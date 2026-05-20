@@ -26,13 +26,10 @@ export namespace ArrowFlight {
 
     namespace CallOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -110,7 +107,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](location: Location, options: (ClientOptions | null)): Client;
+        static ["new"](location: Location, options: ClientOptions | null): Client;
 
         // Signals
         /** @signal */
@@ -131,26 +128,23 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
          */
-        do_get(ticket: Ticket, options: (CallOptions | null)): (StreamReader | null);
+        do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
 
         /**
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(criteria: (Criteria | null), options: (CallOptions | null)): (Info[] | null);
+        list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
 
 
     namespace ClientOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -197,9 +191,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Descriptor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
     /**
@@ -253,7 +245,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            expression: (GLib.Bytes | Uint8Array);
+            expression: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -269,7 +261,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get expression(): GLib.Bytes;
-        set expression(val: (GLib.Bytes | Uint8Array));
+        set expression(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -285,7 +277,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](expression: (GLib.Bytes | Uint8Array)): Criteria;
+        static ["new"](expression: GLib.Bytes | Uint8Array): Criteria;
 
         // Signals
         /** @signal */
@@ -485,7 +477,7 @@ export namespace ArrowFlight {
         /**
          * @returns The locations in this endpoint.   It must be freed with `g_list_free()` and `g_object_unref()` when no   longer needed. You can use `g_list_free_full(locations,   g_object_unref)`.
          */
-        get_locations(): (Location[] | null);
+        get_locations(): Location[] | null;
     }
 
 
@@ -527,7 +519,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](schema: Arrow.Schema, descriptor: Descriptor, endpoints: Endpoint[], total_records: (bigint | number), total_bytes: (bigint | number)): Info;
+        static ["new"](schema: Arrow.Schema, descriptor: Descriptor, endpoints: Endpoint[], total_records: bigint | number, total_bytes: bigint | number): Info;
 
         // Signals
         /** @signal */
@@ -563,7 +555,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
          */
-        get_schema(options: (Arrow.ReadOptions | null)): Arrow.Schema;
+        get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
 
         /**
          * @returns The number of total bytes of the information.
@@ -579,13 +571,10 @@ export namespace ArrowFlight {
 
     namespace Location {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -649,9 +638,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Descriptor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
     /**
@@ -693,7 +680,7 @@ export namespace ArrowFlight {
         /**
          * @returns The paths in this descriptor.   It must be freed with `g_strfreev()` when no longer needed.
          */
-        get_paths(): (string[] | null);
+        get_paths(): string[] | null;
     }
 
 
@@ -802,7 +789,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](reader: Arrow.RecordBatchReader, options: (Arrow.WriteOptions | null)): RecordBatchStream;
+        static ["new"](reader: Arrow.RecordBatchReader, options: Arrow.WriteOptions | null): RecordBatchStream;
 
         // Signals
         /** @signal */
@@ -821,13 +808,10 @@ export namespace ArrowFlight {
 
     namespace Server {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -876,7 +860,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @virtual
          */
-        vfunc_list_flights(context: ServerCallContext, criteria: (Criteria | null)): Info[];
+        vfunc_list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         // Methods
         /**
@@ -893,7 +877,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(context: ServerCallContext, criteria: (Criteria | null)): Info[];
+        list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         /**
          * @param options A {@link ArrowFlight.ServerOptions}.
@@ -1092,7 +1076,7 @@ export namespace ArrowFlight {
         /**
          * @returns The metadata of the chunk.   The metadata may be NULL.
          */
-        get_metadata(): (Arrow.Buffer | null);
+        get_metadata(): Arrow.Buffer | null;
     }
 
 
@@ -1103,9 +1087,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchReader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
     /**
@@ -1151,7 +1133,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: (GLib.Bytes | Uint8Array);
+            data: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -1168,7 +1150,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get data(): GLib.Bytes;
-        set data(val: (GLib.Bytes | Uint8Array));
+        set data(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -1184,7 +1166,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (GLib.Bytes | Uint8Array)): Ticket;
+        static ["new"](data: GLib.Bytes | Uint8Array): Ticket;
 
         // Signals
         /** @signal */

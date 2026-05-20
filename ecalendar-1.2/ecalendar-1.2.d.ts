@@ -446,9 +446,7 @@ export namespace ECalendar {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -504,7 +502,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__ENUM_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+        static marshal_VOID__ENUM_ENUM(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -514,7 +512,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+        static marshal_VOID__STRING_UINT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -524,7 +522,7 @@ export namespace ECalendar {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+        static marshal_VOID__UINT_STRING(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
         /**
          * Matches `tzid` against the system timezone definitions
@@ -615,7 +613,7 @@ export namespace ECalendar {
          * @param alarms Return value for the component's alarm instances.  Will return NULL if no instances occur within the specified time range.  This should be freed using the `e_cal_component_alarms_free()` function.
          * @returns TRUE on success, FALSE if the object was not found.
          */
-        get_alarms_for_object(id: CalComponentId, start: (bigint | number), end: (bigint | number), alarms: CalComponentAlarms): boolean;
+        get_alarms_for_object(id: CalComponentId, start: bigint | number, end: bigint | number, alarms: CalComponentAlarms): boolean;
 
         /**
          * Queries the calendar address associated with a calendar client.
@@ -785,9 +783,7 @@ export namespace ECalendar {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.Client.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.Client.ConstructorProps {}
     }
 
     /**
@@ -952,7 +948,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+        discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_cal_client_discard_alarm()`.
@@ -984,7 +980,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance.
          */
-        generate_instances(start: (bigint | number), end: (bigint | number), cancellable: Gio.Cancellable, cb: CalRecurInstanceFn): void;
+        generate_instances(start: bigint | number, end: bigint | number, cancellable: Gio.Cancellable, cb: CalRecurInstanceFn): void;
 
         /**
          * Does a combination of `e_cal_client_get_object_list()` and
@@ -997,7 +993,7 @@ export namespace ECalendar {
          * @param end End time for query
          * @param cb Callback for each generated instance
          */
-        generate_instances_sync(start: (bigint | number), end: (bigint | number), cb: CalRecurInstanceFn): void;
+        generate_instances_sync(start: bigint | number, end: bigint | number, cb: CalRecurInstanceFn): void;
 
         /**
          * Queries a calendar for a specified component's object attachment uris.
@@ -1029,7 +1025,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string[]> | void);
+        get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string[]> | void;
 
         /**
          * Finishes previous call of `e_cal_client_get_attachment_uris()` and
@@ -1070,7 +1066,7 @@ export namespace ECalendar {
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_free_busy(start: (bigint | number), end: (bigint | number), users: string[], cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+        get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Begins retrieval of free/busy information from the calendar server
@@ -1084,7 +1080,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_free_busy(start: (bigint | number), end: (bigint | number), users: string[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Begins retrieval of free/busy information from the calendar server
@@ -1098,7 +1094,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_free_busy(start: (bigint | number), end: (bigint | number), users: string[], cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+        get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_cal_client_get_free_busy()`.
@@ -1117,7 +1113,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_free_busy_sync(start: (bigint | number), end: (bigint | number), users: string[], cancellable: Gio.Cancellable): boolean;
+        get_free_busy_sync(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable): boolean;
 
         /**
          * Queries the URL where the calendar attachments are
@@ -1185,7 +1181,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<CalComponent[]> | void);
+        get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalComponent[]> | void;
 
         /**
          * Finishes previous call of `e_cal_client_get_object_list_as_comps()` and
@@ -1240,7 +1236,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_objects_for_uid(uid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<CalComponent[]> | void);
+        get_objects_for_uid(uid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalComponent[]> | void;
 
         /**
          * Finishes previous call of `e_cal_client_get_objects_for_uid()` and
@@ -1306,7 +1302,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_view(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<CalClientView> | void);
+        get_view(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalClientView> | void;
 
         /**
          * Finishes previous call of `e_cal_client_get_view()`.
@@ -1515,13 +1511,10 @@ export namespace ECalendar {
 
     namespace CalComponent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2125,7 +2118,7 @@ export namespace ECalendar {
          * @param icalcomp An #icalcomponent.
          * @returns TRUE on success, FALSE if `icalcomp` is an unsupported component type.
          */
-        set_icalcomponent(icalcomp: (bigint | number)): boolean;
+        set_icalcomponent(icalcomp: bigint | number): boolean;
 
         /**
          * Sets the time at which a calendar component object was last stored in the

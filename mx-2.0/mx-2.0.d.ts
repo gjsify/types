@@ -205,7 +205,7 @@ export namespace Mx {
         static INVALID_PARAMETER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -520,7 +520,7 @@ export namespace Mx {
      * @param str 
      * @param filename 
      */
-    function border_image_set_from_string(value: (GObject.Value | any), str: string, filename: string): void;
+    function border_image_set_from_string(value: GObject.Value | any, str: string, filename: string): void;
 
     /**
      * Transforms a focus direction to a focus hint. This is a convenience
@@ -545,7 +545,7 @@ export namespace Mx {
      * @param value 
      * @param str 
      */
-    function font_weight_set_from_string(value: (GObject.Value | any), str: string): void;
+    function font_weight_set_from_string(value: GObject.Value | any, str: string): void;
 
     function image_error_quark(): GLib.Quark;
 
@@ -784,7 +784,7 @@ export namespace Mx {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameter_type(): (GLib.VariantType | null);
+        get parameter_type(): GLib.VariantType | null;
 
         /**
          * The type of the parameter that must be given when activating the
@@ -794,7 +794,7 @@ export namespace Mx {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameterType(): (GLib.VariantType | null);
+        get parameterType(): GLib.VariantType | null;
 
         /**
          * The state of the action, or `NULL` if the action is stateless.
@@ -802,7 +802,7 @@ export namespace Mx {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state(): (GLib.Variant | null);
+        get state(): GLib.Variant | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -811,7 +811,7 @@ export namespace Mx {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state_type(): (GLib.VariantType | null);
+        get state_type(): GLib.VariantType | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -820,7 +820,7 @@ export namespace Mx {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get stateType(): (GLib.VariantType | null);
+        get stateType(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -832,7 +832,7 @@ export namespace Mx {
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
-        activate(parameter: (GLib.Variant | null)): void;
+        activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -870,7 +870,7 @@ export namespace Mx {
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
          */
-        get_parameter_type(): (GLib.VariantType | null);
+        get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -883,7 +883,7 @@ export namespace Mx {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
          */
-        get_state(): (GLib.Variant | null);
+        get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -906,7 +906,7 @@ export namespace Mx {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
          */
-        get_state_hint(): (GLib.Variant | null);
+        get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -923,7 +923,7 @@ export namespace Mx {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
          */
-        get_state_type(): (GLib.VariantType | null);
+        get_state_type(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -936,7 +936,7 @@ export namespace Mx {
          * @param parameter the parameter to the activation
          * @virtual
          */
-        vfunc_activate(parameter: (GLib.Variant | null)): void;
+        vfunc_activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -981,7 +981,7 @@ export namespace Mx {
          * {@link GLib.Variant}, but `NULL` instead.
          * @virtual
          */
-        vfunc_get_parameter_type(): (GLib.VariantType | null);
+        vfunc_get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -994,7 +994,7 @@ export namespace Mx {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state(): (GLib.Variant | null);
+        vfunc_get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -1017,7 +1017,7 @@ export namespace Mx {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state_hint(): (GLib.Variant | null);
+        vfunc_get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -1034,7 +1034,7 @@ export namespace Mx {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @virtual
          */
-        vfunc_get_state_type(): (GLib.VariantType | null);
+        vfunc_get_state_type(): GLib.VariantType | null;
     }
 
 
@@ -1241,7 +1241,7 @@ export namespace Mx {
          * is cancelled.
          * @param id An operation ID
          */
-        cancel_operation(id: (bigint | number)): void;
+        cancel_operation(id: bigint | number): void;
 
         /**
          * Cancels all operations associated with the given actor.
@@ -1512,7 +1512,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate(value: number, duration: number, mode: (bigint | number)): void;
+        interpolate(value: number, duration: number, mode: bigint | number): void;
 
         /**
          * Interpolate the value of {@link Mx.Adjustment.value} to a new value calculated from
@@ -1521,7 +1521,7 @@ export namespace Mx {
          * @param duration duration in milliseconds
          * @param mode A {@link Clutter.AnimationMode}
          */
-        interpolate_relative(offset: number, duration: number, mode: (bigint | number)): void;
+        interpolate_relative(offset: number, duration: number, mode: bigint | number): void;
 
         /**
          * Set the value of the {@link Mx.Adjustment.clamp_value} property.
@@ -1599,9 +1599,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -1747,7 +1745,7 @@ export namespace Mx {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -1793,7 +1791,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -1807,7 +1805,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1831,7 +1829,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1853,7 +1851,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -1980,7 +1978,7 @@ export namespace Mx {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2027,7 +2025,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2041,7 +2039,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2065,7 +2063,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2087,7 +2085,7 @@ export namespace Mx {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2163,7 +2161,7 @@ export namespace Mx {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -2219,7 +2217,7 @@ export namespace Mx {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -2333,12 +2331,12 @@ export namespace Mx {
         // Constructor properties interface
         interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {
             child: Clutter.Actor;
-            x_align: (Align | any);
-            xAlign: (Align | any);
+            x_align: Align | any;
+            xAlign: Align | any;
             x_fill: boolean;
             xFill: boolean;
-            y_align: (Align | any);
-            yAlign: (Align | any);
+            y_align: Align | any;
+            yAlign: Align | any;
             y_fill: boolean;
             yFill: boolean;
         }
@@ -2362,17 +2360,17 @@ export namespace Mx {
          * The horizontal alignment of the {@link Mx.Bin} child.
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get x_align(): (Align | any);
+        get x_align(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set x_align(val: (Align | any));
+        set x_align(val: Align | any);
 
         /**
          * The horizontal alignment of the {@link Mx.Bin} child.
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get xAlign(): (Align | any);
+        get xAlign(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set xAlign(val: (Align | any));
+        set xAlign(val: Align | any);
 
         /**
          * Whether the child should fill the horizontal allocation
@@ -2390,17 +2388,17 @@ export namespace Mx {
          * The vertical alignment of the {@link Mx.Bin} child.
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get y_align(): (Align | any);
+        get y_align(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set y_align(val: (Align | any));
+        set y_align(val: Align | any);
 
         /**
          * The vertical alignment of the {@link Mx.Bin} child.
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get yAlign(): (Align | any);
+        get yAlign(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set yAlign(val: (Align | any));
+        set yAlign(val: Align | any);
 
         /**
          * Whether the child should fill the vertical allocation
@@ -4068,13 +4066,10 @@ export namespace Mx {
 
     namespace Clipboard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4692,9 +4687,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {}
     }
 
     /**
@@ -6196,9 +6189,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Stylable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Stylable.ConstructorProps {}
     }
 
     /**
@@ -6637,9 +6628,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Stylable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Stylable.ConstructorProps {}
     }
 
     /**
@@ -8155,7 +8144,7 @@ export namespace Mx {
          * @param duration duration of the animation in milliseconds
          * @param scale_mode The {@link Mx.ImageScaleMode} to set
          */
-        animate_scale_mode(mode: (bigint | number), duration: number, scale_mode: ImageScaleMode): void;
+        animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode): void;
 
         /**
          * Clear the current image and set a blank, transparent image.
@@ -8224,7 +8213,7 @@ export namespace Mx {
          * @param buffer A buffer pointing to encoded image data
          * @returns `TRUE` if the image was successfully updated
          */
-        set_from_buffer(buffer: (Uint8Array | string)): boolean;
+        set_from_buffer(buffer: Uint8Array | string): boolean;
 
         /**
          * Set the image data from unencoded image data, stored in memory, and scales
@@ -8237,7 +8226,7 @@ export namespace Mx {
          * @param height Height to scale the image to, or -1
          * @returns `TRUE` if the image was successfully updated
          */
-        set_from_buffer_at_size(buffer: (Uint8Array | string), width: number, height: number): boolean;
+        set_from_buffer_at_size(buffer: Uint8Array | string, width: number, height: number): boolean;
 
         /**
          * Sets the contents of the image from the given Cogl texture.
@@ -8256,7 +8245,7 @@ export namespace Mx {
          * @param rowstride Distance in bytes between row starts.
          * @returns `TRUE` if the image was successfully updated
          */
-        set_from_data(data: (Uint8Array | string), pixel_format: Cogl.PixelFormat, width: number, height: number, rowstride: number): boolean;
+        set_from_data(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, rowstride: number): boolean;
 
         /**
          * Set the image data from an image file. In case of failure, `FALSE` is returned
@@ -8939,8 +8928,8 @@ export namespace Mx {
             accelerationFactor: number;
             clamp_duration: number;
             clampDuration: number;
-            clamp_mode: (bigint | number);
-            clampMode: (bigint | number);
+            clamp_mode: bigint | number;
+            clampMode: bigint | number;
             clamp_to_center: boolean;
             clampToCenter: boolean;
             deceleration: number;
@@ -8981,10 +8970,10 @@ export namespace Mx {
         set clampDuration(val: number);
 
         get clamp_mode(): number;
-        set clamp_mode(val: (bigint | number));
+        set clamp_mode(val: bigint | number);
 
         get clampMode(): number;
-        set clampMode(val: (bigint | number));
+        set clampMode(val: bigint | number);
 
         get clamp_to_center(): boolean;
         set clamp_to_center(val: boolean);
@@ -9158,7 +9147,7 @@ export namespace Mx {
          * Animation mode to use for the adjustment clamp animation.
          * @param clamp_mode Clamp mode
          */
-        set_clamp_mode(clamp_mode: (bigint | number)): void;
+        set_clamp_mode(clamp_mode: bigint | number): void;
 
         /**
          * Set whether to clamp to step increments based on the center of the page.
@@ -9603,15 +9592,15 @@ export namespace Mx {
             fadeOut: boolean;
             line_wrap: boolean;
             lineWrap: boolean;
-            show_tooltip: (boolean | any);
+            show_tooltip: boolean | any;
             showTooltip: boolean;
             text: string;
             use_markup: boolean;
             useMarkup: boolean;
-            x_align: (Align | any);
-            xAlign: (Align | any);
-            y_align: (Align | any);
-            yAlign: (Align | any);
+            x_align: Align | any;
+            xAlign: Align | any;
+            y_align: Align | any;
+            yAlign: Align | any;
         }
     }
 
@@ -9684,24 +9673,24 @@ export namespace Mx {
         set useMarkup(val: boolean);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get x_align(): (Align | any);
+        get x_align(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set x_align(val: (Align | any));
+        set x_align(val: Align | any);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get xAlign(): (Align | any);
+        get xAlign(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set xAlign(val: (Align | any));
+        set xAlign(val: Align | any);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get y_align(): (Align | any);
+        get y_align(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set y_align(val: (Align | any));
+        set y_align(val: Align | any);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get yAlign(): (Align | any);
+        get yAlign(): Align | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set yAlign(val: (Align | any));
+        set yAlign(val: Align | any);
 
         /**
          * Compile-time signal type information.
@@ -10440,9 +10429,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FloatingWidget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FloatingWidget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {}
     }
 
     /**
@@ -13776,9 +13763,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps, Focusable.ConstructorProps, Stylable.ConstructorProps {}
     }
 
     /**
@@ -14238,9 +14223,7 @@ export namespace Mx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -15076,13 +15059,10 @@ export namespace Mx {
 
     namespace TextureCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -15481,7 +15461,7 @@ export namespace Mx {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -15495,7 +15475,7 @@ export namespace Mx {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -15519,7 +15499,7 @@ export namespace Mx {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -15605,7 +15585,7 @@ export namespace Mx {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -15622,7 +15602,7 @@ export namespace Mx {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -15705,7 +15685,7 @@ export namespace Mx {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -15716,7 +15696,7 @@ export namespace Mx {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -15845,7 +15825,7 @@ export namespace Mx {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -15857,7 +15837,7 @@ export namespace Mx {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -15895,7 +15875,7 @@ export namespace Mx {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -15904,7 +15884,7 @@ export namespace Mx {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -16347,7 +16327,7 @@ export namespace Mx {
              * @signal
              * @run-last
              */
-            "close-button-clicked": () => (boolean | void);
+            "close-button-clicked": () => boolean | void;
             "notify::has-close-button": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
@@ -17218,7 +17198,7 @@ export namespace Mx {
              * @signal
              * @run-last
              */
-            "long-press": (arg0: number, arg1: number, arg2: LongPressAction) => (boolean | void);
+            "long-press": (arg0: number, arg1: number, arg2: LongPressAction) => boolean | void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -17551,7 +17531,7 @@ export namespace Mx {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -17565,7 +17545,7 @@ export namespace Mx {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -17589,7 +17569,7 @@ export namespace Mx {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -17675,7 +17655,7 @@ export namespace Mx {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -17692,7 +17672,7 @@ export namespace Mx {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -17775,7 +17755,7 @@ export namespace Mx {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -17786,7 +17766,7 @@ export namespace Mx {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -17915,7 +17895,7 @@ export namespace Mx {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -17927,7 +17907,7 @@ export namespace Mx {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -17965,7 +17945,7 @@ export namespace Mx {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -17974,7 +17954,7 @@ export namespace Mx {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -18642,7 +18622,7 @@ export namespace Mx {
          * @param str 
          * @param filename 
          */
-        static set_from_string(value: (GObject.Value | any), str: string, filename: string): void;
+        static set_from_string(value: GObject.Value | any, str: string, filename: string): void;
 
         // Methods
         /**
@@ -19549,9 +19529,7 @@ export namespace Mx {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FocusableNamespace {
@@ -19603,9 +19581,7 @@ export namespace Mx {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ItemFactoryNamespace {

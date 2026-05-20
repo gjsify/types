@@ -86,7 +86,7 @@ export namespace EDataServerUI4 {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @since 3.16
      */
-    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: (string | null), allow_source_save: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null, allow_source_save: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Similar to `e_trust_prompt_run_modal()`, except it also manages all the necessary things
      * around the `source`<!-- -->'s SSL/TLS trust properties when it also contains `E_SOURCE_EXTENSION_WEBDAV`,
@@ -109,7 +109,7 @@ export namespace EDataServerUI4 {
      * @param callback a callback to call, when the prompt (an `source` save) is done
      * @since 3.16
      */
-    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: (string | null), allow_source_save: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gtk.Window> | null)): void;
+    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null, allow_source_save: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gtk.Window> | null): void;
     /**
      * Similar to `e_trust_prompt_run_modal()`, except it also manages all the necessary things
      * around the `source`<!-- -->'s SSL/TLS trust properties when it also contains `E_SOURCE_EXTENSION_WEBDAV`,
@@ -132,7 +132,7 @@ export namespace EDataServerUI4 {
      * @param callback a callback to call, when the prompt (an `source` save) is done
      * @since 3.16
      */
-    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: (string | null), allow_source_save: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gtk.Window> | null)): (globalThis.Promise<boolean> | void);
+    function trust_prompt_run_for_source(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null, allow_source_save: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gtk.Window> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes the operation started with `e_trust_prompt_run_for_source()`.
@@ -171,13 +171,13 @@ export namespace EDataServerUI4 {
      * @returns A code of the user's choice. The #E_TRUST_PROMPT_RESPONSE_UNKNOWN    is returned, when the user cancelled the trust prompt dialog.
      * @since 3.16
      */
-    function trust_prompt_run_modal(parent: Gtk.Window, source_extension: (string | null), source_display_name: (string | null), host: string, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: (string | null)): EDataServer.TrustPromptResponse;
+    function trust_prompt_run_modal(parent: Gtk.Window, source_extension: string | null, source_display_name: string | null, host: string, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null): EDataServer.TrustPromptResponse;
 
     /**
      * @gir-type Callback
      */
     interface CredentialsPrompterLoopPromptFunc {
-        (prompter: CredentialsPrompter, source: EDataServer.Source, credentials: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null)): boolean;
+        (prompter: CredentialsPrompter, source: EDataServer.Source, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): boolean;
     }
 
     /**
@@ -324,9 +324,7 @@ export namespace EDataServerUI4 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -384,7 +382,7 @@ export namespace EDataServerUI4 {
          * The content of the `self` is cleared when the `pem_data` is `null`.
          * @param pem_data certificate data in PEM format, or `null`
          */
-        set_pem(pem_data: (string | null)): void;
+        set_pem(pem_data: string | null): void;
 
         /**
          * The orientation of the orientable.
@@ -419,7 +417,7 @@ export namespace EDataServerUI4 {
              * @since 3.16
              * @run-last
              */
-            "get-dialog-parent": () => (Gtk.Window | null);
+            "get-dialog-parent": () => Gtk.Window | null;
             /**
              * Emitted when a new dialog will be shown, to get the right parent
              * window for it. If the result of the call is `null`, then it tries
@@ -428,7 +426,7 @@ export namespace EDataServerUI4 {
              * @since 3.42
              * @run-last
              */
-            "get-dialog-parent-full": (arg0: (EDataServer.Source | null)) => (Gtk.Window | null);
+            "get-dialog-parent-full": (arg0: EDataServer.Source | null) => Gtk.Window | null;
             "notify::auto-prompt": (pspec: GObject.ParamSpec) => void;
             "notify::provider": (pspec: GObject.ParamSpec) => void;
             "notify::registry": (pspec: GObject.ParamSpec) => void;
@@ -522,7 +520,7 @@ export namespace EDataServerUI4 {
          * chosen the last active window from the default GApplication, if any available.
          * @virtual
          */
-        vfunc_get_dialog_parent(): (Gtk.Window | null);
+        vfunc_get_dialog_parent(): Gtk.Window | null;
 
         // Methods
         /**
@@ -552,7 +550,7 @@ export namespace EDataServerUI4 {
          * chosen the last active window from the default GApplication, if any available.
          * @returns a {@link Gtk.Window}, to be used as a dialog parent,    or `null`.
          */
-        get_dialog_parent(): (Gtk.Window | null);
+        get_dialog_parent(): Gtk.Window | null;
 
         /**
          * Returns a {@link Gtk.Window}, which should be used as a dialog parent for the `auth_source`.
@@ -565,7 +563,7 @@ export namespace EDataServerUI4 {
          * @param auth_source an {@link EDataServer.Source}
          * @returns a {@link Gtk.Window}, to be used as a dialog parent,    or `null`.
          */
-        get_dialog_parent_full(auth_source: (EDataServer.Source | null)): (Gtk.Window | null);
+        get_dialog_parent_full(auth_source: EDataServer.Source | null): Gtk.Window | null;
 
         /**
          * Returns an {@link EDataServer.SourceCredentialsProvider}, which the `prompter` uses.
@@ -596,7 +594,7 @@ export namespace EDataServerUI4 {
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
          * @returns `true`, when the credentials were provided successfully and they   can be used to authenticate the `source`; `false` otherwise.
          */
-        loop_prompt_sync(source: EDataServer.Source, flags: CredentialsPrompterPromptFlags, func: CredentialsPrompterLoopPromptFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        loop_prompt_sync(source: EDataServer.Source, flags: CredentialsPrompterPromptFlags, func: CredentialsPrompterLoopPromptFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Process all enabled sources with connection state #E_SOURCE_CONNECTION_STATUS_AWAITING_CREDENTIALS,
@@ -624,7 +622,7 @@ export namespace EDataServerUI4 {
          * @param error_text Additional error text to show to a user, or `null`
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
          */
-        prompt(source: EDataServer.Source, error_text: (string | null), flags: CredentialsPrompterPromptFlags): globalThis.Promise<[(EDataServer.Source | null), (EDataServer.NamedParameters | null)]>;
+        prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
 
         /**
          * Asks the `prompter` to prompt for credentials, which are returned
@@ -638,7 +636,7 @@ export namespace EDataServerUI4 {
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
          * @param callback a callback to call when the credentials are ready, or `null`
          */
-        prompt(source: EDataServer.Source, error_text: (string | null), flags: CredentialsPrompterPromptFlags, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asks the `prompter` to prompt for credentials, which are returned
@@ -652,7 +650,7 @@ export namespace EDataServerUI4 {
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
          * @param callback a callback to call when the credentials are ready, or `null`
          */
-        prompt(source: EDataServer.Source, error_text: (string | null), flags: CredentialsPrompterPromptFlags, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(EDataServer.Source | null), (EDataServer.NamedParameters | null)]> | void);
+        prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
 
         /**
          * Finishes a credentials prompt previously started with `e_credentials_prompter_prompt()`.
@@ -680,7 +678,7 @@ export namespace EDataServerUI4 {
          * @param prompter_impl an {@link EDataServerUI4.CredentialsPrompterImpl}
          * @returns `true` on success, `false` on failure or when there was another prompter implementation registered for the given authentication method.
          */
-        register_impl(authentication_method: (string | null), prompter_impl: CredentialsPrompterImpl): boolean;
+        register_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): boolean;
 
         /**
          * Sets whether can respond to credential prompts automatically. That means that
@@ -712,7 +710,7 @@ export namespace EDataServerUI4 {
          * @param authentication_method an authentication method to registr `prompter_impl` for; or `null`
          * @param prompter_impl an {@link EDataServerUI4.CredentialsPrompterImpl}
          */
-        unregister_impl(authentication_method: (string | null), prompter_impl: CredentialsPrompterImpl): void;
+        unregister_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): void;
 
         /**
          * Returns a list of {@link EDataServer.Extension} objects bound to `extensible` whose
@@ -752,14 +750,12 @@ export namespace EDataServerUI4 {
              * @since 3.16
              * @run-last
              */
-            "prompt-finished": (arg0: null, arg1: (EDataServer.NamedParameters | null)) => void;
+            "prompt-finished": (arg0: null, arg1: EDataServer.NamedParameters | null) => void;
             "notify::extensible": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
     }
 
     /**
@@ -856,7 +852,7 @@ export namespace EDataServerUI4 {
          * @param error_text an optional error text from the previous credentials prompt; can be `null`
          * @param credentials credentials, as saved in keyring; can be empty, but not `null`
          */
-        prompt(prompt_id: null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: (string | null), credentials: EDataServer.NamedParameters): void;
+        prompt(prompt_id: null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void;
 
         /**
          * The actual credentials prompt implementation finishes a previously started
@@ -869,7 +865,7 @@ export namespace EDataServerUI4 {
          * @param prompt_id a prompt ID
          * @param credentials credentials to use; can be `null` for cancelled prompts
          */
-        prompt_finish(prompt_id: null, credentials: (EDataServer.NamedParameters | null)): void;
+        prompt_finish(prompt_id: null, credentials: EDataServer.NamedParameters | null): void;
     }
 
 
@@ -880,9 +876,7 @@ export namespace EDataServerUI4 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
     }
 
     /**
@@ -932,9 +926,7 @@ export namespace EDataServerUI4 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
     }
 
     /**
@@ -985,7 +977,7 @@ export namespace EDataServerUI4 {
              * @action
              * @run-last
              */
-            activated: (arg0: ECal.ReminderData) => (boolean | void);
+            activated: (arg0: ECal.ReminderData) => boolean | void;
             /**
              * @signal
              * @action
@@ -1148,7 +1140,7 @@ export namespace EDataServerUI4 {
          * @param prefix an optional prefix to show before the error message, or `null` for none
          * @param error a {@link GLib.Error} to show the message from in the UI, or `null` for unknown error
          */
-        report_error(prefix: (string | null), error: (GLib.Error | null)): void;
+        report_error(prefix: string | null, error: GLib.Error | null): void;
 
         /**
          * The orientation of the orientable.
@@ -1246,9 +1238,7 @@ export namespace EDataServerUI4 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -1271,7 +1261,7 @@ export namespace EDataServerUI4 {
 
         _init(...args: any[]): void;
 
-        static ["new"](credentials_prompter: CredentialsPrompter, source: (EDataServer.Source | null), base_url: (string | null), supports_filter: number): WebDAVDiscoverContent;
+        static ["new"](credentials_prompter: CredentialsPrompter, source: EDataServer.Source | null, base_url: string | null, supports_filter: number): WebDAVDiscoverContent;
 
         // Conflicted with Gtk.Grid.new
         static ["new"](...args: never[]): any;
@@ -1327,7 +1317,7 @@ export namespace EDataServerUI4 {
          * This value has meaning only with calendar sources.
          * @returns currently selected user address. The   returned string is newly allocated and should be freed with `g_free()` when   no longer needed. If there are none addresses provided by the server, or   no calendar sources were found, then `null` is returned instead.
          */
-        get_user_address(): (string | null);
+        get_user_address(): string | null;
 
         /**
          * Asynchronously starts refresh of the `content`. This means to access the server
@@ -1342,23 +1332,7 @@ export namespace EDataServerUI4 {
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        refresh(display_name: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously starts refresh of the `content`. This means to access the server
-         * and search it for available sources. The `content` shows a feedback and a Cancel
-         * button during the operation.
-         * 
-         * The `display_name` is used only if the `content` wasn't created with an {@link EDataServer.Source} and
-         * it's shown in the password prompts, if there are required any.
-         * 
-         * When the operation is finished, `callback` will be called. You can then
-         * call `e_webdav_discover_content_refresh_finish()` to get the result of the operation.
-         * @param display_name optional display name to use for scratch sources
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        refresh(display_name: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh(display_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously starts refresh of the `content`. This means to access the server
@@ -1374,7 +1348,23 @@ export namespace EDataServerUI4 {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        refresh(display_name: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh(display_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously starts refresh of the `content`. This means to access the server
+         * and search it for available sources. The `content` shows a feedback and a Cancel
+         * button during the operation.
+         * 
+         * The `display_name` is used only if the `content` wasn't created with an {@link EDataServer.Source} and
+         * it's shown in the password prompts, if there are required any.
+         * 
+         * When the operation is finished, `callback` will be called. You can then
+         * call `e_webdav_discover_content_refresh_finish()` to get the result of the operation.
+         * @param display_name optional display name to use for scratch sources
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        refresh(display_name: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_webdav_discover_content_refresh()`. If an
@@ -1499,9 +1489,7 @@ export namespace EDataServerUI4 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -1524,7 +1512,7 @@ export namespace EDataServerUI4 {
 
         _init(...args: any[]): void;
 
-        static ["new"](parent: Gtk.Window, title: string, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: (string | null), supports_filter: number): WebDAVDiscoverDialog;
+        static ["new"](parent: Gtk.Window, title: string, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: string | null, supports_filter: number): WebDAVDiscoverDialog;
 
         // Conflicted with Gtk.Dialog.new
         static ["new"](...args: never[]): any;

@@ -1306,7 +1306,7 @@ export namespace Gst {
      * @param name 
      * @param value 
      */
-    function child_proxy_get_property(object: Object, name: string, value: (GObject.Value | any)): void;
+    function child_proxy_get_property(object: Object, name: string, value: GObject.Value | any): void;
 
     /**
      * @param object 
@@ -1321,7 +1321,7 @@ export namespace Gst {
      * @param name 
      * @param value 
      */
-    function child_proxy_set_property(object: Object, name: string, value: (GObject.Value | any)): void;
+    function child_proxy_set_property(object: Object, name: string, value: GObject.Value | any): void;
 
     /**
      * @param klass 
@@ -1491,7 +1491,7 @@ export namespace Gst {
     /**
      * @param argv arguments
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     /**
      * @param argv 
@@ -1638,19 +1638,19 @@ export namespace Gst {
      * @param list 
      * @param tag 
      */
-    function tag_list_copy_value(dest: (GObject.Value | any), list: TagList, tag: string): boolean;
+    function tag_list_copy_value(dest: GObject.Value | any, list: TagList, tag: string): boolean;
 
     /**
      * @param dest 
      * @param src 
      */
-    function tag_merge_strings_with_comma(dest: (GObject.Value | any), src: (GObject.Value | any)): void;
+    function tag_merge_strings_with_comma(dest: GObject.Value | any, src: GObject.Value | any): void;
 
     /**
      * @param dest 
      * @param src 
      */
-    function tag_merge_use_first(dest: (GObject.Value | any), src: (GObject.Value | any)): void;
+    function tag_merge_use_first(dest: GObject.Value | any, src: GObject.Value | any): void;
 
     /**
      * @param name 
@@ -1776,7 +1776,7 @@ export namespace Gst {
      * @param search_data 
      * @param user_data 
      */
-    function util_array_binary_search(array: any, num_elements: number, element_size: (bigint | number), search_func: GLib.CompareDataFunc, mode: SearchMode, search_data: any, user_data: any): any;
+    function util_array_binary_search(array: any, num_elements: number, element_size: bigint | number, search_func: GLib.CompareDataFunc, mode: SearchMode, search_data: any, user_data: any): any;
 
     /**
      * @param src 
@@ -1848,7 +1848,7 @@ export namespace Gst {
      * @param value 
      * @param value_str 
      */
-    function util_set_value_from_string(value: (GObject.Value | any), value_str: string): void;
+    function util_set_value_from_string(value: GObject.Value | any, value_str: string): void;
 
     /**
      * @param val 
@@ -1896,192 +1896,192 @@ export namespace Gst {
      * @param value 
      * @param append_value 
      */
-    function value_array_append_value(value: (GObject.Value | any), append_value: (GObject.Value | any)): void;
+    function value_array_append_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
 
     /**
      * @param value 
      */
-    function value_array_get_size(value: (GObject.Value | any)): number;
+    function value_array_get_size(value: GObject.Value | any): number;
 
     /**
      * @param value 
      * @param index 
      */
-    function value_array_get_value(value: (GObject.Value | any), index: number): unknown;
+    function value_array_get_value(value: GObject.Value | any, index: number): unknown;
 
     /**
      * @param value 
      * @param prepend_value 
      */
-    function value_array_prepend_value(value: (GObject.Value | any), prepend_value: (GObject.Value | any)): void;
+    function value_array_prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
 
     /**
      * @param value1 
      * @param value2 
      */
-    function value_can_compare(value1: (GObject.Value | any), value2: (GObject.Value | any)): boolean;
+    function value_can_compare(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
 
     /**
      * @param value1 
      * @param value2 
      */
-    function value_can_intersect(value1: (GObject.Value | any), value2: (GObject.Value | any)): boolean;
+    function value_can_intersect(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
 
     /**
      * @param minuend 
      * @param subtrahend 
      */
-    function value_can_subtract(minuend: (GObject.Value | any), subtrahend: (GObject.Value | any)): boolean;
+    function value_can_subtract(minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
 
     /**
      * @param value1 
      * @param value2 
      */
-    function value_can_union(value1: (GObject.Value | any), value2: (GObject.Value | any)): boolean;
+    function value_can_union(value1: GObject.Value | any, value2: GObject.Value | any): boolean;
 
     /**
      * @param value1 
      * @param value2 
      */
-    function value_compare(value1: (GObject.Value | any), value2: (GObject.Value | any)): number;
+    function value_compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
 
     /**
      * @param dest 
      * @param src 
      */
-    function value_deserialize(dest: (GObject.Value | any), src: string): boolean;
+    function value_deserialize(dest: GObject.Value | any, src: string): boolean;
 
     /**
      * @param value 
      */
-    function value_dup_mini_object(value: (GObject.Value | any)): MiniObject;
+    function value_dup_mini_object(value: GObject.Value | any): MiniObject;
 
     /**
      * @param product 
      * @param factor1 
      * @param factor2 
      */
-    function value_fraction_multiply(product: (GObject.Value | any), factor1: (GObject.Value | any), factor2: (GObject.Value | any)): boolean;
+    function value_fraction_multiply(product: GObject.Value | any, factor1: GObject.Value | any, factor2: GObject.Value | any): boolean;
 
     /**
      * @param dest 
      * @param minuend 
      * @param subtrahend 
      */
-    function value_fraction_subtract(dest: (GObject.Value | any), minuend: (GObject.Value | any), subtrahend: (GObject.Value | any)): boolean;
+    function value_fraction_subtract(dest: GObject.Value | any, minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
 
     /**
      * @param value 
      */
-    function value_get_caps(value: (GObject.Value | any)): Caps;
+    function value_get_caps(value: GObject.Value | any): Caps;
 
     /**
      * @param value 
      */
-    function value_get_date(value: (GObject.Value | any)): GLib.Date;
+    function value_get_date(value: GObject.Value | any): GLib.Date;
 
     /**
      * @param value 
      */
-    function value_get_double_range_max(value: (GObject.Value | any)): number;
+    function value_get_double_range_max(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_double_range_min(value: (GObject.Value | any)): number;
+    function value_get_double_range_min(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_fourcc(value: (GObject.Value | any)): number;
+    function value_get_fourcc(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_fraction_denominator(value: (GObject.Value | any)): number;
+    function value_get_fraction_denominator(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_fraction_numerator(value: (GObject.Value | any)): number;
+    function value_get_fraction_numerator(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_fraction_range_max(value: (GObject.Value | any)): unknown;
+    function value_get_fraction_range_max(value: GObject.Value | any): unknown;
 
     /**
      * @param value 
      */
-    function value_get_fraction_range_min(value: (GObject.Value | any)): unknown;
+    function value_get_fraction_range_min(value: GObject.Value | any): unknown;
 
     /**
      * @param value 
      */
-    function value_get_int_range_max(value: (GObject.Value | any)): number;
+    function value_get_int_range_max(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_int_range_min(value: (GObject.Value | any)): number;
+    function value_get_int_range_min(value: GObject.Value | any): number;
 
     /**
      * @param value 
      */
-    function value_get_mini_object(value: (GObject.Value | any)): MiniObject;
+    function value_get_mini_object(value: GObject.Value | any): MiniObject;
 
     /**
      * @param value 
      */
-    function value_get_structure(value: (GObject.Value | any)): Structure;
+    function value_get_structure(value: GObject.Value | any): Structure;
 
     /**
      * @param dest 
      * @param src 
      */
-    function value_init_and_copy(dest: (GObject.Value | any), src: (GObject.Value | any)): void;
+    function value_init_and_copy(dest: GObject.Value | any, src: GObject.Value | any): void;
 
     /**
      * @param dest 
      * @param value1 
      * @param value2 
      */
-    function value_intersect(dest: (GObject.Value | any), value1: (GObject.Value | any), value2: (GObject.Value | any)): boolean;
+    function value_intersect(dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
 
     /**
      * @param value 
      */
-    function value_is_fixed(value: (GObject.Value | any)): boolean;
+    function value_is_fixed(value: GObject.Value | any): boolean;
 
     /**
      * @param value 
      * @param append_value 
      */
-    function value_list_append_value(value: (GObject.Value | any), append_value: (GObject.Value | any)): void;
+    function value_list_append_value(value: GObject.Value | any, append_value: GObject.Value | any): void;
 
     /**
      * @param dest 
      * @param value1 
      * @param value2 
      */
-    function value_list_concat(dest: (GObject.Value | any), value1: (GObject.Value | any), value2: (GObject.Value | any)): void;
+    function value_list_concat(dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): void;
 
     /**
      * @param value 
      */
-    function value_list_get_size(value: (GObject.Value | any)): number;
+    function value_list_get_size(value: GObject.Value | any): number;
 
     /**
      * @param value 
      * @param index 
      */
-    function value_list_get_value(value: (GObject.Value | any), index: number): unknown;
+    function value_list_get_value(value: GObject.Value | any, index: number): unknown;
 
     /**
      * @param value 
      * @param prepend_value 
      */
-    function value_list_prepend_value(value: (GObject.Value | any), prepend_value: (GObject.Value | any)): void;
+    function value_list_prepend_value(value: GObject.Value | any, prepend_value: GObject.Value | any): void;
 
     /**
      * @param table 
@@ -2112,46 +2112,46 @@ export namespace Gst {
     /**
      * @param value 
      */
-    function value_serialize(value: (GObject.Value | any)): string;
+    function value_serialize(value: GObject.Value | any): string;
 
     /**
      * @param value 
      * @param caps 
      */
-    function value_set_caps(value: (GObject.Value | any), caps: Caps): void;
+    function value_set_caps(value: GObject.Value | any, caps: Caps): void;
 
     /**
      * @param value 
      * @param date 
      */
-    function value_set_date(value: (GObject.Value | any), date: GLib.Date): void;
+    function value_set_date(value: GObject.Value | any, date: GLib.Date): void;
 
     /**
      * @param value 
      * @param start 
      * @param end 
      */
-    function value_set_double_range(value: (GObject.Value | any), start: number, end: number): void;
+    function value_set_double_range(value: GObject.Value | any, start: number, end: number): void;
 
     /**
      * @param value 
      * @param fourcc 
      */
-    function value_set_fourcc(value: (GObject.Value | any), fourcc: number): void;
+    function value_set_fourcc(value: GObject.Value | any, fourcc: number): void;
 
     /**
      * @param value 
      * @param numerator 
      * @param denominator 
      */
-    function value_set_fraction(value: (GObject.Value | any), numerator: number, denominator: number): void;
+    function value_set_fraction(value: GObject.Value | any, numerator: number, denominator: number): void;
 
     /**
      * @param value 
      * @param start 
      * @param end 
      */
-    function value_set_fraction_range(value: (GObject.Value | any), start: (GObject.Value | any), end: (GObject.Value | any)): void;
+    function value_set_fraction_range(value: GObject.Value | any, start: GObject.Value | any, end: GObject.Value | any): void;
 
     /**
      * @param value 
@@ -2160,46 +2160,46 @@ export namespace Gst {
      * @param numerator_end 
      * @param denominator_end 
      */
-    function value_set_fraction_range_full(value: (GObject.Value | any), numerator_start: number, denominator_start: number, numerator_end: number, denominator_end: number): void;
+    function value_set_fraction_range_full(value: GObject.Value | any, numerator_start: number, denominator_start: number, numerator_end: number, denominator_end: number): void;
 
     /**
      * @param value 
      * @param start 
      * @param end 
      */
-    function value_set_int_range(value: (GObject.Value | any), start: number, end: number): void;
+    function value_set_int_range(value: GObject.Value | any, start: number, end: number): void;
 
     /**
      * @param value 
      * @param mini_object 
      */
-    function value_set_mini_object(value: (GObject.Value | any), mini_object: MiniObject): void;
+    function value_set_mini_object(value: GObject.Value | any, mini_object: MiniObject): void;
 
     /**
      * @param value 
      * @param structure 
      */
-    function value_set_structure(value: (GObject.Value | any), structure: Structure): void;
+    function value_set_structure(value: GObject.Value | any, structure: Structure): void;
 
     /**
      * @param dest 
      * @param minuend 
      * @param subtrahend 
      */
-    function value_subtract(dest: (GObject.Value | any), minuend: (GObject.Value | any), subtrahend: (GObject.Value | any)): boolean;
+    function value_subtract(dest: GObject.Value | any, minuend: GObject.Value | any, subtrahend: GObject.Value | any): boolean;
 
     /**
      * @param value 
      * @param mini_object 
      */
-    function value_take_mini_object(value: (GObject.Value | any), mini_object: MiniObject): void;
+    function value_take_mini_object(value: GObject.Value | any, mini_object: MiniObject): void;
 
     /**
      * @param dest 
      * @param value1 
      * @param value2 
      */
-    function value_union(dest: (GObject.Value | any), value1: (GObject.Value | any), value2: (GObject.Value | any)): boolean;
+    function value_union(dest: GObject.Value | any, value1: GObject.Value | any, value2: GObject.Value | any): boolean;
 
     function version(): [number, number, number, number];
 
@@ -2649,12 +2649,12 @@ export namespace Gst {
     /**
      * @gir-type Alias
      */
-    type Date = (object | null);
+    type Date = object | null;
 
     /**
      * @gir-type Alias
      */
-    type GError = (object | null);
+    type GError = object | null;
 
     /**
      * @gir-type Alias
@@ -3157,13 +3157,10 @@ export namespace Gst {
 
     namespace Adapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3633,7 +3630,7 @@ export namespace Gst {
 
         // Constructor properties interface
         interface ConstructorProps extends Element.ConstructorProps {
-            blocksize: (bigint | number);
+            blocksize: bigint | number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -3651,7 +3648,7 @@ export namespace Gst {
 
         // Properties
         get blocksize(): number;
-        set blocksize(val: (bigint | number));
+        set blocksize(val: bigint | number);
 
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
@@ -3850,7 +3847,7 @@ export namespace Gst {
         /**
          * @param blocksize 
          */
-        set_blocksize(blocksize: (bigint | number)): void;
+        set_blocksize(blocksize: bigint | number): void;
 
         get_blocksize(): number;
 
@@ -4091,7 +4088,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            "do-latency": () => (boolean | void);
+            "do-latency": () => boolean | void;
             /**
              * @signal
              */
@@ -4277,8 +4274,7 @@ export namespace Gst {
 
     namespace Buffer {
         // Signal signatures
-        interface SignalSignatures extends MiniObject.SignalSignatures {
-        }
+        interface SignalSignatures extends MiniObject.SignalSignatures {}
     }
 
     /**
@@ -4389,8 +4385,7 @@ export namespace Gst {
 
     namespace BufferList {
         // Signal signatures
-        interface SignalSignatures extends MiniObject.SignalSignatures {
-        }
+        interface SignalSignatures extends MiniObject.SignalSignatures {}
     }
 
     /**
@@ -4451,9 +4446,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4853,9 +4846,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5174,9 +5165,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5644,9 +5633,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PluginFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PluginFeature.ConstructorProps {}
     }
 
     /**
@@ -5751,8 +5738,7 @@ export namespace Gst {
 
     namespace Event {
         // Signal signatures
-        interface SignalSignatures extends MiniObject.SignalSignatures {
-        }
+        interface SignalSignatures extends MiniObject.SignalSignatures {}
     }
 
     /**
@@ -5899,13 +5885,10 @@ export namespace Gst {
 
     namespace GParamSpecMiniObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5953,9 +5936,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProxyPad.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProxyPad.ConstructorProps {}
     }
 
     /**
@@ -6238,9 +6219,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PluginFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PluginFeature.ConstructorProps {}
     }
 
     /**
@@ -6306,8 +6285,7 @@ export namespace Gst {
 
     namespace Message {
         // Signal signatures
-        interface SignalSignatures extends MiniObject.SignalSignatures {
-        }
+        interface SignalSignatures extends MiniObject.SignalSignatures {}
     }
 
     /**
@@ -6518,7 +6496,7 @@ export namespace Gst {
         /**
          * @param object 
          */
-        set_stream_status_object(object: (GObject.Value | any)): void;
+        set_stream_status_object(object: GObject.Value | any): void;
 
         get_stream_status_object(): unknown;
 
@@ -6561,8 +6539,7 @@ export namespace Gst {
 
     namespace MiniObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -6790,7 +6767,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            "have-data": (arg0: MiniObject) => (boolean | void);
+            "have-data": (arg0: MiniObject) => boolean | void;
             /**
              * @signal
              */
@@ -7454,13 +7431,10 @@ export namespace Gst {
 
     namespace ParamFraction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7638,9 +7612,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7792,9 +7764,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7891,9 +7861,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Pad.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pad.ConstructorProps {}
     }
 
     /**
@@ -7945,9 +7913,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseSrc.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseSrc.ConstructorProps {}
     }
 
     /**
@@ -8002,8 +7968,7 @@ export namespace Gst {
 
     namespace Query {
         // Signal signatures
-        interface SignalSignatures extends MiniObject.SignalSignatures {
-        }
+        interface SignalSignatures extends MiniObject.SignalSignatures {}
     }
 
     /**
@@ -8242,9 +8207,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -8444,9 +8407,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -8552,9 +8513,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -8645,9 +8604,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PluginFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PluginFeature.ConstructorProps {}
     }
 
     /**
@@ -8718,9 +8675,7 @@ export namespace Gst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -9570,7 +9525,7 @@ export namespace Gst {
          * @param field 
          * @param value 
          */
-        set_value(field: string, value: (GObject.Value | any)): void;
+        set_value(field: string, value: GObject.Value | any): void;
 
         is_any(): boolean;
 
@@ -10021,7 +9976,7 @@ export namespace Gst {
          * @param ret 
          * @param user_data 
          */
-        fold(func: IteratorFoldFunction, ret: (GObject.Value | any), user_data: any): IteratorResult;
+        fold(func: IteratorFoldFunction, ret: GObject.Value | any, user_data: any): IteratorResult;
 
         /**
          * @param func 
@@ -10112,10 +10067,7 @@ export namespace Gst {
         static $gtype: GObject.GType<ParseContext>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ParseContext;
 
@@ -10197,10 +10149,7 @@ export namespace Gst {
         static $gtype: GObject.GType<Poll>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](controllable: boolean): Poll;
 
@@ -10575,13 +10524,13 @@ export namespace Gst {
          * @param field 
          * @param value 
          */
-        id_set_value(field: GLib.Quark, value: (GObject.Value | any)): void;
+        id_set_value(field: GLib.Quark, value: GObject.Value | any): void;
 
         /**
          * @param fieldname 
          * @param value 
          */
-        set_value(fieldname: string, value: (GObject.Value | any)): void;
+        set_value(fieldname: string, value: GObject.Value | any): void;
 
         /**
          * @param field 
@@ -10969,9 +10918,7 @@ export namespace Gst {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface ChildProxyNamespace {
@@ -11020,9 +10967,7 @@ export namespace Gst {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Element.ConstructorProps {}
     }
 
     export interface ImplementsInterfaceNamespace {
@@ -11044,9 +10989,7 @@ export namespace Gst {
     namespace TagSetter {
 
         // Constructor properties interface
-        interface ConstructorProps extends Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Element.ConstructorProps {}
     }
 
     export interface TagSetterNamespace {
@@ -11073,7 +11016,7 @@ export namespace Gst {
          * @param tag 
          * @param value 
          */
-        add_tag_value(mode: TagMergeMode, tag: string, value: (GObject.Value | any)): void;
+        add_tag_value(mode: TagMergeMode, tag: string, value: GObject.Value | any): void;
 
         get_tag_list(): TagList;
 
@@ -11112,9 +11055,7 @@ export namespace Gst {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface URIHandlerNamespace {

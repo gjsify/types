@@ -86,13 +86,10 @@ export namespace Passim {
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -198,13 +195,10 @@ export namespace Passim {
 
     namespace Item {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -248,7 +242,7 @@ export namespace Passim {
          * Converts a string to an enumerated item flag.
          * @param item_flag a string, e.g. `next-reboot`
          */
-        static flag_from_string(item_flag: (string | null)): ItemFlags;
+        static flag_from_string(item_flag: string | null): ItemFlags;
 
         /**
          * Converts an enumerated item flag to a string.
@@ -376,13 +370,13 @@ export namespace Passim {
          * Sets the basename of the file that was published.
          * @param basename the basename name
          */
-        set_basename(basename: (string | null)): void;
+        set_basename(basename: string | null): void;
 
         /**
          * Sets the local bytes in the cache.
          * @param bytes a {@link GLib.Bytes}
          */
-        set_bytes(bytes: (GLib.Bytes | null)): void;
+        set_bytes(bytes: GLib.Bytes | null): void;
 
         /**
          * Sets the cmdline of the binary that published the item.
@@ -392,31 +386,31 @@ export namespace Passim {
          * binary running as root under certain conditions.
          * @param cmdline the binary name
          */
-        set_cmdline(cmdline: (string | null)): void;
+        set_cmdline(cmdline: string | null): void;
 
         /**
          * Sets the creation time of the file.
          * @param ctime a {@link GLib.DateTime}
          */
-        set_ctime(ctime: (GLib.DateTime | null)): void;
+        set_ctime(ctime: GLib.DateTime | null): void;
 
         /**
          * Sets the local file in the cache.
          * @param file a {@link Gio.File}
          */
-        set_file(file: (Gio.File | null)): void;
+        set_file(file: Gio.File | null): void;
 
         /**
          * Sets the item flags.
          * @param flags item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
          */
-        set_flags(flags: (bigint | number)): void;
+        set_flags(flags: bigint | number): void;
 
         /**
          * Sets the file hash.
          * @param hash the hash, typically in SHA-256 lowercase form
          */
-        set_hash(hash: (string | null)): void;
+        set_hash(hash: string | null): void;
 
         /**
          * Sets the maximum permitted file age.
@@ -440,7 +434,7 @@ export namespace Passim {
          * Sets the size of the file in bytes.
          * @param size the share limit, or 0
          */
-        set_size(size: (bigint | number)): void;
+        set_size(size: bigint | number): void;
 
         /**
          * Sets the input stream stream for the item.
@@ -448,7 +442,7 @@ export namespace Passim {
          * NOTE: This *MUST* be a `GUnixInputStream`, or subclass thereof.
          * @param stream a {@link Gio.InputStream}
          */
-        set_stream(stream: (Gio.InputStream | null)): void;
+        set_stream(stream: Gio.InputStream | null): void;
 
         /**
          * Builds a text representation of the object.
@@ -478,7 +472,7 @@ export namespace Passim {
      * Flags used to represent item attributes
      * @gir-type Alias
      */
-    type ItemFlags = (bigint | number);
+    type ItemFlags = bigint | number;
 
     /**
      * Name of the imported GIR library

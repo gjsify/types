@@ -317,7 +317,7 @@ export namespace Budgie {
          * this widget implementation light, and to prefer vertical space.
          * @virtual
          */
-        vfunc_get_settings_ui(): (Gtk.Widget | null);
+        vfunc_get_settings_ui(): Gtk.Widget | null;
 
         /**
          * Invoke the given action on this applet. This action will only be one
@@ -404,7 +404,7 @@ export namespace Budgie {
          * @param manager 
          * @virtual
          */
-        vfunc_update_popovers(manager: (PopoverManager | null)): void;
+        vfunc_update_popovers(manager: PopoverManager | null): void;
 
         // Methods
         /**
@@ -444,7 +444,7 @@ export namespace Budgie {
          * this widget implementation light, and to prefer vertical space.
          * @returns A GTK Settings UI
          */
-        get_settings_ui(): (Gtk.Widget | null);
+        get_settings_ui(): Gtk.Widget | null;
 
         /**
          * Utility function for Python bindings. See {@link Budgie.Applet.supported_actions}
@@ -531,7 +531,7 @@ export namespace Budgie {
          * the GtkPopover.
          * @param manager 
          */
-        update_popovers(manager: (PopoverManager | null)): void;
+        update_popovers(manager: PopoverManager | null): void;
     }
 
 
@@ -699,9 +699,7 @@ export namespace Budgie {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -746,13 +744,10 @@ export namespace Budgie {
 
     namespace PopoverManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -878,9 +873,7 @@ export namespace Budgie {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PluginNamespace {

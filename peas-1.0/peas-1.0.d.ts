@@ -54,7 +54,7 @@ export namespace Peas {
         static DEP_LOADING_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -286,7 +286,7 @@ export namespace Peas {
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        add_search_path(module_dir: string, data_dir: (string | null)): void;
+        add_search_path(module_dir: string, data_dir: string | null): void;
 
         /**
          * If the plugin identified by `info` implements the `extension_type`,
@@ -379,7 +379,7 @@ export namespace Peas {
          * @param module_dir the plugin module directory.
          * @param data_dir the plugin data directory.
          */
-        prepend_search_path(module_dir: string, data_dir: (string | null)): void;
+        prepend_search_path(module_dir: string, data_dir: string | null): void;
 
         /**
          * Returns if `info` provides an extension for `extension_type`.
@@ -413,7 +413,7 @@ export namespace Peas {
          * If `plugin_names` is `null`, all plugins will be unloaded.
          * @param plugin_names A `null`-terminated  array of plugin names, or `null`.
          */
-        set_loaded_plugins(plugin_names: (string[] | null)): void;
+        set_loaded_plugins(plugin_names: string[] | null): void;
 
         /**
          * Unloads the plugin corresponding to `info`.
@@ -623,7 +623,7 @@ export namespace Peas {
 
         _init(...args: any[]): void;
 
-        static ["new"](engine: (Engine | null), exten_type: GObject.GType, prop_names: string[], prop_values: (GObject.Value | any)[]): ExtensionSet;
+        static ["new"](engine: Engine | null, exten_type: GObject.GType, prop_names: string[], prop_values: (GObject.Value | any)[]): ExtensionSet;
 
         // Signals
         /** @signal */
@@ -674,7 +674,7 @@ export namespace Peas {
          * @param info a {@link Peas.PluginInfo}
          * @returns a reference to a {@link Peas.Extension}
          */
-        get_extension(info: PluginInfo): (Extension | null);
+        get_extension(info: PluginInfo): Extension | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -715,7 +715,7 @@ export namespace Peas {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -755,7 +755,7 @@ export namespace Peas {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1090,7 +1090,7 @@ export namespace Peas {
          * @param key The key to lookup.
          * @returns the external data, or `null` if the external data could not be found.
          */
-        get_external_data(key: string): (string | null);
+        get_external_data(key: string): string | null;
 
         /**
          * Gets the help URI of the plugin.
@@ -1156,7 +1156,7 @@ export namespace Peas {
          * @param schema_id The schema id.
          * @returns a new {@link Gio.Settings}.
          */
-        get_settings(schema_id: (string | null)): (Gio.Settings | null);
+        get_settings(schema_id: string | null): Gio.Settings | null;
 
         /**
          * Gets the version of the plugin.

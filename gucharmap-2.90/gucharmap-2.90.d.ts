@@ -308,13 +308,10 @@ export namespace Gucharmap {
 
     namespace BlockChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends ChaptersModel.SignalSignatures {
-        }
+        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
     }
 
     /**
@@ -446,13 +443,10 @@ export namespace Gucharmap {
 
     namespace ChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {
-        }
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
     }
 
     /**
@@ -518,7 +512,7 @@ export namespace Gucharmap {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -539,7 +533,7 @@ export namespace Gucharmap {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -549,7 +543,7 @@ export namespace Gucharmap {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -558,7 +552,7 @@ export namespace Gucharmap {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -594,7 +588,7 @@ export namespace Gucharmap {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -610,7 +604,7 @@ export namespace Gucharmap {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -632,7 +626,7 @@ export namespace Gucharmap {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -643,7 +637,7 @@ export namespace Gucharmap {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -652,7 +646,7 @@ export namespace Gucharmap {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -817,7 +811,7 @@ export namespace Gucharmap {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -917,7 +911,7 @@ export namespace Gucharmap {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -934,7 +928,7 @@ export namespace Gucharmap {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -958,7 +952,7 @@ export namespace Gucharmap {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1052,7 +1046,7 @@ export namespace Gucharmap {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -1130,7 +1124,7 @@ export namespace Gucharmap {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1147,7 +1141,7 @@ export namespace Gucharmap {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1171,7 +1165,7 @@ export namespace Gucharmap {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1483,9 +1477,7 @@ export namespace Gucharmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -1643,7 +1635,7 @@ export namespace Gucharmap {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1657,7 +1649,7 @@ export namespace Gucharmap {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2021,7 +2013,7 @@ export namespace Gucharmap {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.MovementStep, arg1: number) => (boolean | void);
+            "move-cursor": (arg0: Gtk.MovementStep, arg1: number) => boolean | void;
             /**
              * @signal
              * @action
@@ -2392,7 +2384,7 @@ export namespace Gucharmap {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2406,7 +2398,7 @@ export namespace Gucharmap {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2430,13 +2422,10 @@ export namespace Gucharmap {
 
     namespace CodepointList {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2507,13 +2496,10 @@ export namespace Gucharmap {
 
     namespace ScriptChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends ChaptersModel.SignalSignatures {
-        }
+        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
     }
 
     /**
@@ -2567,13 +2553,10 @@ export namespace Gucharmap {
 
     namespace ScriptCodepointList {
         // Signal signatures
-        interface SignalSignatures extends CodepointList.SignalSignatures {
-        }
+        interface SignalSignatures extends CodepointList.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends CodepointList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CodepointList.ConstructorProps {}
     }
 
     /**

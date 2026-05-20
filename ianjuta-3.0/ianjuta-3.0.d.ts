@@ -152,7 +152,7 @@ export namespace IAnjuta {
         static OTHER_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -372,7 +372,7 @@ export namespace IAnjuta {
         static OTHER_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -461,7 +461,7 @@ export namespace IAnjuta {
         static DOESNT_EXIST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -510,7 +510,7 @@ export namespace IAnjuta {
         static DOESNT_EXIST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -558,7 +558,7 @@ export namespace IAnjuta {
         static OTHER_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -606,7 +606,7 @@ export namespace IAnjuta {
         static INVALID_LOCATION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -662,7 +662,7 @@ export namespace IAnjuta {
         static DOESNT_EXIST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -754,7 +754,7 @@ export namespace IAnjuta {
         static UNKNOWN_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -785,7 +785,7 @@ export namespace IAnjuta {
         static ERROR_GENERAL_FAILURE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1167,7 +1167,7 @@ export namespace IAnjuta {
         static UNKOWN_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -2057,9 +2057,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BuildableNamespace {
@@ -2169,9 +2167,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BuilderNamespace {
@@ -2329,9 +2325,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DebugManagerNamespace {
@@ -2625,9 +2619,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DebuggerNamespace {
@@ -2842,9 +2834,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Debugger.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Debugger.ConstructorProps {}
     }
 
     export interface DebuggerBreakpointNamespace {
@@ -2908,9 +2898,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Debugger.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Debugger.ConstructorProps {}
     }
 
     export interface DebuggerInstructionNamespace {
@@ -2929,14 +2917,14 @@ export namespace IAnjuta {
          * @param address Run from this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_from_address(address: (bigint | number)): boolean;
+        run_from_address(address: bigint | number): boolean;
 
         /**
          * Start the program until it reachs the address address
          * @param address Run to this addresss
          * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
          */
-        run_to_address(address: (bigint | number)): boolean;
+        run_to_address(address: bigint | number): boolean;
 
         /**
          * Execute one assembler instruction in the program.
@@ -2960,9 +2948,7 @@ export namespace IAnjuta {
     namespace DebuggerMemory {
 
         // Constructor properties interface
-        interface ConstructorProps extends Debugger.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Debugger.ConstructorProps {}
     }
 
     export interface DebuggerMemoryNamespace {
@@ -2999,9 +2985,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Debugger.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Debugger.ConstructorProps {}
     }
 
     export interface DebuggerRegisterNamespace {
@@ -3055,9 +3039,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Debugger.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Debugger.ConstructorProps {}
     }
 
     export interface DebuggerVariableNamespace {
@@ -3182,9 +3164,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentNamespace {
@@ -3381,9 +3361,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentManagerNamespace {
@@ -3776,9 +3754,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditorNamespace {
@@ -4040,9 +4016,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorAssistNamespace {
@@ -4134,9 +4108,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditorCellNamespace {
@@ -4213,9 +4185,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorCell.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorCell.ConstructorProps {}
     }
 
     export interface EditorCellStyleNamespace {
@@ -4270,9 +4240,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorCommentNamespace {
@@ -4334,9 +4302,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorConvertNamespace {
@@ -4373,9 +4339,7 @@ export namespace IAnjuta {
     namespace EditorFactory {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditorFactoryNamespace {
@@ -4420,9 +4384,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorFoldsNamespace {
@@ -4472,9 +4434,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorGladeSignalNamespace {
@@ -4522,9 +4482,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorGotoNamespace {
@@ -4590,9 +4548,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorHoverNamespace {
@@ -4663,9 +4619,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorLanguageNamespace {
@@ -4750,9 +4704,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorLineModeNamespace {
@@ -4836,9 +4788,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorSearchNamespace {
@@ -4943,9 +4893,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorSelectionNamespace {
@@ -5055,9 +5003,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorTipNamespace {
@@ -5132,9 +5078,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorViewNamespace {
@@ -5196,9 +5140,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Editor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Editor.ConstructorProps {}
     }
 
     export interface EditorZoomNamespace {
@@ -5258,9 +5200,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EnvironmentNamespace {
@@ -5327,9 +5267,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileNamespace {
@@ -5378,9 +5316,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Loader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Loader.ConstructorProps {}
     }
 
     export interface FileLoaderNamespace {
@@ -5436,9 +5372,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileManagerNamespace {
@@ -5536,9 +5470,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends File.ConstructorProps {
-
-        }
+        interface ConstructorProps extends File.ConstructorProps {}
     }
 
     export interface FileSavableNamespace {
@@ -5617,9 +5549,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface GladeNamespace {
@@ -5663,9 +5593,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface HelpNamespace {
@@ -5714,9 +5642,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IndenterNamespace {
@@ -5773,9 +5699,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IndicableNamespace {
@@ -5918,9 +5842,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IterableNamespace {
@@ -6063,9 +5985,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Iterable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Iterable.ConstructorProps {}
     }
 
     export interface IterableTreeNamespace {
@@ -6159,9 +6079,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LanguageNamespace {
@@ -6261,14 +6179,12 @@ export namespace IAnjuta {
              * @param iter the text iter where the provider should be populated
              * @virtual
              */
-            vfunc_populate_completions(iter: Iterable): (Iterable | null);
+            vfunc_populate_completions(iter: Iterable): Iterable | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Provider.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Provider.ConstructorProps {}
     }
 
     export interface LanguageProviderNamespace {
@@ -6312,7 +6228,7 @@ export namespace IAnjuta {
          * @param iter the text iter where the provider should be populated
          * @returns the iter where the provider populated, NULL otherwise
          */
-        populate_completions(iter: Iterable): (Iterable | null);
+        populate_completions(iter: Iterable): Iterable | null;
     }
 
 
@@ -6323,9 +6239,7 @@ export namespace IAnjuta {
     namespace Loader {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LoaderNamespace {
@@ -6386,7 +6300,7 @@ export namespace IAnjuta {
              * @param tooltip optional tooltip displayed with the marker
              * @virtual
              */
-            vfunc_mark(location: number, marker: MarkableMarker, tooltip: (string | null)): number;
+            vfunc_mark(location: number, marker: MarkableMarker, tooltip: string | null): number;
 
             /**
              * @param double_click 
@@ -6406,9 +6320,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MarkableNamespace {
@@ -6454,7 +6366,7 @@ export namespace IAnjuta {
          * @param tooltip optional tooltip displayed with the marker
          * @returns Handle of the location marked. Can be used later to obtain new location, if it has been moved due to addetions/deletions in the implementor object.
          */
-        mark(location: number, marker: MarkableMarker, tooltip: (string | null)): number;
+        mark(location: number, marker: MarkableMarker, tooltip: string | null): number;
 
         /**
          * Clears the `marker` at given `location`.
@@ -6519,9 +6431,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MessageManagerNamespace {
@@ -6638,9 +6548,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MessageViewNamespace {
@@ -6698,9 +6606,7 @@ export namespace IAnjuta {
     namespace PluginFactory {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PluginFactoryNamespace {
@@ -6743,9 +6649,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PreferencesNamespace {
@@ -6801,9 +6705,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PrintNamespace {
@@ -6851,7 +6753,7 @@ export namespace IAnjuta {
              * @param name Optional name for the node
              * @virtual
              */
-            vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+            vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
 
             /**
              * Create a new node and insert it before sibling
@@ -6862,7 +6764,7 @@ export namespace IAnjuta {
              * @param name Optional name for the node
              * @virtual
              */
-            vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+            vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
 
             /**
              * @param node 
@@ -6930,7 +6832,7 @@ export namespace IAnjuta {
              * @param name Name for map property
              * @virtual
              */
-            vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: (string | null)): boolean;
+            vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
 
             /**
              * Save a project node
@@ -6947,7 +6849,7 @@ export namespace IAnjuta {
              * @param value Value
              * @virtual
              */
-            vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: (string | null), value: string): (Anjuta.ProjectProperty | null);
+            vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null;
 
             /**
              * @param args 
@@ -6958,9 +6860,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProjectNamespace {
@@ -6982,7 +6882,7 @@ export namespace IAnjuta {
          * @param name Optional name for the node
          * @returns The new node, NULL if error
          */
-        add_node_after(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+        add_node_after(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
 
         /**
          * Create a new node and insert it before sibling
@@ -6993,7 +6893,7 @@ export namespace IAnjuta {
          * @param name Optional name for the node
          * @returns The new node, NULL if error
          */
-        add_node_before(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+        add_node_before(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
 
         /**
          * Return a list of possible node;
@@ -7034,7 +6934,7 @@ export namespace IAnjuta {
          * @param name Name for map property
          * @returns TRUE if the node is removed
          */
-        remove_property(node: Anjuta.ProjectNode, id: string, name: (string | null)): boolean;
+        remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
 
         /**
          * Save a project node
@@ -7051,7 +6951,7 @@ export namespace IAnjuta {
          * @param value Value
          * @returns The new property of NULL if the property cannot be set
          */
-        set_property(node: Anjuta.ProjectNode, id: string, name: (string | null), value: string): (Anjuta.ProjectProperty | null);
+        set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null;
 
         /**
          * @param args 
@@ -7074,7 +6974,7 @@ export namespace IAnjuta {
      * @param name Optional name for the node
      * @virtual
      */
-    vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+    vfunc_add_node_after(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
         /**
          * Create a new node and insert it before sibling
          * @ignore
@@ -7088,7 +6988,7 @@ export namespace IAnjuta {
      * @param name Optional name for the node
      * @virtual
      */
-    vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: (Anjuta.ProjectNode | null), type: Anjuta.ProjectNodeType, file: (Gio.File | null), name: (string | null)): Anjuta.ProjectNode;
+    vfunc_add_node_before(parent: Anjuta.ProjectNode, sibling: Anjuta.ProjectNode | null, type: Anjuta.ProjectNodeType, file: Gio.File | null, name: string | null): Anjuta.ProjectNode;
         /** @ignore */
     /**
      * @param node 
@@ -7174,7 +7074,7 @@ export namespace IAnjuta {
      * @param name Name for map property
      * @virtual
      */
-    vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: (string | null)): boolean;
+    vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean;
         /**
          * Save a project node
          * @ignore
@@ -7197,7 +7097,7 @@ export namespace IAnjuta {
      * @param value Value
      * @virtual
      */
-    vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: (string | null), value: string): (Anjuta.ProjectProperty | null);
+    vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null;
         /**
          * the generic setter for all properties of this type. Should be
          *  overridden for every type with properties. If implementations of
@@ -7251,9 +7151,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProjectBackendNamespace {
@@ -7332,9 +7230,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProjectChooserNamespace {
@@ -7397,7 +7293,7 @@ export namespace IAnjuta {
              * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_group(name: string, default_group: (Gio.File | null)): Gio.File;
+            vfunc_add_group(name: string, default_group: Gio.File | null): Gio.File;
 
             /**
              * Prompts the user to add a file to the project. If the user selects
@@ -7411,7 +7307,7 @@ export namespace IAnjuta {
              * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if you don't care.
              * @virtual
              */
-            vfunc_add_source(name: string, default_target: (Gio.File | null)): Gio.File;
+            vfunc_add_source(name: string, default_target: Gio.File | null): Gio.File;
 
             /**
              * Adds a file to the project without prompting the user.
@@ -7439,7 +7335,7 @@ export namespace IAnjuta {
              * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_sources(names: string[], default_target: (Gio.File | null)): Gio.File[];
+            vfunc_add_sources(names: string[], default_target: Gio.File | null): Gio.File[];
 
             /**
              * Prompts the user to add a new target to the project. The user can select
@@ -7448,7 +7344,7 @@ export namespace IAnjuta {
              * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
              * @virtual
              */
-            vfunc_add_target(name: string, default_group: (Gio.File | null)): Gio.File;
+            vfunc_add_target(name: string, default_group: Gio.File | null): Gio.File;
 
             /**
              * @param element 
@@ -7546,9 +7442,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProjectManagerNamespace {
@@ -7569,7 +7463,7 @@ export namespace IAnjuta {
          * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
          * @returns A {@link Gio.File} corresponding to the new group added in the project. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_group(name: string, default_group: (Gio.File | null)): Gio.File;
+        add_group(name: string, default_group: Gio.File | null): Gio.File;
 
         /**
          * Prompts the user to add a file to the project. If the user selects
@@ -7583,7 +7477,7 @@ export namespace IAnjuta {
          * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if you don't care.
          * @returns A {@link Gio.File} corresponding to the new source file in the project view. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_source(name: string, default_target: (Gio.File | null)): Gio.File;
+        add_source(name: string, default_target: Gio.File | null): Gio.File;
 
         /**
          * Adds a file to the project without prompting the user.
@@ -7611,7 +7505,7 @@ export namespace IAnjuta {
          * @param default_target A {@link Gio.File} corresponding to the default target or group or 				`null` if don't care.
          * @returns A list of {@link Gio.File} corresponding to all new source files added in the project. You own the list with the the returned files; use `g_list_free()` and `g_object_unref()` on each file to release them.
          */
-        add_sources(names: string[], default_target: (Gio.File | null)): Gio.File[];
+        add_sources(names: string[], default_target: Gio.File | null): Gio.File[];
 
         /**
          * Prompts the user to add a new target to the project. The user can select
@@ -7620,7 +7514,7 @@ export namespace IAnjuta {
          * @param default_group A {@link Gio.File} corresponding to the default parent group or 				`null` if don't care.
          * @returns A {@link Gio.File} corresponding to the new target added in the project. You own the returned file; use `g_object_unref()` to release it.
          */
-        add_target(name: string, default_group: (Gio.File | null)): Gio.File;
+        add_target(name: string, default_group: Gio.File | null): Gio.File;
 
         /**
          * Gets the capabilites of project whether it can add group, target
@@ -7739,9 +7633,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProviderNamespace {
@@ -7808,9 +7700,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SnippetsManagerNamespace {
@@ -7855,9 +7745,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface StreamNamespace {
@@ -7902,9 +7790,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Loader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Loader.ConstructorProps {}
     }
 
     export interface StreamLoaderNamespace {
@@ -7949,9 +7835,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps {}
     }
 
     export interface StreamSavableNamespace {
@@ -8023,9 +7907,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SymbolNamespace {
@@ -8127,9 +8009,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SymbolManagerNamespace {
@@ -8254,9 +8134,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SymbolQueryNamespace {
@@ -8360,9 +8238,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TerminalNamespace {
@@ -8409,9 +8285,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TodoNamespace {
@@ -8460,7 +8334,7 @@ export namespace IAnjuta {
              * @param notify {@link Anjuta.AsyncNotify} object for finish notification and error reporting.
              * @virtual
              */
-            vfunc_checkout(repository_location: string, dest: Gio.File, cancel: (Gio.Cancellable | null), notify: Anjuta.AsyncNotify): void;
+            vfunc_checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void;
 
             /**
              * Remove files from the VCS repository.
@@ -8478,9 +8352,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface VcsNamespace {
@@ -8507,7 +8379,7 @@ export namespace IAnjuta {
          * @param cancel An optional {@link Gio.Cancellable} object to cancel the operation, or NULL
          * @param notify {@link Anjuta.AsyncNotify} object for finish notification and error reporting.
          */
-        checkout(repository_location: string, dest: Gio.File, cancel: (Gio.Cancellable | null), notify: Anjuta.AsyncNotify): void;
+        checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void;
 
         /**
          * Remove files from the VCS repository.
@@ -8539,9 +8411,7 @@ export namespace IAnjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WizardNamespace {

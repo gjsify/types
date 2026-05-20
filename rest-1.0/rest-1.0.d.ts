@@ -57,7 +57,7 @@ export namespace Rest {
         static ACCESS_TOKEN_EXPIRED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -75,7 +75,7 @@ export namespace Rest {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -291,7 +291,7 @@ export namespace Rest {
         static HTTP_HTTP_VERSION_NOT_SUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -487,22 +487,14 @@ export namespace Rest {
          * @param scope the requesting scope of the resource
          * @returns the authorization url which should be shown in a WebView in order to accept/decline the request to authorize the application
          */
-        build_authorization_url(code_challenge: string, scope: (string | null)): [string, string];
+        build_authorization_url(code_challenge: string, scope: string | null): [string, string];
 
         /**
          * @param authorization_code 
          * @param code_verifier 
          * @param cancellable 
          */
-        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param authorization_code 
-         * @param code_verifier 
-         * @param cancellable 
-         * @param callback 
-         */
-        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param authorization_code 
@@ -510,7 +502,15 @@ export namespace Rest {
          * @param cancellable 
          * @param callback 
          */
-        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param authorization_code 
+         * @param code_verifier 
+         * @param cancellable 
+         * @param callback 
+         */
+        fetch_access_token_async(authorization_code: string, code_verifier: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
@@ -538,19 +538,19 @@ export namespace Rest {
         /**
          * @param cancellable 
          */
-        refresh_access_token_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        refresh_access_token_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        refresh_access_token_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_access_token_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        refresh_access_token_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_access_token_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
@@ -606,9 +606,7 @@ export namespace Rest {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProxyCall.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProxyCall.ConstructorProps {}
     }
 
     /**
@@ -854,13 +852,10 @@ export namespace Rest {
 
     namespace ProxyAuth {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1063,19 +1058,19 @@ export namespace Rest {
         /**
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          */
-        invoke_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
-        invoke_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
-        invoke_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        invoke_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result the result from the {@link Gio.AsyncReadyCallback}
@@ -1095,7 +1090,7 @@ export namespace Rest {
          * @param name The paramter name
          * @returns The parameter value, or `null` if it does not exist. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
          */
-        lookup_param(name: string): (Param | null);
+        lookup_param(name: string): Param | null;
 
         /**
          * Get the string value of the header `header` or `null` if that header is not
@@ -1171,13 +1166,10 @@ export namespace Rest {
 
     namespace XmlParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1224,7 +1216,7 @@ export namespace Rest {
          * @param len the length of `data`, or -1 if `data` is a nul-terminated string
          * @returns a new {@link Rest.XmlNode}, or `null` if the XML was invalid.
          */
-        parse_from_data(data: string, len: (bigint | number)): XmlNode;
+        parse_from_data(data: string, len: bigint | number): XmlNode;
     }
 
 
@@ -1245,13 +1237,13 @@ export namespace Rest {
         static $gtype: GObject.GType<Param>;
 
         // Constructors
-        constructor(name: string, use: MemoryUse, data: (Uint8Array | string), content_type: string, filename: (string | null));
+        constructor(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string | null);
 
-        static new_full(name: string, use: MemoryUse, data: (Uint8Array | string), content_type: string, filename: (string | null)): Param;
+        static new_full(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string | null): Param;
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
 
-        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: null): Param;
+        static new_with_owner(name: string, data: Uint8Array | string, content_type: string, filename: string | null, owner: null): Param;
 
         // Methods
         /**
@@ -1313,10 +1305,7 @@ export namespace Rest {
         static $gtype: GObject.GType<Params>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Params;
 
@@ -1355,7 +1344,7 @@ export namespace Rest {
          * @param name a parameter name
          * @returns a {@link Rest.Param} or `null` if the name doesn't exist
          */
-        get(name: string): (Param | null);
+        get(name: string): Param | null;
 
         /**
          * Increments the reference count of `self` by one.
@@ -1422,10 +1411,7 @@ export namespace Rest {
         static $gtype: GObject.GType<PkceCodeChallenge>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_random(): PkceCodeChallenge;
 

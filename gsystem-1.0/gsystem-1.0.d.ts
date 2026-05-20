@@ -56,7 +56,7 @@ export namespace GSystem {
      * @param name File name
      * @param cancellable Cancellable
      */
-    function dfd_and_name_get_all_xattrs(dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+    function dfd_and_name_get_all_xattrs(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
     /**
      * @param dfd 
@@ -64,7 +64,7 @@ export namespace GSystem {
      * @param xattrs 
      * @param cancellable 
      */
-    function dfd_and_name_set_all_xattrs(dfd: number, name: string, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+    function dfd_and_name_set_all_xattrs(dfd: number, name: string, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * @param dfd_iter 
@@ -94,7 +94,7 @@ export namespace GSystem {
      * @param fd a file descriptor
      * @param cancellable Cancellable
      */
-    function fd_get_all_xattrs(fd: number, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+    function fd_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
     /**
      * For each attribute in `xattrs`, set its value on the file or
@@ -104,7 +104,7 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Merely wraps UNIX `chmod()`.
@@ -113,7 +113,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chmod(path: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_chmod(path: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Merely wraps UNIX `chown()`.
@@ -123,7 +123,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chown(path: Gio.File, owner: number, group: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_chown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Like `g_file_create()`, except this function allows specifying the
@@ -132,7 +132,7 @@ export namespace GSystem {
      * @param mode Unix access permissions
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_create(file: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, Gio.OutputStream | null];
+    function file_create(file: Gio.File, mode: number, cancellable: Gio.Cancellable | null): [boolean, Gio.OutputStream | null];
 
     /**
      * Like `g_file_make_directory()`, except does not throw an error if the
@@ -141,7 +141,7 @@ export namespace GSystem {
      * @param with_parents Also create parent directories
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Wraps UNIX `mkdir()` function with support for `cancellable`, and
@@ -150,7 +150,7 @@ export namespace GSystem {
      * @param mode Create directory with these permissions
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * This is a version of `g_file_enumerator_next_file()` that's easier to
@@ -194,7 +194,7 @@ export namespace GSystem {
      * @param direnum an open {@link Gio.FileEnumerator}
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_enumerator_iterate(direnum: Gio.FileEnumerator, cancellable: (Gio.Cancellable | null)): [boolean, Gio.FileInfo | null, Gio.File | null];
+    function file_enumerator_iterate(direnum: Gio.FileEnumerator, cancellable: Gio.Cancellable | null): [boolean, Gio.FileInfo | null, Gio.File | null];
 
     /**
      * Read all extended attributes of `f` in a canonical sorted order, and
@@ -205,7 +205,7 @@ export namespace GSystem {
      * @param f a {@link Gio.File}
      * @param cancellable Cancellable
      */
-    function file_get_all_xattrs(f: Gio.File, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+    function file_get_all_xattrs(f: Gio.File, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
     /**
      * Like `g_file_get_basename()`, but returns a constant copy so callers
@@ -239,7 +239,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_lchown(path: Gio.File, owner: number, group: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_lchown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * First tries to use the UNIX `link()` call, but if the files are on
@@ -262,7 +262,7 @@ export namespace GSystem {
      * @param flags flags
      * @param cancellable 
      */
-    function file_linkcopy(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_linkcopy(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * This function is similar to `gs_file_linkcopy()`, except it also uses
@@ -273,7 +273,7 @@ export namespace GSystem {
      * @param flags flags
      * @param cancellable 
      */
-    function file_linkcopy_sync_data(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_linkcopy_sync_data(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Like `g_file_load_contents()`, except validates the contents are
@@ -281,7 +281,7 @@ export namespace GSystem {
      * @param file Path to file whose contents must be UTF-8
      * @param cancellable 
      */
-    function file_load_contents_utf8(file: Gio.File, cancellable: (Gio.Cancellable | null)): string;
+    function file_load_contents_utf8(file: Gio.File, cancellable: Gio.Cancellable | null): string;
 
     /**
      * Return a {@link GLib.Bytes} which references a readonly view of the contents of
@@ -290,7 +290,7 @@ export namespace GSystem {
      * @param cancellable 
      * @returns a newly referenced {@link GLib.Bytes}
      */
-    function file_map_readonly(file: Gio.File, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+    function file_map_readonly(file: Gio.File, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
@@ -298,7 +298,7 @@ export namespace GSystem {
      * @param path Directory name
      * @param cancellable Cancellable
      */
-    function file_open_dir_fd(path: Gio.File, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function file_open_dir_fd(path: Gio.File, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
@@ -307,7 +307,7 @@ export namespace GSystem {
      * @param name Directory name
      * @param cancellable Cancellable
      */
-    function file_open_dir_fd_at(parent_dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function file_open_dir_fd_at(parent_dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
@@ -318,7 +318,7 @@ export namespace GSystem {
      * @param mode Default mode (will be affected by umask)
      * @param cancellable 
      */
-    function file_open_in_tmpdir(tmpdir: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, Gio.File, Gio.OutputStream | null];
+    function file_open_in_tmpdir(tmpdir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): [boolean, Gio.File, Gio.OutputStream | null];
 
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
@@ -329,7 +329,7 @@ export namespace GSystem {
      * @param mode Default mode (will be affected by umask)
      * @param cancellable 
      */
-    function file_open_in_tmpdir_at(tmpdir_fd: number, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, string, Gio.OutputStream | null];
+    function file_open_in_tmpdir_at(tmpdir_fd: number, mode: number, cancellable: Gio.Cancellable | null): [boolean, string, Gio.OutputStream | null];
 
     /**
      * Wrapper for `openat()` using `O_RDONLY` with `O_NOATIME` if available.
@@ -337,7 +337,7 @@ export namespace GSystem {
      * @param name Pathname, relative to `dfd`
      * @param cancellable Cancellable
      */
-    function file_openat_noatime(dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function file_openat_noatime(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Like `g_file_read()`, but try to avoid updating the file's
@@ -347,7 +347,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns A new input stream, or `null` on error
      */
-    function file_read_noatime(file: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+    function file_read_noatime(file: Gio.File, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
     /**
      * Return a {@link Gio.File} that contains the same path with symlinks
@@ -356,7 +356,7 @@ export namespace GSystem {
      * @param file A {@link Gio.File}
      * @returns A new {@link Gio.File} or `null` if `file` is invalid
      */
-    function file_realpath(file: Gio.File): (Gio.File | null);
+    function file_realpath(file: Gio.File): Gio.File | null;
 
     /**
      * This function wraps the raw Unix function `rename()`.
@@ -365,7 +365,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_rename(from: Gio.File, to: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_rename(from: Gio.File, to: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * For each attribute in `xattrs`, set its value on the file or
@@ -375,7 +375,7 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Wraps the UNIX `fsync()` function (or `fdatasync()`, if available), which
@@ -383,7 +383,7 @@ export namespace GSystem {
      * @param file a {@link Gio.File}
      * @param cancellable 
      */
-    function file_sync_data(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_sync_data(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Like `g_file_delete()`, except this function does not follow Unix
@@ -394,7 +394,7 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_unlink(path: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function file_unlink(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Generate a name suitable for use as a temporary file.  This
@@ -403,7 +403,7 @@ export namespace GSystem {
      * @param prefix String prepended to the result
      * @param suffix String suffixed to the result
      */
-    function fileutil_gen_tmp_name(prefix: (string | null), suffix: (string | null)): string;
+    function fileutil_gen_tmp_name(prefix: string | null, suffix: string | null): string;
 
     /**
      * Log structured data in an operating-system specific fashion.  The
@@ -415,7 +415,7 @@ export namespace GSystem {
      * @param message Text message to send
      * @param keys Optional structured data
      */
-    function log_structured(message: string, keys: (string[] | null)): void;
+    function log_structured(message: string, keys: string[] | null): void;
 
     /**
      * Like `gs_log_structured()`, but also print to standard output (if it
@@ -423,7 +423,7 @@ export namespace GSystem {
      * @param message A message to log
      * @param keys Optional structured data
      */
-    function log_structured_print(message: string, keys: (string[] | null)): void;
+    function log_structured_print(message: string, keys: string[] | null): void;
 
     /**
      * Use `openat()` to open a directory, using a standard set of flags.
@@ -450,7 +450,7 @@ export namespace GSystem {
      * @param error Error
      * @param saved_errno errno value
      */
-    function set_error_from_errno(error: (GLib.Error | null), saved_errno: number): void;
+    function set_error_from_errno(error: GLib.Error | null, saved_errno: number): void;
 
     /**
      * Recursively copy path `src` (which must be a directory) to the
@@ -460,7 +460,7 @@ export namespace GSystem {
      * @param cancellable 
      * @returns `true` on success
      */
-    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Recursively copy path `src` (which must be a directory) to the
@@ -472,7 +472,7 @@ export namespace GSystem {
      * @param cancellable 
      * @returns `true` on success
      */
-    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Recursively delete the filename referenced by `path`; it may be a
@@ -480,7 +480,7 @@ export namespace GSystem {
      * @param path A file or directory
      * @param cancellable 
      */
-    function shutil_rm_rf(path: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function shutil_rm_rf(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Recursively delete the filename referenced by the combination of
@@ -490,7 +490,7 @@ export namespace GSystem {
      * @param path Path
      * @param cancellable Cancellable
      */
-    function shutil_rm_rf_at(dfd: number, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+    function shutil_rm_rf_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Use this function when you want your code to behave differently
@@ -502,13 +502,10 @@ export namespace GSystem {
 
     namespace Console {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -580,7 +577,7 @@ export namespace GSystem {
          * @param line String to output
          * @param cancellable 
          */
-        begin_status_line(line: string, cancellable: (Gio.Cancellable | null)): boolean;
+        begin_status_line(line: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Complete a series of invocations of `gs_console_begin_status_line()`,
@@ -589,7 +586,7 @@ export namespace GSystem {
          * string to clear it before invoking this function.
          * @param cancellable 
          */
-        end_status_line(cancellable: (Gio.Cancellable | null)): boolean;
+        end_status_line(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Write `prompt` to standard output, then switch output echo off, read
@@ -598,7 +595,7 @@ export namespace GSystem {
          * @param cancellable 
          * @returns A string, or `null` on error
          */
-        read_password(prompt: string, cancellable: (Gio.Cancellable | null)): string;
+        read_password(prompt: string, cancellable: Gio.Cancellable | null): string;
     }
 
 
@@ -654,9 +651,9 @@ export namespace GSystem {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: SubprocessContext, cancellable: (Gio.Cancellable | null)): Subprocess;
+        static ["new"](context: SubprocessContext, cancellable: Gio.Cancellable | null): Subprocess;
 
-        static new_simple_argv(argv: string[], stdout_disposition: SubprocessStreamDisposition, stderr_disposition: SubprocessStreamDisposition, cancellable: (Gio.Cancellable | null)): Subprocess;
+        static new_simple_argv(argv: string[], stdout_disposition: SubprocessStreamDisposition, stderr_disposition: SubprocessStreamDisposition, cancellable: Gio.Cancellable | null): Subprocess;
 
         // Signals
         /** @signal */
@@ -743,21 +740,21 @@ export namespace GSystem {
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        wait(cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+        wait(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
-        wait(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
-        wait(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        wait(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * The exit status of the process will be stored in `out_exit_status`.
@@ -778,14 +775,14 @@ export namespace GSystem {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if `cancellable` was cancelled
          */
-        wait_sync(cancellable: (Gio.Cancellable | null)): [boolean, number];
+        wait_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Combines `gs_subprocess_wait_sync()` with `g_spawn_check_exit_status()`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
          */
-        wait_sync_check(cancellable: (Gio.Cancellable | null)): boolean;
+        wait_sync_check(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -829,7 +826,7 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -873,7 +870,7 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

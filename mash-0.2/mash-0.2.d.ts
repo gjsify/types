@@ -110,13 +110,10 @@ export namespace Mash {
 
     namespace Data {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -196,13 +193,10 @@ export namespace Mash {
 
     namespace DataLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -370,9 +364,7 @@ export namespace Mash {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Light.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Light.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -908,7 +900,7 @@ export namespace Mash {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -922,7 +914,7 @@ export namespace Mash {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -946,7 +938,7 @@ export namespace Mash {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -1032,7 +1024,7 @@ export namespace Mash {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -1049,7 +1041,7 @@ export namespace Mash {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -1132,7 +1124,7 @@ export namespace Mash {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -1143,7 +1135,7 @@ export namespace Mash {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -1272,7 +1264,7 @@ export namespace Mash {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -1284,7 +1276,7 @@ export namespace Mash {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -1322,7 +1314,7 @@ export namespace Mash {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -1331,7 +1323,7 @@ export namespace Mash {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -1387,13 +1379,10 @@ export namespace Mash {
 
     namespace LightSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1732,7 +1721,7 @@ export namespace Mash {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -1746,7 +1735,7 @@ export namespace Mash {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -1770,7 +1759,7 @@ export namespace Mash {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -1856,7 +1845,7 @@ export namespace Mash {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -1873,7 +1862,7 @@ export namespace Mash {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -1956,7 +1945,7 @@ export namespace Mash {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -1967,7 +1956,7 @@ export namespace Mash {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -2096,7 +2085,7 @@ export namespace Mash {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -2108,7 +2097,7 @@ export namespace Mash {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -2146,7 +2135,7 @@ export namespace Mash {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -2155,7 +2144,7 @@ export namespace Mash {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -2211,13 +2200,10 @@ export namespace Mash {
 
     namespace PlyLoader {
         // Signal signatures
-        interface SignalSignatures extends Data.SignalSignatures {
-        }
+        interface SignalSignatures extends Data.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Data.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Data.ConstructorProps {}
     }
 
     /**

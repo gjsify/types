@@ -5394,7 +5394,7 @@ export namespace Gdk {
      * @param npixels the number of pixels in each plane to allocate.
      * @returns `true` if the allocation was successful
      */
-    function colors_alloc(colormap: Colormap, contiguous: boolean, planes: (bigint | number), nplanes: number, pixels: (bigint | number), npixels: number): number;
+    function colors_alloc(colormap: Colormap, contiguous: boolean, planes: bigint | number, nplanes: number, pixels: bigint | number, npixels: number): number;
 
     /**
      * Frees colors allocated with `gdk_colors_alloc()`. This
@@ -5404,7 +5404,7 @@ export namespace Gdk {
      * @param npixels the number of values in `pixels`.
      * @param planes the plane masks for all planes to free, OR'd together.
      */
-    function colors_free(colormap: Colormap, pixels: (bigint | number), npixels: number, planes: (bigint | number)): void;
+    function colors_free(colormap: Colormap, pixels: bigint | number, npixels: number, planes: bigint | number): void;
 
     /**
      * Changes the value of the first `ncolors` colors in
@@ -5612,7 +5612,7 @@ export namespace Gdk {
      * @since 2.6
      * @deprecated since 2.22: Use `pango_cairo_show_glyphs()` instead.
      */
-    function draw_glyphs_transformed(drawable: Drawable, gc: GC, matrix: (Pango.Matrix | null), font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString): void;
+    function draw_glyphs_transformed(drawable: Drawable, gc: GC, matrix: Pango.Matrix | null, font: Pango.Font, x: number, y: number, glyphs: Pango.GlyphString): void;
 
     /**
      * @param drawable 
@@ -5706,7 +5706,7 @@ export namespace Gdk {
      * @param foreground foreground override color, or `null` for none
      * @param background background override color, or `null` for none
      */
-    function draw_layout_line_with_colors(drawable: Drawable, gc: GC, x: number, y: number, line: Pango.LayoutLine, foreground: (Color | null), background: (Color | null)): void;
+    function draw_layout_line_with_colors(drawable: Drawable, gc: GC, x: number, y: number, line: Pango.LayoutLine, foreground: Color | null, background: Color | null): void;
 
     /**
      * Render a {@link Pango.Layout} onto a {@link Gdk.Drawable}, overriding the
@@ -5727,7 +5727,7 @@ export namespace Gdk {
      * @param foreground foreground override color, or `null` for none
      * @param background background override color, or `null` for none
      */
-    function draw_layout_with_colors(drawable: Drawable, gc: GC, x: number, y: number, layout: Pango.Layout, foreground: (Color | null), background: (Color | null)): void;
+    function draw_layout_with_colors(drawable: Drawable, gc: GC, x: number, y: number, layout: Pango.Layout, foreground: Color | null, background: Color | null): void;
 
     /**
      * Draws a line, using the foreground color and other attributes of
@@ -5785,7 +5785,7 @@ export namespace Gdk {
      * @since 2.2
      * @deprecated since 2.22: Use `gdk_cairo_set_source_pixbuf()` and `cairo_paint()` or `cairo_rectangle()` and `cairo_fill()` instead.
      */
-    function draw_pixbuf(drawable: Drawable, gc: (GC | null), pixbuf: GdkPixbuf.Pixbuf, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number, dither: RgbDither, x_dither: number, y_dither: number): void;
+    function draw_pixbuf(drawable: Drawable, gc: GC | null, pixbuf: GdkPixbuf.Pixbuf, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number, dither: RgbDither, x_dither: number, y_dither: number): void;
 
     /**
      * Draws a point, using the foreground color and other attributes of
@@ -6555,7 +6555,7 @@ export namespace Gdk {
      * @param actual_length 
      * @param data 
      */
-    function property_get(window: Window, property: Atom, type: Atom, offset: (bigint | number), length: (bigint | number), pdelete: number, actual_property_type: Atom, actual_format: number, actual_length: number, data: number): boolean;
+    function property_get(window: Window, property: Atom, type: Atom, offset: bigint | number, length: bigint | number, pdelete: number, actual_property_type: Atom, actual_format: number, actual_length: number, data: number): boolean;
 
     /**
      * This function returns the available bit depths for the default
@@ -6778,7 +6778,7 @@ export namespace Gdk {
      * @param value location to store the value of the setting.
      * @returns `true` if the setting existed and a value was stored   in `value`, `false` otherwise.
      */
-    function setting_get(name: string, value: (GObject.Value | any)): boolean;
+    function setting_get(name: string, value: GObject.Value | any): boolean;
 
     /**
      * Like `g_spawn_command_line_async()`, except the child process is
@@ -7020,7 +7020,7 @@ export namespace Gdk {
      * @param list location to store the list of strings or `null`. The            list should be freed with `g_strfreev()`.
      * @returns the number of strings in the resulting               list.
      */
-    function text_property_to_utf8_list(encoding: Atom, format: number, text: number, length: number, list: (string | null)): number;
+    function text_property_to_utf8_list(encoding: Atom, format: number, text: number, length: number, list: string | null): number;
 
     /**
      * Converts a text property in the given encoding to
@@ -7568,13 +7568,10 @@ export namespace Gdk {
 
     namespace AppLaunchContext {
         // Signal signatures
-        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {}
     }
 
     /**
@@ -7644,7 +7641,7 @@ export namespace Gdk {
          * See also `gdk_app_launch_context_set_icon_name()`.
          * @param icon a {@link Gio.Icon}, or `null`
          */
-        set_icon(icon: (Gio.Icon | null)): void;
+        set_icon(icon: Gio.Icon | null): void;
 
         /**
          * Sets the icon for applications that are launched with this context.
@@ -7657,7 +7654,7 @@ export namespace Gdk {
          * for the launched application itself.
          * @param icon_name an icon name, or `null`
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the screen on which applications will be launched when
@@ -7686,13 +7683,10 @@ export namespace Gdk {
 
     namespace Colormap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7794,7 +7788,7 @@ export namespace Gdk {
          * @param pixel pixel value in hardware display format
          * @param result {@link Gdk.Color} with red, green, blue fields initialized
          */
-        query_color(pixel: (bigint | number), result: Color): void;
+        query_color(pixel: bigint | number, result: Color): void;
 
         /**
          * Deprecated function; use `g_object_unref()` instead.
@@ -7805,13 +7799,10 @@ export namespace Gdk {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7991,9 +7982,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8390,13 +8379,10 @@ export namespace Gdk {
 
     namespace DragContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8517,13 +8503,10 @@ export namespace Gdk {
 
     namespace Drawable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8832,13 +8815,10 @@ export namespace Gdk {
 
     namespace GC {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9153,13 +9133,10 @@ export namespace Gdk {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9336,9 +9313,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9639,7 +9614,7 @@ export namespace Gdk {
          * Sets the drawable the renderer draws to.
          * @param drawable the new target drawable, or `null`
          */
-        set_drawable(drawable: (Drawable | null)): void;
+        set_drawable(drawable: Drawable | null): void;
 
         /**
          * Sets the GC the renderer draws with. Note that the GC must not be
@@ -9649,7 +9624,7 @@ export namespace Gdk {
          * original GC.
          * @param gc the new GC to use for drawing, or `null`
          */
-        set_gc(gc: (GC | null)): void;
+        set_gc(gc: GC | null): void;
 
         /**
          * Sets the color for a particular render part (foreground,
@@ -9658,7 +9633,7 @@ export namespace Gdk {
          * @param part the part to render to set the color of
          * @param color the color to use, or `null` to unset a previously         set override color.
          */
-        set_override_color(part: Pango.RenderPart, color: (Color | null)): void;
+        set_override_color(part: Pango.RenderPart, color: Color | null): void;
 
         /**
          * Sets the stipple for one render part (foreground, background, underline,
@@ -9676,13 +9651,10 @@ export namespace Gdk {
 
     namespace Pixmap {
         // Signal signatures
-        interface SignalSignatures extends Drawable.SignalSignatures {
-        }
+        interface SignalSignatures extends Drawable.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Drawable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Drawable.ConstructorProps {}
     }
 
     /**
@@ -10087,7 +10059,7 @@ export namespace Gdk {
          * @param name 
          * @param value 
          */
-        get_setting(name: string, value: (GObject.Value | any)): boolean;
+        get_setting(name: string, value: GObject.Value | any): boolean;
 
         /**
          * Gets the system's default colormap for `screen`
@@ -10190,7 +10162,7 @@ export namespace Gdk {
          * have already been created.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options: (cairo.FontOptions | null)): void;
+        set_font_options(options: cairo.FontOptions | null): void;
 
         /**
          * Sets the resolution for font handling on the screen. This is a
@@ -10205,13 +10177,10 @@ export namespace Gdk {
 
     namespace Visual {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11068,7 +11037,7 @@ export namespace Gdk {
          * @param x X position of shape mask with respect to `window`
          * @param y Y position of shape mask with respect to `window`
          */
-        input_shape_combine_mask(mask: (Bitmap | null), x: number, y: number): void;
+        input_shape_combine_mask(mask: Bitmap | null, x: number, y: number): void;
 
         /**
          * Like `gdk_window_shape_combine_region()`, but the shape applies
@@ -11123,7 +11092,7 @@ export namespace Gdk {
          * @param rect rectangle to invalidate or `null` to invalidate the whole      window
          * @param invalidate_children whether to also invalidate child windows
          */
-        invalidate_rect(rect: (Rectangle | null), invalidate_children: boolean): void;
+        invalidate_rect(rect: Rectangle | null, invalidate_children: boolean): void;
 
         /**
          * Adds `region` to the update area for `window`. The update area is the
@@ -11382,7 +11351,7 @@ export namespace Gdk {
          * @param sibling a {@link Gdk.Window} that is a sibling of `window`, or `null`
          * @param above a boolean
          */
-        restack(sibling: (Window | null), above: boolean): void;
+        restack(sibling: Window | null, above: boolean): void;
 
         /**
          * Scroll the contents of `window`, both pixels and children, by the
@@ -11433,7 +11402,7 @@ export namespace Gdk {
          * @param pixmap a {@link Gdk.Pixmap}, or `null`
          * @param parent_relative whether the tiling origin is at the origin of   `window`'s parent
          */
-        set_back_pixmap(pixmap: (Pixmap | null), parent_relative: boolean): void;
+        set_back_pixmap(pixmap: Pixmap | null, parent_relative: boolean): void;
 
         /**
          * Sets the background color of `window`. (However, when using GTK+,
@@ -11501,7 +11470,7 @@ export namespace Gdk {
          * parent window. Most windows should use this default.
          * @param cursor a cursor
          */
-        set_cursor(cursor: (Cursor | null)): void;
+        set_cursor(cursor: Cursor | null): void;
 
         /**
          * "Decorations" are the features the window manager adds to a toplevel {@link Gdk.Window}.

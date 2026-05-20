@@ -46,7 +46,7 @@ export namespace GPasteGtk {
      * @param action 
      * @param msg the message to display
      */
-    function util_confirm_dialog(parent: (Gtk.Window | null), action: string, msg: string): boolean;
+    function util_confirm_dialog(parent: Gtk.Window | null, action: string, msg: string): boolean;
 
     /**
      * Empty history after prompting user for confirmation
@@ -55,7 +55,7 @@ export namespace GPasteGtk {
      * @param settings a {@link GPaste.Settings} instance
      * @param history the name of the history to empty
      */
-    function util_empty_history(parent_window: (Gtk.Window | null), client: GPaste.Client, settings: GPaste.Settings, history: string): void;
+    function util_empty_history(parent_window: Gtk.Window | null, client: GPaste.Client, settings: GPaste.Settings, history: string): void;
 
     /**
      * Present the application's window to user
@@ -145,9 +145,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -304,9 +302,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Stack.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Stack.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -414,9 +410,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**

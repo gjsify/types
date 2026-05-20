@@ -163,7 +163,7 @@ export namespace FcitxG {
          * @param timeout_msec timeout in millisecond
          * @param cancellable cancellable
          */
-        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * use this function with `fcitx_g_client_process_key_finish`
@@ -176,7 +176,7 @@ export namespace FcitxG {
          * @param cancellable cancellable
          * @param callback callback
          */
-        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * use this function with `fcitx_g_client_process_key_finish`
@@ -189,7 +189,7 @@ export namespace FcitxG {
          * @param cancellable cancellable
          * @param callback callback
          */
-        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        process_key(keyval: number, keycode: number, state: number, isRelease: boolean, t: number, timeout_msec: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * use this function with `fcitx_g_client_process_key_async`
@@ -224,7 +224,7 @@ export namespace FcitxG {
          * set client capability of input context.
          * @param flags capability
          */
-        set_capability(flags: (bigint | number)): void;
+        set_capability(flags: bigint | number): void;
 
         /**
          * tell fcitx current client's cursor geometry info
@@ -262,7 +262,7 @@ export namespace FcitxG {
          * @param cursor cursor position coresponding to text
          * @param anchor anchor position coresponding to text
          */
-        set_surrounding_text(text: (string | null), cursor: number, anchor: number): void;
+        set_surrounding_text(text: string | null, cursor: number, anchor: number): void;
 
         /**
          * Set whether use ProcessKeyEventBatch if supports, default is true.
@@ -284,9 +284,7 @@ export namespace FcitxG {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

@@ -164,7 +164,7 @@ export namespace Liferea {
      * @param downloaded downloading state (TRUE=downloaded)
      * @returns new string (to be free'd using g_free)
      */
-    function enclosure_values_to_string(url: string, mime: string, size: (bigint | number), downloaded: boolean): string;
+    function enclosure_values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
 
     /**
      * Takes a file name relative to "pixmaps" directory and tries to load the
@@ -316,7 +316,7 @@ export namespace Liferea {
      * @param state 
      * @param lastmodified 
      */
-    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: (bigint | number)): void;
+    function update_state_set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
 
     /**
      * @gir-type Callback
@@ -415,9 +415,7 @@ export namespace Liferea {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -700,7 +698,7 @@ export namespace Liferea {
          * is currently visible and can be used to display HTML that
          * is to be loaded
          */
-        static get_active_htmlview(): (Browser | null);
+        static get_active_htmlview(): Browser | null;
 
         /**
          * makes the headline tab visible
@@ -733,9 +731,7 @@ export namespace Liferea {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -794,7 +790,7 @@ export namespace Liferea {
          * @param type NODE_BY_(URL|FOLDER_TITLE|ID)
          * @param str string to compare to
          */
-        static find_node(parent: (Node | null), type: feedListFindType, str: string): (Node | null);
+        static find_node(parent: Node | null, type: feedListFindType, str: string): Node | null;
 
         /**
          * Query overall number of new items.
@@ -812,7 +808,7 @@ export namespace Liferea {
         /**
          * Get currently selected feed list node
          */
-        static get_selected(): (Node | null);
+        static get_selected(): Node | null;
 
         /**
          * Query overall number of unread items.
@@ -896,13 +892,10 @@ export namespace Liferea {
 
     namespace Item {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -994,7 +987,7 @@ export namespace Liferea {
          * the item with `item_unload()` once it is not used anymore.
          * @param id item id to load
          */
-        static load(id: (bigint | number)): (Item | null);
+        static load(id: bigint | number): Item | null;
 
         // Methods
         /**
@@ -1079,7 +1072,7 @@ export namespace Liferea {
          * supplied for the item!
          * @param time the time
          */
-        set_time(time: (bigint | number)): void;
+        set_time(time: bigint | number): void;
 
         /**
          * Sets the item title
@@ -1101,9 +1094,7 @@ export namespace Liferea {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1143,7 +1134,7 @@ export namespace Liferea {
         /**
          * Returns the currently displayed node.
          */
-        static get_displayed_node(): (Node | null);
+        static get_displayed_node(): Node | null;
 
         /**
          * Returns the id of the currently selected item.
@@ -1176,13 +1167,10 @@ export namespace Liferea {
 
     namespace ItemListView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1224,7 +1212,7 @@ export namespace Liferea {
          * @param id the item id
          * @returns TRUE if the item is in the ItemListView
          */
-        contains_id(id: (bigint | number)): boolean;
+        contains_id(id: bigint | number): boolean;
 
         /**
          * @param enabled 
@@ -1424,9 +1412,7 @@ export namespace Liferea {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1482,13 +1468,10 @@ export namespace Liferea {
 
     namespace Node {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1571,13 +1554,13 @@ export namespace Liferea {
          * id does not exist.
          * @param id the node id to look up
          */
-        static from_id(id: string): (Node | null);
+        static from_id(id: string): Node | null;
 
         /**
          * Can be used to check whether an id is used or not.
          * @param id the node id to check
          */
-        static is_used_id(id: string): (Node | null);
+        static is_used_id(id: string): Node | null;
 
         /**
          * Returns a new unused unique node id.
@@ -1682,7 +1665,7 @@ export namespace Liferea {
          * to mass-auto-update subscriptions.
          * @param now the current timestamp
          */
-        reset_update_counter(now: (bigint | number)): void;
+        reset_update_counter(now: bigint | number): void;
 
         /**
          * Saves the given node to cache.
@@ -1722,7 +1705,7 @@ export namespace Liferea {
          * @param parent the parent node (optional can be NULL)
          * @param position insert position (optional can be 0)
          */
-        set_parent(parent: (Node | null), position: number): void;
+        set_parent(parent: Node | null, position: number): void;
 
         /**
          * Change/Set the sort column of a given node.
@@ -1889,7 +1872,7 @@ export namespace Liferea {
          * name and returns the found widget.
          * @param name the widget name
          */
-        static lookup(name: string): (Gtk.Widget | null);
+        static lookup(name: string): Gtk.Widget | null;
 
         /**
          * Invokes a rebuild of the WebView CSS.
@@ -1921,13 +1904,10 @@ export namespace Liferea {
 
     namespace UpdateJob {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2004,13 +1984,10 @@ export namespace Liferea {
 
     namespace UpdateRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2090,13 +2067,10 @@ export namespace Liferea {
 
     namespace UpdateResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2298,7 +2272,7 @@ export namespace Liferea {
          * @param size the enclosure size (optional, can be 0, and also -1)
          * @param downloaded downloading state (TRUE=downloaded)
          */
-        static values_to_string(url: string, mime: string, size: (bigint | number), downloaded: boolean): string;
+        static values_to_string(url: string, mime: string, size: bigint | number, downloaded: boolean): string;
     }
 
 
@@ -2610,7 +2584,7 @@ export namespace Liferea {
          * @param state 
          * @param lastmodified 
          */
-        static set_lastmodified(state: updateStatePtr, lastmodified: (bigint | number)): void;
+        static set_lastmodified(state: updateStatePtr, lastmodified: bigint | number): void;
     }
 
 
@@ -2652,9 +2626,7 @@ export namespace Liferea {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ActivatableNamespace {
@@ -2720,9 +2692,7 @@ export namespace Liferea {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Activatable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Activatable.ConstructorProps {}
     }
 
     export interface AuthActivatableNamespace {
@@ -2824,9 +2794,7 @@ export namespace Liferea {
     namespace NodeSourceActivatable {
 
         // Constructor properties interface
-        interface ConstructorProps extends Activatable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Activatable.ConstructorProps {}
     }
 
     export interface NodeSourceActivatableNamespace {
@@ -2847,9 +2815,7 @@ export namespace Liferea {
     namespace NodeSourceProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface NodeSourceProviderNamespace {

@@ -101,7 +101,7 @@ export namespace RygelCore {
         static VALUE_OUT_OF_RANGE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -115,7 +115,7 @@ export namespace RygelCore {
         static VERSION_ONLY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -158,9 +158,7 @@ export namespace RygelCore {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GUPnP.Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
     /**
@@ -300,13 +298,10 @@ export namespace RygelCore {
 
     namespace DescriptionFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -379,7 +374,7 @@ export namespace RygelCore {
          */
         set_udn(udn: string): void;
 
-        get_udn(): (string | null);
+        get_udn(): string | null;
 
         /**
          * @param serial 
@@ -435,8 +430,7 @@ export namespace RygelCore {
 
     namespace DLNAProfile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -493,9 +487,7 @@ export namespace RygelCore {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GUPnP.Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
     /**
@@ -647,7 +639,7 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -691,7 +683,7 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -798,7 +790,7 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -842,19 +834,16 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace LogHandler {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -897,13 +886,10 @@ export namespace RygelCore {
 
     namespace MetaConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
     /**
@@ -971,11 +957,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -1072,17 +1058,17 @@ export namespace RygelCore {
         /**
          * @virtual
          */
-        vfunc_get_video_upload_folder(): (string | null);
+        vfunc_get_video_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_music_upload_folder(): (string | null);
+        vfunc_get_music_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_picture_upload_folder(): (string | null);
+        vfunc_get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -1146,9 +1132,7 @@ export namespace RygelCore {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecursiveModuleLoader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecursiveModuleLoader.ConstructorProps {}
     }
 
     /**
@@ -1200,7 +1184,7 @@ export namespace RygelCore {
         /**
          * @param name 
          */
-        get_plugin_by_name(name: string): (Plugin | null);
+        get_plugin_by_name(name: string): Plugin | null;
 
         list_plugins(): Gee.Collection;
     }
@@ -1278,7 +1262,7 @@ export namespace RygelCore {
         /**
          * @param cancellable 
          */
-        load_modules_sync(cancellable: (Gio.Cancellable | null)): void;
+        load_modules_sync(cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
@@ -1399,7 +1383,7 @@ export namespace RygelCore {
 
         _init(...args: any[]): void;
 
-        static ["new"](desc_path: string, name: string, title: (string | null), description: (string | null), capabilities: PluginCapabilities): Plugin;
+        static ["new"](desc_path: string, name: string, title: string | null, description: string | null, capabilities: PluginCapabilities): Plugin;
 
         // Conflicted with GUPnP.ResourceFactory.new
         static ["new"](...args: never[]): any;
@@ -1479,8 +1463,7 @@ export namespace RygelCore {
 
     namespace ResourceInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -1611,13 +1594,10 @@ export namespace RygelCore {
 
     namespace BaseConfiguration {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
     /**
@@ -1709,17 +1689,17 @@ export namespace RygelCore {
         /**
          * @virtual
          */
-        vfunc_get_video_upload_folder(): (string | null);
+        vfunc_get_video_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_music_upload_folder(): (string | null);
+        vfunc_get_music_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_picture_upload_folder(): (string | null);
+        vfunc_get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -1791,11 +1771,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -1843,13 +1823,10 @@ export namespace RygelCore {
 
     namespace CmdlineConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
     /**
@@ -1918,11 +1895,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2019,17 +1996,17 @@ export namespace RygelCore {
         /**
          * @virtual
          */
-        vfunc_get_video_upload_folder(): (string | null);
+        vfunc_get_video_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_music_upload_folder(): (string | null);
+        vfunc_get_music_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_picture_upload_folder(): (string | null);
+        vfunc_get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2084,13 +2061,10 @@ export namespace RygelCore {
 
     namespace EnvironmentConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
     /**
@@ -2151,11 +2125,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2252,17 +2226,17 @@ export namespace RygelCore {
         /**
          * @virtual
          */
-        vfunc_get_video_upload_folder(): (string | null);
+        vfunc_get_video_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_music_upload_folder(): (string | null);
+        vfunc_get_music_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_picture_upload_folder(): (string | null);
+        vfunc_get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2317,13 +2291,10 @@ export namespace RygelCore {
 
     namespace UserConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
     }
 
     /**
@@ -2391,11 +2362,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2492,17 +2463,17 @@ export namespace RygelCore {
         /**
          * @virtual
          */
-        vfunc_get_video_upload_folder(): (string | null);
+        vfunc_get_video_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_music_upload_folder(): (string | null);
+        vfunc_get_music_upload_folder(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_picture_upload_folder(): (string | null);
+        vfunc_get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -2631,7 +2602,7 @@ export namespace RygelCore {
          * @param device 
          * @param template_path 
          */
-        apply_on_device(device: RootDevice, template_path: (string | null)): void;
+        apply_on_device(device: RootDevice, template_path: string | null): void;
 
         get_device_type(): string;
 
@@ -2646,8 +2617,7 @@ export namespace RygelCore {
 
     namespace IconInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2695,8 +2665,7 @@ export namespace RygelCore {
 
     namespace XMLUtils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2730,8 +2699,7 @@ export namespace RygelCore {
 
     namespace XMLUtilsIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2772,8 +2740,7 @@ export namespace RygelCore {
 
     namespace XMLUtilsChildIterator {
         // Signal signatures
-        interface SignalSignatures extends XMLUtilsIterator.SignalSignatures {
-        }
+        interface SignalSignatures extends XMLUtilsIterator.SignalSignatures {}
     }
 
     /**
@@ -3252,9 +3219,7 @@ export namespace RygelCore {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DBusInterfaceNamespace {
@@ -3292,7 +3257,7 @@ export namespace RygelCore {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_is_allowed(device: GLib.HashTable<string, string>, service: GLib.HashTable<string, string>, path: string, address: string, agent: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_is_allowed(device: GLib.HashTable<string, string>, service: GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -3303,9 +3268,7 @@ export namespace RygelCore {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DBusAclProviderNamespace {
@@ -3325,7 +3288,7 @@ export namespace RygelCore {
          * @param address 
          * @param agent 
          */
-        is_allowed(device: ({ [key: string]: any } | GLib.HashTable<string, string>), service: ({ [key: string]: any } | GLib.HashTable<string, string>), path: string, address: string, agent: (string | null)): globalThis.Promise<boolean>;
+        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null): globalThis.Promise<boolean>;
 
         /**
          * @param device 
@@ -3335,7 +3298,7 @@ export namespace RygelCore {
          * @param agent 
          * @param _callback_ 
          */
-        is_allowed(device: ({ [key: string]: any } | GLib.HashTable<string, string>), service: ({ [key: string]: any } | GLib.HashTable<string, string>), path: string, address: string, agent: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param device 
@@ -3345,7 +3308,7 @@ export namespace RygelCore {
          * @param agent 
          * @param _callback_ 
          */
-        is_allowed(device: ({ [key: string]: any } | GLib.HashTable<string, string>), service: ({ [key: string]: any } | GLib.HashTable<string, string>), path: string, address: string, agent: (string | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
@@ -3419,17 +3382,17 @@ export namespace RygelCore {
             /**
              * @virtual
              */
-            vfunc_get_video_upload_folder(): (string | null);
+            vfunc_get_video_upload_folder(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_music_upload_folder(): (string | null);
+            vfunc_get_music_upload_folder(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_picture_upload_folder(): (string | null);
+            vfunc_get_picture_upload_folder(): string | null;
 
             /**
              * @param section 
@@ -3483,9 +3446,7 @@ export namespace RygelCore {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConfigurationNamespace {
@@ -3518,11 +3479,11 @@ export namespace RygelCore {
 
         get_media_engine(): string;
 
-        get_video_upload_folder(): (string | null);
+        get_video_upload_folder(): string | null;
 
-        get_music_upload_folder(): (string | null);
+        get_music_upload_folder(): string | null;
 
-        get_picture_upload_folder(): (string | null);
+        get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
@@ -3584,7 +3545,7 @@ export namespace RygelCore {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -3630,12 +3591,12 @@ export namespace RygelCore {
         /**
          * @param _callback_ 
          */
-        run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 

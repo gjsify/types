@@ -40,7 +40,7 @@ export namespace GModule {
         static CHECK_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -71,7 +71,7 @@ export namespace GModule {
      * @returns the complete path of the module, including the standard library     prefix and suffix. This should be freed when no longer needed
      * @deprecated since 2.76: Use `g_module_open()` instead with `module_name` as the basename of the file_name argument. See `G_MODULE_SUFFIX` for why.
      */
-    function module_build_path(directory: (string | null), module_name: string): string;
+    function module_build_path(directory: string | null, module_name: string): string;
 
     /**
      * Gets a string describing the last module error.
@@ -158,7 +158,7 @@ export namespace GModule {
          * @param directory the directory where the module is. This can be     `null` or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
          * @param module_name the name of the module
          */
-        static build_path(directory: (string | null), module_name: string): string;
+        static build_path(directory: string | null, module_name: string): string;
 
         /**
          * Gets a string describing the last module error.

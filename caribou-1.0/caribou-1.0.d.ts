@@ -261,9 +261,7 @@ export namespace Caribou {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DisplayAdapter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
     }
 
     /**
@@ -310,9 +308,7 @@ export namespace Caribou {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DisplayAdapter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
     }
 
     /**
@@ -473,13 +469,10 @@ export namespace Caribou {
 
     namespace KeyboardService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -768,9 +761,7 @@ export namespace Caribou {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {}
     }
 
     /**
@@ -1131,9 +1122,7 @@ export namespace Caribou {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ScannableGroup.ConstructorProps, IScannableItem.ConstructorProps, IKeyboardObject.ConstructorProps {}
     }
 
     /**
@@ -1465,9 +1454,7 @@ export namespace Caribou {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {}
     }
 
     /**
@@ -1959,9 +1946,7 @@ export namespace Caribou {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IKeyboardObjectNamespace {

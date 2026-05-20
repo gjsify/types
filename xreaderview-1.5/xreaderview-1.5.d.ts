@@ -449,9 +449,7 @@ export namespace XreaderView {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -557,13 +555,10 @@ export namespace XreaderView {
 
     namespace JobAnnots {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -608,13 +603,10 @@ export namespace XreaderView {
 
     namespace JobAttachments {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -659,13 +651,10 @@ export namespace XreaderView {
 
     namespace JobExport {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -727,9 +716,7 @@ export namespace XreaderView {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -816,9 +803,7 @@ export namespace XreaderView {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -870,13 +855,10 @@ export namespace XreaderView {
 
     namespace JobLayers {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -921,13 +903,10 @@ export namespace XreaderView {
 
     namespace JobLinks {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -972,13 +951,10 @@ export namespace XreaderView {
 
     namespace JobLoad {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1036,13 +1012,10 @@ export namespace XreaderView {
 
     namespace JobPageData {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1095,13 +1068,10 @@ export namespace XreaderView {
 
     namespace JobPrint {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1157,13 +1127,10 @@ export namespace XreaderView {
 
     namespace JobRender {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1237,13 +1204,10 @@ export namespace XreaderView {
 
     namespace JobSave {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1290,13 +1254,10 @@ export namespace XreaderView {
 
     namespace JobThumbnail {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -1576,9 +1537,7 @@ export namespace XreaderView {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -1722,7 +1681,7 @@ export namespace XreaderView {
          * you have to use `ev_document_model_set_max_scale()` too.
          * @param cache_size 
          */
-        set_page_cache_size(cache_size: (bigint | number)): void;
+        set_page_cache_size(cache_size: bigint | number): void;
 
         show_cursor(): void;
 
@@ -1826,7 +1785,7 @@ export namespace XreaderView {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1840,7 +1799,7 @@ export namespace XreaderView {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2036,7 +1995,7 @@ export namespace XreaderView {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -2057,7 +2016,7 @@ export namespace XreaderView {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2067,7 +2026,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2076,7 +2035,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2112,7 +2071,7 @@ export namespace XreaderView {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -2128,7 +2087,7 @@ export namespace XreaderView {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -2150,7 +2109,7 @@ export namespace XreaderView {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2161,7 +2120,7 @@ export namespace XreaderView {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2170,7 +2129,7 @@ export namespace XreaderView {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

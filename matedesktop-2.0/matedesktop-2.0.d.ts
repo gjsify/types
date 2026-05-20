@@ -79,7 +79,7 @@ export namespace MateDesktop {
         static INVALID_TYPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -138,7 +138,7 @@ export namespace MateDesktop {
         static NO_MATCHING_CONFIG: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -308,7 +308,7 @@ export namespace MateDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: (bigint | number)): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
 
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
@@ -352,7 +352,7 @@ export namespace MateDesktop {
      * @returns the country name. Caller takes ownership.
      * @since 1.22
      */
-    function get_country_from_code(code: string, translation: (string | null)): string;
+    function get_country_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the country description for `locale`. If `translation` is
@@ -362,7 +362,7 @@ export namespace MateDesktop {
      * @returns the country description. Caller takes ownership.
      * @since 1.22
      */
-    function get_country_from_locale(locale: string, translation: (string | null)): string;
+    function get_country_from_locale(locale: string, translation: string | null): string;
 
     /**
      * Gets the language name for `code`. If `locale` is provided the
@@ -372,7 +372,7 @@ export namespace MateDesktop {
      * @returns the language name. Caller takes ownership.
      * @since 1.22
      */
-    function get_language_from_code(code: string, translation: (string | null)): string;
+    function get_language_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the language description for `locale`. If `translation` is
@@ -382,7 +382,7 @@ export namespace MateDesktop {
      * @returns the language description. Caller takes ownership.
      * @since 1.22
      */
-    function get_language_from_locale(locale: string, translation: (string | null)): string;
+    function get_language_from_locale(locale: string, translation: string | null): string;
 
     /**
      * @param settings 
@@ -517,9 +517,7 @@ export namespace MateDesktop {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1359,13 +1357,10 @@ export namespace MateDesktop {
 
     namespace DesktopThumbnailFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1414,7 +1409,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: (bigint | number)): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
         /**
          * Creates a failed thumbnail for the file so that we don't try
@@ -1424,7 +1419,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param mtime the modification time of the file
          */
-        create_failed_thumbnail(uri: string, mtime: (bigint | number)): void;
+        create_failed_thumbnail(uri: string, mtime: bigint | number): void;
 
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -1447,7 +1442,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: (bigint | number)): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
         /**
          * Tries to locate an existing thumbnail for the file specified.
@@ -1457,7 +1452,7 @@ export namespace MateDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: (bigint | number)): string;
+        lookup(uri: string, mtime: bigint | number): string;
 
         /**
          * Saves `thumbnail` at the right place. If the save fails a
@@ -1468,7 +1463,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number)): void;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
     }
 
 
@@ -1528,9 +1523,7 @@ export namespace MateDesktop {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1624,7 +1617,7 @@ export namespace MateDesktop {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1645,7 +1638,7 @@ export namespace MateDesktop {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1655,7 +1648,7 @@ export namespace MateDesktop {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1664,7 +1657,7 @@ export namespace MateDesktop {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1700,7 +1693,7 @@ export namespace MateDesktop {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -1716,7 +1709,7 @@ export namespace MateDesktop {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1738,7 +1731,7 @@ export namespace MateDesktop {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1749,7 +1742,7 @@ export namespace MateDesktop {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1758,7 +1751,7 @@ export namespace MateDesktop {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1933,21 +1926,21 @@ export namespace MateDesktop {
          * the image will be displayed or not.
          * @param image a widget to set as the image for the menu item.
          */
-        set_image(image: (Gtk.Widget | null)): void;
+        set_image(image: Gtk.Widget | null): void;
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -2027,7 +2020,7 @@ export namespace MateDesktop {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2051,7 +2044,7 @@ export namespace MateDesktop {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2075,7 +2068,7 @@ export namespace MateDesktop {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -2099,7 +2092,7 @@ export namespace MateDesktop {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2124,7 +2117,7 @@ export namespace MateDesktop {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2149,7 +2142,7 @@ export namespace MateDesktop {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -2213,7 +2206,7 @@ export namespace MateDesktop {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -2223,7 +2216,7 @@ export namespace MateDesktop {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -2293,7 +2286,7 @@ export namespace MateDesktop {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path: (string | null), accel_group: (Gtk.AccelGroup | null)): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
 
         /**
          * @param args 
@@ -2491,13 +2484,10 @@ export namespace MateDesktop {
 
     namespace RROutputInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2784,7 +2774,7 @@ export namespace MateDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2828,7 +2818,7 @@ export namespace MateDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2875,10 +2865,7 @@ export namespace MateDesktop {
         static $gtype: GObject.GType<DesktopItem>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): DesktopItem;
 
@@ -2886,7 +2873,7 @@ export namespace MateDesktop {
 
         static new_from_file(file: string, flags: DesktopItemLoadFlags): DesktopItem;
 
-        static new_from_string(uri: string, string: string, length: (bigint | number), flags: DesktopItemLoadFlags): DesktopItem;
+        static new_from_string(uri: string, string: string, length: bigint | number, flags: DesktopItemLoadFlags): DesktopItem;
 
         static new_from_uri(uri: string, flags: DesktopItemLoadFlags): DesktopItem;
 

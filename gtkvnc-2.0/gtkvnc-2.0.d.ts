@@ -192,7 +192,7 @@ export namespace GtkVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        fill(src: (Uint8Array | string), x: number, y: number, width: number, height: number): void;
+        fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
 
         /**
          * Get a pointer to the framebuffer contents
@@ -244,7 +244,7 @@ export namespace GtkVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        rgb24_blt(src: (Uint8Array | string), rowstride: number, x: number, y: number, width: number, height: number): void;
+        rgb24_blt(src: Uint8Array | string, rowstride: number, x: number, y: number, width: number, height: number): void;
 
         /**
          * Set the color map to use for the framebuffer
@@ -260,7 +260,7 @@ export namespace GtkVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        set_pixel_at(src: (Uint8Array | string), x: number, y: number): void;
+        set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
 
         /**
          * @param src 
@@ -992,7 +992,7 @@ export namespace GtkVnc {
          * @param hostname the hostname
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_addr(addr: Gio.SocketAddress, hostname: (string | null)): boolean;
+        open_addr(addr: Gio.SocketAddress, hostname: string | null): boolean;
 
         /**
          * Open a connection using `fd` as the transport. If `fd`
@@ -1016,7 +1016,7 @@ export namespace GtkVnc {
          * @param hostname the host associated with the connection
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_fd_with_hostname(fd: number, hostname: (string | null)): boolean;
+        open_fd_with_hostname(fd: number, hostname: string | null): boolean;
 
         /**
          * Open a TCP connection to the remote desktop at `host`

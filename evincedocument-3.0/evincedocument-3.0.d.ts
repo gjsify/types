@@ -159,7 +159,7 @@ export namespace EvinceDocument {
         static ENCRYPTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -558,7 +558,7 @@ export namespace EvinceDocument {
      * @param size 
      * @param info 
      */
-    function xmp_parse(xmp: string, size: (bigint | number), info: DocumentInfo): boolean;
+    function xmp_parse(xmp: string, size: bigint | number, info: DocumentInfo): boolean;
 
     /**
      * @gir-type Flags
@@ -933,7 +933,7 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: (bigint | number)): boolean;
+        set_modified_from_time_t(utime: bigint | number): boolean;
 
         /**
          * Set the name of `annot`.
@@ -1513,10 +1513,10 @@ export namespace EvinceDocument {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: (bigint | number);
+            ctime: bigint | number;
             data: never;
             description: string;
-            mtime: (bigint | number);
+            mtime: bigint | number;
             name: string;
             size: number;
         }
@@ -1533,7 +1533,7 @@ export namespace EvinceDocument {
          * @construct-only
          * @default 0
          */
-        set ctime(val: (bigint | number));
+        set ctime(val: bigint | number);
 
         /**
          * @construct-only
@@ -1550,7 +1550,7 @@ export namespace EvinceDocument {
          * @construct-only
          * @default 0
          */
-        set mtime(val: (bigint | number));
+        set mtime(val: bigint | number);
 
         /**
          * @construct-only
@@ -1581,7 +1581,7 @@ export namespace EvinceDocument {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: (bigint | number), data: null): Attachment;
+        static ["new"](name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: bigint | number, data: null): Attachment;
 
         // Signals
         /** @signal */
@@ -1728,7 +1728,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_fd(fd: number, mime_type: string, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+        static factory_get_document_for_fd(fd: number, mime_type: string, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document at `file`; or, if no
@@ -1740,7 +1740,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+        static factory_get_document_for_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document from `stream`; or, if no
@@ -1757,7 +1757,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_stream(stream: Gio.InputStream, mime_type: (string | null), flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+        static factory_get_document_for_stream(stream: Gio.InputStream, mime_type: string | null, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
         /**
          * Creates a {@link EvinceDocument.Document} for the document at `uri`; or, if no backend handling
@@ -1973,7 +1973,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously loads the document from `file`.
@@ -1983,7 +1983,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously loads the document from `stream`.
@@ -1993,7 +1993,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param rc 
@@ -2123,7 +2123,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Loads `document` from `uri`.
@@ -2148,7 +2148,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously loads the document from `stream`.
@@ -2158,7 +2158,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param rc 
@@ -2193,13 +2193,10 @@ export namespace EvinceDocument {
 
     namespace FormField {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2252,13 +2249,10 @@ export namespace EvinceDocument {
 
     namespace FormFieldButton {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2305,13 +2299,10 @@ export namespace EvinceDocument {
 
     namespace FormFieldChoice {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2368,13 +2359,10 @@ export namespace EvinceDocument {
 
     namespace FormFieldSignature {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2416,13 +2404,10 @@ export namespace EvinceDocument {
 
     namespace FormFieldText {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2481,13 +2466,10 @@ export namespace EvinceDocument {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2551,13 +2533,10 @@ export namespace EvinceDocument {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3084,13 +3063,10 @@ export namespace EvinceDocument {
 
     namespace Media {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3147,13 +3123,10 @@ export namespace EvinceDocument {
 
     namespace Page {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3204,13 +3177,10 @@ export namespace EvinceDocument {
 
     namespace RenderContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3604,18 +3574,18 @@ export namespace EvinceDocument {
         /**
          * @returns a {@link GLib.DateTime} for when the document was created
          */
-        get_created_datetime(): (GLib.DateTime | null);
+        get_created_datetime(): GLib.DateTime | null;
 
         /**
          * @returns a {@link GLib.DateTime} for when the document was last modified
          */
-        get_modified_datetime(): (GLib.DateTime | null);
+        get_modified_datetime(): GLib.DateTime | null;
 
         /**
          * @param xmp 
          * @param size 
          */
-        set_from_xmp(xmp: string, size: (bigint | number)): boolean;
+        set_from_xmp(xmp: string, size: bigint | number): boolean;
 
         /**
          * @param datetime 
@@ -3671,17 +3641,17 @@ export namespace EvinceDocument {
         /**
          * @returns the license text
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * @returns the license URI
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * @returns the license web statement
          */
-        get_web_statement(): (string | null);
+        get_web_statement(): string | null;
     }
 
 
@@ -4248,9 +4218,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AsyncRendererNamespace {
@@ -4326,9 +4294,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAnnotationsNamespace {
@@ -4403,9 +4369,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAttachmentsNamespace {
@@ -4471,9 +4435,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFindNamespace {
@@ -4551,9 +4513,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFontsNamespace {
@@ -4693,9 +4653,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFormsNamespace {
@@ -4816,9 +4774,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentImagesNamespace {
@@ -4887,9 +4843,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLayersNamespace {
@@ -4969,9 +4923,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLinksNamespace {
@@ -5050,9 +5002,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentMediaNamespace {
@@ -5094,9 +5044,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentPrintNamespace {
@@ -5143,9 +5091,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentSecurityNamespace {
@@ -5209,9 +5155,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTextNamespace {
@@ -5277,9 +5221,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTransitionNamespace {
@@ -5352,9 +5294,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileExporterNamespace {
@@ -5430,9 +5370,7 @@ export namespace EvinceDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SelectionNamespace {

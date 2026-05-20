@@ -131,13 +131,10 @@ export namespace BaseSink {
 
     namespace GstAdapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -259,9 +256,7 @@ export namespace BaseSink {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -572,9 +567,7 @@ export namespace BaseSink {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Src.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Src.ConstructorProps {}
     }
 
     /**
@@ -878,7 +871,7 @@ export namespace BaseSink {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Element.ConstructorProps {
-            blocksize: (bigint | number);
+            blocksize: bigint | number;
             do_timestamp: boolean;
             doTimestamp: boolean;
             num_buffers: number;
@@ -896,7 +889,7 @@ export namespace BaseSink {
 
         // Properties
         get blocksize(): number;
-        set blocksize(val: (bigint | number));
+        set blocksize(val: bigint | number);
 
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
@@ -991,7 +984,7 @@ export namespace BaseSink {
         /**
          * @param blocksize 
          */
-        set_blocksize(blocksize: (bigint | number)): void;
+        set_blocksize(blocksize: bigint | number): void;
 
         get_blocksize(): number;
 

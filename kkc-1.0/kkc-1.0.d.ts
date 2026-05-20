@@ -110,7 +110,7 @@ export namespace Kkc {
         static INVALID_FIELD: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -124,7 +124,7 @@ export namespace Kkc {
         static NOT_FOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -140,7 +140,7 @@ export namespace Kkc {
         static KEYSYM_NOT_FOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -154,7 +154,7 @@ export namespace Kkc {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -170,7 +170,7 @@ export namespace Kkc {
         static MALFORMED_INPUT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -4350,7 +4350,7 @@ export namespace Kkc {
      * @gir-type Callback
      */
     interface GetTime {
-        (): (bigint | number);
+        (): bigint | number;
     }
 
     /**
@@ -4529,7 +4529,7 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4573,14 +4573,13 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace TrellisNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -4592,7 +4591,7 @@ export namespace Kkc {
         // Fields
         ref_count: number;
 
-        previous: (TrellisNode | null);
+        previous: TrellisNode | null;
 
         cumulative_cost: number;
 
@@ -4660,8 +4659,7 @@ export namespace Kkc {
 
     namespace UnigramTrellisNode {
         // Signal signatures
-        interface SignalSignatures extends TrellisNode.SignalSignatures {
-        }
+        interface SignalSignatures extends TrellisNode.SignalSignatures {}
     }
 
     /**
@@ -4695,8 +4693,7 @@ export namespace Kkc {
 
     namespace BigramTrellisNode {
         // Signal signatures
-        interface SignalSignatures extends TrellisNode.SignalSignatures {
-        }
+        interface SignalSignatures extends TrellisNode.SignalSignatures {}
     }
 
     /**
@@ -4793,10 +4790,10 @@ export namespace Kkc {
         /**
          * @param name 
          */
-        static find(name: string): (LanguageModelMetadata | null);
+        static find(name: string): LanguageModelMetadata | null;
 
         // Methods
-        create_language_model(): (LanguageModel | null);
+        create_language_model(): LanguageModel | null;
 
         get_model_type(): GObject.GType;
 
@@ -4874,7 +4871,7 @@ export namespace Kkc {
         /**
          * @param name 
          */
-        static load(name: string): (LanguageModel | null);
+        static load(name: string): LanguageModel | null;
 
         // Virtual methods
         /**
@@ -4894,7 +4891,7 @@ export namespace Kkc {
          * @param output 
          * @virtual
          */
-        vfunc_get(input: string, output: string): (LanguageModelEntry | null);
+        vfunc_get(input: string, output: string): LanguageModelEntry | null;
 
         /**
          * @virtual
@@ -4926,7 +4923,7 @@ export namespace Kkc {
          * @param input 
          * @param output 
          */
-        get(input: string, output: string): (LanguageModelEntry | null);
+        get(input: string, output: string): LanguageModelEntry | null;
 
         parse(): boolean;
 
@@ -4983,7 +4980,7 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5027,7 +5024,7 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -5040,9 +5037,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LanguageModel.ConstructorProps, UnigramLanguageModel.ConstructorProps, BigramLanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LanguageModel.ConstructorProps, UnigramLanguageModel.ConstructorProps, BigramLanguageModel.ConstructorProps {}
     }
 
     /**
@@ -5178,9 +5173,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TextBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TextBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
     /**
@@ -5474,9 +5467,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SortedBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SortedBigramLanguageModel.ConstructorProps, TrigramLanguageModel.ConstructorProps {}
     }
 
     /**
@@ -5622,13 +5613,10 @@ export namespace Kkc {
 
     namespace Decoder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5668,7 +5656,7 @@ export namespace Kkc {
         /**
          * @param model 
          */
-        static create(model: LanguageModel): (Decoder | null);
+        static create(model: LanguageModel): Decoder | null;
 
         // Virtual methods
         /**
@@ -5816,9 +5804,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BigramDecoder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BigramDecoder.ConstructorProps {}
     }
 
     /**
@@ -6005,7 +5991,7 @@ export namespace Kkc {
         $signals: Segment.SignalSignatures;
 
         // Fields
-        next: (Segment | null);
+        next: Segment | null;
 
         // Constructors
         constructor(properties?: Partial<Segment.ConstructorProps>, ...args: any[]);
@@ -6237,7 +6223,7 @@ export namespace Kkc {
             midasi: string;
             okuri: boolean;
             text: string;
-            annotation: (string | null);
+            annotation: string | null;
             output: string;
         }
     }
@@ -6258,8 +6244,8 @@ export namespace Kkc {
         get text(): string;
         set text(val: string);
 
-        get annotation(): (string | null);
-        set annotation(val: (string | null));
+        get annotation(): string | null;
+        set annotation(val: string | null);
 
         get output(): string;
         set output(val: string);
@@ -6278,7 +6264,7 @@ export namespace Kkc {
 
         _init(...args: any[]): void;
 
-        static ["new"](midasi: string, okuri: boolean, text: string, annotation: (string | null), output: (string | null)): Candidate;
+        static ["new"](midasi: string, okuri: boolean, text: string, annotation: string | null, output: string | null): Candidate;
 
         // Signals
         /** @signal */
@@ -6317,12 +6303,12 @@ export namespace Kkc {
          */
         set_text(value: string): void;
 
-        get_annotation(): (string | null);
+        get_annotation(): string | null;
 
         /**
          * @param value 
          */
-        set_annotation(value: (string | null)): void;
+        set_annotation(value: string | null): void;
 
         get_output(): string;
 
@@ -6343,9 +6329,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6386,7 +6370,7 @@ export namespace Kkc {
          * @param key 
          * @virtual
          */
-        vfunc_filter_key_event(key: KeyEvent): (KeyEvent | null);
+        vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
 
         /**
          * @virtual
@@ -6397,7 +6381,7 @@ export namespace Kkc {
         /**
          * @param key 
          */
-        filter_key_event(key: KeyEvent): (KeyEvent | null);
+        filter_key_event(key: KeyEvent): KeyEvent | null;
 
         reset(): void;
     }
@@ -6526,7 +6510,7 @@ export namespace Kkc {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            parent: (Keymap | null);
+            parent: Keymap | null;
         }
     }
 
@@ -6537,8 +6521,8 @@ export namespace Kkc {
         static $gtype: GObject.GType<Keymap>;
 
         // Properties
-        get parent(): (Keymap | null);
-        set parent(val: (Keymap | null));
+        get parent(): Keymap | null;
+        set parent(val: Keymap | null);
 
         /**
          * Compile-time signal type information.
@@ -6586,7 +6570,7 @@ export namespace Kkc {
          * @param key 
          * @param command 
          */
-        set(key: KeyEvent, command: (string | null)): void;
+        set(key: KeyEvent, command: string | null): void;
 
         /**
          * @param args 
@@ -6597,31 +6581,28 @@ export namespace Kkc {
         /**
          * @param key 
          */
-        lookup_key(key: KeyEvent): (string | null);
+        lookup_key(key: KeyEvent): string | null;
 
         /**
          * @param command 
          */
-        where_is(command: string): (KeyEvent | null);
+        where_is(command: string): KeyEvent | null;
 
-        get_parent(): (Keymap | null);
+        get_parent(): Keymap | null;
 
         /**
          * @param value 
          */
-        set_parent(value: (Keymap | null)): void;
+        set_parent(value: Keymap | null): void;
     }
 
 
     namespace NicolaKeyEventFilter {
         // Signal signatures
-        interface SignalSignatures extends KeyEventFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyEventFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyEventFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
     }
 
     /**
@@ -7005,7 +6986,7 @@ export namespace Kkc {
         /**
          * @param name 
          */
-        static find(name: string): (RuleMetadata | null);
+        static find(name: string): RuleMetadata | null;
 
         // Methods
         create_key_event_filter(): KeyEventFilter;
@@ -7014,7 +6995,7 @@ export namespace Kkc {
          * @param type 
          * @param name 
          */
-        locate_map_file(type: string, name: string): (string | null);
+        locate_map_file(type: string, name: string): string | null;
 
         get_filter(): string;
 
@@ -7156,7 +7137,7 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -7200,7 +7181,7 @@ export namespace Kkc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -7212,9 +7193,7 @@ export namespace Kkc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Rule.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Rule.ConstructorProps {}
     }
 
     /**
@@ -7418,7 +7397,7 @@ export namespace Kkc {
         /**
          * @param text 
          */
-        set_selection_text(text: (string | null)): void;
+        set_selection_text(text: string | null): void;
 
         /**
          * @param keyseq 
@@ -7491,13 +7470,10 @@ export namespace Kkc {
 
     namespace EmptySegmentDictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     /**
@@ -7599,13 +7575,10 @@ export namespace Kkc {
 
     namespace SystemSegmentDictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     /**
@@ -7707,13 +7680,10 @@ export namespace Kkc {
 
     namespace UserSegmentDictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps {}
     }
 
     /**
@@ -7815,13 +7785,10 @@ export namespace Kkc {
 
     namespace UserSentenceDictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SentenceDictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SentenceDictionary.ConstructorProps {}
     }
 
     /**
@@ -7910,13 +7877,10 @@ export namespace Kkc {
 
     namespace UserDictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps, SentenceDictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Dictionary.ConstructorProps, SegmentDictionary.ConstructorProps, SentenceDictionary.ConstructorProps {}
     }
 
     /**
@@ -8122,7 +8086,7 @@ export namespace Kkc {
          * @param type 
          * @param callback 
          */
-        call(type: (GObject.GType | null), callback: DictionaryList.DictionaryCallback): void;
+        call(type: GObject.GType | null, callback: DictionaryList.DictionaryCallback): void;
 
         save(): void;
 
@@ -8526,13 +8490,10 @@ export namespace Kkc {
 
     namespace DBusServer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8555,7 +8516,7 @@ export namespace Kkc {
 
         _init(...args: any[]): void;
 
-        static ["new"](connection: Gio.DBusConnection, model: LanguageModel, dictionaries: DictionaryList, typing_rule: (Rule | null)): DBusServer;
+        static ["new"](connection: Gio.DBusConnection, model: LanguageModel, dictionaries: DictionaryList, typing_rule: Rule | null): DBusServer;
 
         // Signals
         /** @signal */
@@ -9126,7 +9087,7 @@ export namespace Kkc {
         // Fields
         key: KeyEvent;
 
-        command: (string | null);
+        command: string | null;
     }
 
 
@@ -9173,9 +9134,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends LanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LanguageModel.ConstructorProps {}
     }
 
     export interface UnigramLanguageModelNamespace {
@@ -9236,9 +9195,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends UnigramLanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnigramLanguageModel.ConstructorProps {}
     }
 
     export interface BigramLanguageModelNamespace {
@@ -9308,9 +9265,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends BigramLanguageModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BigramLanguageModel.ConstructorProps {}
     }
 
     export interface TrigramLanguageModelNamespace {
@@ -9371,9 +9326,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DictionaryNamespace {
@@ -9432,9 +9385,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SegmentDictionaryNamespace {
@@ -9503,9 +9454,7 @@ export namespace Kkc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SentenceDictionaryNamespace {

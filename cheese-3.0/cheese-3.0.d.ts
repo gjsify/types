@@ -197,7 +197,7 @@ export namespace Cheese {
 
         _init(...args: any[]): void;
 
-        static ["new"](video_texture: Clutter.Actor, name: (string | null), x_resolution: number, y_resolution: number): Camera;
+        static ["new"](video_texture: Clutter.Actor, name: string | null, x_resolution: number, y_resolution: number): Camera;
 
         // Signals
         /** @signal */
@@ -320,7 +320,7 @@ export namespace Cheese {
          * Setup a video capture device.
          * @param device the video capture device, or `null`
          */
-        setup(device: (CameraDevice | null)): void;
+        setup(device: CameraDevice | null): void;
 
         /**
          * Start a video recording with the `camera` and save it to `filename`.
@@ -528,7 +528,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -572,7 +572,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -598,9 +598,7 @@ export namespace Cheese {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -654,7 +652,7 @@ export namespace Cheese {
          * @param cancellable a {@link Gio.Cancellable} or NULL
          * @param callback a GAsyncReadyCallback to call when the initialization is finished
          */
-        static new_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<CameraDeviceMonitor> | null)): void;
+        static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<CameraDeviceMonitor> | null): void;
 
         // Virtual methods
         /**
@@ -717,7 +715,7 @@ export namespace Cheese {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -760,7 +758,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -803,7 +801,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -863,7 +861,7 @@ export namespace Cheese {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -915,7 +913,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -959,7 +957,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1095,13 +1093,10 @@ export namespace Cheese {
 
     namespace FileUtil {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

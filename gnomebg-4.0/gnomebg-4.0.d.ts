@@ -48,9 +48,7 @@ export namespace GnomeBG {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -336,7 +334,7 @@ export namespace GnomeBG {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
 
 

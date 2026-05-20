@@ -343,7 +343,7 @@ export namespace Dmap {
         static NUM_ERRORS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -362,7 +362,7 @@ export namespace Dmap {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -381,7 +381,7 @@ export namespace Dmap {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -574,9 +574,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Connection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
     /**
@@ -634,9 +632,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Share.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Share.ConstructorProps {}
     }
 
     /**
@@ -662,7 +658,7 @@ export namespace Dmap {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, password: (string | null), db: Db, container_db: ContainerDb, transcode_mimetype: (string | null)): AvShare;
+        static ["new"](name: string, password: string | null, db: Db, container_db: ContainerDb, transcode_mimetype: string | null): AvShare;
 
         // Signals
         /** @signal */
@@ -977,9 +973,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Connection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
     /**
@@ -1034,7 +1028,7 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            "lookup-guid": (arg0: string) => (boolean | void);
+            "lookup-guid": (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -1206,9 +1200,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Connection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Connection.ConstructorProps {}
     }
 
     /**
@@ -1266,9 +1258,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Share.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Share.ConstructorProps {}
     }
 
     /**
@@ -1294,7 +1284,7 @@ export namespace Dmap {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, password: (string | null), db: null, container_db: null, transcode_mimetype: (string | null)): ImageShare;
+        static ["new"](name: string, password: string | null, db: null, container_db: null, transcode_mimetype: string | null): ImageShare;
 
         // Signals
         /** @signal */
@@ -1328,9 +1318,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1422,9 +1410,7 @@ export namespace Dmap {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1905,13 +1891,10 @@ export namespace Dmap {
 
     namespace TranscodeStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -1988,7 +1971,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -2010,7 +1993,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -2045,13 +2028,13 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -2067,7 +2050,7 @@ export namespace Dmap {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2396,7 +2379,7 @@ export namespace Dmap {
             bitrate: number;
             disc: number;
             duration: number;
-            filesize: (bigint | number);
+            filesize: bigint | number;
             firstseen: number;
             format: string;
             has_video: boolean;
@@ -2407,7 +2390,7 @@ export namespace Dmap {
             mtime: number;
             rating: number;
             songalbum: string;
-            songalbumid: (bigint | number);
+            songalbumid: bigint | number;
             songartist: string;
             songgenre: string;
             sort_album: string;
@@ -2460,7 +2443,7 @@ export namespace Dmap {
          * @default 0
          */
         get filesize(): number;
-        set filesize(val: (bigint | number));
+        set filesize(val: bigint | number);
 
         /**
          * @default 0
@@ -2523,7 +2506,7 @@ export namespace Dmap {
          * @default 0
          */
         get songalbumid(): number;
-        set songalbumid(val: (bigint | number));
+        set songalbumid(val: bigint | number);
 
         /**
          * @default Unknown
@@ -2614,7 +2597,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): (bigint | number);
+            vfunc_count(): bigint | number;
 
             /**
              * Apply a function to each record in a container database.
@@ -2632,9 +2615,7 @@ export namespace Dmap {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ContainerDbNamespace {
@@ -2701,7 +2682,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_get_entry_count(): (bigint | number);
+            vfunc_get_entry_count(): bigint | number;
 
             /**
              * @virtual
@@ -2820,13 +2801,13 @@ export namespace Dmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             play_state: ControlPlayState;
             playState: ControlPlayState;
-            playing_time: (bigint | number);
-            playingTime: (bigint | number);
+            playing_time: bigint | number;
+            playingTime: bigint | number;
             repeat_state: ControlRepeatState;
             repeatState: ControlRepeatState;
             shuffle_state: boolean;
             shuffleState: boolean;
-            volume: (bigint | number);
+            volume: bigint | number;
         }
     }
 
@@ -2856,13 +2837,13 @@ export namespace Dmap {
          * @default 0
          */
         get playing_time(): number;
-        set playing_time(val: (bigint | number));
+        set playing_time(val: bigint | number);
 
         /**
          * @default 0
          */
         get playingTime(): number;
-        set playingTime(val: (bigint | number));
+        set playingTime(val: bigint | number);
 
         /**
          * @default Dmap.ControlRepeatState.NONE
@@ -2892,7 +2873,7 @@ export namespace Dmap {
          * @default 0
          */
         get volume(): number;
-        set volume(val: (bigint | number));
+        set volume(val: bigint | number);
 
         // Methods
         cue_clear(): void;
@@ -2963,7 +2944,7 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_count(): (bigint | number);
+            vfunc_count(): bigint | number;
 
             /**
              * Apply a function to each record in a media database.
@@ -2987,9 +2968,7 @@ export namespace Dmap {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DbNamespace {
@@ -3232,14 +3211,12 @@ export namespace Dmap {
             /**
              * @virtual
              */
-            vfunc_to_blob(): (Uint8Array | string);
+            vfunc_to_blob(): Uint8Array | string;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RecordNamespace {
@@ -3256,7 +3233,7 @@ export namespace Dmap {
          * @param blob A byte array representation of a record.
          * @returns True on success, else false.
          */
-        set_from_blob(blob: (Uint8Array | string)): boolean;
+        set_from_blob(blob: Uint8Array | string): boolean;
 
         /**
          * @returns A byte array representation of the record.
@@ -3286,9 +3263,7 @@ export namespace Dmap {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RecordFactoryNamespace {
@@ -3316,7 +3291,7 @@ export namespace Dmap {
     /**
      * @gir-type Alias
      */
-    type Bits = (bigint | number);
+    type Bits = bigint | number;
 
     /**
      * Name of the imported GIR library

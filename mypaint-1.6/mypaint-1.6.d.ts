@@ -255,10 +255,7 @@ export namespace MyPaint {
         static $gtype: GObject.GType<Brush>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Brush;
 

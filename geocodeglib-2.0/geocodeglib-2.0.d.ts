@@ -59,7 +59,7 @@ export namespace GeocodeGlib {
         static INTERNAL_SERVER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -463,8 +463,8 @@ export namespace GeocodeGlib {
             answer_count: number;
             answerCount: number;
             bounded: boolean;
-            search_area: (BoundingBox | null);
-            searchArea: (BoundingBox | null);
+            search_area: BoundingBox | null;
+            searchArea: BoundingBox | null;
         }
     }
 
@@ -505,16 +505,16 @@ export namespace GeocodeGlib {
          * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
-        get search_area(): (BoundingBox | null);
-        set search_area(val: (BoundingBox | null));
+        get search_area(): BoundingBox | null;
+        set search_area(val: BoundingBox | null);
 
         /**
          * The bounding box that limits the search area.
          * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
-        get searchArea(): (BoundingBox | null);
-        set searchArea(val: (BoundingBox | null));
+        get searchArea(): BoundingBox | null;
+        set searchArea(val: BoundingBox | null);
 
         /**
          * Compile-time signal type information.
@@ -530,7 +530,7 @@ export namespace GeocodeGlib {
 
         _init(...args: any[]): void;
 
-        static new_for_params(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Forward;
+        static new_for_params(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Forward;
 
         static new_for_string(str: string): Forward;
 
@@ -563,7 +563,7 @@ export namespace GeocodeGlib {
          * Gets the area to limit searches within.
          * @returns the search area, or `null` if none is set
          */
-        get_search_area(): (BoundingBox | null);
+        get_search_area(): BoundingBox | null;
 
         /**
          * Gets the result of a forward geocoding
@@ -585,7 +585,7 @@ export namespace GeocodeGlib {
          * `geocode_forward_search_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
          */
-        search_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
+        search_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously performs a forward geocoding
@@ -597,7 +597,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        search_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously performs a forward geocoding
@@ -609,7 +609,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        search_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        search_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a forward geocoding operation. See `geocode_forward_search_async()`.
@@ -630,7 +630,7 @@ export namespace GeocodeGlib {
          * If none is given, the default GNOME Nominatim server is used.
          * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the    default one.
          */
-        set_backend(backend: (Backend | null)): void;
+        set_backend(backend: Backend | null): void;
 
         /**
          * Set the {@link GeocodeGlib.Forward.bounded} property that regulates whether the
@@ -667,7 +667,7 @@ export namespace GeocodeGlib {
             description: string;
             latitude: number;
             longitude: number;
-            timestamp: (bigint | number);
+            timestamp: bigint | number;
         }
     }
 
@@ -870,13 +870,10 @@ export namespace GeocodeGlib {
 
     namespace MockBackend {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {}
     }
 
     /**
@@ -933,7 +930,7 @@ export namespace GeocodeGlib {
          * @param results result set     to return for the query, or `null` if `error` is non-`null`; result sets     must be in the same format as returned by `geocode_forward_search()`
          * @param error error to return for the query, or `null` if `results`     should be returned instead; errors must match those returned by     `geocode_forward_search()`
          */
-        add_forward_result(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), results: (Place[] | null), error: (GLib.Error | null)): void;
+        add_forward_result(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, results: Place[] | null, error: GLib.Error | null): void;
 
         /**
          * Add a query and corresponding result (or error) to the mock backend, meaning
@@ -950,7 +947,7 @@ export namespace GeocodeGlib {
          * @param results result set     to return for the query, or `null` if `error` is non-`null`; result sets     must be in the same format as returned by `geocode_reverse_resolve()`
          * @param error error to return for the query, or `null` if `results`     should be returned instead; errors must match those returned by     `geocode_reverse_resolve()`
          */
-        add_reverse_result(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), results: (Place[] | null), error: (GLib.Error | null)): void;
+        add_reverse_result(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, results: Place[] | null, error: GLib.Error | null): void;
 
         /**
          * Clear the set of stored results in the mock backend which have been added
@@ -991,7 +988,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        forward_search(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        forward_search(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1007,24 +1004,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * `geocode_backend_forward_search()` to do the same thing synchronously.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_forward_search_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1041,7 +1021,24 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously performs a forward geocoding query using the `backend`. Use
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a forward geocoding operation. See
@@ -1066,7 +1063,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        reverse_resolve(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        reverse_resolve(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1090,32 +1087,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously gets the result of a reverse geocoding query using the
-         * backend.
-         * 
-         * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
-         * some cases the results will be ambiguous and *multiple* results will be
-         * returned. They will be returned in order of relevance, with the most
-         * relevant result first in the list.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
-         */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1140,7 +1112,32 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously gets the result of a reverse geocoding query using the
+         * backend.
+         * 
+         * Typically, a single result will be returned representing the place at a
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
+         * some cases the results will be ambiguous and *multiple* results will be
+         * returned. They will be returned in order of relevance, with the most
+         * relevant result first in the list.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -1162,7 +1159,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @virtual
          */
-        vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+        vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1180,7 +1177,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a forward geocoding operation. See
@@ -1205,7 +1202,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+        vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1231,7 +1228,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          * @virtual
          */
-        vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -1388,7 +1385,7 @@ export namespace GeocodeGlib {
          * @param cancellable 
          * @virtual
          */
-        vfunc_query(uri: string, cancellable: (Gio.Cancellable | null)): string;
+        vfunc_query(uri: string, cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param uri 
@@ -1396,7 +1393,7 @@ export namespace GeocodeGlib {
          * @param callback 
          * @virtual
          */
-        vfunc_query_async(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_query_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param res 
@@ -1417,7 +1414,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        forward_search(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        forward_search(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1433,24 +1430,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * `geocode_backend_forward_search()` to do the same thing synchronously.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_forward_search_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1467,7 +1447,24 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously performs a forward geocoding query using the `backend`. Use
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a forward geocoding operation. See
@@ -1492,7 +1489,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        reverse_resolve(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        reverse_resolve(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1516,32 +1513,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously gets the result of a reverse geocoding query using the
-         * backend.
-         * 
-         * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
-         * some cases the results will be ambiguous and *multiple* results will be
-         * returned. They will be returned in order of relevance, with the most
-         * relevant result first in the list.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
-         */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1566,7 +1538,32 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously gets the result of a reverse geocoding query using the
+         * backend.
+         * 
+         * Typically, a single result will be returned representing the place at a
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
+         * some cases the results will be ambiguous and *multiple* results will be
+         * returned. They will be returned in order of relevance, with the most
+         * relevant result first in the list.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -1588,7 +1585,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @virtual
          */
-        vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+        vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -1606,7 +1603,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a forward geocoding operation. See
@@ -1631,7 +1628,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+        vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -1657,7 +1654,7 @@ export namespace GeocodeGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          * @virtual
          */
-        vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -2170,13 +2167,10 @@ export namespace GeocodeGlib {
 
     namespace Reverse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2238,7 +2232,7 @@ export namespace GeocodeGlib {
          * `geocode_reverse_resolve_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        resolve_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place>;
+        resolve_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Place>;
 
         /**
          * Asynchronously gets the result of a reverse geocoding
@@ -2250,7 +2244,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        resolve_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        resolve_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets the result of a reverse geocoding
@@ -2262,7 +2256,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        resolve_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place> | void);
+        resolve_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place> | void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_reverse_resolve_async()`.
@@ -2277,7 +2271,7 @@ export namespace GeocodeGlib {
          * If none is given, the default GNOME Nominatim server is used.
          * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the default one.
          */
-        set_backend(backend: (Backend | null)): void;
+        set_backend(backend: Backend | null): void;
     }
 
 
@@ -2405,7 +2399,7 @@ export namespace GeocodeGlib {
              * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
              * @virtual
              */
-            vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+            vfunc_forward_search(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
             /**
              * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -2423,7 +2417,7 @@ export namespace GeocodeGlib {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
              * @virtual
              */
-            vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_forward_search_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes a forward geocoding operation. See
@@ -2448,7 +2442,7 @@ export namespace GeocodeGlib {
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
              * @virtual
              */
-            vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null)): Place[];
+            vfunc_reverse_resolve(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
             /**
              * Asynchronously gets the result of a reverse geocoding query using the
@@ -2474,7 +2468,7 @@ export namespace GeocodeGlib {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
              * @virtual
              */
-            vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_reverse_resolve_async(params: GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
@@ -2486,9 +2480,7 @@ export namespace GeocodeGlib {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BackendNamespace {
@@ -2517,7 +2509,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        forward_search(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        forward_search(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -2533,24 +2525,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * `geocode_backend_forward_search()` to do the same thing synchronously.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_forward_search_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
@@ -2567,7 +2542,24 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        forward_search_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously performs a forward geocoding query using the `backend`. Use
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        forward_search_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a forward geocoding operation. See
@@ -2592,7 +2584,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
-        reverse_resolve(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): Place[];
+        reverse_resolve(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): Place[];
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -2616,32 +2608,7 @@ export namespace GeocodeGlib {
          * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Place[]>;
-
-        /**
-         * Asynchronously gets the result of a reverse geocoding query using the
-         * backend.
-         * 
-         * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
-         * some cases the results will be ambiguous and *multiple* results will be
-         * returned. They will be returned in order of relevance, with the most
-         * relevant result first in the list.
-         * 
-         * The `params` hash table is in the format used by Telepathy, and documented
-         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
-         * 
-         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
-         * 
-         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
-         * 
-         * When the operation is finished, `callback` will be called. You can then call
-         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
-         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
-         */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null): globalThis.Promise<Place[]>;
 
         /**
          * Asynchronously gets the result of a reverse geocoding query using the
@@ -2666,7 +2633,32 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        reverse_resolve_async(params: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Place[]> | void);
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously gets the result of a reverse geocoding query using the
+         * backend.
+         * 
+         * Typically, a single result will be returned representing the place at a
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
+         * some cases the results will be ambiguous and *multiple* results will be
+         * returned. They will be returned in order of relevance, with the most
+         * relevant result first in the list.
+         * 
+         * The `params` hash table is in the format used by Telepathy, and documented
+         * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
+         * 
+         * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
+         * 
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        reverse_resolve_async(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Place[]> | void;
 
         /**
          * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.

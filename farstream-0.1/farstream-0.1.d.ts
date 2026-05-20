@@ -158,7 +158,7 @@ export namespace Farstream {
         static ALREADY_EXISTS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -375,27 +375,27 @@ export namespace Farstream {
      * @param element The {@link Gst.Element}
      * @param bitrate The bitrate in bits/sec
      */
-    function utils_set_bitrate(element: Gst.Element, bitrate: (bigint | number)): void;
+    function utils_set_bitrate(element: Gst.Element, bitrate: bigint | number): void;
 
     /**
      * @gir-type Alias
      */
-    type CandidateList = (object | null);
+    type CandidateList = object | null;
 
     /**
      * @gir-type Alias
      */
-    type CodecGList = (object | null);
+    type CodecGList = object | null;
 
     /**
      * @gir-type Alias
      */
-    type RtpHeaderExtension = (object | null);
+    type RtpHeaderExtension = object | null;
 
     /**
      * @gir-type Alias
      */
-    type RtpHeaderExtensionGList = (object | null);
+    type RtpHeaderExtensionGList = object | null;
 
     /**
      * @gir-type Flags
@@ -424,9 +424,7 @@ export namespace Farstream {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -532,9 +530,7 @@ export namespace Farstream {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -627,9 +623,7 @@ export namespace Farstream {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -670,13 +664,10 @@ export namespace Farstream {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
     }
 
     /**

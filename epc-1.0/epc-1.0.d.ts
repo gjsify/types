@@ -247,7 +247,7 @@ export namespace Epc {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: string) => (boolean | void);
+            authenticate: (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -645,7 +645,7 @@ export namespace Epc {
          * @param data 
          * @param length 
          */
-        add(key: string, data: never, length: (bigint | number)): void;
+        add(key: string, data: never, length: bigint | number): void;
 
         /**
          * @param key 
@@ -920,11 +920,11 @@ export namespace Epc {
         static $gtype: GObject.GType<Contents>;
 
         // Constructors
-        constructor(type: string, data: never, length: (bigint | number));
+        constructor(type: string, data: never, length: bigint | number);
 
-        static ["new"](type: string, data: never, length: (bigint | number)): Contents;
+        static ["new"](type: string, data: never, length: bigint | number): Contents;
 
-        static new_dup(type: string, data: never, length: (bigint | number)): Contents;
+        static new_dup(type: string, data: never, length: bigint | number): Contents;
 
         static stream_new(type: string, callback: ContentsReadFunc): Contents;
 
@@ -1020,10 +1020,7 @@ export namespace Epc {
         static $gtype: GObject.GType<ShellProgressHooks>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 

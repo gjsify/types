@@ -161,7 +161,7 @@ export namespace Grl {
      * @param argv list of arguments
      * @since 0.1.6
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     /**
      * Configure a set of log domains. The default configuration is to display
@@ -206,7 +206,7 @@ export namespace Grl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * Retrieves the description associated with the key
@@ -418,13 +418,10 @@ export namespace Grl {
 
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -472,7 +469,7 @@ export namespace Grl {
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
          */
-        get_api_key_blob(size: (bigint | number)): number;
+        get_api_key_blob(size: bigint | number): number;
 
         /**
          * @returns the webservice API passphrase
@@ -488,7 +485,7 @@ export namespace Grl {
          * @param param 
          * @param size 
          */
-        get_binary(param: string, size: (bigint | number)): number;
+        get_binary(param: string, size: bigint | number): number;
 
         /**
          * @param param 
@@ -536,7 +533,7 @@ export namespace Grl {
          * @param param 
          * @param value 
          */
-        set(param: string, value: (GObject.Value | any)): void;
+        set(param: string, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -555,7 +552,7 @@ export namespace Grl {
          * @param blob the binary API key blob
          * @param size the size of the blob
          */
-        set_api_key_blob(blob: number, size: (bigint | number)): void;
+        set_api_key_blob(blob: number, size: bigint | number): void;
 
         /**
          * Set the webservice passphrase in the configuration
@@ -574,7 +571,7 @@ export namespace Grl {
          * @param blob 
          * @param size 
          */
-        set_binary(param: string, blob: number, size: (bigint | number)): void;
+        set_binary(param: string, blob: number, size: bigint | number): void;
 
         /**
          * @param param 
@@ -691,7 +688,7 @@ export namespace Grl {
          * @param buf the buffer containing the new value
          * @param size size of buffer
          */
-        add_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+        add_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
 
         /**
          * Appends a new float value for `key` in `data`.
@@ -900,7 +897,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -915,7 +912,7 @@ export namespace Grl {
          * @param buf buffer holding the data
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
 
         /**
          * Sets the first float value associated with `key` in `data`. If `key` already has
@@ -970,9 +967,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Data.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Data.ConstructorProps {}
     }
 
     /**
@@ -1047,7 +1042,7 @@ export namespace Grl {
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
          */
-        add_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+        add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
         /**
          * Adds a new media's URL with its mime-type.
@@ -1175,7 +1170,7 @@ export namespace Grl {
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
          */
-        get_thumbnail_binary(size: (bigint | number)): number;
+        get_thumbnail_binary(size: bigint | number): number;
 
         /**
          * buffer size.
@@ -1183,7 +1178,7 @@ export namespace Grl {
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail
          */
-        get_thumbnail_binary_nth(size: (bigint | number), index: number): number;
+        get_thumbnail_binary_nth(size: bigint | number, index: number): number;
 
         /**
          * @param index element to retrieve
@@ -1340,7 +1335,7 @@ export namespace Grl {
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
          */
-        set_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+        set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
         /**
          * Set the media's title
@@ -1370,9 +1365,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Media.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Media.ConstructorProps {}
     }
 
     /**
@@ -1575,9 +1568,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Media.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Media.ConstructorProps {}
     }
 
     /**
@@ -1640,9 +1631,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Media.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Media.ConstructorProps {}
     }
 
     /**
@@ -1825,13 +1814,10 @@ export namespace Grl {
 
     namespace MediaPlugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2434,9 +2420,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Media.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Media.ConstructorProps {}
     }
 
     /**
@@ -2814,7 +2798,7 @@ export namespace Grl {
          * @param return_filtered if `true` the return value shall be a new list with the slow keys
          * @returns if
          */
-        filter_slow(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_slow(keys: GObject.ParamSpec[] | null, return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
 
         /**
          * Compares the received `keys` list with the supported key list by the
@@ -2825,7 +2809,7 @@ export namespace Grl {
          * @param keys the list of keys to filter out
          * @param return_filtered if `true` the return value shall be a new list with the unsupported keys
          */
-        filter_supported(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_supported(keys: GObject.ParamSpec[] | null, return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
 
         /**
          * Similar to `grl_metadata_source_filter_supported()` but applied to
@@ -2840,7 +2824,7 @@ export namespace Grl {
          * @param keys the list of keys to filter out
          * @param return_filtered if `true` the return value shall be a new list with the non-writable keys
          */
-        filter_writable(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_writable(keys: GObject.ParamSpec[] | null, return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
 
         gen_operation_id(): number;
 
@@ -3048,9 +3032,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3275,13 +3257,10 @@ export namespace Grl {
 
     namespace RelatedKeys {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3414,7 +3393,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -3429,7 +3408,7 @@ export namespace Grl {
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
 
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been

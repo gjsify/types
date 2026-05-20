@@ -98,7 +98,7 @@ export namespace Mtk {
      * @param base_us 
      * @param interval_us 
      */
-    function extrapolate_next_interval_boundary(base_us: (bigint | number), interval_us: (bigint | number)): number;
+    function extrapolate_next_interval_boundary(base_us: bigint | number, interval_us: bigint | number): number;
 
     /**
      * @param name 

@@ -272,7 +272,7 @@ export namespace Hs {
         static INTERNAL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -296,7 +296,7 @@ export namespace Hs {
         static INCOMPATIBLE_VERSION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1474,7 +1474,7 @@ export namespace Hs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             current_media: number;
             currentMedia: number;
-            frontend: (Frontend | null);
+            frontend: Frontend | null;
             name: string;
             platform: Platform;
         }
@@ -1731,8 +1731,8 @@ export namespace Hs {
          * Cores shouldn't touch this property directly, but instead use methods like
          * {@link Core.play_samples}.
          */
-        get frontend(): (Frontend | null);
-        set frontend(val: (Frontend | null));
+        get frontend(): Frontend | null;
+        set frontend(val: Frontend | null);
 
         /**
          * The core name, set by the frontend.
@@ -2020,7 +2020,7 @@ export namespace Hs {
          * {@link Core.play_samples}.
          * @returns the frontend instance
          */
-        get_frontend(): (Frontend | null);
+        get_frontend(): Frontend | null;
 
         /**
          * Gets the name of `self`.
@@ -2070,7 +2070,7 @@ export namespace Hs {
          * @param path path to the save state file
          * @param cancellable an optional cancellable object
          */
-        load_state(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Loads a save state from `path`.
@@ -2078,7 +2078,7 @@ export namespace Hs {
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the load is finished
          */
-        load_state(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_state(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads a save state from `path`.
@@ -2086,7 +2086,7 @@ export namespace Hs {
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the load is finished
          */
-        load_state(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_state(path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous save state loading operation started with
@@ -2198,7 +2198,7 @@ export namespace Hs {
          * @param path path to the save state location
          * @param cancellable an optional cancellable object
          */
-        save_state(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Saves the current state into `path`.
@@ -2206,7 +2206,7 @@ export namespace Hs {
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the save is finished
          */
-        save_state(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_state(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves the current state into `path`.
@@ -2214,7 +2214,7 @@ export namespace Hs {
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the save is finished
          */
-        save_state(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_state(path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous state saving operation started with
@@ -2239,7 +2239,7 @@ export namespace Hs {
          * Cores must never call this function.
          * @param frontend the new frontend instance
          */
-        set_frontend(frontend: (Frontend | null)): void;
+        set_frontend(frontend: Frontend | null): void;
 
         /**
          * Starts the game.
@@ -2905,9 +2905,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface Atari2600CoreNamespace {
@@ -2974,9 +2972,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface Atari7800CoreNamespace {
@@ -3033,9 +3029,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface AtariLynxCoreNamespace {
@@ -3113,9 +3107,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface FdsCoreNamespace {
@@ -3271,9 +3263,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FrontendNamespace {
@@ -3458,9 +3448,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface GLContextNamespace {
@@ -3588,9 +3576,7 @@ export namespace Hs {
     namespace GameBoyAdvanceCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface GameBoyAdvanceCoreNamespace {
@@ -3642,9 +3628,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface GameBoyCoreNamespace {
@@ -3687,9 +3671,7 @@ export namespace Hs {
     namespace GameGearCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface GameGearCoreNamespace {
@@ -3747,9 +3729,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface MasterSystemCoreNamespace {
@@ -3814,9 +3794,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface MegaDriveCoreNamespace {
@@ -3849,9 +3827,7 @@ export namespace Hs {
     namespace NeoGeoPocketCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface NeoGeoPocketCoreNamespace {
@@ -3903,9 +3879,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface NesCoreNamespace {
@@ -3973,9 +3947,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface Nintendo64CoreNamespace {
@@ -4014,9 +3986,7 @@ export namespace Hs {
     namespace NintendoDsCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface NintendoDsCoreNamespace {
@@ -4059,9 +4029,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface PcEngineCdCoreNamespace {
@@ -4110,9 +4078,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface PcEngineCoreNamespace {
@@ -4194,9 +4160,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface PlayStationCoreNamespace {
@@ -4307,9 +4271,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface SegaSaturnCoreNamespace {
@@ -4378,9 +4340,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface Sg1000CoreNamespace {
@@ -4446,9 +4406,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SoftwareContextNamespace {
@@ -4527,9 +4485,7 @@ export namespace Hs {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface SuperNesCoreNamespace {
@@ -4562,9 +4518,7 @@ export namespace Hs {
     namespace VirtualBoyCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface VirtualBoyCoreNamespace {
@@ -4592,9 +4546,7 @@ export namespace Hs {
     namespace WonderSwanCore {
 
         // Constructor properties interface
-        interface ConstructorProps extends Core.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Core.ConstructorProps {}
     }
 
     export interface WonderSwanCoreNamespace {

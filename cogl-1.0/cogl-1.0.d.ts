@@ -1142,7 +1142,7 @@ export namespace Cogl {
      * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
      * @deprecated since 1.16: Use `cogl_framebuffer_clear()` api instead
      */
-    function clear(color: Color, buffers: (bigint | number)): void;
+    function clear(color: Color, buffers: bigint | number): void;
 
     /**
      * Ensures that the current clipping region has been set in GL. This
@@ -2744,8 +2744,7 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2784,8 +2783,7 @@ export namespace Cogl {
 
     namespace Fixed {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2833,8 +2831,7 @@ export namespace Cogl {
 
     namespace Offscreen {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2890,10 +2887,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Color>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Color;
 
@@ -4156,9 +4150,7 @@ export namespace Cogl {
     namespace Texture {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TextureNamespace {

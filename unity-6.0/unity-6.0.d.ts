@@ -247,7 +247,7 @@ export namespace Unity {
      * @param io_priority 
      * @param cancellable 
      */
-    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable): globalThis.Promise<[Uint8Array, (bigint | number)]>;
+    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable): globalThis.Promise<[Uint8Array, bigint | number]>;
     /**
      * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
      * @param input 
@@ -263,7 +263,7 @@ export namespace Unity {
      * @param cancellable 
      * @param _callback_ 
      */
-    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<Gio.InputStream>): (globalThis.Promise<[Uint8Array, (bigint | number)]> | void);
+    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<Gio.InputStream>): globalThis.Promise<[Uint8Array, bigint | number]> | void;
 
     /**
      * @param _res_ 
@@ -295,7 +295,7 @@ export namespace Unity {
      * @param dirs 
      * @param _callback_ 
      */
-    function io_open_from_dirs(filename: string, dirs: string[], _callback_: Gio.AsyncReadyCallback<string>): (globalThis.Promise<Gio.FileInputStream> | void);
+    function io_open_from_dirs(filename: string, dirs: string[], _callback_: Gio.AsyncReadyCallback<string>): globalThis.Promise<Gio.FileInputStream> | void;
 
     /**
      * @param _res_ 
@@ -321,7 +321,7 @@ export namespace Unity {
      * @param filename 
      * @param _callback_ 
      */
-    function io_open_from_data_dirs(filename: string, _callback_: Gio.AsyncReadyCallback<string>): (globalThis.Promise<Gio.FileInputStream> | void);
+    function io_open_from_data_dirs(filename: string, _callback_: Gio.AsyncReadyCallback<string>): globalThis.Promise<Gio.FileInputStream> | void;
 
     /**
      * @param _res_ 
@@ -341,9 +341,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -448,7 +446,7 @@ export namespace Unity {
          * @param id 
          * @param _callback_ 
          */
-        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.AppInfo> | void);
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
 
         /**
          * @param _res_ 
@@ -634,7 +632,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
             app_uri: string;
             appUri: string;
-            count: (bigint | number);
+            count: bigint | number;
             count_visible: boolean;
             countVisible: boolean;
             progress: number;
@@ -663,7 +661,7 @@ export namespace Unity {
         set appUri(val: string);
 
         get count(): number;
-        set count(val: (bigint | number));
+        set count(val: bigint | number);
 
         get count_visible(): boolean;
         set count_visible(val: boolean);
@@ -772,9 +770,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1275,9 +1271,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1337,9 +1331,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1396,9 +1388,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1515,9 +1505,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1643,7 +1631,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
             search_string: string;
             searchString: string;
-            hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
         }
@@ -1695,7 +1683,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ["new"](search_string: string, hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), results_model: Dee.SerializableModel): LensSearch;
+        static ["new"](search_string: string, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, results_model: Dee.SerializableModel): LensSearch;
 
         // Signals
         /** @signal */
@@ -2037,7 +2025,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -2259,9 +2247,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Preview.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Preview.ConstructorProps {}
     }
 
     /**
@@ -3811,9 +3797,7 @@ export namespace Unity {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MergeStrategyNamespace {

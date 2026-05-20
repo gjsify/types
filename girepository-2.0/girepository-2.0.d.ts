@@ -644,7 +644,7 @@ export namespace GIRepository {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_generic(closure: GObject.Closure, return_gvalue: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_generic(closure: GObject.Closure, return_gvalue: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * Obtain the type of the constant as a {@link GIRepository.TypeInfo}.
@@ -952,7 +952,7 @@ export namespace GIRepository {
      * @param name name of method to obtain
      * @returns the {@link GIRepository.FunctionInfo}. Free the struct by calling `g_base_info_unref()` when done.
      */
-    function object_info_find_method(info: ObjectInfo, name: string): (FunctionInfo | null);
+    function object_info_find_method(info: ObjectInfo, name: string): FunctionInfo | null;
 
     /**
      * Obtain a method of the object given a `name`, searching both the
@@ -965,7 +965,7 @@ export namespace GIRepository {
      * @param name name of method to obtain
      * @returns the {@link GIRepository.FunctionInfo}. Free the struct by calling `g_base_info_unref()` when done.
      */
-    function object_info_find_method_using_interfaces(info: ObjectInfo, name: string): [(FunctionInfo | null), ObjectInfo];
+    function object_info_find_method_using_interfaces(info: ObjectInfo, name: string): [FunctionInfo | null, ObjectInfo];
 
     /**
      * TODO
@@ -973,7 +973,7 @@ export namespace GIRepository {
      * @param name Name of signal
      * @returns Info for the signal with name `name` in `info`, or `null` on failure.
      */
-    function object_info_find_signal(info: ObjectInfo, name: string): (SignalInfo | null);
+    function object_info_find_signal(info: ObjectInfo, name: string): SignalInfo | null;
 
     /**
      * Locate a virtual function slot with name `name`. Note that the namespace
@@ -987,7 +987,7 @@ export namespace GIRepository {
      * @param name The name of a virtual function to find.
      * @returns the {@link GIRepository.VFuncInfo}, or `null`. Free it with `g_base_info_unref()` when done.
      */
-    function object_info_find_vfunc(info: ObjectInfo, name: string): (VFuncInfo | null);
+    function object_info_find_vfunc(info: ObjectInfo, name: string): VFuncInfo | null;
 
     /**
      * Locate a virtual function slot with name `name`, searching both the object
@@ -1003,7 +1003,7 @@ export namespace GIRepository {
      * @param name name of vfunc to obtain
      * @returns the {@link GIRepository.VFuncInfo}. Free the struct by calling `g_base_info_unref()` when done.
      */
-    function object_info_find_vfunc_using_interfaces(info: ObjectInfo, name: string): [(VFuncInfo | null), ObjectInfo];
+    function object_info_find_vfunc_using_interfaces(info: ObjectInfo, name: string): [VFuncInfo | null, ObjectInfo];
 
     /**
      * Obtain if the object type is an abstract type, eg if it cannot be
@@ -1019,7 +1019,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the {@link GIRepository.StructInfo} or `null`. Free with `g_base_info_unref()` when done.
      */
-    function object_info_get_class_struct(info: ObjectInfo): (StructInfo | null);
+    function object_info_get_class_struct(info: ObjectInfo): StructInfo | null;
 
     /**
      * Obtain an object type constant at index `n`.
@@ -1063,7 +1063,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the symbol or `null`
      */
-    function object_info_get_get_value_function(info: ObjectInfo): (string | null);
+    function object_info_get_get_value_function(info: ObjectInfo): string | null;
 
     /**
      * Obtain an object type interface at index `n`.
@@ -1135,7 +1135,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the {@link GIRepository.ObjectInfo}. Free the struct by calling `g_base_info_unref()` when done.
      */
-    function object_info_get_parent(info: ObjectInfo): (ObjectInfo | null);
+    function object_info_get_parent(info: ObjectInfo): ObjectInfo | null;
 
     /**
      * Obtain an object type property at index `n`.
@@ -1153,7 +1153,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the symbol or `null`
      */
-    function object_info_get_ref_function(info: ObjectInfo): (string | null);
+    function object_info_get_ref_function(info: ObjectInfo): string | null;
 
     /**
      * Obtain the symbol name of the function that should be called to convert
@@ -1164,7 +1164,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the symbol or `null`
      */
-    function object_info_get_set_value_function(info: ObjectInfo): (string | null);
+    function object_info_get_set_value_function(info: ObjectInfo): string | null;
 
     /**
      * Obtain an object type signal at index `n`.
@@ -1197,7 +1197,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.ObjectInfo}
      * @returns the symbol or `null`
      */
-    function object_info_get_unref_function(info: ObjectInfo): (string | null);
+    function object_info_get_unref_function(info: ObjectInfo): string | null;
 
     /**
      * Obtain an object type virtual function at index `n`.
@@ -1222,7 +1222,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.PropertyInfo}
      * @returns the function info or `null` if not set.   Free it with `g_base_info_unref()` when done.
      */
-    function property_info_get_getter(info: PropertyInfo): (FunctionInfo | null);
+    function property_info_get_getter(info: PropertyInfo): FunctionInfo | null;
 
     /**
      * Obtain the ownership transfer for this property. See {@link GIRepository.Transfer} for more
@@ -1240,7 +1240,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.PropertyInfo}
      * @returns the function info or `null` if not set.   Free it with `g_base_info_unref()` when done.
      */
-    function property_info_get_setter(info: PropertyInfo): (FunctionInfo | null);
+    function property_info_get_setter(info: PropertyInfo): FunctionInfo | null;
 
     /**
      * Obtain the type information for the property `info`.
@@ -1332,7 +1332,7 @@ export namespace GIRepository {
      * @returns the name of the copy function
      * @since 1.76
      */
-    function struct_info_get_copy_function(info: StructInfo): (string | null);
+    function struct_info_get_copy_function(info: StructInfo): string | null;
 
     /**
      * Obtain the type information for field with specified index.
@@ -1348,7 +1348,7 @@ export namespace GIRepository {
      * @returns the name of the free function
      * @since 1.76
      */
-    function struct_info_get_free_function(info: StructInfo): (string | null);
+    function struct_info_get_free_function(info: StructInfo): string | null;
 
     /**
      * Obtain the type information for method with specified index.
@@ -1580,7 +1580,7 @@ export namespace GIRepository {
      * @returns the name of the copy function
      * @since 1.76
      */
-    function union_info_get_copy_function(info: UnionInfo): (string | null);
+    function union_info_get_copy_function(info: UnionInfo): string | null;
 
     /**
      * Obtain discriminator value assigned for n-th union field, i.e. n-th
@@ -1620,7 +1620,7 @@ export namespace GIRepository {
      * @returns the name of the free function
      * @since 1.76
      */
-    function union_info_get_free_function(info: UnionInfo): (string | null);
+    function union_info_get_free_function(info: UnionInfo): string | null;
 
     /**
      * Obtain the type information for method with specified index.
@@ -1795,13 +1795,10 @@ export namespace GIRepository {
 
     namespace Repository {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2037,7 +2034,7 @@ export namespace GIRepository {
          * @param namespace_ Namespace to inspect
          * @returns Comma-separated list of paths to shared libraries,   or `null` if none are associated
          */
-        get_shared_library(namespace_: string): (string | null);
+        get_shared_library(namespace_: string): string | null;
 
         /**
          * If namespace `namespace_` is loaded, return the full path to the
@@ -2071,7 +2068,7 @@ export namespace GIRepository {
          * @param version Required version, may be `null` for latest
          * @returns `true` if namespace-version is loaded, `false` otherwise
          */
-        is_registered(namespace_: string, version: (string | null)): boolean;
+        is_registered(namespace_: string, version: string | null): boolean;
 
         /**
          * TODO
@@ -2091,7 +2088,7 @@ export namespace GIRepository {
          * @param flags Set of %GIRepositoryLoadFlags, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if successful, `null` otherwise
          */
-        require(namespace_: string, version: (string | null), flags: RepositoryLoadFlags): Typelib;
+        require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
 
         /**
          * Force the namespace `namespace_` to be loaded if it isn't already.
@@ -2105,7 +2102,7 @@ export namespace GIRepository {
          * @param flags Set of %GIRepositoryLoadFlags, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if successful, `null` otherwise
          */
-        require_private(typelib_dir: string, namespace_: string, version: (string | null), flags: RepositoryLoadFlags): Typelib;
+        require_private(typelib_dir: string, namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
     }
 
 
@@ -2118,10 +2115,7 @@ export namespace GIRepository {
         static $gtype: GObject.GType<AttributeIter>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 
@@ -2177,10 +2171,7 @@ export namespace GIRepository {
         static $gtype: GObject.GType<BaseInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**

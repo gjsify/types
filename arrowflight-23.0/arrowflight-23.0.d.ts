@@ -173,7 +173,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](location: Location, options: (ClientOptions | null)): Client;
+        static ["new"](location: Location, options: ClientOptions | null): Client;
 
         // Signals
         /** @signal */
@@ -196,7 +196,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns `true` on success, `false` if there was an error.
          */
-        authenticate_basic_token(user: string, password: string, options: (CallOptions | null)): [boolean, string, string];
+        authenticate_basic_token(user: string, password: string, options: CallOptions | null): [boolean, string, string];
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -208,7 +208,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
          */
-        do_get(ticket: Ticket, options: (CallOptions | null)): (StreamReader | null);
+        do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
 
         /**
          * Upload data to a Flight described by the given descriptor. The
@@ -223,21 +223,21 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The `GAFlighDoPutResult` holding a reader and a writer on success,   `null` on error.
          */
-        do_put(descriptor: Descriptor, schema: Arrow.Schema, options: (CallOptions | null)): (DoPutResult | null);
+        do_put(descriptor: Descriptor, schema: Arrow.Schema, options: CallOptions | null): DoPutResult | null;
 
         /**
          * @param descriptor A {@link ArrowFlight.Descriptor} to be processed.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned {@link ArrowFlight.Info} on   success, `null` on error.
          */
-        get_flight_info(descriptor: Descriptor, options: (CallOptions | null)): (Info | null);
+        get_flight_info(descriptor: Descriptor, options: CallOptions | null): Info | null;
 
         /**
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(criteria: (Criteria | null), options: (CallOptions | null)): (Info[] | null);
+        list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
 
 
@@ -264,8 +264,8 @@ export namespace ArrowFlight {
             privateKey: string;
             tls_root_certificates: string;
             tlsRootCertificates: string;
-            write_size_limit_bytes: (bigint | number);
-            writeSizeLimitBytes: (bigint | number);
+            write_size_limit_bytes: bigint | number;
+            writeSizeLimitBytes: bigint | number;
         }
     }
 
@@ -362,7 +362,7 @@ export namespace ArrowFlight {
          * @default 0
          */
         get write_size_limit_bytes(): number;
-        set write_size_limit_bytes(val: (bigint | number));
+        set write_size_limit_bytes(val: bigint | number);
 
         /**
          * A soft limit on the number of bytes to write in a single batch
@@ -374,7 +374,7 @@ export namespace ArrowFlight {
          * @default 0
          */
         get writeSizeLimitBytes(): number;
-        set writeSizeLimitBytes(val: (bigint | number));
+        set writeSizeLimitBytes(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -414,9 +414,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Descriptor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
     /**
@@ -470,7 +468,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            expression: (GLib.Bytes | Uint8Array);
+            expression: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -486,7 +484,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get expression(): GLib.Bytes;
-        set expression(val: (GLib.Bytes | Uint8Array));
+        set expression(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -502,7 +500,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](expression: (GLib.Bytes | Uint8Array)): Criteria;
+        static ["new"](expression: GLib.Bytes | Uint8Array): Criteria;
 
         // Signals
         /** @signal */
@@ -773,7 +771,7 @@ export namespace ArrowFlight {
         /**
          * @returns The locations in this endpoint.   It must be freed with `g_list_free()` and `g_object_unref()` when no   longer needed. You can use `g_list_free_full(locations,   g_object_unref)`.
          */
-        get_locations(): (Location[] | null);
+        get_locations(): Location[] | null;
     }
 
 
@@ -815,7 +813,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](schema: Arrow.Schema, descriptor: Descriptor, endpoints: Endpoint[], total_records: (bigint | number), total_bytes: (bigint | number)): Info;
+        static ["new"](schema: Arrow.Schema, descriptor: Descriptor, endpoints: Endpoint[], total_records: bigint | number, total_bytes: bigint | number): Info;
 
         // Signals
         /** @signal */
@@ -851,7 +849,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
          */
-        get_schema(options: (Arrow.ReadOptions | null)): Arrow.Schema;
+        get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
 
         /**
          * @returns The number of total bytes of the information.
@@ -867,13 +865,10 @@ export namespace ArrowFlight {
 
     namespace Location {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -938,9 +933,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchReader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
     /**
@@ -1111,9 +1104,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Descriptor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Descriptor.ConstructorProps {}
     }
 
     /**
@@ -1155,7 +1146,7 @@ export namespace ArrowFlight {
         /**
          * @returns The paths in this descriptor.   It must be freed with `g_strfreev()` when no longer needed.
          */
-        get_paths(): (string[] | null);
+        get_paths(): string[] | null;
     }
 
 
@@ -1279,7 +1270,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](reader: Arrow.RecordBatchReader, options: (Arrow.WriteOptions | null)): RecordBatchStream;
+        static ["new"](reader: Arrow.RecordBatchReader, options: Arrow.WriteOptions | null): RecordBatchStream;
 
         // Signals
         /** @signal */
@@ -1303,9 +1294,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Arrow.RecordBatchWriter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Arrow.RecordBatchWriter.ConstructorProps {}
     }
 
     /**
@@ -1349,7 +1338,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.WriteOptions}.
          * @returns `true` on success, `false` on error.
          */
-        begin(schema: Arrow.Schema, options: (Arrow.WriteOptions | null)): boolean;
+        begin(schema: Arrow.Schema, options: Arrow.WriteOptions | null): boolean;
 
         /**
          * Write metadata.
@@ -1364,7 +1353,7 @@ export namespace ArrowFlight {
          * @param metadata A {@link Arrow.Buffer}.
          * @returns `true` on success, `false` on error.
          */
-        write_record_batch(record_batch: Arrow.RecordBatch, metadata: (Arrow.Buffer | null)): boolean;
+        write_record_batch(record_batch: Arrow.RecordBatch, metadata: Arrow.Buffer | null): boolean;
 
         /**
          * @param args 
@@ -1376,13 +1365,10 @@ export namespace ArrowFlight {
 
     namespace Server {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Servable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Servable.ConstructorProps {}
     }
 
     /**
@@ -1449,7 +1435,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @virtual
          */
-        vfunc_list_flights(context: ServerCallContext, criteria: (Criteria | null)): Info[];
+        vfunc_list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         // Methods
         /**
@@ -1482,7 +1468,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
          */
-        list_flights(context: ServerCallContext, criteria: (Criteria | null)): Info[];
+        list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         /**
          * @param options A {@link ArrowFlight.ServerOptions}.
@@ -1610,7 +1596,7 @@ export namespace ArrowFlight {
          * Reads a message from the client.
          * @returns Read data as {@link GLib.Bytes} on   success, `null` on error.
          */
-        read(): (GLib.Bytes | null);
+        read(): GLib.Bytes | null;
     }
 
 
@@ -1671,7 +1657,7 @@ export namespace ArrowFlight {
          * @param message A {@link GLib.Bytes} to be sent.
          * @returns `true` on success, `false` on error.
          */
-        write(message: (GLib.Bytes | Uint8Array)): boolean;
+        write(message: GLib.Bytes | Uint8Array): boolean;
     }
 
 
@@ -1748,9 +1734,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ServerAuthHandler.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ServerAuthHandler.ConstructorProps {}
     }
 
     /**
@@ -1803,7 +1787,7 @@ export namespace ArrowFlight {
          * @param token The client token. May be the empty string if the client does not   provide a token.
          * @virtual
          */
-        vfunc_is_valid(context: ServerCallContext, token: GLib.Bytes): (GLib.Bytes | null);
+        vfunc_is_valid(context: ServerCallContext, token: GLib.Bytes): GLib.Bytes | null;
 
         // Methods
         /**
@@ -1821,7 +1805,7 @@ export namespace ArrowFlight {
          * @param token The client token. May be the empty string if the client does not   provide a token.
          * @returns The identity of the peer, if   this authentication method supports it.
          */
-        is_valid(context: ServerCallContext, token: (GLib.Bytes | Uint8Array)): (GLib.Bytes | null);
+        is_valid(context: ServerCallContext, token: GLib.Bytes | Uint8Array): GLib.Bytes | null;
     }
 
 
@@ -1965,7 +1949,7 @@ export namespace ArrowFlight {
         /**
          * @returns The metadata of the chunk.   The metadata may be NULL.
          */
-        get_metadata(): (Arrow.Buffer | null);
+        get_metadata(): Arrow.Buffer | null;
     }
 
 
@@ -1977,9 +1961,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchReader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
     /**
@@ -2024,9 +2006,7 @@ export namespace ArrowFlight {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
     }
 
     /**
@@ -2078,7 +2058,7 @@ export namespace ArrowFlight {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: (GLib.Bytes | Uint8Array);
+            data: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -2095,7 +2075,7 @@ export namespace ArrowFlight {
          * @since 5.0.0
          */
         get data(): GLib.Bytes;
-        set data(val: (GLib.Bytes | Uint8Array));
+        set data(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -2111,7 +2091,7 @@ export namespace ArrowFlight {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (GLib.Bytes | Uint8Array)): Ticket;
+        static ["new"](data: GLib.Bytes | Uint8Array): Ticket;
 
         // Signals
         /** @signal */
@@ -2288,9 +2268,7 @@ export namespace ArrowFlight {
     namespace Servable {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ServableNamespace {

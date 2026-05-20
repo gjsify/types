@@ -45,7 +45,7 @@ export namespace GUPnPIgd {
              * @signal
              * @run-last
              */
-            "context-available": (arg0: GObject.Object) => (boolean | void);
+            "context-available": (arg0: GObject.Object) => boolean | void;
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
@@ -187,9 +187,7 @@ export namespace GUPnPIgd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SimpleIgd.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SimpleIgd.ConstructorProps {}
     }
 
     /**

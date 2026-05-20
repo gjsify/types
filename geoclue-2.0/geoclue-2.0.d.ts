@@ -125,9 +125,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Client.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Client.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -158,12 +156,12 @@ export namespace Geoclue {
 
         static new_for_bus_finish(res: Gio.AsyncResult): ClientProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): ClientProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): ClientProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): ClientProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): ClientProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -197,7 +195,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the results are ready.
          */
-        static create(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ClientProxy> | null)): void;
+        static create(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ClientProxy> | null): void;
 
         /**
          * Finishes an operation started with `gclue_client_proxy_create()`.
@@ -222,7 +220,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the results are ready.
          */
-        static create_full(desktop_id: string, accuracy_level: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ClientProxy> | null)): void;
+        static create_full(desktop_id: string, accuracy_level: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ClientProxy> | null): void;
 
         /**
          * Finishes an operation started with `gclue_client_proxy_create_full()`.
@@ -242,7 +240,7 @@ export namespace Geoclue {
          * @param flags {@link Geoclue.ClientProxyCreateFlags} to modify the creation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        static create_full_sync(desktop_id: string, accuracy_level: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: (Gio.Cancellable | null)): ClientProxy;
+        static create_full_sync(desktop_id: string, accuracy_level: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null): ClientProxy;
 
         /**
          * The synchronous and blocking version of `gclue_client_proxy_create`().
@@ -255,7 +253,7 @@ export namespace Geoclue {
          * @param accuracy_level The requested accuracy level as {@link Geoclue.AccuracyLevel}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        static create_sync(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: (Gio.Cancellable | null)): ClientProxy;
+        static create_sync(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: Gio.Cancellable | null): ClientProxy;
 
         /**
          * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Client.top_of_page">org.freedesktop.GeoClue2.Client</link>. See `g_dbus_proxy_new()` for more details.
@@ -271,7 +269,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ClientProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ClientProxy> | null): void;
 
         /**
          * @param args 
@@ -293,7 +291,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ClientProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ClientProxy> | null): void;
 
         /**
          * @param args 
@@ -318,8 +316,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get desktop_id(): (string | null);
-        set desktop_id(val: (string | null));
+        get desktop_id(): string | null;
+        set desktop_id(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DesktopId">"DesktopId"</link>.
@@ -328,8 +326,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get desktopId(): (string | null);
-        set desktopId(val: (string | null));
+        get desktopId(): string | null;
+        set desktopId(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
@@ -358,8 +356,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get location(): (string | null);
-        set location(val: (string | null));
+        get location(): string | null;
+        set location(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.RequestedAccuracyLevel">"RequestedAccuracyLevel"</link>.
@@ -409,7 +407,7 @@ export namespace Geoclue {
          * See `gclue_client_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_start(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -420,7 +418,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -431,7 +429,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_start()`.
@@ -447,7 +445,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_start_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -457,18 +455,7 @@ export namespace Geoclue {
          * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
-         * 
-         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_stop(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_stop(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -479,7 +466,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_stop(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
+         * 
+         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_stop()`.
@@ -495,7 +493,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_stop_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_stop_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -579,7 +577,7 @@ export namespace Geoclue {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -622,7 +620,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -665,7 +663,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -731,7 +729,7 @@ export namespace Geoclue {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -745,7 +743,7 @@ export namespace Geoclue {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -760,13 +758,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -782,7 +780,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -826,7 +824,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -870,7 +868,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -887,9 +885,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Client.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Client.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -945,8 +941,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get desktop_id(): (string | null);
-        set desktop_id(val: (string | null));
+        get desktop_id(): string | null;
+        set desktop_id(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DesktopId">"DesktopId"</link>.
@@ -955,8 +951,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get desktopId(): (string | null);
-        set desktopId(val: (string | null));
+        get desktopId(): string | null;
+        set desktopId(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
@@ -985,8 +981,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Client
          */
-        get location(): (string | null);
-        set location(val: (string | null));
+        get location(): string | null;
+        set location(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.RequestedAccuracyLevel">"RequestedAccuracyLevel"</link>.
@@ -1036,7 +1032,7 @@ export namespace Geoclue {
          * See `gclue_client_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_start(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -1047,7 +1043,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -1058,7 +1054,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_start()`.
@@ -1074,7 +1070,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_start_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -1084,18 +1080,7 @@ export namespace Geoclue {
          * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
-         * 
-         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_stop(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_stop(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -1106,7 +1091,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_stop(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
+         * 
+         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_stop()`.
@@ -1122,7 +1118,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_stop_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_stop_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -1170,7 +1166,7 @@ export namespace Geoclue {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1185,13 +1181,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1207,7 +1203,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -1234,9 +1230,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Location.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Location.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1267,12 +1261,12 @@ export namespace Geoclue {
 
         static new_for_bus_finish(res: Gio.AsyncResult): LocationProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): LocationProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): LocationProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): LocationProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): LocationProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -1305,7 +1299,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<LocationProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<LocationProxy> | null): void;
 
         /**
          * @param args 
@@ -1327,7 +1321,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<LocationProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<LocationProxy> | null): void;
 
         /**
          * @param args 
@@ -1362,8 +1356,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Location
          */
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Location.Heading">"Heading"</link>.
@@ -1411,8 +1405,8 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
           * @category Inherited from Geoclue.Location
          */
-        get timestamp(): (GLib.Variant | null);
-        set timestamp(val: (GLib.Variant | null));
+        get timestamp(): GLib.Variant | null;
+        set timestamp(val: GLib.Variant | null);
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1454,50 +1448,7 @@ export namespace Geoclue {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1540,7 +1491,50 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1606,7 +1600,7 @@ export namespace Geoclue {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1620,7 +1614,7 @@ export namespace Geoclue {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1635,13 +1629,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1657,7 +1651,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -1701,7 +1695,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1745,7 +1739,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1764,9 +1758,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Location.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Location.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -1832,8 +1824,8 @@ export namespace Geoclue {
          * @default null
           * @category Inherited from Geoclue.Location
          */
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Location.Heading">"Heading"</link>.
@@ -1881,14 +1873,14 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
           * @category Inherited from Geoclue.Location
          */
-        get timestamp(): (GLib.Variant | null);
-        set timestamp(val: (GLib.Variant | null));
+        get timestamp(): GLib.Variant | null;
+        set timestamp(val: GLib.Variant | null);
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1903,13 +1895,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1925,7 +1917,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -1946,9 +1938,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Manager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Manager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1979,12 +1969,12 @@ export namespace Geoclue {
 
         static new_for_bus_finish(res: Gio.AsyncResult): ManagerProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): ManagerProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): ManagerProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): ManagerProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): ManagerProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -2017,7 +2007,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -2039,7 +2029,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -2096,7 +2086,7 @@ export namespace Geoclue {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -2108,7 +2098,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -2120,7 +2110,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_add_agent()`.
@@ -2137,7 +2127,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_add_agent_sync(arg_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_add_agent_sync(arg_id: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -2147,18 +2137,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_create_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -2169,7 +2148,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_create_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_create_client()`.
@@ -2185,7 +2175,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_create_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_create_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -2196,19 +2186,7 @@ export namespace Geoclue {
          * @param arg_client Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
-         * @param arg_client Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -2220,7 +2198,19 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
+         * @param arg_client Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_delete_client()`.
@@ -2237,7 +2227,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_delete_client_sync(arg_client: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_delete_client_sync(arg_client: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -2247,18 +2237,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -2269,7 +2248,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_get_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_get_client()`.
@@ -2285,7 +2275,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_get_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -2387,7 +2377,7 @@ export namespace Geoclue {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2430,7 +2420,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2473,7 +2463,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2539,7 +2529,7 @@ export namespace Geoclue {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2553,7 +2543,7 @@ export namespace Geoclue {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2568,13 +2558,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2590,7 +2580,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -2634,7 +2624,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2678,7 +2668,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2691,9 +2681,7 @@ export namespace Geoclue {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Manager.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Manager.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -2781,7 +2769,7 @@ export namespace Geoclue {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -2793,7 +2781,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -2805,7 +2793,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_add_agent()`.
@@ -2822,7 +2810,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_add_agent_sync(arg_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_add_agent_sync(arg_id: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -2832,18 +2820,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_create_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -2854,7 +2831,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_create_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_create_client()`.
@@ -2870,7 +2858,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_create_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_create_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -2881,19 +2869,7 @@ export namespace Geoclue {
          * @param arg_client Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
-         * @param arg_client Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -2905,7 +2881,19 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
+         * @param arg_client Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_delete_client()`.
@@ -2922,7 +2910,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_delete_client_sync(arg_client: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_delete_client_sync(arg_client: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -2932,18 +2920,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -2954,7 +2931,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_get_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_get_client()`.
@@ -2970,7 +2958,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_get_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -3036,7 +3024,7 @@ export namespace Geoclue {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3051,13 +3039,13 @@ export namespace Geoclue {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3073,7 +3061,7 @@ export namespace Geoclue {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -3214,11 +3202,11 @@ export namespace Geoclue {
         // Conflicted with Gio.AsyncInitable.new_finish
         static new_finish(...args: never[]): any;
 
-        static new_sync(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: (Gio.Cancellable | null)): Simple;
+        static new_sync(desktop_id: string, accuracy_level: AccuracyLevel, cancellable: Gio.Cancellable | null): Simple;
 
         static new_with_thresholds_finish(result: Gio.AsyncResult): Simple;
 
-        static new_with_thresholds_sync(desktop_id: string, accuracy_level: AccuracyLevel, time_threshold: number, distance_threshold: number, cancellable: (Gio.Cancellable | null)): Simple;
+        static new_with_thresholds_sync(desktop_id: string, accuracy_level: AccuracyLevel, time_threshold: number, distance_threshold: number, cancellable: Gio.Cancellable | null): Simple;
 
         // Signals
         /** @signal */
@@ -3245,7 +3233,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the results are ready.
          */
-        static ["new"](desktop_id: string, accuracy_level: AccuracyLevel, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Simple> | null)): void;
+        static ["new"](desktop_id: string, accuracy_level: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Simple> | null): void;
 
         /**
          * Asynchronously creates a {@link Geoclue.Simple} instance. Use
@@ -3260,7 +3248,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the results are ready.
          */
-        static new_with_thresholds(desktop_id: string, accuracy_level: AccuracyLevel, time_threshold: number, distance_threshold: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Simple> | null)): void;
+        static new_with_thresholds(desktop_id: string, accuracy_level: AccuracyLevel, time_threshold: number, distance_threshold: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Simple> | null): void;
 
         // Methods
         /**
@@ -3316,7 +3304,7 @@ export namespace Geoclue {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3359,7 +3347,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3402,7 +3390,7 @@ export namespace Geoclue {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3462,7 +3450,7 @@ export namespace Geoclue {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3612,11 +3600,11 @@ export namespace Geoclue {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             active: boolean;
-            desktop_id: (string | null);
-            desktopId: (string | null);
+            desktop_id: string | null;
+            desktopId: string | null;
             distance_threshold: number;
             distanceThreshold: number;
-            location: (string | null);
+            location: string | null;
             requested_accuracy_level: number;
             requestedAccuracyLevel: number;
             time_threshold: number;
@@ -3661,8 +3649,8 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @default null
          */
-        get desktop_id(): (string | null);
-        set desktop_id(val: (string | null));
+        get desktop_id(): string | null;
+        set desktop_id(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DesktopId">"DesktopId"</link>.
@@ -3670,8 +3658,8 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is both readable and writable, it is meaningful to both read from it and write to it on both the service- and client-side.
          * @default null
          */
-        get desktopId(): (string | null);
-        set desktopId(val: (string | null));
+        get desktopId(): string | null;
+        set desktopId(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.DistanceThreshold">"DistanceThreshold"</link>.
@@ -3697,8 +3685,8 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get location(): (string | null);
-        set location(val: (string | null));
+        get location(): string | null;
+        set location(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Client.RequestedAccuracyLevel">"RequestedAccuracyLevel"</link>.
@@ -3745,7 +3733,7 @@ export namespace Geoclue {
          * See `gclue_client_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_start(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -3756,7 +3744,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method on `proxy`.
@@ -3767,7 +3755,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_start(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_start()`.
@@ -3783,7 +3771,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_start_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -3793,18 +3781,7 @@ export namespace Geoclue {
          * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
-         * 
-         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_stop(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_stop(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
@@ -3815,7 +3792,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_stop(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_stop(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_client_call_stop_finish()` to get the result of the operation.
+         * 
+         * See `gclue_client_call_stop_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_stop(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_client_call_stop()`.
@@ -3831,7 +3819,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_stop_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_stop_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -3868,12 +3856,12 @@ export namespace Geoclue {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accuracy: number;
             altitude: number;
-            description: (string | null);
+            description: string | null;
             heading: number;
             latitude: number;
             longitude: number;
             speed: number;
-            timestamp: (GLib.Variant | null);
+            timestamp: GLib.Variant | null;
         }
     }
 
@@ -3923,8 +3911,8 @@ export namespace Geoclue {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-GeoClue2-Location.Heading">"Heading"</link>.
@@ -3967,8 +3955,8 @@ export namespace Geoclue {
          * 
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        get timestamp(): (GLib.Variant | null);
-        set timestamp(val: (GLib.Variant | null));
+        get timestamp(): GLib.Variant | null;
+        set timestamp(val: GLib.Variant | null);
     }
 
 
@@ -4089,7 +4077,7 @@ export namespace Geoclue {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -4101,7 +4089,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method on `proxy`.
@@ -4113,7 +4101,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_add_agent(arg_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_add_agent(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_add_agent()`.
@@ -4130,7 +4118,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_add_agent_sync(arg_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_add_agent_sync(arg_id: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -4140,18 +4128,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_create_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
@@ -4162,7 +4139,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_create_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_create_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_create_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_create_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_create_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_create_client()`.
@@ -4178,7 +4166,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_create_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_create_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -4189,19 +4177,7 @@ export namespace Geoclue {
          * @param arg_client Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
-         * @param arg_client Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
@@ -4213,7 +4189,19 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_delete_client(arg_client: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_delete_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_delete_client_sync()` for the synchronous, blocking version of this method.
+         * @param arg_client Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_delete_client(arg_client: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_delete_client()`.
@@ -4230,7 +4218,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_delete_client_sync(arg_client: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_delete_client_sync(arg_client: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -4240,18 +4228,7 @@ export namespace Geoclue {
          * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
-         * 
-         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_client(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
@@ -4262,7 +4239,18 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_get_client(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        call_get_client(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `gclue_manager_call_get_client_finish()` to get the result of the operation.
+         * 
+         * See `gclue_manager_call_get_client_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_get_client(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `gclue_manager_call_get_client()`.
@@ -4278,7 +4266,7 @@ export namespace Geoclue {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_get_client_sync(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        call_get_client_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.

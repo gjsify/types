@@ -59,7 +59,7 @@ export namespace GoVirt {
         static BAD_URI: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -75,7 +75,7 @@ export namespace GoVirt {
         static CANCELLED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -187,9 +187,7 @@ export namespace GoVirt {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -342,7 +340,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -386,7 +384,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -465,7 +463,7 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        update_async(current: boolean, proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_async(current: boolean, proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param current 
@@ -473,7 +471,7 @@ export namespace GoVirt {
          * @param cancellable 
          * @param callback 
          */
-        update_async(current: boolean, proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_async(current: boolean, proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param current 
@@ -481,7 +479,7 @@ export namespace GoVirt {
          * @param cancellable 
          * @param callback 
          */
-        update_async(current: boolean, proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_async(current: boolean, proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param args 
@@ -536,7 +534,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -580,7 +578,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -726,7 +724,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -770,7 +768,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -793,7 +791,7 @@ export namespace GoVirt {
             resourceType: GObject.GTypeInput;
             resource_xml_name: string;
             resourceXmlName: string;
-            resources: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            resources: { [key: string]: any } | GLib.HashTable<never, never>;
         }
     }
 
@@ -845,7 +843,7 @@ export namespace GoVirt {
         set resourceXmlName(val: string);
 
         get resources(): GLib.HashTable<never, never>;
-        set resources(val: ({ [key: string]: any } | GLib.HashTable<never, never>));
+        set resources(val: { [key: string]: any } | GLib.HashTable<never, never>);
 
         /**
          * Compile-time signal type information.
@@ -884,21 +882,21 @@ export namespace GoVirt {
          * @param proxy a {@link GoVirt.Proxy}
          * @param cancellable 
          */
-        fetch_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        fetch_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy a {@link GoVirt.Proxy}
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy a {@link GoVirt.Proxy}
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        fetch_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result async method result
@@ -932,9 +930,7 @@ export namespace GoVirt {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1033,7 +1029,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1077,7 +1073,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1092,9 +1088,7 @@ export namespace GoVirt {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1174,7 +1168,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1218,7 +1212,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1364,7 +1358,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1408,7 +1402,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1432,8 +1426,8 @@ export namespace GoVirt {
         // Constructor properties interface
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
             admin: boolean;
-            ca_cert: (Uint8Array | string);
-            caCert: (Uint8Array | string);
+            ca_cert: Uint8Array | string;
+            caCert: Uint8Array | string;
             session_id: string;
             sessionId: string;
             sso_token: string;
@@ -1464,14 +1458,14 @@ export namespace GoVirt {
          * REST API communication with the oVirt instance
          */
         get ca_cert(): Uint8Array;
-        set ca_cert(val: (Uint8Array | string));
+        set ca_cert(val: Uint8Array | string);
 
         /**
          * Path to a file containing the CA certificates to use for the HTTPS
          * REST API communication with the oVirt instance
          */
         get caCert(): Uint8Array;
-        set caCert(val: (Uint8Array | string));
+        set caCert(val: Uint8Array | string);
 
         /**
          * jsessionid cookie value. This allows to use the REST API without
@@ -1546,19 +1540,19 @@ export namespace GoVirt {
         /**
          * @param cancellable 
          */
-        fetch_api_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Api>;
+        fetch_api_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Api>;
 
         /**
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_api_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_api_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_api_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Api> | void);
+        fetch_api_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Api> | void;
 
         /**
          * @param result async method result
@@ -1571,19 +1565,19 @@ export namespace GoVirt {
         /**
          * @param cancellable 
          */
-        fetch_ca_certificate_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+        fetch_ca_certificate_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        fetch_ca_certificate_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_ca_certificate_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        fetch_ca_certificate_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+        fetch_ca_certificate_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array> | void;
 
         /**
          * @param result 
@@ -1595,19 +1589,19 @@ export namespace GoVirt {
         /**
          * @param cancellable 
          */
-        fetch_vms_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Vm[]>;
+        fetch_vms_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Vm[]>;
 
         /**
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_vms_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_vms_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback completion callback
          */
-        fetch_vms_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Vm[]> | void);
+        fetch_vms_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Vm[]> | void;
 
         /**
          * @param result async method result
@@ -1761,7 +1755,7 @@ export namespace GoVirt {
          * @param proxy an {@link GoVirt.Proxy}.
          * @param cancellable a {@link Gio.Cancellable} or NULL.
          */
-        delete_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        delete_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously send an HTTP DELETE request to `resource`.
@@ -1772,7 +1766,7 @@ export namespace GoVirt {
          * @param cancellable a {@link Gio.Cancellable} or NULL.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the call completes, or NULL if you don't care about the result of the method invocation.
          */
-        delete_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously send an HTTP DELETE request to `resource`.
@@ -1783,7 +1777,7 @@ export namespace GoVirt {
          * @param cancellable a {@link Gio.Cancellable} or NULL.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the call completes, or NULL if you don't care about the result of the method invocation.
          */
-        delete_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}.
@@ -1805,21 +1799,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1835,21 +1829,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        update_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        update_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        update_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1898,7 +1892,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1942,7 +1936,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1965,8 +1959,8 @@ export namespace GoVirt {
 
         // Constructor properties interface
         interface ConstructorProps extends Resource.ConstructorProps, Gio.Initable.ConstructorProps {
-            available: (bigint | number);
-            committed: (bigint | number);
+            available: bigint | number;
+            committed: bigint | number;
             data_center_href: string;
             dataCenterHref: string;
             data_center_id: string;
@@ -1974,7 +1968,7 @@ export namespace GoVirt {
             data_center_ids: string[];
             dataCenterIds: string[];
             master: boolean;
-            used: (bigint | number);
+            used: bigint | number;
         }
     }
 
@@ -1989,13 +1983,13 @@ export namespace GoVirt {
          * @default 0
          */
         get available(): number;
-        set available(val: (bigint | number));
+        set available(val: bigint | number);
 
         /**
          * @default 0
          */
         get committed(): number;
-        set committed(val: (bigint | number));
+        set committed(val: bigint | number);
 
         /**
          * @default null
@@ -2037,7 +2031,7 @@ export namespace GoVirt {
          * @default 0
          */
         get used(): number;
-        set used(val: (bigint | number));
+        set used(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2129,7 +2123,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2173,7 +2167,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2330,21 +2324,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        get_ticket_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        get_ticket_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        get_ticket_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        get_ticket_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2355,21 +2349,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        refresh_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2385,21 +2379,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        start_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        start_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        start_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        start_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        start_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        start_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2415,21 +2409,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        stop_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        stop_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        stop_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        stop_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        stop_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        stop_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2478,7 +2472,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2522,7 +2516,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2547,8 +2541,8 @@ export namespace GoVirt {
             address: string;
             allow_override: boolean;
             allowOverride: boolean;
-            ca_cert: (Uint8Array | string);
-            caCert: (Uint8Array | string);
+            ca_cert: Uint8Array | string;
+            caCert: Uint8Array | string;
             expiry: number;
             host_subject: string;
             hostSubject: string;
@@ -2590,10 +2584,10 @@ export namespace GoVirt {
         set allowOverride(val: boolean);
 
         get ca_cert(): Uint8Array;
-        set ca_cert(val: (Uint8Array | string));
+        set ca_cert(val: Uint8Array | string);
 
         get caCert(): Uint8Array;
-        set caCert(val: (Uint8Array | string));
+        set caCert(val: Uint8Array | string);
 
         /**
          * @default 0
@@ -2799,21 +2793,21 @@ export namespace GoVirt {
          * @param proxy 
          * @param cancellable 
          */
-        allocate_vm_async(proxy: Proxy, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        allocate_vm_async(proxy: Proxy, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        allocate_vm_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        allocate_vm_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param proxy 
          * @param cancellable 
          * @param callback 
          */
-        allocate_vm_async(proxy: Proxy, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        allocate_vm_async(proxy: Proxy, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2862,7 +2856,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2906,7 +2900,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

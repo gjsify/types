@@ -37,9 +37,7 @@ export namespace SoupGNOME {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Soup.CookieJarDB.ConstructorProps, Soup.SessionFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Soup.CookieJarDB.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
     }
 
     /**
@@ -84,13 +82,10 @@ export namespace SoupGNOME {
 
     namespace PasswordManagerGNOME {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Soup.SessionFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
     }
 
     /**
@@ -236,9 +231,7 @@ export namespace SoupGNOME {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Soup.ProxyResolverDefault.ConstructorProps, Soup.ProxyURIResolver.ConstructorProps, Soup.SessionFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Soup.ProxyResolverDefault.ConstructorProps, Soup.ProxyURIResolver.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
     }
 
     /**
@@ -282,7 +275,7 @@ export namespace SoupGNOME {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
          */
-        get_proxy_uri_async(uri: Soup.URI, async_context: (GLib.MainContext | null), cancellable: (Gio.Cancellable | null), callback: Soup.ProxyURIResolverCallback): void;
+        get_proxy_uri_async(uri: Soup.URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: Soup.ProxyURIResolverCallback): void;
 
         /**
          * Synchronously determines a proxy URI to use for `uri`. If `uri`
@@ -292,7 +285,7 @@ export namespace SoupGNOME {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns {@link Soup.Status.OK} if successful, or a transport-level error.
          */
-        get_proxy_uri_sync(uri: Soup.URI, cancellable: (Gio.Cancellable | null)): [number, Soup.URI];
+        get_proxy_uri_sync(uri: Soup.URI, cancellable: Gio.Cancellable | null): [number, Soup.URI];
 
         /**
          * Asynchronously determines a proxy URI to use for `msg` and calls
@@ -303,7 +296,7 @@ export namespace SoupGNOME {
          * @param callback callback to invoke with the proxy address
          * @virtual
          */
-        vfunc_get_proxy_uri_async(uri: Soup.URI, async_context: (GLib.MainContext | null), cancellable: (Gio.Cancellable | null), callback: Soup.ProxyURIResolverCallback): void;
+        vfunc_get_proxy_uri_async(uri: Soup.URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: Soup.ProxyURIResolverCallback): void;
 
         /**
          * Synchronously determines a proxy URI to use for `uri`. If `uri`
@@ -313,7 +306,7 @@ export namespace SoupGNOME {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_get_proxy_uri_sync(uri: Soup.URI, cancellable: (Gio.Cancellable | null)): [number, Soup.URI];
+        vfunc_get_proxy_uri_sync(uri: Soup.URI, cancellable: Gio.Cancellable | null): [number, Soup.URI];
 
         /**
          * Adds a "sub-feature" of type `type` to the base feature `feature`.

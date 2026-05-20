@@ -336,7 +336,7 @@ export namespace GimpUi {
         static WIDGETS_PARSE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -1040,7 +1040,7 @@ export namespace GimpUi {
      * @param widget {@link Gtk.Widget} to draw the focus indicator on.
      * @since 3.0
      */
-    function cairo_set_source_color(cr: cairo.Context, color: Gegl.Color, config: Gimp.ColorConfig, softproof: boolean, widget: (Gtk.Widget | null)): void;
+    function cairo_set_source_color(cr: cairo.Context, color: Gegl.Color, config: Gimp.ColorConfig, softproof: boolean, widget: Gtk.Widget | null): void;
 
     /**
      * Create a Cairo image surface from a GdkPixbuf.
@@ -1114,7 +1114,7 @@ export namespace GimpUi {
      * @returns a new horizontal {@link Gtk.Box} holding a group of `GtkRadioButtons`.
      * @since 2.10
      */
-    function enum_icon_box_new(enum_type: GObject.GType, icon_prefix: string, icon_size: Gtk.IconSize, callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_icon_box_new(enum_type: GObject.GType, icon_prefix: string, icon_size: Gtk.IconSize, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Just like `gimp_enum_icon_box_new()`, this function creates a group
@@ -1129,7 +1129,7 @@ export namespace GimpUi {
      * @returns a new horizontal {@link Gtk.Box} holding a group of `GtkRadioButtons`.
      * @since 2.10
      */
-    function enum_icon_box_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, icon_prefix: string, icon_size: Gtk.IconSize, callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_icon_box_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, icon_prefix: string, icon_size: Gtk.IconSize, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Sets the padding of all buttons in a box created by
@@ -1160,7 +1160,7 @@ export namespace GimpUi {
      * @returns a new {@link Gtk.Box} holding a group of `GtkRadioButtons`.
      * @since 2.4
      */
-    function enum_radio_box_new(enum_type: GObject.GType, callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_radio_box_new(enum_type: GObject.GType, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Just like `gimp_enum_radio_box_new()`, this function creates a group
@@ -1173,7 +1173,7 @@ export namespace GimpUi {
      * @returns a new vertical {@link Gtk.Box} holding a group of                           `GtkRadioButtons`
      * @since 2.4
      */
-    function enum_radio_box_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_radio_box_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Calls `gimp_enum_radio_box_new()` and puts the resulting vbox into a
@@ -1184,7 +1184,7 @@ export namespace GimpUi {
      * @returns a new {@link Gtk.Frame} holding a group of `GtkRadioButtons`.
      * @since 2.4
      */
-    function enum_radio_frame_new(enum_type: GObject.GType, label_widget: (Gtk.Widget | null), callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_radio_frame_new(enum_type: GObject.GType, label_widget: Gtk.Widget | null, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Calls `gimp_enum_radio_box_new_with_range()` and puts the resulting
@@ -1197,7 +1197,7 @@ export namespace GimpUi {
      * @returns a new {@link Gtk.Frame} holding a group of `GtkRadioButtons`.
      * @since 2.4
      */
-    function enum_radio_frame_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, label_widget: (Gtk.Widget | null), callback: (GObject.Callback | null)): [Gtk.Widget, Gtk.Widget | null];
+    function enum_radio_frame_new_with_range(enum_type: GObject.GType, minimum: number, maximum: number, label_widget: Gtk.Widget | null, callback: GObject.Callback | null): [Gtk.Widget, Gtk.Widget | null];
 
     /**
      * Alternative of `gdk_event_triggers_context_menu()` with the additional
@@ -1251,7 +1251,7 @@ export namespace GimpUi {
      * @param help_func The function which will be called if the user presses "F1".
      * @param help_id The `help_id` which will be passed to `help_func`.
      */
-    function help_connect(widget: Gtk.Widget, tooltip: (string | null), help_func: HelpFunc, help_id: string): void;
+    function help_connect(widget: Gtk.Widget, tooltip: string | null, help_func: HelpFunc, help_id: string): void;
 
     /**
      * This function returns the {@link GLib.Quark} which should be used as key when
@@ -1273,7 +1273,7 @@ export namespace GimpUi {
      * @param tooltip The text for this widget's tooltip (or `null`).
      * @param help_id The `help_id` for the `GtkTipsQuery` tooltips inspector.
      */
-    function help_set_help_data(widget: Gtk.Widget, tooltip: (string | null), help_id: string): void;
+    function help_set_help_data(widget: Gtk.Widget, tooltip: string | null, help_id: string): void;
 
     /**
      * Just like `gimp_help_set_help_data()`, but supports to pass text
@@ -1338,7 +1338,7 @@ export namespace GimpUi {
      * @returns the monitor's {@link Gimp.ColorProfile},          or `null`.
      * @since 3.0
      */
-    function monitor_get_color_profile(monitor: Gdk.Monitor): (Gimp.ColorProfile | null);
+    function monitor_get_color_profile(monitor: Gdk.Monitor): Gimp.ColorProfile | null;
 
     /**
      * @param procedure_name The name of a procedure.
@@ -1374,7 +1374,7 @@ export namespace GimpUi {
      * @returns A {@link GimpUi.Frame} containing the radio buttons.
      * @since 2.4
      */
-    function prop_boolean_radio_frame_new(config: GObject.Object, property_name: string, title: (string | null), true_text: string, false_text: string): Gtk.Widget;
+    function prop_boolean_radio_frame_new(config: GObject.Object, property_name: string, title: string | null, true_text: string, false_text: string): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.BrushChooser} controlled by the specified property.
@@ -1384,7 +1384,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.BrushChooser}.
      * @since 3.0
      */
-    function prop_brush_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_brush_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link Gtk.CheckButton} that displays and sets the specified
@@ -1397,7 +1397,7 @@ export namespace GimpUi {
      * @returns The newly created {@link Gtk.CheckButton} widget.
      * @since 2.4
      */
-    function prop_check_button_new(config: GObject.Object, property_name: string, label: (string | null)): Gtk.Widget;
+    function prop_check_button_new(config: GObject.Object, property_name: string, label: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.StringComboBox} widget to display and set the
@@ -1485,7 +1485,7 @@ export namespace GimpUi {
      * @since 3.0
      * @deprecated since 3.2: Use `gimp_prop_item_chooser_new()`.
      */
-    function prop_drawable_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_drawable_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link Gtk.Entry} to set and display the value of the specified
@@ -1513,7 +1513,7 @@ export namespace GimpUi {
      * @returns The newly created {@link Gtk.CheckButton} widget.
      * @since 2.4
      */
-    function prop_enum_check_button_new(config: GObject.Object, property_name: string, label: (string | null), false_value: number, true_value: number): Gtk.Widget;
+    function prop_enum_check_button_new(config: GObject.Object, property_name: string, label: string | null, false_value: number, true_value: number): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.IntComboBox} widget to display and set the specified
@@ -1585,7 +1585,7 @@ export namespace GimpUi {
      * @returns A {@link GimpUi.Frame} containing the radio buttons.
      * @since 2.4
      */
-    function prop_enum_radio_frame_new(config: GObject.Object, property_name: string, title: (string | null), minimum: number, maximum: number): Gtk.Widget;
+    function prop_enum_radio_frame_new(config: GObject.Object, property_name: string, title: string | null, minimum: number, maximum: number): Gtk.Widget;
 
     /**
      * Creates a {@link Gtk.Expander} controlled by the specified boolean property.
@@ -1599,7 +1599,7 @@ export namespace GimpUi {
      * @returns A new {@link Gtk.Expander} widget.
      * @since 2.4
      */
-    function prop_expander_new(config: GObject.Object, property_name: string, label: (string | null)): Gtk.Widget;
+    function prop_expander_new(config: GObject.Object, property_name: string, label: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link Gtk.FileChooserButton} to edit the specified path property.
@@ -1615,7 +1615,7 @@ export namespace GimpUi {
      * @returns A new {@link Gtk.FileChooserButton}.
      * @since 2.4
      */
-    function prop_file_chooser_button_new(config: GObject.Object, property_name: string, title: (string | null), action: Gtk.FileChooserAction): Gtk.Widget;
+    function prop_file_chooser_button_new(config: GObject.Object, property_name: string, title: string | null, action: Gtk.FileChooserAction): Gtk.Widget;
 
     /**
      * Creates a {@link Gtk.FileChooserButton} to edit the specified path property.
@@ -1648,7 +1648,7 @@ export namespace GimpUi {
      * @returns A new {@link Gtk.FileChooserButton}.
      * @since 3.0
      */
-    function prop_file_chooser_new(config: GObject.Object, property_name: string, label: (string | null), title: (string | null)): Gtk.Widget;
+    function prop_file_chooser_new(config: GObject.Object, property_name: string, label: string | null, title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.FontChooser} controlled by the specified property.
@@ -1658,7 +1658,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.FontChooser}.
      * @since 3.0
      */
-    function prop_font_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_font_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.GradientChooser} controlled by the specified property.
@@ -1668,7 +1668,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.GradientChooser}.
      * @since 3.0
      */
-    function prop_gradient_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_gradient_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a horizontal scale to control the value of the specified
@@ -1703,7 +1703,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.ImageChooser}.
      * @since 3.0
      */
-    function prop_image_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_image_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.IntComboBox} widget to display and set the specified
@@ -1728,7 +1728,7 @@ export namespace GimpUi {
      * @returns A {@link GimpUi.Frame} containing the radio buttons.
      * @since 3.0
      */
-    function prop_int_radio_frame_new(config: GObject.Object, property_name: string, title: (string | null), store: IntStore): Gtk.Widget;
+    function prop_int_radio_frame_new(config: GObject.Object, property_name: string, title: string | null, store: IntStore): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.ItemChooser} controlled by the specified property.
@@ -1738,7 +1738,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.ItemChooser}.
      * @since 3.2
      */
-    function prop_item_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_item_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.LabelColor} to set and display the value of an RGB
@@ -1804,7 +1804,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.PaletteChooser}.
      * @since 3.0
      */
-    function prop_palette_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_palette_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.PathEditor} to edit the specified path and writable
@@ -1825,7 +1825,7 @@ export namespace GimpUi {
      * @returns A new {@link GimpUi.PatternChooser}.
      * @since 3.0
      */
-    function prop_pattern_chooser_new(config: GObject.Object, property_name: string, chooser_title: (string | null)): Gtk.Widget;
+    function prop_pattern_chooser_new(config: GObject.Object, property_name: string, chooser_title: string | null): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.IntComboBox} widget to display and set the specified
@@ -1867,7 +1867,7 @@ export namespace GimpUi {
      * @returns The newly allocated {@link GimpUi.ScaleEntry}.
      * @since 2.4
      */
-    function prop_scale_entry_new(config: GObject.Object, property_name: string, label: (string | null), factor: number, limit_scale: boolean, lower_limit: number, upper_limit: number): Gtk.Widget;
+    function prop_scale_entry_new(config: GObject.Object, property_name: string, label: string | null, factor: number, limit_scale: boolean, lower_limit: number, upper_limit: number): Gtk.Widget;
 
     /**
      * Creates a {@link GimpUi.SizeEntry} to set and display the specified double or
@@ -2125,7 +2125,7 @@ export namespace GimpUi {
      * @param hadj Horizontal adjustment
      * @param vadj Vertical adjustment
      */
-    function scroll_adjustment_values(sevent: Gdk.EventScroll, hadj: (Gtk.Adjustment | null), vadj: (Gtk.Adjustment | null)): [number, number];
+    function scroll_adjustment_values(sevent: Gdk.EventScroll, hadj: Gtk.Adjustment | null, vadj: Gtk.Adjustment | null): [number, number];
 
     /**
      * This is the standard GIMP help function which does nothing but calling
@@ -2177,7 +2177,7 @@ export namespace GimpUi {
      * @param window_handle same pointer previously passed to {@link GimpUi.widget_set_native_handle}.
      * @since 3.0
      */
-    function widget_free_native_handle(widget: Gtk.Widget, window_handle: (GLib.Bytes | Uint8Array)): GLib.Bytes;
+    function widget_free_native_handle(widget: Gtk.Widget, window_handle: GLib.Bytes | Uint8Array): GLib.Bytes;
 
     /**
      * This function returns the {@link Gimp.ColorProfile} of the monitor `widget` is
@@ -2186,7 +2186,7 @@ export namespace GimpUi {
      * @returns `widget`'s monitor's {@link Gimp.ColorProfile},          or `null`.
      * @since 3.0
      */
-    function widget_get_color_profile(widget: Gtk.Widget): (Gimp.ColorProfile | null);
+    function widget_get_color_profile(widget: Gtk.Widget): Gimp.ColorProfile | null;
 
     /**
      * This function returns the {@link Gimp.ColorTransform} that transforms pixels
@@ -2203,7 +2203,7 @@ export namespace GimpUi {
      * @returns the {@link Gimp.ColorTransform}.
      * @since 2.10
      */
-    function widget_get_color_transform(widget: Gtk.Widget, config: Gimp.ColorConfig, src_profile: Gimp.ColorProfile, src_format: Babl.Object, dest_format: Babl.Object, softproof_profile: Gimp.ColorProfile, proof_intent: Gimp.ColorRenderingIntent, proof_bpc: boolean): (Gimp.ColorTransform | null);
+    function widget_get_color_transform(widget: Gtk.Widget, config: Gimp.ColorConfig, src_profile: Gimp.ColorProfile, src_format: Babl.Object, dest_format: Babl.Object, softproof_profile: Gimp.ColorProfile, proof_intent: Gimp.ColorRenderingIntent, proof_bpc: boolean): Gimp.ColorTransform | null;
 
     /**
      * @param widget a {@link Gtk.Widget}.
@@ -2239,7 +2239,7 @@ export namespace GimpUi {
      * @param window_handle pointer to store the native handle as a {@link GLib.Bytes}.
      * @since 3.0
      */
-    function widget_set_native_handle(widget: Gtk.Widget, window_handle: (GLib.Bytes | Uint8Array)): GLib.Bytes;
+    function widget_set_native_handle(widget: Gtk.Widget, window_handle: GLib.Bytes | Uint8Array): GLib.Bytes;
 
     /**
      * This function behaves as if {@link Gtk.Widget} had a signal
@@ -2294,7 +2294,7 @@ export namespace GimpUi {
      * @param handle handle of the window that should become the parent
      * @since 3.0
      */
-    function window_set_transient_for(window: Gtk.Window, handle: (GLib.Bytes | Uint8Array)): void;
+    function window_set_transient_for(window: Gtk.Window, handle: GLib.Bytes | Uint8Array): void;
 
     /**
      * Indicates to the window manager that `window` is a transient dialog
@@ -2561,9 +2561,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Paned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Paned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2710,9 +2708,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2739,7 +2735,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), brush: (Gimp.Brush | null)): BrushChooser;
+        static ["new"](title: string | null, label: string | null, brush: Gimp.Brush | null): BrushChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -2848,7 +2844,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](message: (string | null)): BusyBox;
+        static ["new"](message: string | null): BusyBox;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -2970,9 +2966,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -3032,15 +3026,15 @@ export namespace GimpUi {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -3120,7 +3114,7 @@ export namespace GimpUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -3144,7 +3138,7 @@ export namespace GimpUi {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -3168,7 +3162,7 @@ export namespace GimpUi {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -3192,7 +3186,7 @@ export namespace GimpUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -3217,7 +3211,7 @@ export namespace GimpUi {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -3242,7 +3236,7 @@ export namespace GimpUi {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -3306,7 +3300,7 @@ export namespace GimpUi {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -3316,7 +3310,7 @@ export namespace GimpUi {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -3862,9 +3856,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -3887,7 +3879,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](constraint: (ItemConstraintFunc | null)): ChannelComboBox;
+        static ["new"](constraint: ItemConstraintFunc | null): ChannelComboBox;
 
         // Conflicted with GimpUi.IntComboBox.new
         static ["new"](...args: never[]): any;
@@ -4666,9 +4658,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4861,9 +4851,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {}
     }
 
     /**
@@ -4959,7 +4947,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -4987,7 +4975,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -5277,9 +5265,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ColorSelector.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ColorSelector.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -5463,9 +5449,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {}
     }
 
     /**
@@ -5557,16 +5541,16 @@ export namespace GimpUi {
         set doOverwriteConfirmation(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extra_widget(): (Gtk.Widget | null);
-        set extra_widget(val: (Gtk.Widget | null));
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extraWidget(): (Gtk.Widget | null);
-        set extraWidget(val: (Gtk.Widget | null));
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get filter(): (Gtk.FileFilter | null);
-        set filter(val: (Gtk.FileFilter | null));
+        get filter(): Gtk.FileFilter | null;
+        set filter(val: Gtk.FileFilter | null);
 
         /**
          * @default true
@@ -5583,12 +5567,12 @@ export namespace GimpUi {
         set localOnly(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get preview_widget(): (Gtk.Widget | null);
-        set preview_widget(val: (Gtk.Widget | null));
+        get preview_widget(): Gtk.Widget | null;
+        set preview_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get previewWidget(): (Gtk.Widget | null);
-        set previewWidget(val: (Gtk.Widget | null));
+        get previewWidget(): Gtk.Widget | null;
+        set previewWidget(val: Gtk.Widget | null);
 
         /**
          * @default true
@@ -5659,7 +5643,7 @@ export namespace GimpUi {
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
          */
-        add_choice(id: string, label: string, options: (string[] | null), option_labels: (string[] | null)): void;
+        add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
 
         /**
          * Adds `filter` to the list of filters that the user can select between.
@@ -5726,14 +5710,14 @@ export namespace GimpUi {
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
          */
-        get_current_folder(): (string | null);
+        get_current_folder(): string | null;
 
         /**
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
          */
-        get_current_folder_file(): (Gio.File | null);
+        get_current_folder_file(): Gio.File | null;
 
         /**
          * Gets the current folder of `chooser` as an URI.
@@ -5748,7 +5732,7 @@ export namespace GimpUi {
          * usual way to get the selection.
          * @returns the URI for the current folder. Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
          */
-        get_current_folder_uri(): (string | null);
+        get_current_folder_uri(): string | null;
 
         /**
          * Gets the current name in the file selector, as entered by the user in the
@@ -5775,7 +5759,7 @@ export namespace GimpUi {
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
          */
-        get_extra_widget(): (Gtk.Widget | null);
+        get_extra_widget(): Gtk.Widget | null;
 
         /**
          * Gets the {@link Gio.File} for the currently selected file in
@@ -5798,7 +5782,7 @@ export namespace GimpUi {
          * folder.
          * @returns The currently selected filename,  or `null` if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -5820,7 +5804,7 @@ export namespace GimpUi {
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
          */
-        get_filter(): (Gtk.FileFilter | null);
+        get_filter(): Gtk.FileFilter | null;
 
         /**
          * Gets whether only local files can be selected in the
@@ -5834,28 +5818,28 @@ export namespace GimpUi {
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
          */
-        get_preview_file(): (Gio.File | null);
+        get_preview_file(): Gio.File | null;
 
         /**
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
          */
-        get_preview_filename(): (string | null);
+        get_preview_filename(): string | null;
 
         /**
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview,     or `null` if no file is selected. Free with `g_free()`.
          */
-        get_preview_uri(): (string | null);
+        get_preview_uri(): string | null;
 
         /**
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
          */
-        get_preview_widget(): (Gtk.Widget | null);
+        get_preview_widget(): Gtk.Widget | null;
 
         /**
          * Gets whether the preview widget set by `gtk_file_chooser_set_preview_widget()`
@@ -5888,7 +5872,7 @@ export namespace GimpUi {
          * folder.
          * @returns The currently selected URI, or `null`    if no file is selected. If `gtk_file_chooser_set_local_only()` is set to    `true` (the default) a local URI will be returned for any FUSE locations.    Free with `g_free()`
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -5916,14 +5900,14 @@ export namespace GimpUi {
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
          */
-        list_shortcut_folder_uris(): (string[] | null);
+        list_shortcut_folder_uris(): string[] | null;
 
         /**
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders. Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
          */
-        list_shortcut_folders(): (string[] | null);
+        list_shortcut_folders(): string[] | null;
 
         /**
          * Removes a 'choice' that has been added with `gtk_file_chooser_add_choice()`.
@@ -6519,7 +6503,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -6547,7 +6531,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -6581,7 +6565,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -6632,7 +6616,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -6669,7 +6653,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -6724,7 +6708,7 @@ export namespace GimpUi {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -6842,7 +6826,7 @@ export namespace GimpUi {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -6863,7 +6847,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6873,7 +6857,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6882,7 +6866,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6918,7 +6902,7 @@ export namespace GimpUi {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -6934,7 +6918,7 @@ export namespace GimpUi {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -6956,7 +6940,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6967,7 +6951,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6976,7 +6960,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -7141,7 +7125,7 @@ export namespace GimpUi {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -7241,7 +7225,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -7258,7 +7242,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -7282,7 +7266,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -7376,7 +7360,7 @@ export namespace GimpUi {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -7454,7 +7438,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -7471,7 +7455,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -7495,7 +7479,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -7810,9 +7794,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TextView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TextView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -7958,7 +7940,7 @@ export namespace GimpUi {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -7972,7 +7954,7 @@ export namespace GimpUi {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -8190,9 +8172,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ScaleEntry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ScaleEntry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -8420,9 +8400,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ColorSelector.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ColorSelector.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -8742,9 +8720,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -9122,7 +9098,7 @@ export namespace GimpUi {
             helpFunc: never;
             help_id: string;
             helpId: string;
-            parent: (Gtk.Widget | any);
+            parent: Gtk.Widget | any;
         }
     }
 
@@ -9166,7 +9142,7 @@ export namespace GimpUi {
          * @construct-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set parent(val: (Gtk.Widget | any));
+        set parent(val: Gtk.Widget | any);
 
         /**
          * Compile-time signal type information.
@@ -9362,7 +9338,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), drawable_type: GObject.GType, drawable: (Gimp.Drawable | null)): DrawableChooser;
+        static ["new"](title: string | null, label: string | null, drawable_type: GObject.GType, drawable: Gimp.Drawable | null): DrawableChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -9491,9 +9467,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -9516,7 +9490,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](constraint: (ItemConstraintFunc | null)): DrawableComboBox;
+        static ["new"](constraint: ItemConstraintFunc | null): DrawableComboBox;
 
         // Conflicted with GimpUi.IntComboBox.new
         static ["new"](...args: never[]): any;
@@ -10170,9 +10144,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProcedureDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProcedureDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -10280,8 +10252,8 @@ export namespace GimpUi {
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             action: Gimp.FileChooserAction;
             file: Gio.File;
-            label: (string | null);
-            title: (string | null);
+            label: string | null;
+            title: string | null;
         }
     }
 
@@ -10315,8 +10287,8 @@ export namespace GimpUi {
          * @since 3.0
          * @default null
          */
-        get label(): (string | null);
-        set label(val: (string | null));
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * The title to be used for the file selection popup dialog.
@@ -10324,8 +10296,8 @@ export namespace GimpUi {
          * @since 3.0
          * @default File Selection
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -10341,7 +10313,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](action: Gimp.FileChooserAction, label: (string | null), title: (string | null), file: (Gio.File | null)): FileChooser;
+        static ["new"](action: Gimp.FileChooserAction, label: string | null, title: string | null, file: Gio.File | null): FileChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -10379,7 +10351,7 @@ export namespace GimpUi {
          * Note: the label text may contain a mnemonic.
          * @returns the label set.
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * Returns the label widget. This can be useful for instance when
@@ -10396,7 +10368,7 @@ export namespace GimpUi {
          * entry has no placeholder text.
          * @returns the text used for the title of `chooser`'s dialog.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Changes how `chooser` is set to select a file. It may completely
@@ -10427,7 +10399,7 @@ export namespace GimpUi {
          * Setting a `null` label text will hide the label widget.
          * @param text Label text.
          */
-        set_label(text: (string | null)): void;
+        set_label(text: string | null): void;
 
         /**
          * Set the text to be used for the file dialog's title and for entry's
@@ -10437,7 +10409,7 @@ export namespace GimpUi {
          * generic title and there will be no placeholder text in the entry.
          * @param text Dialog's title text.
          */
-        set_title(text: (string | null)): void;
+        set_title(text: string | null): void;
 
         /**
          * The orientation of the orientable.
@@ -10516,9 +10488,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -10542,7 +10512,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), font: (Gimp.Font | null)): FontChooser;
+        static ["new"](title: string | null, label: string | null, font: Gimp.Font | null): FontChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -10615,9 +10585,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Frame.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Frame.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -10641,7 +10609,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: (string | null)): Frame;
+        static ["new"](label: string | null): Frame;
 
         // Signals
         /** @signal */
@@ -10712,9 +10680,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -10738,7 +10704,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), gradient: (Gimp.Gradient | null)): GradientChooser;
+        static ["new"](title: string | null, label: string | null, gradient: Gimp.Gradient | null): GradientChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -11009,7 +10975,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), image: (Gimp.Image | null)): ImageChooser;
+        static ["new"](title: string | null, label: string | null, image: Gimp.Image | null): ImageChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -11138,9 +11104,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -11164,7 +11128,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](constraint: (ImageConstraintFunc | null)): ImageComboBox;
+        static ["new"](constraint: ImageConstraintFunc | null): ImageComboBox;
 
         // Conflicted with GimpUi.IntComboBox.new
         static ["new"](...args: never[]): any;
@@ -11508,7 +11472,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -11536,7 +11500,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -11570,7 +11534,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -11621,7 +11585,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -11658,7 +11622,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -11713,7 +11677,7 @@ export namespace GimpUi {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -12016,7 +11980,7 @@ export namespace GimpUi {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -12037,7 +12001,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -12047,7 +12011,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12056,7 +12020,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -12092,7 +12056,7 @@ export namespace GimpUi {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -12108,7 +12072,7 @@ export namespace GimpUi {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -12130,7 +12094,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -12141,7 +12105,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -12150,7 +12114,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -12315,7 +12279,7 @@ export namespace GimpUi {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -12415,7 +12379,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -12432,7 +12396,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -12456,7 +12420,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -12550,7 +12514,7 @@ export namespace GimpUi {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -12628,7 +12592,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -12645,7 +12609,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -12669,7 +12633,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -13039,7 +13003,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), item_type: GObject.GType, item: (Gimp.Item | null)): ItemChooser;
+        static ["new"](title: string | null, label: string | null, item_type: GObject.GType, item: Gimp.Item | null): ItemChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -13455,7 +13419,7 @@ export namespace GimpUi {
         // Constructor properties interface
         interface ConstructorProps extends Labeled.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             value: number;
-            widget: (Gtk.Widget | any);
+            widget: Gtk.Widget | any;
         }
     }
 
@@ -13777,7 +13741,7 @@ export namespace GimpUi {
         // Constructor properties interface
         interface ConstructorProps extends Labeled.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             value: string;
-            widget: (Gtk.Widget | any);
+            widget: Gtk.Widget | any;
         }
     }
 
@@ -14083,9 +14047,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -14108,7 +14070,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](constraint: (ItemConstraintFunc | null)): LayerComboBox;
+        static ["new"](constraint: ItemConstraintFunc | null): LayerComboBox;
 
         // Conflicted with GimpUi.IntComboBox.new
         static ["new"](...args: never[]): any;
@@ -14215,9 +14177,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -14244,7 +14204,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number), lower: (bigint | number), upper: (bigint | number)): MemsizeEntry;
+        static ["new"](value: bigint | number, lower: bigint | number, upper: bigint | number): MemsizeEntry;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -14279,7 +14239,7 @@ export namespace GimpUi {
          * the value to full Kilobytes.
          * @param value the new value (in Bytes)
          */
-        set_value(value: (bigint | number)): void;
+        set_value(value: bigint | number): void;
 
         /**
          * The orientation of the orientable.
@@ -14431,8 +14391,8 @@ export namespace GimpUi {
             defaultLeftNumber: number;
             default_right_number: number;
             defaultRightNumber: number;
-            default_text: (string | null);
-            defaultText: (string | null);
+            default_text: string | null;
+            defaultText: string | null;
             left_number: number;
             leftNumber: number;
             max_valid_value: number;
@@ -14501,14 +14461,14 @@ export namespace GimpUi {
         /**
          * @default null
          */
-        get default_text(): (string | null);
-        set default_text(val: (string | null));
+        get default_text(): string | null;
+        set default_text(val: string | null);
 
         /**
          * @default null
          */
-        get defaultText(): (string | null);
-        set defaultText(val: (string | null));
+        get defaultText(): string | null;
+        set defaultText(val: string | null);
 
         /**
          * @default 100
@@ -14624,7 +14584,7 @@ export namespace GimpUi {
         /**
          * @returns the string manually set to be shown,          or `null` if values are shown in a normal fashion.
          */
-        get_default_text(): (string | null);
+        get_default_text(): string | null;
 
         get_default_values(): [number, number];
 
@@ -14739,7 +14699,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -14767,7 +14727,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -15056,9 +15016,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -15276,13 +15234,13 @@ export namespace GimpUi {
          * @param page_no The number of the page to get the thumbnail for.
          * @returns The page's label, or `null` if none is          set. This is a newly allocated string that should be `g_free()`'d          when no longer needed.
          */
-        get_page_label(page_no: number): (string | null);
+        get_page_label(page_no: number): string | null;
 
         /**
          * @param page_no The number of the page to get the thumbnail for.
          * @returns The page's thumbnail, or `null` if none          is set. The returned pixbuf is owned by {@link GimpUi.PageSelector} and must          not be unref'ed when no longer needed.
          */
-        get_page_thumbnail(page_no: number): (GdkPixbuf.Pixbuf | null);
+        get_page_thumbnail(page_no: number): GdkPixbuf.Pixbuf | null;
 
         /**
          * @returns A sorted array of page numbers of          selected pages. Use `g_free()` if you don't need the array any longer
@@ -15442,9 +15400,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -15468,7 +15424,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), palette: (Gimp.Palette | null)): PaletteChooser;
+        static ["new"](title: string | null, label: string | null, palette: Gimp.Palette | null): PaletteChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -15556,9 +15512,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -15581,7 +15535,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](constraint: (ItemConstraintFunc | null)): PathComboBox;
+        static ["new"](constraint: ItemConstraintFunc | null): PathComboBox;
 
         // Conflicted with GimpUi.IntComboBox.new
         static ["new"](...args: never[]): any;
@@ -15698,9 +15652,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -15735,7 +15687,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, path: (string | null)): PathEditor;
+        static ["new"](title: string, path: string | null): PathEditor;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -15871,9 +15823,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ResourceChooser.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -15900,7 +15850,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), label: (string | null), pattern: (Gimp.Pattern | null)): PatternChooser;
+        static ["new"](title: string | null, label: string | null, pattern: Gimp.Pattern | null): PatternChooser;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -15987,9 +15937,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -16041,15 +15989,15 @@ export namespace GimpUi {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -16129,7 +16077,7 @@ export namespace GimpUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -16153,7 +16101,7 @@ export namespace GimpUi {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -16177,7 +16125,7 @@ export namespace GimpUi {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -16201,7 +16149,7 @@ export namespace GimpUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -16226,7 +16174,7 @@ export namespace GimpUi {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -16251,7 +16199,7 @@ export namespace GimpUi {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -16315,7 +16263,7 @@ export namespace GimpUi {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -16325,7 +16273,7 @@ export namespace GimpUi {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -16559,7 +16507,7 @@ export namespace GimpUi {
          * @param buffer a pixel buffer the size of the preview
          * @param rowstride the `buffer`'s rowstride
          */
-        draw_buffer(buffer: (Uint8Array | string), rowstride: number): void;
+        draw_buffer(buffer: Uint8Array | string, rowstride: number): void;
 
         /**
          * In most cases, you shouldn't need to access the {@link GimpUi.PreviewArea}
@@ -16845,7 +16793,7 @@ export namespace GimpUi {
          * @param rowstride2 rowstride of `buf2`
          * @param opacity The opacity of the first layer.
          */
-        blend(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf1: (Uint8Array | string), rowstride1: number, buf2: (Uint8Array | string), rowstride2: number, opacity: number): void;
+        blend(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf1: Uint8Array | string, rowstride1: number, buf2: Uint8Array | string, rowstride2: number, opacity: number): void;
 
         /**
          * Draws `buf` on `area` and queues a redraw on the given rectangle.
@@ -16859,7 +16807,7 @@ export namespace GimpUi {
          * @param buf a `guchar` buffer that contains the preview pixel data.
          * @param rowstride rowstride of `buf`
          */
-        draw(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf: (Uint8Array | string), rowstride: number): void;
+        draw(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf: Uint8Array | string, rowstride: number): void;
 
         /**
          * @param args 
@@ -16904,14 +16852,14 @@ export namespace GimpUi {
          * @param mask a `guchar` buffer representing the mask of the second                  layer.
          * @param rowstride_mask rowstride for the mask.
          */
-        mask(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf1: (Uint8Array | string), rowstride1: number, buf2: (Uint8Array | string), rowstride2: number, mask: (Uint8Array | string), rowstride_mask: number): void;
+        mask(x: number, y: number, width: number, height: number, type: Gimp.ImageType, buf1: Uint8Array | string, rowstride1: number, buf2: Uint8Array | string, rowstride2: number, mask: Uint8Array | string, rowstride_mask: number): void;
 
         /**
          * Creates a popup menu that allows one to configure the size and type of
          * the checkerboard pattern that the `area` uses to visualize transparency.
          * @param event the button event that causes the menu to popup or `null`
          */
-        menu_popup(event: (Gdk.EventButton | null)): void;
+        menu_popup(event: Gdk.EventButton | null): void;
 
         /**
          * Reset any previous drawing done through {@link GimpUi.PreviewArea} functions.
@@ -16933,7 +16881,7 @@ export namespace GimpUi {
          * @param colormap a `guchar` buffer that contains the colormap
          * @param num_colors the number of colors in the colormap
          */
-        set_colormap(colormap: (Uint8Array | string), num_colors: number): void;
+        set_colormap(colormap: Uint8Array | string, num_colors: number): void;
 
         /**
          * Usually a {@link GimpUi.PreviewArea} fills the size that it is
@@ -17051,9 +16999,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -17095,7 +17041,7 @@ export namespace GimpUi {
          * Retrieves the name of the currently selected procedure.
          * @returns The name of the selected procedure of `null` if no               procedure is selected.
          */
-        get_selected(): (string | null);
+        get_selected(): string | null;
     }
 
 
@@ -17220,7 +17166,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](procedure: Gimp.Procedure, config: Gimp.ProcedureConfig, title: (string | null)): ProcedureDialog;
+        static ["new"](procedure: Gimp.Procedure, config: Gimp.ProcedureConfig, title: string | null): ProcedureDialog;
 
         // Conflicted with Gtk.Dialog.new
         static ["new"](...args: never[]): any;
@@ -17271,7 +17217,7 @@ export namespace GimpUi {
          * @param properties the list of property names.
          * @returns the {@link Gtk.Box} representing `property`. The                           object belongs to `dialog` and must not be                           freed.
          */
-        fill_box(container_id: string, properties: (string[] | null)): Gtk.Widget;
+        fill_box(container_id: string, properties: string[] | null): Gtk.Widget;
 
         /**
          * Creates a new {@link Gtk.Expander} and packs `title_id` as its title
@@ -17291,7 +17237,7 @@ export namespace GimpUi {
          * @param contents_id the identifier for the contents.
          * @returns the {@link Gtk.Widget} representing `container_id`. The                           object belongs to `dialog` and must not be                           freed.
          */
-        fill_expander(container_id: string, title_id: (string | null), invert_title: boolean, contents_id: (string | null)): Gtk.Widget;
+        fill_expander(container_id: string, title_id: string | null, invert_title: boolean, contents_id: string | null): Gtk.Widget;
 
         /**
          * Creates and populates a new {@link Gtk.FlowBox} with widgets corresponding to
@@ -17310,7 +17256,7 @@ export namespace GimpUi {
          * @param properties the list of property names.
          * @returns the {@link Gtk.FlowBox} representing `property`. The                           object belongs to `dialog` and must not be                           freed.
          */
-        fill_flowbox(container_id: string, properties: (string[] | null)): Gtk.Widget;
+        fill_flowbox(container_id: string, properties: string[] | null): Gtk.Widget;
 
         /**
          * Creates a new {@link Gtk.Frame} and packs `title_id` as its title and
@@ -17330,7 +17276,7 @@ export namespace GimpUi {
          * @param contents_id the identifier for the contents.
          * @returns the {@link Gtk.Widget} representing `container_id`. The                           object belongs to `dialog` and must not be                           freed.
          */
-        fill_frame(container_id: string, title_id: (string | null), invert_title: boolean, contents_id: (string | null)): Gtk.Widget;
+        fill_frame(container_id: string, title_id: string | null, invert_title: boolean, contents_id: string | null): Gtk.Widget;
 
         /**
          * Populate `dialog` with the widgets corresponding to every listed
@@ -17358,7 +17304,7 @@ export namespace GimpUi {
          * type.
          * @param properties the list of property names.
          */
-        fill(properties: (string[] | null)): void;
+        fill(properties: string[] | null): void;
 
         /**
          * Creates and populates a new {@link Gtk.Notebook} with widgets corresponding to every
@@ -17395,7 +17341,7 @@ export namespace GimpUi {
          * @param child2_id the second child's ID.
          * @returns the {@link Gtk.Paned} representing `property`. The                           object belongs to `dialog` and must not be                           freed.
          */
-        fill_paned(container_id: string, orientation: Gtk.Orientation, child1_id: (string | null), child2_id: (string | null)): Gtk.Widget;
+        fill_paned(container_id: string, orientation: Gtk.Orientation, child1_id: string | null, child2_id: string | null): Gtk.Widget;
 
         /**
          * Creates and populates a new {@link Gtk.ScrolledWindow} with a widget corresponding
@@ -17652,7 +17598,7 @@ export namespace GimpUi {
          * @param config_property name of a property of `config`.
          * @param config_invert whether to negate the value of `config_property`.
          */
-        set_sensitive(property: string, sensitive: boolean, config: (GObject.Object | null), config_property: (string | null), config_invert: boolean): void;
+        set_sensitive(property: string, sensitive: boolean, config: GObject.Object | null, config_property: string | null, config_invert: boolean): void;
 
         /**
          * @param args 
@@ -17674,7 +17620,7 @@ export namespace GimpUi {
          * @param values an array of GValues which could be values of `config_property`.
          * @param in_values whether `property` should be sensitive when `config_property`                   is one of `values`, or the opposite.
          */
-        set_sensitive_if_in(property: string, config: (GObject.Object | null), config_property: string, values: Gimp.ValueArray, in_values: boolean): void;
+        set_sensitive_if_in(property: string, config: GObject.Object | null, config_property: string, values: Gimp.ValueArray, in_values: boolean): void;
     }
 
 
@@ -17730,9 +17676,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ProgressBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ProgressBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -18202,7 +18146,7 @@ export namespace GimpUi {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -18223,7 +18167,7 @@ export namespace GimpUi {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -18233,7 +18177,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -18242,7 +18186,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -18278,7 +18222,7 @@ export namespace GimpUi {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -18294,7 +18238,7 @@ export namespace GimpUi {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -18316,7 +18260,7 @@ export namespace GimpUi {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -18327,7 +18271,7 @@ export namespace GimpUi {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -18336,7 +18280,7 @@ export namespace GimpUi {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -18443,9 +18387,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LabelSpin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LabelSpin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -18594,9 +18536,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Preview.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Preview.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -18737,9 +18677,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -18811,7 +18749,7 @@ export namespace GimpUi {
          * @param value_spinbutton The spinbutton to display the field's value.
          * @param refval_spinbutton The spinbutton to display the field's reference value.
          */
-        add_field(value_spinbutton: Gtk.SpinButton, refval_spinbutton: (Gtk.SpinButton | null)): void;
+        add_field(value_spinbutton: Gtk.SpinButton, refval_spinbutton: Gtk.SpinButton | null): void;
 
         /**
          * Attaches a {@link Gtk.Label} to the {@link GimpUi.SizeEntry} (which is a {@link Gtk.Grid}).
@@ -19136,9 +19074,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.SpinButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.SpinButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -19171,7 +19107,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](adjustment: (Gtk.Adjustment | null), climb_rate: number, digits: number): SpinButton;
+        static ["new"](adjustment: Gtk.Adjustment | null, climb_rate: number, digits: number): SpinButton;
 
         // Conflicted with Gtk.Entry.new
         static ["new"](...args: never[]): any;
@@ -19670,7 +19606,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -19698,7 +19634,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -19732,7 +19668,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -19783,7 +19719,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -19820,7 +19756,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -19875,7 +19811,7 @@ export namespace GimpUi {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -19978,9 +19914,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -20087,7 +20021,7 @@ export namespace GimpUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -20115,7 +20049,7 @@ export namespace GimpUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -20149,7 +20083,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -20200,7 +20134,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -20237,7 +20171,7 @@ export namespace GimpUi {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -20292,7 +20226,7 @@ export namespace GimpUi {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -20491,7 +20425,7 @@ export namespace GimpUi {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -20591,7 +20525,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -20608,7 +20542,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -20632,7 +20566,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -20726,7 +20660,7 @@ export namespace GimpUi {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -20804,7 +20738,7 @@ export namespace GimpUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -20821,7 +20755,7 @@ export namespace GimpUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -20845,7 +20779,7 @@ export namespace GimpUi {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -21037,9 +20971,7 @@ export namespace GimpUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProcedureDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProcedureDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -21062,7 +20994,7 @@ export namespace GimpUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](procedure: Gimp.VectorLoadProcedure, config: Gimp.ProcedureConfig, extracted_data: (Gimp.VectorLoadData | null), file: (Gio.File | null)): VectorLoadProcedureDialog;
+        static ["new"](procedure: Gimp.VectorLoadProcedure, config: Gimp.ProcedureConfig, extracted_data: Gimp.VectorLoadData | null, file: Gio.File | null): VectorLoadProcedureDialog;
 
         // Conflicted with GimpUi.ProcedureDialog.new
         static ["new"](...args: never[]): any;

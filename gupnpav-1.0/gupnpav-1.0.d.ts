@@ -125,7 +125,7 @@ export namespace GUPnPAV {
         static OTHER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -400,13 +400,10 @@ export namespace GUPnPAV {
 
     namespace CDSLastChangeParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -494,8 +491,8 @@ export namespace GUPnPAV {
             container_update_id: number;
             containerUpdateId: number;
             searchable: boolean;
-            storage_used: (bigint | number);
-            storageUsed: (bigint | number);
+            storage_used: bigint | number;
+            storageUsed: bigint | number;
             total_deleted_child_count: number;
             totalDeletedChildCount: number;
         }
@@ -548,14 +545,14 @@ export namespace GUPnPAV {
          * @default -1
          */
         get storage_used(): number;
-        set storage_used(val: (bigint | number));
+        set storage_used(val: bigint | number);
 
         /**
          * The number of bytes used by all child items of this container.
          * @default -1
          */
         get storageUsed(): number;
-        set storageUsed(val: (bigint | number));
+        set storageUsed(val: bigint | number);
 
         /**
          * Total deleted child count of this container.
@@ -703,7 +700,7 @@ export namespace GUPnPAV {
          * Set the number of bytes used by all child items of the `container`.
          * @param storage_used The number of bytes used by all child items of the                `container` or -1 if unknown.
          */
-        set_storage_used(storage_used: (bigint | number)): void;
+        set_storage_used(storage_used: bigint | number): void;
 
         /**
          * Set the container update ID of the `container`.
@@ -1187,7 +1184,7 @@ export namespace GUPnPAV {
 
         // Constructor properties interface
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
-            lifetime: (bigint | number);
+            lifetime: bigint | number;
             ref_id: string;
             refId: string;
         }
@@ -1205,7 +1202,7 @@ export namespace GUPnPAV {
          * @default -1
          */
         get lifetime(): number;
-        set lifetime(val: (bigint | number));
+        set lifetime(val: bigint | number);
 
         /**
          * The ref ID of this item.
@@ -1263,7 +1260,7 @@ export namespace GUPnPAV {
         /**
          * @param lifetime The lifetime (in seconds) of this item in a media collection.
          */
-        set_lifetime(lifetime: (bigint | number)): void;
+        set_lifetime(lifetime: bigint | number): void;
 
         /**
          * Set the ref ID of the `item`.
@@ -2045,9 +2042,7 @@ export namespace GUPnPAV {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2150,25 +2145,25 @@ export namespace GUPnPAV {
             bitrate: number;
             bits_per_sample: number;
             bitsPerSample: number;
-            cleartext_size: (bigint | number);
-            cleartextSize: (bigint | number);
+            cleartext_size: bigint | number;
+            cleartextSize: bigint | number;
             color_depth: number;
             colorDepth: number;
             dlna_namespace: never;
             dlnaNamespace: never;
-            duration: (bigint | number);
+            duration: bigint | number;
             height: number;
             import_uri: string;
             importUri: string;
             protection: string;
-            protocol_info: (ProtocolInfo | null);
-            protocolInfo: (ProtocolInfo | null);
+            protocol_info: ProtocolInfo | null;
+            protocolInfo: ProtocolInfo | null;
             pv_namespace: never;
             pvNamespace: never;
             sample_freq: number;
             sampleFreq: number;
-            size: (bigint | number);
-            size64: (bigint | number);
+            size: bigint | number;
+            size64: bigint | number;
             subtitle_file_type: string;
             subtitleFileType: string;
             subtitle_file_uri: string;
@@ -2177,7 +2172,7 @@ export namespace GUPnPAV {
             trackTotal: number;
             update_count: number;
             updateCount: number;
-            uri: (string | null);
+            uri: string | null;
             width: number;
             xml_node: never;
             xmlNode: never;
@@ -2230,13 +2225,13 @@ export namespace GUPnPAV {
          * @default -1
          */
         get cleartext_size(): number;
-        set cleartext_size(val: (bigint | number));
+        set cleartext_size(val: bigint | number);
 
         /**
          * @default -1
          */
         get cleartextSize(): number;
-        set cleartextSize(val: (bigint | number));
+        set cleartextSize(val: bigint | number);
 
         /**
          * The color-depth of this image/video resource.
@@ -2271,7 +2266,7 @@ export namespace GUPnPAV {
          * @default -1
          */
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         /**
          * The height of this image/video resource.
@@ -2304,14 +2299,14 @@ export namespace GUPnPAV {
         /**
          * The protocol info associated with this resource.
          */
-        get protocol_info(): (ProtocolInfo | null);
-        set protocol_info(val: (ProtocolInfo | null));
+        get protocol_info(): ProtocolInfo | null;
+        set protocol_info(val: ProtocolInfo | null);
 
         /**
          * The protocol info associated with this resource.
          */
-        get protocolInfo(): (ProtocolInfo | null);
-        set protocolInfo(val: (ProtocolInfo | null));
+        get protocolInfo(): ProtocolInfo | null;
+        set protocolInfo(val: ProtocolInfo | null);
 
         /**
          * Pointer to the PV metadata namespace registered with the
@@ -2346,14 +2341,14 @@ export namespace GUPnPAV {
          * @default -1
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * The size (in bytes) of this resource.
          * @default -1
          */
         get size64(): number;
-        set size64(val: (bigint | number));
+        set size64(val: bigint | number);
 
         /**
          * Type of external subtitle file. Usually SRT or SMI.
@@ -2413,8 +2408,8 @@ export namespace GUPnPAV {
          * The URI associated with this resource.
          * @default null
          */
-        get uri(): (string | null);
-        set uri(val: (string | null));
+        get uri(): string | null;
+        set uri(val: string | null);
 
         /**
          * The width of this image/video resource.
@@ -2528,7 +2523,7 @@ export namespace GUPnPAV {
          * Get the protocol info associated with the `resource`.
          * @returns The protocol info associated with the `resource` or `null`. The returned object must not be unrefed.
          */
-        get_protocol_info(): (ProtocolInfo | null);
+        get_protocol_info(): ProtocolInfo | null;
 
         /**
          * Get the pointer to the DLNA metadata namespace registered with the XML
@@ -2581,7 +2576,7 @@ export namespace GUPnPAV {
          * Get the URI associated with the `resource`.
          * @returns The of URI the `resource` or `null`.
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Get the width of this image/video resource.
@@ -2621,7 +2616,7 @@ export namespace GUPnPAV {
          * unset this property.
          * @param cleartext_size The size (in bytes)
          */
-        set_cleartext_size(cleartext_size: (bigint | number)): void;
+        set_cleartext_size(cleartext_size: bigint | number): void;
 
         /**
          * Set the color-depth of this image/video resource. Passing a negative number
@@ -2635,7 +2630,7 @@ export namespace GUPnPAV {
          * will unset this property.
          * @param duration The duration (in seconds)
          */
-        set_duration(duration: (bigint | number)): void;
+        set_duration(duration: bigint | number): void;
 
         /**
          * Set the height of this image/video resource. Setting both width and height to
@@ -2675,14 +2670,14 @@ export namespace GUPnPAV {
          * unset this property.
          * @param size The size (in bytes)
          */
-        set_size(size: (bigint | number)): void;
+        set_size(size: bigint | number): void;
 
         /**
          * Set the size (in bytes) of the `resource`. Passing a negative number will
          * unset this property.
          * @param size The size (in bytes)
          */
-        set_size64(size: (bigint | number)): void;
+        set_size64(size: bigint | number): void;
 
         /**
          * Set the type of an external subtitle file, specified via
@@ -2691,14 +2686,14 @@ export namespace GUPnPAV {
          * When `type` is `null` the value is removed.
          * @param type An URI to an external subtitle file
          */
-        set_subtitle_file_type(type: (string | null)): void;
+        set_subtitle_file_type(type: string | null): void;
 
         /**
          * Set the URI of an external subtitle file to be used with this resource.
          * When `uri` is `null` the value is removed.
          * @param uri An URI to an external subtitle file or `null` to remove.
          */
-        set_subtitle_file_uri(uri: (string | null)): void;
+        set_subtitle_file_uri(uri: string | null): void;
 
         /**
          * Set the total number of tracks in this resource.
@@ -2804,7 +2799,7 @@ export namespace GUPnPAV {
 
         _init(...args: any[]): void;
 
-        static ["new"](language: (string | null)): DIDLLiteWriter;
+        static ["new"](language: string | null): DIDLLiteWriter;
 
         // Signals
         /** @signal */
@@ -2970,13 +2965,10 @@ export namespace GUPnPAV {
 
     namespace FeatureListParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3021,19 +3013,16 @@ export namespace GUPnPAV {
          * @param text The feature list string to be parsed
          * @returns The list of features or `null` if an error occured.
          */
-        parse_text(text: string): (Feature[] | null);
+        parse_text(text: string): Feature[] | null;
     }
 
 
     namespace LastChangeParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3087,7 +3076,7 @@ export namespace GUPnPAV {
             author: string;
             data: string;
             mutable: boolean;
-            title: (string | null);
+            title: string | null;
         }
     }
 
@@ -3125,8 +3114,8 @@ export namespace GUPnPAV {
          * The title of this media collection.
          * @default null
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3188,7 +3177,7 @@ export namespace GUPnPAV {
         /**
          * @returns The title of this media collection or `null` if not set.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Set the author of the media collection
@@ -3225,14 +3214,14 @@ export namespace GUPnPAV {
             dlnaFlags: DLNAFlags;
             dlna_operation: DLNAOperation;
             dlnaOperation: DLNAOperation;
-            dlna_profile: (string | null);
-            dlnaProfile: (string | null);
-            mime_type: (string | null);
-            mimeType: (string | null);
-            network: (string | null);
-            play_speeds: (string[] | null);
-            playSpeeds: (string[] | null);
-            protocol: (string | null);
+            dlna_profile: string | null;
+            dlnaProfile: string | null;
+            mime_type: string | null;
+            mimeType: string | null;
+            network: string | null;
+            play_speeds: string[] | null;
+            playSpeeds: string[] | null;
+            protocol: string | null;
         }
     }
 
@@ -3289,57 +3278,57 @@ export namespace GUPnPAV {
          * The DLNA profile of this info.
          * @default null
          */
-        get dlna_profile(): (string | null);
-        set dlna_profile(val: (string | null));
+        get dlna_profile(): string | null;
+        set dlna_profile(val: string | null);
 
         /**
          * The DLNA profile of this info.
          * @default null
          */
-        get dlnaProfile(): (string | null);
-        set dlnaProfile(val: (string | null));
+        get dlnaProfile(): string | null;
+        set dlnaProfile(val: string | null);
 
         /**
          * The MIME-type of this info.
          * @default null
          */
-        get mime_type(): (string | null);
-        set mime_type(val: (string | null));
+        get mime_type(): string | null;
+        set mime_type(val: string | null);
 
         /**
          * The MIME-type of this info.
          * @default null
          */
-        get mimeType(): (string | null);
-        set mimeType(val: (string | null));
+        get mimeType(): string | null;
+        set mimeType(val: string | null);
 
         /**
          * The network this info is associated with.
          * @default null
          */
-        get network(): (string | null);
-        set network(val: (string | null));
+        get network(): string | null;
+        set network(val: string | null);
 
         /**
          * The allowed play speeds on this info in the form of array of
          * strings.
          */
-        get play_speeds(): (string[] | null);
-        set play_speeds(val: (string[] | null));
+        get play_speeds(): string[] | null;
+        set play_speeds(val: string[] | null);
 
         /**
          * The allowed play speeds on this info in the form of array of
          * strings.
          */
-        get playSpeeds(): (string[] | null);
-        set playSpeeds(val: (string[] | null));
+        get playSpeeds(): string[] | null;
+        set playSpeeds(val: string[] | null);
 
         /**
          * The protocol of this info.
          * @default null
          */
-        get protocol(): (string | null);
-        set protocol(val: (string | null));
+        get protocol(): string | null;
+        set protocol(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3395,31 +3384,31 @@ export namespace GUPnPAV {
          * Get the DLNA profile of this info.
          * @returns The DLNA profile of this info or `null`. This string should not be freed.
          */
-        get_dlna_profile(): (string | null);
+        get_dlna_profile(): string | null;
 
         /**
          * Get the MIME-type of this info.
          * @returns The MIME-type of this info or `null`. This string should not be freed.
          */
-        get_mime_type(): (string | null);
+        get_mime_type(): string | null;
 
         /**
          * Get the network this info is associated with.
          * @returns The network string or `null`. This string should not be freed.
          */
-        get_network(): (string | null);
+        get_network(): string | null;
 
         /**
          * Get the allowed play speeds on this info in the form of array of strings.
          * @returns The allowed play speeds as array of strings or `null`. This return array and it's content must not be modified or freed.
          */
-        get_play_speeds(): (string[] | null);
+        get_play_speeds(): string[] | null;
 
         /**
          * Get the protocol of this info.
          * @returns The protocol of this info or `null`. This string should not be freed.
          */
-        get_protocol(): (string | null);
+        get_protocol(): string | null;
 
         /**
          * Checks if the given protocolInfo string is compatible with `info`.
@@ -3480,7 +3469,7 @@ export namespace GUPnPAV {
          * Provides the string representation of `info`.
          * @returns String representation of `info`. `g_free` after usage.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
     }
 
 
@@ -3521,13 +3510,11 @@ export namespace GUPnPAV {
              * @signal
              * @run-last
              */
-            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: null) => (boolean | void);
+            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: null) => boolean | void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

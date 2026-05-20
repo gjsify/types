@@ -365,7 +365,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application with process ID `pid`.
      * @since 2.6
      */
-    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: (bigint | number), usage: ResourceUsage): void;
+    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: bigint | number, usage: ResourceUsage): void;
 
     /**
      * Sets the role of the libwnck user.
@@ -390,7 +390,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID `xid`.
      * @since 2.6
      */
-    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: (bigint | number), usage: ResourceUsage): void;
+    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: bigint | number, usage: ResourceUsage): void;
 
     /**
      * @gir-type Flags
@@ -640,7 +640,7 @@ export namespace Wnck {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            window: (never | any);
+            window: never | any;
         }
     }
 
@@ -657,7 +657,7 @@ export namespace Wnck {
          * @construct-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get window(): (null | any);
+        get window(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -745,9 +745,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -791,7 +789,7 @@ export namespace Wnck {
          * as X window ID.
          * @param xwindow the X window ID of a group leader.
          */
-        static get(xwindow: (bigint | number)): Application;
+        static get(xwindow: bigint | number): Application;
 
         // Virtual methods
         /**
@@ -881,9 +879,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -985,9 +981,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1103,7 +1097,7 @@ export namespace Wnck {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1124,7 +1118,7 @@ export namespace Wnck {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1134,7 +1128,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -1143,7 +1137,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1179,7 +1173,7 @@ export namespace Wnck {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -1195,7 +1189,7 @@ export namespace Wnck {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1217,7 +1211,7 @@ export namespace Wnck {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1228,7 +1222,7 @@ export namespace Wnck {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under &lt;child&gt;.
@@ -1237,7 +1231,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1422,9 +1416,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1489,7 +1481,7 @@ export namespace Wnck {
          * sought {@link Wnck.Screen} before, and returns `null`.
          * @param root_window_id an X window ID.
          */
-        static get_for_root(root_window_id: (bigint | number)): Screen;
+        static get_for_root(root_window_id: bigint | number): Screen;
 
         // Virtual methods
         /**
@@ -1820,9 +1812,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.MenuBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.MenuBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1931,9 +1921,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2145,9 +2133,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2192,7 +2178,7 @@ export namespace Wnck {
          * window IDs.
          * @param xwindow an X window ID.
          */
-        static get(xwindow: (bigint | number)): Window;
+        static get(xwindow: bigint | number): Window;
 
         // Virtual methods
         /**
@@ -2806,9 +2792,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

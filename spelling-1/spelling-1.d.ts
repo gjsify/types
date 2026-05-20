@@ -49,7 +49,7 @@ export namespace Spelling {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            language: (string | null);
+            language: string | null;
             provider: Provider;
         }
     }
@@ -68,8 +68,8 @@ export namespace Spelling {
          * {@link Spelling.Provider}. For example, `en_US`.
          * @default null
          */
-        get language(): (string | null);
-        set language(val: (string | null));
+        get language(): string | null;
+        set language(val: string | null);
 
         /**
          * The "provider" property contains the provider that is providing
@@ -96,7 +96,7 @@ export namespace Spelling {
 
         _init(...args: any[]): void;
 
-        static ["new"](provider: (Provider | null), language: (string | null)): Checker;
+        static ["new"](provider: Provider | null, language: string | null): Checker;
 
         // Signals
         /** @signal */
@@ -130,7 +130,7 @@ export namespace Spelling {
          * @param word_len length of the word, in bytes
          * @returns `true` if the dictionary contains the word
          */
-        check_word(word: string, word_len: (bigint | number)): boolean;
+        check_word(word: string, word_len: bigint | number): boolean;
 
         /**
          * Gets the extra word characters of the active dictionary.
@@ -142,7 +142,7 @@ export namespace Spelling {
          * Gets the language being used by the spell checker.
          * @returns a string describing the current language.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * Gets the spell provider used by the spell checker.
@@ -163,7 +163,7 @@ export namespace Spelling {
          * @param word a word to be checked
          * @returns A list of possible corrections, or `null`.
          */
-        list_corrections(word: string): (string[] | null);
+        list_corrections(word: string): string[] | null;
 
         /**
          * Sets the language code to use when communicating with the provider,
@@ -182,7 +182,7 @@ export namespace Spelling {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            code: (string | null);
+            code: string | null;
         }
     }
 
@@ -199,7 +199,7 @@ export namespace Spelling {
          * @construct-only
          * @default null
          */
-        get code(): (string | null);
+        get code(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -241,13 +241,13 @@ export namespace Spelling {
          * @param word_len length of the word, in bytes
          * @returns `true` if the dictionary contains the word
          */
-        contains_word(word: string, word_len: (bigint | number)): boolean;
+        contains_word(word: string, word_len: bigint | number): boolean;
 
         /**
          * Gets the language code of the dictionary, or `null` if undefined.
          * @returns the language code of the dictionary
          */
-        get_code(): (string | null);
+        get_code(): string | null;
 
         /**
          * Gets the extra word characters of the dictionary.
@@ -267,7 +267,7 @@ export namespace Spelling {
          * @param word_len the length of `word`, or -1 if `word` is zero-terminated
          * @returns A list of possible corrections, or `null`.
          */
-        list_corrections(word: string, word_len: (bigint | number)): (string[] | null);
+        list_corrections(word: string, word_len: bigint | number): string[] | null;
     }
 
 
@@ -281,9 +281,9 @@ export namespace Spelling {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            code: (string | null);
-            group: (string | null);
-            name: (string | null);
+            code: string | null;
+            group: string | null;
+            name: string | null;
         }
     }
 
@@ -300,21 +300,21 @@ export namespace Spelling {
          * @construct-only
          * @default null
          */
-        get code(): (string | null);
+        get code(): string | null;
 
         /**
          * A group for sorting, usually the country name.
          * @construct-only
          * @default null
          */
-        get group(): (string | null);
+        get group(): string | null;
 
         /**
          * The name of the language.
          * @construct-only
          * @default null
          */
-        get name(): (string | null);
+        get name(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -348,19 +348,19 @@ export namespace Spelling {
          * Gets the code of the language, or `null` if undefined.
          * @returns the code of the language
          */
-        get_code(): (string | null);
+        get_code(): string | null;
 
         /**
          * Gets the group of the language, or `null` if undefined.
          * @returns the group of the language
          */
-        get_group(): (string | null);
+        get_group(): string | null;
 
         /**
          * Gets the name of the language, or `null` if undefined.
          * @returns the name of the language
          */
-        get_name(): (string | null);
+        get_name(): string | null;
     }
 
 
@@ -372,8 +372,8 @@ export namespace Spelling {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            display_name: (string | null);
-            displayName: (string | null);
+            display_name: string | null;
+            displayName: string | null;
         }
     }
 
@@ -390,14 +390,14 @@ export namespace Spelling {
          * @construct-only
          * @default null
          */
-        get display_name(): (string | null);
+        get display_name(): string | null;
 
         /**
          * The display name.
          * @construct-only
          * @default null
          */
-        get displayName(): (string | null);
+        get displayName(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -438,13 +438,13 @@ export namespace Spelling {
          * if the provider doesn't support any of them.
          * @returns the default language code
          */
-        get_default_code(): (string | null);
+        get_default_code(): string | null;
 
         /**
          * Gets the display name of the provider, or `null` if undefined.
          * @returns the display name of the provider
          */
-        get_display_name(): (string | null);
+        get_display_name(): string | null;
 
         /**
          * Gets a {@link Gio.ListModel} of languages supported by the provider.
@@ -458,7 +458,7 @@ export namespace Spelling {
          * @param language the language to load such as `en_US`.
          * @returns a {@link Spelling.Dictionary} or `null`
          */
-        load_dictionary(language: string): (Dictionary | null);
+        load_dictionary(language: string): Dictionary | null;
 
         /**
          * Checks of `language` is supported by the provider.
@@ -480,10 +480,10 @@ export namespace Spelling {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
-            buffer: (GtkSource.Buffer | null);
-            checker: (Checker | null);
+            buffer: GtkSource.Buffer | null;
+            checker: Checker | null;
             enabled: boolean;
-            language: (string | null);
+            language: string | null;
         }
     }
 
@@ -500,13 +500,13 @@ export namespace Spelling {
          * The {@link GtkSource.Buffer}.
          * @construct-only
          */
-        get buffer(): (GtkSource.Buffer | null);
+        get buffer(): GtkSource.Buffer | null;
 
         /**
          * The {@link Spelling.Checker}.
          */
-        get checker(): (Checker | null);
-        set checker(val: (Checker | null));
+        get checker(): Checker | null;
+        set checker(val: Checker | null);
 
         /**
          * Whether spellcheck is enabled.
@@ -519,8 +519,8 @@ export namespace Spelling {
          * The language code, such as `en_US`.
          * @default null
          */
-        get language(): (string | null);
-        set language(val: (string | null));
+        get language(): string | null;
+        set language(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -556,13 +556,13 @@ export namespace Spelling {
          * Gets the underlying buffer for the adapter.
          * @returns a {@link GtkSource.Buffer}
          */
-        get_buffer(): (GtkSource.Buffer | null);
+        get_buffer(): GtkSource.Buffer | null;
 
         /**
          * Gets the checker used by the adapter.
          * @returns a {@link Spelling.Checker} or `null`
          */
-        get_checker(): (Checker | null);
+        get_checker(): Checker | null;
 
         /**
          * Gets if the spellcheck is enabled.
@@ -574,7 +574,7 @@ export namespace Spelling {
          * Gets the checker language.
          * @returns a language code
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * Gets the menu model containing corrections
@@ -586,7 +586,7 @@ export namespace Spelling {
          * Gets the tag used for potentially misspelled words.
          * @returns a {@link Gtk.TextTag} or `null`
          */
-        get_tag(): (Gtk.TextTag | null);
+        get_tag(): Gtk.TextTag | null;
 
         /**
          * Invalidate the spelling engine, to force parsing again.
@@ -694,7 +694,7 @@ export namespace Spelling {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -740,7 +740,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -754,7 +754,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -778,7 +778,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -800,7 +800,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -927,7 +927,7 @@ export namespace Spelling {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -974,7 +974,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -988,7 +988,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1012,7 +1012,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1034,7 +1034,7 @@ export namespace Spelling {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.

@@ -312,7 +312,7 @@ export namespace EpcUi {
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             message: string;
             progress: number;
-            title: (string | any);
+            title: string | any;
         }
     }
 
@@ -331,9 +331,9 @@ export namespace EpcUi {
         set progress(val: number);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get title(): (string | any);
+        get title(): string | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set title(val: (string | any));
+        set title(val: string | any);
 
         /**
          * Compile-time signal type information.

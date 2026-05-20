@@ -33,9 +33,7 @@ export namespace ArrowCUDA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Arrow.Buffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Arrow.Buffer.ConstructorProps {}
     }
 
     /**
@@ -58,7 +56,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, size: (bigint | number)): Buffer;
+        static ["new"](context: Context, size: bigint | number): Buffer;
 
         // Conflicted with Arrow.Buffer.new
         static ["new"](...args: never[]): any;
@@ -85,14 +83,14 @@ export namespace ArrowCUDA {
          * @param data Data on CPU host to be copied.
          * @returns `true` on success, `false` if there was an error.
          */
-        copy_from_host(data: (Uint8Array | string)): boolean;
+        copy_from_host(data: Uint8Array | string): boolean;
 
         /**
          * @param position The offset of memory on GPU device to be copied.
          * @param size The size of memory on GPU device to be copied in bytes.
          * @returns A {@link GLib.Bytes} that have copied memory on CPU   host on success, `null` on error.
          */
-        copy_to_host(position: (bigint | number), size: (bigint | number)): GLib.Bytes;
+        copy_to_host(position: bigint | number, size: bigint | number): GLib.Bytes;
 
         /**
          * @returns A newly created   {@link ArrowCUDA.IPCMemoryHandle} to handle the exported buffer on   success, `null` on error
@@ -109,7 +107,7 @@ export namespace ArrowCUDA {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns A newly created {@link Arrow.RecordBatch} on   success, `null` on error. The record batch data is located on GPU.
          */
-        read_record_batch(schema: Arrow.Schema, options: (Arrow.ReadOptions | null)): Arrow.RecordBatch;
+        read_record_batch(schema: Arrow.Schema, options: Arrow.ReadOptions | null): Arrow.RecordBatch;
     }
 
 
@@ -121,9 +119,7 @@ export namespace ArrowCUDA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Arrow.BufferInputStream.ConstructorProps, Arrow.File.ConstructorProps, Arrow.Readable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Arrow.BufferInputStream.ConstructorProps, Arrow.File.ConstructorProps, Arrow.Readable.ConstructorProps {}
     }
 
     /**
@@ -170,9 +166,7 @@ export namespace ArrowCUDA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Arrow.OutputStream.ConstructorProps, Arrow.File.ConstructorProps, Arrow.Writable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Arrow.OutputStream.ConstructorProps, Arrow.File.ConstructorProps, Arrow.Writable.ConstructorProps {}
     }
 
     /**
@@ -225,7 +219,7 @@ export namespace ArrowCUDA {
          * @param size A size of CPU buffer in bytes.
          * @returns `true` on success, `false` if there was an error. Sets CPU buffer size. to limit `cudaMemcpy()` calls. If CPU buffer size is `0`, buffering is disabled. The default is `0`.
          */
-        set_buffer_size(size: (bigint | number)): boolean;
+        set_buffer_size(size: bigint | number): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -257,7 +251,7 @@ export namespace ArrowCUDA {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -323,13 +317,10 @@ export namespace ArrowCUDA {
 
     namespace DeviceManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -390,9 +381,7 @@ export namespace ArrowCUDA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Arrow.MutableBuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Arrow.MutableBuffer.ConstructorProps {}
     }
 
     /**
@@ -415,7 +404,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ["new"](gpu_number: number, size: (bigint | number)): HostBuffer;
+        static ["new"](gpu_number: number, size: bigint | number): HostBuffer;
 
         // Conflicted with Arrow.MutableBuffer.new
         static ["new"](...args: never[]): any;
@@ -481,7 +470,7 @@ export namespace ArrowCUDA {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (Uint8Array | string)): IPCMemoryHandle;
+        static ["new"](data: Uint8Array | string): IPCMemoryHandle;
 
         // Signals
         /** @signal */

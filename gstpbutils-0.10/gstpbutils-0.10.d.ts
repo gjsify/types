@@ -203,10 +203,7 @@ export namespace GstPbutils {
         static $gtype: GObject.GType<GstInstallPluginsContext>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): GstInstallPluginsContext;
 

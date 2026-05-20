@@ -613,7 +613,7 @@ export namespace AyatanaAppIndicator3 {
          * @param icon_name The name of the attention icon to set for this indicator
          * @param icon_desc A textual description of the icon
          */
-        set_attention_icon_full(icon_name: string, icon_desc: (string | null)): void;
+        set_attention_icon_full(icon_name: string, icon_desc: string | null): void;
 
         /**
          * Wrapper function for `app_indicator_set_icon_full()` with a NULL
@@ -632,7 +632,7 @@ export namespace AyatanaAppIndicator3 {
          * @param icon_name The icon name to set.
          * @param icon_desc A textual description of the icon for accessibility
          */
-        set_icon_full(icon_name: string, icon_desc: (string | null)): void;
+        set_icon_full(icon_name: string, icon_desc: string | null): void;
 
         /**
          * Sets the path to use when searching for icons.
@@ -657,7 +657,7 @@ export namespace AyatanaAppIndicator3 {
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.menu}.
          * @param menu A {@link Gtk.Menu} to set
          */
-        set_menu(menu: (Gtk.Menu | null)): void;
+        set_menu(menu: Gtk.Menu | null): void;
 
         /**
          * Sets the ordering index for the app indicator which effects the
@@ -680,7 +680,7 @@ export namespace AyatanaAppIndicator3 {
          * Setting `menuitem` to `null` causes to disable this feature.
          * @param menuitem A {@link Gtk.Widget} to be activated on secondary activation
          */
-        set_secondary_activate_target(menuitem: (Gtk.Widget | null)): void;
+        set_secondary_activate_target(menuitem: Gtk.Widget | null): void;
 
         /**
          * Wrapper function for property {@link AyatanaAppIndicator3.Indicator.status}.
@@ -700,7 +700,7 @@ export namespace AyatanaAppIndicator3 {
          * Setting `title` to `null` removes the title.
          * @param title Title of the app indicator
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
     }
 
 

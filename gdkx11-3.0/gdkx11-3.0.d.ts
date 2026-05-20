@@ -70,7 +70,7 @@ export namespace GdkX11 {
      * @returns The {@link Gdk.Device} wrapping the device ID,          or `null` if the given ID doesn’t currently represent a device.
      * @since 3.2
      */
-    function x11_device_manager_lookup(device_manager: X11DeviceManagerCore, device_id: number): (X11DeviceCore | null);
+    function x11_device_manager_lookup(device_manager: X11DeviceManagerCore, device_id: number): X11DeviceCore | null;
 
     /**
      * Frees the data returned from `gdk_x11_display_string_to_compound_text()`.
@@ -211,7 +211,7 @@ export namespace GdkX11 {
      * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or `null` to remove the property.
      * @since 2.24
      */
-    function x11_set_sm_client_id(sm_client_id: (string | null)): void;
+    function x11_set_sm_client_id(sm_client_id: string | null): void;
 
     /**
      * Ungrab the default display after it has been grabbed with
@@ -244,9 +244,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {}
     }
 
     /**
@@ -292,9 +290,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Cursor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Cursor.ConstructorProps {}
     }
 
     /**
@@ -366,9 +362,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Device.ConstructorProps {}
     }
 
     /**
@@ -413,9 +407,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {}
     }
 
     /**
@@ -602,13 +594,10 @@ export namespace GdkX11 {
 
     namespace X11Display {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Display.SignalSignatures {
-        }
+        interface SignalSignatures extends Gdk.Display.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Display.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Display.ConstructorProps {}
     }
 
     /**
@@ -733,7 +722,7 @@ export namespace GdkX11 {
          * @param theme the name of the cursor theme to use, or `null` to unset         a previously set value
          * @param size the cursor size to use, or 0 to keep the previous size
          */
-        set_cursor_theme(theme: (string | null), size: number): void;
+        set_cursor_theme(theme: string | null, size: number): void;
 
         /**
          * Sets the startup notification ID for a display.
@@ -810,9 +799,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {}
     }
 
     /**
@@ -852,13 +839,10 @@ export namespace GdkX11 {
 
     namespace X11DragContext {
         // Signal signatures
-        interface SignalSignatures extends Gdk.DragContext.SignalSignatures {
-        }
+        interface SignalSignatures extends Gdk.DragContext.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.DragContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.DragContext.ConstructorProps {}
     }
 
     /**
@@ -905,9 +889,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
     }
 
     /**
@@ -947,13 +929,10 @@ export namespace GdkX11 {
 
     namespace X11Keymap {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Keymap.SignalSignatures {
-        }
+        interface SignalSignatures extends Gdk.Keymap.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Keymap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Keymap.ConstructorProps {}
     }
 
     /**
@@ -1029,9 +1008,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
     }
 
     /**
@@ -1088,9 +1065,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Screen.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Screen.ConstructorProps {}
     }
 
     /**
@@ -1201,13 +1176,10 @@ export namespace GdkX11 {
 
     namespace X11Visual {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Visual.SignalSignatures {
-        }
+        interface SignalSignatures extends Gdk.Visual.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Visual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Visual.ConstructorProps {}
     }
 
     /**
@@ -1259,9 +1231,7 @@ export namespace GdkX11 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Window.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Window.ConstructorProps {}
     }
 
     /**
@@ -1406,7 +1376,7 @@ export namespace GdkX11 {
          * @param name Property name, will be interned as an X atom
          * @param value Property value, or `null` to delete
          */
-        set_utf8_property(name: string, value: (string | null)): void;
+        set_utf8_property(name: string, value: string | null): void;
     }
 
 

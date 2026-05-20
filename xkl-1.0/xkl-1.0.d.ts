@@ -169,13 +169,10 @@ export namespace Xkl {
 
     namespace ConfigItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -241,33 +238,30 @@ export namespace Xkl {
          * language bindings, in C you can manipulate the member directly.
          * @param description Description (max. 192        characters); can be NULL.
          */
-        set_description(description: (string | null)): void;
+        set_description(description: string | null): void;
 
         /**
          * Change the `name` field of a XklConfigItem. This is mostly useful for
          * language bindings, in C you can manipulate the member directly.
          * @param name Name (max. 32 characters); can be NULL.
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * Change the `short_description` field of a XklConfigItem. This is mostly useful for
          * language bindings, in C you can manipulate the member directly.
          * @param short_description Short Description (max. 10        characters); can be NULL.
          */
-        set_short_description(short_description: (string | null)): void;
+        set_short_description(short_description: string | null): void;
     }
 
 
     namespace ConfigRec {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -756,7 +750,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static INT__LONG_LONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+        static INT__LONG_LONG(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
         /**
          * @param closure 
@@ -766,7 +760,7 @@ export namespace Xkl {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+        static VOID__ENUM_INT_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.

@@ -3283,7 +3283,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_complex_to_s64(destination: (bigint | number), dchannels: number, source: Ags.Complex, schannels: number, count: number): void;
+    function audio_buffer_util_copy_complex_to_s64(destination: bigint | number, dchannels: number, source: Ags.Complex, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3371,7 +3371,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_double_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_double_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3459,7 +3459,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_float_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_float_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3547,7 +3547,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s16_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_s16_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3635,7 +3635,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s24_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_s24_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3723,7 +3723,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s32_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_s32_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3745,7 +3745,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_complex(destination: Ags.Complex, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_complex(destination: Ags.Complex, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3756,7 +3756,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_double(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_double(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3767,7 +3767,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_float(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_float(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3778,7 +3778,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_s16(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_s16(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3789,7 +3789,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_s24(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_s24(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3800,7 +3800,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_s32(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_s32(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3811,7 +3811,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_s64(destination: (bigint | number), dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_s64(destination: bigint | number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3822,7 +3822,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s64_to_s8(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_copy_s64_to_s8(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -3899,7 +3899,7 @@ export namespace AgsAudio {
      * @param count number of frames to copy
      * @since 3.0.0
      */
-    function audio_buffer_util_copy_s8_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+    function audio_buffer_util_copy_s8_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
     /**
      * Copy audio data using additive strategy.
@@ -4016,7 +4016,7 @@ export namespace AgsAudio {
      * @param count the count of frames
      * @since 3.4.0
      */
-    function audio_buffer_util_pong_s64(destination: (bigint | number), dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+    function audio_buffer_util_pong_s64(destination: bigint | number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
     /**
      * Pingpong copy `source` to `destination`.
@@ -4119,7 +4119,7 @@ export namespace AgsAudio {
      * @param byte_order the byte-order
      * @since 3.0.0
      */
-    function char_buffer_util_copy_cbuffer_to_s64(destination: (bigint | number), dchannels: number, source: number, word_size: number, schannels: number, frame_count: number, byte_order: number): void;
+    function char_buffer_util_copy_cbuffer_to_s64(destination: bigint | number, dchannels: number, source: number, word_size: number, schannels: number, frame_count: number, byte_order: number): void;
 
     /**
      * Copy char to gint8 buffer.
@@ -4210,7 +4210,7 @@ export namespace AgsAudio {
      * @param byte_order the byte-order
      * @since 3.0.0
      */
-    function char_buffer_util_copy_s64_to_cbuffer(destination: number, word_size: number, dchannels: number, source: (bigint | number), schannels: number, frame_count: number, byte_order: number): void;
+    function char_buffer_util_copy_s64_to_cbuffer(destination: number, word_size: number, dchannels: number, source: bigint | number, schannels: number, frame_count: number, byte_order: number): void;
 
     /**
      * Copy gint8 to char buffer.
@@ -4589,7 +4589,7 @@ export namespace AgsAudio {
      * @returns the number of chars written
      * @since 3.0.0
      */
-    function diatonic_scale_midi_key_to_note(key: (bigint | number), note: string): number;
+    function diatonic_scale_midi_key_to_note(key: bigint | number, note: string): number;
 
     /**
      * Convert `note` to MIDI key and store in `key`.
@@ -4598,7 +4598,7 @@ export namespace AgsAudio {
      * @returns the number of chars read
      * @since 3.0.0
      */
-    function diatonic_scale_note_to_midi_key(note: string, key: (bigint | number)): number;
+    function diatonic_scale_note_to_midi_key(note: string, key: bigint | number): number;
 
     /**
      * Allocate {@link AgsAudio.EnvelopeUtil}-struct
@@ -4734,7 +4734,7 @@ export namespace AgsAudio {
      * @param retval the return location of result
      * @since 3.0.0
      */
-    function fourier_transform_util_compute_stft_s64(buffer: (bigint | number), channels: number, buffer_length: number, retval: Ags.Complex): void;
+    function fourier_transform_util_compute_stft_s64(buffer: bigint | number, channels: number, buffer_length: number, retval: Ags.Complex): void;
 
     /**
      * Compute fourier transform of `buffer`.
@@ -4814,7 +4814,7 @@ export namespace AgsAudio {
      * @param retval the return location of result
      * @since 3.0.0
      */
-    function fourier_transform_util_inverse_stft_s64(buffer: Ags.Complex, channels: number, buffer_length: number, retval: (bigint | number)): void;
+    function fourier_transform_util_inverse_stft_s64(buffer: Ags.Complex, channels: number, buffer_length: number, retval: bigint | number): void;
 
     /**
      * Compute inverse fourier transform of `buffer`.
@@ -5038,7 +5038,7 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderBundle}-struct
      * @since 3.0.0
      */
-    function osc_builder_bundle_alloc(offset: (bigint | number)): null;
+    function osc_builder_bundle_alloc(offset: bigint | number): null;
 
     /**
      * Free `bundle`.
@@ -5053,7 +5053,7 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderMessage}-struct
      * @since 3.0.0
      */
-    function osc_builder_message_alloc(offset: (bigint | number)): null;
+    function osc_builder_message_alloc(offset: bigint | number): null;
 
     /**
      * Free `message`.
@@ -5068,7 +5068,7 @@ export namespace AgsAudio {
      * @returns the newly allocated {@link AgsAudio.OscBuilderPacket}-struct
      * @since 3.0.0
      */
-    function osc_builder_packet_alloc(offset: (bigint | number)): null;
+    function osc_builder_packet_alloc(offset: bigint | number): null;
 
     /**
      * Free `packet`.
@@ -5405,7 +5405,7 @@ export namespace AgsAudio {
      * @returns the count of zero-crossings
      * @since 3.0.0
      */
-    function synth_util_get_xcross_count_s64(buffer: (bigint | number), buffer_size: number): number;
+    function synth_util_get_xcross_count_s64(buffer: bigint | number, buffer_size: number): number;
 
     /**
      * Get zero-cross count.
@@ -13435,10 +13435,10 @@ export namespace AgsAudio {
             is_minor: boolean;
             isMinor: boolean;
             key: number;
-            loop_end: (bigint | number);
-            loopEnd: (bigint | number);
-            loop_start: (bigint | number);
-            loopStart: (bigint | number);
+            loop_end: bigint | number;
+            loopEnd: bigint | number;
+            loop_start: bigint | number;
+            loopStart: bigint | number;
             max_audio_channels: number;
             maxAudioChannels: number;
             max_input_pads: number;
@@ -13461,7 +13461,7 @@ export namespace AgsAudio {
             notation: Notation[];
             numerator: number;
             octave: number;
-            offset: (bigint | number);
+            offset: bigint | number;
             output: Output;
             output_audio_file: GObject.Object;
             outputAudioFile: GObject.Object;
@@ -13767,7 +13767,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get loop_end(): number;
-        set loop_end(val: (bigint | number));
+        set loop_end(val: bigint | number);
 
         /**
          * The audio's loop end.
@@ -13775,7 +13775,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get loopEnd(): number;
-        set loopEnd(val: (bigint | number));
+        set loopEnd(val: bigint | number);
 
         /**
          * The audio's loop start.
@@ -13783,7 +13783,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get loop_start(): number;
-        set loop_start(val: (bigint | number));
+        set loop_start(val: bigint | number);
 
         /**
          * The audio's loop start.
@@ -13791,7 +13791,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get loopStart(): number;
-        set loopStart(val: (bigint | number));
+        set loopStart(val: bigint | number);
 
         /**
          * The maximum audio channels count.
@@ -13973,7 +13973,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get offset(): number;
-        set offset(val: (bigint | number));
+        set offset(val: bigint | number);
 
         /**
          * The {@link AgsAudio.Output} it contains.
@@ -14916,7 +14916,7 @@ export namespace AgsAudio {
          * @param parameter_name the parameter's name array
          * @param value the value array
          */
-        recursive_set_property(n_params: number, parameter_name: string, value: (GObject.Value | any)): void;
+        recursive_set_property(n_params: number, parameter_name: string, value: GObject.Value | any): void;
 
         /**
          * Remove all empty automation.
@@ -15605,9 +15605,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.ApplicationContext.ConstructorProps, Ags.ConcurrencyProvider.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.ServiceProvider.ConstructorProps, SoundProvider.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.ApplicationContext.ConstructorProps, Ags.ConcurrencyProvider.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.ServiceProvider.ConstructorProps, SoundProvider.ConstructorProps {}
     }
 
     /**
@@ -15636,7 +15634,7 @@ export namespace AgsAudio {
 
         
     // This field conflicts with a function in a parent class or interface.
-    is_operating: (boolean | any);
+    is_operating: boolean | any;
 
         server_status: Ags.ServerStatus;
 
@@ -16488,7 +16486,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns the new {@link GLib.List}-struct containing {@link AgsAudio.Wave} or `null`
          */
-        read_wave(x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Remove `audio_signal` from `audio_container`.
@@ -17121,7 +17119,7 @@ export namespace AgsAudio {
          * @param delay the delay
          * @param attack the attack
          */
-        read_wave(x_offset: (bigint | number), delay: number, attack: number): void;
+        read_wave(x_offset: bigint | number, delay: number, attack: number): void;
 
         /**
          * Remove `audio_signal` from `audio_file`.
@@ -17833,11 +17831,11 @@ export namespace AgsAudio {
 
         
     // This field conflicts with a function in a parent class or interface.
-    is_syncing: (boolean | any);
+    is_syncing: boolean | any;
 
         
     // This field conflicts with a function in a parent class or interface.
-    is_critical_region: (boolean | any);
+    is_critical_region: boolean | any;
 
         critical_region_ref: number;
 
@@ -19009,7 +19007,7 @@ export namespace AgsAudio {
          * Set stream by replacing existing.
          * @param stream the {@link GLib.List}-struct containing audio data
          */
-        set_stream(stream: (Uint8Array | string)): void;
+        set_stream(stream: Uint8Array | string): void;
 
         /**
          * Set stream mode of `audio_signal`.
@@ -24123,7 +24121,7 @@ export namespace AgsAudio {
          * @param value the {@link GObject.Value}-struct array
          * @returns the new plugin instance handle
          */
-        instantiate_with_params(n_params: number, parameter_name: string, value: (GObject.Value | any)): null;
+        instantiate_with_params(n_params: number, parameter_name: string, value: GObject.Value | any): null;
 
         /**
          * Load the plugin
@@ -24237,11 +24235,11 @@ export namespace AgsAudio {
             data: never;
             format: number;
             samplerate: number;
-            selection_x0: (bigint | number);
-            selectionX0: (bigint | number);
-            selection_x1: (bigint | number);
-            selectionX1: (bigint | number);
-            x: (bigint | number);
+            selection_x0: bigint | number;
+            selectionX0: bigint | number;
+            selection_x1: bigint | number;
+            selectionX1: bigint | number;
+            x: bigint | number;
         }
     }
 
@@ -24297,7 +24295,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get selection_x0(): number;
-        set selection_x0(val: (bigint | number));
+        set selection_x0(val: bigint | number);
 
         /**
          * Buffer's selection x0 offset.
@@ -24305,7 +24303,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get selectionX0(): number;
-        set selectionX0(val: (bigint | number));
+        set selectionX0(val: bigint | number);
 
         /**
          * Buffer's selection x1 offset.
@@ -24313,7 +24311,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get selection_x1(): number;
-        set selection_x1(val: (bigint | number));
+        set selection_x1(val: bigint | number);
 
         /**
          * Buffer's selection x1 offset.
@@ -24321,7 +24319,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get selectionX1(): number;
-        set selectionX1(val: (bigint | number));
+        set selectionX1(val: bigint | number);
 
         /**
          * Buffer's x offset.
@@ -24329,7 +24327,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get x(): number;
-        set x(val: (bigint | number));
+        set x(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -24443,7 +24441,7 @@ export namespace AgsAudio {
          * Sets x.
          * @param x the x
          */
-        set_x(x: (bigint | number)): void;
+        set_x(x: bigint | number): void;
 
         /**
          * Test `flags` to be set on `buffer`.
@@ -25607,7 +25605,7 @@ export namespace AgsAudio {
          * @param parameter_name a string vector containing parameter names
          * @param value the value array
          */
-        recursive_set_property(n_params: number, parameter_name: string, value: (GObject.Value | any)): void;
+        recursive_set_property(n_params: number, parameter_name: string, value: GObject.Value | any): void;
 
         /**
          * Modify recycling. Asynchronously only.
@@ -30813,13 +30811,10 @@ export namespace AgsAudio {
 
     namespace DssiManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -32854,13 +32849,10 @@ export namespace AgsAudio {
 
     namespace FrequencyMapManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -32997,9 +32989,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33070,9 +33060,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33143,9 +33131,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33340,9 +33326,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33415,9 +33399,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33487,9 +33469,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33560,9 +33540,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33633,9 +33611,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33707,9 +33683,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33806,9 +33780,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33881,9 +33853,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -33960,9 +33930,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34108,9 +34076,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -34178,32 +34144,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -34224,19 +34190,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -34249,7 +34215,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -34341,19 +34307,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -34365,7 +34331,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -34398,9 +34364,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34472,9 +34436,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34556,9 +34518,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34631,9 +34591,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34703,9 +34661,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34776,9 +34732,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -34849,9 +34803,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35067,9 +35019,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35142,9 +35092,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35214,9 +35162,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35287,9 +35233,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35360,9 +35304,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35701,9 +35643,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -35776,9 +35716,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -36758,9 +36696,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -36828,32 +36764,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -36874,19 +36810,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -36899,7 +36835,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -36991,19 +36927,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -37015,7 +36951,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -37048,9 +36984,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37122,9 +37056,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37198,9 +37130,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37273,9 +37203,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37319,13 +37247,10 @@ export namespace AgsAudio {
 
     namespace FxFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -37413,9 +37338,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37486,9 +37409,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37559,9 +37480,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37752,9 +37671,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37827,9 +37744,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37899,9 +37814,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -37972,9 +37885,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38045,9 +37956,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38119,9 +38028,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38220,9 +38127,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38295,9 +38200,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38367,9 +38270,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38440,9 +38341,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38513,9 +38412,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38761,9 +38658,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38836,9 +38731,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38908,9 +38801,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -38981,9 +38872,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39054,9 +38943,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39247,9 +39134,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39322,9 +39207,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39401,9 +39284,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39557,9 +39438,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -39627,32 +39506,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -39673,19 +39552,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -39698,7 +39577,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -39790,19 +39669,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -39814,7 +39693,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -39847,9 +39726,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -39921,9 +39798,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -40022,9 +39897,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -40097,9 +39970,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -40409,9 +40280,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -40594,32 +40463,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -40640,19 +40509,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -40665,7 +40534,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -40757,19 +40626,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -40781,7 +40650,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -40814,9 +40683,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -40906,7 +40773,7 @@ export namespace AgsAudio {
          * @param delay 
          * @param buffer_size 
          */
-        stream_feed(source: AudioSignal, note: Note, pattern_mode: boolean, x0: number, x1: number, y: number, delay_counter: number, offset_counter: (bigint | number), frame_count: number, delay: number, buffer_size: number): void;
+        stream_feed(source: AudioSignal, note: Note, pattern_mode: boolean, x0: number, x1: number, y: number, delay_counter: number, offset_counter: bigint | number, frame_count: number, delay: number, buffer_size: number): void;
     }
 
 
@@ -40940,9 +40807,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41016,9 +40881,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41091,9 +40954,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41355,9 +41216,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -41466,32 +41325,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -41512,19 +41371,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -41537,7 +41396,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -41629,19 +41488,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -41653,7 +41512,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -41686,9 +41545,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41776,7 +41633,7 @@ export namespace AgsAudio {
          * @param delay 
          * @param buffer_size 
          */
-        stream_feed(source: AudioSignal, note: Note, x0: number, x1: number, y: number, delay_counter: number, offset_counter: (bigint | number), frame_count: number, delay: number, buffer_size: number): void;
+        stream_feed(source: AudioSignal, note: Note, x0: number, x1: number, y: number, delay_counter: number, offset_counter: bigint | number, frame_count: number, delay: number, buffer_size: number): void;
     }
 
 
@@ -41810,9 +41667,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41886,9 +41741,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -41961,9 +41814,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42033,9 +41884,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42106,9 +41955,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42179,9 +42026,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42342,9 +42187,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42417,9 +42260,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -42518,7 +42359,7 @@ export namespace AgsAudio {
             fileFormat: Port;
             file_samplerate: Port;
             fileSamplerate: Port;
-            filename: (Port | any);
+            filename: Port | any;
             loop: Port;
             loop_end: Port;
             loopEnd: Port;
@@ -42645,9 +42486,9 @@ export namespace AgsAudio {
          * @since 3.3.0
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get filename(): (Port | any);
+        get filename(): Port | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set filename(val: (Port | any));
+        set filename(val: Port | any);
 
         /**
          * Do loop.
@@ -42840,9 +42681,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -43003,32 +42842,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -43049,19 +42888,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -43074,7 +42913,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -43166,19 +43005,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -43190,7 +43029,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -43223,9 +43062,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -43299,9 +43136,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -43375,9 +43210,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -43450,9 +43283,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -43910,9 +43741,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -43980,32 +43809,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -44026,19 +43855,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -44051,7 +43880,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -44143,19 +43972,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -44167,7 +43996,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -44200,9 +44029,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -44274,9 +44101,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -44350,9 +44175,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -44425,9 +44248,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -44877,9 +44698,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -44947,32 +44766,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -44993,19 +44812,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -45018,7 +44837,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -45110,19 +44929,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -45134,7 +44953,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -45167,9 +44986,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -45241,9 +45058,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -45317,9 +45132,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -45392,9 +45205,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -46428,9 +46239,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioProcessor.ConstructorProps, Ags.Connectable.ConstructorProps, Ags.Countable.ConstructorProps, Ags.Seekable.ConstructorProps, Ags.Tactable.ConstructorProps {}
     }
 
     /**
@@ -46498,32 +46307,32 @@ export namespace AgsAudio {
          * Retrieve current position of MIDI.
          * @virtual
          */
-        vfunc_get_midi_counter(): (bigint | number);
+        vfunc_get_midi_counter(): bigint | number;
 
         /**
          * Retrieve current position of notation.
          * @virtual
          */
-        vfunc_get_notation_counter(): (bigint | number);
+        vfunc_get_notation_counter(): bigint | number;
 
         /**
          * Retrieve current position of sequencer.
          * @virtual
          */
-        vfunc_get_sequencer_counter(): (bigint | number);
+        vfunc_get_sequencer_counter(): bigint | number;
 
         /**
          * Retrieve current position of wave.
          * @virtual
          */
-        vfunc_get_wave_counter(): (bigint | number);
+        vfunc_get_wave_counter(): bigint | number;
 
         /**
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
          */
-        seek(offset: (bigint | number), whence: number): void;
+        seek(offset: bigint | number, whence: number): void;
 
         /**
          * Seek.
@@ -46544,19 +46353,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -46569,7 +46378,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -46661,19 +46470,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -46685,7 +46494,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -46718,9 +46527,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -46792,9 +46599,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -46868,9 +46673,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationChannelProcessor.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -46943,9 +46746,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FxNotationRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47173,9 +46974,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47246,9 +47045,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47320,9 +47117,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47396,9 +47191,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47471,9 +47264,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47543,9 +47334,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47616,9 +47405,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47689,9 +47476,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -47961,9 +47746,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48036,9 +47819,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48203,9 +47984,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48276,9 +48055,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48457,9 +48234,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48532,9 +48307,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48604,9 +48377,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudio.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48677,9 +48448,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -48750,9 +48519,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallAudioSignal.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -49091,9 +48858,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallChannelRun.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -49166,9 +48931,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -49334,9 +49097,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecallRecycling.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -52380,7 +52141,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns a {@link GLib.List}-struct containing {@link AgsAudio.Wave}
          */
-        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -52398,7 +52159,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count
          * @param whence SEEK_SET, SEEK_CUR or SEEK_END
          */
-        seek(frame_count: (bigint | number), whence: number): void;
+        seek(frame_count: bigint | number, whence: number): void;
 
         /**
          * Set presets of `sound_resource`.
@@ -55340,7 +55101,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns a {@link GLib.List}-struct containing {@link AgsAudio.Wave}
          */
-        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -55358,7 +55119,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count
          * @param whence SEEK_SET, SEEK_CUR or SEEK_END
          */
-        seek(frame_count: (bigint | number), whence: number): void;
+        seek(frame_count: bigint | number, whence: number): void;
 
         /**
          * Set presets of `sound_resource`.
@@ -59619,13 +59380,10 @@ export namespace AgsAudio {
 
     namespace LadspaManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -60009,13 +59767,10 @@ export namespace AgsAudio {
 
     namespace Lv2EventManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -60066,13 +59821,10 @@ export namespace AgsAudio {
 
     namespace Lv2LogManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -60296,9 +60048,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -60970,13 +60720,10 @@ export namespace AgsAudio {
 
     namespace Lv2PresetManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -61133,13 +60880,10 @@ export namespace AgsAudio {
 
     namespace Lv2TurtleScanner {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -61207,13 +60951,10 @@ export namespace AgsAudio {
 
     namespace Lv2UriMapManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -61269,7 +61010,7 @@ export namespace AgsAudio {
          * @param id the id to insert
          * @returns `true` on success, otherwise `false`
          */
-        insert(uri: string, id: (GObject.Value | any)): boolean;
+        insert(uri: string, id: GObject.Value | any): boolean;
 
         load_default(): void;
 
@@ -61291,13 +61032,10 @@ export namespace AgsAudio {
 
     namespace Lv2UridManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -61353,7 +61091,7 @@ export namespace AgsAudio {
          * @param id the id to insert
          * @returns `true` on success, otherwise `false`
          */
-        insert(uri: string, id: (GObject.Value | any)): boolean;
+        insert(uri: string, id: GObject.Value | any): boolean;
 
         load_default(): void;
 
@@ -61697,13 +61435,10 @@ export namespace AgsAudio {
 
     namespace Lv2WorkerManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -61765,13 +61500,10 @@ export namespace AgsAudio {
 
     namespace Lv2uiManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -62316,7 +62048,7 @@ export namespace AgsAudio {
          * @param audio_channel the matching audio channel
          * @param timestamp the matching timestamp, or `null` to match any timestamp
          */
-        static find_near_timestamp(midi: Midi[], audio_channel: number, timestamp: (Ags.Timestamp | null)): Midi[];
+        static find_near_timestamp(midi: Midi[], audio_channel: number, timestamp: Ags.Timestamp | null): Midi[];
 
         /**
          * Compare `a` and `b`.
@@ -62587,7 +62319,7 @@ export namespace AgsAudio {
 
         static ["new"](): MidiBuilder;
 
-        static new_from_filename(filename: (string | null)): MidiBuilder;
+        static new_from_filename(filename: string | null): MidiBuilder;
 
         // Signals
         /** @signal */
@@ -63293,7 +63025,7 @@ export namespace AgsAudio {
         /**
          * @param val 
          */
-        write_varlength(val: (bigint | number)): void;
+        write_varlength(val: bigint | number): void;
     }
 
 
@@ -63531,7 +63263,7 @@ export namespace AgsAudio {
 
         static ["new"](): MidiParser;
 
-        static new_from_filename(filename: (string | null)): MidiParser;
+        static new_from_filename(filename: string | null): MidiParser;
 
         // Signals
         /** @signal */
@@ -63871,7 +63603,7 @@ export namespace AgsAudio {
          * Set file length of `midi_parser`
          * @param file_length the file length
          */
-        set_file_length(file_length: (bigint | number)): void;
+        set_file_length(file_length: bigint | number): void;
 
         /**
          * Parse smtpe.
@@ -64232,7 +63964,7 @@ export namespace AgsAudio {
          * @param audio_channel the matching audio channel
          * @param timestamp the matching timestamp, or `null` to match any timestamp
          */
-        static find_near_timestamp(notation: Notation[], audio_channel: number, timestamp: (Ags.Timestamp | null)): Notation[];
+        static find_near_timestamp(notation: Notation[], audio_channel: number, timestamp: Ags.Timestamp | null): Notation[];
 
         /**
          * Clear all selection of `notation`.
@@ -64252,7 +63984,7 @@ export namespace AgsAudio {
          * @param delay_factor the segmentation delay factor
          * @param buffer_length the buffer length
          */
-        static from_raw_midi(raw_midi: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number, buffer_length: number): Notation;
+        static from_raw_midi(raw_midi: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, bpm: number, delay_factor: number, buffer_length: number): Notation;
 
         /**
          * Compare `a` and `b`.
@@ -64509,7 +64241,7 @@ export namespace AgsAudio {
          * @param buffer_length the return location of buffer length
          * @returns the raw-midi buffer
          */
-        to_raw_midi(bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), buffer_length: number): number;
+        to_raw_midi(bpm: number, delay_factor: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, buffer_length: number): number;
 
         /**
          * Unset `flags` on `notation`.
@@ -64558,14 +64290,14 @@ export namespace AgsAudio {
             release: Ags.Complex;
             rt_attack: number;
             rtAttack: number;
-            rt_offset: (bigint | number);
-            rtOffset: (bigint | number);
+            rt_offset: bigint | number;
+            rtOffset: bigint | number;
             stream_attack: number;
             streamAttack: number;
             stream_delay: number;
             streamDelay: number;
-            stream_frame_count: (bigint | number);
-            streamFrameCount: (bigint | number);
+            stream_frame_count: bigint | number;
+            streamFrameCount: bigint | number;
             sustain: Ags.Complex;
             x0: number;
             x0_256th: number;
@@ -64674,7 +64406,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get rt_offset(): number;
-        set rt_offset(val: (bigint | number));
+        set rt_offset(val: bigint | number);
 
         /**
          * Note realtime offset.
@@ -64682,7 +64414,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get rtOffset(): number;
-        set rtOffset(val: (bigint | number));
+        set rtOffset(val: bigint | number);
 
         /**
          * The stream's attack.
@@ -64722,7 +64454,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get stream_frame_count(): number;
-        set stream_frame_count(val: (bigint | number));
+        set stream_frame_count(val: bigint | number);
 
         /**
          * The stream's frame count.
@@ -64730,7 +64462,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get streamFrameCount(): number;
-        set streamFrameCount(val: (bigint | number));
+        set streamFrameCount(val: bigint | number);
 
         /**
          * Envelope sustain.
@@ -64879,7 +64611,7 @@ export namespace AgsAudio {
          * @param delay_factor the segmentation delay factor
          * @param length the length of the array
          */
-        static from_raw_midi_extended(raw_midi: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number, length: number): Note[];
+        static from_raw_midi_extended(raw_midi: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, bpm: number, delay_factor: number, length: number): Note[];
 
         /**
          * Convert ALSA sequencer data `event` to {@link AgsAudio.Note}.
@@ -64902,7 +64634,7 @@ export namespace AgsAudio {
          * @param delay_factor the segmentation delay factor
          * @param n_events the count snd_seq_event_t structs
          */
-        static from_seq_event_extended(event: null, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number, n_events: number): Note[];
+        static from_seq_event_extended(event: null, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, bpm: number, delay_factor: number, n_events: number): Note[];
 
         /**
          * Convert note length to SMF delta-time.
@@ -64915,7 +64647,7 @@ export namespace AgsAudio {
          * @param bb beats
          * @param tempo tempo
          */
-        static length_to_smf_delta_time(note_length: number, bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number)): number;
+        static length_to_smf_delta_time(note_length: number, bpm: number, delay_factor: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number): number;
 
         /**
          * Convert SMF delta-time to note length.
@@ -64928,7 +64660,7 @@ export namespace AgsAudio {
          * @param bpm the target bpm
          * @param delay_factor the target delay factor
          */
-        static smf_delta_time_to_length(delta_time: (bigint | number), nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), bpm: number, delay_factor: number): number;
+        static smf_delta_time_to_length(delta_time: bigint | number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, bpm: number, delay_factor: number): number;
 
         /**
          * Sort notes.
@@ -65091,7 +64823,7 @@ export namespace AgsAudio {
          * Sets rt-offset.
          * @param rt_offset the rt-offset
          */
-        set_rt_offset(rt_offset: (bigint | number)): void;
+        set_rt_offset(rt_offset: bigint | number): void;
 
         /**
          * Sets sharp flats.
@@ -65171,7 +64903,7 @@ export namespace AgsAudio {
          * @param buffer_length the return location of buffer length
          * @returns the raw-midi buffer
          */
-        to_raw_midi_extended(bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), buffer_length: number): number;
+        to_raw_midi_extended(bpm: number, delay_factor: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, buffer_length: number): number;
 
         /**
          * Convert `note` to ALSA sequencer events and set the number of events
@@ -65195,7 +64927,7 @@ export namespace AgsAudio {
          * @param n_events the return location of event count
          * @returns an array of snd_seq_event_t structs
          */
-        to_seq_event_extended(bpm: number, delay_factor: number, nn: (bigint | number), dd: (bigint | number), cc: (bigint | number), bb: (bigint | number), tempo: (bigint | number), n_events: number): null;
+        to_seq_event_extended(bpm: number, delay_factor: number, nn: bigint | number, dd: bigint | number, cc: bigint | number, bb: bigint | number, tempo: bigint | number, n_events: number): null;
 
         /**
          * Unset `flags` on `note`.
@@ -65906,9 +65638,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -66019,9 +65749,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -66149,7 +65877,7 @@ export namespace AgsAudio {
          * @param v_type the type as char
          * @param value the {@link GObject.Value}-struct containinig value
          */
-        append_value(message: OscBuilderMessage, v_type: number, value: (GObject.Value | any)): void;
+        append_value(message: OscBuilderMessage, v_type: number, value: GObject.Value | any): void;
 
         /**
          * Build the OSC data.
@@ -66217,7 +65945,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "write-bytes": (arg0: null, arg1: number) => (boolean | void);
+            "write-bytes": (arg0: null, arg1: number) => boolean | void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::ip4": (pspec: GObject.ParamSpec) => void;
             "notify::ip6": (pspec: GObject.ParamSpec) => void;
@@ -66444,9 +66172,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -66532,7 +66258,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "write-response": (arg0: GObject.Object) => (bigint | number);
+            "write-response": (arg0: GObject.Object) => bigint | number;
             "notify::ip4": (pspec: GObject.ParamSpec) => void;
             "notify::ip6": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
@@ -66669,7 +66395,7 @@ export namespace AgsAudio {
          * @param osc_response the {@link AgsAudio.OscResponse}
          * @virtual
          */
-        vfunc_write_response(osc_response: GObject.Object): (bigint | number);
+        vfunc_write_response(osc_response: GObject.Object): bigint | number;
 
         // Methods
         /**
@@ -66814,9 +66540,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -66908,9 +66632,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -66992,7 +66714,7 @@ export namespace AgsAudio {
          * @param packet 
          * @param packet_size 
          */
-        do_request(osc_connection: OscConnection, packet: number, packet_size: (bigint | number)): null;
+        do_request(osc_connection: OscConnection, packet: number, packet_size: bigint | number): null;
 
         /**
          * Remove `message` from `osc_front_controller`.
@@ -67046,9 +66768,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -67295,9 +67015,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -67436,9 +67154,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -67569,9 +67285,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -67775,9 +67489,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -68003,7 +67715,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            listen: () => (boolean | void);
+            listen: () => boolean | void;
             /**
              * The ::start signal is emited during start of server.
              * @signal
@@ -68280,9 +67992,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OscController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OscController.ConstructorProps {}
     }
 
     /**
@@ -68644,7 +68354,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: ({ [key: string]: any } | GLib.HashTable<never, never>), security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        do_request(msg: Soup.ServerMessage, query: { [key: string]: any } | GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         /**
          * Do request.
@@ -71650,9 +71360,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Channel.ConstructorProps, Ags.Connectable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Channel.ConstructorProps, Ags.Connectable.ConstructorProps {}
     }
 
     /**
@@ -72292,19 +72000,19 @@ export namespace AgsAudio {
          * Change midi duration.
          * @param midi_duration the duration
          */
-        change_midi_duration(midi_duration: (bigint | number)): void;
+        change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
          */
-        change_notation_duration(notation_duration: (bigint | number)): void;
+        change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
          */
-        change_sequencer_duration(sequencer_duration: (bigint | number)): void;
+        change_sequencer_duration(sequencer_duration: bigint | number): void;
 
         /**
          * Change tact.
@@ -72317,7 +72025,7 @@ export namespace AgsAudio {
          * Change wave duration.
          * @param wave_duration the duration
          */
-        change_wave_duration(wave_duration: (bigint | number)): void;
+        change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
@@ -72409,19 +72117,19 @@ export namespace AgsAudio {
          * Get midi duration.
          * @virtual
          */
-        vfunc_get_midi_duration(): (bigint | number);
+        vfunc_get_midi_duration(): bigint | number;
 
         /**
          * Get notation duration.
          * @virtual
          */
-        vfunc_get_notation_duration(): (bigint | number);
+        vfunc_get_notation_duration(): bigint | number;
 
         /**
          * Get sequencer duration.
          * @virtual
          */
-        vfunc_get_sequencer_duration(): (bigint | number);
+        vfunc_get_sequencer_duration(): bigint | number;
 
         /**
          * Get tact.
@@ -72433,7 +72141,7 @@ export namespace AgsAudio {
          * Get wave duration.
          * @virtual
          */
-        vfunc_get_wave_duration(): (bigint | number);
+        vfunc_get_wave_duration(): bigint | number;
     }
 
 
@@ -73052,7 +72760,7 @@ export namespace AgsAudio {
          * Set default value.
          * @param default_value the default value
          */
-        set_default_value(default_value: (GObject.Value | any)): void;
+        set_default_value(default_value: GObject.Value | any): void;
 
         /**
          * Set `flags` on `plugin_port`.
@@ -73064,7 +72772,7 @@ export namespace AgsAudio {
          * Set lower value.
          * @param lower_value the lower value
          */
-        set_lower_value(lower_value: (GObject.Value | any)): void;
+        set_lower_value(lower_value: GObject.Value | any): void;
 
         /**
          * Set port index.
@@ -73106,7 +72814,7 @@ export namespace AgsAudio {
          * Set upper value.
          * @param upper_value the upper value
          */
-        set_upper_value(upper_value: (GObject.Value | any)): void;
+        set_upper_value(upper_value: GObject.Value | any): void;
 
         /**
          * Test `flags` to be set on `plugin_port`.
@@ -73476,37 +73184,37 @@ export namespace AgsAudio {
          * @param property_name the property's name
          * @param value the {@link GObject.Value} to store the result
          */
-        safe_get_property(property_name: string, value: (GObject.Value | any)): void;
+        safe_get_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Perform safe read.
          * @param value the {@link GObject.Value} to store result
          */
-        safe_read(value: (GObject.Value | any)): void;
+        safe_read(value: GObject.Value | any): void;
 
         /**
          * Perform safe read.
          * @param value the {@link GObject.Value} to store result
          */
-        safe_read_raw(value: (GObject.Value | any)): void;
+        safe_read_raw(value: GObject.Value | any): void;
 
         /**
          * Perform safe set property.
          * @param property_name the property's name
          * @param value the {@link GObject.Value} containing data
          */
-        safe_set_property(property_name: string, value: (GObject.Value | any)): void;
+        safe_set_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Perform safe write.
          * @param value the {@link GObject.Value} containing data
          */
-        safe_write(value: (GObject.Value | any)): void;
+        safe_write(value: GObject.Value | any): void;
 
         /**
          * @param value 
          */
-        safe_write_raw(value: (GObject.Value | any)): void;
+        safe_write_raw(value: GObject.Value | any): void;
 
         /**
          * Set flags.
@@ -73945,7 +73653,7 @@ export namespace AgsAudio {
          * @param param_name the parameter name
          * @param value the value to add
          */
-        add_parameter(param_name: string, value: (GObject.Value | any)): boolean;
+        add_parameter(param_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Get audio.
@@ -73983,7 +73691,7 @@ export namespace AgsAudio {
          * @param param_name the parameter name
          * @param value the return location of value
          */
-        get_parameter(param_name: string, value: (GObject.Value | any)): void;
+        get_parameter(param_name: string, value: GObject.Value | any): void;
 
         /**
          * Get preset name.
@@ -74364,7 +74072,7 @@ export namespace AgsAudio {
          * @param use_prev_on_failure 
          * @param value 
          */
-        get_value(x: number, x_end: number, use_prev_on_failure: boolean, value: (GObject.Value | any)): number;
+        get_value(x: number, x_end: number, use_prev_on_failure: boolean, value: GObject.Value | any): number;
 
         /**
          * Paste previously copied markers.
@@ -78883,7 +78591,7 @@ export namespace AgsAudio {
          * @param value the {@link GObject.Value}-struct array
          * @returns the duplicated {@link AgsAudio.Recall}
          */
-        duplicate(recall_id: RecallID, n_params: number, parameter_name: string, value: (GObject.Value | any)): Recall;
+        duplicate(recall_id: RecallID, n_params: number, parameter_name: string, value: GObject.Value | any): Recall;
 
         /**
          * Feed input queue of `recall`.
@@ -82428,7 +82136,7 @@ export namespace AgsAudio {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             child: RecyclingContext[];
-            length: (bigint | number);
+            length: bigint | number;
             parent: RecyclingContext;
             recall_id: RecallID;
             recallId: RecallID;
@@ -82455,7 +82163,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get length(): number;
-        set length(val: (bigint | number));
+        set length(val: bigint | number);
 
         /**
          * The parent recycling context within tree.
@@ -82505,7 +82213,7 @@ export namespace AgsAudio {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number)): RecyclingContext;
+        static ["new"](length: bigint | number): RecyclingContext;
 
         // Signals
         /** @signal */
@@ -82939,9 +82647,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -83012,9 +82718,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -83085,9 +82789,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -83160,9 +82862,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -86300,7 +86000,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns a {@link GLib.List}-struct containing {@link AgsAudio.Wave}
          */
-        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -86318,7 +86018,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count
          * @param whence SEEK_SET, SEEK_CUR or SEEK_END
          */
-        seek(frame_count: (bigint | number), whence: number): void;
+        seek(frame_count: bigint | number, whence: number): void;
 
         /**
          * Set presets of `sound_resource`.
@@ -86844,7 +86544,7 @@ export namespace AgsAudio {
 
         // Constructor properties interface
         interface ConstructorProps extends Ags.Task.ConstructorProps {
-            offset: (bigint | number);
+            offset: bigint | number;
             soundcard: GObject.Object;
             whence: number;
         }
@@ -86863,7 +86563,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get offset(): number;
-        set offset(val: (bigint | number));
+        set offset(val: bigint | number);
 
         /**
          * The assigned {@link Ags.Soundcard}
@@ -86897,7 +86597,7 @@ export namespace AgsAudio {
 
         _init(...args: any[]): void;
 
-        static ["new"](soundcard: GObject.Object, offset: (bigint | number), whence: number): SeekSoundcard;
+        static ["new"](soundcard: GObject.Object, offset: bigint | number, whence: number): SeekSoundcard;
 
         // Conflicted with Ags.Task.new
         static ["new"](...args: never[]): any;
@@ -88212,7 +87912,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns a {@link GLib.List}-struct containing {@link AgsAudio.Wave}
          */
-        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -88230,7 +87930,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count
          * @param whence SEEK_SET, SEEK_CUR or SEEK_END
          */
-        seek(frame_count: (bigint | number), whence: number): void;
+        seek(frame_count: bigint | number, whence: number): void;
 
         /**
          * Set presets of `sound_resource`.
@@ -88778,9 +88478,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -88830,9 +88528,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -88882,9 +88578,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -88934,9 +88628,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -88986,9 +88678,7 @@ export namespace AgsAudio {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ags.Task.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ags.Task.ConstructorProps {}
     }
 
     /**
@@ -89947,7 +89637,7 @@ export namespace AgsAudio {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             smf_buffer: never;
             smfBuffer: never;
-            x: (bigint | number);
+            x: bigint | number;
         }
     }
 
@@ -89978,7 +89668,7 @@ export namespace AgsAudio {
          * @default 0
          */
         get x(): number;
-        set x(val: (bigint | number));
+        set x(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -90073,7 +89763,7 @@ export namespace AgsAudio {
          * Sets x.
          * @param x the x
          */
-        set_x(x: (bigint | number)): void;
+        set_x(x: bigint | number): void;
 
         /**
          * Test `flags` to be set on `track`.
@@ -92404,7 +92094,7 @@ export namespace AgsAudio {
          * @param x1 x end offset
          * @param replace_current_selection if `true` selection is replaced
          */
-        add_region_to_selection(x0: (bigint | number), x1: (bigint | number), replace_current_selection: boolean): void;
+        add_region_to_selection(x0: bigint | number, x1: bigint | number, replace_current_selection: boolean): void;
 
         /**
          * Copy selection to clipboard.
@@ -92424,7 +92114,7 @@ export namespace AgsAudio {
          * @param use_selection_list if `true` selection is searched
          * @returns the matching buffer as {@link AgsAudio.Buffer}.
          */
-        find_point(x: (bigint | number), use_selection_list: boolean): Buffer;
+        find_point(x: bigint | number, use_selection_list: boolean): Buffer;
 
         /**
          * Find buffers by offset and region.
@@ -92433,7 +92123,7 @@ export namespace AgsAudio {
          * @param use_selection_list if `true` selection is searched
          * @returns the matching buffers as {@link GLib.List}.
          */
-        find_region(x0: (bigint | number), x1: (bigint | number), use_selection_list: boolean): Buffer[];
+        find_region(x0: bigint | number, x1: bigint | number, use_selection_list: boolean): Buffer[];
 
         /**
          * Clear selection.
@@ -92496,7 +92186,7 @@ export namespace AgsAudio {
          * @param delay the delay to be used
          * @param attack the attack to be used
          */
-        insert_from_clipboard(wave_node: libxml2.Node, reset_x_offset: boolean, x_offset: (bigint | number), delay: number, attack: number): void;
+        insert_from_clipboard(wave_node: libxml2.Node, reset_x_offset: boolean, x_offset: bigint | number, delay: number, attack: number): void;
 
         /**
          * Paste previously copied buffers.
@@ -92508,7 +92198,7 @@ export namespace AgsAudio {
          * @param match_line only paste if channel matches
          * @param do_replace if `true` current data is replaced, otherwise additive mixing is performed
          */
-        insert_from_clipboard_extended(wave_node: libxml2.Node, reset_x_offset: boolean, x_offset: (bigint | number), delay: number, attack: number, match_line: boolean, do_replace: boolean): void;
+        insert_from_clipboard_extended(wave_node: libxml2.Node, reset_x_offset: boolean, x_offset: bigint | number, delay: number, attack: number, match_line: boolean, do_replace: boolean): void;
 
         /**
          * Check selection for buffer.
@@ -92529,7 +92219,7 @@ export namespace AgsAudio {
          * @param x0 x start offset
          * @param x1 x end offset
          */
-        remove_region_from_selection(x0: (bigint | number), x1: (bigint | number)): void;
+        remove_region_from_selection(x0: bigint | number, x1: bigint | number): void;
 
         /**
          * Set audio.
@@ -92962,7 +92652,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_complex_to_s64(destination: (bigint | number), dchannels: number, source: Ags.Complex, schannels: number, count: number): void;
+        static copy_complex_to_s64(destination: bigint | number, dchannels: number, source: Ags.Complex, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93042,7 +92732,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_double_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_double_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93122,7 +92812,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_float_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_float_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93202,7 +92892,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s16_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_s16_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93282,7 +92972,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s24_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_s24_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93362,7 +93052,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s32_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_s32_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93382,7 +93072,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_complex(destination: Ags.Complex, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_complex(destination: Ags.Complex, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93392,7 +93082,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_double(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_double(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93402,7 +93092,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_float(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_float(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93412,7 +93102,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_s16(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_s16(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93422,7 +93112,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_s24(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_s24(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93432,7 +93122,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_s32(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_s32(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93442,7 +93132,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_s64(destination: (bigint | number), dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_s64(destination: bigint | number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93452,7 +93142,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s64_to_s8(destination: number, dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static copy_s64_to_s8(destination: number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93522,7 +93212,7 @@ export namespace AgsAudio {
          * @param schannels source buffer's count of channels
          * @param count number of frames to copy
          */
-        static copy_s8_to_s64(destination: (bigint | number), dchannels: number, source: number, schannels: number, count: number): void;
+        static copy_s8_to_s64(destination: bigint | number, dchannels: number, source: number, schannels: number, count: number): void;
 
         /**
          * Copy audio data using additive strategy.
@@ -93626,7 +93316,7 @@ export namespace AgsAudio {
          * @param schannels the source channels
          * @param count the count of frames
          */
-        static pong_s64(destination: (bigint | number), dchannels: number, source: (bigint | number), schannels: number, count: number): void;
+        static pong_s64(destination: bigint | number, dchannels: number, source: bigint | number, schannels: number, count: number): void;
 
         /**
          * Pingpong copy `source` to `destination`.
@@ -93860,7 +93550,7 @@ export namespace AgsAudio {
          * @param frame_count frame count
          * @param byte_order the byte-order
          */
-        static copy_cbuffer_to_s64(destination: (bigint | number), dchannels: number, source: number, word_size: number, schannels: number, frame_count: number, byte_order: number): void;
+        static copy_cbuffer_to_s64(destination: bigint | number, dchannels: number, source: number, word_size: number, schannels: number, frame_count: number, byte_order: number): void;
 
         /**
          * Copy char to gint8 buffer.
@@ -93944,7 +93634,7 @@ export namespace AgsAudio {
          * @param frame_count frame count
          * @param byte_order the byte-order
          */
-        static copy_s64_to_cbuffer(destination: number, word_size: number, dchannels: number, source: (bigint | number), schannels: number, frame_count: number, byte_order: number): void;
+        static copy_s64_to_cbuffer(destination: number, word_size: number, dchannels: number, source: bigint | number, schannels: number, frame_count: number, byte_order: number): void;
 
         /**
          * Copy gint8 to char buffer.
@@ -94274,7 +93964,7 @@ export namespace AgsAudio {
          * Set `offset` of `chorus_util`.
          * @param offset the offset
          */
-        set_offset(offset: (bigint | number)): void;
+        set_offset(offset: bigint | number): void;
 
         /**
          * Set `offset_256th` of `chorus_util`.
@@ -94678,14 +94368,14 @@ export namespace AgsAudio {
          * @param key MIDI key
          * @param note return location of note name
          */
-        static midi_key_to_note(key: (bigint | number), note: string): number;
+        static midi_key_to_note(key: bigint | number, note: string): number;
 
         /**
          * Convert `note` to MIDI key and store in `key`.
          * @param note the note name
          * @param key return location of MIDI key
          */
-        static note_to_midi_key(note: string, key: (bigint | number)): number;
+        static note_to_midi_key(note: string, key: bigint | number): number;
     }
 
 
@@ -97637,7 +97327,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @param retval the return location of result
          */
-        static compute_stft_s64(buffer: (bigint | number), channels: number, buffer_length: number, retval: Ags.Complex): void;
+        static compute_stft_s64(buffer: bigint | number, channels: number, buffer_length: number, retval: Ags.Complex): void;
 
         /**
          * Compute fourier transform of `buffer`.
@@ -97709,7 +97399,7 @@ export namespace AgsAudio {
          * @param buffer_length the buffer's length
          * @param retval the return location of result
          */
-        static inverse_stft_s64(buffer: Ags.Complex, channels: number, buffer_length: number, retval: (bigint | number)): void;
+        static inverse_stft_s64(buffer: Ags.Complex, channels: number, buffer_length: number, retval: bigint | number): void;
 
         /**
          * Compute inverse fourier transform of `buffer`.
@@ -100467,7 +100157,7 @@ export namespace AgsAudio {
          * @param absolute_time the absolute time
          * @returns the buffer position before `delta_time`
          */
-        get_delta_time_offset(absolute_time: (bigint | number)): number;
+        get_delta_time_offset(absolute_time: bigint | number): number;
 
         /**
          * Insert MIDI message.
@@ -101782,7 +101472,7 @@ export namespace AgsAudio {
          * @param extension_value 
          * @param extension_count 
          */
-        get_end_of_clip(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): number;
+        get_end_of_clip(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): number;
 
         /**
          * Get endpoint discovery.
@@ -102042,7 +101732,7 @@ export namespace AgsAudio {
          * @param extension_value 
          * @param extension_count 
          */
-        get_noop(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): number;
+        get_noop(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): number;
 
         /**
          * Get product instance ID notification.
@@ -102057,7 +101747,7 @@ export namespace AgsAudio {
          * @param extension_value 
          * @param extension_count 
          */
-        get_start_of_clip(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): number;
+        get_start_of_clip(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): number;
 
         /**
          * Get stream configuration notification.
@@ -102443,7 +102133,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_delta_clock_ticks_per_quarter_note(buffer: number, ticks_per_quarter_note_count: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_delta_clock_ticks_per_quarter_note(buffer: number, ticks_per_quarter_note_count: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put delta clock ticks per quarter note.
@@ -102453,7 +102143,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_delta_clock_ticks_since_last_event(buffer: number, ticks_since_last_event_count: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_delta_clock_ticks_since_last_event(buffer: number, ticks_since_last_event_count: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put device identity notification.
@@ -102466,7 +102156,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_device_identity_notification(buffer: number, device_manufacturer: number, device_family: number, device_family_model: number, software_revision: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_device_identity_notification(buffer: number, device_manufacturer: number, device_family: number, device_family_model: number, software_revision: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put end of clip.
@@ -102475,7 +102165,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_end_of_clip(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_end_of_clip(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put endpoint discovery.
@@ -102487,7 +102177,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_endpoint_discovery(buffer: number, major: number, minor: number, filter: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_endpoint_discovery(buffer: number, major: number, minor: number, filter: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * @param buffer 
@@ -102503,7 +102193,7 @@ export namespace AgsAudio {
          * @param extension_value 
          * @param extension_count 
          */
-        put_endpoint_info_notification(buffer: number, major: number, minor: number, static_function_blocks: boolean, function_block_count: number, midi_v2_0_support: boolean, midi_v1_0_support: boolean, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_endpoint_info_notification(buffer: number, major: number, minor: number, static_function_blocks: boolean, function_block_count: number, midi_v2_0_support: boolean, midi_v1_0_support: boolean, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put endpoint name notification.
@@ -102513,7 +102203,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_endpoint_name_notification(buffer: number, endpoint_name: string, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_endpoint_name_notification(buffer: number, endpoint_name: string, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 flex set chord name.
@@ -102542,7 +102232,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_flex_set_chord_name(buffer: number, group: number, channel: number, t_sharp_flats: number, chord_tonic: number, chord_type: number, alter_1_type: number, alter_1_degree: number, alter_2_type: number, alter_2_degree: number, alter_3_type: number, alter_3_degree: number, alter_4_type: number, alter_4_degree: number, b_sharp_flats: number, bass_note: number, bass_chord_type: number, b_alter_1_type: number, b_alter_1_degree: number, b_alter_2_type: number, b_alter_2_degree: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_flex_set_chord_name(buffer: number, group: number, channel: number, t_sharp_flats: number, chord_tonic: number, chord_type: number, alter_1_type: number, alter_1_degree: number, alter_2_type: number, alter_2_degree: number, alter_3_type: number, alter_3_degree: number, alter_4_type: number, alter_4_degree: number, b_sharp_flats: number, bass_note: number, bass_chord_type: number, b_alter_1_type: number, b_alter_1_degree: number, b_alter_2_type: number, b_alter_2_degree: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 flex set key signature.
@@ -102555,7 +102245,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_flex_set_key_signature(buffer: number, group: number, channel: number, sharp_flats: number, tonic_note: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_flex_set_key_signature(buffer: number, group: number, channel: number, sharp_flats: number, tonic_note: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 flex set metronome.
@@ -102572,7 +102262,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_flex_set_metronome(buffer: number, group: number, channel: number, clocks_per_primary_click: number, bar_accent_part_1: number, bar_accent_part_2: number, bar_accent_part_3: number, subdivision_clicks_1: number, subdivision_clicks_2: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_flex_set_metronome(buffer: number, group: number, channel: number, clocks_per_primary_click: number, bar_accent_part_1: number, bar_accent_part_2: number, bar_accent_part_3: number, subdivision_clicks_1: number, subdivision_clicks_2: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 flex set tempo.
@@ -102584,7 +102274,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_flex_set_tempo(buffer: number, group: number, channel: number, ten_ns_per_quarter_note: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_flex_set_tempo(buffer: number, group: number, channel: number, ten_ns_per_quarter_note: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 flex set time_signature.
@@ -102598,7 +102288,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_flex_set_time_signature(buffer: number, group: number, channel: number, numerator: number, denominator: number, thirty_two_ticks: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_flex_set_time_signature(buffer: number, group: number, channel: number, numerator: number, denominator: number, thirty_two_ticks: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put function block discovery.
@@ -102609,7 +102299,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_function_block_discovery(buffer: number, function_block: number, filter: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_function_block_discovery(buffer: number, function_block: number, filter: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put function block info notification.
@@ -102627,7 +102317,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_function_block_info_notification(buffer: number, function_block_active: boolean, function_block: number, direction: number, midi1_port: number, ui_hint: number, first_group: number, group_count: number, message_version: number, max_sysex8_stream_count: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_function_block_info_notification(buffer: number, function_block_active: boolean, function_block: number, direction: number, midi1_port: number, ui_hint: number, first_group: number, group_count: number, message_version: number, max_sysex8_stream_count: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put function block name notification.
@@ -102638,7 +102328,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_function_block_name_notification(buffer: number, function_block: number, function_block_name: string, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_function_block_name_notification(buffer: number, function_block: number, function_block_name: string, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put JR clock.
@@ -102648,7 +102338,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_jr_clock(buffer: number, sender_clock_time: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_jr_clock(buffer: number, sender_clock_time: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put JR timestamp.
@@ -102658,7 +102348,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_jr_timestamp(buffer: number, sender_clock_timestamp: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_jr_timestamp(buffer: number, sender_clock_timestamp: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 channel pressure.
@@ -102671,7 +102361,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_channel_pressure(buffer: number, group: number, channel: number, pressure: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_channel_pressure(buffer: number, group: number, channel: number, pressure: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 control change.
@@ -102684,7 +102374,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_control_change(buffer: number, group: number, channel: number, index_key: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_control_change(buffer: number, group: number, channel: number, index_key: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 note off.
@@ -102697,7 +102387,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_note_off(buffer: number, group: number, channel: number, key: number, velocity: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_note_off(buffer: number, group: number, channel: number, key: number, velocity: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 note on.
@@ -102710,7 +102400,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_note_on(buffer: number, group: number, channel: number, key: number, velocity: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_note_on(buffer: number, group: number, channel: number, key: number, velocity: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 pitch bend.
@@ -102723,7 +102413,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_pitch_bend(buffer: number, group: number, channel: number, pitch: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_pitch_bend(buffer: number, group: number, channel: number, pitch: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 polyphonic aftertouch.
@@ -102736,7 +102426,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_polyphonic_aftertouch(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_polyphonic_aftertouch(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 1.0 program change.
@@ -102749,7 +102439,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi1_program_change(buffer: number, group: number, channel: number, program: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi1_program_change(buffer: number, group: number, channel: number, program: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 assignable per note controller.
@@ -102763,7 +102453,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_assignable_per_note_controller(buffer: number, group: number, channel: number, key: number, data_index: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_assignable_per_note_controller(buffer: number, group: number, channel: number, key: number, data_index: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 channel pressure.
@@ -102775,7 +102465,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_channel_pressure(buffer: number, group: number, channel: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_channel_pressure(buffer: number, group: number, channel: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 control change.
@@ -102787,7 +102477,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_control_change(buffer: number, group: number, channel: number, index_key: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_control_change(buffer: number, group: number, channel: number, index_key: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 note off.
@@ -102802,7 +102492,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_note_off(buffer: number, group: number, channel: number, key: number, attribute_type: number, velocity: number, attribute: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_note_off(buffer: number, group: number, channel: number, key: number, attribute_type: number, velocity: number, attribute: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 note on.
@@ -102817,7 +102507,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_note_on(buffer: number, group: number, channel: number, key: number, attribute_type: number, velocity: number, attribute: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_note_on(buffer: number, group: number, channel: number, key: number, attribute_type: number, velocity: number, attribute: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 registered per note management.
@@ -102830,7 +102520,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_per_note_management(buffer: number, group: number, channel: number, key: number, options_flags: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_per_note_management(buffer: number, group: number, channel: number, key: number, options_flags: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 pitch bend.
@@ -102843,7 +102533,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_per_note_pitch_bend(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_per_note_pitch_bend(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 pitch bend.
@@ -102855,7 +102545,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_pitch_bend(buffer: number, group: number, channel: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_pitch_bend(buffer: number, group: number, channel: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 polyphonic aftertouch.
@@ -102868,7 +102558,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_polyphonic_aftertouch(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_polyphonic_aftertouch(buffer: number, group: number, channel: number, key: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 program change.
@@ -102882,7 +102572,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_program_change(buffer: number, group: number, channel: number, option_flags: number, program: number, bank: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_program_change(buffer: number, group: number, channel: number, option_flags: number, program: number, bank: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 registered per note controller.
@@ -102896,7 +102586,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_registered_per_note_controller(buffer: number, group: number, channel: number, key: number, data_index: number, data: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_registered_per_note_controller(buffer: number, group: number, channel: number, key: number, data_index: number, data: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 RPN coarse tuning.
@@ -102908,7 +102598,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_rpn_coarse_tuning(buffer: number, group: number, channel: number, coarse_tuning: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_rpn_coarse_tuning(buffer: number, group: number, channel: number, coarse_tuning: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 RPN MPE MCM.
@@ -102920,7 +102610,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_rpn_mpe_mcm(buffer: number, group: number, channel: number, channel_count: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_rpn_mpe_mcm(buffer: number, group: number, channel: number, channel_count: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 RPN pitch bend range.
@@ -102933,7 +102623,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_rpn_pitch_bend_range(buffer: number, group: number, channel: number, semitones: number, cents: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_rpn_pitch_bend_range(buffer: number, group: number, channel: number, semitones: number, cents: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 RPN tuning bank select.
@@ -102945,7 +102635,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_rpn_tuning_bank_select(buffer: number, group: number, channel: number, tuning_bank_number: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_rpn_tuning_bank_select(buffer: number, group: number, channel: number, tuning_bank_number: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put MIDI version 2.0 RPN tuning program change.
@@ -102957,7 +102647,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_midi2_rpn_tuning_program_change(buffer: number, group: number, channel: number, tuning_program_number: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_midi2_rpn_tuning_program_change(buffer: number, group: number, channel: number, tuning_program_number: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put NOOP.
@@ -102966,7 +102656,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_noop(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_noop(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put product instance ID notification.
@@ -102976,7 +102666,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_product_instance_id_notification(buffer: number, product_instance_id: string, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_product_instance_id_notification(buffer: number, product_instance_id: string, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put start of clip.
@@ -102985,7 +102675,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_start_of_clip(buffer: number, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_start_of_clip(buffer: number, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put product instance ID notification.
@@ -102997,7 +102687,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_stream_configuration_notification(buffer: number, protocol: number, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_stream_configuration_notification(buffer: number, protocol: number, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
 
         /**
          * Put product instance ID request.
@@ -103009,7 +102699,7 @@ export namespace AgsAudio {
          * @param extension_value the extension value array
          * @param extension_count the extension count
          */
-        put_stream_configuration_request(buffer: number, protocol: number, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: (GObject.Value | any), extension_count: number): void;
+        put_stream_configuration_request(buffer: number, protocol: number, rx_jitter_reduction: boolean, tx_jitter_reduction: boolean, extension_name: string, extension_value: GObject.Value | any, extension_count: number): void;
     }
 
 
@@ -103654,7 +103344,7 @@ export namespace AgsAudio {
          * @param buffer the guchar buffer
          * @param val the return location of 64 bit integer
          */
-        get_int64(buffer: number, val: (bigint | number)): void;
+        get_int64(buffer: number, val: bigint | number): void;
 
         /**
          * Get message heading from `buffer`. Note you have to get following arguments
@@ -103699,7 +103389,7 @@ export namespace AgsAudio {
          * @param str the return location of ASCII string
          * @param length the return location of bytes read
          */
-        get_string(buffer: number, str: string, length: (bigint | number)): void;
+        get_string(buffer: number, str: string, length: bigint | number): void;
 
         /**
          * Get timetag specified by `tv_secs`, `tv_fraction` and `immediately` from `buffer`.
@@ -103760,7 +103450,7 @@ export namespace AgsAudio {
          * @param buffer the guchar buffer
          * @param val the 64 bit integer
          */
-        put_int64(buffer: number, val: (bigint | number)): void;
+        put_int64(buffer: number, val: bigint | number): void;
 
         /**
          * Put message heading to `buffer`. Note you have to put following arguments
@@ -103805,7 +103495,7 @@ export namespace AgsAudio {
          * @param str the ASCII string
          * @param length the length to write or -1 to write until null byte
          */
-        put_string(buffer: number, str: string, length: (bigint | number)): void;
+        put_string(buffer: number, str: string, length: bigint | number): void;
 
         /**
          * Put timetag specified by `tv_secs`, `tv_fraction` and `immediately` to `buffer`.
@@ -103844,7 +103534,7 @@ export namespace AgsAudio {
          * Allocate {@link AgsAudio.OscBuilderBundle}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): null;
+        static alloc(offset: bigint | number): null;
 
         /**
          * Free `bundle`.
@@ -103883,7 +103573,7 @@ export namespace AgsAudio {
          * Allocate {@link AgsAudio.OscBuilderMessage}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): null;
+        static alloc(offset: bigint | number): null;
 
         /**
          * Free `message`.
@@ -103915,7 +103605,7 @@ export namespace AgsAudio {
          * Allocate {@link AgsAudio.OscBuilderPacket}-struct.
          * @param offset the current offset
          */
-        static alloc(offset: (bigint | number)): null;
+        static alloc(offset: bigint | number): null;
 
         /**
          * Free `packet`.
@@ -106145,7 +105835,7 @@ export namespace AgsAudio {
          * @param buffer the buffer containing audio data
          * @param buffer_size the buffer size
          */
-        static get_xcross_count_s64(buffer: (bigint | number), buffer_size: number): number;
+        static get_xcross_count_s64(buffer: bigint | number, buffer_size: number): number;
 
         /**
          * Get zero-cross count.
@@ -107680,9 +107370,7 @@ export namespace AgsAudio {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface OscPluginControllerNamespace {
@@ -107811,9 +107499,7 @@ export namespace AgsAudio {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SoundContainerNamespace {
@@ -108023,9 +107709,7 @@ export namespace AgsAudio {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SoundProviderNamespace {
@@ -108236,9 +107920,7 @@ export namespace AgsAudio {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SoundResourceNamespace {
@@ -108327,7 +108009,7 @@ export namespace AgsAudio {
          * @param attack the attack
          * @returns a {@link GLib.List}-struct containing {@link AgsAudio.Wave}
          */
-        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: (bigint | number), delay: number, attack: number): Wave[];
+        read_wave(soundcard: GObject.Object, audio_channel: number, x_offset: bigint | number, delay: number, attack: number): Wave[];
 
         /**
          * Open `sound_resource` for reading/writing and assign filename. Setting
@@ -108345,7 +108027,7 @@ export namespace AgsAudio {
          * @param frame_count the frame count
          * @param whence SEEK_SET, SEEK_CUR or SEEK_END
          */
-        seek(frame_count: (bigint | number), whence: number): void;
+        seek(frame_count: bigint | number, whence: number): void;
 
         /**
          * Set presets of `sound_resource`.

@@ -76,7 +76,7 @@ export namespace Gtef {
         static ENCODING_AUTO_DETECTION_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -104,7 +104,7 @@ export namespace Gtef {
         static EXTERNALLY_MODIFIED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -227,7 +227,7 @@ export namespace Gtef {
      * @returns the long description of `menu_item`, previously set with   `gtef_menu_item_set_long_description()`.
      * @since 2.0
      */
-    function menu_item_get_long_description(menu_item: Gtk.MenuItem): (string | null);
+    function menu_item_get_long_description(menu_item: Gtk.MenuItem): string | null;
 
     /**
      * Sets an icon to a {@link Gtk.MenuItem}.
@@ -255,7 +255,7 @@ export namespace Gtef {
      * @param long_description the long description, or `null` to unset it.
      * @since 2.0
      */
-    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: (string | null)): void;
+    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: string | null): void;
 
     /**
      * This function initializes the metadata manager.
@@ -367,13 +367,10 @@ export namespace Gtef {
 
     namespace ActionInfoCentralStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -429,7 +426,7 @@ export namespace Gtef {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: (Gtk.Application | null);
+            application: Gtk.Application | null;
         }
     }
 
@@ -446,7 +443,7 @@ export namespace Gtef {
          * @since 2.0
          * @construct-only
          */
-        get application(): (Gtk.Application | null);
+        get application(): Gtk.Application | null;
 
         /**
          * Compile-time signal type information.
@@ -462,7 +459,7 @@ export namespace Gtef {
 
         _init(...args: any[]): void;
 
-        static ["new"](application: (Gtk.Application | null)): ActionInfoStore;
+        static ["new"](application: Gtk.Application | null): ActionInfoStore;
 
         // Signals
         /** @signal */
@@ -497,7 +494,7 @@ export namespace Gtef {
          * @param entries a pointer to the first item in an array of {@link Gtef.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
          */
-        add_entries(entries: ActionInfoEntry[], translation_domain: (string | null)): void;
+        add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
 
         /**
          * Checks that all {@link Gtef.ActionInfo}'s of `store` have been used by
@@ -532,7 +529,7 @@ export namespace Gtef {
         /**
          * @returns the associated {@link Gtk.Application}, or `null`.
          */
-        get_application(): (Gtk.Application | null);
+        get_application(): Gtk.Application | null;
 
         /**
          * @param action_name an action name.
@@ -644,7 +641,7 @@ export namespace Gtef {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application_window: Gtk.ApplicationWindow;
             applicationWindow: Gtk.ApplicationWindow;
-            statusbar: (Gtk.Statusbar | null);
+            statusbar: Gtk.Statusbar | null;
         }
     }
 
@@ -673,8 +670,8 @@ export namespace Gtef {
          * The {@link Gtk.Statusbar}. `null` by default.
          * @since 2.0
          */
-        get statusbar(): (Gtk.Statusbar | null);
-        set statusbar(val: (Gtk.Statusbar | null));
+        get statusbar(): Gtk.Statusbar | null;
+        set statusbar(val: Gtk.Statusbar | null);
 
         /**
          * Compile-time signal type information.
@@ -765,13 +762,13 @@ export namespace Gtef {
         /**
          * @returns the {@link Gtef.ApplicationWindow.statusbar}.
          */
-        get_statusbar(): (Gtk.Statusbar | null);
+        get_statusbar(): Gtk.Statusbar | null;
 
         /**
          * Sets the {@link Gtef.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
          */
-        set_statusbar(statusbar: (Gtk.Statusbar | null)): void;
+        set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
 
 
@@ -1175,7 +1172,7 @@ export namespace Gtef {
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location: (Gio.File | null)): void;
+        set_location(location: Gio.File | null): void;
     }
 
 
@@ -1191,13 +1188,13 @@ export namespace Gtef {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Buffer | null);
-            chunk_size: (bigint | number);
-            chunkSize: (bigint | number);
-            file: (File | null);
-            location: (Gio.File | null);
-            max_size: (bigint | number);
-            maxSize: (bigint | number);
+            buffer: Buffer | null;
+            chunk_size: bigint | number;
+            chunkSize: bigint | number;
+            file: File | null;
+            location: Gio.File | null;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -1214,7 +1211,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Buffer | null);
+        get buffer(): Buffer | null;
 
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
@@ -1226,7 +1223,7 @@ export namespace Gtef {
          * @since 1.0
          */
         get chunk_size(): number;
-        set chunk_size(val: (bigint | number));
+        set chunk_size(val: bigint | number);
 
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
@@ -1238,7 +1235,7 @@ export namespace Gtef {
          * @since 1.0
          */
         get chunkSize(): number;
-        set chunkSize(val: (bigint | number));
+        set chunkSize(val: bigint | number);
 
         /**
          * The {@link Gtef.File}. The {@link Gtef.FileLoader} object has a weak
@@ -1246,7 +1243,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get file(): (File | null);
+        get file(): File | null;
 
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
@@ -1254,7 +1251,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get location(): (Gio.File | null);
+        get location(): Gio.File | null;
 
         /**
          * The maximum content size, in bytes. Keep in mind that all the
@@ -1265,7 +1262,7 @@ export namespace Gtef {
          * @since 1.0
          */
         get max_size(): number;
-        set max_size(val: (bigint | number));
+        set max_size(val: bigint | number);
 
         /**
          * The maximum content size, in bytes. Keep in mind that all the
@@ -1276,7 +1273,7 @@ export namespace Gtef {
          * @since 1.0
          */
         get maxSize(): number;
-        set maxSize(val: (bigint | number));
+        set maxSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1311,7 +1308,7 @@ export namespace Gtef {
         /**
          * @returns the {@link Gtef.Buffer} to load the content into.
          */
-        get_buffer(): (Buffer | null);
+        get_buffer(): Buffer | null;
 
         /**
          * @returns the chunk size.
@@ -1321,17 +1318,17 @@ export namespace Gtef {
         /**
          * @returns the detected file encoding, or `null`.
          */
-        get_encoding(): (Encoding | null);
+        get_encoding(): Encoding | null;
 
         /**
          * @returns the {@link Gtef.File}.
          */
-        get_file(): (File | null);
+        get_file(): File | null;
 
         /**
          * @returns the {@link Gio.File} to load.
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * @returns the maximum content size, or -1 for unlimited.
@@ -1351,7 +1348,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the file content into the {@link Gtef.Buffer}.
@@ -1362,7 +1359,7 @@ export namespace Gtef {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads asynchronously the file content into the {@link Gtef.Buffer}.
@@ -1373,7 +1370,7 @@ export namespace Gtef {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file loading started with `gtef_file_loader_load_async()`.
@@ -1385,12 +1382,12 @@ export namespace Gtef {
         /**
          * @param chunk_size the new chunk size.
          */
-        set_chunk_size(chunk_size: (bigint | number)): void;
+        set_chunk_size(chunk_size: bigint | number): void;
 
         /**
          * @param max_size the new maximum size, or -1 for unlimited.
          */
-        set_max_size(max_size: (bigint | number)): void;
+        set_max_size(max_size: bigint | number): void;
     }
 
 
@@ -1455,7 +1452,7 @@ export namespace Gtef {
          * @param key the name of the metadata.
          * @returns the value of the metadata, or `null` if the metadata   doesn't exist. Free with `g_free()`.
          */
-        get(key: string): (string | null);
+        get(key: string): string | null;
 
         /**
          * @returns the {@link Gtef.File} that the metadata belong to.
@@ -1476,7 +1473,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          */
-        load(cancellable: (Gio.Cancellable | null)): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The asynchronous version of `gtef_file_metadata_load()`.
@@ -1489,21 +1486,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * The asynchronous version of `gtef_file_metadata_load()`.
-         * 
-         * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
-         * this function loads the metadata synchronously. A future version might fix
-         * this.
-         * 
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * The asynchronous version of `gtef_file_metadata_load()`.
@@ -1517,7 +1500,21 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * The asynchronous version of `gtef_file_metadata_load()`.
+         * 
+         * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
+         * this function loads the metadata synchronously. A future version might fix
+         * this.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the metadata loading started with `gtef_file_metadata_load_async()`.
@@ -1536,7 +1533,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable: (Gio.Cancellable | null)): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The asynchronous version of `gtef_file_metadata_save()`.
@@ -1548,20 +1545,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * The asynchronous version of `gtef_file_metadata_save()`.
-         * 
-         * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
-         * function saves the metadata synchronously. A future version might fix this.
-         * 
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * The asynchronous version of `gtef_file_metadata_save()`.
@@ -1574,7 +1558,20 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * The asynchronous version of `gtef_file_metadata_save()`.
+         * 
+         * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
+         * function saves the metadata synchronously. A future version might fix this.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the metadata saving started with `gtef_file_metadata_save_async()`.
@@ -1592,7 +1589,7 @@ export namespace Gtef {
          * @param key the name of the metadata.
          * @param value the value of the metadata, or `null` to unset.
          */
-        set(key: string, value: (string | null)): void;
+        set(key: string, value: string | null): void;
 
         /**
          * @param args 
@@ -1778,7 +1775,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -1788,7 +1785,7 @@ export namespace Gtef {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -1798,7 +1795,7 @@ export namespace Gtef {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file saving started with `gtef_file_saver_save_async()`.
@@ -1826,7 +1823,7 @@ export namespace Gtef {
          * By default the encoding is taken from the {@link Gtef.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding: (Encoding | null)): void;
+        set_encoding(encoding: Encoding | null): void;
 
         /**
          * @param flags the new flags.
@@ -1851,7 +1848,7 @@ export namespace Gtef {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Gtk.TextBuffer | null);
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -1869,7 +1866,7 @@ export namespace Gtef {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Gtk.TextBuffer | null);
+        get buffer(): Gtk.TextBuffer | null;
 
         /**
          * Whether the {@link Gtef.FoldRegion} is folded or not.
@@ -1917,7 +1914,7 @@ export namespace Gtef {
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
          */
-        get_buffer(): (Gtk.TextBuffer | null);
+        get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * @returns whether the {@link Gtef.FoldRegion} is folded.
@@ -1956,9 +1953,7 @@ export namespace Gtef {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
     }
 
     /**
@@ -2062,9 +2057,7 @@ export namespace Gtef {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.InfoBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.InfoBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2089,7 +2082,7 @@ export namespace Gtef {
 
         static ["new"](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: (string | null)): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
         /** @signal */
@@ -2317,9 +2310,7 @@ export namespace Gtef {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2479,9 +2470,7 @@ export namespace Gtef {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -2588,14 +2577,11 @@ export namespace Gtef {
         static $gtype: GObject.GType<ActionInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ActionInfo;
 
-        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: (string | null)): ActionInfo;
+        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: string | null): ActionInfo;
 
         // Methods
         /**
@@ -2614,22 +2600,22 @@ export namespace Gtef {
         /**
          * @returns the action name, or `null`. Example: `"win.save"`.
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * @returns the icon name, or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @returns the label (i.e. a short description), or `null`.
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * @returns the tooltip (i.e. a long description), or `null`.
          */
-        get_tooltip(): (string | null);
+        get_tooltip(): string | null;
 
         /**
          * Increments the reference count of `info` by one.
@@ -2655,17 +2641,17 @@ export namespace Gtef {
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * @param label the label (i.e. a short description), or `null`.
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
          */
-        set_tooltip(tooltip: (string | null)): void;
+        set_tooltip(tooltip: string | null): void;
 
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
@@ -2775,10 +2761,7 @@ export namespace Gtef {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](charset: string): Encoding;
 
@@ -2812,7 +2795,7 @@ export namespace Gtef {
          * @param enc2 a {@link Gtef.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equals.
          */
-        equals(enc2: (Encoding | null)): boolean;
+        equals(enc2: Encoding | null): boolean;
 
         free(): void;
 

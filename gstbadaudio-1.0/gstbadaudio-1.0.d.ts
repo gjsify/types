@@ -434,7 +434,7 @@ export namespace GstBadAudio {
          * @param size Size of the output buffer, in bytes
          * @returns Newly allocated output buffer, or NULL if allocation failed
          */
-        allocate_output_buffer(size: (bigint | number)): (Gst.Buffer | null);
+        allocate_output_buffer(size: bigint | number): Gst.Buffer | null;
 
         /**
          * Gets sample format, sample rate, channel count from the allowed srcpad caps.
@@ -525,13 +525,10 @@ export namespace GstBadAudio {
 
     namespace PlanarAudioAdapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -607,7 +604,7 @@ export namespace GstBadAudio {
          * that at least this many samples are available.
          * @param to_flush the number of samples to flush
          */
-        flush(to_flush: (bigint | number)): void;
+        flush(to_flush: bigint | number): void;
 
         /**
          * Returns a {@link Gst.Buffer} containing the first `nsamples` of the `adapter`, but
@@ -626,7 +623,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
-        get_buffer(nsamples: (bigint | number), flags: Gst.MapFlags): (Gst.Buffer | null);
+        get_buffer(nsamples: bigint | number, flags: Gst.MapFlags): Gst.Buffer | null;
 
         /**
          * Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
@@ -702,7 +699,7 @@ export namespace GstBadAudio {
          * @param flags hint the intended use of the returned buffer
          * @returns a {@link Gst.Buffer} containing the first     `nsamples` of the adapter, or `null` if `nsamples` samples are not     available. `gst_buffer_unref()` when no longer needed.
          */
-        take_buffer(nsamples: (bigint | number), flags: Gst.MapFlags): (Gst.Buffer | null);
+        take_buffer(nsamples: bigint | number, flags: Gst.MapFlags): Gst.Buffer | null;
     }
 
 

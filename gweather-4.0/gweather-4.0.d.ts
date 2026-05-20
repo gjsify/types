@@ -765,7 +765,7 @@ export namespace GWeather {
 
         _init(...args: any[]): void;
 
-        static ["new"](location: (Location | null)): Info;
+        static ["new"](location: Location | null): Info;
 
         // Signals
         /** @signal */
@@ -862,7 +862,7 @@ export namespace GWeather {
         /**
          * @param phases 
          */
-        get_upcoming_moonphases(phases: (bigint | number)): boolean;
+        get_upcoming_moonphases(phases: bigint | number): boolean;
 
         get_update(): string;
 
@@ -1010,7 +1010,7 @@ export namespace GWeather {
          * you must call {@link GWeather.Info.update} to obtain the new data.
          * @param location a location for which weather is desired
          */
-        set_location(location: (Location | null)): void;
+        set_location(location: Location | null): void;
 
         /**
          * Requests a reload of weather conditions and forecast data from
@@ -1026,13 +1026,10 @@ export namespace GWeather {
 
     namespace Location {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1061,7 +1058,7 @@ export namespace GWeather {
 
         _init(...args: any[]): void;
 
-        static new_detached(name: string, icao: (string | null), latitude: number, longitude: number): Location;
+        static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
 
         // Signals
         /** @signal */
@@ -1088,7 +1085,7 @@ export namespace GWeather {
          * representing a hierarchy containing all of the locations from the
          * location data.
          */
-        static get_world(): (Location | null);
+        static get_world(): Location | null;
 
         // Methods
         /**
@@ -1114,7 +1111,7 @@ export namespace GWeather {
          * @param cancellable a cancellable instance
          * @param callback callback function
          */
-        detect_nearest_city(lat: number, lon: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        detect_nearest_city(lat: number, lon: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Compares two {@link GWeather.Location} and sees if they represent the same
@@ -1150,7 +1147,7 @@ export namespace GWeather {
          * @param station_code a 4 letter METAR code
          * @returns a weather station level location   for the given station code, or `NULL` if none exists in the database
          */
-        find_by_station_code(station_code: string): (Location | null);
+        find_by_station_code(station_code: string): Location | null;
 
         /**
          * Finds the nearest city to the passed latitude and
@@ -1182,7 +1179,7 @@ export namespace GWeather {
          * @param func a function to iterate   over the locations; the function must return `TRUE` to continue checking   for the location, and `FALSE` to filter the location out
          * @returns the city closest to (`lat`, `lon`), in the   region or administrative district of `loc` with validation of   filter function
          */
-        find_nearest_city_full(lat: number, lon: number, func: (FilterFunc | null)): Location;
+        find_nearest_city_full(lat: number, lon: number, func: FilterFunc | null): Location;
 
         /**
          * Frees the array of timezones returned by
@@ -1203,14 +1200,14 @@ export namespace GWeather {
          * For other locations this method will return `NULL`.
          * @returns the city name of the location
          */
-        get_city_name(): (string | null);
+        get_city_name(): string | null;
 
         /**
          * Gets the METAR station code associated with a
          * `GWEATHER_LOCATION_WEATHER_STATION` location.
          * @returns the location's METAR station code
          */
-        get_code(): (string | null);
+        get_code(): string | null;
 
         /**
          * Gets `loc`'s coordinates.
@@ -1227,7 +1224,7 @@ export namespace GWeather {
          * function returns `NULL`.
          * @returns the location's country code
          */
-        get_country(): (string | null);
+        get_country(): string | null;
 
         /**
          * Retrieves the country name for the given location.
@@ -1242,7 +1239,7 @@ export namespace GWeather {
          * `GWEATHER_LOCATION_COUNTRY` and return its name.
          * @returns the location's country name
          */
-        get_country_name(): (string | null);
+        get_country_name(): string | null;
 
         /**
          * Determines the distance in kilometers between `loc` and `loc2`.
@@ -1255,7 +1252,7 @@ export namespace GWeather {
          * Gets the location's name.
          * @returns the location's name
          */
-        get_english_name(): (string | null);
+        get_english_name(): string | null;
 
         /**
          * Gets the location's name, in a representation useful for comparisons.
@@ -1266,7 +1263,7 @@ export namespace GWeather {
          * location name.
          * @returns the sort name of the location
          */
-        get_english_sort_name(): (string | null);
+        get_english_sort_name(): string | null;
 
         /**
          * Gets `loc`'s level, from {@link GWeather.LocationLevel.WORLD}, to
@@ -1279,13 +1276,13 @@ export namespace GWeather {
          * Gets the location's name, localized into the current language.
          * @returns the location's name
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the location's parent.
          * @returns the location's parent
          */
-        get_parent(): (Location | null);
+        get_parent(): Location | null;
 
         /**
          * Gets the location's name, localized into the current language,
@@ -1297,19 +1294,19 @@ export namespace GWeather {
          * location name.
          * @returns the sort name of the location
          */
-        get_sort_name(): (string | null);
+        get_sort_name(): string | null;
 
         /**
          * Gets the timezone associated with `loc`, if known.
          * @returns the location's timezone
          */
-        get_timezone(): (GLib.TimeZone | null);
+        get_timezone(): GLib.TimeZone | null;
 
         /**
          * Gets the timezone associated with `loc`, if known, as a string.
          * @returns the location's timezone as   a string
          */
-        get_timezone_str(): (string | null);
+        get_timezone_str(): string | null;
 
         /**
          * Gets an array of all timezones associated with any location under
@@ -1350,7 +1347,7 @@ export namespace GWeather {
          * @param child the next child
          * @returns The next child, if one exists
          */
-        next_child(child: (Location | null)): (Location | null);
+        next_child(child: Location | null): Location | null;
 
         /**
          * Transforms a {@link GWeather.Location} into a {@link GLib.Variant}, in a way that

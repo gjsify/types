@@ -111,7 +111,7 @@ export namespace Ide {
         static NEEDS_REBUILD: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -319,7 +319,7 @@ export namespace Ide {
         static DEVICE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -548,7 +548,7 @@ export namespace Ide {
         static SPAWN_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -893,7 +893,7 @@ export namespace Ide {
      * @param context a {@link Ide.Context}
      * @returns an {@link Ide.BuildSystem}
      */
-    function build_system_from_context(context: Context): (BuildSystem | null);
+    function build_system_from_context(context: Context): BuildSystem | null;
 
     /**
      * If both `self` and `other` are not `null`, then the cancellation of
@@ -916,7 +916,7 @@ export namespace Ide {
      * @param other a {@link Gio.Cancellable} or `null`
      * @returns a {@link Gio.Cancellable} or `null`
      */
-    function cancellable_chain(self: (Gio.Cancellable | null), other: (Gio.Cancellable | null)): (Gio.Cancellable | null);
+    function cancellable_chain(self: Gio.Cancellable | null, other: Gio.Cancellable | null): Gio.Cancellable | null;
 
     /**
      * @param location 
@@ -1051,7 +1051,7 @@ export namespace Ide {
      * @param program the name of the executable
      * @returns a path or `null`
      */
-    function find_program_in_host_path(program: string): (string | null);
+    function find_program_in_host_path(program: string): string | null;
 
     /**
      * @param font_desc 
@@ -1068,7 +1068,7 @@ export namespace Ide {
      * @param name the name for the memfd or tempfile
      * @returns -1 upon failure, otherwise a file-descriptor
      */
-    function foundry_bytes_to_memfd(bytes: (GLib.Bytes | null), name: string): number;
+    function foundry_bytes_to_memfd(bytes: GLib.Bytes | null, name: string): number;
 
     /**
      * @param file 
@@ -1090,7 +1090,7 @@ export namespace Ide {
      * @param bundled_program_path the path to a bundled version of the program
      * @returns a {@link Ide.SubprocessLauncher} or `null` and   `error` is set.
      */
-    function foundry_get_launcher_for_context(context: Context, program_name: string, bundled_program_path: (string | null)): SubprocessLauncher;
+    function foundry_get_launcher_for_context(context: Context, program_name: string, bundled_program_path: string | null): SubprocessLauncher;
 
     /**
      * @param str 
@@ -1110,7 +1110,7 @@ export namespace Ide {
      * @param filename 
      * @returns A {@link Gio.Icon} or `null`
      */
-    function g_content_type_get_symbolic_icon(content_type: string, filename: string): (Gio.Icon | null);
+    function g_content_type_get_symbolic_icon(content_type: string, filename: string): Gio.Icon | null;
 
     /**
      * Helper function to create a human-friendly string describing approximately
@@ -1137,7 +1137,7 @@ export namespace Ide {
      * @param pattern the glob pattern to search for using GPatternSpec
      * @param cancellable a {@link Gio.Cancellable} or `null`
      */
-    function g_file_find_async(file: Gio.File, pattern: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File[]>;
+    function g_file_find_async(file: Gio.File, pattern: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File[]>;
     /**
      * Searches descendants of `file` for files matching `pattern`.
      * 
@@ -1147,7 +1147,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @param callback a callback to execute upon completion
      */
-    function g_file_find_async(file: Gio.File, pattern: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function g_file_find_async(file: Gio.File, pattern: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * Searches descendants of `file` for files matching `pattern`.
      * 
@@ -1157,7 +1157,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @param callback a callback to execute upon completion
      */
-    function g_file_find_async(file: Gio.File, pattern: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<Gio.File[]> | void);
+    function g_file_find_async(file: Gio.File, pattern: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<Gio.File[]> | void;
 
     /**
      * Gets the files that were found which matched the pattern.
@@ -1172,21 +1172,21 @@ export namespace Ide {
      * @param name 
      * @param cancellable 
      */
-    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
     /**
      * @param directory 
      * @param name 
      * @param cancellable 
      * @param callback 
      */
-    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * @param directory 
      * @param name 
      * @param cancellable 
      * @param callback 
      */
-    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<Gio.File> | void);
+    function g_file_find_in_ancestors_async(directory: Gio.File, name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<Gio.File> | void;
 
     /**
      * @param result 
@@ -1201,7 +1201,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @returns a {@link GLib.PtrArray} of {@link Gio.File}.
      */
-    function g_file_find_with_depth(file: Gio.File, pattern: string, max_depth: number, cancellable: (Gio.Cancellable | null)): Gio.File[];
+    function g_file_find_with_depth(file: Gio.File, pattern: string, max_depth: number, cancellable: Gio.Cancellable | null): Gio.File[];
 
     /**
      * Searches descendants of `file` for files matching `pattern`.
@@ -1216,7 +1216,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @param callback a callback to execute upon completion
      */
-    function g_file_find_with_depth_async(file: Gio.File, pattern: string, max_depth: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function g_file_find_with_depth_async(file: Gio.File, pattern: string, max_depth: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
 
     /**
      * This function is like `g_file_enumerate_children_async()` except that
@@ -1230,7 +1230,7 @@ export namespace Ide {
      * @param io_priority the io priority
      * @param cancellable a {@link Gio.Cancellable} or `null`
      */
-    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileInfo[]>;
+    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.FileInfo[]>;
     /**
      * This function is like `g_file_enumerate_children_async()` except that
      * it returns a {@link GLib.PtrArray} of {@link Gio.FileInfo} instead of an enumerator.
@@ -1244,7 +1244,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @param callback a callback to execute upon completion
      */
-    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * This function is like `g_file_enumerate_children_async()` except that
      * it returns a {@link GLib.PtrArray} of {@link Gio.FileInfo} instead of an enumerator.
@@ -1258,7 +1258,7 @@ export namespace Ide {
      * @param cancellable a {@link Gio.Cancellable} or `null`
      * @param callback a callback to execute upon completion
      */
-    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<Gio.FileInfo[]> | void);
+    function g_file_get_children_async(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<Gio.FileInfo[]> | void;
 
     /**
      * Completes an asynchronous request to `ide_g_file_get_children_async()`.
@@ -1281,7 +1281,7 @@ export namespace Ide {
      * @param other a {@link Gio.File} with a common ancestor to `file`
      * @returns A relative path, or `null` if no common ancestor was   found for the relative path.
      */
-    function g_file_get_uncanonical_relative_path(file: Gio.File, other: Gio.File): (string | null);
+    function g_file_get_uncanonical_relative_path(file: Gio.File, other: Gio.File): string | null;
 
     /**
      * Checks if `file` should be ignored using the internal ignore rules.  If you
@@ -1301,7 +1301,7 @@ export namespace Ide {
      * @param cancellable an optional cancellable
      * @param callback a callback for each directory starting from `directory`
      */
-    function g_file_walk(directory: Gio.File, attributes: string, cancellable: (Gio.Cancellable | null), callback: FileWalkCallback): void;
+    function g_file_walk(directory: Gio.File, attributes: string, cancellable: Gio.Cancellable | null, callback: FileWalkCallback): void;
 
     /**
      * Calls `callback` for every directory starting from `directory`.
@@ -1317,7 +1317,7 @@ export namespace Ide {
      * @param cancellable an optional cancellable
      * @param callback a callback for each directory starting from   the `directory`
      */
-    function g_file_walk_with_ignore(directory: Gio.File, attributes: string, ignore_file: (string | null), cancellable: (Gio.Cancellable | null), callback: FileWalkCallback): void;
+    function g_file_walk_with_ignore(directory: Gio.File, attributes: string, ignore_file: string | null, cancellable: Gio.Cancellable | null, callback: FileWalkCallback): void;
 
     /**
      * This is similar to `g_file_get_contents()` but ensures that we get
@@ -1444,7 +1444,7 @@ export namespace Ide {
      * @param uri 
      * @param timestamp 
      */
-    function gtk_show_uri_on_window(window: Gtk.Window, uri: string, timestamp: (bigint | number)): boolean;
+    function gtk_show_uri_on_window(window: Gtk.Window, uri: string, timestamp: bigint | number): boolean;
 
     /**
      * @param widget 
@@ -1501,7 +1501,7 @@ export namespace Ide {
      * @param gfile The file the edit should be applied to
      * @returns an {@link Ide.TextEdit} See_also: https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textEdit
      */
-    function lsp_decode_text_edit(text_edit: GLib.Variant, gfile: Gio.File): (TextEdit | null);
+    function lsp_decode_text_edit(text_edit: GLib.Variant, gfile: Gio.File): TextEdit | null;
 
     /**
      * @param object_module 
@@ -1618,7 +1618,7 @@ export namespace Ide {
      * keep search performance good.
      * @param max_results max result size for the reuslts
      */
-    function search_reducer_init(max_results: (bigint | number)): SearchReducer;
+    function search_reducer_init(max_results: bigint | number): SearchReducer;
 
     /**
      * Sets the application id that will be used.
@@ -1689,7 +1689,7 @@ export namespace Ide {
      * @param kind a {@link Ide.SymbolKind}
      * @returns a {@link Gio.Icon} or `null`
      */
-    function symbol_kind_get_gicon(kind: SymbolKind): (Gio.Icon | null);
+    function symbol_kind_get_gicon(kind: SymbolKind): Gio.Icon | null;
 
     /**
      * @param kind 
@@ -1756,7 +1756,7 @@ export namespace Ide {
      * @param only_at_start `true` if the searched `str` string should be constrained to start `iter` position.
      * @returns `true` if case of succes, `false` otherwise.
      */
-    function text_iter_find_chars_backward(iter: Gtk.TextIter, limit: (Gtk.TextIter | null), str: string, only_at_start: boolean): [boolean, Gtk.TextIter | null];
+    function text_iter_find_chars_backward(iter: Gtk.TextIter, limit: Gtk.TextIter | null, str: string, only_at_start: boolean): [boolean, Gtk.TextIter | null];
 
     /**
      * Search forward for a `str` string, starting at `iter` position till `limit` if there's one.
@@ -1768,7 +1768,7 @@ export namespace Ide {
      * @param only_at_start `true` if the searched `str` string should be constrained to start `iter` position.
      * @returns `true` if case of succes, `false` otherwise.
      */
-    function text_iter_find_chars_forward(iter: Gtk.TextIter, limit: (Gtk.TextIter | null), str: string, only_at_start: boolean): [boolean, Gtk.TextIter | null];
+    function text_iter_find_chars_forward(iter: Gtk.TextIter, limit: Gtk.TextIter | null, str: string, only_at_start: boolean): [boolean, Gtk.TextIter | null];
 
     /**
      * @param iter 
@@ -1876,7 +1876,7 @@ export namespace Ide {
      * @param notif 
      * @param cancellable 
      */
-    function vcs_cloner_clone_simple(context: Context, module_name: string, url: string, branch: string, destination: string, notif: Notification, cancellable: (Gio.Cancellable | null)): boolean;
+    function vcs_cloner_clone_simple(context: Context, module_name: string, url: string, branch: string, destination: string, notif: Notification, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Gets the {@link Ide.Vcs} for the context.
@@ -1907,21 +1907,21 @@ export namespace Ide {
      * @param widget a {@link Gtk.Widget}
      * @returns an {@link Ide.Context}, or `null`
      */
-    function widget_get_context(widget: Gtk.Widget): (Context | null);
+    function widget_get_context(widget: Gtk.Widget): Context | null;
 
     /**
      * Gets the {@link Ide.Workbench} that contains `widget`.
      * @param widget a {@link Gtk.Widget}
      * @returns an {@link Ide.Workbench} or `null`
      */
-    function widget_get_workbench(widget: Gtk.Widget): (Workbench | null);
+    function widget_get_workbench(widget: Gtk.Widget): Workbench | null;
 
     /**
      * Gets the {@link Ide.Workspace} containing `widget`.
      * @param widget a {@link Gtk.Widget}
      * @returns an {@link Ide.Workspace} or `null`
      */
-    function widget_get_workspace(widget: Gtk.Widget): (Workspace | null);
+    function widget_get_workspace(widget: Gtk.Widget): Workspace | null;
 
     /**
      * Calls `handler` when the {@link Ide.Context} has been set for `widget`.
@@ -2032,7 +2032,7 @@ export namespace Ide {
      * @gir-type Callback
      */
     interface TaskThreadFunc {
-        (task: Task, source_object: null, task_data: null, cancellable: (Gio.Cancellable | null)): void;
+        (task: Task, source_object: null, task_data: null, cancellable: Gio.Cancellable | null): void;
     }
 
     /**
@@ -2274,13 +2274,10 @@ export namespace Ide {
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
     }
 
     /**
@@ -2332,7 +2329,7 @@ export namespace Ide {
          * @param prefix the name of the inserted action group
          * @returns a {@link Gio.ActionGroup} matching `prefix` if   found, otherwise `null`.
          */
-        get_action_group(prefix: string): (Gio.ActionGroup | null);
+        get_action_group(prefix: string): Gio.ActionGroup | null;
 
         /**
          * @param prefix 
@@ -2430,7 +2427,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2476,7 +2473,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2490,7 +2487,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2514,7 +2511,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2536,7 +2533,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2663,7 +2660,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2710,7 +2707,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2724,7 +2721,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2748,7 +2745,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2770,7 +2767,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2933,7 +2930,7 @@ export namespace Ide {
          * @param pspec A {@link GObject.ParamSpec} of `target` or a {@link Gtk.Widget}<!-- -->'s parent.
          * @param value The new value for the property at the end of the animation.
          */
-        add_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        add_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * Start the animation. When the animation stops, the internal reference will
@@ -2961,7 +2958,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "show-help": () => (boolean | void);
+            "show-help": () => boolean | void;
             "notify::style-scheme": (pspec: GObject.ParamSpec) => void;
             "notify::system-font": (pspec: GObject.ParamSpec) => void;
             "notify::system-font-name": (pspec: GObject.ParamSpec) => void;
@@ -3073,7 +3070,7 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        create_cancel_action(cancellable: (Gio.Cancellable | null)): string;
+        create_cancel_action(cancellable: Gio.Cancellable | null): string;
 
         /**
          * Finds a loaded {@link Ide.ApplicationAddin} within `self` that was part of
@@ -3081,7 +3078,7 @@ export namespace Ide {
          * @param module_name the name of the plugin module
          * @returns an   {@link Ide.ApplicationAddin} or `null`.
          */
-        find_addin_by_module_name(module_name: string): (ApplicationAddin | null);
+        find_addin_by_module_name(module_name: string): ApplicationAddin | null;
 
         /**
          * Finds a workbench that has `project_info` loaded.
@@ -3090,7 +3087,7 @@ export namespace Ide {
          * @param project_info an {@link Ide.ProjectInfo}
          * @returns an {@link Ide.Workbench} or `null`
          */
-        find_project_workbench(project_info: ProjectInfo): (Workbench | null);
+        find_project_workbench(project_info: ProjectInfo): Workbench | null;
 
         /**
          * Looks for the workbench that is the closest match to `file`.
@@ -3099,7 +3096,7 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @returns an {@link Ide.Workbench} or `null`
          */
-        find_workbench_for_file(file: Gio.File): (Workbench | null);
+        find_workbench_for_file(file: Gio.File): Workbench | null;
 
         /**
          * Calls `callback` for each of the registered workbenches.
@@ -3115,7 +3112,7 @@ export namespace Ide {
          * @param cmdline a {@link Gio.ApplicationCommandLine}
          * @returns an   array of strings or `null`
          */
-        get_argv(cmdline: Gio.ApplicationCommandLine): (string[] | null);
+        get_argv(cmdline: Gio.ApplicationCommandLine): string[] | null;
 
         /**
          * @param cmdline 
@@ -3129,7 +3126,7 @@ export namespace Ide {
          * @param menu_id the menu identifier
          * @returns a {@link Gio.Menu} or `null` if `menu_id` is `null`
          */
-        get_menu_by_id(menu_id: (string | null)): (Gio.Menu | null);
+        get_menu_by_id(menu_id: string | null): Gio.Menu | null;
 
         /**
          * @param args 
@@ -3160,7 +3157,7 @@ export namespace Ide {
          * @param n_files 
          * @param cancellable 
          */
-        install_schemes_async(files: Gio.File, n_files: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        install_schemes_async(files: Gio.File, n_files: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param files 
@@ -3168,7 +3165,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        install_schemes_async(files: Gio.File, n_files: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_schemes_async(files: Gio.File, n_files: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param files 
@@ -3176,7 +3173,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        install_schemes_async(files: Gio.File, n_files: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        install_schemes_async(files: Gio.File, n_files: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -3188,7 +3185,7 @@ export namespace Ide {
          * @param workspace_type 
          * @param cancellable 
          */
-        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Workbench>;
+        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<Workbench>;
 
         /**
          * @param project_info 
@@ -3196,7 +3193,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param project_info 
@@ -3204,7 +3201,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Workbench> | void);
+        open_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Workbench> | void;
 
         /**
          * Completes a request to open a project.
@@ -3321,19 +3318,19 @@ export namespace Ide {
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
             buffer_manager: BufferManager;
             bufferManager: BufferManager;
-            change_monitor: (BufferChangeMonitor | null);
-            changeMonitor: (BufferChangeMonitor | null);
+            change_monitor: BufferChangeMonitor | null;
+            changeMonitor: BufferChangeMonitor | null;
             changed_on_volume: boolean;
             changedOnVolume: boolean;
             charset: string;
-            diagnostics: (Diagnostics | null);
+            diagnostics: Diagnostics | null;
             enable_addins: boolean;
             enableAddins: boolean;
             failed: boolean;
             file: Gio.File;
-            file_settings: (FileSettings | null);
-            fileSettings: (FileSettings | null);
-            formatter: (Formatter | null);
+            file_settings: FileSettings | null;
+            fileSettings: FileSettings | null;
+            formatter: Formatter | null;
             has_diagnostics: boolean;
             hasDiagnostics: boolean;
             has_encoding_error: boolean;
@@ -3344,15 +3341,15 @@ export namespace Ide {
             highlightDiagnostics: boolean;
             is_temporary: boolean;
             isTemporary: boolean;
-            language_id: (string | null);
-            languageId: (string | null);
+            language_id: string | null;
+            languageId: string | null;
             newline_type: GtkSource.NewlineType;
             newlineType: GtkSource.NewlineType;
             read_only: boolean;
             readOnly: boolean;
             state: BufferState;
-            style_scheme_name: (string | null);
-            styleSchemeName: (string | null);
+            style_scheme_name: string | null;
+            styleSchemeName: string | null;
             symbol_resolvers: Gio.ListModel;
             symbolResolvers: Gio.ListModel;
             title: string;
@@ -3385,16 +3382,16 @@ export namespace Ide {
          * used to track changes in the {@link Ide.Buffer}. This can be used to show line
          * changes in the editor gutter.
          */
-        get change_monitor(): (BufferChangeMonitor | null);
-        set change_monitor(val: (BufferChangeMonitor | null));
+        get change_monitor(): BufferChangeMonitor | null;
+        set change_monitor(val: BufferChangeMonitor | null);
 
         /**
          * The "change-monitor" property is an {@link Ide.BufferChangeMonitor} that will be
          * used to track changes in the {@link Ide.Buffer}. This can be used to show line
          * changes in the editor gutter.
          */
-        get changeMonitor(): (BufferChangeMonitor | null);
-        set changeMonitor(val: (BufferChangeMonitor | null));
+        get changeMonitor(): BufferChangeMonitor | null;
+        set changeMonitor(val: BufferChangeMonitor | null);
 
         /**
          * The "changed-on-volume" property is set to `true` when it has been
@@ -3427,8 +3424,8 @@ export namespace Ide {
          * The "diagnostics" property contains an {@link Ide.Diagnostics} that represent
          * the diagnostics found in the buffer.
          */
-        get diagnostics(): (Diagnostics | null);
-        set diagnostics(val: (Diagnostics | null));
+        get diagnostics(): Diagnostics | null;
+        set diagnostics(val: Diagnostics | null);
 
         /**
          * The "enable-addins" property determines whether addins will be aware of
@@ -3470,7 +3467,7 @@ export namespace Ide {
          * {@link Ide.FileSettings} extension points.
          * @read-only
          */
-        get file_settings(): (FileSettings | null);
+        get file_settings(): FileSettings | null;
 
         /**
          * The "file-settings" property are the settings to be used by the buffer
@@ -3480,12 +3477,12 @@ export namespace Ide {
          * {@link Ide.FileSettings} extension points.
          * @read-only
          */
-        get fileSettings(): (FileSettings | null);
+        get fileSettings(): FileSettings | null;
 
         /**
          * @read-only
          */
-        get formatter(): (Formatter | null);
+        get formatter(): Formatter | null;
 
         /**
          * The "has-diagnostics" property denotes that there are a non-zero number
@@ -3576,16 +3573,16 @@ export namespace Ide {
          * {@link GtkSource.Buffer.language} property using a string name.
          * @default null
          */
-        get language_id(): (string | null);
-        set language_id(val: (string | null));
+        get language_id(): string | null;
+        set language_id(val: string | null);
 
         /**
          * The "language-id" property is a convenience property to set the
          * {@link GtkSource.Buffer.language} property using a string name.
          * @default null
          */
-        get languageId(): (string | null);
-        set languageId(val: (string | null));
+        get languageId(): string | null;
+        set languageId(val: string | null);
 
         /**
          * Sets the style of newline to append to each line.
@@ -3652,8 +3649,8 @@ export namespace Ide {
          * {@link GtkSource.StyleSchemeManager} to lookup style schemes.
          * @default null
          */
-        get style_scheme_name(): (string | null);
-        set style_scheme_name(val: (string | null));
+        get style_scheme_name(): string | null;
+        set style_scheme_name(val: string | null);
 
         /**
          * The "style-scheme-name" is the name of the style scheme that is used.
@@ -3661,8 +3658,8 @@ export namespace Ide {
          * {@link GtkSource.StyleSchemeManager} to lookup style schemes.
          * @default null
          */
-        get styleSchemeName(): (string | null);
-        set styleSchemeName(val: (string | null));
+        get styleSchemeName(): string | null;
+        set styleSchemeName(val: string | null);
 
         /**
          * @read-only
@@ -3727,7 +3724,7 @@ export namespace Ide {
          * @param after_delete_range function for after deleting a range
          * @returns a handler-id which can be used with   `ide_buffer_remove_commit_funcs()`.
          */
-        add_commit_funcs(before_insert_text: (BufferCommitFunc | null), after_insert_text: (BufferCommitFunc | null), before_delete_range: (BufferCommitFunc | null), after_delete_range: (BufferCommitFunc | null)): number;
+        add_commit_funcs(before_insert_text: BufferCommitFunc | null, after_insert_text: BufferCommitFunc | null, before_delete_range: BufferCommitFunc | null, after_delete_range: BufferCommitFunc | null): number;
 
         /**
          * Locates an addin attached to the {@link Ide.Buffer} by the name of the module
@@ -3735,27 +3732,27 @@ export namespace Ide {
          * @param module_name the module name of the addin
          * @returns An {@link Ide.BufferAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (BufferAddin | null);
+        addin_find_by_module_name(module_name: string): BufferAddin | null;
 
         /**
          * Queries for code actions in the current buffer.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        code_action_query_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeAction[]>;
-
-        /**
-         * Queries for code actions in the current buffer.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the callback upon completion
-         */
-        code_action_query_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        code_action_query_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CodeAction[]>;
 
         /**
          * Queries for code actions in the current buffer.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the callback upon completion
          */
-        code_action_query_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeAction[]> | void);
+        code_action_query_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Queries for code actions in the current buffer.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the callback upon completion
+         */
+        code_action_query_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeAction[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_buffer_query_code_action_async()`.
@@ -3795,7 +3792,7 @@ export namespace Ide {
          * @param options options for the formatting
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        format_selection_async(options: FormatterOptions, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        format_selection_async(options: FormatterOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Formats the selection using an available {@link Ide.Formatter} for the buffer.
@@ -3803,7 +3800,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the callback upon completion
          */
-        format_selection_async(options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        format_selection_async(options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Formats the selection using an available {@link Ide.Formatter} for the buffer.
@@ -3811,7 +3808,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the callback upon completion
          */
-        format_selection_async(options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        format_selection_async(options: FormatterOptions, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_buffer_format_selection_async()`.
@@ -3830,7 +3827,7 @@ export namespace Ide {
          * Gets the {@link Ide.Buffer.change_monitor} for the buffer.
          * @returns an {@link Ide.BufferChangeMonitor} or `null`
          */
-        get_change_monitor(): (BufferChangeMonitor | null);
+        get_change_monitor(): BufferChangeMonitor | null;
 
         /**
          * Returns `true` if the {@link Ide.Buffer} is known to have been modified on storage
@@ -3845,13 +3842,13 @@ export namespace Ide {
          * Gets the code action provider, if any.
          * @returns an {@link Ide.CodeActionProvider} or `null`
          */
-        get_code_action_provider(): (CodeActionProvider | null);
+        get_code_action_provider(): CodeActionProvider | null;
 
         /**
          * Gets the {@link Ide.Diagnostics} for the buffer if any have been registered.
          * @returns an {@link Ide.Diagnostics} or `null`
          */
-        get_diagnostics(): (Diagnostics | null);
+        get_diagnostics(): Diagnostics | null;
 
         /**
          * Gets the {@link Ide.Buffer.failed} property, denoting if the buffer has failed
@@ -3880,13 +3877,13 @@ export namespace Ide {
          * syntax are chnaged.
          * @returns an {@link Ide.FileSettings} or `null`
          */
-        get_file_settings(): (FileSettings | null);
+        get_file_settings(): FileSettings | null;
 
         /**
          * Gets an {@link Ide.Formatter} for the buffer, if any.
          * @returns an {@link Ide.Formatter} or `null`
          */
-        get_formatter(): (Formatter | null);
+        get_formatter(): Formatter | null;
 
         /**
          * Checks if diagnostics should be highlighted.
@@ -3926,14 +3923,14 @@ export namespace Ide {
          * A helper to get the language identifier of the buffers current language.
          * @returns a string containing the language id, or `null`
          */
-        get_language_id(): (string | null);
+        get_language_id(): string | null;
 
         /**
          * Gets the contents of a single line within the buffer.
          * @param line a line number starting from 0
          * @returns a string containing the line's text   or `null` if the line does not exist.
          */
-        get_line_text(line: number): (string | null);
+        get_line_text(line: number): string | null;
 
         /**
          * This checks to see if the buffer is currently loading. This is equivalent
@@ -3956,7 +3953,7 @@ export namespace Ide {
          * Gets the {@link Ide.RenameProvider} for this buffer, or `null`.
          * @returns An {@link Ide.RenameProvider} or `null` if   there is no {@link Ide.RenameProvider} that can satisfy the buffer.
          */
-        get_rename_provider(): (RenameProvider | null);
+        get_rename_provider(): RenameProvider | null;
 
         /**
          * This function acts like `gtk_text_buffer_get_selection_bounds()` except that
@@ -3993,22 +3990,14 @@ export namespace Ide {
          * property.
          * @returns a string containing the style scheme or `null`
          */
-        get_style_scheme_name(): (string | null);
+        get_style_scheme_name(): string | null;
 
         /**
          * Asynchronously get a possible symbol at `location`.
          * @param location a {@link Gtk.TextIter} indicating a position to search for a symbol
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Symbol>;
-
-        /**
-         * Asynchronously get a possible symbol at `location`.
-         * @param location a {@link Gtk.TextIter} indicating a position to search for a symbol
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback}
-         */
-        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol>;
 
         /**
          * Asynchronously get a possible symbol at `location`.
@@ -4016,7 +4005,15 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Symbol> | void);
+        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously get a possible symbol at `location`.
+         * @param location a {@link Gtk.TextIter} indicating a position to search for a symbol
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback}
+         */
+        get_symbol_at_location_async(location: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Symbol> | void;
 
         /**
          * Completes an asynchronous request to locate a symbol at a location.
@@ -4098,7 +4095,7 @@ export namespace Ide {
          * @param file a {@link Gio.File} or `null`
          * @param cancellable a {@link Gio.Cancellable}
          */
-        save_file_async(file: (Gio.File | null), cancellable: (Gio.Cancellable | null)): [globalThis.Promise<boolean>, Notification | null];
+        save_file_async(file: Gio.File | null, cancellable: Gio.Cancellable | null): [globalThis.Promise<boolean>, Notification | null];
 
         /**
          * Asynchronously saves the buffer contents to `file`.
@@ -4114,7 +4111,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        save_file_async(file: (Gio.File | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): Notification | null;
+        save_file_async(file: Gio.File | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): Notification | null;
 
         /**
          * Asynchronously saves the buffer contents to `file`.
@@ -4130,7 +4127,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        save_file_async(file: (Gio.File | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): [(globalThis.Promise<boolean> | void), Notification | null];
+        save_file_async(file: Gio.File | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): [globalThis.Promise<boolean> | void, Notification | null];
 
         /**
          * Completes an asynchronous request to save the buffer via
@@ -4144,7 +4141,7 @@ export namespace Ide {
          * Sets an {@link Ide.BufferChangeMonitor} to use for the buffer.
          * @param change_monitor an {@link Ide.BufferChangeMonitor} or `null`
          */
-        set_change_monitor(change_monitor: (BufferChangeMonitor | null)): void;
+        set_change_monitor(change_monitor: BufferChangeMonitor | null): void;
 
         /**
          * @param charset 
@@ -4157,7 +4154,7 @@ export namespace Ide {
          * is `true`.
          * @param diagnostics an {@link Ide.Diagnostics}
          */
-        set_diagnostics(diagnostics: (Diagnostics | null)): void;
+        set_diagnostics(diagnostics: Diagnostics | null): void;
 
         /**
          * Sets the {@link Ide.Buffer.highlight_diagnostics} property.
@@ -4182,7 +4179,7 @@ export namespace Ide {
          * matching `style_scheme_name`.
          * @param style_scheme_name string containing the style scheme's name
          */
-        set_style_scheme_name(style_scheme_name: (string | null)): void;
+        set_style_scheme_name(style_scheme_name: string | null): void;
     }
 
 
@@ -4335,8 +4332,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            max_file_size: (bigint | number);
-            maxFileSize: (bigint | number);
+            max_file_size: bigint | number;
+            maxFileSize: bigint | number;
         }
     }
 
@@ -4355,7 +4352,7 @@ export namespace Ide {
          * @default 10485760
          */
         get max_file_size(): number;
-        set max_file_size(val: (bigint | number));
+        set max_file_size(val: bigint | number);
 
         /**
          * The "max-file-size" property is the largest file size in bytes that
@@ -4365,7 +4362,7 @@ export namespace Ide {
          * @default 10485760
          */
         get maxFileSize(): number;
-        set maxFileSize(val: (bigint | number));
+        set maxFileSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -4412,7 +4409,7 @@ export namespace Ide {
          * @param edits An {@link GLib.PtrArray} of {@link Ide.TextEdit}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        apply_edits_async(edits: TextEdit[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        apply_edits_async(edits: TextEdit[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that all of `edits` are applied to the buffers
@@ -4425,7 +4422,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the callback to complete the request
          */
-        apply_edits_async(edits: TextEdit[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        apply_edits_async(edits: TextEdit[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that all of `edits` are applied to the buffers
@@ -4438,7 +4435,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the callback to complete the request
          */
-        apply_edits_async(edits: TextEdit[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        apply_edits_async(edits: TextEdit[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -4503,7 +4500,7 @@ export namespace Ide {
          * @param notif a location for an {@link Ide.Notification}, or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_file_async(file: (Gio.File | null), flags: BufferOpenFlags, notif: (Notification | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Buffer>;
+        load_file_async(file: Gio.File | null, flags: BufferOpenFlags, notif: Notification | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Buffer>;
 
         /**
          * Requests that `file` be loaded by the buffer manager. Depending on `flags`,
@@ -4529,7 +4526,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion of the operation
          */
-        load_file_async(file: (Gio.File | null), flags: BufferOpenFlags, notif: (Notification | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_file_async(file: Gio.File | null, flags: BufferOpenFlags, notif: Notification | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that `file` be loaded by the buffer manager. Depending on `flags`,
@@ -4555,7 +4552,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion of the operation
          */
-        load_file_async(file: (Gio.File | null), flags: BufferOpenFlags, notif: (Notification | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Buffer> | void);
+        load_file_async(file: Gio.File | null, flags: BufferOpenFlags, notif: Notification | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Buffer> | void;
 
         /**
          * Completes an asynchronous request to `ide_buffer_manager_laod_file_async()`.
@@ -4567,19 +4564,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        reload_all_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        reload_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        reload_all_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reload_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        reload_all_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reload_all_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -4593,7 +4590,7 @@ export namespace Ide {
          * `callback` will be executed after all the buffers have been saved.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        save_all_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the {@link Ide.BufferManager} save all of the loaded
@@ -4603,7 +4600,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback to execute upon completion
          */
-        save_all_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the {@link Ide.BufferManager} save all of the loaded
@@ -4613,7 +4610,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback to execute upon completion
          */
-        save_all_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_all_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to save all buffers.
@@ -4625,7 +4622,7 @@ export namespace Ide {
         /**
          * @param max_file_size 
          */
-        set_max_file_size(max_file_size: (bigint | number)): void;
+        set_max_file_size(max_file_size: bigint | number): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -4666,7 +4663,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -4706,7 +4703,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -4830,12 +4827,12 @@ export namespace Ide {
             errorCount: number;
             has_diagnostics: boolean;
             hasDiagnostics: boolean;
-            last_build_time: (GLib.DateTime | null);
-            lastBuildTime: (GLib.DateTime | null);
+            last_build_time: GLib.DateTime | null;
+            lastBuildTime: GLib.DateTime | null;
             message: string;
-            pipeline: (Pipeline | null);
-            running_time: (bigint | number);
-            runningTime: (bigint | number);
+            pipeline: Pipeline | null;
+            running_time: bigint | number;
+            runningTime: bigint | number;
             warning_count: number;
             warningCount: number;
         }
@@ -4913,14 +4910,14 @@ export namespace Ide {
          * the last build request was submitted.
          * @read-only
          */
-        get last_build_time(): (GLib.DateTime | null);
+        get last_build_time(): GLib.DateTime | null;
 
         /**
          * The "last-build-time" property contains a {@link GLib.DateTime} of the time
          * the last build request was submitted.
          * @read-only
          */
-        get lastBuildTime(): (GLib.DateTime | null);
+        get lastBuildTime(): GLib.DateTime | null;
 
         /**
          * The "message" property contains a string message describing
@@ -4936,7 +4933,7 @@ export namespace Ide {
          * is currently managing.
          * @read-only
          */
-        get pipeline(): (Pipeline | null);
+        get pipeline(): Pipeline | null;
 
         /**
          * The "running-time" property can be bound by UI elements that
@@ -5030,7 +5027,7 @@ export namespace Ide {
          * @param targets an array of   {@link Ide.BuildTarget} to build
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        build_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function will request that `phase` is completed in the underlying
@@ -5042,7 +5039,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to execute upon completion
          */
-        build_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will request that `phase` is completed in the underlying
@@ -5054,7 +5051,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to execute upon completion
          */
-        build_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to `ide_build_manager_build_async()`.
@@ -5078,7 +5075,7 @@ export namespace Ide {
          * @param phase the build phase to clean
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the build pipeline clean up to `phase`.
@@ -5088,7 +5085,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion, or `null`
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the build pipeline clean up to `phase`.
@@ -5098,7 +5095,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion, or `null`
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_build_manager_clean_async()`.
@@ -5129,7 +5126,7 @@ export namespace Ide {
          * See {@link Ide.BuildManager.last_build_time} for more information.
          * @returns a {@link GLib.DateTime} or `null`.
          */
-        get_last_build_time(): (GLib.DateTime | null);
+        get_last_build_time(): GLib.DateTime | null;
 
         /**
          * This function returns the current build message as a string.
@@ -5144,7 +5141,7 @@ export namespace Ide {
          * reloaded as build configurations change.
          * @returns An {@link Ide.Pipeline}.
          */
-        get_pipeline(): (Pipeline | null);
+        get_pipeline(): Pipeline | null;
 
         /**
          * Gets the amount of elapsed time of the current build as a
@@ -5164,19 +5161,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        list_targets_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_targets_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_targets_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_targets_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_targets_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_targets_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Lists available build targets.
@@ -5202,7 +5199,7 @@ export namespace Ide {
          * @param targets an array of {@link GLib.PtrArray}   of {@link Ide.BuildTarget} or `null`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the build pipeline clean and rebuild up
@@ -5215,7 +5212,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion, or `null`
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the build pipeline clean and rebuild up
@@ -5228,7 +5225,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion, or `null`
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_build_manager_rebuild_async()`.
@@ -5241,7 +5238,7 @@ export namespace Ide {
          * A thread-safe variant of `ide_build_manager_get_pipeline()`.
          * @returns an {@link Ide.Pipeline} or `null`
          */
-        ref_pipeline(): (Pipeline | null);
+        ref_pipeline(): Pipeline | null;
 
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
@@ -5314,7 +5311,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -5360,7 +5357,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -5374,7 +5371,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -5398,7 +5395,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -5420,7 +5417,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -5547,7 +5544,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -5594,7 +5591,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -5608,7 +5605,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -5632,7 +5629,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -5654,7 +5651,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -5747,7 +5744,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5791,7 +5788,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
@@ -5849,7 +5846,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            model: (Gio.ListModel | null);
+            model: Gio.ListModel | null;
         }
     }
 
@@ -5860,8 +5857,8 @@ export namespace Ide {
         static $gtype: GObject.GType<CachedListModel>;
 
         // Properties
-        get model(): (Gio.ListModel | null);
-        set model(val: (Gio.ListModel | null));
+        get model(): Gio.ListModel | null;
+        set model(val: Gio.ListModel | null);
 
         /**
          * Compile-time signal type information.
@@ -5877,7 +5874,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](model: (Gio.ListModel | null)): CachedListModel;
+        static ["new"](model: Gio.ListModel | null): CachedListModel;
 
         // Signals
         /** @signal */
@@ -5897,7 +5894,7 @@ export namespace Ide {
          * Gets the underlying model.
          * @returns a {@link Gio.ListModel} or `null`
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * @param model 
@@ -5943,7 +5940,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -5983,7 +5980,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -6012,13 +6009,10 @@ export namespace Ide {
 
     namespace CompileCommands {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6070,7 +6064,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if successful; otherwise `false` and `error` is set.
          */
-        load(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously loads the contents of the requested `file` and parses
@@ -6084,22 +6078,7 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously loads the contents of the requested `file` and parses
-         * the JSON command database contained within.
-         * 
-         * You may only call this function once on an {@link Ide.CompileCommands} object.
-         * If there is a failure, you must create a new {@link Ide.CompileCommands} instance
-         * instead of calling this function again.
-         * 
-         * See also: `ide_compile_commands_load_finish()`
-         * @param file a {@link Gio.File}
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the callback for the async operation
-         */
-        load_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously loads the contents of the requested `file` and parses
@@ -6114,7 +6093,22 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the callback for the async operation
          */
-        load_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously loads the contents of the requested `file` and parses
+         * the JSON command database contained within.
+         * 
+         * You may only call this function once on an {@link Ide.CompileCommands} object.
+         * If there is a failure, you must create a new {@link Ide.CompileCommands} instance
+         * instead of calling this function again.
+         * 
+         * See also: `ide_compile_commands_load_finish()`
+         * @param file a {@link Gio.File}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the callback for the async operation
+         */
+        load_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_compile_commands_load_async()`.
@@ -6134,7 +6128,7 @@ export namespace Ide {
          * @param system_includes system include dirs if any
          * @returns A string array or `null` if   there was a failure to locate or parse the command.
          */
-        lookup(file: Gio.File, system_includes: string): [(string[] | null), Gio.File | null];
+        lookup(file: Gio.File, system_includes: string): [string[] | null, Gio.File | null];
     }
 
 
@@ -6176,14 +6170,14 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            app_id: (string | null);
-            appId: (string | null);
+            app_id: string | null;
+            appId: string | null;
             append_path: string;
             appendPath: string;
             build_commands: string[];
             buildCommands: string[];
-            build_commands_dir: (Gio.File | null);
-            buildCommandsDir: (Gio.File | null);
+            build_commands_dir: Gio.File | null;
+            buildCommandsDir: Gio.File | null;
             config_opts: string;
             configOpts: string;
             debug: boolean;
@@ -6203,16 +6197,16 @@ export namespace Ide {
             prepend_path: string;
             prependPath: string;
             ready: boolean;
-            run_opts: (string | null);
-            runOpts: (string | null);
-            runtime: (Runtime | null);
+            run_opts: string | null;
+            runOpts: string | null;
+            runtime: Runtime | null;
             runtime_id: string;
             runtimeId: string;
             supported_runtimes: Gio.ListModel;
             supportedRuntimes: Gio.ListModel;
-            toolchain: (Toolchain | null);
-            toolchain_id: (string | null);
-            toolchainId: (string | null);
+            toolchain: Toolchain | null;
+            toolchain_id: string | null;
+            toolchainId: string | null;
         }
     }
 
@@ -6226,14 +6220,14 @@ export namespace Ide {
         /**
          * @default null
          */
-        get app_id(): (string | null);
-        set app_id(val: (string | null));
+        get app_id(): string | null;
+        set app_id(val: string | null);
 
         /**
          * @default null
          */
-        get appId(): (string | null);
-        set appId(val: (string | null));
+        get appId(): string | null;
+        set appId(val: string | null);
 
         /**
          * @default null
@@ -6253,11 +6247,11 @@ export namespace Ide {
         get buildCommands(): string[];
         set buildCommands(val: string[]);
 
-        get build_commands_dir(): (Gio.File | null);
-        set build_commands_dir(val: (Gio.File | null));
+        get build_commands_dir(): Gio.File | null;
+        set build_commands_dir(val: Gio.File | null);
 
-        get buildCommandsDir(): (Gio.File | null);
-        set buildCommandsDir(val: (Gio.File | null));
+        get buildCommandsDir(): Gio.File | null;
+        set buildCommandsDir(val: Gio.File | null);
 
         /**
          * @default null
@@ -6367,17 +6361,17 @@ export namespace Ide {
         /**
          * @default null
          */
-        get run_opts(): (string | null);
-        set run_opts(val: (string | null));
+        get run_opts(): string | null;
+        set run_opts(val: string | null);
 
         /**
          * @default null
          */
-        get runOpts(): (string | null);
-        set runOpts(val: (string | null));
+        get runOpts(): string | null;
+        set runOpts(val: string | null);
 
-        get runtime(): (Runtime | null);
-        set runtime(val: (Runtime | null));
+        get runtime(): Runtime | null;
+        set runtime(val: Runtime | null);
 
         /**
          * @default host
@@ -6401,20 +6395,20 @@ export namespace Ide {
          */
         get supportedRuntimes(): Gio.ListModel;
 
-        get toolchain(): (Toolchain | null);
-        set toolchain(val: (Toolchain | null));
+        get toolchain(): Toolchain | null;
+        set toolchain(val: Toolchain | null);
 
         /**
          * @default default
          */
-        get toolchain_id(): (string | null);
-        set toolchain_id(val: (string | null));
+        get toolchain_id(): string | null;
+        set toolchain_id(val: string | null);
 
         /**
          * @default default
          */
-        get toolchainId(): (string | null);
-        set toolchainId(val: (string | null));
+        get toolchainId(): string | null;
+        set toolchainId(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -6464,7 +6458,7 @@ export namespace Ide {
          * Gets the runtime for the configuration.
          * @virtual
          */
-        vfunc_get_runtime(): (Runtime | null);
+        vfunc_get_runtime(): Runtime | null;
 
         /**
          * @param runtime 
@@ -6486,7 +6480,7 @@ export namespace Ide {
          * @param file 
          * @virtual
          */
-        vfunc_translate_file(file: Gio.File): (Gio.File | null);
+        vfunc_translate_file(file: Gio.File): Gio.File | null;
 
         // Methods
         /**
@@ -6498,7 +6492,7 @@ export namespace Ide {
          * Gets the application ID for the configuration.
          * @returns A string.
          */
-        get_app_id(): (string | null);
+        get_app_id(): string | null;
 
         get_append_path(): string;
 
@@ -6512,7 +6506,7 @@ export namespace Ide {
         /**
          * @returns a {@link Gio.File} or `null`
          */
-        get_build_commands_dir(): (Gio.File | null);
+        get_build_commands_dir(): Gio.File | null;
 
         get_config_opts(): string;
 
@@ -6607,13 +6601,13 @@ export namespace Ide {
          * options to an array suitable for use in argv.
          * @returns A string containing the run options   or `null` if none have been set.
          */
-        get_run_opts(): (string | null);
+        get_run_opts(): string | null;
 
         /**
          * Gets the runtime for the configuration.
          * @returns An {@link Ide.Runtime}
          */
-        get_runtime(): (Runtime | null);
+        get_runtime(): Runtime | null;
 
         /**
          * @returns An {@link Ide.Environment}.
@@ -6638,13 +6632,13 @@ export namespace Ide {
          * Gets the toolchain for the configuration.
          * @returns An {@link Ide.Toolchain}
          */
-        get_toolchain(): (Toolchain | null);
+        get_toolchain(): Toolchain | null;
 
         /**
          * Gets the toolchain id for the configuration.
          * @returns The id of an {@link Ide.Toolchain} or `null`
          */
-        get_toolchain_id(): (string | null);
+        get_toolchain_id(): string | null;
 
         /**
          * @param key 
@@ -6718,14 +6712,14 @@ export namespace Ide {
          * @param key 
          * @param value 
          */
-        set_internal_int64(key: string, value: (bigint | number)): void;
+        set_internal_int64(key: string, value: bigint | number): void;
 
         /**
          * Sets the value for `key` to `instance`.
          * @param key the key to set
          * @param instance a {@link GObject.Object} or `null`
          */
-        set_internal_object(key: string, instance: (GObject.Object | null)): void;
+        set_internal_object(key: string, instance: GObject.Object | null): void;
 
         /**
          * @param key 
@@ -6774,7 +6768,7 @@ export namespace Ide {
          * See `ide_config_get_run_opts()` for more information.
          * @param run_opts the run options for the target application
          */
-        set_run_opts(run_opts: (string | null)): void;
+        set_run_opts(run_opts: string | null): void;
 
         /**
          * @param runtime 
@@ -6795,7 +6789,7 @@ export namespace Ide {
          * Sets the toolchain for the configuration.
          * @param toolchain An {@link Ide.Toolchain} or `null` to use the default one
          */
-        set_toolchain(toolchain: (Toolchain | null)): void;
+        set_toolchain(toolchain: Toolchain | null): void;
 
         /**
          * Sets the toolchain id for the configuration.
@@ -6822,7 +6816,7 @@ export namespace Ide {
          * @param file 
          * @returns a {@link Gio.File} or `null`
          */
-        translate_file(file: Gio.File): (Gio.File | null);
+        translate_file(file: Gio.File): Gio.File | null;
     }
 
 
@@ -6935,7 +6929,7 @@ export namespace Ide {
          * @param id The string identifier of the configuration
          * @returns An {@link Ide.Config} or `null` if   the configuration could not be found.
          */
-        get_config(id: string): (Config | null);
+        get_config(id: string): Config | null;
 
         /**
          * Gets the current configuration to use for building.
@@ -6978,19 +6972,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -7073,7 +7067,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -7119,7 +7113,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -7133,7 +7127,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -7157,7 +7151,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -7179,7 +7173,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -7306,7 +7300,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -7353,7 +7347,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -7367,7 +7361,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -7391,7 +7385,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -7413,7 +7407,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -7504,7 +7498,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -7547,7 +7541,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -7590,7 +7584,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7650,7 +7644,7 @@ export namespace Ide {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7699,7 +7693,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -7739,7 +7733,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -7928,7 +7922,7 @@ export namespace Ide {
          * @param path a path to the file
          * @returns a {@link Gio.File}
          */
-        build_file(path: (string | null)): Gio.File;
+        build_file(path: string | null): Gio.File;
 
         /**
          * Copies the project-id and returns it to the caller.
@@ -7964,7 +7958,7 @@ export namespace Ide {
          * @param type the {@link GObject.GType} of the child
          * @returns an {@link Ide.Object} that   matches `type` if successful; otherwise `null`
          */
-        peek_child_typed(type: GObject.GType): (Object | null);
+        peek_child_typed(type: GObject.GType): Object | null;
 
         /**
          * Gets the action muxer for the context.
@@ -7996,7 +7990,7 @@ export namespace Ide {
          * @param schema_id 
          * @returns an {@link Ide.Settings}
          */
-        ref_settings(schema_id: string): (Settings | null);
+        ref_settings(schema_id: string): Settings | null;
 
         /**
          * Gets the working-directory of the context and increments the
@@ -8028,7 +8022,7 @@ export namespace Ide {
          * include the omnibar and the window title.
          * @param title the title for the project or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
 
         /**
          * Sets the working directory for the project.
@@ -8086,7 +8080,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             active: boolean;
-            "debugger": (Debugger | null);
+            "debugger": Debugger | null;
         }
     }
 
@@ -8110,7 +8104,7 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get "debugger"(): (Debugger | null);
+        get "debugger"(): Debugger | null;
 
         /**
          * Compile-time signal type information.
@@ -8168,7 +8162,7 @@ export namespace Ide {
          * Gets the debugger instance, if it is loaded.
          * @returns An {@link Ide.Debugger} or `null`
          */
-        get_debugger(): (Debugger | null);
+        get_debugger(): Debugger | null;
 
         /**
          * This checks to see if there is a debugger that can possibly support a given
@@ -8180,7 +8174,7 @@ export namespace Ide {
          * @param language_id {@link GtkSource.View} based language identifier or `null`
          * @returns `true` if the language is supported; otherwise `false`.
          */
-        supports_language(language_id: (string | null)): boolean;
+        supports_language(language_id: string | null): boolean;
     }
 
 
@@ -8247,7 +8241,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            stopped: (arg0: DebuggerStopReason, arg1: (DebuggerBreakpoint | null)) => void;
+            stopped: (arg0: DebuggerStopReason, arg1: DebuggerBreakpoint | null) => void;
             /**
              * The signal is emitted when a thread is added to the inferior.
              * @signal
@@ -8300,8 +8294,8 @@ export namespace Ide {
         interface ConstructorProps extends Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
             display_name: string;
             displayName: string;
-            selected_thread: (DebuggerThread | null);
-            selectedThread: (DebuggerThread | null);
+            selected_thread: DebuggerThread | null;
+            selectedThread: DebuggerThread | null;
         }
     }
 
@@ -8334,13 +8328,13 @@ export namespace Ide {
          * The currently selected thread.
          * @read-only
          */
-        get selected_thread(): (DebuggerThread | null);
+        get selected_thread(): DebuggerThread | null;
 
         /**
          * The currently selected thread.
          * @read-only
          */
-        get selectedThread(): (DebuggerThread | null);
+        get selectedThread(): DebuggerThread | null;
 
         /**
          * Compile-time signal type information.
@@ -8401,7 +8395,7 @@ export namespace Ide {
          * @param callback A callback to call once the operation has finished
          * @virtual
          */
-        vfunc_disassemble_async(range: DebuggerAddressRange, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_disassemble_async(range: DebuggerAddressRange, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_disassemble_async()`.
@@ -8428,7 +8422,7 @@ export namespace Ide {
          * @param callback an async callback to complete the operation
          * @virtual
          */
-        vfunc_insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes a request to asynchronously insert a breakpoint.
@@ -8455,7 +8449,7 @@ export namespace Ide {
          * @param callback a callback to execute, or `null`
          * @virtual
          */
-        vfunc_interpret_async(command: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_interpret_async(command: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Retrieves the result of the asynchronous operation to interpret a debugger
@@ -8475,7 +8469,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_interrupt_async(thread_group: (DebuggerThreadGroup | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_interrupt_async(thread_group: DebuggerThreadGroup | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -8504,7 +8498,7 @@ export namespace Ide {
          * @param callback a callback to call upon completion
          * @virtual
          */
-        vfunc_list_breakpoints_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_breakpoints_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the list of breakpoints from the debugger.
@@ -8519,13 +8513,13 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_list_frames_async(thread: DebuggerThread, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_frames_async(thread: DebuggerThread, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
          * @virtual
          */
-        vfunc_list_frames_finish(result: Gio.AsyncResult): (DebuggerFrame[] | null);
+        vfunc_list_frames_finish(result: Gio.AsyncResult): DebuggerFrame[] | null;
 
         /**
          * Requests the debugger backend to list the locals that are available to the
@@ -8536,7 +8530,7 @@ export namespace Ide {
          * @param callback A callback to call once the operation has finished
          * @virtual
          */
-        vfunc_list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_locals_async()`.
@@ -8554,7 +8548,7 @@ export namespace Ide {
          * @param callback A callback to call once the operation has finished
          * @virtual
          */
-        vfunc_list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_params_async()`.
@@ -8569,7 +8563,7 @@ export namespace Ide {
          * @param callback A callback to call once the operation has finished
          * @virtual
          */
-        vfunc_list_registers_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_registers_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_registers_async()`.
@@ -8599,7 +8593,7 @@ export namespace Ide {
          * @param callback an async callback to complete the operation
          * @virtual
          */
-        vfunc_modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to modify a breakpoint.
@@ -8620,7 +8614,7 @@ export namespace Ide {
          * @param callback A callback to call upon   completion of the operation.
          * @virtual
          */
-        vfunc_move_async(movement: DebuggerMovement, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_move_async(movement: DebuggerMovement, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Notifies that the movement request has been submitted to the debugger.
@@ -8651,7 +8645,7 @@ export namespace Ide {
          * @param callback an async callback to complete the operation
          * @virtual
          */
-        vfunc_remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes a request to asynchronously remove a breakpoint.
@@ -8673,7 +8667,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_send_signal_async(signum: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_send_signal_async(signum: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -8744,7 +8738,7 @@ export namespace Ide {
          * @param range an {@link Ide.DebuggerAddressRange} to disassemble
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        disassemble_async(range: DebuggerAddressRange, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DebuggerInstruction[]>;
+        disassemble_async(range: DebuggerAddressRange, cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerInstruction[]>;
 
         /**
          * Disassembles the address range requested.
@@ -8752,7 +8746,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        disassemble_async(range: DebuggerAddressRange, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        disassemble_async(range: DebuggerAddressRange, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Disassembles the address range requested.
@@ -8760,7 +8754,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        disassemble_async(range: DebuggerAddressRange, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebuggerInstruction[]> | void);
+        disassemble_async(range: DebuggerAddressRange, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerInstruction[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_disassemble_async()`.
@@ -8830,7 +8824,7 @@ export namespace Ide {
          * @param stream 
          * @param content 
          */
-        emit_log(stream: DebuggerStream, content: (GLib.Bytes | Uint8Array)): void;
+        emit_log(stream: DebuggerStream, content: GLib.Bytes | Uint8Array): void;
 
         /**
          * Emits the "running" signal.
@@ -8925,7 +8919,7 @@ export namespace Ide {
          * Gets the current selected thread by the debugger.
          * @returns An {@link Ide.DebuggerThread} or `null`
          */
-        get_selected_thread(): (DebuggerThread | null);
+        get_selected_thread(): DebuggerThread | null;
 
         /**
          * Gets the thread groups that have been registered by the debugger.
@@ -8954,7 +8948,7 @@ export namespace Ide {
          * @param breakpoint An {@link Ide.DebuggerBreakpoint}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that a breakpoint is added to the debugger.
@@ -8966,7 +8960,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that a breakpoint is added to the debugger.
@@ -8978,7 +8972,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        insert_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to asynchronously insert a breakpoint.
@@ -9003,7 +8997,7 @@ export namespace Ide {
          * @param command a command to execute
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        interpret_async(command: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        interpret_async(command: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the debugger interpret the command.
@@ -9020,7 +9014,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute, or `null`
          */
-        interpret_async(command: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        interpret_async(command: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the debugger interpret the command.
@@ -9037,7 +9031,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute, or `null`
          */
-        interpret_async(command: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        interpret_async(command: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Retrieves the result of the asynchronous operation to interpret a debugger
@@ -9055,7 +9049,7 @@ export namespace Ide {
          * @param thread_group An {@link Ide.DebuggerThreadGroup}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        interrupt_async(thread_group: (DebuggerThreadGroup | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        interrupt_async(thread_group: DebuggerThreadGroup | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the debugger interrupts execution of a thread
@@ -9066,7 +9060,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        interrupt_async(thread_group: (DebuggerThreadGroup | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        interrupt_async(thread_group: DebuggerThreadGroup | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the debugger interrupts execution of a thread
@@ -9077,7 +9071,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        interrupt_async(thread_group: (DebuggerThreadGroup | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        interrupt_async(thread_group: DebuggerThreadGroup | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -9091,7 +9085,7 @@ export namespace Ide {
          * for this method.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        list_breakpoints_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<DebuggerBreakpoint[]>;
+        list_breakpoints_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerBreakpoint[]>;
 
         /**
          * Asynchronously requests the list of current breakpoints from the debugger.
@@ -9101,7 +9095,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to call upon completion
          */
-        list_breakpoints_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_breakpoints_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests the list of current breakpoints from the debugger.
@@ -9111,7 +9105,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to call upon completion
          */
-        list_breakpoints_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebuggerBreakpoint[]> | void);
+        list_breakpoints_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerBreakpoint[]> | void;
 
         /**
          * Gets the list of breakpoints from the debugger.
@@ -9124,27 +9118,27 @@ export namespace Ide {
          * @param thread 
          * @param cancellable 
          */
-        list_frames_async(thread: DebuggerThread, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(DebuggerFrame[] | null)>;
+        list_frames_async(thread: DebuggerThread, cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerFrame[] | null>;
 
         /**
          * @param thread 
          * @param cancellable 
          * @param callback 
          */
-        list_frames_async(thread: DebuggerThread, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_frames_async(thread: DebuggerThread, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param thread 
          * @param cancellable 
          * @param callback 
          */
-        list_frames_async(thread: DebuggerThread, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(DebuggerFrame[] | null)> | void);
+        list_frames_async(thread: DebuggerThread, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerFrame[] | null> | void;
 
         /**
          * @param result 
          * @returns An   array of debugger frames or `null` and `error` is set.
          */
-        list_frames_finish(result: Gio.AsyncResult): (DebuggerFrame[] | null);
+        list_frames_finish(result: Gio.AsyncResult): DebuggerFrame[] | null;
 
         /**
          * Requests the debugger backend to list the locals that are available to the
@@ -9153,17 +9147,7 @@ export namespace Ide {
          * @param frame an {@link Ide.DebuggerFrame}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DebuggerVariable[]>;
-
-        /**
-         * Requests the debugger backend to list the locals that are available to the
-         * given `frame` of `thread`.
-         * @param thread an {@link Ide.DebuggerThread}
-         * @param frame an {@link Ide.DebuggerFrame}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback A callback to call once the operation has finished
-         */
-        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerVariable[]>;
 
         /**
          * Requests the debugger backend to list the locals that are available to the
@@ -9173,7 +9157,17 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebuggerVariable[]> | void);
+        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Requests the debugger backend to list the locals that are available to the
+         * given `frame` of `thread`.
+         * @param thread an {@link Ide.DebuggerThread}
+         * @param frame an {@link Ide.DebuggerFrame}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback A callback to call once the operation has finished
+         */
+        list_locals_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerVariable[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_locals_async()`.
@@ -9189,7 +9183,7 @@ export namespace Ide {
          * @param frame an {@link Ide.DebuggerFrame}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DebuggerVariable[]>;
+        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerVariable[]>;
 
         /**
          * Requests the debugger backend to list the parameters to the given stack
@@ -9199,7 +9193,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the debugger backend to list the parameters to the given stack
@@ -9209,7 +9203,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebuggerVariable[]> | void);
+        list_params_async(thread: DebuggerThread, frame: DebuggerFrame, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerVariable[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_params_async()`.
@@ -9222,21 +9216,21 @@ export namespace Ide {
          * Requests the list of registers and their values.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        list_registers_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<DebuggerRegister[]>;
+        list_registers_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DebuggerRegister[]>;
 
         /**
          * Requests the list of registers and their values.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        list_registers_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_registers_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the list of registers and their values.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call once the operation has finished
          */
-        list_registers_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebuggerRegister[]> | void);
+        list_registers_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebuggerRegister[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_debugger_list_registers_async()`.
@@ -9272,7 +9266,7 @@ export namespace Ide {
          * @param breakpoint An {@link Ide.DebuggerBreakpoint}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that a breakpoint is modified by the debugger backend.
@@ -9287,7 +9281,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that a breakpoint is modified by the debugger backend.
@@ -9302,7 +9296,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        modify_breakpoint_async(change: DebuggerBreakpointChange, breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to modify a breakpoint.
@@ -9321,7 +9315,7 @@ export namespace Ide {
          * @param movement An {@link Ide.DebuggerMovement}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        move_async(movement: DebuggerMovement, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        move_async(movement: DebuggerMovement, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Advances the debugger to the next breakpoint or until the debugger stops.
@@ -9330,7 +9324,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call upon   completion of the operation.
          */
-        move_async(movement: DebuggerMovement, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        move_async(movement: DebuggerMovement, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Advances the debugger to the next breakpoint or until the debugger stops.
@@ -9339,7 +9333,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to call upon   completion of the operation.
          */
-        move_async(movement: DebuggerMovement, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        move_async(movement: DebuggerMovement, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Notifies that the movement request has been submitted to the debugger.
@@ -9367,7 +9361,7 @@ export namespace Ide {
          * @param breakpoint An {@link Ide.DebuggerBreakpoint}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that a breakpoint is removed from the debugger.
@@ -9379,7 +9373,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that a breakpoint is removed from the debugger.
@@ -9391,7 +9385,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback to complete the operation
          */
-        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_breakpoint_async(breakpoint: DebuggerBreakpoint, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to asynchronously remove a breakpoint.
@@ -9406,21 +9400,21 @@ export namespace Ide {
          * @param signum 
          * @param cancellable 
          */
-        send_signal_async(signum: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        send_signal_async(signum: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param signum 
          * @param cancellable 
          * @param callback 
          */
-        send_signal_async(signum: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_signal_async(signum: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param signum 
          * @param cancellable 
          * @param callback 
          */
-        send_signal_async(signum: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_signal_async(signum: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -9511,7 +9505,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -9557,7 +9551,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -9571,7 +9565,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -9595,7 +9589,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -9617,7 +9611,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -9744,7 +9738,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -9791,7 +9785,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -9805,7 +9799,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -9829,7 +9823,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -9851,7 +9845,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -9977,17 +9971,17 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: (bigint | number);
-            count: (bigint | number);
+            address: bigint | number;
+            count: bigint | number;
             disposition: DebuggerDisposition;
             enabled: boolean;
-            file: (string | null);
+            file: string | null;
             "function": string;
             id: string;
             line: number;
             mode: DebuggerBreakMode;
-            spec: (string | null);
-            thread: (string | null);
+            spec: string | null;
+            thread: string | null;
         }
     }
 
@@ -10005,7 +9999,7 @@ export namespace Ide {
          * @default 0
          */
         get address(): number;
-        set address(val: (bigint | number));
+        set address(val: bigint | number);
 
         /**
          * The number of times the breakpoint has been reached.
@@ -10014,7 +10008,7 @@ export namespace Ide {
          * @default 0
          */
         get count(): number;
-        set count(val: (bigint | number));
+        set count(val: bigint | number);
 
         /**
          * This property describes what should happen to the breakpoint upon the
@@ -10045,8 +10039,8 @@ export namespace Ide {
          * represented by a file, this will be `null`.
          * @default null
          */
-        get file(): (string | null);
-        set file(val: (string | null));
+        get file(): string | null;
+        set file(val: string | null);
 
         /**
          * The name of the function containing the breakpoint.
@@ -10087,15 +10081,15 @@ export namespace Ide {
          * to determine of the breakpoint should be applied while executing.
          * @default null
          */
-        get spec(): (string | null);
-        set spec(val: (string | null));
+        get spec(): string | null;
+        set spec(val: string | null);
 
         /**
          * The thread the breakpoint is currently stopped in, or `null`.
          * @default null
          */
-        get thread(): (string | null);
-        set thread(val: (string | null));
+        get thread(): string | null;
+        set thread(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -10172,7 +10166,7 @@ export namespace Ide {
          * address.
          * @returns The file containing the breakpoint, or `null`
          */
-        get_file(): (string | null);
+        get_file(): string | null;
 
         /**
          * Gets the "function" property of the breakpoint.
@@ -10212,14 +10206,14 @@ export namespace Ide {
          * {@link Ide.DebuggerBreakMode.WATCHPOINT}.
          * @returns A string containing the spec, or `null`
          */
-        get_spec(): (string | null);
+        get_spec(): string | null;
 
         /**
          * Gets the "thread" property, which is the thread the breakpoint is
          * currently stopped in (if any).
          * @returns the thread identifier or `null`
          */
-        get_thread(): (string | null);
+        get_thread(): string | null;
 
         /**
          * Sets the address of the breakpoint, if any.
@@ -10233,7 +10227,7 @@ export namespace Ide {
          * regular breakpoints).
          * @param count 
          */
-        set_count(count: (bigint | number)): void;
+        set_count(count: bigint | number): void;
 
         /**
          * Sets the "disposition" property.
@@ -10257,14 +10251,14 @@ export namespace Ide {
          * Sets the file that contains the breakpoint, if any.
          * @param file the file containing the breakpoint, or `null`
          */
-        set_file(file: (string | null)): void;
+        set_file(file: string | null): void;
 
         /**
          * Sets the "function" property, which is a user-readable value representing
          * the name of the function.
          * @param _function the name of the function, or `null`
          */
-        set_function(_function: (string | null)): void;
+        set_function(_function: string | null): void;
 
         /**
          * Sets the line for the breakpoint. A value of 0 means the line is unset.
@@ -10289,7 +10283,7 @@ export namespace Ide {
          * should be applied when stopping the debugger.
          * @param spec the specification or `null`
          */
-        set_spec(spec: (string | null)): void;
+        set_spec(spec: string | null): void;
 
         /**
          * Sets the thread that the breakpoint is currently stopped in.
@@ -10377,7 +10371,7 @@ export namespace Ide {
          * @param line The line number
          * @returns An {@link Ide.DebuggerBreakpoint} or `null`
          */
-        get_line(line: number): (DebuggerBreakpoint | null);
+        get_line(line: number): DebuggerBreakpoint | null;
 
         /**
          * @param line 
@@ -10400,7 +10394,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: (bigint | number);
+            address: bigint | number;
             args: string[];
             depth: number;
             file: string;
@@ -10421,7 +10415,7 @@ export namespace Ide {
          * @default 0
          */
         get address(): number;
-        set address(val: (bigint | number));
+        set address(val: bigint | number);
 
         get args(): string[];
         set args(val: string[]);
@@ -10547,7 +10541,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: (bigint | number);
+            address: bigint | number;
             display: string;
             "function": string;
         }
@@ -11147,9 +11141,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -11198,7 +11190,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_deploy_async(pipeline: Pipeline, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to deploy the application to the
@@ -11224,7 +11216,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_load_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_load_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to load the {@link Ide.DeployStrategy}.
@@ -11260,7 +11252,7 @@ export namespace Ide {
          * @param progress a {@link Gio.FileProgressCallback} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        deploy_async(pipeline: Pipeline, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the {@link Ide.DeployStrategy} deploy the application to the
@@ -11273,7 +11265,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        deploy_async(pipeline: Pipeline, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the {@link Ide.DeployStrategy} deploy the application to the
@@ -11286,7 +11278,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        deploy_async(pipeline: Pipeline, progress: (Gio.FileProgressCallback | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        deploy_async(pipeline: Pipeline, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to deploy the application to the
@@ -11310,7 +11302,7 @@ export namespace Ide {
          * @param pipeline an {@link Ide.Pipeline}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests that the {@link Ide.DeployStrategy} load anything
@@ -11327,7 +11319,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the {@link Ide.DeployStrategy} load anything
@@ -11344,7 +11336,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to load the {@link Ide.DeployStrategy}.
@@ -11382,10 +11374,10 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            display_name: (string | null);
-            displayName: (string | null);
-            icon_name: (string | null);
-            iconName: (string | null);
+            display_name: string | null;
+            displayName: string | null;
+            icon_name: string | null;
+            iconName: string | null;
             id: string;
         }
     }
@@ -11400,30 +11392,30 @@ export namespace Ide {
         /**
          * @default null
          */
-        get display_name(): (string | null);
-        set display_name(val: (string | null));
+        get display_name(): string | null;
+        set display_name(val: string | null);
 
         /**
          * @default null
          */
-        get displayName(): (string | null);
-        set displayName(val: (string | null));
-
-        /**
-         * The "icon-name" property is the icon to display with the device in
-         * various UI elements of Builder.
-         * @default null
-         */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get displayName(): string | null;
+        set displayName(val: string | null);
 
         /**
          * The "icon-name" property is the icon to display with the device in
          * various UI elements of Builder.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
+
+        /**
+         * The "icon-name" property is the icon to display with the device in
+         * various UI elements of Builder.
+         * @default null
+         */
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * @default null
@@ -11469,7 +11461,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_get_info_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_info_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to load the information about a device.
@@ -11493,13 +11485,13 @@ export namespace Ide {
          * has been probed from the device.
          * @returns A string containing the display name for the device.
          */
-        get_display_name(): (string | null);
+        get_display_name(): string | null;
 
         /**
          * Gets the icon to use when displaying the device in UI elements.
          * @returns an icon-name or `null`
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Retrieves the "id" property of the {@link Ide.Device}. This is generally not a
@@ -11516,7 +11508,7 @@ export namespace Ide {
          * fetching that information.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_info_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<DeviceInfo>;
+        get_info_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DeviceInfo>;
 
         /**
          * Asynchronously requests information about the device.
@@ -11527,7 +11519,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_info_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_info_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests information about the device.
@@ -11538,7 +11530,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_info_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DeviceInfo> | void);
+        get_info_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DeviceInfo> | void;
 
         /**
          * Completes an asynchronous request to load the information about a device.
@@ -11581,8 +11573,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            host_triplet: (Triplet | null);
-            hostTriplet: (Triplet | null);
+            host_triplet: Triplet | null;
+            hostTriplet: Triplet | null;
             kind: DeviceKind;
         }
     }
@@ -11594,11 +11586,11 @@ export namespace Ide {
         static $gtype: GObject.GType<DeviceInfo>;
 
         // Properties
-        get host_triplet(): (Triplet | null);
-        set host_triplet(val: (Triplet | null));
+        get host_triplet(): Triplet | null;
+        set host_triplet(val: Triplet | null);
 
-        get hostTriplet(): (Triplet | null);
-        set hostTriplet(val: (Triplet | null));
+        get hostTriplet(): Triplet | null;
+        set hostTriplet(val: Triplet | null);
 
         /**
          * @default Ide.DeviceKind.COMPUTER
@@ -11641,7 +11633,7 @@ export namespace Ide {
          * of the Device (its architecture…)
          * @returns An {@link Ide.Triplet}.
          */
-        get_host_triplet(): (Triplet | null);
+        get_host_triplet(): Triplet | null;
 
         /**
          * Get the {@link Ide.DeviceKind} of the device describing the type of device `self` refers to
@@ -11753,7 +11745,7 @@ export namespace Ide {
          * @param pipeline an {@link Ide.Pipeline}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        deploy_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        deploy_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the application be deployed to the device. This may need to
@@ -11763,7 +11755,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        deploy_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        deploy_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the application be deployed to the device. This may need to
@@ -11773,7 +11765,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        deploy_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        deploy_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to deploy the application to the device.
@@ -11806,7 +11798,7 @@ export namespace Ide {
          * If `device` is `null`, the local device will be used.
          * @param device an {@link Ide.Device} or `null`
          */
-        set_device(device: (Device | null)): void;
+        set_device(device: Device | null): void;
 
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
@@ -11879,7 +11871,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -11925,7 +11917,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -11939,7 +11931,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -11963,7 +11955,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -11985,7 +11977,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -12112,7 +12104,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -12159,7 +12151,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -12173,7 +12165,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -12197,7 +12189,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -12219,7 +12211,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -12310,7 +12302,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -12353,7 +12345,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -12396,7 +12388,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -12456,7 +12448,7 @@ export namespace Ide {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -12505,7 +12497,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -12545,7 +12537,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -12646,9 +12638,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -12712,7 +12702,7 @@ export namespace Ide {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          * @virtual
          */
-        vfunc_load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to load known devices via
@@ -12761,7 +12751,7 @@ export namespace Ide {
          * devices to enter the "settled" state.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the {@link Ide.DeviceProvider} asynchronously load any known devices.
@@ -12777,7 +12767,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the {@link Ide.DeviceProvider} asynchronously load any known devices.
@@ -12793,7 +12783,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to load known devices via
@@ -12820,7 +12810,7 @@ export namespace Ide {
         interface ConstructorProps extends Object.ConstructorProps {
             display_text: string;
             displayText: string;
-            location: (Location | null);
+            location: Location | null;
             severity: DiagnosticSeverity;
             text: string;
         }
@@ -12848,7 +12838,7 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get location(): (Location | null);
+        get location(): Location | null;
 
         /**
          * @construct-only
@@ -12881,7 +12871,7 @@ export namespace Ide {
         // Conflicted with Ide.Object.new
         static ["new"](...args: never[]): any;
 
-        static new_from_variant(variant: (GLib.Variant | null)): Diagnostic;
+        static new_from_variant(variant: GLib.Variant | null): Diagnostic;
 
         // Signals
         /** @signal */
@@ -12923,7 +12913,7 @@ export namespace Ide {
          * Gets the file containing the diagnostic, if any.
          * @returns an {@link Ide.Location} or `null`
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * Gets the fixit denoted by `index`. This value should be less than the value
@@ -12931,7 +12921,7 @@ export namespace Ide {
          * @param index The index of the fixit.
          * @returns An {@link Ide.TextEdit}
          */
-        get_fixit(index: number): (TextEdit | null);
+        get_fixit(index: number): TextEdit | null;
 
         /**
          * Gets the location of the diagnostic.
@@ -12939,7 +12929,7 @@ export namespace Ide {
          * See also: `ide_diagnostic_get_range()`.
          * @returns an {@link Ide.Location} or `null`
          */
-        get_location(): (Location | null);
+        get_location(): Location | null;
 
         get_marked_kind(): MarkedKind;
 
@@ -12953,7 +12943,7 @@ export namespace Ide {
          * @param index 
          * @returns An {@link Ide.Range}
          */
-        get_range(index: number): (Range | null);
+        get_range(index: number): Range | null;
 
         get_severity(): DiagnosticSeverity;
 
@@ -13129,7 +13119,7 @@ export namespace Ide {
          * @param language_id 
          * @virtual
          */
-        vfunc_get_stdin_bytes(file: Gio.File, contents: GLib.Bytes, language_id: string): (GLib.Bytes | Uint8Array);
+        vfunc_get_stdin_bytes(file: Gio.File, contents: GLib.Bytes, language_id: string): GLib.Bytes | Uint8Array;
 
         /**
          * @param diagnostics 
@@ -13189,7 +13179,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -13203,7 +13193,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -13217,7 +13207,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Diagnostics> | void);
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -13251,7 +13241,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -13369,7 +13359,7 @@ export namespace Ide {
 
         static ["new"](): Diagnostics;
 
-        static new_from_array(array: (Diagnostic[] | null)): Diagnostics;
+        static new_from_array(array: Diagnostic[] | null): Diagnostics;
 
         // Signals
         /** @signal */
@@ -13407,7 +13397,7 @@ export namespace Ide {
          * @param line a line number
          * @returns an {@link Ide.Diagnostic} or `null`
          */
-        get_diagnostic_at_line(file: Gio.File, line: number): (Diagnostic | null);
+        get_diagnostic_at_line(file: Gio.File, line: number): Diagnostic | null;
 
         /**
          * Locates all {@link Ide.Diagnostic} in `file` at `line`.
@@ -13415,7 +13405,7 @@ export namespace Ide {
          * @param line a line number
          * @returns an {@link GLib.PtrArray} or `null`
          */
-        get_diagnostics_at_line(file: Gio.File, line: number): (Diagnostic[] | null);
+        get_diagnostics_at_line(file: Gio.File, line: number): Diagnostic[] | null;
 
         get_has_errors(): boolean;
 
@@ -13474,7 +13464,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -13514,7 +13504,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -13704,9 +13694,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -13767,24 +13755,24 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        execute(cancellable: (Gio.Cancellable | null)): boolean;
+        execute(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -13803,9 +13791,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Vcs.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Vcs.ConstructorProps {}
     }
 
     /**
@@ -13879,7 +13865,7 @@ export namespace Ide {
          * support access to configuration, then `null` is returned.
          * @returns An {@link Ide.VcsConfig} or `null`.
          */
-        get_config(): (VcsConfig | null);
+        get_config(): VcsConfig | null;
 
         /**
          * Gets the display name for the VCS.
@@ -13909,24 +13895,24 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
          */
-        is_ignored(file: (Gio.File | null)): boolean;
+        is_ignored(file: Gio.File | null): boolean;
 
         /**
          * @param cancellable 
          */
-        list_branches_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<VcsBranch[]>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        list_branches_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_branches_async(cancellable: Gio.Cancellable | null): globalThis.Promise<VcsBranch[]>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_branches_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<VcsBranch[]> | void);
+        list_branches_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        list_branches_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<VcsBranch[]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -13947,7 +13933,7 @@ export namespace Ide {
          * @param io_priority a priority for the IO, such as `G_PRIORITY_DEFAULT`.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Gio.ListModel | null)>;
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel | null>;
 
         /**
          * Retrieves the status of the files matching the request. If
@@ -13963,7 +13949,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback for the operation
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Retrieves the status of the files matching the request. If
@@ -13979,7 +13965,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback for the operation
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Gio.ListModel | null)> | void);
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel | null> | void;
 
         /**
          * Completes an asynchronous request to `ide_vcs_list_status_async()`.
@@ -13989,24 +13975,24 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns A {@link Gio.ListModel} containing an {@link Ide.VcsFileInfo} for each of the files scanned   by the {@link Ide.Vcs}. Upon failure, `null` is returned and `error` is set.
          */
-        list_status_finish(result: Gio.AsyncResult): (Gio.ListModel | null);
+        list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
         /**
          * @param cancellable 
          */
-        list_tags_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<VcsBranch[]>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        list_tags_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_tags_async(cancellable: Gio.Cancellable | null): globalThis.Promise<VcsBranch[]>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_tags_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<VcsBranch[]> | void);
+        list_tags_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        list_tags_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<VcsBranch[]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -14027,27 +14013,27 @@ export namespace Ide {
          * @param path The path to check
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
          */
-        path_is_ignored(path: (string | null)): boolean;
+        path_is_ignored(path: string | null): boolean;
 
         /**
          * @param branch 
          * @param cancellable 
          */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param branch 
-         * @param cancellable 
-         * @param callback 
-         */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param branch 
+         * @param cancellable 
+         * @param callback 
+         */
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -14064,21 +14050,21 @@ export namespace Ide {
          * @param branch 
          * @param cancellable 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -14101,7 +14087,7 @@ export namespace Ide {
          * support access to configuration, then `null` is returned.
          * @virtual
          */
-        vfunc_get_config(): (VcsConfig | null);
+        vfunc_get_config(): VcsConfig | null;
 
         /**
          * Gets the display name for the VCS.
@@ -14134,14 +14120,14 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @virtual
          */
-        vfunc_is_ignored(file: (Gio.File | null)): boolean;
+        vfunc_is_ignored(file: Gio.File | null): boolean;
 
         /**
          * @param cancellable 
          * @param callback 
          * @virtual
          */
-        vfunc_list_branches_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_branches_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -14164,7 +14150,7 @@ export namespace Ide {
          * @param callback a callback for the operation
          * @virtual
          */
-        vfunc_list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_vcs_list_status_async()`.
@@ -14174,14 +14160,14 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @virtual
          */
-        vfunc_list_status_finish(result: Gio.AsyncResult): (Gio.ListModel | null);
+        vfunc_list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
         /**
          * @param cancellable 
          * @param callback 
          * @virtual
          */
-        vfunc_list_tags_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_list_tags_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -14195,7 +14181,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -14215,7 +14201,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -14381,13 +14367,13 @@ export namespace Ide {
          * @param data 
          * @param length 
          */
-        load_from_data(data: string, length: (bigint | number)): boolean;
+        load_from_data(data: string, length: bigint | number): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        load_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -14533,7 +14519,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Page.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             buffer: Buffer;
-            gutter: (Gutter | null);
+            gutter: Gutter | null;
             view: SourceView;
         }
     }
@@ -14556,8 +14542,8 @@ export namespace Ide {
          * specialized renderer for the sourceview which can bring together a number
          * of types of content which needs to be displayed, in a single renderer.
          */
-        get gutter(): (Gutter | null);
-        set gutter(val: (Gutter | null));
+        get gutter(): Gutter | null;
+        set gutter(val: Gutter | null);
 
         /**
          * The {@link Ide.SourceView} contained within the page.
@@ -14608,24 +14594,24 @@ export namespace Ide {
          * @param module_name the module name which provides the addin
          * @returns An {@link Ide.EditorPageAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (EditorPageAddin | null);
+        addin_find_by_module_name(module_name: string): EditorPageAddin | null;
 
         /**
          * @param cancellable 
          */
-        discard_changes_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        discard_changes_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        discard_changes_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        discard_changes_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        discard_changes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        discard_changes_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -14650,7 +14636,7 @@ export namespace Ide {
          * Gets the {@link Ide.Gutter} displayed in the editor page.
          * @returns an {@link Ide.Gutter} or `null`
          */
-        get_gutter(): (Gutter | null);
+        get_gutter(): Gutter | null;
 
         /**
          * Gets the {@link Ide.SourceView} for the page.
@@ -14661,19 +14647,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -14775,9 +14761,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Workspace.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Workspace.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -14851,7 +14835,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => (boolean | void);
+            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -15047,13 +15031,13 @@ export namespace Ide {
          * Returns the renderer that is used for this {@link Gtk.Native}.
          * @returns the renderer for `self`
          */
-        get_renderer(): (Gsk.Renderer | null);
+        get_renderer(): Gsk.Renderer | null;
 
         /**
          * Returns the surface of this {@link Gtk.Native}.
          * @returns the surface of `self`
          */
-        get_surface(): (Gdk.Surface | null);
+        get_surface(): Gdk.Surface | null;
 
         /**
          * Retrieves the surface transform of `self`.
@@ -15184,9 +15168,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -15309,7 +15291,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -15349,7 +15331,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -15420,7 +15402,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            environment: (Environment | null);
+            environment: Environment | null;
         }
     }
 
@@ -15431,8 +15413,8 @@ export namespace Ide {
         static $gtype: GObject.GType<EnvironmentEditor>;
 
         // Properties
-        get environment(): (Environment | null);
-        set environment(val: (Environment | null));
+        get environment(): Environment | null;
+        set environment(val: Environment | null);
 
         /**
          * Compile-time signal type information.
@@ -15467,7 +15449,7 @@ export namespace Ide {
         /**
          * @returns An {@link Ide.Environment} or `null`.
          */
-        get_environment(): (Environment | null);
+        get_environment(): Environment | null;
 
         /**
          * @param environment 
@@ -15519,7 +15501,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -15527,7 +15509,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -15555,13 +15537,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -15605,7 +15587,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -15614,7 +15596,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -15672,7 +15654,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -15680,13 +15662,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -15702,13 +15684,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -15728,7 +15710,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -15738,7 +15720,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -15749,7 +15731,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -15760,7 +15742,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -15769,7 +15751,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -15976,7 +15958,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](parent: (Object | null), engine: (Peas.Engine | null), interface_type: GObject.GType, key: string, value: (string | null)): ExtensionAdapter;
+        static ["new"](parent: Object | null, engine: Peas.Engine | null, interface_type: GObject.GType, key: string, value: string | null): ExtensionAdapter;
 
         // Conflicted with Ide.Object.new
         static ["new"](...args: never[]): any;
@@ -16216,7 +16198,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -16256,7 +16238,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -16408,21 +16390,21 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * @param result 
@@ -16433,21 +16415,21 @@ export namespace Ide {
          * @param directory 
          * @param cancellable 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
 
         /**
          * @param directory 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param directory 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable> | void);
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -16461,7 +16443,7 @@ export namespace Ide {
          * @param files array of files whose build flags has to be retrieved.
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
 
         /**
          * This function will get build flags for all files and returns
@@ -16470,7 +16452,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will get build flags for all files and returns
@@ -16479,7 +16461,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable> | void);
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -16503,7 +16485,7 @@ export namespace Ide {
          * in the build system's configuration files.
          * @returns a string containing the project version
          */
-        get_project_version(): (string | null);
+        get_project_version(): string | null;
 
         get_srcdir(): string;
 
@@ -16533,7 +16515,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -16549,13 +16531,13 @@ export namespace Ide {
          * @param callback function to be called after getting build flags.
          * @virtual
          */
-        vfunc_get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
-        vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): ({ [key: string]: any } | GLib.HashTable);
+        vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any } | GLib.HashTable;
 
         /**
          * @param pipeline 
@@ -16583,7 +16565,7 @@ export namespace Ide {
          * in the build system's configuration files.
          * @virtual
          */
-        vfunc_get_project_version(): (string | null);
+        vfunc_get_project_version(): string | null;
 
         /**
          * @virtual
@@ -16670,7 +16652,7 @@ export namespace Ide {
             createFolders: boolean;
             do_overwrite_confirmation: boolean;
             doOverwriteConfirmation: boolean;
-            file: (Gio.File | null);
+            file: Gio.File | null;
             filter: Gtk.FileFilter;
             local_only: boolean;
             localOnly: boolean;
@@ -16719,8 +16701,8 @@ export namespace Ide {
         get doOverwriteConfirmation(): boolean;
         set doOverwriteConfirmation(val: boolean);
 
-        get file(): (Gio.File | null);
-        set file(val: (Gio.File | null));
+        get file(): Gio.File | null;
+        set file(val: Gio.File | null);
 
         get filter(): Gtk.FileFilter;
         set filter(val: Gtk.FileFilter);
@@ -16807,7 +16789,7 @@ export namespace Ide {
          * Returns the currently selected file or `null` if there is no selection.
          * @returns A {@link Gio.File} or `null`.
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * @param file 
@@ -16859,7 +16841,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -16867,7 +16849,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -16895,13 +16877,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -16945,7 +16927,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -16954,7 +16936,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -17012,7 +16994,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -17020,13 +17002,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -17042,13 +17024,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -17068,7 +17050,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -17078,7 +17060,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -17089,7 +17071,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -17100,7 +17082,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -17109,7 +17091,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -17326,7 +17308,7 @@ export namespace Ide {
             insertTrailingNewline: boolean;
             insert_trailing_newline_set: boolean;
             insertTrailingNewlineSet: boolean;
-            language: (string | null);
+            language: string | null;
             newline_type: GtkSource.NewlineType;
             newlineType: GtkSource.NewlineType;
             newline_type_set: boolean;
@@ -17513,7 +17495,7 @@ export namespace Ide {
          * @construct-only
          * @default null
          */
-        get language(): (string | null);
+        get language(): string | null;
 
         /**
          * @default GtkSource.NewlineType.LF
@@ -17738,7 +17720,7 @@ export namespace Ide {
          * the language identifier known to GtkSourceView such as "c" or "sh".
          * @returns a string containing the language id or `null`
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * Gets the {@link Ide.FileSettings.settled} property.
@@ -17824,27 +17806,27 @@ export namespace Ide {
          * @param io_priority 
          * @param cancellable 
          */
-        execute(io_priority: number, cancellable: (Gio.Cancellable | null)): boolean;
+        execute(io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param io_priority 
          * @param cancellable 
          */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param io_priority 
-         * @param cancellable 
-         * @param callback 
-         */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param io_priority 
          * @param cancellable 
          * @param callback 
          */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param io_priority 
+         * @param cancellable 
+         * @param callback 
+         */
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -18072,7 +18054,7 @@ export namespace Ide {
          * @param module_name the module name which provides the addin
          * @returns An {@link Ide.FrameAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (FrameAddin | null);
+        addin_find_by_module_name(module_name: string): FrameAddin | null;
 
         /**
          * Gets the position in the grid of a frame.
@@ -18111,13 +18093,10 @@ export namespace Ide {
 
     namespace FuzzyIndex {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -18161,7 +18140,7 @@ export namespace Ide {
          * @param key 
          * @returns A {@link GLib.Variant} or `null`.
          */
-        get_metadata(key: string): (GLib.Variant | null);
+        get_metadata(key: string): GLib.Variant | null;
 
         /**
          * @param key 
@@ -18182,27 +18161,27 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        load_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param callback 
-         */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param callback 
+         */
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -18214,7 +18193,7 @@ export namespace Ide {
          * @param max_matches 
          * @param cancellable 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param query 
@@ -18222,7 +18201,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param query 
@@ -18230,7 +18209,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes an asynchronous request to `ide_fuzzy_index_query_async()`.
@@ -18311,7 +18290,7 @@ export namespace Ide {
          * @param document_id 
          * @returns A {@link GLib.Variant}
          */
-        get_document(document_id: (bigint | number)): GLib.Variant;
+        get_document(document_id: bigint | number): GLib.Variant;
 
         /**
          * Inserts `document` into the index using `key` as the lookup key.
@@ -18357,14 +18336,14 @@ export namespace Ide {
          * @param key 
          * @param value 
          */
-        set_metadata_uint64(key: string, value: (bigint | number)): void;
+        set_metadata_uint64(key: string, value: bigint | number): void;
 
         /**
          * @param file 
          * @param io_priority 
          * @param cancellable 
          */
-        write(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): boolean;
+        write(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Builds and writes the index to `file`. The file format is a
@@ -18374,18 +18353,7 @@ export namespace Ide {
          * @param io_priority The priority for IO operations
          * @param cancellable An optional {@link Gio.Cancellable} or `null`
          */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Builds and writes the index to `file`. The file format is a
-         * GVariant on disk and can be loaded and searched using
-         * {@link Ide.FuzzyIndex}.
-         * @param file A {@link Gio.File} to write the index to
-         * @param io_priority The priority for IO operations
-         * @param cancellable An optional {@link Gio.Cancellable} or `null`
-         * @param callback A callback for completion or `null`
-         */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Builds and writes the index to `file`. The file format is a
@@ -18396,7 +18364,18 @@ export namespace Ide {
          * @param cancellable An optional {@link Gio.Cancellable} or `null`
          * @param callback A callback for completion or `null`
          */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Builds and writes the index to `file`. The file format is a
+         * GVariant on disk and can be loaded and searched using
+         * {@link Ide.FuzzyIndex}.
+         * @param file A {@link Gio.File} to write the index to
+         * @param io_priority The priority for IO operations
+         * @param cancellable An optional {@link Gio.Cancellable} or `null`
+         * @param callback A callback for completion or `null`
+         */
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -18548,7 +18527,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -18591,7 +18570,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -18634,7 +18613,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -18694,7 +18673,7 @@ export namespace Ide {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -18743,7 +18722,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -18783,7 +18762,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -19028,7 +19007,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -19074,7 +19053,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -19088,7 +19067,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -19112,7 +19091,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -19134,7 +19113,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -19261,7 +19240,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -19308,7 +19287,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -19322,7 +19301,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -19346,7 +19325,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -19368,7 +19347,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -19470,8 +19449,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            project_info: (ProjectInfo | null);
-            projectInfo: (ProjectInfo | null);
+            project_info: ProjectInfo | null;
+            projectInfo: ProjectInfo | null;
             selected: boolean;
         }
     }
@@ -19487,15 +19466,15 @@ export namespace Ide {
          * The "project-info" property contains information about the project
          * to be displayed.
          */
-        get project_info(): (ProjectInfo | null);
-        set project_info(val: (ProjectInfo | null));
+        get project_info(): ProjectInfo | null;
+        set project_info(val: ProjectInfo | null);
 
         /**
          * The "project-info" property contains information about the project
          * to be displayed.
          */
-        get projectInfo(): (ProjectInfo | null);
-        set projectInfo(val: (ProjectInfo | null));
+        get projectInfo(): ProjectInfo | null;
+        set projectInfo(val: ProjectInfo | null);
 
         /**
          * @default false
@@ -19537,13 +19516,13 @@ export namespace Ide {
          * Gets the {@link Ide.GreeterRow.project_info} property.
          * @returns an {@link Ide.ProjectInfo} or `null`
          */
-        get_project_info(): (ProjectInfo | null);
+        get_project_info(): ProjectInfo | null;
 
         /**
          * Gets a new string containing the search text for the greeter row.
          * @returns a string or `null`
          */
-        get_search_text(): (string | null);
+        get_search_text(): string | null;
 
         get_selection_mode(): boolean;
 
@@ -19562,16 +19541,16 @@ export namespace Ide {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -19591,13 +19570,13 @@ export namespace Ide {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -19615,7 +19594,7 @@ export namespace Ide {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -19638,7 +19617,7 @@ export namespace Ide {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -19654,13 +19633,13 @@ export namespace Ide {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -19679,7 +19658,7 @@ export namespace Ide {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -19703,7 +19682,7 @@ export namespace Ide {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -19714,7 +19693,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "open-project": (arg0: ProjectInfo) => (boolean | void);
+            "open-project": (arg0: ProjectInfo) => boolean | void;
             "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -19902,7 +19881,7 @@ export namespace Ide {
          * @param tag 
          * @returns a {@link Adw.NavigationPage} or `null`
          */
-        find_page(tag: string): (Adw.NavigationPage | null);
+        find_page(tag: string): Adw.NavigationPage | null;
 
         /**
          * Gets if the greeter is in selection mode, which means that the workspace
@@ -19914,7 +19893,7 @@ export namespace Ide {
         /**
          * @returns the current page, or `null` if not   page has been added yet.
          */
-        get_visible_page(): (Adw.NavigationPage | null);
+        get_visible_page(): Adw.NavigationPage | null;
 
         /**
          * Opens the project described by `project_info`.
@@ -20007,9 +19986,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Panel.Grid.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Panel.Grid.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -20119,8 +20096,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            menu_id: (string | null);
-            menuId: (string | null);
+            menu_id: string | null;
+            menuId: string | null;
             show_end_title_buttons: boolean;
             showEndTitleButtons: boolean;
         }
@@ -20136,14 +20113,14 @@ export namespace Ide {
         /**
          * @default null
          */
-        get menu_id(): (string | null);
-        set menu_id(val: (string | null));
+        get menu_id(): string | null;
+        set menu_id(val: string | null);
 
         /**
          * @default null
          */
-        get menuId(): (string | null);
-        set menuId(val: (string | null));
+        get menuId(): string | null;
+        set menuId(val: string | null);
 
         /**
          * @default true
@@ -20198,7 +20175,7 @@ export namespace Ide {
          * Gets the menu-id to show in the workspace window.
          * @returns a string containing the menu-id, or `null`
          */
-        get_menu_id(): (string | null);
+        get_menu_id(): string | null;
 
         /**
          * @param widget 
@@ -20258,7 +20235,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -20266,7 +20243,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -20294,13 +20271,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -20344,7 +20321,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -20353,7 +20330,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -20411,7 +20388,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -20419,13 +20396,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -20441,13 +20418,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -20467,7 +20444,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -20477,7 +20454,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -20488,7 +20465,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -20499,7 +20476,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -20508,7 +20485,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -20762,7 +20739,7 @@ export namespace Ide {
          * @param callback a function to call after completion
          * @virtual
          */
-        vfunc_generate_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_generate_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes a request to generate HTML.
@@ -20776,7 +20753,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
-        vfunc_generate_finish(result: Gio.AsyncResult): (GLib.Bytes | Uint8Array);
+        vfunc_generate_finish(result: Gio.AsyncResult): GLib.Bytes | Uint8Array;
 
         /**
          * Notifies that the last generated HTML is now invalid.
@@ -20798,7 +20775,7 @@ export namespace Ide {
          * `ide_html_generator_generate_finish()` to retrieve the result.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        generate_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Bytes>;
+        generate_async(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>;
 
         /**
          * Asynchronously generate HTML.
@@ -20811,7 +20788,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a function to call after completion
          */
-        generate_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously generate HTML.
@@ -20824,7 +20801,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a function to call after completion
          */
-        generate_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Bytes> | void);
+        generate_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Bytes> | void;
 
         /**
          * Completes a request to generate HTML.
@@ -20864,12 +20841,12 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            cancel: (arg0: Notification, arg1: (Gio.Cancellable | null)) => void;
+            cancel: (arg0: Notification, arg1: Gio.Cancellable | null) => void;
             /**
              * @signal
              * @run-last
              */
-            install: (arg0: Notification, arg1: (Gio.Cancellable | null)) => void;
+            install: (arg0: Notification, arg1: Gio.Cancellable | null) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
@@ -21012,7 +20989,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -21020,7 +20997,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -21048,13 +21025,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -21098,7 +21075,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -21107,7 +21084,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -21165,7 +21142,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -21173,13 +21150,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -21195,13 +21172,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -21221,7 +21198,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -21231,7 +21208,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -21242,7 +21219,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -21253,7 +21230,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -21262,7 +21239,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -21316,13 +21293,10 @@ export namespace Ide {
 
     namespace JoinedMenu {
         // Signal signatures
-        interface SignalSignatures extends Gio.MenuModel.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.MenuModel.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.MenuModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.MenuModel.ConstructorProps {}
     }
 
     /**
@@ -21436,9 +21410,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -21546,7 +21518,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            file: (Gio.File | null);
+            file: Gio.File | null;
             line: number;
             line_offset: number;
             lineOffset: number;
@@ -21565,7 +21537,7 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get file(): (Gio.File | null);
+        get file(): Gio.File | null;
 
         /**
          * @construct-only
@@ -21613,7 +21585,7 @@ export namespace Ide {
 
         static ["new"](file: Gio.File, line: number, line_offset: number): Location;
 
-        static new_from_variant(variant: (GLib.Variant | null)): Location;
+        static new_from_variant(variant: GLib.Variant | null): Location;
 
         static new_with_offset(file: Gio.File, line: number, line_offset: number, offset: number): Location;
 
@@ -21647,7 +21619,7 @@ export namespace Ide {
          *   shortname:line:column
          * @returns A new string containing the   something suitable to be used as a title for diagnostics.
          */
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * @param b 
@@ -21658,7 +21630,7 @@ export namespace Ide {
          * Gets the file within the location.
          * @returns a {@link Gio.File} or `null`
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * Gets the line within the {@link Ide.Location.file}, or -1 if it is unknown.
@@ -21827,7 +21799,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "supports-language": (arg0: string) => (boolean | void);
+            "supports-language": (arg0: string) => boolean | void;
             "notify::initialization-options": (pspec: GObject.ParamSpec) => void;
             "notify::io-stream": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -21889,15 +21861,15 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            initialization_options: (GLib.Variant | null);
-            initializationOptions: (GLib.Variant | null);
+            initialization_options: GLib.Variant | null;
+            initializationOptions: GLib.Variant | null;
             io_stream: Gio.IOStream;
             ioStream: Gio.IOStream;
             name: string;
             root_uri: string;
             rootUri: string;
-            server_capabilities: (GLib.Variant | null);
-            serverCapabilities: (GLib.Variant | null);
+            server_capabilities: GLib.Variant | null;
+            serverCapabilities: GLib.Variant | null;
             use_markdown_in_diagnostics: boolean;
             useMarkdownInDiagnostics: boolean;
         }
@@ -21910,11 +21882,11 @@ export namespace Ide {
         static $gtype: GObject.GType<LspClient>;
 
         // Properties
-        get initialization_options(): (GLib.Variant | null);
-        set initialization_options(val: (GLib.Variant | null));
+        get initialization_options(): GLib.Variant | null;
+        set initialization_options(val: GLib.Variant | null);
 
-        get initializationOptions(): (GLib.Variant | null);
-        set initializationOptions(val: (GLib.Variant | null));
+        get initializationOptions(): GLib.Variant | null;
+        set initializationOptions(val: GLib.Variant | null);
 
         /**
          * @construct-only
@@ -21941,12 +21913,12 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get server_capabilities(): (GLib.Variant | null);
+        get server_capabilities(): GLib.Variant | null;
 
         /**
          * @read-only
          */
-        get serverCapabilities(): (GLib.Variant | null);
+        get serverCapabilities(): GLib.Variant | null;
 
         /**
          * @default false
@@ -22037,7 +22009,7 @@ export namespace Ide {
          * @param params An {@link GLib.Variant} or `null`
          * @param cancellable A cancellable or `null`
          */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously queries the Language Server using the JSON-RPC protocol.
@@ -22048,7 +22020,7 @@ export namespace Ide {
          * @param cancellable A cancellable or `null`
          * @param callback the callback to receive the result, or `null`
          */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously queries the Language Server using the JSON-RPC protocol.
@@ -22059,7 +22031,7 @@ export namespace Ide {
          * @param cancellable A cancellable or `null`
          * @param callback the callback to receive the result, or `null`
          */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -22073,7 +22045,7 @@ export namespace Ide {
          * @param lang_id 
          * @param cancellable 
          */
-        get_diagnostics_async(file: Gio.File, content: (GLib.Bytes | Uint8Array), lang_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Diagnostics | null)>;
+        get_diagnostics_async(file: Gio.File, content: GLib.Bytes | Uint8Array, lang_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics | null>;
 
         /**
          * @param file 
@@ -22082,7 +22054,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_diagnostics_async(file: Gio.File, content: (GLib.Bytes | Uint8Array), lang_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_diagnostics_async(file: Gio.File, content: GLib.Bytes | Uint8Array, lang_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
@@ -22091,7 +22063,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_diagnostics_async(file: Gio.File, content: (GLib.Bytes | Uint8Array), lang_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Diagnostics | null)> | void);
+        get_diagnostics_async(file: Gio.File, content: GLib.Bytes | Uint8Array, lang_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics | null> | void;
 
         /**
          * Completes a request to `ide_lsp_client_get_diagnostics_async()`.
@@ -22104,7 +22076,7 @@ export namespace Ide {
          * Gets the initialization options for the client.
          * @returns a {@link GLib.Variant} or `null`
          */
-        get_initialization_options(): (GLib.Variant | null);
+        get_initialization_options(): GLib.Variant | null;
 
         /**
          * Gets the capabilities provided to us by the server after initializing.
@@ -22113,7 +22085,7 @@ export namespace Ide {
          * the connection.
          * @returns a {@link GLib.Variant} that is a   `G_VARIANT_TYPE_VARDICT` or `null`.
          */
-        get_server_capabilities(): (GLib.Variant | null);
+        get_server_capabilities(): GLib.Variant | null;
 
         get_trace(): LspTrace;
 
@@ -22125,7 +22097,7 @@ export namespace Ide {
          * @param params An {@link GLib.Variant} or `null`
          * @param cancellable A cancellable or `null`
          */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously sends a notification to the Language Server.
@@ -22136,7 +22108,7 @@ export namespace Ide {
          * @param cancellable A cancellable or `null`
          * @param notificationback the notificationback to receive the result, or `null`
          */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), notificationback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously sends a notification to the Language Server.
@@ -22147,7 +22119,7 @@ export namespace Ide {
          * @param cancellable A cancellable or `null`
          * @param notificationback the notificationback to receive the result, or `null`
          */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), notificationback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -22163,7 +22135,7 @@ export namespace Ide {
          * `options` will be incremented by one.
          * @param options a {@link GLib.Variant} or `null`
          */
-        set_initialization_options(options: (GLib.Variant | null)): void;
+        set_initialization_options(options: GLib.Variant | null): void;
 
         /**
          * Sets the name for the client.
@@ -22264,19 +22236,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -22290,7 +22262,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -22317,7 +22289,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, CodeActionProvider.ConstructorProps {
             client: LspClient;
-            diagnostics: (Diagnostics | null);
+            diagnostics: Diagnostics | null;
         }
     }
 
@@ -22331,8 +22303,8 @@ export namespace Ide {
         get client(): LspClient;
         set client(val: LspClient);
 
-        get diagnostics(): (Diagnostics | null);
-        set diagnostics(val: (Diagnostics | null));
+        get diagnostics(): Diagnostics | null;
+        set diagnostics(val: Diagnostics | null);
 
         /**
          * Compile-time signal type information.
@@ -22372,7 +22344,7 @@ export namespace Ide {
          * Gets the diagnostics to use for the code action query.
          * @returns An {@link Ide.Diagnostics} or `null`.
          */
-        get_diagnostics(): (Diagnostics | null);
+        get_diagnostics(): Diagnostics | null;
 
         /**
          * @param client 
@@ -22385,21 +22357,21 @@ export namespace Ide {
          * @param buffer 
          * @param cancellable 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeAction[]>;
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null): globalThis.Promise<CodeAction[]>;
 
         /**
          * @param buffer 
          * @param cancellable 
          * @param callback 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
          * @param cancellable 
          * @param callback 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeAction[]> | void);
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeAction[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
@@ -22424,7 +22396,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
@@ -22489,13 +22461,10 @@ export namespace Ide {
 
     namespace LspCompletionItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, GtkSource.CompletionProposal.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, GtkSource.CompletionProposal.ConstructorProps {}
     }
 
     /**
@@ -22545,7 +22514,7 @@ export namespace Ide {
          * @param file The file the completion is applied to
          * @returns a {@link GLib.PtrArray} of {@link Ide.TextEdit}
          */
-        get_additional_text_edits(file: Gio.File): (TextEdit[] | null);
+        get_additional_text_edits(file: Gio.File): TextEdit[] | null;
 
         get_detail(): string;
 
@@ -22567,7 +22536,7 @@ export namespace Ide {
          * external tooling to compare results.
          * @returns a newly allocated string, or `null`
          */
-        get_typed_text(): (string | null);
+        get_typed_text(): string | null;
 
         /**
          * Gets the typed-text for the proposal, if supported by the implementation.
@@ -22576,7 +22545,7 @@ export namespace Ide {
          * external tooling to compare results.
          * @virtual
          */
-        vfunc_get_typed_text(): (string | null);
+        vfunc_get_typed_text(): string | null;
     }
 
 
@@ -22590,7 +22559,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, GtkSource.CompletionProvider.ConstructorProps {
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -22601,8 +22570,8 @@ export namespace Ide {
         static $gtype: GObject.GType<LspCompletionProvider>;
 
         // Properties
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -22642,7 +22611,7 @@ export namespace Ide {
          * Gets the client for the completion provider.
          * @returns An {@link Ide.LspClient} or `null`
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -22697,7 +22666,7 @@ export namespace Ide {
          * at some point in the future when non-`null`.
          * @returns a title for the provider or `null`
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * This function is used to determine if a character inserted into the text
@@ -22738,7 +22707,7 @@ export namespace Ide {
          * @param proposal a {@link GtkSource.CompletionProposal}
          * @returns a {@link GLib.PtrArray} of {@link GtkSource.CompletionProposal} or `null`.
          */
-        list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): (GtkSource.CompletionProposal[] | null);
+        list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): GtkSource.CompletionProposal[] | null;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -22751,21 +22720,7 @@ export namespace Ide {
          * @param context a {@link GtkSource.CompletionContext}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
-
-        /**
-         * Asynchronously requests that the provider populates the completion
-         * results for `context`.
-         * 
-         * For providers that would like to populate a {@link Gio.ListModel} while those
-         * results are displayed to the user,
-         * {@link CompletionContext.set_proposals_for_provider} may be used
-         * to reduce latency until the user sees results.
-         * @param context a {@link GtkSource.CompletionContext}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute upon completion
-         */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -22779,7 +22734,21 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously requests that the provider populates the completion
+         * results for `context`.
+         * 
+         * For providers that would like to populate a {@link Gio.ListModel} while those
+         * results are displayed to the user,
+         * {@link CompletionContext.set_proposals_for_provider} may be used
+         * to reduce latency until the user sees results.
+         * @param context a {@link GtkSource.CompletionContext}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute upon completion
+         */
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes an asynchronous operation to populate a completion provider.
@@ -22851,7 +22820,7 @@ export namespace Ide {
          * at some point in the future when non-`null`.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * This function is used to determine if a character inserted into the text
@@ -22894,7 +22863,7 @@ export namespace Ide {
          * @param proposal a {@link GtkSource.CompletionProposal}
          * @virtual
          */
-        vfunc_list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): (GtkSource.CompletionProposal[] | null);
+        vfunc_list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): GtkSource.CompletionProposal[] | null;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -22909,7 +22878,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous operation to populate a completion provider.
@@ -22981,13 +22950,10 @@ export namespace Ide {
 
     namespace LspCompletionResults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -23070,7 +23036,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -23110,7 +23076,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -23205,7 +23171,7 @@ export namespace Ide {
          * returns it.
          * @returns a {@link GLib.Variant} with it's reference count incremented
          */
-        dup_raw(): (GLib.Variant | null);
+        dup_raw(): GLib.Variant | null;
     }
 
 
@@ -23219,7 +23185,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, DiagnosticProvider.ConstructorProps {
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -23230,8 +23196,8 @@ export namespace Ide {
         static $gtype: GObject.GType<LspDiagnosticProvider>;
 
         // Properties
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -23265,7 +23231,7 @@ export namespace Ide {
          * Gets the client used by diagnostic provider.
          * @returns An {@link Ide.LspClient} or `null`.
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -23283,7 +23249,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -23297,7 +23263,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -23311,7 +23277,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Diagnostics> | void);
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -23345,7 +23311,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -23436,7 +23402,7 @@ export namespace Ide {
          * @param options 
          * @param cancellable 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param buffer 
@@ -23444,7 +23410,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
@@ -23452,7 +23418,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -23466,7 +23432,7 @@ export namespace Ide {
          * @param end 
          * @param cancellable 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param buffer 
@@ -23476,7 +23442,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
@@ -23486,7 +23452,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -23502,7 +23468,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -23519,7 +23485,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -23590,7 +23556,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, Highlighter.ConstructorProps {
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -23601,8 +23567,8 @@ export namespace Ide {
         static $gtype: GObject.GType<LspHighlighter>;
 
         // Properties
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -23635,7 +23601,7 @@ export namespace Ide {
         /**
          * @returns An {@link Ide.LspHighlighter} or `null`.
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -23705,7 +23671,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, GtkSource.HoverProvider.ConstructorProps {
             category: string;
-            client: (LspClient | null);
+            client: LspClient | null;
             priority: number;
         }
     }
@@ -23729,8 +23695,8 @@ export namespace Ide {
          * The "client" property is the {@link Ide.LspClient} that should be used to
          * communicate with the Language Server peer process.
          */
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * @default 0
@@ -23776,7 +23742,7 @@ export namespace Ide {
          * Gets the client that is used for communication.
          * @returns an {@link Ide.LspClient} or `null`
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * Sets the client to be used to query for hover information.
@@ -23789,7 +23755,7 @@ export namespace Ide {
          * @param display 
          * @param cancellable 
          */
-        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param context 
@@ -23797,7 +23763,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param context 
@@ -23805,7 +23771,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -23826,7 +23792,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_populate_async(context: GtkSource.HoverContext, display: GtkSource.HoverDisplay, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -23894,7 +23860,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, RenameProvider.ConstructorProps {
             buffer: Buffer;
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -23910,8 +23876,8 @@ export namespace Ide {
          */
         set buffer(val: Buffer);
 
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -23944,7 +23910,7 @@ export namespace Ide {
         /**
          * @returns an {@link Ide.LspClient} or `null`.
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -23962,7 +23928,7 @@ export namespace Ide {
          * @param new_name The replacement name for the symbol
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(TextEdit[] | null)>;
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<TextEdit[] | null>;
 
         /**
          * This requests the provider to determine the edits that must be made to the
@@ -23974,7 +23940,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to complete the request
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This requests the provider to determine the edits that must be made to the
@@ -23986,7 +23952,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to complete the request
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(TextEdit[] | null)> | void);
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<TextEdit[] | null> | void;
 
         /**
          * Completes a request to `ide_rename_provider_rename_async()`.
@@ -24016,7 +23982,7 @@ export namespace Ide {
          * @param callback a callback to complete the request
          * @virtual
          */
-        vfunc_rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes a request to `ide_rename_provider_rename_async()`.
@@ -24045,7 +24011,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, SearchProvider.ConstructorProps {
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -24056,8 +24022,8 @@ export namespace Ide {
         static $gtype: GObject.GType<LspSearchProvider>;
 
         // Properties
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -24091,7 +24057,7 @@ export namespace Ide {
          * Gets the client for the search provider.
          * @returns An {@link Ide.LspClient} or `null`
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -24102,7 +24068,7 @@ export namespace Ide {
          * Gets the icon for the provider, if any.
          * @returns a {@link Gio.Icon} or `null`
          */
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_title(): string;
 
@@ -24115,7 +24081,7 @@ export namespace Ide {
          * @param max_results 
          * @param cancellable 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Gio.ListModel, boolean]>;
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.ListModel, boolean]>;
 
         /**
          * @param query 
@@ -24123,7 +24089,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param query 
@@ -24131,7 +24097,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Gio.ListModel, boolean]> | void);
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.ListModel, boolean]> | void;
 
         /**
          * Completes a request to a search provider.
@@ -24149,7 +24115,7 @@ export namespace Ide {
          * Gets the icon for the provider, if any.
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * @virtual
@@ -24173,7 +24139,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes a request to a search provider.
@@ -24361,7 +24327,7 @@ export namespace Ide {
          * the host system.
          * @param search_path a search path to apply when searching the host or `null`.
          */
-        set_search_path(search_path: (string[] | null)): void;
+        set_search_path(search_path: string[] | null): void;
     }
 
 
@@ -24377,9 +24343,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SymbolNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SymbolNode.ConstructorProps {}
     }
 
     /**
@@ -24435,7 +24399,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, SymbolResolver.ConstructorProps {
-            client: (LspClient | null);
+            client: LspClient | null;
         }
     }
 
@@ -24446,8 +24410,8 @@ export namespace Ide {
         static $gtype: GObject.GType<LspSymbolResolver>;
 
         // Properties
-        get client(): (LspClient | null);
-        set client(val: (LspClient | null));
+        get client(): LspClient | null;
+        set client(val: LspClient | null);
 
         /**
          * Compile-time signal type information.
@@ -24481,7 +24445,7 @@ export namespace Ide {
          * Gets the client used by the symbol resolver.
          * @returns An {@link Ide.LspClient} or `null`.
          */
-        get_client(): (LspClient | null);
+        get_client(): LspClient | null;
 
         /**
          * @param client 
@@ -24497,7 +24461,7 @@ export namespace Ide {
          * @param location an {@link Ide.Location}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Symbol | null)>;
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol | null>;
 
         /**
          * This function asynchronously requests to locate the containing
@@ -24509,7 +24473,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function asynchronously requests to locate the containing
@@ -24521,7 +24485,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Symbol | null)> | void);
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Symbol | null> | void;
 
         /**
          * This function completes an asynchronous operation to locate the containing
@@ -24531,22 +24495,14 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult}
          * @returns An {@link Ide.Symbol} or `null`
          */
-        find_nearest_scope_finish(result: Gio.AsyncResult): (Symbol | null);
+        find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
         /**
          * @param location an {@link Ide.Location}
          * @param language_id a language identifier or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Range[]>;
-
-        /**
-         * @param location an {@link Ide.Location}
-         * @param language_id a language identifier or `null`
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute
-         */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Range[]>;
 
         /**
          * @param location an {@link Ide.Location}
@@ -24554,7 +24510,15 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute
          */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Range[]> | void);
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param location an {@link Ide.Location}
+         * @param language_id a language identifier or `null`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute
+         */
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Range[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
@@ -24569,7 +24533,7 @@ export namespace Ide {
          * @param contents a {@link GLib.Bytes} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(SymbolTree | null)>;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -24578,7 +24542,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -24587,7 +24551,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(SymbolTree | null)> | void);
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
 
         /**
          * Completes an asynchronous request to get the symbol tree for the
@@ -24595,7 +24559,7 @@ export namespace Ide {
          * @param result 
          * @returns An {@link Ide.SymbolTree}; otherwise   `null` and `error` is set.
          */
-        get_symbol_tree_finish(result: Gio.AsyncResult): (SymbolTree | null);
+        get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
         load(): void;
 
@@ -24606,7 +24570,7 @@ export namespace Ide {
          * @param location An {@link Ide.Location}.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Symbol | null)>;
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol | null>;
 
         /**
          * Asynchronously requests that `self` determine the symbol existing at the source location
@@ -24616,7 +24580,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback A callback to execute upon completion.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that `self` determine the symbol existing at the source location
@@ -24626,7 +24590,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback A callback to execute upon completion.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Symbol | null)> | void);
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Symbol | null> | void;
 
         /**
          * Completes an asynchronous call to lookup a symbol using
@@ -24634,7 +24598,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback.
          * @returns An {@link Ide.Symbol} if successful; otherwise `null`.
          */
-        lookup_symbol_finish(result: Gio.AsyncResult): (Symbol | null);
+        lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
         unload(): void;
 
@@ -24649,7 +24613,7 @@ export namespace Ide {
          * @param callback an async callback
          * @virtual
          */
-        vfunc_find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function completes an asynchronous operation to locate the containing
@@ -24659,7 +24623,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
-        vfunc_find_nearest_scope_finish(result: Gio.AsyncResult): (Symbol | null);
+        vfunc_find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
         /**
          * @param location an {@link Ide.Location}
@@ -24668,7 +24632,7 @@ export namespace Ide {
          * @param callback a callback to execute
          * @virtual
          */
-        vfunc_find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
@@ -24685,7 +24649,7 @@ export namespace Ide {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous request to get the symbol tree for the
@@ -24693,7 +24657,7 @@ export namespace Ide {
          * @param result 
          * @virtual
          */
-        vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): (SymbolTree | null);
+        vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
         /**
          * @virtual
@@ -24709,7 +24673,7 @@ export namespace Ide {
          * @param callback A callback to execute upon completion.
          * @virtual
          */
-        vfunc_lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous call to lookup a symbol using
@@ -24717,7 +24681,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback.
          * @virtual
          */
-        vfunc_lookup_symbol_finish(result: Gio.AsyncResult): (Symbol | null);
+        vfunc_lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
         /**
          * @virtual
@@ -24728,13 +24692,10 @@ export namespace Ide {
 
     namespace LspSymbolTree {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SymbolTree.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SymbolTree.ConstructorProps {}
     }
 
     /**
@@ -24776,7 +24737,7 @@ export namespace Ide {
          * @param node An {@link Ide.SymbolNode} or `null`.
          * @returns An unsigned integer containing the number of children.
          */
-        get_n_children(node: (SymbolNode | null)): number;
+        get_n_children(node: SymbolNode | null): number;
 
         /**
          * Gets the `nth` child node of `node`.
@@ -24784,7 +24745,7 @@ export namespace Ide {
          * @param nth the nth child to retrieve.
          * @returns an {@link Ide.SymbolNode} or `null`.
          */
-        get_nth_child(node: (SymbolNode | null), nth: number): (SymbolNode | null);
+        get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
 
         /**
          * Get the number of children of `node`. If `node` is NULL, the root node
@@ -24792,7 +24753,7 @@ export namespace Ide {
          * @param node An {@link Ide.SymbolNode} or `null`.
          * @virtual
          */
-        vfunc_get_n_children(node: (SymbolNode | null)): number;
+        vfunc_get_n_children(node: SymbolNode | null): number;
 
         /**
          * Gets the `nth` child node of `node`.
@@ -24800,19 +24761,16 @@ export namespace Ide {
          * @param nth the nth child to retrieve.
          * @virtual
          */
-        vfunc_get_nth_child(node: (SymbolNode | null), nth: number): (SymbolNode | null);
+        vfunc_get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
     }
 
 
     namespace LspWorkspaceEdit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -24901,9 +24859,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -24986,7 +24942,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -24994,7 +24950,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -25022,13 +24978,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -25072,7 +25028,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -25081,7 +25037,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -25139,7 +25095,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -25147,13 +25103,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -25169,13 +25125,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -25195,7 +25151,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -25205,7 +25161,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -25216,7 +25172,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -25227,7 +25183,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -25236,7 +25192,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -25290,13 +25246,10 @@ export namespace Ide {
 
     namespace MenuManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -25371,7 +25324,7 @@ export namespace Ide {
          * @param id the identifier of the menu item
          * @returns a {@link Gio.Menu} if successful; otherwise   `null` and `position` is unset.
          */
-        find_item_by_id(id: string): [(Gio.Menu | null), number];
+        find_item_by_id(id: string): [Gio.Menu | null, number];
 
         /**
          * @param menu_id 
@@ -25599,7 +25552,7 @@ export namespace Ide {
          * @param total_num_bytes 
          * @param user_data 
          */
-        static file_progress_callback(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: null): void;
+        static file_progress_callback(current_num_bytes: bigint | number, total_num_bytes: bigint | number, user_data: null): void;
 
         /**
          * @param status 
@@ -25618,7 +25571,7 @@ export namespace Ide {
          * @param icon an optional icon for the button
          * @param detailed_action a detailed action name (See {@link Gio.Action})
          */
-        add_button(label: string, icon: (Gio.Icon | null), detailed_action: string): void;
+        add_button(label: string, icon: Gio.Icon | null, detailed_action: string): void;
 
         /**
          * Adds a new button, used the parsed {@link GLib.Variant} format for the action
@@ -25628,7 +25581,7 @@ export namespace Ide {
          * @param action an action name (See {@link Gio.Action})
          * @param target an optional {@link GLib.Variant} for the action target
          */
-        add_button_with_target_value(label: string, icon: (Gio.Icon | null), action: string, target: (GLib.Variant | null)): void;
+        add_button_with_target_value(label: string, icon: Gio.Icon | null, action: string, target: GLib.Variant | null): void;
 
         /**
          * This function will locate the {@link Ide.Notifications} object starting from
@@ -25707,13 +25660,13 @@ export namespace Ide {
          * to the {@link Gio.Icon}.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_icon(): (Gio.Icon | null);
+        ref_icon(): Gio.Icon | null;
 
         /**
          * Sets the {@link Ide.Notification.body} property.
          * @param body a string containing the body text, or `null`
          */
-        set_body(body: (string | null)): void;
+        set_body(body: string | null): void;
 
         /**
          * @param detailed_action 
@@ -25746,7 +25699,7 @@ export namespace Ide {
          * Sets the {@link Ide.Notification.id} property.
          * @param id a string containing the id, or `null`
          */
-        set_id(id: (string | null)): void;
+        set_id(id: string | null): void;
 
         /**
          * @param priority 
@@ -25768,7 +25721,7 @@ export namespace Ide {
          * Sets the {@link Ide.Notification.title} property.
          * @param title a string containing the title text, or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
 
         /**
          * @param urgent 
@@ -25900,7 +25853,7 @@ export namespace Ide {
          * @param id the id of the notification
          * @returns an {@link Ide.Notification} or `null`
          */
-        find_by_id(id: string): (Notification | null);
+        find_by_id(id: string): Notification | null;
 
         /**
          * Gets if any of the notification support progress updates.
@@ -25960,7 +25913,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -26000,7 +25953,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -26115,9 +26068,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -26200,7 +26151,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -26208,7 +26159,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -26236,13 +26187,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -26286,7 +26237,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -26295,7 +26246,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -26353,7 +26304,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -26361,13 +26312,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -26383,13 +26334,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -26409,7 +26360,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -26419,7 +26370,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -26430,7 +26381,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -26441,7 +26392,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -26450,7 +26401,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -26525,7 +26476,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cancellable: Gio.Cancellable;
-            parent: (Object | null);
+            parent: Object | null;
         }
     }
 
@@ -26550,7 +26501,7 @@ export namespace Ide {
          * The parent {@link Ide.Object}, if any.
          * @construct-only
          */
-        get parent(): (Object | null);
+        get parent(): Object | null;
 
         /**
          * Compile-time signal type information.
@@ -26566,7 +26517,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](type: GObject.GType, parent: (Object | null)): Object;
+        static ["new"](type: GObject.GType, parent: Object | null): Object;
 
         // Signals
         /** @signal */
@@ -26630,7 +26581,7 @@ export namespace Ide {
          * @param location location for child
          * @virtual
          */
-        vfunc_add(sibling: (Object | null), child: Object, location: ObjectLocation): void;
+        vfunc_add(sibling: Object | null, child: Object, location: ObjectLocation): void;
 
         /**
          * @virtual
@@ -26675,7 +26626,7 @@ export namespace Ide {
          * @param child an {@link Ide.Object}
          * @param location location for child
          */
-        add(sibling: (Object | null), child: Object, location: ObjectLocation): void;
+        add(sibling: Object | null, child: Object, location: ObjectLocation): void;
 
         /**
          * Inserts `child` as the last child of `self`.
@@ -26693,7 +26644,7 @@ export namespace Ide {
          * @param type the {@link GObject.GType} of the child
          * @returns an {@link Ide.Object} or `null`
          */
-        ensure_child_typed(type: GObject.GType): (Object | null);
+        ensure_child_typed(type: GObject.GType): Object | null;
 
         /**
          * Calls `callback` for each child of `self`.
@@ -26710,7 +26661,7 @@ export namespace Ide {
          * @param type the {@link GObject.GType} of the child to match
          * @returns an {@link Ide.Object} or `null`
          */
-        get_child_typed(type: GObject.GType): (Object | null);
+        get_child_typed(type: GObject.GType): Object | null;
 
         /**
          * Gets all children matching `type`.
@@ -26723,7 +26674,7 @@ export namespace Ide {
          * Gets the {@link Ide.Context} for the object.
          * @returns an {@link Ide.Context}
          */
-        get_context(): (Context | null);
+        get_context(): Context | null;
 
         /**
          * Gets the number of children for an object.
@@ -26738,7 +26689,7 @@ export namespace Ide {
          * @param nth position of child to fetch
          * @returns an {@link Ide.Object} or `null`
          */
-        get_nth_child(nth: number): (Object | null);
+        get_nth_child(nth: number): Object | null;
 
         /**
          * Gets the parent {@link Ide.Object}, if any.
@@ -26746,7 +26697,7 @@ export namespace Ide {
          * This function may only be called from the main thread.
          * @returns an {@link Ide.Object} or `null`
          */
-        get_parent(): (Object | null);
+        get_parent(): Object | null;
 
         /**
          * Gets the position of `self` within the parent node.
@@ -26814,13 +26765,13 @@ export namespace Ide {
          * Gets the root {@link Ide.Context} for the object, if any.
          * @returns an {@link Ide.Context} or `null`
          */
-        ref_context(): (Context | null);
+        ref_context(): Context | null;
 
         /**
          * Gets the parent {@link Ide.Object}, if any.
          * @returns an {@link Ide.Object} or `null`
          */
-        ref_parent(): (Object | null);
+        ref_parent(): Object | null;
 
         /**
          * Finds and returns the toplevel object in the tree.
@@ -26963,7 +26914,7 @@ export namespace Ide {
          * @param instance a {@link GObject.Object} or `null`
          * @returns `true` if {@link Ide.ObjectBox.object} matches `instance`
          */
-        contains(instance: (GObject.Object | null)): boolean;
+        contains(instance: GObject.Object | null): boolean;
 
         /**
          * Gets the boxed object.
@@ -27102,16 +27053,16 @@ export namespace Ide {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -27198,7 +27149,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * @param args 
@@ -27250,7 +27201,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -27264,7 +27215,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -27288,7 +27239,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -27310,7 +27261,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -27437,7 +27388,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -27484,7 +27435,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -27498,7 +27449,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -27522,7 +27473,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -27544,7 +27495,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -27599,13 +27550,13 @@ export namespace Ide {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -27623,7 +27574,7 @@ export namespace Ide {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -27646,7 +27597,7 @@ export namespace Ide {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -27662,13 +27613,13 @@ export namespace Ide {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -27687,7 +27638,7 @@ export namespace Ide {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -27711,7 +27662,7 @@ export namespace Ide {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -27863,7 +27814,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_agree_to_close_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_agree_to_close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -27878,7 +27829,7 @@ export namespace Ide {
          * The view should be added to an `IdeLayoutStack` where appropriate.
          * @virtual
          */
-        vfunc_create_split(): (Page | null);
+        vfunc_create_split(): Page | null;
 
         /**
          * Gets a {@link Gio.File} representing a file or directory that best maps to this
@@ -27886,7 +27837,7 @@ export namespace Ide {
          * or designer might use the backing file.
          * @virtual
          */
-        vfunc_get_file_or_directory(): (Gio.File | null);
+        vfunc_get_file_or_directory(): Gio.File | null;
 
         // Methods
         /**
@@ -27897,19 +27848,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        agree_to_close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        agree_to_close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        agree_to_close_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -27923,7 +27874,7 @@ export namespace Ide {
          * The view should be added to an `IdeLayoutStack` where appropriate.
          * @returns A newly created {@link Ide.Page} or `null`.
          */
-        create_split(): (Page | null);
+        create_split(): Page | null;
 
         destroy(): void;
 
@@ -27937,7 +27888,7 @@ export namespace Ide {
          * or designer might use the backing file.
          * @returns a {@link Gio.File} or `null`
          */
-        get_file_or_directory(): (Gio.File | null);
+        get_file_or_directory(): Gio.File | null;
 
         get_menu_id(): string;
 
@@ -27945,7 +27896,7 @@ export namespace Ide {
          * Gets the position of a page within the workspace.
          * @returns an {@link Panel.Position} or `null`   if the page is not rooted.
          */
-        get_position(): (Panel.Position | null);
+        get_position(): Panel.Position | null;
 
         /**
          * This function marks the page as used by updating it's position in the
@@ -27982,7 +27933,7 @@ export namespace Ide {
          * again and reutrn a value of `null` for `notification`.
          * @param notification an {@link Ide.Notification} or `null`
          */
-        set_progress(notification: (Notification | null)): void;
+        set_progress(notification: Notification | null): void;
 
         /**
          * @param location 
@@ -28046,9 +27997,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Panel.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Panel.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -28095,7 +28044,7 @@ export namespace Ide {
          * Gets the position of the panel or `null`
          * @returns an {@link Panel.Position} or `null`
          */
-        get_position(): (Panel.Position | null);
+        get_position(): Panel.Position | null;
 
         /**
          * @param location 
@@ -28111,13 +28060,10 @@ export namespace Ide {
 
     namespace PathCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -28172,7 +28118,7 @@ export namespace Ide {
          * @param program_name the name of the program
          * @param program_path the path for the program
          */
-        insert(program_name: string, program_path: (string | null)): void;
+        insert(program_name: string, program_path: string | null): void;
 
         /**
          * `true` is returned when an entry is found in the cache. That entry
@@ -28186,13 +28132,10 @@ export namespace Ide {
 
     namespace PersistentMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -28240,27 +28183,27 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        load_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param callback 
-         */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param callback 
+         */
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
@@ -28278,13 +28221,10 @@ export namespace Ide {
 
     namespace PersistentMapBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -28334,29 +28274,21 @@ export namespace Ide {
          * @param key 
          * @param value 
          */
-        set_metadata_int64(key: string, value: (bigint | number)): void;
+        set_metadata_int64(key: string, value: bigint | number): void;
 
         /**
          * @param destination 
          * @param io_priority 
          * @param cancellable 
          */
-        write(destination: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): boolean;
+        write(destination: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param destination 
          * @param io_priority 
          * @param cancellable 
          */
-        write_async(destination: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param destination 
-         * @param io_priority 
-         * @param cancellable 
-         * @param callback 
-         */
-        write_async(destination: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(destination: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param destination 
@@ -28364,7 +28296,15 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        write_async(destination: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_async(destination: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param destination 
+         * @param io_priority 
+         * @param cancellable 
+         * @param callback 
+         */
+        write_async(destination: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
@@ -28430,9 +28370,9 @@ export namespace Ide {
             busy: boolean;
             config: Config;
             device: Device;
-            message: (string | null);
+            message: string | null;
             phase: PipelinePhase;
-            pty: (Vte.Pty | null);
+            pty: Vte.Pty | null;
         }
     }
 
@@ -28499,7 +28439,7 @@ export namespace Ide {
          * @read-only
          * @default null
          */
-        get message(): (string | null);
+        get message(): string | null;
 
         /**
          * The current build phase during execution of the pipeline.
@@ -28513,7 +28453,7 @@ export namespace Ide {
          * build subprocesses with a pseudo terminal.
          * @read-only
          */
-        get pty(): (Vte.Pty | null);
+        get pty(): Vte.Pty | null;
 
         /**
          * Compile-time signal type information.
@@ -28588,7 +28528,7 @@ export namespace Ide {
          * @param module_name the name of the addin module
          * @returns an {@link Ide.PipelineAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (PipelineAddin | null);
+        addin_find_by_module_name(module_name: string): PipelineAddin | null;
 
         /**
          * Insert `stage` into the pipeline as part of the phase denoted by `phase`.
@@ -28655,7 +28595,7 @@ export namespace Ide {
          * @param phase the requested build phase
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        build_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously starts the build pipeline.
@@ -28677,7 +28617,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        build_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously starts the build pipeline.
@@ -28699,7 +28639,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        build_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * This function completes the asynchronous request to build
@@ -28729,7 +28669,7 @@ export namespace Ide {
          * @param targets an optional array of   {@link Ide.BuildTarget} for the pipeline to build.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        build_targets_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_targets_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously starts the build pipeline.
@@ -28752,7 +28692,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        build_targets_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_targets_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously starts the build pipeline.
@@ -28775,7 +28715,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        build_targets_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_targets_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * This function completes the asynchronous request to build
@@ -28789,21 +28729,21 @@ export namespace Ide {
          * @param phase 
          * @param cancellable 
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param phase 
          * @param cancellable 
          * @param callback 
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param phase 
          * @param cancellable 
          * @param callback 
          */
-        clean_async(phase: PipelinePhase, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        clean_async(phase: PipelinePhase, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -28817,7 +28757,7 @@ export namespace Ide {
          * @param cancellable 
          * @returns `true` if `name` was found; otherwise `false`
          */
-        contains_program_in_path(name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_program_in_path(name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This is a convenience function to create a new {@link Ide.SubprocessLauncher}
@@ -28897,7 +28837,7 @@ export namespace Ide {
          * Gets the best discovered deployment strategry.
          * @returns the best deployment strategy   if any are supported for the current configuration.
          */
-        get_deploy_strategy(): (DeployStrategy | null);
+        get_deploy_strategy(): DeployStrategy | null;
 
         /**
          * Gets the device that the pipeline is building for.
@@ -28909,7 +28849,7 @@ export namespace Ide {
          * Gets the device info for the current device.
          * @returns an {@link Ide.DeviceInfo} or `null`
          */
-        get_device_info(): (DeviceInfo | null);
+        get_device_info(): DeviceInfo | null;
 
         /**
          * Gets the "host" triplet which specifies where the build results will run.
@@ -28926,7 +28866,7 @@ export namespace Ide {
          * build.
          * @returns A string representing the   current stage of the build, or `null`.
          */
-        get_message(): (string | null);
+        get_message(): string | null;
 
         /**
          * Gets the current phase that is executing. This is only useful during
@@ -28941,7 +28881,7 @@ export namespace Ide {
          * guaranteed to happen at object creation time.
          * @returns a {@link Vte.Pty} or `null`
          */
-        get_pty(): (Vte.Pty | null);
+        get_pty(): Vte.Pty | null;
 
         /**
          * Gets the phase that has been requested. This can be useful when you want to
@@ -28954,7 +28894,7 @@ export namespace Ide {
          * A convenience function to get the runtime for a build pipeline.
          * @returns An {@link Ide.Runtime} or `null`
          */
-        get_runtime(): (Runtime | null);
+        get_runtime(): Runtime | null;
 
         /**
          * Gets the "srcdir" of the project. This is equivalent to the
@@ -28969,7 +28909,7 @@ export namespace Ide {
          * @param stage_id the identifier of the stage
          * @returns An {@link Ide.PipelineStage} or `null` if the   stage could not be found.
          */
-        get_stage_by_id(stage_id: number): (PipelineStage | null);
+        get_stage_by_id(stage_id: number): PipelineStage | null;
 
         /**
          * A convenience function to get the toolchain for a build pipeline.
@@ -29032,7 +28972,7 @@ export namespace Ide {
          * @param targets an array of   {@link Ide.BuildTarget} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously starts the build pipeline after cleaning any
@@ -29042,7 +28982,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously starts the build pipeline after cleaning any
@@ -29052,7 +28992,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to build upon completion
          */
-        rebuild_async(phase: PipelinePhase, targets: (BuildTarget[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        rebuild_async(phase: PipelinePhase, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -29063,7 +29003,7 @@ export namespace Ide {
          * Thread-safe variant of `ide_pipeline_get_toolchain()`.
          * @returns an {@link Ide.Toolchain} or `null`
          */
-        ref_toolchain(): (Toolchain | null);
+        ref_toolchain(): Toolchain | null;
 
         /**
          * Removes an error format that was registered with
@@ -29128,7 +29068,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -29172,7 +29112,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the type of the items in `list`.
@@ -29213,7 +29153,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -29253,7 +29193,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -29333,7 +29273,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            chain: (arg0: PipelineStage) => (boolean | void);
+            chain: (arg0: PipelineStage) => boolean | void;
             /**
              * The {@link Ide.PipelineStage.SignalSignatures.query | Ide.PipelineStage::query} signal is emitted to request that the
              * build stage update its completed stage from any external resources.
@@ -29353,7 +29293,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            query: (arg0: Pipeline, arg1: (BuildTarget[] | null), arg2: (Gio.Cancellable | null)) => void;
+            query: (arg0: Pipeline, arg1: BuildTarget[] | null, arg2: Gio.Cancellable | null) => void;
             /**
              * This signal is emitted when a request to rebuild the project has
              * occurred. This allows build stages to ensure that certain files are
@@ -29529,7 +29469,7 @@ export namespace Ide {
          * @param cancellable 
          * @virtual
          */
-        vfunc_build(pipeline: Pipeline, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_build(pipeline: Pipeline, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param pipeline 
@@ -29537,7 +29477,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_build_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_build_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -29557,7 +29497,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_clean_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_clean_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -29576,21 +29516,21 @@ export namespace Ide {
          * @param pipeline 
          * @param cancellable 
          */
-        build_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param pipeline 
          * @param cancellable 
          * @param callback 
          */
-        build_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param pipeline 
          * @param cancellable 
          * @param callback 
          */
-        build_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -29606,21 +29546,21 @@ export namespace Ide {
          * @param pipeline 
          * @param cancellable 
          */
-        clean_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        clean_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param pipeline 
          * @param cancellable 
          * @param callback 
          */
-        clean_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        clean_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param pipeline 
          * @param cancellable 
          * @param callback 
          */
-        clean_async(pipeline: Pipeline, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        clean_async(pipeline: Pipeline, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -29656,7 +29596,7 @@ export namespace Ide {
          * @param message 
          * @param message_len 
          */
-        log(stream: BuildLogStream, message: string, message_len: (bigint | number)): void;
+        log(stream: BuildLogStream, message: string, message_len: bigint | number): void;
 
         /**
          * This function will begin logging `subprocess` by reading from the
@@ -29876,8 +29816,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends PipelineStage.ConstructorProps {
-            clean_launcher: (SubprocessLauncher | null);
-            cleanLauncher: (SubprocessLauncher | null);
+            clean_launcher: SubprocessLauncher | null;
+            cleanLauncher: SubprocessLauncher | null;
             ignore_exit_status: boolean;
             ignoreExitStatus: boolean;
             launcher: SubprocessLauncher;
@@ -29893,11 +29833,11 @@ export namespace Ide {
         static $gtype: GObject.GType<PipelineStageLauncher>;
 
         // Properties
-        get clean_launcher(): (SubprocessLauncher | null);
-        set clean_launcher(val: (SubprocessLauncher | null));
+        get clean_launcher(): SubprocessLauncher | null;
+        set clean_launcher(val: SubprocessLauncher | null);
 
-        get cleanLauncher(): (SubprocessLauncher | null);
-        set cleanLauncher(val: (SubprocessLauncher | null));
+        get cleanLauncher(): SubprocessLauncher | null;
+        set cleanLauncher(val: SubprocessLauncher | null);
 
         /**
          * @default false
@@ -29940,7 +29880,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, launcher: (SubprocessLauncher | null)): PipelineStageLauncher;
+        static ["new"](context: Context, launcher: SubprocessLauncher | null): PipelineStageLauncher;
 
         // Conflicted with Ide.Object.new
         static ["new"](...args: never[]): any;
@@ -29962,7 +29902,7 @@ export namespace Ide {
         /**
          * @returns An {@link Ide.SubprocessLauncher} or `null`.
          */
-        get_clean_launcher(): (SubprocessLauncher | null);
+        get_clean_launcher(): SubprocessLauncher | null;
 
         /**
          * Gets the "ignore-exit-status" property.
@@ -30021,9 +29961,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PipelineStage.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PipelineStage.ConstructorProps {}
     }
 
     /**
@@ -30529,9 +30467,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Workspace.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Workspace.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -30703,9 +30639,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -30753,21 +30687,21 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        list_similar_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_similar_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        list_similar_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_similar_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        list_similar_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_similar_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes asynchronous request to locate similar files.
@@ -30781,7 +30715,7 @@ export namespace Ide {
          * @param new_file 
          * @param cancellable 
          */
-        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param orig_file 
@@ -30789,7 +30723,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param orig_file 
@@ -30797,7 +30731,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        rename_file_async(orig_file: Gio.File, new_file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -30808,21 +30742,21 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        trash_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        trash_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        trash_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        trash_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        trash_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        trash_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -30951,7 +30885,7 @@ export namespace Ide {
          * Gets the symbolic icon to represent the file.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_symbolic_icon(): (Gio.Icon | null);
+        get_symbolic_icon(): Gio.Icon | null;
 
         /**
          * Checks if `self` represents a directory. If `ide_project_file_is_symlink()` is
@@ -30973,7 +30907,7 @@ export namespace Ide {
          * of this operation.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        list_children_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<ProjectFile[]>;
+        list_children_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ProjectFile[]>;
 
         /**
          * List the children of `self`.
@@ -30983,7 +30917,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to execute upon completion
          */
-        list_children_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_children_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * List the children of `self`.
@@ -30993,7 +30927,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to execute upon completion
          */
-        list_children_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ProjectFile[]> | void);
+        list_children_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ProjectFile[]> | void;
 
         /**
          * Completes an asynchronous request to
@@ -31012,19 +30946,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        trash_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        trash_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        trash_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        trash_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        trash_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        trash_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -31060,22 +30994,22 @@ export namespace Ide {
             build_system_name: string;
             buildSystemName: string;
             description: string;
-            directory: (Gio.File | null);
-            doap: (Doap | null);
-            file: (Gio.File | null);
-            icon: (Gio.Icon | null);
+            directory: Gio.File | null;
+            doap: Doap | null;
+            file: Gio.File | null;
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             id: string;
             is_recent: boolean;
             isRecent: boolean;
             languages: string[];
-            last_modified_at: (GLib.DateTime | null);
-            lastModifiedAt: (GLib.DateTime | null);
+            last_modified_at: GLib.DateTime | null;
+            lastModifiedAt: GLib.DateTime | null;
             name: string;
             priority: number;
-            vcs_uri: (string | null);
-            vcsUri: (string | null);
+            vcs_uri: string | null;
+            vcsUri: string | null;
         }
     }
 
@@ -31118,17 +31052,17 @@ export namespace Ide {
         get description(): string;
         set description(val: string);
 
-        get directory(): (Gio.File | null);
-        set directory(val: (Gio.File | null));
+        get directory(): Gio.File | null;
+        set directory(val: Gio.File | null);
 
-        get doap(): (Doap | null);
-        set doap(val: (Doap | null));
+        get doap(): Doap | null;
+        set doap(val: Doap | null);
 
-        get file(): (Gio.File | null);
-        set file(val: (Gio.File | null));
+        get file(): Gio.File | null;
+        set file(val: Gio.File | null);
 
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -31163,11 +31097,11 @@ export namespace Ide {
         get languages(): string[];
         set languages(val: string[]);
 
-        get last_modified_at(): (GLib.DateTime | null);
-        set last_modified_at(val: (GLib.DateTime | null));
+        get last_modified_at(): GLib.DateTime | null;
+        set last_modified_at(val: GLib.DateTime | null);
 
-        get lastModifiedAt(): (GLib.DateTime | null);
-        set lastModifiedAt(val: (GLib.DateTime | null));
+        get lastModifiedAt(): GLib.DateTime | null;
+        set lastModifiedAt(val: GLib.DateTime | null);
 
         /**
          * @default null
@@ -31184,14 +31118,14 @@ export namespace Ide {
         /**
          * @default null
          */
-        get vcs_uri(): (string | null);
-        set vcs_uri(val: (string | null));
+        get vcs_uri(): string | null;
+        set vcs_uri(val: string | null);
 
         /**
          * @default null
          */
-        get vcsUri(): (string | null);
-        set vcsUri(val: (string | null));
+        get vcsUri(): string | null;
+        set vcsUri(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -31253,25 +31187,25 @@ export namespace Ide {
          * This is the directory containing the project (if known).
          * @returns a {@link Gio.File}.
          */
-        get_directory(): (Gio.File | null);
+        get_directory(): Gio.File | null;
 
         /**
          * @returns An {@link Ide.Doap} or `null`.
          */
-        get_doap(): (Doap | null);
+        get_doap(): Doap | null;
 
         /**
          * Gets the {@link Ide.ProjectInfo.file} property.
          * This is the project file (such as configure.ac) of the project.
          * @returns a {@link Gio.File}.
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * Gets the {@link Ide.ProjectInfo.icon} property.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_id(): string;
 
@@ -31285,7 +31219,7 @@ export namespace Ide {
         /**
          * @returns a {@link GLib.DateTime} or `null`.
          */
-        get_last_modified_at(): (GLib.DateTime | null);
+        get_last_modified_at(): GLib.DateTime | null;
 
         get_name(): string;
 
@@ -31297,7 +31231,7 @@ export namespace Ide {
          * project when activated from the greeter.
          * @returns a {@link Ide.VcsUri} or `null`
          */
-        get_vcs_uri(): (string | null);
+        get_vcs_uri(): string | null;
 
         /**
          * @param build_system_hint 
@@ -31391,7 +31325,7 @@ export namespace Ide {
         interface ConstructorProps extends TemplateBase.ConstructorProps {
             description: string;
             id: string;
-            languages: (string[] | null);
+            languages: string[] | null;
             name: string;
             priority: number;
         }
@@ -31419,7 +31353,7 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get languages(): (string[] | null);
+        get languages(): string[] | null;
 
         /**
          * @construct-only
@@ -31474,7 +31408,7 @@ export namespace Ide {
          * @param callback the callback for the asynchronous operation.
          * @virtual
          */
-        vfunc_expand_async(input: TemplateInput, scope: Template.Scope, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_expand_async(input: TemplateInput, scope: Template.Scope, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -31511,7 +31445,7 @@ export namespace Ide {
          * @param scope scope for the template
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests expansion of the template.
@@ -31525,7 +31459,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback the callback for the asynchronous operation.
          */
-        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests expansion of the template.
@@ -31539,7 +31473,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback the callback for the asynchronous operation.
          */
-        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        expand_async(input: TemplateInput, scope: Template.Scope, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -31555,7 +31489,7 @@ export namespace Ide {
          * the project.
          * @returns an array of language names
          */
-        get_languages(): (string[] | null);
+        get_languages(): string[] | null;
 
         get_name(): string;
 
@@ -31733,7 +31667,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -31779,7 +31713,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -31793,7 +31727,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -31817,7 +31751,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -31839,7 +31773,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -31966,7 +31900,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -32013,7 +31947,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -32027,7 +31961,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -32051,7 +31985,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -32073,7 +32007,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -32322,7 +32256,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -32330,7 +32264,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -32358,13 +32292,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -32408,7 +32342,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -32417,7 +32351,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -32475,7 +32409,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -32483,13 +32417,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -32505,13 +32439,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -32531,7 +32465,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -32541,7 +32475,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -32552,7 +32486,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -32563,7 +32497,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -32572,7 +32506,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -32709,13 +32643,10 @@ export namespace Ide {
 
     namespace RecentProjects {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -32815,7 +32746,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -32855,7 +32786,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -32891,7 +32822,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: (Gio.File | null), arg2: Gio.FileMonitorEvent) => void;
+            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -32957,19 +32888,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        start_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        start_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        start_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        start_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        start_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        start_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -33020,9 +32951,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -33105,7 +33034,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -33113,7 +33042,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -33141,13 +33070,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -33191,7 +33120,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -33200,7 +33129,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -33258,7 +33187,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -33266,13 +33195,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -33288,13 +33217,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -33314,7 +33243,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -33324,7 +33253,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -33335,7 +33264,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -33346,7 +33275,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -33355,7 +33284,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -33732,9 +33661,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -33785,7 +33712,7 @@ export namespace Ide {
          * @param id the id of the run command
          * @returns an {@link Ide.RunCommand} or `null`
          */
-        dup_by_id(id: (string | null)): (RunCommand | null);
+        dup_by_id(id: string | null): RunCommand | null;
 
         /**
          * Creates a new {@link Gio.ListModel} of {@link Ide.RunCommand} filtered by `kind`
@@ -33835,7 +33762,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -33875,7 +33802,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -33950,13 +33877,10 @@ export namespace Ide {
 
     namespace RunContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -34303,19 +34227,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        discover_run_command_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<RunCommand>;
+        discover_run_command_async(cancellable: Gio.Cancellable | null): globalThis.Promise<RunCommand>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        discover_run_command_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        discover_run_command_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        discover_run_command_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<RunCommand> | void);
+        discover_run_command_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RunCommand> | void;
 
         /**
          * Complete request to discover the default run command.
@@ -34331,19 +34255,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_commands_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_commands_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_commands_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * @param result 
@@ -34354,19 +34278,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        run_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        run_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        run_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        run_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -34449,7 +34373,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -34495,7 +34419,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -34509,7 +34433,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -34533,7 +34457,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -34555,7 +34479,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -34682,7 +34606,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -34729,7 +34653,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -34743,7 +34667,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -34767,7 +34691,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -34789,7 +34713,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -34882,7 +34806,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -34926,7 +34850,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
@@ -34994,9 +34918,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -35213,7 +35135,7 @@ export namespace Ide {
          * @param cancellable 
          * @virtual
          */
-        vfunc_contains_program_in_path(program: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_contains_program_in_path(program: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the system include dirs for the runtime. Usually, this is just
@@ -35252,7 +35174,7 @@ export namespace Ide {
          * @param run_context an {@link Ide.RunContext}
          * @virtual
          */
-        vfunc_prepare_to_build(pipeline: (Pipeline | null), run_context: RunContext): void;
+        vfunc_prepare_to_build(pipeline: Pipeline | null, run_context: RunContext): void;
 
         /**
          * Prepares a run context to run an application.
@@ -35269,7 +35191,7 @@ export namespace Ide {
          * @param run_context an {@link Ide.RunContext}
          * @virtual
          */
-        vfunc_prepare_to_run(pipeline: (Pipeline | null), run_context: RunContext): void;
+        vfunc_prepare_to_run(pipeline: Pipeline | null, run_context: RunContext): void;
 
         /**
          * Informs wether a toolchain is supported by this.
@@ -35291,7 +35213,7 @@ export namespace Ide {
          * @param program 
          * @param cancellable 
          */
-        contains_program_in_path(program: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_program_in_path(program: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the architecture of the runtime.
@@ -35352,7 +35274,7 @@ export namespace Ide {
          * @param pipeline an {@link Ide.Pipeline} or `null` for the current
          * @param run_context an {@link Ide.RunContext}
          */
-        prepare_to_build(pipeline: (Pipeline | null), run_context: RunContext): void;
+        prepare_to_build(pipeline: Pipeline | null, run_context: RunContext): void;
 
         /**
          * Prepares a run context to run an application.
@@ -35368,7 +35290,7 @@ export namespace Ide {
          * @param pipeline an {@link Ide.Pipeline} or `null` for the current
          * @param run_context an {@link Ide.RunContext}
          */
-        prepare_to_run(pipeline: (Pipeline | null), run_context: RunContext): void;
+        prepare_to_run(pipeline: Pipeline | null, run_context: RunContext): void;
 
         /**
          * @param category 
@@ -35425,9 +35347,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -35480,7 +35400,7 @@ export namespace Ide {
          * @param id the identifier of the runtime
          * @returns An {@link Ide.Runtime}.
          */
-        get_runtime(id: string): (Runtime | null);
+        get_runtime(id: string): Runtime | null;
 
         /**
          * @param runtime 
@@ -35529,7 +35449,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -35573,7 +35493,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the type of the items in `list`.
@@ -35614,7 +35534,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -35654,7 +35574,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -35735,9 +35655,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -35873,7 +35791,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -35913,7 +35831,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -36032,9 +35950,9 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            content: (Gtk.Widget | null);
+            content: Gtk.Widget | null;
             policy: ScrubberRevealPolicy;
-            scrubber: (Gtk.Widget | null);
+            scrubber: Gtk.Widget | null;
         }
     }
 
@@ -36045,8 +35963,8 @@ export namespace Ide {
         static $gtype: GObject.GType<ScrubberRevealer>;
 
         // Properties
-        get content(): (Gtk.Widget | null);
-        set content(val: (Gtk.Widget | null));
+        get content(): Gtk.Widget | null;
+        set content(val: Gtk.Widget | null);
 
         /**
          * @default Ide.ScrubberRevealPolicy.NEVER
@@ -36054,8 +35972,8 @@ export namespace Ide {
         get policy(): ScrubberRevealPolicy;
         set policy(val: ScrubberRevealPolicy);
 
-        get scrubber(): (Gtk.Widget | null);
-        set scrubber(val: (Gtk.Widget | null));
+        get scrubber(): Gtk.Widget | null;
+        set scrubber(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -36090,14 +36008,14 @@ export namespace Ide {
         /**
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_content(): (Gtk.Widget | null);
+        get_content(): Gtk.Widget | null;
 
         get_policy(): ScrubberRevealPolicy;
 
         /**
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_scrubber(): (Gtk.Widget | null);
+        get_scrubber(): Gtk.Widget | null;
 
         /**
          * @param content 
@@ -36159,7 +36077,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -36167,7 +36085,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -36195,13 +36113,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -36245,7 +36163,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -36254,7 +36172,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -36312,7 +36230,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -36320,13 +36238,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -36342,13 +36260,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -36368,7 +36286,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -36378,7 +36296,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -36389,7 +36307,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -36400,7 +36318,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -36409,7 +36327,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -36685,7 +36603,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -36725,7 +36643,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -36768,9 +36686,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -36827,7 +36743,7 @@ export namespace Ide {
          * @param callback callback to execute upon completion
          * @virtual
          */
-        vfunc_update_async(sdk: Sdk, notif: (Notification | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_update_async(sdk: Sdk, notif: Notification | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets result of `ide_sdk_provider_update_async()`.
@@ -36853,7 +36769,7 @@ export namespace Ide {
          * @param notif an {@link Ide.Notification}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        update_async(sdk: Sdk, notif: (Notification | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_async(sdk: Sdk, notif: Notification | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous request to update an {@link Ide.Sdk} from the provider.
@@ -36862,7 +36778,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to execute upon completion
          */
-        update_async(sdk: Sdk, notif: (Notification | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_async(sdk: Sdk, notif: Notification | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronous request to update an {@link Ide.Sdk} from the provider.
@@ -36871,7 +36787,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to execute upon completion
          */
-        update_async(sdk: Sdk, notif: (Notification | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_async(sdk: Sdk, notif: Notification | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets result of `ide_sdk_provider_update_async()`.
@@ -36919,7 +36835,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -36959,7 +36875,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -37055,7 +36971,7 @@ export namespace Ide {
          * @param module_name 
          * @returns a {@link Ide.SearchProvider} or `null`
          */
-        find_by_module_name(module_name: string): (SearchProvider | null);
+        find_by_module_name(module_name: string): SearchProvider | null;
 
         /**
          * Checks if the {@link Ide.SearchEngine} is currently executing a query.
@@ -37082,7 +36998,7 @@ export namespace Ide {
          * @param max_results 
          * @param cancellable 
          */
-        search_async(category: SearchCategory, query: string, max_results: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<SearchResults>;
+        search_async(category: SearchCategory, query: string, max_results: number, cancellable: Gio.Cancellable | null): globalThis.Promise<SearchResults>;
 
         /**
          * @param category 
@@ -37091,7 +37007,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(category: SearchCategory, query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_async(category: SearchCategory, query: string, max_results: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param category 
@@ -37100,7 +37016,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(category: SearchCategory, query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<SearchResults> | void);
+        search_async(category: SearchCategory, query: string, max_results: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SearchResults> | void;
 
         /**
          * Completes an asynchronous request to `ide_search_engine_search_async()`.
@@ -37165,9 +37081,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Editable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Editable.ConstructorProps {}
     }
 
     /**
@@ -37370,7 +37284,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -37378,7 +37292,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -37406,13 +37320,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -37456,7 +37370,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -37465,7 +37379,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -37523,7 +37437,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -37531,13 +37445,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -37553,13 +37467,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -37579,7 +37493,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -37589,7 +37503,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -37600,7 +37514,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -37611,7 +37525,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -37620,7 +37534,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -37765,7 +37679,7 @@ export namespace Ide {
          * Typically, the delegate is a {@link Gtk.Text} widget.
          * @returns the delegate {@link Gtk.Editable}
          */
-        get_delegate(): (Gtk.Editable | null);
+        get_delegate(): Gtk.Editable | null;
 
         /**
          * Retrieves whether `editable` is editable.
@@ -37978,7 +37892,7 @@ export namespace Ide {
          * Typically, the delegate is a {@link Gtk.Text} widget.
          * @virtual
          */
-        vfunc_get_delegate(): (Gtk.Editable | null);
+        vfunc_get_delegate(): Gtk.Editable | null;
 
         /**
          * Retrieves the selection bound of the editable.
@@ -38205,7 +38119,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            child: (Gtk.Widget | null);
+            child: Gtk.Widget | null;
             progress: number;
             subtitle: string;
             title: string;
@@ -38219,8 +38133,8 @@ export namespace Ide {
         static $gtype: GObject.GType<SearchPreview>;
 
         // Properties
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * @default 0
@@ -38274,7 +38188,7 @@ export namespace Ide {
          * Gets the child widget, if any.
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         get_progress(): number;
 
@@ -38347,7 +38261,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -38355,7 +38269,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -38383,13 +38297,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -38433,7 +38347,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -38442,7 +38356,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -38500,7 +38414,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -38508,13 +38422,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -38530,13 +38444,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -38556,7 +38470,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -38566,7 +38480,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -38577,7 +38491,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -38588,7 +38502,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -38597,7 +38511,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -38666,8 +38580,8 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             accelerator: string;
-            gicon: (Gio.Icon | null);
-            paintable: (Gdk.Paintable | null);
+            gicon: Gio.Icon | null;
+            paintable: Gdk.Paintable | null;
             priority: number;
             score: number;
             subtitle: string;
@@ -38692,11 +38606,11 @@ export namespace Ide {
         get accelerator(): string;
         set accelerator(val: string);
 
-        get gicon(): (Gio.Icon | null);
-        set gicon(val: (Gio.Icon | null));
+        get gicon(): Gio.Icon | null;
+        set gicon(val: Gio.Icon | null);
 
-        get paintable(): (Gdk.Paintable | null);
-        set paintable(val: (Gdk.Paintable | null));
+        get paintable(): Gdk.Paintable | null;
+        set paintable(val: Gdk.Paintable | null);
 
         /**
          * @default 0
@@ -38796,7 +38710,7 @@ export namespace Ide {
          * @param context an {@link Ide.Context}
          * @virtual
          */
-        vfunc_load_preview(context: Context): (SearchPreview | null);
+        vfunc_load_preview(context: Context): SearchPreview | null;
 
         /**
          * @param query 
@@ -38818,13 +38732,13 @@ export namespace Ide {
          * Gets the {@link Gio.Icon} for the search result, if any.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         /**
          * Gets the paintable for the row, if any.
          * @returns a {@link Gdk.Paintable} or `null`
          */
-        get_paintable(): (Gdk.Paintable | null);
+        get_paintable(): Gdk.Paintable | null;
 
         get_priority(): number;
 
@@ -38843,7 +38757,7 @@ export namespace Ide {
          * @param context an {@link Ide.Context}
          * @returns an {@link Ide.SearchPreview}, or `null`
          */
-        load_preview(context: Context): (SearchPreview | null);
+        load_preview(context: Context): SearchPreview | null;
 
         /**
          * @param accelerator 
@@ -38894,13 +38808,10 @@ export namespace Ide {
 
     namespace SearchResults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -38981,7 +38892,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -39021,7 +38932,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -39050,13 +38961,10 @@ export namespace Ide {
 
     namespace Session {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -39107,7 +39015,7 @@ export namespace Ide {
          * @param position the index of the item
          * @returns The {@link Ide.SessionItem} at `position`   or `null` if there is no item at that position.
          */
-        get_item(position: number): (SessionItem | null);
+        get_item(position: number): SessionItem | null;
 
         get_n_items(): number;
 
@@ -39122,7 +39030,7 @@ export namespace Ide {
          * @param id the id of the item
          * @returns an {@link Ide.SessionItem} or `null`
          */
-        lookup_by_id(id: string): (SessionItem | null);
+        lookup_by_id(id: string): SessionItem | null;
 
         /**
          * @param item 
@@ -39164,13 +39072,13 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            id: (string | null);
-            module_name: (string | null);
-            moduleName: (string | null);
-            position: (Panel.Position | null);
-            type_hint: (string | null);
-            typeHint: (string | null);
-            workspace: (string | null);
+            id: string | null;
+            module_name: string | null;
+            moduleName: string | null;
+            position: Panel.Position | null;
+            type_hint: string | null;
+            typeHint: string | null;
+            workspace: string | null;
         }
     }
 
@@ -39184,41 +39092,41 @@ export namespace Ide {
         /**
          * @default null
          */
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
         /**
          * @default null
          */
-        get module_name(): (string | null);
-        set module_name(val: (string | null));
+        get module_name(): string | null;
+        set module_name(val: string | null);
 
         /**
          * @default null
          */
-        get moduleName(): (string | null);
-        set moduleName(val: (string | null));
+        get moduleName(): string | null;
+        set moduleName(val: string | null);
 
-        get position(): (Panel.Position | null);
-        set position(val: (Panel.Position | null));
-
-        /**
-         * @default null
-         */
-        get type_hint(): (string | null);
-        set type_hint(val: (string | null));
+        get position(): Panel.Position | null;
+        set position(val: Panel.Position | null);
 
         /**
          * @default null
          */
-        get typeHint(): (string | null);
-        set typeHint(val: (string | null));
+        get type_hint(): string | null;
+        set type_hint(val: string | null);
 
         /**
          * @default null
          */
-        get workspace(): (string | null);
-        set workspace(val: (string | null));
+        get typeHint(): string | null;
+        set typeHint(val: string | null);
+
+        /**
+         * @default null
+         */
+        get workspace(): string | null;
+        set workspace(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -39254,7 +39162,7 @@ export namespace Ide {
          * Gets the id for the session item, if any.
          * @returns a string containing the id; otherwise `null`
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * Retrieves the metadata value for `key`.
@@ -39265,31 +39173,31 @@ export namespace Ide {
          * @param expected_type a {@link GLib.VariantType} or `null`
          * @returns a non-floating {@link GLib.Variant} which should be   released with `g_variant_unref()`; otherwise `null`.
          */
-        get_metadata_value(key: string, expected_type: (GLib.VariantType | null)): GLib.Variant;
+        get_metadata_value(key: string, expected_type: GLib.VariantType | null): GLib.Variant;
 
         /**
          * Gets the module-name that created an item.
          * @returns a module-name or `null`
          */
-        get_module_name(): (string | null);
+        get_module_name(): string | null;
 
         /**
          * Gets the {@link Panel.Position} for the item.
          * @returns a {@link Panel.Position} or `null`
          */
-        get_position(): (Panel.Position | null);
+        get_position(): Panel.Position | null;
 
         /**
          * Gets the type hint for an item.
          * @returns a type-hint or `null`
          */
-        get_type_hint(): (string | null);
+        get_type_hint(): string | null;
 
         /**
          * Gets the workspace id for the item.
          * @returns a workspace or `null`
          */
-        get_workspace(): (string | null);
+        get_workspace(): string | null;
 
         /**
          * If the item contains a metadata value for `key`.
@@ -39316,7 +39224,7 @@ export namespace Ide {
          * not be expected to come across multiple items with the same id.
          * @param id an optional identifier for the item
          */
-        set_id(id: (string | null)): void;
+        set_id(id: string | null): void;
 
         /**
          * Sets the value for metadata `key`.
@@ -39325,7 +39233,7 @@ export namespace Ide {
          * @param key the metadata key
          * @param value the value for `key` or `null`
          */
-        set_metadata_value(key: string, value: (GLib.Variant | null)): void;
+        set_metadata_value(key: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the module-name for the session item.
@@ -39334,13 +39242,13 @@ export namespace Ide {
          * the item when decoding them at project load time.
          * @param module_name the module name owning the item
          */
-        set_module_name(module_name: (string | null)): void;
+        set_module_name(module_name: string | null): void;
 
         /**
          * Sets the position for `self`, if any.
          * @param position a {@link Panel.Position} or `null`
          */
-        set_position(position: (Panel.Position | null)): void;
+        set_position(position: Panel.Position | null): void;
 
         /**
          * Sets the type-hint value for the item.
@@ -39349,7 +39257,7 @@ export namespace Ide {
          * an object when loading session items.
          * @param type_hint a type hint string for the item
          */
-        set_type_hint(type_hint: (string | null)): void;
+        set_type_hint(type_hint: string | null): void;
 
         /**
          * Sets the workspace id for the item.
@@ -39357,7 +39265,7 @@ export namespace Ide {
          * This is generally used to tie an item to a specific workspace.
          * @param workspace a workspace string for the item
          */
-        set_workspace(workspace: (string | null)): void;
+        set_workspace(workspace: string | null): void;
     }
 
 
@@ -39524,7 +39432,7 @@ export namespace Ide {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping | null, set_mapping: Gio.SettingsBindSetMapping | null): void;
 
         /**
          * @param key 
@@ -39680,7 +39588,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -39726,7 +39634,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -39740,7 +39648,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -39764,7 +39672,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -39786,7 +39694,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -39913,7 +39821,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -39960,7 +39868,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -39974,7 +39882,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -39998,7 +39906,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -40020,7 +39928,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -40162,7 +40070,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](schema_id: string, schema_key: string, path: (string | null), flag_nick: string): SettingsFlagAction;
+        static ["new"](schema_id: string, schema_key: string, path: string | null, flag_nick: string): SettingsFlagAction;
 
         // Signals
         /** @signal */
@@ -40207,7 +40115,7 @@ export namespace Ide {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameter_type(): (GLib.VariantType | null);
+        get parameter_type(): GLib.VariantType | null;
 
         /**
          * The type of the parameter that must be given when activating the
@@ -40217,7 +40125,7 @@ export namespace Ide {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameterType(): (GLib.VariantType | null);
+        get parameterType(): GLib.VariantType | null;
 
         /**
          * The state of the action, or `NULL` if the action is stateless.
@@ -40225,7 +40133,7 @@ export namespace Ide {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state(): (GLib.Variant | null);
+        get state(): GLib.Variant | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -40234,7 +40142,7 @@ export namespace Ide {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state_type(): (GLib.VariantType | null);
+        get state_type(): GLib.VariantType | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -40243,7 +40151,7 @@ export namespace Ide {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get stateType(): (GLib.VariantType | null);
+        get stateType(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -40255,7 +40163,7 @@ export namespace Ide {
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
-        activate(parameter: (GLib.Variant | null)): void;
+        activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -40299,7 +40207,7 @@ export namespace Ide {
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
          */
-        get_parameter_type(): (GLib.VariantType | null);
+        get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -40312,7 +40220,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
          */
-        get_state(): (GLib.Variant | null);
+        get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -40335,7 +40243,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
          */
-        get_state_hint(): (GLib.Variant | null);
+        get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -40352,7 +40260,7 @@ export namespace Ide {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
          */
-        get_state_type(): (GLib.VariantType | null);
+        get_state_type(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -40365,7 +40273,7 @@ export namespace Ide {
          * @param parameter the parameter to the activation
          * @virtual
          */
-        vfunc_activate(parameter: (GLib.Variant | null)): void;
+        vfunc_activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -40410,7 +40318,7 @@ export namespace Ide {
          * {@link GLib.Variant}, but `NULL` instead.
          * @virtual
          */
-        vfunc_get_parameter_type(): (GLib.VariantType | null);
+        vfunc_get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -40423,7 +40331,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state(): (GLib.Variant | null);
+        vfunc_get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -40446,7 +40354,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state_hint(): (GLib.Variant | null);
+        vfunc_get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -40463,7 +40371,7 @@ export namespace Ide {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @virtual
          */
-        vfunc_get_state_type(): (GLib.VariantType | null);
+        vfunc_get_state_type(): GLib.VariantType | null;
     }
 
 
@@ -40731,7 +40639,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The hint for the build system, which should match what   the build system returns from `ide_build_system_get_id()`.
          */
-        discover(project_file: Gio.File, cancellable: (Gio.Cancellable | null)): [string, number];
+        discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
 
         /**
          * This virtual method can be used to try to discover the build system to use for
@@ -40742,7 +40650,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @virtual
          */
-        vfunc_discover(project_file: Gio.File, cancellable: (Gio.Cancellable | null)): [string, number];
+        vfunc_discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
 
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
@@ -40800,9 +40708,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, BuildTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, BuildTarget.ConstructorProps {}
     }
 
     /**
@@ -40894,12 +40800,12 @@ export namespace Ide {
          * in the host system, or the flatpak sandbox home under flatpak).
          * @returns the working directory to use for this target
          */
-        get_cwd(): (string | null);
+        get_cwd(): string | null;
 
         /**
          * @returns A display name for the build   target to be displayed in UI. May contain pango markup.
          */
-        get_display_name(): (string | null);
+        get_display_name(): string | null;
 
         /**
          * Checks if the {@link Ide.BuildTarget} gets installed.
@@ -40910,7 +40816,7 @@ export namespace Ide {
         /**
          * @returns a {@link Gio.File} or `null`.
          */
-        get_install_directory(): (Gio.File | null);
+        get_install_directory(): Gio.File | null;
 
         /**
          * Gets the kind of artifact.
@@ -40938,7 +40844,7 @@ export namespace Ide {
         /**
          * @returns A filename or `null`.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the priority of the build target. This is used to sort build targets by
@@ -40963,17 +40869,17 @@ export namespace Ide {
          * in the host system, or the flatpak sandbox home under flatpak).
          * @virtual
          */
-        vfunc_get_cwd(): (string | null);
+        vfunc_get_cwd(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_display_name(): (string | null);
+        vfunc_get_display_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_install_directory(): (Gio.File | null);
+        vfunc_get_install_directory(): Gio.File | null;
 
         /**
          * Gets the kind of artifact.
@@ -41001,7 +40907,7 @@ export namespace Ide {
         /**
          * @virtual
          */
-        vfunc_get_name(): (string | null);
+        vfunc_get_name(): string | null;
 
         /**
          * Gets the priority of the build target. This is used to sort build targets by
@@ -41024,9 +40930,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Toolchain.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Toolchain.ConstructorProps {}
     }
 
     /**
@@ -41511,7 +41415,7 @@ export namespace Ide {
          * @param cancellable 
          * @virtual
          */
-        vfunc_spawn(cancellable: (Gio.Cancellable | null)): Subprocess;
+        vfunc_spawn(cancellable: Gio.Cancellable | null): Subprocess;
 
         // Methods
         /**
@@ -41591,7 +41495,7 @@ export namespace Ide {
          * If `args` is `null`, this function does nothing.
          * @param args the arguments
          */
-        push_args(args: (string[] | null)): void;
+        push_args(args: string[] | null): void;
 
         /**
          * @param argv 
@@ -41630,7 +41534,7 @@ export namespace Ide {
          * Replace the environment variables by a new list of variables.
          * @param environ_ the list of environment variables to set
          */
-        set_environ(environ_: (string[] | null)): void;
+        set_environ(environ_: string[] | null): void;
 
         /**
          * @param flags 
@@ -41667,7 +41571,7 @@ export namespace Ide {
          * @param cancellable 
          * @returns an {@link Ide.Subprocess} or `null` upon error.
          */
-        spawn(cancellable: (Gio.Cancellable | null)): Subprocess;
+        spawn(cancellable: Gio.Cancellable | null): Subprocess;
 
         /**
          * @param source_fd 
@@ -41709,18 +41613,16 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            supervise: (arg0: SubprocessLauncher) => (boolean | void);
+            supervise: (arg0: SubprocessLauncher) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            unsupervise: (arg0: SubprocessLauncher) => (boolean | void);
+            unsupervise: (arg0: SubprocessLauncher) => boolean | void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -41769,7 +41671,7 @@ export namespace Ide {
         /**
          * @returns An {@link Ide.SubprocessLauncher} or `null`.
          */
-        get_launcher(): (SubprocessLauncher | null);
+        get_launcher(): SubprocessLauncher | null;
 
         /**
          * Gets the current {@link Ide.Subprocess} that is being supervised. This might be
@@ -41777,7 +41679,7 @@ export namespace Ide {
          * called or if there was a failure to spawn the process.
          * @returns An {@link Ide.Subprocess} or `null`.
          */
-        get_subprocess(): (Subprocess | null);
+        get_subprocess(): Subprocess | null;
 
         /**
          * @param launcher 
@@ -41808,10 +41710,10 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             flags: SymbolFlags;
-            header_location: (Location | null);
-            headerLocation: (Location | null);
+            header_location: Location | null;
+            headerLocation: Location | null;
             kind: SymbolKind;
-            location: (Location | null);
+            location: Location | null;
             name: string;
         }
     }
@@ -41832,12 +41734,12 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get header_location(): (Location | null);
+        get header_location(): Location | null;
 
         /**
          * @construct-only
          */
-        get headerLocation(): (Location | null);
+        get headerLocation(): Location | null;
 
         /**
          * @construct-only
@@ -41848,7 +41750,7 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get location(): (Location | null);
+        get location(): Location | null;
 
         /**
          * @construct-only
@@ -41870,7 +41772,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, kind: SymbolKind, flags: SymbolFlags, location: (Location | null), header_location: (Location | null)): Symbol;
+        static ["new"](name: string, kind: SymbolKind, flags: SymbolFlags, location: Location | null, header_location: Location | null): Symbol;
 
         static new_from_variant(variant: GLib.Variant): Symbol;
 
@@ -41894,7 +41796,7 @@ export namespace Ide {
          * Gets the header location, if any.
          * @returns an {@link Ide.Location} or `null`
          */
-        get_header_location(): (Location | null);
+        get_header_location(): Location | null;
 
         get_kind(): SymbolKind;
 
@@ -41902,7 +41804,7 @@ export namespace Ide {
          * Gets the location, if any.
          * @returns an {@link Ide.Location} or `null`
          */
-        get_location(): (Location | null);
+        get_location(): Location | null;
 
         get_name(): string;
 
@@ -42036,14 +41938,14 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_get_location_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_location_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes the request to gets the location for the symbol node.
          * @param result 
          * @virtual
          */
-        vfunc_get_location_finish(result: Gio.AsyncResult): (Location | null);
+        vfunc_get_location_finish(result: Gio.AsyncResult): Location | null;
 
         // Methods
         get_flags(): SymbolFlags;
@@ -42052,7 +41954,7 @@ export namespace Ide {
          * Gets a {@link Gio.Icon} for the symbol node.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         get_icon_name(): string;
 
@@ -42061,26 +41963,26 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        get_location_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Location | null)>;
+        get_location_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Location | null>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        get_location_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_location_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        get_location_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Location | null)> | void);
+        get_location_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Location | null> | void;
 
         /**
          * Completes the request to gets the location for the symbol node.
          * @param result 
          * @returns An {@link Ide.Location} or `null`.
          */
-        get_location_finish(result: Gio.AsyncResult): (Location | null);
+        get_location_finish(result: Gio.AsyncResult): Location | null;
 
         get_name(): string;
 
@@ -42127,7 +42029,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback | null)): Task;
+        static ["new"](source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): Task;
 
         // Signals
         /** @signal */
@@ -42161,7 +42063,7 @@ export namespace Ide {
          * Gets the {@link Gio.Cancellable} for the task.
          * @returns a {@link Gio.Cancellable} or `null`
          */
-        get_cancellable(): (Gio.Cancellable | null);
+        get_cancellable(): Gio.Cancellable | null;
 
         get_complete_priority(): number;
 
@@ -42181,7 +42083,7 @@ export namespace Ide {
          * Gets the name assigned for the task.
          * @returns a string or `null`
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         get_priority(): number;
 
@@ -42256,7 +42158,7 @@ export namespace Ide {
          * to the {@link GLib.MainContext} of the task.
          * @param result the result for the task
          */
-        return_int(result: (bigint | number)): void;
+        return_int(result: bigint | number): void;
 
         /**
          * Returns a new object instance.
@@ -42431,8 +42333,8 @@ export namespace Ide {
             populateCallbackData: never;
             populate_callback_data_destroy: never;
             populateCallbackDataDestroy: never;
-            time_to_live: (bigint | number);
-            timeToLive: (bigint | number);
+            time_to_live: bigint | number;
+            timeToLive: bigint | number;
             value_copy_func: never;
             valueCopyFunc: never;
             value_destroy_func: never;
@@ -42525,7 +42427,7 @@ export namespace Ide {
          * @construct-only
          * @default 30000
          */
-        set time_to_live(val: (bigint | number));
+        set time_to_live(val: bigint | number);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -42535,7 +42437,7 @@ export namespace Ide {
          * @construct-only
          * @default 30000
          */
-        set timeToLive(val: (bigint | number));
+        set timeToLive(val: bigint | number);
 
         /**
          * @construct-only
@@ -42597,7 +42499,7 @@ export namespace Ide {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -42605,7 +42507,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param key 
@@ -42613,7 +42515,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<null> | void;
 
         /**
          * Finish a call to `ide_task_cache_get_async()`.
@@ -42649,7 +42551,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            locator: (Template.TemplateLocator | null);
+            locator: Template.TemplateLocator | null;
         }
     }
 
@@ -42666,8 +42568,8 @@ export namespace Ide {
          * will not be allowed to include other templates.
          * directive.
          */
-        get locator(): (Template.TemplateLocator | null);
-        set locator(val: (Template.TemplateLocator | null));
+        get locator(): Template.TemplateLocator | null;
+        set locator(val: Template.TemplateLocator | null);
 
         /**
          * Compile-time signal type information.
@@ -42716,19 +42618,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        expand_all_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        expand_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        expand_all_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        expand_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        expand_all_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        expand_all_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -42739,7 +42641,7 @@ export namespace Ide {
          * Fetches the {@link Template.TemplateLocator} used for resolving templates.
          * @returns a {@link Template.TemplateLocator} or `null`.
          */
-        get_locator(): (Template.TemplateLocator | null);
+        get_locator(): Template.TemplateLocator | null;
 
         reset(): void;
 
@@ -42943,21 +42845,21 @@ export namespace Ide {
          * @param context 
          * @param cancellable 
          */
-        expand_async(context: Context, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+        expand_async(context: Context, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * @param context 
          * @param cancellable 
          * @param callback 
          */
-        expand_async(context: Context, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        expand_async(context: Context, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param context 
          * @param cancellable 
          * @param callback 
          */
-        expand_async(context: Context, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        expand_async(context: Context, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param result 
@@ -42988,7 +42890,7 @@ export namespace Ide {
          * Gets a path to a {@link Gio.Resource} containing the full license text.
          * @returns a resource path or `null`
          */
-        get_license_path(): (string | null);
+        get_license_path(): string | null;
 
         /**
          * @returns A {@link Gio.ListModel}
@@ -43135,7 +43037,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "match-clicked": (arg0: number, arg1: number, arg2: number, arg3: Gdk.ModifierType, arg4: string) => (boolean | void);
+            "match-clicked": (arg0: number, arg1: number, arg2: number, arg3: Gdk.ModifierType, arg4: string) => boolean | void;
             "notify::palette": (pspec: GObject.ParamSpec) => void;
             "notify::allow-bold": (pspec: GObject.ParamSpec) => void;
             "notify::allow-hyperlink": (pspec: GObject.ParamSpec) => void;
@@ -43281,8 +43183,8 @@ export namespace Ide {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get hadjustment(): (Gtk.Adjustment | null);
-        set hadjustment(val: (Gtk.Adjustment | null));
+        get hadjustment(): Gtk.Adjustment | null;
+        set hadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when horizontal scrolling should start.
@@ -43306,8 +43208,8 @@ export namespace Ide {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get vadjustment(): (Gtk.Adjustment | null);
-        set vadjustment(val: (Gtk.Adjustment | null));
+        get vadjustment(): Gtk.Adjustment | null;
+        set vadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when vertical scrolling should start.
@@ -43398,7 +43300,7 @@ export namespace Ide {
          * @param end the end of the range, in characters
          * @virtual
          */
-        vfunc_get_contents(start: number, end: number): (GLib.Bytes | Uint8Array);
+        vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
 
         /**
          * Retrieve the current contents of the accessible object starting
@@ -43409,7 +43311,7 @@ export namespace Ide {
          * @param granularity the granularity of the query
          * @virtual
          */
-        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [(GLib.Bytes | Uint8Array), number, number];
+        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes | Uint8Array, number, number];
 
         /**
          * Retrieves the default text attributes inside the accessible object.
@@ -43484,7 +43386,7 @@ export namespace Ide {
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
-        get_hadjustment(): (Gtk.Adjustment | null);
+        get_hadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
@@ -43496,7 +43398,7 @@ export namespace Ide {
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
-        get_vadjustment(): (Gtk.Adjustment | null);
+        get_vadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
@@ -43508,7 +43410,7 @@ export namespace Ide {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -43523,7 +43425,7 @@ export namespace Ide {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -43625,21 +43527,21 @@ export namespace Ide {
          * @param pty 
          * @param cancellable 
          */
-        spawn_async(pty: Vte.Pty, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        spawn_async(pty: Vte.Pty, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param pty 
          * @param cancellable 
          * @param callback 
          */
-        spawn_async(pty: Vte.Pty, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        spawn_async(pty: Vte.Pty, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param pty 
          * @param cancellable 
          * @param callback 
          */
-        spawn_async(pty: Vte.Pty, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        spawn_async(pty: Vte.Pty, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to `ide_terminal_launcher_spawn_async()`
@@ -43716,7 +43618,7 @@ export namespace Ide {
         interface ConstructorProps extends Page.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             close_on_exit: boolean;
             closeOnExit: boolean;
-            launcher: (TerminalLauncher | null);
+            launcher: TerminalLauncher | null;
             manage_spawn: boolean;
             manageSpawn: boolean;
             pty: Vte.Pty;
@@ -43744,8 +43646,8 @@ export namespace Ide {
         get closeOnExit(): boolean;
         set closeOnExit(val: boolean);
 
-        get launcher(): (TerminalLauncher | null);
-        set launcher(val: (TerminalLauncher | null));
+        get launcher(): TerminalLauncher | null;
+        set launcher(val: TerminalLauncher | null);
 
         /**
          * @construct-only
@@ -43817,7 +43719,7 @@ export namespace Ide {
          * Gets the launcher for the page.
          * @returns an {@link Ide.TerminalLauncher} or `null`
          */
-        get_launcher(): (TerminalLauncher | null);
+        get_launcher(): TerminalLauncher | null;
 
         /**
          * Gets the {@link Vte.Pty} for the page.
@@ -43847,13 +43749,10 @@ export namespace Ide {
 
     namespace TerminalPalette {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -43955,9 +43854,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -44005,13 +43902,13 @@ export namespace Ide {
          * Returns the renderer that is used for this {@link Gtk.Native}.
          * @returns the renderer for `self`
          */
-        get_renderer(): (Gsk.Renderer | null);
+        get_renderer(): Gsk.Renderer | null;
 
         /**
          * Returns the surface of this {@link Gtk.Native}.
          * @returns the surface of `self`
          */
-        get_surface(): (Gdk.Surface | null);
+        get_surface(): Gdk.Surface | null;
 
         /**
          * Retrieves the surface transform of `self`.
@@ -44107,7 +44004,7 @@ export namespace Ide {
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             case_sensitive: boolean;
             caseSensitive: boolean;
-            regex: (Vte.Regex | null);
+            regex: Vte.Regex | null;
             use_regex: boolean;
             useRegex: boolean;
             whole_words: boolean;
@@ -44139,7 +44036,7 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get regex(): (Vte.Regex | null);
+        get regex(): Vte.Regex | null;
 
         /**
          * @default false
@@ -44208,7 +44105,7 @@ export namespace Ide {
         /**
          * @returns a {@link Vte.Regex} or `null`.
          */
-        get_regex(): (Vte.Regex | null);
+        get_regex(): Vte.Regex | null;
 
         get_wrap_around(): boolean;
 
@@ -44262,7 +44159,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -44270,7 +44167,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -44298,13 +44195,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -44348,7 +44245,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -44357,7 +44254,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -44415,7 +44312,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -44423,13 +44320,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -44445,13 +44342,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -44471,7 +44368,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -44481,7 +44378,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -44492,7 +44389,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -44503,7 +44400,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -44512,7 +44409,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -44782,7 +44679,7 @@ export namespace Ide {
          * to the specific {@link Ide.Test} instances.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        run_all_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        run_all_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Executes all tests in an undefined order.
@@ -44795,7 +44692,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        run_all_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Executes all tests in an undefined order.
@@ -44808,7 +44705,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        run_all_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        run_all_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to execute all unit tests.
@@ -44829,7 +44726,7 @@ export namespace Ide {
          * @param test An {@link Ide.Test}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        run_async(test: Test, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        run_async(test: Test, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Executes a single unit test, asynchronously.
@@ -44840,7 +44737,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
          */
-        run_async(test: Test, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run_async(test: Test, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Executes a single unit test, asynchronously.
@@ -44851,7 +44748,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
          */
-        run_async(test: Test, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        run_async(test: Test, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to `ide_test_manager_run_finish()`.
@@ -44935,7 +44832,7 @@ export namespace Ide {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -44981,7 +44878,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -44995,7 +44892,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -45019,7 +44916,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -45041,7 +44938,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -45168,7 +45065,7 @@ export namespace Ide {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -45215,7 +45112,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -45229,7 +45126,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -45253,7 +45150,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -45275,7 +45172,7 @@ export namespace Ide {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -45385,8 +45282,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            range: (Range | null);
-            text: (string | null);
+            range: Range | null;
+            text: string | null;
         }
     }
 
@@ -45397,14 +45294,14 @@ export namespace Ide {
         static $gtype: GObject.GType<TextEdit>;
 
         // Properties
-        get range(): (Range | null);
-        set range(val: (Range | null));
+        get range(): Range | null;
+        set range(val: Range | null);
 
         /**
          * @default null
          */
-        get text(): (string | null);
-        set text(val: (string | null));
+        get text(): string | null;
+        set text(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -45425,7 +45322,7 @@ export namespace Ide {
         // Conflicted with Ide.Object.new
         static ["new"](...args: never[]): any;
 
-        static new_from_variant(variant: (GLib.Variant | null)): TextEdit;
+        static new_from_variant(variant: GLib.Variant | null): TextEdit;
 
         // Signals
         /** @signal */
@@ -45445,13 +45342,13 @@ export namespace Ide {
          * Gets the range for the edit.
          * @returns the range for the replacement, or `null`
          */
-        get_range(): (Range | null);
+        get_range(): Range | null;
 
         /**
          * Gets the text for the edit.
          * @returns the text to replace, or `null`
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * @param range 
@@ -45567,7 +45464,7 @@ export namespace Ide {
          * @param tool_id the identifier of the tool like `IDE_TOOLCHAIN_TOOL_CC`
          * @virtual
          */
-        vfunc_get_tools_for_id(tool_id: string): ({ [key: string]: any } | GLib.HashTable<string, string>);
+        vfunc_get_tools_for_id(tool_id: string): { [key: string]: any } | GLib.HashTable<string, string>;
 
         // Methods
         get_display_name(): string;
@@ -45632,9 +45529,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -45731,7 +45626,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -45774,7 +45669,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -45817,7 +45712,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -45877,7 +45772,7 @@ export namespace Ide {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -45926,7 +45821,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -45966,7 +45861,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -46154,7 +46049,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -46173,24 +46068,24 @@ export namespace Ide {
          * If the transfer has completed, `null` is returned.
          * @returns an {@link Ide.Notification} or `null`
          */
-        create_notification(): (Notification | null);
+        create_notification(): Notification | null;
 
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -46343,7 +46238,7 @@ export namespace Ide {
          * @param transfer 
          * @param cancellable a {@link Gio.Cancellable}
          */
-        execute_async(transfer: Transfer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        execute_async(transfer: Transfer, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This is a convenience function that will queue `transfer` into the transfer
@@ -46354,7 +46249,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback A callback or `null`
          */
-        execute_async(transfer: Transfer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(transfer: Transfer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This is a convenience function that will queue `transfer` into the transfer
@@ -46365,7 +46260,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback A callback or `null`
          */
-        execute_async(transfer: Transfer, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(transfer: Transfer, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -46419,7 +46314,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -46459,7 +46354,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -46533,11 +46428,11 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             kind: string;
-            menu_model: (Gio.MenuModel | null);
-            menuModel: (Gio.MenuModel | null);
-            root: ((TreeNode | null) | any);
-            selected_node: (TreeNode | null);
-            selectedNode: (TreeNode | null);
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
+            root: TreeNode | null | any;
+            selected_node: TreeNode | null;
+            selectedNode: TreeNode | null;
         }
     }
 
@@ -46554,22 +46449,22 @@ export namespace Ide {
          */
         get kind(): string;
 
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
-        get menuModel(): (Gio.MenuModel | null);
-        set menuModel(val: (Gio.MenuModel | null));
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get root(): ((TreeNode | null) | any);
+        get root(): TreeNode | null | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set root(val: ((TreeNode | null) | any));
+        set root(val: TreeNode | null | any);
 
-        get selected_node(): (TreeNode | null);
-        set selected_node(val: (TreeNode | null));
+        get selected_node(): TreeNode | null;
+        set selected_node(val: TreeNode | null);
 
-        get selectedNode(): (TreeNode | null);
-        set selectedNode(val: (TreeNode | null));
+        get selectedNode(): TreeNode | null;
+        set selectedNode(val: TreeNode | null);
 
         /**
          * Compile-time signal type information.
@@ -46618,21 +46513,21 @@ export namespace Ide {
          * @param node 
          * @param cancellable 
          */
-        expand_node_async(node: TreeNode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        expand_node_async(node: TreeNode, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param node 
          * @param cancellable 
          * @param callback 
          */
-        expand_node_async(node: TreeNode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        expand_node_async(node: TreeNode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param node 
          * @param cancellable 
          * @param callback 
          */
-        expand_node_async(node: TreeNode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        expand_node_async(node: TreeNode, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -46648,13 +46543,13 @@ export namespace Ide {
          * Gets the menu model for the tree.
          * @returns a {@link Gio.MenuModel} or `null`
          */
-        get_menu_model(): (Gio.MenuModel | null);
+        get_menu_model(): Gio.MenuModel | null;
 
         /**
          * Gets the root node.
          * @returns an IdeTreeNode or `null`
          */
-        get_root(): (TreeNode | null);
+        get_root(): TreeNode | null;
 
         /**
          * @param args 
@@ -46666,7 +46561,7 @@ export namespace Ide {
          * Gets the selected item.
          * @returns an {@link Ide.TreeNode} or `null`
          */
-        get_selected_node(): (TreeNode | null);
+        get_selected_node(): TreeNode | null;
 
         invalidate_all(): void;
 
@@ -46691,7 +46586,7 @@ export namespace Ide {
          * If `node` is `null`, the current selection is cleared.
          * @param node an {@link Ide.TreeNode} or `null`
          */
-        set_selected_node(node: (TreeNode | null)): void;
+        set_selected_node(node: TreeNode | null): void;
 
         /**
          * @param node 
@@ -46744,7 +46639,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -46752,7 +46647,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -46780,13 +46675,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -46830,7 +46725,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -46839,7 +46734,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -46897,7 +46792,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -46905,13 +46800,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -46927,13 +46822,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -46953,7 +46848,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -46963,7 +46858,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -46974,7 +46869,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -46985,7 +46880,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -46994,7 +46889,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -47102,20 +46997,20 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             expanded: boolean;
-            expanded_icon: (Gio.Icon | null);
-            expandedIcon: (Gio.Icon | null);
+            expanded_icon: Gio.Icon | null;
+            expandedIcon: Gio.Icon | null;
             expanded_icon_name: string;
             expandedIconName: string;
-            icon: (Gio.Icon | null);
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             ignored: boolean;
-            item: (GObject.Object | null);
-            list_row: (Gtk.TreeListRow | null);
-            listRow: (Gtk.TreeListRow | null);
-            menu_model: (Gio.MenuModel | null);
-            menuModel: (Gio.MenuModel | null);
-            suffix: (Gtk.Widget | null);
+            item: GObject.Object | null;
+            list_row: Gtk.TreeListRow | null;
+            listRow: Gtk.TreeListRow | null;
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
+            suffix: Gtk.Widget | null;
             title: string;
             use_markup: boolean;
             useMarkup: boolean;
@@ -47135,11 +47030,11 @@ export namespace Ide {
          */
         get expanded(): boolean;
 
-        get expanded_icon(): (Gio.Icon | null);
-        set expanded_icon(val: (Gio.Icon | null));
+        get expanded_icon(): Gio.Icon | null;
+        set expanded_icon(val: Gio.Icon | null);
 
-        get expandedIcon(): (Gio.Icon | null);
-        set expandedIcon(val: (Gio.Icon | null));
+        get expandedIcon(): Gio.Icon | null;
+        set expandedIcon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -47153,8 +47048,8 @@ export namespace Ide {
          */
         set expandedIconName(val: string);
 
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -47177,22 +47072,22 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get item(): (GObject.Object | null);
+        get item(): GObject.Object | null;
 
-        get list_row(): (Gtk.TreeListRow | null);
-        set list_row(val: (Gtk.TreeListRow | null));
+        get list_row(): Gtk.TreeListRow | null;
+        set list_row(val: Gtk.TreeListRow | null);
 
-        get listRow(): (Gtk.TreeListRow | null);
-        set listRow(val: (Gtk.TreeListRow | null));
+        get listRow(): Gtk.TreeListRow | null;
+        set listRow(val: Gtk.TreeListRow | null);
 
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
-        get menuModel(): (Gio.MenuModel | null);
-        set menuModel(val: (Gio.MenuModel | null));
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
 
-        get suffix(): (Gtk.Widget | null);
-        set suffix(val: (Gtk.Widget | null));
+        get suffix(): Gtk.Widget | null;
+        set suffix(val: Gtk.Widget | null);
 
         /**
          * @default null
@@ -47246,13 +47141,13 @@ export namespace Ide {
          * Gets the icon for the row when expanded.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_expanded_icon(): (Gio.Icon | null);
+        get_expanded_icon(): Gio.Icon | null;
 
         /**
          * Gets the icon for the row.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_ignored(): boolean;
 
@@ -47266,19 +47161,19 @@ export namespace Ide {
          * Gets the list row for the expander.
          * @returns a {@link Gtk.TreeListRow} or `null`
          */
-        get_list_row(): (Gtk.TreeListRow | null);
+        get_list_row(): Gtk.TreeListRow | null;
 
         /**
          * Sets the menu model to use for context menus.
          * @returns a {@link Gio.MenuModel} or `null`
          */
-        get_menu_model(): (Gio.MenuModel | null);
+        get_menu_model(): Gio.MenuModel | null;
 
         /**
          * Get the suffix widget, if any.
          * @returns a {@link Gtk.Widget}
          */
-        get_suffix(): (Gtk.Widget | null);
+        get_suffix(): Gtk.Widget | null;
 
         get_title(): string;
 
@@ -47384,7 +47279,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -47392,7 +47287,7 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -47420,13 +47315,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -47470,7 +47365,7 @@ export namespace Ide {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -47479,7 +47374,7 @@ export namespace Ide {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -47537,7 +47432,7 @@ export namespace Ide {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -47545,13 +47440,13 @@ export namespace Ide {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -47567,13 +47462,13 @@ export namespace Ide {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -47593,7 +47488,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -47603,7 +47498,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -47614,7 +47509,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -47625,7 +47520,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -47634,7 +47529,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -47693,7 +47588,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "show-popover": (arg0: Gtk.Popover) => (boolean | void);
+            "show-popover": (arg0: Gtk.Popover) => boolean | void;
             "notify::children-possible": (pspec: GObject.ParamSpec) => void;
             "notify::destroy-item": (pspec: GObject.ParamSpec) => void;
             "notify::expanded-icon": (pspec: GObject.ParamSpec) => void;
@@ -47718,21 +47613,21 @@ export namespace Ide {
             childrenPossible: boolean;
             destroy_item: boolean;
             destroyItem: boolean;
-            expanded_icon: (Gio.Icon | null);
-            expandedIcon: (Gio.Icon | null);
+            expanded_icon: Gio.Icon | null;
+            expandedIcon: Gio.Icon | null;
             expanded_icon_name: string;
             expandedIconName: string;
             flags: TreeNodeFlags;
             has_error: boolean;
             hasError: boolean;
-            icon: (Gio.Icon | null);
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             is_header: boolean;
             isHeader: boolean;
             item: GObject.Object;
             loading: boolean;
-            parent: (GObject.Object | null);
+            parent: GObject.Object | null;
             reset_on_collapse: boolean;
             resetOnCollapse: boolean;
             title: string;
@@ -47774,11 +47669,11 @@ export namespace Ide {
         get destroyItem(): boolean;
         set destroyItem(val: boolean);
 
-        get expanded_icon(): (Gio.Icon | null);
-        set expanded_icon(val: (Gio.Icon | null));
+        get expanded_icon(): Gio.Icon | null;
+        set expanded_icon(val: Gio.Icon | null);
 
-        get expandedIcon(): (Gio.Icon | null);
-        set expandedIcon(val: (Gio.Icon | null));
+        get expandedIcon(): Gio.Icon | null;
+        set expandedIcon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -47810,8 +47705,8 @@ export namespace Ide {
         get hasError(): boolean;
         set hasError(val: boolean);
 
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -47846,8 +47741,8 @@ export namespace Ide {
          */
         get loading(): boolean;
 
-        get parent(): (GObject.Object | null);
-        set parent(val: (GObject.Object | null));
+        get parent(): GObject.Object | null;
+        set parent(val: GObject.Object | null);
 
         /**
          * @default false
@@ -47929,13 +47824,13 @@ export namespace Ide {
          * Gets the icon used when the node is expanded.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_expanded_icon(): (Gio.Icon | null);
+        get_expanded_icon(): Gio.Icon | null;
 
         /**
          * Gets the first child of `self`.
          * @returns a {@link Ide.TreeNode} or `null`
          */
-        get_first_child(): (TreeNode | null);
+        get_first_child(): TreeNode | null;
 
         get_flags(): TreeNodeFlags;
 
@@ -47945,7 +47840,7 @@ export namespace Ide {
          * Gets the icon for the node.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_is_header(): boolean;
 
@@ -47965,7 +47860,7 @@ export namespace Ide {
          * Gets the last child of `self`.
          * @returns a {@link Ide.TreeNode} or `null`
          */
-        get_last_child(): (TreeNode | null);
+        get_last_child(): TreeNode | null;
 
         get_n_children(): number;
 
@@ -47973,19 +47868,19 @@ export namespace Ide {
          * Gets the nextious sibling, if any.
          * @returns an {@link Ide.TreeNode} or `null`
          */
-        get_next_sibling(): (TreeNode | null);
+        get_next_sibling(): TreeNode | null;
 
         /**
          * Gets the parent node, if any.
          * @returns an {@link Ide.TreeNode} or `null`
          */
-        get_parent(): (TreeNode | null);
+        get_parent(): TreeNode | null;
 
         /**
          * Gets the previous sibling, if any.
          * @returns an {@link Ide.TreeNode} or `null`
          */
-        get_prev_sibling(): (TreeNode | null);
+        get_prev_sibling(): TreeNode | null;
 
         get_reset_on_collapse(): boolean;
 
@@ -48084,7 +47979,7 @@ export namespace Ide {
          * the node with additional data.
          * @param item a {@link GObject.Object} or `null`
          */
-        set_item(item: (GObject.Object | null)): void;
+        set_item(item: GObject.Object | null): void;
 
         /**
          * @param node 
@@ -48186,7 +48081,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -48374,7 +48269,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -48414,7 +48309,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -48453,7 +48348,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            context: (Context | null);
+            context: Context | null;
             project_id: string;
             projectId: string;
         }
@@ -48469,7 +48364,7 @@ export namespace Ide {
         /**
          * @construct-only
          */
-        get context(): (Context | null);
+        get context(): Context | null;
 
         /**
          * @default null
@@ -48499,7 +48394,7 @@ export namespace Ide {
 
         static ["new"](): Tweaks;
 
-        static new_for_context(context: (Context | null)): Tweaks;
+        static new_for_context(context: Context | null): Tweaks;
 
         // Signals
         /** @signal */
@@ -48533,7 +48428,7 @@ export namespace Ide {
          * Gets the {@link Ide.Context} if any.
          * @returns an {@link Ide.Context} or `null`
          */
-        get_context(): (Context | null);
+        get_context(): Context | null;
 
         /**
          * Gets the object with `name`.
@@ -48548,7 +48443,7 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        load_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param project_id 
@@ -48562,7 +48457,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -48572,7 +48467,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -48583,7 +48478,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -48594,7 +48489,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -48603,7 +48498,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -48764,9 +48659,7 @@ export namespace Ide {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -48812,7 +48705,7 @@ export namespace Ide {
          * Creates a new adjustment for the setting.
          * @virtual
          */
-        vfunc_create_adjustment(): (Gtk.Adjustment | null);
+        vfunc_create_adjustment(): Gtk.Adjustment | null;
 
         /**
          * @virtual
@@ -48845,7 +48738,7 @@ export namespace Ide {
          * @param get_transform an {@link Ide.TweaksBindingTransform} or `null`
          * @param set_transform an {@link Ide.TweaksBindingTransform} or `null`
          */
-        bind_with_transform(instance: null, property_name: string, get_transform: (TweaksBindingTransform | null), set_transform: (TweaksBindingTransform | null)): void;
+        bind_with_transform(instance: null, property_name: string, get_transform: TweaksBindingTransform | null, set_transform: TweaksBindingTransform | null): void;
 
         changed(): void;
 
@@ -48853,19 +48746,19 @@ export namespace Ide {
          * Creates a new adjustment for the setting.
          * @returns A {@link Gtk.Adjustment}, or `null` if   an adjustment is not supported for the binding.
          */
-        create_adjustment(): (Gtk.Adjustment | null);
+        create_adjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the current value as a newly allocated string.
          * @returns a string or `null`
          */
-        dup_string(): (string | null);
+        dup_string(): string | null;
 
         /**
          * Gets the value as a {@link GObject.Strv}.
          * @returns A   newly allocated string array, or `null`
          */
-        dup_strv(): (string[] | null);
+        dup_strv(): string[] | null;
 
         /**
          * Gets the expected type for a binding.
@@ -48879,7 +48772,7 @@ export namespace Ide {
         /**
          * @param value 
          */
-        get_value(value: (GObject.Value | any)): boolean;
+        get_value(value: GObject.Value | any): boolean;
 
         /**
          * @param string 
@@ -48894,7 +48787,7 @@ export namespace Ide {
         /**
          * @param value 
          */
-        set_value(value: (GObject.Value | any)): void;
+        set_value(value: GObject.Value | any): void;
 
         /**
          * @param variant 
@@ -48910,7 +48803,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -48920,7 +48813,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -48931,7 +48824,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -48942,7 +48835,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -48951,7 +48844,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -49086,7 +48979,7 @@ export namespace Ide {
         interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
             subtitle: string;
             title: string;
-            value: (GLib.Variant | null);
+            value: GLib.Variant | null;
         }
     }
 
@@ -49109,8 +49002,8 @@ export namespace Ide {
         get title(): string;
         set title(val: string);
 
-        get value(): (GLib.Variant | null);
-        set value(val: (GLib.Variant | null));
+        get value(): GLib.Variant | null;
+        set value(val: GLib.Variant | null);
 
         /**
          * Compile-time signal type information.
@@ -49149,7 +49042,7 @@ export namespace Ide {
         /**
          * @returns A {@link GLib.Variant} or `null`
          */
-        get_value(): (GLib.Variant | null);
+        get_value(): GLib.Variant | null;
 
         /**
          * @param subtitle 
@@ -49173,7 +49066,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -49183,7 +49076,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -49194,7 +49087,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -49205,7 +49098,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -49214,7 +49107,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -49670,8 +49563,8 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            item: (GObject.Object | null);
-            model: (Gio.ListModel | null);
+            item: GObject.Object | null;
+            model: Gio.ListModel | null;
         }
     }
 
@@ -49685,10 +49578,10 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get item(): (GObject.Object | null);
+        get item(): GObject.Object | null;
 
-        get model(): (Gio.ListModel | null);
-        set model(val: (Gio.ListModel | null));
+        get model(): Gio.ListModel | null;
+        set model(val: Gio.ListModel | null);
 
         /**
          * Compile-time signal type information.
@@ -49729,7 +49622,7 @@ export namespace Ide {
         /**
          * @returns a {@link Gio.ListModel} or `null`
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * @param model 
@@ -49751,7 +49644,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -49761,7 +49654,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -49772,7 +49665,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -49783,7 +49676,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -49792,7 +49685,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -49999,7 +49892,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -50009,7 +49902,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -50020,7 +49913,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50031,7 +49924,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50040,7 +49933,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50284,7 +50177,7 @@ export namespace Ide {
          * Gets the first child of `self`.
          * @returns a {@link Ide.TweaksItem} or `null`
          */
-        get_first_child(): (TweaksItem | null);
+        get_first_child(): TweaksItem | null;
 
         get_hidden_when(): string;
 
@@ -50296,25 +50189,25 @@ export namespace Ide {
          * Gets the last child of `self`.
          * @returns a {@link Ide.TweaksItem} or `null`
          */
-        get_last_child(): (TweaksItem | null);
+        get_last_child(): TweaksItem | null;
 
         /**
          * Gets the next sibling within the parent.
          * @returns A {@link Ide.TweaksItem} or `null`
          */
-        get_next_sibling(): (TweaksItem | null);
+        get_next_sibling(): TweaksItem | null;
 
         /**
          * Gets the parent {@link Ide.TweaksItem}
          * @returns the parent {@link Ide.TweaksItem} or `null`
          */
-        get_parent(): (TweaksItem | null);
+        get_parent(): TweaksItem | null;
 
         /**
          * Gets the previous sibling within the parent.
          * @returns A {@link Ide.TweaksItem} or `null`
          */
-        get_previous_sibling(): (TweaksItem | null);
+        get_previous_sibling(): TweaksItem | null;
 
         /**
          * Gets the root {@link Ide.TweaksItem}.
@@ -50359,7 +50252,7 @@ export namespace Ide {
          * Items that are hidden will not be visited by `ide_tweaks_item_visit_children()`.
          * @param hidden_when the value for when the item is hidden
          */
-        set_hidden_when(hidden_when: (string | null)): void;
+        set_hidden_when(hidden_when: string | null): void;
 
         /**
          * @param keywords 
@@ -50386,7 +50279,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -50396,7 +50289,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -50407,7 +50300,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50418,7 +50311,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50427,7 +50320,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50499,7 +50392,7 @@ export namespace Ide {
             hasSubpage: boolean;
             icon_name: string;
             iconName: string;
-            section: (TweaksSection | null);
+            section: TweaksSection | null;
             show_icon: boolean;
             showIcon: boolean;
             show_search: boolean;
@@ -50542,7 +50435,7 @@ export namespace Ide {
         /**
          * @read-only
          */
-        get section(): (TweaksSection | null);
+        get section(): TweaksSection | null;
 
         /**
          * @default true
@@ -50616,7 +50509,7 @@ export namespace Ide {
          * Gets the section containing the page.
          * @returns an {@link Ide.TweaksItem} or `null`
          */
-        get_section(): (TweaksItem | null);
+        get_section(): TweaksItem | null;
 
         get_show_icon(): boolean;
 
@@ -50651,7 +50544,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -50661,7 +50554,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -50672,7 +50565,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -50683,7 +50576,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -50692,7 +50585,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -50911,7 +50804,7 @@ export namespace Ide {
         interface ConstructorProps extends TweaksWidget.ConstructorProps, Gtk.Buildable.ConstructorProps {
             subtitle: string;
             title: string;
-            value: (GLib.Variant | null);
+            value: GLib.Variant | null;
         }
     }
 
@@ -50934,8 +50827,8 @@ export namespace Ide {
         get title(): string;
         set title(val: string);
 
-        get value(): (GLib.Variant | null);
-        set value(val: (GLib.Variant | null));
+        get value(): GLib.Variant | null;
+        set value(val: GLib.Variant | null);
 
         /**
          * Compile-time signal type information.
@@ -50974,7 +50867,7 @@ export namespace Ide {
         /**
          * @returns a {@link GLib.Variant} or `null`
          */
-        get_value(): (GLib.Variant | null);
+        get_value(): GLib.Variant | null;
 
         /**
          * @param subtitle 
@@ -51087,7 +50980,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -51097,7 +50990,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -51108,7 +51001,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -51119,7 +51012,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -51128,7 +51021,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -51493,7 +51386,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "create-for-item": (arg0: TweaksItem) => (Gtk.Widget | null);
+            "create-for-item": (arg0: TweaksItem) => Gtk.Widget | null;
             "notify::binding": (pspec: GObject.ParamSpec) => void;
             "notify::hidden-when": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -51502,7 +51395,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends TweaksItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            binding: (TweaksBinding | null);
+            binding: TweaksBinding | null;
         }
     }
 
@@ -51513,8 +51406,8 @@ export namespace Ide {
         static $gtype: GObject.GType<TweaksWidget>;
 
         // Properties
-        get binding(): (TweaksBinding | null);
-        set binding(val: (TweaksBinding | null));
+        get binding(): TweaksBinding | null;
+        set binding(val: TweaksBinding | null);
 
         /**
          * Compile-time signal type information.
@@ -51550,7 +51443,7 @@ export namespace Ide {
          * Gets the binding for the widget.
          * @returns an {@link Ide.TweaksBinding} or `null`
          */
-        get_binding(): (TweaksBinding | null);
+        get_binding(): TweaksBinding | null;
 
         /**
          * @param binding 
@@ -51564,7 +51457,7 @@ export namespace Ide {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -51574,7 +51467,7 @@ export namespace Ide {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -51585,7 +51478,7 @@ export namespace Ide {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -51596,7 +51489,7 @@ export namespace Ide {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -51605,7 +51498,7 @@ export namespace Ide {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -51733,7 +51626,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Adw.Window.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
             folded: boolean;
-            tweaks: (Tweaks | null);
+            tweaks: Tweaks | null;
         }
     }
 
@@ -51750,8 +51643,8 @@ export namespace Ide {
         get folded(): boolean;
         set folded(val: boolean);
 
-        get tweaks(): (Tweaks | null);
-        set tweaks(val: (Tweaks | null));
+        get tweaks(): Tweaks | null;
+        set tweaks(val: Tweaks | null);
 
         /**
          * Compile-time signal type information.
@@ -51787,7 +51680,7 @@ export namespace Ide {
          * Gets the tweaks property of the window.
          * @returns an {@link Ide.Tweaks} or `null`
          */
-        get_tweaks(): (Tweaks | null);
+        get_tweaks(): Tweaks | null;
 
         navigate_initial(): void;
 
@@ -51798,13 +51691,13 @@ export namespace Ide {
          * to the topmost item.
          * @param item an {@link Ide.TweaksItem} or `null`
          */
-        navigate_to(item: (TweaksItem | null)): void;
+        navigate_to(item: TweaksItem | null): void;
 
         /**
          * Sets the tweaks to be displayed in the window.
          * @param tweaks an {@link Ide.Tweaks}
          */
-        set_tweaks(tweaks: (Tweaks | null)): void;
+        set_tweaks(tweaks: Tweaks | null): void;
     }
 
 
@@ -51821,11 +51714,11 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             incremental: boolean;
-            model: (Gio.ListModel | null);
+            model: Gio.ListModel | null;
             n_items: number;
             nItems: number;
             pending: number;
-            sorter: (Gtk.Sorter | null);
+            sorter: Gtk.Sorter | null;
         }
     }
 
@@ -51842,8 +51735,8 @@ export namespace Ide {
         get incremental(): boolean;
         set incremental(val: boolean);
 
-        get model(): (Gio.ListModel | null);
-        set model(val: (Gio.ListModel | null));
+        get model(): Gio.ListModel | null;
+        set model(val: Gio.ListModel | null);
 
         /**
          * @read-only
@@ -51863,8 +51756,8 @@ export namespace Ide {
          */
         get pending(): number;
 
-        get sorter(): (Gtk.Sorter | null);
-        set sorter(val: (Gtk.Sorter | null));
+        get sorter(): Gtk.Sorter | null;
+        set sorter(val: Gtk.Sorter | null);
 
         /**
          * Compile-time signal type information.
@@ -51880,7 +51773,7 @@ export namespace Ide {
 
         _init(...args: any[]): void;
 
-        static ["new"](model: (Gio.ListModel | null), sorter: (Gtk.Sorter | null)): UniqueListModel;
+        static ["new"](model: Gio.ListModel | null, sorter: Gtk.Sorter | null): UniqueListModel;
 
         // Signals
         /** @signal */
@@ -51902,7 +51795,7 @@ export namespace Ide {
          * Gets the underlying model.
          * @returns a {@link Gio.ListModel}
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * Returns the number of items that have not yet been filtered.
@@ -51919,7 +51812,7 @@ export namespace Ide {
          * Get the {@link Gtk.Sorter} used to deduplicate items.
          * @returns a GtkSorter or `null`
          */
-        get_sorter(): (Gtk.Sorter | null);
+        get_sorter(): Gtk.Sorter | null;
 
         /**
          * @param incremental if filtering should be incremental
@@ -51930,13 +51823,13 @@ export namespace Ide {
          * Sets the underlying model to be deduplicated.
          * @param model a {@link Gio.ListModel} or `null`
          */
-        set_model(model: (Gio.ListModel | null)): void;
+        set_model(model: Gio.ListModel | null): void;
 
         /**
          * Sets the sorter used to deduplicate items.
          * @param sorter a {@link Gtk.Sorter} or `null`
          */
-        set_sorter(sorter: (Gtk.Sorter | null)): void;
+        set_sorter(sorter: Gtk.Sorter | null): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -51977,7 +51870,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -52017,7 +51910,7 @@ export namespace Ide {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -52046,13 +51939,10 @@ export namespace Ide {
 
     namespace UnixFDMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -52252,24 +52142,24 @@ export namespace Ide {
          * @param file 
          * @returns An {@link Ide.UnsavedFile} or `null`. Thread safety: you may call this from any thread, as long as you   hold a reference to `self`.
          */
-        get_unsaved_file(file: Gio.File): (UnsavedFile | null);
+        get_unsaved_file(file: Gio.File): UnsavedFile | null;
 
         /**
          * @param cancellable 
          */
-        reap_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        reap_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reap_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        reap_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reap_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        reap_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -52290,19 +52180,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        restore_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        restore_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        restore_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        restore_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        restore_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        restore_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -52312,19 +52202,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -52348,7 +52238,7 @@ export namespace Ide {
          * @param file 
          * @param content 
          */
-        update(file: Gio.File, content: (GLib.Bytes | Uint8Array)): void;
+        update(file: Gio.File, content: GLib.Bytes | Uint8Array): void;
     }
 
 
@@ -52544,7 +52434,7 @@ export namespace Ide {
          * @param pty_fd 
          * @param cancellable 
          */
-        clone_async(notif: Notification, pty_fd: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+        clone_async(notif: Notification, pty_fd: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * @param notif 
@@ -52552,7 +52442,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        clone_async(notif: Notification, pty_fd: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        clone_async(notif: Notification, pty_fd: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param notif 
@@ -52560,7 +52450,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        clone_async(notif: Notification, pty_fd: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        clone_async(notif: Notification, pty_fd: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * Complete a clone request.
@@ -52718,7 +52608,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: (Gio.File | null), arg2: Gio.FileMonitorEvent) => void;
+            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
             /**
              * The "reloaded" signal is emitted when the monitor has been reloaded.
              * @signal
@@ -52792,7 +52682,7 @@ export namespace Ide {
          * Gets the {@link Ide.VcsMonitor} for a context.
          * @param context an {@link Ide.Context}
          */
-        static from_context(context: Context): (VcsMonitor | null);
+        static from_context(context: Context): VcsMonitor | null;
 
         // Methods
         get_sequence(): number;
@@ -52806,14 +52696,14 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @returns an {@link Ide.VcsFileInfo} or `null`
          */
-        ref_info(file: Gio.File): (VcsFileInfo | null);
+        ref_info(file: Gio.File): VcsFileInfo | null;
 
         /**
          * Gets the {@link Ide.VcsMonitor.root} property and increments the reference
          * count of the {@link Gio.File} by one.
          * @returns a {@link Gio.File} or `null`
          */
-        ref_root(): (Gio.File | null);
+        ref_root(): Gio.File | null;
 
         /**
          * @param args 
@@ -52826,7 +52716,7 @@ export namespace Ide {
          * {@link Ide.VcsMonitor} and returns it.
          * @returns an {@link Ide.Vcs} or `null`
          */
-        ref_vcs(): (Vcs | null);
+        ref_vcs(): Vcs | null;
 
         /**
          * @param file 
@@ -53023,7 +52913,7 @@ export namespace Ide {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.WindowGroup.ConstructorProps {
             context: Context;
-            vcs: (Vcs | null);
+            vcs: Vcs | null;
         }
     }
 
@@ -53049,8 +52939,8 @@ export namespace Ide {
          * 
          * The {@link Ide.Vcs} is registered by an {@link Ide.WorkbenchAddin} when loading a project.
          */
-        get vcs(): (Vcs | null);
-        set vcs(val: (Vcs | null));
+        get vcs(): Vcs | null;
+        set vcs(val: Vcs | null);
 
         /**
          * Compile-time signal type information.
@@ -53088,13 +52978,13 @@ export namespace Ide {
          * Helper to get the {@link Ide.Workbench} for a given context.
          * @param context an {@link Ide.Context}
          */
-        static from_context(context: Context): (Workbench | null);
+        static from_context(context: Context): Workbench | null;
 
         /**
          * Finds the {@link Ide.Workbench} associated with a widget.
          * @param widget a {@link Gtk.Widget}
          */
-        static from_widget(widget: Gtk.Widget): (Workbench | null);
+        static from_widget(widget: Gtk.Widget): Workbench | null;
 
         // Methods
         /**
@@ -53113,7 +53003,7 @@ export namespace Ide {
          * @param module_name the name of the addin module
          * @returns an {@link Ide.WorkbenchAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (WorkbenchAddin | null);
+        addin_find_by_module_name(module_name: string): WorkbenchAddin | null;
 
         /**
          * Requests that `workspace` be raised in the windows of `self`, and
@@ -53140,7 +53030,7 @@ export namespace Ide {
          * Gets the {@link Ide.BuildSystem} for the workbench, if any.
          * @returns an {@link Ide.BuildSystem} or `null`
          */
-        get_build_system(): (BuildSystem | null);
+        get_build_system(): BuildSystem | null;
 
         /**
          * Gets the {@link Ide.Context} for the workbench.
@@ -53153,14 +53043,14 @@ export namespace Ide {
          * deliver events such as opening new pages.
          * @returns an {@link Ide.Workspace} or `null`
          */
-        get_current_workspace(): (Workspace | null);
+        get_current_workspace(): Workspace | null;
 
         /**
          * Gets the {@link Ide.ProjectInfo} for the workbench, if a project has been or is
          * currently, loading.
          * @returns an {@link Ide.ProjectInfo} or `null`
          */
-        get_project_info(): (ProjectInfo | null);
+        get_project_info(): ProjectInfo | null;
 
         /**
          * Gets the search engine for the workbench, if any.
@@ -53172,20 +53062,20 @@ export namespace Ide {
          * Gets the {@link Ide.Vcs} that has been loaded for the workbench, if any.
          * @returns an {@link Ide.Vcs} or `null`
          */
-        get_vcs(): (Vcs | null);
+        get_vcs(): Vcs | null;
 
         /**
          * Gets the {@link Ide.VcsMonitor} for the workbench, if any.
          * @returns an {@link Ide.VcsMonitor} or `null`
          */
-        get_vcs_monitor(): (VcsMonitor | null);
+        get_vcs_monitor(): VcsMonitor | null;
 
         /**
          * Gets the most-recently-used workspace that matches `type`.
          * @param type a {@link GObject.GType} of a subclass of {@link Ide.Workspace}
          * @returns an {@link Ide.Workspace} or `null`
          */
-        get_workspace_by_type(type: GObject.GType): (Workspace | null);
+        get_workspace_by_type(type: GObject.GType): Workspace | null;
 
         /**
          * Returns `true` if a project is loaded (or currently loading) in the
@@ -53211,7 +53101,7 @@ export namespace Ide {
          * @param workspace_type 
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that a project be opened in the workbench.
@@ -53231,7 +53121,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that a project be opened in the workbench.
@@ -53251,7 +53141,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_project_async(project_info: ProjectInfo, workspace_type: GObject.GType, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to open a project using
@@ -53274,7 +53164,7 @@ export namespace Ide {
          * @param hint an optional hint about what addin to use
          * @param cancellable a {@link Gio.Cancellable}
          */
-        open_all_async(files: Gio.File[], hint: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open_all_async(files: Gio.File[], hint: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the workbench open all of the {@link Gio.File} denoted by `files`.
@@ -53290,7 +53180,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        open_all_async(files: Gio.File[], hint: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_all_async(files: Gio.File[], hint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the workbench open all of the {@link Gio.File} denoted by `files`.
@@ -53306,7 +53196,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        open_all_async(files: Gio.File[], hint: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_all_async(files: Gio.File[], hint: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -53327,7 +53217,7 @@ export namespace Ide {
          * @param position a position to open the page
          * @param cancellable a {@link Gio.Cancellable}
          */
-        open_async(file: Gio.File, hint: (string | null), flags: BufferOpenFlags, position: (Panel.Position | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open_async(file: Gio.File, hint: string | null, flags: BufferOpenFlags, position: Panel.Position | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the workbench open `file`.
@@ -53344,7 +53234,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        open_async(file: Gio.File, hint: (string | null), flags: BufferOpenFlags, position: (Panel.Position | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_async(file: Gio.File, hint: string | null, flags: BufferOpenFlags, position: Panel.Position | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the workbench open `file`.
@@ -53361,7 +53251,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        open_async(file: Gio.File, hint: (string | null), flags: BufferOpenFlags, position: (Panel.Position | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_async(file: Gio.File, hint: string | null, flags: BufferOpenFlags, position: Panel.Position | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Like `ide_workbench_open_async()`, this allows opening a file
@@ -53383,30 +53273,7 @@ export namespace Ide {
          * @param position 
          * @param cancellable a {@link Gio.Cancellable}
          */
-        open_at_async(file: Gio.File, hint: (string | null), at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Like `ide_workbench_open_async()`, this allows opening a file
-         * within the workbench. However, it also allows specifying a
-         * line and column offset within the file to focus. Usually, this
-         * only makes sense for files that can be opened in an editor.
-         * 
-         * `at_line` and `at_line_offset` may be < 0 to ignore the parameters.
-         * 
-         * `flags` may be ignored by some backends
-         * 
-         * Use `ide_workbench_open_finish()` to receive teh result of this
-         * asynchronous operation.
-         * @param file a {@link Gio.File}
-         * @param hint an optional hint about what addin to use
-         * @param at_line the line number to open at, or -1 to ignore
-         * @param at_line_offset the line offset to open at, or -1 to ignore
-         * @param flags optional {@link Ide.BufferOpenFlags}
-         * @param position 
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        open_at_async(file: Gio.File, hint: (string | null), at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_at_async(file: Gio.File, hint: string | null, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Like `ide_workbench_open_async()`, this allows opening a file
@@ -53429,7 +53296,30 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        open_at_async(file: Gio.File, hint: (string | null), at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_at_async(file: Gio.File, hint: string | null, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Like `ide_workbench_open_async()`, this allows opening a file
+         * within the workbench. However, it also allows specifying a
+         * line and column offset within the file to focus. Usually, this
+         * only makes sense for files that can be opened in an editor.
+         * 
+         * `at_line` and `at_line_offset` may be < 0 to ignore the parameters.
+         * 
+         * `flags` may be ignored by some backends
+         * 
+         * Use `ide_workbench_open_finish()` to receive teh result of this
+         * asynchronous operation.
+         * @param file a {@link Gio.File}
+         * @param hint an optional hint about what addin to use
+         * @param at_line the line number to open at, or -1 to ignore
+         * @param at_line_offset the line offset to open at, or -1 to ignore
+         * @param flags optional {@link Ide.BufferOpenFlags}
+         * @param position 
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        open_at_async(file: Gio.File, hint: string | null, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -53459,7 +53349,7 @@ export namespace Ide {
          * @param filename the filename to discover
          * @param cancellable 
          */
-        resolve_file_async(filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+        resolve_file_async(filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * This function will try to locate a given file based on the filename,
@@ -53471,7 +53361,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        resolve_file_async(filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        resolve_file_async(filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will try to locate a given file based on the filename,
@@ -53483,7 +53373,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        resolve_file_async(filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        resolve_file_async(filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * Completes an asynchronous request to `ide_workbench_resolve_file_async()`.
@@ -53500,13 +53390,13 @@ export namespace Ide {
          * components that require a build system to continue functioning.
          * @param build_system an {@link Ide.BuildSystem} or `null`
          */
-        set_build_system(build_system: (BuildSystem | null)): void;
+        set_build_system(build_system: BuildSystem | null): void;
 
         /**
          * Sets the {@link Ide.Vcs} for the workbench.
          * @param vcs an {@link Ide.Vcs}
          */
-        set_vcs(vcs: (Vcs | null)): void;
+        set_vcs(vcs: Vcs | null): void;
 
         /**
          * Asynchronously unloads the workbench.
@@ -53515,17 +53405,7 @@ export namespace Ide {
          * function.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        unload_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously unloads the workbench.
-         * 
-         * All {@link Ide.Workspace} windows will be closed after calling this
-         * function.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        unload_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unload_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously unloads the workbench.
@@ -53535,7 +53415,17 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        unload_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unload_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously unloads the workbench.
+         * 
+         * All {@link Ide.Workspace} windows will be closed after calling this
+         * function.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        unload_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a request to unload the workbench.
@@ -53624,7 +53514,7 @@ export namespace Ide {
 
         // Constructor properties interface
         interface ConstructorProps extends Adw.ApplicationWindow.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-            context: (Context | null);
+            context: Context | null;
             id: string;
             search_popover: SearchPopover;
             searchPopover: SearchPopover;
@@ -53645,7 +53535,7 @@ export namespace Ide {
          * when the workspace joins a workbench.
          * @read-only
          */
-        get context(): (Context | null);
+        get context(): Context | null;
 
         /**
          * The "id" property is a unique identifier for the workspace
@@ -53710,7 +53600,7 @@ export namespace Ide {
          * @param parameter_type the parameter type
          * @param activate callback to use when the action is activated
          */
-        static install_action(action_name: string, parameter_type: (string | null), activate: ActionActivateFunc): void;
+        static install_action(action_name: string, parameter_type: string | null, activate: ActionActivateFunc): void;
 
         /**
          * @param args 
@@ -53769,7 +53659,7 @@ export namespace Ide {
          * @param callback 
          * @virtual
          */
-        vfunc_agree_to_close_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_agree_to_close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -53800,31 +53690,31 @@ export namespace Ide {
          * @param position an {@link Panel.Position}
          * @virtual
          */
-        vfunc_get_frame_at_position(position: Panel.Position): (Panel.Frame | null);
+        vfunc_get_frame_at_position(position: Panel.Position): Panel.Frame | null;
 
         /**
          * Gets the headerbar for the workspace, if it is an {@link Ide.HeaderBar}.
          * Also works around Gtk giving back a GtkStack for the header bar.
          * @virtual
          */
-        vfunc_get_header_bar(): (HeaderBar | null);
+        vfunc_get_header_bar(): HeaderBar | null;
 
         /**
          * Gets the most recently selected frame.
          * @virtual
          */
-        vfunc_get_most_recent_frame(): (Frame | null);
+        vfunc_get_most_recent_frame(): Frame | null;
 
         /**
          * Gets the most recently focused {@link Ide.Page}.
          * @virtual
          */
-        vfunc_get_most_recent_page(): (Page | null);
+        vfunc_get_most_recent_page(): Page | null;
 
         /**
          * @virtual
          */
-        vfunc_get_statusbar(): (Panel.Statusbar | null);
+        vfunc_get_statusbar(): Panel.Statusbar | null;
 
         /**
          * @param overlay 
@@ -53900,7 +53790,7 @@ export namespace Ide {
          * @param module_name the name of the addin module
          * @returns an {@link Ide.WorkspaceAddin} or `null`
          */
-        addin_find_by_module_name(module_name: string): (WorkspaceAddin | null);
+        addin_find_by_module_name(module_name: string): WorkspaceAddin | null;
 
         /**
          * Calls `callback` for each {@link Ide.Page} found within the workspace.
@@ -53920,21 +53810,21 @@ export namespace Ide {
          * workspace joins an {@link Ide.Workbench}.
          * @returns an {@link Ide.Context} or `null`
          */
-        get_context(): (Context | null);
+        get_context(): Context | null;
 
         /**
          * Attempts to locate the {@link Panel.Frame} at a given position.
          * @param position an {@link Panel.Position}
          * @returns a `PaneFrame` or `null`
          */
-        get_frame_at_position(position: Panel.Position): (Panel.Frame | null);
+        get_frame_at_position(position: Panel.Position): Panel.Frame | null;
 
         /**
          * Gets the headerbar for the workspace, if it is an {@link Ide.HeaderBar}.
          * Also works around Gtk giving back a GtkStack for the header bar.
          * @returns an {@link Ide.HeaderBar} or `null`
          */
-        get_header_bar(): (HeaderBar | null);
+        get_header_bar(): HeaderBar | null;
 
         get_id(): string;
 
@@ -53948,18 +53838,18 @@ export namespace Ide {
          * Gets the most recently selected frame.
          * @returns an {@link Ide.Frame} or `null`
          */
-        get_most_recent_frame(): (Frame | null);
+        get_most_recent_frame(): Frame | null;
 
         /**
          * Gets the most recently focused {@link Ide.Page}.
          * @returns an {@link Ide.Page} or `null`
          */
-        get_most_recent_page(): (Page | null);
+        get_most_recent_page(): Page | null;
 
         /**
          * @returns a {@link Panel.Statusbar} or `null`
          */
-        get_statusbar(): (Panel.Statusbar | null);
+        get_statusbar(): Panel.Statusbar | null;
 
         get_toolbar_style(): Adw.ToolbarStyle;
 
@@ -54158,10 +54048,7 @@ export namespace Ide {
         static $gtype: GObject.GType<CodeIndexEntryBuilder>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CodeIndexEntryBuilder;
 
@@ -54589,7 +54476,7 @@ export namespace Ide {
          * @param max_matches The max number of matches to return.
          * @returns A newly allocated   {@link GLib.Array} containing `FuzzyMatch` elements. This should be freed when   the caller is done with it using `g_array_unref()`.   It is a programming error to keep the structure around longer than   the `fuzzy` instance.
          */
-        match(needle: string, max_matches: (bigint | number)): FuzzyMutableIndexMatch[];
+        match(needle: string, max_matches: bigint | number): FuzzyMutableIndexMatch[];
 
         ref(): FuzzyMutableIndex;
 
@@ -54741,7 +54628,7 @@ export namespace Ide {
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: null): boolean;
+        extract_index(index_: bigint | number, result: null): boolean;
 
         /**
          * @param data 
@@ -54775,10 +54662,7 @@ export namespace Ide {
         static $gtype: GObject.GType<HighlightIndex>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): HighlightIndex;
 
@@ -54857,7 +54741,7 @@ export namespace Ide {
          * @param contents 
          * @param length 
          */
-        init(contents: string, length: (bigint | number)): void;
+        init(contents: string, length: bigint | number): void;
 
         /**
          * Moves forward to the beginning of the next line in the buffer. No changes to the buffer
@@ -54867,7 +54751,7 @@ export namespace Ide {
          * @param length a location for the length of the line in bytes.
          * @returns The beginning of the line within the buffer.
          */
-        next(length: (bigint | number)): string;
+        next(length: bigint | number): string;
     }
 
 
@@ -54983,20 +54867,20 @@ export namespace Ide {
         static $gtype: GObject.GType<MarkedContent>;
 
         // Constructors
-        constructor(content: (GLib.Bytes | Uint8Array), kind: MarkedKind);
+        constructor(content: GLib.Bytes | Uint8Array, kind: MarkedKind);
 
-        static ["new"](content: (GLib.Bytes | Uint8Array), kind: MarkedKind): MarkedContent;
+        static ["new"](content: GLib.Bytes | Uint8Array, kind: MarkedKind): MarkedContent;
 
-        static new_from_data(data: string, len: (bigint | number), kind: MarkedKind): MarkedContent;
+        static new_from_data(data: string, len: bigint | number, kind: MarkedKind): MarkedContent;
 
-        static new_plaintext(plaintext: (string | null)): MarkedContent;
+        static new_plaintext(plaintext: string | null): MarkedContent;
 
         // Methods
         /**
          * Gets the contents of the marked content as a C string.
          * @returns the content as a string or `null`
          */
-        as_string(): [(string | null), number];
+        as_string(): [string | null, number];
 
         /**
          * Gets the bytes for the marked content.
@@ -55271,7 +55155,7 @@ export namespace Ide {
          * @param main_context a {@link GLib.MainContext} or `null` for thread-default
          * @returns `true` if successful; otherwise `false`
          */
-        init(fd: PtyFd, main_context: (GLib.MainContext | null)): boolean;
+        init(fd: PtyFd, main_context: GLib.MainContext | null): boolean;
 
         /**
          * This sets the callback to execute every time data is received
@@ -55457,7 +55341,7 @@ export namespace Ide {
          * keep search performance good.
          * @param max_results max result size for the reuslts
          */
-        static init(max_results: (bigint | number)): SearchReducer;
+        static init(max_results: bigint | number): SearchReducer;
 
         // Methods
         /**
@@ -55480,7 +55364,7 @@ export namespace Ide {
          * @param free_results `true` if the results should be discarded
          * @returns An array of {@link Ide.SearchResult} unless `free_results` is `true`, then   `null` is returned.
          */
-        free(free_results: boolean): (SearchResult[] | null);
+        free(free_results: boolean): SearchResult[] | null;
 
         /**
          * Adds result to the set unless it scores too low.
@@ -55555,7 +55439,7 @@ export namespace Ide {
         /**
          * @returns a {@link GLib.Variant} or `null`
          */
-        get_action_target(): (GLib.Variant | null);
+        get_action_target(): GLib.Variant | null;
 
         get_group(): string;
 
@@ -55830,18 +55714,15 @@ export namespace Ide {
         static $gtype: GObject.GType<Triplet>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](full_name: string): Triplet;
 
         static new_from_system(): Triplet;
 
-        static new_with_quadruplet(arch: string, vendor: (string | null), kernel: (string | null), operating_system: (string | null)): Triplet;
+        static new_with_quadruplet(arch: string, vendor: string | null, kernel: string | null, operating_system: string | null): Triplet;
 
-        static new_with_triplet(arch: string, kernel: (string | null), operating_system: (string | null)): Triplet;
+        static new_with_triplet(arch: string, kernel: string | null, operating_system: string | null): Triplet;
 
         // Methods
         /**
@@ -55861,19 +55742,19 @@ export namespace Ide {
          * Gets name of the kernel of the machine
          * @returns The name of the kernel of the machine
          */
-        get_kernel(): (string | null);
+        get_kernel(): string | null;
 
         /**
          * Gets name of the operating system of the machine
          * @returns The name of the operating system of the machine
          */
-        get_operating_system(): (string | null);
+        get_operating_system(): string | null;
 
         /**
          * Gets the vendor name of the machine
          * @returns The vendor name of the machine
          */
-        get_vendor(): (string | null);
+        get_vendor(): string | null;
 
         /**
          * Gets whether this is the same architecture as the system
@@ -56056,7 +55937,7 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        persist(cancellable: (Gio.Cancellable | null)): boolean;
+        persist(cancellable: Gio.Cancellable | null): boolean;
 
         ref(): UnsavedFile;
 
@@ -56138,7 +56019,7 @@ export namespace Ide {
          * quality of results.
          * @returns a string containing the suggested   clone directory name, or `null`.
          */
-        get_clone_name(): (string | null);
+        get_clone_name(): string | null;
 
         get_host(): string;
 
@@ -56299,9 +56180,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ApplicationAddinNamespace {
@@ -56460,7 +56339,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_settle_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_settle_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -56490,9 +56369,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BufferAddinNamespace {
@@ -56557,19 +56434,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        settle_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        settle_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        settle_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        settle_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        settle_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        settle_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -56613,7 +56490,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -56629,13 +56506,13 @@ export namespace Ide {
              * @param callback function to be called after getting build flags.
              * @virtual
              */
-            vfunc_get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result a {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): ({ [key: string]: any } | GLib.HashTable);
+            vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any } | GLib.HashTable;
 
             /**
              * @param pipeline 
@@ -56663,7 +56540,7 @@ export namespace Ide {
              * in the build system's configuration files.
              * @virtual
              */
-            vfunc_get_project_version(): (string | null);
+            vfunc_get_project_version(): string | null;
 
             /**
              * @virtual
@@ -56708,7 +56585,7 @@ export namespace Ide {
         * registered, then this returns `null`.
         * @param context a {@link Ide.Context}
         */
-        from_context(context: Context): (BuildSystem | null);
+        from_context(context: Context): BuildSystem | null;
     }
     /**
      * @gir-type Interface
@@ -56731,21 +56608,21 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        get_build_flags_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * @param result 
@@ -56756,21 +56633,21 @@ export namespace Ide {
          * @param directory 
          * @param cancellable 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
 
         /**
          * @param directory 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param directory 
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable> | void);
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -56784,7 +56661,7 @@ export namespace Ide {
          * @param files array of files whose build flags has to be retrieved.
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
 
         /**
          * This function will get build flags for all files and returns
@@ -56793,7 +56670,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will get build flags for all files and returns
@@ -56802,7 +56679,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable> | void);
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -56826,7 +56703,7 @@ export namespace Ide {
          * in the build system's configuration files.
          * @returns a string containing the project version
          */
-        get_project_version(): (string | null);
+        get_project_version(): string | null;
 
         get_srcdir(): string;
 
@@ -56873,14 +56750,12 @@ export namespace Ide {
              * @param cancellable a {@link Gio.Cancellable} or `null`
              * @virtual
              */
-            vfunc_discover(project_file: Gio.File, cancellable: (Gio.Cancellable | null)): [string, number];
+            vfunc_discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BuildSystemDiscoveryNamespace {
@@ -56902,7 +56777,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The hint for the build system, which should match what   the build system returns from `ide_build_system_get_id()`.
          */
-        discover(project_file: Gio.File, cancellable: (Gio.Cancellable | null)): [string, number];
+        discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
     }
 
 
@@ -56933,17 +56808,17 @@ export namespace Ide {
              * in the host system, or the flatpak sandbox home under flatpak).
              * @virtual
              */
-            vfunc_get_cwd(): (string | null);
+            vfunc_get_cwd(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_display_name(): (string | null);
+            vfunc_get_display_name(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_install_directory(): (Gio.File | null);
+            vfunc_get_install_directory(): Gio.File | null;
 
             /**
              * Gets the kind of artifact.
@@ -56971,7 +56846,7 @@ export namespace Ide {
             /**
              * @virtual
              */
-            vfunc_get_name(): (string | null);
+            vfunc_get_name(): string | null;
 
             /**
              * Gets the priority of the build target. This is used to sort build targets by
@@ -56984,9 +56859,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface BuildTargetNamespace {
@@ -57019,12 +56892,12 @@ export namespace Ide {
          * in the host system, or the flatpak sandbox home under flatpak).
          * @returns the working directory to use for this target
          */
-        get_cwd(): (string | null);
+        get_cwd(): string | null;
 
         /**
          * @returns A display name for the build   target to be displayed in UI. May contain pango markup.
          */
-        get_display_name(): (string | null);
+        get_display_name(): string | null;
 
         /**
          * Checks if the {@link Ide.BuildTarget} gets installed.
@@ -57035,7 +56908,7 @@ export namespace Ide {
         /**
          * @returns a {@link Gio.File} or `null`.
          */
-        get_install_directory(): (Gio.File | null);
+        get_install_directory(): Gio.File | null;
 
         /**
          * Gets the kind of artifact.
@@ -57063,7 +56936,7 @@ export namespace Ide {
         /**
          * @returns A filename or `null`.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the priority of the build target. This is used to sort build targets by
@@ -57100,7 +56973,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_get_targets_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_get_targets_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes a request to get the targets for the project.
@@ -57114,9 +56987,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BuildTargetProviderNamespace {
@@ -57140,7 +57011,7 @@ export namespace Ide {
          * See also: `ide_build_target_provider_get_targets_finish()`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_targets_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<BuildTarget[]>;
+        get_targets_async(cancellable: Gio.Cancellable | null): globalThis.Promise<BuildTarget[]>;
 
         /**
          * Asynchronously requests that the provider fetch all of the known build
@@ -57154,7 +57025,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_targets_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_targets_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that the provider fetch all of the known build
@@ -57168,7 +57039,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_targets_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<BuildTarget[]> | void);
+        get_targets_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<BuildTarget[]> | void;
 
         /**
          * Completes a request to get the targets for the project.
@@ -57198,7 +57069,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -57239,19 +57110,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -57285,7 +57156,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
@@ -57303,9 +57174,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CodeActionProviderNamespace {
@@ -57324,21 +57193,21 @@ export namespace Ide {
          * @param buffer 
          * @param cancellable 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeAction[]>;
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null): globalThis.Promise<CodeAction[]>;
 
         /**
          * @param buffer 
          * @param cancellable 
          * @param callback 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
          * @param cancellable 
          * @param callback 
          */
-        query_async(buffer: Buffer, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeAction[]> | void);
+        query_async(buffer: Buffer, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeAction[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
@@ -57378,7 +57247,7 @@ export namespace Ide {
              * When all of the entries have been exhausted, `null` should be returned.
              * @virtual
              */
-            vfunc_get_next_entry(): (CodeIndexEntry | null);
+            vfunc_get_next_entry(): CodeIndexEntry | null;
 
             /**
              * Requests the next set of results from the code index asynchronously.
@@ -57388,7 +57257,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_next_entries_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_next_entries_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request for the next set of entries from the index.
@@ -57400,9 +57269,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CodeIndexEntriesNamespace {
@@ -57420,7 +57287,7 @@ export namespace Ide {
          * entries have been retrieved. After that, the async operation will complete.
          * @param cancellable 
          */
-        collect_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeIndexEntry[]>;
+        collect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CodeIndexEntry[]>;
 
         /**
          * Calls `ide_code_index_entries_next_entries_async()` repeatedly until all
@@ -57428,7 +57295,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        collect_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        collect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Calls `ide_code_index_entries_next_entries_async()` repeatedly until all
@@ -57436,7 +57303,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        collect_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeIndexEntry[]> | void);
+        collect_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeIndexEntry[]> | void;
 
         /**
          * @param result 
@@ -57456,7 +57323,7 @@ export namespace Ide {
          * When all of the entries have been exhausted, `null` should be returned.
          * @returns An {@link Ide.CodeIndexEntry}.
          */
-        get_next_entry(): (CodeIndexEntry | null);
+        get_next_entry(): CodeIndexEntry | null;
 
         /**
          * Requests the next set of results from the code index asynchronously.
@@ -57464,16 +57331,7 @@ export namespace Ide {
          * without blocking the main loop.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        next_entries_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeIndexEntry[]>;
-
-        /**
-         * Requests the next set of results from the code index asynchronously.
-         * This allows implementations to possibly process data off the main thread
-         * without blocking the main loop.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute upon completion
-         */
-        next_entries_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        next_entries_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CodeIndexEntry[]>;
 
         /**
          * Requests the next set of results from the code index asynchronously.
@@ -57482,7 +57340,16 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        next_entries_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeIndexEntry[]> | void);
+        next_entries_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Requests the next set of results from the code index asynchronously.
+         * This allows implementations to possibly process data off the main thread
+         * without blocking the main loop.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute upon completion
+         */
+        next_entries_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeIndexEntry[]> | void;
 
         /**
          * Completes an asynchronous request for the next set of entries from the index.
@@ -57515,7 +57382,7 @@ export namespace Ide {
              * @param callback A callback to execute upon indexing.
              * @virtual
              */
-            vfunc_generate_key_async(location: Location, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_generate_key_async(location: Location, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Returns key for declaration of reference at a location.
@@ -57534,7 +57401,7 @@ export namespace Ide {
              * @param callback a {@link Gio.AsyncReadyCallback}
              * @virtual
              */
-            vfunc_index_file_async(file: Gio.File, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_index_file_async(file: Gio.File, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_code_indexer_index_file_async()`.
@@ -57546,9 +57413,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface CodeIndexerNamespace {
@@ -57569,7 +57434,7 @@ export namespace Ide {
          * @param build_flags array of build flags to parse `file`.
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        generate_key_async(location: Location, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        generate_key_async(location: Location, build_flags: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * This function will get key of reference located at `IdeSoureLocation`.
@@ -57580,7 +57445,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A callback to execute upon indexing.
          */
-        generate_key_async(location: Location, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_key_async(location: Location, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will get key of reference located at `IdeSoureLocation`.
@@ -57591,7 +57456,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A callback to execute upon indexing.
          */
-        generate_key_async(location: Location, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        generate_key_async(location: Location, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Returns key for declaration of reference at a location.
@@ -57608,7 +57473,7 @@ export namespace Ide {
          * @param build_flags array of build flags to parse `file`.
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        index_file_async(file: Gio.File, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<CodeIndexEntries>;
+        index_file_async(file: Gio.File, build_flags: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<CodeIndexEntries>;
 
         /**
          * This function will take index source file and create an array of symbols in
@@ -57619,7 +57484,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        index_file_async(file: Gio.File, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        index_file_async(file: Gio.File, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function will take index source file and create an array of symbols in
@@ -57630,7 +57495,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        index_file_async(file: Gio.File, build_flags: (string[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CodeIndexEntries> | void);
+        index_file_async(file: Gio.File, build_flags: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CodeIndexEntries> | void;
 
         /**
          * Completes an asynchronous request to `ide_code_indexer_index_file_async()`.
@@ -57697,7 +57562,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_config_provider_load_async()`.
@@ -57722,7 +57587,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_config_provider_save_async()`.
@@ -57745,9 +57610,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface ConfigProviderNamespace {
@@ -57808,7 +57671,7 @@ export namespace Ide {
          * aware of the configurations.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function is called to initialize the configuration provider after
@@ -57820,7 +57683,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function is called to initialize the configuration provider after
@@ -57832,7 +57695,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_config_provider_load_async()`.
@@ -57849,7 +57712,7 @@ export namespace Ide {
          * so that it has a chance to persist any outstanding changes.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function is called to request that the configuration provider
@@ -57860,7 +57723,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function is called to request that the configuration provider
@@ -57871,7 +57734,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_config_provider_save_async()`.
@@ -57909,7 +57772,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_update_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_update_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -57920,9 +57783,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface DependencyUpdaterNamespace {
@@ -57938,19 +57799,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        update_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        update_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        update_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -57984,7 +57845,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to diagnose a file.
@@ -58008,9 +57869,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface DiagnosticProviderNamespace {
@@ -58034,7 +57893,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -58048,7 +57907,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -58062,7 +57921,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: (GLib.Bytes | null), lang_id: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Diagnostics> | void);
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -58118,7 +57977,7 @@ export namespace Ide {
             /**
              * @virtual
              */
-            vfunc_ref_action_group(): (Gio.ActionGroup | null);
+            vfunc_ref_action_group(): Gio.ActionGroup | null;
 
             /**
              * @param page 
@@ -58129,9 +57988,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditorPageAddinNamespace {
@@ -58162,7 +58019,7 @@ export namespace Ide {
         /**
          * @returns a {@link Gio.ActionGroup} or `null`
          */
-        ref_action_group(): (Gio.ActionGroup | null);
+        ref_action_group(): Gio.ActionGroup | null;
 
         /**
          * @param page 
@@ -58190,7 +58047,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -58207,7 +58064,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -58223,9 +58080,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FormatterNamespace {
@@ -58243,7 +58098,7 @@ export namespace Ide {
          * @param options 
          * @param cancellable 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param buffer 
@@ -58251,7 +58106,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
@@ -58259,7 +58114,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_async(buffer: Buffer, options: FormatterOptions, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        format_async(buffer: Buffer, options: FormatterOptions, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -58273,7 +58128,7 @@ export namespace Ide {
          * @param end 
          * @param cancellable 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param buffer 
@@ -58283,7 +58138,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param buffer 
@@ -58293,7 +58148,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        format_range_async(buffer: Buffer, options: FormatterOptions, begin: Gtk.TextIter, end: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -58335,7 +58190,7 @@ export namespace Ide {
              * @param page An {@link Ide.Page} or `null`.
              * @virtual
              */
-            vfunc_set_page(page: (Page | null)): void;
+            vfunc_set_page(page: Page | null): void;
 
             /**
              * This function should be implemented by {@link Ide.FrameAddin} plugins
@@ -58351,9 +58206,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FrameAddinNamespace {
@@ -58383,7 +58236,7 @@ export namespace Ide {
          * are displayed on the frame based on the current page.
          * @param page An {@link Ide.Page} or `null`.
          */
-        set_page(page: (Page | null)): void;
+        set_page(page: Page | null): void;
 
         /**
          * This function should be implemented by {@link Ide.FrameAddin} plugins
@@ -58431,7 +58284,7 @@ export namespace Ide {
              * @param spec a {@link Ide.PatternSpec} or `null`
              * @virtual
              */
-            vfunc_filter(spec: (PatternSpec | null)): boolean;
+            vfunc_filter(spec: PatternSpec | null): boolean;
 
             /**
              * Get the priority of the section. The lowest integral value is
@@ -58460,9 +58313,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface GreeterSectionNamespace {
@@ -58499,7 +58350,7 @@ export namespace Ide {
          * @param spec a {@link Ide.PatternSpec} or `null`
          * @returns `true` if at least one element matched.
          */
-        filter(spec: (PatternSpec | null)): boolean;
+        filter(spec: PatternSpec | null): boolean;
 
         /**
          * Get the priority of the section. The lowest integral value is
@@ -58702,9 +58553,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface HighlighterNamespace {
@@ -58767,9 +58616,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface OmniBarAddinNamespace {
@@ -58838,9 +58685,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface PipelineAddinNamespace {
@@ -58933,9 +58778,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ProjectTreeAddinNamespace {
@@ -59004,7 +58847,7 @@ export namespace Ide {
              * @param callback a callback to complete the request
              * @virtual
              */
-            vfunc_rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes a request to `ide_rename_provider_rename_async()`.
@@ -59024,9 +58867,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface RenameProviderNamespace {
@@ -59050,7 +58891,7 @@ export namespace Ide {
          * @param new_name The replacement name for the symbol
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(TextEdit[] | null)>;
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<TextEdit[] | null>;
 
         /**
          * This requests the provider to determine the edits that must be made to the
@@ -59062,7 +58903,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to complete the request
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This requests the provider to determine the edits that must be made to the
@@ -59074,7 +58915,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to complete the request
          */
-        rename_async(location: Location, new_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(TextEdit[] | null)> | void);
+        rename_async(location: Location, new_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<TextEdit[] | null> | void;
 
         /**
          * Completes a request to `ide_rename_provider_rename_async()`.
@@ -59112,7 +58953,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_list_commands_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_commands_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes request to list run commands.
@@ -59124,9 +58965,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface RunCommandProviderNamespace {
@@ -59162,19 +59001,19 @@ export namespace Ide {
         /**
          * @param cancellable 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_commands_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_commands_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_commands_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_commands_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes request to list run commands.
@@ -59201,7 +59040,7 @@ export namespace Ide {
              * Gets the icon for the provider, if any.
              * @virtual
              */
-            vfunc_dup_icon(): (Gio.Icon | null);
+            vfunc_dup_icon(): Gio.Icon | null;
 
             /**
              * @virtual
@@ -59225,7 +59064,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes a request to a search provider.
@@ -59245,9 +59084,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface SearchProviderNamespace {
@@ -59264,7 +59101,7 @@ export namespace Ide {
          * Gets the icon for the provider, if any.
          * @returns a {@link Gio.Icon} or `null`
          */
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_title(): string;
 
@@ -59277,7 +59114,7 @@ export namespace Ide {
          * @param max_results 
          * @param cancellable 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Gio.ListModel, boolean]>;
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.ListModel, boolean]>;
 
         /**
          * @param query 
@@ -59285,7 +59122,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param query 
@@ -59293,7 +59130,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        search_async(query: string, max_results: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Gio.ListModel, boolean]> | void);
+        search_async(query: string, max_results: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.ListModel, boolean]> | void;
 
         /**
          * Completes a request to a search provider.
@@ -59335,9 +59172,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface ShortcutProviderNamespace {
@@ -59385,7 +59220,7 @@ export namespace Ide {
              * @param callback callback to use to complete operation
              * @virtual
              */
-            vfunc_list_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes asynchronous request to list similar files.
@@ -59397,9 +59232,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SimilarFileLocatorNamespace {
@@ -59420,7 +59253,7 @@ export namespace Ide {
          * @param file a {@link Gio.File} to find similar files for
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        list_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * Asynchronously requests locating similar files.
@@ -59431,7 +59264,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to use to complete operation
          */
-        list_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests locating similar files.
@@ -59442,7 +59275,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback callback to use to complete operation
          */
-        list_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes asynchronous request to list similar files.
@@ -59472,7 +59305,7 @@ export namespace Ide {
              * @param stderr_buf 
              * @virtual
              */
-            vfunc_communicate(stdin_buf: GLib.Bytes, cancellable: (Gio.Cancellable | null), stdout_buf: GLib.Bytes, stderr_buf: GLib.Bytes): boolean;
+            vfunc_communicate(stdin_buf: GLib.Bytes, cancellable: Gio.Cancellable | null, stdout_buf: GLib.Bytes, stderr_buf: GLib.Bytes): boolean;
 
             /**
              * Asynchronously communicates with the the child process.
@@ -59488,7 +59321,7 @@ export namespace Ide {
              * @param callback A callback to complete the request
              * @virtual
              */
-            vfunc_communicate_async(stdin_buf: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes a request to `ide_subprocess_communicate_async()`.
@@ -59503,7 +59336,7 @@ export namespace Ide {
              * @param cancellable an optional {@link Gio.Cancellable}
              * @virtual
              */
-            vfunc_communicate_utf8(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string, string];
+            vfunc_communicate_utf8(stdin_buf: string | null, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
             /**
              * @param stdin_buf The data to send to stdin or `null`
@@ -59511,7 +59344,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_communicate_utf8_async(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result a {@link Gio.AsyncResult}
@@ -59584,14 +59417,14 @@ export namespace Ide {
              * @param cancellable 
              * @virtual
              */
-            vfunc_wait(cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_wait(cancellable: Gio.Cancellable | null): boolean;
 
             /**
              * @param cancellable 
              * @param callback 
              * @virtual
              */
-            vfunc_wait_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_wait_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -59602,9 +59435,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SubprocessNamespace {
@@ -59625,7 +59456,7 @@ export namespace Ide {
          * @param stdout_buf 
          * @param stderr_buf 
          */
-        communicate(stdin_buf: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null), stdout_buf: (GLib.Bytes | Uint8Array), stderr_buf: (GLib.Bytes | Uint8Array)): boolean;
+        communicate(stdin_buf: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null, stdout_buf: GLib.Bytes | Uint8Array, stderr_buf: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -59639,22 +59470,7 @@ export namespace Ide {
          * @param stdin_buf a {@link GLib.Bytes} to send to stdin or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        communicate_async(stdin_buf: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(GLib.Bytes | null), (GLib.Bytes | null)]>;
-
-        /**
-         * Asynchronously communicates with the the child process.
-         * 
-         * There is no need to call `ide_subprocess_wait()` on the process if using
-         * this asynchronous operation as it will internally wait for the child
-         * to exit or be signaled.
-         * 
-         * Ensure you've set the proper flags to ensure that you can write to stdin
-         * or read from stderr/stdout as necessary.
-         * @param stdin_buf a {@link GLib.Bytes} to send to stdin or `null`
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback A callback to complete the request
-         */
-        communicate_async(stdin_buf: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -59669,7 +59485,22 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to complete the request
          */
-        communicate_async(stdin_buf: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(GLib.Bytes | null), (GLib.Bytes | null)]> | void);
+        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously communicates with the the child process.
+         * 
+         * There is no need to call `ide_subprocess_wait()` on the process if using
+         * this asynchronous operation as it will internally wait for the child
+         * to exit or be signaled.
+         * 
+         * Ensure you've set the proper flags to ensure that you can write to stdin
+         * or read from stderr/stdout as necessary.
+         * @param stdin_buf a {@link GLib.Bytes} to send to stdin or `null`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback A callback to complete the request
+         */
+        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
 
         /**
          * Finishes a request to `ide_subprocess_communicate_async()`.
@@ -59684,27 +59515,27 @@ export namespace Ide {
          * @param cancellable an optional {@link Gio.Cancellable}
          * @returns `true` if successful; otherwise `false` and `error` is set.
          */
-        communicate_utf8(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string, string];
+        communicate_utf8(stdin_buf: string | null, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
         /**
          * @param stdin_buf The data to send to stdin or `null`
          * @param cancellable 
          */
-        communicate_utf8_async(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<[string, string]>;
-
-        /**
-         * @param stdin_buf The data to send to stdin or `null`
-         * @param cancellable 
-         * @param callback 
-         */
-        communicate_utf8_async(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, string]>;
 
         /**
          * @param stdin_buf The data to send to stdin or `null`
          * @param cancellable 
          * @param callback 
          */
-        communicate_utf8_async(stdin_buf: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[string, string]> | void);
+        communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stdin_buf The data to send to stdin or `null`
+         * @param cancellable 
+         * @param callback 
+         */
+        communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, string]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -59752,51 +59583,51 @@ export namespace Ide {
          * @param cancellable 
          * @param signal_num 
          */
-        send_signal_upon_cancel(cancellable: (Gio.Cancellable | null), signal_num: number): void;
+        send_signal_upon_cancel(cancellable: Gio.Cancellable | null, signal_num: number): void;
 
         /**
          * @param cancellable 
          */
-        wait(cancellable: (Gio.Cancellable | null)): boolean;
+        wait(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        wait_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        wait_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        wait_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
-
-        /**
-         * @param cancellable 
-         */
-        wait_check(cancellable: (Gio.Cancellable | null)): boolean;
-
-        /**
-         * @param cancellable 
-         */
-        wait_check_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        wait_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        wait_check_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+
+        /**
+         * @param cancellable 
+         */
+        wait_check(cancellable: Gio.Cancellable | null): boolean;
+
+        /**
+         * @param cancellable 
+         */
+        wait_check_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        wait_check_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        wait_check_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        wait_check_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -59833,7 +59664,7 @@ export namespace Ide {
              * @param callback an async callback
              * @virtual
              */
-            vfunc_find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * This function completes an asynchronous operation to locate the containing
@@ -59843,7 +59674,7 @@ export namespace Ide {
              * @param result a {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_find_nearest_scope_finish(result: Gio.AsyncResult): (Symbol | null);
+            vfunc_find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
             /**
              * @param location an {@link Ide.Location}
@@ -59852,7 +59683,7 @@ export namespace Ide {
              * @param callback a callback to execute
              * @virtual
              */
-            vfunc_find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
@@ -59869,7 +59700,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to get the symbol tree for the
@@ -59877,7 +59708,7 @@ export namespace Ide {
              * @param result 
              * @virtual
              */
-            vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): (SymbolTree | null);
+            vfunc_get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
             /**
              * @virtual
@@ -59893,7 +59724,7 @@ export namespace Ide {
              * @param callback A callback to execute upon completion.
              * @virtual
              */
-            vfunc_lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous call to lookup a symbol using
@@ -59901,7 +59732,7 @@ export namespace Ide {
              * @param result a {@link Gio.AsyncResult} provided to the callback.
              * @virtual
              */
-            vfunc_lookup_symbol_finish(result: Gio.AsyncResult): (Symbol | null);
+            vfunc_lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
             /**
              * @virtual
@@ -59911,9 +59742,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface SymbolResolverNamespace {
@@ -59935,7 +59764,7 @@ export namespace Ide {
          * @param location an {@link Ide.Location}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Symbol | null)>;
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol | null>;
 
         /**
          * This function asynchronously requests to locate the containing
@@ -59947,7 +59776,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function asynchronously requests to locate the containing
@@ -59959,7 +59788,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback an async callback
          */
-        find_nearest_scope_async(location: Location, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Symbol | null)> | void);
+        find_nearest_scope_async(location: Location, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Symbol | null> | void;
 
         /**
          * This function completes an asynchronous operation to locate the containing
@@ -59969,22 +59798,14 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult}
          * @returns An {@link Ide.Symbol} or `null`
          */
-        find_nearest_scope_finish(result: Gio.AsyncResult): (Symbol | null);
+        find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
         /**
          * @param location an {@link Ide.Location}
          * @param language_id a language identifier or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Range[]>;
-
-        /**
-         * @param location an {@link Ide.Location}
-         * @param language_id a language identifier or `null`
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute
-         */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Range[]>;
 
         /**
          * @param location an {@link Ide.Location}
@@ -59992,7 +59813,15 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute
          */
-        find_references_async(location: Location, language_id: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Range[]> | void);
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param location an {@link Ide.Location}
+         * @param language_id a language identifier or `null`
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute
+         */
+        find_references_async(location: Location, language_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Range[]> | void;
 
         /**
          * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
@@ -60007,7 +59836,7 @@ export namespace Ide {
          * @param contents a {@link GLib.Bytes} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(SymbolTree | null)>;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -60016,7 +59845,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -60025,7 +59854,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(SymbolTree | null)> | void);
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
 
         /**
          * Completes an asynchronous request to get the symbol tree for the
@@ -60033,7 +59862,7 @@ export namespace Ide {
          * @param result 
          * @returns An {@link Ide.SymbolTree}; otherwise   `null` and `error` is set.
          */
-        get_symbol_tree_finish(result: Gio.AsyncResult): (SymbolTree | null);
+        get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
         load(): void;
 
@@ -60044,7 +59873,7 @@ export namespace Ide {
          * @param location An {@link Ide.Location}.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Symbol | null)>;
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null): globalThis.Promise<Symbol | null>;
 
         /**
          * Asynchronously requests that `self` determine the symbol existing at the source location
@@ -60054,7 +59883,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback A callback to execute upon completion.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests that `self` determine the symbol existing at the source location
@@ -60064,7 +59893,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback A callback to execute upon completion.
          */
-        lookup_symbol_async(location: Location, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Symbol | null)> | void);
+        lookup_symbol_async(location: Location, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Symbol | null> | void;
 
         /**
          * Completes an asynchronous call to lookup a symbol using
@@ -60072,7 +59901,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback.
          * @returns An {@link Ide.Symbol} if successful; otherwise `null`.
          */
-        lookup_symbol_finish(result: Gio.AsyncResult): (Symbol | null);
+        lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
         unload(): void;
     }
@@ -60096,7 +59925,7 @@ export namespace Ide {
              * @param node An {@link Ide.SymbolNode} or `null`.
              * @virtual
              */
-            vfunc_get_n_children(node: (SymbolNode | null)): number;
+            vfunc_get_n_children(node: SymbolNode | null): number;
 
             /**
              * Gets the `nth` child node of `node`.
@@ -60104,14 +59933,12 @@ export namespace Ide {
              * @param nth the nth child to retrieve.
              * @virtual
              */
-            vfunc_get_nth_child(node: (SymbolNode | null), nth: number): (SymbolNode | null);
+            vfunc_get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SymbolTreeNamespace {
@@ -60130,7 +59957,7 @@ export namespace Ide {
          * @param node An {@link Ide.SymbolNode} or `null`.
          * @returns An unsigned integer containing the number of children.
          */
-        get_n_children(node: (SymbolNode | null)): number;
+        get_n_children(node: SymbolNode | null): number;
 
         /**
          * Gets the `nth` child node of `node`.
@@ -60138,7 +59965,7 @@ export namespace Ide {
          * @param nth the nth child to retrieve.
          * @returns an {@link Ide.SymbolNode} or `null`.
          */
-        get_nth_child(node: (SymbolNode | null), nth: number): (SymbolNode | null);
+        get_nth_child(node: SymbolNode | null, nth: number): SymbolNode | null;
     }
 
 
@@ -60166,9 +59993,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TemplateProviderNamespace {
@@ -60220,7 +60045,7 @@ export namespace Ide {
              * @param callback a callback to execute upon completion
              * @virtual
              */
-            vfunc_load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_toolchain_provider_load_async()`.
@@ -60244,9 +60069,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface ToolchainProviderNamespace {
@@ -60281,7 +60104,7 @@ export namespace Ide {
          * manager may be made aware of the toolchains.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function is called to initialize the toolchain provider after
@@ -60292,7 +60115,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function is called to initialize the toolchain provider after
@@ -60303,7 +60126,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_toolchain_provider_load_async()`.
@@ -60352,7 +60175,7 @@ export namespace Ide {
              * @param callback a {@link Gio.AsyncReadyCallback} or `null`
              * @virtual
              */
-            vfunc_build_children_async(node: TreeNode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_build_children_async(node: TreeNode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_tree_addin_build_children_async()`.
@@ -60398,7 +60221,7 @@ export namespace Ide {
              * @param node an {@link Ide.TreeNode}
              * @virtual
              */
-            vfunc_node_draggable(node: TreeNode): (Gdk.ContentProvider | null);
+            vfunc_node_draggable(node: TreeNode): Gdk.ContentProvider | null;
 
             /**
              * Determines if `drop_node` is a droppable for `drop_target`.
@@ -60418,7 +60241,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -60447,9 +60270,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TreeAddinNamespace {
@@ -60483,7 +60304,7 @@ export namespace Ide {
          * @param node a {@link Ide.TreeNode}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        build_children_async(node: TreeNode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_children_async(node: TreeNode, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function is called when building the children of a node. This
@@ -60499,7 +60320,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} or `null`
          */
-        build_children_async(node: TreeNode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_children_async(node: TreeNode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This function is called when building the children of a node. This
@@ -60515,7 +60336,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} or `null`
          */
-        build_children_async(node: TreeNode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_children_async(node: TreeNode, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request to `ide_tree_addin_build_children_async()`.
@@ -60557,7 +60378,7 @@ export namespace Ide {
          * @param node an {@link Ide.TreeNode}
          * @returns `null` or a {@link Gdk.ContentProvider} if   the node is draggable.
          */
-        node_draggable(node: TreeNode): (Gdk.ContentProvider | null);
+        node_draggable(node: TreeNode): Gdk.ContentProvider | null;
 
         /**
          * Determines if `drop_node` is a droppable for `drop_target`.
@@ -60575,7 +60396,7 @@ export namespace Ide {
          * @param drop_node 
          * @param cancellable 
          */
-        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param drop_target 
@@ -60583,7 +60404,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param drop_target 
@@ -60591,7 +60412,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        node_dropped_async(drop_target: Gtk.DropTarget, drop_node: TreeNode, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -60643,7 +60464,7 @@ export namespace Ide {
              * support access to configuration, then `null` is returned.
              * @virtual
              */
-            vfunc_get_config(): (VcsConfig | null);
+            vfunc_get_config(): VcsConfig | null;
 
             /**
              * Gets the display name for the VCS.
@@ -60676,14 +60497,14 @@ export namespace Ide {
              * @param file a {@link Gio.File}
              * @virtual
              */
-            vfunc_is_ignored(file: (Gio.File | null)): boolean;
+            vfunc_is_ignored(file: Gio.File | null): boolean;
 
             /**
              * @param cancellable 
              * @param callback 
              * @virtual
              */
-            vfunc_list_branches_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_branches_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result a {@link Gio.AsyncResult}
@@ -60706,7 +60527,7 @@ export namespace Ide {
              * @param callback a callback for the operation
              * @virtual
              */
-            vfunc_list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Completes an asynchronous request to `ide_vcs_list_status_async()`.
@@ -60716,14 +60537,14 @@ export namespace Ide {
              * @param result a {@link Gio.AsyncResult} provided to the callback
              * @virtual
              */
-            vfunc_list_status_finish(result: Gio.AsyncResult): (Gio.ListModel | null);
+            vfunc_list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
             /**
              * @param cancellable 
              * @param callback 
              * @virtual
              */
-            vfunc_list_tags_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_tags_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result a {@link Gio.AsyncResult}
@@ -60737,7 +60558,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -60757,7 +60578,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -60826,7 +60647,7 @@ export namespace Ide {
          * support access to configuration, then `null` is returned.
          * @returns An {@link Ide.VcsConfig} or `null`.
          */
-        get_config(): (VcsConfig | null);
+        get_config(): VcsConfig | null;
 
         /**
          * Gets the display name for the VCS.
@@ -60856,24 +60677,24 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
          */
-        is_ignored(file: (Gio.File | null)): boolean;
+        is_ignored(file: Gio.File | null): boolean;
 
         /**
          * @param cancellable 
          */
-        list_branches_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<VcsBranch[]>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        list_branches_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_branches_async(cancellable: Gio.Cancellable | null): globalThis.Promise<VcsBranch[]>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_branches_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<VcsBranch[]> | void);
+        list_branches_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        list_branches_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<VcsBranch[]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -60894,7 +60715,7 @@ export namespace Ide {
          * @param io_priority a priority for the IO, such as `G_PRIORITY_DEFAULT`.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Gio.ListModel | null)>;
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel | null>;
 
         /**
          * Retrieves the status of the files matching the request. If
@@ -60910,7 +60731,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback for the operation
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Retrieves the status of the files matching the request. If
@@ -60926,7 +60747,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback for the operation
          */
-        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Gio.ListModel | null)> | void);
+        list_status_async(directory_or_file: Gio.File, include_descendants: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel | null> | void;
 
         /**
          * Completes an asynchronous request to `ide_vcs_list_status_async()`.
@@ -60936,24 +60757,24 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns A {@link Gio.ListModel} containing an {@link Ide.VcsFileInfo} for each of the files scanned   by the {@link Ide.Vcs}. Upon failure, `null` is returned and `error` is set.
          */
-        list_status_finish(result: Gio.AsyncResult): (Gio.ListModel | null);
+        list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
         /**
          * @param cancellable 
          */
-        list_tags_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<VcsBranch[]>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        list_tags_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_tags_async(cancellable: Gio.Cancellable | null): globalThis.Promise<VcsBranch[]>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        list_tags_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<VcsBranch[]> | void);
+        list_tags_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        list_tags_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<VcsBranch[]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -60974,27 +60795,27 @@ export namespace Ide {
          * @param path The path to check
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
          */
-        path_is_ignored(path: (string | null)): boolean;
+        path_is_ignored(path: string | null): boolean;
 
         /**
          * @param branch 
          * @param cancellable 
          */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param branch 
-         * @param cancellable 
-         * @param callback 
-         */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        push_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param branch 
+         * @param cancellable 
+         * @param callback 
+         */
+        push_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61011,21 +60832,21 @@ export namespace Ide {
          * @param branch 
          * @param cancellable 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param branch 
          * @param cancellable 
          * @param callback 
          */
-        switch_branch_async(branch: VcsBranch, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        switch_branch_async(branch: VcsBranch, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61106,7 +60927,7 @@ export namespace Ide {
              * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
              * @virtual
              */
-            vfunc_clone_async(uri: string, destination: string, options: GLib.Variant, progress: (Notification | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_clone_async(uri: string, destination: string, options: GLib.Variant, progress: Notification | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result a {@link Gio.AsyncResult} provided to callback
@@ -61138,7 +60959,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_list_branches_async(uri: VcsUri, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_list_branches_async(uri: VcsUri, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -61164,9 +60985,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface VcsClonerNamespace {
@@ -61181,7 +61000,7 @@ export namespace Ide {
         * @param notif 
         * @param cancellable 
         */
-        clone_simple(context: Context, module_name: string, url: string, branch: string, destination: string, notif: Notification, cancellable: (Gio.Cancellable | null)): boolean;
+        clone_simple(context: Context, module_name: string, url: string, branch: string, destination: string, notif: Notification, cancellable: Gio.Cancellable | null): boolean;
     }
     /**
      * @gir-type Interface
@@ -61196,7 +61015,7 @@ export namespace Ide {
          * @param progress a location for an {@link Ide.Notification}, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          */
-        clone_async(uri: string, destination: string, options: GLib.Variant, progress: (Notification | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        clone_async(uri: string, destination: string, options: GLib.Variant, progress: Notification | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param uri a string containing the URI
@@ -61206,7 +61025,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        clone_async(uri: string, destination: string, options: GLib.Variant, progress: (Notification | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        clone_async(uri: string, destination: string, options: GLib.Variant, progress: Notification | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri a string containing the URI
@@ -61216,7 +61035,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        clone_async(uri: string, destination: string, options: GLib.Variant, progress: (Notification | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        clone_async(uri: string, destination: string, options: GLib.Variant, progress: Notification | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
@@ -61246,21 +61065,21 @@ export namespace Ide {
          * @param uri 
          * @param cancellable 
          */
-        list_branches_async(uri: VcsUri, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        list_branches_async(uri: VcsUri, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param callback 
          */
-        list_branches_async(uri: VcsUri, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_branches_async(uri: VcsUri, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param callback 
          */
-        list_branches_async(uri: VcsUri, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        list_branches_async(uri: VcsUri, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * @param result 
@@ -61313,9 +61132,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface VcsConfigNamespace {
@@ -61332,13 +61149,13 @@ export namespace Ide {
          * @param type 
          * @param value 
          */
-        get_config(type: VcsConfigType, value: (GObject.Value | any)): void;
+        get_config(type: VcsConfigType, value: GObject.Value | any): void;
 
         /**
          * @param type 
          * @param value 
          */
-        set_config(type: VcsConfigType, value: (GObject.Value | any)): void;
+        set_config(type: VcsConfigType, value: GObject.Value | any): void;
     }
 
 
@@ -61365,7 +61182,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_initialize_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -61376,9 +61193,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface VcsInitializerNamespace {
@@ -61397,21 +61212,21 @@ export namespace Ide {
          * @param file 
          * @param cancellable 
          */
-        initialize_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        initialize_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        initialize_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        initialize_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61505,7 +61320,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_load_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_load_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -61524,7 +61339,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -61555,7 +61370,7 @@ export namespace Ide {
              * returned with it's reference count incremented.
              * @virtual
              */
-            vfunc_ref_action_group(): (Gio.ActionGroup | null);
+            vfunc_ref_action_group(): Gio.ActionGroup | null;
 
             /**
              * Requests that the workbench restore any session state that was saved
@@ -61589,7 +61404,7 @@ export namespace Ide {
              * @param callback 
              * @virtual
              */
-            vfunc_unload_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_unload_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -61607,7 +61422,7 @@ export namespace Ide {
              * @param vcs an {@link Ide.Vcs}
              * @virtual
              */
-            vfunc_vcs_changed(vcs: (Vcs | null)): void;
+            vfunc_vcs_changed(vcs: Vcs | null): void;
 
             /**
              * @param workspace 
@@ -61624,9 +61439,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WorkbenchAddinNamespace {
@@ -61655,21 +61468,21 @@ export namespace Ide {
          * @param project_info 
          * @param cancellable 
          */
-        load_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param project_info 
          * @param cancellable 
          * @param callback 
          */
-        load_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param project_info 
          * @param cancellable 
          * @param callback 
          */
-        load_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61685,7 +61498,7 @@ export namespace Ide {
          * @param position 
          * @param cancellable 
          */
-        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
@@ -61697,7 +61510,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
@@ -61709,7 +61522,7 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_async(file: Gio.File, content_type: string, at_line: number, at_line_offset: number, flags: BufferOpenFlags, position: Panel.Position, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61738,7 +61551,7 @@ export namespace Ide {
          * returned with it's reference count incremented.
          * @returns a {@link Gio.ActionGroup} or `null`
          */
-        ref_action_group(): (Gio.ActionGroup | null);
+        ref_action_group(): Gio.ActionGroup | null;
 
         /**
          * Requests that the workbench restore any session state that was saved
@@ -61767,21 +61580,21 @@ export namespace Ide {
          * @param project_info 
          * @param cancellable 
          */
-        unload_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        unload_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param project_info 
          * @param cancellable 
          * @param callback 
          */
-        unload_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unload_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param project_info 
          * @param cancellable 
          * @param callback 
          */
-        unload_project_async(project_info: ProjectInfo, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unload_project_async(project_info: ProjectInfo, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -61797,7 +61610,7 @@ export namespace Ide {
          * changing branches, or tracking commits.
          * @param vcs an {@link Ide.Vcs}
          */
-        vcs_changed(vcs: (Vcs | null)): void;
+        vcs_changed(vcs: Vcs | null): void;
 
         /**
          * @param workspace 
@@ -61839,7 +61652,7 @@ export namespace Ide {
              * @param page an {@link Ide.Page} or `null`
              * @virtual
              */
-            vfunc_page_changed(page: (Page | null)): void;
+            vfunc_page_changed(page: Page | null): void;
 
             /**
              * Gets the action group for the workspace addin. This is automatically
@@ -61847,7 +61660,7 @@ export namespace Ide {
              * "module-name" is the value of "Module=" in the plugin's manifest.
              * @virtual
              */
-            vfunc_ref_action_group(): (Gio.ActionGroup | null);
+            vfunc_ref_action_group(): Gio.ActionGroup | null;
 
             /**
              * @param session 
@@ -61881,9 +61694,7 @@ export namespace Ide {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WorkspaceAddinNamespace {
@@ -61910,7 +61721,7 @@ export namespace Ide {
          * the workspace.
          * @param page an {@link Ide.Page} or `null`
          */
-        page_changed(page: (Page | null)): void;
+        page_changed(page: Page | null): void;
 
         /**
          * Gets the action group for the workspace addin. This is automatically
@@ -61918,7 +61729,7 @@ export namespace Ide {
          * "module-name" is the value of "Module=" in the plugin's manifest.
          * @returns a {@link Gio.ActionGroup} or `null`
          */
-        ref_action_group(): (Gio.ActionGroup | null);
+        ref_action_group(): Gio.ActionGroup | null;
 
         /**
          * @param session 
@@ -61948,7 +61759,7 @@ export namespace Ide {
     /**
      * @gir-type Alias
      */
-    type DebuggerAddress = (bigint | number);
+    type DebuggerAddress = bigint | number;
 
     /**
      * @gir-type Alias

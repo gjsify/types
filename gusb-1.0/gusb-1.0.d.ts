@@ -168,7 +168,7 @@ export namespace GUsb {
         static SOURCE_ERROR_INTERNAL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -234,13 +234,10 @@ export namespace GUsb {
 
     namespace BosDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -582,7 +579,7 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -626,7 +623,7 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -733,7 +730,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          */
-        bulk_transfer(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): [boolean, number];
+        bulk_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Do an async bulk transfer
@@ -742,17 +739,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        bulk_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Do an async bulk transfer
-         * @param endpoint the address of a valid endpoint to communicate with
-         * @param data a suitably-sized data buffer for either input or output
-         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the function to run on completion
-         */
-        bulk_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Do an async bulk transfer
@@ -762,7 +749,17 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        bulk_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Do an async bulk transfer
+         * @param endpoint the address of a valid endpoint to communicate with
+         * @param data a suitably-sized data buffer for either input or output
+         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the function to run on completion
+         */
+        bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -805,7 +802,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          */
-        control_transfer(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): [boolean, number];
+        control_transfer(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Do an async control transfer
@@ -819,22 +816,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Do an async control transfer
-         * @param direction 
-         * @param request_type 
-         * @param recipient 
-         * @param request 
-         * @param value 
-         * @param idx 
-         * @param data a suitably-sized data buffer for either input or output
-         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the function to run on completion
-         */
-        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Do an async control transfer
@@ -849,7 +831,22 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Do an async control transfer
+         * @param direction 
+         * @param request_type 
+         * @param recipient 
+         * @param request 
+         * @param value 
+         * @param idx 
+         * @param data a suitably-sized data buffer for either input or output
+         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the function to run on completion
+         */
+        control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -1087,7 +1084,7 @@ export namespace GUsb {
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
          */
-        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: (bigint | number)): GLib.Bytes;
+        get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
 
         /**
          * Gets all the tags.
@@ -1124,7 +1121,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          */
-        interrupt_transfer(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): [boolean, number];
+        interrupt_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Do an async interrupt transfer
@@ -1133,17 +1130,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        interrupt_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Do an async interrupt transfer
-         * @param endpoint the address of a valid endpoint to communicate with
-         * @param data a suitably-sized data buffer for either input or output
-         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the function to run on completion
-         */
-        interrupt_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Do an async interrupt transfer
@@ -1153,7 +1140,17 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        interrupt_transfer_async(endpoint: number, data: (Uint8Array | string), timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Do an async interrupt transfer
+         * @param endpoint the address of a valid endpoint to communicate with
+         * @param data a suitably-sized data buffer for either input or output
+         * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the function to run on completion
+         */
+        interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -1266,7 +1263,7 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1310,19 +1307,16 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace DeviceEvent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1387,7 +1381,7 @@ export namespace GUsb {
          * Set the bytes data to the event.
          * @param bytes a {@link GLib.Bytes}
          */
-        set_bytes(bytes: (GLib.Bytes | Uint8Array)): void;
+        set_bytes(bytes: GLib.Bytes | Uint8Array): void;
     }
 
 
@@ -1500,13 +1494,10 @@ export namespace GUsb {
 
     namespace Endpoint {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1601,13 +1592,10 @@ export namespace GUsb {
 
     namespace Interface {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

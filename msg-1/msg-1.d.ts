@@ -64,7 +64,7 @@ export namespace Msg {
         static PROTOCOL_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -117,13 +117,10 @@ export namespace Msg {
 
     namespace Drive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -219,13 +216,10 @@ export namespace Msg {
 
     namespace DriveItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -356,13 +350,10 @@ export namespace Msg {
 
     namespace DriveItemFile {
         // Signal signatures
-        interface SignalSignatures extends DriveItem.SignalSignatures {
-        }
+        interface SignalSignatures extends DriveItem.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DriveItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DriveItem.ConstructorProps {}
     }
 
     /**
@@ -419,13 +410,10 @@ export namespace Msg {
 
     namespace DriveItemFolder {
         // Signal signatures
-        interface SignalSignatures extends DriveItem.SignalSignatures {
-        }
+        interface SignalSignatures extends DriveItem.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DriveItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DriveItem.ConstructorProps {}
     }
 
     /**
@@ -474,9 +462,7 @@ export namespace Msg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps {}
     }
 
     /**
@@ -522,7 +508,7 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a new drive item
          */
-        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem;
+        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
 
         /**
          * Copy a file async on remote server to a new directory.
@@ -531,7 +517,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if accepted, `false` on error
          */
-        copy_file(file: DriveItem, destination: DriveItem, cancellable: (Gio.Cancellable | null)): boolean;
+        copy_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Creates a new folder called name under parent.
@@ -540,7 +526,7 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a newly created {@link Msg.DriveItem}
          */
-        create_folder(parent: DriveItem, name: string, cancellable: (Gio.Cancellable | null)): DriveItem;
+        create_folder(parent: DriveItem, name: string, cancellable: Gio.Cancellable | null): DriveItem;
 
         /**
          * Deletes item.
@@ -548,7 +534,7 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns `true` when item has been deleted, otherwise `false`
          */
-        ["delete"](item: DriveItem, cancellable: (Gio.Cancellable | null)): boolean;
+        ["delete"](item: DriveItem, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Download item
@@ -556,7 +542,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns input stream of drive item
          */
-        download_item(item: DriveItem, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        download_item(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * Download url
@@ -564,14 +550,14 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream} for url
          */
-        download_url(url: string, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        download_url(url: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * Queries the Microsoft Graph API for all the drives of the currently logged in user
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all drives the user can access
          */
-        get_drives(cancellable: (Gio.Cancellable | null)): Drive[];
+        get_drives(cancellable: Gio.Cancellable | null): Drive[];
 
         /**
          * Get root item of selected drive
@@ -579,14 +565,14 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns root 'MsgDriveItem'
          */
-        get_root(drive: Drive, cancellable: (Gio.Cancellable | null)): DriveItem;
+        get_root(drive: Drive, cancellable: Gio.Cancellable | null): DriveItem;
 
         /**
          * Requests all shared with me items
          * @param cancellable a {@link Gio.Cancellable}
          * @returns shared with me list
          */
-        get_shared_with_me(cancellable: (Gio.Cancellable | null)): DriveItem[];
+        get_shared_with_me(cancellable: Gio.Cancellable | null): DriveItem[];
 
         /**
          * Get a list of all files in folder item
@@ -594,7 +580,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all items in folder
          */
-        list_children(item: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem[];
+        list_children(item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem[];
 
         /**
          * Move a file async on remote server to a new directory.
@@ -603,7 +589,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns moved {@link Msg.DriveItem}
          */
-        move_file(file: DriveItem, destination: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem;
+        move_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
 
         /**
          * Sets a new drive item name
@@ -612,7 +598,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the renamed {@link Msg.DriveItem}
          */
-        rename(item: DriveItem, new_name: string, cancellable: (Gio.Cancellable | null)): DriveItem;
+        rename(item: DriveItem, new_name: string, cancellable: Gio.Cancellable | null): DriveItem;
 
         /**
          * Creates an update stream for drive item in order to update it's content.
@@ -620,7 +606,7 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns an output stream
          */
-        update(item: DriveItem, cancellable: (Gio.Cancellable | null)): Gio.OutputStream;
+        update(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.OutputStream;
 
         /**
          * Finish a update session of given #item.
@@ -629,7 +615,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.DriveItem} or `null` on error.
          */
-        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): DriveItem;
+        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): DriveItem;
     }
 
 
@@ -719,7 +705,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -740,19 +726,16 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace InputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -803,7 +786,7 @@ export namespace Msg {
          * @param cancellable 
          * @param callback 
          */
-        static send_async(stream: Gio.InputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<InputStream> | null)): void;
+        static send_async(stream: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<InputStream> | null): void;
 
         /**
          * @param stream 
@@ -844,7 +827,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -866,7 +849,7 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -901,13 +884,13 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -923,19 +906,16 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace MailFolder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1049,13 +1029,10 @@ export namespace Msg {
 
     namespace MailMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1191,7 +1168,7 @@ export namespace Msg {
          * Set mail received timestamp.
          * @param timestamp received timestamp
          */
-        set_received_date(timestamp: (bigint | number)): void;
+        set_received_date(timestamp: bigint | number): void;
 
         /**
          * Set mail receiver.
@@ -1226,9 +1203,7 @@ export namespace Msg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps {}
     }
 
     /**
@@ -1273,7 +1248,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new `MsgMail`
          */
-        create_draft_message(mail: MailMessage, cancellable: (Gio.Cancellable | null)): MailMessage;
+        create_draft_message(mail: MailMessage, cancellable: Gio.Cancellable | null): MailMessage;
 
         /**
          * Delets #mail.
@@ -1281,13 +1256,13 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else &FALSE
          */
-        delete_message(mail: MailMessage, cancellable: (Gio.Cancellable | null)): boolean;
+        delete_message(mail: MailMessage, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param type 
          * @param cancellable 
          */
-        get_folder_id(type: MailFolderType, cancellable: (Gio.Cancellable | null)): string;
+        get_folder_id(type: MailFolderType, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Get a specific mail folder for given service
@@ -1295,7 +1270,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Msg.MailFolder}
          */
-        get_mail_folder(type: MailFolderType, cancellable: (Gio.Cancellable | null)): MailFolder;
+        get_mail_folder(type: MailFolderType, cancellable: Gio.Cancellable | null): MailFolder;
 
         /**
          * Get all folders for given service
@@ -1304,7 +1279,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all mail folders the user can access
          */
-        get_mail_folders(delta_url: string, delta_url_out: string, cancellable: (Gio.Cancellable | null)): MailFolder[];
+        get_mail_folders(delta_url: string, delta_url_out: string, cancellable: Gio.Cancellable | null): MailFolder[];
 
         /**
          * Get all mails for given service
@@ -1317,13 +1292,13 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all mails the user can access
          */
-        get_messages(folder: MailFolder, next_link: string, out_next_link: string, delta_link: string, out_delta_link: string, max_page_size: number, cancellable: (Gio.Cancellable | null)): MailMessage[];
+        get_messages(folder: MailFolder, next_link: string, out_next_link: string, delta_link: string, out_delta_link: string, max_page_size: number, cancellable: Gio.Cancellable | null): MailMessage[];
 
         /**
          * @param mail 
          * @param cancellable 
          */
-        get_mime_message(mail: MailMessage, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        get_mime_message(mail: MailMessage, cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
 
 
@@ -1436,7 +1411,7 @@ export namespace Msg {
          * @param authorization_code 
          * @param cancellable 
          */
-        request_authorization(authorization_code: string, cancellable: (Gio.Cancellable | null)): boolean;
+        request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -1456,7 +1431,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -1477,7 +1452,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1560,7 +1535,7 @@ export namespace Msg {
          * @param bytes input bytes containing response buffer
          * @param object a pointer to the returning root object
          */
-        static parse_response(bytes: (GLib.Bytes | Uint8Array), object: Json.Object): Json.Parser;
+        static parse_response(bytes: GLib.Bytes | Uint8Array, object: Json.Object): Json.Parser;
 
         // Methods
         /**
@@ -1588,7 +1563,7 @@ export namespace Msg {
         /**
          * @param cancellable 
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds authorizer information to `message` and send it.
@@ -1596,7 +1571,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream}
          */
-        send(message: Soup.Message, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        send(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * A combination of `msg_service_send_and_read` and `msg_service_parse_response`
@@ -1605,7 +1580,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Json.Parser} or `null` on error
          */
-        send_and_parse_response(message: Soup.Message, object: Json.Object, cancellable: (Gio.Cancellable | null)): Json.Parser;
+        send_and_parse_response(message: Soup.Message, object: Json.Object, cancellable: Gio.Cancellable | null): Json.Parser;
 
         /**
          * Adds authorizer information to `message` and send it.
@@ -1613,19 +1588,16 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} or `null` on error.
          */
-        send_and_read(message: Soup.Message, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        send_and_read(message: Soup.Message, cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
 
 
     namespace User {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1713,13 +1685,10 @@ export namespace Msg {
 
     namespace UserContactFolder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1780,9 +1749,7 @@ export namespace Msg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps {}
     }
 
     /**
@@ -1827,21 +1794,21 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a list of contacts with the given name.
          */
-        find_users(name: string, cancellable: (Gio.Cancellable | null)): User[];
+        find_users(name: string, cancellable: Gio.Cancellable | null): User[];
 
         /**
          * Get all folders for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all user contact folders the user can access
          */
-        get_contact_folders(cancellable: (Gio.Cancellable | null)): UserContactFolder[];
+        get_contact_folders(cancellable: Gio.Cancellable | null): UserContactFolder[];
 
         /**
          * Get all contats within users 'Contact' folder.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all contact in users contact folder
          */
-        get_contacts(cancellable: (Gio.Cancellable | null)): UserContactFolder[];
+        get_contacts(cancellable: Gio.Cancellable | null): UserContactFolder[];
 
         /**
          * Try to load user photo using provided %mail address.
@@ -1849,7 +1816,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns user photo or `null` if not found.
          */
-        get_photo(mail: string, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        get_photo(mail: string, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
         /**
          * Get user information
@@ -1857,7 +1824,7 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns request user
          */
-        get_user(name: string, cancellable: (Gio.Cancellable | null)): User;
+        get_user(name: string, cancellable: Gio.Cancellable | null): User;
     }
 
 
@@ -2014,14 +1981,12 @@ export namespace Msg {
              * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AuthorizerNamespace {
@@ -2052,7 +2017,7 @@ export namespace Msg {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

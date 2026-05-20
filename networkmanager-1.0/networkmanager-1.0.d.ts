@@ -125,7 +125,7 @@ export namespace NetworkManager {
         static INVALIDSETTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -692,7 +692,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -726,7 +726,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -767,7 +767,7 @@ export namespace NetworkManager {
         static TYPESETTINGNOTFOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -811,7 +811,7 @@ export namespace NetworkManager {
         static MISSINGOPTION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -845,7 +845,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -879,7 +879,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -919,7 +919,7 @@ export namespace NetworkManager {
         static MISSINGSERIALSETTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1035,7 +1035,7 @@ export namespace NetworkManager {
         static IPCONFIGNOTALLOWED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1069,7 +1069,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1182,7 +1182,7 @@ export namespace NetworkManager {
         static PROPERTYTYPEMISMATCH: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1216,7 +1216,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1256,7 +1256,7 @@ export namespace NetworkManager {
         static MISSINGSERIALSETTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1452,7 +1452,7 @@ export namespace NetworkManager {
         static NOTALLOWEDFORMETHOD: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1492,7 +1492,7 @@ export namespace NetworkManager {
         static NOTALLOWEDFORMETHOD: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1560,7 +1560,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1594,7 +1594,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1631,7 +1631,7 @@ export namespace NetworkManager {
         static REQUIREMPPENOTALLOWED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1671,7 +1671,7 @@ export namespace NetworkManager {
         static MISSINGPPPSETTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1751,7 +1751,7 @@ export namespace NetworkManager {
         static MISSINGPPPSETTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1785,7 +1785,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1819,7 +1819,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1859,7 +1859,7 @@ export namespace NetworkManager {
         static INVALIDPARENT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1893,7 +1893,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1927,7 +1927,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1961,7 +1961,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -2007,7 +2007,7 @@ export namespace NetworkManager {
         static CHANNELREQUIRESBAND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -2066,7 +2066,7 @@ export namespace NetworkManager {
         static SHAREDKEYREQUIRESWEP: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -3518,14 +3518,14 @@ export namespace NetworkManager {
      * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
      * @returns the full path to the helper, if found, or `null` if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
      */
-    function utils_file_search_in_paths(progname: string, try_first: (string | null), paths: (string | null), file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
+    function utils_file_search_in_paths(progname: string, try_first: string | null, paths: string | null, file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
 
     /**
      * Utility function to duplicate a hash table of `GValues`.
      * @param hash a {@link GLib.HashTable} mapping string:GValue
      * @returns a newly allocated duplicated {@link GLib.HashTable}, caller must free the returned hash with `g_hash_table_unref()` or `g_hash_table_destroy()`
      */
-    function utils_gvalue_hash_dup(hash: ({ [key: string]: any } | GLib.HashTable<never, never>)): GLib.HashTable<string, GObject.Value>;
+    function utils_gvalue_hash_dup(hash: { [key: string]: any } | GLib.HashTable<never, never>): GLib.HashTable<string, GObject.Value>;
 
     /**
      * Converts a hex string (2 characters) into its byte representation.
@@ -3543,7 +3543,7 @@ export namespace NetworkManager {
      * @returns a array of bytes, or `null` on error
      * @since 0.9.10
      */
-    function utils_hexstr2bin(hex: string, len: (bigint | number)): string;
+    function utils_hexstr2bin(hex: string, len: bigint | number): string;
 
     /**
      * Parses `asc` and converts it to binary form in a {@link GLib.ByteArray}. See
@@ -3577,7 +3577,7 @@ export namespace NetworkManager {
      * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
      * @since 0.9.10
      */
-    function utils_hwaddr_aton_len(asc: string, buffer: null, length: (bigint | number)): number;
+    function utils_hwaddr_aton_len(asc: string, buffer: null, length: bigint | number): number;
 
     /**
      * Returns the length in octets of a hardware address of type `type`.
@@ -3604,7 +3604,7 @@ export namespace NetworkManager {
      * @returns the textual form of `addr`
      * @since 0.9.10
      */
-    function utils_hwaddr_ntoa_len(addr: null, length: (bigint | number)): string;
+    function utils_hwaddr_ntoa_len(addr: null, length: bigint | number): string;
 
     /**
      * Returns the type (either <literal>ARPHRD_ETHER</literal> or
@@ -3648,7 +3648,7 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Address} objects
      */
-    function utils_ip4_addresses_from_gvalue(value: (GObject.Value | any)): IP4Address[];
+    function utils_ip4_addresses_from_gvalue(value: GObject.Value | any): IP4Address[];
 
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Address} objects into a
@@ -3659,7 +3659,7 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP4Address} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: (GObject.Value | any)): void;
+    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: GObject.Value | any): void;
 
     /**
      * When the Internet was originally set up, various ranges of IP addresses were
@@ -3692,7 +3692,7 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Route} objects
      */
-    function utils_ip4_routes_from_gvalue(value: (GObject.Value | any)): IP4Route[];
+    function utils_ip4_routes_from_gvalue(value: GObject.Value | any): IP4Route[];
 
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Route} objects into a
@@ -3703,7 +3703,7 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP4Route} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: (GObject.Value | any)): void;
+    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: GObject.Value | any): void;
 
     /**
      * Utility function to convert a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of guchars) and `guint32`
@@ -3714,7 +3714,7 @@ export namespace NetworkManager {
      * @param value gvalue containing a GPtrArray of GValueArrays of (GArray of guchars) and `guint32`
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Address} objects
      */
-    function utils_ip6_addresses_from_gvalue(value: (GObject.Value | any)): IP6Address[];
+    function utils_ip6_addresses_from_gvalue(value: GObject.Value | any): IP6Address[];
 
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Address} objects into a
@@ -3725,7 +3725,7 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP6Address} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: (GObject.Value | any)): void;
+    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: GObject.Value | any): void;
 
     /**
      * Utility function {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`,
@@ -3736,7 +3736,7 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`, ({@link GLib.Array} of #guchars), and `guint32`
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Route} objects
      */
-    function utils_ip6_routes_from_gvalue(value: (GObject.Value | any)): IP6Route[];
+    function utils_ip6_routes_from_gvalue(value: GObject.Value | any): IP6Route[];
 
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Route} objects into a {@link GLib.PtrArray} of
@@ -3747,7 +3747,7 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP6Route} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: (GObject.Value | any)): void;
+    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: GObject.Value | any): void;
 
     /**
      * Different manufacturers use different mechanisms for not broadcasting the
@@ -3775,7 +3775,7 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt(data: (Uint8Array | string), in_password: (string | null)): [Uint8Array, string];
+    function utils_rsa_key_encrypt(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
 
     /**
      * Encrypts the given RSA private key data with the given password (or generates
@@ -3785,7 +3785,7 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt_aes(data: (Uint8Array | string), in_password: (string | null)): [Uint8Array, string];
+    function utils_rsa_key_encrypt_aes(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
 
     /**
      * Earlier versions of the Linux kernel added a NULL byte to the end of the
@@ -3799,7 +3799,7 @@ export namespace NetworkManager {
      * @param ignore_trailing_null `true` to ignore one trailing NULL byte
      * @returns `true` if the SSIDs are the same, `false` if they are not
      */
-    function utils_same_ssid(ssid1: (Uint8Array | string), ssid2: (Uint8Array | string), ignore_trailing_null: boolean): boolean;
+    function utils_same_ssid(ssid1: Uint8Array | string, ssid2: Uint8Array | string, ignore_trailing_null: boolean): boolean;
 
     /**
      * Given a set of device capabilities, and a desired security type to check
@@ -3845,7 +3845,7 @@ export namespace NetworkManager {
      * @param ssid a byte array containing the SSID data
      * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using `g_free()`. Returns `null` on errors.
      */
-    function utils_ssid_to_utf8(ssid: (Uint8Array | string)): string;
+    function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
 
     /**
      * @returns a newly allocated UUID suitable for use as the {@link NetworkManager.SettingConnection} object's {@link NetworkManager.SettingConnection.id}: property.  Should be freed with `g_free()`
@@ -4216,7 +4216,7 @@ export namespace NetworkManager {
 
         static ["new"](): Connection;
 
-        static new_from_hash(hash: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): Connection;
+        static new_from_hash(hash: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): Connection;
 
         // Signals
         /** @signal */
@@ -4301,7 +4301,7 @@ export namespace NetworkManager {
          * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
          * @returns `true` if the connections contain the same values, `false` if they do not
          */
-        diff(b: Connection, flags: SettingCompareFlags, out_settings: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): boolean;
+        diff(b: Connection, flags: SettingCompareFlags, out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
 
         /**
          * Print the connection to stdout.  For debugging purposes ONLY, should NOT
@@ -4578,7 +4578,7 @@ export namespace NetworkManager {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
+        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
 
         /**
          * Removes the {@link NetworkManager.Setting} with the given {@link GObject.GType} from the {@link NetworkManager.Connection}.  This
@@ -4591,7 +4591,7 @@ export namespace NetworkManager {
          * @param new_settings a {@link GLib.HashTable} of settings
          * @returns `true` if the settings were valid and added to the connection, `false` if they were not
          */
-        replace_settings(new_settings: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): boolean;
+        replace_settings(new_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
 
         /**
          * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
@@ -4632,7 +4632,7 @@ export namespace NetworkManager {
          * @param secrets a {@link GLib.HashTable} mapping string:{@link GObject.Value} of setting property names and secrets of the given `setting_name`
          * @returns `true` if the secrets were successfully updated, `false` if the update failed (tried to update secrets for a setting that doesn't exist, etc)
          */
-        update_secrets(setting_name: string, secrets: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): boolean;
+        update_secrets(setting_name: string, secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
 
         /**
          * Validates the connection and all its settings.  Each setting's properties
@@ -4693,7 +4693,7 @@ export namespace NetworkManager {
 
         _init(...args: any[]): void;
 
-        static new_from_hash(setting_type: GObject.GType, hash: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Setting;
+        static new_from_hash(setting_type: GObject.GType, hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Setting;
 
         // Signals
         /** @signal */
@@ -4792,7 +4792,7 @@ export namespace NetworkManager {
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
          * @returns `true` if the settings contain the same values, `false` if they do not
          */
-        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: ({ [key: string]: any } | GLib.HashTable<string, number>)): [boolean, GLib.HashTable<string, number>];
+        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: any } | GLib.HashTable<string, number>): [boolean, GLib.HashTable<string, number>];
 
         /**
          * Duplicates a {@link NetworkManager.Setting}.
@@ -4870,7 +4870,7 @@ export namespace NetworkManager {
          * @param secrets a {@link GLib.HashTable} mapping string to {@link GObject.Value} of setting property names and secrets
          * @returns `true` if the secrets were successfully updated, `false` on failure to update one or more of the secrets.
          */
-        update_secrets(secrets: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): boolean;
+        update_secrets(secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
 
         /**
          * Validates the setting.  Each setting's properties have allowed values, and
@@ -6722,7 +6722,7 @@ export namespace NetworkManager {
             readOnly: boolean;
             slave_type: string;
             slaveType: string;
-            timestamp: (bigint | number);
+            timestamp: bigint | number;
             type: string;
             uuid: string;
             zone: string;
@@ -6852,7 +6852,7 @@ export namespace NetworkManager {
          * property will not be preserved).
          */
         get timestamp(): number;
-        set timestamp(val: (bigint | number));
+        set timestamp(val: bigint | number);
 
         /**
          * Base type of the connection. For hardware-dependent connections, should
@@ -6929,7 +6929,7 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid or it the permission was already present in the list
          */
-        add_permission(ptype: string, pitem: string, detail: (string | null)): boolean;
+        add_permission(ptype: string, pitem: string, detail: string | null): boolean;
 
         /**
          * Adds a new secondary connection UUID to the setting.
@@ -7060,7 +7060,7 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
          */
-        remove_permission_by_value(ptype: string, pitem: string, detail: (string | null)): boolean;
+        remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
 
         /**
          * Removes the secondary coonnection UUID at index `idx`.
@@ -7448,9 +7448,7 @@ export namespace NetworkManager {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Setting.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Setting.ConstructorProps {}
     }
 
     /**
@@ -7809,8 +7807,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: (bigint | number);
-            routeMetric: (bigint | number);
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
         }
     }
 
@@ -7984,7 +7982,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: (bigint | number));
+        set route_metric(val: bigint | number);
 
         /**
          * The default metric for routes that don't explicitly specify a metric.
@@ -7998,7 +7996,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: (bigint | number));
+        set routeMetric(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -8275,8 +8273,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: (bigint | number);
-            routeMetric: (bigint | number);
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
         }
     }
 
@@ -8428,7 +8426,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: (bigint | number));
+        set route_metric(val: bigint | number);
 
         /**
          * The default metric for routes that don't explicitly specify a metric.
@@ -8442,7 +8440,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: (bigint | number));
+        set routeMetric(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -9402,8 +9400,8 @@ export namespace NetworkManager {
             baud: number;
             bits: number;
             parity: number;
-            send_delay: (bigint | number);
-            sendDelay: (bigint | number);
+            send_delay: bigint | number;
+            sendDelay: bigint | number;
             stopbits: number;
         }
     }
@@ -9440,13 +9438,13 @@ export namespace NetworkManager {
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get send_delay(): number;
-        set send_delay(val: (bigint | number));
+        set send_delay(val: bigint | number);
 
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get sendDelay(): number;
-        set sendDelay(val: (bigint | number));
+        set sendDelay(val: bigint | number);
 
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
@@ -11235,10 +11233,7 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<IP4Address>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): IP4Address;
 
@@ -11313,10 +11308,7 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<IP4Route>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): IP4Route;
 
@@ -11404,10 +11396,7 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<IP6Address>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): IP6Address;
 
@@ -11481,10 +11470,7 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<IP6Route>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): IP6Route;
 

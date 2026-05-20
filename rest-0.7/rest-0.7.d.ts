@@ -84,7 +84,7 @@ export namespace Rest {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -290,7 +290,7 @@ export namespace Rest {
         static HTTP_HTTP_VERSION_NOT_SUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -475,7 +475,7 @@ export namespace Rest {
          * @param extra_params any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
          * @returns a newly allocated uri string
          */
-        build_login_url_full(redirect_uri: string, extra_params: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+        build_login_url_full(redirect_uri: string, extra_params: { [key: string]: any } | GLib.HashTable<never, never>): string;
 
         /**
          * Get the current request or access token.
@@ -498,9 +498,7 @@ export namespace Rest {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProxyCall.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProxyCall.ConstructorProps {}
     }
 
     /**
@@ -833,9 +831,7 @@ export namespace Rest {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProxyCall.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProxyCall.ConstructorProps {}
     }
 
     /**
@@ -902,7 +898,7 @@ export namespace Rest {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: ProxyAuth, arg1: boolean) => (boolean | void);
+            authenticate: (arg0: ProxyAuth, arg1: boolean) => boolean | void;
             "notify::binding-required": (pspec: GObject.ParamSpec) => void;
             "notify::disable-cookies": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -1108,13 +1104,10 @@ export namespace Rest {
 
     namespace ProxyAuth {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1314,21 +1307,21 @@ export namespace Rest {
          * A GIO-style version of `rest_proxy_call_async()`.
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          */
-        invoke_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        invoke_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * A GIO-style version of `rest_proxy_call_async()`.
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
-        invoke_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * A GIO-style version of `rest_proxy_call_async()`.
          * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
-        invoke_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        invoke_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result the result from the {@link Gio.AsyncReadyCallback}
@@ -1421,13 +1414,10 @@ export namespace Rest {
 
     namespace XmlParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1473,7 +1463,7 @@ export namespace Rest {
          * @param len the length of `data`, or -1 if `data` is a nul-terminated string
          * @returns a new {@link Rest.XmlNode}, or `null` if the XML was invalid.
          */
-        parse_from_data(data: string, len: (bigint | number)): XmlNode;
+        parse_from_data(data: string, len: bigint | number): XmlNode;
     }
 
 
@@ -1512,13 +1502,13 @@ export namespace Rest {
         static $gtype: GObject.GType<Param>;
 
         // Constructors
-        constructor(name: string, use: MemoryUse, data: (Uint8Array | string), content_type: string, filename: string);
+        constructor(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string);
 
-        static new_full(name: string, use: MemoryUse, data: (Uint8Array | string), content_type: string, filename: string): Param;
+        static new_full(name: string, use: MemoryUse, data: Uint8Array | string, content_type: string, filename: string): Param;
 
         static new_string(name: string, use: MemoryUse, string: string): Param;
 
-        static new_with_owner(name: string, data: (Uint8Array | string), content_type: string, filename: (string | null), owner: null): Param;
+        static new_with_owner(name: string, data: Uint8Array | string, content_type: string, filename: string | null, owner: null): Param;
 
         // Methods
         /**

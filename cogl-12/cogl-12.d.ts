@@ -489,7 +489,7 @@ export namespace Cogl {
         static SCANOUT_ERROR_INHIBITED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -1740,8 +1740,7 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -1803,8 +1802,7 @@ export namespace Cogl {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -1861,7 +1859,7 @@ export namespace Cogl {
          * @param key a {@link Cogl.PipelineKey} pointer
          * @param pipeline a {@link Cogl.Pipeline} to associate with the `context` and            `key`
          */
-        set_named_pipeline(key: PipelineKey, pipeline: (Pipeline | null)): void;
+        set_named_pipeline(key: PipelineKey, pipeline: Pipeline | null): void;
 
         /**
          * @param query 
@@ -1872,8 +1870,7 @@ export namespace Cogl {
 
     namespace FrameInfo {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -2073,7 +2070,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -2084,7 +2081,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -2105,7 +2102,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
@@ -2813,8 +2810,7 @@ export namespace Cogl {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2850,9 +2846,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Framebuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Framebuffer.ConstructorProps {}
     }
 
     /**
@@ -2901,9 +2895,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Framebuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Framebuffer.ConstructorProps {}
     }
 
     /**
@@ -3086,7 +3078,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenDirtyClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: (UserDataDestroyCallback | null)): OnscreenDirtyClosure;
+        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: UserDataDestroyCallback | null): OnscreenDirtyClosure;
 
         /**
          * Installs a `callback` function that will be called for significant
@@ -3116,7 +3108,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy: (UserDataDestroyCallback | null)): FrameClosure;
+        add_frame_callback(callback: FrameCallback, destroy: UserDataDestroyCallback | null): FrameClosure;
 
         /**
          * Gets the current age of the buffer contents.
@@ -3332,8 +3324,7 @@ export namespace Cogl {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4022,8 +4013,7 @@ export namespace Cogl {
 
     namespace Snippet {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4035,7 +4025,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](hook: SnippetHook, declarations: (string | null), post: (string | null)): Snippet;
+        static ["new"](hook: SnippetHook, declarations: string | null, post: string | null): Snippet;
 
         // Signals
         /** @signal */
@@ -4132,8 +4122,7 @@ export namespace Cogl {
 
     namespace Texture2D {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4204,7 +4193,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: (Uint8Array | null)): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
@@ -4324,7 +4313,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: (Uint8Array | string), level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
 
         /**
          * Affects the internal storage format for this texture by specifying
@@ -4370,7 +4359,7 @@ export namespace Cogl {
          * @param data the actual pixel data.
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
          */
-        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): boolean;
+        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): boolean;
 
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -4393,8 +4382,7 @@ export namespace Cogl {
 
     namespace Texture2DSliced {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4457,7 +4445,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: (Uint8Array | null)): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
@@ -4577,7 +4565,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: (Uint8Array | string), level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
 
         /**
          * Affects the internal storage format for this texture by specifying
@@ -4623,7 +4611,7 @@ export namespace Cogl {
          * @param data the actual pixel data.
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
          */
-        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): boolean;
+        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): boolean;
 
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -4654,10 +4642,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Color>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Color;
 
@@ -5175,7 +5160,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: (Uint8Array | null)): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
@@ -5295,7 +5280,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: (Uint8Array | string), level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
 
         /**
          * Affects the internal storage format for this texture by specifying
@@ -5341,7 +5326,7 @@ export namespace Cogl {
          * @param data the actual pixel data.
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
          */
-        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): boolean;
+        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): boolean;
 
         /**
          * Copies a specified source region from `bitmap` to the position

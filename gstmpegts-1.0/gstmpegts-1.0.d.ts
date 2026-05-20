@@ -1420,7 +1420,7 @@ export namespace GstMpegts {
      * @param data descriptor data (after tag and length field)
      * @returns {@link GstMpegts.Descriptor}
      */
-    function descriptor_from_custom(tag: number, data: (Uint8Array | string)): Descriptor;
+    function descriptor_from_custom(tag: number, data: Uint8Array | string): Descriptor;
 
     /**
      * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
@@ -1430,7 +1430,7 @@ export namespace GstMpegts {
      * @returns {@link GstMpegts.Descriptor}
      * @since 1.20
      */
-    function descriptor_from_custom_with_extension(tag: number, tag_extension: number, data: (Uint8Array | string)): Descriptor;
+    function descriptor_from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array | string): Descriptor;
 
     /**
      * Creates a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.NETWORK_NAME},
@@ -1450,7 +1450,7 @@ export namespace GstMpegts {
      * @param service_provider Name of the service provider
      * @returns the {@link GstMpegts.Descriptor} or `null` on fail
      */
-    function descriptor_from_dvb_service(service_type: DVBServiceType, service_name: (string | null), service_provider: (string | null)): Descriptor;
+    function descriptor_from_dvb_service(service_type: DVBServiceType, service_name: string | null, service_provider: string | null): Descriptor;
 
     /**
      * @param lang a string containing the ISO639 language
@@ -1474,7 +1474,7 @@ export namespace GstMpegts {
      * @param additional_info pointer to optional additional info
      * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
-    function descriptor_from_registration(format_identifier: string, additional_info: (Uint8Array | null)): Descriptor;
+    function descriptor_from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
 
     /**
      * @param source 
@@ -1562,7 +1562,7 @@ export namespace GstMpegts {
      * @param buf_len Size of `buffer`
      * @returns an array of the parsed descriptors or `null` if there was an error. Release with `g_array_unref` when done with it.
      */
-    function parse_descriptors(buffer: number, buf_len: (bigint | number)): Descriptor[];
+    function parse_descriptors(buffer: number, buf_len: bigint | number): Descriptor[];
 
     /**
      * Allocates a new {@link GLib.PtrArray} for {@link GstMpegts.PatProgram}. The array can be filled
@@ -2607,7 +2607,7 @@ export namespace GstMpegts {
          * @param tag descriptor tag
          * @param data descriptor data (after tag and length field)
          */
-        static from_custom(tag: number, data: (Uint8Array | string)): Descriptor;
+        static from_custom(tag: number, data: Uint8Array | string): Descriptor;
 
         /**
          * Creates a {@link GstMpegts.Descriptor} with custom `tag`, `tag_extension` and `data`
@@ -2615,7 +2615,7 @@ export namespace GstMpegts {
          * @param tag_extension descriptor tag extension
          * @param data descriptor data (after tag and length field)
          */
-        static from_custom_with_extension(tag: number, tag_extension: number, data: (Uint8Array | string)): Descriptor;
+        static from_custom_with_extension(tag: number, tag_extension: number, data: Uint8Array | string): Descriptor;
 
         /**
          * Creates a {@link GstMpegts.Descriptor} to be a {@link GstMpegts.DVBDescriptorType.NETWORK_NAME},
@@ -2633,7 +2633,7 @@ export namespace GstMpegts {
          * @param service_name Name of the service
          * @param service_provider Name of the service provider
          */
-        static from_dvb_service(service_type: DVBServiceType, service_name: (string | null), service_provider: (string | null)): Descriptor;
+        static from_dvb_service(service_type: DVBServiceType, service_name: string | null, service_provider: string | null): Descriptor;
 
         /**
          * @param lang a string containing the ISO639 language
@@ -2655,7 +2655,7 @@ export namespace GstMpegts {
          * @param format_identifier a 4 character format identifier string
          * @param additional_info pointer to optional additional info
          */
-        static from_registration(format_identifier: string, additional_info: (Uint8Array | null)): Descriptor;
+        static from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
 
         /**
          * @param source 
@@ -3697,9 +3697,9 @@ export namespace GstMpegts {
         crc: number;
 
         // Constructors
-        constructor(pid: number, data: (Uint8Array | string));
+        constructor(pid: number, data: Uint8Array | string);
 
-        static ["new"](pid: number, data: (Uint8Array | string)): Section;
+        static ["new"](pid: number, data: Uint8Array | string): Section;
 
         // Static methods
         /**

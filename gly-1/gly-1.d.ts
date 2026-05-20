@@ -49,7 +49,7 @@ export namespace Gly {
         static UNKNOWN_IMAGE_FORMAT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -235,13 +235,10 @@ export namespace Gly {
 
     namespace Frame {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -322,13 +319,10 @@ export namespace Gly {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -402,21 +396,21 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        next_frame_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Frame>;
+        next_frame_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
 
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
-        next_frame_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        next_frame_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
-        next_frame_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Frame> | void);
+        next_frame_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Frame> | void;
 
         /**
          * Finishes the {@link Image.next_frame_async} call.
@@ -534,21 +528,21 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
-        load_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Image>;
+        load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
 
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
-        load_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Image> | void);
+        load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Image> | void;
 
         /**
          * Finishes the {@link Image.next_frame_async} call.

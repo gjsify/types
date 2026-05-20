@@ -868,13 +868,10 @@ export namespace WebKit2WebExtension {
 
     namespace ContextMenu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1030,13 +1027,10 @@ export namespace WebKit2WebExtension {
 
     namespace ContextMenuItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     /**
@@ -1066,7 +1060,7 @@ export namespace WebKit2WebExtension {
 
         _init(...args: any[]): void;
 
-        static new_from_gaction(action: Gio.Action, label: string, target: (GLib.Variant | null)): ContextMenuItem;
+        static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem;
 
         static new_from_stock_action(action: ContextMenuAction): ContextMenuItem;
 
@@ -1126,7 +1120,7 @@ export namespace WebKit2WebExtension {
          * submenu of `item` is removed.
          * @param submenu a {@link WebKit2WebExtension.ContextMenu}
          */
-        set_submenu(submenu: (ContextMenu | null)): void;
+        set_submenu(submenu: ContextMenu | null): void;
     }
 
 
@@ -1354,7 +1348,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            size: (bigint | number);
+            size: bigint | number;
         }
     }
 
@@ -1429,9 +1423,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMText.ConstructorProps, DOMEventTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMText.ConstructorProps, DOMEventTarget.ConstructorProps {}
     }
 
     /**
@@ -1629,7 +1621,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -1683,7 +1675,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMCSSRule}
          */
-        item(index: (bigint | number)): DOMCSSRule;
+        item(index: bigint | number): DOMCSSRule;
     }
 
 
@@ -1700,7 +1692,7 @@ export namespace WebKit2WebExtension {
         interface ConstructorProps extends DOMObject.ConstructorProps {
             css_text: string;
             cssText: string;
-            length: (bigint | number);
+            length: bigint | number;
             parent_rule: DOMCSSRule;
             parentRule: DOMCSSRule;
         }
@@ -1806,7 +1798,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: (bigint | number)): string;
+        item(index: bigint | number): string;
 
         /**
          * @param propertyName A `gchar`
@@ -1926,12 +1918,12 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `glong`
          */
-        add_rule(selector: string, style: string, index: (bigint | number)): number;
+        add_rule(selector: string, style: string, index: bigint | number): number;
 
         /**
          * @param index A `gulong`
          */
-        delete_rule(index: (bigint | number)): void;
+        delete_rule(index: bigint | number): void;
 
         /**
          * @returns A {@link WebKit2WebExtension.DOMCSSRuleList}
@@ -1953,12 +1945,12 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gulong`
          */
-        insert_rule(rule: string, index: (bigint | number)): number;
+        insert_rule(rule: string, index: bigint | number): number;
 
         /**
          * @param index A `gulong`
          */
-        remove_rule(index: (bigint | number)): void;
+        remove_rule(index: bigint | number): void;
     }
 
 
@@ -2073,7 +2065,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
             data: string;
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -2130,7 +2122,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @param length A `gulong`
          */
-        delete_data(offset: (bigint | number), length: (bigint | number)): void;
+        delete_data(offset: bigint | number, length: bigint | number): void;
 
         /**
          * @returns A `gchar`
@@ -2152,14 +2144,14 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @param data A `gchar`
          */
-        insert_data(offset: (bigint | number), data: string): void;
+        insert_data(offset: bigint | number, data: string): void;
 
         /**
          * @param offset A `gulong`
          * @param length A `gulong`
          * @param data A `gchar`
          */
-        replace_data(offset: (bigint | number), length: (bigint | number), data: string): void;
+        replace_data(offset: bigint | number, length: bigint | number, data: string): void;
 
         /**
          * @param value A `gchar`
@@ -2171,7 +2163,7 @@ export namespace WebKit2WebExtension {
          * @param length A `gulong`
          * @returns A `gchar`
          */
-        substring_data(offset: (bigint | number), length: (bigint | number)): string;
+        substring_data(offset: bigint | number, length: bigint | number): string;
 
         /**
          * Version of `webkit_dom_event_target_add_event_listener()` using a closure
@@ -2364,7 +2356,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -2420,7 +2412,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMClientRect}
          */
-        item(index: (bigint | number)): DOMClientRect;
+        item(index: bigint | number): DOMClientRect;
     }
 
 
@@ -2446,9 +2438,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {}
     }
 
     /**
@@ -2528,9 +2518,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMObject.ConstructorProps {}
     }
 
     /**
@@ -2580,7 +2568,7 @@ export namespace WebKit2WebExtension {
          * @param doctype A {@link WebKit2WebExtension.DOMDocumentType}
          * @returns A {@link WebKit2WebExtension.DOMDocument}
          */
-        create_document(namespaceURI: (string | null), qualifiedName: string, doctype: (DOMDocumentType | null)): DOMDocument;
+        create_document(namespaceURI: string | null, qualifiedName: string, doctype: DOMDocumentType | null): DOMDocument;
 
         /**
          * @param qualifiedName A `gchar`
@@ -2626,24 +2614,24 @@ export namespace WebKit2WebExtension {
         interface ConstructorProps extends DOMObject.ConstructorProps {
             anchor_node: DOMNode;
             anchorNode: DOMNode;
-            anchor_offset: (bigint | number);
-            anchorOffset: (bigint | number);
+            anchor_offset: bigint | number;
+            anchorOffset: bigint | number;
             base_node: DOMNode;
             baseNode: DOMNode;
-            base_offset: (bigint | number);
-            baseOffset: (bigint | number);
+            base_offset: bigint | number;
+            baseOffset: bigint | number;
             extent_node: DOMNode;
             extentNode: DOMNode;
-            extent_offset: (bigint | number);
-            extentOffset: (bigint | number);
+            extent_offset: bigint | number;
+            extentOffset: bigint | number;
             focus_node: DOMNode;
             focusNode: DOMNode;
-            focus_offset: (bigint | number);
-            focusOffset: (bigint | number);
+            focus_offset: bigint | number;
+            focusOffset: bigint | number;
             is_collapsed: boolean;
             isCollapsed: boolean;
-            range_count: (bigint | number);
-            rangeCount: (bigint | number);
+            range_count: bigint | number;
+            rangeCount: bigint | number;
             type: string;
         }
     }
@@ -2809,7 +2797,7 @@ export namespace WebKit2WebExtension {
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        collapse(node: DOMNode, offset: (bigint | number)): void;
+        collapse(node: DOMNode, offset: bigint | number): void;
 
         collapse_to_end(): void;
 
@@ -2830,7 +2818,7 @@ export namespace WebKit2WebExtension {
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        extend(node: DOMNode, offset: (bigint | number)): void;
+        extend(node: DOMNode, offset: bigint | number): void;
 
         /**
          * @returns A {@link WebKit2WebExtension.DOMNode}
@@ -2881,7 +2869,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMRange}
          */
-        get_range_at(index: (bigint | number)): DOMRange;
+        get_range_at(index: bigint | number): DOMRange;
 
         /**
          * @returns A `gulong`
@@ -2913,13 +2901,13 @@ export namespace WebKit2WebExtension {
          * @param extentNode A {@link WebKit2WebExtension.DOMNode}
          * @param extentOffset A `gulong`
          */
-        set_base_and_extent(baseNode: DOMNode, baseOffset: (bigint | number), extentNode: DOMNode, extentOffset: (bigint | number)): void;
+        set_base_and_extent(baseNode: DOMNode, baseOffset: bigint | number, extentNode: DOMNode, extentOffset: bigint | number): void;
 
         /**
          * @param node A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `gulong`
          */
-        set_position(node: DOMNode, offset: (bigint | number)): void;
+        set_position(node: DOMNode, offset: bigint | number): void;
     }
 
 
@@ -2933,7 +2921,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
             value: string;
         }
     }
@@ -3002,7 +2990,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: (bigint | number)): string;
+        item(index: bigint | number): string;
 
         /**
          * @param token A `gchar`
@@ -3071,37 +3059,37 @@ export namespace WebKit2WebExtension {
             frame_element: DOMElement;
             frameElement: DOMElement;
             frames: DOMDOMWindow;
-            inner_height: (bigint | number);
-            innerHeight: (bigint | number);
-            inner_width: (bigint | number);
-            innerWidth: (bigint | number);
-            length: (bigint | number);
+            inner_height: bigint | number;
+            innerHeight: bigint | number;
+            inner_width: bigint | number;
+            innerWidth: bigint | number;
+            length: bigint | number;
             name: string;
             offscreen_buffering: boolean;
             offscreenBuffering: boolean;
             opener: DOMDOMWindow;
-            orientation: (bigint | number);
-            outer_height: (bigint | number);
-            outerHeight: (bigint | number);
-            outer_width: (bigint | number);
-            outerWidth: (bigint | number);
-            page_x_offset: (bigint | number);
-            pageXOffset: (bigint | number);
-            page_y_offset: (bigint | number);
-            pageYOffset: (bigint | number);
+            orientation: bigint | number;
+            outer_height: bigint | number;
+            outerHeight: bigint | number;
+            outer_width: bigint | number;
+            outerWidth: bigint | number;
+            page_x_offset: bigint | number;
+            pageXOffset: bigint | number;
+            page_y_offset: bigint | number;
+            pageYOffset: bigint | number;
             parent: DOMDOMWindow;
-            screen_left: (bigint | number);
-            screenLeft: (bigint | number);
-            screen_top: (bigint | number);
-            screenTop: (bigint | number);
-            screen_x: (bigint | number);
-            screenX: (bigint | number);
-            screen_y: (bigint | number);
-            screenY: (bigint | number);
-            scroll_x: (bigint | number);
-            scrollX: (bigint | number);
-            scroll_y: (bigint | number);
-            scrollY: (bigint | number);
+            screen_left: bigint | number;
+            screenLeft: bigint | number;
+            screen_top: bigint | number;
+            screenTop: bigint | number;
+            screen_x: bigint | number;
+            screenX: bigint | number;
+            screen_y: bigint | number;
+            screenY: bigint | number;
+            scroll_x: bigint | number;
+            scrollX: bigint | number;
+            scroll_y: bigint | number;
+            scrollY: bigint | number;
             self: DOMDOMWindow;
             status: string;
             top: DOMDOMWindow;
@@ -3428,7 +3416,7 @@ export namespace WebKit2WebExtension {
          * @param pseudoElement A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMCSSStyleDeclaration}
          */
-        get_computed_style(element: DOMElement, pseudoElement: (string | null)): DOMCSSStyleDeclaration;
+        get_computed_style(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration;
 
         /**
          * @returns A `gchar`
@@ -3770,8 +3758,8 @@ export namespace WebKit2WebExtension {
             character_set: string;
             characterSet: string;
             charset: string;
-            child_element_count: (bigint | number);
-            childElementCount: (bigint | number);
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             compat_mode: string;
             compatMode: string;
@@ -4278,7 +4266,7 @@ export namespace WebKit2WebExtension {
          * @param y A `glong`
          * @returns A {@link WebKit2WebExtension.DOMRange}
          */
-        caret_range_from_point(x: (bigint | number), y: (bigint | number)): DOMRange;
+        caret_range_from_point(x: bigint | number, y: bigint | number): DOMRange;
 
         /**
          * @param name A `gchar`
@@ -4291,7 +4279,7 @@ export namespace WebKit2WebExtension {
          * @param qualifiedName A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMAttr}
          */
-        create_attribute_ns(namespaceURI: (string | null), qualifiedName: string): DOMAttr;
+        create_attribute_ns(namespaceURI: string | null, qualifiedName: string): DOMAttr;
 
         /**
          * @param data A `gchar`
@@ -4326,14 +4314,14 @@ export namespace WebKit2WebExtension {
          * @param qualifiedName A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMElement}
          */
-        create_element_ns(namespaceURI: (string | null), qualifiedName: string): DOMElement;
+        create_element_ns(namespaceURI: string | null, qualifiedName: string): DOMElement;
 
         /**
          * This function has been removed from the DOM spec and it just returns `null`.
          * @param name A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMEntityReference}
          */
-        create_entity_reference(name: (string | null)): DOMEntityReference;
+        create_entity_reference(name: string | null): DOMEntityReference;
 
         /**
          * @param eventType A `gchar`
@@ -4355,7 +4343,7 @@ export namespace WebKit2WebExtension {
          * @param expandEntityReferences A `gboolean`
          * @returns A {@link WebKit2WebExtension.DOMNodeIterator}
          */
-        create_node_iterator(root: DOMNode, whatToShow: (bigint | number), filter: (DOMNodeFilter | null), expandEntityReferences: boolean): DOMNodeIterator;
+        create_node_iterator(root: DOMNode, whatToShow: bigint | number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMNodeIterator;
 
         /**
          * @param nodeResolver A {@link WebKit2WebExtension.DOMNode}
@@ -4388,14 +4376,14 @@ export namespace WebKit2WebExtension {
          * @param expandEntityReferences A `gboolean`
          * @returns A {@link WebKit2WebExtension.DOMTreeWalker}
          */
-        create_tree_walker(root: DOMNode, whatToShow: (bigint | number), filter: (DOMNodeFilter | null), expandEntityReferences: boolean): DOMTreeWalker;
+        create_tree_walker(root: DOMNode, whatToShow: bigint | number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMTreeWalker;
 
         /**
          * @param x A `glong`
          * @param y A `glong`
          * @returns A {@link WebKit2WebExtension.DOMElement}
          */
-        element_from_point(x: (bigint | number), y: (bigint | number)): DOMElement;
+        element_from_point(x: bigint | number, y: bigint | number): DOMElement;
 
         /**
          * @param expression A `gchar`
@@ -4405,7 +4393,7 @@ export namespace WebKit2WebExtension {
          * @param inResult A {@link WebKit2WebExtension.DOMXPathResult}
          * @returns A {@link WebKit2WebExtension.DOMXPathResult}
          */
-        evaluate(expression: string, contextNode: DOMNode, resolver: (DOMXPathNSResolver | null), type: number, inResult: (DOMXPathResult | null)): DOMXPathResult;
+        evaluate(expression: string, contextNode: DOMNode, resolver: DOMXPathNSResolver | null, type: number, inResult: DOMXPathResult | null): DOMXPathResult;
 
         /**
          * @param command A `gchar`
@@ -4632,7 +4620,7 @@ export namespace WebKit2WebExtension {
          * @param pseudoElement A `gchar`
          * @returns A {@link WebKit2WebExtension.DOMCSSStyleDeclaration}
          */
-        get_override_style(element: DOMElement, pseudoElement: (string | null)): DOMCSSStyleDeclaration;
+        get_override_style(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration;
 
         /**
          * @returns A {@link WebKit2WebExtension.DOMHTMLCollection}
@@ -4920,8 +4908,8 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
-            child_element_count: (bigint | number);
-            childElementCount: (bigint | number);
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             first_element_child: DOMElement;
             firstElementChild: DOMElement;
@@ -5342,8 +5330,8 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
             attributes: DOMNamedNodeMap;
-            child_element_count: (bigint | number);
-            childElementCount: (bigint | number);
+            child_element_count: bigint | number;
+            childElementCount: bigint | number;
             children: DOMHTMLCollection;
             class_list: DOMDOMTokenList;
             classList: DOMDOMTokenList;
@@ -5385,14 +5373,14 @@ export namespace WebKit2WebExtension {
             prefix: string;
             previous_element_sibling: DOMElement;
             previousElementSibling: DOMElement;
-            scroll_height: (bigint | number);
-            scrollHeight: (bigint | number);
-            scroll_left: (bigint | number);
-            scrollLeft: (bigint | number);
-            scroll_top: (bigint | number);
-            scrollTop: (bigint | number);
-            scroll_width: (bigint | number);
-            scrollWidth: (bigint | number);
+            scroll_height: bigint | number;
+            scrollHeight: bigint | number;
+            scroll_left: bigint | number;
+            scrollLeft: bigint | number;
+            scroll_top: bigint | number;
+            scrollTop: bigint | number;
+            scroll_width: bigint | number;
+            scrollWidth: bigint | number;
             style: DOMCSSStyleDeclaration;
             tag_name: string;
             tagName: string;
@@ -5648,25 +5636,25 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get scroll_left(): number;
-        set scroll_left(val: (bigint | number));
+        set scroll_left(val: bigint | number);
 
         /**
          * @default 0
          */
         get scrollLeft(): number;
-        set scrollLeft(val: (bigint | number));
+        set scrollLeft(val: bigint | number);
 
         /**
          * @default 0
          */
         get scroll_top(): number;
-        set scroll_top(val: (bigint | number));
+        set scroll_top(val: bigint | number);
 
         /**
          * @default 0
          */
         get scrollTop(): number;
-        set scrollTop(val: (bigint | number));
+        set scrollTop(val: bigint | number);
 
         /**
          * @read-only
@@ -6079,12 +6067,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param lines A `glong`
          */
-        scroll_by_lines(lines: (bigint | number)): void;
+        scroll_by_lines(lines: bigint | number): void;
 
         /**
          * @param pages A `glong`
          */
-        scroll_by_pages(pages: (bigint | number)): void;
+        scroll_by_pages(pages: bigint | number): void;
 
         /**
          * @param alignWithTop A `gboolean`
@@ -6119,7 +6107,7 @@ export namespace WebKit2WebExtension {
          * @param qualifiedName A `gchar`
          * @param value A `gchar`
          */
-        set_attribute_ns(namespaceURI: (string | null), qualifiedName: string, value: string): void;
+        set_attribute_ns(namespaceURI: string | null, qualifiedName: string, value: string): void;
 
         /**
          * @param value A `gchar`
@@ -6144,12 +6132,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_scroll_left(value: (bigint | number)): void;
+        set_scroll_left(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_scroll_top(value: (bigint | number)): void;
+        set_scroll_top(value: bigint | number): void;
 
         /**
          * @param selectors A `gchar`
@@ -6229,9 +6217,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {}
     }
 
     /**
@@ -6622,7 +6608,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -6676,7 +6662,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMFile}
          */
-        item(index: (bigint | number)): DOMFile;
+        item(index: bigint | number): DOMFile;
     }
 
 
@@ -7140,10 +7126,10 @@ export namespace WebKit2WebExtension {
             code_base: string;
             codeBase: string;
             height: string;
-            hspace: (bigint | number);
+            hspace: bigint | number;
             name: string;
             object: string;
-            vspace: (bigint | number);
+            vspace: bigint | number;
             width: string;
         }
     }
@@ -7180,7 +7166,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get hspace(): number;
-        set hspace(val: (bigint | number));
+        set hspace(val: bigint | number);
 
         get name(): string;
         set name(val: string);
@@ -7192,7 +7178,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get vspace(): number;
-        set vspace(val: (bigint | number));
+        set vspace(val: bigint | number);
 
         get width(): string;
         set width(val: string);
@@ -7313,7 +7299,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_hspace(value: (bigint | number)): void;
+        set_hspace(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -7328,7 +7314,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: (bigint | number)): void;
+        set_vspace(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -7970,9 +7956,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
     }
 
     /**
@@ -8043,7 +8027,7 @@ export namespace WebKit2WebExtension {
          * This function has been removed from the DOM spec and it does nothing.
          * @param value A `glong`
          */
-        set_size(value: (bigint | number)): void;
+        set_size(value: bigint | number): void;
     }
 
 
@@ -8542,8 +8526,8 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-            height: (bigint | number);
-            width: (bigint | number);
+            height: bigint | number;
+            width: bigint | number;
         }
     }
 
@@ -8558,13 +8542,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get height(): number;
-        set height(val: (bigint | number));
+        set height(val: bigint | number);
 
         /**
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -8607,12 +8591,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: (bigint | number)): void;
+        set_height(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_width(value: (bigint | number)): void;
+        set_width(value: bigint | number): void;
     }
 
 
@@ -8625,7 +8609,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -8679,7 +8663,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: (bigint | number)): DOMNode;
+        item(index: bigint | number): DOMNode;
 
         /**
          * @param name A `gchar`
@@ -9144,12 +9128,12 @@ export namespace WebKit2WebExtension {
             dir: string;
             fg_color: string;
             fgColor: string;
-            height: (bigint | number);
+            height: bigint | number;
             link_color: string;
             linkColor: string;
             vlink_color: string;
             vlinkColor: string;
-            width: (bigint | number);
+            width: bigint | number;
         }
     }
 
@@ -9424,8 +9408,8 @@ export namespace WebKit2WebExtension {
             outer_text: string;
             outerText: string;
             spellcheck: boolean;
-            tab_index: (bigint | number);
-            tabIndex: (bigint | number);
+            tab_index: bigint | number;
+            tabIndex: bigint | number;
             title: string;
             translate: boolean;
             webkitdropzone: string;
@@ -9503,13 +9487,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get tab_index(): number;
-        set tab_index(val: (bigint | number));
+        set tab_index(val: bigint | number);
 
         /**
          * @default 0
          */
         get tabIndex(): number;
-        set tabIndex(val: (bigint | number));
+        set tabIndex(val: bigint | number);
 
         get title(): string;
         set title(val: string);
@@ -9696,7 +9680,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_tab_index(value: (bigint | number)): void;
+        set_tab_index(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -9788,11 +9772,11 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             align: string;
-            height: (bigint | number);
+            height: bigint | number;
             name: string;
             src: string;
             type: string;
-            width: (bigint | number);
+            width: bigint | number;
         }
     }
 
@@ -9810,7 +9794,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get height(): number;
-        set height(val: (bigint | number));
+        set height(val: bigint | number);
 
         get name(): string;
         set name(val: string);
@@ -9825,7 +9809,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -9893,7 +9877,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: (bigint | number)): void;
+        set_height(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -9913,7 +9897,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_width(value: (bigint | number)): void;
+        set_width(value: bigint | number): void;
     }
 
 
@@ -10267,7 +10251,7 @@ export namespace WebKit2WebExtension {
             elements: DOMHTMLCollection;
             encoding: string;
             enctype: string;
-            length: (bigint | number);
+            length: bigint | number;
             method: string;
             name: string;
             target: string;
@@ -10514,7 +10498,7 @@ export namespace WebKit2WebExtension {
             contentWindow: DOMDOMWindow;
             frame_border: string;
             frameBorder: string;
-            height: (bigint | number);
+            height: bigint | number;
             long_desc: string;
             longDesc: string;
             margin_height: string;
@@ -10526,7 +10510,7 @@ export namespace WebKit2WebExtension {
             noResize: boolean;
             scrolling: string;
             src: string;
-            width: (bigint | number);
+            width: bigint | number;
         }
     }
 
@@ -11815,25 +11799,25 @@ export namespace WebKit2WebExtension {
             alt: string;
             border: string;
             complete: boolean;
-            height: (bigint | number);
-            hspace: (bigint | number);
+            height: bigint | number;
+            hspace: bigint | number;
             is_map: boolean;
             isMap: boolean;
             long_desc: string;
             longDesc: string;
             lowsrc: string;
             name: string;
-            natural_height: (bigint | number);
-            naturalHeight: (bigint | number);
-            natural_width: (bigint | number);
-            naturalWidth: (bigint | number);
+            natural_height: bigint | number;
+            naturalHeight: bigint | number;
+            natural_width: bigint | number;
+            naturalWidth: bigint | number;
             src: string;
             use_map: string;
             useMap: string;
-            vspace: (bigint | number);
-            width: (bigint | number);
-            x: (bigint | number);
-            y: (bigint | number);
+            vspace: bigint | number;
+            width: bigint | number;
+            x: bigint | number;
+            y: bigint | number;
         }
     }
 
@@ -11863,13 +11847,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get height(): number;
-        set height(val: (bigint | number));
+        set height(val: bigint | number);
 
         /**
          * @default 0
          */
         get hspace(): number;
-        set hspace(val: (bigint | number));
+        set hspace(val: bigint | number);
 
         /**
          * @default false
@@ -11932,13 +11916,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get vspace(): number;
-        set vspace(val: (bigint | number));
+        set vspace(val: bigint | number);
 
         /**
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * @read-only
@@ -12088,12 +12072,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_height(value: (bigint | number)): void;
+        set_height(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_hspace(value: (bigint | number)): void;
+        set_hspace(value: bigint | number): void;
 
         /**
          * @param value A `gboolean`
@@ -12128,12 +12112,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: (bigint | number)): void;
+        set_vspace(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_width(value: (bigint | number)): void;
+        set_width(value: bigint | number): void;
     }
 
 
@@ -12240,21 +12224,21 @@ export namespace WebKit2WebExtension {
             disabled: boolean;
             files: DOMFileList;
             form: DOMHTMLFormElement;
-            height: (bigint | number);
+            height: bigint | number;
             indeterminate: boolean;
-            max_length: (bigint | number);
-            maxLength: (bigint | number);
+            max_length: bigint | number;
+            maxLength: bigint | number;
             multiple: boolean;
             name: string;
             read_only: boolean;
             readOnly: boolean;
-            size: (bigint | number);
+            size: bigint | number;
             src: string;
             type: string;
             use_map: string;
             useMap: string;
             value: string;
-            width: (bigint | number);
+            width: bigint | number;
             will_validate: boolean;
             willValidate: boolean;
         }
@@ -12329,7 +12313,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get height(): number;
-        set height(val: (bigint | number));
+        set height(val: bigint | number);
 
         /**
          * @default false
@@ -12341,13 +12325,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get max_length(): number;
-        set max_length(val: (bigint | number));
+        set max_length(val: bigint | number);
 
         /**
          * @default 0
          */
         get maxLength(): number;
-        set maxLength(val: (bigint | number));
+        set maxLength(val: bigint | number);
 
         /**
          * @default false
@@ -12374,7 +12358,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         get src(): string;
         set src(val: string);
@@ -12395,7 +12379,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * @read-only
@@ -12637,7 +12621,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_height(value: (bigint | number)): void;
+        set_height(value: bigint | number): void;
 
         /**
          * @param value A `gboolean`
@@ -12652,7 +12636,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_max_length(value: (bigint | number)): void;
+        set_max_length(value: bigint | number): void;
 
         /**
          * @param value A `gboolean`
@@ -12672,7 +12656,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_size(value: (bigint | number)): void;
+        set_size(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -12692,7 +12676,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_width(value: (bigint | number)): void;
+        set_width(value: bigint | number): void;
     }
 
 
@@ -12765,7 +12749,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             type: string;
-            value: (bigint | number);
+            value: bigint | number;
         }
     }
 
@@ -12783,7 +12767,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get value(): number;
-        set value(val: (bigint | number));
+        set value(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -12831,7 +12815,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_value(value: (bigint | number)): void;
+        set_value(value: bigint | number): void;
     }
 
 
@@ -13576,9 +13560,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
     }
 
     /**
@@ -14125,7 +14107,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             compact: boolean;
-            start: (bigint | number);
+            start: bigint | number;
             type: string;
         }
     }
@@ -14147,7 +14129,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         get type(): string;
         set type(val: string);
@@ -14203,7 +14185,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_start(value: (bigint | number)): void;
+        set_start(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -14310,13 +14292,13 @@ export namespace WebKit2WebExtension {
             declare: boolean;
             form: DOMHTMLFormElement;
             height: string;
-            hspace: (bigint | number);
+            hspace: bigint | number;
             name: string;
             standby: string;
             type: string;
             use_map: string;
             useMap: string;
-            vspace: (bigint | number);
+            vspace: bigint | number;
             width: string;
         }
     }
@@ -14383,7 +14365,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get hspace(): number;
-        set hspace(val: (bigint | number));
+        set hspace(val: bigint | number);
 
         get name(): string;
         set name(val: string);
@@ -14404,7 +14386,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get vspace(): number;
-        set vspace(val: (bigint | number));
+        set vspace(val: bigint | number);
 
         get width(): string;
         set width(val: string);
@@ -14581,7 +14563,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_hspace(value: (bigint | number)): void;
+        set_hspace(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -14606,7 +14588,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_vspace(value: (bigint | number)): void;
+        set_vspace(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -14832,7 +14814,7 @@ export namespace WebKit2WebExtension {
             defaultSelected: boolean;
             disabled: boolean;
             form: DOMHTMLFormElement;
-            index: (bigint | number);
+            index: bigint | number;
             label: string;
             selected: boolean;
             text: string;
@@ -14998,9 +14980,9 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLCollection.ConstructorProps {
-            length: (bigint | number);
-            selected_index: (bigint | number);
-            selectedIndex: (bigint | number);
+            length: bigint | number;
+            selected_index: bigint | number;
+            selectedIndex: bigint | number;
         }
     }
 
@@ -15021,13 +15003,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get selected_index(): number;
-        set selected_index(val: (bigint | number));
+        set selected_index(val: bigint | number);
 
         /**
          * @default 0
          */
         get selectedIndex(): number;
-        set selectedIndex(val: (bigint | number));
+        set selectedIndex(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -15076,7 +15058,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_selected_index(value: (bigint | number)): void;
+        set_selected_index(value: bigint | number): void;
     }
 
 
@@ -15439,7 +15421,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
-            width: (bigint | number);
+            width: bigint | number;
             wrap: boolean;
         }
     }
@@ -15455,7 +15437,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * @default false
@@ -15504,7 +15486,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_width(value: (bigint | number)): void;
+        set_width(value: bigint | number): void;
 
         /**
          * @param value A `gboolean`
@@ -15933,13 +15915,13 @@ export namespace WebKit2WebExtension {
             autofocus: boolean;
             disabled: boolean;
             form: DOMHTMLFormElement;
-            length: (bigint | number);
+            length: bigint | number;
             multiple: boolean;
             name: string;
             options: DOMHTMLOptionsCollection;
-            selected_index: (bigint | number);
-            selectedIndex: (bigint | number);
-            size: (bigint | number);
+            selected_index: bigint | number;
+            selectedIndex: bigint | number;
+            size: bigint | number;
             type: string;
             value: string;
             will_validate: boolean;
@@ -15975,7 +15957,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get length(): number;
-        set length(val: (bigint | number));
+        set length(val: bigint | number);
 
         /**
          * @default false
@@ -15995,19 +15977,19 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get selected_index(): number;
-        set selected_index(val: (bigint | number));
+        set selected_index(val: bigint | number);
 
         /**
          * @default 0
          */
         get selectedIndex(): number;
-        set selectedIndex(val: (bigint | number));
+        set selectedIndex(val: bigint | number);
 
         /**
          * @default 0
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * @read-only
@@ -16127,7 +16109,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: (bigint | number)): DOMNode;
+        item(index: bigint | number): DOMNode;
 
         /**
          * @param name A `gchar`
@@ -16138,7 +16120,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        remove(index: (bigint | number)): void;
+        remove(index: bigint | number): void;
 
         /**
          * @param args 
@@ -16159,7 +16141,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `gulong`
          */
-        set_length(value: (bigint | number)): void;
+        set_length(value: bigint | number): void;
 
         /**
          * @param value A `gboolean`
@@ -16174,12 +16156,12 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_selected_index(value: (bigint | number)): void;
+        set_selected_index(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_size(value: (bigint | number)): void;
+        set_size(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -16561,19 +16543,19 @@ export namespace WebKit2WebExtension {
             axis: string;
             bg_color: string;
             bgColor: string;
-            cell_index: (bigint | number);
-            cellIndex: (bigint | number);
+            cell_index: bigint | number;
+            cellIndex: bigint | number;
             ch: string;
             ch_off: string;
             chOff: string;
-            col_span: (bigint | number);
-            colSpan: (bigint | number);
+            col_span: bigint | number;
+            colSpan: bigint | number;
             headers: string;
             height: string;
             no_wrap: boolean;
             noWrap: boolean;
-            row_span: (bigint | number);
-            rowSpan: (bigint | number);
+            row_span: bigint | number;
+            rowSpan: bigint | number;
             scope: string;
             v_align: string;
             vAlign: string;
@@ -16628,13 +16610,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get col_span(): number;
-        set col_span(val: (bigint | number));
+        set col_span(val: bigint | number);
 
         /**
          * @default 0
          */
         get colSpan(): number;
-        set colSpan(val: (bigint | number));
+        set colSpan(val: bigint | number);
 
         get headers(): string;
         set headers(val: string);
@@ -16658,13 +16640,13 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get row_span(): number;
-        set row_span(val: (bigint | number));
+        set row_span(val: bigint | number);
 
         /**
          * @default 0
          */
         get rowSpan(): number;
-        set rowSpan(val: (bigint | number));
+        set rowSpan(val: bigint | number);
 
         get scope(): string;
         set scope(val: string);
@@ -16814,7 +16796,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_col_span(value: (bigint | number)): void;
+        set_col_span(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -16834,7 +16816,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_row_span(value: (bigint | number)): void;
+        set_row_span(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -16929,7 +16911,7 @@ export namespace WebKit2WebExtension {
             ch: string;
             ch_off: string;
             chOff: string;
-            span: (bigint | number);
+            span: bigint | number;
             v_align: string;
             vAlign: string;
             width: string;
@@ -16959,7 +16941,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get span(): number;
-        set span(val: (bigint | number));
+        set span(val: bigint | number);
 
         get v_align(): string;
         set v_align(val: string);
@@ -17046,7 +17028,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_span(value: (bigint | number)): void;
+        set_span(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -17289,7 +17271,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_row(index: (bigint | number)): void;
+        delete_row(index: bigint | number): void;
 
         delete_t_foot(): void;
 
@@ -17364,7 +17346,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_row(index: (bigint | number)): DOMHTMLElement;
+        insert_row(index: bigint | number): DOMHTMLElement;
 
         /**
          * @param value A `gchar`
@@ -17504,10 +17486,10 @@ export namespace WebKit2WebExtension {
             ch: string;
             ch_off: string;
             chOff: string;
-            row_index: (bigint | number);
-            rowIndex: (bigint | number);
-            section_row_index: (bigint | number);
-            sectionRowIndex: (bigint | number);
+            row_index: bigint | number;
+            rowIndex: bigint | number;
+            section_row_index: bigint | number;
+            sectionRowIndex: bigint | number;
             v_align: string;
             vAlign: string;
         }
@@ -17604,7 +17586,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_cell(index: (bigint | number)): void;
+        delete_cell(index: bigint | number): void;
 
         /**
          * @returns A `gchar`
@@ -17650,7 +17632,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_cell(index: (bigint | number)): DOMHTMLElement;
+        insert_cell(index: bigint | number): DOMHTMLElement;
 
         /**
          * @param value A `gchar`
@@ -17821,7 +17803,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param index A `glong`
          */
-        delete_row(index: (bigint | number)): void;
+        delete_row(index: bigint | number): void;
 
         /**
          * @returns A `gchar`
@@ -17852,7 +17834,7 @@ export namespace WebKit2WebExtension {
          * @param index A `glong`
          * @returns A {@link WebKit2WebExtension.DOMHTMLElement}
          */
-        insert_row(index: (bigint | number)): DOMHTMLElement;
+        insert_row(index: bigint | number): DOMHTMLElement;
 
         /**
          * @param value A `gchar`
@@ -17956,7 +17938,7 @@ export namespace WebKit2WebExtension {
         // Constructor properties interface
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
             autofocus: boolean;
-            cols: (bigint | number);
+            cols: bigint | number;
             default_value: string;
             defaultValue: string;
             disabled: boolean;
@@ -17964,11 +17946,11 @@ export namespace WebKit2WebExtension {
             name: string;
             read_only: boolean;
             readOnly: boolean;
-            rows: (bigint | number);
-            selection_end: (bigint | number);
-            selectionEnd: (bigint | number);
-            selection_start: (bigint | number);
-            selectionStart: (bigint | number);
+            rows: bigint | number;
+            selection_end: bigint | number;
+            selectionEnd: bigint | number;
+            selection_start: bigint | number;
+            selectionStart: bigint | number;
             type: string;
             value: string;
             will_validate: boolean;
@@ -17993,7 +17975,7 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get cols(): number;
-        set cols(val: (bigint | number));
+        set cols(val: bigint | number);
 
         get default_value(): string;
         set default_value(val: string);
@@ -18031,31 +18013,31 @@ export namespace WebKit2WebExtension {
          * @default 0
          */
         get rows(): number;
-        set rows(val: (bigint | number));
+        set rows(val: bigint | number);
 
         /**
          * @default 0
          */
         get selection_end(): number;
-        set selection_end(val: (bigint | number));
+        set selection_end(val: bigint | number);
 
         /**
          * @default 0
          */
         get selectionEnd(): number;
-        set selectionEnd(val: (bigint | number));
+        set selectionEnd(val: bigint | number);
 
         /**
          * @default 0
          */
         get selection_start(): number;
-        set selection_start(val: (bigint | number));
+        set selection_start(val: bigint | number);
 
         /**
          * @default 0
          */
         get selectionStart(): number;
-        set selectionStart(val: (bigint | number));
+        set selectionStart(val: bigint | number);
 
         /**
          * @read-only
@@ -18185,7 +18167,7 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_cols(value: (bigint | number)): void;
+        set_cols(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -18210,24 +18192,24 @@ export namespace WebKit2WebExtension {
         /**
          * @param value A `glong`
          */
-        set_rows(value: (bigint | number)): void;
+        set_rows(value: bigint | number): void;
 
         /**
          * @param value A `glong`
          */
-        set_selection_end(value: (bigint | number)): void;
+        set_selection_end(value: bigint | number): void;
 
         /**
          * @param start A `glong`
          * @param end A `glong`
          * @param direction A `gchar`
          */
-        set_selection_range(start: (bigint | number), end: (bigint | number), direction: string): void;
+        set_selection_range(start: bigint | number, end: bigint | number, direction: string): void;
 
         /**
          * @param value A `glong`
          */
-        set_selection_start(value: (bigint | number)): void;
+        set_selection_start(value: bigint | number): void;
 
         /**
          * @param value A `gchar`
@@ -18537,8 +18519,8 @@ export namespace WebKit2WebExtension {
             ctrlKey: boolean;
             key_identifier: string;
             keyIdentifier: string;
-            key_location: (bigint | number);
-            keyLocation: (bigint | number);
+            key_location: bigint | number;
+            keyLocation: bigint | number;
             meta_key: boolean;
             metaKey: boolean;
             shift_key: boolean;
@@ -18717,7 +18699,7 @@ export namespace WebKit2WebExtension {
          * @param metaKey A `gboolean`
          * @param altGraphKey A `gboolean`
          */
-        init_keyboard_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string, location: (bigint | number), ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void;
+        init_keyboard_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string, location: bigint | number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void;
     }
 
 
@@ -18731,7 +18713,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
             media_text: string;
             mediaText: string;
         }
@@ -18808,7 +18790,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A `gchar`
          */
-        item(index: (bigint | number)): string;
+        item(index: bigint | number): string;
 
         /**
          * @param value A `gchar`
@@ -18862,32 +18844,32 @@ export namespace WebKit2WebExtension {
             alt_key: boolean;
             altKey: boolean;
             button: number;
-            client_x: (bigint | number);
-            clientX: (bigint | number);
-            client_y: (bigint | number);
-            clientY: (bigint | number);
+            client_x: bigint | number;
+            clientX: bigint | number;
+            client_y: bigint | number;
+            clientY: bigint | number;
             ctrl_key: boolean;
             ctrlKey: boolean;
             from_element: DOMNode;
             fromElement: DOMNode;
             meta_key: boolean;
             metaKey: boolean;
-            offset_x: (bigint | number);
-            offsetX: (bigint | number);
-            offset_y: (bigint | number);
-            offsetY: (bigint | number);
+            offset_x: bigint | number;
+            offsetX: bigint | number;
+            offset_y: bigint | number;
+            offsetY: bigint | number;
             related_target: DOMEventTarget;
             relatedTarget: DOMEventTarget;
-            screen_x: (bigint | number);
-            screenX: (bigint | number);
-            screen_y: (bigint | number);
-            screenY: (bigint | number);
+            screen_x: bigint | number;
+            screenX: bigint | number;
+            screen_y: bigint | number;
+            screenY: bigint | number;
             shift_key: boolean;
             shiftKey: boolean;
             to_element: DOMNode;
             toElement: DOMNode;
-            x: (bigint | number);
-            y: (bigint | number);
+            x: bigint | number;
+            y: bigint | number;
         }
     }
 
@@ -19191,7 +19173,7 @@ export namespace WebKit2WebExtension {
          * @param button A `gushort`
          * @param relatedTarget A {@link WebKit2WebExtension.DOMEventTarget}
          */
-        init_mouse_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: (bigint | number), screenX: (bigint | number), screenY: (bigint | number), clientX: (bigint | number), clientY: (bigint | number), ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void;
+        init_mouse_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: bigint | number, screenX: bigint | number, screenY: bigint | number, clientX: bigint | number, clientY: bigint | number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void;
     }
 
 
@@ -19204,7 +19186,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -19271,7 +19253,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: (bigint | number)): DOMNode;
+        item(index: bigint | number): DOMNode;
 
         /**
          * @param name A `gchar`
@@ -19636,7 +19618,7 @@ export namespace WebKit2WebExtension {
          * @param refChild A {@link WebKit2WebExtension.DOMNode}
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        insert_before(newChild: DOMNode, refChild: (DOMNode | null)): DOMNode;
+        insert_before(newChild: DOMNode, refChild: DOMNode | null): DOMNode;
 
         /**
          * @param namespaceURI A `gchar`
@@ -19774,8 +19756,8 @@ export namespace WebKit2WebExtension {
             reference_node: DOMNode;
             referenceNode: DOMNode;
             root: DOMNode;
-            what_to_show: (bigint | number);
-            whatToShow: (bigint | number);
+            what_to_show: bigint | number;
+            whatToShow: bigint | number;
         }
     }
 
@@ -19912,7 +19894,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -19966,7 +19948,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        item(index: (bigint | number)): DOMNode;
+        item(index: bigint | number): DOMNode;
     }
 
 
@@ -20174,12 +20156,12 @@ export namespace WebKit2WebExtension {
             commonAncestorContainer: DOMNode;
             end_container: DOMNode;
             endContainer: DOMNode;
-            end_offset: (bigint | number);
-            endOffset: (bigint | number);
+            end_offset: bigint | number;
+            endOffset: bigint | number;
             start_container: DOMNode;
             startContainer: DOMNode;
-            start_offset: (bigint | number);
-            startOffset: (bigint | number);
+            start_offset: bigint | number;
+            startOffset: bigint | number;
             text: string;
         }
     }
@@ -20317,7 +20299,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `glong`
          * @returns A `gshort`
          */
-        compare_point(refNode: DOMNode, offset: (bigint | number)): number;
+        compare_point(refNode: DOMNode, offset: bigint | number): number;
 
         /**
          * @param html A `gchar`
@@ -20390,7 +20372,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `glong`
          * @returns A `gboolean`
          */
-        is_point_in_range(refNode: DOMNode, offset: (bigint | number)): boolean;
+        is_point_in_range(refNode: DOMNode, offset: bigint | number): boolean;
 
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
@@ -20406,7 +20388,7 @@ export namespace WebKit2WebExtension {
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `glong`
          */
-        set_end(refNode: DOMNode, offset: (bigint | number)): void;
+        set_end(refNode: DOMNode, offset: bigint | number): void;
 
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
@@ -20422,7 +20404,7 @@ export namespace WebKit2WebExtension {
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
          * @param offset A `glong`
          */
-        set_start(refNode: DOMNode, offset: (bigint | number)): void;
+        set_start(refNode: DOMNode, offset: bigint | number): void;
 
         /**
          * @param refNode A {@link WebKit2WebExtension.DOMNode}
@@ -20605,7 +20587,7 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMObject.ConstructorProps {
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -20659,7 +20641,7 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMStyleSheet}
          */
-        item(index: (bigint | number)): DOMStyleSheet;
+        item(index: bigint | number): DOMStyleSheet;
     }
 
 
@@ -20752,7 +20734,7 @@ export namespace WebKit2WebExtension {
          * @param offset A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMText}
          */
-        split_text(offset: (bigint | number)): DOMText;
+        split_text(offset: bigint | number): DOMText;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
@@ -20807,8 +20789,8 @@ export namespace WebKit2WebExtension {
             currentNode: DOMNode;
             filter: DOMNodeFilter;
             root: DOMNode;
-            what_to_show: (bigint | number);
-            whatToShow: (bigint | number);
+            what_to_show: bigint | number;
+            whatToShow: bigint | number;
         }
     }
 
@@ -20973,19 +20955,19 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMEvent.ConstructorProps {
-            char_code: (bigint | number);
-            charCode: (bigint | number);
-            detail: (bigint | number);
-            key_code: (bigint | number);
-            keyCode: (bigint | number);
-            layer_x: (bigint | number);
-            layerX: (bigint | number);
-            layer_y: (bigint | number);
-            layerY: (bigint | number);
-            page_x: (bigint | number);
-            pageX: (bigint | number);
-            page_y: (bigint | number);
-            pageY: (bigint | number);
+            char_code: bigint | number;
+            charCode: bigint | number;
+            detail: bigint | number;
+            key_code: bigint | number;
+            keyCode: bigint | number;
+            layer_x: bigint | number;
+            layerX: bigint | number;
+            layer_y: bigint | number;
+            layerY: bigint | number;
+            page_x: bigint | number;
+            pageX: bigint | number;
+            page_y: bigint | number;
+            pageY: bigint | number;
             view: DOMDOMWindow;
         }
     }
@@ -21155,7 +21137,7 @@ export namespace WebKit2WebExtension {
          * @param view A {@link WebKit2WebExtension.DOMDOMWindow}
          * @param detail A `glong`
          */
-        init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: (bigint | number)): void;
+        init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: bigint | number): void;
     }
 
 
@@ -21204,12 +21186,12 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends DOMMouseEvent.ConstructorProps {
-            wheel_delta: (bigint | number);
-            wheelDelta: (bigint | number);
-            wheel_delta_x: (bigint | number);
-            wheelDeltaX: (bigint | number);
-            wheel_delta_y: (bigint | number);
-            wheelDeltaY: (bigint | number);
+            wheel_delta: bigint | number;
+            wheelDelta: bigint | number;
+            wheel_delta_x: bigint | number;
+            wheelDeltaX: bigint | number;
+            wheel_delta_y: bigint | number;
+            wheelDeltaY: bigint | number;
         }
     }
 
@@ -21312,7 +21294,7 @@ export namespace WebKit2WebExtension {
          * @param shiftKey A `gboolean`
          * @param metaKey A `gboolean`
          */
-        init_wheel_event(wheelDeltaX: (bigint | number), wheelDeltaY: (bigint | number), view: DOMDOMWindow, screenX: (bigint | number), screenY: (bigint | number), clientX: (bigint | number), clientY: (bigint | number), ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean): void;
+        init_wheel_event(wheelDeltaX: bigint | number, wheelDeltaY: bigint | number, view: DOMDOMWindow, screenX: bigint | number, screenY: bigint | number, clientX: bigint | number, clientY: bigint | number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean): void;
     }
 
 
@@ -21323,9 +21305,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DOMObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DOMObject.ConstructorProps {}
     }
 
     /**
@@ -21397,8 +21377,8 @@ export namespace WebKit2WebExtension {
             resultType: number;
             single_node_value: DOMNode;
             singleNodeValue: DOMNode;
-            snapshot_length: (bigint | number);
-            snapshotLength: (bigint | number);
+            snapshot_length: bigint | number;
+            snapshotLength: bigint | number;
             string_value: string;
             stringValue: string;
         }
@@ -21563,19 +21543,16 @@ export namespace WebKit2WebExtension {
          * @param index A `gulong`
          * @returns A {@link WebKit2WebExtension.DOMNode}
          */
-        snapshot_item(index: (bigint | number)): DOMNode;
+        snapshot_item(index: bigint | number): DOMNode;
     }
 
 
     namespace Frame {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -21937,9 +21914,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -22097,8 +22072,8 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: (bigint | number);
-            contentLength: (bigint | number);
+            content_length: bigint | number;
+            contentLength: bigint | number;
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -22287,10 +22262,10 @@ export namespace WebKit2WebExtension {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            fd_list: (Gio.UnixFDList | null);
-            fdList: (Gio.UnixFDList | null);
+            fd_list: Gio.UnixFDList | null;
+            fdList: Gio.UnixFDList | null;
             name: string;
-            parameters: (GLib.Variant | null);
+            parameters: GLib.Variant | null;
         }
     }
 
@@ -22315,14 +22290,14 @@ export namespace WebKit2WebExtension {
          * @since 2.28
          * @construct-only
          */
-        get fd_list(): (Gio.UnixFDList | null);
+        get fd_list(): Gio.UnixFDList | null;
 
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
          * @construct-only
          */
-        get fdList(): (Gio.UnixFDList | null);
+        get fdList(): Gio.UnixFDList | null;
 
         /**
          * The name of the user message.
@@ -22339,7 +22314,7 @@ export namespace WebKit2WebExtension {
          * @since 2.28
          * @construct-only
          */
-        get parameters(): (GLib.Variant | null);
+        get parameters(): GLib.Variant | null;
 
         /**
          * Compile-time signal type information.
@@ -22355,9 +22330,9 @@ export namespace WebKit2WebExtension {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, parameters: (GLib.Variant | null)): UserMessage;
+        static ["new"](name: string, parameters: GLib.Variant | null): UserMessage;
 
-        static new_with_fd_list(name: string, parameters: (GLib.Variant | null), fd_list: (Gio.UnixFDList | null)): UserMessage;
+        static new_with_fd_list(name: string, parameters: GLib.Variant | null, fd_list: Gio.UnixFDList | null): UserMessage;
 
         // Signals
         /** @signal */
@@ -22383,7 +22358,7 @@ export namespace WebKit2WebExtension {
          * Get the `message` list of file descritpor.
          * @returns the message list of file descriptors
          */
-        get_fd_list(): (Gio.UnixFDList | null);
+        get_fd_list(): Gio.UnixFDList | null;
 
         /**
          * Get the `message` name.
@@ -22395,7 +22370,7 @@ export namespace WebKit2WebExtension {
          * Get the `message` parameters.
          * @returns the message parameters
          */
-        get_parameters(): (GLib.Variant | null);
+        get_parameters(): GLib.Variant | null;
 
         /**
          * Send a reply to an user message.
@@ -22424,9 +22399,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -22501,9 +22474,7 @@ export namespace WebKit2WebExtension {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -22616,7 +22587,7 @@ export namespace WebKit2WebExtension {
          * @param page_id the identifier of the {@link WebKit2WebExtension.WebPage} to get
          * @returns the {@link WebKit2WebExtension.WebPage} for the given `page_id`, or `null` if the    identifier doesn't correspond to an existing web page.
          */
-        get_page(page_id: (bigint | number)): WebPage;
+        get_page(page_id: bigint | number): WebPage;
 
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
@@ -22627,19 +22598,7 @@ export namespace WebKit2WebExtension {
          * @param message a {@link WebKit2WebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        send_message_to_context(message: UserMessage, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserMessage>;
-
-        /**
-         * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
-         * 
-         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `calback`.
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_extension_send_message_to_context_finish()` to get the message reply.
-         * @param message a {@link WebKit2WebExtension.UserMessage}
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
-         */
-        send_message_to_context(message: UserMessage, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null): globalThis.Promise<UserMessage>;
 
         /**
          * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
@@ -22651,7 +22610,19 @@ export namespace WebKit2WebExtension {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
-        send_message_to_context(message: UserMessage, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserMessage> | void);
+        send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
+         * 
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `calback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_extension_send_message_to_context_finish()` to get the message reply.
+         * @param message a {@link WebKit2WebExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         */
+        send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserMessage> | void;
 
         /**
          * Finish an asynchronous operation started with `webkit_web_extension_send_message_to_context()`.
@@ -22760,7 +22731,7 @@ export namespace WebKit2WebExtension {
              * @since 2.8
              * @run-last
              */
-            "context-menu": (arg0: ContextMenu, arg1: WebHitTestResult) => (boolean | void);
+            "context-menu": (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
             /**
              * This signal is emitted when the DOM document of a {@link WebKit2WebExtension.WebPage} has been
              * loaded.
@@ -22820,7 +22791,7 @@ export namespace WebKit2WebExtension {
              * @signal
              * @run-last
              */
-            "send-request": (arg0: URIRequest, arg1: URIResponse) => (boolean | void);
+            "send-request": (arg0: URIRequest, arg1: URIResponse) => boolean | void;
             /**
              * This signal is emitted when a {@link WebKit2WebExtension.UserMessage} is received from the
              * `WebKitWebView` corresponding to `web_page`. You can reply to the message
@@ -22834,7 +22805,7 @@ export namespace WebKit2WebExtension {
              * @since 2.28
              * @run-last
              */
-            "user-message-received": (arg0: UserMessage) => (boolean | void);
+            "user-message-received": (arg0: UserMessage) => boolean | void;
             /**
              * This signal is emitted to indicate various points during form
              * submission. `step` indicates the current stage of form submission.
@@ -22962,7 +22933,7 @@ export namespace WebKit2WebExtension {
          * @param message a {@link WebKit2WebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        send_message_to_view(message: UserMessage, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserMessage>;
+        send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null): globalThis.Promise<UserMessage>;
 
         /**
          * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
@@ -22974,7 +22945,7 @@ export namespace WebKit2WebExtension {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
-        send_message_to_view(message: UserMessage, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
@@ -22986,7 +22957,7 @@ export namespace WebKit2WebExtension {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
-        send_message_to_view(message: UserMessage, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserMessage> | void);
+        send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserMessage> | void;
 
         /**
          * Finish an asynchronous operation started with `webkit_web_page_send_message_to_view()`.
@@ -23767,9 +23738,7 @@ export namespace WebKit2WebExtension {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DOMEventTargetNamespace {
@@ -23831,9 +23800,7 @@ export namespace WebKit2WebExtension {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DOMNodeFilterNamespace {
@@ -23875,9 +23842,7 @@ export namespace WebKit2WebExtension {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DOMXPathNSResolverNamespace {

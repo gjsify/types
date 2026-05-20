@@ -209,7 +209,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
+        vfunc_get_connection_post_params(node_type: GObject.GType): { [key: string]: any } | GLib.HashTable<never, never>;
 
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -223,13 +223,10 @@ export namespace GFBGraph {
 
     namespace GoaAuthorizer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
     }
 
     /**
@@ -290,7 +287,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds the necessary authorization to `call`.
@@ -319,7 +316,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -438,7 +435,7 @@ export namespace GFBGraph {
          * @param authorizer a {@link GFBGraph.Authorizer}.
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
-        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Node[]>;
+        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: Gio.Cancellable | null): globalThis.Promise<Node[]>;
 
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
@@ -451,7 +448,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
-        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously retrieve the list of nodes of type `node_type` connected to the `node` object. See
@@ -464,7 +461,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
-        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Node[]> | void);
+        get_connection_nodes_async(node_type: GObject.GType, authorizer: Authorizer, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Node[]> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -687,7 +684,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
          * @virtual
          */
-        vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
+        vfunc_get_connection_post_params(node_type: GObject.GType): { [key: string]: any } | GLib.HashTable<never, never>;
 
         /**
          * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -721,7 +718,7 @@ export namespace GFBGraph {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -748,7 +745,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -778,7 +775,7 @@ export namespace GFBGraph {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -810,7 +807,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -819,7 +816,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -855,7 +852,7 @@ export namespace GFBGraph {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -881,7 +878,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -982,7 +979,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds the necessary authorization to `call`.
@@ -1011,7 +1008,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1102,7 +1099,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
-        static get_me_async(authorizer: Authorizer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<User> | null)): void;
+        static get_me_async(authorizer: Authorizer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<User> | null): void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -1129,7 +1126,7 @@ export namespace GFBGraph {
          * @param authorizer a {@link GFBGraph.Authorizer}.
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          */
-        get_albums_async(authorizer: Authorizer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Album[]>;
+        get_albums_async(authorizer: Authorizer, cancellable: Gio.Cancellable | null): globalThis.Promise<Album[]>;
 
         /**
          * Asynchronously retrieve the albums nodes owned by the `user`. See `gfbgraph_user_get_albums()` for the
@@ -1141,7 +1138,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
-        get_albums_async(authorizer: Authorizer, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_albums_async(authorizer: Authorizer, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously retrieve the albums nodes owned by the `user`. See `gfbgraph_user_get_albums()` for the
@@ -1153,7 +1150,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is completed.
          */
-        get_albums_async(authorizer: Authorizer, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Album[]> | void);
+        get_albums_async(authorizer: Authorizer, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Album[]> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -1325,14 +1322,12 @@ export namespace GFBGraph {
              * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AuthorizerNamespace {
@@ -1370,7 +1365,7 @@ export namespace GFBGraph {
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1392,7 +1387,7 @@ export namespace GFBGraph {
              * @param node_type a {@link GObject.GType}, required a #GFBGRAPH_TYPE_NODE or children.
              * @virtual
              */
-            vfunc_get_connection_post_params(node_type: GObject.GType): ({ [key: string]: any } | GLib.HashTable<never, never>);
+            vfunc_get_connection_post_params(node_type: GObject.GType): { [key: string]: any } | GLib.HashTable<never, never>;
 
             /**
              * Parse the response contained in `payload` when a `gfbgraph_node_get_connection_nodes()` was
@@ -1405,9 +1400,7 @@ export namespace GFBGraph {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps {}
     }
 
     export interface ConnectableNamespace {

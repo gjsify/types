@@ -184,7 +184,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @returns the monitor this surface will/has requested to be on.
      */
-    function get_monitor(window: Gtk.Window): (Gdk.Monitor | null);
+    function get_monitor(window: Gtk.Window): Gdk.Monitor | null;
 
     /**
      * NOTE: this function does not return ownership of the string. Do not free the returned string.
@@ -297,7 +297,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param monitor The output this layer surface will be placed on (`null` to let the compositor decide).
      */
-    function set_monitor(window: Gtk.Window, monitor: (Gdk.Monitor | null)): void;
+    function set_monitor(window: Gtk.Window, monitor: Gdk.Monitor | null): void;
 
     /**
      * Set the "namespace" of the surface.
@@ -311,7 +311,7 @@ export namespace Gtk4LayerShell {
      * @param window A layer surface.
      * @param name_space The namespace of this layer surface.
      */
-    function set_namespace(window: Gtk.Window, name_space: (string | null)): void;
+    function set_namespace(window: Gtk.Window, name_space: string | null): void;
 
     /**
      * Compositors may send the `zwlr_layer_surface_v1.closed` event in some cases (such as

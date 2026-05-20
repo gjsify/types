@@ -147,7 +147,7 @@ export namespace FolksTelepathy {
         interface ConstructorProps extends Folks.Persona.ConstructorProps, Folks.AliasDetails.ConstructorProps, Folks.AvatarDetails.ConstructorProps, Folks.BirthdayDetails.ConstructorProps, Folks.EmailDetails.ConstructorProps, Folks.FavouriteDetails.ConstructorProps, Folks.GroupDetails.ConstructorProps, Folks.InteractionDetails.ConstructorProps, Folks.ImDetails.ConstructorProps, Folks.NameDetails.ConstructorProps, Folks.PhoneDetails.ConstructorProps, Folks.PresenceDetails.ConstructorProps, Folks.UrlDetails.ConstructorProps {
             is_in_contact_list: boolean;
             isInContactList: boolean;
-            contact: (TelepathyGLib.Contact | null);
+            contact: TelepathyGLib.Contact | null;
         }
     }
 
@@ -167,7 +167,7 @@ export namespace FolksTelepathy {
         /**
          * @construct-only
          */
-        get contact(): (TelepathyGLib.Contact | null);
+        get contact(): TelepathyGLib.Contact | null;
 
         /**
          * Compile-time signal type information.
@@ -202,7 +202,7 @@ export namespace FolksTelepathy {
         /**
          * @param contact 
          */
-        static dup_for_contact(contact: TelepathyGLib.Contact): (Persona | null);
+        static dup_for_contact(contact: TelepathyGLib.Contact): Persona | null;
 
         // Methods
         get_is_in_contact_list(): boolean;
@@ -212,23 +212,23 @@ export namespace FolksTelepathy {
          */
         set_is_in_contact_list(value: boolean): void;
 
-        get_contact(): (TelepathyGLib.Contact | null);
+        get_contact(): TelepathyGLib.Contact | null;
 
         /** @category Inherited from Folks.AliasDetails */
         get alias(): string;
         set alias(val: string);
 
         /** @category Inherited from Folks.AvatarDetails */
-        get avatar(): (Gio.LoadableIcon | null);
-        set avatar(val: (Gio.LoadableIcon | null));
+        get avatar(): Gio.LoadableIcon | null;
+        set avatar(val: Gio.LoadableIcon | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
-        get birthday(): (GLib.DateTime | null);
-        set birthday(val: (GLib.DateTime | null));
+        get birthday(): GLib.DateTime | null;
+        set birthday(val: GLib.DateTime | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
-        get calendar_event_id(): (string | null);
-        set calendar_event_id(val: (string | null));
+        get calendar_event_id(): string | null;
+        set calendar_event_id(val: string | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
         get calendarEventId(): string;
@@ -270,7 +270,7 @@ export namespace FolksTelepathy {
          * @read-only
           * @category Inherited from Folks.InteractionDetails
          */
-        get last_im_interaction_datetime(): (GLib.DateTime | null);
+        get last_im_interaction_datetime(): GLib.DateTime | null;
 
         /**
          * @read-only
@@ -294,7 +294,7 @@ export namespace FolksTelepathy {
          * @read-only
           * @category Inherited from Folks.InteractionDetails
          */
-        get last_call_interaction_datetime(): (GLib.DateTime | null);
+        get last_call_interaction_datetime(): GLib.DateTime | null;
 
         /**
          * @read-only
@@ -311,8 +311,8 @@ export namespace FolksTelepathy {
         set imAddresses(val: Gee.MultiMap);
 
         /** @category Inherited from Folks.NameDetails */
-        get structured_name(): (Folks.StructuredName | null);
-        set structured_name(val: (Folks.StructuredName | null));
+        get structured_name(): Folks.StructuredName | null;
+        set structured_name(val: Folks.StructuredName | null);
 
         /** @category Inherited from Folks.NameDetails */
         get structuredName(): Folks.StructuredName;
@@ -383,13 +383,13 @@ export namespace FolksTelepathy {
          * @param alias 
          * @param _callback_ 
          */
-        change_alias(alias: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param alias 
          * @param _callback_ 
          */
-        change_alias(alias: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -408,7 +408,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_alias(alias: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_alias(alias: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -430,38 +430,38 @@ export namespace FolksTelepathy {
         /**
          * @param avatar 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null)): globalThis.Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon | null): globalThis.Promise<void>;
 
         /**
          * @param avatar 
          * @param _callback_ 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param avatar 
          * @param _callback_ 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_avatar(avatar: Gio.LoadableIcon | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
-        get_avatar(): (Gio.LoadableIcon | null);
+        get_avatar(): Gio.LoadableIcon | null;
 
         /**
          * @param value 
          */
-        set_avatar(value: (Gio.LoadableIcon | null)): void;
+        set_avatar(value: Gio.LoadableIcon | null): void;
 
         /**
          * @param avatar 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_avatar(avatar: (Gio.LoadableIcon | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -472,30 +472,30 @@ export namespace FolksTelepathy {
         /**
          * @virtual
          */
-        vfunc_get_avatar(): (Gio.LoadableIcon | null);
+        vfunc_get_avatar(): Gio.LoadableIcon | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_avatar(value: (Gio.LoadableIcon | null)): void;
+        vfunc_set_avatar(value: Gio.LoadableIcon | null): void;
 
         /**
          * @param birthday 
          */
-        change_birthday(birthday: (GLib.DateTime | null)): globalThis.Promise<void>;
-
-        /**
-         * @param birthday 
-         * @param _callback_ 
-         */
-        change_birthday(birthday: (GLib.DateTime | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_birthday(birthday: GLib.DateTime | null): globalThis.Promise<void>;
 
         /**
          * @param birthday 
          * @param _callback_ 
          */
-        change_birthday(birthday: (GLib.DateTime | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param birthday 
+         * @param _callback_ 
+         */
+        change_birthday(birthday: GLib.DateTime | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -505,45 +505,45 @@ export namespace FolksTelepathy {
         /**
          * @param event_id 
          */
-        change_calendar_event_id(event_id: (string | null)): globalThis.Promise<void>;
+        change_calendar_event_id(event_id: string | null): globalThis.Promise<void>;
 
         /**
          * @param event_id 
          * @param _callback_ 
          */
-        change_calendar_event_id(event_id: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param event_id 
          * @param _callback_ 
          */
-        change_calendar_event_id(event_id: (string | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_calendar_event_id(event_id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
-        get_birthday(): (GLib.DateTime | null);
+        get_birthday(): GLib.DateTime | null;
 
         /**
          * @param value 
          */
-        set_birthday(value: (GLib.DateTime | null)): void;
+        set_birthday(value: GLib.DateTime | null): void;
 
-        get_calendar_event_id(): (string | null);
+        get_calendar_event_id(): string | null;
 
         /**
          * @param value 
          */
-        set_calendar_event_id(value: (string | null)): void;
+        set_calendar_event_id(value: string | null): void;
 
         /**
          * @param birthday 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_birthday(birthday: (GLib.DateTime | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -556,7 +556,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_calendar_event_id(event_id: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -567,24 +567,24 @@ export namespace FolksTelepathy {
         /**
          * @virtual
          */
-        vfunc_get_birthday(): (GLib.DateTime | null);
+        vfunc_get_birthday(): GLib.DateTime | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_birthday(value: (GLib.DateTime | null)): void;
+        vfunc_set_birthday(value: GLib.DateTime | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_calendar_event_id(): (string | null);
+        vfunc_get_calendar_event_id(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_calendar_event_id(value: (string | null)): void;
+        vfunc_set_calendar_event_id(value: string | null): void;
 
         /**
          * @param email_addresses 
@@ -595,13 +595,13 @@ export namespace FolksTelepathy {
          * @param email_addresses 
          * @param _callback_ 
          */
-        change_email_addresses(email_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param email_addresses 
          * @param _callback_ 
          */
-        change_email_addresses(email_addresses: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -620,7 +620,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -648,13 +648,13 @@ export namespace FolksTelepathy {
          * @param is_favourite 
          * @param _callback_ 
          */
-        change_is_favourite(is_favourite: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param is_favourite 
          * @param _callback_ 
          */
-        change_is_favourite(is_favourite: boolean, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -673,7 +673,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -703,14 +703,14 @@ export namespace FolksTelepathy {
          * @param is_member 
          * @param _callback_ 
          */
-        change_group(group: string, is_member: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param group 
          * @param is_member 
          * @param _callback_ 
          */
-        change_group(group: string, is_member: boolean, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -726,13 +726,13 @@ export namespace FolksTelepathy {
          * @param groups 
          * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param groups 
          * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -752,7 +752,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_group(group: string, is_member: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -765,7 +765,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_groups(groups: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -786,11 +786,11 @@ export namespace FolksTelepathy {
 
         get_im_interaction_count(): number;
 
-        get_last_im_interaction_datetime(): (GLib.DateTime | null);
+        get_last_im_interaction_datetime(): GLib.DateTime | null;
 
         get_call_interaction_count(): number;
 
-        get_last_call_interaction_datetime(): (GLib.DateTime | null);
+        get_last_call_interaction_datetime(): GLib.DateTime | null;
 
         /**
          * @virtual
@@ -800,7 +800,7 @@ export namespace FolksTelepathy {
         /**
          * @virtual
          */
-        vfunc_get_last_im_interaction_datetime(): (GLib.DateTime | null);
+        vfunc_get_last_im_interaction_datetime(): GLib.DateTime | null;
 
         /**
          * @virtual
@@ -810,7 +810,7 @@ export namespace FolksTelepathy {
         /**
          * @virtual
          */
-        vfunc_get_last_call_interaction_datetime(): (GLib.DateTime | null);
+        vfunc_get_last_call_interaction_datetime(): GLib.DateTime | null;
 
         /**
          * @param im_addresses 
@@ -821,13 +821,13 @@ export namespace FolksTelepathy {
          * @param im_addresses 
          * @param _callback_ 
          */
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param im_addresses 
          * @param _callback_ 
          */
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -846,7 +846,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -868,19 +868,19 @@ export namespace FolksTelepathy {
         /**
          * @param name 
          */
-        change_structured_name(name: (Folks.StructuredName | null)): globalThis.Promise<void>;
+        change_structured_name(name: Folks.StructuredName | null): globalThis.Promise<void>;
 
         /**
          * @param name 
          * @param _callback_ 
          */
-        change_structured_name(name: (Folks.StructuredName | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_structured_name(name: Folks.StructuredName | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param name 
          * @param _callback_ 
          */
-        change_structured_name(name: (Folks.StructuredName | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_structured_name(name: Folks.StructuredName | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -896,13 +896,13 @@ export namespace FolksTelepathy {
          * @param full_name 
          * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param full_name 
          * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -918,25 +918,25 @@ export namespace FolksTelepathy {
          * @param nickname 
          * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param nickname 
          * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
-        get_structured_name(): (Folks.StructuredName | null);
+        get_structured_name(): Folks.StructuredName | null;
 
         /**
          * @param value 
          */
-        set_structured_name(value: (Folks.StructuredName | null)): void;
+        set_structured_name(value: Folks.StructuredName | null): void;
 
         get_full_name(): string;
 
@@ -957,7 +957,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_structured_name(name: (Folks.StructuredName | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_structured_name(name: Folks.StructuredName | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -970,7 +970,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_full_name(full_name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -983,7 +983,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_nickname(nickname: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -994,13 +994,13 @@ export namespace FolksTelepathy {
         /**
          * @virtual
          */
-        vfunc_get_structured_name(): (Folks.StructuredName | null);
+        vfunc_get_structured_name(): Folks.StructuredName | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_structured_name(value: (Folks.StructuredName | null)): void;
+        vfunc_set_structured_name(value: Folks.StructuredName | null): void;
 
         /**
          * @virtual
@@ -1033,13 +1033,13 @@ export namespace FolksTelepathy {
          * @param phone_numbers 
          * @param _callback_ 
          */
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param phone_numbers 
          * @param _callback_ 
          */
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1058,7 +1058,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1160,13 +1160,13 @@ export namespace FolksTelepathy {
          * @param urls 
          * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param urls 
          * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1185,7 +1185,7 @@ export namespace FolksTelepathy {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_urls(urls: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 

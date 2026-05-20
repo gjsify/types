@@ -99,9 +99,7 @@ export namespace Phosh {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, DBusScreenshot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, DBusScreenshot.ConstructorProps {}
     }
 
     /**
@@ -132,12 +130,12 @@ export namespace Phosh {
 
         static new_for_bus_finish(res: Gio.AsyncResult): DBusScreenshotProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): DBusScreenshotProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): DBusScreenshotProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): DBusScreenshotProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): DBusScreenshotProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -170,7 +168,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DBusScreenshotProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null): void;
 
         /**
          * @param args 
@@ -192,7 +190,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DBusScreenshotProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DBusScreenshotProxy> | null): void;
 
         /**
          * @param args 
@@ -240,7 +238,7 @@ export namespace Phosh {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -283,7 +281,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -326,7 +324,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -392,7 +390,7 @@ export namespace Phosh {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -406,7 +404,7 @@ export namespace Phosh {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -421,13 +419,13 @@ export namespace Phosh {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -443,7 +441,7 @@ export namespace Phosh {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -487,7 +485,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -531,7 +529,7 @@ export namespace Phosh {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -545,22 +543,7 @@ export namespace Phosh {
          * @param arg_height Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -575,7 +558,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_flash_area()`.
@@ -595,7 +593,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -605,18 +603,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Variant | null)>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -627,7 +614,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Variant | null)> | void);
+        call_pick_color(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_pick_color(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_pick_color()`.
@@ -643,7 +641,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -656,21 +654,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -684,7 +668,21 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -700,24 +698,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -734,7 +715,24 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_area()`.
@@ -756,7 +754,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -775,7 +773,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -789,22 +787,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_frame Argument to pass with the method invocation.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -819,7 +802,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_frame Argument to pass with the method invocation.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_window()`.
@@ -839,7 +837,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -849,18 +847,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, number, number, number]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -871,7 +858,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, number, number, number]> | void);
+        call_select_area(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_select_area(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, number, number, number]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_select_area()`.
@@ -887,7 +885,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable: (Gio.Cancellable | null)): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -1016,9 +1014,7 @@ export namespace Phosh {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, DBusScreenshot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, DBusScreenshot.ConstructorProps {}
     }
 
     /**
@@ -1061,7 +1057,7 @@ export namespace Phosh {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1076,13 +1072,13 @@ export namespace Phosh {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1098,7 +1094,7 @@ export namespace Phosh {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -1112,22 +1108,7 @@ export namespace Phosh {
          * @param arg_height Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -1142,7 +1123,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_flash_area()`.
@@ -1162,7 +1158,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -1172,18 +1168,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Variant | null)>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -1194,7 +1179,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Variant | null)> | void);
+        call_pick_color(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_pick_color(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_pick_color()`.
@@ -1210,7 +1206,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -1223,21 +1219,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -1251,7 +1233,21 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -1267,24 +1263,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -1301,7 +1280,24 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_area()`.
@@ -1323,7 +1319,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -1342,7 +1338,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -1356,22 +1352,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_frame Argument to pass with the method invocation.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -1386,7 +1367,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_frame Argument to pass with the method invocation.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_window()`.
@@ -1406,7 +1402,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -1416,18 +1412,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, number, number, number]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -1438,7 +1423,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, number, number, number]> | void);
+        call_select_area(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_select_area(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, number, number, number]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_select_area()`.
@@ -1454,7 +1450,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable: (Gio.Cancellable | null)): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -2205,7 +2201,7 @@ export namespace Phosh {
          * Gets the current {@link Lockscreen}, if one exists (NULL otherwise).
          * @returns The lockscreen
          */
-        get_lockscreen(): (Lockscreen | null);
+        get_lockscreen(): Lockscreen | null;
 
         /**
          * @returns The currently shown {@link Phosh.LockscreenPage} in the {@link Phosh.Lockscreen}
@@ -2572,9 +2568,7 @@ export namespace Phosh {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DBusScreenshotSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, DBusScreenshot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DBusScreenshotSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, DBusScreenshot.ConstructorProps {}
     }
 
     /**
@@ -2626,7 +2620,7 @@ export namespace Phosh {
          * @param include_cursor Whether to include the cursor
          * @returns `FALSE` on failure, otherwise `TRUE`
          */
-        take_screenshot(area: (Gdk.Rectangle | null), filename: (string | null), copy_to_clipboard: boolean, include_cursor: boolean): boolean;
+        take_screenshot(area: Gdk.Rectangle | null, filename: string | null, copy_to_clipboard: boolean, include_cursor: boolean): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -2640,22 +2634,7 @@ export namespace Phosh {
          * @param arg_height Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -2670,7 +2649,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_flash_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_flash_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_flash_area()`.
@@ -2690,7 +2684,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -2700,18 +2694,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Variant | null)>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -2722,7 +2705,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Variant | null)> | void);
+        call_pick_color(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_pick_color(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_pick_color()`.
@@ -2738,7 +2732,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -2751,21 +2745,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -2779,7 +2759,21 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -2795,24 +2789,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -2829,7 +2806,24 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_area()`.
@@ -2851,7 +2845,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -2870,7 +2864,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -2884,22 +2878,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_frame Argument to pass with the method invocation.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -2914,7 +2893,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_frame Argument to pass with the method invocation.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_window()`.
@@ -2934,7 +2928,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -2944,18 +2938,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, number, number, number]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -2966,7 +2949,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, number, number, number]> | void);
+        call_select_area(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_select_area(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, number, number, number]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_select_area()`.
@@ -2982,7 +2976,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable: (Gio.Cancellable | null)): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -3335,7 +3329,7 @@ export namespace Phosh {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -3381,7 +3375,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -3395,7 +3389,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -3419,7 +3413,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -3441,7 +3435,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -3568,7 +3562,7 @@ export namespace Phosh {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -3615,7 +3609,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -3629,7 +3623,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -3653,7 +3647,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -3675,7 +3669,7 @@ export namespace Phosh {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -3751,7 +3745,7 @@ export namespace Phosh {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -3807,7 +3801,7 @@ export namespace Phosh {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -3874,8 +3868,8 @@ export namespace Phosh {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            extra_widget: (Gtk.Widget | null);
-            extraWidget: (Gtk.Widget | null);
+            extra_widget: Gtk.Widget | null;
+            extraWidget: Gtk.Widget | null;
             icon_name: string;
             iconName: string;
             icon_size: Gtk.IconSize;
@@ -3905,16 +3899,16 @@ export namespace Phosh {
          * used in PhoshTopPanel. When used in {@link QuickSetting} this
          * is not needed.
          */
-        get extra_widget(): (Gtk.Widget | null);
-        set extra_widget(val: (Gtk.Widget | null));
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
 
         /**
          * An extra widget to display. This is used for extra information when
          * used in PhoshTopPanel. When used in {@link QuickSetting} this
          * is not needed.
          */
-        get extraWidget(): (Gtk.Widget | null);
-        set extraWidget(val: (Gtk.Widget | null));
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
 
         /**
          * The name of the icon to display in the widget
@@ -4007,7 +4001,7 @@ export namespace Phosh {
          * Get the extra widget or `null` if there's no extra widget
          * @returns The extra widget
          */
-        get_extra_widget(): (Gtk.Widget | null);
+        get_extra_widget(): Gtk.Widget | null;
 
         get_icon_name(): string;
 
@@ -4315,7 +4309,7 @@ export namespace Phosh {
         /**
          * @virtual
          */
-        vfunc_get_time_t(): (bigint | number);
+        vfunc_get_time_t(): bigint | number;
 
         // Methods
         /**
@@ -4496,9 +4490,7 @@ export namespace Phosh {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DBusScreenshotNamespace {
@@ -4535,7 +4527,7 @@ export namespace Phosh {
          * @param arg_height Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -4550,7 +4542,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method on `proxy`.
@@ -4565,7 +4557,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_flash_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_flash_area()`.
@@ -4585,7 +4577,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_flash_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -4595,18 +4587,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Variant | null)>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_pick_color(cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
@@ -4617,7 +4598,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_pick_color(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Variant | null)> | void);
+        call_pick_color(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_pick_color_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_pick_color_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_pick_color(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_pick_color()`.
@@ -4633,7 +4625,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_pick_color_sync(cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant | null];
+        call_pick_color_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -4646,21 +4638,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
@@ -4674,7 +4652,21 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -4690,24 +4682,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_width Argument to pass with the method invocation.
-         * @param arg_height Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
@@ -4724,7 +4699,24 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_area_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_width Argument to pass with the method invocation.
+         * @param arg_height Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_area(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_area()`.
@@ -4746,7 +4738,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_area_sync(arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot()`.
@@ -4765,7 +4757,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_sync(arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -4779,22 +4771,7 @@ export namespace Phosh {
          * @param arg_filename Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[boolean, string]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
-         * @param arg_include_frame Argument to pass with the method invocation.
-         * @param arg_include_cursor Argument to pass with the method invocation.
-         * @param arg_flash Argument to pass with the method invocation.
-         * @param arg_filename Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[boolean, string]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
@@ -4809,7 +4786,22 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[boolean, string]> | void);
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_screenshot_window_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_screenshot_window_sync()` for the synchronous, blocking version of this method.
+         * @param arg_include_frame Argument to pass with the method invocation.
+         * @param arg_include_cursor Argument to pass with the method invocation.
+         * @param arg_flash Argument to pass with the method invocation.
+         * @param arg_filename Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_screenshot_window(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[boolean, string]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_screenshot_window()`.
@@ -4829,7 +4821,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean, string];
+        call_screenshot_window_sync(arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string, cancellable: Gio.Cancellable | null): [boolean, boolean, string];
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -4839,18 +4831,7 @@ export namespace Phosh {
          * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, number, number, number]>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
-         * 
-         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_area(cancellable: Gio.Cancellable | null): globalThis.Promise<[number, number, number, number]>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
@@ -4861,7 +4842,18 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_select_area(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, number, number, number]> | void);
+        call_select_area(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `phosh_dbus_screenshot_call_select_area_finish()` to get the result of the operation.
+         * 
+         * See `phosh_dbus_screenshot_call_select_area_sync()` for the synchronous, blocking version of this method.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_select_area(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, number, number, number]> | void;
 
         /**
          * Finishes an operation started with `phosh_dbus_screenshot_call_select_area()`.
@@ -4877,7 +4869,7 @@ export namespace Phosh {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_select_area_sync(cancellable: (Gio.Cancellable | null)): [boolean, number, number, number, number];
+        call_select_area_sync(cancellable: Gio.Cancellable | null): [boolean, number, number, number, number];
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.

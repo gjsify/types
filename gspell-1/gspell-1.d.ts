@@ -52,7 +52,7 @@ export namespace Gspell {
         static NO_LANGUAGE_SET: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -70,13 +70,13 @@ export namespace Gspell {
      * Finds the best available language based on the current locale.
      * @returns the default {@link Gspell.Language}, or `null` if no dictionaries are available.
      */
-    function language_get_default(): (Language | null);
+    function language_get_default(): Language | null;
 
     /**
      * @param language_code a language code.
      * @returns a {@link Gspell.Language} corresponding to `language_code`, or `null` if not found.
      */
-    function language_lookup(language_code: string): (Language | null);
+    function language_lookup(language_code: string): Language | null;
 
     namespace Checker {
         // Signal signatures
@@ -105,7 +105,7 @@ export namespace Gspell {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            language: (Language | null);
+            language: Language | null;
         }
     }
 
@@ -119,8 +119,8 @@ export namespace Gspell {
         /**
          * The {@link Gspell.Language} used.
          */
-        get language(): (Language | null);
-        set language(val: (Language | null));
+        get language(): Language | null;
+        set language(val: Language | null);
 
         /**
          * Compile-time signal type information.
@@ -136,7 +136,7 @@ export namespace Gspell {
 
         _init(...args: any[]): void;
 
-        static ["new"](language: (Language | null)): Checker;
+        static ["new"](language: Language | null): Checker;
 
         // Signals
         /** @signal */
@@ -176,7 +176,7 @@ export namespace Gspell {
          * @param word a word.
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          */
-        add_word_to_personal(word: string, word_length: (bigint | number)): void;
+        add_word_to_personal(word: string, word_length: bigint | number): void;
 
         /**
          * Adds a word to the session dictionary. Each {@link Gspell.Checker} instance has a
@@ -188,7 +188,7 @@ export namespace Gspell {
          * @param word a word.
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          */
-        add_word_to_session(word: string, word_length: (bigint | number)): void;
+        add_word_to_session(word: string, word_length: bigint | number): void;
 
         /**
          * If the {@link Gspell.Checker.language} is `null`, i.e. when no dictonaries are
@@ -197,7 +197,7 @@ export namespace Gspell {
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          * @returns `true` if `word` is correctly spelled, `false` otherwise.
          */
-        check_word(word: string, word_length: (bigint | number)): boolean;
+        check_word(word: string, word_length: bigint | number): boolean;
 
         /**
          * Clears the session dictionary.
@@ -207,7 +207,7 @@ export namespace Gspell {
         /**
          * @returns the {@link Gspell.Language} currently used, or `null` if no dictionaries are available.
          */
-        get_language(): (Language | null);
+        get_language(): Language | null;
 
         /**
          * Gets the suggestions for `word`. Free the return value with
@@ -216,7 +216,7 @@ export namespace Gspell {
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          * @returns the list of suggestions.
          */
-        get_suggestions(word: string, word_length: (bigint | number)): string[];
+        get_suggestions(word: string, word_length: bigint | number): string[];
 
         /**
          * Informs the spell checker that `word` is replaced/corrected by `replacement`.
@@ -225,14 +225,14 @@ export namespace Gspell {
          * @param replacement the replacement word.
          * @param replacement_length the byte length of `replacement`, or -1 if `replacement`   is nul-terminated.
          */
-        set_correction(word: string, word_length: (bigint | number), replacement: string, replacement_length: (bigint | number)): void;
+        set_correction(word: string, word_length: bigint | number, replacement: string, replacement_length: bigint | number): void;
 
         /**
          * Sets the language to use for the spell checking. If `language` is `null`, the
          * default language is picked with `gspell_language_get_default()`.
          * @param language the {@link Gspell.Language} to use, or `null`.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
     }
 
 
@@ -540,8 +540,8 @@ export namespace Gspell {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Gtk.EntryBuffer;
-            spell_checker: (Checker | null);
-            spellChecker: (Checker | null);
+            spell_checker: Checker | null;
+            spellChecker: Checker | null;
         }
     }
 
@@ -563,15 +563,15 @@ export namespace Gspell {
          * The {@link Gspell.Checker}.
          * @since 1.4
          */
-        get spell_checker(): (Checker | null);
-        set spell_checker(val: (Checker | null));
+        get spell_checker(): Checker | null;
+        set spell_checker(val: Checker | null);
 
         /**
          * The {@link Gspell.Checker}.
          * @since 1.4
          */
-        get spellChecker(): (Checker | null);
-        set spellChecker(val: (Checker | null));
+        get spellChecker(): Checker | null;
+        set spellChecker(val: Checker | null);
 
         /**
          * Compile-time signal type information.
@@ -617,7 +617,7 @@ export namespace Gspell {
         /**
          * @returns the {@link Gspell.Checker} if one has been set,   or `null`.
          */
-        get_spell_checker(): (Checker | null);
+        get_spell_checker(): Checker | null;
 
         /**
          * Sets a {@link Gspell.Checker} to a {@link Gspell.EntryBuffer}. The `gspell_buffer` will own a
@@ -625,7 +625,7 @@ export namespace Gspell {
          * `spell_checker` if you no longer need it.
          * @param spell_checker a {@link Gspell.Checker}, or `null` to unset the spell   checker.
          */
-        set_spell_checker(spell_checker: (Checker | null)): void;
+        set_spell_checker(spell_checker: Checker | null): void;
     }
 
 
@@ -692,9 +692,7 @@ export namespace Gspell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, LanguageChooser.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, LanguageChooser.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -717,7 +715,7 @@ export namespace Gspell {
 
         _init(...args: any[]): void;
 
-        static ["new"](current_language: (Language | null)): LanguageChooserButton;
+        static ["new"](current_language: Language | null): LanguageChooserButton;
 
         // Conflicted with Gtk.Button.new
         static ["new"](...args: never[]): any;
@@ -739,8 +737,8 @@ export namespace Gspell {
          * The selected {@link Gspell.Language}.
           * @category Inherited from Gspell.LanguageChooser
          */
-        get language(): (Language | null);
-        set language(val: (Language | null));
+        get language(): Language | null;
+        set language(val: Language | null);
 
         /**
          * The empty string if the default language was set and the selection
@@ -764,15 +762,15 @@ export namespace Gspell {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -849,7 +847,7 @@ export namespace Gspell {
         /**
          * @returns the selected {@link Gspell.Language}, or `null` if no dictionaries are available.
          */
-        get_language(): (Language | null);
+        get_language(): Language | null;
 
         /**
          * @returns the {@link Gspell.LanguageChooser.language_code}. It cannot be `null`.
@@ -860,12 +858,12 @@ export namespace Gspell {
          * Sets the selected language.
          * @param language a {@link Gspell.Language} or `null` to pick the default   language.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
 
         /**
          * @param language_code a language code, or the empty string or `null` to   pick the default language.
          */
-        set_language_code(language_code: (string | null)): void;
+        set_language_code(language_code: string | null): void;
 
         /**
          * @param default_language 
@@ -878,7 +876,7 @@ export namespace Gspell {
          * @param language a {@link Gspell.Language} or `null` to pick the default   language.
          * @virtual
          */
-        vfunc_set_language(language: (Language | null)): void;
+        vfunc_set_language(language: Language | null): void;
 
         /**
          * Gets the action name for `actionable`.
@@ -886,7 +884,7 @@ export namespace Gspell {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -910,7 +908,7 @@ export namespace Gspell {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -934,7 +932,7 @@ export namespace Gspell {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -958,7 +956,7 @@ export namespace Gspell {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -983,7 +981,7 @@ export namespace Gspell {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1008,7 +1006,7 @@ export namespace Gspell {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1072,7 +1070,7 @@ export namespace Gspell {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1082,7 +1080,7 @@ export namespace Gspell {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1214,9 +1212,7 @@ export namespace Gspell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, LanguageChooser.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, LanguageChooser.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1239,7 +1235,7 @@ export namespace Gspell {
 
         _init(...args: any[]): void;
 
-        static ["new"](parent: Gtk.Window, current_language: (Language | null), flags: Gtk.DialogFlags): LanguageChooserDialog;
+        static ["new"](parent: Gtk.Window, current_language: Language | null, flags: Gtk.DialogFlags): LanguageChooserDialog;
 
         // Conflicted with Gtk.Dialog.new
         static ["new"](...args: never[]): any;
@@ -1261,8 +1257,8 @@ export namespace Gspell {
          * The selected {@link Gspell.Language}.
           * @category Inherited from Gspell.LanguageChooser
          */
-        get language(): (Language | null);
-        set language(val: (Language | null));
+        get language(): Language | null;
+        set language(val: Language | null);
 
         /**
          * The empty string if the default language was set and the selection
@@ -1285,7 +1281,7 @@ export namespace Gspell {
         /**
          * @returns the selected {@link Gspell.Language}, or `null` if no dictionaries are available.
          */
-        get_language(): (Language | null);
+        get_language(): Language | null;
 
         /**
          * @returns the {@link Gspell.LanguageChooser.language_code}. It cannot be `null`.
@@ -1296,12 +1292,12 @@ export namespace Gspell {
          * Sets the selected language.
          * @param language a {@link Gspell.Language} or `null` to pick the default   language.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
 
         /**
          * @param language_code a language code, or the empty string or `null` to   pick the default language.
          */
-        set_language_code(language_code: (string | null)): void;
+        set_language_code(language_code: string | null): void;
 
         /**
          * @param default_language 
@@ -1314,7 +1310,7 @@ export namespace Gspell {
          * @param language a {@link Gspell.Language} or `null` to pick the default   language.
          * @virtual
          */
-        vfunc_set_language(language: (Language | null)): void;
+        vfunc_set_language(language: Language | null): void;
     }
 
 
@@ -1457,8 +1453,8 @@ export namespace Gspell {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Gtk.TextBuffer;
-            spell_checker: (Checker | null);
-            spellChecker: (Checker | null);
+            spell_checker: Checker | null;
+            spellChecker: Checker | null;
         }
     }
 
@@ -1478,14 +1474,14 @@ export namespace Gspell {
         /**
          * The {@link Gspell.Checker}.
          */
-        get spell_checker(): (Checker | null);
-        set spell_checker(val: (Checker | null));
+        get spell_checker(): Checker | null;
+        set spell_checker(val: Checker | null);
 
         /**
          * The {@link Gspell.Checker}.
          */
-        get spellChecker(): (Checker | null);
-        set spellChecker(val: (Checker | null));
+        get spellChecker(): Checker | null;
+        set spellChecker(val: Checker | null);
 
         /**
          * Compile-time signal type information.
@@ -1531,7 +1527,7 @@ export namespace Gspell {
         /**
          * @returns the {@link Gspell.Checker} if one has been set,   or `null`.
          */
-        get_spell_checker(): (Checker | null);
+        get_spell_checker(): Checker | null;
 
         /**
          * Sets a {@link Gspell.Checker} to a {@link Gspell.TextBuffer}. The `gspell_buffer` will own a
@@ -1539,7 +1535,7 @@ export namespace Gspell {
          * `spell_checker` if you no longer need it.
          * @param spell_checker a {@link Gspell.Checker}, or `null` to unset the spell   checker.
          */
-        set_spell_checker(spell_checker: (Checker | null)): void;
+        set_spell_checker(spell_checker: Checker | null): void;
     }
 
 
@@ -1748,12 +1744,12 @@ export namespace Gspell {
         /**
          * Finds the best available language based on the current locale.
          */
-        static get_default(): (Language | null);
+        static get_default(): Language | null;
 
         /**
          * @param language_code a language code.
          */
-        static lookup(language_code: string): (Language | null);
+        static lookup(language_code: string): Language | null;
 
         // Methods
         /**
@@ -1844,13 +1840,13 @@ export namespace Gspell {
              * @param language a {@link Gspell.Language} or `null` to pick the default   language.
              * @virtual
              */
-            vfunc_set_language(language: (Language | null)): void;
+            vfunc_set_language(language: Language | null): void;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            language: (Language | null);
+            language: Language | null;
             language_code: string;
             languageCode: string;
         }
@@ -1869,8 +1865,8 @@ export namespace Gspell {
         /**
          * The selected {@link Gspell.Language}.
          */
-        get language(): (Language | null);
-        set language(val: (Language | null));
+        get language(): Language | null;
+        set language(val: Language | null);
 
         /**
          * The empty string if the default language was set and the selection
@@ -1892,7 +1888,7 @@ export namespace Gspell {
         /**
          * @returns the selected {@link Gspell.Language}, or `null` if no dictionaries are available.
          */
-        get_language(): (Language | null);
+        get_language(): Language | null;
 
         /**
          * @returns the {@link Gspell.LanguageChooser.language_code}. It cannot be `null`.
@@ -1903,12 +1899,12 @@ export namespace Gspell {
          * Sets the selected language.
          * @param language a {@link Gspell.Language} or `null` to pick the default   language.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
 
         /**
          * @param language_code a language code, or the empty string or `null` to   pick the default language.
          */
-        set_language_code(language_code: (string | null)): void;
+        set_language_code(language_code: string | null): void;
     }
 
 
@@ -1959,9 +1955,7 @@ export namespace Gspell {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     export interface NavigatorNamespace {

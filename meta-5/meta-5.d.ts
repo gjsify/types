@@ -1548,7 +1548,7 @@ export namespace Meta {
      * @param src 
      * @param n 
      */
-    function g_utf8_strndup(src: string, n: (bigint | number)): string;
+    function g_utf8_strndup(src: string, n: bigint | number): string;
 
     /**
      * Accessor for the singleton MetaBackend.
@@ -1627,7 +1627,7 @@ export namespace Meta {
      * @param handler The new handler function
      * @returns `true` if the binding known as `name` was found, `false` otherwise.
      */
-    function keybindings_set_custom_handler(name: string, handler: (KeyHandlerFunc | null)): boolean;
+    function keybindings_set_custom_handler(name: string, handler: KeyHandlerFunc | null): boolean;
 
     /**
      * Sets up a callback  to be called at some later time. `when` determines the
@@ -1805,7 +1805,7 @@ export namespace Meta {
      * reexec the compositor.
      * @param message message to display to the user, or `null`
      */
-    function restart(message: (string | null)): void;
+    function restart(message: string | null): void;
 
     function test_init(): void;
 
@@ -2301,9 +2301,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -2416,7 +2414,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2460,7 +2458,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2806,7 +2804,7 @@ export namespace Meta {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -2820,7 +2818,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -2844,7 +2842,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -2930,7 +2928,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -2947,7 +2945,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -3030,7 +3028,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3041,7 +3039,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3170,7 +3168,7 @@ export namespace Meta {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3182,7 +3180,7 @@ export namespace Meta {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3220,7 +3218,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -3229,7 +3227,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -3371,9 +3369,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -3428,7 +3424,7 @@ export namespace Meta {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -3442,7 +3438,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -3466,7 +3462,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -3552,7 +3548,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -3569,7 +3565,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -3652,7 +3648,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3663,7 +3659,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3792,7 +3788,7 @@ export namespace Meta {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3804,7 +3800,7 @@ export namespace Meta {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3842,7 +3838,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -3851,7 +3847,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -3916,9 +3912,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3978,13 +3972,10 @@ export namespace Meta {
 
     namespace BackgroundImageCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4189,9 +4180,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4313,7 +4302,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "modifiers-accelerator-activated": () => (boolean | void);
+            "modifiers-accelerator-activated": () => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4338,7 +4327,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            restart: () => (boolean | void);
+            restart: () => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4349,12 +4338,12 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "show-pad-osd": (arg0: Clutter.InputDevice, arg1: Gio.Settings, arg2: string, arg3: boolean, arg4: number) => (Clutter.Actor | null);
+            "show-pad-osd": (arg0: Clutter.InputDevice, arg1: Gio.Settings, arg2: string, arg3: boolean, arg4: number) => Clutter.Actor | null;
             /**
              * @signal
              * @run-last
              */
-            "show-resize-popup": (arg0: boolean, arg1: Rectangle, arg2: number, arg3: number) => (boolean | void);
+            "show-resize-popup": (arg0: boolean, arg1: Rectangle, arg2: number, arg3: number) => boolean | void;
             /**
              * The ::show-restart-message signal will be emitted to indicate
              * that the compositor should show a message during restart. This is
@@ -4369,7 +4358,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "show-restart-message": (arg0: (string | null)) => (boolean | void);
+            "show-restart-message": (arg0: string | null) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4483,7 +4472,7 @@ export namespace Meta {
          * end up in a new window.
          * @param serial the serial to ignore
          */
-        add_ignored_crossing_serial(serial: (bigint | number)): void;
+        add_ignored_crossing_serial(serial: bigint | number): void;
 
         /**
          * Add a keybinding at runtime. The key `name` in `schema` needs to be of
@@ -4514,7 +4503,7 @@ export namespace Meta {
          * @param root_x 
          * @param root_y 
          */
-        begin_grab_op(window: Window, op: GrabOp, pointer_already_grabbed: boolean, frame_action: boolean, button: number, modmask: (bigint | number), timestamp: number, root_x: number, root_y: number): boolean;
+        begin_grab_op(window: Window, op: GrabOp, pointer_already_grabbed: boolean, frame_action: boolean, button: number, modmask: bigint | number, timestamp: number, root_x: number, root_y: number): boolean;
 
         /**
          * Sets the mouse-mode flag to `false`, which means that motion events are
@@ -4577,7 +4566,7 @@ export namespace Meta {
          * @param mask Event mask
          * @returns The action that should be taken for the given key, or {@link Meta.KeyBindingAction.NONE}.
          */
-        get_keybinding_action(keycode: number, mask: (bigint | number)): number;
+        get_keybinding_action(keycode: number, mask: bigint | number): number;
 
         /**
          * @returns Timestamp of the last user interaction event with a window
@@ -4672,7 +4661,7 @@ export namespace Meta {
          * @param workspace origin workspace
          * @returns List of windows
          */
-        get_tab_list(type: TabList, workspace: (Workspace | null)): Window[];
+        get_tab_list(type: TabList, workspace: Workspace | null): Window[];
 
         /**
          * Determine the next window that should be displayed for Alt-TAB
@@ -4683,7 +4672,7 @@ export namespace Meta {
          * @param backward If `true`, look for the previous window.
          * @returns Next window
          */
-        get_tab_next(type: TabList, workspace: Workspace, window: (Window | null), backward: boolean): Window;
+        get_tab_next(type: TabList, workspace: Workspace, window: Window | null, backward: boolean): Window;
 
         /**
          * @returns The workspace manager of the display
@@ -4702,7 +4691,7 @@ export namespace Meta {
          * @param sequence a {@link Clutter.EventSequence}
          * @returns `TRUE` if the sequence emulates pointer behavior
          */
-        is_pointer_emulating_sequence(sequence: (Clutter.EventSequence | null)): boolean;
+        is_pointer_emulating_sequence(sequence: Clutter.EventSequence | null): boolean;
 
         /**
          * Remove keybinding `name`; the function will fail if `name` is not a known
@@ -4809,9 +4798,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4920,13 +4907,13 @@ export namespace Meta {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `meta_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `meta_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: (bigint | number), callback: (IdleMonitorWatchFunc | null)): number;
+        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `meta_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback: (IdleMonitorWatchFunc | null)): number;
+        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @returns The current idle time, in milliseconds, or -1 for not supported
@@ -5121,13 +5108,10 @@ export namespace Meta {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5390,9 +5374,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5441,9 +5423,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5505,9 +5485,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5570,7 +5548,7 @@ export namespace Meta {
          * @param output Output stream to write contents to
          * @param cancellable Cancellable
          */
-        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        transfer_async(selection_type: SelectionType, mimetype: string, size: bigint | number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests a transfer of `mimetype` on the selection given by
@@ -5582,7 +5560,7 @@ export namespace Meta {
          * @param cancellable Cancellable
          * @param callback User callback
          */
-        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        transfer_async(selection_type: SelectionType, mimetype: string, size: bigint | number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests a transfer of `mimetype` on the selection given by
@@ -5594,7 +5572,7 @@ export namespace Meta {
          * @param cancellable Cancellable
          * @param callback User callback
          */
-        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        transfer_async(selection_type: SelectionType, mimetype: string, size: bigint | number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the transfer of a queried mimetype.
@@ -5631,9 +5609,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5692,7 +5668,7 @@ export namespace Meta {
          * @param callback 
          * @virtual
          */
-        vfunc_read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_async(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a read from the selection source.
@@ -5718,21 +5694,21 @@ export namespace Meta {
          * @param mimetype 
          * @param cancellable 
          */
-        read_async(mimetype: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        read_async(mimetype: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param mimetype 
          * @param cancellable 
          * @param callback 
          */
-        read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_async(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param mimetype 
          * @param cancellable 
          * @param callback 
          */
-        read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        read_async(mimetype: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * Finishes a read from the selection source.
@@ -5745,13 +5721,10 @@ export namespace Meta {
 
     namespace SelectionSourceMemory {
         // Signal signatures
-        interface SignalSignatures extends SelectionSource.SignalSignatures {
-        }
+        interface SignalSignatures extends SelectionSource.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends SelectionSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SelectionSource.ConstructorProps {}
     }
 
     /**
@@ -5774,7 +5747,7 @@ export namespace Meta {
 
         _init(...args: any[]): void;
 
-        static ["new"](mimetype: string, content: (GLib.Bytes | Uint8Array)): SelectionSourceMemory;
+        static ["new"](mimetype: string, content: GLib.Bytes | Uint8Array): SelectionSourceMemory;
 
         // Signals
         /** @signal */
@@ -5802,9 +5775,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5899,9 +5870,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {}
     }
 
     /**
@@ -5945,7 +5914,7 @@ export namespace Meta {
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the texture, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip: (cairo.RectangleInt | null)): (cairo.Surface | null);
+        get_image(clip: cairo.RectangleInt | null): cairo.Surface | null;
 
         /**
          * @returns the unshaped texture
@@ -6052,13 +6021,10 @@ export namespace Meta {
 
     namespace SoundPlayer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6101,7 +6067,7 @@ export namespace Meta {
          * @param description description of the played sound
          * @param cancellable cancellable for the request
          */
-        play_from_file(file: Gio.File, description: string, cancellable: (Gio.Cancellable | null)): void;
+        play_from_file(file: Gio.File, description: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Plays a sound from the sound theme.
@@ -6109,7 +6075,7 @@ export namespace Meta {
          * @param description description of the event
          * @param cancellable cancellable for the request
          */
-        play_from_theme(name: string, description: string, cancellable: (Gio.Cancellable | null)): void;
+        play_from_theme(name: string, description: string, cancellable: Gio.Cancellable | null): void;
     }
 
 
@@ -6216,9 +6182,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.Stage.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.Stage.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -6352,7 +6316,7 @@ export namespace Meta {
             iconName: string;
             id: string;
             name: string;
-            timestamp: (bigint | number);
+            timestamp: bigint | number;
             wmclass: string;
             workspace: number;
         }
@@ -6961,7 +6925,7 @@ export namespace Meta {
          * Gets a region representing the outer bounds of the window's frame.
          * @returns a {@link cairo.Region}  holding the outer bounds of the window, or `null` if the window  doesn't have a frame.
          */
-        get_frame_bounds(): (cairo.Region | null);
+        get_frame_bounds(): cairo.Region | null;
 
         /**
          * Gets the rectangle that bounds `window` that is what the user thinks of
@@ -7095,7 +7059,7 @@ export namespace Meta {
          *    partially visible in the common edge.
          * @returns the matching tiled window or `null` if it doesn't exist.
          */
-        get_tile_match(): (Window | null);
+        get_tile_match(): Window | null;
 
         /**
          * @returns the current title of the window.
@@ -7310,7 +7274,7 @@ export namespace Meta {
          * interface element displaying the icon, and is relative to the root window.
          * @param rect rectangle with the desired geometry or `null`.
          */
-        set_icon_geometry(rect: (Rectangle | null)): void;
+        set_icon_geometry(rect: Rectangle | null): void;
 
         /**
          * @param timestamp 
@@ -7546,7 +7510,7 @@ export namespace Meta {
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip: (cairo.RectangleInt | null)): (cairo.Surface | null);
+        get_image(clip: cairo.RectangleInt | null): cairo.Surface | null;
 
         /**
          * Gets the {@link Meta.Window} object that the the {@link Meta.WindowActor} is displaying
@@ -7586,7 +7550,7 @@ export namespace Meta {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -7600,7 +7564,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -7624,7 +7588,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -7710,7 +7674,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -7727,7 +7691,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -7810,7 +7774,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -7821,7 +7785,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -7950,7 +7914,7 @@ export namespace Meta {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -7962,7 +7926,7 @@ export namespace Meta {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -8000,7 +7964,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -8009,7 +7973,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -8151,9 +8115,7 @@ export namespace Meta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -8206,7 +8168,7 @@ export namespace Meta {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -8220,7 +8182,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -8244,7 +8206,7 @@ export namespace Meta {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -8330,7 +8292,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -8347,7 +8309,7 @@ export namespace Meta {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -8430,7 +8392,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -8441,7 +8403,7 @@ export namespace Meta {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -8570,7 +8532,7 @@ export namespace Meta {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -8582,7 +8544,7 @@ export namespace Meta {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -8620,7 +8582,7 @@ export namespace Meta {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -8629,7 +8591,7 @@ export namespace Meta {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -9006,13 +8968,10 @@ export namespace Meta {
 
     namespace X11Display {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9490,7 +9449,7 @@ export namespace Meta {
          * @param clip if non-`null` specifies the visible portion   of the shadow.
          * @param clip_strictly if `true`, drawing will be clipped strictly   to `clip`, otherwise, it will be only used to optimize   drawing.
          */
-        paint(framebuffer: Cogl.Framebuffer, window_x: number, window_y: number, window_width: number, window_height: number, opacity: number, clip: (cairo.Region | null), clip_strictly: boolean): void;
+        paint(framebuffer: Cogl.Framebuffer, window_x: number, window_y: number, window_width: number, window_height: number, opacity: number, clip: cairo.Region | null, clip_strictly: boolean): void;
 
         ref(): Shadow;
 

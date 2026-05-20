@@ -97,7 +97,7 @@ export namespace GConf {
         static IN_SHUTDOWN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -284,9 +284,7 @@ export namespace GConf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -580,10 +578,7 @@ export namespace GConf {
         static $gtype: GObject.GType<ChangeSet>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ChangeSet;
 

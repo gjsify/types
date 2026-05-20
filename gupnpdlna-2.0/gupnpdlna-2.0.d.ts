@@ -43,13 +43,10 @@ export namespace GUPnPDLNA {
 
     namespace AudioInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -89,13 +86,10 @@ export namespace GUPnPDLNA {
 
     namespace ContainerInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -135,13 +129,10 @@ export namespace GUPnPDLNA {
 
     namespace ImageInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -376,13 +367,11 @@ export namespace GUPnPDLNA {
              * @signal
              * @run-last
              */
-            done: (arg0: Information, arg1: (GLib.Error | null)) => void;
+            done: (arg0: Information, arg1: GLib.Error | null) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -446,7 +435,7 @@ export namespace GUPnPDLNA {
          * @param info A {@link GUPnPDLNA.Information} about discovered URI.
          * @param error A {@link GLib.Error}.
          */
-        emit_done(info: Information, error: (GLib.Error | null)): void;
+        emit_done(info: Information, error: GLib.Error | null): void;
 
         /**
          * Queues `uri` for metadata discovery. When discovery is completed,
@@ -642,7 +631,7 @@ export namespace GUPnPDLNA {
              * @signal
              * @run-last
              */
-            done: (arg0: Information, arg1: (Profile | null), arg2: (GLib.Error | null)) => void;
+            done: (arg0: Information, arg1: Profile | null, arg2: GLib.Error | null) => void;
             "notify::extended-mode": (pspec: GObject.ParamSpec) => void;
             "notify::relaxed-mode": (pspec: GObject.ParamSpec) => void;
         }
@@ -785,13 +774,10 @@ export namespace GUPnPDLNA {
 
     namespace VideoInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

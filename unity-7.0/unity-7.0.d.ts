@@ -431,9 +431,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -510,7 +508,7 @@ export namespace Unity {
          * @param id 
          * @param _callback_ 
          */
-        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.AppInfo> | void);
+        lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.AppInfo> | void;
 
         /**
          * @param _res_ 
@@ -728,7 +726,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Dee.Serializable.ConstructorProps {
             app_uri: string;
             appUri: string;
-            count: (bigint | number);
+            count: bigint | number;
             count_visible: boolean;
             countVisible: boolean;
             progress: number;
@@ -753,7 +751,7 @@ export namespace Unity {
         set appUri(val: string);
 
         get count(): number;
-        set count(val: (bigint | number));
+        set count(val: bigint | number);
 
         get count_visible(): boolean;
         set count_visible(val: boolean);
@@ -832,7 +830,7 @@ export namespace Unity {
         /**
          * @param value 
          */
-        set_count(value: (bigint | number)): void;
+        set_count(value: bigint | number): void;
 
         get_count_visible(): boolean;
 
@@ -912,9 +910,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -977,13 +973,10 @@ export namespace Unity {
 
     namespace MetadataProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1618,9 +1611,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1681,9 +1672,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1741,9 +1730,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -1864,9 +1851,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OptionsFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OptionsFilter.ConstructorProps {}
     }
 
     /**
@@ -2067,7 +2052,7 @@ export namespace Unity {
             searchString: string;
             search_type: SearchType;
             searchType: SearchType;
-            hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
             owner: DeprecatedScopeBase;
@@ -2209,9 +2194,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DeprecatedScopeSearch.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DeprecatedScopeSearch.ConstructorProps {}
     }
 
     /**
@@ -2234,7 +2217,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ["new"](owner: AggregatorScope, channel_id: string, hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), results_model: Dee.SerializableModel): AggregatedScopeSearch;
+        static ["new"](owner: AggregatorScope, channel_id: string, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, results_model: Dee.SerializableModel): AggregatedScopeSearch;
 
         // Signals
         /** @signal */
@@ -2256,7 +2239,7 @@ export namespace Unity {
          * @param search_type 
          * @param hints 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>)): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
 
         /**
          * @param scope_id 
@@ -2265,7 +2248,7 @@ export namespace Unity {
          * @param hints 
          * @param _callback_ 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), _callback_: Gio.AsyncReadyCallback<this>): void;
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, _callback_: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * @param scope_id 
@@ -2274,7 +2257,7 @@ export namespace Unity {
          * @param hints 
          * @param _callback_ 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void);
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
 
         /**
          * @param _res_ 
@@ -2302,7 +2285,7 @@ export namespace Unity {
          * @param category_ids 
          * @param _callback_ 
          */
-        push_results(scope_id: string, results_model: Dee.SerializableModel, category_ids: string[], _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        push_results(scope_id: string, results_model: Dee.SerializableModel, category_ids: string[], _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -2498,7 +2481,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -2755,9 +2738,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Preview.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Preview.ConstructorProps {}
     }
 
     /**
@@ -2924,9 +2905,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Preview.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Preview.ConstructorProps {}
     }
 
     /**
@@ -3472,7 +3451,7 @@ export namespace Unity {
             actionType: number;
             scope_result: ScopeResult;
             scopeResult: ScopeResult;
-            hints: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
         }
     }
 
@@ -3508,7 +3487,7 @@ export namespace Unity {
         set scopeResult(val: ScopeResult);
 
         get hints(): GLib.HashTable<string, GLib.Variant>;
-        set hints(val: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>));
+        set hints(val: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
 
         /**
          * Compile-time signal type information.
@@ -3574,13 +3553,10 @@ export namespace Unity {
 
     namespace FilterSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3653,13 +3629,10 @@ export namespace Unity {
 
     namespace CategorySet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3721,13 +3694,10 @@ export namespace Unity {
 
     namespace Schema {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3793,13 +3763,10 @@ export namespace Unity {
 
     namespace Cancellable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3865,13 +3832,10 @@ export namespace Unity {
 
     namespace ScopeSearchBase {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3942,13 +3906,10 @@ export namespace Unity {
 
     namespace ResultSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4022,13 +3983,10 @@ export namespace Unity {
 
     namespace AbstractPreview {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4069,7 +4027,7 @@ export namespace Unity {
          * @param serialization_type 
          * @virtual
          */
-        vfunc_serialize_as(serialization_type: SerializationType): (Uint8Array | string);
+        vfunc_serialize_as(serialization_type: SerializationType): Uint8Array | string;
 
         // Methods
         /**
@@ -4081,13 +4039,10 @@ export namespace Unity {
 
     namespace ResultPreviewer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4237,7 +4192,7 @@ export namespace Unity {
         /**
          * @param metadata 
          */
-        static create(metadata: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>)): SearchMetadata;
+        static create(metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): SearchMetadata;
 
         /**
          * @param metadata 
@@ -4255,13 +4210,10 @@ export namespace Unity {
 
     namespace GeoCoordinate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4323,9 +4275,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4742,9 +4692,7 @@ export namespace Unity {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DeprecatedScopeBase.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DeprecatedScopeBase.ConstructorProps {}
     }
 
     /**
@@ -4825,7 +4773,7 @@ export namespace Unity {
          * @param result 
          * @param _callback_ 
          */
-        preview_result(result: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Preview> | void);
+        preview_result(result: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Preview> | void;
 
         /**
          * @param _res_ 
@@ -4847,7 +4795,7 @@ export namespace Unity {
          * @param result 
          * @param _callback_ 
          */
-        activate_result(result: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<ActivationResponse> | void);
+        activate_result(result: ScopeResult, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<ActivationResponse> | void;
 
         /**
          * @param _res_ 
@@ -5009,7 +4957,7 @@ export namespace Unity {
          * @param scope_search 
          * @param _callback_ 
          */
-        search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5031,7 +4979,7 @@ export namespace Unity {
          * @param activation 
          * @param _callback_ 
          */
-        activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<ActivationResponse> | void);
+        activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<ActivationResponse> | void;
 
         /**
          * @param _res_ 
@@ -5322,13 +5270,10 @@ export namespace Unity {
 
     namespace ScopeLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6718,7 +6663,7 @@ export namespace Unity {
          * @param dnd_uri 
          * @param metadata 
          */
-        static create(uri: string, icon_hint: string, category: number, result_type: ResultType, mimetype: string, title: string, comment: string, dnd_uri: string, metadata: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>)): ScopeResult;
+        static create(uri: string, icon_hint: string, category: number, result_type: ResultType, mimetype: string, title: string, comment: string, dnd_uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): ScopeResult;
 
         /**
          * @param variant 
@@ -6755,7 +6700,7 @@ export namespace Unity {
          * @param result_set 
          * @param cancellable 
          */
-        static create(search_query: string, search_type: SearchType, filter_state: FilterSet, metadata: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), result_set: ResultSet, cancellable: Cancellable): SearchContext;
+        static create(search_query: string, search_type: SearchType, filter_state: FilterSet, metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, result_set: ResultSet, cancellable: Cancellable): SearchContext;
 
         // Methods
         /**

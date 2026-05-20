@@ -464,12 +464,12 @@ export namespace Grl {
      * @param value the {@link GObject.Value} to copy
      * @returns a duplicated {@link GObject.Value}
      */
-    function g_value_dup(value: (GObject.Value | any)): unknown;
+    function g_value_dup(value: GObject.Value | any): unknown;
 
     /**
      * @param value 
      */
-    function g_value_free(value: (GObject.Value | any)): void;
+    function g_value_free(value: GObject.Value | any): void;
 
     /**
      * @returns a new hash table made to contain GValues.
@@ -491,7 +491,7 @@ export namespace Grl {
      * @param argv list of arguments
      * @since 0.1.6
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     /**
      * Returns a {@link GLib.OptionGroup} with Grilo's argument specifications.
@@ -592,7 +592,7 @@ export namespace Grl {
      * @returns the operation identifier
      * @since 0.2.0
      */
-    function multiple_search(sources: (Source[] | null), text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
+    function multiple_search(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
 
     /**
      * Search for `text` in all the sources specified in `sources`.
@@ -605,7 +605,7 @@ export namespace Grl {
      * @returns a list with {@link Grl.Media} elements
      * @since 0.2.0
      */
-    function multiple_search_sync(sources: (Source[] | null), text: string, keys: KeyID[], options: OperationOptions): Media[];
+    function multiple_search_sync(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions): Media[];
 
     /**
      * Cancel an operation.
@@ -671,7 +671,7 @@ export namespace Grl {
      * @param min 
      * @param max 
      */
-    function range_value_hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<never, never>), key: null, min: (GObject.Value | any), max: (GObject.Value | any)): void;
+    function range_value_hashtable_insert(hash_table: { [key: string]: any } | GLib.HashTable<never, never>, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
 
     /**
      * @returns a {@link GLib.HashTable}
@@ -696,28 +696,28 @@ export namespace Grl {
      * @gir-type Callback
      */
     interface SourceRemoveCb {
-        (source: Source, media: Media, error: (GLib.Error | null)): void;
+        (source: Source, media: Media, error: GLib.Error | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SourceResolveCb {
-        (source: Source, operation_id: number, media: Media, error: (GLib.Error | null)): void;
+        (source: Source, operation_id: number, media: Media, error: GLib.Error | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SourceResultCb {
-        (source: Source, operation_id: number, media: (Media | null), remaining: number, error: (GLib.Error | null)): void;
+        (source: Source, operation_id: number, media: Media | null, remaining: number, error: GLib.Error | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SourceStoreCb {
-        (source: Source, media: Media, failed_keys: KeyID[], error: (GLib.Error | null)): void;
+        (source: Source, media: Media, failed_keys: KeyID[], error: GLib.Error | null): void;
     }
 
     /**
@@ -906,13 +906,10 @@ export namespace Grl {
 
     namespace Caps {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -996,19 +993,16 @@ export namespace Grl {
          * @param value the value corresponding to `key` to test against `caps`
          * @returns `true` if (`key`, `value`) obey to `caps`, `false` otherwise.
          */
-        test_option(key: string, value: (GObject.Value | any)): boolean;
+        test_option(key: string, value: GObject.Value | any): boolean;
     }
 
 
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1031,7 +1025,7 @@ export namespace Grl {
 
         _init(...args: any[]): void;
 
-        static ["new"](plugin: string, source: (string | null)): Config;
+        static ["new"](plugin: string, source: string | null): Config;
 
         // Signals
         /** @signal */
@@ -1056,7 +1050,7 @@ export namespace Grl {
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
          */
-        get_api_key_blob(size: (bigint | number)): number;
+        get_api_key_blob(size: bigint | number): number;
 
         /**
          * @returns the webservice API passphrase
@@ -1080,7 +1074,7 @@ export namespace Grl {
          * @param size place for size of value
          * @returns `param` value
          */
-        get_binary(param: string, size: ((bigint | number) | null)): number;
+        get_binary(param: string, size: bigint | number | null): number;
 
         /**
          * @param param a boolean type parameter
@@ -1137,7 +1131,7 @@ export namespace Grl {
          * @param param a parameter
          * @param value value
          */
-        set(param: string, value: (GObject.Value | any)): void;
+        set(param: string, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -1156,7 +1150,7 @@ export namespace Grl {
          * @param blob the binary API key blob
          * @param size the size of the blob
          */
-        set_api_key_blob(blob: number, size: (bigint | number)): void;
+        set_api_key_blob(blob: number, size: bigint | number): void;
 
         /**
          * Set the webservice passphrase in the configuration
@@ -1183,7 +1177,7 @@ export namespace Grl {
          * @param blob a base64 encoded binary value
          * @param size size of `value`
          */
-        set_binary(param: string, blob: number, size: (bigint | number)): void;
+        set_binary(param: string, blob: number, size: bigint | number): void;
 
         /**
          * Set `param` `value`.
@@ -1241,13 +1235,10 @@ export namespace Grl {
 
     namespace Data {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1292,7 +1283,7 @@ export namespace Grl {
          * @param buf the buffer containing the new value
          * @param size size of buffer
          */
-        add_binary(key: KeyID, buf: number, size: (bigint | number)): void;
+        add_binary(key: KeyID, buf: number, size: bigint | number): void;
 
         /**
          * Appends a new boxed value for `key` in `data`.
@@ -1321,7 +1312,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if `value` was added to `key_name`, FALSE otherwise.
          */
-        add_for_id(key_name: string, value: (GObject.Value | any)): boolean;
+        add_for_id(key_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Appends a new int value for `key` in `data`.
@@ -1335,7 +1326,7 @@ export namespace Grl {
          * @param key key to append
          * @param intvalue the new value
          */
-        add_int64(key: KeyID, intvalue: (bigint | number)): void;
+        add_int64(key: KeyID, intvalue: bigint | number): void;
 
         /**
          * Adds a new set of values into `data`.
@@ -1509,7 +1500,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: (GObject.Value | any)): void;
+        set(key: KeyID, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -1524,7 +1515,7 @@ export namespace Grl {
          * @param buf buffer holding the data
          * @param size size of the buffer
          */
-        set_binary(key: KeyID, buf: number, size: (bigint | number)): void;
+        set_binary(key: KeyID, buf: number, size: bigint | number): void;
 
         /**
          * Sets the first boolean value associated with `key` in `data`. If `key` already
@@ -1564,7 +1555,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if `value` was set to `key_name`, FALSE otherwise.
          */
-        set_for_id(key_name: string, value: (GObject.Value | any)): boolean;
+        set_for_id(key_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the first int value associated with `key` in `data`. If `key` already has a
@@ -1580,7 +1571,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param intvalue the new value
          */
-        set_int64(key: KeyID, intvalue: (bigint | number)): void;
+        set_int64(key: KeyID, intvalue: bigint | number): void;
 
         /**
          * Updates the values at position `index` in `data` with values in `relkeys`.
@@ -1764,7 +1755,7 @@ export namespace Grl {
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
          */
-        add_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+        add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
@@ -2172,14 +2163,14 @@ export namespace Grl {
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
          */
-        get_thumbnail_binary(size: (bigint | number)): number;
+        get_thumbnail_binary(size: bigint | number): number;
 
         /**
          * @param size pointer to store the thumbnail buffer size
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail buffer size.
          */
-        get_thumbnail_binary_nth(size: (bigint | number), index: number): number;
+        get_thumbnail_binary_nth(size: bigint | number, index: number): number;
 
         /**
          * @param index element to retrieve
@@ -2577,7 +2568,7 @@ export namespace Grl {
          * Set the size of the media
          * @param size the size in bytes
          */
-        set_size(size: (bigint | number)): void;
+        set_size(size: bigint | number): void;
 
         /**
          * Set the media's source
@@ -2602,7 +2593,7 @@ export namespace Grl {
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
          */
-        set_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+        set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
         /**
          * Set the media's title
@@ -2643,13 +2634,10 @@ export namespace Grl {
 
     namespace OperationOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2672,7 +2660,7 @@ export namespace Grl {
 
         _init(...args: any[]): void;
 
-        static ["new"](caps: (Caps | null)): OperationOptions;
+        static ["new"](caps: Caps | null): OperationOptions;
 
         // Signals
         /** @signal */
@@ -2757,7 +2745,7 @@ export namespace Grl {
          * @param filters 
          * @returns `true` on success
          */
-        set_key_filters(filters: ({ [key: string]: any } | GLib.HashTable<KeyID, GObject.Value>)): boolean;
+        set_key_filters(filters: { [key: string]: any } | GLib.HashTable<KeyID, GObject.Value>): boolean;
 
         /**
          * Set filter as "`key` == `value`".
@@ -2765,7 +2753,7 @@ export namespace Grl {
          * @param value a {@link GObject.Value}
          * @returns `true` on success
          */
-        set_key_filter_value(key: KeyID, value: (GObject.Value | any)): boolean;
+        set_key_filter_value(key: KeyID, value: GObject.Value | any): boolean;
 
         /**
          * Set filter as "`min_value` <= `key` <= `max_value`".
@@ -2782,7 +2770,7 @@ export namespace Grl {
          * @param max_value maximum value for range
          * @returns `true` on success
          */
-        set_key_range_filter_value(key: KeyID, min_value: (GObject.Value | null), max_value: (GObject.Value | null)): boolean;
+        set_key_range_filter_value(key: KeyID, min_value: GObject.Value | null, max_value: GObject.Value | null): boolean;
 
         /**
          * Set the resolution flags for an operation. Will only succeed if `flags` obey
@@ -2958,9 +2946,7 @@ export namespace Grl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3166,7 +3152,7 @@ export namespace Grl {
          * @param value value to be validate
          * @returns `true` if complies
          */
-        metadata_key_validate(key: KeyID, value: (GObject.Value | any)): boolean;
+        metadata_key_validate(key: KeyID, value: GObject.Value | any): boolean;
 
         /**
          * Registers a new metadata key, creating a relation between the new key and
@@ -3213,13 +3199,10 @@ export namespace Grl {
 
     namespace RelatedKeys {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3359,7 +3342,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: KeyID, value: (GObject.Value | any)): void;
+        set(key: KeyID, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -3374,7 +3357,7 @@ export namespace Grl {
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
          */
-        set_binary(key: KeyID, buf: number, size: (bigint | number)): void;
+        set_binary(key: KeyID, buf: number, size: bigint | number): void;
 
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -3414,7 +3397,7 @@ export namespace Grl {
          * @param value the new value
          * @returns TRUE if `value` was set to `key_name`, FALSE otherwise.
          */
-        set_for_id(key_name: string, value: (GObject.Value | any)): boolean;
+        set_for_id(key_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -3430,7 +3413,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param intvalue the new value
          */
-        set_int64(key: KeyID, intvalue: (bigint | number)): void;
+        set_int64(key: KeyID, intvalue: bigint | number): void;
 
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
@@ -3901,7 +3884,7 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        browse(container: (Media | null), keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
+        browse(container: Media | null, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
 
         /**
          * Browse media elements through an available
@@ -3913,7 +3896,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
          */
-        browse_sync(container: (Media | null), keys: KeyID[], options: OperationOptions): Media[];
+        browse_sync(container: Media | null, keys: KeyID[], options: OperationOptions): Media[];
 
         /**
          * Gets how much elements the source is able to handle in a single request.
@@ -4036,7 +4019,7 @@ export namespace Grl {
          * @param change_type the type of change
          * @param location_unknown if change has happened in `media` or any descendant
          */
-        notify_change(media: (Media | null), change_type: SourceChangeType, location_unknown: boolean): void;
+        notify_change(media: Media | null, change_type: SourceChangeType, location_unknown: boolean): void;
 
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
@@ -4131,7 +4114,7 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifie
          */
-        resolve(media: (Media | null), keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number;
+        resolve(media: Media | null, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number;
 
         /**
          * This method is intended to fetch the requested keys of metadata of
@@ -4143,7 +4126,7 @@ export namespace Grl {
          * @param options options to pass to this operation
          * @returns a filled {@link Grl.Media}
          */
-        resolve_sync(media: (Media | null), keys: KeyID[], options: OperationOptions): Media;
+        resolve_sync(media: Media | null, keys: KeyID[], options: OperationOptions): Media;
 
         /**
          * Search for the `text` string in a source for data identified with that string.
@@ -4214,7 +4197,7 @@ export namespace Grl {
          * @param flags flags to configure specific behaviour of the operation
          * @param callback the user defined callback
          */
-        store(parent: (Media | null), media: Media, flags: WriteFlags, callback: SourceStoreCb): void;
+        store(parent: Media | null, media: Media, flags: WriteFlags, callback: SourceStoreCb): void;
 
         /**
          * Get the values for `keys` from `media` and store it permanently. After
@@ -4227,7 +4210,7 @@ export namespace Grl {
          * @param flags Flags to configure specific behaviors of the operation.
          * @param callback the callback to execute when the operation is finished.
          */
-        store_metadata(media: Media, keys: (KeyID[] | null), flags: WriteFlags, callback: SourceStoreCb): void;
+        store_metadata(media: Media, keys: KeyID[] | null, flags: WriteFlags, callback: SourceStoreCb): void;
 
         /**
          * Update `keys` values from `media` in the `source`. After calling this method,
@@ -4240,7 +4223,7 @@ export namespace Grl {
          * @param flags Flags to configure specific behaviors of the operation.
          * @returns a {@link GLib.List} of keys that could not be updated, or `NULL`
          */
-        store_metadata_sync(media: Media, keys: (KeyID[] | null), flags: WriteFlags): KeyID[];
+        store_metadata_sync(media: Media, keys: KeyID[] | null, flags: WriteFlags): KeyID[];
 
         /**
          * Store the `media` into the `parent` container.
@@ -4250,7 +4233,7 @@ export namespace Grl {
          * @param media a {@link Grl.Media} data transfer object
          * @param flags flags to configure specific behaviour of the operation
          */
-        store_sync(parent: (Media | null), media: Media, flags: WriteFlags): void;
+        store_sync(parent: Media | null, media: Media, flags: WriteFlags): void;
 
         /**
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
@@ -4415,9 +4398,9 @@ export namespace Grl {
         static $gtype: GObject.GType<RangeValue>;
 
         // Constructors
-        constructor(min: (GObject.Value | any), max: (GObject.Value | any));
+        constructor(min: GObject.Value | any, max: GObject.Value | any);
 
-        static ["new"](min: (GObject.Value | any), max: (GObject.Value | any)): RangeValue;
+        static ["new"](min: GObject.Value | any, max: GObject.Value | any): RangeValue;
 
         // Static methods
         /**
@@ -4426,7 +4409,7 @@ export namespace Grl {
          * @param min 
          * @param max 
          */
-        static hashtable_insert(hash_table: ({ [key: string]: any } | GLib.HashTable<never, never>), key: null, min: (GObject.Value | any), max: (GObject.Value | any)): void;
+        static hashtable_insert(hash_table: { [key: string]: any } | GLib.HashTable<never, never>, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
 
         static hashtable_new(): GLib.HashTable<never, RangeValue>;
 

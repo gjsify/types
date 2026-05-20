@@ -346,9 +346,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Light.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Light.ConstructorProps {}
     }
 
     /**
@@ -393,13 +391,10 @@ export namespace Gthree {
 
     namespace AnimationAction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -552,13 +547,10 @@ export namespace Gthree {
 
     namespace AnimationClip {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -632,9 +624,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -714,13 +704,10 @@ export namespace Gthree {
 
     namespace Attribute {
         // Signal signatures
-        interface SignalSignatures extends Resource.SignalSignatures {
-        }
+        interface SignalSignatures extends Resource.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps {}
     }
 
     /**
@@ -1047,13 +1034,10 @@ export namespace Gthree {
 
     namespace BloomPass {
         // Signal signatures
-        interface SignalSignatures extends Pass.SignalSignatures {
-        }
+        interface SignalSignatures extends Pass.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Pass.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
     /**
@@ -1105,9 +1089,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1268,13 +1250,10 @@ export namespace Gthree {
 
     namespace ClearPass {
         // Signal signatures
-        interface SignalSignatures extends Pass.SignalSignatures {
-        }
+        interface SignalSignatures extends Pass.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Pass.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
     /**
@@ -1322,13 +1301,10 @@ export namespace Gthree {
 
     namespace ColorKeyframeTrack {
         // Signal signatures
-        interface SignalSignatures extends KeyframeTrack.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyframeTrack.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
     /**
@@ -1376,9 +1352,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Texture.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
     /**
@@ -1425,13 +1399,10 @@ export namespace Gthree {
 
     namespace CubicInterpolant {
         // Signal signatures
-        interface SignalSignatures extends Interpolant.SignalSignatures {
-        }
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Interpolant.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
     /**
@@ -1543,13 +1514,10 @@ export namespace Gthree {
 
     namespace DirectionalLightShadow {
         // Signal signatures
-        interface SignalSignatures extends LightShadow.SignalSignatures {
-        }
+        interface SignalSignatures extends LightShadow.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends LightShadow.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LightShadow.ConstructorProps {}
     }
 
     /**
@@ -1589,13 +1557,10 @@ export namespace Gthree {
 
     namespace DiscreteInterpolant {
         // Signal signatures
-        interface SignalSignatures extends Interpolant.SignalSignatures {
-        }
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Interpolant.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
     /**
@@ -1637,13 +1602,10 @@ export namespace Gthree {
 
     namespace EffectComposer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1709,13 +1671,10 @@ export namespace Gthree {
 
     namespace Fog {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1795,13 +1754,10 @@ export namespace Gthree {
 
     namespace FullscreenQuadPass {
         // Signal signatures
-        interface SignalSignatures extends Pass.SignalSignatures {
-        }
+        interface SignalSignatures extends Pass.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Pass.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
     /**
@@ -1849,13 +1805,10 @@ export namespace Gthree {
 
     namespace Geometry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2016,9 +1969,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2128,13 +2079,10 @@ export namespace Gthree {
 
     namespace Interpolant {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2209,13 +2157,10 @@ export namespace Gthree {
 
     namespace InterpolantSettings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2272,13 +2217,10 @@ export namespace Gthree {
 
     namespace KeyframeTrack {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2435,13 +2377,10 @@ export namespace Gthree {
 
     namespace LightShadow {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2678,9 +2617,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Line.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Line.ConstructorProps {}
     }
 
     /**
@@ -2725,13 +2662,10 @@ export namespace Gthree {
 
     namespace LinearInterpolant {
         // Signal signatures
-        interface SignalSignatures extends Interpolant.SignalSignatures {
-        }
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Interpolant.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
     /**
@@ -2773,13 +2707,10 @@ export namespace Gthree {
 
     namespace Loader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3375,9 +3306,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MeshMaterial.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
     /**
@@ -3442,9 +3371,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MeshMaterial.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
     /**
@@ -3828,9 +3755,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MeshMaterial.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
     /**
@@ -5440,13 +5365,10 @@ export namespace Gthree {
 
     namespace NumberKeyframeTrack {
         // Signal signatures
-        interface SignalSignatures extends KeyframeTrack.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyframeTrack.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
     /**
@@ -6041,13 +5963,10 @@ export namespace Gthree {
 
     namespace Pass {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6612,13 +6531,10 @@ export namespace Gthree {
 
     namespace Program {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6683,13 +6599,10 @@ export namespace Gthree {
 
     namespace QuaternionInterpolant {
         // Signal signatures
-        interface SignalSignatures extends Interpolant.SignalSignatures {
-        }
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Interpolant.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
     /**
@@ -6731,13 +6644,10 @@ export namespace Gthree {
 
     namespace QuaternionKeyframeTrack {
         // Signal signatures
-        interface SignalSignatures extends KeyframeTrack.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyframeTrack.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
     /**
@@ -6779,13 +6689,10 @@ export namespace Gthree {
 
     namespace Raycaster {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6856,13 +6763,10 @@ export namespace Gthree {
 
     namespace RenderPass {
         // Signal signatures
-        interface SignalSignatures extends Pass.SignalSignatures {
-        }
+        interface SignalSignatures extends Pass.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Pass.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
     /**
@@ -6910,13 +6814,10 @@ export namespace Gthree {
 
     namespace RenderTarget {
         // Signal signatures
-        interface SignalSignatures extends Resource.SignalSignatures {
-        }
+        interface SignalSignatures extends Resource.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps {}
     }
 
     /**
@@ -6960,7 +6861,7 @@ export namespace Gthree {
          * @param data 
          * @param stride 
          */
-        download(renderer: Renderer, data: number, stride: (bigint | number)): void;
+        download(renderer: Renderer, data: number, stride: bigint | number): void;
 
         /**
          * @param renderer 
@@ -6968,7 +6869,7 @@ export namespace Gthree {
          * @param data 
          * @param stride 
          */
-        download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: (bigint | number)): void;
+        download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: bigint | number): void;
 
         get_depth_buffer(): boolean;
 
@@ -7008,13 +6909,10 @@ export namespace Gthree {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7201,13 +7099,10 @@ export namespace Gthree {
 
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7298,9 +7193,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7372,13 +7265,10 @@ export namespace Gthree {
 
     namespace Shader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7559,13 +7449,10 @@ export namespace Gthree {
 
     namespace ShaderPass {
         // Signal signatures
-        interface SignalSignatures extends Pass.SignalSignatures {
-        }
+        interface SignalSignatures extends Pass.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Pass.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
     /**
@@ -7607,13 +7494,10 @@ export namespace Gthree {
 
     namespace Skeleton {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7740,9 +7624,7 @@ export namespace Gthree {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Mesh.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Mesh.ConstructorProps {}
     }
 
     /**
@@ -7937,13 +7819,10 @@ export namespace Gthree {
 
     namespace SpotLightShadow {
         // Signal signatures
-        interface SignalSignatures extends LightShadow.SignalSignatures {
-        }
+        interface SignalSignatures extends LightShadow.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends LightShadow.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LightShadow.ConstructorProps {}
     }
 
     /**
@@ -8364,13 +8243,10 @@ export namespace Gthree {
 
     namespace Uniforms {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8471,13 +8347,10 @@ export namespace Gthree {
 
     namespace VectorKeyframeTrack {
         // Signal signatures
-        interface SignalSignatures extends KeyframeTrack.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyframeTrack.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
     /**
@@ -9108,10 +8981,7 @@ export namespace Gthree {
         static $gtype: GObject.GType<ObjectIter>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         destroy(): void;

@@ -123,7 +123,7 @@ export namespace Libxfce4util {
      * @returns Checksum of the `file`. If file read fails, returns `null`. Free with `g_free()`.
      * @since 4.17
      */
-    function g_file_create_checksum(file: Gio.File, cancellable: (Gio.Cancellable | null)): (string | null);
+    function g_file_create_checksum(file: Gio.File, cancellable: Gio.Cancellable | null): string | null;
 
     /**
      * Compares the checksum stored in safety flag
@@ -137,7 +137,7 @@ export namespace Libxfce4util {
      * @returns `true` if safety flag is verified or not supported. `false` otherwise.
      * @since 4.17
      */
-    function g_file_is_trusted(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function g_file_is_trusted(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Checks if GVFS-metadata is available for
@@ -168,7 +168,7 @@ export namespace Libxfce4util {
      * @returns `true` on success, `false` on error.
      * @since 4.17
      */
-    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Quotes a string `unquoted` and appends to an existing
@@ -197,7 +197,7 @@ export namespace Libxfce4util {
      * @param directory name of directory to check for localized variant of.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_dir_localized_r(buffer: string, length: (bigint | number), directory: string): string;
+    function get_dir_localized_r(buffer: string, length: bigint | number, directory: string): string;
 
     /**
      * Checks if theres a version of `filename` which is localized to the current
@@ -219,7 +219,7 @@ export namespace Libxfce4util {
      * @param filename name of a file to look for a localized version.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_file_localized_r(buffer: string, length: (bigint | number), filename: string): string;
+    function get_file_localized_r(buffer: string, length: bigint | number, filename: string): string;
 
     /**
      * Similar to `g_get_home_dir()` in functionality but will never return NULL.
@@ -258,7 +258,7 @@ export namespace Libxfce4util {
      * @param filename the filename
      * @param test test
      */
-    function get_path_localized(dst: string, size: (bigint | number), paths: string, filename: string, test: GLib.FileTest): string;
+    function get_path_localized(dst: string, size: bigint | number, paths: string, filename: string, test: GLib.FileTest): string;
 
     /**
      * Safe way to retrieve the path to the user's ".xfce4" directory. The path
@@ -308,7 +308,7 @@ export namespace Libxfce4util {
      * @returns `true` on success, else `false`.
      * @since 4.2
      */
-    function mkdirhier(whole_path: string, mode: (bigint | number)): boolean;
+    function mkdirhier(whole_path: string, mode: bigint | number): boolean;
 
     /**
      * Initializes the POSIX signal handler system.  Must be called
@@ -514,7 +514,7 @@ export namespace Libxfce4util {
      * @returns a newly allocated copy of `str` where all occurrences of          `pattern` are replaced with `replacement`. Or `null` if          `str` is `null`.
      * @since 4.17
      */
-    function str_replace(str: string, pattern: string, replacement: string): (string | null);
+    function str_replace(str: string, pattern: string, replacement: string): string | null;
 
     /**
      * Sets up the translations for `package`.
@@ -545,7 +545,7 @@ export namespace Libxfce4util {
      * @returns pointer to `str` or `null` on error.
      * @since 4.2
      */
-    function utf8_remove_controls(str: string, max_len: (bigint | number), end: string): string;
+    function utf8_remove_controls(str: string, max_len: bigint | number, end: string): string;
 
     /**
      * Duplicates the `src` string up to `max_len` characters
@@ -558,7 +558,7 @@ export namespace Libxfce4util {
      * @returns pointer to the newly allocated string.
      * @since 4.3
      */
-    function utf8_strndup(src: string, max_len: (bigint | number)): string;
+    function utf8_strndup(src: string, max_len: bigint | number): string;
 
     /**
      * Queries the version string of the installed Xfce desktop environment.
@@ -583,13 +583,10 @@ export namespace Libxfce4util {
 
     namespace Consolekit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -701,13 +698,10 @@ export namespace Libxfce4util {
 
     namespace Kiosk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -764,13 +758,10 @@ export namespace Libxfce4util {
 
     namespace Systemd {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

@@ -156,13 +156,10 @@ export namespace AppStreamBuilder {
 
     namespace App {
         // Signal signatures
-        interface SignalSignatures extends AppStreamGlib.App.SignalSignatures {
-        }
+        interface SignalSignatures extends AppStreamGlib.App.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AppStreamGlib.App.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AppStreamGlib.App.ConstructorProps {}
     }
 
     /**
@@ -233,13 +230,10 @@ export namespace AppStreamBuilder {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -454,13 +448,10 @@ export namespace AppStreamBuilder {
 
     namespace Package {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -835,13 +826,10 @@ export namespace AppStreamBuilder {
 
     namespace Task {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -917,7 +905,7 @@ export namespace AppStreamBuilder {
     /**
      * @gir-type Alias
      */
-    type PackageEnsureFlags = (bigint | number);
+    type PackageEnsureFlags = bigint | number;
 
     /**
      * Name of the imported GIR library

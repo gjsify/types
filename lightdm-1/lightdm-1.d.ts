@@ -57,7 +57,7 @@ export namespace LightDM {
         static INVALID_USER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -187,42 +187,42 @@ export namespace LightDM {
      * e.g. "Welcome to Yoyodyne"
      * @returns a string (the contents of /etc/motd) or `null` if not set.
      */
-    function get_motd(): (string | null);
+    function get_motd(): string | null;
 
     /**
      * Get a word describing the OS, suitable for checking which OS the greeter is running on.
      * e.g. "ubuntu"
      * @returns a string (ID variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_id(): (string | null);
+    function get_os_id(): string | null;
 
     /**
      * Get a line of text describing the OS without version information, suitable for presentation to the user.
      * e.g. "Ubuntu"
      * @returns a string (NAME variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_name(): (string | null);
+    function get_os_name(): string | null;
 
     /**
      * Get a line of text describing the OS, suitable for presentation to the user.
      * e.g. "Ubuntu 16.04.1 LTS"
      * @returns a string (PRETTY_NAME variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_pretty_name(): (string | null);
+    function get_os_pretty_name(): string | null;
 
     /**
      * Get a line of text describing the OS version, suitable for presentation to the user.
      * e.g. "16.04.1 LTS (Xenial Xapus)"
      * @returns a string (VERSION variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_version(): (string | null);
+    function get_os_version(): string | null;
 
     /**
      * Get a word descibing the OS version, suitable for checking which version of the OS this greeter is running on.
      * e.g. "16.04"
      * @returns a string (VERSION_ID variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_version_id(): (string | null);
+    function get_os_version_id(): string | null;
 
     /**
      * Get the available remote sessions.
@@ -345,16 +345,16 @@ export namespace LightDM {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            authentication_user: (string | null);
-            authenticationUser: (string | null);
+            authentication_user: string | null;
+            authenticationUser: string | null;
             autologin_guest_hint: boolean;
             autologinGuestHint: boolean;
-            autologin_session_hint: (string | null);
-            autologinSessionHint: (string | null);
+            autologin_session_hint: string | null;
+            autologinSessionHint: string | null;
             autologin_timeout_hint: number;
             autologinTimeoutHint: number;
-            autologin_user_hint: (string | null);
-            autologinUserHint: (string | null);
+            autologin_user_hint: string | null;
+            autologinUserHint: string | null;
             default_session_hint: string;
             defaultSessionHint: string;
             has_guest_account_hint: boolean;
@@ -369,8 +369,8 @@ export namespace LightDM {
             lockHint: boolean;
             select_guest_hint: boolean;
             selectGuestHint: boolean;
-            select_user_hint: (string | null);
-            selectUserHint: (string | null);
+            select_user_hint: string | null;
+            selectUserHint: string | null;
             show_manual_login_hint: boolean;
             showManualLoginHint: boolean;
             show_remote_login_hint: boolean;
@@ -391,13 +391,13 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get authentication_user(): (string | null);
+        get authentication_user(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get authenticationUser(): (string | null);
+        get authenticationUser(): string | null;
 
         /**
          * @read-only
@@ -415,13 +415,13 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get autologin_session_hint(): (string | null);
+        get autologin_session_hint(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get autologinSessionHint(): (string | null);
+        get autologinSessionHint(): string | null;
 
         /**
          * @read-only
@@ -439,13 +439,13 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get autologin_user_hint(): (string | null);
+        get autologin_user_hint(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get autologinUserHint(): (string | null);
+        get autologinUserHint(): string | null;
 
         /**
          * @read-only
@@ -535,13 +535,13 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get select_user_hint(): (string | null);
+        get select_user_hint(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get selectUserHint(): (string | null);
+        get selectUserHint(): string | null;
 
         /**
          * @read-only
@@ -637,7 +637,7 @@ export namespace LightDM {
          * @param username A username or `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate(username: (string | null)): boolean;
+        authenticate(username: string | null): boolean;
 
         /**
          * Starts the authentication procedure for the guest user.
@@ -657,7 +657,7 @@ export namespace LightDM {
          * @param username A username of `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate_remote(session: string, username: (string | null)): boolean;
+        authenticate_remote(session: string, username: string | null): boolean;
 
         /**
          * Cancel the current user authentication.
@@ -684,7 +684,7 @@ export namespace LightDM {
          * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        connect_to_daemon(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        connect_to_daemon(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously connects the greeter to the display manager.
@@ -695,7 +695,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        connect_to_daemon(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect_to_daemon(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously connects the greeter to the display manager.
@@ -706,7 +706,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        connect_to_daemon(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect_to_daemon(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `lightdm_greeter_connect_to_daemon()`.
@@ -735,7 +735,7 @@ export namespace LightDM {
          * @param username A username
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        ensure_shared_data_dir(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
@@ -752,7 +752,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ensure_shared_data_dir(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
@@ -769,7 +769,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        ensure_shared_data_dir(username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Function to call from lightdm_greeter_ensure_shared_data_dir callback.
@@ -798,7 +798,7 @@ export namespace LightDM {
          * Get the user that is being authenticated.
          * @returns The username of the authentication user being authenticated or `NULL` if no authentication in progress.
          */
-        get_authentication_user(): (string | null);
+        get_authentication_user(): string | null;
 
         /**
          * Check if the guest account should be automatically logged into when the timer expires.
@@ -810,7 +810,7 @@ export namespace LightDM {
          * Get the session used to automatically log into when the timer expires.
          * @returns The session name or `null` if configured to use the default.
          */
-        get_autologin_session_hint(): (string | null);
+        get_autologin_session_hint(): string | null;
 
         /**
          * Get the number of seconds to wait before automatically logging in.
@@ -822,7 +822,7 @@ export namespace LightDM {
          * Get the user account to automatically log into when the timer expires.
          * @returns The user account to automatically log into or `null` if none configured.
          */
-        get_autologin_user_hint(): (string | null);
+        get_autologin_user_hint(): string | null;
 
         /**
          * Get the default session to use.
@@ -853,7 +853,7 @@ export namespace LightDM {
          * @param name The hint name to query.
          * @returns The value for this hint or `NULL` if not set.
          */
-        get_hint(name: string): (string | null);
+        get_hint(name: string): string | null;
 
         /**
          * Checks if the greeter is in the process of authenticating.
@@ -883,7 +883,7 @@ export namespace LightDM {
          * Get the user to select by default.
          * @returns A username or `null` if no particular user should be selected.
          */
-        get_select_user_hint(): (string | null);
+        get_select_user_hint(): string | null;
 
         /**
          * Check if a manual login option should be shown.  If set the GUI
@@ -931,7 +931,7 @@ export namespace LightDM {
          * @param session The session to log into or `NULL` to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        start_session(session: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        start_session(session: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously start a session for the authenticated user.
@@ -943,7 +943,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        start_session(session: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        start_session(session: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously start a session for the authenticated user.
@@ -955,7 +955,7 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        start_session(session: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        start_session(session: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Start a session for the authenticated user.
@@ -969,7 +969,7 @@ export namespace LightDM {
          * @param session The session to log into or `NULL` to use the default.
          * @returns TRUE if the session was started.
          */
-        start_session_sync(session: (string | null)): boolean;
+        start_session_sync(session: string | null): boolean;
     }
 
 
@@ -1293,26 +1293,26 @@ export namespace LightDM {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            background: (string | null);
+            background: string | null;
             display_name: string;
             displayName: string;
             has_messages: boolean;
             hasMessages: boolean;
             home_directory: string;
             homeDirectory: string;
-            image: (string | null);
+            image: string | null;
             is_locked: boolean;
             isLocked: boolean;
-            language: (string | null);
-            layout: (string | null);
+            language: string | null;
+            layout: string | null;
             layouts: string[];
             logged_in: boolean;
             loggedIn: boolean;
             name: string;
             real_name: string;
             realName: string;
-            session: (string | null);
-            uid: (bigint | number);
+            session: string | null;
+            uid: bigint | number;
         }
     }
 
@@ -1329,7 +1329,7 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get background(): (string | null);
+        get background(): string | null;
 
         /**
          * @read-only
@@ -1371,7 +1371,7 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get image(): (string | null);
+        get image(): string | null;
 
         /**
          * @read-only
@@ -1389,13 +1389,13 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get language(): (string | null);
+        get language(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get layout(): (string | null);
+        get layout(): string | null;
 
         /**
          * @read-only
@@ -1436,7 +1436,7 @@ export namespace LightDM {
          * @read-only
          * @default null
          */
-        get session(): (string | null);
+        get session(): string | null;
 
         /**
          * @read-only
@@ -1482,7 +1482,7 @@ export namespace LightDM {
          * Get the background file path for a user.
          * @returns The background file path for the given user or `NULL` if no path
          */
-        get_background(): (string | null);
+        get_background(): string | null;
 
         /**
          * Get the display name of a user.
@@ -1506,7 +1506,7 @@ export namespace LightDM {
          * Get the image URI for a user.
          * @returns The image URI for the given user or `NULL` if no URI
          */
-        get_image(): (string | null);
+        get_image(): string | null;
 
         /**
          * Get if the user is locked.
@@ -1518,13 +1518,13 @@ export namespace LightDM {
          * Get the language for a user.
          * @returns The language in the form of a local specification (e.g. "de_DE.UTF-8") for the given user or `NULL` if using the system default locale.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * Get the keyboard layout for a user.
          * @returns The keyboard layout for the given user or `NULL` if using system defaults.  Copy the value if you want to use it long term.
          */
-        get_layout(): (string | null);
+        get_layout(): string | null;
 
         /**
          * Get the configured keyboard layouts for a user.
@@ -1554,7 +1554,7 @@ export namespace LightDM {
          * Get the session for a user.
          * @returns The session for the given user or `NULL` if using system defaults.
          */
-        get_session(): (string | null);
+        get_session(): string | null;
 
         /**
          * Get the uid of a user.

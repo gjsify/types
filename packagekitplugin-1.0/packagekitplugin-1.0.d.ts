@@ -160,7 +160,7 @@ export namespace PackageKitPlugin {
      * @param value The return numeric return value
      * @returns `true` if the string was converted correctly
      */
-    function strtouint64(text: string, value: (bigint | number)): boolean;
+    function strtouint64(text: string, value: bigint | number): boolean;
 
     /**
      * This function is a much safer way of doing "if (strlen (text) == 0))"
@@ -223,13 +223,10 @@ export namespace PackageKitPlugin {
 
     namespace Backend {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -615,13 +612,10 @@ export namespace PackageKitPlugin {
 
     namespace BackendJob {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -678,7 +672,7 @@ export namespace PackageKitPlugin {
          * @param url 
          * @param size 
          */
-        details(package_id: string, summary: string, license: string, group: PackageKitGlib.GroupEnum, description: string, url: string, size: (bigint | number)): void;
+        details(package_id: string, summary: string, license: string, group: PackageKitGlib.GroupEnum, description: string, url: string, size: bigint | number): void;
 
         /**
          * @param type 
@@ -872,7 +866,7 @@ export namespace PackageKitPlugin {
         /**
          * @param download_size_remaining 
          */
-        set_download_size_remaining(download_size_remaining: (bigint | number)): void;
+        set_download_size_remaining(download_size_remaining: bigint | number): void;
 
         /**
          * Should only be used internally, or from PkRunner when setting CANCELLED.
@@ -1007,9 +1001,7 @@ export namespace PackageKitPlugin {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

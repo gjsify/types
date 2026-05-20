@@ -241,7 +241,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Not used with libsecret.
      */
-    function change_password_sync(keyring: string, original: (string | null), password: (string | null)): Result;
+    function change_password_sync(keyring: string, original: string | null, password: string | null): Result;
 
     /**
      * Create a new keyring with the specified name. In most cases `null` will be
@@ -254,7 +254,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_collection_create_sync()` instead.
      */
-    function create_sync(keyring_name: string, password: (string | null)): Result;
+    function create_sync(keyring_name: string, password: string | null): Result;
 
     /**
      * @returns GNOME_KEYRING_RESULT_OK
@@ -319,7 +319,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_password_lookup_sync()` with `SECRET_SCHEMA_COMPAT_NETWORK`.
      */
-    function find_network_password_sync(user: (string | null), domain: (string | null), server: (string | null), object: (string | null), protocol: (string | null), authtype: (string | null), port: number): [Result, NetworkPasswordData[]];
+    function find_network_password_sync(user: string | null, domain: string | null, server: string | null, object: string | null, protocol: string | null, authtype: string | null, port: number): [Result, NetworkPasswordData[]];
 
     /**
      * Free the memory used by the {@link GnomeKeyring.Found} items in `found_list`.
@@ -359,7 +359,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `SecretCollection` objects instead.
      */
-    function get_info_sync(keyring: (string | null)): [Result, Info];
+    function get_info_sync(keyring: string | null): [Result, Info];
 
     /**
      * Check whether you can communicate with a gnome-keyring-daemon.
@@ -439,7 +439,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_password_store_sync()` or `secret_item_create_sync()` instead.
      */
-    function item_create_sync(keyring: (string | null), type: ItemType, display_name: string, attributes: AttributeList, secret: string, update_if_exists: boolean): [Result, number];
+    function item_create_sync(keyring: string | null, type: ItemType, display_name: string, attributes: AttributeList, secret: string, update_if_exists: boolean): [Result, number];
 
     /**
      * Delete an item in a keyring.
@@ -453,7 +453,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_password_clear_sync()` or `secret_item_delete_sync()` instead.
      */
-    function item_delete_sync(keyring: (string | null), id: number): Result;
+    function item_delete_sync(keyring: string | null, id: number): Result;
 
     /**
      * @param keyring The name of the keyring in which the item exists, or           `null` for the default keyring.
@@ -461,7 +461,7 @@ export namespace GnomeKeyring {
      * @returns Always {@link GnomeKeyring.Result.OK}.
      * @deprecated Never returns any acls.
      */
-    function item_get_acl_sync(keyring: (string | null), id: number): [Result, AccessControl[]];
+    function item_get_acl_sync(keyring: string | null, id: number): [Result, AccessControl[]];
 
     /**
      * Get all attributes for an item.
@@ -476,7 +476,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_item_get_attributes()` instead.
      */
-    function item_get_attributes_sync(keyring: (string | null), id: number, attributes: AttributeList): Result;
+    function item_get_attributes_sync(keyring: string | null, id: number, attributes: AttributeList): Result;
 
     /**
      * Get information about an item, optionally retrieving its secret.
@@ -496,7 +496,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `SecretItem` objects instead.
      */
-    function item_get_info_full_sync(keyring: (string | null), id: number, flags: number): [Result, ItemInfo];
+    function item_get_info_full_sync(keyring: string | null, id: number, flags: number): [Result, ItemInfo];
 
     /**
      * Get information about an item and its secret.
@@ -513,7 +513,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `SecretItem` objects instead.
      */
-    function item_get_info_sync(keyring: (string | null), id: number): [Result, ItemInfo];
+    function item_get_info_sync(keyring: string | null, id: number): [Result, ItemInfo];
 
     /**
      * Will grant the application access rights to the item, provided
@@ -526,7 +526,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated This function no longer has any effect.
      */
-    function item_grant_access_rights_sync(keyring: (string | null), display_name: string, full_path: string, id: number, rights: AccessType): Result;
+    function item_grant_access_rights_sync(keyring: string | null, display_name: string, full_path: string, id: number, rights: AccessType): Result;
 
     /**
      * @param keyring The name of the keyring in which the item exists, or           `null` for the default keyring.
@@ -535,7 +535,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated This function no longer has any effect.
      */
-    function item_set_acl_sync(keyring: (string | null), id: number, acl: AccessControl[]): Result;
+    function item_set_acl_sync(keyring: string | null, id: number, acl: AccessControl[]): Result;
 
     /**
      * Set all the attributes for an item. This will replace any previous attributes
@@ -548,7 +548,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_item_set_attributes_sync()` instead.
      */
-    function item_set_attributes_sync(keyring: (string | null), id: number, attributes: AttributeList): Result;
+    function item_set_attributes_sync(keyring: string | null, id: number, attributes: AttributeList): Result;
 
     /**
      * Set information on an item, like its display name, secret etc...
@@ -563,7 +563,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `SecretItem` objects instead.
      */
-    function item_set_info_sync(keyring: (string | null), id: number, info: ItemInfo): Result;
+    function item_set_info_sync(keyring: string | null, id: number, info: ItemInfo): Result;
 
     /**
      * Get a list of all the ids for items in `keyring`.
@@ -576,7 +576,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_collection_get_items()` instead.
      */
-    function list_item_ids_sync(keyring: (string | null)): [Result, number[]];
+    function list_item_ids_sync(keyring: string | null): [Result, number[]];
 
     /**
      * Get a list of keyring names.
@@ -612,7 +612,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_service_lock_sync()` instead.
      */
-    function lock_sync(keyring: (string | null)): Result;
+    function lock_sync(keyring: string | null): Result;
 
     /**
      * Free a network password data pointer. If `null` is passed in,
@@ -620,7 +620,7 @@ export namespace GnomeKeyring {
      * @param data A {@link GnomeKeyring.NetworkPasswordData} pointer.
      * @deprecated Not used with libsecret.
      */
-    function network_password_free(data: (NetworkPasswordData | null)): void;
+    function network_password_free(data: NetworkPasswordData | null): void;
 
     /**
      * Free a list of network password data.
@@ -662,7 +662,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `SecretCollection` objects instead.
      */
-    function set_info_sync(keyring: (string | null), info: Info): Result;
+    function set_info_sync(keyring: string | null, info: Info): Result;
 
     /**
      * Store a network password.
@@ -685,7 +685,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_password_store_sync()` with `SECRET_SCHEMA_COMPAT_NETWORK`.
      */
-    function set_network_password_sync(keyring: (string | null), user: (string | null), domain: (string | null), server: (string | null), object: (string | null), protocol: (string | null), authtype: (string | null), port: number, password: string): [Result, number];
+    function set_network_password_sync(keyring: string | null, user: string | null, domain: string | null, server: string | null, object: string | null, protocol: string | null, authtype: string | null, port: number, password: string): [Result, number];
 
     /**
      * Free a list of string pointers.
@@ -708,7 +708,7 @@ export namespace GnomeKeyring {
      * @returns {@link GnomeKeyring.Result.OK} if the operation was succcessful or an error result otherwise.
      * @deprecated Use `secret_service_unlock_sync()` instead.
      */
-    function unlock_sync(keyring: (string | null), password: (string | null)): Result;
+    function unlock_sync(keyring: string | null, password: string | null): Result;
 
     /**
      * @gir-type Callback
@@ -749,7 +749,7 @@ export namespace GnomeKeyring {
      * @gir-type Callback
      */
     interface OperationGetStringCallback {
-        (result: Result, string: (string | null)): void;
+        (result: Result, string: string | null): void;
     }
 
     /**
@@ -815,10 +815,7 @@ export namespace GnomeKeyring {
         static $gtype: GObject.GType<ApplicationRef>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ApplicationRef;
 
@@ -1043,10 +1040,7 @@ export namespace GnomeKeyring {
         static $gtype: GObject.GType<ItemInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ItemInfo;
 

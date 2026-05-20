@@ -471,7 +471,7 @@ export namespace Nice {
      * @param interface_name name of local interface
      * @returns a newly-allocated string with the IP address
      */
-    function interfaces_get_ip_for_interface(interface_name: string): (string | null);
+    function interfaces_get_ip_for_interface(interface_name: string): string | null;
 
     /**
      * Get the list of local interfaces
@@ -1457,7 +1457,7 @@ export namespace Nice {
          * ports aren't left behind on TURN server but properly removed.
          * @param callback A callback that will be called when the closing is  complete
          */
-        close_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Notifies the agent that consent to receive has been revoked.  This will
@@ -1692,7 +1692,7 @@ export namespace Nice {
          * @param component_id The ID of the component
          * @returns pointer to the {@link Gio.Socket}, or `null` if there is no selected candidate or if the selected candidate is a relayed candidate.
          */
-        get_selected_socket(stream_id: number, component_id: number): (Gio.Socket | null);
+        get_selected_socket(stream_id: number, component_id: number): Gio.Socket | null;
 
         /**
          * Each component can have multiple sockets, this is an API to retrieve them all
@@ -1778,7 +1778,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of bytes written to `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
-        recv(stream_id: number, component_id: number, cancellable: (Gio.Cancellable | null)): [number, Uint8Array];
+        recv(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, Uint8Array];
 
         /**
          * Block on receiving data from the given stream/component combination on
@@ -1819,7 +1819,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if the remote peer closed the stream, or -1 on error
          */
-        recv_messages(stream_id: number, component_id: number, cancellable: (Gio.Cancellable | null)): [number, InputMessage[]];
+        recv_messages(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, InputMessage[]];
 
         /**
          * Try to receive data from the given stream/component combination on `agent`,
@@ -1852,7 +1852,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
-        recv_messages_nonblocking(stream_id: number, component_id: number, cancellable: (Gio.Cancellable | null)): [number, InputMessage[]];
+        recv_messages_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, InputMessage[]];
 
         /**
          * A single-message version of `nice_agent_recv_messages_nonblocking()`.
@@ -1861,7 +1861,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of bytes received into `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
-        recv_nonblocking(stream_id: number, component_id: number, cancellable: (Gio.Cancellable | null)): [number, Uint8Array];
+        recv_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, Uint8Array];
 
         /**
          * Remove and free a previously created data stream from `agent`. If any I/O
@@ -1967,7 +1967,7 @@ export namespace Nice {
          * @param cancellable a {@link Gio.Cancellable} to cancel the operation from another thread, or `null`
          * @returns the number of messages sent (may be zero), or -1 on error
          */
-        send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable: (Gio.Cancellable | null)): number;
+        send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable: Gio.Cancellable | null): number;
 
         /**
          * Sets the local credentials for stream `stream_id`.
@@ -2389,7 +2389,7 @@ export namespace Nice {
          * @param timeout A pointer to be filled with the new timeout.
          * @returns `true` if `timeout` was filled, `false` if the socket is closed and ready to be destroyed. <para> See also: `pseudo_tcp_socket_notify_clock()` </para>
          */
-        get_next_clock(timeout: (bigint | number)): boolean;
+        get_next_clock(timeout: bigint | number): boolean;
 
         /**
          * Gets whether the socket is closed, with the shutdown handshake completed,
@@ -2457,7 +2457,7 @@ export namespace Nice {
          * @param len The length of `buffer`
          * @returns The number of bytes received or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
          */
-        recv(buffer: string, len: (bigint | number)): number;
+        recv(buffer: string, len: bigint | number): number;
 
         /**
          * Send data on the socket.

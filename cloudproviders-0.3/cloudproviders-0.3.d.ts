@@ -405,9 +405,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -483,9 +481,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, DbusAccount.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, DbusAccount.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -516,12 +512,12 @@ export namespace CloudProviders {
 
         static new_for_bus_finish(res: Gio.AsyncResult): DbusAccountProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): DbusAccountProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): DbusAccountProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): DbusAccountProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): DbusAccountProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -554,7 +550,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusAccountProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusAccountProxy> | null): void;
 
         /**
          * @param args 
@@ -576,7 +572,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusAccountProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusAccountProxy> | null): void;
 
         /**
          * @param args 
@@ -591,8 +587,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get icon(): (string | null);
-        set icon(val: (string | null));
+        get icon(): string | null;
+        set icon(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Name">"Name"</link>.
@@ -601,8 +597,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Path">"Path"</link>.
@@ -611,8 +607,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get path(): (string | null);
-        set path(val: (string | null));
+        get path(): string | null;
+        set path(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Status">"Status"</link>.
@@ -631,8 +627,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get status_details(): (string | null);
-        set status_details(val: (string | null));
+        get status_details(): string | null;
+        set status_details(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.StatusDetails">"StatusDetails"</link>.
@@ -641,8 +637,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get statusDetails(): (string | null);
-        set statusDetails(val: (string | null));
+        get statusDetails(): string | null;
+        set statusDetails(val: string | null);
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -684,50 +680,7 @@ export namespace CloudProviders {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -770,7 +723,50 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -836,7 +832,7 @@ export namespace CloudProviders {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -850,7 +846,7 @@ export namespace CloudProviders {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -865,13 +861,13 @@ export namespace CloudProviders {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -887,7 +883,7 @@ export namespace CloudProviders {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -931,7 +927,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -975,7 +971,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -991,9 +987,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, DbusAccount.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, DbusAccount.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -1039,8 +1033,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get icon(): (string | null);
-        set icon(val: (string | null));
+        get icon(): string | null;
+        set icon(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Name">"Name"</link>.
@@ -1049,8 +1043,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Path">"Path"</link>.
@@ -1059,8 +1053,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get path(): (string | null);
-        set path(val: (string | null));
+        get path(): string | null;
+        set path(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Status">"Status"</link>.
@@ -1079,8 +1073,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get status_details(): (string | null);
-        set status_details(val: (string | null));
+        get status_details(): string | null;
+        set status_details(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.StatusDetails">"StatusDetails"</link>.
@@ -1089,14 +1083,14 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusAccount
          */
-        get statusDetails(): (string | null);
-        set statusDetails(val: (string | null));
+        get statusDetails(): string | null;
+        set statusDetails(val: string | null);
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1111,13 +1105,13 @@ export namespace CloudProviders {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1133,7 +1127,7 @@ export namespace CloudProviders {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -1152,9 +1146,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectManagerClient.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusObjectManager.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectManagerClient.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusObjectManager.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1185,12 +1177,12 @@ export namespace CloudProviders {
 
         static new_for_bus_finish(res: Gio.AsyncResult): DbusObjectManagerClient;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): DbusObjectManagerClient;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): DbusObjectManagerClient;
 
         // Conflicted with Gio.DBusObjectManagerClient.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): DbusObjectManagerClient;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): DbusObjectManagerClient;
 
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
         static new_sync(...args: never[]): any;
@@ -1216,7 +1208,7 @@ export namespace CloudProviders {
          * @param interface_name Interface name of the remote object or `null` to get the object proxy {@link GObject.GType}.
          * @param user_data User data (unused).
          */
-        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: null): GObject.GType;
+        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: string | null, user_data: null): GObject.GType;
 
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `cloud_providers_dbus_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.
@@ -1232,7 +1224,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusObjectManagerClient> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusObjectManagerClient> | null): void;
 
         /**
          * @param args 
@@ -1254,7 +1246,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusObjectManagerClient> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusObjectManagerClient> | null): void;
 
         /**
          * @param args 
@@ -1302,7 +1294,7 @@ export namespace CloudProviders {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1345,7 +1337,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1388,7 +1380,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1454,7 +1446,7 @@ export namespace CloudProviders {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1471,14 +1463,14 @@ export namespace CloudProviders {
          * @param interface_name D-Bus interface name to look up.
          * @returns A {@link Gio.DBusInterface} instance or `null`. Free   with `g_object_unref()`.
          */
-        get_interface(object_path: string, interface_name: string): (Gio.DBusInterface | null);
+        get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @returns A {@link Gio.DBusObject} or `null`. Free with   `g_object_unref()`.
          */
-        get_object(object_path: string): (Gio.DBusObject | null);
+        get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
@@ -1499,14 +1491,14 @@ export namespace CloudProviders {
          * @param interface_name D-Bus interface name to look up.
          * @virtual
          */
-        vfunc_get_interface(object_path: string, interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @virtual
          */
-        vfunc_get_object(object_path: string): (Gio.DBusObject | null);
+        vfunc_get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
@@ -1592,7 +1584,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1636,7 +1628,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1650,9 +1642,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectProxy.ConstructorProps, DbusObject.ConstructorProps, Gio.DBusObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectProxy.ConstructorProps, DbusObject.ConstructorProps, Gio.DBusObject.ConstructorProps {}
     }
 
     /**
@@ -1697,8 +1687,8 @@ export namespace CloudProviders {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from CloudProviders.DbusObject
          */
-        get account(): (DbusAccount | null);
-        set account(val: (DbusAccount | null));
+        get account(): DbusAccount | null;
+        set account(val: DbusAccount | null);
 
         /**
          * The {@link CloudProviders.DbusProvider} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link>, if any.
@@ -1706,20 +1696,20 @@ export namespace CloudProviders {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from CloudProviders.DbusObject
          */
-        get provider(): (DbusProvider | null);
-        set provider(val: (DbusProvider | null));
+        get provider(): DbusProvider | null;
+        set provider(val: DbusProvider | null);
 
         /**
          * Gets the {@link CloudProviders.DbusAccount} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusAccount} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_account(): (DbusAccount | null);
+        get_account(): DbusAccount | null;
 
         /**
          * Gets the {@link CloudProviders.DbusProvider} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusProvider} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_provider(): (DbusProvider | null);
+        get_provider(): DbusProvider | null;
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -1727,7 +1717,7 @@ export namespace CloudProviders {
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
          */
-        get_interface(interface_name: string): (Gio.DBusInterface | null);
+        get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -1747,7 +1737,7 @@ export namespace CloudProviders {
          * @param interface_name A D-Bus interface name.
          * @virtual
          */
-        vfunc_get_interface(interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -1786,9 +1776,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectSkeleton.ConstructorProps, DbusObject.ConstructorProps, Gio.DBusObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectSkeleton.ConstructorProps, DbusObject.ConstructorProps, Gio.DBusObject.ConstructorProps {}
     }
 
     /**
@@ -1832,13 +1820,13 @@ export namespace CloudProviders {
          * Sets the {@link CloudProviders.DbusAccount} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object`.
          * @param interface_ A {@link CloudProviders.DbusAccount} or `null` to clear the interface.
          */
-        set_account(interface_: (DbusAccount | null)): void;
+        set_account(interface_: DbusAccount | null): void;
 
         /**
          * Sets the {@link CloudProviders.DbusProvider} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link> on `object`.
          * @param interface_ A {@link CloudProviders.DbusProvider} or `null` to clear the interface.
          */
-        set_provider(interface_: (DbusProvider | null)): void;
+        set_provider(interface_: DbusProvider | null): void;
 
         /**
          * The {@link CloudProviders.DbusAccount} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link>, if any.
@@ -1846,8 +1834,8 @@ export namespace CloudProviders {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from CloudProviders.DbusObject
          */
-        get account(): (DbusAccount | null);
-        set account(val: (DbusAccount | null));
+        get account(): DbusAccount | null;
+        set account(val: DbusAccount | null);
 
         /**
          * The {@link CloudProviders.DbusProvider} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link>, if any.
@@ -1855,20 +1843,20 @@ export namespace CloudProviders {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from CloudProviders.DbusObject
          */
-        get provider(): (DbusProvider | null);
-        set provider(val: (DbusProvider | null));
+        get provider(): DbusProvider | null;
+        set provider(val: DbusProvider | null);
 
         /**
          * Gets the {@link CloudProviders.DbusAccount} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusAccount} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_account(): (DbusAccount | null);
+        get_account(): DbusAccount | null;
 
         /**
          * Gets the {@link CloudProviders.DbusProvider} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusProvider} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_provider(): (DbusProvider | null);
+        get_provider(): DbusProvider | null;
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -1876,7 +1864,7 @@ export namespace CloudProviders {
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
          */
-        get_interface(interface_name: string): (Gio.DBusInterface | null);
+        get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -1896,7 +1884,7 @@ export namespace CloudProviders {
          * @param interface_name A D-Bus interface name.
          * @virtual
          */
-        vfunc_get_interface(interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -1942,9 +1930,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, DbusProvider.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, DbusProvider.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1975,12 +1961,12 @@ export namespace CloudProviders {
 
         static new_for_bus_finish(res: Gio.AsyncResult): DbusProviderProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): DbusProviderProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): DbusProviderProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): DbusProviderProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): DbusProviderProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -2013,7 +1999,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusProviderProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusProviderProxy> | null): void;
 
         /**
          * @param args 
@@ -2035,7 +2021,7 @@ export namespace CloudProviders {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<DbusProviderProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DbusProviderProxy> | null): void;
 
         /**
          * @param args 
@@ -2050,8 +2036,8 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusProvider
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2093,50 +2079,7 @@ export namespace CloudProviders {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2179,7 +2122,50 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2245,7 +2231,7 @@ export namespace CloudProviders {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2259,7 +2245,7 @@ export namespace CloudProviders {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2274,13 +2260,13 @@ export namespace CloudProviders {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2296,7 +2282,7 @@ export namespace CloudProviders {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -2340,7 +2326,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2384,7 +2370,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2396,9 +2382,7 @@ export namespace CloudProviders {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, DbusProvider.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, DbusProvider.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -2444,14 +2428,14 @@ export namespace CloudProviders {
          * @default null
           * @category Inherited from CloudProviders.DbusProvider
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2466,13 +2450,13 @@ export namespace CloudProviders {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2488,7 +2472,7 @@ export namespace CloudProviders {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -2847,12 +2831,12 @@ export namespace CloudProviders {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon: (string | null);
-            name: (string | null);
-            path: (string | null);
+            icon: string | null;
+            name: string | null;
+            path: string | null;
             status: number;
-            status_details: (string | null);
-            statusDetails: (string | null);
+            status_details: string | null;
+            statusDetails: string | null;
         }
     }
 
@@ -2884,8 +2868,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get icon(): (string | null);
-        set icon(val: (string | null));
+        get icon(): string | null;
+        set icon(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Name">"Name"</link>.
@@ -2893,8 +2877,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Path">"Path"</link>.
@@ -2902,8 +2886,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get path(): (string | null);
-        set path(val: (string | null));
+        get path(): string | null;
+        set path(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.Status">"Status"</link>.
@@ -2920,8 +2904,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get status_details(): (string | null);
-        set status_details(val: (string | null));
+        get status_details(): string | null;
+        set status_details(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-freedesktop-CloudProviders-Account.StatusDetails">"StatusDetails"</link>.
@@ -2929,8 +2913,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get statusDetails(): (string | null);
-        set statusDetails(val: (string | null));
+        get statusDetails(): string | null;
+        set statusDetails(val: string | null);
     }
 
 
@@ -2942,8 +2926,8 @@ export namespace CloudProviders {
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
-            account: (DbusAccount | null);
-            provider: (DbusProvider | null);
+            account: DbusAccount | null;
+            provider: DbusProvider | null;
         }
     }
 
@@ -2963,29 +2947,29 @@ export namespace CloudProviders {
          * 
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get account(): (DbusAccount | null);
-        set account(val: (DbusAccount | null));
+        get account(): DbusAccount | null;
+        set account(val: DbusAccount | null);
 
         /**
          * The {@link CloudProviders.DbusProvider} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link>, if any.
          * 
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get provider(): (DbusProvider | null);
-        set provider(val: (DbusProvider | null));
+        get provider(): DbusProvider | null;
+        set provider(val: DbusProvider | null);
 
         // Methods
         /**
          * Gets the {@link CloudProviders.DbusAccount} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Account.top_of_page">org.freedesktop.CloudProviders.Account</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusAccount} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_account(): (DbusAccount | null);
+        get_account(): DbusAccount | null;
 
         /**
          * Gets the {@link CloudProviders.DbusProvider} instance for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-CloudProviders-Provider.top_of_page">org.freedesktop.CloudProviders.Provider</link> on `object`, if any.
          * @returns A {@link CloudProviders.DbusProvider} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_provider(): (DbusProvider | null);
+        get_provider(): DbusProvider | null;
     }
 
 
@@ -2997,7 +2981,7 @@ export namespace CloudProviders {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            name: (string | null);
+            name: string | null;
         }
     }
 
@@ -3029,8 +3013,8 @@ export namespace CloudProviders {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
     }
 
 

@@ -529,7 +529,7 @@ export namespace NMA {
          * Gets the real certificate location from the chooser button along with the scheme.
          * @returns the certificate path
          */
-        get_cert(): [(string | null), NM.Setting8021xCKScheme];
+        get_cert(): [string | null, NM.Setting8021xCKScheme];
 
         /**
          * Obtains the password or a PIN that was be required to access the certificate.
@@ -550,13 +550,13 @@ export namespace NMA {
          * Gets the real certificate URI from the chooser button along with the scheme.
          * @returns the certificate URI
          */
-        get_cert_uri(): (string | null);
+        get_cert_uri(): string | null;
 
         /**
          * Gets the real key location from the chooser button along with the scheme.
          * @returns the key path
          */
-        get_key(): [(string | null), NM.Setting8021xCKScheme];
+        get_key(): [string | null, NM.Setting8021xCKScheme];
 
         /**
          * Obtains the password or a PIN that was be required to access the key.
@@ -577,7 +577,7 @@ export namespace NMA {
          * Gets the real key URI from the chooser button along with the scheme.
          * @returns the key URI
          */
-        get_key_uri(): (string | null);
+        get_key_uri(): string | null;
 
         /**
          * Sets the certificate location for the chooser button.
@@ -754,7 +754,7 @@ export namespace NMA {
         // Conflicted with Gio.AsyncInitable.new_finish
         static new_finish(...args: never[]): any;
 
-        static new_sync(country_codes: (string | null), service_providers: (string | null), cancellable: (Gio.Cancellable | null)): MobileProvidersDatabase;
+        static new_sync(country_codes: string | null, service_providers: string | null, cancellable: Gio.Cancellable | null): MobileProvidersDatabase;
 
         // Signals
         /** @signal */
@@ -776,7 +776,7 @@ export namespace NMA {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](country_codes: (string | null), service_providers: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<MobileProvidersDatabase> | null)): void;
+        static ["new"](country_codes: string | null, service_providers: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MobileProvidersDatabase> | null): void;
 
         // Methods
         dump(): void;
@@ -844,7 +844,7 @@ export namespace NMA {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -887,7 +887,7 @@ export namespace NMA {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -930,7 +930,7 @@ export namespace NMA {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -990,7 +990,7 @@ export namespace NMA {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1042,7 +1042,7 @@ export namespace NMA {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1086,19 +1086,16 @@ export namespace NMA {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace MobileWizard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1223,9 +1220,7 @@ export namespace NMA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1410,9 +1405,7 @@ export namespace NMA {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**

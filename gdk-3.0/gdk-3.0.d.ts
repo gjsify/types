@@ -1034,7 +1034,7 @@ export namespace Gdk {
         static UNSUPPORTED_PROFILE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -6625,7 +6625,7 @@ export namespace Gdk {
      * @returns a {@link Gdk.DrawingContext}, if any is set
      * @since 3.22
      */
-    function cairo_get_drawing_context(cr: cairo.Context): (DrawingContext | null);
+    function cairo_get_drawing_context(cr: cairo.Context): DrawingContext | null;
 
     /**
      * Adds the given rectangle to the current path of `cr`.
@@ -6710,7 +6710,7 @@ export namespace Gdk {
      * @returns a new cairo surface, must be freed with `cairo_surface_destroy()`
      * @since 3.10
      */
-    function cairo_surface_create_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf, scale: number, for_window: (Window | null)): cairo.Surface;
+    function cairo_surface_create_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf, scale: number, for_window: Window | null): cairo.Surface;
 
     /**
      * Parses a textual specification of a color and fill in the
@@ -6969,7 +6969,7 @@ export namespace Gdk {
      * See `gdk_display_get_event()`.
      * @returns the next {@link Gdk.Event} to be processed, or `null` if no events are pending. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
      */
-    function event_get(): (Event | null);
+    function event_get(): Event | null;
 
     /**
      * Sets the function to call to handle all events from GDK.
@@ -6987,7 +6987,7 @@ export namespace Gdk {
      * display, returns a copy of it. See `gdk_display_peek_event()`.
      * @returns a copy of the first {@link Gdk.Event} on some event queue, or `null` if no events are in any queues. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
      */
-    function event_peek(): (Event | null);
+    function event_peek(): Event | null;
 
     /**
      * Request more motion notifies if `event` is a motion notify hint event.
@@ -7081,7 +7081,7 @@ export namespace Gdk {
      * @returns the display name, if specified explicitly,   otherwise `null` this string is owned by GTK+ and must not be   modified or freed.
      * @since 2.2
      */
-    function get_display_arg_name(): (string | null);
+    function get_display_arg_name(): string | null;
 
     /**
      * Gets the program class. Unless the program class has explicitly
@@ -7193,7 +7193,7 @@ export namespace Gdk {
      * @param keyval a key value
      * @returns a string containing the name     of the key, or `null` if `keyval` is not a valid key. The string     should not be modified.
      */
-    function keyval_name(keyval: number): (string | null);
+    function keyval_name(keyval: number): string | null;
 
     /**
      * Converts a key value to lower case, if applicable.
@@ -7262,7 +7262,7 @@ export namespace Gdk {
      * @returns the embedding {@link Gdk.Window}, or     `null` if `window` is not an mbedded offscreen window
      * @since 2.18
      */
-    function offscreen_window_get_embedder(window: Window): (Window | null);
+    function offscreen_window_get_embedder(window: Window): Window | null;
 
     /**
      * Gets the offscreen surface that an offscreen window renders into.
@@ -7271,7 +7271,7 @@ export namespace Gdk {
      * @param window a {@link Gdk.Window}
      * @returns The offscreen surface, or   `null` if not offscreen
      */
-    function offscreen_window_get_surface(window: Window): (cairo.Surface | null);
+    function offscreen_window_get_surface(window: Window): cairo.Surface | null;
 
     /**
      * Sets `window` to be embedded in `embedder`.
@@ -7373,7 +7373,7 @@ export namespace Gdk {
      * @param height Height in pixels of region to get
      * @returns A newly-created pixbuf with a     reference count of 1, or `null` on error
      */
-    function pixbuf_get_from_surface(surface: cairo.Surface, src_x: number, src_y: number, width: number, height: number): (GdkPixbuf.Pixbuf | null);
+    function pixbuf_get_from_surface(surface: cairo.Surface, src_x: number, src_y: number, width: number, height: number): GdkPixbuf.Pixbuf | null;
 
     /**
      * Transfers image data from a {@link Gdk.Window} and converts it to an RGB(A)
@@ -7414,7 +7414,7 @@ export namespace Gdk {
      * @param height Height in pixels of region to get
      * @returns A newly-created pixbuf with a   reference count of 1, or `null` on error
      */
-    function pixbuf_get_from_window(window: Window, src_x: number, src_y: number, width: number, height: number): (GdkPixbuf.Pixbuf | null);
+    function pixbuf_get_from_window(window: Window, src_x: number, src_y: number, width: number, height: number): GdkPixbuf.Pixbuf | null;
 
     /**
      * Grabs the pointer (usually a mouse) so that all events are passed to this
@@ -7447,7 +7447,7 @@ export namespace Gdk {
      * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab was successful.
      * @deprecated since 3.0: Use `gdk_device_grab()` instead.
      */
-    function pointer_grab(window: Window, owner_events: boolean, event_mask: EventMask, confine_to: (Window | null), cursor: (Cursor | null), time_: number): GrabStatus;
+    function pointer_grab(window: Window, owner_events: boolean, event_mask: EventMask, confine_to: Window | null, cursor: Cursor | null, time_: number): GrabStatus;
 
     /**
      * Returns `true` if the pointer on the default display is currently
@@ -7503,7 +7503,7 @@ export namespace Gdk {
      * @param pdelete if `true`, delete the property after retrieving the   data.
      * @returns `true` if data was successfully received and stored   in `data`, otherwise `false`.
      */
-    function property_get(window: Window, property: Atom, type: Atom, offset: (bigint | number), length: (bigint | number), pdelete: number): [boolean, Atom, number, Uint8Array];
+    function property_get(window: Window, property: Atom, type: Atom, offset: bigint | number, length: bigint | number, pdelete: number): [boolean, Atom, number, Uint8Array];
 
     /**
      * This function returns the available bit depths for the default
@@ -7542,7 +7542,7 @@ export namespace Gdk {
      * @param selection an atom indentifying a selection.
      * @returns if there is a selection owner   for this window, and it is a window known to the current process,   the {@link Gdk.Window} that owns the selection, otherwise `null`. Note   that the return value may be owned by a different process if a   foreign window was previously created for that window, but a new   foreign window will never be created by this call.
      */
-    function selection_owner_get(selection: Atom): (Window | null);
+    function selection_owner_get(selection: Atom): Window | null;
 
     /**
      * Determine the owner of the given selection.
@@ -7555,7 +7555,7 @@ export namespace Gdk {
      * @returns if there is a selection owner    for this window, and it is a window known to the current    process, the {@link Gdk.Window} that owns the selection, otherwise    `null`.
      * @since 2.2
      */
-    function selection_owner_get_for_display(display: Display, selection: Atom): (Window | null);
+    function selection_owner_get_for_display(display: Display, selection: Atom): Window | null;
 
     /**
      * Sets the owner of the given selection.
@@ -7565,7 +7565,7 @@ export namespace Gdk {
      * @param send_event if `true`, and the new owner is different   from the current owner, the current owner   will be sent a SelectionClear event.
      * @returns `true` if the selection owner was successfully   changed to `owner`, otherwise `false`.
      */
-    function selection_owner_set(owner: (Window | null), selection: Atom, time_: number, send_event: boolean): boolean;
+    function selection_owner_set(owner: Window | null, selection: Atom, time_: number, send_event: boolean): boolean;
 
     /**
      * Sets the {@link Gdk.Window} `owner` as the current owner of the selection `selection`.
@@ -7577,7 +7577,7 @@ export namespace Gdk {
      * @returns `true` if the selection owner was successfully changed to owner,    otherwise `false`.
      * @since 2.2
      */
-    function selection_owner_set_for_display(display: Display, owner: (Window | null), selection: Atom, time_: number, send_event: boolean): boolean;
+    function selection_owner_set_for_display(display: Display, owner: Window | null, selection: Atom, time_: number, send_event: boolean): boolean;
 
     /**
      * Sends a response to SelectionRequest event.
@@ -7673,7 +7673,7 @@ export namespace Gdk {
      * @param value location to store the value of the setting.
      * @returns `true` if the setting existed and a value was stored   in `value`, `false` otherwise.
      */
-    function setting_get(name: string, value: (GObject.Value | any)): boolean;
+    function setting_get(name: string, value: GObject.Value | any): boolean;
 
     /**
      * @param window 
@@ -7755,7 +7755,7 @@ export namespace Gdk {
      * @returns the number of strings in the resulting list
      * @since 2.2
      */
-    function text_property_to_utf8_list_for_display(display: Display, encoding: Atom, format: number, text: (Uint8Array | string)): [number, string[]];
+    function text_property_to_utf8_list_for_display(display: Display, encoding: Atom, format: number, text: Uint8Array | string): [number, string[]];
 
     /**
      * Adds a function to be called whenever there are no higher priority
@@ -7914,7 +7914,7 @@ export namespace Gdk {
      * @param str a UTF-8 string
      * @returns the newly-allocated string, or `null` if the          conversion failed. (It should not fail for any properly          formed UTF-8 string unless system limits like memory or          file descriptors are exceeded.)
      */
-    function utf8_to_string_target(str: string): (string | null);
+    function utf8_to_string_target(str: string): string | null;
 
     /**
      * @gir-type Callback
@@ -8908,7 +8908,7 @@ export namespace Gdk {
          * See also `gdk_app_launch_context_set_icon_name()`.
          * @param icon a {@link Gio.Icon}, or `null`
          */
-        set_icon(icon: (Gio.Icon | null)): void;
+        set_icon(icon: Gio.Icon | null): void;
 
         /**
          * Sets the icon for applications that are launched with this context.
@@ -8921,7 +8921,7 @@ export namespace Gdk {
          * for the launched application itself.
          * @param icon_name an icon name, or `null`
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the screen on which applications will be launched when
@@ -9049,7 +9049,7 @@ export namespace Gdk {
          * case, `null` is returned.
          * @returns a {@link GdkPixbuf.Pixbuf} representing   `cursor`, or `null`
          */
-        get_image(): (GdkPixbuf.Pixbuf | null);
+        get_image(): GdkPixbuf.Pixbuf | null;
 
         /**
          * Returns a cairo image surface with the image used to display the cursor.
@@ -9059,7 +9059,7 @@ export namespace Gdk {
          * case, `null` is returned.
          * @returns a {@link cairo.Surface}   representing `cursor`, or `null`
          */
-        get_surface(): [(cairo.Surface | null), number, number];
+        get_surface(): [cairo.Surface | null, number, number];
 
         /**
          * Adds a reference to `cursor`.
@@ -9117,8 +9117,8 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            associated_device: (Device | null);
-            associatedDevice: (Device | null);
+            associated_device: Device | null;
+            associatedDevice: Device | null;
             axes: AxisFlags;
             device_manager: DeviceManager;
             deviceManager: DeviceManager;
@@ -9134,13 +9134,13 @@ export namespace Gdk {
             name: string;
             num_touches: number;
             numTouches: number;
-            product_id: (string | null);
-            productId: (string | null);
+            product_id: string | null;
+            productId: string | null;
             seat: Seat;
             tool: DeviceTool;
             type: DeviceType;
-            vendor_id: (string | null);
-            vendorId: (string | null);
+            vendor_id: string | null;
+            vendorId: string | null;
         }
     }
 
@@ -9163,7 +9163,7 @@ export namespace Gdk {
          * @since 3.0
          * @read-only
          */
-        get associated_device(): (Device | null);
+        get associated_device(): Device | null;
 
         /**
          * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
@@ -9171,7 +9171,7 @@ export namespace Gdk {
          * @since 3.0
          * @read-only
          */
-        get associatedDevice(): (Device | null);
+        get associatedDevice(): Device | null;
 
         /**
          * The axes currently available for this device.
@@ -9298,7 +9298,7 @@ export namespace Gdk {
          * @construct-only
          * @default null
          */
-        get product_id(): (string | null);
+        get product_id(): string | null;
 
         /**
          * Product ID of this device, see `gdk_device_get_product_id()`.
@@ -9306,7 +9306,7 @@ export namespace Gdk {
          * @construct-only
          * @default null
          */
-        get productId(): (string | null);
+        get productId(): string | null;
 
         /**
          * {@link Gdk.Seat} of this device.
@@ -9334,7 +9334,7 @@ export namespace Gdk {
          * @construct-only
          * @default null
          */
-        get vendor_id(): (string | null);
+        get vendor_id(): string | null;
 
         /**
          * Vendor ID of this device, see `gdk_device_get_vendor_id()`.
@@ -9342,7 +9342,7 @@ export namespace Gdk {
          * @construct-only
          * @default null
          */
-        get vendorId(): (string | null);
+        get vendorId(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -9393,7 +9393,7 @@ export namespace Gdk {
          * returned, as there is no associated device.
          * @returns The associated device, or   `null`
          */
-        get_associated_device(): (Device | null);
+        get_associated_device(): Device | null;
 
         /**
          * Returns the axes currently available on the device.
@@ -9442,7 +9442,7 @@ export namespace Gdk {
          * application's windows.
          * @returns the last window the device
          */
-        get_last_event_window(): (Window | null);
+        get_last_event_window(): Window | null;
 
         /**
          * Determines the mode of the device.
@@ -9490,7 +9490,7 @@ export namespace Gdk {
          * it. See `gdk_device_get_vendor_id()` for more information.
          * @returns the product ID, or `null`
          */
-        get_product_id(): (string | null);
+        get_product_id(): string | null;
 
         /**
          * Returns the {@link Gdk.Seat} the device belongs to.
@@ -9535,7 +9535,7 @@ export namespace Gdk {
          * 
          * @returns the vendor ID, or `null`
          */
-        get_vendor_id(): (string | null);
+        get_vendor_id(): string | null;
 
         /**
          * Obtains the window underneath `device`, returning the location of the device in `win_x` and `win_y`. Returns
@@ -9546,7 +9546,7 @@ export namespace Gdk {
          * unless there is an ongoing grab on them, see `gdk_device_grab()`.
          * @returns the {@link Gdk.Window} under the device position, or `null`.
          */
-        get_window_at_position(): [(Window | null), number, number];
+        get_window_at_position(): [Window | null, number, number];
 
         /**
          * Obtains the window underneath `device`, returning the location of the device in `win_x` and `win_y` in
@@ -9558,7 +9558,7 @@ export namespace Gdk {
          * unless there is an ongoing grab on them, see `gdk_device_grab()`.
          * @returns the {@link Gdk.Window} under the   device position, or `null`.
          */
-        get_window_at_position_double(): [(Window | null), number, number];
+        get_window_at_position_double(): [Window | null, number, number];
 
         /**
          * Grabs the device so that all events coming from this device are passed to
@@ -9590,7 +9590,7 @@ export namespace Gdk {
          * @param time_ the timestamp of the event which led to this pointer grab. This         usually comes from the {@link Gdk.Event} struct, though `GDK_CURRENT_TIME`         can be used if the time isn’t known.
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab was successful.
          */
-        grab(window: Window, grab_ownership: GrabOwnership, owner_events: boolean, event_mask: EventMask, cursor: (Cursor | null), time_: number): GrabStatus;
+        grab(window: Window, grab_ownership: GrabOwnership, owner_events: boolean, event_mask: EventMask, cursor: Cursor | null, time_: number): GrabStatus;
 
         /**
          * Returns a {@link GLib.List} of `GdkAtoms`, containing the labels for
@@ -9605,7 +9605,7 @@ export namespace Gdk {
          * `null`
          * @returns the list of slave devices, or `null`. The list must be          freed with `g_list_free()`, the contents of the list are          owned by GTK+ and should not be freed.
          */
-        list_slave_devices(): (Device[] | null);
+        list_slave_devices(): Device[] | null;
 
         /**
          * Specifies how an axis of a device is used.
@@ -9701,7 +9701,7 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            display: (Display | null);
+            display: Display | null;
         }
     }
 
@@ -9831,7 +9831,7 @@ export namespace Gdk {
         /**
          * @construct-only
          */
-        get display(): (Display | null);
+        get display(): Display | null;
 
         /**
          * Compile-time signal type information.
@@ -9876,7 +9876,7 @@ export namespace Gdk {
          * Gets the {@link Gdk.Display} associated to `device_manager`.
          * @returns the {@link Gdk.Display} to which          `device_manager` is associated to, or `null`. This memory is          owned by GDK and must not be freed or unreferenced.
          */
-        get_display(): (Display | null);
+        get_display(): Display | null;
 
         /**
          * Returns the list of devices of type `type` currently attached to
@@ -9900,9 +9900,9 @@ export namespace Gdk {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             axes: AxisFlags;
-            hardware_id: (bigint | number);
-            hardwareId: (bigint | number);
-            serial: (bigint | number);
+            hardware_id: bigint | number;
+            hardwareId: bigint | number;
+            serial: bigint | number;
             tool_type: DeviceToolType;
             toolType: DeviceToolType;
         }
@@ -10061,9 +10061,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -10123,13 +10121,13 @@ export namespace Gdk {
          * function for:
          * `gdk_display_manager_get_default_display (gdk_display_manager_get ())`.
          */
-        static get_default(): (Display | null);
+        static get_default(): Display | null;
 
         /**
          * Opens a display.
          * @param display_name the name of the display to open
          */
-        static open(display_name: string): (Display | null);
+        static open(display_name: string): Display | null;
 
         /**
          * Opens the default display specified by command line arguments or
@@ -10138,7 +10136,7 @@ export namespace Gdk {
          * display has previously been set, simply returns that. An internal
          * function that should not be used by applications.
          */
-        static open_default_libgtk_only(): (Display | null);
+        static open_default_libgtk_only(): Display | null;
 
         // Methods
         /**
@@ -10209,14 +10207,14 @@ export namespace Gdk {
          * Returns the {@link Gdk.DeviceManager} associated to `display`.
          * @returns A {@link Gdk.DeviceManager}, or          `null`. This memory is owned by GDK and must not be freed          or unreferenced.
          */
-        get_device_manager(): (DeviceManager | null);
+        get_device_manager(): DeviceManager | null;
 
         /**
          * Gets the next {@link Gdk.Event} to be processed for `display`, fetching events from the
          * windowing system if necessary.
          * @returns the next {@link Gdk.Event} to be processed, or `null` if no events are pending. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
          */
-        get_event(): (Event | null);
+        get_event(): Event | null;
 
         /**
          * Gets the maximal size to use for cursors on `display`.
@@ -10228,7 +10226,7 @@ export namespace Gdk {
          * @param monitor_num number of the monitor
          * @returns the {@link Gdk.Monitor}, or `null` if    `monitor_num` is not a valid monitor number
          */
-        get_monitor(monitor_num: number): (Monitor | null);
+        get_monitor(monitor_num: number): Monitor | null;
 
         /**
          * Gets the monitor in which the point (`x`, `y`) is located,
@@ -10284,7 +10282,7 @@ export namespace Gdk {
          * such as panels should place themselves on the primary monitor.
          * @returns the primary monitor, or `null` if no primary     monitor is configured by the user
          */
-        get_primary_monitor(): (Monitor | null);
+        get_primary_monitor(): Monitor | null;
 
         /**
          * Returns a screen object for one of the screens of the display.
@@ -10300,7 +10298,7 @@ export namespace Gdk {
          * belongs to another application).
          * @returns the window under the mouse   pointer, or `null`
          */
-        get_window_at_pointer(): [(Window | null), number, number];
+        get_window_at_pointer(): [Window | null, number, number];
 
         /**
          * Returns whether the display has events that are waiting
@@ -10353,7 +10351,7 @@ export namespace Gdk {
          * that have already been moved to the GDK event queue.)
          * @returns a copy of the first {@link Gdk.Event} on the event queue, or `null` if no events are in the queue. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
          */
-        peek_event(): (Event | null);
+        peek_event(): Event | null;
 
         /**
          * Test if the pointer is grabbed.
@@ -10410,7 +10408,7 @@ export namespace Gdk {
          * @param time_ a timestamp
          * @param targets an array of targets                    that should be saved, or `null`                    if all available targets should be saved.
          */
-        store_clipboard(clipboard_window: Window, time_: number, targets: (Atom[] | null)): void;
+        store_clipboard(clipboard_window: Window, time_: number, targets: Atom[] | null): void;
 
         /**
          * Returns whether the speicifed display supports clipboard
@@ -10516,8 +10514,8 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            default_display: (Display | null);
-            defaultDisplay: (Display | null);
+            default_display: Display | null;
+            defaultDisplay: Display | null;
         }
     }
 
@@ -10569,11 +10567,11 @@ export namespace Gdk {
         static $gtype: GObject.GType<DisplayManager>;
 
         // Properties
-        get default_display(): (Display | null);
-        set default_display(val: (Display | null));
+        get default_display(): Display | null;
+        set default_display(val: Display | null);
 
-        get defaultDisplay(): (Display | null);
-        set defaultDisplay(val: (Display | null));
+        get defaultDisplay(): Display | null;
+        set defaultDisplay(val: Display | null);
 
         /**
          * Compile-time signal type information.
@@ -10619,7 +10617,7 @@ export namespace Gdk {
          * Gets the default {@link Gdk.Display}.
          * @returns a {@link Gdk.Display}, or `null` if     there is no default display.
          */
-        get_default_display(): (Display | null);
+        get_default_display(): Display | null;
 
         /**
          * List all currently open displays.
@@ -10632,7 +10630,7 @@ export namespace Gdk {
          * @param name the name of the display to open
          * @returns a {@link Gdk.Display}, or `null` if the     display could not be opened
          */
-        open_display(name: string): (Display | null);
+        open_display(name: string): Display | null;
 
         /**
          * Sets `display` as the default display.
@@ -10694,9 +10692,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -10761,7 +10757,7 @@ export namespace Gdk {
          * the drag operation is over.
          * @returns the drag window, or `null`
          */
-        get_drag_window(): (Window | null);
+        get_drag_window(): Window | null;
 
         /**
          * Returns the drag protocol that is used by this context.
@@ -10843,7 +10839,7 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            clip: (cairo.Region | null);
+            clip: cairo.Region | null;
             window: Window;
         }
     }
@@ -10870,7 +10866,7 @@ export namespace Gdk {
          * @since 3.22
          * @construct-only
          */
-        get clip(): (cairo.Region | null);
+        get clip(): cairo.Region | null;
 
         /**
          * The {@link Gdk.Window} that created the drawing context.
@@ -10922,7 +10918,7 @@ export namespace Gdk {
          * Retrieves a copy of the clip region used when creating the `context`.
          * @returns a Cairo region
          */
-        get_clip(): (cairo.Region | null);
+        get_clip(): cairo.Region | null;
 
         /**
          * Retrieves the window that created the drawing `context`.
@@ -11004,9 +11000,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11096,7 +11090,7 @@ export namespace Gdk {
          * Gets the frame timings for the current frame.
          * @returns the {@link Gdk.FrameTimings} for the  frame currently being processed, or even no frame is being  processed, for the previous frame. Before any frames have been  processed, returns `null`.
          */
-        get_current_timings(): (FrameTimings | null);
+        get_current_timings(): FrameTimings | null;
 
         /**
          * A {@link Gdk.FrameClock} maintains a 64-bit counter that increments for
@@ -11135,7 +11129,7 @@ export namespace Gdk {
          * interval after the last presentation time, and later than `base_time`.
          * @param base_time base time for determining a presentaton time
          */
-        get_refresh_info(base_time: (bigint | number)): [number, number];
+        get_refresh_info(base_time: bigint | number): [number, number];
 
         /**
          * Retrieves a {@link Gdk.FrameTimings} object holding timing information
@@ -11144,7 +11138,7 @@ export namespace Gdk {
          * @param frame_counter the frame counter value identifying the frame to  be received.
          * @returns the {@link Gdk.FrameTimings} object for  the specified frame, or `null` if it is not available. See  `gdk_frame_clock_get_history_start()`.
          */
-        get_timings(frame_counter: (bigint | number)): (FrameTimings | null);
+        get_timings(frame_counter: bigint | number): FrameTimings | null;
 
         /**
          * Asks the frame clock to run a particular phase. The signal
@@ -11173,10 +11167,10 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            display: (Display | null);
-            shared_context: (GLContext | null);
-            sharedContext: (GLContext | null);
-            window: (Window | null);
+            display: Display | null;
+            shared_context: GLContext | null;
+            sharedContext: GLContext | null;
+            window: Window | null;
         }
     }
 
@@ -11245,28 +11239,28 @@ export namespace Gdk {
          * @since 3.16
          * @construct-only
          */
-        get display(): (Display | null);
+        get display(): Display | null;
 
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
          * @construct-only
          */
-        get shared_context(): (GLContext | null);
+        get shared_context(): GLContext | null;
 
         /**
          * The {@link Gdk.GLContext} that this context is sharing data with, or `null`
          * @since 3.16
          * @construct-only
          */
-        get sharedContext(): (GLContext | null);
+        get sharedContext(): GLContext | null;
 
         /**
          * The {@link Gdk.Window} the gl context is bound to.
          * @since 3.16
          * @construct-only
          */
-        get window(): (Window | null);
+        get window(): Window | null;
 
         /**
          * Compile-time signal type information.
@@ -11307,7 +11301,7 @@ export namespace Gdk {
         /**
          * Retrieves the current {@link Gdk.GLContext}.
          */
-        static get_current(): (GLContext | null);
+        static get_current(): GLContext | null;
 
         // Methods
         /**
@@ -11320,7 +11314,7 @@ export namespace Gdk {
          * Retrieves the {@link Gdk.Display} the `context` is created for
          * @returns a {@link Gdk.Display} or `null`
          */
-        get_display(): (Display | null);
+        get_display(): Display | null;
 
         /**
          * Retrieves the value set using `gdk_gl_context_set_forward_compatible()`.
@@ -11338,7 +11332,7 @@ export namespace Gdk {
          * Retrieves the {@link Gdk.GLContext} that this `context` share data with.
          * @returns a {@link Gdk.GLContext} or `null`
          */
-        get_shared_context(): (GLContext | null);
+        get_shared_context(): GLContext | null;
 
         /**
          * Checks whether the `context` is using an OpenGL or OpenGL ES profile.
@@ -11357,7 +11351,7 @@ export namespace Gdk {
          * Retrieves the {@link Gdk.Window} used by the `context`.
          * @returns a {@link Gdk.Window} or `null`
          */
-        get_window(): (Window | null);
+        get_window(): Window | null;
 
         /**
          * Whether the {@link Gdk.GLContext} is in legacy mode or not.
@@ -11480,9 +11474,7 @@ export namespace Gdk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11743,8 +11735,8 @@ export namespace Gdk {
             geometry: Rectangle;
             height_mm: number;
             heightMm: number;
-            manufacturer: (string | null);
-            model: (string | null);
+            manufacturer: string | null;
+            model: string | null;
             refresh_rate: number;
             refreshRate: number;
             scale_factor: number;
@@ -11798,13 +11790,13 @@ export namespace Gdk {
          * @read-only
          * @default null
          */
-        get manufacturer(): (string | null);
+        get manufacturer(): string | null;
 
         /**
          * @read-only
          * @default null
          */
-        get model(): (string | null);
+        get model(): string | null;
 
         /**
          * @read-only
@@ -11915,13 +11907,13 @@ export namespace Gdk {
          * PNP ID registry is located at https://uefi.org/pnp_id_list
          * @returns the name of the manufacturer, or `null`
          */
-        get_manufacturer(): (string | null);
+        get_manufacturer(): string | null;
 
         /**
          * Gets the a string identifying the monitor model, if available.
          * @returns the monitor model, or `null`
          */
-        get_model(): (string | null);
+        get_model(): string | null;
 
         /**
          * Gets the refresh rate of the monitor, if available.
@@ -12086,7 +12078,7 @@ export namespace Gdk {
          * Gets the default screen for the default display. (See
          * gdk_display_get_default ()).
          */
-        static get_default(): (Screen | null);
+        static get_default(): Screen | null;
 
         /**
          * Gets the height of the default screen in pixels. The returned
@@ -12132,7 +12124,7 @@ export namespace Gdk {
          * no longer needed.
          * @returns the currently active window,   or `null`.
          */
-        get_active_window(): (Window | null);
+        get_active_window(): Window | null;
 
         /**
          * Gets the display to which the `screen` belongs.
@@ -12144,7 +12136,7 @@ export namespace Gdk {
          * Gets any options previously set with `gdk_screen_set_font_options()`.
          * @returns the current font options, or `null` if no  default font options have been set.
          */
-        get_font_options(): (cairo.FontOptions | null);
+        get_font_options(): cairo.FontOptions | null;
 
         /**
          * Gets the height of `screen` in pixels. The returned size is in
@@ -12209,7 +12201,7 @@ export namespace Gdk {
          * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
          * @returns a newly-allocated string containing the name   of the monitor, or `null` if the name cannot be determined
          */
-        get_monitor_plug_name(monitor_num: number): (string | null);
+        get_monitor_plug_name(monitor_num: number): string | null;
 
         /**
          * Returns the internal scale factor that maps from monitor coordinates
@@ -12300,7 +12292,7 @@ export namespace Gdk {
          * `gdk_window_set_opacity()`.
          * @returns a visual to use for windows     with an alpha channel or `null` if the capability is not     available.
          */
-        get_rgba_visual(): (Visual | null);
+        get_rgba_visual(): Visual | null;
 
         /**
          * Gets the root window of `screen`.
@@ -12318,7 +12310,7 @@ export namespace Gdk {
          * @param value location to store the value of the setting
          * @returns `true` if the setting existed and a value was stored   in `value`, `false` otherwise.
          */
-        get_setting(name: string, value: (GObject.Value | any)): boolean;
+        get_setting(name: string, value: GObject.Value | any): boolean;
 
         /**
          * Get the system’s default visual for `screen`.
@@ -12375,7 +12367,7 @@ export namespace Gdk {
          * its windows unrefed using `g_object_unref()` when no longer needed.
          * @returns a     list of `GdkWindows` for the current window stack, or `null`.
          */
-        get_window_stack(): (Window[] | null);
+        get_window_stack(): Window[] | null;
 
         /**
          * Returns whether windows with an RGBA visual can reasonably
@@ -12414,7 +12406,7 @@ export namespace Gdk {
          * have already been created.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
          */
-        set_font_options(options: (cairo.FontOptions | null)): void;
+        set_font_options(options: cairo.FontOptions | null): void;
 
         /**
          * Sets the resolution for font handling on the screen. This is a
@@ -12535,13 +12527,13 @@ export namespace Gdk {
          * Returns the master device that routes keyboard events.
          * @returns a master {@link Gdk.Device} with keyboard          capabilities. This object is owned by GTK+ and must not be freed.
          */
-        get_keyboard(): (Device | null);
+        get_keyboard(): Device | null;
 
         /**
          * Returns the master device that routes pointer events.
          * @returns a master {@link Gdk.Device} with pointer          capabilities. This object is owned by GTK+ and must not be freed.
          */
-        get_pointer(): (Device | null);
+        get_pointer(): Device | null;
 
         /**
          * Returns the slave devices that match the given capabilities.
@@ -12583,7 +12575,7 @@ export namespace Gdk {
          * @param prepare_func function to                prepare the window to be grabbed, it can be `null` if `window` is                visible before this call.
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab was successful.
          */
-        grab(window: Window, capabilities: SeatCapabilities, owner_events: boolean, cursor: (Cursor | null), event: (Event | null), prepare_func: (SeatGrabPrepareFunc | null)): GrabStatus;
+        grab(window: Window, capabilities: SeatCapabilities, owner_events: boolean, cursor: Cursor | null, event: Event | null, prepare_func: SeatGrabPrepareFunc | null): GrabStatus;
 
         /**
          * Releases a grab added through `gdk_seat_grab()`.
@@ -12594,13 +12586,10 @@ export namespace Gdk {
 
     namespace Visual {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -12663,7 +12652,7 @@ export namespace Gdk {
          * @param depth a bit depth
          * @param visual_type a visual type
          */
-        static get_best_with_both(depth: number, visual_type: VisualType): (Visual | null);
+        static get_best_with_both(depth: number, visual_type: VisualType): Visual | null;
 
         /**
          * Get the best visual with depth `depth` for the default GDK screen.
@@ -12817,7 +12806,7 @@ export namespace Gdk {
              * @since 2.18
              * @run-last
              */
-            "pick-embedded-child": (arg0: number, arg1: number) => (Window | null);
+            "pick-embedded-child": (arg0: number, arg1: number) => Window | null;
             /**
              * The ::to-embedder signal is emitted to translate coordinates
              * in an offscreen window to its embedder.
@@ -12833,7 +12822,7 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            cursor: (Cursor | null);
+            cursor: Cursor | null;
         }
     }
 
@@ -12849,8 +12838,8 @@ export namespace Gdk {
          * `gdk_window_get_cursor()` for details.
          * @since 2.18
          */
-        get cursor(): (Cursor | null);
-        set cursor(val: (Cursor | null));
+        get cursor(): Cursor | null;
+        set cursor(val: Cursor | null);
 
         /**
          * Compile-time signal type information.
@@ -12866,7 +12855,7 @@ export namespace Gdk {
 
         _init(...args: any[]): void;
 
-        static ["new"](parent: (Window | null), attributes: WindowAttr, attributes_mask: WindowAttributesType): Window;
+        static ["new"](parent: Window | null, attributes: WindowAttr, attributes_mask: WindowAttributesType): Window;
 
         // Signals
         /** @signal */
@@ -13367,7 +13356,7 @@ export namespace Gdk {
          * Gets the pattern used to clear the background on `window`.
          * @returns The pattern to use for the background or `null` if there is no background.
          */
-        get_background_pattern(): (cairo.Pattern | null);
+        get_background_pattern(): cairo.Pattern | null;
 
         /**
          * Gets the list of children of `window` known to GDK.
@@ -13420,7 +13409,7 @@ export namespace Gdk {
          * using the cursor for its parent window.
          * @returns a {@link Gdk.Cursor}, or `null`. The   returned object is owned by the {@link Gdk.Window} and should not be   unreferenced directly. Use `gdk_window_set_cursor()` to unset the   cursor of the window
          */
-        get_cursor(): (Cursor | null);
+        get_cursor(): Cursor | null;
 
         /**
          * Returns the decorations set on the GdkWindow with
@@ -13437,7 +13426,7 @@ export namespace Gdk {
          * @param device a master, pointer {@link Gdk.Device}.
          * @returns a {@link Gdk.Cursor}, or `null`. The   returned object is owned by the {@link Gdk.Window} and should not be   unreferenced directly. Use `gdk_window_set_cursor()` to unset the   cursor of the window
          */
-        get_device_cursor(device: Device): (Cursor | null);
+        get_device_cursor(device: Device): Cursor | null;
 
         /**
          * Returns the event mask for `window` corresponding to an specific device.
@@ -13455,7 +13444,7 @@ export namespace Gdk {
          * @param device pointer {@link Gdk.Device} to query to.
          * @returns The window underneath `device` (as with `gdk_device_get_window_at_position()`), or `null` if the window is not known to GDK.
          */
-        get_device_position(device: Device): [(Window | null), number, number, ModifierType | null];
+        get_device_position(device: Device): [Window | null, number, number, ModifierType | null];
 
         /**
          * Obtains the current device position in doubles and modifier state.
@@ -13464,7 +13453,7 @@ export namespace Gdk {
          * @param device pointer {@link Gdk.Device} to query to.
          * @returns The window underneath `device` (as with `gdk_device_get_window_at_position()`), or `null` if the window is not known to GDK.
          */
-        get_device_position_double(device: Device): [(Window | null), number, number, ModifierType | null];
+        get_device_position_double(device: Device): [Window | null, number, number, ModifierType | null];
 
         /**
          * Gets the {@link Gdk.Display} associated with a {@link Gdk.Window}.
@@ -13627,7 +13616,7 @@ export namespace Gdk {
          * corner of `window`.
          * @returns the window containing the pointer (as with `gdk_window_at_pointer()`), or `null` if the window containing the pointer isn’t known to GDK
          */
-        get_pointer(): [(Window | null), number, number, ModifierType | null];
+        get_pointer(): [Window | null, number, number, ModifierType | null];
 
         /**
          * Obtains the position of the window as reported in the
@@ -13837,7 +13826,7 @@ export namespace Gdk {
          * @param region a {@link cairo.Region}
          * @param child_func function to use to decide if to     recurse to a child, `null` means never recurse.
          */
-        invalidate_maybe_recurse(region: cairo.Region, child_func: (WindowChildFunc | null)): void;
+        invalidate_maybe_recurse(region: cairo.Region, child_func: WindowChildFunc | null): void;
 
         /**
          * A convenience wrapper around `gdk_window_invalidate_region()` which
@@ -13846,7 +13835,7 @@ export namespace Gdk {
          * @param rect rectangle to invalidate or `null` to invalidate the whole      window
          * @param invalidate_children whether to also invalidate child windows
          */
-        invalidate_rect(rect: (Rectangle | null), invalidate_children: boolean): void;
+        invalidate_rect(rect: Rectangle | null, invalidate_children: boolean): void;
 
         /**
          * Adds `region` to the update area for `window`. The update area is the
@@ -14107,7 +14096,7 @@ export namespace Gdk {
          * @param sibling a {@link Gdk.Window} that is a sibling of `window`, or `null`
          * @param above a boolean
          */
-        restack(sibling: (Window | null), above: boolean): void;
+        restack(sibling: Window | null, above: boolean): void;
 
         /**
          * Scroll the contents of `window`, both pixels and children, by the
@@ -14158,7 +14147,7 @@ export namespace Gdk {
          * when the window is obscured then exposed.
          * @param pattern a pattern to use, or `null`
          */
-        set_background_pattern(pattern: (cairo.Pattern | null)): void;
+        set_background_pattern(pattern: cairo.Pattern | null): void;
 
         /**
          * Sets the background color of `window`.
@@ -14223,7 +14212,7 @@ export namespace Gdk {
          * should use this default.
          * @param cursor a cursor
          */
-        set_cursor(cursor: (Cursor | null)): void;
+        set_cursor(cursor: Cursor | null): void;
 
         /**
          * “Decorations” are the features the window manager adds to a toplevel {@link Gdk.Window}.
@@ -14387,7 +14376,7 @@ export namespace Gdk {
          * if your application pretends to be multiple applications.
          * @param leader group leader window, or `null` to restore the default group leader window
          */
-        set_group(leader: (Window | null)): void;
+        set_group(leader: Window | null): void;
 
         /**
          * Sets a list of icons for the window. One of these will be used
@@ -14418,7 +14407,7 @@ export namespace Gdk {
          * Note that some platforms don't support window icons.
          * @param name name of window while iconified (minimized)
          */
-        set_icon_name(name: (string | null)): void;
+        set_icon_name(name: string | null): void;
 
         /**
          * Set if `window` must be kept above other windows. If the
@@ -14500,7 +14489,7 @@ export namespace Gdk {
          * property in your `GtkWidget::style-updated` handler.
          * @param region a region, or `null`
          */
-        set_opaque_region(region: (cairo.Region | null)): void;
+        set_opaque_region(region: cairo.Region | null): void;
 
         /**
          * An override redirect window is not under the control of the window manager.
@@ -14682,7 +14671,7 @@ export namespace Gdk {
          * user data is a `GtkWidget`, and forward the event to that widget.
          * @param user_data user data
          */
-        set_user_data(user_data: (GObject.Object | null)): void;
+        set_user_data(user_data: GObject.Object | null): void;
 
         /**
          * Makes pixels in `window` outside `shape_region` be transparent,
@@ -14703,7 +14692,7 @@ export namespace Gdk {
          * @param offset_x X position of `shape_region` in `window` coordinates
          * @param offset_y Y position of `shape_region` in `window` coordinates
          */
-        shape_combine_region(shape_region: (cairo.Region | null), offset_x: number, offset_y: number): void;
+        shape_combine_region(shape_region: cairo.Region | null, offset_x: number, offset_y: number): void;
 
         /**
          * Like `gdk_window_show_unraised()`, but also raises the window to the
@@ -16167,7 +16156,7 @@ export namespace Gdk {
          * on, fetching events from the windowing system if necessary.
          * See `gdk_display_get_event()`.
          */
-        static get(): (Event | null);
+        static get(): Event | null;
 
         /**
          * Sets the function to call to handle all events from GDK.
@@ -16184,7 +16173,7 @@ export namespace Gdk {
          * If there is an event waiting in the event queue of some open
          * display, returns a copy of it. See `gdk_display_peek_event()`.
          */
-        static peek(): (Event | null);
+        static peek(): Event | null;
 
         /**
          * Request more motion notifies if `event` is a motion notify hint event.
@@ -16283,7 +16272,7 @@ export namespace Gdk {
          * it, else it will return `null`.
          * @returns a {@link Gdk.Device}, or `null`.
          */
-        get_device(): (Device | null);
+        get_device(): Device | null;
 
         /**
          * If the event was generated by a device that supports
@@ -16433,7 +16422,7 @@ export namespace Gdk {
          * return `null`.
          * @returns a {@link Gdk.Device}, or `null`.
          */
-        get_source_device(): (Device | null);
+        get_source_device(): Device | null;
 
         /**
          * If the event contains a “state” field, puts that field in `state`. Otherwise
@@ -16488,7 +16477,7 @@ export namespace Gdk {
          * Sets the device tool for this event, should be rarely used.
          * @param tool tool to set on the event, or `null`
          */
-        set_device_tool(tool: (DeviceTool | null)): void;
+        set_device_tool(tool: DeviceTool | null): void;
 
         /**
          * Sets the screen for `event` to `screen`. The event must
@@ -16526,9 +16515,7 @@ export namespace Gdk {
     namespace DevicePad {
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     export interface DevicePadNamespace {

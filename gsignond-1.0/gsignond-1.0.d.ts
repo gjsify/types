@@ -232,7 +232,7 @@ export namespace GSignond {
         static USER_ERR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -397,7 +397,7 @@ export namespace GSignond {
      * @param _var instance of {@link GLib.Variant}
      * @returns {@link GLib.Error} object if successful, `null` otherwise.
      */
-    function error_new_from_variant(_var: GLib.Variant): (GLib.Error | null);
+    function error_new_from_variant(_var: GLib.Variant): GLib.Error | null;
 
     /**
      * Creates and returns a domain for GSignond errors.
@@ -409,7 +409,7 @@ export namespace GSignond {
      * @param error instance of {@link GLib.Error}
      * @returns {@link GLib.Variant} object if successful, `null` otherwise.
      */
-    function error_to_variant(error: GLib.Error): (GLib.Variant | null);
+    function error_to_variant(error: GLib.Error): GLib.Variant | null;
 
     /**
      * This function generates a random secure nonce using SHA1 HMAC.
@@ -656,13 +656,10 @@ export namespace GSignond {
 
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -714,7 +711,7 @@ export namespace GSignond {
          * @param key the key name
          * @returns the value corresponding to the key as string. If the key does not exist, `null` is returned.
          */
-        get_string(key: string): (string | null);
+        get_string(key: string): string | null;
 
         /**
          * Sets the configuration value to the provided integer.
@@ -734,13 +731,10 @@ export namespace GSignond {
 
     namespace Credentials {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -797,13 +791,13 @@ export namespace GSignond {
          * Gets the password from the {@link GSignond.Credentials} object
          * @returns the password if the object is valid, `null` otherwise.
          */
-        get_password(): (string | null);
+        get_password(): string | null;
 
         /**
          * Gets the username of the {@link GSignond.Credentials} object
          * @returns the username if the object is valid, `null` otherwise.
          */
-        get_username(): (string | null);
+        get_username(): string | null;
 
         /**
          * Sets the data of the {@link GSignond.Credentials}.
@@ -832,26 +826,23 @@ export namespace GSignond {
          * @param password the password.
          * @returns `true` if successful, `false` otherwise.
          */
-        set_password(password: (string | null)): boolean;
+        set_password(password: string | null): boolean;
 
         /**
          * Sets the username of the GSignondCredentials object
          * @param username the username.
          * @returns `true` if successful, `false` otherwise.
          */
-        set_username(username: (string | null)): boolean;
+        set_username(username: string | null): boolean;
     }
 
 
     namespace Dictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -915,7 +906,7 @@ export namespace GSignond {
          * @param key the key to look up in the dictionary
          * @returns the value; `null` is returned in case of failure (for example if the entry corresponding to the supplied key doesn't exist).
          */
-        get(key: string): (GLib.Variant | null);
+        get(key: string): GLib.Variant | null;
 
         /**
          * Retrieves a gboolean value.
@@ -943,7 +934,7 @@ export namespace GSignond {
          * @param key key to look up
          * @returns the value if it was retrieved successfully, `null` otherwise.
          */
-        get_string(key: string): (string | null);
+        get_string(key: string): string | null;
 
         /**
          * Get the {@link GLib.HashTable} associated to the {@link GSignond.Dictionary}.
@@ -1012,7 +1003,7 @@ export namespace GSignond {
          * @param value value to set
          * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
-        set_int64(key: string, value: (bigint | number)): boolean;
+        set_int64(key: string, value: bigint | number): boolean;
 
         /**
          * Sets or replaces a string value in the dictionary.
@@ -1036,14 +1027,14 @@ export namespace GSignond {
          * @param value value to set
          * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
-        set_uint64(key: string, value: (bigint | number)): boolean;
+        set_uint64(key: string, value: bigint | number): boolean;
 
         /**
          * Converts the {@link GSignond.Dictionary} to a {@link GLib.Variant}. The result can be serialized
          * or put into another {@link GSignond.Dictionary} using `gsignond_dictionary_set()`.
          * @returns {@link GLib.Variant} object if successful, `null` otherwise.
          */
-        to_variant(): (GLib.Variant | null);
+        to_variant(): GLib.Variant | null;
 
         /**
          * Converts the {@link GSignond.Dictionary} to a {@link GLib.VariantBuilder} of type
@@ -1053,19 +1044,16 @@ export namespace GSignond {
          * no longer needed.
          * @returns {@link GLib.VariantBuilder} if successful, `null` otherwise.
          */
-        to_variant_builder(): (GLib.VariantBuilder | null);
+        to_variant_builder(): GLib.VariantBuilder | null;
     }
 
 
     namespace Extension {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1266,7 +1254,7 @@ export namespace GSignond {
          * @param id the identity id whose credentials are being loaded.
          * @virtual
          */
-        vfunc_load_credentials(id: number): (Credentials | null);
+        vfunc_load_credentials(id: number): Credentials | null;
 
         /**
          * Loads the secret data associated with a given identity and method.
@@ -1356,7 +1344,7 @@ export namespace GSignond {
          * @param id the identity id whose credentials are being loaded.
          * @returns {@link GSignond.Credentials} if successful, `null` otherwise.
          */
-        load_credentials(id: number): (Credentials | null);
+        load_credentials(id: number): Credentials | null;
 
         /**
          * Loads the secret data associated with a given identity and method.
@@ -1413,13 +1401,10 @@ export namespace GSignond {
 
     namespace SessionData {
         // Signal signatures
-        interface SignalSignatures extends Dictionary.SignalSignatures {
-        }
+        interface SignalSignatures extends Dictionary.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Dictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dictionary.ConstructorProps {}
     }
 
     /**
@@ -1598,13 +1583,10 @@ export namespace GSignond {
 
     namespace SignonuiData {
         // Signal signatures
-        interface SignalSignatures extends Dictionary.SignalSignatures {
-        }
+        interface SignalSignatures extends Dictionary.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Dictionary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dictionary.ConstructorProps {}
     }
 
     /**
@@ -1659,19 +1641,19 @@ export namespace GSignond {
          * A getter for the user's response to a captcha query.
          * @returns the string entered by the user in response to a captcha query.
          */
-        get_captcha_response(): (string | null);
+        get_captcha_response(): string | null;
 
         /**
          * A getter for the captcha URL.
          * @returns the URL to the captcha image to be verified by user.
          */
-        get_captcha_url(): (string | null);
+        get_captcha_url(): string | null;
 
         /**
          * A getter for the caption string. Caption tells the user which
          * application/credentials/provider is requestion authentication.
          */
-        get_caption(): (string | null);
+        get_caption(): string | null;
 
         /**
          * A getter for the confirm mode. In confirm mode the user is asked to enter
@@ -1687,34 +1669,34 @@ export namespace GSignond {
          * will close the window and return the full URL via url response property.
          * This is used by redirection-based authentication, such as OAuth.
          */
-        get_final_url(): (string | null);
+        get_final_url(): string | null;
 
         /**
          * A getter for the forgot password string which is shown to the user as a link to
          * reset the password or remind him of the password.
          */
-        get_forgot_password(): (string | null);
+        get_forgot_password(): string | null;
 
         /**
          * A getter for the forgot password URL, where the user can reset or request a
          * reminder of the password.
          */
-        get_forgot_password_url(): (string | null);
+        get_forgot_password_url(): string | null;
 
         /**
          * A getter for the message which is show to the user in the signon UI dialog.
          */
-        get_message(): (string | null);
+        get_message(): string | null;
 
         /**
          * A getter for the URL that should be opened by signon UI.
          */
-        get_open_url(): (string | null);
+        get_open_url(): string | null;
 
         /**
          * A getter for the password string.
          */
-        get_password(): (string | null);
+        get_password(): string | null;
 
         /**
          * A getter for the UI interaction error. Signon UI sets this to `SIGNONUI_ERROR_NONE` if
@@ -1747,30 +1729,30 @@ export namespace GSignond {
          * A getter for the dialog request id. The id identifies the dialog so that it
          * can be refreshed or updated.
          */
-        get_request_id(): (string | null);
+        get_request_id(): string | null;
 
         /**
          * A getter for the test reply values. It's used only by the signon ui
          * implementations to test themselves.
          */
-        get_test_reply(): (string | null);
+        get_test_reply(): string | null;
 
         /**
          * A getter for the UI dialog title.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * A getter for the response URL. If the final URL was set in the request to the signon UI, and the signon UI
          * detects that it has been reached, then the full final URL is returned using
          * this property. This is used by redirection-based authentication such as OAauth.
          */
-        get_url_response(): (string | null);
+        get_url_response(): string | null;
 
         /**
          * A getter for the username string.
          */
-        get_username(): (string | null);
+        get_username(): string | null;
 
         /**
          * A setter for the user's response to a captcha query.

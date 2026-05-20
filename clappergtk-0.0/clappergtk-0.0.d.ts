@@ -109,7 +109,7 @@ export namespace ClapperGtk {
      * @param widget a {@link Gtk.Widget}
      * @returns a {@link Clapper.Player} from ancestor of a `widget`.
      */
-    function get_player_from_ancestor(widget: Gtk.Widget): (Clapper.Player | null);
+    function get_player_from_ancestor(widget: Gtk.Widget): Clapper.Player | null;
 
     function get_resource(): Gio.Resource;
 
@@ -208,7 +208,7 @@ export namespace ClapperGtk {
 
         // Constructor properties interface
         interface ConstructorProps extends Av.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            child: (Gtk.Widget | null);
+            child: Gtk.Widget | null;
         }
     }
 
@@ -270,8 +270,8 @@ export namespace ClapperGtk {
         /**
          * The child widget of {@link ClapperGtk.Audio}.
          */
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -307,13 +307,13 @@ export namespace ClapperGtk {
          * Get a child {@link Gtk.Widget} of `audio`.
          * @returns {@link Gtk.Widget} set as child.
          */
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         /**
          * Set a child {@link Gtk.Widget} of `audio`.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child: (Gtk.Widget | null)): void;
+        set_child(child: Gtk.Widget | null): void;
     }
 
 
@@ -531,7 +531,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -539,7 +539,7 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -567,13 +567,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -617,7 +617,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -626,7 +626,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -684,7 +684,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -692,13 +692,13 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -714,13 +714,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -740,7 +740,7 @@ export namespace ClapperGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -750,7 +750,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -761,7 +761,7 @@ export namespace ClapperGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -772,7 +772,7 @@ export namespace ClapperGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -781,7 +781,7 @@ export namespace ClapperGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -878,9 +878,7 @@ export namespace ClapperGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Container.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Container.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -1163,7 +1161,7 @@ export namespace ClapperGtk {
          * Get a child {@link Gtk.Widget} of `container`.
          * @returns {@link Gtk.Widget} set as child.
          */
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         /**
          * Get a `container` height target.
@@ -1260,7 +1258,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1268,7 +1266,7 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1296,13 +1294,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1346,7 +1344,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1355,7 +1353,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1413,7 +1411,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1421,13 +1419,13 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1443,13 +1441,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1469,7 +1467,7 @@ export namespace ClapperGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1479,7 +1477,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1490,7 +1488,7 @@ export namespace ClapperGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1501,7 +1499,7 @@ export namespace ClapperGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1510,7 +1508,7 @@ export namespace ClapperGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -1803,7 +1801,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1811,7 +1809,7 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1839,13 +1837,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1889,7 +1887,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1898,7 +1896,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1956,7 +1954,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1964,13 +1962,13 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1986,13 +1984,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2012,7 +2010,7 @@ export namespace ClapperGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2022,7 +2020,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2033,7 +2031,7 @@ export namespace ClapperGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2044,7 +2042,7 @@ export namespace ClapperGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2053,7 +2051,7 @@ export namespace ClapperGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2308,9 +2306,7 @@ export namespace ClapperGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -2354,16 +2350,16 @@ export namespace ClapperGtk {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -2383,13 +2379,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -2407,7 +2403,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2430,7 +2426,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -2446,13 +2442,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -2471,7 +2467,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2495,7 +2491,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -2548,9 +2544,7 @@ export namespace ClapperGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -2594,16 +2588,16 @@ export namespace ClapperGtk {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -2623,13 +2617,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -2647,7 +2641,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2670,7 +2664,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -2686,13 +2680,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -2711,7 +2705,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2735,7 +2729,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -2926,7 +2920,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2934,7 +2928,7 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2962,13 +2956,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3012,7 +3006,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3021,7 +3015,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3079,7 +3073,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3087,13 +3081,13 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3109,13 +3103,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3135,7 +3129,7 @@ export namespace ClapperGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -3145,7 +3139,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -3156,7 +3150,7 @@ export namespace ClapperGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -3167,7 +3161,7 @@ export namespace ClapperGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -3176,7 +3170,7 @@ export namespace ClapperGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3602,8 +3596,8 @@ export namespace ClapperGtk {
             currentTitle: string;
             fallback_to_uri: boolean;
             fallbackToUri: boolean;
-            media_item: (Clapper.MediaItem | null);
-            mediaItem: (Clapper.MediaItem | null);
+            media_item: Clapper.MediaItem | null;
+            mediaItem: Clapper.MediaItem | null;
         }
     }
 
@@ -3655,14 +3649,14 @@ export namespace ClapperGtk {
         /**
          * Currently set media item to display title of.
          */
-        get media_item(): (Clapper.MediaItem | null);
-        set media_item(val: (Clapper.MediaItem | null));
+        get media_item(): Clapper.MediaItem | null;
+        set media_item(val: Clapper.MediaItem | null);
 
         /**
          * Currently set media item to display title of.
          */
-        get mediaItem(): (Clapper.MediaItem | null);
-        set mediaItem(val: (Clapper.MediaItem | null));
+        get mediaItem(): Clapper.MediaItem | null;
+        set mediaItem(val: Clapper.MediaItem | null);
 
         /**
          * Compile-time signal type information.
@@ -3711,7 +3705,7 @@ export namespace ClapperGtk {
          * Get currently set media item to display title of.
          * @returns currently set media item.
          */
-        get_media_item(): (Clapper.MediaItem | null);
+        get_media_item(): Clapper.MediaItem | null;
 
         /**
          * Set whether a {@link Clapper.MediaItem.uri} property should
@@ -3725,7 +3719,7 @@ export namespace ClapperGtk {
          * `label` will use default behavior (showing title of current queue item).
          * @param item a {@link Clapper.MediaItem}
          */
-        set_media_item(item: (Clapper.MediaItem | null)): void;
+        set_media_item(item: Clapper.MediaItem | null): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -3772,7 +3766,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3780,7 +3774,7 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3808,13 +3802,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3858,7 +3852,7 @@ export namespace ClapperGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3867,7 +3861,7 @@ export namespace ClapperGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3925,7 +3919,7 @@ export namespace ClapperGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3933,13 +3927,13 @@ export namespace ClapperGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3955,13 +3949,13 @@ export namespace ClapperGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3981,7 +3975,7 @@ export namespace ClapperGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -3991,7 +3985,7 @@ export namespace ClapperGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -4002,7 +3996,7 @@ export namespace ClapperGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -4013,7 +4007,7 @@ export namespace ClapperGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -4022,7 +4016,7 @@ export namespace ClapperGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4123,9 +4117,7 @@ export namespace ClapperGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -4169,16 +4161,16 @@ export namespace ClapperGtk {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -4198,13 +4190,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -4222,7 +4214,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -4245,7 +4237,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -4261,13 +4253,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -4286,7 +4278,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -4310,7 +4302,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -4363,9 +4355,7 @@ export namespace ClapperGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -4409,16 +4399,16 @@ export namespace ClapperGtk {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -4438,13 +4428,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -4462,7 +4452,7 @@ export namespace ClapperGtk {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -4485,7 +4475,7 @@ export namespace ClapperGtk {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -4501,13 +4491,13 @@ export namespace ClapperGtk {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -4526,7 +4516,7 @@ export namespace ClapperGtk {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -4550,7 +4540,7 @@ export namespace ClapperGtk {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 

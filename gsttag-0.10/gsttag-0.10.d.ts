@@ -238,9 +238,7 @@ export namespace GstTag {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     /**

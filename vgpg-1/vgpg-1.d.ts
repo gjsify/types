@@ -32,13 +32,10 @@ export namespace Vgpg {
 
     namespace Connection {
         // Signal signatures
-        interface SignalSignatures extends Vgda.GProvider.SignalSignatures {
-        }
+        interface SignalSignatures extends Vgda.GProvider.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}
     }
 
     /**

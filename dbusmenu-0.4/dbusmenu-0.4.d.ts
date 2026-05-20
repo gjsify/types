@@ -437,7 +437,7 @@ export namespace Dbusmenu {
      * @gir-type Callback
      */
     interface menuitem_buildvariant_slot_t {
-        (mi: Menuitem, properties: (string | null)): GLib.Variant;
+        (mi: Menuitem, properties: string | null): GLib.Variant;
     }
 
     namespace Client {
@@ -647,7 +647,7 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "about-to-show": () => (boolean | void);
+            "about-to-show": () => boolean | void;
             /**
              * Signaled when the child menuitem has been added to
              * 		the parent.
@@ -678,7 +678,7 @@ export namespace Dbusmenu {
              * @detailed
              * @run-last
              */
-            event: (arg0: string, arg1: GLib.Variant, arg2: number) => (boolean | void);
+            event: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
             /**
              * Emitted on the objects on the server side when
              * 		they are signaled on the client side.
@@ -718,8 +718,8 @@ export namespace Dbusmenu {
              * @detailed
              * @run-last
              */
-            "event::id": (arg0: string, arg1: GLib.Variant, arg2: number) => (boolean | void);
-            [key: `event::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: number) => (boolean | void);
+            "event::id": (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
+            [key: `event::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
         }
 
         // Constructor properties interface
@@ -1071,7 +1071,7 @@ export namespace Dbusmenu {
          * @param nelements The number of elements in the byte array.
          * @returns A boolean representing if the property value was set.
          */
-        property_set_byte_array(property: string, value: number, nelements: (bigint | number)): boolean;
+        property_set_byte_array(property: string, value: number, nelements: bigint | number): boolean;
 
         /**
          * Takes a boolean `value` and sets it on `property` as a

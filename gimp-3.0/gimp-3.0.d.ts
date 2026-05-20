@@ -563,7 +563,7 @@ export namespace ParamArray {
         static VERSION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -3035,7 +3035,7 @@ export namespace ParamArray {
      * @param y 
      * @param values 
      */
-    function bilinear_8(x: number, y: number, values: (Uint8Array | string)): number;
+    function bilinear_8(x: number, y: number, values: Uint8Array | string): number;
 
     /**
      * @param x 
@@ -3086,7 +3086,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function brushes_popup(brush_callback: string, popup_title: string, initial_brush: (Brush | null), parent_window: (GLib.Bytes | null)): boolean;
+    function brushes_popup(brush_callback: string, popup_title: string, initial_brush: Brush | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Refresh current brushes. This function always succeeds.
@@ -3177,7 +3177,7 @@ export namespace ParamArray {
      * @returns The list of buffer names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.4
      */
-    function buffers_get_name_list(filter: (string | null)): string[];
+    function buffers_get_name_list(filter: string | null): string[];
 
     /**
      * Returns the default top directory for GIMP cached files. If the
@@ -3632,7 +3632,7 @@ export namespace ParamArray {
      * @returns `true` if serialization succeeded, `false` otherwise.
      * @since 2.4
      */
-    function config_serialize_value(value: (GObject.Value | any), str: GLib.String, escaped: boolean): boolean;
+    function config_serialize_value(value: GObject.Value | any, str: GLib.String, escaped: boolean): boolean;
 
     /**
      * Escapes and quotes `val` and appends it to `string`. The escape
@@ -5269,7 +5269,7 @@ export namespace ParamArray {
      * @returns TRUE on success.
      * @deprecated since 3.2: Use `gimp_items_popup()` instead.
      */
-    function drawables_popup(callback: string, popup_title: string, drawable_type: string, initial_drawable: (Drawable | null), parent_window: (GLib.Bytes | null)): boolean;
+    function drawables_popup(callback: string, popup_title: string, drawable_type: string, initial_drawable: Drawable | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Sets the selected drawable in a drawable selection dialog.
@@ -5291,7 +5291,7 @@ export namespace ParamArray {
      * @returns The list of paint dynamics names.          The returned value must be freed with `g_strfreev()`.
      * @since 2.8
      */
-    function dynamics_get_name_list(filter: (string | null)): string[];
+    function dynamics_get_name_list(filter: string | null): string[];
 
     /**
      * Refresh current paint dynamics. This function always succeeds.
@@ -5464,7 +5464,7 @@ export namespace ParamArray {
      * @returns the value's {@link Gimp.EnumDesc}.
      * @since 2.2
      */
-    function enum_get_desc(enum_class: GObject.EnumClass, value: number): (EnumDesc | null);
+    function enum_get_desc(enum_class: GObject.EnumClass, value: number): EnumDesc | null;
 
     /**
      * Checks if `value` is valid for the enum registered as `enum_type`.
@@ -5580,7 +5580,7 @@ export namespace ParamArray {
      * @returns A (possibly escaped) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
      * @since 2.2
      */
-    function escape_uline(str: (string | null)): string;
+    function escape_uline(str: string | null): string;
 
     /**
      * Returns whether file plug-ins should default to exporting the
@@ -5744,7 +5744,7 @@ export namespace ParamArray {
      * @returns a newly allocated {@link Gio.File},          or `null` if the expansion failed.
      * @since 2.10
      */
-    function file_new_for_config_path(path: string): (Gio.File | null);
+    function file_new_for_config_path(path: string): Gio.File | null;
 
     /**
      * Saves to XCF or export `image` to any supported format by extension.
@@ -5760,7 +5760,7 @@ export namespace ParamArray {
      * @param options Export option settings.
      * @returns TRUE on success.
      */
-    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options: (ExportOptions | null)): boolean;
+    function file_save(run_mode: RunMode, image: Image, file: Gio.File, options: ExportOptions | null): boolean;
 
     /**
      * Shows `file` in the system file manager.
@@ -5791,7 +5791,7 @@ export namespace ParamArray {
      * @returns the value's {@link Gimp.FlagsDesc}.
      * @since 2.2
      */
-    function flags_get_first_desc(flags_class: GObject.FlagsClass, value: number): (FlagsDesc | null);
+    function flags_get_first_desc(flags_class: GObject.FlagsClass, value: number): FlagsDesc | null;
 
     /**
      * Checks if `value` is valid for the flags registered as `flags_type`.
@@ -5919,7 +5919,7 @@ export namespace ParamArray {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of fonts.          The returned value must be freed with `g_free()`.
      */
-    function fonts_get_list(filter: (string | null)): Font[];
+    function fonts_get_list(filter: string | null): Font[];
 
     /**
      * Invokes the Gimp font selection dialog.
@@ -5931,7 +5931,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function fonts_popup(font_callback: string, popup_title: string, initial_font: (Font | null), parent_window: (GLib.Bytes | null)): boolean;
+    function fonts_popup(font_callback: string, popup_title: string, initial_font: Font | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Refresh current fonts. This function always succeeds.
@@ -6038,7 +6038,7 @@ export namespace ParamArray {
      * @returns The plug-in's {@link Gimp.PDB} singleton.
      * @since 3.0
      */
-    function get_pdb(): (PDB | null);
+    function get_pdb(): PDB | null;
 
     /**
      * This function returns the plug-in's {@link Gimp.PlugIn} instance, which is
@@ -6046,7 +6046,7 @@ export namespace ParamArray {
      * @returns The plug-in's {@link Gimp.PlugIn} singleton.
      * @since 3.0
      */
-    function get_plug_in(): (PlugIn | null);
+    function get_plug_in(): PlugIn | null;
 
     /**
      * Returns the plug-in's executable name.
@@ -6113,7 +6113,7 @@ export namespace ParamArray {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of gradients.          The returned value must be freed with `g_free()`.
      */
-    function gradients_get_list(filter: (string | null)): Gradient[];
+    function gradients_get_list(filter: string | null): Gradient[];
 
     /**
      * Invokes the Gimp gradients selection dialog.
@@ -6125,7 +6125,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function gradients_popup(gradient_callback: string, popup_title: string, initial_gradient: (Gradient | null), parent_window: (GLib.Bytes | null)): boolean;
+    function gradients_popup(gradient_callback: string, popup_title: string, initial_gradient: Gradient | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Refresh current gradients. This function always succeeds.
@@ -6194,7 +6194,7 @@ export namespace ParamArray {
      * @param help_id The help page's ID.
      * @returns TRUE on success.
      */
-    function help(help_domain: (string | null), help_id: string): boolean;
+    function help(help_domain: string | null, help_id: string): boolean;
 
     /**
      * Returns the directory of the current icon theme.
@@ -6224,7 +6224,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function images_popup(callback: string, popup_title: string, initial_image: (Image | null), parent_window: (GLib.Bytes | null)): boolean;
+    function images_popup(callback: string, popup_title: string, initial_image: Image | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Sets the selected image in a image selection dialog.
@@ -6300,7 +6300,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function items_popup(callback: string, popup_title: string, item_type: string, initial_item: (Item | null), parent_window: (GLib.Bytes | null)): boolean;
+    function items_popup(callback: string, popup_title: string, item_type: string, initial_item: Item | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Sets the selected item in a item selection dialog.
@@ -6453,7 +6453,7 @@ export namespace ParamArray {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of palettes.          The returned value must be freed with `g_free()`.
      */
-    function palettes_get_list(filter: (string | null)): Palette[];
+    function palettes_get_list(filter: string | null): Palette[];
 
     /**
      * Invokes the Gimp palette selection dialog.
@@ -6465,7 +6465,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function palettes_popup(palette_callback: string, popup_title: string, initial_palette: (Palette | null), parent_window: (GLib.Bytes | null)): boolean;
+    function palettes_popup(palette_callback: string, popup_title: string, initial_palette: Palette | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Refreshes current palettes. This function always succeeds.
@@ -6513,7 +6513,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecBrush`.
      * @since 3.0
      */
-    function param_spec_brush(name: string, nick: string, blurb: string, none_ok: boolean, default_value: (Brush | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_brush(name: string, nick: string, blurb: string, none_ok: boolean, default_value: Brush | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * Creates a new `GimpParamSpecChannel` specifying a
@@ -6755,7 +6755,7 @@ export namespace ParamArray {
      * @returns a newly allocated {@link GObject.ParamSpec} instance
      * @since 3.0
      */
-    function param_spec_file(name: string, nick: string, blurb: string, action: FileChooserAction, none_ok: boolean, default_value: (Gio.File | null), flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_file(name: string, nick: string, blurb: string, action: FileChooserAction, none_ok: boolean, default_value: Gio.File | null, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a {@link Gio.File} value.
@@ -6792,7 +6792,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecFont`.
      * @since 3.0
      */
-    function param_spec_font(name: string, nick: string, blurb: string, none_ok: boolean, default_value: (Font | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_font(name: string, nick: string, blurb: string, none_ok: boolean, default_value: Font | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * Creates a new `GimpParamSpecGradient` specifying a
@@ -6807,7 +6807,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecGradient`.
      * @since 3.0
      */
-    function param_spec_gradient(name: string, nick: string, blurb: string, none_ok: boolean, default_value: (Gradient | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_gradient(name: string, nick: string, blurb: string, none_ok: boolean, default_value: Gradient | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * Creates a new `GimpParamSpecGroupLayer` specifying a
@@ -6966,7 +6966,7 @@ export namespace ParamArray {
      * @returns a newly allocated {@link GObject.ParamSpec} instance
      * @since 2.4
      */
-    function param_spec_memsize(name: string, nick: string, blurb: string, minimum: (bigint | number), maximum: (bigint | number), default_value: (bigint | number), flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_memsize(name: string, nick: string, blurb: string, minimum: bigint | number, maximum: bigint | number, default_value: bigint | number, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * This function duplicates `pspec` appropriately, depending on the
@@ -7008,7 +7008,7 @@ export namespace ParamArray {
      * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
      * @param default_value a default value.
      */
-    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value: (GObject.Object | null)): void;
+    function param_spec_object_set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
 
     /**
      * Creates a new `GimpParamSpecPalette` specifying a
@@ -7023,7 +7023,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecPalette`.
      * @since 3.0
      */
-    function param_spec_palette(name: string, nick: string, blurb: string, none_ok: boolean, default_value: (Palette | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_palette(name: string, nick: string, blurb: string, none_ok: boolean, default_value: Palette | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * Creates a new `GimpParamSpecParasite` specifying a
@@ -7067,7 +7067,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecPattern`.
      * @since 3.0
      */
-    function param_spec_pattern(name: string, nick: string, blurb: string, none_ok: boolean, default_value: (Pattern | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_pattern(name: string, nick: string, blurb: string, none_ok: boolean, default_value: Pattern | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * Creates a new `GimpParamSpecRasterizable` specifying a
@@ -7104,7 +7104,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecResource`.
      * @since 3.0
      */
-    function param_spec_resource(name: string, nick: string, blurb: string, resource_type: GObject.GType, none_ok: boolean, default_value: (Resource | null), default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_resource(name: string, nick: string, blurb: string, resource_type: GObject.GType, none_ok: boolean, default_value: Resource | null, default_to_context: boolean, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * @param pspec 
@@ -7188,7 +7188,7 @@ export namespace ParamArray {
      * @returns The newly created `GimpParamSpecValueArray`.
      * @since 3.0
      */
-    function param_spec_value_array(name: string, nick: string, blurb: string, element_spec: (GObject.ParamSpec | null), flags: GObject.ParamFlags): GObject.ParamSpec;
+    function param_spec_value_array(name: string, nick: string, blurb: string, element_spec: GObject.ParamSpec | null, flags: GObject.ParamFlags): GObject.ParamSpec;
 
     /**
      * @param pspec a {@link GObject.ParamSpec} to hold a `GimpParamSpecValueArray` value.
@@ -7231,7 +7231,7 @@ export namespace ParamArray {
      * @param filter An optional regular expression used to filter the list.
      * @returns The list of patterns.          The returned value must be freed with `g_free()`.
      */
-    function patterns_get_list(filter: (string | null)): Pattern[];
+    function patterns_get_list(filter: string | null): Pattern[];
 
     /**
      * Invokes the Gimp pattern selection.
@@ -7243,7 +7243,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function patterns_popup(pattern_callback: string, popup_title: string, initial_pattern: (Pattern | null), parent_window: (GLib.Bytes | null)): boolean;
+    function patterns_popup(pattern_callback: string, popup_title: string, initial_pattern: Pattern | null, parent_window: GLib.Bytes | null): boolean;
 
     /**
      * Refresh current patterns. This function always succeeds.
@@ -7307,7 +7307,7 @@ export namespace ParamArray {
      * @returns The ICC profile data, or `null`.          The value should be freed with `g_free()`.
      * @since 2.10
      */
-    function pixbuf_get_icc_profile(pixbuf: GdkPixbuf.Pixbuf): (Uint8Array | null);
+    function pixbuf_get_icc_profile(pixbuf: GdkPixbuf.Pixbuf): Uint8Array | null;
 
     /**
      * Converts a `value` specified in pixels to `unit`.
@@ -7430,7 +7430,7 @@ export namespace ParamArray {
      * @returns TRUE on success.
      * @since 2.4
      */
-    function progress_set_text(message: (string | null)): boolean;
+    function progress_set_text(message: string | null): boolean;
 
     /**
      * Uninstalls a temporary progress procedure that was installed using
@@ -7607,7 +7607,7 @@ export namespace ParamArray {
      * @param str underline infested string (or `null`)
      * @returns A (possibly stripped) copy of `str` which should be               freed using `g_free()` when it is not needed any longer.
      */
-    function strip_uline(str: (string | null)): string;
+    function strip_uline(str: string | null): string;
 
     /**
      * Returns the top directory for GIMP config files. If the environment
@@ -7656,7 +7656,7 @@ export namespace ParamArray {
      * @param extension The extension the file will have.
      * @returns The new temp file.
      */
-    function temp_file(extension: (string | null)): Gio.File;
+    function temp_file(extension: string | null): Gio.File;
 
     /**
      * Add text at the specified location as a floating selection or a new
@@ -7683,7 +7683,7 @@ export namespace ParamArray {
      * @param font The font.
      * @returns The new text layer or `null` if no layer was created.
      */
-    function text_font(image: Image, drawable: (Drawable | null), x: number, y: number, text: string, border: number, antialias: boolean, size: number, font: Font): (Layer | null);
+    function text_font(image: Image, drawable: Drawable | null, x: number, y: number, text: string, border: number, antialias: boolean, size: number, font: Font): Layer | null;
 
     /**
      * Get extents of the bounding box for the specified text.
@@ -7818,77 +7818,77 @@ export namespace ParamArray {
      * @param max_chars the maximum number of characters before the string get trimmed
      * @returns A (possibly trimmed) copy of `str` which should be freed using `g_free()` when it is not needed any longer.
      */
-    function utf8_strtrim(str: (string | null), max_chars: number): string;
+    function utf8_strtrim(str: string | null, max_chars: number): string;
 
     /**
      * Gets the contents of a `GIMP_TYPE_DOUBLE_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @returns The contents of `value`
      */
-    function value_dup_double_array(value: (GObject.Value | any)): number[];
+    function value_dup_double_array(value: GObject.Value | any): number[];
 
     /**
      * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
      * @returns The contents of `value`
      */
-    function value_dup_int32_array(value: (GObject.Value | any)): number[];
+    function value_dup_int32_array(value: GObject.Value | any): number[];
 
     /**
      * Gets the contents of a `GIMP_TYPE_DOUBLE_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @returns The contents of `value`
      */
-    function value_get_double_array(value: (GObject.Value | any)): number[];
+    function value_get_double_array(value: GObject.Value | any): number[];
 
     /**
      * Gets the contents of a `GIMP_TYPE_INT32_ARRAY` {@link GObject.Value}
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
      * @returns The contents of `value`
      */
-    function value_get_int32_array(value: (GObject.Value | any)): number[];
+    function value_get_int32_array(value: GObject.Value | any): number[];
 
     /**
      * Sets the contents of `value` to `data`.
      * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @param data A `gdouble` array
      */
-    function value_set_double_array(value: (GObject.Value | any), data: number[]): void;
+    function value_set_double_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Sets the contents of `value` to `data`.
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
      * @param data A `gint32` array
      */
-    function value_set_int32_array(value: (GObject.Value | any), data: number[]): void;
+    function value_set_int32_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Sets the contents of `value` to `data`, without copying the data.
      * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @param data A `gdouble` array
      */
-    function value_set_static_double_array(value: (GObject.Value | any), data: number[]): void;
+    function value_set_static_double_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Sets the contents of `value` to `data`, without copying the data.
      * @param value A valid value of type `GIMP_TYPE_INT32_ARRAY`
      * @param data A `gint32` array
      */
-    function value_set_static_int32_array(value: (GObject.Value | any), data: number[]): void;
+    function value_set_static_int32_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Sets the contents of `value` to `data`, and takes ownership of `data`.
      * @param value A valid value of type `GIMP_TYPE_DOUBLE_ARRAY`
      * @param data A `gdouble` array
      */
-    function value_take_double_array(value: (GObject.Value | any), data: number[]): void;
+    function value_take_double_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Sets the contents of `value` to `data`, and takes ownership of `data`.
      * @param value A valid value of type %GIMP_TYPE_int32_ARRAY
      * @param data A `gint32` array
      */
-    function value_take_int32_array(value: (GObject.Value | any), data: number[]): void;
+    function value_take_int32_array(value: GObject.Value | any, data: number[]): void;
 
     /**
      * Computes the sum of two 2D vectors. The resulting {@link Gimp.Vector2} is
@@ -8008,7 +8008,7 @@ export namespace ParamArray {
      * @gir-type Callback
      */
     interface ExtractVectorFunc {
-        (procedure: Procedure, run_mode: RunMode, file: Gio.File, metadata: Metadata, config: (ProcedureConfig | null)): boolean;
+        (procedure: Procedure, run_mode: RunMode, file: Gio.File, metadata: Metadata, config: ProcedureConfig | null): boolean;
     }
 
     /**
@@ -8133,12 +8133,12 @@ export namespace ParamArray {
     /**
      * @gir-type Alias
      */
-    type DoubleArray = (object | null);
+    type DoubleArray = object | null;
 
     /**
      * @gir-type Alias
      */
-    type Int32Array = (object | null);
+    type Int32Array = object | null;
 
     /**
      * @gir-type Flags
@@ -8315,9 +8315,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Procedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Procedure.ConstructorProps {}
     }
 
     /**
@@ -8407,9 +8405,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
     }
 
     /**
@@ -8456,7 +8452,7 @@ export namespace ParamArray {
          * no brush exists of that name.
          * @param name The name of the brush.
          */
-        static get_by_name(name: string): (Brush | null);
+        static get_by_name(name: string): Brush | null;
 
         /**
          * @param args 
@@ -8681,9 +8677,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Drawable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Drawable.ConstructorProps {}
     }
 
     /**
@@ -8731,7 +8725,7 @@ export namespace ParamArray {
          * or `null` otherwise.
          * @param channel_id The channel id.
          */
-        static get_by_id(channel_id: number): (Channel | null);
+        static get_by_id(channel_id: number): Channel | null;
 
         // Methods
         /**
@@ -8827,9 +8821,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9273,13 +9265,10 @@ export namespace ParamArray {
 
     namespace ColorProfile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9311,7 +9300,7 @@ export namespace ParamArray {
 
         static new_from_file(file: Gio.File): ColorProfile;
 
-        static new_from_icc_profile(data: (Uint8Array | string)): ColorProfile;
+        static new_from_icc_profile(data: Uint8Array | string): ColorProfile;
 
         static new_from_lcms_profile(lcms_profile: null): ColorProfile;
 
@@ -9345,7 +9334,7 @@ export namespace ParamArray {
          * R'G'B'A, Y, YA, Y', Y'A and the cairo-RGB24 and cairo-ARGB32 formats.
          * @param format a {@link Babl.Object} format
          */
-        static get_lcms_format(format: Babl.Object): [(Babl.Object | null), number];
+        static get_lcms_format(format: Babl.Object): [Babl.Object | null, number];
 
         // Methods
         /**
@@ -9454,14 +9443,14 @@ export namespace ParamArray {
          * and `profile`'s RGB chromacities and whitepoint.
          * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
          */
-        new_linear_from_color_profile(): (ColorProfile | null);
+        new_linear_from_color_profile(): ColorProfile | null;
 
         /**
          * This function creates a new RGB {@link Gimp.ColorProfile} with a sRGB gamma
          * TRC and `profile`'s RGB chromacities and whitepoint.
          * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
          */
-        new_srgb_trc_from_color_profile(): (ColorProfile | null);
+        new_srgb_trc_from_color_profile(): ColorProfile | null;
 
         /**
          * This function saves `profile` to `file` as ICC profile.
@@ -9483,9 +9472,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9562,14 +9549,13 @@ export namespace ParamArray {
          * @param dest_pixels pointer to the destination pixels
          * @param length number of pixels to process
          */
-        process_pixels(src_format: Babl.Object, src_pixels: null, dest_format: Babl.Object, dest_pixels: null, length: (bigint | number)): void;
+        process_pixels(src_format: Babl.Object, src_pixels: null, dest_format: Babl.Object, dest_pixels: null, length: bigint | number): void;
     }
 
 
     namespace ConfigPath {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -9971,7 +9957,7 @@ export namespace ParamArray {
          * case instead.
          * @param display_id The display id.
          */
-        static get_by_id(display_id: number): (Display | null);
+        static get_by_id(display_id: number): Display | null;
 
         /**
          * Returns TRUE if the display ID is valid.
@@ -10056,9 +10042,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Item.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Item.ConstructorProps {}
     }
 
     /**
@@ -10102,7 +10086,7 @@ export namespace ParamArray {
          * or `null` otherwise.
          * @param drawable_id The drawable id.
          */
-        static get_by_id(drawable_id: number): (Drawable | null);
+        static get_by_id(drawable_id: number): Drawable | null;
 
         // Methods
         /**
@@ -10520,7 +10504,7 @@ export namespace ParamArray {
          * @param height the requested thumbnail height (<= 1024 pixels)
          * @returns thumbnail data or `null` if          `drawable` is invalid.
          */
-        get_thumbnail_data(width: number, height: number): [(GLib.Bytes | null), number, number, number];
+        get_thumbnail_data(width: number, height: number): [GLib.Bytes | null, number, number, number];
 
         /**
          * Returns the {@link Babl.Object} thumbnail format of the drawable.
@@ -10884,7 +10868,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](drawable: Drawable, operation_name: string, name: (string | null)): DrawableFilter;
+        static ["new"](drawable: Drawable, operation_name: string, name: string | null): DrawableFilter;
 
         // Signals
         /** @signal */
@@ -10903,7 +10887,7 @@ export namespace ParamArray {
         /**
          * @param filter_id The %GimpDrawableFilter id.
          */
-        static get_by_id(filter_id: number): (DrawableFilter | null);
+        static get_by_id(filter_id: number): DrawableFilter | null;
 
         /**
          * Returns `true` if the drawable filter ID is valid.
@@ -11091,13 +11075,10 @@ export namespace ParamArray {
 
     namespace DrawableFilterConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11457,7 +11438,7 @@ export namespace ParamArray {
          * @param capabilities a {@link Gimp.ExportCapabilities} bitfield.
          * @param get_capabilities_func callback function to update export options
          */
-        set_capabilities(capabilities: ExportCapabilities, get_capabilities_func: (ExportGetCapabilitiesFunc | null)): void;
+        set_capabilities(capabilities: ExportCapabilities, get_capabilities_func: ExportGetCapabilitiesFunc | null): void;
 
         /**
          * Determine whether `procedure` supports exporting a comment. By default,
@@ -11614,9 +11595,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Procedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Procedure.ConstructorProps {}
     }
 
     /**
@@ -11819,9 +11798,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
     }
 
     /**
@@ -11871,7 +11848,7 @@ export namespace ParamArray {
          * Returns `null` when no font exists of that name.
          * @param name The name of the font.
          */
-        static get_by_name(name: string): (Font | null);
+        static get_by_name(name: string): Font | null;
 
         /**
          * @param args 
@@ -11895,9 +11872,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
     }
 
     /**
@@ -11944,7 +11919,7 @@ export namespace ParamArray {
          * when no gradient exists of that name.
          * @param name The name of the gradient.
          */
-        static get_by_name(name: string): (Gradient | null);
+        static get_by_name(name: string): Gradient | null;
 
         /**
          * @param args 
@@ -12289,9 +12264,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Layer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Layer.ConstructorProps {}
     }
 
     /**
@@ -12315,7 +12288,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](image: Image, name: (string | null)): GroupLayer;
+        static ["new"](image: Image, name: string | null): GroupLayer;
 
         // Signals
         /** @signal */
@@ -12337,7 +12310,7 @@ export namespace ParamArray {
          * `null` otherwise.
          * @param layer_id The layer id.
          */
-        static get_by_id(layer_id: number): (GroupLayer | null);
+        static get_by_id(layer_id: number): GroupLayer | null;
 
         // Methods
         /**
@@ -12420,12 +12393,12 @@ export namespace ParamArray {
          * @param height Height of the matrix (0 to reset to default matrix).
          * @param matrix The matrix -- all values must be >= 1.
          */
-        static convert_set_dither_matrix(width: number, height: number, matrix: (GLib.Bytes | Uint8Array)): boolean;
+        static convert_set_dither_matrix(width: number, height: number, matrix: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * @param image_id The image id.
          */
-        static get_by_id(image_id: number): (Image | null);
+        static get_by_id(image_id: number): Image | null;
 
         /**
          * Returns TRUE if the image ID is valid.
@@ -12440,7 +12413,7 @@ export namespace ParamArray {
          * Retrieves a thumbnail from metadata if present.
          * @param file A {@link Gio.File} image
          */
-        static metadata_load_thumbnail(file: Gio.File): (Image | null);
+        static metadata_load_thumbnail(file: Gio.File): Image | null;
 
         // Methods
         /**
@@ -12500,7 +12473,7 @@ export namespace ParamArray {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop(drawable: (Drawable | null)): boolean;
+        autocrop(drawable: Drawable | null): boolean;
 
         /**
          * Crop the selected layers based on empty borders of the input
@@ -12516,7 +12489,7 @@ export namespace ParamArray {
          * @param drawable Input drawable.
          * @returns TRUE on success.
          */
-        autocrop_selected_layers(drawable: (Drawable | null)): boolean;
+        autocrop_selected_layers(drawable: Drawable | null): boolean;
 
         /**
          * Set the image dirty count to 0.
@@ -12543,7 +12516,7 @@ export namespace ParamArray {
          * @param bpc Black point compensation.
          * @returns `true` on success.
          */
-        convert_color_profile(profile: (ColorProfile | null), intent: ColorRenderingIntent, bpc: boolean): boolean;
+        convert_color_profile(profile: ColorProfile | null, intent: ColorRenderingIntent, bpc: boolean): boolean;
 
         /**
          * Convert the image's layers to a color profile
@@ -12699,7 +12672,7 @@ export namespace ParamArray {
          * @param path The path object to export, or `null` for all in the image.
          * @returns TRUE on success.
          */
-        export_path_to_file(file: Gio.File, path: (Path | null)): boolean;
+        export_path_to_file(file: Gio.File, path: Path | null): boolean;
 
         /**
          * Save a path as an SVG string.
@@ -12711,7 +12684,7 @@ export namespace ParamArray {
          * @param path The path object to export, or `null` for all in the image.
          * @returns A string whose contents are a complete SVG document.          The returned value must be freed with `g_free()`.
          */
-        export_path_to_string(path: (Path | null)): string;
+        export_path_to_string(path: Path | null): string;
 
         /**
          * Find next guide on an image.
@@ -12866,7 +12839,7 @@ export namespace ParamArray {
          * return values.
          * @returns The image's color profile. The          returned value must be freed with {@link GObject.Object.unref}.
          */
-        get_color_profile(): (ColorProfile | null);
+        get_color_profile(): ColorProfile | null;
 
         /**
          * Returns if the specified image's image component is active.
@@ -13041,7 +13014,7 @@ export namespace ParamArray {
          * Returns exif/iptc/xmp metadata from the image.
          * @returns The exif/ptc/xmp metadata,          or `null` if there is none.
          */
-        get_metadata(): (Metadata | null);
+        get_metadata(): Metadata | null;
 
         /**
          * Returns the specified image's name.
@@ -13217,7 +13190,7 @@ export namespace ParamArray {
          * the image has no simulation color profile assigned.
          * @returns The image's simulation color profile. The          returned value must be freed with {@link GObject.Object.unref}.
          */
-        get_simulation_profile(): (ColorProfile | null);
+        get_simulation_profile(): ColorProfile | null;
 
         /**
          * Returns the tattoo state associated with the image.
@@ -13413,7 +13386,7 @@ export namespace ParamArray {
          * @param position The channel position.
          * @returns TRUE on success.
          */
-        insert_channel(channel: Channel, parent: (Channel | null), position: number): boolean;
+        insert_channel(channel: Channel, parent: Channel | null, position: number): boolean;
 
         /**
          * Add the specified layer to the image.
@@ -13434,7 +13407,7 @@ export namespace ParamArray {
          * @param position The layer position.
          * @returns TRUE on success.
          */
-        insert_layer(layer: Layer, parent: (Layer | null), position: number): boolean;
+        insert_layer(layer: Layer, parent: Layer | null, position: number): boolean;
 
         /**
          * Add the specified path to the image.
@@ -13450,7 +13423,7 @@ export namespace ParamArray {
          * @param position The path position.
          * @returns TRUE on success.
          */
-        insert_path(path: Path, parent: (Path | null), position: number): boolean;
+        insert_path(path: Path, parent: Path | null, position: number): boolean;
 
         /**
          * Checks if the image has unsaved changes.
@@ -13746,7 +13719,7 @@ export namespace ParamArray {
          * @param position The new position of the item.
          * @returns TRUE on success.
          */
-        reorder_item(item: Item, parent: (Item | null), position: number): boolean;
+        reorder_item(item: Item, parent: Item | null, position: number): boolean;
 
         /**
          * Resize the image to the specified extents.
@@ -13970,7 +13943,7 @@ export namespace ParamArray {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_color_profile(profile: (ColorProfile | null)): boolean;
+        set_color_profile(profile: ColorProfile | null): boolean;
 
         /**
          * Sets the image's color profile from an ICC file
@@ -14118,7 +14091,7 @@ export namespace ParamArray {
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
          */
-        set_simulation_profile(profile: (ColorProfile | null)): boolean;
+        set_simulation_profile(profile: ColorProfile | null): boolean;
 
         /**
          * Sets the image's simulation color profile from an ICC file
@@ -14339,9 +14312,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Procedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Procedure.ConstructorProps {}
     }
 
     /**
@@ -14462,7 +14433,7 @@ export namespace ParamArray {
          * sessions. Use the appropriate functions for your use case instead.
          * @param item_id The item id.
          */
-        static get_by_id(item_id: number): (Item | null);
+        static get_by_id(item_id: number): Item | null;
 
         /**
          * Returns whether the item ID is a channel.
@@ -15239,9 +15210,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Drawable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Drawable.ConstructorProps {}
     }
 
     /**
@@ -15265,7 +15234,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](image: Image, name: (string | null), width: number, height: number, type: ImageType, opacity: number, mode: LayerMode): Layer;
+        static ["new"](image: Image, name: string | null, width: number, height: number, type: ImageType, opacity: number, mode: LayerMode): Layer;
 
         static new_from_drawable(drawable: Drawable, dest_image: Image): Layer;
 
@@ -15273,7 +15242,7 @@ export namespace ParamArray {
 
         static new_from_surface(image: Image, name: string, surface: cairo.Surface, progress_start: number, progress_end: number): Layer;
 
-        static new_from_visible(image: Image, dest_image: Image, name: (string | null)): Layer;
+        static new_from_visible(image: Image, dest_image: Image, name: string | null): Layer;
 
         // Signals
         /** @signal */
@@ -15304,7 +15273,7 @@ export namespace ParamArray {
          * otherwise.
          * @param layer_id The layer id.
          */
-        static get_by_id(layer_id: number): (Layer | null);
+        static get_by_id(layer_id: number): Layer | null;
 
         // Methods
         /**
@@ -15652,9 +15621,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Channel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Channel.ConstructorProps {}
     }
 
     /**
@@ -15697,7 +15664,7 @@ export namespace ParamArray {
          * layer_mask or `null` otherwise.
          * @param layer_mask_id The layer_mask id.
          */
-        static get_by_id(layer_mask_id: number): (LayerMask | null);
+        static get_by_id(layer_mask_id: number): LayerMask | null;
     }
 
 
@@ -15708,9 +15675,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
     }
 
     /**
@@ -15759,7 +15724,7 @@ export namespace ParamArray {
          * layer or `null` otherwise.
          * @param layer_id The layer id.
          */
-        static get_by_id(layer_id: number): (LinkLayer | null);
+        static get_by_id(layer_id: number): LinkLayer | null;
 
         // Methods
         /**
@@ -15854,9 +15819,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileProcedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileProcedure.ConstructorProps {}
     }
 
     /**
@@ -15956,8 +15919,7 @@ export namespace ParamArray {
 
     namespace Memsize {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -15998,19 +15960,16 @@ export namespace ParamArray {
          * nice human-readable string please use `g_format_size()`.
          * @param memsize memory size in bytes
          */
-        static serialize(memsize: (bigint | number)): string;
+        static serialize(memsize: bigint | number): string;
     }
 
 
     namespace Metadata {
         // Signal signatures
-        interface SignalSignatures extends GExiv2.Metadata.SignalSignatures {
-        }
+        interface SignalSignatures extends GExiv2.Metadata.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExiv2.Metadata.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExiv2.Metadata.ConstructorProps {}
     }
 
     /**
@@ -16146,21 +16105,21 @@ export namespace ParamArray {
          * @param exif_data The blob of Exif data to set
          * @returns `true` on success, `false` otherwise.
          */
-        set_from_exif(exif_data: (Uint8Array | string)): boolean;
+        set_from_exif(exif_data: Uint8Array | string): boolean;
 
         /**
          * Sets the tags from a piece of IPTC data on `metadata`.
          * @param iptc_data The blob of Iptc data to set
          * @returns `true` on success, `false` otherwise.
          */
-        set_from_iptc(iptc_data: (Uint8Array | string)): boolean;
+        set_from_iptc(iptc_data: Uint8Array | string): boolean;
 
         /**
          * Sets the tags from a piece of XMP data on `metadata`.
          * @param xmp_data The blob of XMP data to set
          * @returns `true` on success, `false` otherwise.
          */
-        set_from_xmp(xmp_data: (Uint8Array | string)): boolean;
+        set_from_xmp(xmp_data: Uint8Array | string): boolean;
 
         /**
          * Sets Exif.Image.ImageWidth and Exif.Image.ImageLength on `metadata`.
@@ -16381,13 +16340,10 @@ export namespace ParamArray {
 
     namespace ModuleDB {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -16511,7 +16467,7 @@ export namespace ParamArray {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -16551,7 +16507,7 @@ export namespace ParamArray {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -16580,13 +16536,10 @@ export namespace ParamArray {
 
     namespace PDB {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -16664,7 +16617,7 @@ export namespace ParamArray {
          * @param procedure_name A procedure name
          * @returns A {@link Procedure}, or `null`.
          */
-        lookup_procedure(procedure_name: string): (Procedure | null);
+        lookup_procedure(procedure_name: string): Procedure | null;
 
         /**
          * This function checks if a procedure exists in the procedural
@@ -16722,9 +16675,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
     }
 
     /**
@@ -16771,7 +16722,7 @@ export namespace ParamArray {
          * when no palette exists of that name.
          * @param name The name of the palette.
          */
-        static get_by_name(name: string): (Palette | null);
+        static get_by_name(name: string): Palette | null;
 
         /**
          * @param args 
@@ -16791,7 +16742,7 @@ export namespace ParamArray {
          * @param color The color for the added entry.
          * @returns TRUE on success.
          */
-        add_entry(entry_name: (string | null), color: Gegl.Color): [boolean, number];
+        add_entry(entry_name: string | null, color: Gegl.Color): [boolean, number];
 
         /**
          * Deletes an entry from the palette.
@@ -16883,7 +16834,7 @@ export namespace ParamArray {
          * @param num_bytes The byte-size of `colormap`.
          * @returns `true` on success.
          */
-        set_colormap(format: Babl.Object, colormap: number, num_bytes: (bigint | number)): boolean;
+        set_colormap(format: Babl.Object, colormap: number, num_bytes: bigint | number): boolean;
 
         /**
          * Sets the number of columns used to display the palette
@@ -16918,14 +16869,13 @@ export namespace ParamArray {
          * @param entry_name The new name.
          * @returns TRUE on success.
          */
-        set_entry_name(entry_num: number, entry_name: (string | null)): boolean;
+        set_entry_name(entry_num: number, entry_name: string | null): boolean;
     }
 
 
     namespace ParamBrush {
         // Signal signatures
-        interface SignalSignatures extends ParamResource.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     /**
@@ -16954,8 +16904,7 @@ export namespace ParamArray {
 
     namespace ParamChannel {
         // Signal signatures
-        interface SignalSignatures extends ParamDrawable.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
     /**
@@ -16984,8 +16933,7 @@ export namespace ParamArray {
 
     namespace ParamColor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17014,8 +16962,7 @@ export namespace ParamArray {
 
     namespace ParamDoubleArray {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17044,8 +16991,7 @@ export namespace ParamArray {
 
     namespace ParamDrawable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17074,8 +17020,7 @@ export namespace ParamArray {
 
     namespace ParamFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17104,8 +17049,7 @@ export namespace ParamArray {
 
     namespace ParamFont {
         // Signal signatures
-        interface SignalSignatures extends ParamResource.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     /**
@@ -17134,8 +17078,7 @@ export namespace ParamArray {
 
     namespace ParamGradient {
         // Signal signatures
-        interface SignalSignatures extends ParamResource.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     /**
@@ -17164,8 +17107,7 @@ export namespace ParamArray {
 
     namespace ParamGroupLayer {
         // Signal signatures
-        interface SignalSignatures extends ParamLayer.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     /**
@@ -17194,8 +17136,7 @@ export namespace ParamArray {
 
     namespace ParamInt32Array {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17224,8 +17165,7 @@ export namespace ParamArray {
 
     namespace ParamLayer {
         // Signal signatures
-        interface SignalSignatures extends ParamDrawable.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
     /**
@@ -17254,8 +17194,7 @@ export namespace ParamArray {
 
     namespace ParamLayerMask {
         // Signal signatures
-        interface SignalSignatures extends ParamChannel.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
     /**
@@ -17284,8 +17223,7 @@ export namespace ParamArray {
 
     namespace ParamLinkLayer {
         // Signal signatures
-        interface SignalSignatures extends ParamLayer.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     /**
@@ -17314,8 +17252,7 @@ export namespace ParamArray {
 
     namespace ParamPalette {
         // Signal signatures
-        interface SignalSignatures extends ParamResource.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     /**
@@ -17344,8 +17281,7 @@ export namespace ParamArray {
 
     namespace ParamPath {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17374,8 +17310,7 @@ export namespace ParamArray {
 
     namespace ParamPattern {
         // Signal signatures
-        interface SignalSignatures extends ParamResource.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     /**
@@ -17404,8 +17339,7 @@ export namespace ParamArray {
 
     namespace ParamRasterizable {
         // Signal signatures
-        interface SignalSignatures extends ParamDrawable.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
     /**
@@ -17434,8 +17368,7 @@ export namespace ParamArray {
 
     namespace ParamResource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17464,8 +17397,7 @@ export namespace ParamArray {
 
     namespace ParamSelection {
         // Signal signatures
-        interface SignalSignatures extends ParamChannel.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
     /**
@@ -17494,8 +17426,7 @@ export namespace ParamArray {
 
     namespace ParamTextLayer {
         // Signal signatures
-        interface SignalSignatures extends ParamLayer.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     /**
@@ -17524,8 +17455,7 @@ export namespace ParamArray {
 
     namespace ParamUnit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -17554,8 +17484,7 @@ export namespace ParamArray {
 
     namespace ParamVectorLayer {
         // Signal signatures
-        interface SignalSignatures extends ParamLayer.SignalSignatures {
-        }
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     /**
@@ -17589,9 +17518,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Item.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Item.ConstructorProps {}
     }
 
     /**
@@ -17615,7 +17542,7 @@ export namespace ParamArray {
 
         _init(...args: any[]): void;
 
-        static ["new"](image: Image, name: (string | null)): Path;
+        static ["new"](image: Image, name: string | null): Path;
 
         static new_from_text_layer(image: Image, layer: Layer): Path;
 
@@ -17646,7 +17573,7 @@ export namespace ParamArray {
          * or `null` otherwise.
          * @param path_id The path id.
          */
-        static get_by_id(path_id: number): (Path | null);
+        static get_by_id(path_id: number): Path | null;
 
         /**
          * Note that you have to `g_free()` the returned string.
@@ -17915,9 +17842,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
     }
 
     /**
@@ -17962,7 +17887,7 @@ export namespace ParamArray {
          * when no pattern exists of that name.
          * @param name The name of the pattern.
          */
-        static get_by_name(name: string): (Pattern | null);
+        static get_by_name(name: string): Pattern | null;
 
         /**
          * @param args 
@@ -18318,7 +18243,7 @@ export namespace ParamArray {
          * @param procedure_name The name of a {@link Procedure} added to `plug_in`.
          * @returns The procedure if registered, or `null`.
          */
-        get_temp_procedure(procedure_name: string): (Procedure | null);
+        get_temp_procedure(procedure_name: string): Procedure | null;
 
         /**
          * This function retrieves the list of temporary procedure of `plug_in` as
@@ -18538,7 +18463,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_boolean_argument(name: string, nick: string, blurb: (string | null), value: boolean, flags: GObject.ParamFlags): void;
+        add_boolean_argument(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new boolean auxiliary argument to `procedure`.
@@ -18548,7 +18473,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_boolean_aux_argument(name: string, nick: string, blurb: (string | null), value: boolean, flags: GObject.ParamFlags): void;
+        add_boolean_aux_argument(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new boolean return value to `procedure`.
@@ -18558,7 +18483,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_boolean_return_value(name: string, nick: string, blurb: (string | null), value: boolean, flags: GObject.ParamFlags): void;
+        add_boolean_return_value(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Brush} argument to `procedure`.
@@ -18570,7 +18495,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's brush as default value.
          * @param flags argument flags.
          */
-        add_brush_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Brush | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_brush_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Brush | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Brush} auxiliary argument to `procedure`.
@@ -18581,7 +18506,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's brush as default value.
          * @param flags argument flags.
          */
-        add_brush_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Brush | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_brush_aux_argument(name: string, nick: string, blurb: string | null, default_value: Brush | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Brush} return value to `procedure`.
@@ -18590,7 +18515,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_brush_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_brush_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GLib.Bytes} argument to `procedure`.
@@ -18599,7 +18524,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_bytes_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GLib.Bytes} auxiliary argument to `procedure`.
@@ -18608,7 +18533,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_aux_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_bytes_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GLib.Bytes} return value to `procedure`.
@@ -18617,7 +18542,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_bytes_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_bytes_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Channel} argument to `procedure`.
@@ -18627,7 +18552,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_channel_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_channel_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Channel} auxiliary argument to `procedure`.
@@ -18637,7 +18562,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_channel_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_channel_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Channel} return value to `procedure`.
@@ -18647,7 +18572,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_channel_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_channel_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Choice} argument to `procedure`.
@@ -18658,7 +18583,7 @@ export namespace ParamArray {
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
-        add_choice_argument(name: string, nick: string, blurb: (string | null), choice: Choice, value: string, flags: GObject.ParamFlags): void;
+        add_choice_argument(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Choice} auxiliary argument to `procedure`.
@@ -18669,7 +18594,7 @@ export namespace ParamArray {
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
-        add_choice_aux_argument(name: string, nick: string, blurb: (string | null), choice: Choice, value: string, flags: GObject.ParamFlags): void;
+        add_choice_aux_argument(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Choice} return value to `procedure`.
@@ -18680,7 +18605,7 @@ export namespace ParamArray {
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
          */
-        add_choice_return_value(name: string, nick: string, blurb: (string | null), choice: Choice, value: string, flags: GObject.ParamFlags): void;
+        add_choice_return_value(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} argument to `procedure`.
@@ -18691,7 +18616,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_argument(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
+        add_color_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} auxiliary argument to `procedure`.
@@ -18702,7 +18627,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_aux_argument(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
+        add_color_aux_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} argument to `procedure` from a string representation.
@@ -18713,7 +18638,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_from_string_argument(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
+        add_color_from_string_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} auxiliary argument to `procedure` from a string representation.
@@ -18724,7 +18649,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_from_string_aux_argument(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
+        add_color_from_string_aux_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} return value to `procedure` from a string representation.
@@ -18735,7 +18660,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_from_string_return_value(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
+        add_color_from_string_return_value(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gegl.Color} return value to `procedure`.
@@ -18746,7 +18671,7 @@ export namespace ParamArray {
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
          */
-        add_color_return_value(name: string, nick: string, blurb: (string | null), has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
+        add_color_return_value(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new object array argument to `procedure`.
@@ -18756,7 +18681,7 @@ export namespace ParamArray {
          * @param object_type 
          * @param flags argument flags.
          */
-        add_core_object_array_argument(name: string, nick: string, blurb: (string | null), object_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_core_object_array_argument(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new object array auxiliary argument to `procedure`.
@@ -18766,7 +18691,7 @@ export namespace ParamArray {
          * @param object_type 
          * @param flags argument flags.
          */
-        add_core_object_array_aux_argument(name: string, nick: string, blurb: (string | null), object_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_core_object_array_aux_argument(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new object array return value to `procedure`.
@@ -18776,7 +18701,7 @@ export namespace ParamArray {
          * @param object_type 
          * @param flags argument flags.
          */
-        add_core_object_array_return_value(name: string, nick: string, blurb: (string | null), object_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_core_object_array_return_value(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Display} argument to `procedure`.
@@ -18786,7 +18711,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_display_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_display_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Display} auxiliary argument to `procedure`.
@@ -18796,7 +18721,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_display_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_display_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Display} return value to `procedure`.
@@ -18806,7 +18731,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_display_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_display_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new floating-point in double precision argument to `procedure`.
@@ -18818,7 +18743,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_double_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_double_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new double array argument to `procedure`.
@@ -18827,7 +18752,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_double_array_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_double_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new double array auxiliary argument to `procedure`.
@@ -18836,7 +18761,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_double_array_aux_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_double_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new double array return value to `procedure`.
@@ -18845,7 +18770,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_double_array_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_double_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new floating-point in double precision auxiliary argument to `procedure`.
@@ -18857,7 +18782,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_double_aux_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_double_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new floating-point in double precision return value to `procedure`.
@@ -18869,7 +18794,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_double_return_value(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_double_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Drawable} argument to `procedure`.
@@ -18879,7 +18804,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_drawable_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_drawable_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Drawable} auxiliary argument to `procedure`.
@@ -18889,7 +18814,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_drawable_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_drawable_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Drawable} return value to `procedure`.
@@ -18899,7 +18824,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_drawable_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_drawable_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new enum argument to `procedure`.
@@ -18910,7 +18835,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_enum_argument(name: string, nick: string, blurb: (string | null), enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
+        add_enum_argument(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new enum auxiliary argument to `procedure`.
@@ -18921,7 +18846,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_enum_aux_argument(name: string, nick: string, blurb: (string | null), enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
+        add_enum_aux_argument(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new enum return value to `procedure`.
@@ -18932,7 +18857,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_enum_return_value(name: string, nick: string, blurb: (string | null), enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
+        add_enum_return_value(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gio.File} argument to `procedure`.
@@ -18944,7 +18869,7 @@ export namespace ParamArray {
          * @param default_file File to use if none is assigned.
          * @param flags Argument flags.
          */
-        add_file_argument(name: string, nick: string, blurb: (string | null), action: FileChooserAction, none_ok: boolean, default_file: (Gio.File | null), flags: GObject.ParamFlags): void;
+        add_file_argument(name: string, nick: string, blurb: string | null, action: FileChooserAction, none_ok: boolean, default_file: Gio.File | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gio.File} auxiliary argument to `procedure`.
@@ -18956,7 +18881,7 @@ export namespace ParamArray {
          * @param default_file File to use if none is assigned.
          * @param flags Argument flags.
          */
-        add_file_aux_argument(name: string, nick: string, blurb: (string | null), action: FileChooserAction, none_ok: boolean, default_file: (Gio.File | null), flags: GObject.ParamFlags): void;
+        add_file_aux_argument(name: string, nick: string, blurb: string | null, action: FileChooserAction, none_ok: boolean, default_file: Gio.File | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gio.File} return value to `procedure`.
@@ -18965,7 +18890,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_file_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_file_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Font} argument to `procedure`.
@@ -18977,7 +18902,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's font as default value.
          * @param flags argument flags.
          */
-        add_font_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Font | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_font_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Font | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Font} auxiliary argument to `procedure`.
@@ -18988,7 +18913,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's font as default value.
          * @param flags argument flags.
          */
-        add_font_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Font | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_font_aux_argument(name: string, nick: string, blurb: string | null, default_value: Font | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Font} return value to `procedure`.
@@ -18997,7 +18922,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_font_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_font_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Gradient} argument to `procedure`.
@@ -19009,7 +18934,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's gradient as default value.
          * @param flags argument flags.
          */
-        add_gradient_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Gradient | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_gradient_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Gradient | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Gradient} auxiliary argument to `procedure`.
@@ -19020,7 +18945,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's gradient as default value.
          * @param flags argument flags.
          */
-        add_gradient_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Gradient | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_gradient_aux_argument(name: string, nick: string, blurb: string | null, default_value: Gradient | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Gradient} return value to `procedure`.
@@ -19029,7 +18954,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_gradient_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_gradient_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GroupLayer} argument to `procedure`.
@@ -19039,7 +18964,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_group_layer_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_group_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GroupLayer} auxiliary argument to `procedure`.
@@ -19049,7 +18974,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_group_layer_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_group_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link GroupLayer} return value to `procedure`.
@@ -19059,7 +18984,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_group_layer_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_group_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Image} argument to `procedure`.
@@ -19069,7 +18994,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_image_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_image_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Image} auxiliary argument to `procedure`.
@@ -19079,7 +19004,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_image_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_image_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Image} return value to `procedure`.
@@ -19089,7 +19014,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_image_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_image_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer array argument to `procedure`.
@@ -19098,7 +19023,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_int32_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer array auxiliary argument to `procedure`.
@@ -19107,7 +19032,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_aux_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_int32_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer array return value to `procedure`.
@@ -19116,7 +19041,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_int32_array_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_int32_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer argument to `procedure`.
@@ -19128,7 +19053,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_int_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_int_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer auxiliary argument to `procedure`.
@@ -19140,7 +19065,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_int_aux_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_int_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new integer return value to `procedure`.
@@ -19152,7 +19077,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_int_return_value(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_int_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Item} argument to `procedure`.
@@ -19162,7 +19087,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_item_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_item_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Item} auxiliary argument to `procedure`.
@@ -19172,7 +19097,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_item_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_item_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Item} return value to `procedure`.
@@ -19182,7 +19107,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_item_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_item_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Layer} argument to `procedure`.
@@ -19192,7 +19117,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Layer} auxiliary argument to `procedure`.
@@ -19202,7 +19127,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LayerMask} argument to `procedure`.
@@ -19212,7 +19137,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_mask_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_mask_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LayerMask} auxiliary argument to `procedure`.
@@ -19222,7 +19147,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_mask_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_mask_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LayerMask} return value to `procedure`.
@@ -19232,7 +19157,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_mask_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_mask_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Layer} return value to `procedure`.
@@ -19242,7 +19167,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_layer_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LinkLayer} argument to `procedure`.
@@ -19252,7 +19177,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_link_layer_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_link_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LinkLayer} auxiliary argument to `procedure`.
@@ -19262,7 +19187,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_link_layer_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_link_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.LinkLayer} return value to `procedure`.
@@ -19272,7 +19197,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_link_layer_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_link_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Adds a menu path to the procedure. Only procedures which have a menu
@@ -19318,7 +19243,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's palette as default value.
          * @param flags argument flags.
          */
-        add_palette_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Palette | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_palette_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Palette | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Palette} auxiliary argument to `procedure`.
@@ -19329,7 +19254,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's palette as default value.
          * @param flags argument flags.
          */
-        add_palette_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Palette | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_palette_aux_argument(name: string, nick: string, blurb: string | null, default_value: Palette | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Palette} return value to `procedure`.
@@ -19338,7 +19263,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_palette_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_palette_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new param argument to `procedure`.
@@ -19348,7 +19273,7 @@ export namespace ParamArray {
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
-        add_param_argument(name: string, nick: string, blurb: (string | null), param_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_param_argument(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new param auxiliary argument to `procedure`.
@@ -19358,7 +19283,7 @@ export namespace ParamArray {
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
-        add_param_aux_argument(name: string, nick: string, blurb: (string | null), param_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_param_aux_argument(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new param return value to `procedure`.
@@ -19368,7 +19293,7 @@ export namespace ParamArray {
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
          */
-        add_param_return_value(name: string, nick: string, blurb: (string | null), param_type: GObject.GType, flags: GObject.ParamFlags): void;
+        add_param_return_value(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Parasite} argument to `procedure`.
@@ -19377,7 +19302,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_parasite_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Parasite} auxiliary argument to `procedure`.
@@ -19386,7 +19311,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_aux_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_parasite_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Parasite} return value to `procedure`.
@@ -19395,7 +19320,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_parasite_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_parasite_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Path} argument to `procedure`.
@@ -19405,7 +19330,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_path_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_path_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Path} auxiliary argument to `procedure`.
@@ -19415,7 +19340,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_path_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_path_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Path} return value to `procedure`.
@@ -19425,7 +19350,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_path_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_path_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Pattern} argument to `procedure`.
@@ -19437,7 +19362,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's pattern as default value.
          * @param flags argument flags.
          */
-        add_pattern_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Pattern | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_pattern_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Pattern | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Pattern} auxiliary argument to `procedure`.
@@ -19448,7 +19373,7 @@ export namespace ParamArray {
          * @param default_to_context Use the context's pattern as default value.
          * @param flags argument flags.
          */
-        add_pattern_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Pattern | null), default_to_context: boolean, flags: GObject.ParamFlags): void;
+        add_pattern_aux_argument(name: string, nick: string, blurb: string | null, default_value: Pattern | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Pattern} return value to `procedure`.
@@ -19457,7 +19382,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_pattern_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_pattern_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Resource} argument to `procedure`.
@@ -19468,7 +19393,7 @@ export namespace ParamArray {
          * @param default_value default value.
          * @param flags argument flags.
          */
-        add_resource_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, default_value: (Resource | null), flags: GObject.ParamFlags): void;
+        add_resource_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Resource | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Resource} auxiliary argument to `procedure`.
@@ -19478,7 +19403,7 @@ export namespace ParamArray {
          * @param default_value default value.
          * @param flags argument flags.
          */
-        add_resource_aux_argument(name: string, nick: string, blurb: (string | null), default_value: (Resource | null), flags: GObject.ParamFlags): void;
+        add_resource_aux_argument(name: string, nick: string, blurb: string | null, default_value: Resource | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Resource} return value to `procedure`.
@@ -19487,7 +19412,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_resource_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_resource_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Selection} argument to `procedure`.
@@ -19497,7 +19422,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_selection_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_selection_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Selection} auxiliary argument to `procedure`.
@@ -19507,7 +19432,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_selection_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_selection_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Selection} return value to `procedure`.
@@ -19517,7 +19442,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_selection_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_selection_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string argument to `procedure`.
@@ -19527,7 +19452,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_string_argument(name: string, nick: string, blurb: (string | null), value: string, flags: GObject.ParamFlags): void;
+        add_string_argument(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string array argument to `procedure`.
@@ -19536,7 +19461,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_string_array_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_string_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string array auxiliary argument to `procedure`.
@@ -19545,7 +19470,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_string_array_aux_argument(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_string_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string array return value to `procedure`.
@@ -19554,7 +19479,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param flags argument flags.
          */
-        add_string_array_return_value(name: string, nick: string, blurb: (string | null), flags: GObject.ParamFlags): void;
+        add_string_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string auxiliary argument to `procedure`.
@@ -19564,7 +19489,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_string_aux_argument(name: string, nick: string, blurb: (string | null), value: string, flags: GObject.ParamFlags): void;
+        add_string_aux_argument(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new string return value to `procedure`.
@@ -19574,7 +19499,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_string_return_value(name: string, nick: string, blurb: (string | null), value: string, flags: GObject.ParamFlags): void;
+        add_string_return_value(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.TextLayer} argument to `procedure`.
@@ -19584,7 +19509,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_text_layer_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_text_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.TextLayer} auxiliary argument to `procedure`.
@@ -19594,7 +19519,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_text_layer_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_text_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.TextLayer} return value to `procedure`.
@@ -19604,7 +19529,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_text_layer_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_text_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new unsigned integer argument to `procedure`.
@@ -19616,7 +19541,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_uint_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_uint_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new unsigned integer auxiliary argument to `procedure`.
@@ -19628,7 +19553,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_uint_aux_argument(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_uint_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new unsigned integer return value to `procedure`.
@@ -19640,7 +19565,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_uint_return_value(name: string, nick: string, blurb: (string | null), min: number, max: number, value: number, flags: GObject.ParamFlags): void;
+        add_uint_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Unit} argument to `procedure`.
@@ -19652,7 +19577,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_unit_argument(name: string, nick: string, blurb: (string | null), show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
+        add_unit_argument(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Unit} auxiliary argument to `procedure`.
@@ -19664,7 +19589,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_unit_aux_argument(name: string, nick: string, blurb: (string | null), show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
+        add_unit_aux_argument(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.Unit} return value to `procedure`.
@@ -19676,7 +19601,7 @@ export namespace ParamArray {
          * @param value the default value.
          * @param flags argument flags.
          */
-        add_unit_return_value(name: string, nick: string, blurb: (string | null), show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
+        add_unit_return_value(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.VectorLayer} argument to `procedure`.
@@ -19686,7 +19611,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_vector_layer_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_vector_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.VectorLayer} auxiliary argument to `procedure`.
@@ -19696,7 +19621,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_vector_layer_aux_argument(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_vector_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Add a new {@link Gimp.VectorLayer} return value to `procedure`.
@@ -19706,7 +19631,7 @@ export namespace ParamArray {
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
          */
-        add_vector_layer_return_value(name: string, nick: string, blurb: (string | null), none_ok: boolean, flags: GObject.ParamFlags): void;
+        add_vector_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
         /**
          * Create a {@link Gimp.Config} with properties that match `procedure`'s arguments, to be
@@ -19788,20 +19713,20 @@ export namespace ParamArray {
          * Gets the file of the icon if one was set for `procedure`.
          * @returns the icon {@link Gio.File} or `null` if no          file was set.
          */
-        get_icon_file(): (Gio.File | null);
+        get_icon_file(): Gio.File | null;
 
         /**
          * Gets the name of the icon if one was set for `procedure`.
          * @returns the icon name or `null` if no icon name was set.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the {@link GdkPixbuf.Pixbuf} of the icon if an icon was set this way for
          * `procedure`.
          * @returns the icon pixbuf or `null` if no          icon name was set.
          */
-        get_icon_pixbuf(): (GdkPixbuf.Pixbuf | null);
+        get_icon_pixbuf(): GdkPixbuf.Pixbuf | null;
 
         /**
          * Gets the type of data set as `procedure`'s icon. Depending on the
@@ -19867,7 +19792,7 @@ export namespace ParamArray {
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
          */
-        new_return_values(status: PDBStatusType, error: (GLib.Error | null)): ValueArray;
+        new_return_values(status: PDBStatusType, error: GLib.Error | null): ValueArray;
 
         /**
          * Notify the main GIMP application that the persistent procedure has
@@ -19895,7 +19820,7 @@ export namespace ParamArray {
          * @param config the `procedure`'s arguments.
          * @returns The `procedure`'s return values.
          */
-        run(config: (ProcedureConfig | null)): ValueArray;
+        run(config: ProcedureConfig | null): ValueArray;
 
         /**
          * When the procedure's `run()` function exits, a {@link Gimp.Procedure}'s arguments
@@ -19938,25 +19863,25 @@ export namespace ParamArray {
          * @param help The `procedure`'s help text.
          * @param help_id The `procedure`'s help ID.
          */
-        set_documentation(blurb: string, help: (string | null), help_id: (string | null)): void;
+        set_documentation(blurb: string, help: string | null, help_id: string | null): void;
 
         /**
          * Sets the icon for `procedure` to the contents of an image file.
          * @param file a {@link Gio.File} pointing to an image file.
          */
-        set_icon_file(file: (Gio.File | null)): void;
+        set_icon_file(file: Gio.File | null): void;
 
         /**
          * Sets the icon for `procedure` to the icon referenced by `icon_name`.
          * @param icon_name an icon name.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the icon for `procedure` to `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
          */
-        set_icon_pixbuf(pixbuf: (GdkPixbuf.Pixbuf | null)): void;
+        set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * This is a comma separated list of image types, or actually drawable
@@ -20224,7 +20149,7 @@ export namespace ParamArray {
          * case instead.
          * @param resource_id The resource id.
          */
-        static get_by_id(resource_id: number): (Resource | null);
+        static get_by_id(resource_id: number): Resource | null;
 
         /**
          * Returns the resource with the given `resource_type` and
@@ -20232,7 +20157,7 @@ export namespace ParamArray {
          * @param resource_type The {@link GObject.GType} of the resource.
          * @param resource_name The name of the resource.
          */
-        static get_by_name(resource_type: GObject.GType, resource_name: string): (Resource | null);
+        static get_by_name(resource_type: GObject.GType, resource_name: string): Resource | null;
 
         /**
          * Returns whether the resource ID is a brush.
@@ -20401,9 +20326,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Channel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Channel.ConstructorProps {}
     }
 
     /**
@@ -20519,7 +20442,7 @@ export namespace ParamArray {
          * or `null` otherwise.
          * @param selection_id The selection id.
          */
-        static get_by_id(selection_id: number): (Selection | null);
+        static get_by_id(selection_id: number): Selection | null;
 
         /**
          * Grow the image's selection
@@ -20624,9 +20547,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
     }
 
     /**
@@ -20675,7 +20596,7 @@ export namespace ParamArray {
          * otherwise.
          * @param layer_id The layer id.
          */
-        static get_by_id(layer_id: number): (TextLayer | null);
+        static get_by_id(layer_id: number): TextLayer | null;
 
         // Methods
         /**
@@ -21184,9 +21105,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Procedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Procedure.ConstructorProps {}
     }
 
     /**
@@ -21517,9 +21436,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Layer.ConstructorProps, Rasterizable.ConstructorProps {}
     }
 
     /**
@@ -21568,7 +21485,7 @@ export namespace ParamArray {
          * otherwise.
          * @param layer_id The layer id.
          */
-        static get_by_id(layer_id: number): (VectorLayer | null);
+        static get_by_id(layer_id: number): VectorLayer | null;
 
         // Methods
         /**
@@ -21870,9 +21787,7 @@ export namespace ParamArray {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LoadProcedure.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LoadProcedure.ConstructorProps {}
     }
 
     /**
@@ -21953,9 +21868,9 @@ export namespace ParamArray {
         static_data: boolean;
 
         // Constructors
-        constructor(data: (Uint8Array | string), static_data: boolean);
+        constructor(data: Uint8Array | string, static_data: boolean);
 
-        static ["new"](data: (Uint8Array | string), static_data: boolean): Array;
+        static ["new"](data: Uint8Array | string, static_data: boolean): Array;
 
         // Methods
         copy(): Array;
@@ -22183,7 +22098,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          */
-        serialize_to_file(file: Gio.File, header: (string | null), footer: (string | null), data: null): boolean;
+        serialize_to_file(file: Gio.File, header: string | null, footer: string | null, data: null): boolean;
 
         /**
          * Serializes the object properties of `config` to a {@link Parasite}.
@@ -22203,7 +22118,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns Whether serialization succeeded.
          */
-        serialize_to_stream(output: Gio.OutputStream, header: (string | null), footer: (string | null), data: null): boolean;
+        serialize_to_stream(output: Gio.OutputStream, header: string | null, footer: string | null, data: null): boolean;
 
         /**
          * Serializes the object properties of `config` to a string.
@@ -22269,7 +22184,7 @@ export namespace ParamArray {
          * Writes data to `writer`.
          * @param data The data to write
          */
-        data(data: (Uint8Array | string)): void;
+        data(data: Uint8Array | string): void;
 
         /**
          * This function finishes the work of `writer` and unrefs it
@@ -22802,7 +22717,7 @@ export namespace ParamArray {
          * @param pspec a {@link GObject.Object} {@link GObject.ParamSpec}
          * @param default_value a default value.
          */
-        static set_default(pspec: GObject.ParamSpec, default_value: (GObject.Object | null)): void;
+        static set_default(pspec: GObject.ParamSpec, default_value: GObject.Object | null): void;
     }
 
 
@@ -22839,7 +22754,7 @@ export namespace ParamArray {
             data: null[];
         }>);
 
-        static ["new"](name: string, flags: number, data: (number[] | null)): Parasite;
+        static ["new"](name: string, flags: number, data: number[] | null): Parasite;
 
         // Methods
         /**
@@ -22888,7 +22803,7 @@ export namespace ParamArray {
          * @param flag a parasite flag
          * @returns `true` if `parasite` has `flag` set, `false` otherwise.
          */
-        has_flag(flag: (bigint | number)): boolean;
+        has_flag(flag: bigint | number): boolean;
 
         /**
          * @returns `true` if `parasite` is persistent, `false` otherwise.
@@ -23142,7 +23057,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        append(value: (GObject.Value | null)): ValueArray;
+        append(value: GObject.Value | null): ValueArray;
 
         /**
          * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
@@ -23202,7 +23117,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        insert(index: number, value: (GObject.Value | null)): ValueArray;
+        insert(index: number, value: GObject.Value | null): ValueArray;
 
         length(): number;
 
@@ -23212,7 +23127,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        prepend(value: (GObject.Value | null)): ValueArray;
+        prepend(value: GObject.Value | null): ValueArray;
 
         /**
          * Adds a reference to a {@link Gimp.ValueArray}.
@@ -23687,7 +23602,7 @@ export namespace ParamArray {
             /**
              * @virtual
              */
-            vfunc_get_icc_profile(): (Uint8Array | string);
+            vfunc_get_icc_profile(): Uint8Array | string;
 
             /**
              * This function always returns a gboolean representing whether
@@ -23735,9 +23650,7 @@ export namespace ParamArray {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ColorManagedNamespace {
@@ -23811,9 +23724,7 @@ export namespace ParamArray {
     namespace ConfigInterface {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConfigInterfaceNamespace {
@@ -23915,7 +23826,7 @@ export namespace ParamArray {
         * @param str a {@link GLib.String}.
         * @param escaped whether to escape string values.
         */
-        serialize_value(value: (GObject.Value | any), str: GLib.String, escaped: boolean): boolean;
+        serialize_value(value: GObject.Value | any, str: GLib.String, escaped: boolean): boolean;
         /**
         * Escapes and quotes `val` and appends it to `string`. The escape
         * algorithm is different from the one used by `g_strescape()` since it
@@ -23965,9 +23876,7 @@ export namespace ParamArray {
     namespace Rasterizable {
 
         // Constructor properties interface
-        interface ConstructorProps extends Drawable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Drawable.ConstructorProps {}
     }
 
     export interface RasterizableNamespace {

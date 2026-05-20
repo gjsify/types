@@ -266,7 +266,7 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1. (See below for more details)
      * @returns `true` if the level and profile could be set, `false` otherwise.
      */
-    function codec_utils_aac_caps_set_level_and_profile(caps: Gst.Caps, audio_config: (Uint8Array | string)): boolean;
+    function codec_utils_aac_caps_set_level_and_profile(caps: Gst.Caps, audio_config: Uint8Array | string): boolean;
 
     /**
      * Returns the channels of the given AAC stream.
@@ -274,7 +274,7 @@ export namespace GstPbutils {
      * @returns The channels or 0 if the channel could not be determined.
      * @since 1.10
      */
-    function codec_utils_aac_get_channels(audio_config: (Uint8Array | string)): number;
+    function codec_utils_aac_get_channels(audio_config: Uint8Array | string): number;
 
     /**
      * Translates the sample rate to the index corresponding to it in AAC spec.
@@ -300,7 +300,7 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The level as a const string and `null` if the level could not be determined.
      */
-    function codec_utils_aac_get_level(audio_config: (Uint8Array | string)): (string | null);
+    function codec_utils_aac_get_level(audio_config: Uint8Array | string): string | null;
 
     /**
      * Returns the profile of the given AAC stream as a string. The profile is
@@ -309,7 +309,7 @@ export namespace GstPbutils {
      * @param audio_config a pointer to the AudioSpecificConfig                as specified in the Elementary Stream Descriptor (esds)                in ISO/IEC 14496-1.
      * @returns The profile as a const string and `null` if the profile could not be determined.
      */
-    function codec_utils_aac_get_profile(audio_config: (Uint8Array | string)): (string | null);
+    function codec_utils_aac_get_profile(audio_config: Uint8Array | string): string | null;
 
     /**
      * Translates the sample rate index found in AAC headers to the actual sample
@@ -318,7 +318,7 @@ export namespace GstPbutils {
      * @returns The sample rate if sr_idx is valid, 0 otherwise.
      * @since 1.10
      */
-    function codec_utils_aac_get_sample_rate(audio_config: (Uint8Array | string)): number;
+    function codec_utils_aac_get_sample_rate(audio_config: Uint8Array | string): number;
 
     /**
      * Translates the sample rate index found in AAC headers to the actual sample
@@ -337,7 +337,7 @@ export namespace GstPbutils {
      * @returns The corresponding {@link Gst.Caps} or `null`
      * @since 1.22
      */
-    function codec_utils_caps_from_mime_codec(codecs_field: string): (Gst.Caps | null);
+    function codec_utils_caps_from_mime_codec(codecs_field: string): Gst.Caps | null;
 
     /**
      * Converts `caps` to a RFC 6381 compatible codec string if possible.
@@ -350,7 +350,7 @@ export namespace GstPbutils {
      * @returns a RFC 6381 compatible codec string or `null`
      * @since 1.20
      */
-    function codec_utils_caps_get_mime_codec(caps: Gst.Caps): (string | null);
+    function codec_utils_caps_get_mime_codec(caps: Gst.Caps): string | null;
 
     /**
      * Sets the level and profile in `caps` if it can be determined from `sps`. See
@@ -360,7 +360,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns `true` if the level and profile could be set, `false` otherwise.
      */
-    function codec_utils_h264_caps_set_level_and_profile(caps: Gst.Caps, sps: (Uint8Array | string)): boolean;
+    function codec_utils_h264_caps_set_level_and_profile(caps: Gst.Caps, sps: Uint8Array | string): boolean;
 
     /**
      * Converts the level indication (level_idc) in the stream's
@@ -369,7 +369,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns The level as a const string, or `null` if there is an error.
      */
-    function codec_utils_h264_get_level(sps: (Uint8Array | string)): (string | null);
+    function codec_utils_h264_get_level(sps: Uint8Array | string): string | null;
 
     /**
      * Transform a level string from the caps into the level_idc
@@ -396,7 +396,7 @@ export namespace GstPbutils {
      * @param sps Pointer to the sequence parameter set for the stream.
      * @returns The profile as a const string, or `null` if there is an error.
      */
-    function codec_utils_h264_get_profile(sps: (Uint8Array | string)): (string | null);
+    function codec_utils_h264_get_profile(sps: Uint8Array | string): string | null;
 
     /**
      * Parses profile, flags, and level from a H264 AVCC extradata/sequence_header.
@@ -410,7 +410,7 @@ export namespace GstPbutils {
      * @returns `true` on success, `false` on failure
      * @since 1.20
      */
-    function codec_utils_h264_get_profile_flags_level(codec_data: (Uint8Array | string)): [boolean, number, number, number];
+    function codec_utils_h264_get_profile_flags_level(codec_data: Uint8Array | string): [boolean, number, number, number];
 
     /**
      * Sets the level, tier and profile in `caps` if it can be determined from
@@ -422,7 +422,7 @@ export namespace GstPbutils {
      * @returns `true` if the level, tier, profile could be set, `false` otherwise.
      * @since 1.4
      */
-    function codec_utils_h265_caps_set_level_tier_and_profile(caps: Gst.Caps, profile_tier_level: (Uint8Array | string)): boolean;
+    function codec_utils_h265_caps_set_level_tier_and_profile(caps: Gst.Caps, profile_tier_level: Uint8Array | string): boolean;
 
     /**
      * Converts the level indication (general_level_idc) in the stream's
@@ -432,7 +432,7 @@ export namespace GstPbutils {
      * @returns The level as a const string, or `null` if there is an error.
      * @since 1.4
      */
-    function codec_utils_h265_get_level(profile_tier_level: (Uint8Array | string)): (string | null);
+    function codec_utils_h265_get_level(profile_tier_level: Uint8Array | string): string | null;
 
     /**
      * Transform a level string from the caps into the level_idc
@@ -463,7 +463,7 @@ export namespace GstPbutils {
      * @returns The profile as a const string, or `null` if there is an error.
      * @since 1.4
      */
-    function codec_utils_h265_get_profile(profile_tier_level: (Uint8Array | string)): (string | null);
+    function codec_utils_h265_get_profile(profile_tier_level: Uint8Array | string): string | null;
 
     /**
      * Converts the tier indication (general_tier_flag) in the stream's
@@ -473,7 +473,7 @@ export namespace GstPbutils {
      * @returns The tier as a const string, or `null` if there is an error.
      * @since 1.4
      */
-    function codec_utils_h265_get_tier(profile_tier_level: (Uint8Array | string)): (string | null);
+    function codec_utils_h265_get_tier(profile_tier_level: Uint8Array | string): string | null;
 
     /**
      * Sets the level and profile in `caps` if it can be determined from
@@ -484,7 +484,7 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns `true` if the level and profile could be set, `false` otherwise.
      */
-    function codec_utils_mpeg4video_caps_set_level_and_profile(caps: Gst.Caps, vis_obj_seq: (Uint8Array | string)): boolean;
+    function codec_utils_mpeg4video_caps_set_level_and_profile(caps: Gst.Caps, vis_obj_seq: Uint8Array | string): boolean;
 
     /**
      * Converts the level indication in the stream's visual object sequence into
@@ -494,7 +494,7 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns The level as a const string, or NULL if there is an error.
      */
-    function codec_utils_mpeg4video_get_level(vis_obj_seq: (Uint8Array | string)): (string | null);
+    function codec_utils_mpeg4video_get_level(vis_obj_seq: Uint8Array | string): string | null;
 
     /**
      * Converts the profile indication in the stream's visual object sequence into
@@ -504,7 +504,7 @@ export namespace GstPbutils {
      * @param vis_obj_seq Pointer to the visual object   sequence for the stream.
      * @returns The profile as a const string, or NULL if there is an error.
      */
-    function codec_utils_mpeg4video_get_profile(vis_obj_seq: (Uint8Array | string)): (string | null);
+    function codec_utils_mpeg4video_get_profile(vis_obj_seq: Uint8Array | string): string | null;
 
     /**
      * Creates Opus caps from the given parameters.
@@ -517,7 +517,7 @@ export namespace GstPbutils {
      * @returns The {@link Gst.Caps}, or `null` if the parameters would lead to invalid Opus caps.
      * @since 1.8
      */
-    function codec_utils_opus_create_caps(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: (Uint8Array | null)): (Gst.Caps | null);
+    function codec_utils_opus_create_caps(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | null): Gst.Caps | null;
 
     /**
      * Creates Opus caps from the given OpusHead `header` and comment header
@@ -527,7 +527,7 @@ export namespace GstPbutils {
      * @returns The {@link Gst.Caps}.
      * @since 1.8
      */
-    function codec_utils_opus_create_caps_from_header(header: Gst.Buffer, comments: (Gst.Buffer | null)): (Gst.Caps | null);
+    function codec_utils_opus_create_caps_from_header(header: Gst.Buffer, comments: Gst.Buffer | null): Gst.Caps | null;
 
     /**
      * Creates OpusHead header from the given parameters.
@@ -542,7 +542,7 @@ export namespace GstPbutils {
      * @returns The {@link Gst.Buffer} containing the OpusHead.
      * @since 1.8
      */
-    function codec_utils_opus_create_header(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: (Uint8Array | null), pre_skip: number, output_gain: number): (Gst.Buffer | null);
+    function codec_utils_opus_create_header(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | null, pre_skip: number, output_gain: number): Gst.Buffer | null;
 
     /**
      * Parses Opus caps and fills the different fields with defaults if possible.
@@ -566,7 +566,7 @@ export namespace GstPbutils {
      * @param categoryname The category, for ex: #GST_ENCODING_CATEGORY_DEVICE. Can be `null`.
      * @returns The list of {@link GstPbutils.EncodingTarget}
      */
-    function encoding_list_all_targets(categoryname: (string | null)): EncodingTarget[];
+    function encoding_list_all_targets(categoryname: string | null): EncodingTarget[];
 
     /**
      * Lists all {@link GstPbutils.EncodingTarget} categories present on disk.
@@ -596,7 +596,7 @@ export namespace GstPbutils {
      * @param func the function to call when the installer program returns
      * @returns result code whether an external installer could be started
      */
-    function install_plugins_async(details: string[], ctx: (InstallPluginsContext | null), func: InstallPluginsResultFunc): InstallPluginsReturn;
+    function install_plugins_async(details: string[], ctx: InstallPluginsContext | null, func: InstallPluginsResultFunc): InstallPluginsReturn;
 
     /**
      * Checks whether plugin installation (initiated by this application only)
@@ -637,7 +637,7 @@ export namespace GstPbutils {
      * @param ctx a {@link GstPbutils.InstallPluginsContext}, or NULL
      * @returns the result of the installation.
      */
-    function install_plugins_sync(details: string[], ctx: (InstallPluginsContext | null)): InstallPluginsReturn;
+    function install_plugins_sync(details: string[], ctx: InstallPluginsContext | null): InstallPluginsReturn;
 
     /**
      * Checks whether `msg` is a missing plugins message.
@@ -741,7 +741,7 @@ export namespace GstPbutils {
      * @param msg a missing-plugin {@link Gst.Message} of type #GST_MESSAGE_ELEMENT
      * @returns a newly-allocated detail string, or NULL on error. Free string          with `g_free()` when not needed any longer.
      */
-    function missing_plugin_message_get_installer_detail(msg: Gst.Message): (string | null);
+    function missing_plugin_message_get_installer_detail(msg: Gst.Message): string | null;
 
     /**
      * Returns an opaque string containing all the details about the missing
@@ -798,7 +798,7 @@ export namespace GstPbutils {
      * @param caps the (fixed) {@link Gst.Caps} for which a codec tag should be added.
      * @returns TRUE if a codec tag was added, FALSE otherwise.
      */
-    function pb_utils_add_codec_description_to_tag_list(taglist: Gst.TagList, codec_tag: (string | null), caps: Gst.Caps): boolean;
+    function pb_utils_add_codec_description_to_tag_list(taglist: Gst.TagList, codec_tag: string | null, caps: Gst.Caps): boolean;
 
     /**
      * Returns flags that describe the format of the caps if known. No flags are
@@ -819,7 +819,7 @@ export namespace GstPbutils {
      * @param caps the (fixed) {@link Gst.Caps} for which an format description is needed
      * @returns a newly-allocated description string, or NULL on error. Free          string with `g_free()` when not needed any longer.
      */
-    function pb_utils_get_codec_description(caps: Gst.Caps): (string | null);
+    function pb_utils_get_codec_description(caps: Gst.Caps): string | null;
 
     /**
      * Returns a localised string describing an decoder for the format specified
@@ -863,7 +863,7 @@ export namespace GstPbutils {
      * @returns a newly-allocated file extension string, or NULL on error. Free          string with `g_free()` when not needed any longer.
      * @since 1.20
      */
-    function pb_utils_get_file_extension_from_caps(caps: Gst.Caps): (string | null);
+    function pb_utils_get_file_extension_from_caps(caps: Gst.Caps): string | null;
 
     /**
      * Returns a localised string describing a sink element handling the protocol
@@ -1134,7 +1134,7 @@ export namespace GstPbutils {
              * @signal
              * @run-last
              */
-            discovered: (arg0: DiscovererInfo, arg1: (GLib.Error | null)) => void;
+            discovered: (arg0: DiscovererInfo, arg1: GLib.Error | null) => void;
             /**
              * Will be emitted in async mode when all pending URIs have been processed.
              * @signal
@@ -1149,7 +1149,7 @@ export namespace GstPbutils {
              * @since 1.24
              * @run-last
              */
-            "load-serialized-info": (arg0: string) => (DiscovererInfo | null);
+            "load-serialized-info": (arg0: string) => DiscovererInfo | null;
             /**
              * This signal is emitted after the source element has been created for, so
              * the URI being discovered, so it can be configured by setting additional
@@ -1174,7 +1174,7 @@ export namespace GstPbutils {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            timeout: (bigint | number);
+            timeout: bigint | number;
             use_cache: boolean;
             useCache: boolean;
         }
@@ -1212,7 +1212,7 @@ export namespace GstPbutils {
          * @default 15000000000
          */
         get timeout(): number;
-        set timeout(val: (bigint | number));
+        set timeout(val: bigint | number);
 
         /**
          * @default false
@@ -1326,13 +1326,10 @@ export namespace GstPbutils {
 
     namespace DiscovererAudioInfo {
         // Signal signatures
-        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1393,7 +1390,7 @@ export namespace GstPbutils {
         /**
          * @returns the language of the stream, or NULL if unknown.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * @returns the maximum bitrate of the stream in bits/second.
@@ -1409,13 +1406,10 @@ export namespace GstPbutils {
 
     namespace DiscovererContainerInfo {
         // Signal signatures
-        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1461,19 +1455,16 @@ export namespace GstPbutils {
         /**
          * @returns tags specific to the given container. If you wish to use the tags after the life-time of `info`, you will need to copy them.
          */
-        get_tags(): (Gst.TagList | null);
+        get_tags(): Gst.TagList | null;
     }
 
 
     namespace DiscovererInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1549,7 +1540,7 @@ export namespace GstPbutils {
         /**
          * @returns Miscellaneous information stored as a {@link Gst.Structure} (for example: information about missing plugins). If you wish to use the {@link Gst.Structure} after the life-time of `info`, you will need to copy it.
          */
-        get_misc(): (Gst.Structure | null);
+        get_misc(): Gst.Structure | null;
 
         /**
          * Get the installer details for missing elements
@@ -1570,7 +1561,7 @@ export namespace GstPbutils {
         /**
          * @returns the structure (or topology) of the URI as a {@link GstPbutils.DiscovererStreamInfo}. This structure can be traversed to see the original hierarchy. Unref with `gst_discoverer_stream_info_unref()` after usage.
          */
-        get_stream_info(): (DiscovererStreamInfo | null);
+        get_stream_info(): DiscovererStreamInfo | null;
 
         /**
          * @returns the list of all streams contained in the #info. Free after usage with `gst_discoverer_stream_info_list_free()`.
@@ -1594,12 +1585,12 @@ export namespace GstPbutils {
         /**
          * @returns all tags contained in the URI. If you wish to use the tags after the life-time of `info`, you will need to copy them.
          */
-        get_tags(): (Gst.TagList | null);
+        get_tags(): Gst.TagList | null;
 
         /**
          * @returns TOC contained in the URI. If you wish to use the TOC after the life-time of `info`, you will need to copy it.
          */
-        get_toc(): (Gst.Toc | null);
+        get_toc(): Gst.Toc | null;
 
         /**
          * @returns the URI to which this information corresponds to. Copy it if you wish to use it after the life-time of `info`.
@@ -1627,13 +1618,10 @@ export namespace GstPbutils {
 
     namespace DiscovererStreamInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1696,27 +1684,27 @@ export namespace GstPbutils {
         /**
          * @returns the {@link Gst.Caps} of the stream. Unref with `gst_caps_unref` after usage.
          */
-        get_caps(): (Gst.Caps | null);
+        get_caps(): Gst.Caps | null;
 
         /**
          * @returns additional information regarding the stream (for example codec version, profile, etc..). If you wish to use the {@link Gst.Structure} after the life-time of `info` you will need to copy it.
          */
-        get_misc(): (Gst.Structure | null);
+        get_misc(): Gst.Structure | null;
 
         /**
          * @returns the next {@link GstPbutils.DiscovererStreamInfo} in a chain. `null` for final streams. Unref with `gst_discoverer_stream_info_unref` after usage.
          */
-        get_next(): (DiscovererStreamInfo | null);
+        get_next(): DiscovererStreamInfo | null;
 
         /**
          * @returns the previous {@link GstPbutils.DiscovererStreamInfo} in a chain. `null` for starting points. Unref with `gst_discoverer_stream_info_unref` after usage.
          */
-        get_previous(): (DiscovererStreamInfo | null);
+        get_previous(): DiscovererStreamInfo | null;
 
         /**
          * @returns the stream ID of this stream. If you wish to use the stream ID after the life-time of `info` you will need to copy it.
          */
-        get_stream_id(): (string | null);
+        get_stream_id(): string | null;
 
         /**
          * @returns the stream number, -1 if no index could be determined. This property acts as a unique identifier as a 'int' for the stream.
@@ -1731,24 +1719,21 @@ export namespace GstPbutils {
         /**
          * @returns the tags contained in this stream. If you wish to use the tags after the life-time of `info` you will need to copy them.
          */
-        get_tags(): (Gst.TagList | null);
+        get_tags(): Gst.TagList | null;
 
         /**
          * @returns the TOC contained in this stream. If you wish to use the TOC after the life-time of `info` you will need to copy it.
          */
-        get_toc(): (Gst.Toc | null);
+        get_toc(): Gst.Toc | null;
     }
 
 
     namespace DiscovererSubtitleInfo {
         // Signal signatures
-        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1790,19 +1775,16 @@ export namespace GstPbutils {
         /**
          * @returns the language of the stream, or NULL if unknown.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
     }
 
 
     namespace DiscovererVideoInfo {
         // Signal signatures
-        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1905,9 +1887,7 @@ export namespace GstPbutils {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EncodingProfile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EncodingProfile.ConstructorProps {}
     }
 
     /**
@@ -1931,7 +1911,7 @@ export namespace GstPbutils {
 
         _init(...args: any[]): void;
 
-        static ["new"](format: Gst.Caps, preset: (string | null), restriction: (Gst.Caps | null), presence: number): EncodingAudioProfile;
+        static ["new"](format: Gst.Caps, preset: string | null, restriction: Gst.Caps | null, presence: number): EncodingAudioProfile;
 
         // Signals
         /** @signal */
@@ -1956,9 +1936,7 @@ export namespace GstPbutils {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EncodingProfile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EncodingProfile.ConstructorProps {}
     }
 
     /**
@@ -1982,7 +1960,7 @@ export namespace GstPbutils {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null), description: (string | null), format: Gst.Caps, preset: (string | null)): EncodingContainerProfile;
+        static ["new"](name: string | null, description: string | null, format: Gst.Caps, preset: string | null): EncodingContainerProfile;
 
         // Signals
         /** @signal */
@@ -2032,8 +2010,8 @@ export namespace GstPbutils {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            element_properties: (Gst.Structure | null);
-            elementProperties: (Gst.Structure | null);
+            element_properties: Gst.Structure | null;
+            elementProperties: Gst.Structure | null;
             restriction_caps: Gst.Caps;
             restrictionCaps: Gst.Caps;
         }
@@ -2059,8 +2037,8 @@ export namespace GstPbutils {
          * ```
          * @since 1.20
          */
-        get element_properties(): (Gst.Structure | null);
-        set element_properties(val: (Gst.Structure | null));
+        get element_properties(): Gst.Structure | null;
+        set element_properties(val: Gst.Structure | null);
 
         /**
          * A {@link Gst.Structure} defining the properties to be set to the element
@@ -2073,8 +2051,8 @@ export namespace GstPbutils {
          * ```
          * @since 1.20
          */
-        get elementProperties(): (Gst.Structure | null);
-        set elementProperties(val: (Gst.Structure | null));
+        get elementProperties(): Gst.Structure | null;
+        set elementProperties(val: Gst.Structure | null);
 
         get restriction_caps(): Gst.Caps;
         set restriction_caps(val: Gst.Caps);
@@ -2116,7 +2094,7 @@ export namespace GstPbutils {
          * @param profilename The name of the profile, if `null` provided, it will default to the encoding profile called `default`.
          * @param category The target category. Can be `null`
          */
-        static find(targetname: string, profilename: (string | null), category: (string | null)): (EncodingProfile | null);
+        static find(targetname: string, profilename: string | null, category: string | null): EncodingProfile | null;
 
         /**
          * Creates a {@link GstPbutils.EncodingProfile} matching the formats from the given
@@ -2124,7 +2102,7 @@ export namespace GstPbutils {
          * subtitles), are currently ignored.
          * @param info The {@link GstPbutils.DiscovererInfo} to read from
          */
-        static from_discoverer(info: DiscovererInfo): (EncodingProfile | null);
+        static from_discoverer(info: DiscovererInfo): EncodingProfile | null;
 
         // Methods
         /**
@@ -2142,17 +2120,17 @@ export namespace GstPbutils {
         /**
          * @returns the description of the profile, can be `null`.
          */
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * @returns The properties that are going to be set on the underlying element
          */
-        get_element_properties(): (Gst.Structure | null);
+        get_element_properties(): Gst.Structure | null;
 
         /**
          * @returns a suitable file extension for `profile`, or NULL.
          */
-        get_file_extension(): (string | null);
+        get_file_extension(): string | null;
 
         /**
          * @returns (nullable): the {@link Gst.Caps} corresponding to the media format used in the profile. Unref after usage.
@@ -2168,7 +2146,7 @@ export namespace GstPbutils {
         /**
          * @returns the name of the profile, can be `null`.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The number of times the profile is used in its parent container profile. If 0, it is not a mandatory stream.
@@ -2178,17 +2156,17 @@ export namespace GstPbutils {
         /**
          * @returns the name of the {@link Gst.Preset} to be used in the profile. This is the name that has been set when saving the preset.
          */
-        get_preset(): (string | null);
+        get_preset(): string | null;
 
         /**
          * @returns the name of the {@link Gst.Preset} factory to be used in the profile.
          */
-        get_preset_name(): (string | null);
+        get_preset_name(): string | null;
 
         /**
          * @returns The restriction {@link Gst.Caps} to apply before the encoder that will be used in the profile. The fields present in restriction caps are properties of the raw stream (that is before encoding), such as height and width for video and depth and sampling rate for audio. Does not apply to {@link GstPbutils.EncodingContainerProfile} (since there is no corresponding raw stream). Can be `null`. Unref after usage.
          */
-        get_restriction(): (Gst.Caps | null);
+        get_restriction(): Gst.Caps | null;
 
         /**
          * @returns `TRUE` if the stream represented by `profile` should use a single segment before the encoder, `FALSE` otherwise. This means that buffers will be retimestamped and segments will be eat so as to appear as one segment.
@@ -2221,7 +2199,7 @@ export namespace GstPbutils {
          * `description` will be made internally.
          * @param description the description to set on the profile
          */
-        set_description(description: (string | null)): void;
+        set_description(description: string | null): void;
 
         /**
          * This allows setting the muxing/encoding element properties.
@@ -2261,7 +2239,7 @@ export namespace GstPbutils {
          * internally.
          * @param name the name to set on the profile
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * Set the number of time the profile is used in its parent
@@ -2276,13 +2254,13 @@ export namespace GstPbutils {
          * This is the name that has been set when saving the preset.
          * @param preset the element preset to use
          */
-        set_preset(preset: (string | null)): void;
+        set_preset(preset: string | null): void;
 
         /**
          * Sets the name of the {@link Gst.Preset}'s factory to be used in the profile.
          * @param preset_name The name of the preset to use in this `profile`.
          */
-        set_preset_name(preset_name: (string | null)): void;
+        set_preset_name(preset_name: string | null): void;
 
         /**
          * Set the restriction {@link Gst.Caps} to apply before the encoder
@@ -2290,7 +2268,7 @@ export namespace GstPbutils {
          * for more about restrictions. Does not apply to {@link GstPbutils.EncodingContainerProfile}.
          * @param restriction the restriction to apply
          */
-        set_restriction(restriction: (Gst.Caps | null)): void;
+        set_restriction(restriction: Gst.Caps | null): void;
 
         /**
          * If using a single segment, buffers will be retimestamped and segments will be
@@ -2306,13 +2284,10 @@ export namespace GstPbutils {
 
     namespace EncodingTarget {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2364,7 +2339,7 @@ export namespace GstPbutils {
          * @param name the name of the {@link GstPbutils.EncodingTarget} to load (automatically converted to lower case internally as capital letters are not valid for target names).
          * @param category the name of the target category, like #GST_ENCODING_CATEGORY_DEVICE. Can be `null`
          */
-        static load(name: string, category: (string | null)): EncodingTarget;
+        static load(name: string, category: string | null): EncodingTarget;
 
         /**
          * Opens the provided file and returns the contained {@link GstPbutils.EncodingTarget}.
@@ -2403,13 +2378,13 @@ export namespace GstPbutils {
         /**
          * @returns The path to the `target` file.
          */
-        get_path(): (string | null);
+        get_path(): string | null;
 
         /**
          * @param name the name of the profile to retrieve
          * @returns The matching {@link GstPbutils.EncodingProfile}, or `null`.
          */
-        get_profile(name: string): (EncodingProfile | null);
+        get_profile(name: string): EncodingProfile | null;
 
         /**
          * @returns A list of {@link GstPbutils.EncodingProfile}(s) this `target` handles.
@@ -2439,9 +2414,7 @@ export namespace GstPbutils {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EncodingProfile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EncodingProfile.ConstructorProps {}
     }
 
     /**
@@ -2465,7 +2438,7 @@ export namespace GstPbutils {
 
         _init(...args: any[]): void;
 
-        static ["new"](format: Gst.Caps, preset: (string | null), restriction: (Gst.Caps | null), presence: number): EncodingVideoProfile;
+        static ["new"](format: Gst.Caps, preset: string | null, restriction: Gst.Caps | null, presence: number): EncodingVideoProfile;
 
         // Signals
         /** @signal */
@@ -2568,10 +2541,7 @@ export namespace GstPbutils {
         static $gtype: GObject.GType<InstallPluginsContext>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): InstallPluginsContext;
 

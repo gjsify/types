@@ -801,7 +801,7 @@ export namespace Cogl {
         static INHIBITED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1428,7 +1428,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_project_points_f3(matrix: Graphene.Matrix, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+    function graphene_matrix_project_points_f3(matrix: Graphene.Matrix, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
     /**
      * Transforms an array of input points and writes the result to
@@ -1471,7 +1471,7 @@ export namespace Cogl {
      * @param points_out A pointer to the first component of the first output point.
      * @param n_points The number of points to transform.
      */
-    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+    function graphene_matrix_transform_points(matrix: Graphene.Matrix, n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
     /**
      * Queries the number of bytes per pixel for a given format in the given plane.
@@ -1525,13 +1525,13 @@ export namespace Cogl {
     /**
      * @param value 
      */
-    function value_get_color(value: (GObject.Value | any)): Color;
+    function value_get_color(value: GObject.Value | any): Color;
 
     /**
      * @param value 
      * @param color 
      */
-    function value_set_color(value: (GObject.Value | any), color: Color): void;
+    function value_set_color(value: GObject.Value | any, color: Color): void;
 
     /**
      * @gir-type Callback
@@ -1695,13 +1695,10 @@ export namespace Cogl {
 
     namespace Atlas {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1758,9 +1755,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Texture.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
     /**
@@ -1823,13 +1818,10 @@ export namespace Cogl {
 
     namespace Attribute {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1852,7 +1844,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](attribute_buffer: AttributeBuffer, name: string, stride: (bigint | number), offset: (bigint | number), components: number, type: AttributeType): Attribute;
+        static ["new"](attribute_buffer: AttributeBuffer, name: string, stride: bigint | number, offset: bigint | number, components: number, type: AttributeType): Attribute;
 
         // Signals
         /** @signal */
@@ -1899,9 +1891,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Buffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
     /**
@@ -1925,9 +1915,9 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, data: (Uint8Array | string)): AttributeBuffer;
+        static ["new"](context: Context, data: Uint8Array | string): AttributeBuffer;
 
-        static new_with_size(context: Context, bytes: (bigint | number)): AttributeBuffer;
+        static new_with_size(context: Context, bytes: bigint | number): AttributeBuffer;
 
         // Signals
         /** @signal */
@@ -1946,13 +1936,10 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1979,7 +1966,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static new_for_data(context: Context, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): Bitmap;
+        static new_for_data(context: Context, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): Bitmap;
 
         static new_from_buffer(buffer: Buffer, format: PixelFormat, width: number, height: number, rowstride: number, offset: number): Bitmap;
 
@@ -2040,7 +2027,7 @@ export namespace Cogl {
             context: Context;
             default_target: BufferBindTarget;
             defaultTarget: BufferBindTarget;
-            size: (bigint | number);
+            size: bigint | number;
             update_hint: BufferUpdateHint;
             updateHint: BufferUpdateHint;
         }
@@ -2091,7 +2078,7 @@ export namespace Cogl {
          * @construct-only
          * @default 0
          */
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * @write-only
@@ -2188,7 +2175,7 @@ export namespace Cogl {
          * @param hints A mask of {@link Cogl.BufferMapHint}s that tell Cogl how   the data will be modified once mapped.
          * @returns A pointer to the mapped memory or        `null` is the call fails
          */
-        map_range(offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): null;
+        map_range(offset: bigint | number, size: bigint | number, access: BufferAccess, hints: BufferMapHint): null;
 
         /**
          * Updates part of the buffer with new data from `data`. Where to put this new
@@ -2199,7 +2186,7 @@ export namespace Cogl {
          * @param size number of bytes to copy
          * @returns `true` is the operation succeeded, `false` otherwise
          */
-        set_data(offset: (bigint | number), data: (Uint8Array | string), size: (bigint | number)): boolean;
+        set_data(offset: bigint | number, data: Uint8Array | string, size: bigint | number): boolean;
 
         /**
          * @param args 
@@ -2223,13 +2210,10 @@ export namespace Cogl {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2290,7 +2274,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](display: (Display | null)): Context;
+        static ["new"](display: Display | null): Context;
 
         // Signals
         /** @signal */
@@ -2424,7 +2408,7 @@ export namespace Cogl {
          * @param key a {@link Cogl.PipelineKey} pointer
          * @param pipeline a {@link Cogl.Pipeline} to associate with the `context` and            `key`
          */
-        set_named_pipeline(key: PipelineKey, pipeline: (Pipeline | null)): void;
+        set_named_pipeline(key: PipelineKey, pipeline: Pipeline | null): void;
 
         /**
          * @param query 
@@ -2435,13 +2419,10 @@ export namespace Cogl {
 
     namespace Display {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2533,13 +2514,10 @@ export namespace Cogl {
 
     namespace FrameInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2823,7 +2801,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -2834,7 +2812,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -2855,7 +2833,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
@@ -3406,9 +3384,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Buffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
     /**
@@ -3432,7 +3408,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, bytes: (bigint | number)): IndexBuffer;
+        static ["new"](context: Context, bytes: bigint | number): IndexBuffer;
 
         // Signals
         /** @signal */
@@ -3451,13 +3427,10 @@ export namespace Cogl {
 
     namespace Indices {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3561,13 +3534,10 @@ export namespace Cogl {
 
     namespace MatrixStack {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3784,9 +3754,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Framebuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Framebuffer.ConstructorProps {}
     }
 
     /**
@@ -3843,9 +3811,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Framebuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Framebuffer.ConstructorProps {}
     }
 
     /**
@@ -4217,13 +4183,10 @@ export namespace Cogl {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4908,9 +4871,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Buffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
     /**
@@ -4933,7 +4894,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, data: (Uint8Array | string)): PixelBuffer;
+        static ["new"](context: Context, data: Uint8Array | string): PixelBuffer;
 
         // Signals
         /** @signal */
@@ -4952,13 +4913,10 @@ export namespace Cogl {
 
     namespace Primitive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5068,13 +5026,10 @@ export namespace Cogl {
 
     namespace Program {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5186,13 +5141,10 @@ export namespace Cogl {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5306,7 +5258,7 @@ export namespace Cogl {
         /**
          * @param modifier 
          */
-        is_implicit_drm_modifier(modifier: (bigint | number)): boolean;
+        is_implicit_drm_modifier(modifier: bigint | number): boolean;
 
         /**
          * Requests that Cogl should try to use a specific underlying driver
@@ -5335,9 +5287,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5412,13 +5362,10 @@ export namespace Cogl {
 
     namespace Shader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5551,13 +5498,10 @@ export namespace Cogl {
 
     namespace Snippet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5754,7 +5698,7 @@ export namespace Cogl {
 
         _init(...args: any[]): void;
 
-        static ["new"](hook: SnippetHook, declarations: (string | null), post: (string | null)): Snippet;
+        static ["new"](hook: SnippetHook, declarations: string | null, post: string | null): Snippet;
 
         // Signals
         /** @signal */
@@ -5866,9 +5810,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Texture.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
     /**
@@ -6091,7 +6033,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: (Uint8Array | null)): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
 
         /**
          * @param args 
@@ -6210,7 +6152,7 @@ export namespace Cogl {
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
          */
-        set_data(format: PixelFormat, rowstride: number, data: (Uint8Array | string), level: number): boolean;
+        set_data(format: PixelFormat, rowstride: number, data: Uint8Array | string, level: number): boolean;
 
         /**
          * @param args 
@@ -6262,7 +6204,7 @@ export namespace Cogl {
          * @param data the actual pixel data.
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
          */
-        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): boolean;
+        set_region(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): boolean;
 
         /**
          * Copies a specified source region from `bitmap` to the position
@@ -6294,9 +6236,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Texture.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
     /**
@@ -6328,7 +6268,7 @@ export namespace Cogl {
 
         static new_from_bitmap(bitmap: Bitmap): Texture2D;
 
-        static new_from_data(ctx: Context, width: number, height: number, format: PixelFormat, rowstride: number, data: (Uint8Array | string)): Texture2D;
+        static new_from_data(ctx: Context, width: number, height: number, format: PixelFormat, rowstride: number, data: Uint8Array | string): Texture2D;
 
         static new_with_format(ctx: Context, width: number, height: number, format: PixelFormat): Texture2D;
 
@@ -6372,9 +6312,7 @@ export namespace Cogl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Texture.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
     /**
@@ -7187,9 +7125,7 @@ export namespace Cogl {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ScanoutBufferNamespace {

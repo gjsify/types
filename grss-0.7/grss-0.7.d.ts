@@ -27,13 +27,10 @@ export namespace Grss {
 
     namespace FeedAtomFormatter {
         // Signal signatures
-        interface SignalSignatures extends FeedFormatter.SignalSignatures {
-        }
+        interface SignalSignatures extends FeedFormatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FeedFormatter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FeedFormatter.ConstructorProps {}
     }
 
     /**
@@ -75,13 +72,10 @@ export namespace Grss {
 
     namespace FeedChannel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -166,13 +160,13 @@ export namespace Grss {
          * Similar to `grss_feed_channel_fetch_all()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_all_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_all_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Similar to `grss_feed_channel_fetch_all()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_all_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<FeedItem[]> | void);
+        fetch_all_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<FeedItem[]> | void;
 
         /**
          * Finalizes an asyncronous operation started with
@@ -191,13 +185,13 @@ export namespace Grss {
          * Similar to `grss_feed_channel_fetch()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Similar to `grss_feed_channel_fetch()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * If a fetch operation was scheduled with `grss_feed_channel_fetch_async()` or
@@ -422,7 +416,7 @@ export namespace Grss {
          * To set the time of publishing for the feed.
          * @param publish timestamp of publishing.
          */
-        set_publish_time(publish: (bigint | number)): void;
+        set_publish_time(publish: bigint | number): void;
 
         /**
          * To set information about PubSubHubbub for the channel. To unset the hub,
@@ -462,7 +456,7 @@ export namespace Grss {
          * To set the latest update time of `channel`.
          * @param update update time of the feed.
          */
-        set_update_time(update: (bigint | number)): void;
+        set_update_time(update: bigint | number): void;
 
         /**
          * To assign a webmaster to the `channel`.
@@ -474,13 +468,10 @@ export namespace Grss {
 
     namespace FeedEnclosure {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -536,13 +527,13 @@ export namespace Grss {
          * Similar to `grss_feed_enclosure_fetch()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Similar to `grss_feed_enclosure_fetch()`, but asyncronous.
          * @param callback function to invoke at the end of the download.
          */
-        fetch_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        fetch_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * Finalizes an asyncronous operation started with
@@ -580,19 +571,16 @@ export namespace Grss {
          * To set the size of the embedded `enclosure`.
          * @param length size of the enclosure, in bytes.
          */
-        set_length(length: (bigint | number)): void;
+        set_length(length: bigint | number): void;
     }
 
 
     namespace FeedFormatter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -687,13 +675,10 @@ export namespace Grss {
 
     namespace FeedItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -895,7 +880,7 @@ export namespace Grss {
          * To set the publish time of the item.
          * @param publish publishing timestamp of the item.
          */
-        set_publish_time(publish: (bigint | number)): void;
+        set_publish_time(publish: bigint | number): void;
 
         /**
          * To set an alternative real source for `item`. This parameter is used by web
@@ -929,13 +914,10 @@ export namespace Grss {
 
     namespace FeedParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -997,13 +979,10 @@ export namespace Grss {
 
     namespace FeedRssFormatter {
         // Signal signatures
-        interface SignalSignatures extends FeedFormatter.SignalSignatures {
-        }
+        interface SignalSignatures extends FeedFormatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FeedFormatter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FeedFormatter.ConstructorProps {}
     }
 
     /**
@@ -1045,13 +1024,10 @@ export namespace Grss {
 
     namespace FeedsGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1145,9 +1121,7 @@ export namespace Grss {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1252,9 +1226,7 @@ export namespace Grss {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1368,13 +1340,10 @@ export namespace Grss {
 
     namespace FeedsStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1497,9 +1466,7 @@ export namespace Grss {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1770,9 +1737,9 @@ export namespace Grss {
         static $gtype: GObject.GType<Person>;
 
         // Constructors
-        constructor(name: string, email: (string | null), uri: (string | null));
+        constructor(name: string, email: string | null, uri: string | null);
 
-        static ["new"](name: string, email: (string | null), uri: (string | null)): Person;
+        static ["new"](name: string, email: string | null, uri: string | null): Person;
 
         // Methods
         /**

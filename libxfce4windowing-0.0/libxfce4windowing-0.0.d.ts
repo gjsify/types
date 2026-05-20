@@ -103,7 +103,7 @@ export namespace Libxfce4windowing {
         static INTERNAL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -314,7 +314,7 @@ export namespace Libxfce4windowing {
      * @param required_micro the required micro version.
      * @returns `null` if the library is compatible with the given version, or a string describing the version mismatch. The returned string is owned by the library and must not be freed or modified by the caller.
      */
-    function check_version(required_major: number, required_minor: number, required_micro: number): (string | null);
+    function check_version(required_major: number, required_minor: number, required_micro: number): string | null;
 
     function error_quark(): GLib.Quark;
 
@@ -609,7 +609,7 @@ export namespace Libxfce4windowing {
             class_id: string;
             classId: string;
             gicon: Gio.Icon;
-            instances: (ApplicationInstance[] | null);
+            instances: ApplicationInstance[] | null;
             name: string;
             windows: Window[];
         }
@@ -646,7 +646,7 @@ export namespace Libxfce4windowing {
          * The list of {@link Libxfce4windowing.ApplicationInstance} belonging to the application.
          * @read-only
          */
-        get instances(): (ApplicationInstance[] | null);
+        get instances(): ApplicationInstance[] | null;
 
         /**
          * The application name.
@@ -715,20 +715,20 @@ export namespace Libxfce4windowing {
          * @param scale the UI scale factor.
          * @returns a {@link GdkPixbuf.Pixbuf}, owned by `app`, or `null` if `app` has no icon and a fallback cannot be rendered.
          */
-        get_icon(size: number, scale: number): (GdkPixbuf.Pixbuf | null);
+        get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
 
         /**
          * Finds the {@link Libxfce4windowing.ApplicationInstance} to which `window` belongs.
          * @param window the application window you want to get the instance of.
          * @returns The {@link Libxfce4windowing.ApplicationInstance} to which `window` belongs, or `null` if `window` does not belong to `app`, or if listing instances is not supported on the windowing environment in use. The returned {@link Libxfce4windowing.ApplicationInstance} is owned by `app`.
          */
-        get_instance(window: Window): (ApplicationInstance | null);
+        get_instance(window: Window): ApplicationInstance | null;
 
         /**
          * Lists all instances of the application.
          * @returns The list of {@link Libxfce4windowing.ApplicationInstance} of `app`, or `null` if listing instances is not supported on the windowing environment in use. The list and its contents are owned by `app`.
          */
-        get_instances(): (ApplicationInstance[] | null);
+        get_instances(): ApplicationInstance[] | null;
 
         /**
          * Fetches this application's human-readable name.
@@ -790,13 +790,13 @@ export namespace Libxfce4windowing {
             isPrimary: boolean;
             logical_geometry: Gdk.Rectangle;
             logicalGeometry: Gdk.Rectangle;
-            make: (string | null);
-            model: (string | null);
+            make: string | null;
+            model: string | null;
             physical_geometry: Gdk.Rectangle;
             physicalGeometry: Gdk.Rectangle;
             refresh: number;
             scale: number;
-            serial: (string | null);
+            serial: string | null;
             subpixel: MonitorSubpixel;
             transform: MonitorTransform;
             width_mm: number;
@@ -920,7 +920,7 @@ export namespace Libxfce4windowing {
          * @read-only
          * @default null
          */
-        get make(): (string | null);
+        get make(): string | null;
 
         /**
          * Product model name.
@@ -928,7 +928,7 @@ export namespace Libxfce4windowing {
          * @read-only
          * @default null
          */
-        get model(): (string | null);
+        get model(): string | null;
 
         /**
          * Coordinates and size of the monitor in physical device pixels.
@@ -966,7 +966,7 @@ export namespace Libxfce4windowing {
          * @read-only
          * @default null
          */
-        get serial(): (string | null);
+        get serial(): string | null;
 
         /**
          * Hardware subpixel layout.
@@ -1085,13 +1085,13 @@ export namespace Libxfce4windowing {
          * Returns the monitor's manufacturer's name, if available.
          * @returns A string owned by `monitor`, or `null`.
          */
-        get_make(): (string | null);
+        get_make(): string | null;
 
         /**
          * Returns the monitor's product model name, if available.
          * @returns A string owned by `monitor`, or `null`.
          */
-        get_model(): (string | null);
+        get_model(): string | null;
 
         /**
          * Retrieves the position and size of the monitor in physical device pixels.
@@ -1121,7 +1121,7 @@ export namespace Libxfce4windowing {
          * numbers.
          * @returns A string owned by `monitor`, or `null`.
          */
-        get_serial(): (string | null);
+        get_serial(): string | null;
 
         /**
          * Returns the subpixel ordering of `monitor`.
@@ -1243,8 +1243,8 @@ export namespace Libxfce4windowing {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_window: (Window | null);
-            activeWindow: (Window | null);
+            active_window: Window | null;
+            activeWindow: Window | null;
             gdk_screen: Gdk.Screen;
             gdkScreen: Gdk.Screen;
             show_desktop: boolean;
@@ -1265,13 +1265,13 @@ export namespace Libxfce4windowing {
          * The currently-active window.
          * @read-only
          */
-        get active_window(): (Window | null);
+        get active_window(): Window | null;
 
         /**
          * The currently-active window.
          * @read-only
          */
-        get activeWindow(): (Window | null);
+        get activeWindow(): Window | null;
 
         /**
          * The {@link Gdk.Screen} instance used to construct this {@link Libxfce4windowing.Screen}.
@@ -1351,13 +1351,13 @@ export namespace Libxfce4windowing {
          * Retrieves the window on `screen` that is currently active.
          * @returns an {@link Libxfce4windowing.Window}, or `null` if no window is active on `screen`.
          */
-        get_active_window(): (Window | null);
+        get_active_window(): Window | null;
 
         /**
          * Retrieves the list of monitors currently attached and enabled on `screen`.
          * @returns the list of {@link Libxfce4windowing.Monitor} on `screen`, or `null` if there are no connected/enabled monitors.  The list and its contents are owned by `screen`.
          */
-        get_monitors(): (Monitor[] | null);
+        get_monitors(): Monitor[] | null;
 
         /**
          * Returns the monitor designated as "primary".
@@ -1370,13 +1370,13 @@ export namespace Libxfce4windowing {
          * However, if no monitors are connected, `null` can still be returned.
          * @returns `screen`'s primary {@link Libxfce4windowing.Monitor}, or `null`.
          */
-        get_primary_monitor(): (Monitor | null);
+        get_primary_monitor(): Monitor | null;
 
         /**
          * Returns the list of all {@link Libxfce4windowing.Seat} instances available on `screen`.
          * @returns a list of {@link Libxfce4windowing.Seat}.  The list and its contents are owned by `screen`.
          */
-        get_seats(): (Seat[] | null);
+        get_seats(): Seat[] | null;
 
         /**
          * @returns `true` if the desktop is shown, `false` otherwise.
@@ -1389,14 +1389,14 @@ export namespace Libxfce4windowing {
          * The list and its contents are owned by `screen`.
          * @returns the list of {@link Libxfce4windowing.Window} on `screen`, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
-        get_windows(): (Window[] | null);
+        get_windows(): Window[] | null;
 
         /**
          * Retrieves the list of windows currently displayed on `screen`, in stacking
          * order, with the bottom-most window first in the returned list.
          * @returns the list of {@link Libxfce4windowing.Window} on `screen`, in stacking order, or `null` if there are no windows.  The list and its contents are owned by `screen`.
          */
-        get_windows_stacked(): (Window[] | null);
+        get_windows_stacked(): Window[] | null;
 
         /**
          * Retrieves this screen's {@link Libxfce4windowing.WorkspaceManager} instance, which can be used
@@ -1559,12 +1559,12 @@ export namespace Libxfce4windowing {
             class_ids: string[];
             classIds: string[];
             gicon: Gio.Icon;
-            monitors: (Monitor[] | null);
-            name: (string | null);
+            monitors: Monitor[] | null;
+            name: string | null;
             screen: Screen;
             state: WindowState;
             type: WindowType;
-            workspace: (Workspace | null);
+            workspace: Workspace | null;
         }
     }
 
@@ -1612,13 +1612,13 @@ export namespace Libxfce4windowing {
          * The list of {@link Libxfce4windowing.Monitor}<!-- -->s (if any) that the window is displayed on.
          * @read-only
          */
-        get monitors(): (Monitor[] | null);
+        get monitors(): Monitor[] | null;
 
         /**
          * The window's name or title.
          * @read-only
          */
-        get name(): (string | null);
+        get name(): string | null;
 
         /**
          * The {@link Libxfce4windowing.Screen} instances that owns this window.
@@ -1643,7 +1643,7 @@ export namespace Libxfce4windowing {
         /**
          * @read-only
          */
-        get workspace(): (Workspace | null);
+        get workspace(): Workspace | null;
 
         /**
          * Compile-time signal type information.
@@ -1677,12 +1677,12 @@ export namespace Libxfce4windowing {
          * @param seat 
          * @param event_timestamp 
          */
-        activate(seat: Seat, event_timestamp: (bigint | number)): boolean;
+        activate(seat: Seat, event_timestamp: bigint | number): boolean;
 
         /**
          * @param event_timestamp 
          */
-        close(event_timestamp: (bigint | number)): boolean;
+        close(event_timestamp: bigint | number): boolean;
 
         /**
          * Fetches `window`'s application.
@@ -1728,19 +1728,19 @@ export namespace Libxfce4windowing {
          * @param scale the UI scale factor.
          * @returns a {@link GdkPixbuf.Pixbuf}, owned by `window`, or `null` if `window` has no icon and a fallback cannot be rendered.
          */
-        get_icon(size: number, scale: number): (GdkPixbuf.Pixbuf | null);
+        get_icon(size: number, scale: number): GdkPixbuf.Pixbuf | null;
 
         /**
          * Fetches the list of monitors `window` is displayed on, if any.
          * @returns A list of {@link Libxfce4windowing.Monitor} instances, or `null`.  The list and its contents are owned by `window` and should not be modified or freed.
          */
-        get_monitors(): (Monitor[] | null);
+        get_monitors(): Monitor[] | null;
 
         /**
          * Fetches `window`'s name/title.
          * @returns a window title, or `null` if there is no title.  The returned title should not be modified or freed.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Fetches the {@link Libxfce4windowing.Screen} instance that owns `window`.
@@ -1761,7 +1761,7 @@ export namespace Libxfce4windowing {
          * not on a workspace, or is pinned to all workspaces.
          * @returns A {@link Libxfce4windowing.Workspace} instance, with a reference owned by `window`, or `null`.
          */
-        get_workspace(): (Workspace | null);
+        get_workspace(): Workspace | null;
 
         /**
          * Determines if `window` does not have an icon, and thus a fallback icon
@@ -2139,7 +2139,7 @@ export namespace Libxfce4windowing {
          * @param direction an {@link Libxfce4windowing.Direction}.
          * @returns a {@link Libxfce4windowing.Workspace}, owned by the parent `group`, or `null` if no workspace exists in `direction`.
          */
-        get_neighbor(direction: Direction): (Workspace | null);
+        get_neighbor(direction: Direction): Workspace | null;
 
         /**
          * Fetches the ordinal number of this workspace.
@@ -2164,7 +2164,7 @@ export namespace Libxfce4windowing {
          * Fetches the group this workspace belongs to, if any.
          * @returns a {@link Libxfce4windowing.WorkspaceGroup} instance, owned by `workspace`, or `null` if the workspace is not a member of any groups.
          */
-        get_workspace_group(): (WorkspaceGroup | null);
+        get_workspace_group(): WorkspaceGroup | null;
 
         /**
          * Attempts to remove `workspace` from its group.
@@ -2185,9 +2185,9 @@ export namespace Libxfce4windowing {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_workspace: (Workspace | null);
-            activeWorkspace: (Workspace | null);
-            monitors: (Monitor[] | null);
+            active_workspace: Workspace | null;
+            activeWorkspace: Workspace | null;
+            monitors: Monitor[] | null;
             screen: Screen;
             workspace_manager: WorkspaceManager;
             workspaceManager: WorkspaceManager;
@@ -2209,19 +2209,19 @@ export namespace Libxfce4windowing {
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          * @read-only
          */
-        get active_workspace(): (Workspace | null);
+        get active_workspace(): Workspace | null;
 
         /**
          * The active {@link Libxfce4windowing.Workspace} on this {@link Libxfce4windowing.WorkspaceGroup}, or `null`.
          * @read-only
          */
-        get activeWorkspace(): (Workspace | null);
+        get activeWorkspace(): Workspace | null;
 
         /**
          * The list of {@link Libxfce4windowing.Monitor} this {@link Libxfce4windowing.WorkspaceGroup} is displayed on.
          * @read-only
          */
-        get monitors(): (Monitor[] | null);
+        get monitors(): Monitor[] | null;
 
         /**
          * The {@link Libxfce4windowing.Screen} that owns this {@link Libxfce4windowing.WorkspaceGroup}.
@@ -2263,7 +2263,7 @@ export namespace Libxfce4windowing {
          * Gets the active workspace on `group`, if there is one.
          * @returns an {@link Libxfce4windowing.Workspace}, or `null` if there is no active workspace.
          */
-        get_active_workspace(): (Workspace | null);
+        get_active_workspace(): Workspace | null;
 
         /**
          * Returns a bitfield describing operations allowed on this `group`.
@@ -2275,7 +2275,7 @@ export namespace Libxfce4windowing {
          * Lists the physical monitors that this workspace group displays on.
          * @returns A list of {@link Libxfce4windowing.Monitor}, or `null` if `group` is not displayed on any monitors.  The list and its contents are owned by `group`.
          */
-        get_monitors(): (Monitor[] | null);
+        get_monitors(): Monitor[] | null;
 
         /**
          * Fetches the number of workspaces in `group`.
@@ -2293,7 +2293,7 @@ export namespace Libxfce4windowing {
          * Lists the workspaces in `group`.
          * @returns the list of {@link Libxfce4windowing.Workspace} in `group`, or `null` if there are no workspaces. The list and its contents are owned by `group`.
          */
-        list_workspaces(): (Workspace[] | null);
+        list_workspaces(): Workspace[] | null;
 
         /**
          * Moves the workspace group to a new location, and possibly a new monitor.
@@ -2355,13 +2355,13 @@ export namespace Libxfce4windowing {
          * Lists all workspace groups known to the workspace manager.
          * @returns the list of {@link Libxfce4windowing.WorkspaceGroup} managed by `manager`, or `null` if there are no workspace groups.  The list and its contents are owned by `manager`.
          */
-        list_workspace_groups(): (WorkspaceGroup[] | null);
+        list_workspace_groups(): WorkspaceGroup[] | null;
 
         /**
          * List all workspaces known to the workspace manager.
          * @returns the list of {@link Libxfce4windowing.Workspace} managed by `manager`, or `null` if there are no workspaces.  The list and its contents are owned by `manager`.
          */
-        list_workspaces(): (Workspace[] | null);
+        list_workspaces(): Workspace[] | null;
     }
 
 

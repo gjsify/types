@@ -133,13 +133,13 @@ export namespace Fep {
              * @signal
              * @run-last
              */
-            "filter-event": (arg0: null) => (boolean | void);
+            "filter-event": (arg0: null) => boolean | void;
             /**
              * The ::filter-key-event signal is emitted when key event is dispatched.
              * @signal
              * @run-last
              */
-            "filter-key-event": (arg0: number, arg1: number) => (boolean | void);
+            "filter-key-event": (arg0: number, arg1: number) => boolean | void;
             /**
              * The ::resized signal is emitted when terminal is resized.
              * @signal
@@ -182,7 +182,7 @@ export namespace Fep {
 
         _init(...args: any[]): void;
 
-        static ["new"](address: (string | null), cancellable: (Gio.Cancellable | null)): GClient;
+        static ["new"](address: string | null, cancellable: Gio.Cancellable | null): GClient;
 
         // Signals
         /** @signal */
@@ -245,7 +245,7 @@ export namespace Fep {
          * @param data data to be sent
          * @param length length of `data`
          */
-        send_data(data: string, length: (bigint | number)): void;
+        send_data(data: string, length: bigint | number): void;
 
         /**
          * Request to send `data` to the child process of the FEP server.
@@ -260,14 +260,14 @@ export namespace Fep {
          * @param text a cursor text
          * @param attr a {@link Fep.GAttribute}
          */
-        set_cursor_text(text: string, attr: (GAttribute | null)): void;
+        set_cursor_text(text: string, attr: GAttribute | null): void;
 
         /**
          * Request to display `text` at the bottom of the terminal.
          * @param text a status text
          * @param attr a {@link Fep.GAttribute}
          */
-        set_status_text(text: string, attr: (GAttribute | null)): void;
+        set_status_text(text: string, attr: GAttribute | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -311,7 +311,7 @@ export namespace Fep {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -355,7 +355,7 @@ export namespace Fep {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

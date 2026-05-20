@@ -57,7 +57,7 @@ export namespace Gfls {
         static HAS_VERY_LONG_LINE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -103,7 +103,7 @@ export namespace Gfls {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @since 0.1
      */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: (bigint | number), max_size: (bigint | number), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Bytes>;
+    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>;
     /**
      * This function starts a read operation on `input_stream`. It is meant to be
      * used as the only read operation on `input_stream`, to get a {@link GLib.Bytes} as a
@@ -124,7 +124,7 @@ export namespace Gfls {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 0.1
      */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: (bigint | number), max_size: (bigint | number), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.InputStream> | null)): void;
+    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): void;
     /**
      * This function starts a read operation on `input_stream`. It is meant to be
      * used as the only read operation on `input_stream`, to get a {@link GLib.Bytes} as a
@@ -145,7 +145,7 @@ export namespace Gfls {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 0.1
      */
-    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: (bigint | number), max_size: (bigint | number), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.InputStream> | null)): (globalThis.Promise<GLib.Bytes> | void);
+    function input_stream_read_async(input_stream: Gio.InputStream, expected_size: bigint | number, max_size: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): globalThis.Promise<GLib.Bytes> | void;
 
     /**
      * Finishes an operation started with `gfls_input_stream_read_async()`.
@@ -181,7 +181,7 @@ export namespace Gfls {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @since 0.1
      */
-    function loader_basic_load_async(file: Gio.File, max_size: (bigint | number), max_n_bytes_per_line: number, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Bytes>;
+    function loader_basic_load_async(file: Gio.File, max_size: bigint | number, max_n_bytes_per_line: number, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>;
     /**
      * Starts a basic file loading operation.
      * 
@@ -198,7 +198,7 @@ export namespace Gfls {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 0.1
      */
-    function loader_basic_load_async(file: Gio.File, max_size: (bigint | number), max_n_bytes_per_line: number, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function loader_basic_load_async(file: Gio.File, max_size: bigint | number, max_n_bytes_per_line: number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * Starts a basic file loading operation.
      * 
@@ -215,7 +215,7 @@ export namespace Gfls {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 0.1
      */
-    function loader_basic_load_async(file: Gio.File, max_size: (bigint | number), max_n_bytes_per_line: number, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<GLib.Bytes> | void);
+    function loader_basic_load_async(file: Gio.File, max_size: bigint | number, max_n_bytes_per_line: number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<GLib.Bytes> | void;
 
     /**
      * Finishes an operation started with `gfls_loader_basic_load_async()`.
@@ -259,13 +259,10 @@ export namespace Gfls {
 
     namespace AttributeKeys {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -316,19 +313,16 @@ export namespace Gfls {
         /**
          * @returns the complete string to pass to   `g_file_query_info()` (for example), or `null` if the list is empty.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
     }
 
 
     namespace LoaderConfigSimple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -372,24 +366,21 @@ export namespace Gfls {
         /**
          * @returns the {@link Gio.File} of `config`, or `null`.
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * @returns the {@link Gio.InputStream} of `config`, or `null`.
          */
-        get_stream(): (Gio.InputStream | null);
+        get_stream(): Gio.InputStream | null;
     }
 
 
     namespace UnsavedDocumentTitles {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -506,9 +497,7 @@ export namespace Gfls {
     namespace LoaderConfig {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LoaderConfigNamespace {

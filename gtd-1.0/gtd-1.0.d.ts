@@ -65,18 +65,15 @@ export namespace Gtd {
      * @gir-type Callback
      */
     interface TaskListViewHeaderFunc {
-        (task: Task, previous_task: Task): (Gtk.Widget | null);
+        (task: Task, previous_task: Task): Gtk.Widget | null;
     }
 
     namespace BinLayout {
         // Signal signatures
-        interface SignalSignatures extends Gtk.LayoutManager.SignalSignatures {
-        }
+        interface SignalSignatures extends Gtk.LayoutManager.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {}
     }
 
     /**
@@ -139,9 +136,7 @@ export namespace Gtd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -293,7 +288,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -333,7 +328,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -566,7 +561,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -606,7 +601,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -765,7 +760,7 @@ export namespace Gtd {
          * @param description detailed description of the error
          * @param _function function to be called when the notification is dismissed
          */
-        emit_error_message(title: (string | null), description: (string | null), _function: (ErrorActionFunc | null)): void;
+        emit_error_message(title: string | null, description: string | null, _function: ErrorActionFunc | null): void;
 
         /**
          * Retrieves the {@link Gio.ListModel} containing `GtdTasks` from
@@ -794,7 +789,7 @@ export namespace Gtd {
          * Retrieves the local inbox.
          * @returns a {@link Gtd.TaskList}
          */
-        get_inbox(): (TaskList | null);
+        get_inbox(): TaskList | null;
 
         /**
          * Retrieves the {@link Gio.ListModel} containing `GtdTaskLists` that are
@@ -867,7 +862,7 @@ export namespace Gtd {
          * Sets the provider.
          * @param provider the default provider.
          */
-        set_default_provider(provider: (Provider | null)): void;
+        set_default_provider(provider: Provider | null): void;
 
         /**
          * Sets the 'first-run' setting.
@@ -1095,16 +1090,16 @@ export namespace Gtd {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            align_widget: (Gtk.Widget | null);
-            alignWidget: (Gtk.Widget | null);
+            align_widget: Gtk.Widget | null;
+            alignWidget: Gtk.Widget | null;
             direction: Gtk.ArrowType;
             gicon: Gio.Icon;
             has_frame: boolean;
             hasFrame: boolean;
             label: string;
-            menu_model: (Gio.MenuModel | null);
-            menuModel: (Gio.MenuModel | null);
-            popover: (Gtk.Popover | null);
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
+            popover: Gtk.Popover | null;
             use_underline: boolean;
             useUnderline: boolean;
         }
@@ -1120,14 +1115,14 @@ export namespace Gtd {
         /**
          * The {@link Gtk.Widget} to use to align the menu with.
          */
-        get align_widget(): (Gtk.Widget | null);
-        set align_widget(val: (Gtk.Widget | null));
+        get align_widget(): Gtk.Widget | null;
+        set align_widget(val: Gtk.Widget | null);
 
         /**
          * The {@link Gtk.Widget} to use to align the menu with.
          */
-        get alignWidget(): (Gtk.Widget | null);
-        set alignWidget(val: (Gtk.Widget | null));
+        get alignWidget(): Gtk.Widget | null;
+        set alignWidget(val: Gtk.Widget | null);
 
         /**
          * The {@link Gtk.ArrowType} representing the direction in which the
@@ -1164,8 +1159,8 @@ export namespace Gtd {
          * See `gtd_menu_button_set_menu_model()` for the interaction with the
          * {@link Gtd.MenuButton.popup} property.
          */
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
         /**
          * The {@link Gio.MenuModel} from which the popup will be created.
@@ -1173,14 +1168,14 @@ export namespace Gtd {
          * See `gtd_menu_button_set_menu_model()` for the interaction with the
          * {@link Gtd.MenuButton.popup} property.
          */
-        get menuModel(): (Gio.MenuModel | null);
-        set menuModel(val: (Gio.MenuModel | null));
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
 
         /**
          * The {@link Gtk.Popover} that will be popped up when the button is clicked.
          */
-        get popover(): (Gtk.Popover | null);
-        set popover(val: (Gtk.Popover | null));
+        get popover(): Gtk.Popover | null;
+        set popover(val: Gtk.Popover | null);
 
         /**
          * @default false
@@ -1228,7 +1223,7 @@ export namespace Gtd {
          * Returns the parent {@link Gtk.Widget} to use to line up with menu.
          * @returns a {@link Gtk.Widget} value or `null`
          */
-        get_align_widget(): (Gtk.Widget | null);
+        get_align_widget(): Gtk.Widget | null;
 
         /**
          * Returns the direction the popup will be pointing at when popped up.
@@ -1264,7 +1259,7 @@ export namespace Gtd {
          * Returns the {@link Gio.MenuModel} used to generate the popup.
          * @returns a {@link Gio.MenuModel} or `null`
          */
-        get_menu_model(): (Gio.MenuModel | null);
+        get_menu_model(): Gio.MenuModel | null;
 
         /**
          * Returns the {@link Gtk.Popover} that pops out of the button.
@@ -1272,7 +1267,7 @@ export namespace Gtd {
          * returns `null`.
          * @returns a {@link Gtk.Popover} or `null`
          */
-        get_popover(): (Gtk.Popover | null);
+        get_popover(): Gtk.Popover | null;
 
         /**
          * Returns whether an embedded underline in the text indicates a
@@ -1302,7 +1297,7 @@ export namespace Gtd {
          * and not for popovers.
          * @param align_widget a {@link Gtk.Widget}
          */
-        set_align_widget(align_widget: (Gtk.Widget | null)): void;
+        set_align_widget(align_widget: Gtk.Widget | null): void;
 
         /**
          * Sets `func` to be called when a popup is about to be shown.
@@ -1318,7 +1313,7 @@ export namespace Gtd {
          * Instead, this can be done manually in `func`.
          * @param func function to call when a popuop is about to   be shown, but none has been provided via other means, or `null`   to reset to default behavior.
          */
-        set_create_popup_func(func: (MenuButtonCreatePopupFunc | null)): void;
+        set_create_popup_func(func: MenuButtonCreatePopupFunc | null): void;
 
         /**
          * Sets the direction in which the popup will be popped up, as
@@ -1368,7 +1363,7 @@ export namespace Gtd {
          * and the property is set to `null`.
          * @param menu_model a {@link Gio.MenuModel}, or `null` to unset and disable the   button
          */
-        set_menu_model(menu_model: (Gio.MenuModel | null)): void;
+        set_menu_model(menu_model: Gio.MenuModel | null): void;
 
         /**
          * Sets the {@link Gtk.Popover} that will be popped up when the `menu_button` is clicked,
@@ -1378,7 +1373,7 @@ export namespace Gtd {
          * `menu_button`, and the property is set to `null`.
          * @param popover a {@link Gtk.Popover}, or `null` to unset and disable the button
          */
-        set_popover(popover: (Gtk.Widget | null)): void;
+        set_popover(popover: Gtk.Widget | null): void;
 
         /**
          * If true, an underline in the text indicates the next character should be
@@ -1432,7 +1427,7 @@ export namespace Gtd {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1440,7 +1435,7 @@ export namespace Gtd {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1468,13 +1463,13 @@ export namespace Gtd {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1518,7 +1513,7 @@ export namespace Gtd {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1527,7 +1522,7 @@ export namespace Gtd {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1585,7 +1580,7 @@ export namespace Gtd {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1593,13 +1588,13 @@ export namespace Gtd {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1615,13 +1610,13 @@ export namespace Gtd {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1641,7 +1636,7 @@ export namespace Gtd {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1651,7 +1646,7 @@ export namespace Gtd {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1662,7 +1657,7 @@ export namespace Gtd {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1673,7 +1668,7 @@ export namespace Gtd {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1682,7 +1677,7 @@ export namespace Gtd {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -1818,7 +1813,7 @@ export namespace Gtd {
 
         _init(...args: any[]): void;
 
-        static ["new"](text: (string | null)): Notification;
+        static ["new"](text: string | null): Notification;
 
         // Conflicted with Gtd.Object.new
         static ["new"](...args: never[]): any;
@@ -1857,7 +1852,7 @@ export namespace Gtd {
          * Sets the dismissal action of `notification`
          * @param func the dismissal action function
          */
-        set_dismissal_action(func: (NotificationActionFunc | null)): void;
+        set_dismissal_action(func: NotificationActionFunc | null): void;
 
         /**
          * Sets the secondary action of `notification`, which is triggered
@@ -1865,7 +1860,7 @@ export namespace Gtd {
          * @param name the name of the secondary action
          * @param func the secondary action function
          */
-        set_secondary_action(name: string, func: (NotificationActionFunc | null)): void;
+        set_secondary_action(name: string, func: NotificationActionFunc | null): void;
 
         /**
          * Sets the text of `notification` to `text`.
@@ -2040,9 +2035,7 @@ export namespace Gtd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -2085,7 +2078,7 @@ export namespace Gtd {
          * @param text user visible text of the notification
          * @param icon a {@link Gio.Icon}
          */
-        push_message(id: string, text: string, icon: (Gio.Icon | null)): void;
+        push_message(id: string, text: string, icon: Gio.Icon | null): void;
 
         /**
          * Withdraws a message from `self`. If a message with `id` doesn't
@@ -2145,9 +2138,7 @@ export namespace Gtd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Popover.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -2189,13 +2180,13 @@ export namespace Gtd {
          * Returns the renderer that is used for this {@link Gtk.Native}.
          * @returns the renderer for `self`
          */
-        get_renderer(): (Gsk.Renderer | null);
+        get_renderer(): Gsk.Renderer | null;
 
         /**
          * Returns the surface of this {@link Gtk.Native}.
          * @returns the surface of `self`
          */
-        get_surface(): (Gdk.Surface | null);
+        get_surface(): Gdk.Surface | null;
 
         /**
          * Retrieves the surface transform of `self`.
@@ -2368,11 +2359,11 @@ export namespace Gtd {
             creation_date: GLib.DateTime;
             creationDate: GLib.DateTime;
             description: string;
-            due_date: (GLib.DateTime | null);
-            dueDate: (GLib.DateTime | null);
+            due_date: GLib.DateTime | null;
+            dueDate: GLib.DateTime | null;
             important: boolean;
             list: TaskList;
-            position: (bigint | number);
+            position: bigint | number;
             title: string;
         }
     }
@@ -2402,11 +2393,11 @@ export namespace Gtd {
         get description(): string;
         set description(val: string);
 
-        get due_date(): (GLib.DateTime | null);
-        set due_date(val: (GLib.DateTime | null));
+        get due_date(): GLib.DateTime | null;
+        set due_date(val: GLib.DateTime | null);
 
-        get dueDate(): (GLib.DateTime | null);
-        set dueDate(val: (GLib.DateTime | null));
+        get dueDate(): GLib.DateTime | null;
+        set dueDate(val: GLib.DateTime | null);
 
         /**
          * @default false
@@ -2421,7 +2412,7 @@ export namespace Gtd {
          * @default 0
          */
         get position(): number;
-        set position(val: (bigint | number));
+        set position(val: bigint | number);
 
         /**
          * @default null
@@ -2470,7 +2461,7 @@ export namespace Gtd {
          * Returns `null` if no date is set.
          * @virtual
          */
-        vfunc_get_completion_date(): (GLib.DateTime | null);
+        vfunc_get_completion_date(): GLib.DateTime | null;
 
         /**
          * Returns the {@link GLib.DateTime} that represents the task's creation date.
@@ -2492,7 +2483,7 @@ export namespace Gtd {
          * no date is set.
          * @virtual
          */
-        vfunc_get_due_date(): (GLib.DateTime | null);
+        vfunc_get_due_date(): GLib.DateTime | null;
 
         /**
          * Retrieves whether `self` is `important` or not.
@@ -2505,7 +2496,7 @@ export namespace Gtd {
          * or -1 if not set.
          * @virtual
          */
-        vfunc_get_position(): (bigint | number);
+        vfunc_get_position(): bigint | number;
 
         /**
          * Retrieves the title of the task, or `null`.
@@ -2539,14 +2530,14 @@ export namespace Gtd {
          * @param description the new description, or `null`
          * @virtual
          */
-        vfunc_set_description(description: (string | null)): void;
+        vfunc_set_description(description: string | null): void;
 
         /**
          * Updates the internal `GtdTask`::due-date property.
          * @param dt a {@link GLib.DateTime}
          * @virtual
          */
-        vfunc_set_due_date(dt: (GLib.DateTime | null)): void;
+        vfunc_set_due_date(dt: GLib.DateTime | null): void;
 
         /**
          * Sets whether `self` is `important` or not.
@@ -2570,7 +2561,7 @@ export namespace Gtd {
          * @param title the new title, or `null`
          * @virtual
          */
-        vfunc_set_title(title: (string | null)): void;
+        vfunc_set_title(title: string | null): void;
 
         // Methods
         /**
@@ -2578,7 +2569,7 @@ export namespace Gtd {
          * @param t2 a {@link Gtd.Task}
          * @returns %-1 if `t1` comes before `t2`, %1 for the opposite, %0 if they're equal
          */
-        compare(t2: (Task | null)): number;
+        compare(t2: Task | null): number;
 
         /**
          * Retrieves whether the task is complete or not.
@@ -2591,7 +2582,7 @@ export namespace Gtd {
          * Returns `null` if no date is set.
          * @returns the internal {@link GLib.DateTime} or `null`. Unreference it after use.
          */
-        get_completion_date(): (GLib.DateTime | null);
+        get_completion_date(): GLib.DateTime | null;
 
         /**
          * Returns the {@link GLib.DateTime} that represents the task's creation date.
@@ -2613,7 +2604,7 @@ export namespace Gtd {
          * no date is set.
          * @returns the internal {@link GLib.DateTime} referenced for thread safety, or `null`. Unreference it after use.
          */
-        get_due_date(): (GLib.DateTime | null);
+        get_due_date(): GLib.DateTime | null;
 
         /**
          * Retrieves whether `self` is `important` or not.
@@ -2650,7 +2641,7 @@ export namespace Gtd {
          * 
          * @returns the {@link Gtd.Provider} of this task's list.
          */
-        get_provider(): (Provider | null);
+        get_provider(): Provider | null;
 
         /**
          * Retrieves the title of the task, or `null`.
@@ -2675,13 +2666,13 @@ export namespace Gtd {
          * spaces to preserve user data.
          * @param description the new description, or `null`
          */
-        set_description(description: (string | null)): void;
+        set_description(description: string | null): void;
 
         /**
          * Updates the internal `GtdTask`::due-date property.
          * @param dt a {@link GLib.DateTime}
          */
-        set_due_date(dt: (GLib.DateTime | null)): void;
+        set_due_date(dt: GLib.DateTime | null): void;
 
         /**
          * Sets whether `self` is `important` or not.
@@ -2693,7 +2684,7 @@ export namespace Gtd {
          * Sets the parent {@link Gtd.TaskList} of `task`.
          * @param list a {@link Gtd.TaskList}
          */
-        set_list(list: (TaskList | null)): void;
+        set_list(list: TaskList | null): void;
 
         /**
          * Sets the `task` position inside the parent {@link Gtd.TaskList}. It
@@ -2701,14 +2692,14 @@ export namespace Gtd {
          * the same position value.
          * @param position the priority of `task`, or -1
          */
-        set_position(position: (bigint | number)): void;
+        set_position(position: bigint | number): void;
 
         /**
          * Updates the title of `task`. The string is stripped off of
          * leading spaces.
          * @param title the new title, or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
     }
 
 
@@ -2807,7 +2798,7 @@ export namespace Gtd {
 
         _init(...args: any[]): void;
 
-        static ["new"](provider: (Provider | null)): TaskList;
+        static ["new"](provider: Provider | null): TaskList;
 
         // Conflicted with Gtd.Object.new
         static ["new"](...args: never[]): any;
@@ -2903,22 +2894,14 @@ export namespace Gtd {
          * @param id the id of the task
          * @returns a {@link Gtd.Task}, or `null`
          */
-        get_task_by_id(id: string): (Task | null);
+        get_task_by_id(id: string): Task | null;
 
         /**
          * Imports task into `self`
          * @param task a {@link Gtd.Task}
          * @param cancellable 
          */
-        import_task(task: Task, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.Task>;
-
-        /**
-         * Imports task into `self`
-         * @param task a {@link Gtd.Task}
-         * @param cancellable 
-         * @param callback 
-         */
-        import_task(task: Task, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        import_task(task: Task, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.Task>;
 
         /**
          * Imports task into `self`
@@ -2926,7 +2909,15 @@ export namespace Gtd {
          * @param cancellable 
          * @param callback 
          */
-        import_task(task: Task, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.Task> | void);
+        import_task(task: Task, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Imports task into `self`
+         * @param task a {@link Gtd.Task}
+         * @param cancellable 
+         * @param callback 
+         */
+        import_task(task: Task, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.Task> | void;
 
         /**
          * Imports task into `self`
@@ -2979,13 +2970,13 @@ export namespace Gtd {
          * Sets the `list` name to `name`.
          * @param name the name of `list`
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * Sets the provider of this tasklist.
          * @param provider a {@link Gtd.Provider}, or `null`
          */
-        set_provider(provider: (Provider | null)): void;
+        set_provider(provider: Provider | null): void;
 
         /**
          * Updates `task` at `list`.
@@ -3032,7 +3023,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -3072,7 +3063,7 @@ export namespace Gtd {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -3220,7 +3211,7 @@ export namespace Gtd {
          * Retrieves the current default date which new tasks are set to.
          * @returns a {@link GLib.DateTime}, or `null`
          */
-        get_default_date(): (GLib.DateTime | null);
+        get_default_date(): GLib.DateTime | null;
 
         /**
          * Retrieves the {@link Gtd.TaskList} from `view`, or `null` if none was set.
@@ -3245,7 +3236,7 @@ export namespace Gtd {
          * Sets the current default date.
          * @param default_date the default_date, or `null`
          */
-        set_default_date(default_date: (GLib.DateTime | null)): void;
+        set_default_date(default_date: GLib.DateTime | null): void;
 
         /**
          * Sets `func` as the header function of `view`. You can safely call
@@ -3254,7 +3245,7 @@ export namespace Gtd {
          * Do not unref nor free any of the passed data.
          * @param func the header function
          */
-        set_header_func(func: (TaskListViewHeaderFunc | null)): void;
+        set_header_func(func: TaskListViewHeaderFunc | null): void;
 
         /**
          * Sets the internal {@link Gio.ListModel} of `view`. The model must have
@@ -4307,7 +4298,7 @@ export namespace Gtd {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4315,7 +4306,7 @@ export namespace Gtd {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -4343,13 +4334,13 @@ export namespace Gtd {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4393,7 +4384,7 @@ export namespace Gtd {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -4402,7 +4393,7 @@ export namespace Gtd {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -4460,7 +4451,7 @@ export namespace Gtd {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4468,13 +4459,13 @@ export namespace Gtd {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -4490,13 +4481,13 @@ export namespace Gtd {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4516,7 +4507,7 @@ export namespace Gtd {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -4526,7 +4517,7 @@ export namespace Gtd {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -4537,7 +4528,7 @@ export namespace Gtd {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -4548,7 +4539,7 @@ export namespace Gtd {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -4557,7 +4548,7 @@ export namespace Gtd {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4817,7 +4808,7 @@ export namespace Gtd {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * @param args 
@@ -4869,7 +4860,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -4883,7 +4874,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -4907,7 +4898,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -4929,7 +4920,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -5056,7 +5047,7 @@ export namespace Gtd {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -5103,7 +5094,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -5117,7 +5108,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -5141,7 +5132,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -5163,7 +5154,7 @@ export namespace Gtd {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -5239,7 +5230,7 @@ export namespace Gtd {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -5295,7 +5286,7 @@ export namespace Gtd {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -5574,14 +5565,14 @@ export namespace Gtd {
              * Retrieve the preferences panel of `activatable` if any.
              * @virtual
              */
-            vfunc_get_preferences_panel(): (Gtk.Widget | null);
+            vfunc_get_preferences_panel(): Gtk.Widget | null;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            preferences_panel: (Gtk.Widget | null);
-            preferencesPanel: (Gtk.Widget | null);
+            preferences_panel: Gtk.Widget | null;
+            preferencesPanel: Gtk.Widget | null;
         }
     }
 
@@ -5598,12 +5589,12 @@ export namespace Gtd {
         /**
          * @read-only
          */
-        get preferences_panel(): (Gtk.Widget | null);
+        get preferences_panel(): Gtk.Widget | null;
 
         /**
          * @read-only
          */
-        get preferencesPanel(): (Gtk.Widget | null);
+        get preferencesPanel(): Gtk.Widget | null;
 
         // Methods
         /**
@@ -5632,7 +5623,7 @@ export namespace Gtd {
          * Retrieve the preferences panel of `activatable` if any.
          * @returns a {@link Gtk.Widget}, or `null`
          */
-        get_preferences_panel(): (Gtk.Widget | null);
+        get_preferences_panel(): Gtk.Widget | null;
     }
 
 
@@ -5668,9 +5659,7 @@ export namespace Gtd {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface OmniAreaAddinNamespace {
@@ -5720,7 +5709,7 @@ export namespace Gtd {
              * @param parameters parameters of the panel
              * @virtual
              */
-            vfunc_activate(parameters: (GLib.Variant | null)): void;
+            vfunc_activate(parameters: GLib.Variant | null): void;
 
             /**
              * Retrieves the list of widgets to be placed at headerbar. The
@@ -5738,7 +5727,7 @@ export namespace Gtd {
              * Retrieves the icon of `self`.
              * @virtual
              */
-            vfunc_get_icon(): (Gio.Icon | null);
+            vfunc_get_icon(): Gio.Icon | null;
 
             /**
              * Retrieves the gear menu of `panel`.
@@ -5763,7 +5752,7 @@ export namespace Gtd {
              * window menu when available.
              * @virtual
              */
-            vfunc_get_popover(): (Gtk.Popover | null);
+            vfunc_get_popover(): Gtk.Popover | null;
 
             /**
              * Retrieves the priority of `self`. This value is used to
@@ -5782,7 +5771,7 @@ export namespace Gtd {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-            icon: (Gio.Icon | null);
+            icon: Gio.Icon | null;
             menu: Gio.Menu;
             name: string;
             priority: number;
@@ -5804,7 +5793,7 @@ export namespace Gtd {
         /**
          * @read-only
          */
-        get icon(): (Gio.Icon | null);
+        get icon(): Gio.Icon | null;
 
         /**
          * @read-only
@@ -5843,7 +5832,7 @@ export namespace Gtd {
          * This is an optional vfunc.
          * @param parameters parameters of the panel
          */
-        activate(parameters: (GLib.Variant | null)): void;
+        activate(parameters: GLib.Variant | null): void;
 
         /**
          * @param args 
@@ -5867,7 +5856,7 @@ export namespace Gtd {
          * Retrieves the icon of `self`.
          * @returns a {@link Gio.Icon}
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         /**
          * Retrieves the gear menu of `panel`.
@@ -5892,7 +5881,7 @@ export namespace Gtd {
          * window menu when available.
          * @returns a {@link Gtk.Popover}
          */
-        get_popover(): (Gtk.Popover | null);
+        get_popover(): Gtk.Popover | null;
 
         /**
          * Retrieves the priority of `self`. This value is used to
@@ -5930,14 +5919,14 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_create_task(list: TaskList, title: string, due_date: (GLib.DateTime | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_create_task(list: TaskList, title: string, due_date: GLib.DateTime | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes creating the task.
              * @param result a {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_create_task_finish(result: Gio.AsyncResult): (Task | null);
+            vfunc_create_task_finish(result: Gio.AsyncResult): Task | null;
 
             /**
              * Creates the given list in `provider`.
@@ -5946,7 +5935,7 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_create_task_list(name: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_create_task_list(name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes creating the task list. The provider will emit the
@@ -5986,7 +5975,7 @@ export namespace Gtd {
              * Retrieves the inbox of `provider`.
              * @virtual
              */
-            vfunc_get_inbox(): (TaskList | null);
+            vfunc_get_inbox(): TaskList | null;
 
             /**
              * Retrieves the user-visible name of `provider`.
@@ -6027,7 +6016,7 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_remove_task(task: Task, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_remove_task(task: Task, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes removing the task.
@@ -6043,7 +6032,7 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_remove_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_remove_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes removing the task list. The provider will emit the
@@ -6060,7 +6049,7 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_update_task(task: Task, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_update_task(task: Task, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes updating the task list.
@@ -6076,7 +6065,7 @@ export namespace Gtd {
              * @param callback a callback
              * @virtual
              */
-            vfunc_update_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_update_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes updating the task list. The provider will emit the
@@ -6167,7 +6156,7 @@ export namespace Gtd {
          * @param due_date a {@link GLib.DateTime}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        create_task(list: TaskList, title: string, due_date: (GLib.DateTime | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Task | null)>;
+        create_task(list: TaskList, title: string, due_date: GLib.DateTime | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Task | null>;
 
         /**
          * Creates the given task in `provider`.
@@ -6177,7 +6166,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        create_task(list: TaskList, title: string, due_date: (GLib.DateTime | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_task(list: TaskList, title: string, due_date: GLib.DateTime | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Creates the given task in `provider`.
@@ -6187,29 +6176,21 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        create_task(list: TaskList, title: string, due_date: (GLib.DateTime | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Task | null)> | void);
+        create_task(list: TaskList, title: string, due_date: GLib.DateTime | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Task | null> | void;
 
         /**
          * Finishes creating the task.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gtd.Task}
          */
-        create_task_finish(result: Gio.AsyncResult): (Task | null);
+        create_task_finish(result: Gio.AsyncResult): Task | null;
 
         /**
          * Creates the given list in `provider`.
          * @param name the name of the new task list
          * @param cancellable a {@link Gio.Cancellable}
          */
-        create_task_list(name: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Creates the given list in `provider`.
-         * @param name the name of the new task list
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a callback
-         */
-        create_task_list(name: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_task_list(name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Creates the given list in `provider`.
@@ -6217,7 +6198,15 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        create_task_list(name: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        create_task_list(name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Creates the given list in `provider`.
+         * @param name the name of the new task list
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a callback
+         */
+        create_task_list(name: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes creating the task list. The provider will emit the
@@ -6257,7 +6246,7 @@ export namespace Gtd {
          * Retrieves the inbox of `provider`.
          * @returns a {@link Gtd.TaskList}
          */
-        get_inbox(): (TaskList | null);
+        get_inbox(): TaskList | null;
 
         /**
          * Retrieves the user-visible name of `provider`.
@@ -6295,7 +6284,7 @@ export namespace Gtd {
          * @param task a {@link Gtd.Task}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        remove_task(task: Task, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        remove_task(task: Task, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes the given task from `provider`.
@@ -6303,7 +6292,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        remove_task(task: Task, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_task(task: Task, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Removes the given task from `provider`.
@@ -6311,7 +6300,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        remove_task(task: Task, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_task(task: Task, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes removing the task.
@@ -6325,7 +6314,7 @@ export namespace Gtd {
          * @param list a {@link Gtd.TaskList}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        remove_task_list(list: TaskList, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        remove_task_list(list: TaskList, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes the given list from `provider`.
@@ -6333,7 +6322,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        remove_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Removes the given list from `provider`.
@@ -6341,7 +6330,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        remove_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes removing the task list. The provider will emit the
@@ -6356,7 +6345,7 @@ export namespace Gtd {
          * @param task a {@link Gtd.Task}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        update_task(task: Task, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_task(task: Task, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Updates the given task in `provider`.
@@ -6364,7 +6353,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        update_task(task: Task, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_task(task: Task, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Updates the given task in `provider`.
@@ -6372,7 +6361,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        update_task(task: Task, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_task(task: Task, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes updating the task list.
@@ -6386,7 +6375,7 @@ export namespace Gtd {
          * @param list a {@link Gtd.TaskList}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        update_task_list(list: TaskList, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        update_task_list(list: TaskList, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Updates the given list in `provider`.
@@ -6394,7 +6383,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        update_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Updates the given list in `provider`.
@@ -6402,7 +6391,7 @@ export namespace Gtd {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a callback
          */
-        update_task_list(list: TaskList, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update_task_list(list: TaskList, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes updating the task list. The provider will emit the
@@ -6432,7 +6421,7 @@ export namespace Gtd {
              * @param parameters workspace-specific parameters
              * @virtual
              */
-            vfunc_activate(parameters: (GLib.Variant | null)): void;
+            vfunc_activate(parameters: GLib.Variant | null): void;
 
             /**
              * Deactivates `self`. This happens when the workspace
@@ -6505,7 +6494,7 @@ export namespace Gtd {
          * becomes the active workspace in the main window.
          * @param parameters workspace-specific parameters
          */
-        activate(parameters: (GLib.Variant | null)): void;
+        activate(parameters: GLib.Variant | null): void;
 
         /**
          * @param args 

@@ -210,7 +210,7 @@ export namespace Gitg {
         static CANCELLED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -224,7 +224,7 @@ export namespace Gitg {
         static INVALID_FORMAT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -238,7 +238,7 @@ export namespace Gitg {
         static THREADS_UNSAFE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -258,7 +258,7 @@ export namespace Gitg {
         static STILL_CONNECTING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -284,7 +284,7 @@ export namespace Gitg {
         static UPDATE_REF_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -350,8 +350,7 @@ export namespace Gitg {
 
     namespace Async {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     interface ThreadFunc {
         (): void;
     }
@@ -389,7 +388,7 @@ export namespace Gitg {
          * @param func 
          * @param _callback_ 
          */
-        static thread(func: Async.ThreadFunc, _callback_: (Gio.AsyncReadyCallback<Async> | null)): void;
+        static thread(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
 
         /**
          * @param _res_ 
@@ -400,7 +399,7 @@ export namespace Gitg {
          * @param func 
          * @param _callback_ 
          */
-        static thread_try(func: Async.ThreadFunc, _callback_: (Gio.AsyncReadyCallback<Async> | null)): void;
+        static thread_try(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
 
         /**
          * @param _res_ 
@@ -543,7 +542,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ["new"](url: string, username: (string | null), failed: boolean): AuthenticationDialog;
+        static ["new"](url: string, username: string | null, failed: boolean): AuthenticationDialog;
 
         // Conflicted with Gtk.Dialog.new
         static ["new"](...args: never[]): any;
@@ -572,13 +571,10 @@ export namespace Gitg {
 
     namespace AvatarCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -623,7 +619,7 @@ export namespace Gitg {
          * @param size 
          * @param cancellable 
          */
-        load(email: string, size: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GdkPixbuf.Pixbuf | null)>;
+        load(email: string, size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf | null>;
 
         /**
          * @param email 
@@ -631,7 +627,7 @@ export namespace Gitg {
          * @param cancellable 
          * @param _callback_ 
          */
-        load(email: string, size: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        load(email: string, size: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param email 
@@ -639,12 +635,12 @@ export namespace Gitg {
          * @param cancellable 
          * @param _callback_ 
          */
-        load(email: string, size: number, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GdkPixbuf.Pixbuf | null)> | void);
+        load(email: string, size: number, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GdkPixbuf.Pixbuf | null> | void;
 
         /**
          * @param _res_ 
          */
-        load_finish(_res_: Gio.AsyncResult): (GdkPixbuf.Pixbuf | null);
+        load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
     }
 
 
@@ -659,9 +655,7 @@ export namespace Gitg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {}
     }
 
     /**
@@ -708,8 +702,8 @@ export namespace Gitg {
         set dParsedName(val: ParsedRefName);
 
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): (Ref[] | null);
-        set d_pushes(val: (Ref[] | null));
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
 
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
@@ -732,12 +726,12 @@ export namespace Gitg {
          */
         set_d_parsed_name(value: ParsedRefName): void;
 
-        get_d_pushes(): (Ref[] | null);
+        get_d_pushes(): Ref[] | null;
 
         /**
          * @param value 
          */
-        set_d_pushes(value: (Ref[] | null)): void;
+        set_d_pushes(value: Ref[] | null): void;
 
         get_state(): RefState;
 
@@ -776,13 +770,13 @@ export namespace Gitg {
         /**
          * @virtual
          */
-        vfunc_get_d_pushes(): (Ref[] | null);
+        vfunc_get_d_pushes(): Ref[] | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_d_pushes(value: (Ref[] | null)): void;
+        vfunc_set_d_pushes(value: Ref[] | null): void;
 
         /**
          * @virtual
@@ -827,7 +821,7 @@ export namespace Gitg {
          * Gets the full name of `ref`.
          * @returns the full name of a reference or `null`.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
     }
 
 
@@ -907,8 +901,8 @@ export namespace Gitg {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
-            commit: (Commit | null);
-            next_commit: (Commit | null);
+            commit: Commit | null;
+            next_commit: Commit | null;
             nextCommit: Commit;
             lane_width: number;
             laneWidth: number;
@@ -925,11 +919,11 @@ export namespace Gitg {
         static $gtype: GObject.GType<CellRendererLanes>;
 
         // Properties
-        get commit(): (Commit | null);
-        set commit(val: (Commit | null));
+        get commit(): Commit | null;
+        set commit(val: Commit | null);
 
-        get next_commit(): (Commit | null);
-        set next_commit(val: (Commit | null));
+        get next_commit(): Commit | null;
+        set next_commit(val: Commit | null);
 
         get nextCommit(): Commit;
         set nextCommit(val: Commit);
@@ -984,21 +978,21 @@ export namespace Gitg {
          * @param x 
          * @param cell_w 
          */
-        get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [(Ref | null), number];
+        get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [Ref | null, number];
 
-        get_commit(): (Commit | null);
-
-        /**
-         * @param value 
-         */
-        set_commit(value: (Commit | null)): void;
-
-        get_next_commit(): (Commit | null);
+        get_commit(): Commit | null;
 
         /**
          * @param value 
          */
-        set_next_commit(value: (Commit | null)): void;
+        set_commit(value: Commit | null): void;
+
+        get_next_commit(): Commit | null;
+
+        /**
+         * @param value 
+         */
+        set_next_commit(value: Commit | null): void;
 
         get_lane_width(): number;
 
@@ -1179,9 +1173,7 @@ export namespace Gitg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1230,7 +1222,7 @@ export namespace Gitg {
          * @param path 
          * @param x 
          */
-        find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [(Gtk.CellRenderer | null), number];
+        find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [Gtk.CellRenderer | null, number];
     }
 
 
@@ -1304,7 +1296,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ["new"](repository: (Repository | null)): CommitModel;
+        static ["new"](repository: Repository | null): CommitModel;
 
         // Signals
         /** @signal */
@@ -1334,7 +1326,7 @@ export namespace Gitg {
         /**
          * @param idx 
          */
-        get(idx: number): (Commit | null);
+        get(idx: number): Commit | null;
 
         /**
          * @param ids 
@@ -1351,17 +1343,17 @@ export namespace Gitg {
         /**
          * @param iter 
          */
-        commit_from_iter(iter: Gtk.TreeIter): (Commit | null);
+        commit_from_iter(iter: Gtk.TreeIter): Commit | null;
 
         /**
          * @param commit 
          */
-        path_from_commit(commit: Commit): (Gtk.TreePath | null);
+        path_from_commit(commit: Commit): Gtk.TreePath | null;
 
         /**
          * @param path 
          */
-        commit_from_path(path: Gtk.TreePath): (Commit | null);
+        commit_from_path(path: Gtk.TreePath): Commit | null;
 
         get_limit(): number;
 
@@ -1390,7 +1382,7 @@ export namespace Gitg {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -1490,7 +1482,7 @@ export namespace Gitg {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1507,7 +1499,7 @@ export namespace Gitg {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1531,7 +1523,7 @@ export namespace Gitg {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1625,7 +1617,7 @@ export namespace Gitg {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -1703,7 +1695,7 @@ export namespace Gitg {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1720,7 +1712,7 @@ export namespace Gitg {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1744,7 +1736,7 @@ export namespace Gitg {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1977,7 +1969,7 @@ export namespace Gitg {
          * @param options 
          * @param parent 
          */
-        get_diff(options: (Ggit.DiffOptions | null), parent: number): Ggit.Diff;
+        get_diff(options: Ggit.DiffOptions | null, parent: number): Ggit.Diff;
 
         get_note(): Ggit.Note;
 
@@ -2007,8 +1999,7 @@ export namespace Gitg {
 
     namespace CredentialsManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2023,7 +2014,7 @@ export namespace Gitg {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](config: (Ggit.Config | null), window: Gtk.Window, save_user_in_config: boolean): CredentialsManager;
+        static ["new"](config: Ggit.Config | null, window: Gtk.Window, save_user_in_config: boolean): CredentialsManager;
 
         // Signals
         /** @signal */
@@ -2044,7 +2035,7 @@ export namespace Gitg {
          * @param username 
          * @param allowed_types 
          */
-        credentials(url: string, username: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
+        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
 
 
@@ -2177,7 +2168,7 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2221,7 +2212,7 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2394,7 +2385,7 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.Toolbar.ConstructorProps {
             context_lines: number;
             contextLines: number;
-            view: (DiffView | null);
+            view: DiffView | null;
         }
     }
 
@@ -2411,8 +2402,8 @@ export namespace Gitg {
         get contextLines(): number;
         set contextLines(val: number);
 
-        get view(): (DiffView | null);
-        set view(val: (DiffView | null));
+        get view(): DiffView | null;
+        set view(val: DiffView | null);
 
         /**
          * Compile-time signal type information.
@@ -2428,7 +2419,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ["new"](view: (DiffView | null)): DiffViewOptions;
+        static ["new"](view: DiffView | null): DiffViewOptions;
 
         // Conflicted with Gtk.Toolbar.new
         static ["new"](...args: never[]): any;
@@ -2454,12 +2445,12 @@ export namespace Gitg {
          */
         set_context_lines(value: number): void;
 
-        get_view(): (DiffView | null);
+        get_view(): DiffView | null;
 
         /**
          * @param value 
          */
-        set_view(value: (DiffView | null)): void;
+        set_view(value: DiffView | null): void;
     }
 
 
@@ -2542,8 +2533,8 @@ export namespace Gitg {
             options: Ggit.DiffOptions;
             has_selection: boolean;
             hasSelection: boolean;
-            diff: (Ggit.Diff | null);
-            commit: (Commit | null);
+            diff: Ggit.Diff | null;
+            commit: Commit | null;
             wrap_lines: boolean;
             wrapLines: boolean;
             staged: boolean;
@@ -2559,7 +2550,7 @@ export namespace Gitg {
             handle_selection: boolean;
             handleSelection: boolean;
             highlight: boolean;
-            repository: (Repository | null);
+            repository: Repository | null;
             new_is_workdir: boolean;
             newIsWorkdir: boolean;
             ignore_whitespace: boolean;
@@ -2589,11 +2580,11 @@ export namespace Gitg {
         get hasSelection(): boolean;
         set hasSelection(val: boolean);
 
-        get diff(): (Ggit.Diff | null);
-        set diff(val: (Ggit.Diff | null));
+        get diff(): Ggit.Diff | null;
+        set diff(val: Ggit.Diff | null);
 
-        get commit(): (Commit | null);
-        set commit(val: (Commit | null));
+        get commit(): Commit | null;
+        set commit(val: Commit | null);
 
         get wrap_lines(): boolean;
         set wrap_lines(val: boolean);
@@ -2640,8 +2631,8 @@ export namespace Gitg {
         get highlight(): boolean;
         set highlight(val: boolean);
 
-        get repository(): (Repository | null);
-        set repository(val: (Repository | null));
+        get repository(): Repository | null;
+        set repository(val: Repository | null);
 
         get new_is_workdir(): boolean;
         set new_is_workdir(val: boolean);
@@ -2711,7 +2702,7 @@ export namespace Gitg {
          * @param is_custom_color 
          * @param is_custom_link 
          */
-        apply_link_tags(buffer: Gtk.TextBuffer, regex: GLib.Regex, replacement: (string | null), custom_color_link: Gdk.RGBA, is_custom_color: boolean, is_custom_link: boolean): void;
+        apply_link_tags(buffer: Gtk.TextBuffer, regex: GLib.Regex, replacement: string | null, custom_color_link: Gdk.RGBA, is_custom_color: boolean, is_custom_link: boolean): void;
 
         /**
          * @param texview 
@@ -2727,19 +2718,19 @@ export namespace Gitg {
 
         get_has_selection(): boolean;
 
-        get_diff(): (Ggit.Diff | null);
+        get_diff(): Ggit.Diff | null;
 
         /**
          * @param value 
          */
-        set_diff(value: (Ggit.Diff | null)): void;
+        set_diff(value: Ggit.Diff | null): void;
 
-        get_commit(): (Commit | null);
+        get_commit(): Commit | null;
 
         /**
          * @param value 
          */
-        set_commit(value: (Commit | null)): void;
+        set_commit(value: Commit | null): void;
 
         get_wrap_lines(): boolean;
 
@@ -2804,12 +2795,12 @@ export namespace Gitg {
          */
         set_highlight(value: boolean): void;
 
-        get_repository(): (Repository | null);
+        get_repository(): Repository | null;
 
         /**
          * @param value 
          */
-        set_repository(value: (Repository | null)): void;
+        set_repository(value: Repository | null): void;
 
         get_new_is_workdir(): boolean;
 
@@ -2843,13 +2834,10 @@ export namespace Gitg {
 
     namespace FontManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2891,8 +2879,7 @@ export namespace Gitg {
 
     namespace GPGUtils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2944,7 +2931,7 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             environment: Gee.HashMap;
             name: string;
-            working_directory: (Gio.File | null);
+            working_directory: Gio.File | null;
             workingDirectory: Gio.File;
             output: string[];
         }
@@ -2963,8 +2950,8 @@ export namespace Gitg {
         get name(): string;
         set name(val: string);
 
-        get working_directory(): (Gio.File | null);
-        set working_directory(val: (Gio.File | null));
+        get working_directory(): Gio.File | null;
+        set working_directory(val: Gio.File | null);
 
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
@@ -3028,13 +3015,13 @@ export namespace Gitg {
          * @param repository 
          * @param _callback_ 
          */
-        run(repository: Ggit.Repository, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(repository: Ggit.Repository, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param repository 
          * @param _callback_ 
          */
-        run(repository: Ggit.Repository, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        run(repository: Ggit.Repository, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * @param _res_ 
@@ -3055,12 +3042,12 @@ export namespace Gitg {
          */
         set_name(value: string): void;
 
-        get_working_directory(): (Gio.File | null);
+        get_working_directory(): Gio.File | null;
 
         /**
          * @param value 
          */
-        set_working_directory(value: (Gio.File | null)): void;
+        set_working_directory(value: Gio.File | null): void;
 
         get_output(): string[];
     }
@@ -3068,8 +3055,7 @@ export namespace Gitg {
 
     namespace LabelRenderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -3122,7 +3108,7 @@ export namespace Gitg {
          * @param labels 
          * @param x 
          */
-        static get_ref_at_pos(widget: Gtk.Widget, font: Pango.FontDescription, labels: Ref[], x: number): [(Ref | null), number];
+        static get_ref_at_pos(widget: Gtk.Widget, font: Pango.FontDescription, labels: Ref[], x: number): [Ref | null, number];
 
         /**
          * @param widget 
@@ -3231,7 +3217,7 @@ export namespace Gitg {
          * @param reserved 
          * @param roots 
          */
-        reset(reserved: (Ggit.OId[] | null), roots: (Gee.HashSet | null)): void;
+        reset(reserved: Ggit.OId[] | null, roots: Gee.HashSet | null): void;
 
         /**
          * @param next 
@@ -3278,13 +3264,10 @@ export namespace Gitg {
 
     namespace Lane {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3316,7 +3299,7 @@ export namespace Gitg {
 
         static ["new"](): Lane;
 
-        static with_color(color: (Color | null)): Lane;
+        static with_color(color: Color | null): Lane;
 
         // Signals
         /** @signal */
@@ -3452,9 +3435,7 @@ export namespace Gitg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {}
     }
 
     /**
@@ -3501,8 +3482,8 @@ export namespace Gitg {
         set dParsedName(val: ParsedRefName);
 
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): (Ref[] | null);
-        set d_pushes(val: (Ref[] | null));
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
 
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
@@ -3525,12 +3506,12 @@ export namespace Gitg {
          */
         set_d_parsed_name(value: ParsedRefName): void;
 
-        get_d_pushes(): (Ref[] | null);
+        get_d_pushes(): Ref[] | null;
 
         /**
          * @param value 
          */
-        set_d_pushes(value: (Ref[] | null)): void;
+        set_d_pushes(value: Ref[] | null): void;
 
         get_state(): RefState;
 
@@ -3569,13 +3550,13 @@ export namespace Gitg {
         /**
          * @virtual
          */
-        vfunc_get_d_pushes(): (Ref[] | null);
+        vfunc_get_d_pushes(): Ref[] | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_d_pushes(value: (Ref[] | null)): void;
+        vfunc_set_d_pushes(value: Ref[] | null): void;
 
         /**
          * @virtual
@@ -3617,11 +3598,11 @@ export namespace Gitg {
             rtype: RefType;
             name: string;
             shortname: string;
-            remote_name: (string | null);
+            remote_name: string | null;
             remoteName: string;
-            remote_branch: (string | null);
+            remote_branch: string | null;
             remoteBranch: string;
-            prefix: (string | null);
+            prefix: string | null;
         }
     }
 
@@ -3648,7 +3629,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get remote_name(): (string | null);
+        get remote_name(): string | null;
 
         /**
          * @read-only
@@ -3658,7 +3639,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get remote_branch(): (string | null);
+        get remote_branch(): string | null;
 
         /**
          * @read-only
@@ -3668,7 +3649,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -3706,11 +3687,11 @@ export namespace Gitg {
 
         get_shortname(): string;
 
-        get_remote_name(): (string | null);
+        get_remote_name(): string | null;
 
-        get_remote_branch(): (string | null);
+        get_remote_branch(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
     }
 
 
@@ -3734,11 +3715,11 @@ export namespace Gitg {
             transfer_progress: number;
             transferProgress: number;
             state: RemoteState;
-            fetch_specs: (string[] | null);
+            fetch_specs: string[] | null;
             fetchSpecs: string[];
-            push_specs: (string[] | null);
+            push_specs: string[] | null;
             pushSpecs: string[];
-            credentials_provider: (CredentialsProvider | null);
+            credentials_provider: CredentialsProvider | null;
             credentialsProvider: CredentialsProvider;
         }
     }
@@ -3763,20 +3744,20 @@ export namespace Gitg {
         get state(): RemoteState;
         set state(val: RemoteState);
 
-        get fetch_specs(): (string[] | null);
-        set fetch_specs(val: (string[] | null));
+        get fetch_specs(): string[] | null;
+        set fetch_specs(val: string[] | null);
 
         get fetchSpecs(): string[];
         set fetchSpecs(val: string[]);
 
-        get push_specs(): (string[] | null);
-        set push_specs(val: (string[] | null));
+        get push_specs(): string[] | null;
+        set push_specs(val: string[] | null);
 
         get pushSpecs(): string[];
         set pushSpecs(val: string[]);
 
-        get credentials_provider(): (CredentialsProvider | null);
-        set credentials_provider(val: (CredentialsProvider | null));
+        get credentials_provider(): CredentialsProvider | null;
+        set credentials_provider(val: CredentialsProvider | null);
 
         get credentialsProvider(): CredentialsProvider;
         set credentialsProvider(val: CredentialsProvider);
@@ -3811,21 +3792,21 @@ export namespace Gitg {
          * @param direction 
          * @param callbacks 
          */
-        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+        connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
 
         /**
          * @param direction 
          * @param callbacks 
          * @param _callback_ 
          */
-        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param direction 
          * @param callbacks 
          * @param _callback_ 
          */
-        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param args 
@@ -3843,12 +3824,12 @@ export namespace Gitg {
         /**
          * @param _callback_ 
          */
-        disconnect(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        disconnect(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        disconnect(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param args 
@@ -3864,19 +3845,19 @@ export namespace Gitg {
         /**
          * @param callbacks 
          */
-        download(callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+        download(callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
 
         /**
          * @param callbacks 
          * @param _callback_ 
          */
-        download(callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        download(callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callbacks 
          * @param _callback_ 
          */
-        download(callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        download(callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param args 
@@ -3893,21 +3874,21 @@ export namespace Gitg {
          * @param branch 
          * @param callbacks 
          */
-        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+        push(branch: string, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
 
         /**
          * @param branch 
          * @param callbacks 
          * @param _callback_ 
          */
-        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        push(branch: string, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param branch 
          * @param callbacks 
          * @param _callback_ 
          */
-        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        push(branch: string, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param args 
@@ -3924,21 +3905,21 @@ export namespace Gitg {
          * @param message 
          * @param callbacks 
          */
-        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
 
         /**
          * @param message 
          * @param callbacks 
          * @param _callback_ 
          */
-        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param message 
          * @param callbacks 
          * @param _callback_ 
          */
-        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3949,26 +3930,26 @@ export namespace Gitg {
 
         get_state(): RemoteState;
 
-        get_fetch_specs(): (string[] | null);
+        get_fetch_specs(): string[] | null;
 
         /**
          * @param value 
          */
-        set_fetch_specs(value: (string[] | null)): void;
+        set_fetch_specs(value: string[] | null): void;
 
-        get_push_specs(): (string[] | null);
-
-        /**
-         * @param value 
-         */
-        set_push_specs(value: (string[] | null)): void;
-
-        get_credentials_provider(): (CredentialsProvider | null);
+        get_push_specs(): string[] | null;
 
         /**
          * @param value 
          */
-        set_credentials_provider(value: (CredentialsProvider | null)): void;
+        set_push_specs(value: string[] | null): void;
+
+        get_credentials_provider(): CredentialsProvider | null;
+
+        /**
+         * @param value 
+         */
+        set_credentials_provider(value: CredentialsProvider | null): void;
     }
 
 
@@ -4038,7 +4019,7 @@ export namespace Gitg {
             mode: SelectionMode;
             bookmarks_from_recent_files: boolean;
             bookmarksFromRecentFiles: boolean;
-            location: (Gio.File | null);
+            location: Gio.File | null;
             has_selection: boolean;
             hasSelection: boolean;
         }
@@ -4060,8 +4041,8 @@ export namespace Gitg {
         get bookmarksFromRecentFiles(): boolean;
         set bookmarksFromRecentFiles(val: boolean);
 
-        get location(): (Gio.File | null);
-        set location(val: (Gio.File | null));
+        get location(): Gio.File | null;
+        set location(val: Gio.File | null);
 
         /**
          * @read-only
@@ -4109,25 +4090,25 @@ export namespace Gitg {
          * @param row 
          * @param repository 
          */
-        end_cloning(row: RepositoryListBoxRow, repository: (Repository | null)): void;
+        end_cloning(row: RepositoryListBoxRow, repository: Repository | null): void;
 
         /**
          * @param location 
          */
-        begin_cloning(location: Gio.File): (RepositoryListBoxRow | null);
+        begin_cloning(location: Gio.File): RepositoryListBoxRow | null;
 
         /**
          * @param repository 
          * @param visited 
          */
-        add_repository(repository: Repository, visited: (GLib.DateTime | null)): (RepositoryListBoxRow | null);
+        add_repository(repository: Repository, visited: GLib.DateTime | null): RepositoryListBoxRow | null;
 
         get_selection(): RepositoryListBoxRow[];
 
         /**
          * @param text 
          */
-        filter_text(text: (string | null)): void;
+        filter_text(text: string | null): void;
 
         get_mode(): SelectionMode;
 
@@ -4143,12 +4124,12 @@ export namespace Gitg {
          */
         set_bookmarks_from_recent_files(value: boolean): void;
 
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * @param value 
          */
-        set_location(value: (Gio.File | null)): void;
+        set_location(value: Gio.File | null): void;
 
         get_has_selection(): boolean;
     }
@@ -4229,15 +4210,15 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             mode: SelectionMode;
             selected: boolean;
-            repository: (Repository | null);
+            repository: Repository | null;
             can_remove: boolean;
             canRemove: boolean;
             time: GLib.DateTime;
             fraction: number;
-            repository_name: (string | null);
+            repository_name: string | null;
             repositoryName: string;
-            dirname: (string | null);
-            branch_name: (string | null);
+            dirname: string | null;
+            branch_name: string | null;
             branchName: string;
             loading: boolean;
         }
@@ -4256,8 +4237,8 @@ export namespace Gitg {
         get selected(): boolean;
         set selected(val: boolean);
 
-        get repository(): (Repository | null);
-        set repository(val: (Repository | null));
+        get repository(): Repository | null;
+        set repository(val: Repository | null);
 
         get can_remove(): boolean;
         set can_remove(val: boolean);
@@ -4273,17 +4254,17 @@ export namespace Gitg {
          */
         set fraction(val: number);
 
-        get repository_name(): (string | null);
-        set repository_name(val: (string | null));
+        get repository_name(): string | null;
+        set repository_name(val: string | null);
 
         get repositoryName(): string;
         set repositoryName(val: string);
 
-        get dirname(): (string | null);
-        set dirname(val: (string | null));
+        get dirname(): string | null;
+        set dirname(val: string | null);
 
-        get branch_name(): (string | null);
-        set branch_name(val: (string | null));
+        get branch_name(): string | null;
+        set branch_name(val: string | null);
 
         get branchName(): string;
         set branchName(val: string);
@@ -4305,7 +4286,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ["new"](repository: (Repository | null), dirname: string): RepositoryListBoxRow;
+        static ["new"](repository: Repository | null, dirname: string): RepositoryListBoxRow;
 
         // Conflicted with Gtk.ListBoxRow.new
         static ["new"](...args: never[]): any;
@@ -4338,12 +4319,12 @@ export namespace Gitg {
          */
         set_selected(value: boolean): void;
 
-        get_repository(): (Repository | null);
+        get_repository(): Repository | null;
 
         /**
          * @param value 
          */
-        set_repository(value: (Repository | null)): void;
+        set_repository(value: Repository | null): void;
 
         get_can_remove(): boolean;
 
@@ -4364,26 +4345,26 @@ export namespace Gitg {
          */
         set_fraction(value: number): void;
 
-        get_repository_name(): (string | null);
+        get_repository_name(): string | null;
 
         /**
          * @param value 
          */
-        set_repository_name(value: (string | null)): void;
+        set_repository_name(value: string | null): void;
 
-        get_dirname(): (string | null);
-
-        /**
-         * @param value 
-         */
-        set_dirname(value: (string | null)): void;
-
-        get_branch_name(): (string | null);
+        get_dirname(): string | null;
 
         /**
          * @param value 
          */
-        set_branch_name(value: (string | null)): void;
+        set_dirname(value: string | null): void;
+
+        get_branch_name(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_branch_name(value: string | null): void;
 
         get_loading(): boolean;
 
@@ -4411,7 +4392,7 @@ export namespace Gitg {
 
         // Constructor properties interface
         interface ConstructorProps extends Ggit.Repository.ConstructorProps {
-            name: (string | null);
+            name: string | null;
             stage: Stage;
         }
     }
@@ -4426,7 +4407,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get name(): (string | null);
+        get name(): string | null;
 
         /**
          * @read-only
@@ -4447,7 +4428,7 @@ export namespace Gitg {
 
         _init(...args: any[]): void;
 
-        static ["new"](location: Gio.File, workdir: (Gio.File | null)): Repository;
+        static ["new"](location: Gio.File, workdir: Gio.File | null): Repository;
 
         // Signals
         /** @signal */
@@ -4529,7 +4510,7 @@ export namespace Gitg {
          */
         get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature;
 
-        get_name(): (string | null);
+        get_name(): string | null;
 
         get_stage(): Stage;
     }
@@ -4537,8 +4518,7 @@ export namespace Gitg {
 
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -4572,7 +4552,7 @@ export namespace Gitg {
         /**
          * @param id 
          */
-        static load_css(id: string): (Gtk.CssProvider | null);
+        static load_css(id: string): Gtk.CssProvider | null;
     }
 
 
@@ -4683,9 +4663,7 @@ export namespace Gitg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {}
     }
 
     /**
@@ -4733,7 +4711,7 @@ export namespace Gitg {
          * @read-only
           * @category Inherited from Gitg.SidebarItem
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * @read-only
@@ -4748,7 +4726,7 @@ export namespace Gitg {
 
         get_text(): string;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @param numclick 
@@ -4764,7 +4742,7 @@ export namespace Gitg {
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
     }
 
 
@@ -5116,7 +5094,7 @@ export namespace Gitg {
          * @read-only
           * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * @read-only
@@ -5132,7 +5110,7 @@ export namespace Gitg {
 
         get_is_untracked(): boolean;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @virtual
@@ -5157,7 +5135,7 @@ export namespace Gitg {
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
     }
 
 
@@ -5292,7 +5270,7 @@ export namespace Gitg {
          * @read-only
           * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * @read-only
@@ -5308,7 +5286,7 @@ export namespace Gitg {
 
         get_is_untracked(): boolean;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @virtual
@@ -5333,19 +5311,16 @@ export namespace Gitg {
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
     }
 
 
     namespace StageStatusEnumerator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5393,13 +5368,13 @@ export namespace Gitg {
          * @param num 
          * @param _callback_ 
          */
-        next_items(num: number, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        next_items(num: number, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param num 
          * @param _callback_ 
          */
-        next_items(num: number, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<StageStatusItem[]> | void);
+        next_items(num: number, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<StageStatusItem[]> | void;
 
         /**
          * @param _res_ 
@@ -5410,8 +5385,7 @@ export namespace Gitg {
 
     namespace PatchSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -5454,13 +5428,10 @@ export namespace Gitg {
 
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5502,39 +5473,39 @@ export namespace Gitg {
         /**
          * @param _callback_ 
          */
-        refresh(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        refresh(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         refresh_finish(_res_: Gio.AsyncResult): void;
 
-        get_head_tree(): globalThis.Promise<(Ggit.Tree | null)>;
+        get_head_tree(): globalThis.Promise<Ggit.Tree | null>;
 
         /**
          * @param _callback_ 
          */
-        get_head_tree(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_head_tree(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        get_head_tree(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Tree | null)> | void);
+        get_head_tree(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Tree | null> | void;
 
         /**
          * @param _res_ 
          */
-        get_head_tree_finish(_res_: Gio.AsyncResult): (Ggit.Tree | null);
+        get_head_tree_finish(_res_: Gio.AsyncResult): Ggit.Tree | null;
 
         /**
          * @param options 
          */
-        file_status(options: (Ggit.StatusOptions | null)): StageStatusEnumerator;
+        file_status(options: Ggit.StatusOptions | null): StageStatusEnumerator;
 
         /**
          * @param author 
@@ -5545,13 +5516,13 @@ export namespace Gitg {
          * @param author 
          * @param _callback_ 
          */
-        pre_commit_hook(author: Ggit.Signature, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        pre_commit_hook(author: Ggit.Signature, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param author 
          * @param _callback_ 
          */
-        pre_commit_hook(author: Ggit.Signature, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        pre_commit_hook(author: Ggit.Signature, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5567,7 +5538,7 @@ export namespace Gitg {
          * @param parents 
          * @param options 
          */
-        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions): globalThis.Promise<Ggit.OId | null>;
 
         /**
          * @param index 
@@ -5579,7 +5550,7 @@ export namespace Gitg {
          * @param options 
          * @param _callback_ 
          */
-        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param index 
@@ -5591,12 +5562,12 @@ export namespace Gitg {
          * @param options 
          * @param _callback_ 
          */
-        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.OId | null> | void;
 
         /**
          * @param _res_ 
          */
-        commit_index_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+        commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
         /**
          * @param treeoid 
@@ -5607,19 +5578,7 @@ export namespace Gitg {
          * @param parents 
          * @param options 
          */
-        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
-
-        /**
-         * @param treeoid 
-         * @param reference 
-         * @param message 
-         * @param author 
-         * @param committer 
-         * @param parents 
-         * @param options 
-         * @param _callback_ 
-         */
-        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions): globalThis.Promise<Ggit.OId | null>;
 
         /**
          * @param treeoid 
@@ -5631,12 +5590,24 @@ export namespace Gitg {
          * @param options 
          * @param _callback_ 
          */
-        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param treeoid 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
+         * @param _callback_ 
+         */
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.OId | null> | void;
 
         /**
          * @param _res_ 
          */
-        commit_tree_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+        commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
         /**
          * @param message 
@@ -5644,7 +5615,7 @@ export namespace Gitg {
          * @param committer 
          * @param options 
          */
-        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions): globalThis.Promise<Ggit.OId | null>;
 
         /**
          * @param message 
@@ -5653,7 +5624,7 @@ export namespace Gitg {
          * @param options 
          * @param _callback_ 
          */
-        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param message 
@@ -5662,12 +5633,12 @@ export namespace Gitg {
          * @param options 
          * @param _callback_ 
          */
-        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.OId | null> | void;
 
         /**
          * @param _res_ 
          */
-        commit_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+        commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
         /**
          * @param file 
@@ -5678,13 +5649,13 @@ export namespace Gitg {
          * @param file 
          * @param _callback_ 
          */
-        revert(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        revert(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        revert(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        revert(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5700,13 +5671,13 @@ export namespace Gitg {
          * @param path 
          * @param _callback_ 
          */
-        revert_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        revert_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param path 
          * @param _callback_ 
          */
-        revert_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        revert_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5722,13 +5693,13 @@ export namespace Gitg {
          * @param patch 
          * @param _callback_ 
          */
-        revert_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        revert_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param patch 
          * @param _callback_ 
          */
-        revert_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        revert_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5744,13 +5715,13 @@ export namespace Gitg {
          * @param file 
          * @param _callback_ 
          */
-        ["delete"](file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        ["delete"](file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        ["delete"](file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        ["delete"](file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5766,13 +5737,13 @@ export namespace Gitg {
          * @param path 
          * @param _callback_ 
          */
-        delete_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param path 
          * @param _callback_ 
          */
-        delete_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        delete_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5788,13 +5759,13 @@ export namespace Gitg {
          * @param file 
          * @param _callback_ 
          */
-        stage(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        stage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        stage(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        stage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5810,13 +5781,13 @@ export namespace Gitg {
          * @param path 
          * @param _callback_ 
          */
-        stage_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        stage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param path 
          * @param _callback_ 
          */
-        stage_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        stage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5834,14 +5805,14 @@ export namespace Gitg {
          * @param commit 
          * @param _callback_ 
          */
-        stage_commit(path: string, commit: Ggit.Commit, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        stage_commit(path: string, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param path 
          * @param commit 
          * @param _callback_ 
          */
-        stage_commit(path: string, commit: Ggit.Commit, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        stage_commit(path: string, commit: Ggit.Commit, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5857,13 +5828,13 @@ export namespace Gitg {
          * @param patch 
          * @param _callback_ 
          */
-        stage_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        stage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param patch 
          * @param _callback_ 
          */
-        stage_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        stage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5879,13 +5850,13 @@ export namespace Gitg {
          * @param file 
          * @param _callback_ 
          */
-        unstage(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        unstage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        unstage(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        unstage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5901,13 +5872,13 @@ export namespace Gitg {
          * @param path 
          * @param _callback_ 
          */
-        unstage_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        unstage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param path 
          * @param _callback_ 
          */
-        unstage_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        unstage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5923,13 +5894,13 @@ export namespace Gitg {
          * @param patch 
          * @param _callback_ 
          */
-        unstage_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        unstage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param patch 
          * @param _callback_ 
          */
-        unstage_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        unstage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -5940,108 +5911,107 @@ export namespace Gitg {
          * @param files 
          * @param defopts 
          */
-        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+        diff_index_all(files: StageStatusItem[] | null, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
 
         /**
          * @param files 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        diff_index_all(files: StageStatusItem[] | null, defopts: Ggit.DiffOptions | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param files 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+        diff_index_all(files: StageStatusItem[] | null, defopts: Ggit.DiffOptions | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Diff | null> | void;
 
         /**
          * @param _res_ 
          */
-        diff_index_all_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+        diff_index_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
         /**
          * @param f 
          * @param defopts 
          */
-        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
-
-        /**
-         * @param f 
-         * @param defopts 
-         * @param _callback_ 
-         */
-        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        diff_index(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
 
         /**
          * @param f 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+        diff_index(f: StageStatusItem, defopts: Ggit.DiffOptions | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param defopts 
+         * @param _callback_ 
+         */
+        diff_index(f: StageStatusItem, defopts: Ggit.DiffOptions | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Diff | null> | void;
 
         /**
          * @param _res_ 
          */
-        diff_index_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+        diff_index_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
         /**
          * @param files 
          * @param defopts 
          */
-        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
-
-        /**
-         * @param files 
-         * @param defopts 
-         * @param _callback_ 
-         */
-        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        diff_workdir_all(files: StageStatusItem[], defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
 
         /**
          * @param files 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+        diff_workdir_all(files: StageStatusItem[], defopts: Ggit.DiffOptions | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param files 
+         * @param defopts 
+         * @param _callback_ 
+         */
+        diff_workdir_all(files: StageStatusItem[], defopts: Ggit.DiffOptions | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Diff | null> | void;
 
         /**
          * @param _res_ 
          */
-        diff_workdir_all_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+        diff_workdir_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
         /**
          * @param f 
          * @param defopts 
          */
-        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+        diff_workdir(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
 
         /**
          * @param f 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        diff_workdir(f: StageStatusItem, defopts: Ggit.DiffOptions | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param f 
          * @param defopts 
          * @param _callback_ 
          */
-        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+        diff_workdir(f: StageStatusItem, defopts: Ggit.DiffOptions | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Diff | null> | void;
 
         /**
          * @param _res_ 
          */
-        diff_workdir_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+        diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
     }
 
 
     namespace TextConv {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -6089,7 +6059,7 @@ export namespace Gitg {
          * @param file 
          * @param raw_content 
          */
-        static get_textconv_content_from_raw(repository: Repository, file: Ggit.DiffFile, raw_content: (Uint8Array | null)): Uint8Array;
+        static get_textconv_content_from_raw(repository: Repository, file: Ggit.DiffFile, raw_content: Uint8Array | null): Uint8Array;
     }
 
 
@@ -6138,9 +6108,7 @@ export namespace Gitg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     /**
@@ -6188,8 +6156,7 @@ export namespace Gitg {
 
     namespace Utils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -6234,8 +6201,7 @@ export namespace Gitg {
 
     namespace WhenMapped {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     interface OnMapped {
         (): void;
     }
@@ -6273,7 +6239,7 @@ export namespace Gitg {
          * @param mapped 
          * @param lifetime 
          */
-        update(mapped: WhenMapped.OnMapped, lifetime: (GObject.Object | null)): void;
+        update(mapped: WhenMapped.OnMapped, lifetime: GObject.Object | null): void;
     }
 
 
@@ -6868,9 +6834,7 @@ export namespace Gitg {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Ggit.Branch.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Ggit.Branch.ConstructorProps {}
     }
 
     export interface BranchNamespace {
@@ -6918,13 +6882,13 @@ export namespace Gitg {
             /**
              * @virtual
              */
-            vfunc_get_d_pushes(): (Ref[] | null);
+            vfunc_get_d_pushes(): Ref[] | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_d_pushes(value: (Ref[] | null)): void;
+            vfunc_set_d_pushes(value: Ref[] | null): void;
 
             /**
              * @virtual
@@ -6954,7 +6918,7 @@ export namespace Gitg {
         interface ConstructorProps extends Ggit.Ref.ConstructorProps {
             d_parsed_name: ParsedRefName;
             dParsedName: ParsedRefName;
-            d_pushes: (Ref[] | null);
+            d_pushes: Ref[] | null;
             dPushes: Ref[];
             state: RefState;
             working: boolean;
@@ -6977,8 +6941,8 @@ export namespace Gitg {
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
 
-        get d_pushes(): (Ref[] | null);
-        set d_pushes(val: (Ref[] | null));
+        get d_pushes(): Ref[] | null;
+        set d_pushes(val: Ref[] | null);
 
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
@@ -6999,12 +6963,12 @@ export namespace Gitg {
          */
         set_d_parsed_name(value: ParsedRefName): void;
 
-        get_d_pushes(): (Ref[] | null);
+        get_d_pushes(): Ref[] | null;
 
         /**
          * @param value 
          */
-        set_d_pushes(value: (Ref[] | null)): void;
+        set_d_pushes(value: Ref[] | null): void;
 
         get_state(): RefState;
 
@@ -7044,14 +7008,12 @@ export namespace Gitg {
              * @param allowed_types 
              * @virtual
              */
-            vfunc_credentials(url: string, username_from_url: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
+            vfunc_credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CredentialsProviderNamespace {
@@ -7069,7 +7031,7 @@ export namespace Gitg {
          * @param username_from_url 
          * @param allowed_types 
          */
-        credentials(url: string, username_from_url: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
+        credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
 
 
@@ -7099,14 +7061,14 @@ export namespace Gitg {
             /**
              * @virtual
              */
-            vfunc_get_icon_name(): (string | null);
+            vfunc_get_icon_name(): string | null;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             text: string;
-            icon_name: (string | null);
+            icon_name: string | null;
             iconName: string;
         }
     }
@@ -7129,7 +7091,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * @read-only
@@ -7144,7 +7106,7 @@ export namespace Gitg {
 
         get_text(): string;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
     }
 
 
@@ -7183,7 +7145,7 @@ export namespace Gitg {
             /**
              * @virtual
              */
-            vfunc_get_icon_name(): (string | null);
+            vfunc_get_icon_name(): string | null;
         }
 
 
@@ -7196,7 +7158,7 @@ export namespace Gitg {
             isUnstaged: boolean;
             is_untracked: boolean;
             isUntracked: boolean;
-            icon_name: (string | null);
+            icon_name: string | null;
             iconName: string;
         }
     }
@@ -7249,7 +7211,7 @@ export namespace Gitg {
         /**
          * @read-only
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * @read-only
@@ -7265,7 +7227,7 @@ export namespace Gitg {
 
         get_is_untracked(): boolean;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
     }
 
 

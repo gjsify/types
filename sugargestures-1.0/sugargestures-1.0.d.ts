@@ -330,9 +330,7 @@ export namespace SugarGestures {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TouchController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TouchController.ConstructorProps {}
     }
 
     /**
@@ -583,9 +581,7 @@ export namespace SugarGestures {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TouchController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TouchController.ConstructorProps {}
     }
 
     /**

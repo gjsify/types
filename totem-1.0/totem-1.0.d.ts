@@ -244,7 +244,7 @@ export namespace Totem {
      * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
      * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
-    function interface_load(name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
+    function interface_load(name: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
 
     /**
      * Load the image called `name` in the directory given by `totem_interface_get_full_path()` into a {@link GdkPixbuf.Pixbuf}.
@@ -261,7 +261,7 @@ export namespace Totem {
      * @param user_data the user data to pass to `gtk_builder_connect_signals()`, or `null`
      * @returns the loaded {@link Gtk.Builder} object, or `null`
      */
-    function interface_load_with_full_path(filename: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
+    function interface_load_with_full_path(filename: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
 
     /**
      * Finds the specified `file` by looking in the plugin paths
@@ -288,7 +288,7 @@ export namespace Totem {
      * @param user_data a pointer to be passed to each signal handler in the interface when they're called
      * @returns the {@link Gtk.Builder} instance for the interface
      */
-    function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: (Gtk.Window | null), user_data: null): Gtk.Builder;
+    function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: Gtk.Window | null, user_data: null): Gtk.Builder;
 
     function remote_command_quark(): GLib.Quark;
 
@@ -369,15 +369,15 @@ export namespace Totem {
             currentDisplayName: string;
             current_mrl: string;
             currentMrl: string;
-            current_time: (bigint | number);
-            currentTime: (bigint | number);
+            current_time: bigint | number;
+            currentTime: bigint | number;
             fullscreen: boolean;
             main_page: string;
             mainPage: string;
             playing: boolean;
             seekable: boolean;
-            stream_length: (bigint | number);
-            streamLength: (bigint | number);
+            stream_length: bigint | number;
+            streamLength: bigint | number;
         }
     }
 
@@ -624,7 +624,7 @@ export namespace Totem {
          * @param id the ID for the menu section to look up
          * @returns a {@link Gio.Menu} or `null` on failure
          */
-        get_menu_section(id: string): (Gio.Menu | null);
+        get_menu_section(id: string): Gio.Menu | null;
 
         /**
          * Returns the length of the current playlist.
@@ -763,7 +763,7 @@ export namespace Totem {
          * @param offset the time offset to seek to
          * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
          */
-        seek_relative(offset: (bigint | number), accurate: boolean): void;
+        seek_relative(offset: bigint | number, accurate: boolean): void;
 
         /**
          * Seeks to an absolute time in the stream, or displays an
@@ -771,7 +771,7 @@ export namespace Totem {
          * @param msec the time to seek to
          * @param accurate whether to use accurate seek, an accurate seek might be slower for some formats (see GStreamer docs)
          */
-        seek_time(msec: (bigint | number), accurate: boolean): void;
+        seek_time(msec: bigint | number, accurate: boolean): void;
 
         /**
          * Add the `subtitle_uri` subtitle file to the playlist, setting it as the subtitle for the current

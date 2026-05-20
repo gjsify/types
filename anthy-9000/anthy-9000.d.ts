@@ -162,13 +162,10 @@ export namespace Anthy {
 
     namespace GContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     /**

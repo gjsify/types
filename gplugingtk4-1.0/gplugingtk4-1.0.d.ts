@@ -153,7 +153,7 @@ export namespace GPluginGtk4 {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            plugin: (GObject.Object | null);
+            plugin: GObject.Object | null;
             settings_backend: Gio.SettingsBackend;
             settingsBackend: Gio.SettingsBackend;
         }
@@ -173,8 +173,8 @@ export namespace GPluginGtk4 {
          * The {@link GPlugin.Plugin} whose info should be displayed.
          * @since 0.39
          */
-        get plugin(): (GObject.Object | null);
-        set plugin(val: (GObject.Object | null));
+        get plugin(): GObject.Object | null;
+        set plugin(val: GObject.Object | null);
 
         /**
          * The {@link Gio.SettingsBackend} to use when viewing plugin settings.
@@ -224,7 +224,7 @@ export namespace GPluginGtk4 {
          * Gets the {@link GPlugin.Plugin} that's being displayed.
          * @returns The plugin that's being displayed, or          `null` if the page is empty.
          */
-        get_plugin(): (GPlugin.Plugin | null);
+        get_plugin(): GPlugin.Plugin | null;
 
         /**
          * Gets the settings backend used when displaying plugin settings.
@@ -243,7 +243,7 @@ export namespace GPluginGtk4 {
          * A `plugin` value of `null` will clear the widget.
          * @param plugin The plugin instance.
          */
-        set_plugin(plugin: (GPlugin.Plugin | null)): void;
+        set_plugin(plugin: GPlugin.Plugin | null): void;
 
         /**
          * Sets the settings backend to use when displaying plugin settings.
@@ -332,7 +332,7 @@ export namespace GPluginGtk4 {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            plugin: (GObject.Object | null);
+            plugin: GObject.Object | null;
         }
     }
 
@@ -350,8 +350,8 @@ export namespace GPluginGtk4 {
          * The {@link GPlugin.Plugin} whose info should be displayed.
          * @since 0.38
          */
-        get plugin(): (GObject.Object | null);
-        set plugin(val: (GObject.Object | null));
+        get plugin(): GObject.Object | null;
+        set plugin(val: GObject.Object | null);
 
         /**
          * Compile-time signal type information.
@@ -387,7 +387,7 @@ export namespace GPluginGtk4 {
          * Returns the {@link GPlugin.Plugin} that's being displayed.
          * @returns The plugin that's being displayed, or          `null` if the row is empty.
          */
-        get_plugin(): (GPlugin.Plugin | null);
+        get_plugin(): GPlugin.Plugin | null;
 
         /**
          * Returns a key that can be used to sort this row.
@@ -408,23 +408,23 @@ export namespace GPluginGtk4 {
          * A `plugin` value of `null` will clear the widget.
          * @param plugin The plugin instance.
          */
-        set_plugin(plugin: (GPlugin.Plugin | null)): void;
+        set_plugin(plugin: GPlugin.Plugin | null): void;
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -444,13 +444,13 @@ export namespace GPluginGtk4 {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -468,7 +468,7 @@ export namespace GPluginGtk4 {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -491,7 +491,7 @@ export namespace GPluginGtk4 {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -507,13 +507,13 @@ export namespace GPluginGtk4 {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -532,7 +532,7 @@ export namespace GPluginGtk4 {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -556,7 +556,7 @@ export namespace GPluginGtk4 {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
     }
 
 
@@ -673,7 +673,7 @@ export namespace GPluginGtk4 {
          * This function will set which plugin settings to display.
          * @param settings The plugin settings to display.
          */
-        set_settings(settings: (Gio.Settings | null)): void;
+        set_settings(settings: Gio.Settings | null): void;
 
         /**
          * The orientation of the orientable.

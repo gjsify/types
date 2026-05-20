@@ -52,7 +52,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         static SERVICE_NOT_AVAILABLE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -463,17 +463,17 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
     /**
      * @param count 
      */
-    function services_application_set_badge(count: (bigint | number)): globalThis.Promise<boolean>;
+    function services_application_set_badge(count: bigint | number): globalThis.Promise<boolean>;
     /**
      * @param count 
      * @param _callback_ 
      */
-    function services_application_set_badge(count: (bigint | number), _callback_: (Gio.AsyncReadyCallback<(bigint | number)> | null)): void;
+    function services_application_set_badge(count: bigint | number, _callback_: Gio.AsyncReadyCallback<bigint | number> | null): void;
     /**
      * @param count 
      * @param _callback_ 
      */
-    function services_application_set_badge(count: (bigint | number), _callback_: (Gio.AsyncReadyCallback<(bigint | number)> | null)): (globalThis.Promise<boolean> | void);
+    function services_application_set_badge(count: bigint | number, _callback_: Gio.AsyncReadyCallback<bigint | number> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param _res_ 
@@ -488,12 +488,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @param visible 
      * @param _callback_ 
      */
-    function services_application_set_badge_visible(visible: boolean, _callback_: (Gio.AsyncReadyCallback<boolean> | null)): void;
+    function services_application_set_badge_visible(visible: boolean, _callback_: Gio.AsyncReadyCallback<boolean> | null): void;
     /**
      * @param visible 
      * @param _callback_ 
      */
-    function services_application_set_badge_visible(visible: boolean, _callback_: (Gio.AsyncReadyCallback<boolean> | null)): (globalThis.Promise<boolean> | void);
+    function services_application_set_badge_visible(visible: boolean, _callback_: Gio.AsyncReadyCallback<boolean> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param _res_ 
@@ -508,12 +508,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @param progress 
      * @param _callback_ 
      */
-    function services_application_set_progress(progress: number, _callback_: (Gio.AsyncReadyCallback<number> | null)): void;
+    function services_application_set_progress(progress: number, _callback_: Gio.AsyncReadyCallback<number> | null): void;
     /**
      * @param progress 
      * @param _callback_ 
      */
-    function services_application_set_progress(progress: number, _callback_: (Gio.AsyncReadyCallback<number> | null)): (globalThis.Promise<boolean> | void);
+    function services_application_set_progress(progress: number, _callback_: Gio.AsyncReadyCallback<number> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param _res_ 
@@ -528,12 +528,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @param visible 
      * @param _callback_ 
      */
-    function services_application_set_progress_visible(visible: boolean, _callback_: (Gio.AsyncReadyCallback<boolean> | null)): void;
+    function services_application_set_progress_visible(visible: boolean, _callback_: Gio.AsyncReadyCallback<boolean> | null): void;
     /**
      * @param visible 
      * @param _callback_ 
      */
-    function services_application_set_progress_visible(visible: boolean, _callback_: (Gio.AsyncReadyCallback<boolean> | null)): (globalThis.Promise<boolean> | void);
+    function services_application_set_progress_visible(visible: boolean, _callback_: Gio.AsyncReadyCallback<boolean> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param _res_ 
@@ -546,7 +546,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @param priority 
      * @deprecated since 7.7.0
      */
-    function widgets_utils_set_color_primary(window: Gtk.Widget, color: Gdk.RGBA, priority: number): (Gtk.CssProvider | null);
+    function widgets_utils_set_color_primary(window: Gtk.Widget, color: Gdk.RGBA, priority: number): Gtk.CssProvider | null;
 
     function box_spacing_to_string(): string;
 
@@ -560,13 +560,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
     /**
      * @param accel 
      */
-    function accel_to_string(accel: (string | null)): string;
+    function accel_to_string(accel: string | null): string;
 
     /**
      * @param accels 
      * @param description 
      */
-    function markup_accel_tooltip(accels: (string[] | null), description: (string | null)): string;
+    function markup_accel_tooltip(accels: string[] | null, description: string | null): string;
 
     /**
      * @param bg_color 
@@ -583,9 +583,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -650,13 +648,10 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     namespace ServicesSystem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -835,11 +830,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
             status_type: SettingsPageStatusType;
             statusType: SettingsPageStatusType;
-            display_widget: (Gtk.Widget | null);
+            display_widget: Gtk.Widget | null;
             displayWidget: Gtk.Widget;
-            header: (string | null);
+            header: string | null;
             status: string;
-            icon_name: (string | null);
+            icon_name: string | null;
             iconName: string;
             title: string;
             child: Gtk.Widget;
@@ -863,7 +858,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @construct-only
          */
-        get display_widget(): (Gtk.Widget | null);
+        get display_widget(): Gtk.Widget | null;
 
         /**
          * @construct-only
@@ -873,13 +868,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @construct-only
          */
-        get header(): (string | null);
+        get header(): string | null;
 
         get status(): string;
         set status(val: string);
 
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         get iconName(): string;
         set iconName(val: string);
@@ -925,9 +920,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_status_type(value: SettingsPageStatusType): void;
 
-        get_display_widget(): (Gtk.Widget | null);
+        get_display_widget(): Gtk.Widget | null;
 
-        get_header(): (string | null);
+        get_header(): string | null;
 
         get_status(): string;
 
@@ -936,12 +931,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_status(value: string): void;
 
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @param value 
          */
-        set_icon_name(value: (string | null)): void;
+        set_icon_name(value: string | null): void;
 
         get_title(): string;
 
@@ -1021,7 +1016,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             actionArea: Gtk.Box;
             content_area: Gtk.Grid;
             contentArea: Gtk.Grid;
-            status_switch: (Gtk.Switch | null);
+            status_switch: Gtk.Switch | null;
             statusSwitch: Gtk.Switch;
             activatable: boolean;
             description: string;
@@ -1059,7 +1054,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @construct-only
          */
-        get status_switch(): (Gtk.Switch | null);
+        get status_switch(): Gtk.Switch | null;
 
         /**
          * @construct-only
@@ -1106,7 +1101,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         get_content_area(): Gtk.Grid;
 
-        get_status_switch(): (Gtk.Switch | null);
+        get_status_switch(): Gtk.Switch | null;
 
         get_activatable(): boolean;
 
@@ -1170,7 +1165,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
             action_name: string;
             actionName: string;
-            accel_string: (string | null);
+            accel_string: string | null;
             accelString: string;
             label: string;
         }
@@ -1189,8 +1184,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         get actionName(): string;
         set actionName(val: string);
 
-        get accel_string(): (string | null);
-        set accel_string(val: (string | null));
+        get accel_string(): string | null;
+        set accel_string(val: string | null);
 
         get accelString(): string;
         set accelString(val: string);
@@ -1212,7 +1207,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         _init(...args: any[]): void;
 
-        static ["new"](label: string, accel_string: (string | null)): AccelLabel;
+        static ["new"](label: string, accel_string: string | null): AccelLabel;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -1240,12 +1235,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_action_name(value: string): void;
 
-        get_accel_string(): (string | null);
+        get_accel_string(): string | null;
 
         /**
          * @param value 
          */
-        set_accel_string(value: (string | null)): void;
+        set_accel_string(value: string | null): void;
 
         get_label(): string;
 
@@ -1304,7 +1299,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Button.ConstructorProps {
-            label: (string | any);
+            label: string | any;
         }
     }
 
@@ -1317,9 +1312,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         // Properties
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get label(): (string | any);
+        get label(): string | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set label(val: (string | any));
+        set label(val: string | any);
 
         /**
          * Compile-time signal type information.
@@ -1412,7 +1407,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-            child: (Gtk.Widget | null);
+            child: Gtk.Widget | null;
         }
     }
 
@@ -1424,8 +1419,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         static $gtype: GObject.GType<Bin>;
 
         // Properties
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -1457,12 +1452,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         /**
          * @param value 
          */
-        set_child(value: (Gtk.Widget | null)): void;
+        set_child(value: Gtk.Widget | null): void;
     }
 
 
@@ -1790,9 +1785,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
     }
 
     /**
@@ -1893,11 +1886,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
             label: string;
-            mnemonic_widget: (Gtk.Widget | null);
+            mnemonic_widget: Gtk.Widget | null;
             mnemonicWidget: Gtk.Widget;
             size: HeaderLabelSize;
             ellipsize: Pango.EllipsizeMode;
-            secondary_text: (string | null);
+            secondary_text: string | null;
             secondaryText: string;
         }
     }
@@ -1915,8 +1908,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @since 7.4.0
          */
-        get mnemonic_widget(): (Gtk.Widget | null);
-        set mnemonic_widget(val: (Gtk.Widget | null));
+        get mnemonic_widget(): Gtk.Widget | null;
+        set mnemonic_widget(val: Gtk.Widget | null);
 
         /**
          * @since 7.4.0
@@ -1939,8 +1932,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @since 7.1.0
          */
-        get secondary_text(): (string | null);
-        set secondary_text(val: (string | null));
+        get secondary_text(): string | null;
+        set secondary_text(val: string | null);
 
         /**
          * @since 7.1.0
@@ -1985,12 +1978,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_label(value: string): void;
 
-        get_mnemonic_widget(): (Gtk.Widget | null);
+        get_mnemonic_widget(): Gtk.Widget | null;
 
         /**
          * @param value 
          */
-        set_mnemonic_widget(value: (Gtk.Widget | null)): void;
+        set_mnemonic_widget(value: Gtk.Widget | null): void;
 
         get_size(): HeaderLabelSize;
 
@@ -2012,12 +2005,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_ellipsize(value: Pango.EllipsizeMode): void;
 
-        get_secondary_text(): (string | null);
+        get_secondary_text(): string | null;
 
         /**
          * @param value 
          */
-        set_secondary_text(value: (string | null)): void;
+        set_secondary_text(value: string | null): void;
     }
 
 
@@ -2083,9 +2076,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TextView.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
     }
 
     /**
@@ -2172,9 +2163,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
             text: string;
-            description: (string | null);
-            child: (Gtk.Widget | null);
-            menu_model: (Gio.MenuModel | null);
+            description: string | null;
+            child: Gtk.Widget | null;
+            menu_model: Gio.MenuModel | null;
             menuModel: Gio.MenuModel;
         }
     }
@@ -2190,17 +2181,17 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         get text(): string;
         set text(val: string);
 
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * @since 7.8.0
          */
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
         /**
          * @since 7.8.0
@@ -2245,26 +2236,26 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_text(value: string): void;
 
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * @param value 
          */
-        set_description(value: (string | null)): void;
+        set_description(value: string | null): void;
 
-        get_child(): (Gtk.Widget | null);
-
-        /**
-         * @param value 
-         */
-        set_child(value: (Gtk.Widget | null)): void;
-
-        get_menu_model(): (Gio.MenuModel | null);
+        get_child(): Gtk.Widget | null;
 
         /**
          * @param value 
          */
-        set_menu_model(value: (Gio.MenuModel | null)): void;
+        set_child(value: Gtk.Widget | null): void;
+
+        get_menu_model(): Gio.MenuModel | null;
+
+        /**
+         * @param value 
+         */
+        set_menu_model(value: Gio.MenuModel | null): void;
     }
 
 
@@ -2751,7 +2742,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-            overlay: (Gtk.Overlay | null);
+            overlay: Gtk.Overlay | null;
             label: string;
             active: boolean;
         }
@@ -2767,7 +2758,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @construct-only
          */
-        get overlay(): (Gtk.Overlay | null);
+        get overlay(): Gtk.Overlay | null;
 
         get label(): string;
         set label(val: string);
@@ -2789,7 +2780,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         _init(...args: any[]): void;
 
-        static ["new"](overlay: (Gtk.Overlay | null)): OverlayBar;
+        static ["new"](overlay: Gtk.Overlay | null): OverlayBar;
 
         // Signals
         /** @signal */
@@ -2805,7 +2796,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_overlay(): (Gtk.Overlay | null);
+        get_overlay(): Gtk.Overlay | null;
 
         get_label(): string;
 
@@ -2995,7 +2986,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
             stack: Gtk.Stack;
-            visible_child_name: (string | null);
+            visible_child_name: string | null;
             visibleChildName: string;
         }
     }
@@ -3013,8 +3004,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         get stack(): Gtk.Stack;
 
-        get visible_child_name(): (string | null);
-        set visible_child_name(val: (string | null));
+        get visible_child_name(): string | null;
+        set visible_child_name(val: string | null);
 
         get visibleChildName(): string;
         set visibleChildName(val: string);
@@ -3051,12 +3042,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Methods
         get_stack(): Gtk.Stack;
 
-        get_visible_child_name(): (string | null);
+        get_visible_child_name(): string | null;
 
         /**
          * @param value 
          */
-        set_visible_child_name(value: (string | null)): void;
+        set_visible_child_name(value: string | null): void;
     }
 
 
@@ -3191,7 +3182,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
             text: string;
-            description: (string | null);
+            description: string | null;
         }
     }
 
@@ -3205,8 +3196,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         get text(): string;
         set text(val: string);
 
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3248,12 +3239,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_text(value: string): void;
 
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * @param value 
          */
-        set_description(value: (string | null)): void;
+        set_description(value: string | null): void;
     }
 
 
@@ -3588,7 +3579,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3596,7 +3587,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3624,13 +3615,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3674,7 +3665,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3683,7 +3674,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3741,7 +3732,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3749,13 +3740,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3771,13 +3762,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3902,7 +3893,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         /**
          * @param label 
          */
-        set_default_action(label: (string | null)): void;
+        set_default_action(label: string | null): void;
 
         send_notification(): void;
 
@@ -4454,9 +4445,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ServicesContractNamespace {
@@ -4513,9 +4502,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ServicesSettingsSerializableNamespace {

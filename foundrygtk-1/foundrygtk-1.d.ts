@@ -262,7 +262,7 @@ export namespace FoundryGtk {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_diagnostics(): (Foundry.OnTypeDiagnostics | null);
+        dup_diagnostics(): Foundry.OnTypeDiagnostics | null;
 
         /**
          * @param diagnostics 
@@ -313,9 +313,7 @@ export namespace FoundryGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -404,7 +402,7 @@ export namespace FoundryGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -412,7 +410,7 @@ export namespace FoundryGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -440,13 +438,13 @@ export namespace FoundryGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -490,7 +488,7 @@ export namespace FoundryGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -499,7 +497,7 @@ export namespace FoundryGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -557,7 +555,7 @@ export namespace FoundryGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -565,13 +563,13 @@ export namespace FoundryGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -587,13 +585,13 @@ export namespace FoundryGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -613,7 +611,7 @@ export namespace FoundryGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -623,7 +621,7 @@ export namespace FoundryGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -634,7 +632,7 @@ export namespace FoundryGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -645,7 +643,7 @@ export namespace FoundryGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -654,7 +652,7 @@ export namespace FoundryGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -708,13 +706,10 @@ export namespace FoundryGtk {
 
     namespace MenuManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -793,7 +788,7 @@ export namespace FoundryGtk {
          * @param id the identifier of the menu item
          * @returns a {@link Gio.Menu} if successful; otherwise   `null` and `position` is unset.
          */
-        find_item_by_id(id: string): [(Gio.Menu | null), number];
+        find_item_by_id(id: string): [Gio.Menu | null, number];
 
         /**
          * @param menu_id 
@@ -910,13 +905,10 @@ export namespace FoundryGtk {
 
     namespace ShortcutBundle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -968,7 +960,7 @@ export namespace FoundryGtk {
         /**
          * @param id_to_trigger 
          */
-        override_triggers(id_to_trigger: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        override_triggers(id_to_trigger: { [key: string]: any } | GLib.HashTable<never, never>): void;
 
         /**
          * @param file 
@@ -1014,7 +1006,7 @@ export namespace FoundryGtk {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -1054,7 +1046,7 @@ export namespace FoundryGtk {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1088,9 +1080,7 @@ export namespace FoundryGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Foundry.Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Foundry.Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -1192,7 +1182,7 @@ export namespace FoundryGtk {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -1232,7 +1222,7 @@ export namespace FoundryGtk {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1269,7 +1259,7 @@ export namespace FoundryGtk {
              * @detailed
              * @run-last
              */
-            "accel-changed": (arg0: string, arg1: (string | null)) => void;
+            "accel-changed": (arg0: string, arg1: string | null) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             /**
              * This signal is emitted when an action is determined to have been changed
@@ -1278,8 +1268,8 @@ export namespace FoundryGtk {
              * @detailed
              * @run-last
              */
-            "accel-changed::model": (arg0: string, arg1: (string | null)) => void;
-            [key: `accel-changed::${string}`]: (arg0: string, arg1: (string | null)) => void;
+            "accel-changed::model": (arg0: string, arg1: string | null) => void;
+            [key: `accel-changed::${string}`]: (arg0: string, arg1: string | null) => void;
         }
 
         // Constructor properties interface
@@ -1456,7 +1446,7 @@ export namespace FoundryGtk {
          * 
          * `NULL` indicates to use the default guessed syntax.
          */
-        dup_override_syntax(): (string | null);
+        dup_override_syntax(): string | null;
 
         get_enable_spellcheck(): boolean;
 
@@ -1507,13 +1497,13 @@ export namespace FoundryGtk {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @returns a {@link GLib.Bytes} or `null`
          */
-        dup_contents(): (GLib.Bytes | null);
+        dup_contents(): GLib.Bytes | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
          * such as "c" or "js".
          */
-        dup_language_id(): (string | null);
+        dup_language_id(): string | null;
 
         emit_changed(): void;
 
@@ -1528,7 +1518,7 @@ export namespace FoundryGtk {
          * @param iter 
          * @param offset 
          */
-        get_iter_at_offset(iter: Foundry.TextIter, offset: (bigint | number)): void;
+        get_iter_at_offset(iter: Foundry.TextIter, offset: bigint | number): void;
 
         /**
          * @param args 
@@ -1580,14 +1570,14 @@ export namespace FoundryGtk {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @virtual
          */
-        vfunc_dup_contents(): (GLib.Bytes | null);
+        vfunc_dup_contents(): GLib.Bytes | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
          * such as "c" or "js".
          * @virtual
          */
-        vfunc_dup_language_id(): (string | null);
+        vfunc_dup_language_id(): string | null;
 
         /**
          * Gets the number of changes that have occurred to `buffer`.
@@ -1595,7 +1585,7 @@ export namespace FoundryGtk {
          * This is generally just a monotonic number.
          * @virtual
          */
-        vfunc_get_change_count(): (bigint | number);
+        vfunc_get_change_count(): bigint | number;
 
         /**
          * @param iter 
@@ -1723,8 +1713,8 @@ export namespace FoundryGtk {
             showLineChanges: boolean;
             show_line_changes_overview: boolean;
             showLineChangesOverview: boolean;
-            vim_im_context: (Gtk.IMContext | null);
-            vimImContext: (Gtk.IMContext | null);
+            vim_im_context: Gtk.IMContext | null;
+            vimImContext: Gtk.IMContext | null;
         }
     }
 
@@ -1841,13 +1831,13 @@ export namespace FoundryGtk {
          * Gets the IM context used for vim emulation.
          * @read-only
          */
-        get vim_im_context(): (Gtk.IMContext | null);
+        get vim_im_context(): Gtk.IMContext | null;
 
         /**
          * Gets the IM context used for vim emulation.
          * @read-only
          */
-        get vimImContext(): (Gtk.IMContext | null);
+        get vimImContext(): Gtk.IMContext | null;
 
         /**
          * Compile-time signal type information.
@@ -1890,9 +1880,9 @@ export namespace FoundryGtk {
         /**
          * @returns the {@link Foundry.Context} of the document
          */
-        dup_context(): (Foundry.Context | null);
+        dup_context(): Foundry.Context | null;
 
-        dup_document(): (Foundry.TextDocument | null);
+        dup_document(): Foundry.TextDocument | null;
 
         dup_font(): Pango.FontDescription;
 
@@ -1911,7 +1901,7 @@ export namespace FoundryGtk {
         /**
          * This may return `null` when Vim emulation is not in use.
          */
-        get_vim_im_context(): (Gtk.IMContext | null);
+        get_vim_im_context(): Gtk.IMContext | null;
 
         /**
          * @param line 
@@ -2047,7 +2037,7 @@ export namespace FoundryGtk {
          * This will always be `null` before load has been called and after
          * unload has been called.
          */
-        get_view(): (SourceView | null);
+        get_view(): SourceView | null;
     }
 
 
@@ -2099,7 +2089,7 @@ export namespace FoundryGtk {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.AccessibleText.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-            palette: (TerminalPalette | null);
+            palette: TerminalPalette | null;
         }
     }
 
@@ -2110,8 +2100,8 @@ export namespace FoundryGtk {
         static $gtype: GObject.GType<Terminal>;
 
         // Properties
-        get palette(): (TerminalPalette | null);
-        set palette(val: (TerminalPalette | null));
+        get palette(): TerminalPalette | null;
+        set palette(val: TerminalPalette | null);
 
         /**
          * Compile-time signal type information.
@@ -2155,7 +2145,7 @@ export namespace FoundryGtk {
         static list_palette_sets(): Dex.Future;
 
         // Methods
-        get_palette(): (TerminalPalette | null);
+        get_palette(): TerminalPalette | null;
 
         /**
          * @param palette 
@@ -2188,8 +2178,8 @@ export namespace FoundryGtk {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get hadjustment(): (Gtk.Adjustment | null);
-        set hadjustment(val: (Gtk.Adjustment | null));
+        get hadjustment(): Gtk.Adjustment | null;
+        set hadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when horizontal scrolling should start.
@@ -2213,8 +2203,8 @@ export namespace FoundryGtk {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get vadjustment(): (Gtk.Adjustment | null);
-        set vadjustment(val: (Gtk.Adjustment | null));
+        get vadjustment(): Gtk.Adjustment | null;
+        set vadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when vertical scrolling should start.
@@ -2257,7 +2247,7 @@ export namespace FoundryGtk {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2265,7 +2255,7 @@ export namespace FoundryGtk {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2293,13 +2283,13 @@ export namespace FoundryGtk {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2343,7 +2333,7 @@ export namespace FoundryGtk {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2352,7 +2342,7 @@ export namespace FoundryGtk {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2410,7 +2400,7 @@ export namespace FoundryGtk {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2418,13 +2408,13 @@ export namespace FoundryGtk {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2440,13 +2430,13 @@ export namespace FoundryGtk {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2532,7 +2522,7 @@ export namespace FoundryGtk {
          * @param end the end of the range, in characters
          * @virtual
          */
-        vfunc_get_contents(start: number, end: number): (GLib.Bytes | Uint8Array);
+        vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
 
         /**
          * Retrieve the current contents of the accessible object starting
@@ -2543,7 +2533,7 @@ export namespace FoundryGtk {
          * @param granularity the granularity of the query
          * @virtual
          */
-        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [(GLib.Bytes | Uint8Array), number, number];
+        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes | Uint8Array, number, number];
 
         /**
          * Retrieves the default text attributes inside the accessible object.
@@ -2610,7 +2600,7 @@ export namespace FoundryGtk {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2620,7 +2610,7 @@ export namespace FoundryGtk {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2631,7 +2621,7 @@ export namespace FoundryGtk {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2642,7 +2632,7 @@ export namespace FoundryGtk {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2651,7 +2641,7 @@ export namespace FoundryGtk {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2716,7 +2706,7 @@ export namespace FoundryGtk {
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
-        get_hadjustment(): (Gtk.Adjustment | null);
+        get_hadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
@@ -2728,7 +2718,7 @@ export namespace FoundryGtk {
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
-        get_vadjustment(): (Gtk.Adjustment | null);
+        get_vadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
@@ -2740,7 +2730,7 @@ export namespace FoundryGtk {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -2755,7 +2745,7 @@ export namespace FoundryGtk {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -2902,7 +2892,7 @@ export namespace FoundryGtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](bytes: (GLib.Bytes | Uint8Array)): TerminalPaletteSet;
+        static ["new"](bytes: GLib.Bytes | Uint8Array): TerminalPaletteSet;
 
         // Signals
         /** @signal */
@@ -2979,7 +2969,7 @@ export namespace FoundryGtk {
         /**
          * @returns a {@link GLib.Variant} or `null`
          */
-        get_action_target(): (GLib.Variant | null);
+        get_action_target(): GLib.Variant | null;
 
         get_group(): string;
 
@@ -3062,9 +3052,7 @@ export namespace FoundryGtk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Foundry.Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Foundry.Contextual.ConstructorProps {}
     }
 
     export interface ShortcutProviderNamespace {

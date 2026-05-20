@@ -57,7 +57,7 @@ export namespace GtkClutter {
      * @param argv pointer to the   arguments vector, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      */
-    function init(argv: (string[] | null)): [Clutter.InitError, string[] | null];
+    function init(argv: string[] | null): [Clutter.InitError, string[] | null];
 
     /**
      * This function should be called instead of `clutter_init()` and
@@ -68,7 +68,7 @@ export namespace GtkClutter {
      * @param translation_domain a translation domain to use for    translating the <option>--help</option> output for the options    in `entries` with `gettext()`, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      */
-    function init_with_args(argv: (string[] | null), parameter_string: (string | null), entries: (GLib.OptionEntry[] | null), translation_domain: (string | null)): [Clutter.InitError, string[] | null];
+    function init_with_args(argv: string[] | null, parameter_string: string | null, entries: GLib.OptionEntry[] | null, translation_domain: string | null): [Clutter.InitError, string[] | null];
 
     namespace Actor {
         // Signal signatures
@@ -251,7 +251,7 @@ export namespace GtkClutter {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -265,7 +265,7 @@ export namespace GtkClutter {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -289,7 +289,7 @@ export namespace GtkClutter {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -375,7 +375,7 @@ export namespace GtkClutter {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -392,7 +392,7 @@ export namespace GtkClutter {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -475,7 +475,7 @@ export namespace GtkClutter {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -486,7 +486,7 @@ export namespace GtkClutter {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -615,7 +615,7 @@ export namespace GtkClutter {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -627,7 +627,7 @@ export namespace GtkClutter {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -665,7 +665,7 @@ export namespace GtkClutter {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -674,7 +674,7 @@ export namespace GtkClutter {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -976,9 +976,7 @@ export namespace GtkClutter {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.Texture.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.Texture.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -1031,7 +1029,7 @@ export namespace GtkClutter {
          * @param icon_size the icon size or -1
          * @returns `true` on success, `false` on failure
          */
-        set_from_icon_name(widget: (Gtk.Widget | null), icon_name: string, icon_size: Gtk.IconSize): boolean;
+        set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize): boolean;
 
         /**
          * Sets the contents of `texture` with a copy of `pixbuf`.
@@ -1133,9 +1131,7 @@ export namespace GtkClutter {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**

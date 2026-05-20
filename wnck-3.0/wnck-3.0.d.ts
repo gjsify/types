@@ -361,7 +361,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application with process ID `pid`.
      * @since 2.6
      */
-    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: (bigint | number), usage: ResourceUsage): void;
+    function pid_read_resource_usage(gdk_display: Gdk.Display, pid: bigint | number, usage: ResourceUsage): void;
 
     /**
      * Sets the role of the libwnck user.
@@ -386,7 +386,7 @@ export namespace Wnck {
      * @param size the default size for windows and application standard icons.
      * @since 2.4.6
      */
-    function set_default_icon_size(size: (bigint | number)): void;
+    function set_default_icon_size(size: bigint | number): void;
 
     /**
      * The default main icon size is `WNCK_DEFAULT_MINI_ICON_SIZE`. This function
@@ -394,7 +394,7 @@ export namespace Wnck {
      * @param size the default size for windows and application mini icons.
      * @since 2.4.6
      */
-    function set_default_mini_icon_size(size: (bigint | number)): void;
+    function set_default_mini_icon_size(size: bigint | number): void;
 
     /**
      * Makes libwnck stop listening to events and tear down all resources from
@@ -424,7 +424,7 @@ export namespace Wnck {
      * @param usage return location for the X resource usage of the application owning the X window ID `xid`.
      * @since 2.6
      */
-    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: (bigint | number), usage: ResourceUsage): void;
+    function xid_read_resource_usage(gdk_display: Gdk.Display, xid: bigint | number, usage: ResourceUsage): void;
 
     /**
      * @gir-type Flags
@@ -693,7 +693,7 @@ export namespace Wnck {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            window: (never | any);
+            window: never | any;
         }
     }
 
@@ -710,7 +710,7 @@ export namespace Wnck {
          * @construct-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get window(): (null | any);
+        get window(): any | null;
 
         /**
          * Compile-time signal type information.
@@ -764,9 +764,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -810,7 +808,7 @@ export namespace Wnck {
          * as X window ID.
          * @param xwindow the X window ID of a group leader.
          */
-        static get(xwindow: (bigint | number)): Application;
+        static get(xwindow: bigint | number): Application;
 
         // Virtual methods
         /**
@@ -916,9 +914,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1096,7 +1092,7 @@ export namespace Wnck {
          * @param xwindow the X window ID of a group leader.
          * @returns the {@link Wnck.Application} corresponding to `xwindow`, or `null` if there no such {@link Wnck.Application} could be found. The returned {@link Wnck.Application} is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_application(xwindow: (bigint | number)): Application;
+        get_application(xwindow: bigint | number): Application;
 
         /**
          * Gets the {@link Wnck.ClassGroup} corresponding to `id`.
@@ -1109,7 +1105,7 @@ export namespace Wnck {
          * Gets the default {@link Wnck.Screen} on the default display.
          * @returns the default {@link Wnck.Screen}. The returned {@link Wnck.Screen} is owned by {@link Wnck.Handle} and must not be referenced or unreferenced. This can return `null` if not on X11.
          */
-        get_default_screen(): (Screen | null);
+        get_default_screen(): Screen | null;
 
         /**
          * Gets the {@link Wnck.Screen} for a given screen on the default display.
@@ -1127,7 +1123,7 @@ export namespace Wnck {
          * @param root_window_id an X window ID.
          * @returns the {@link Wnck.Screen} for the root window at `root_window_id`, or `null`. The returned {@link Wnck.Screen} is owned by {@link Wnck.Handle} and must not be referenced or unreferenced.
          */
-        get_screen_for_root(root_window_id: (bigint | number)): Screen;
+        get_screen_for_root(root_window_id: bigint | number): Screen;
 
         /**
          * Gets a preexisting {@link Wnck.Window} for the X window `xwindow`. This will not
@@ -1136,21 +1132,21 @@ export namespace Wnck {
          * @param xwindow an X window ID.
          * @returns the {@link Wnck.Window} for `xwindow`. The returned {@link Wnck.Window} is owned by libwnck and must not be referenced or unreferenced.
          */
-        get_window(xwindow: (bigint | number)): Window;
+        get_window(xwindow: bigint | number): Window;
 
         /**
          * The default main icon size is `WNCK_DEFAULT_ICON_SIZE`. This function allows
          * to change this value.
          * @param icon_size the default size for windows and application standard icons.
          */
-        set_default_icon_size(icon_size: (bigint | number)): void;
+        set_default_icon_size(icon_size: bigint | number): void;
 
         /**
          * The default main icon size is `WNCK_DEFAULT_MINI_ICON_SIZE`. This function
          * allows to change this value.
          * @param icon_size the default size for windows and application mini icons.
          */
-        set_default_mini_icon_size(icon_size: (bigint | number)): void;
+        set_default_mini_icon_size(icon_size: bigint | number): void;
     }
 
 
@@ -1211,9 +1207,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.MenuItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.MenuItem.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1272,15 +1266,15 @@ export namespace Wnck {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -1360,7 +1354,7 @@ export namespace Wnck {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1384,7 +1378,7 @@ export namespace Wnck {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1408,7 +1402,7 @@ export namespace Wnck {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -1432,7 +1426,7 @@ export namespace Wnck {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1457,7 +1451,7 @@ export namespace Wnck {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1482,7 +1476,7 @@ export namespace Wnck {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1546,7 +1540,7 @@ export namespace Wnck {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1556,7 +1550,7 @@ export namespace Wnck {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1626,7 +1620,7 @@ export namespace Wnck {
          * @param accel_path path used to look up the accelerator
          * @param accel_group a {@link Gtk.AccelGroup}.
          */
-        set_accel_path(accel_path: (string | null), accel_group: (Gtk.AccelGroup | null)): void;
+        set_accel_path(accel_path: string | null, accel_group: Gtk.AccelGroup | null): void;
 
         /**
          * @param args 
@@ -1822,7 +1816,7 @@ export namespace Wnck {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1843,7 +1837,7 @@ export namespace Wnck {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1853,7 +1847,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1862,7 +1856,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1898,7 +1892,7 @@ export namespace Wnck {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -1914,7 +1908,7 @@ export namespace Wnck {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1936,7 +1930,7 @@ export namespace Wnck {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1947,7 +1941,7 @@ export namespace Wnck {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1956,7 +1950,7 @@ export namespace Wnck {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2107,9 +2101,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2164,7 +2156,7 @@ export namespace Wnck {
         /**
          * Gets the default {@link Wnck.Screen} on the default display.
          */
-        static get_default(): (Screen | null);
+        static get_default(): Screen | null;
 
         /**
          * Gets the {@link Wnck.Screen} for the root window at `root_window_id`, or
@@ -2174,7 +2166,7 @@ export namespace Wnck {
          * sought {@link Wnck.Screen} before, and returns `null`.
          * @param root_window_id an X window ID.
          */
-        static get_for_root(root_window_id: (bigint | number)): Screen;
+        static get_for_root(root_window_id: bigint | number): Screen;
 
         // Virtual methods
         /**
@@ -2852,9 +2844,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2899,7 +2889,7 @@ export namespace Wnck {
          * window IDs.
          * @param xwindow an X window ID.
          */
-        static get(xwindow: (bigint | number)): Window;
+        static get(xwindow: bigint | number): Window;
 
         // Virtual methods
         /**
@@ -3572,9 +3562,7 @@ export namespace Wnck {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

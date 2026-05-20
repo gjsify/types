@@ -122,9 +122,7 @@ export namespace DbusmenuGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dbusmenu.Client.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dbusmenu.Client.ConstructorProps {}
     }
 
     /**

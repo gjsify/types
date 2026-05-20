@@ -676,7 +676,7 @@ export namespace Gladeui {
      * `null` to remove all paths.
      * @param path the new path containing catalogs or `null` to remove all of them
      */
-    function catalog_remove_path(path: (string | null)): void;
+    function catalog_remove_path(path: string | null): void;
 
     function cursor_get_add_widget_pixbuf(): GdkPixbuf.Pixbuf;
 
@@ -773,7 +773,7 @@ export namespace Gladeui {
      * @param domain the domain to translate catalog strings from
      * @returns `true` on success. `property_def_ref` is set to NULL if the property          has Disabled="TRUE".
      */
-    function property_def_update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: (PropertyDef | null), domain: string): [boolean, PropertyDef | null];
+    function property_def_update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string): [boolean, PropertyDef | null];
 
     /**
      * @param type 
@@ -1099,7 +1099,7 @@ export namespace Gladeui {
      * @param funcname the symbol name of a function to generate a {@link GObject.ParamSpec}
      * @returns A {@link GObject.ParamSpec} created by the delegate function          specified by `funcname`
      */
-    function utils_get_pspec_from_funcname(funcname: string): (GObject.ParamSpec | null);
+    function utils_get_pspec_from_funcname(funcname: string): GObject.ParamSpec | null;
 
     /**
      * This function is meant to be attached to key-press-event of a toplevel,
@@ -1144,7 +1144,7 @@ export namespace Gladeui {
      * @param value a {@link GObject.Value} to convert
      * @returns A newly allocated string
      */
-    function utils_string_from_value(value: (GObject.Value | any)): string;
+    function utils_string_from_value(value: GObject.Value | any): string;
 
     /**
      * Allocates and sets a {@link GObject.Value} of type `type`
@@ -1281,7 +1281,7 @@ export namespace Gladeui {
      * @param name the name of the child
      * @returns the requested {@link Gladeui.XmlNode}
      */
-    function xml_search_child_required(tree: XmlNode, name: string): (XmlNode | null);
+    function xml_search_child_required(tree: XmlNode, name: string): XmlNode | null;
 
     /**
      * Sets the content of `node` to `content`.
@@ -1309,7 +1309,7 @@ export namespace Gladeui {
      * @gir-type Callback
      */
     interface ActionSubmenuFunc<A = GObject.Object> {
-        (adaptor: WidgetAdaptor, object: A, action_path: string): (Gtk.Widget | null);
+        (adaptor: WidgetAdaptor, object: A, action_path: string): Gtk.Widget | null;
     }
 
     /**
@@ -1407,7 +1407,7 @@ export namespace Gladeui {
      * @gir-type Callback
      */
     interface GetInternalFunc<A = GObject.Object> {
-        (adaptor: WidgetAdaptor, object: A, internal_name: string): (GObject.Object | null);
+        (adaptor: WidgetAdaptor, object: A, internal_name: string): GObject.Object | null;
     }
 
     /**
@@ -1476,7 +1476,7 @@ export namespace Gladeui {
     /**
      * @gir-type Alias
      */
-    type GList = (object | null);
+    type GList = object | null;
 
     /**
      * @gir-type Flags
@@ -1720,9 +1720,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1787,7 +1785,7 @@ export namespace Gladeui {
         /**
          * @param name the name of the catalog
          */
-        static get_catalog(name: string): (Catalog | null);
+        static get_catalog(name: string): Catalog | null;
 
         /**
          * @param name the name of the {@link Gladeui.Catalog}
@@ -1814,7 +1812,7 @@ export namespace Gladeui {
          * Finds an open project with `path`
          * @param project_path The path of an open project
          */
-        static get_project_by_path(project_path: string): (Project | null);
+        static get_project_by_path(project_path: string): Project | null;
 
         static get_projects(): Catalog[];
 
@@ -1863,12 +1861,12 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "build-child": (arg0: GObject.Object, arg1: GObject.GType) => (GObject.Object | null);
+            "build-child": (arg0: GObject.Object, arg1: GObject.GType) => GObject.Object | null;
             /**
              * @signal
              * @run-last
              */
-            "change-type": (arg0: GObject.Object, arg1: GObject.GType) => (boolean | void);
+            "change-type": (arg0: GObject.Object, arg1: GObject.GType) => boolean | void;
             /**
              * Emitted when the user selects a child in the editor's treeview.
              * You can add the relevant child properties here using
@@ -1883,7 +1881,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "delete-child": (arg0: GObject.Object, arg1: GObject.Object) => (boolean | void);
+            "delete-child": (arg0: GObject.Object, arg1: GObject.Object) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -1894,7 +1892,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "move-child": (arg0: GObject.Object, arg1: GObject.Object) => (boolean | void);
+            "move-child": (arg0: GObject.Object, arg1: GObject.Object) => boolean | void;
             "notify::container": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -1946,7 +1944,7 @@ export namespace Gladeui {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            container: (GObject.Object | any);
+            container: GObject.Object | any;
         }
     }
 
@@ -2296,13 +2294,10 @@ export namespace Gladeui {
 
     namespace Command {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2376,7 +2371,7 @@ export namespace Gladeui {
          * @param placeholder the placeholder which will be substituted by the widget
          * @param project the project his widget belongs to.
          */
-        static create(adaptor: WidgetAdaptor, parent: (Widget | null), placeholder: (Placeholder | null), project: Project): Widget;
+        static create(adaptor: WidgetAdaptor, parent: Widget | null, placeholder: Placeholder | null, project: Project): Widget;
 
         /**
          * Removes the list of widgets and adds them to the clipboard.
@@ -2398,7 +2393,7 @@ export namespace Gladeui {
          * @param parent a {@link Gladeui.Widget}
          * @param placeholder a {@link Gladeui.Placeholder}
          */
-        static dnd(widgets: Widget[], parent: (Widget | null), placeholder: (Placeholder | null)): void;
+        static dnd(widgets: Widget[], parent: Widget | null, placeholder: Placeholder | null): void;
 
         static get_group_depth(): number;
 
@@ -2420,7 +2415,7 @@ export namespace Gladeui {
          * @param placeholder a {@link Gladeui.Placeholder}
          * @param project a {@link Gladeui.Project}
          */
-        static paste(widgets: Widget[], parent: (Widget | null), placeholder: (Placeholder | null), project: Project): void;
+        static paste(widgets: Widget[], parent: Widget | null, placeholder: Placeholder | null, project: Project): void;
 
         /**
          * Mark the end of a command group.
@@ -2505,7 +2500,7 @@ export namespace Gladeui {
          * @param property 
          * @param value 
          */
-        static set_property_value(property: Property, value: (GObject.Value | any)): void;
+        static set_property_value(property: Property, value: GObject.Value | any): void;
 
         /**
          * Unlocks `widget` so that it can be removed
@@ -2683,7 +2678,7 @@ export namespace Gladeui {
         /**
          * @param project A {@link Gladeui.Project}
          */
-        static get_from_project(project: Project): (DesignView | null);
+        static get_from_project(project: Project): DesignView | null;
 
         // Methods
         /**
@@ -2769,9 +2764,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2826,7 +2819,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -2881,7 +2874,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -2964,9 +2957,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3021,7 +3012,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -3076,7 +3067,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -3159,9 +3150,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3216,7 +3205,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -3271,7 +3260,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -3354,9 +3343,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3411,7 +3398,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -3466,7 +3453,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -3549,9 +3536,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3606,7 +3591,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -3661,7 +3646,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -3744,9 +3729,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3801,7 +3784,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -3856,7 +3839,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -3939,9 +3922,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3996,7 +3977,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -4051,7 +4032,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -4134,9 +4115,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -4191,7 +4170,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -4246,7 +4225,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -4329,9 +4308,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -4386,7 +4363,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -4441,7 +4418,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -4524,9 +4501,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -4581,7 +4556,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -4636,7 +4611,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -4719,9 +4694,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EditorProperty.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -4776,7 +4749,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -4831,7 +4804,7 @@ export namespace Gladeui {
          * @param property_name The name of the property to get
          * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
          */
-        get_property(property_name: string, value: (GObject.Value | any)): any;
+        get_property(property_name: string, value: GObject.Value | any): any;
 
         /**
          * @param args 
@@ -4928,7 +4901,7 @@ export namespace Gladeui {
             showInfo: boolean;
             signal_editor: SignalEditor;
             signalEditor: SignalEditor;
-            widget: (Widget | any);
+            widget: Widget | any;
         }
     }
 
@@ -5306,12 +5279,12 @@ export namespace Gladeui {
          * Commits `value` to the property currently being edited by `eprop`.
          * @param value The {@link GObject.Value} to commit
          */
-        commit(value: (GObject.Value | any)): void;
+        commit(value: GObject.Value | any): void;
 
         /**
          * @param value 
          */
-        commit_no_callback(value: (GObject.Value | any)): void;
+        commit_no_callback(value: GObject.Value | any): void;
 
         get_custom_text(): string;
 
@@ -5385,7 +5358,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         /**
          * This only applies for the general page in the property
@@ -5492,9 +5465,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Editable.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -5560,7 +5531,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -5760,7 +5731,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -6092,9 +6063,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -6444,9 +6413,7 @@ export namespace Gladeui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -6491,7 +6458,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Project}
          */
-        get_parent(): (Widget | null);
+        get_parent(): Widget | null;
 
         /**
          * @param args 
@@ -6502,7 +6469,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Project}
          */
-        get_project(): (Project | null);
+        get_project(): Project | null;
 
         /**
          * @returns a list of {@link Gladeui.WidgetAction}
@@ -6574,7 +6541,7 @@ export namespace Gladeui {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -6595,7 +6562,7 @@ export namespace Gladeui {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6605,7 +6572,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6614,7 +6581,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6650,7 +6617,7 @@ export namespace Gladeui {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -6666,7 +6633,7 @@ export namespace Gladeui {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -6688,7 +6655,7 @@ export namespace Gladeui {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -6699,7 +6666,7 @@ export namespace Gladeui {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -6708,7 +6675,7 @@ export namespace Gladeui {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -6793,7 +6760,7 @@ export namespace Gladeui {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -6807,7 +6774,7 @@ export namespace Gladeui {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -7099,7 +7066,7 @@ export namespace Gladeui {
          * Opens a project at the given path.
          * @param path the path of the project to load
          */
-        static load(path: string): (Project | null);
+        static load(path: string): Project | null;
 
         /**
          * @param property 
@@ -7323,7 +7290,7 @@ export namespace Gladeui {
          * @param name The user visible name of the widget we are looking for
          * @returns a pointer to the widget, `null` if the widget does not exist
          */
-        get_widget_by_name(name: string): (Widget | null);
+        get_widget_by_name(name: string): Widget | null;
 
         /**
          * @param object the {@link GObject.Object} to search
@@ -7657,7 +7624,7 @@ export namespace Gladeui {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -7748,7 +7715,7 @@ export namespace Gladeui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -7765,7 +7732,7 @@ export namespace Gladeui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -7789,7 +7756,7 @@ export namespace Gladeui {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -7883,7 +7850,7 @@ export namespace Gladeui {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -7961,7 +7928,7 @@ export namespace Gladeui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -7978,7 +7945,7 @@ export namespace Gladeui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -8002,7 +7969,7 @@ export namespace Gladeui {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -8233,7 +8200,7 @@ export namespace Gladeui {
 
         _init(...args: any[]): void;
 
-        static ["new"](def: PropertyDef, widget: Widget, value: (GObject.Value | any)): Property;
+        static ["new"](def: PropertyDef, widget: Widget, value: GObject.Value | any): Property;
 
         // Signals
         /** @signal */
@@ -8334,7 +8301,7 @@ export namespace Gladeui {
          * @param value a {@link GObject.Value}
          * @returns Whether this property is equal to the value provided
          */
-        equals_value(value: (GObject.Value | any)): boolean;
+        equals_value(value: GObject.Value | any): boolean;
 
         /**
          * Get the {@link Gladeui.PropertyDef} this property was created for.
@@ -8346,7 +8313,7 @@ export namespace Gladeui {
          * Retrieve the default property value
          * @param value a {@link GObject.Value}
          */
-        get_default(value: (GObject.Value | any)): void;
+        get_default(value: GObject.Value | any): void;
 
         get_enabled(): boolean;
 
@@ -8365,7 +8332,7 @@ export namespace Gladeui {
          * Retrieve the property value
          * @param value a {@link GObject.Value}
          */
-        get_value(value: (GObject.Value | any)): void;
+        get_value(value: GObject.Value | any): void;
 
         /**
          * @returns a {@link Gladeui.Widget}
@@ -8469,7 +8436,7 @@ export namespace Gladeui {
          * @param value a {@link GObject.Value}
          * @returns Whether the property was successfully set.
          */
-        set_value(value: (GObject.Value | any)): boolean;
+        set_value(value: GObject.Value | any): boolean;
 
         /**
          * @param widget a {@link Gladeui.Widget}
@@ -8726,7 +8693,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -9027,7 +8994,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 
@@ -9543,7 +9510,7 @@ export namespace Gladeui {
          * @param widget The {@link Gladeui.Widget} the signals belong to
          * @param signals The signals of the {@link Gladeui.Widget}
          */
-        static ["new"](widget: Widget, signals: ({ [key: string]: any } | GLib.HashTable<never, never>)): Gtk.TreeModel;
+        static ["new"](widget: Widget, signals: { [key: string]: any } | GLib.HashTable<never, never>): Gtk.TreeModel;
 
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
@@ -9613,7 +9580,7 @@ export namespace Gladeui {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -9713,7 +9680,7 @@ export namespace Gladeui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -9730,7 +9697,7 @@ export namespace Gladeui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -9754,7 +9721,7 @@ export namespace Gladeui {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -9848,7 +9815,7 @@ export namespace Gladeui {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -9926,7 +9893,7 @@ export namespace Gladeui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -9943,7 +9910,7 @@ export namespace Gladeui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -9967,7 +9934,7 @@ export namespace Gladeui {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -10085,12 +10052,12 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "button-press-event": (arg0: Gdk.Event) => (boolean | void);
+            "button-press-event": (arg0: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "button-release-event": (arg0: Gdk.Event) => (boolean | void);
+            "button-release-event": (arg0: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -10100,7 +10067,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "motion-notify-event": (arg0: Gdk.Event) => (boolean | void);
+            "motion-notify-event": (arg0: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -10347,7 +10314,7 @@ export namespace Gladeui {
          * @param node a {@link Gladeui.XmlNode}
          * @param internal the name of an internal child name
          */
-        static read(project: Project, parent: (Widget | null), node: XmlNode, internal: (string | null)): Widget;
+        static read(project: Project, parent: Widget | null, node: XmlNode, internal: string | null): Widget;
 
         /**
          * Checks if we are in superuser mode.
@@ -10493,7 +10460,7 @@ export namespace Gladeui {
          * @param property_name The id of the property
          * @param value The `GValue`
          */
-        child_get_property(child: Widget, property_name: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Widget, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `child`'s packing property identified by `property_name` to `value`.
@@ -10501,7 +10468,7 @@ export namespace Gladeui {
          * @param property_name The id of the property
          * @param value The `GValue`
          */
-        child_set_property(child: Widget, property_name: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Widget, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Sets properties in `widget` based on the values of
@@ -10580,7 +10547,7 @@ export namespace Gladeui {
          * @param name child name
          * @returns The child of widget or `null` if it was not found.
          */
-        find_child(name: string): (Widget | null);
+        find_child(name: string): Widget | null;
 
         /**
          * Creates a user friendly name to describe project widgets
@@ -10593,7 +10560,7 @@ export namespace Gladeui {
          * @param action_path a full action path including groups
          * @returns the action or `null` if not found.
          */
-        get_action(action_path: string): (WidgetAction | null);
+        get_action(action_path: string): WidgetAction | null;
 
         /**
          * @returns the list of {@link Gladeui.WidgetAction}
@@ -10633,7 +10600,7 @@ export namespace Gladeui {
          * be removed from the project until unlocked
          * @returns a {@link Gladeui.Widget} or `null` if none is locked
          */
-        get_locker(): (Widget | null);
+        get_locker(): Widget | null;
 
         /**
          * @returns a pointer to `widget`'s name This is what will be serialized as the widget's ID, unless the name currently carries the `GLADE_UNNAMED_PREFIX`.
@@ -10650,7 +10617,7 @@ export namespace Gladeui {
          * @param action_path a full action path including groups
          * @returns the action or `null` if not found.
          */
-        get_pack_action(action_path: string): (WidgetAction | null);
+        get_pack_action(action_path: string): WidgetAction | null;
 
         /**
          * @returns the list of {@link Gladeui.WidgetAction}
@@ -10661,7 +10628,7 @@ export namespace Gladeui {
          * @param id_property a string naming a {@link Gladeui.Property}
          * @returns the {@link Gladeui.Property} in `widget` named `id_property`
          */
-        get_pack_property(id_property: string): (Property | null);
+        get_pack_property(id_property: string): Property | null;
 
         /**
          * @returns the list of {@link Gladeui.Property}
@@ -10697,7 +10664,7 @@ export namespace Gladeui {
          * @param id_property a string naming a {@link Gladeui.Property}
          * @returns the {@link Gladeui.Property} in `widget` named `id_property`
          */
-        get_property(id_property: string): (Property | null);
+        get_property(id_property: string): Property | null;
 
         /**
          * @param args 
@@ -10779,7 +10746,7 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The {@link GObject.Value}
          */
-        object_get_property(property_name: string, value: (GObject.Value | any)): void;
+        object_get_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function applies `value` to the property `property_name` on
@@ -10787,7 +10754,7 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The {@link GObject.Value}
          */
-        object_set_property(property_name: string, value: (GObject.Value | any)): void;
+        object_set_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * @param id_property a string naming a {@link Gladeui.Property}
@@ -10839,7 +10806,7 @@ export namespace Gladeui {
          * @param value the {@link GObject.Value} to print or `null`
          * @returns A newly allocated string representing `id_property`
          */
-        pack_property_string(id_property: string, value: (GObject.Value | any)): string;
+        pack_property_string(id_property: string, value: GObject.Value | any): string;
 
         /**
          * Returns whether placeholders should be used
@@ -10912,7 +10879,7 @@ export namespace Gladeui {
          * @param value the {@link GObject.Value} to print or `null`
          * @returns A newly allocated string representing `id_property`
          */
-        property_string(id_property: string, value: (GObject.Value | any)): string;
+        property_string(id_property: string, value: GObject.Value | any): string;
 
         /**
          * Reads in a child widget from the xml (handles 'child' tag)
@@ -11046,7 +11013,7 @@ export namespace Gladeui {
          * sets the parenting {@link Gladeui.Widget}
          * @param parent the parenting {@link Gladeui.Widget} (or `null`)
          */
-        set_parent(parent: (Widget | null)): void;
+        set_parent(parent: Widget | null): void;
 
         /**
          * Makes `widget` belong to `project`.
@@ -11372,12 +11339,12 @@ export namespace Gladeui {
         /**
          * @param name name of the widget class (for instance: GtkButton)
          */
-        static get_by_name(name: string): (WidgetAdaptor | null);
+        static get_by_name(name: string): WidgetAdaptor | null;
 
         /**
          * @param type the {@link GObject.GType} of an object class
          */
-        static get_by_type(type: GObject.GType): (WidgetAdaptor | null);
+        static get_by_type(type: GObject.GType): WidgetAdaptor | null;
 
         /**
          * Compiles a list of all registered adaptors.
@@ -11400,7 +11367,7 @@ export namespace Gladeui {
          * @param action_path The action identifier in the action tree
          * @virtual
          */
-        vfunc_action_submenu(object: GObject.Object, action_path: string): (Gtk.Widget | null);
+        vfunc_action_submenu(object: GObject.Object, action_path: string): Gtk.Widget | null;
 
         /**
          * Adds `child` to `container`.
@@ -11697,7 +11664,7 @@ export namespace Gladeui {
          * @param action_path The action identifier in the action tree
          * @returns A newly created {@link Gtk.Menu} or `null`
          */
-        action_submenu(object: GObject.Object, action_path: string): (Gtk.Widget | null);
+        action_submenu(object: GObject.Object, action_path: string): Gtk.Widget | null;
 
         /**
          * Create a list of actions.
@@ -11740,7 +11707,7 @@ export namespace Gladeui {
          * @param property_name The id of the property
          * @param value The `GValue`
          */
-        child_get_property(container: GObject.Object, child: GObject.Object, property_name: string, value: (GObject.Value | any)): void;
+        child_get_property(container: GObject.Object, child: GObject.Object, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `child`'s packing property identified by `property_name` to `value`.
@@ -11749,7 +11716,7 @@ export namespace Gladeui {
          * @param property_name The id of the property
          * @param value The `GValue`
          */
-        child_set_property(container: GObject.Object, child: GObject.Object, property_name: string, value: (GObject.Value | any)): void;
+        child_set_property(container: GObject.Object, child: GObject.Object, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This delegate function is always called whenever setting any
@@ -11763,7 +11730,7 @@ export namespace Gladeui {
          * @param value The `GValue`
          * @returns whether or not its OK to set `value` on `object`, this function will silently return TRUE if the class did not provide a verify function.
          */
-        child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string, value: (GObject.Value | any)): boolean;
+        child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string, value: GObject.Value | any): boolean;
 
         /**
          * This function is called to construct a GObject instance for
@@ -11870,7 +11837,7 @@ export namespace Gladeui {
          * @param name a string
          * @returns A {@link Gladeui.PropertyDef} object
          */
-        get_pack_property_def(name: string): (PropertyDef | null);
+        get_pack_property_def(name: string): PropertyDef | null;
 
         /**
          * Gets the default value for `property_id` on a widget governed by
@@ -11902,7 +11869,7 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The {@link GObject.Value}
          */
-        get_property(object: GObject.Object, property_name: string, value: (GObject.Value | any)): void;
+        get_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -11915,14 +11882,14 @@ export namespace Gladeui {
          * @param name a string
          * @returns A {@link Gladeui.PropertyDef} object
          */
-        get_property_def(name: string): (PropertyDef | null);
+        get_property_def(name: string): PropertyDef | null;
 
         /**
          * Looks up signal class `name` on `adaptor`.
          * @param name the name of the signal class.
          * @returns a {@link Gladeui.SignalDef} or `null`
          */
-        get_signal_def(name: string): (SignalDef | null);
+        get_signal_def(name: string): SignalDef | null;
 
         /**
          * @returns a list of {@link Gladeui.SignalDef}
@@ -11936,7 +11903,7 @@ export namespace Gladeui {
          * default heuristic for getting the GType is enough for both Glade and GtkBuilder.
          * @returns The _get_type () function name or `null` if none is set
          */
-        get_type_func(): (string | null);
+        get_type_func(): string | null;
 
         /**
          * @param container The {@link GObject.Object} container
@@ -12032,7 +11999,7 @@ export namespace Gladeui {
          * @param property_name The property identifier
          * @param value The {@link GObject.Value}
          */
-        set_property(object: GObject.Object, property_name: string, value: (GObject.Value | any)): void;
+        set_property(object: GObject.Object, property_name: string, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -12048,7 +12015,7 @@ export namespace Gladeui {
          * @param value The {@link GObject.Value} to convert to a string
          * @returns A newly allocated string representation of `value`
          */
-        string_from_value(def: PropertyDef, value: (GObject.Value | any)): string;
+        string_from_value(def: PropertyDef, value: GObject.Value | any): string;
 
         /**
          * This delegate function is always called whenever setting any
@@ -12061,7 +12028,7 @@ export namespace Gladeui {
          * @param value The {@link GObject.Value}
          * @returns whether or not its OK to set `value` on `object`, this function will silently return TRUE if the class did not provide a verify function.
          */
-        verify_property(object: GObject.Object, property_name: string, value: (GObject.Value | any)): boolean;
+        verify_property(object: GObject.Object, property_name: string, value: GObject.Value | any): boolean;
 
         /**
          * This function is called to write the child `widget` to `node`
@@ -12146,7 +12113,7 @@ export namespace Gladeui {
          * `null` to remove all paths.
          * @param path the new path containing catalogs or `null` to remove all of them
          */
-        static remove_path(path: (string | null)): void;
+        static remove_path(path: string | null): void;
 
         // Methods
         /**
@@ -12483,7 +12450,7 @@ export namespace Gladeui {
          * @param property_def_ref a pointer to the property class
          * @param domain the domain to translate catalog strings from
          */
-        static update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: (PropertyDef | null), domain: string): [boolean, PropertyDef | null];
+        static update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string): [boolean, PropertyDef | null];
 
         // Methods
         atk(): boolean;
@@ -12501,7 +12468,7 @@ export namespace Gladeui {
          * @param value2 a GValue of correct type for `property_def`
          * @returns -1, 0 or +1, if value1 is found to be less than, equal to or greater than value2, respectively.
          */
-        compare(value1: (GObject.Value | any), value2: (GObject.Value | any)): number;
+        compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
 
         create_type(): string;
 
@@ -12575,7 +12542,7 @@ export namespace Gladeui {
          * @param value A {@link GObject.Value}
          * @returns A newly allocated string representation of `value`
          */
-        make_string_from_gvalue(value: (GObject.Value | any)): string;
+        make_string_from_gvalue(value: GObject.Value | any): string;
 
         /**
          * @param comp a {@link Gladeui.PropertyDef}
@@ -12657,7 +12624,7 @@ export namespace Gladeui {
          * @param value a GValue of correct type for `property_def`
          * @returns Whether `value` for this `property_def` is voided; a voided value          can be a `null` value for boxed or object type param specs.
          */
-        void_value(value: (GObject.Value | any)): boolean;
+        void_value(value: GObject.Value | any): boolean;
 
         weight(): number;
     }
@@ -12973,11 +12940,11 @@ export namespace Gladeui {
         static $gtype: GObject.GType<XmlContext>;
 
         // Constructors
-        constructor(doc: XmlDoc, name_space: (string | null));
+        constructor(doc: XmlDoc, name_space: string | null);
 
-        static ["new"](doc: XmlDoc, name_space: (string | null)): XmlContext;
+        static ["new"](doc: XmlDoc, name_space: string | null): XmlContext;
 
-        static new_from_path(full_path: string, nspace: (string | null), root_name: (string | null)): XmlContext;
+        static new_from_path(full_path: string, nspace: string | null, root_name: string | null): XmlContext;
 
         // Methods
         /**
@@ -13005,10 +12972,7 @@ export namespace Gladeui {
         static $gtype: GObject.GType<XmlDoc>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): XmlDoc;
 
@@ -13109,7 +13073,7 @@ export namespace Gladeui {
          * @param name the name of the property to set
          * @param string the string value of the property to set
          */
-        set_property_string(name: string, string: (string | null)): void;
+        set_property_string(name: string, string: string | null): void;
 
         /**
          * This is a wrapper around `glade_xml_node_verify_silent()`, only it emits
@@ -13157,9 +13121,7 @@ export namespace Gladeui {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface EditableNamespace {
@@ -13185,7 +13147,7 @@ export namespace Gladeui {
         /**
          * @returns a {@link Gladeui.Widget} or `null` if the editable hasn't been loaded
          */
-        loaded_widget(): (Widget | null);
+        loaded_widget(): Widget | null;
 
         loading(): boolean;
 

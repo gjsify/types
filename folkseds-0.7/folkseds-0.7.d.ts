@@ -106,7 +106,7 @@ export namespace FolksEds {
          * @param id 
          * @param _callback_ 
          */
-        static create_address_book(id: string, _callback_: (Gio.AsyncReadyCallback<PersonaStore> | null)): void;
+        static create_address_book(id: string, _callback_: Gio.AsyncReadyCallback<PersonaStore> | null): void;
 
         /**
          * @param _res_ 
@@ -117,7 +117,7 @@ export namespace FolksEds {
          * @param store 
          * @param _callback_ 
          */
-        static remove_address_book(store: PersonaStore, _callback_: (Gio.AsyncReadyCallback<PersonaStore> | null)): void;
+        static remove_address_book(store: PersonaStore, _callback_: Gio.AsyncReadyCallback<PersonaStore> | null): void;
 
         /**
          * @param _res_ 
@@ -171,7 +171,7 @@ export namespace FolksEds {
             contact: EBookContacts.Contact;
             contact_id: string;
             contactId: string;
-            system_groups: (Gee.Set | null);
+            system_groups: Gee.Set | null;
             systemGroups: Gee.Set;
             in_google_personal_group: boolean;
             inGooglePersonalGroup: boolean;
@@ -200,8 +200,8 @@ export namespace FolksEds {
          */
         get contactId(): string;
 
-        get system_groups(): (Gee.Set | null);
-        set system_groups(val: (Gee.Set | null));
+        get system_groups(): Gee.Set | null;
+        set system_groups(val: Gee.Set | null);
 
         get systemGroups(): Gee.Set;
         set systemGroups(val: Gee.Set);
@@ -251,13 +251,13 @@ export namespace FolksEds {
          * @param system_groups 
          * @param _callback_ 
          */
-        change_system_groups(system_groups: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_system_groups(system_groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param system_groups 
          * @param _callback_ 
          */
-        change_system_groups(system_groups: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_system_groups(system_groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -273,13 +273,13 @@ export namespace FolksEds {
          * @param in_personal 
          * @param _callback_ 
          */
-        change_in_google_personal_group(in_personal: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_in_google_personal_group(in_personal: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param in_personal 
          * @param _callback_ 
          */
-        change_in_google_personal_group(in_personal: boolean, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_in_google_personal_group(in_personal: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -290,12 +290,12 @@ export namespace FolksEds {
 
         get_contact_id(): string;
 
-        get_system_groups(): (Gee.Set | null);
+        get_system_groups(): Gee.Set | null;
 
         /**
          * @param value 
          */
-        set_system_groups(value: (Gee.Set | null)): void;
+        set_system_groups(value: Gee.Set | null): void;
 
         get_in_google_personal_group(): boolean;
 
@@ -313,16 +313,16 @@ export namespace FolksEds {
         set antiLinks(val: Gee.Set);
 
         /** @category Inherited from Folks.AvatarDetails */
-        get avatar(): (Gio.LoadableIcon | null);
-        set avatar(val: (Gio.LoadableIcon | null));
+        get avatar(): Gio.LoadableIcon | null;
+        set avatar(val: Gio.LoadableIcon | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
-        get birthday(): (GLib.DateTime | null);
-        set birthday(val: (GLib.DateTime | null));
+        get birthday(): GLib.DateTime | null;
+        set birthday(val: GLib.DateTime | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
-        get calendar_event_id(): (string | null);
-        set calendar_event_id(val: (string | null));
+        get calendar_event_id(): string | null;
+        set calendar_event_id(val: string | null);
 
         /** @category Inherited from Folks.BirthdayDetails */
         get calendarEventId(): string;
@@ -369,12 +369,12 @@ export namespace FolksEds {
         set localIds(val: Gee.Set);
 
         /** @category Inherited from Folks.LocationDetails */
-        get location(): (Folks.Location | null);
-        set location(val: (Folks.Location | null));
+        get location(): Folks.Location | null;
+        set location(val: Folks.Location | null);
 
         /** @category Inherited from Folks.NameDetails */
-        get structured_name(): (Folks.StructuredName | null);
-        set structured_name(val: (Folks.StructuredName | null));
+        get structured_name(): Folks.StructuredName | null;
+        set structured_name(val: Folks.StructuredName | null);
 
         /** @category Inherited from Folks.NameDetails */
         get structuredName(): Folks.StructuredName;
@@ -437,13 +437,13 @@ export namespace FolksEds {
          * @param anti_links 
          * @param _callback_ 
          */
-        change_anti_links(anti_links: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param anti_links 
          * @param _callback_ 
          */
-        change_anti_links(anti_links: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_anti_links(anti_links: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -464,13 +464,13 @@ export namespace FolksEds {
          * @param other_personas 
          * @param _callback_ 
          */
-        add_anti_links(other_personas: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param other_personas 
          * @param _callback_ 
          */
-        add_anti_links(other_personas: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -486,13 +486,13 @@ export namespace FolksEds {
          * @param other_personas 
          * @param _callback_ 
          */
-        remove_anti_links(other_personas: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_anti_links(other_personas: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param other_personas 
          * @param _callback_ 
          */
-        remove_anti_links(other_personas: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_anti_links(other_personas: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -504,12 +504,12 @@ export namespace FolksEds {
         /**
          * @param _callback_ 
          */
-        add_global_anti_link(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_global_anti_link(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        add_global_anti_link(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -521,12 +521,12 @@ export namespace FolksEds {
         /**
          * @param _callback_ 
          */
-        remove_global_anti_link(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_global_anti_link(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        remove_global_anti_link(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_global_anti_link(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -547,7 +547,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_anti_links(anti_links: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_anti_links(anti_links: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -569,38 +569,38 @@ export namespace FolksEds {
         /**
          * @param avatar 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null)): globalThis.Promise<void>;
+        change_avatar(avatar: Gio.LoadableIcon | null): globalThis.Promise<void>;
 
         /**
          * @param avatar 
          * @param _callback_ 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param avatar 
          * @param _callback_ 
          */
-        change_avatar(avatar: (Gio.LoadableIcon | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_avatar(avatar: Gio.LoadableIcon | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
-        get_avatar(): (Gio.LoadableIcon | null);
+        get_avatar(): Gio.LoadableIcon | null;
 
         /**
          * @param value 
          */
-        set_avatar(value: (Gio.LoadableIcon | null)): void;
+        set_avatar(value: Gio.LoadableIcon | null): void;
 
         /**
          * @param avatar 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_avatar(avatar: (Gio.LoadableIcon | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_avatar(avatar: Gio.LoadableIcon | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -611,30 +611,30 @@ export namespace FolksEds {
         /**
          * @virtual
          */
-        vfunc_get_avatar(): (Gio.LoadableIcon | null);
+        vfunc_get_avatar(): Gio.LoadableIcon | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_avatar(value: (Gio.LoadableIcon | null)): void;
+        vfunc_set_avatar(value: Gio.LoadableIcon | null): void;
 
         /**
          * @param birthday 
          */
-        change_birthday(birthday: (GLib.DateTime | null)): globalThis.Promise<void>;
-
-        /**
-         * @param birthday 
-         * @param _callback_ 
-         */
-        change_birthday(birthday: (GLib.DateTime | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_birthday(birthday: GLib.DateTime | null): globalThis.Promise<void>;
 
         /**
          * @param birthday 
          * @param _callback_ 
          */
-        change_birthday(birthday: (GLib.DateTime | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param birthday 
+         * @param _callback_ 
+         */
+        change_birthday(birthday: GLib.DateTime | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -644,45 +644,45 @@ export namespace FolksEds {
         /**
          * @param event_id 
          */
-        change_calendar_event_id(event_id: (string | null)): globalThis.Promise<void>;
+        change_calendar_event_id(event_id: string | null): globalThis.Promise<void>;
 
         /**
          * @param event_id 
          * @param _callback_ 
          */
-        change_calendar_event_id(event_id: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param event_id 
          * @param _callback_ 
          */
-        change_calendar_event_id(event_id: (string | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_calendar_event_id(event_id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
-        get_birthday(): (GLib.DateTime | null);
+        get_birthday(): GLib.DateTime | null;
 
         /**
          * @param value 
          */
-        set_birthday(value: (GLib.DateTime | null)): void;
+        set_birthday(value: GLib.DateTime | null): void;
 
-        get_calendar_event_id(): (string | null);
+        get_calendar_event_id(): string | null;
 
         /**
          * @param value 
          */
-        set_calendar_event_id(value: (string | null)): void;
+        set_calendar_event_id(value: string | null): void;
 
         /**
          * @param birthday 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_birthday(birthday: (GLib.DateTime | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_birthday(birthday: GLib.DateTime | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -695,7 +695,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_calendar_event_id(event_id: (string | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_calendar_event_id(event_id: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -706,24 +706,24 @@ export namespace FolksEds {
         /**
          * @virtual
          */
-        vfunc_get_birthday(): (GLib.DateTime | null);
+        vfunc_get_birthday(): GLib.DateTime | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_birthday(value: (GLib.DateTime | null)): void;
+        vfunc_set_birthday(value: GLib.DateTime | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_calendar_event_id(): (string | null);
+        vfunc_get_calendar_event_id(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_calendar_event_id(value: (string | null)): void;
+        vfunc_set_calendar_event_id(value: string | null): void;
 
         /**
          * @param email_addresses 
@@ -734,13 +734,13 @@ export namespace FolksEds {
          * @param email_addresses 
          * @param _callback_ 
          */
-        change_email_addresses(email_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param email_addresses 
          * @param _callback_ 
          */
-        change_email_addresses(email_addresses: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -759,7 +759,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_email_addresses(email_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -781,7 +781,7 @@ export namespace FolksEds {
         /**
          * @param name 
          */
-        get_extended_field(name: string): (Folks.ExtendedFieldDetails | null);
+        get_extended_field(name: string): Folks.ExtendedFieldDetails | null;
 
         /**
          * @param name 
@@ -794,14 +794,14 @@ export namespace FolksEds {
          * @param value 
          * @param _callback_ 
          */
-        change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param name 
          * @param value 
          * @param _callback_ 
          */
-        change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -817,13 +817,13 @@ export namespace FolksEds {
          * @param name 
          * @param _callback_ 
          */
-        remove_extended_field(name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param name 
          * @param _callback_ 
          */
-        remove_extended_field(name: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -834,7 +834,7 @@ export namespace FolksEds {
          * @param name 
          * @virtual
          */
-        vfunc_get_extended_field(name: string): (Folks.ExtendedFieldDetails | null);
+        vfunc_get_extended_field(name: string): Folks.ExtendedFieldDetails | null;
 
         /**
          * @param name 
@@ -842,7 +842,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_extended_field(name: string, value: Folks.ExtendedFieldDetails, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -855,7 +855,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_remove_extended_field(name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_remove_extended_field(name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -872,13 +872,13 @@ export namespace FolksEds {
          * @param is_favourite 
          * @param _callback_ 
          */
-        change_is_favourite(is_favourite: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param is_favourite 
          * @param _callback_ 
          */
-        change_is_favourite(is_favourite: boolean, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -897,7 +897,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_is_favourite(is_favourite: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_is_favourite(is_favourite: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -925,13 +925,13 @@ export namespace FolksEds {
          * @param gender 
          * @param _callback_ 
          */
-        change_gender(gender: Folks.Gender, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param gender 
          * @param _callback_ 
          */
-        change_gender(gender: Folks.Gender, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_gender(gender: Folks.Gender, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -950,7 +950,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_gender(gender: Folks.Gender, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_gender(gender: Folks.Gender, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -980,14 +980,14 @@ export namespace FolksEds {
          * @param is_member 
          * @param _callback_ 
          */
-        change_group(group: string, is_member: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param group 
          * @param is_member 
          * @param _callback_ 
          */
-        change_group(group: string, is_member: boolean, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1003,13 +1003,13 @@ export namespace FolksEds {
          * @param groups 
          * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param groups 
          * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1029,7 +1029,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_group(group: string, is_member: boolean, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_group(group: string, is_member: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1042,7 +1042,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_groups(groups: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_groups(groups: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1070,13 +1070,13 @@ export namespace FolksEds {
          * @param im_addresses 
          * @param _callback_ 
          */
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param im_addresses 
          * @param _callback_ 
          */
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1095,7 +1095,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_im_addresses(im_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1123,13 +1123,13 @@ export namespace FolksEds {
          * @param local_ids 
          * @param _callback_ 
          */
-        change_local_ids(local_ids: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param local_ids 
          * @param _callback_ 
          */
-        change_local_ids(local_ids: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_local_ids(local_ids: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1148,7 +1148,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_local_ids(local_ids: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_local_ids(local_ids: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1170,38 +1170,38 @@ export namespace FolksEds {
         /**
          * @param location 
          */
-        change_location(location: (Folks.Location | null)): globalThis.Promise<void>;
+        change_location(location: Folks.Location | null): globalThis.Promise<void>;
 
         /**
          * @param location 
          * @param _callback_ 
          */
-        change_location(location: (Folks.Location | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_location(location: Folks.Location | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param location 
          * @param _callback_ 
          */
-        change_location(location: (Folks.Location | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_location(location: Folks.Location | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_location_finish(_res_: Gio.AsyncResult): void;
 
-        get_location(): (Folks.Location | null);
+        get_location(): Folks.Location | null;
 
         /**
          * @param value 
          */
-        set_location(value: (Folks.Location | null)): void;
+        set_location(value: Folks.Location | null): void;
 
         /**
          * @param location 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_location(location: (Folks.Location | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_location(location: Folks.Location | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1212,30 +1212,30 @@ export namespace FolksEds {
         /**
          * @virtual
          */
-        vfunc_get_location(): (Folks.Location | null);
+        vfunc_get_location(): Folks.Location | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_location(value: (Folks.Location | null)): void;
+        vfunc_set_location(value: Folks.Location | null): void;
 
         /**
          * @param name 
          */
-        change_structured_name(name: (Folks.StructuredName | null)): globalThis.Promise<void>;
-
-        /**
-         * @param name 
-         * @param _callback_ 
-         */
-        change_structured_name(name: (Folks.StructuredName | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_structured_name(name: Folks.StructuredName | null): globalThis.Promise<void>;
 
         /**
          * @param name 
          * @param _callback_ 
          */
-        change_structured_name(name: (Folks.StructuredName | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_structured_name(name: Folks.StructuredName | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param name 
+         * @param _callback_ 
+         */
+        change_structured_name(name: Folks.StructuredName | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1251,13 +1251,13 @@ export namespace FolksEds {
          * @param full_name 
          * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param full_name 
          * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1273,25 +1273,25 @@ export namespace FolksEds {
          * @param nickname 
          * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param nickname 
          * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
-        get_structured_name(): (Folks.StructuredName | null);
+        get_structured_name(): Folks.StructuredName | null;
 
         /**
          * @param value 
          */
-        set_structured_name(value: (Folks.StructuredName | null)): void;
+        set_structured_name(value: Folks.StructuredName | null): void;
 
         get_full_name(): string;
 
@@ -1312,7 +1312,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_structured_name(name: (Folks.StructuredName | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_structured_name(name: Folks.StructuredName | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1325,7 +1325,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_full_name(full_name: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_full_name(full_name: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1338,7 +1338,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_nickname(nickname: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_nickname(nickname: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1349,13 +1349,13 @@ export namespace FolksEds {
         /**
          * @virtual
          */
-        vfunc_get_structured_name(): (Folks.StructuredName | null);
+        vfunc_get_structured_name(): Folks.StructuredName | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_structured_name(value: (Folks.StructuredName | null)): void;
+        vfunc_set_structured_name(value: Folks.StructuredName | null): void;
 
         /**
          * @virtual
@@ -1388,13 +1388,13 @@ export namespace FolksEds {
          * @param notes 
          * @param _callback_ 
          */
-        change_notes(notes: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param notes 
          * @param _callback_ 
          */
-        change_notes(notes: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_notes(notes: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1413,7 +1413,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_notes(notes: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_notes(notes: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1441,13 +1441,13 @@ export namespace FolksEds {
          * @param phone_numbers 
          * @param _callback_ 
          */
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param phone_numbers 
          * @param _callback_ 
          */
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1466,7 +1466,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_phone_numbers(phone_numbers: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1494,13 +1494,13 @@ export namespace FolksEds {
          * @param roles 
          * @param _callback_ 
          */
-        change_roles(roles: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param roles 
          * @param _callback_ 
          */
-        change_roles(roles: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_roles(roles: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1519,7 +1519,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_roles(roles: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_roles(roles: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1547,13 +1547,13 @@ export namespace FolksEds {
          * @param urls 
          * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param urls 
          * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1572,7 +1572,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_urls(urls: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_urls(urls: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1600,13 +1600,13 @@ export namespace FolksEds {
          * @param postal_addresses 
          * @param _callback_ 
          */
-        change_postal_addresses(postal_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param postal_addresses 
          * @param _callback_ 
          */
-        change_postal_addresses(postal_addresses: Gee.Set, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_postal_addresses(postal_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1625,7 +1625,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_postal_addresses(postal_addresses: Gee.Set, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1653,13 +1653,13 @@ export namespace FolksEds {
          * @param web_service_addresses 
          * @param _callback_ 
          */
-        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param web_service_addresses 
          * @param _callback_ 
          */
-        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1678,7 +1678,7 @@ export namespace FolksEds {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_change_web_service_addresses(web_service_addresses: Gee.MultiMap, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 

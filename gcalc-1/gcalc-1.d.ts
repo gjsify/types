@@ -34,7 +34,7 @@ export namespace GCalc {
         static INVALID_STRUCTURE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -50,7 +50,7 @@ export namespace GCalc {
         static INVOCATION_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -66,7 +66,7 @@ export namespace GCalc {
         static INVALID_EXPRESSION_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -82,7 +82,7 @@ export namespace GCalc {
         static INVALID_INTERNAL_TERM: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -96,7 +96,7 @@ export namespace GCalc {
         static EXPRESSION_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -112,7 +112,7 @@ export namespace GCalc {
         static EVALUATION_FAIL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -130,7 +130,7 @@ export namespace GCalc {
         static EVALUATION_FAIL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -358,7 +358,7 @@ export namespace GCalc {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -398,7 +398,7 @@ export namespace GCalc {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -533,13 +533,10 @@ export namespace GCalc {
 
     namespace GFunctionAcos {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -581,13 +578,10 @@ export namespace GCalc {
 
     namespace GFunctionAcosh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -629,13 +623,10 @@ export namespace GCalc {
 
     namespace GFunctionAsin {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -677,13 +668,10 @@ export namespace GCalc {
 
     namespace GFunctionAsinh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -725,13 +713,10 @@ export namespace GCalc {
 
     namespace GFunctionAtan {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -773,13 +758,10 @@ export namespace GCalc {
 
     namespace GFunctionAtanh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -821,13 +803,10 @@ export namespace GCalc {
 
     namespace GFunctionCos {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -869,13 +848,10 @@ export namespace GCalc {
 
     namespace GFunctionCosh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -917,13 +893,10 @@ export namespace GCalc {
 
     namespace GFunctionExp {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -965,13 +938,10 @@ export namespace GCalc {
 
     namespace GFunctionLog {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1013,13 +983,10 @@ export namespace GCalc {
 
     namespace GFunctionSin {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1061,13 +1028,10 @@ export namespace GCalc {
 
     namespace GFunctionSinh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1109,13 +1073,10 @@ export namespace GCalc {
 
     namespace GFunctionSqrt {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1157,13 +1118,10 @@ export namespace GCalc {
 
     namespace GFunctionTan {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1205,13 +1163,10 @@ export namespace GCalc {
 
     namespace GFunctionTanh {
         // Signal signatures
-        interface SignalSignatures extends GFunction.SignalSignatures {
-        }
+        interface SignalSignatures extends GFunction.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GFunction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GFunction.ConstructorProps {}
     }
 
     /**
@@ -1259,9 +1214,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Expression.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Expression.ConstructorProps {}
     }
 
     /**
@@ -1354,13 +1307,10 @@ export namespace GCalc {
 
     namespace GErrorExpression {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, ErrorExpression.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, ErrorExpression.ConstructorProps {}
     }
 
     /**
@@ -1402,13 +1352,10 @@ export namespace GCalc {
 
     namespace GAssign {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Assign.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Assign.ConstructorProps {}
     }
 
     /**
@@ -1452,13 +1399,10 @@ export namespace GCalc {
 
     namespace GConstant {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Constant.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Constant.ConstructorProps {}
     }
 
     /**
@@ -1586,13 +1530,10 @@ export namespace GCalc {
 
     namespace GDivision {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Division.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Division.ConstructorProps {}
     }
 
     /**
@@ -1640,9 +1581,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps, ErrorResult.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps, ErrorResult.ConstructorProps {}
     }
 
     /**
@@ -1725,9 +1664,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Function.ConstructorProps, Hashable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Function.ConstructorProps, Hashable.ConstructorProps {}
     }
 
     /**
@@ -1888,9 +1825,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, MathEquation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, MathEquation.ConstructorProps {}
     }
 
     /**
@@ -1951,9 +1886,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {}
     }
 
     /**
@@ -2032,13 +1965,10 @@ export namespace GCalc {
 
     namespace GMinus {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Minus.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Minus.ConstructorProps {}
     }
 
     /**
@@ -2080,13 +2010,10 @@ export namespace GCalc {
 
     namespace GMultiply {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Multiply.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Multiply.ConstructorProps {}
     }
 
     /**
@@ -2128,13 +2055,10 @@ export namespace GCalc {
 
     namespace GParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2187,13 +2111,10 @@ export namespace GCalc {
 
     namespace GPlus {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Plus.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, BinaryOperator.ConstructorProps, Plus.ConstructorProps {}
     }
 
     /**
@@ -2235,13 +2156,10 @@ export namespace GCalc {
 
     namespace GPolynomial {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Polynomial.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Polynomial.ConstructorProps {}
     }
 
     /**
@@ -2290,13 +2208,10 @@ export namespace GCalc {
 
     namespace GPow {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, Pow.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Operator.ConstructorProps, Pow.ConstructorProps {}
     }
 
     /**
@@ -2343,9 +2258,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {}
     }
 
     /**
@@ -2413,9 +2326,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Group.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Group.ConstructorProps {}
     }
 
     /**
@@ -2513,9 +2424,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Solver.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Solver.ConstructorProps {}
     }
 
     /**
@@ -2594,13 +2503,10 @@ export namespace GCalc {
 
     namespace GTerm {
         // Signal signatures
-        interface SignalSignatures extends GExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends GExpression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Term.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Term.ConstructorProps {}
     }
 
     /**
@@ -2667,9 +2573,7 @@ export namespace GCalc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GExpression.ConstructorProps, Variable.ConstructorProps, Hashable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GExpression.ConstructorProps, Variable.ConstructorProps, Hashable.ConstructorProps {}
     }
 
     /**
@@ -3393,9 +3297,7 @@ export namespace GCalc {
     namespace Assign {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AssignNamespace {
@@ -3419,9 +3321,7 @@ export namespace GCalc {
     namespace BinaryOperator {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface BinaryOperatorNamespace {
@@ -3494,9 +3394,7 @@ export namespace GCalc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConstantNamespace {
@@ -3546,9 +3444,7 @@ export namespace GCalc {
     namespace Division {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DivisionNamespace {
@@ -3650,9 +3546,7 @@ export namespace GCalc {
     namespace ErrorExpression {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ErrorExpressionNamespace {
@@ -3949,9 +3843,7 @@ export namespace GCalc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface HashableNamespace {
@@ -4089,9 +3981,7 @@ export namespace GCalc {
     namespace Minus {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MinusNamespace {
@@ -4112,9 +4002,7 @@ export namespace GCalc {
     namespace Multiply {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MultiplyNamespace {
@@ -4135,9 +4023,7 @@ export namespace GCalc {
     namespace Operator {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface OperatorNamespace {
@@ -4158,9 +4044,7 @@ export namespace GCalc {
     namespace Plus {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PlusNamespace {
@@ -4194,9 +4078,7 @@ export namespace GCalc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PolynomialNamespace {
@@ -4220,9 +4102,7 @@ export namespace GCalc {
     namespace Pow {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PowNamespace {
@@ -4383,9 +4263,7 @@ export namespace GCalc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TermNamespace {

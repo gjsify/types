@@ -73,7 +73,7 @@ export namespace RpmOstree {
      * @param new_ref New ref (branch or commit)
      * @param cancellable 
      */
-    function db_diff(repo: OSTree.Repo, orig_ref: string, new_ref: string, cancellable: (Gio.Cancellable | null)): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+    function db_diff(repo: OSTree.Repo, orig_ref: string, new_ref: string, cancellable: Gio.Cancellable | null): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
 
     /**
      * This function is identical to `rpm_ostree_db_diff_ext()`, but supports a `flags` argument to
@@ -85,7 +85,7 @@ export namespace RpmOstree {
      * @param cancellable 
      * @since 2017.12
      */
-    function db_diff_ext(repo: OSTree.Repo, orig_ref: string, new_ref: string, flags: DbDiffExtFlags, cancellable: (Gio.Cancellable | null)): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+    function db_diff_ext(repo: OSTree.Repo, orig_ref: string, new_ref: string, flags: DbDiffExtFlags, cancellable: Gio.Cancellable | null): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
 
     /**
      * Return all of the RPM packages present in the `ref` branch or commit
@@ -95,7 +95,7 @@ export namespace RpmOstree {
      * @param cancellable Cancellable
      * @returns A query result, or `null` on error
      */
-    function db_query_all(repo: OSTree.Repo, ref: string, cancellable: (Gio.Cancellable | null)): Package[];
+    function db_query_all(repo: OSTree.Repo, ref: string, cancellable: Gio.Cancellable | null): Package[];
 
     /**
      * @returns A string for RPM's architecture, commonly used for e.g. $basearch in URLs
@@ -120,13 +120,10 @@ export namespace RpmOstree {
 
     namespace Package {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

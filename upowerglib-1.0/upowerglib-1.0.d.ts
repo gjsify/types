@@ -257,7 +257,7 @@ export namespace UPowerGlib {
         // Conflicted with Gio.AsyncInitable.new_finish
         static new_finish(...args: never[]): any;
 
-        static new_full(cancellable: (Gio.Cancellable | null)): Client;
+        static new_full(cancellable: Gio.Cancellable | null): Client;
 
         // Signals
         /** @signal */
@@ -280,7 +280,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        static new_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Client> | null)): void;
+        static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
 
         // Virtual methods
         /**
@@ -327,21 +327,21 @@ export namespace UPowerGlib {
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_devices_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Device[]>;
+        get_devices_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
 
         /**
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_devices_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_devices_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_devices_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Device[]> | void);
+        get_devices_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device[]> | void;
 
         /**
          * Finishes an operation started with `up_client_get_devices_async()`.
@@ -414,7 +414,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -457,7 +457,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -500,7 +500,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -560,7 +560,7 @@ export namespace UPowerGlib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -612,7 +612,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -656,7 +656,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -751,12 +751,12 @@ export namespace UPowerGlib {
             state: number;
             technology: number;
             temperature: number;
-            time_to_empty: (bigint | number);
-            timeToEmpty: (bigint | number);
-            time_to_full: (bigint | number);
-            timeToFull: (bigint | number);
-            update_time: (bigint | number);
-            updateTime: (bigint | number);
+            time_to_empty: bigint | number;
+            timeToEmpty: bigint | number;
+            time_to_full: bigint | number;
+            timeToFull: bigint | number;
+            update_time: bigint | number;
+            updateTime: bigint | number;
             vendor: string;
             voltage: number;
             voltage_max_design: number;
@@ -1181,7 +1181,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get time_to_empty(): number;
-        set time_to_empty(val: (bigint | number));
+        set time_to_empty(val: bigint | number);
 
         /**
          * The amount of time until the device is empty.
@@ -1189,7 +1189,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get timeToEmpty(): number;
-        set timeToEmpty(val: (bigint | number));
+        set timeToEmpty(val: bigint | number);
 
         /**
          * The amount of time until the device is fully charged.
@@ -1197,7 +1197,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get time_to_full(): number;
-        set time_to_full(val: (bigint | number));
+        set time_to_full(val: bigint | number);
 
         /**
          * The amount of time until the device is fully charged.
@@ -1205,7 +1205,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get timeToFull(): number;
-        set timeToFull(val: (bigint | number));
+        set timeToFull(val: bigint | number);
 
         /**
          * The last time the device was updated.
@@ -1213,7 +1213,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get update_time(): number;
-        set update_time(val: (bigint | number));
+        set update_time(val: bigint | number);
 
         /**
          * The last time the device was updated.
@@ -1221,7 +1221,7 @@ export namespace UPowerGlib {
          * @default 0
          */
         get updateTime(): number;
-        set updateTime(val: (bigint | number));
+        set updateTime(val: bigint | number);
 
         /**
          * The vendor of the device.
@@ -1366,7 +1366,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.HistoryItem}'s, with the most               recent one being first; `null` if `error` is set or `device` is               invalid
          */
-        get_history_sync(type: string, timespec: number, resolution: number, cancellable: (Gio.Cancellable | null)): HistoryItem[];
+        get_history_sync(type: string, timespec: number, resolution: number, cancellable: Gio.Cancellable | null): HistoryItem[];
 
         /**
          * Gets the object path for the device.
@@ -1380,7 +1380,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.StatsItem}'s, else `NULL` and `error` is used
          */
-        get_statistics_sync(type: string, cancellable: (Gio.Cancellable | null)): StatsItem[];
+        get_statistics_sync(type: string, cancellable: Gio.Cancellable | null): StatsItem[];
 
         /**
          * Refreshes properties on the device.
@@ -1389,7 +1389,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        refresh_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the object path of the object and fills up initial properties.
@@ -1397,7 +1397,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          */
-        set_object_path_sync(object_path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_object_path_sync(object_path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Converts the device to a string description.

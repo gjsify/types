@@ -532,7 +532,7 @@ export namespace GstRtsp {
      * @param cancellable a {@link Gio.Cancellable} to cancel the operation
      * @returns #GST_RTSP_OK when `conn` contains a valid connection.
      */
-    function rtsp_connection_accept(socket: Gio.Socket, cancellable: (Gio.Cancellable | null)): [RTSPResult, RTSPConnection | null];
+    function rtsp_connection_accept(socket: Gio.Socket, cancellable: Gio.Cancellable | null): [RTSPResult, RTSPConnection | null];
 
     /**
      * Create a newly allocated {@link GstRtsp.RTSPConnection} from `url` and store it in `conn`.
@@ -586,7 +586,7 @@ export namespace GstRtsp {
      * @returns Authentication response or `null` if unsupported
      * @since 1.12
      */
-    function rtsp_generate_digest_auth_response(algorithm: (string | null), method: string, realm: string, username: string, password: string, uri: string, nonce: string): (string | null);
+    function rtsp_generate_digest_auth_response(algorithm: string | null, method: string, realm: string, username: string, password: string, uri: string, nonce: string): string | null;
 
     /**
      * Calculates the digest auth response from the values given by the server and
@@ -604,7 +604,7 @@ export namespace GstRtsp {
      * @returns Authentication response or `null` if unsupported
      * @since 1.16
      */
-    function rtsp_generate_digest_auth_response_from_md5(algorithm: (string | null), method: string, md5: string, uri: string, nonce: string): (string | null);
+    function rtsp_generate_digest_auth_response_from_md5(algorithm: string | null, method: string, md5: string, uri: string, nonce: string): string | null;
 
     /**
      * Check whether `field` may appear multiple times in a message.
@@ -618,7 +618,7 @@ export namespace GstRtsp {
      * @param field a {@link GstRtsp.RTSPHeaderField}
      * @returns a string representation of `field`.
      */
-    function rtsp_header_as_text(field: RTSPHeaderField): (string | null);
+    function rtsp_header_as_text(field: RTSPHeaderField): string | null;
 
     /**
      * Create a new initialized {@link GstRtsp.RTSPMessage}. Free with `gst_rtsp_message_free()`.
@@ -656,14 +656,14 @@ export namespace GstRtsp {
      * @param request the request that triggered the response or `null`
      * @returns a {@link GstRtsp.RTSPResult}.
      */
-    function rtsp_message_new_response(code: RTSPStatusCode, reason: (string | null), request: (RTSPMessage | null)): [RTSPResult, RTSPMessage];
+    function rtsp_message_new_response(code: RTSPStatusCode, reason: string | null, request: RTSPMessage | null): [RTSPResult, RTSPMessage];
 
     /**
      * Convert `method` to a string.
      * @param method a {@link GstRtsp.RTSPMethod}
      * @returns a string representation of `method`.
      */
-    function rtsp_method_as_text(method: RTSPMethod): (string | null);
+    function rtsp_method_as_text(method: RTSPMethod): string | null;
 
     /**
      * Convert `options` to a string.
@@ -1058,7 +1058,7 @@ export namespace GstRtsp {
          * @param socket a socket
          * @param cancellable a {@link Gio.Cancellable} to cancel the operation
          */
-        static accept(socket: Gio.Socket, cancellable: (Gio.Cancellable | null)): [RTSPResult, RTSPConnection | null];
+        static accept(socket: Gio.Socket, cancellable: Gio.Cancellable | null): [RTSPResult, RTSPConnection | null];
 
         /**
          * Create a newly allocated {@link GstRtsp.RTSPConnection} from `url` and store it in `conn`.
@@ -1116,7 +1116,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK when a connection could be made.
          */
-        connect_usec(timeout: (bigint | number)): RTSPResult;
+        connect_usec(timeout: bigint | number): RTSPResult;
 
         /**
          * Attempt to connect to the url of `conn` made with
@@ -1144,7 +1144,7 @@ export namespace GstRtsp {
          * @param response a {@link GstRtsp.RTSPMessage}
          * @returns #GST_RTSP_OK when a connection could be made.
          */
-        connect_with_response_usec(timeout: (bigint | number), response: RTSPMessage): RTSPResult;
+        connect_with_response_usec(timeout: bigint | number, response: RTSPMessage): RTSPResult;
 
         /**
          * If `conn` received the first tunnel connection and `conn2` received
@@ -1159,7 +1159,7 @@ export namespace GstRtsp {
          * @param conn2 a {@link GstRtsp.RTSPConnection} or `null`
          * @returns return GST_RTSP_OK on success.
          */
-        do_tunnel(conn2: (RTSPConnection | null)): RTSPResult;
+        do_tunnel(conn2: RTSPConnection | null): RTSPResult;
 
         /**
          * Start or stop the flushing action on `conn`. When flushing, all current
@@ -1192,7 +1192,7 @@ export namespace GstRtsp {
          * Get the file descriptor for reading.
          * @returns the file descriptor used for reading or `null` on error. The file descriptor remains valid until the connection is closed.
          */
-        get_read_socket(): (Gio.Socket | null);
+        get_read_socket(): Gio.Socket | null;
 
         /**
          * @returns `true` if the {@link GstRtsp.RTSPConnection} remembers the session id in the last response to set it on any further request.
@@ -1218,7 +1218,7 @@ export namespace GstRtsp {
          * certificate database.
          * @returns the anchor certificate authorities database, or NULL if no database has been previously set. Use `g_object_unref()` to release the certificate database.
          */
-        get_tls_database(): (Gio.TlsDatabase | null);
+        get_tls_database(): Gio.TlsDatabase | null;
 
         /**
          * Gets a {@link Gio.TlsInteraction} object to be used when the connection or certificate
@@ -1226,7 +1226,7 @@ export namespace GstRtsp {
          * user for passwords where necessary.
          * @returns a reference on the {@link Gio.TlsInteraction}. Use `g_object_unref()` to release.
          */
-        get_tls_interaction(): (Gio.TlsInteraction | null);
+        get_tls_interaction(): Gio.TlsInteraction | null;
 
         /**
          * Gets the TLS validation flags used to verify the peer certificate
@@ -1248,7 +1248,7 @@ export namespace GstRtsp {
          * Get the tunnel session id the connection.
          * @returns returns a non-empty string if `conn` is being tunneled over HTTP.
          */
-        get_tunnelid(): (string | null);
+        get_tunnelid(): string | null;
 
         /**
          * Retrieve the URL of the other end of `conn`.
@@ -1260,7 +1260,7 @@ export namespace GstRtsp {
          * Get the file descriptor for writing.
          * @returns the file descriptor used for writing or NULL on error. The file descriptor remains valid until the connection is closed.
          */
-        get_write_socket(): (Gio.Socket | null);
+        get_write_socket(): Gio.Socket | null;
 
         /**
          * Get the tunneling state of the connection.
@@ -1309,7 +1309,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        poll_usec(events: RTSPEvent, timeout: (bigint | number)): [RTSPResult, RTSPEvent];
+        poll_usec(events: RTSPEvent, timeout: bigint | number): [RTSPResult, RTSPEvent];
 
         /**
          * Attempt to read `size` bytes into `data` from the connected `conn`, blocking up to
@@ -1321,7 +1321,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
          */
-        read(data: (Uint8Array | string), timeout: GLib.TimeVal): RTSPResult;
+        read(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
 
         /**
          * Attempt to read `size` bytes into `data` from the connected `conn`, blocking up to
@@ -1333,7 +1333,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        read_usec(data: (Uint8Array | string), timeout: (bigint | number)): RTSPResult;
+        read_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
 
         /**
          * Attempt to read into `message` from the connected `conn`, blocking up to
@@ -1357,7 +1357,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
          */
-        receive_usec(message: RTSPMessage, timeout: (bigint | number)): RTSPResult;
+        receive_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
 
         /**
          * Reset the timeout of `conn`.
@@ -1399,7 +1399,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on Since.
          */
-        send_messages_usec(messages: RTSPMessage[], timeout: (bigint | number)): RTSPResult;
+        send_messages_usec(messages: RTSPMessage[], timeout: bigint | number): RTSPResult;
 
         /**
          * Attempt to send `message` to the connected `conn`, blocking up to
@@ -1411,7 +1411,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
          */
-        send_usec(message: RTSPMessage, timeout: (bigint | number)): RTSPResult;
+        send_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
 
         /**
          * Sets a custom accept-certificate function for checking certificates for
@@ -1504,7 +1504,7 @@ export namespace GstRtsp {
          * can't be verified with the default certificate database first.
          * @param database a {@link Gio.TlsDatabase}
          */
-        set_tls_database(database: (Gio.TlsDatabase | null)): void;
+        set_tls_database(database: Gio.TlsDatabase | null): void;
 
         /**
          * Sets a {@link Gio.TlsInteraction} object to be used when the connection or certificate
@@ -1512,7 +1512,7 @@ export namespace GstRtsp {
          * user for passwords where necessary.
          * @param interaction a {@link Gio.TlsInteraction}
          */
-        set_tls_interaction(interaction: (Gio.TlsInteraction | null)): void;
+        set_tls_interaction(interaction: Gio.TlsInteraction | null): void;
 
         /**
          * Sets the TLS validation flags to be used to verify the peer
@@ -1548,7 +1548,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
          */
-        write(data: (Uint8Array | string), timeout: GLib.TimeVal): RTSPResult;
+        write(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
 
         /**
          * Attempt to write `size` bytes of `data` to the connected `conn`, blocking up to
@@ -1560,7 +1560,7 @@ export namespace GstRtsp {
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
          */
-        write_usec(data: (Uint8Array | string), timeout: (bigint | number)): RTSPResult;
+        write_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
     }
 
 
@@ -1712,7 +1712,7 @@ export namespace GstRtsp {
          * @param request the request that triggered the response or `null`
          * @returns a {@link GstRtsp.RTSPResult}.
          */
-        init_response(code: RTSPStatusCode, reason: (string | null), request: (RTSPMessage | null)): RTSPResult;
+        init_response(code: RTSPStatusCode, reason: string | null, request: RTSPMessage | null): RTSPResult;
 
         /**
          * Parses the credentials given in a WWW-Authenticate or Authorization header.
@@ -1771,7 +1771,7 @@ export namespace GstRtsp {
          * @param data the data
          * @returns #GST_RTSP_OK.
          */
-        set_body(data: (Uint8Array | string)): RTSPResult;
+        set_body(data: Uint8Array | string): RTSPResult;
 
         /**
          * Set the body of `msg` to `buffer`. Any existing body or body buffer
@@ -1805,7 +1805,7 @@ export namespace GstRtsp {
          * @param data the data
          * @returns #GST_RTSP_OK.
          */
-        take_body(data: (Uint8Array | string)): RTSPResult;
+        take_body(data: Uint8Array | string): RTSPResult;
 
         /**
          * Set the body of `msg` to `buffer`. This method takes ownership of `buffer`.
@@ -2045,7 +2045,7 @@ export namespace GstRtsp {
          * an RTSP SETUP response.
          * @returns a string describing the RTSP transport or `null` when the transport is invalid.
          */
-        as_text(): (string | null);
+        as_text(): string | null;
 
         /**
          * Free the memory used by `transport`.
@@ -2165,7 +2165,7 @@ export namespace GstRtsp {
          * @param context a GMainContext (if NULL, the default context will be used)
          * @returns the ID (greater than 0) for the watch within the GMainContext.
          */
-        attach(context: (GLib.MainContext | null)): number;
+        attach(context: GLib.MainContext | null): number;
 
         /**
          * Get the maximum amount of bytes and messages that will be queued in `watch`.
@@ -2221,7 +2221,7 @@ export namespace GstRtsp {
          * @param bytes maximum bytes
          * @param messages maximum messages
          */
-        set_send_backlog(bytes: (bigint | number), messages: number): void;
+        set_send_backlog(bytes: bigint | number, messages: number): void;
 
         /**
          * Decreases the reference count of `watch` by one. If the resulting reference
@@ -2259,7 +2259,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @returns {@link GstRtsp.RTSPResult.OK} when if there is room in queue.          {@link GstRtsp.RTSPResult.ETIMEOUT} when `timeout` was reached.          {@link GstRtsp.RTSPResult.EINTR} when `watch` is flushing          {@link GstRtsp.RTSPResult.EINVAL} when called with invalid parameters.
          */
-        wait_backlog_usec(timeout: (bigint | number)): RTSPResult;
+        wait_backlog_usec(timeout: bigint | number): RTSPResult;
 
         /**
          * Write `data` using the connection of the `watch`. If it cannot be sent
@@ -2277,7 +2277,7 @@ export namespace GstRtsp {
          * @param data the data to queue
          * @returns #GST_RTSP_OK on success. #GST_RTSP_ENOMEM when the backlog limits are reached. #GST_RTSP_EINTR when `watch` was flushing.
          */
-        write_data(data: (Uint8Array | string)): [RTSPResult, number];
+        write_data(data: Uint8Array | string): [RTSPResult, number];
     }
 
 
@@ -2289,10 +2289,7 @@ export namespace GstRtsp {
         static $gtype: GObject.GType<RTSPWatchFuncs>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 
@@ -2371,9 +2368,7 @@ export namespace GstRtsp {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RTSPExtensionNamespace {

@@ -368,7 +368,7 @@ export namespace Vte {
         static PTY98_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -401,7 +401,7 @@ export namespace Vte {
         static NOT_SUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -720,7 +720,7 @@ export namespace Vte {
      * @returns the names of the installed   termprops, or `null` if there are no termprops
      * @since 0.78
      */
-    function get_termprops(): (string[] | null);
+    function get_termprops(): string[] | null;
 
     /**
      * Gets the user's shell, or `null`. In the latter case, the
@@ -807,7 +807,7 @@ export namespace Vte {
      * @returns `true` iff `str` is a valid string representation
      * @since 0.78
      */
-    function uuid_validate_string(str: string, len: (bigint | number), fmt: UuidFormat): boolean;
+    function uuid_validate_string(str: string, len: bigint | number, fmt: UuidFormat): boolean;
 
     /**
      * @gir-type Callback
@@ -820,7 +820,7 @@ export namespace Vte {
      * @gir-type Callback
      */
     interface TerminalSpawnAsyncCallback {
-        (terminal: Terminal, pid: GLib.Pid, error: (GLib.Error | null)): void;
+        (terminal: Terminal, pid: GLib.Pid, error: GLib.Error | null): void;
     }
 
     /**
@@ -991,9 +991,9 @@ export namespace Vte {
 
         _init(...args: any[]): void;
 
-        static new_foreign_sync(fd: number, cancellable: (Gio.Cancellable | null)): Pty;
+        static new_foreign_sync(fd: number, cancellable: Gio.Cancellable | null): Pty;
 
-        static new_sync(flags: PtyFlags, cancellable: (Gio.Cancellable | null)): Pty;
+        static new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
 
         // Signals
         /** @signal */
@@ -1061,7 +1061,7 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        spawn_async(working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Pid | null)>;
+        spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Pid | null>;
 
         /**
          * Like `vte_pty_spawn_with_fds_async()`, except that this function does not
@@ -1076,7 +1076,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        spawn_async(working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Like `vte_pty_spawn_with_fds_async()`, except that this function does not
@@ -1091,7 +1091,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        spawn_async(working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Pid | null)> | void);
+        spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Pid | null> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
@@ -1142,7 +1142,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        spawn_with_fds_async(working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        spawn_with_fds_async(working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -1186,7 +1186,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1230,7 +1230,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1441,7 +1441,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "setup-context-menu": (arg0: (EventContext | null)) => void;
+            "setup-context-menu": (arg0: EventContext | null) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1482,7 +1482,7 @@ export namespace Vte {
              * @since 0.78
              * @run-last
              */
-            "termprops-changed": (arg0: number[]) => (boolean | void);
+            "termprops-changed": (arg0: number[]) => boolean | void;
             /**
              * Emitted when the {@link Vte.Terminal.window_title} property is modified.
              * @signal
@@ -3088,14 +3088,14 @@ export namespace Vte {
             cellWidthScale: number;
             cjk_ambiguous_width: number;
             cjkAmbiguousWidth: number;
-            context_menu: (Gtk.Popover | null);
-            contextMenu: (Gtk.Popover | null);
-            context_menu_model: (Gio.MenuModel | null);
-            contextMenuModel: (Gio.MenuModel | null);
-            current_directory_uri: (string | null);
-            currentDirectoryUri: (string | null);
-            current_file_uri: (string | null);
-            currentFileUri: (string | null);
+            context_menu: Gtk.Popover | null;
+            contextMenu: Gtk.Popover | null;
+            context_menu_model: Gio.MenuModel | null;
+            contextMenuModel: Gio.MenuModel | null;
+            current_directory_uri: string | null;
+            currentDirectoryUri: string | null;
+            current_file_uri: string | null;
+            currentFileUri: string | null;
             cursor_blink_mode: CursorBlinkMode;
             cursorBlinkMode: CursorBlinkMode;
             cursor_shape: CursorShape;
@@ -3114,22 +3114,22 @@ export namespace Vte {
             enableShaping: boolean;
             enable_sixel: boolean;
             enableSixel: boolean;
-            encoding: (string | null);
+            encoding: string | null;
             font_desc: Pango.FontDescription;
             fontDesc: Pango.FontDescription;
-            font_options: (cairo.FontOptions | null);
-            fontOptions: (cairo.FontOptions | null);
+            font_options: cairo.FontOptions | null;
+            fontOptions: cairo.FontOptions | null;
             font_scale: number;
             fontScale: number;
             hyperlink_hover_uri: string;
             hyperlinkHoverUri: string;
-            icon_title: (string | null);
-            iconTitle: (string | null);
+            icon_title: string | null;
+            iconTitle: string | null;
             input_enabled: boolean;
             inputEnabled: boolean;
             pointer_autohide: boolean;
             pointerAutohide: boolean;
-            pty: (Pty | null);
+            pty: Pty | null;
             rewrap_on_resize: boolean;
             rewrapOnResize: boolean;
             scroll_on_insert: boolean;
@@ -3144,10 +3144,10 @@ export namespace Vte {
             scrollbackLines: number;
             text_blink_mode: TextBlinkMode;
             textBlinkMode: TextBlinkMode;
-            window_title: (string | null);
-            windowTitle: (string | null);
-            word_char_exceptions: (string | null);
-            wordCharExceptions: (string | null);
+            window_title: string | null;
+            windowTitle: string | null;
+            word_char_exceptions: string | null;
+            wordCharExceptions: string | null;
             xalign: Align;
             xfill: boolean;
             yalign: Align;
@@ -3312,8 +3312,8 @@ export namespace Vte {
          * takes precedence over this.
          * @since 0.76
          */
-        get context_menu(): (Gtk.Popover | null);
-        set context_menu(val: (Gtk.Popover | null));
+        get context_menu(): Gtk.Popover | null;
+        set context_menu(val: Gtk.Popover | null);
 
         /**
          * The menu used for context menus. Note that context menu model set with the
@@ -3321,8 +3321,8 @@ export namespace Vte {
          * takes precedence over this.
          * @since 0.76
          */
-        get contextMenu(): (Gtk.Popover | null);
-        set contextMenu(val: (Gtk.Popover | null));
+        get contextMenu(): Gtk.Popover | null;
+        set contextMenu(val: Gtk.Popover | null);
 
         /**
          * The menu model used for context menus. If non-`null`, the context menu is
@@ -3330,8 +3330,8 @@ export namespace Vte {
          * {@link Vte.Terminal.SignalSignatures.context_menu | Vte.Terminal::context-menu} property or `vte_terminal_set_context_menu()`.
          * @since 0.76
          */
-        get context_menu_model(): (Gio.MenuModel | null);
-        set context_menu_model(val: (Gio.MenuModel | null));
+        get context_menu_model(): Gio.MenuModel | null;
+        set context_menu_model(val: Gio.MenuModel | null);
 
         /**
          * The menu model used for context menus. If non-`null`, the context menu is
@@ -3339,8 +3339,8 @@ export namespace Vte {
          * {@link Vte.Terminal.SignalSignatures.context_menu | Vte.Terminal::context-menu} property or `vte_terminal_set_context_menu()`.
          * @since 0.76
          */
-        get contextMenuModel(): (Gio.MenuModel | null);
-        set contextMenuModel(val: (Gio.MenuModel | null));
+        get contextMenuModel(): Gio.MenuModel | null;
+        set contextMenuModel(val: Gio.MenuModel | null);
 
         /**
          * The current directory URI, or `null` if unset.
@@ -3348,7 +3348,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get current_directory_uri(): (string | null);
+        get current_directory_uri(): string | null;
 
         /**
          * The current directory URI, or `null` if unset.
@@ -3356,7 +3356,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get currentDirectoryUri(): (string | null);
+        get currentDirectoryUri(): string | null;
 
         /**
          * The current file URI, or `null` if unset.
@@ -3364,7 +3364,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get current_file_uri(): (string | null);
+        get current_file_uri(): string | null;
 
         /**
          * The current file URI, or `null` if unset.
@@ -3372,7 +3372,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get currentFileUri(): (string | null);
+        get currentFileUri(): string | null;
 
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
@@ -3522,8 +3522,8 @@ export namespace Vte {
          * @deprecated since 0.54: Instead of using this, you should use a tool like   luit(1) when support for non-UTF-8 is required
          * @default null
          */
-        get encoding(): (string | null);
-        set encoding(val: (string | null));
+        get encoding(): string | null;
+        set encoding(val: string | null);
 
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
@@ -3554,8 +3554,8 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @since 0.74
          */
-        get font_options(): (cairo.FontOptions | null);
-        set font_options(val: (cairo.FontOptions | null));
+        get font_options(): cairo.FontOptions | null;
+        set font_options(val: cairo.FontOptions | null);
 
         /**
          * The terminal's font options, or `null` to use the default font options.
@@ -3566,8 +3566,8 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @since 0.74
          */
-        get fontOptions(): (cairo.FontOptions | null);
-        set fontOptions(val: (cairo.FontOptions | null));
+        get fontOptions(): cairo.FontOptions | null;
+        set fontOptions(val: cairo.FontOptions | null);
 
         /**
          * The terminal's font scale.
@@ -3604,14 +3604,14 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get icon_title(): (string | null);
+        get icon_title(): string | null;
 
         /**
          * @deprecated since 0.54: This property is always `null`.
          * @read-only
          * @default null
          */
-        get iconTitle(): (string | null);
+        get iconTitle(): string | null;
 
         /**
          * Controls whether the terminal allows user input. When user input is disabled,
@@ -3652,8 +3652,8 @@ export namespace Vte {
         /**
          * The PTY object for the terminal.
          */
-        get pty(): (Pty | null);
-        set pty(val: (Pty | null));
+        get pty(): Pty | null;
+        set pty(val: Pty | null);
 
         /**
          * Controls whether or not the terminal will rewrap its contents, including
@@ -3799,7 +3799,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get window_title(): (string | null);
+        get window_title(): string | null;
 
         /**
          * The terminal's title.
@@ -3807,7 +3807,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get windowTitle(): (string | null);
+        get windowTitle(): string | null;
 
         /**
          * The set of characters which will be considered parts of a word
@@ -3819,7 +3819,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get word_char_exceptions(): (string | null);
+        get word_char_exceptions(): string | null;
 
         /**
          * The set of characters which will be considered parts of a word
@@ -3831,7 +3831,7 @@ export namespace Vte {
          * @read-only
          * @default null
          */
-        get wordCharExceptions(): (string | null);
+        get wordCharExceptions(): string | null;
 
         /**
          * The horizontal alignment of `terminal` within its allocation.
@@ -4066,7 +4066,7 @@ export namespace Vte {
          * @param y 
          * @returns a newly allocated string containing the target of the hyperlink,  or `null`
          */
-        check_hyperlink_at(x: number, y: number): (string | null);
+        check_hyperlink_at(x: number, y: number): string | null;
 
         /**
          * Checks if the text in and around the position (x, y) matches any of the
@@ -4081,7 +4081,7 @@ export namespace Vte {
          * @param y 
          * @returns a newly allocated string which matches one of the previously   set regular expressions, or `null` if there is no match
          */
-        check_match_at(x: number, y: number): [(string | null), number];
+        check_match_at(x: number, y: number): [string | null, number];
 
         /**
          * Like `vte_terminal_check_regex_simple_at()`, but returns an array of strings,
@@ -4096,7 +4096,7 @@ export namespace Vte {
          * @param match_flags PCRE2 match flags, or 0
          * @returns a newly allocated array of strings,   or `null` if none of the regexes matched
          */
-        check_regex_simple_at(x: number, y: number, regexes: Regex[], match_flags: number): (string[] | null);
+        check_regex_simple_at(x: number, y: number, regexes: Regex[], match_flags: number): string[] | null;
 
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
@@ -4130,7 +4130,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value, or `null`
          */
-        dup_termprop_string(prop: string): [(string | null), number];
+        dup_termprop_string(prop: string): [string | null, number];
 
         /**
          * Like `vte_terminal_dup_termprop_string()` except that it takes the termprop
@@ -4138,7 +4138,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value, or `null`
          */
-        dup_termprop_string_by_id(prop: number): [(string | null), number];
+        dup_termprop_string_by_id(prop: number): [string | null, number];
 
         /**
          * Returns the value of a {@link Vte.PropertyType.UUID} termprop as a {@link Vte.Uuid}, or `null` if
@@ -4146,7 +4146,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a {@link Vte.Uuid}, or `null`
          */
-        dup_termprop_uuid(prop: string): (Uuid | null);
+        dup_termprop_uuid(prop: string): Uuid | null;
 
         /**
          * Like `vte_terminal_dup_termprop_uuid()` except that it takes the termprop
@@ -4154,26 +4154,26 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value as a {@link Vte.Uuid}, or `null`
          */
-        dup_termprop_uuid_by_id(prop: number): (Uuid | null);
+        dup_termprop_uuid_by_id(prop: number): Uuid | null;
 
         /**
          * Interprets `data` as if it were data received from a child process.
          * @param data a string in the terminal's current encoding
          */
-        feed(data: (Uint8Array | null)): void;
+        feed(data: Uint8Array | null): void;
 
         /**
          * Sends a block of UTF-8 text to the child as if it were entered by the user
          * at the keyboard.
          * @param text data to send to the child
          */
-        feed_child(text: (Uint8Array | null)): void;
+        feed_child(text: Uint8Array | null): void;
 
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          */
-        feed_child_binary(data: (Uint8Array | null)): void;
+        feed_child_binary(data: Uint8Array | null): void;
 
         /**
          * Checks whether or not the terminal will attempt to draw bold text,
@@ -4254,22 +4254,22 @@ export namespace Vte {
         /**
          * @returns the context menu, or `null`
          */
-        get_context_menu(): (Gtk.Widget | null);
+        get_context_menu(): Gtk.Widget | null;
 
         /**
          * @returns the context menu model, or `null`
          */
-        get_context_menu_model(): (Gio.MenuModel | null);
+        get_context_menu_model(): Gio.MenuModel | null;
 
         /**
          * @returns the URI of the current directory of the   process running in the terminal, or `null`
          */
-        get_current_directory_uri(): (string | null);
+        get_current_directory_uri(): string | null;
 
         /**
          * @returns the URI of the current file the   process running in the terminal is operating on, or `null` if   not set
          */
-        get_current_file_uri(): (string | null);
+        get_current_file_uri(): string | null;
 
         /**
          * Returns the currently set cursor blink mode.
@@ -4329,7 +4329,7 @@ export namespace Vte {
          * encoded, or `null` if UTF-8 is in use.
          * @returns the current encoding for the terminal
          */
-        get_encoding(): (string | null);
+        get_encoding(): string | null;
 
         /**
          * Queries the terminal for information about the fonts which will be
@@ -4343,7 +4343,7 @@ export namespace Vte {
         /**
          * @returns the terminal's font options, or `null`
          */
-        get_font_options(): (cairo.FontOptions | null);
+        get_font_options(): cairo.FontOptions | null;
 
         /**
          * @returns the terminal's font scale
@@ -4361,7 +4361,7 @@ export namespace Vte {
         /**
          * @returns `null`
          */
-        get_icon_title(): (string | null);
+        get_icon_title(): string | null;
 
         /**
          * Returns whether the terminal allow user input.
@@ -4381,7 +4381,7 @@ export namespace Vte {
          * Returns the {@link Vte.Pty} of `terminal`.
          * @returns a {@link Vte.Pty}, or `null`
          */
-        get_pty(): (Pty | null);
+        get_pty(): Pty | null;
 
         /**
          * Checks whether or not the terminal will rewrap its contents upon resize.
@@ -4441,7 +4441,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value, or `null`
          */
-        get_termprop_data(prop: string): (Uint8Array | null);
+        get_termprop_data(prop: string): Uint8Array | null;
 
         /**
          * Like `vte_terminal_get_termprop_data()` except that it takes the termprop
@@ -4449,7 +4449,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value, or `null`
          */
-        get_termprop_data_by_id(prop: number): (Uint8Array | null);
+        get_termprop_data_by_id(prop: number): Uint8Array | null;
 
         /**
          * For a {@link Vte.PropertyType.DOUBLE} termprop, sets `value` to `prop`'s value,
@@ -4548,7 +4548,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value, or `null`
          */
-        get_termprop_string(prop: string): [(string | null), number];
+        get_termprop_string(prop: string): [string | null, number];
 
         /**
          * Like `vte_terminal_get_termprop_string()` except that it takes the termprop
@@ -4556,7 +4556,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value, or `null`
          */
-        get_termprop_string_by_id(prop: number): [(string | null), number];
+        get_termprop_string_by_id(prop: number): [string | null, number];
 
         /**
          * For a {@link Vte.PropertyType.UINT} termprop, sets `value` to `prop`'s value,
@@ -4626,7 +4626,7 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
          */
-        get_text(is_selected: (SelectionFunc | null)): [(string | null), CharAttributes[] | null];
+        get_text(is_selected: SelectionFunc | null): [string | null, CharAttributes[] | null];
 
         /**
          * Checks whether or not the terminal will allow blinking text.
@@ -4642,7 +4642,7 @@ export namespace Vte {
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_format(format: Format): (string | null);
+        get_text_format(format: Format): string | null;
 
         /**
          * Extracts a view of the visible part of the terminal.
@@ -4656,7 +4656,7 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_include_trailing_spaces(is_selected: (SelectionFunc | null)): [string, CharAttributes[] | null];
+        get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [string, CharAttributes[] | null];
 
         /**
          * Extracts a view of the visible part of the terminal. The
@@ -4678,7 +4678,7 @@ export namespace Vte {
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here
          * @returns a newly allocated text string, or `null`.
          */
-        get_text_range(start_row: (bigint | number), start_col: (bigint | number), end_row: (bigint | number), end_col: (bigint | number), is_selected: (SelectionFunc | null)): [(string | null), CharAttributes[] | null];
+        get_text_range(start_row: bigint | number, start_col: bigint | number, end_row: bigint | number, end_col: bigint | number, is_selected: SelectionFunc | null): [string | null, CharAttributes[] | null];
 
         /**
          * Returns the specified range of text in the specified format.
@@ -4689,7 +4689,7 @@ export namespace Vte {
          * @param end_col the last column of the range
          * @returns a newly allocated string, or `null`.
          */
-        get_text_range_format(format: Format, start_row: (bigint | number), start_col: (bigint | number), end_row: (bigint | number), end_col: (bigint | number)): [(string | null), number];
+        get_text_range_format(format: Format, start_row: bigint | number, start_col: bigint | number, end_row: bigint | number, end_col: bigint | number): [string | null, number];
 
         /**
          * Gets the currently selected text in the format specified by `format`.
@@ -4697,19 +4697,19 @@ export namespace Vte {
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
          */
-        get_text_selected(format: Format): (string | null);
+        get_text_selected(format: Format): string | null;
 
         /**
          * Gets the currently selected text in the format specified by `format`.
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
          */
-        get_text_selected_full(format: Format): [(string | null), number];
+        get_text_selected_full(format: Format): [string | null, number];
 
         /**
          * @returns the window title, or `null`
          */
-        get_window_title(): (string | null);
+        get_window_title(): string | null;
 
         /**
          * Returns the set of characters which will be considered parts of a word
@@ -4719,7 +4719,7 @@ export namespace Vte {
          * If `null`, a built-in set is used.
          * @returns a string, or `null`
          */
-        get_word_char_exceptions(): (string | null);
+        get_word_char_exceptions(): string | null;
 
         /**
          * @returns the horizontal alignment of `terminal` within its allocation
@@ -4767,7 +4767,7 @@ export namespace Vte {
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
          */
-        match_check(column: (bigint | number), row: (bigint | number)): [(string | null), number];
+        match_check(column: bigint | number, row: bigint | number): [string | null, number];
 
         /**
          * Removes the regular expression which is associated with the given `tag` from
@@ -4789,7 +4789,7 @@ export namespace Vte {
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
          */
-        match_set_cursor(tag: number, cursor: (Gdk.Cursor | null)): void;
+        match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
 
         /**
          * Sets which cursor the terminal will use if the pointer is over the pattern
@@ -4832,7 +4832,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link Vte.Pty}
          */
-        pty_new_sync(flags: PtyFlags, cancellable: (Gio.Cancellable | null)): Pty;
+        pty_new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
 
         /**
          * Returns the value of a {@link Vte.PropertyType.DATA} termprop as a {@link GLib.Bytes}, or `null` if
@@ -4840,7 +4840,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a {@link GLib.Bytes}, or `null`
          */
-        ref_termprop_data_bytes(prop: string): (GLib.Bytes | null);
+        ref_termprop_data_bytes(prop: string): GLib.Bytes | null;
 
         /**
          * Like `vte_terminal_ref_termprop_data_bytes()` except that it takes the termprop
@@ -4848,7 +4848,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value as a {@link GLib.Bytes}, or `null`
          */
-        ref_termprop_data_bytes_by_id(prop: number): (GLib.Bytes | null);
+        ref_termprop_data_bytes_by_id(prop: number): GLib.Bytes | null;
 
         /**
          * Returns the value of a {@link Vte.PropertyType.IMAGE} termprop as a {@link cairo.Surface},
@@ -4862,7 +4862,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a {@link cairo.Surface}, or `null`
          */
-        ref_termprop_image_surface(prop: string): (cairo.Surface | null);
+        ref_termprop_image_surface(prop: string): cairo.Surface | null;
 
         /**
          * Like `vte_terminal_ref_termprop_image_surface()` except that it takes the
@@ -4870,7 +4870,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value as a {@link cairo.Surface}, or `null`
          */
-        ref_termprop_image_surface_by_id(prop: number): (cairo.Surface | null);
+        ref_termprop_image_surface_by_id(prop: number): cairo.Surface | null;
 
         /**
          * Returns the value of a {@link Vte.PropertyType.IMAGE} termprop as a {@link Gdk.Texture}, or `null` if
@@ -4878,7 +4878,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a {@link Gdk.Texture}, or `null`
          */
-        ref_termprop_image_texture(prop: string): (Gdk.Texture | null);
+        ref_termprop_image_texture(prop: string): Gdk.Texture | null;
 
         /**
          * Like `vte_terminal_ref_termprop_image_texture()` except that it takes the
@@ -4886,7 +4886,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value as a {@link Gdk.Texture}, or `null`
          */
-        ref_termprop_image_texture_by_id(prop: number): (Gdk.Texture | null);
+        ref_termprop_image_texture_by_id(prop: number): Gdk.Texture | null;
 
         /**
          * Returns the value of a {@link Vte.PropertyType.URI} termprop as a {@link GLib.Uri}, or `null` if
@@ -4894,7 +4894,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns the property's value as a {@link GLib.Uri}, or `null`
          */
-        ref_termprop_uri(prop: string): (GLib.Uri | null);
+        ref_termprop_uri(prop: string): GLib.Uri | null;
 
         /**
          * Like `vte_terminal_ref_termprop_uri()` except that it takes the termprop
@@ -4902,7 +4902,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns the property's value as a {@link GLib.Uri}, or `null`
          */
-        ref_termprop_uri_by_id(prop: number): (GLib.Uri | null);
+        ref_termprop_uri_by_id(prop: number): GLib.Uri | null;
 
         /**
          * Returns the value of `prop` as a {@link GLib.Variant}, or `null` if
@@ -4928,7 +4928,7 @@ export namespace Vte {
          * @param prop a termprop name
          * @returns a floating {@link GLib.Variant}, or `null`
          */
-        ref_termprop_variant(prop: string): (GLib.Variant | null);
+        ref_termprop_variant(prop: string): GLib.Variant | null;
 
         /**
          * Like `vte_terminal_ref_termprop_variant()` except that it takes the termprop
@@ -4936,7 +4936,7 @@ export namespace Vte {
          * @param prop a termprop ID
          * @returns a floating {@link GLib.Variant}, or `null`
          */
-        ref_termprop_variant_by_id(prop: number): (GLib.Variant | null);
+        ref_termprop_variant_by_id(prop: number): GLib.Variant | null;
 
         /**
          * Resets as much of the terminal's internal state as possible, discarding any
@@ -4993,7 +4993,7 @@ export namespace Vte {
          * @param regex a {@link Vte.Regex}, or `null`
          * @param flags PCRE2 match flags, or 0
          */
-        search_set_regex(regex: (Regex | null), flags: number): void;
+        search_set_regex(regex: Regex | null, flags: number): void;
 
         /**
          * Sets whether search should wrap around to the beginning of the
@@ -5093,7 +5093,7 @@ export namespace Vte {
          * If `bold` is `null` then the default color is used.
          * @param bold the new bold color or `null`
          */
-        set_color_bold(bold: (Gdk.RGBA | null)): void;
+        set_color_bold(bold: Gdk.RGBA | null): void;
 
         /**
          * Sets the background color for text which is under the cursor.  If `null`, text
@@ -5101,7 +5101,7 @@ export namespace Vte {
          * reversed.
          * @param cursor_background the new color to use for the text cursor, or `null`
          */
-        set_color_cursor(cursor_background: (Gdk.RGBA | null)): void;
+        set_color_cursor(cursor_background: Gdk.RGBA | null): void;
 
         /**
          * Sets the foreground color for text which is under the cursor.  If `null`, text
@@ -5109,7 +5109,7 @@ export namespace Vte {
          * reversed.
          * @param cursor_foreground the new color to use for the text cursor, or `null`
          */
-        set_color_cursor_foreground(cursor_foreground: (Gdk.RGBA | null)): void;
+        set_color_cursor_foreground(cursor_foreground: Gdk.RGBA | null): void;
 
         /**
          * Sets the foreground color used to draw normal text.
@@ -5124,7 +5124,7 @@ export namespace Vte {
          * be drawn with foreground and background colors reversed.
          * @param highlight_background the new color to use for highlighted text, or `null`
          */
-        set_color_highlight(highlight_background: (Gdk.RGBA | null)): void;
+        set_color_highlight(highlight_background: Gdk.RGBA | null): void;
 
         /**
          * Sets the foreground color for text which is highlighted.  If `null`,
@@ -5133,7 +5133,7 @@ export namespace Vte {
          * be drawn with foreground and background colors reversed.
          * @param highlight_foreground the new color to use for highlighted text, or `null`
          */
-        set_color_highlight_foreground(highlight_foreground: (Gdk.RGBA | null)): void;
+        set_color_highlight_foreground(highlight_foreground: Gdk.RGBA | null): void;
 
         /**
          * `palette` specifies the new values for the 256 palette colors: 8 standard colors,
@@ -5149,7 +5149,7 @@ export namespace Vte {
          * @param background the new background color, or `null`
          * @param palette the color palette
          */
-        set_colors(foreground: (Gdk.RGBA | null), background: (Gdk.RGBA | null), palette: (Gdk.RGBA[] | null)): void;
+        set_colors(foreground: Gdk.RGBA | null, background: Gdk.RGBA | null, palette: Gdk.RGBA[] | null): void;
 
         /**
          * Sets `menu` as the context menu in `terminal`.
@@ -5159,14 +5159,14 @@ export namespace Vte {
          * takes precedence over a menu set using this function.
          * @param menu a menu
          */
-        set_context_menu(menu: (Gtk.Widget | null)): void;
+        set_context_menu(menu: Gtk.Widget | null): void;
 
         /**
          * Sets `model` as the context menu model in `terminal`.
          * Use `null` to unset the current menu model.
          * @param model a {@link Gio.MenuModel}
          */
-        set_context_menu_model(model: (Gio.MenuModel | null)): void;
+        set_context_menu_model(model: Gio.MenuModel | null): void;
 
         /**
          * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
@@ -5247,7 +5247,7 @@ export namespace Vte {
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
          */
-        set_encoding(codeset: (string | null)): boolean;
+        set_encoding(codeset: string | null): boolean;
 
         /**
          * Sets the font used for rendering all text displayed by the terminal,
@@ -5257,7 +5257,7 @@ export namespace Vte {
          * and columns.  The font scale is applied to the specified font.
          * @param font_desc a {@link Pango.FontDescription} for the desired font, or `null`
          */
-        set_font(font_desc: (Pango.FontDescription | null)): void;
+        set_font(font_desc: Pango.FontDescription | null): void;
 
         /**
          * Sets the terminal's font options to `options`.
@@ -5268,7 +5268,7 @@ export namespace Vte {
          * {@link cairo.HintMetrics.OFF} set.
          * @param font_options the font options, or `null`
          */
-        set_font_options(font_options: (cairo.FontOptions | null)): void;
+        set_font_options(font_options: cairo.FontOptions | null): void;
 
         /**
          * Sets the terminal's font scale to `scale`.
@@ -5298,7 +5298,7 @@ export namespace Vte {
          * Use `null` to unset the PTY.
          * @param pty a {@link Vte.Pty}, or `null`
          */
-        set_pty(pty: (Pty | null)): void;
+        set_pty(pty: Pty | null): void;
 
         /**
          * Controls whether or not the terminal will rewrap its contents, including
@@ -5353,7 +5353,7 @@ export namespace Vte {
          * No scrollback is allowed on the alternate screen buffer.
          * @param lines the length of the history buffer
          */
-        set_scrollback_lines(lines: (bigint | number)): void;
+        set_scrollback_lines(lines: bigint | number): void;
 
         /**
          * Attempts to change the terminal's size in terms of rows and columns.  If
@@ -5361,7 +5361,7 @@ export namespace Vte {
          * @param columns the desired number of columns
          * @param rows the desired number of rows
          */
-        set_size(columns: (bigint | number), rows: (bigint | number)): void;
+        set_size(columns: bigint | number, rows: bigint | number): void;
 
         /**
          * Suppress emissions of signals and property notifications
@@ -5438,7 +5438,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
          */
-        spawn_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null), callback: (TerminalSpawnAsyncCallback | null)): void;
+        spawn_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: TerminalSpawnAsyncCallback | null): void;
 
         /**
          * Starts the specified command under a newly-allocated controlling
@@ -5473,7 +5473,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
          */
-        spawn_sync(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), cancellable: (Gio.Cancellable | null)): [boolean, GLib.Pid | null];
+        spawn_sync(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Pid | null];
 
         /**
          * A convenience function that wraps creating the {@link Vte.Pty} and spawning
@@ -5532,7 +5532,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
          */
-        spawn_with_fds_async(pty_flags: PtyFlags, working_directory: (string | null), argv: string[], envv: (string[] | null), fds: (number[] | null), map_fds: (number[] | null), spawn_flags: GLib.SpawnFlags, child_setup: (GLib.SpawnChildSetupFunc | null), timeout: number, cancellable: (Gio.Cancellable | null), callback: (TerminalSpawnAsyncCallback | null)): void;
+        spawn_with_fds_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: TerminalSpawnAsyncCallback | null): void;
 
         /**
          * Clears the current selection.
@@ -5573,7 +5573,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
          */
-        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -5601,8 +5601,8 @@ export namespace Vte {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get hadjustment(): (Gtk.Adjustment | null);
-        set hadjustment(val: (Gtk.Adjustment | null));
+        get hadjustment(): Gtk.Adjustment | null;
+        set hadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when horizontal scrolling should start.
@@ -5626,8 +5626,8 @@ export namespace Vte {
          * This adjustment is shared between the scrollable widget and its parent.
           * @category Inherited from Gtk.Scrollable
          */
-        get vadjustment(): (Gtk.Adjustment | null);
-        set vadjustment(val: (Gtk.Adjustment | null));
+        get vadjustment(): Gtk.Adjustment | null;
+        set vadjustment(val: Gtk.Adjustment | null);
 
         /**
          * Determines when vertical scrolling should start.
@@ -5670,7 +5670,7 @@ export namespace Vte {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -5678,7 +5678,7 @@ export namespace Vte {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -5706,13 +5706,13 @@ export namespace Vte {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5756,7 +5756,7 @@ export namespace Vte {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -5765,7 +5765,7 @@ export namespace Vte {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -5823,7 +5823,7 @@ export namespace Vte {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -5831,13 +5831,13 @@ export namespace Vte {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -5853,13 +5853,13 @@ export namespace Vte {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5945,7 +5945,7 @@ export namespace Vte {
          * @param end the end of the range, in characters
          * @virtual
          */
-        vfunc_get_contents(start: number, end: number): (GLib.Bytes | Uint8Array);
+        vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
 
         /**
          * Retrieve the current contents of the accessible object starting
@@ -5956,7 +5956,7 @@ export namespace Vte {
          * @param granularity the granularity of the query
          * @virtual
          */
-        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [(GLib.Bytes | Uint8Array), number, number];
+        vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes | Uint8Array, number, number];
 
         /**
          * Retrieves the default text attributes inside the accessible object.
@@ -6023,7 +6023,7 @@ export namespace Vte {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -6033,7 +6033,7 @@ export namespace Vte {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -6044,7 +6044,7 @@ export namespace Vte {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -6055,7 +6055,7 @@ export namespace Vte {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -6064,7 +6064,7 @@ export namespace Vte {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -6129,7 +6129,7 @@ export namespace Vte {
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
-        get_hadjustment(): (Gtk.Adjustment | null);
+        get_hadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
@@ -6141,7 +6141,7 @@ export namespace Vte {
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
-        get_vadjustment(): (Gtk.Adjustment | null);
+        get_vadjustment(): Gtk.Adjustment | null;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
@@ -6153,7 +6153,7 @@ export namespace Vte {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -6168,7 +6168,7 @@ export namespace Vte {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy}.
@@ -6215,7 +6215,7 @@ export namespace Vte {
          * @param y location to store the Y coordinate
          * @returns `true` if the event has coordinates attached   that are within the terminal, with `x` and `y` filled in;   `false` otherwise
          */
-        get_coordinates(x: (number | null), y: (number | null)): boolean;
+        get_coordinates(x: number | null, y: number | null): boolean;
     }
 
 
@@ -6231,15 +6231,15 @@ export namespace Vte {
         static $gtype: GObject.GType<Regex>;
 
         // Constructors
-        constructor(pattern: string, pattern_length: (bigint | number), flags: number);
+        constructor(pattern: string, pattern_length: bigint | number, flags: number);
 
-        static new_for_match(pattern: string, pattern_length: (bigint | number), flags: number): Regex;
+        static new_for_match(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
-        static new_for_match_full(pattern: string, pattern_length: (bigint | number), flags: number, extra_flags: number): Regex;
+        static new_for_match_full(pattern: string, pattern_length: bigint | number, flags: number, extra_flags: number): Regex;
 
-        static new_for_search(pattern: string, pattern_length: (bigint | number), flags: number): Regex;
+        static new_for_search(pattern: string, pattern_length: bigint | number, flags: number): Regex;
 
-        static new_for_search_full(pattern: string, pattern_length: (bigint | number), flags: number, extra_flags: number): Regex;
+        static new_for_search_full(pattern: string, pattern_length: bigint | number, flags: number, extra_flags: number): Regex;
 
         // Methods
         /**
@@ -6295,12 +6295,9 @@ export namespace Vte {
         static $gtype: GObject.GType<Uuid>;
 
         // Constructors
+        constructor(properties?: Partial<{}>);
 
-        constructor(properties?: Partial<{
-
-        }>);
-
-        static new_from_string(str: string, len: (bigint | number), fmt: UuidFormat): Uuid;
+        static new_from_string(str: string, len: bigint | number, fmt: UuidFormat): Uuid;
 
         static new_v4(): Uuid;
 
@@ -6311,7 +6308,7 @@ export namespace Vte {
          * @param len the length of `str`, or -1 is `str` is NUL terminated
          * @param fmt a {@link Vte.UuidFormat}
          */
-        static validate_string(str: string, len: (bigint | number), fmt: UuidFormat): boolean;
+        static validate_string(str: string, len: bigint | number, fmt: UuidFormat): boolean;
 
         // Methods
         /**
@@ -6339,7 +6336,7 @@ export namespace Vte {
          * @param len a location to store the length of the returned string, or `null`
          * @returns a string representation of `uuid`
          */
-        free_to_string(fmt: UuidFormat, len: (bigint | number)): string;
+        free_to_string(fmt: UuidFormat, len: bigint | number): string;
 
         /**
          * Creates a new UUID for `ns` and `str`.
@@ -6347,7 +6344,7 @@ export namespace Vte {
          * @param len the length of `data`, or -1 if `str` is NUL terminated
          * @returns a new v5 UUID
          */
-        new_v5(data: string, len: (bigint | number)): Uuid;
+        new_v5(data: string, len: bigint | number): Uuid;
 
         /**
          * Returns the string representation of `uuid`.

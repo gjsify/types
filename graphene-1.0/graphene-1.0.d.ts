@@ -479,10 +479,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Box>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Box;
 
@@ -640,7 +637,7 @@ export namespace Graphene {
          * @param max the coordinates of the maximum vertex
          * @returns the initialized {@link Graphene.Box}
          */
-        init(min: (Point3D | null), max: (Point3D | null)): Box;
+        init(min: Point3D | null, max: Point3D | null): Box;
 
         /**
          * Initializes the given {@link Graphene.Box} with the vertices of
@@ -668,7 +665,7 @@ export namespace Graphene {
          * @param max the coordinates of the maximum vertex
          * @returns the initialized {@link Graphene.Box}
          */
-        init_from_vec3(min: (Vec3 | null), max: (Vec3 | null)): Box;
+        init_from_vec3(min: Vec3 | null, max: Vec3 | null): Box;
 
         /**
          * Initializes the given {@link Graphene.Box} with the given array
@@ -711,10 +708,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Euler>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Euler;
 
@@ -808,7 +802,7 @@ export namespace Graphene {
          * @param src a {@link Graphene.Euler}
          * @returns the initialized {@link Graphene.Euler}
          */
-        init_from_euler(src: (Euler | null)): Euler;
+        init_from_euler(src: Euler | null): Euler;
 
         /**
          * Initializes a {@link Graphene.Euler} using the given rotation matrix.
@@ -819,7 +813,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized {@link Graphene.Euler}
          */
-        init_from_matrix(m: (Matrix | null), order: EulerOrder): Euler;
+        init_from_matrix(m: Matrix | null, order: EulerOrder): Euler;
 
         /**
          * Initializes a {@link Graphene.Euler} using the given normalized quaternion.
@@ -830,7 +824,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized {@link Graphene.Euler}
          */
-        init_from_quaternion(q: (Quaternion | null), order: EulerOrder): Euler;
+        init_from_quaternion(q: Quaternion | null, order: EulerOrder): Euler;
 
         /**
          * Initializes a {@link Graphene.Euler} using the given angles
@@ -853,7 +847,7 @@ export namespace Graphene {
          * @param order the order used to apply the rotations
          * @returns the initialized {@link Graphene.Euler}
          */
-        init_from_vec3(v: (Vec3 | null), order: EulerOrder): Euler;
+        init_from_vec3(v: Vec3 | null, order: EulerOrder): Euler;
 
         /**
          * Initializes a {@link Graphene.Euler} with the given angles and `order`.
@@ -920,10 +914,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Frustum>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Frustum;
 
@@ -1010,10 +1001,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Matrix>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Matrix;
 
@@ -1639,10 +1627,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Plane>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Plane;
 
@@ -1686,7 +1671,7 @@ export namespace Graphene {
          * @param constant the distance from the origin to the plane along the   normal vector; the sign determines the half-space occupied by the   plane
          * @returns the initialized plane
          */
-        init(normal: (Vec3 | null), constant: number): Plane;
+        init(normal: Vec3 | null, constant: number): Plane;
 
         /**
          * Initializes the given {@link Graphene.Plane} using the normal
@@ -1750,7 +1735,7 @@ export namespace Graphene {
          * @param matrix a {@link Graphene.Matrix}
          * @param normal_matrix a {@link Graphene.Matrix}
          */
-        transform(matrix: Matrix, normal_matrix: (Matrix | null)): Plane;
+        transform(matrix: Matrix, normal_matrix: Matrix | null): Plane;
     }
 
 
@@ -2014,10 +1999,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Quad>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Quad;
 
@@ -2085,10 +2067,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Quaternion>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Quaternion;
 
@@ -2277,10 +2256,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Ray>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Ray;
 
@@ -2350,7 +2326,7 @@ export namespace Graphene {
          * @param direction the direction vector
          * @returns the initialized ray
          */
-        init(origin: (Point3D | null), direction: (Vec3 | null)): Ray;
+        init(origin: Point3D | null, direction: Vec3 | null): Ray;
 
         /**
          * Initializes the given {@link Graphene.Ray} using the origin and direction
@@ -2366,7 +2342,7 @@ export namespace Graphene {
          * @param direction a {@link Graphene.Vec3}
          * @returns the initialized ray
          */
-        init_from_vec3(origin: (Vec3 | null), direction: (Vec3 | null)): Ray;
+        init_from_vec3(origin: Vec3 | null, direction: Vec3 | null): Ray;
 
         /**
          * Intersects the given {@link Graphene.Ray} `r` with the given
@@ -2762,10 +2738,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Simd4F>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 
@@ -2860,10 +2833,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Sphere>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Sphere;
 
@@ -2918,7 +2888,7 @@ export namespace Graphene {
          * @param radius the radius of the sphere
          * @returns the initialized {@link Graphene.Sphere}
          */
-        init(center: (Point3D | null), radius: number): Sphere;
+        init(center: Point3D | null, radius: number): Sphere;
 
         /**
          * Initializes the given {@link Graphene.Sphere} using the given array
@@ -2930,7 +2900,7 @@ export namespace Graphene {
          * @param center the center of the sphere
          * @returns the initialized {@link Graphene.Sphere}
          */
-        init_from_points(points: Point3D[], center: (Point3D | null)): Sphere;
+        init_from_points(points: Point3D[], center: Point3D | null): Sphere;
 
         /**
          * Initializes the given {@link Graphene.Sphere} using the given array
@@ -2942,7 +2912,7 @@ export namespace Graphene {
          * @param center the center of the sphere
          * @returns the initialized {@link Graphene.Sphere}
          */
-        init_from_vectors(vectors: Vec3[], center: (Point3D | null)): Sphere;
+        init_from_vectors(vectors: Vec3[], center: Point3D | null): Sphere;
 
         /**
          * Checks whether the sphere has a zero radius.
@@ -2968,10 +2938,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Triangle>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Triangle;
 
@@ -3021,7 +2988,7 @@ export namespace Graphene {
          * @param p a {@link Graphene.Point3D}
          * @returns `true` if the barycentric coordinates are valid
          */
-        get_barycoords(p: (Point3D | null)): [boolean, Vec2];
+        get_barycoords(p: Point3D | null): [boolean, Vec2];
 
         /**
          * Computes the bounding box of the given {@link Graphene.Triangle}.
@@ -3071,7 +3038,7 @@ export namespace Graphene {
          * @param uv_c the UV coordinates of the third point
          * @returns `true` if the coordinates are valid
          */
-        get_uv(p: (Point3D | null), uv_a: Vec2, uv_b: Vec2, uv_c: Vec2): [boolean, Vec2];
+        get_uv(p: Point3D | null, uv_a: Vec2, uv_b: Vec2, uv_c: Vec2): [boolean, Vec2];
 
         /**
          * Retrieves the three vertices of the given {@link Graphene.Triangle}.
@@ -3096,7 +3063,7 @@ export namespace Graphene {
          * @param c a {@link Graphene.Point3D}
          * @returns the initialized {@link Graphene.Triangle}
          */
-        init_from_point3d(a: (Point3D | null), b: (Point3D | null), c: (Point3D | null)): Triangle;
+        init_from_point3d(a: Point3D | null, b: Point3D | null, c: Point3D | null): Triangle;
 
         /**
          * Initializes a {@link Graphene.Triangle} using the three given vectors.
@@ -3105,7 +3072,7 @@ export namespace Graphene {
          * @param c a {@link Graphene.Vec3}
          * @returns the initialized {@link Graphene.Triangle}
          */
-        init_from_vec3(a: (Vec3 | null), b: (Vec3 | null), c: (Vec3 | null)): Triangle;
+        init_from_vec3(a: Vec3 | null, b: Vec3 | null, c: Vec3 | null): Triangle;
     }
 
 
@@ -3120,10 +3087,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Vec2>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Vec2;
 
@@ -3304,10 +3268,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Vec3>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Vec3;
 
@@ -3541,10 +3502,7 @@ export namespace Graphene {
         static $gtype: GObject.GType<Vec4>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static alloc(): Vec4;
 

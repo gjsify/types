@@ -240,7 +240,7 @@ export namespace ZBar {
          * return immediately and the device will be opened asynchronously
          * @param video_device the platform specific name of   the device to open. use NULL to close a currently opened device.
          */
-        set_video_device(video_device: (string | null)): void;
+        set_video_device(video_device: string | null): void;
 
         /**
          * enable/disable video scanning.
@@ -256,7 +256,7 @@ export namespace ZBar {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk__.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk__.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -277,7 +277,7 @@ export namespace ZBar {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -287,7 +287,7 @@ export namespace ZBar {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -296,7 +296,7 @@ export namespace ZBar {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -332,7 +332,7 @@ export namespace ZBar {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk__.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk__.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -348,7 +348,7 @@ export namespace ZBar {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk__.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk__.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -370,7 +370,7 @@ export namespace ZBar {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -381,7 +381,7 @@ export namespace ZBar {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -390,7 +390,7 @@ export namespace ZBar {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk__.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk__.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.

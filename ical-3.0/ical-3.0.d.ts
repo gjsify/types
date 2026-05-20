@@ -1018,14 +1018,14 @@ export namespace ICal {
      * @param src 
      * @param size 
      */
-    function decode_base64(dest: string, src: string, size: (bigint | number)): string;
+    function decode_base64(dest: string, src: string, size: bigint | number): string;
 
     /**
      * @param dest 
      * @param src 
      * @param size 
      */
-    function decode_quoted_printable(dest: string, src: string, size: (bigint | number)): string;
+    function decode_quoted_printable(dest: string, src: string, size: bigint | number): string;
 
     function free_zone_directory(): void;
 
@@ -1043,7 +1043,7 @@ export namespace ICal {
      * @param array 
      * @param position 
      */
-    function icalarray_element_at(array: array, position: (bigint | number)): null;
+    function icalarray_element_at(array: array, position: bigint | number): null;
 
     /**
      * `par` Usage
@@ -1067,7 +1067,7 @@ export namespace ICal {
      * @param array 
      * @param position 
      */
-    function icalarray_remove_element_at(array: array, position: (bigint | number)): void;
+    function icalarray_remove_element_at(array: array, position: bigint | number): void;
 
     /**
      * @param array 
@@ -1586,7 +1586,7 @@ export namespace ICal {
      * @param buf_size 
      * @param ch 
      */
-    function icalmemory_append_char(buf: string, pos: string, buf_size: (bigint | number), ch: number): void;
+    function icalmemory_append_char(buf: string, pos: string, buf_size: bigint | number, ch: number): void;
 
     /**
      * @param buf 
@@ -1594,7 +1594,7 @@ export namespace ICal {
      * @param buf_size 
      * @param string 
      */
-    function icalmemory_append_string(buf: string, pos: string, buf_size: (bigint | number), string: string): void;
+    function icalmemory_append_string(buf: string, pos: string, buf_size: bigint | number, string: string): void;
 
     /**
      * @param buf 
@@ -1609,13 +1609,13 @@ export namespace ICal {
     /**
      * @param size 
      */
-    function icalmemory_new_buffer(size: (bigint | number)): null;
+    function icalmemory_new_buffer(size: bigint | number): null;
 
     /**
      * @param buf 
      * @param size 
      */
-    function icalmemory_resize_buffer(buf: null, size: (bigint | number)): null;
+    function icalmemory_resize_buffer(buf: null, size: bigint | number): null;
 
     /**
      * @param s 
@@ -1625,7 +1625,7 @@ export namespace ICal {
     /**
      * @param size 
      */
-    function icalmemory_tmp_buffer(size: (bigint | number)): null;
+    function icalmemory_tmp_buffer(size: bigint | number): null;
 
     /**
      * @param str 
@@ -2326,7 +2326,7 @@ export namespace ICal {
      * @param buf_size 
      * @param d 
      */
-    function icalparser_string_line_generator(out: string, buf_size: (bigint | number), d: null): string;
+    function icalparser_string_line_generator(out: string, buf_size: bigint | number, d: null): string;
 
     /**
      * @param p 
@@ -3919,7 +3919,7 @@ export namespace ICal {
      * @param count 
      * @param array 
      */
-    function icalrecur_expand_recurrence(rule: string, start: (bigint | number), count: number, array: (bigint | number)): number;
+    function icalrecur_expand_recurrence(rule: string, start: bigint | number, count: number, array: bigint | number): number;
 
     /**
      * @param kind 
@@ -4192,7 +4192,7 @@ export namespace ICal {
      * @param is_date 
      * @param zone 
      */
-    function icaltime_from_timet_with_zone(tm: (bigint | number), is_date: number, zone: timezone): null;
+    function icaltime_from_timet_with_zone(tm: bigint | number, is_date: number, zone: timezone): null;
 
     /**
      * @param t 
@@ -4977,7 +4977,7 @@ export namespace ICal {
      * @param parts 
      * @param max_parts 
      */
-    function sspm_free_parts(parts: null, max_parts: (bigint | number)): void;
+    function sspm_free_parts(parts: null, max_parts: bigint | number): void;
 
     /**
      * @param type 
@@ -4997,7 +4997,7 @@ export namespace ICal {
      * @param get_string_data 
      * @param first_header 
      */
-    function sspm_parse_mime(parts: null, max_parts: (bigint | number), actions: null, get_string: null, get_string_data: null, first_header: null): number;
+    function sspm_parse_mime(parts: null, max_parts: bigint | number, actions: null, get_string: null, get_string_data: null, first_header: null): number;
 
     /**
      * @param parts 
@@ -5005,7 +5005,7 @@ export namespace ICal {
      * @param output_string 
      * @param header 
      */
-    function sspm_write_mime(parts: null, num_parts: (bigint | number), output_string: string, header: string): number;
+    function sspm_write_mime(parts: null, num_parts: bigint | number, output_string: string, header: string): number;
 
     /**
      * @gir-type Callback

@@ -75,7 +75,7 @@ export namespace Libosinfo {
         static GENERIC: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -179,7 +179,7 @@ export namespace Libosinfo {
         static NO_DIRECTORY_RECORD_EXTENT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -290,7 +290,7 @@ export namespace Libosinfo {
         static NOT_SUPPORTED_PROTOCOL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -764,9 +764,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Entity.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Entity.ConstructorProps {}
     }
 
     /**
@@ -834,9 +832,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -878,13 +874,10 @@ export namespace Libosinfo {
 
     namespace Db {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1229,7 +1222,7 @@ export namespace Libosinfo {
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter: (Filter | null)): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
 
         /**
          * Retrieve all the associated devices matching the filter.
@@ -1237,7 +1230,7 @@ export namespace Libosinfo {
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter: (Filter | null)): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
 
         /**
          * Get the operating system for the deployment
@@ -1256,7 +1249,7 @@ export namespace Libosinfo {
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device(filter: (Filter | null)): Device;
+        get_preferred_device(filter: Filter | null): Device;
 
         /**
          * Get the preferred device link matching a given filter and platform.
@@ -1264,7 +1257,7 @@ export namespace Libosinfo {
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device_link(filter: (Filter | null)): DeviceLink;
+        get_preferred_device_link(filter: Filter | null): DeviceLink;
     }
 
 
@@ -1275,9 +1268,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -1356,9 +1347,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Entity.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Entity.ConstructorProps {}
     }
 
     /**
@@ -1425,9 +1414,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Entity.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Entity.ConstructorProps {}
     }
 
     /**
@@ -1516,9 +1503,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -1705,9 +1690,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -1751,7 +1734,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter: (Filter | null)): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
 
         /**
          * Construct a new devicelink list that is filled with devicelinks
@@ -1793,9 +1776,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -2012,7 +1993,7 @@ export namespace Libosinfo {
          * @param default_value the value to be returned in case there's no value                 associated with the `key`
          * @returns the value associated with the key as an int64, or `default_value`
          */
-        get_param_value_int64_with_default(key: string, default_value: (bigint | number)): number;
+        get_param_value_int64_with_default(key: string, default_value: bigint | number): number;
 
         /**
          * Retrieve all the parameter values associated with a named
@@ -2057,19 +2038,16 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param value the int64 value to be associated with that key
          */
-        set_param_int64(key: string, value: (bigint | number)): void;
+        set_param_int64(key: string, value: bigint | number): void;
     }
 
 
     namespace Filter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2253,9 +2231,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -2437,9 +2413,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -2486,9 +2460,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Entity.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Entity.ConstructorProps {}
     }
 
     /**
@@ -2998,9 +2970,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -3210,7 +3180,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string. If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_for_tree`() in instead.
          */
-        generate(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+        generate(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
@@ -3223,21 +3193,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
-         * call `osinfo_install_script_generate_finish`() to conclude this call and get
-         * the generated script.
-         * 
-         * If you are generating the script for a specific media, it is recommended that
-         * you use `osinfo_install_script_generate_for_media_async`() instead.
-         * @param os the os
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
@@ -3251,7 +3207,21 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
+         * call `osinfo_install_script_generate_finish`() to conclude this call and get
+         * the generated script.
+         * 
+         * If you are generating the script for a specific media, it is recommended that
+         * you use `osinfo_install_script_generate_for_media_async`() instead.
+         * @param os the os
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Some install scripts need to pass a command line to the kernel, Such install
@@ -3317,7 +3287,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_media(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+        generate_for_media(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
@@ -3327,18 +3297,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
-         * callback, call `osinfo_install_script_generate_for_media_finish`() to
-         * conclude this call and get the generated script.
-         * @param media the media
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
@@ -3349,7 +3308,18 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
+         * callback, call `osinfo_install_script_generate_for_media_finish`() to
+         * conclude this call and get the generated script.
+         * @param media the media
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
@@ -3365,7 +3335,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_tree(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+        generate_for_tree(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
@@ -3375,18 +3345,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
-         * callback, call `osinfo_install_script_generate_for_tree_finish`() to
-         * conclude this call and get the generated script.
-         * @param tree the tree
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
@@ -3397,7 +3356,18 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
+         * callback, call `osinfo_install_script_generate_for_tree_finish`() to
+         * conclude this call and get the generated script.
+         * @param tree the tree
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
@@ -3413,7 +3383,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_output_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_output_for_tree`() instead.
          */
-        generate_output(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+        generate_output(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
@@ -3427,22 +3397,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
-         * callback, call `osinfo_install_script_generate_output_finish`() to conclude
-         * this call and get the generated script.
-         * 
-         * If you are generating the script for a specific media, it is recommended that
-         * you use `osinfo_install_script_generate_output_for_media_async`() instead.
-         * @param os the os
-         * @param config the install script config
-         * @param output_dir the directory where the file containing the output script              will be written
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
@@ -3457,7 +3412,22 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
+         * callback, call `osinfo_install_script_generate_output_finish`() to conclude
+         * this call and get the generated script.
+         * 
+         * If you are generating the script for a specific media, it is recommended that
+         * you use `osinfo_install_script_generate_output_for_media_async`() instead.
+         * @param os the os
+         * @param config the install script config
+         * @param output_dir the directory where the file containing the output script              will be written
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
@@ -3473,7 +3443,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          */
-        generate_output_for_media(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+        generate_output_for_media(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
@@ -3485,20 +3455,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
-         * From the callback, call
-         * `osinfo_install_script_generate_output_for_media_finish`() to conclude this
-         * call and get the generated file.
-         * @param media the media
-         * @param config the install script config
-         * @param output_dir the directory where the file containing the output script              will be written
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
@@ -3511,7 +3468,20 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
+         * From the callback, call
+         * `osinfo_install_script_generate_output_for_media_finish`() to conclude this
+         * call and get the generated file.
+         * @param media the media
+         * @param config the install script config
+         * @param output_dir the directory where the file containing the output script              will be written
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
@@ -3527,7 +3497,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          */
-        generate_output_for_tree(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+        generate_output_for_tree(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
@@ -3539,20 +3509,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
-
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
-         * From the callback, call
-         * `osinfo_install_script_generate_output_for_tree_finish`() to conclude this
-         * call and get the generated file.
-         * @param tree the tree
-         * @param config the install script config
-         * @param output_dir the directory where the file containing the output script              will be written
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
@@ -3565,7 +3522,20 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
+         * From the callback, call
+         * `osinfo_install_script_generate_output_for_tree_finish`() to conclude this
+         * call and get the generated file.
+         * @param tree the tree
+         * @param config the install script config
+         * @param output_dir the directory where the file containing the output script              will be written
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
@@ -3761,9 +3731,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -4014,13 +3982,10 @@ export namespace Libosinfo {
 
     namespace Loader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4150,8 +4115,8 @@ export namespace Libosinfo {
             url: string;
             volume_id: string;
             volumeId: string;
-            volume_size: (bigint | number);
-            volumeSize: (bigint | number);
+            volume_size: bigint | number;
+            volumeSize: bigint | number;
         }
     }
 
@@ -4376,14 +4341,14 @@ export namespace Libosinfo {
          * @default -1
          */
         get volume_size(): number;
-        set volume_size(val: (bigint | number));
+        set volume_size(val: bigint | number);
 
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
          * @default -1
          */
         get volumeSize(): number;
-        set volumeSize(val: (bigint | number));
+        set volumeSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -4423,7 +4388,7 @@ export namespace Libosinfo {
          * @param location the location of an installation media
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable: (Gio.Cancellable | null)): Media;
+        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Media;
 
         /**
          * Asynchronous variant of `osinfo_media_create_from_location`.
@@ -4432,7 +4397,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        static create_from_location_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Media> | null)): void;
+        static create_from_location_async(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Media> | null): void;
 
         /**
          * Finishes an asynchronous media object creation process started with
@@ -4450,7 +4415,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
          */
-        static create_from_location_with_flags(location: string, cancellable: (Gio.Cancellable | null), flags: number): Media;
+        static create_from_location_with_flags(location: string, cancellable: Gio.Cancellable | null, flags: number): Media;
 
         /**
          * Asynchronous variant of `osinfo_media_create_from_location_with_flags`.
@@ -4460,7 +4425,7 @@ export namespace Libosinfo {
          * @param callback Function to call when result of this call is ready
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
          */
-        static create_from_location_with_flags_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Media> | null), flags: number): void;
+        static create_from_location_with_flags_async(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Media> | null, flags: number): void;
 
         /**
          * Finishes an asynchronous media object creation process started with
@@ -4644,9 +4609,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -4917,7 +4880,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of OsinfoDeviceLink
          */
-        get_all_device_links(filter: (Filter | null)): DeviceLinkList;
+        get_all_device_links(filter: Filter | null): DeviceLinkList;
 
         /**
          * Get all devices matching a given filter but unlike osinfo_os_get_devices
@@ -4926,7 +4889,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter: (Filter | null)): DeviceList;
+        get_all_devices(filter: Filter | null): DeviceList;
 
         /**
          * Gets the username expected to be passed to the cloud image when performing
@@ -4940,7 +4903,7 @@ export namespace Libosinfo {
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_complete_firmware_list(filter: (Filter | null)): FirmwareList;
+        get_complete_firmware_list(filter: Filter | null): FirmwareList;
 
         /**
          * Gets list of all available device drivers for OS `os`.
@@ -4960,14 +4923,14 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of device links
          */
-        get_device_links(filter: (Filter | null)): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
 
         /**
          * Get all devices matching a given filter
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter: (Filter | null)): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
 
         /**
          * A utility function that gets devices found from the list of devices
@@ -4998,7 +4961,7 @@ export namespace Libosinfo {
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_firmware_list(filter: (Filter | null)): FirmwareList;
+        get_firmware_list(filter: Filter | null): FirmwareList;
 
         /**
          * Get all installed images associated with operating system `os`.
@@ -5076,9 +5039,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProductList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProductList.ConstructorProps {}
     }
 
     /**
@@ -5222,9 +5183,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -5277,9 +5236,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Product.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Product.ConstructorProps {}
     }
 
     /**
@@ -5333,7 +5290,7 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter: (Filter | null)): DeviceList;
+        get_all_devices(filter: Filter | null): DeviceList;
 
         /**
          * Retrieve all the associated devices matching the filter.
@@ -5341,7 +5298,7 @@ export namespace Libosinfo {
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter: (Filter | null)): DeviceLinkList;
+        get_device_links(filter: Filter | null): DeviceLinkList;
 
         /**
          * Retrieve all the associated devices matching the filter.
@@ -5349,7 +5306,7 @@ export namespace Libosinfo {
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter: (Filter | null)): DeviceList;
+        get_devices(filter: Filter | null): DeviceList;
     }
 
 
@@ -5360,9 +5317,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ProductList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ProductList.ConstructorProps {}
     }
 
     /**
@@ -5602,13 +5557,10 @@ export namespace Libosinfo {
 
     namespace ProductFilter {
         // Signal signatures
-        interface SignalSignatures extends Filter.SignalSignatures {
-        }
+        interface SignalSignatures extends Filter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Filter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Filter.ConstructorProps {}
     }
 
     /**
@@ -5691,9 +5643,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -5779,11 +5729,11 @@ export namespace Libosinfo {
         // Constructor properties interface
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
-            cpu: (bigint | number);
+            cpu: bigint | number;
             n_cpus: number;
             nCpus: number;
-            ram: (bigint | number);
-            storage: (bigint | number);
+            ram: bigint | number;
+            storage: bigint | number;
         }
     }
 
@@ -5806,7 +5756,7 @@ export namespace Libosinfo {
          * @default -1
          */
         get cpu(): number;
-        set cpu(val: (bigint | number));
+        set cpu(val: bigint | number);
 
         /**
          * The number of CPUs.
@@ -5827,14 +5777,14 @@ export namespace Libosinfo {
          * @default -1
          */
         get ram(): number;
-        set ram(val: (bigint | number));
+        set ram(val: bigint | number);
 
         /**
          * The amount of storage space in bytes.
          * @default -1
          */
         get storage(): number;
-        set storage(val: (bigint | number));
+        set storage(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5906,7 +5856,7 @@ export namespace Libosinfo {
          * Sets the CPU frequency.
          * @param cpu the CPU frequency in hertz (Hz)
          */
-        set_cpu(cpu: (bigint | number)): void;
+        set_cpu(cpu: bigint | number): void;
 
         /**
          * Sets the number of CPUs.
@@ -5918,13 +5868,13 @@ export namespace Libosinfo {
          * Sets the amount of RAM in bytes.
          * @param ram the amount of ram in bytes
          */
-        set_ram(ram: (bigint | number)): void;
+        set_ram(ram: bigint | number): void;
 
         /**
          * Sets the amount of storage space.
          * @param storage the amount of storage in bytes
          */
-        set_storage(storage: (bigint | number)): void;
+        set_storage(storage: bigint | number): void;
     }
 
 
@@ -5935,9 +5885,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**
@@ -6230,7 +6178,7 @@ export namespace Libosinfo {
          * @param location the location of an installation tree
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable: (Gio.Cancellable | null)): Tree;
+        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Tree;
 
         /**
          * Asynchronous variant of `osinfo_tree_create_from_location`.
@@ -6239,7 +6187,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        static create_from_location_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Tree> | null)): void;
+        static create_from_location_async(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Tree> | null): void;
 
         /**
          * Finishes an asynchronous tree object creation process started with
@@ -6363,9 +6311,7 @@ export namespace Libosinfo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends List.ConstructorProps {}
     }
 
     /**

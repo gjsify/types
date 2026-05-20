@@ -224,7 +224,7 @@ export namespace Wp {
      * @returns A newly allocated string with the absolute, canonicalized file path, or NULL if the file was not found.
      * @since 0.5.0
      */
-    function base_dirs_find_file(flags: BaseDirsFlags, subdir: (string | null), filename: string): (string | null);
+    function base_dirs_find_file(flags: BaseDirsFlags, subdir: string | null, filename: string): string | null;
 
     /**
      * Creates an iterator to iterate over all files that match `suffix` within the `subdir` of the directories specified in `flags`.
@@ -239,7 +239,7 @@ export namespace Wp {
      * @returns a new iterator iterating over strings which are absolute & canonicalized paths to the files found
      * @since 0.5.0
      */
-    function base_dirs_new_files_iterator(flags: BaseDirsFlags, subdir: (string | null), suffix: (string | null)): Iterator;
+    function base_dirs_new_files_iterator(flags: BaseDirsFlags, subdir: string | null, suffix: string | null): Iterator;
 
     function domain_library_quark(): GLib.Quark;
 
@@ -315,7 +315,7 @@ export namespace Wp {
      * @param n_fields 
      * @param user_data 
      */
-    function log_writer_default(log_level: GLib.LogLevelFlags, fields: GLib.LogField, n_fields: (bigint | number), user_data: null): GLib.LogWriterOutput;
+    function log_writer_default(log_level: GLib.LogLevelFlags, fields: GLib.LogField, n_fields: bigint | number, user_data: null): GLib.LogWriterOutput;
 
     /**
      * Gets the process information of a given PID.
@@ -372,7 +372,7 @@ export namespace Wp {
      * @param value a numeric value that is contained in the table
      * @returns the WpSpaIdValue associated with `value`, or NULL
      */
-    function spa_id_table_find_value(table: SpaIdTable, value: number): (SpaIdValue | null);
+    function spa_id_table_find_value(table: SpaIdTable, value: number): SpaIdValue | null;
 
     /**
      * Finds a named value in an SPA Id table.
@@ -380,7 +380,7 @@ export namespace Wp {
      * @param name the full name of a value that is contained in the table
      * @returns the WpSpaIdValue associated with `name`, or NULL
      */
-    function spa_id_table_find_value_from_name(table: SpaIdTable, name: string): (SpaIdValue | null);
+    function spa_id_table_find_value_from_name(table: SpaIdTable, name: string): SpaIdValue | null;
 
     /**
      * Finds a short named value in an SPA Id table.
@@ -388,7 +388,7 @@ export namespace Wp {
      * @param short_name the short name of a value that is contained in the table
      * @returns the WpSpaIdValue associated with `short_name`, or NULL
      */
-    function spa_id_table_find_value_from_short_name(table: SpaIdTable, short_name: string): (SpaIdValue | null);
+    function spa_id_table_find_value_from_short_name(table: SpaIdTable, short_name: string): SpaIdValue | null;
 
     /**
      * Finds a WpSpaIdTable given its name.
@@ -398,7 +398,7 @@ export namespace Wp {
      * @param name the full name of an id table
      * @returns the associated table, or NULL
      */
-    function spa_id_table_from_name(name: string): (SpaIdTable | null);
+    function spa_id_table_from_name(name: string): SpaIdTable | null;
 
     function spa_id_table_get_type(): GObject.GType;
 
@@ -844,9 +844,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
     }
 
     /**
@@ -917,13 +915,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -940,7 +938,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -952,7 +950,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -964,14 +962,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -983,7 +981,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -1007,7 +1005,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -1028,7 +1026,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -1065,14 +1063,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -1084,7 +1082,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -1108,7 +1106,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -1177,9 +1175,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, properties: (Properties | null)): Conf;
+        static ["new"](name: string, properties: Properties | null): Conf;
 
-        static new_open(name: string, properties: (Properties | null)): Conf;
+        static new_open(name: string, properties: Properties | null): Conf;
 
         // Signals
         /** @signal */
@@ -1211,7 +1209,7 @@ export namespace Wp {
          * @param section the section name
          * @returns the JSON value of the section or NULL if the section does not exist
          */
-        get_section(section: string): (SpaJson | null);
+        get_section(section: string): SpaJson | null;
 
         /**
          * Tests if the configuration files are open.
@@ -1267,9 +1265,9 @@ export namespace Wp {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            conf: (Conf | null);
-            g_main_context: (GLib.MainContext | null);
-            gMainContext: (GLib.MainContext | null);
+            conf: Conf | null;
+            g_main_context: GLib.MainContext | null;
+            gMainContext: GLib.MainContext | null;
             properties: Properties;
             pw_context: never;
             pwContext: never;
@@ -1300,17 +1298,17 @@ export namespace Wp {
         /**
          * @construct-only
          */
-        get conf(): (Conf | null);
+        get conf(): Conf | null;
 
         /**
          * @construct-only
          */
-        get g_main_context(): (GLib.MainContext | null);
+        get g_main_context(): GLib.MainContext | null;
 
         /**
          * @construct-only
          */
-        get gMainContext(): (GLib.MainContext | null);
+        get gMainContext(): GLib.MainContext | null;
 
         /**
          * @construct-only
@@ -1351,7 +1349,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: (GLib.MainContext | null), conf: (Conf | null), properties: (Properties | null)): Core;
+        static ["new"](context: GLib.MainContext | null, conf: Conf | null, properties: Properties | null): Core;
 
         // Signals
         /** @signal */
@@ -1416,7 +1414,7 @@ export namespace Wp {
          * Gets the main configuration file of the core.
          * @returns the main configuration file
          */
-        get_conf(): (Conf | null);
+        get_conf(): Conf | null;
 
         /**
          * Returns the special WpCore that is used to maintain a secondary connection to PipeWire, for exporting objects.
@@ -1431,7 +1429,7 @@ export namespace Wp {
          * Gets the GMainContext of the core.
          * @returns the GMainContext that is in use by this core for events
          */
-        get_g_main_context(): (GLib.MainContext | null);
+        get_g_main_context(): GLib.MainContext | null;
 
         /**
          * Gets the bound id of the client object that is created as a result of this core being connected to the PipeWire daemon.
@@ -1497,7 +1495,7 @@ export namespace Wp {
          * Gets the virtual machine type of the core.
          * @returns a comma separated string with all the virtual machine types that this core matches, or NULL if the core is not running in a virtual machine.
          */
-        get_vm_type(): (string | null);
+        get_vm_type(): string | null;
 
         /**
          * Adds an idle callback to be called in the same GMainContext as the one used by this core.
@@ -1545,7 +1543,7 @@ export namespace Wp {
          * @param provides the name of the feature that this component will provide if it loads successfully; this can be queried later with `wp_core_test_feature()`
          * @param cancellable optional GCancellable
          */
-        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_component(component: string | null, type: string, args: SpaJson | null, provides: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Loads the specified `component` on `self`.
@@ -1561,7 +1559,7 @@ export namespace Wp {
          * @param cancellable optional GCancellable
          * @param callback the callback to call when the operation is done
          */
-        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_component(component: string | null, type: string, args: SpaJson | null, provides: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads the specified `component` on `self`.
@@ -1577,7 +1575,7 @@ export namespace Wp {
          * @param cancellable optional GCancellable
          * @param callback the callback to call when the operation is done
          */
-        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_component(component: string | null, type: string, args: SpaJson | null, provides: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started by `wp_core_load_component()`. This is meant to be called in the callback that was passed to that method.
@@ -1610,7 +1608,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the operation
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        sync(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asks the PipeWire server to call the `callback` via an event.
@@ -1622,7 +1620,7 @@ export namespace Wp {
          * @param callback a function to call when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        sync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asks the PipeWire server to call the `callback` via an event.
@@ -1634,7 +1632,7 @@ export namespace Wp {
          * @param callback a function to call when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        sync(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Asks the PipeWire server to invoke the `closure` via an event.
@@ -1646,7 +1644,7 @@ export namespace Wp {
          * @param closure a closure to invoke when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync_closure(cancellable: (Gio.Cancellable | null), closure: GObject.Closure): boolean;
+        sync_closure(cancellable: Gio.Cancellable | null, closure: GObject.Closure): boolean;
 
         /**
          * This function is meant to be called from within the callback of `wp_core_sync()` in order to determine the success or failure of the operation.
@@ -1712,9 +1710,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
     }
 
     /**
@@ -1739,7 +1735,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Device;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Device;
 
         // Signals
         /** @signal */
@@ -1770,13 +1766,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -1793,7 +1789,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -1805,7 +1801,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -1817,14 +1813,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -1836,7 +1832,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -1860,7 +1856,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -1881,7 +1877,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -1918,14 +1914,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -1937,7 +1933,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -1961,7 +1957,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -1985,13 +1981,10 @@ export namespace Wp {
 
     namespace EventDispatcher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2083,7 +2076,7 @@ export namespace Wp {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            dispatcher: (EventDispatcher | null);
+            dispatcher: EventDispatcher | null;
             name: string;
             runs_after_hooks: string[];
             runsAfterHooks: string[];
@@ -2103,7 +2096,7 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get dispatcher(): (EventDispatcher | null);
+        get dispatcher(): EventDispatcher | null;
 
         /**
          * @construct-only
@@ -2169,7 +2162,7 @@ export namespace Wp {
          * Gets all the matching event types for this hook if any.
          * @virtual
          */
-        vfunc_get_matching_event_types(): (string[] | null);
+        vfunc_get_matching_event_types(): string[] | null;
 
         /**
          * Runs the hook on the given event.
@@ -2178,7 +2171,7 @@ export namespace Wp {
          * @param callback a callback to fire after execution of the hook has completed
          * @virtual
          */
-        vfunc_run(event: Event, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_run(event: Event, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Checks if the hook should be executed for a given event.
@@ -2199,7 +2192,7 @@ export namespace Wp {
          * Gets all the matching event types for this hook if any.
          * @returns the matching event types for this hook if any.
          */
-        get_matching_event_types(): (string[] | null);
+        get_matching_event_types(): string[] | null;
 
         /**
          * Returns the name of the hook.
@@ -2225,7 +2218,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the async operation
          * @param callback a callback to fire after execution of the hook has completed
          */
-        run(event: Event, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(event: Event, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Checks if the hook should be executed for a given event.
@@ -2254,9 +2247,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
     }
 
     /**
@@ -2311,13 +2302,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -2334,7 +2325,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -2346,7 +2337,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -2358,14 +2349,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -2377,7 +2368,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -2401,7 +2392,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -2422,7 +2413,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -2459,14 +2450,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -2478,7 +2469,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -2502,7 +2493,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -2531,9 +2522,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
     }
 
     /**
@@ -2846,7 +2835,7 @@ export namespace Wp {
 
         static ["new"](core: Core): ImplMetadata;
 
-        static new_full(core: Core, name: (string | null), properties: (Properties | null)): ImplMetadata;
+        static new_full(core: Core, name: string | null, properties: Properties | null): ImplMetadata;
 
         // Signals
         /** @signal */
@@ -2958,7 +2947,7 @@ export namespace Wp {
          * @param _arguments arguments to be passed to the module
          * @param properties additional properties to be provided to the module
          */
-        static load(core: Core, name: string, _arguments: (string | null), properties: (Properties | null)): (ImplModule | null);
+        static load(core: Core, name: string, _arguments: string | null, properties: Properties | null): ImplModule | null;
     }
 
 
@@ -3016,7 +3005,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_pw_factory(core: Core, factory_name: string, properties: (Properties | null)): ImplNode;
+        static new_from_pw_factory(core: Core, factory_name: string, properties: Properties | null): ImplNode;
 
         static new_wrap(core: Core, node: null): ImplNode;
 
@@ -3049,13 +3038,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -3072,7 +3061,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -3084,7 +3073,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -3096,14 +3085,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -3115,7 +3104,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -3139,7 +3128,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -3160,7 +3149,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -3197,14 +3186,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -3216,7 +3205,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -3240,7 +3229,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -3272,9 +3261,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EventHook.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EventHook.ConstructorProps {}
     }
 
     /**
@@ -3377,7 +3364,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Link;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Link;
 
         // Signals
         /** @signal */
@@ -3423,13 +3410,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -3446,7 +3433,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -3458,7 +3445,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -3470,14 +3457,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -3489,7 +3476,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -3513,7 +3500,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -3534,7 +3521,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -3571,14 +3558,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -3590,7 +3577,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -3614,7 +3601,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -3656,9 +3643,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GlobalProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GlobalProxy.ConstructorProps {}
     }
 
     /**
@@ -3728,7 +3713,7 @@ export namespace Wp {
          * @param type the type of the value; NULL is synonymous to "string"
          * @param value the value to set, or NULL to unset the given `key`
          */
-        set(subject: number, key: (string | null), type: (string | null), value: (string | null)): void;
+        set(subject: number, key: string | null, type: string | null, value: string | null): void;
 
         /**
          * @param args 
@@ -3861,7 +3846,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Node;
+        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Node;
 
         // Signals
         /** @signal */
@@ -3919,7 +3904,7 @@ export namespace Wp {
          * @param interest the interest
          * @returns the first port that matches the `interest`, or NULL if there is no such port
          */
-        lookup_port_full(interest: ObjectInterest): (Port | null);
+        lookup_port_full(interest: ObjectInterest): Port | null;
 
         /**
          * Gets a new iterator that iterates over all the ports that belong to this node and match the `interest`.
@@ -3965,13 +3950,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -3988,7 +3973,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -4000,7 +3985,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -4012,14 +3997,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -4031,7 +4016,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -4055,7 +4040,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -4076,7 +4061,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -4113,14 +4098,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -4132,7 +4117,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -4156,7 +4141,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -4316,7 +4301,7 @@ export namespace Wp {
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          */
-        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        activate(features: ObjectFeatures, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Callback version of `wp_object_activate_closure()`.
@@ -4324,7 +4309,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
          */
-        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        activate(features: ObjectFeatures, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Callback version of `wp_object_activate_closure()`.
@@ -4332,7 +4317,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
          */
-        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        activate(features: ObjectFeatures, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Activates the requested `features` and invokes `closure` when this is done. `features` may contain unsupported or already active features. The operation will filter them and activate only ones that are supported and inactive.
@@ -4344,7 +4329,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param closure the closure to use when activation is completed
          */
-        activate_closure(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), closure: GObject.Closure): void;
+        activate_closure(features: ObjectFeatures, cancellable: Gio.Cancellable | null, closure: GObject.Closure): void;
 
         /**
          * Finishes the async operation that was started with `wp_object_activate()`.
@@ -4616,7 +4601,7 @@ export namespace Wp {
          * @param core the core
          * @param plugin_name the lookup name
          */
-        static find(core: Core, plugin_name: string): (Plugin | null);
+        static find(core: Core, plugin_name: string): Plugin | null;
 
         // Virtual methods
         /**
@@ -4657,9 +4642,7 @@ export namespace Wp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
     }
 
     /**
@@ -4723,13 +4706,13 @@ export namespace Wp {
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
           * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -4746,7 +4729,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -4758,7 +4741,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -4770,14 +4753,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -4789,7 +4772,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -4813,7 +4796,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -4834,7 +4817,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -4871,14 +4854,14 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -4890,7 +4873,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -4914,7 +4897,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): (GLib.Variant | null);
+        vfunc_get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -5167,7 +5150,7 @@ export namespace Wp {
          * @param core the WpCore
          * @param factory_name the name of the factory to be used for constructing the object
          */
-        static make(core: Core, factory_name: string): (SessionItem | null);
+        static make(core: Core, factory_name: string): SessionItem | null;
 
         // Virtual methods
         /**
@@ -5227,7 +5210,7 @@ export namespace Wp {
          * @param proxy_type a WpProxy subclass GType
          * @returns the associated proxy of the specified `proxy_type`, or NULL if there is no association to such a proxy
          */
-        get_associated_proxy(proxy_type: GObject.GType): (Proxy | null);
+        get_associated_proxy(proxy_type: GObject.GType): Proxy | null;
 
         /**
          * Gets the bound id of a proxy associated with the session item.
@@ -5342,7 +5325,7 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ["new"](core: Core, metadata_name: (string | null)): Settings;
+        static ["new"](core: Core, metadata_name: string | null): Settings;
 
         // Signals
         /** @signal */
@@ -5363,7 +5346,7 @@ export namespace Wp {
          * @param core the WpCore
          * @param metadata_name the name of the metadata object that the settings object is associated with; NULL returns the first settings object that is found
          */
-        static find(core: Core, metadata_name: (string | null)): (Settings | null);
+        static find(core: Core, metadata_name: string | null): Settings | null;
 
         // Methods
         /**
@@ -5383,21 +5366,21 @@ export namespace Wp {
          * @param name the name of the setting
          * @returns The WpSpaJson value of the setting, or NULL if the setting does not exist
          */
-        get(name: string): (SpaJson | null);
+        get(name: string): SpaJson | null;
 
         /**
          * Gets the WpSpaJson saved value of a setting.
          * @param name the name of the setting
          * @returns The WpSpaJson saved value of the setting, or NULL if the setting does not exist
          */
-        get_saved(name: string): (SpaJson | null);
+        get_saved(name: string): SpaJson | null;
 
         /**
          * Gets the specification of a setting.
          * @param name the name of the setting
          * @returns the specification of the setting
          */
-        get_spec(name: string): (SettingsSpec | null);
+        get_spec(name: string): SettingsSpec | null;
 
         /**
          * Iterates over settings.
@@ -5457,14 +5440,14 @@ export namespace Wp {
          * @param closure a GAsyncReadyCallback wrapped in a GClosure
          * @returns the subscription ID (always greater than 0 for success)
          */
-        subscribe_closure(pattern: string, closure: (GObject.Closure | null)): number;
+        subscribe_closure(pattern: string, closure: GObject.Closure | null): number;
 
         /**
          * Unsubscribes callback for a given subscription_id.
          * @param subscription_id identifies the callback
          * @returns TRUE if success, FALSE otherwise
          */
-        unsubscribe(subscription_id: (bigint | number)): boolean;
+        unsubscribe(subscription_id: bigint | number): boolean;
     }
 
 
@@ -5541,7 +5524,7 @@ export namespace Wp {
          * @param core the core
          * @param factory_name the lookup name
          */
-        static find(core: Core, factory_name: string): (SiFactory | null);
+        static find(core: Core, factory_name: string): SiFactory | null;
 
         // Virtual methods
         /**
@@ -5697,9 +5680,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static new_from_spa_factory(core: Core, factory_name: string, properties: (Properties | null)): SpaDevice;
+        static new_from_spa_factory(core: Core, factory_name: string, properties: Properties | null): SpaDevice;
 
-        static new_wrap(core: Core, spa_device_handle: null, properties: (Properties | null)): SpaDevice;
+        static new_wrap(core: Core, spa_device_handle: null, properties: Properties | null): SpaDevice;
 
         // Signals
         /** @signal */
@@ -5749,14 +5732,13 @@ export namespace Wp {
          * @param id the (device-internal) id of the object
          * @param object the object to store or NULL to remove the managed object associated with `id`
          */
-        store_managed_object(id: number, object: (GObject.Object | null)): void;
+        store_managed_object(id: number, object: GObject.Object | null): void;
     }
 
 
     namespace SpaType {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -5988,9 +5970,9 @@ export namespace Wp {
 
         _init(...args: any[]): void;
 
-        static ["new"](type: GObject.GType, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback | null)): Transition;
+        static ["new"](type: GObject.GType, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): Transition;
 
-        static new_closure(type: GObject.GType, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), closure: (GObject.Closure | null)): Transition;
+        static new_closure(type: GObject.GType, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, closure: GObject.Closure | null): Transition;
 
         // Signals
         /** @signal */
@@ -6199,9 +6181,9 @@ export namespace Wp {
         static $gtype: GObject.GType<Event>;
 
         // Constructors
-        constructor(type: string, priority: number, properties: (Properties | null), source: GObject.Object, subject: (GObject.Object | null));
+        constructor(type: string, priority: number, properties: Properties | null, source: GObject.Object, subject: GObject.Object | null);
 
-        static ["new"](type: string, priority: number, properties: (Properties | null), source: GObject.Object, subject: (GObject.Object | null)): Event;
+        static ["new"](type: string, priority: number, properties: Properties | null, source: GObject.Object, subject: GObject.Object | null): Event;
 
         // Methods
         /**
@@ -6222,7 +6204,7 @@ export namespace Wp {
          * @param key the key
          * @returns the data associated with `key` or `null`
          */
-        get_data(key: string): (GObject.Value | null);
+        get_data(key: string): GObject.Value | null;
 
         /**
          * Gets the name of the event.
@@ -6270,7 +6252,7 @@ export namespace Wp {
          * @param key the key to associate `data` with
          * @param data the data element, or `null` to remove any previous data associated with this `key`
          */
-        set_data(key: string, data: (GObject.Value | null)): void;
+        set_data(key: string, data: GObject.Value | null): void;
 
         /**
          * Stops processing of this event; any further hooks will not be executed from this moment onwards and the event will be discarded from the stack.
@@ -6342,9 +6324,9 @@ export namespace Wp {
         static $gtype: GObject.GType<Iterator>;
 
         // Constructors
-        constructor(methods: IteratorMethods, user_size: (bigint | number));
+        constructor(methods: IteratorMethods, user_size: bigint | number);
 
-        static ["new"](methods: IteratorMethods, user_size: (bigint | number)): Iterator;
+        static ["new"](methods: IteratorMethods, user_size: bigint | number): Iterator;
 
         // Methods
         /**
@@ -6353,7 +6335,7 @@ export namespace Wp {
          * @param ret the accumulator data
          * @returns TRUE if all the items were processed, FALSE otherwise.
          */
-        fold(func: IteratorFoldFunc, ret: (GObject.Value | any)): [boolean, unknown];
+        fold(func: IteratorFoldFunc, ret: GObject.Value | any): [boolean, unknown];
 
         /**
          * Iterates over all items of the iterator calling a function.
@@ -6558,7 +6540,7 @@ export namespace Wp {
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value: (GLib.Variant | null)): void;
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value: GLib.Variant | null): void;
 
         /**
          * Finds all the defined constraint values for a subject in `self`.
@@ -6569,7 +6551,7 @@ export namespace Wp {
          * @param subject the subject that the constraint applies to
          * @returns the defined constraint values for this object interest.
          */
-        find_defined_constraint_values(type: ConstraintType, subject: string): (GLib.Variant[] | null);
+        find_defined_constraint_values(type: ConstraintType, subject: string): GLib.Variant[] | null;
 
         /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
@@ -6596,7 +6578,7 @@ export namespace Wp {
          * @param pw_global_props the properties to be used for checking constraints of type WP_CONSTRAINT_TYPE_PW_GLOBAL_PROPERTY
          * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
          */
-        matches_full(flags: InterestMatchFlags, object_type: GObject.GType, object: (GObject.Object | null), pw_props: (Properties | null), pw_global_props: (Properties | null)): InterestMatch;
+        matches_full(flags: InterestMatchFlags, object_type: GObject.GType, object: GObject.Object | null, pw_props: Properties | null, pw_global_props: Properties | null): InterestMatch;
 
         /**
          * Increases the reference count of an object interest.
@@ -6704,10 +6686,7 @@ export namespace Wp {
         static $gtype: GObject.GType<Properties>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_copy(props: null): Properties;
 
@@ -6778,7 +6757,7 @@ export namespace Wp {
          * @param key a property key
          * @returns the value of the property identified with `key`, or NULL if this property is not contained in `self`
          */
-        get(key: string): (string | null);
+        get(key: string): string | null;
 
         /**
          * Gets the number of properties contained in this object.
@@ -6820,7 +6799,7 @@ export namespace Wp {
          * @param value a property value
          * @returns 1 if the property was changed. 0 if nothing was changed because the property already existed with the same value or because the key to remove did not exist.
          */
-        set(key: string, value: (string | null)): number;
+        set(key: string, value: string | null): number;
 
         /**
          * Sorts the keys in alphabetical order.
@@ -6998,19 +6977,19 @@ export namespace Wp {
          * Gets the maximum value of a settings spec.
          * @returns the maximum value of the settings spec, or NULL if the spec type is not WP_SETTINGS_SPEC_TYPE_INT or WP_SETTINGS_SPEC_TYPE_FLOAT
          */
-        get_max_value(): (SpaJson | null);
+        get_max_value(): SpaJson | null;
 
         /**
          * Gets the minimum value of a settings spec.
          * @returns the minimum value of the settings spec, or NULL if the spec type is not WP_SETTINGS_SPEC_TYPE_INT or WP_SETTINGS_SPEC_TYPE_FLOAT
          */
-        get_min_value(): (SpaJson | null);
+        get_min_value(): SpaJson | null;
 
         /**
          * Gets the human-readable name of a settings spec.
          * @returns the human-readable name of the settings spec, or NULL if none
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the type of a settings spec.
@@ -7074,10 +7053,7 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaJson>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_boolean(value: boolean): SpaJson;
 
@@ -7085,7 +7061,7 @@ export namespace Wp {
 
         static new_from_string(json_str: string): SpaJson;
 
-        static new_from_stringn(json_str: string, len: (bigint | number)): SpaJson;
+        static new_from_stringn(json_str: string, len: bigint | number): SpaJson;
 
         static new_int(value: number): SpaJson;
 
@@ -7097,7 +7073,7 @@ export namespace Wp {
 
         static new_wrap_string(json_str: string): SpaJson;
 
-        static new_wrap_stringn(json_str: string, len: (bigint | number)): SpaJson;
+        static new_wrap_stringn(json_str: string, len: bigint | number): SpaJson;
 
         // Methods
         /**
@@ -7241,10 +7217,7 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaJsonBuilder>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_array(): SpaJsonBuilder;
 
@@ -7274,7 +7247,7 @@ export namespace Wp {
          * @param json_str the json string
          * @param len the specific length of the json string
          */
-        add_from_stringn(json_str: string, len: (bigint | number)): void;
+        add_from_stringn(json_str: string, len: bigint | number): void;
 
         /**
          * Adds a int value into the builder.
@@ -7402,10 +7375,7 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaPod>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_boolean(value: boolean): SpaPod;
 
@@ -7413,7 +7383,7 @@ export namespace Wp {
 
         static new_double(value: number): SpaPod;
 
-        static new_fd(value: (bigint | number)): SpaPod;
+        static new_fd(value: bigint | number): SpaPod;
 
         static new_float(value: number): SpaPod;
 
@@ -7423,7 +7393,7 @@ export namespace Wp {
 
         static new_int(value: number): SpaPod;
 
-        static new_long(value: (bigint | number)): SpaPod;
+        static new_long(value: bigint | number): SpaPod;
 
         static new_none(): SpaPod;
 
@@ -7742,7 +7712,7 @@ export namespace Wp {
          * @param value the Fd value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_fd(value: (bigint | number)): boolean;
+        set_fd(value: bigint | number): boolean;
 
         /**
          * Sets a float value in the spa pod object.
@@ -7778,7 +7748,7 @@ export namespace Wp {
          * @param value the long value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_long(value: (bigint | number)): boolean;
+        set_long(value: bigint | number): boolean;
 
         /**
          * Sets the value of a spa pod object in the current spa pod object. The spa pod objects must be of the same value.
@@ -7817,10 +7787,7 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaPodBuilder>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_array(): SpaPodBuilder;
 
@@ -7863,7 +7830,7 @@ export namespace Wp {
          * Adds a Fd value into the builder.
          * @param value the Fd value
          */
-        add_fd(value: (bigint | number)): void;
+        add_fd(value: bigint | number): void;
 
         /**
          * Adds a float value into the builder.
@@ -7894,7 +7861,7 @@ export namespace Wp {
          * Adds a long value into the builder.
          * @param value the long value
          */
-        add_long(value: (bigint | number)): void;
+        add_long(value: bigint | number): void;
 
         /**
          * Adds a none value into the builder.
@@ -8095,7 +8062,7 @@ export namespace Wp {
              * @param callback 
              * @virtual
              */
-            vfunc_load(core: Core, component: string, type: string, args: SpaJson, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_load(core: Core, component: string, type: string, args: SpaJson, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param type 
@@ -8106,9 +8073,7 @@ export namespace Wp {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ComponentLoaderNamespace {
@@ -8151,14 +8116,14 @@ export namespace Wp {
              * @param callback a callback to call with the result
              * @virtual
              */
-            vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes an asynchronous parameter enumeration operation.
              * @param res the async result
              * @virtual
              */
-            vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+            vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
             /**
              * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -8170,7 +8135,7 @@ export namespace Wp {
              * @param filter a param filter or NULL
              * @virtual
              */
-            vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+            vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
             /**
              * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -8194,7 +8159,7 @@ export namespace Wp {
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
              * @virtual
              */
-            vfunc_get_param_info(): (GLib.Variant | null);
+            vfunc_get_param_info(): GLib.Variant | null;
 
             /**
              * Retrieves the PipeWire properties of this object.
@@ -8220,8 +8185,8 @@ export namespace Wp {
         interface ConstructorProps extends Proxy.ConstructorProps {
             native_info: never;
             nativeInfo: never;
-            param_info: (GLib.Variant | null);
-            paramInfo: (GLib.Variant | null);
+            param_info: GLib.Variant | null;
+            paramInfo: GLib.Variant | null;
             properties: Properties;
         }
     }
@@ -8251,12 +8216,12 @@ export namespace Wp {
         /**
          * @read-only
          */
-        get param_info(): (GLib.Variant | null);
+        get param_info(): GLib.Variant | null;
 
         /**
          * @read-only
          */
-        get paramInfo(): (GLib.Variant | null);
+        get paramInfo(): GLib.Variant | null;
 
         /**
          * @read-only
@@ -8273,7 +8238,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Iterator | null>;
 
         /**
          * Enumerate object parameters.
@@ -8285,7 +8250,7 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enumerate object parameters.
@@ -8297,14 +8262,14 @@ export namespace Wp {
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+        enum_params(id: string | null, filter: SpaPod | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Iterator | null> | void;
 
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
@@ -8316,7 +8281,7 @@ export namespace Wp {
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
 
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
@@ -8340,7 +8305,7 @@ export namespace Wp {
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): (GLib.Variant | null);
+        get_param_info(): GLib.Variant | null;
 
         /**
          * Retrieves the PipeWire properties of this object.
@@ -8361,7 +8326,7 @@ export namespace Wp {
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): (string | null);
+        get_property(key: string): string | null;
 
         /**
          * @param args 
@@ -8412,7 +8377,7 @@ export namespace Wp {
              * @param callback the callback to call when the operation is done
              * @virtual
              */
-            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
@@ -8432,9 +8397,7 @@ export namespace Wp {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends SessionItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SessionItem.ConstructorProps {}
     }
 
     export interface SiAcquisitionNamespace {
@@ -8470,7 +8433,7 @@ export namespace Wp {
          * @param item the item that is being acquired
          * @param callback the callback to call when the operation is done
          */
-        acquire(acquisitor: SiLink, item: SiLinkable, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Acquires the `item` for linking by `acquisitor`.
@@ -8482,7 +8445,7 @@ export namespace Wp {
          * @param item the item that is being acquired
          * @param callback the callback to call when the operation is done
          */
-        acquire(acquisitor: SiLink, item: SiLinkable, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        acquire(acquisitor: SiLink, item: SiLinkable, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
@@ -8534,7 +8497,7 @@ export namespace Wp {
              * @param callback the callback to call when the operation is done
              * @virtual
              */
-            vfunc_set_ports_format(format: (SpaPod | null), mode: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_set_ports_format(format: SpaPod | null, mode: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
@@ -8546,9 +8509,7 @@ export namespace Wp {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends SessionItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SessionItem.ConstructorProps {}
     }
 
     export interface SiAdapterNamespace {
@@ -8582,7 +8543,7 @@ export namespace Wp {
          * @param format the format to be set
          * @param mode the mode
          */
-        set_ports_format(format: (SpaPod | null), mode: (string | null)): globalThis.Promise<boolean>;
+        set_ports_format(format: SpaPod | null, mode: string | null): globalThis.Promise<boolean>;
 
         /**
          * Sets the format and configures the adapter session item ports using the given format.
@@ -8593,7 +8554,7 @@ export namespace Wp {
          * @param mode the mode
          * @param callback the callback to call when the operation is done
          */
-        set_ports_format(format: (SpaPod | null), mode: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_ports_format(format: SpaPod | null, mode: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets the format and configures the adapter session item ports using the given format.
@@ -8604,7 +8565,7 @@ export namespace Wp {
          * @param mode the mode
          * @param callback the callback to call when the operation is done
          */
-        set_ports_format(format: (SpaPod | null), mode: (string | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_ports_format(format: SpaPod | null, mode: string | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
@@ -8643,7 +8604,7 @@ export namespace Wp {
              * Gets the properties of the link.
              * @virtual
              */
-            vfunc_get_properties(): (Properties | null);
+            vfunc_get_properties(): Properties | null;
 
             /**
              * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
@@ -8654,9 +8615,7 @@ export namespace Wp {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends SessionItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SessionItem.ConstructorProps {}
     }
 
     export interface SiLinkNamespace {
@@ -8686,7 +8645,7 @@ export namespace Wp {
          * Gets the properties of the link.
          * @returns the properties of the link
          */
-        get_properties(): (Properties | null);
+        get_properties(): Properties | null;
 
         /**
          * @param args 
@@ -8718,7 +8677,7 @@ export namespace Wp {
              * Gets the acquisition interface associated with the item.
              * @virtual
              */
-            vfunc_get_acquisition(): (SiAcquisition | null);
+            vfunc_get_acquisition(): SiAcquisition | null;
 
             /**
              * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
@@ -8740,14 +8699,12 @@ export namespace Wp {
              * @param context an optional context for the ports
              * @virtual
              */
-            vfunc_get_ports(context: (string | null)): GLib.Variant;
+            vfunc_get_ports(context: string | null): GLib.Variant;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends SessionItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SessionItem.ConstructorProps {}
     }
 
     export interface SiLinkableNamespace {
@@ -8765,7 +8722,7 @@ export namespace Wp {
          * Gets the acquisition interface associated with the item.
          * @returns the acquisition interface associated with this item, or NULL if this item does not require acquiring items before linking them
          */
-        get_acquisition(): (SiAcquisition | null);
+        get_acquisition(): SiAcquisition | null;
 
         /**
          * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
@@ -8787,7 +8744,7 @@ export namespace Wp {
          * @param context an optional context for the ports
          * @returns a GVariant containing information about the ports of this item
          */
-        get_ports(context: (string | null)): GLib.Variant;
+        get_ports(context: string | null): GLib.Variant;
     }
 
 

@@ -36,7 +36,7 @@ export namespace PQMarble {
     /**
      * @param data 
      */
-    function get_css_provider_for_data(data: string): (Gtk.CssProvider | null);
+    function get_css_provider_for_data(data: string): Gtk.CssProvider | null;
 
     /**
      * @param widget 
@@ -44,7 +44,7 @@ export namespace PQMarble {
      * @param class_name 
      * @param priority 
      */
-    function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: (string | null), priority: number): void;
+    function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
 
     /**
      * @param resource 

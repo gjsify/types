@@ -45,12 +45,12 @@ export namespace Sushi {
      * @param file 
      * @param callback 
      */
-    function convert_libreoffice(file: Gio.File, callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function convert_libreoffice(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * @param file 
      * @param callback 
      */
-    function convert_libreoffice(file: Gio.File, callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<Gio.File> | void);
+    function convert_libreoffice(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<Gio.File> | void;
 
     /**
      * @param result 
@@ -67,13 +67,13 @@ export namespace Sushi {
      * @param album 
      * @param callback 
      */
-    function get_asin_for_track(artist: string, album: string, callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function get_asin_for_track(artist: string, album: string, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * @param artist 
      * @param album 
      * @param callback 
      */
-    function get_asin_for_track(artist: string, album: string, callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<string> | void);
+    function get_asin_for_track(artist: string, album: string, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<string> | void;
 
     /**
      * @param result 
@@ -239,7 +239,7 @@ export namespace Sushi {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error) => (boolean | void);
+            error: (arg0: GLib.Error) => boolean | void;
             /**
              * @signal
              * @action

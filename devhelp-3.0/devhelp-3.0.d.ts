@@ -237,9 +237,7 @@ export namespace Devhelp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends WebKit2.WebView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends WebKit2.WebView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -290,7 +288,7 @@ export namespace Devhelp {
          * @param link a {@link Devhelp.Link} to set or `null`.
          * @returns `true` if the requested link is open, `false` otherwise.
          */
-        set_link(link: (Link | null)): boolean;
+        set_link(link: Link | null): boolean;
     }
 
 
@@ -314,9 +312,7 @@ export namespace Devhelp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -444,9 +440,7 @@ export namespace Devhelp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -551,13 +545,10 @@ export namespace Devhelp {
 
     namespace BookListBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -657,7 +648,7 @@ export namespace Devhelp {
          * with `dh_book_list_builder_create_object()`.
          * @param settings a {@link Devhelp.Settings}, or `null`.
          */
-        read_books_disabled_setting(settings: (Settings | null)): void;
+        read_books_disabled_setting(settings: Settings | null): void;
     }
 
 
@@ -729,13 +720,10 @@ export namespace Devhelp {
 
     namespace BookManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -888,7 +876,7 @@ export namespace Devhelp {
 
         _init(...args: any[]): void;
 
-        static ["new"](profile: (Profile | null)): BookTree;
+        static ["new"](profile: Profile | null): BookTree;
 
         // Conflicted with Gtk.TreeView.new
         static ["new"](...args: never[]): any;
@@ -915,7 +903,7 @@ export namespace Devhelp {
         /**
          * @returns the currently selected {@link Devhelp.Link} in `tree`, or `null` if the selection is empty or if a language group row is selected. Unref with `dh_link_unref()` when no longer needed.
          */
-        get_selected_link(): (Link | null);
+        get_selected_link(): Link | null;
 
         /**
          * Selects the row corresponding to `uri`. It searches in the tree a {@link Devhelp.Link}
@@ -1021,7 +1009,7 @@ export namespace Devhelp {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1035,7 +1023,7 @@ export namespace Devhelp {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1059,13 +1047,10 @@ export namespace Devhelp {
 
     namespace Completion {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1110,7 +1095,7 @@ export namespace Devhelp {
          * @param completion_objects a {@link GLib.List} of   {@link Devhelp.Completion} objects.
          * @param prefix the string to complete.
          */
-        static aggregate_complete(completion_objects: (Completion[] | null), prefix: string): (string | null);
+        static aggregate_complete(completion_objects: Completion[] | null, prefix: string): string | null;
 
         // Methods
         /**
@@ -1134,7 +1119,7 @@ export namespace Devhelp {
          * @param prefix the string to complete.
          * @returns the completed prefix, or `null` if a longer prefix has not been found. Free with `g_free()` when no longer needed.
          */
-        complete(prefix: string): (string | null);
+        complete(prefix: string): string | null;
 
         /**
          * Sorts all the strings. It is required to call this function after adding
@@ -1146,13 +1131,10 @@ export namespace Devhelp {
 
     namespace KeywordModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {}
     }
 
     /**
@@ -1212,7 +1194,7 @@ export namespace Devhelp {
          * @param profile a {@link Devhelp.Profile}, or `null` for the default profile.
          * @returns the {@link Devhelp.Link} that matches exactly `search_string`, or `null` if no such {@link Devhelp.Link} was found within the maximum number of matches.
          */
-        filter(search_string: string, current_book_id: (string | null), profile: (Profile | null)): (Link | null);
+        filter(search_string: string, current_book_id: string | null, profile: Profile | null): Link | null;
 
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
@@ -1220,7 +1202,7 @@ export namespace Devhelp {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -1320,7 +1302,7 @@ export namespace Devhelp {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1337,7 +1319,7 @@ export namespace Devhelp {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1361,7 +1343,7 @@ export namespace Devhelp {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1455,7 +1437,7 @@ export namespace Devhelp {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -1533,7 +1515,7 @@ export namespace Devhelp {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1550,7 +1532,7 @@ export namespace Devhelp {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1574,7 +1556,7 @@ export namespace Devhelp {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1770,7 +1752,7 @@ export namespace Devhelp {
 
         _init(...args: any[]): void;
 
-        static ["new"](profile: (Profile | null)): Notebook;
+        static ["new"](profile: Profile | null): Notebook;
 
         // Conflicted with Gtk.Notebook.new
         static ["new"](...args: never[]): any;
@@ -1792,12 +1774,12 @@ export namespace Devhelp {
         /**
          * @returns the {@link Devhelp.Tab} currently shown in `notebook`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * @returns the {@link Devhelp.WebView} of the active tab.
          */
-        get_active_web_view(): (WebView | null);
+        get_active_web_view(): WebView | null;
 
         /**
          * @returns a {@link GLib.List} of all   {@link Devhelp.WebView}'s contained in `notebook`.
@@ -1816,19 +1798,16 @@ export namespace Devhelp {
          * @param uri the URI to open, or `null` for a blank page.
          * @param switch_focus whether to call `gtk_notebook_set_current_page()` on the new   tab.
          */
-        open_new_tab(uri: (string | null), switch_focus: boolean): void;
+        open_new_tab(uri: string | null, switch_focus: boolean): void;
     }
 
 
     namespace Profile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1891,13 +1870,10 @@ export namespace Devhelp {
 
     namespace ProfileBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2354,13 +2330,10 @@ export namespace Devhelp {
 
     namespace SettingsBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2528,7 +2501,7 @@ export namespace Devhelp {
 
         _init(...args: any[]): void;
 
-        static ["new"](book_manager: (BookManager | null)): Sidebar;
+        static ["new"](book_manager: BookManager | null): Sidebar;
 
         // Conflicted with Gtk.Grid.new
         static ["new"](...args: never[]): any;
@@ -2550,7 +2523,7 @@ export namespace Devhelp {
         /**
          * @param profile a {@link Devhelp.Profile}, or `null` for the default profile.
          */
-        static new2(profile: (Profile | null)): Sidebar;
+        static new2(profile: Profile | null): Sidebar;
 
         // Virtual methods
         /**
@@ -2571,7 +2544,7 @@ export namespace Devhelp {
          * documentation of {@link Devhelp.Sidebar.SignalSignatures.link_selected | Devhelp.Sidebar::link-selected}.
          * @returns the currently selected {@link Devhelp.Link} in the visible {@link Gtk.TreeView} of `sidebar`, or `null` if the selection is empty or if a language group row is selected. Unref with `dh_link_unref()` when no longer needed.
          */
-        get_selected_link(): (Link | null);
+        get_selected_link(): Link | null;
 
         /**
          * Calls `dh_book_tree_select_uri()`.
@@ -2710,7 +2683,7 @@ export namespace Devhelp {
 
         _init(...args: any[]): void;
 
-        static ["new"](web_view: (WebView | null)): Tab;
+        static ["new"](web_view: WebView | null): Tab;
 
         // Conflicted with Gtk.Grid.new
         static ["new"](...args: never[]): any;
@@ -2813,7 +2786,7 @@ export namespace Devhelp {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            tab: (Tab | null);
+            tab: Tab | null;
         }
     }
 
@@ -2830,7 +2803,7 @@ export namespace Devhelp {
          * @since 3.30
          * @construct-only
          */
-        get tab(): (Tab | null);
+        get tab(): Tab | null;
 
         /**
          * Compile-time signal type information.
@@ -2868,7 +2841,7 @@ export namespace Devhelp {
         /**
          * @returns the {@link Devhelp.TabLabel.tab}.
          */
-        get_tab(): (Tab | null);
+        get_tab(): Tab | null;
 
         /**
          * The orientation of the orientable.
@@ -3011,7 +2984,7 @@ export namespace Devhelp {
 
         _init(...args: any[]): void;
 
-        static ["new"](profile: (Profile | null)): WebView;
+        static ["new"](profile: Profile | null): WebView;
 
         // Conflicted with WebKit2.WebView.new
         static ["new"](...args: never[]): any;
@@ -3089,7 +3062,7 @@ export namespace Devhelp {
          * `webkit_find_controller_search_finish()`.
          * @param search_text the search string, or `null`.
          */
-        set_search_text(search_text: (string | null)): void;
+        set_search_text(search_text: string | null): void;
 
         /**
          * Makes the text larger.
@@ -3246,7 +3219,7 @@ export namespace Devhelp {
          * relative URL.
          * @returns the `link` URI, or `null` if getting the URI failed. Free with `g_free()` when no longer needed.
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * @param relative_url an URL relative to the book base path. Can contain an anchor.

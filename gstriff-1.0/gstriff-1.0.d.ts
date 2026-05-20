@@ -401,7 +401,7 @@ export namespace GstRiff {
      * @param chunk_data buffer (returned by this function).
      * @returns flow status.
      */
-    function riff_read_chunk(element: Gst.Element, pad: Gst.Pad, offset: (bigint | number), tag: number, chunk_data: Gst.Buffer): Gst.FlowReturn;
+    function riff_read_chunk(element: Gst.Element, pad: Gst.Pad, offset: bigint | number, tag: number, chunk_data: Gst.Buffer): Gst.FlowReturn;
 
     /**
      * Name of the imported GIR library

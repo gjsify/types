@@ -64,9 +64,7 @@ export namespace Uhm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.Resolver.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.Resolver.ConstructorProps {}
     }
 
     /**
@@ -147,7 +145,7 @@ export namespace Uhm {
              * @since 0.1.0
              * @run-last
              */
-            "compare-messages": (arg0: Soup.Message, arg1: Soup.Message, arg2: Soup.ClientContext) => (boolean | void);
+            "compare-messages": (arg0: Soup.Message, arg1: Soup.Message, arg2: Soup.ClientContext) => boolean | void;
             /**
              * Emitted whenever the mock server is running and receives a request from a client. Test code may connect to this signal and implement a handler
              * which builds and returns a suitable response for a given message. The default handler reads a request–response pair from the current trace file,
@@ -158,7 +156,7 @@ export namespace Uhm {
              * @since 0.1.0
              * @run-last
              */
-            "handle-message": (arg0: Soup.Message, arg1: Soup.ClientContext) => (boolean | void);
+            "handle-message": (arg0: Soup.Message, arg1: Soup.ClientContext) => boolean | void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
             "notify::enable-logging": (pspec: GObject.ParamSpec) => void;
             "notify::enable-online": (pspec: GObject.ParamSpec) => void;
@@ -170,17 +168,17 @@ export namespace Uhm {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            address: (string | null);
+            address: string | null;
             enable_logging: boolean;
             enableLogging: boolean;
             enable_online: boolean;
             enableOnline: boolean;
             port: number;
-            resolver: (Resolver | null);
-            tls_certificate: (Gio.TlsCertificate | null);
-            tlsCertificate: (Gio.TlsCertificate | null);
-            trace_directory: (Gio.File | null);
-            traceDirectory: (Gio.File | null);
+            resolver: Resolver | null;
+            tls_certificate: Gio.TlsCertificate | null;
+            tlsCertificate: Gio.TlsCertificate | null;
+            trace_directory: Gio.File | null;
+            traceDirectory: Gio.File | null;
         }
     }
 
@@ -203,7 +201,7 @@ export namespace Uhm {
          * @read-only
          * @default null
          */
-        get address(): (string | null);
+        get address(): string | null;
 
         /**
          * `true` if network traffic should be logged to a trace file (specified by calling `uhm_server_start_trace()`). This operates independently
@@ -265,7 +263,7 @@ export namespace Uhm {
          * @since 0.1.0
          * @read-only
          */
-        get resolver(): (Resolver | null);
+        get resolver(): Resolver | null;
 
         /**
          * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-`null`, the server will always use HTTPS. If it is `null`,
@@ -281,8 +279,8 @@ export namespace Uhm {
          * requirements of the certificate used by the mock server it's tested against.
          * @since 0.1.0
          */
-        get tls_certificate(): (Gio.TlsCertificate | null);
-        set tls_certificate(val: (Gio.TlsCertificate | null));
+        get tls_certificate(): Gio.TlsCertificate | null;
+        set tls_certificate(val: Gio.TlsCertificate | null);
 
         /**
          * TLS certificate for the mock server to use when serving HTTPS pages. If this is non-`null`, the server will always use HTTPS. If it is `null`,
@@ -298,24 +296,24 @@ export namespace Uhm {
          * requirements of the certificate used by the mock server it's tested against.
          * @since 0.1.0
          */
-        get tlsCertificate(): (Gio.TlsCertificate | null);
-        set tlsCertificate(val: (Gio.TlsCertificate | null));
+        get tlsCertificate(): Gio.TlsCertificate | null;
+        set tlsCertificate(val: Gio.TlsCertificate | null);
 
         /**
          * Directory relative to which all trace files specified in calls to `uhm_server_start_trace()` will be resolved.
          * This is not used for any other methods, but must be non-`null` if `uhm_server_start_trace()` is called.
          * @since 0.1.0
          */
-        get trace_directory(): (Gio.File | null);
-        set trace_directory(val: (Gio.File | null));
+        get trace_directory(): Gio.File | null;
+        set trace_directory(val: Gio.File | null);
 
         /**
          * Directory relative to which all trace files specified in calls to `uhm_server_start_trace()` will be resolved.
          * This is not used for any other methods, but must be non-`null` if `uhm_server_start_trace()` is called.
          * @since 0.1.0
          */
-        get traceDirectory(): (Gio.File | null);
-        set traceDirectory(val: (Gio.File | null));
+        get traceDirectory(): Gio.File | null;
+        set traceDirectory(val: Gio.File | null);
 
         /**
          * Compile-time signal type information.
@@ -401,7 +399,7 @@ export namespace Uhm {
          * It is an error to call this function with an invalid `filter_id`.
          * @param filter_id filter ID returned by the filter addition function
          */
-        compare_messages_remove_filter(filter_id: (bigint | number)): void;
+        compare_messages_remove_filter(filter_id: bigint | number): void;
 
         /**
          * Convenience function to finish logging to or reading from a trace file previously passed to `uhm_server_start_trace()` or
@@ -432,7 +430,7 @@ export namespace Uhm {
          * Gets the value of the {@link Uhm.Server.address} property.
          * @returns the physical address of the listening socket the server is currently bound to; or `null` if the server is not running
          */
-        get_address(): (string | null);
+        get_address(): string | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.enable_logging} property.
@@ -456,19 +454,19 @@ export namespace Uhm {
          * Gets the value of the {@link Uhm.Server.resolver} property.
          * @returns the mock resolver in use by the mock server, or `null` if no resolver is active
          */
-        get_resolver(): (Resolver | null);
+        get_resolver(): Resolver | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.tls_certificate} property.
          * @returns the server's current TLS certificate; or `null` if it's serving HTTP only
          */
-        get_tls_certificate(): (Gio.TlsCertificate | null);
+        get_tls_certificate(): Gio.TlsCertificate | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.trace_directory} property.
          * @returns the directory to load/store trace files from, or `null`
          */
-        get_trace_directory(): (Gio.File | null);
+        get_trace_directory(): Gio.File | null;
 
         /**
          * Synchronously loads the given `trace_file` of network messages, ready to simulate a network conversation by matching
@@ -482,22 +480,14 @@ export namespace Uhm {
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_trace(trace_file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        load_trace(trace_file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_trace_async(trace_file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
-         * @param trace_file trace file to load
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback function to call once the async operation is complete
-         */
-        load_trace_async(trace_file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
@@ -505,7 +495,15 @@ export namespace Uhm {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback function to call once the async operation is complete
          */
-        load_trace_async(trace_file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
+         * @param trace_file trace file to load
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback function to call once the async operation is complete
+         */
+        load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * Finishes an asynchronous operation started by `uhm_server_load_trace_async()`.
@@ -533,7 +531,7 @@ export namespace Uhm {
          * @param message_chunk single line of a message which was received
          * @param message_chunk_length length of `message_chunk` in bytes
          */
-        received_message_chunk(message_chunk: string, message_chunk_length: (bigint | number)): void;
+        received_message_chunk(message_chunk: string, message_chunk_length: bigint | number): void;
 
         /**
          * Convenience version of `uhm_server_received_message_chunk()` which takes the
@@ -567,7 +565,7 @@ export namespace Uhm {
          * @param data single line of a message which was received
          * @param data_length length of `data` in bytes
          */
-        received_message_chunk_with_direction(direction: number, data: string, data_length: (bigint | number)): void;
+        received_message_chunk_with_direction(direction: number, data: string, data_length: bigint | number): void;
 
         /**
          * Runs the mock server, binding to a loopback TCP/IP interface and preparing a HTTPS server which is ready to accept requests.
@@ -614,19 +612,19 @@ export namespace Uhm {
          * that signal is emitted after the resolver is cleared and these `domain_names` are added.
          * @param domain_names `null`-terminated array of domain names to expect, or `null` to not expect any
          */
-        set_expected_domain_names(domain_names: (string[] | null)): void;
+        set_expected_domain_names(domain_names: string[] | null): void;
 
         /**
          * Sets the value of the {@link Uhm.Server.tls_certificate} property.
          * @param tls_certificate TLS certificate for the server to use; or `null` to serve HTTP only
          */
-        set_tls_certificate(tls_certificate: (Gio.TlsCertificate | null)): void;
+        set_tls_certificate(tls_certificate: Gio.TlsCertificate | null): void;
 
         /**
          * Sets the value of the {@link Uhm.Server.trace_directory} property.
          * @param trace_directory a directory to load/store trace files from, or `null` to unset it
          */
-        set_trace_directory(trace_directory: (Gio.File | null)): void;
+        set_trace_directory(trace_directory: Gio.File | null): void;
 
         /**
          * Starts a mock server which follows the trace file of filename `trace_name` in the {@link Uhm.Server.trace_directory} directory.

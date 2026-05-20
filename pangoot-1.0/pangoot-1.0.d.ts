@@ -94,7 +94,7 @@ export namespace PangoOT {
      * @returns {@link PangoOT.Tag} best matching `language` or `PANGO_OT_TAG_DEFAULT_LANGUAGE` if none found or if `language` is `null`.
      * @since 1.18
      */
-    function tag_from_language(language: (Pango.Language | null)): Tag;
+    function tag_from_language(language: Pango.Language | null): Tag;
 
     /**
      * Finds the OpenType script tag corresponding to `script`.
@@ -141,13 +141,10 @@ export namespace PangoOT {
 
     namespace Info {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -275,13 +272,10 @@ export namespace PangoOT {
 
     namespace Ruleset {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -357,7 +351,7 @@ export namespace PangoOT {
          * @param feature_index the index of the feature to add
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          */
-        add_feature(table_type: TableType, feature_index: number, property_bit: (bigint | number)): void;
+        add_feature(table_type: TableType, feature_index: number, property_bit: bigint | number): void;
 
         /**
          * Gets the number of GSUB and GPOS features in the ruleset.
@@ -378,7 +372,7 @@ export namespace PangoOT {
          * @param property_bit the property bit to use for this feature. Used to   identify the glyphs that this feature should be applied to, or   `PANGO_OT_ALL_GLYPHS` if it should be applied to all glyphs.
          * @returns `true` if the feature was found and added to ruleset,   `false` otherwise
          */
-        maybe_add_feature(table_type: TableType, feature_tag: Tag, property_bit: (bigint | number)): boolean;
+        maybe_add_feature(table_type: TableType, feature_tag: Tag, property_bit: bigint | number): boolean;
 
         /**
          * This is a convenience function that for each feature in the feature map

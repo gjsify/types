@@ -236,7 +236,7 @@ export namespace Farstream {
         static ALREADY_EXISTS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -392,7 +392,7 @@ export namespace Farstream {
      * @param list2 a {@link GLib.List} of {@link Farstream.Codec}
      * @returns `true` if they are identical, `false` otherwise
      */
-    function codec_list_are_equal(list1: (Codec[] | null), list2: (Codec[] | null)): boolean;
+    function codec_list_are_equal(list1: Codec[] | null, list2: Codec[] | null): boolean;
 
     /**
      * Copies a list of {@link Farstream.Codec} structures.
@@ -518,7 +518,7 @@ export namespace Farstream {
      * @param element The {@link Gst.Element}
      * @param bitrate The bitrate in bits/sec
      */
-    function utils_set_bitrate(element: Gst.Element, bitrate: (bigint | number)): void;
+    function utils_set_bitrate(element: Gst.Element, bitrate: bigint | number): void;
 
     /**
      * This is for the bindings benefit. Works around the limitations of GObject
@@ -526,22 +526,22 @@ export namespace Farstream {
      * @param value a {@link GObject.Value} of type #FS_TYPE_CANDIDATE_LIST
      * @param candidates A {@link GLib.List} of {@link Farstream.Candidate}
      */
-    function value_set_candidate_list(value: (GObject.Value | any), candidates: (Candidate[] | null)): void;
+    function value_set_candidate_list(value: GObject.Value | any, candidates: Candidate[] | null): void;
 
     /**
      * @gir-type Alias
      */
-    type CandidateList = (object | null);
+    type CandidateList = object | null;
 
     /**
      * @gir-type Alias
      */
-    type CodecGList = (object | null);
+    type CodecGList = object | null;
 
     /**
      * @gir-type Alias
      */
-    type RtpHeaderExtensionGList = (object | null);
+    type RtpHeaderExtensionGList = object | null;
 
     /**
      * @gir-type Flags
@@ -584,9 +584,7 @@ export namespace Farstream {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -728,7 +726,7 @@ export namespace Farstream {
          * @param name name of the property to set
          * @param value new {@link GObject.Value} for the property
          */
-        set_property(name: string, value: (GObject.Value | any)): void;
+        set_property(name: string, value: GObject.Value | any): void;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
@@ -816,9 +814,7 @@ export namespace Farstream {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -908,13 +904,10 @@ export namespace Farstream {
 
     namespace Participant {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -955,13 +948,10 @@ export namespace Farstream {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
     }
 
     /**
@@ -1348,7 +1338,7 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @virtual
          */
-        vfunc_codecs_need_resend(old_codecs: (Codec[] | null), new_codecs: (Codec[] | null)): Codec[];
+        vfunc_codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
 
         /**
          * Returns the GType of the stream transmitter, bindings can use it
@@ -1389,7 +1379,7 @@ export namespace Farstream {
          * @param src_caps Caps for the src pad or `null`
          * @virtual
          */
-        vfunc_set_allowed_caps(sink_caps: (Gst.Caps | null), src_caps: (Gst.Caps | null)): boolean;
+        vfunc_set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
 
         /**
          * Set the list of desired codec preferences. The user may
@@ -1409,7 +1399,7 @@ export namespace Farstream {
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @virtual
          */
-        vfunc_set_codec_preferences(codec_preferences: (Codec[] | null)): boolean;
+        vfunc_set_codec_preferences(codec_preferences: Codec[] | null): boolean;
 
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
@@ -1417,7 +1407,7 @@ export namespace Farstream {
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @virtual
          */
-        vfunc_set_encryption_parameters(parameters: (Gst.Structure | null)): boolean;
+        vfunc_set_encryption_parameters(parameters: Gst.Structure | null): boolean;
 
         /**
          * This function will set the currently being sent codec for all streams in this
@@ -1465,7 +1455,7 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @returns A new {@link GLib.List} of  {@link Farstream.Codec} that need to be resent or `null` if there are none. This  list must be freed with `fs_codec_list_destroy()`.
          */
-        codecs_need_resend(old_codecs: (Codec[] | null), new_codecs: (Codec[] | null)): Codec[];
+        codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
 
         /**
          * This will cause the session to remove all links to other objects and to
@@ -1557,7 +1547,7 @@ export namespace Farstream {
          * @param src_caps Caps for the src pad or `null`
          * @returns `true` if the new filter caps were acceptable.
          */
-        set_allowed_caps(sink_caps: (Gst.Caps | null), src_caps: (Gst.Caps | null)): boolean;
+        set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
 
         /**
          * Set the list of desired codec preferences. The user may
@@ -1577,7 +1567,7 @@ export namespace Farstream {
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @returns `true` on success, `false` on error.
          */
-        set_codec_preferences(codec_preferences: (Codec[] | null)): boolean;
+        set_codec_preferences(codec_preferences: Codec[] | null): boolean;
 
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
@@ -1585,7 +1575,7 @@ export namespace Farstream {
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @returns `true` if the encryption parameters could be set, `false` otherwise
          */
-        set_encryption_parameters(parameters: (Gst.Structure | null)): boolean;
+        set_encryption_parameters(parameters: Gst.Structure | null): boolean;
 
         /**
          * This function will set the currently being sent codec for all streams in this
@@ -1872,7 +1862,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @virtual
          */
-        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: (GObject.Parameter[] | null)): boolean;
+        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
 
         // Methods
         /**
@@ -2015,7 +2005,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter(transmitter: string, stream_transmitter_parameters: (GObject.Parameter[] | null)): boolean;
+        set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
 
         /**
          * Set the transmitter to use for this stream. This function will only succeed
@@ -2030,7 +2020,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters A {@link GLib.HashTable} of string->GValue containing the parameters.
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter_ht(transmitter: string, stream_transmitter_parameters: (GLib.HashTable<string, GObject.Value> | null)): boolean;
+        set_transmitter_ht(transmitter: string, stream_transmitter_parameters: GLib.HashTable<string, GObject.Value> | null): boolean;
     }
 
 
@@ -2454,11 +2444,11 @@ export namespace Farstream {
         ttl: number;
 
         // Constructors
-        constructor(foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: (string | null), port: number);
+        constructor(foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number);
 
-        static ["new"](foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: (string | null), port: number): Candidate;
+        static ["new"](foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number): Candidate;
 
-        static new_full(foundation: string, component_id: number, ip: (string | null), port: number, base_ip: (string | null), base_port: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: (string | null), password: (string | null), ttl: number): Candidate;
+        static new_full(foundation: string, component_id: number, ip: string | null, port: number, base_ip: string | null, base_port: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: string | null, password: string | null, ttl: number): Candidate;
 
         // Methods
         /**
@@ -2547,7 +2537,7 @@ export namespace Farstream {
          * @param extra_params The extra_params of the parameter to search for or `null` for any extra_params
          * @returns the {@link Farstream.FeedbackParameter} from the {@link Farstream.Codec} or `null`
          */
-        get_feedback_parameter(type: (string | null), subtype: (string | null), extra_params: (string | null)): FeedbackParameter;
+        get_feedback_parameter(type: string | null, subtype: string | null, extra_params: string | null): FeedbackParameter;
 
         /**
          * Finds the {@link Farstream.CodecParameter} in the {@link Farstream.Codec} that has the requested name
@@ -2556,7 +2546,7 @@ export namespace Farstream {
          * @param value The value of the parameter to search for or `null` for any value
          * @returns the {@link Farstream.CodecParameter} from the {@link Farstream.Codec} or `null`
          */
-        get_optional_parameter(name: string, value: (string | null)): CodecParameter;
+        get_optional_parameter(name: string, value: string | null): CodecParameter;
 
         /**
          * Removes an optional parameter from a codec.

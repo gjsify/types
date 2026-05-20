@@ -92,9 +92,7 @@ export namespace MetaTest {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Meta.Context.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Meta.Context.ConstructorProps {}
     }
 
     /**
@@ -142,13 +140,10 @@ export namespace MetaTest {
 
     namespace TestMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

@@ -54,14 +54,12 @@ export namespace GstBadAllocators {
              * @param mem 
              * @virtual
              */
-            vfunc_get_phys_addr(mem: Gst.Memory): (bigint | number);
+            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     export interface PhysMemoryAllocatorNamespace {

@@ -201,9 +201,7 @@ export namespace SugarExt {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -372,13 +370,10 @@ export namespace SugarExt {
 
     namespace ClientXSMP {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {
-        }
+        interface SignalSignatures extends Client.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Client.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Client.ConstructorProps {}
     }
 
     /**
@@ -405,7 +400,7 @@ export namespace SugarExt {
 
         
     // This field conflicts with a function in a parent class or interface.
-    set_restart_command: (boolean | any);
+    set_restart_command: boolean | any;
 
         restart_style: number;
 
@@ -449,13 +444,10 @@ export namespace SugarExt {
 
     namespace CursorTracker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -497,13 +489,10 @@ export namespace SugarExt {
 
     namespace GestureGrabber {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -557,13 +546,10 @@ export namespace SugarExt {
 
     namespace Grid {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -640,19 +626,17 @@ export namespace SugarExt {
              * @action
              * @run-last
              */
-            "key-pressed": (arg0: number, arg1: number, arg2: number) => (boolean | void);
+            "key-pressed": (arg0: number, arg1: number, arg2: number) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "key-released": (arg0: number, arg1: number, arg2: number) => (boolean | void);
+            "key-released": (arg0: number, arg1: number, arg2: number) => boolean | void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -742,9 +726,7 @@ export namespace SugarExt {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -811,13 +793,10 @@ export namespace SugarExt {
 
     namespace Volume {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -906,13 +885,10 @@ export namespace SugarExt {
 
     namespace VolumeAlsa {
         // Signal signatures
-        interface SignalSignatures extends Volume.SignalSignatures {
-        }
+        interface SignalSignatures extends Volume.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Volume.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Volume.ConstructorProps {}
     }
 
     /**

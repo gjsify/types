@@ -303,7 +303,7 @@ export namespace EDataBook {
      * @gir-type Callback
      */
     interface BookBackendCustomOpFunc {
-        (book_backend: BookBackend, cancellable: (Gio.Cancellable | null)): void;
+        (book_backend: BookBackend, cancellable: Gio.Cancellable | null): void;
     }
 
     /**
@@ -338,7 +338,7 @@ export namespace EDataBook {
      * @gir-type Callback
      */
     interface DataBookCursorGetPositionFunc {
-        (cursor: DataBookCursor, cancellable: (Gio.Cancellable | null)): boolean;
+        (cursor: DataBookCursor, cancellable: Gio.Cancellable | null): boolean;
     }
 
     /**
@@ -359,14 +359,14 @@ export namespace EDataBook {
      * @gir-type Callback
      */
     interface DataBookCursorSetSexpFunc {
-        (cursor: DataBookCursor, sexp: (string | null)): boolean;
+        (cursor: DataBookCursor, sexp: string | null): boolean;
     }
 
     /**
      * @gir-type Callback
      */
     interface DataBookCursorStepFunc {
-        (cursor: DataBookCursor, revision_guard: (string | null), flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): number;
+        (cursor: DataBookCursor, revision_guard: string | null, flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): number;
     }
 
     /**
@@ -558,7 +558,7 @@ export namespace EDataBook {
          * @param email_address 
          * @virtual
          */
-        vfunc_impl_contains_email(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), email_address: string): void;
+        vfunc_impl_contains_email(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, email_address: string): void;
 
         /**
          * Add and store the passed vcards
@@ -569,7 +569,7 @@ export namespace EDataBook {
          * @param opflags 
          * @virtual
          */
-        vfunc_impl_create_contacts(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), vcards: string, opflags: number): void;
+        vfunc_impl_create_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, vcards: string, opflags: number): void;
 
         /**
          * Delete an {@link EDataBook.DataBookCursor} previously created by this backend
@@ -607,7 +607,7 @@ export namespace EDataBook {
          * @param id 
          * @virtual
          */
-        vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), id: string): void;
+        vfunc_impl_get_contact(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, id: string): void;
 
         /**
          * Fetch a list of contacts based on a search expression
@@ -617,7 +617,7 @@ export namespace EDataBook {
          * @param query 
          * @virtual
          */
-        vfunc_impl_get_contact_list(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), query: string): void;
+        vfunc_impl_get_contact_list(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, query: string): void;
 
         /**
          * Fetch a list of contact UIDs based on a search expression
@@ -627,7 +627,7 @@ export namespace EDataBook {
          * @param query 
          * @virtual
          */
-        vfunc_impl_get_contact_list_uids(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), query: string): void;
+        vfunc_impl_get_contact_list_uids(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, query: string): void;
 
         /**
          * retrieve how many contacts a "manual query" view has; default implementation
@@ -646,7 +646,7 @@ export namespace EDataBook {
          * @param opflags 
          * @virtual
          */
-        vfunc_impl_modify_contacts(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), vcards: string, opflags: number): void;
+        vfunc_impl_modify_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, vcards: string, opflags: number): void;
 
         /**
          * Notify changes which might have occured for a given contact
@@ -662,7 +662,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_impl_open(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_impl_open(book: DataBook, opid: number, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Refresh the backend
@@ -671,7 +671,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_impl_refresh(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_impl_refresh(book: DataBook, opid: number, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Remove the contacts specified by the passed UIDs
@@ -682,7 +682,7 @@ export namespace EDataBook {
          * @param opflags 
          * @virtual
          */
-        vfunc_impl_remove_contacts(book: DataBook, opid: number, cancellable: (Gio.Cancellable | null), uids: string, opflags: number): void;
+        vfunc_impl_remove_contacts(book: DataBook, opid: number, cancellable: Gio.Cancellable | null, uids: string, opflags: number): void;
 
         /**
          * Store & remember the passed locale setting
@@ -690,7 +690,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_impl_set_locale(locale: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_impl_set_locale(locale: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * sets sort fields for "manual query" views; default implementation saves
@@ -752,7 +752,7 @@ export namespace EDataBook {
          * @param email_address an email address
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
@@ -766,7 +766,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
@@ -780,7 +780,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_contains_email()`.
@@ -801,7 +801,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` when found the `email_address`, `false` on failure
          */
-        contains_email_sync(email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_email_sync(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously creates one or more new contacts from `vcards`.
@@ -813,20 +813,7 @@ export namespace EDataBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        create_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously creates one or more new contacts from `vcards`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_book_backend_create_contacts_finish()` to get the result of the
-         * operation.
-         * @param vcards a `null`-terminated array of vCard strings
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        create_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously creates one or more new contacts from `vcards`.
@@ -839,7 +826,20 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        create_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        create_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously creates one or more new contacts from `vcards`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_book_backend_create_contacts_finish()` to get the result of the
+         * operation.
+         * @param vcards a `null`-terminated array of vCard strings
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        create_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_create_contacts()`.
@@ -870,7 +870,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        create_contacts_sync(vcards: string, opflags: number, out_contacts: GLib.Queue, cancellable: (Gio.Cancellable | null)): boolean;
+        create_contacts_sync(vcards: string, opflags: number, out_contacts: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Creates a new {@link EDataBook.DataBookCursor} for the given backend if the backend
@@ -931,7 +931,7 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns an array of the contacts, or `null`, when the view cannot be found    or when the `range_start` is out of bounds.
          */
-        dup_view_contacts(view_id: (bigint | number), range_start: number, range_length: number): (EBookContacts.Contact[] | null);
+        dup_view_contacts(view_id: bigint | number, range_start: number, range_length: number): EBookContacts.Contact[] | null;
 
         /**
          * Returns a list of {@link EBookContacts.BookIndices} holding indices of the contacts
@@ -947,7 +947,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns an array of {@link EBookContacts.BookIndices}, or `null`
          */
-        dup_view_indices(view_id: (bigint | number)): (EBookContacts.BookIndices | null);
+        dup_view_indices(view_id: bigint | number): EBookContacts.BookIndices | null;
 
         /**
          * Returns currently used sort fields for manual query views. The returned
@@ -963,7 +963,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns current sort fields for the `view_id`, as an {@link EBookContacts.BookClientViewSortFields}    array, or `null`, when the view could not be found.
          */
-        dup_view_sort_fields(view_id: (bigint | number)): EBookContacts.BookClientViewSortFields;
+        dup_view_sort_fields(view_id: bigint | number): EBookContacts.BookClientViewSortFields;
 
         /**
          * Calls `func` for each existing view (as returned by `e_book_backend_list_views()`).
@@ -980,7 +980,7 @@ export namespace EDataBook {
          * @param percent percent complete
          * @param message message describing the operation in progress, or `null`
          */
-        foreach_view_notify_progress(only_completed_views: boolean, percent: number, message: (string | null)): void;
+        foreach_view_notify_progress(only_completed_views: boolean, percent: number, message: string | null): void;
 
         /**
          * Obtains the value of the backend property named `prop_name`.
@@ -1005,7 +1005,7 @@ export namespace EDataBook {
          * @param uid a contact ID
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<EBookContacts.Contact>;
+        get_contact(uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact>;
 
         /**
          * Asynchronously obtains an {@link EBookContacts.Contact} for `uid`.
@@ -1017,7 +1017,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contact(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously obtains an {@link EBookContacts.Contact} for `uid`.
@@ -1029,7 +1029,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<EBookContacts.Contact> | void);
+        get_contact(uid: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EBookContacts.Contact> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_get_contact_finish()`.
@@ -1053,7 +1053,7 @@ export namespace EDataBook {
          * @param query a search query in S-expression format
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_contact_list(query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        get_contact_list(query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously obtains a set of {@link EBookContacts.Contact} instances which satisfy the
@@ -1066,7 +1066,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_contact_list(query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contact_list(query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously obtains a set of {@link EBookContacts.Contact} instances which satisfy the
@@ -1079,7 +1079,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_contact_list(query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        get_contact_list(query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_get_contact_list()`.
@@ -1110,7 +1110,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_contact_list_sync(query: string, out_contacts: GLib.Queue, cancellable: (Gio.Cancellable | null)): boolean;
+        get_contact_list_sync(query: string, out_contacts: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously obtains a set of ID strings for contacts which satisfy
@@ -1122,20 +1122,7 @@ export namespace EDataBook {
          * @param query a search query in S-expression format
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_contact_list_uids(query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously obtains a set of ID strings for contacts which satisfy
-         * the criteria specified in `query`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_book_backend_get_contact_list_uids_finish()` to get the result of
-         * the operation.
-         * @param query a search query in S-expression format
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_contact_list_uids(query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contact_list_uids(query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously obtains a set of ID strings for contacts which satisfy
@@ -1148,7 +1135,20 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_contact_list_uids(query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        get_contact_list_uids(query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously obtains a set of ID strings for contacts which satisfy
+         * the criteria specified in `query`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_book_backend_get_contact_list_uids_finish()` to get the result of
+         * the operation.
+         * @param query a search query in S-expression format
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_contact_list_uids(query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with
@@ -1179,7 +1179,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_contact_list_uids_sync(query: string, out_uids: GLib.Queue, cancellable: (Gio.Cancellable | null)): boolean;
+        get_contact_list_uids_sync(query: string, out_uids: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Obtains an {@link EBookContacts.Contact} for `uid`.
@@ -1192,14 +1192,14 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EBookContacts.Contact}, or `null` on error
          */
-        get_contact_sync(uid: string, cancellable: (Gio.Cancellable | null)): EBookContacts.Contact;
+        get_contact_sync(uid: string, cancellable: Gio.Cancellable | null): EBookContacts.Contact;
 
         /**
          * Tries to create an {@link EDataBook.DataBookDirect} for `backend` if
          * backend supports direct read access.
          * @returns A new {@link EDataBook.DataBookDirect} object, or `null` if          `backend` does not support direct access
          */
-        get_direct_book(): (DataBookDirect | null);
+        get_direct_book(): DataBookDirect | null;
 
         /**
          * Returns the data source registry to which {@link EBackend.Backend.source} belongs.
@@ -1218,7 +1218,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns how many contacts the view identified by `view_id`    contains.
          */
-        get_view_n_total(view_id: (bigint | number)): number;
+        get_view_n_total(view_id: bigint | number): number;
 
         /**
          * Returns whether `backend` will accept changes to its data content.
@@ -1270,7 +1270,7 @@ export namespace EDataBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        modify_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        modify_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously modifies one or more contacts according to `vcards`.
@@ -1283,7 +1283,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        modify_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        modify_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously modifies one or more contacts according to `vcards`.
@@ -1296,7 +1296,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        modify_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        modify_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_modify_contacts()`.
@@ -1316,7 +1316,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        modify_contacts_sync(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        modify_contacts_sync(vcards: string, opflags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Notifies all of `backend`'s book views that the current set of
@@ -1338,7 +1338,7 @@ export namespace EDataBook {
          * @param prop_name property name, which changed
          * @param prop_value new property value
          */
-        notify_property_changed(prop_name: string, prop_value: (string | null)): void;
+        notify_property_changed(prop_name: string, prop_value: string | null): void;
 
         /**
          * Notifies all of `backend`'s book views that the contact with UID
@@ -1372,7 +1372,7 @@ export namespace EDataBook {
          * call `e_book_backend_open_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        open(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously "opens" the `backend`.  Opening a backend is something of
@@ -1385,7 +1385,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        open(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously "opens" the `backend`.  Opening a backend is something of
@@ -1398,7 +1398,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        open(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_open()`.
@@ -1419,7 +1419,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        open_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        open_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Obtains the {@link Gio.Task} for `opid`.
@@ -1447,7 +1447,7 @@ export namespace EDataBook {
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns an {@link EDataBook.DataBook}, or `null`
          */
-        ref_data_book(): (DataBook | null);
+        ref_data_book(): DataBook | null;
 
         /**
          * Returns the {@link Gio.ProxyResolver} for `backend` (if applicable), as indicated
@@ -1458,7 +1458,7 @@ export namespace EDataBook {
          * be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.ProxyResolver}, or `null`
          */
-        ref_proxy_resolver(): (Gio.ProxyResolver | null);
+        ref_proxy_resolver(): Gio.ProxyResolver | null;
 
         /**
          * References an {@link EDataBook.DataBookView} by its identifier.
@@ -1468,7 +1468,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns a referenced {@link EDataBook.DataBookView} corresponding    to the given `view_id`, or `null`, when it cannot be found
          */
-        ref_view(view_id: (bigint | number)): (DataBookView | null);
+        ref_view(view_id: bigint | number): DataBookView | null;
 
         /**
          * References user data previously set by `e_book_backend_take_view_user_data()`
@@ -1479,7 +1479,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @returns previously set user data for the `view_id`,   or `null` when none had been set yet or when the view does not exist.
          */
-        ref_view_user_data<T = GObject.Object>(view_id: (bigint | number)): T;
+        ref_view_user_data<T = GObject.Object>(view_id: bigint | number): T;
 
         /**
          * Asynchronously initiates a refresh for `backend`, if the `backend` supports
@@ -1491,20 +1491,7 @@ export namespace EDataBook {
          * call `e_book_backend_refresh_finish()` to get the result of the initiation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        refresh(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously initiates a refresh for `backend`, if the `backend` supports
-         * refreshing.  The actual refresh operation completes on its own time.  This
-         * function, along with `e_book_backend_refresh_finish()`, merely initiates the
-         * operation.
-         * 
-         * Once the refresh is initiated, `callback` will be called.  You can then
-         * call `e_book_backend_refresh_finish()` to get the result of the initiation.
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        refresh(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously initiates a refresh for `backend`, if the `backend` supports
@@ -1517,7 +1504,20 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        refresh(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously initiates a refresh for `backend`, if the `backend` supports
+         * refreshing.  The actual refresh operation completes on its own time.  This
+         * function, along with `e_book_backend_refresh_finish()`, merely initiates the
+         * operation.
+         * 
+         * Once the refresh is initiated, `callback` will be called.  You can then
+         * call `e_book_backend_refresh_finish()` to get the result of the initiation.
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        refresh(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the refresh initiation started with `e_book_backend_refresh()`.
@@ -1543,7 +1543,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        refresh_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously removes one or more contacts according to `uids`.
@@ -1555,20 +1555,7 @@ export namespace EDataBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        remove_contacts(uids: string[], opflags: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously removes one or more contacts according to `uids`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_book_backend_remove_contacts_finish()` to get the result of the
-         * operation.
-         * @param uids a `null`-terminated array of contact ID strings
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        remove_contacts(uids: string[], opflags: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_contacts(uids: string[], opflags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously removes one or more contacts according to `uids`.
@@ -1581,7 +1568,20 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        remove_contacts(uids: string[], opflags: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_contacts(uids: string[], opflags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously removes one or more contacts according to `uids`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_book_backend_remove_contacts_finish()` to get the result of the
+         * operation.
+         * @param uids a `null`-terminated array of contact ID strings
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        remove_contacts(uids: string[], opflags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_book_backend_remove_contacts()`.
@@ -1601,7 +1601,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        remove_contacts_sync(uids: string, opflags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contacts_sync(uids: string, opflags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes `view` from `backend`.
@@ -1621,7 +1621,7 @@ export namespace EDataBook {
          * @param use_cancellable an optional {@link Gio.Cancellable} to use for `func`
          * @param func a function to call in a dedicated thread
          */
-        schedule_custom_operation(use_cancellable: (Gio.Cancellable | null), func: BookBackendCustomOpFunc): void;
+        schedule_custom_operation(use_cancellable: Gio.Cancellable | null, func: BookBackendCustomOpFunc): void;
 
         /**
          * Sets the cache directory path for use by `backend`.
@@ -1650,7 +1650,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        set_locale(locale: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_locale(locale: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Stores current `indices` for the view identified by the `view_id` and,
@@ -1661,7 +1661,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param indices an array of {@link EBookContacts.BookIndices}, or `null`
          */
-        set_view_indices(view_id: (bigint | number), indices: (EBookContacts.BookIndices | null)): void;
+        set_view_indices(view_id: bigint | number, indices: EBookContacts.BookIndices | null): void;
 
         /**
          * Stores how many contacts the view identified by `view_id`
@@ -1673,7 +1673,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param n_total the value to set
          */
-        set_view_n_total(view_id: (bigint | number), n_total: number): void;
+        set_view_n_total(view_id: bigint | number, n_total: number): void;
 
         /**
          * Sets the sort fields for the view identified by the `view_id`.
@@ -1691,7 +1691,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param fields an array of {@link EBookContacts.BookClientViewSortFields}, or `null`
          */
-        set_view_sort_fields(view_id: (bigint | number), fields: (EBookContacts.BookClientViewSortFields | null)): void;
+        set_view_sort_fields(view_id: bigint | number, fields: EBookContacts.BookClientViewSortFields | null): void;
 
         /**
          * Sets whether `backend` will accept changes to its data content.
@@ -1724,7 +1724,7 @@ export namespace EDataBook {
          * @param view_id a view identifier
          * @param user_data user data to set
          */
-        take_view_user_data(view_id: (bigint | number), user_data: (GObject.Object | null)): void;
+        take_view_user_data(view_id: bigint | number, user_data: GObject.Object | null): void;
     }
 
 
@@ -1735,9 +1735,7 @@ export namespace EDataBook {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {}
     }
 
     /**
@@ -1779,13 +1777,10 @@ export namespace EDataBook {
 
     namespace BookBackendSExp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1882,9 +1877,7 @@ export namespace EDataBook {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BookBackend.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BookBackend.ConstructorProps {}
     }
 
     /**
@@ -1928,21 +1921,21 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_contains_email_sync(email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_contains_email_sync(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Open the backend
          * @param cancellable 
          * @virtual
          */
-        vfunc_open_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_open_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Refresh the backend
          * @param cancellable 
          * @virtual
          */
-        vfunc_refresh_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -1955,7 +1948,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` when found the `email_address`, `false` on failure
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param args 
@@ -1976,7 +1969,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        create_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        create_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * @param args 
@@ -1995,7 +1988,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EBookContacts.Contact}, or `null` on error
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null)): EBookContacts.Contact;
+        get_contact(uid: string, cancellable: Gio.Cancellable | null): EBookContacts.Contact;
 
         /**
          * @param args 
@@ -2016,7 +2009,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_contact_list(query: string, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        get_contact_list(query: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * @param args 
@@ -2037,7 +2030,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_contact_list_uids(query: string, cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        get_contact_list_uids(query: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * @param args 
@@ -2054,7 +2047,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        modify_contacts(vcards: string, opflags: number, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        modify_contacts(vcards: string, opflags: number, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * @param args 
@@ -2072,7 +2065,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        open(cancellable: (Gio.Cancellable | null)): boolean;
+        open(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param args 
@@ -2092,7 +2085,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        refresh(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param args 
@@ -2109,7 +2102,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        remove_contacts(uids: string, opflags: number, cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        remove_contacts(uids: string, opflags: number, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * @param args 
@@ -2179,9 +2172,9 @@ export namespace EDataBook {
 
         _init(...args: any[]): void;
 
-        static ["new"](filename: string, source: (EDataServer.Source | null), cancellable: (Gio.Cancellable | null)): BookCache;
+        static ["new"](filename: string, source: EDataServer.Source | null, cancellable: Gio.Cancellable | null): BookCache;
 
-        static new_full(filename: string, source: (EDataServer.Source | null), setup: (EBookContacts.SourceBackendSummarySetup | null), cancellable: (Gio.Cancellable | null)): BookCache;
+        static new_full(filename: string, source: EDataServer.Source | null, setup: EBookContacts.SourceBackendSummarySetup | null, cancellable: Gio.Cancellable | null): BookCache;
 
         // Signals
         /** @signal */
@@ -2230,7 +2223,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` when found the `email_address`, `false` on failure
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Counts how many contacts satisfy the `sexp`.
@@ -2238,7 +2231,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        count_query(sexp: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, number];
+        count_query(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Calculates the `out_total` amount of results for the `cursor`'s query expression,
@@ -2250,7 +2243,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether `out_total` and `out_position` were successfully calculated.
          */
-        cursor_calculate(cursor: BookCacheCursor, cancellable: (Gio.Cancellable | null)): [boolean, number, number];
+        cursor_calculate(cursor: BookCacheCursor, cancellable: Gio.Cancellable | null): [boolean, number, number];
 
         /**
          * Compares `contact` with `cursor` and returns whether `contact` is less than, equal to, or greater
@@ -2323,7 +2316,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns The number of contacts traversed if successful, otherwise -1 is    returned and the `error` is set.
          */
-        cursor_step(cursor: BookCacheCursor, flags: BookCacheCursorStepFlags, origin: BookCacheCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): [number, BookCacheSearchData[] | null];
+        cursor_step(cursor: BookCacheCursor, flags: BookCacheCursorStepFlags, origin: BookCacheCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [number, BookCacheSearchData[] | null];
 
         /**
          * Returns a comma-separated list of categories used by the contacts
@@ -2331,7 +2324,7 @@ export namespace EDataBook {
          * when no longer needed.
          * @returns a comma-separated list of categories    used by the contacts stored in the `book_cache`, or `null`, when no    category is used by any contact.
          */
-        dup_categories(): (string | null);
+        dup_categories(): string | null;
 
         /**
          * Returns the `contact` revision, used to detect changes.
@@ -2362,7 +2355,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_query_contacts(sexp: (string | null), sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: (Gio.Cancellable | null)): boolean;
+        dup_query_contacts(sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Queries the `book_cache` for a `summary_field` value for contacts in the given range and order.
@@ -2386,7 +2379,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_query_field(summary_field: EBookContacts.ContactField, sexp: (string | null), sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: (Gio.Cancellable | null)): boolean;
+        dup_query_field(summary_field: EBookContacts.ContactField, sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Queries the `book_cache` for a `summary_field` value for contact with UID `uid`.
@@ -2399,7 +2392,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_summary_field(summary_field: EBookContacts.ContactField, uid: string, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        dup_summary_field(summary_field: EBookContacts.ContactField, uid: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Fetch the {@link EBookContacts.Contact} specified by `uid` in `book_cache`.
@@ -2411,7 +2404,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        get_contact(uid: string, meta_contact: boolean, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact];
+        get_contact(uid: string, meta_contact: boolean, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact];
 
         /**
          * Gets the custom flags previously set for the `uid`, either with
@@ -2421,7 +2414,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_contact_custom_flags(uid: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+        get_contact_custom_flags(uid: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Fetches the extra data previously set for `uid`, either with
@@ -2430,7 +2423,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        get_contact_extra(uid: string, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        get_contact_extra(uid: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Gets all the UID-s the `extra` data is set for.
@@ -2442,7 +2435,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_uids_with_extra(extra: string, cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        get_uids_with_extra(extra: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Fetch a vCard string for `uid` in `book_cache`.
@@ -2454,7 +2447,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        get_vcard(uid: string, meta_contact: boolean, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        get_vcard(uid: string, meta_contact: boolean, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * This is a convenience wrapper for `e_book_cache_put_contacts()`,
@@ -2466,7 +2459,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        put_contact(contact: EBookContacts.Contact, extra: (string | null), custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        put_contact(contact: EBookContacts.Contact, extra: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds or replaces contacts in `book_cache`.
@@ -2482,7 +2475,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        put_contacts(contacts: EBookContacts.Contact[], extras: (string[] | null), custom_flags: (number[] | null), offline_flag: EBackend.CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        put_contacts(contacts: EBookContacts.Contact[], extras: string[] | null, custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * References the currently active {@link EDataServer.Collator} for `book_cache`,
@@ -2499,7 +2492,7 @@ export namespace EDataBook {
          * It can be `null` in some cases, like when running tests.
          * @returns A reference to the {@link EDataServer.Source} to which    `book_cache` is paired, or `null`.
          */
-        ref_source(): (EDataServer.Source | null);
+        ref_source(): EDataServer.Source | null;
 
         /**
          * Removes the contact identified by `uid` from `book_cache`.
@@ -2509,7 +2502,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        remove_contact(uid: string, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contact(uid: string, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes the contacts indicated by `uids` from `book_cache`.
@@ -2522,7 +2515,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        remove_contacts(uids: string[], custom_flags: (number[] | null), offline_flag: EBackend.CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contacts(uids: string[], custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Searches `book_cache` for contacts matching the search expression `sexp`.
@@ -2541,7 +2534,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search(sexp: (string | null), meta_contacts: boolean, cancellable: (Gio.Cancellable | null)): [boolean, BookCacheSearchData[]];
+        search(sexp: string | null, meta_contacts: boolean, cancellable: Gio.Cancellable | null): [boolean, BookCacheSearchData[]];
 
         /**
          * Similar to `e_book_cache_search()`, but fetches only a list of contact UIDs.
@@ -2552,7 +2545,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search_uids(sexp: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        search_uids(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Similar to `e_book_cache_search()`, but calls the `func` for each found contact.
@@ -2561,7 +2554,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search_with_callback(sexp: (string | null), func: BookCacheSearchFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        search_with_callback(sexp: string | null, func: BookCacheSearchFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets or replaces the custom flags associated with a contact
@@ -2571,7 +2564,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        set_contact_custom_flags(uid: string, custom_flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        set_contact_custom_flags(uid: string, custom_flags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets or replaces the extra data associated with `uid`.
@@ -2580,7 +2573,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        set_contact_extra(uid: string, extra: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        set_contact_extra(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Relocalizes any locale specific data in the specified
@@ -2597,7 +2590,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether the new locale was successfully set.
          */
-        set_locale(lc_collate: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_locale(lc_collate: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Returns a list of {@link EDataServer.Extension} objects bound to `extensible` whose
@@ -2739,7 +2732,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_connect_sync(credentials: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null)): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
+        vfunc_connect_sync(credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
 
         /**
          * This is called when the backend goes into offline mode or
@@ -2751,7 +2744,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gathers the changes since the last check which had been done
@@ -2785,7 +2778,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_changes_sync(last_sync_tag: (string | null), is_repeat: boolean, cancellable: (Gio.Cancellable | null)): [boolean, string, boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[]];
+        vfunc_get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null): [boolean, string, boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[]];
 
         /**
          * It is optional to implement this virtual method by the descendants.
@@ -2811,7 +2804,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_list_existing_sync(cancellable: (Gio.Cancellable | null)): [boolean, string, BookMetaBackendInfo[]];
+        vfunc_list_existing_sync(cancellable: Gio.Cancellable | null): [boolean, string, BookMetaBackendInfo[]];
 
         /**
          * Loads a contact from the remote side.
@@ -2828,7 +2821,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_load_contact_sync(uid: string, extra: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact, string];
+        vfunc_load_contact_sync(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact, string];
 
         /**
          * Removes a contact from the remote side. The `object` is not `null` when
@@ -2844,7 +2837,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_remove_contact_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: (string | null), object: (string | null), opflags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_remove_contact_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Determines, whether current source content requires reconnect of the backend.
@@ -2891,7 +2884,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_save_contact_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, contact: EBookContacts.Contact, extra: (string | null), opflags: number, cancellable: (Gio.Cancellable | null)): [boolean, string, string];
+        vfunc_save_contact_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, contact: EBookContacts.Contact, extra: string | null, opflags: number, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
         /**
          * Searches `meta_backend` with given expression `expr` and returns
@@ -2910,7 +2903,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_search_sync(expr: (string | null), meta_contact: boolean, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        vfunc_search_sync(expr: string | null, meta_contact: boolean, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * Searches `meta_backend` with given expression `expr` and returns
@@ -2928,7 +2921,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_search_uids_sync(expr: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        vfunc_search_uids_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * @virtual
@@ -2967,7 +2960,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        connect_sync(credentials: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null)): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
+        connect_sync(credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
 
         /**
          * This is called when the backend goes into offline mode or
@@ -2979,7 +2972,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Returns the last known synchronization tag, the same as used to
@@ -2988,7 +2981,7 @@ export namespace EDataBook {
          * Free the returned string with `g_free()`, when no longer needed.
          * @returns The last known synchronization tag,    or `null`, when none is stored.
          */
-        dup_sync_tag(): (string | null);
+        dup_sync_tag(): string | null;
 
         /**
          * Empties the local cache by removing all known contacts from it
@@ -2996,14 +2989,14 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        empty_cache_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        empty_cache_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Ensures that the `meta_backend` is connected to its destination.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        ensure_connected_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        ensure_connected_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @returns an {@link EDataBook.BookBackend.SignalSignatures.capabilities | EDataBook.BookBackend::capabilities} property to be used by    the descendant in conjunction to the descendant's capabilities    in the result of `e_book_backend_get_backend_property()` with    #CLIENT_BACKEND_PROPERTY_CAPABILITIES.
@@ -3042,7 +3035,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_changes_sync(last_sync_tag: (string | null), is_repeat: boolean, cancellable: (Gio.Cancellable | null)): [boolean, string, boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[]];
+        get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null): [boolean, string, boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[]];
 
         /**
          * This value has meaning only if `e_book_meta_backend_get_ever_connected()`
@@ -3074,7 +3067,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        inline_local_photos_sync(contact: EBookContacts.Contact, cancellable: (Gio.Cancellable | null)): boolean;
+        inline_local_photos_sync(contact: EBookContacts.Contact, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Used to get list of all existing objects on the remote side. The descendant
@@ -3092,7 +3085,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        list_existing_sync(cancellable: (Gio.Cancellable | null)): [boolean, string, BookMetaBackendInfo[]];
+        list_existing_sync(cancellable: Gio.Cancellable | null): [boolean, string, BookMetaBackendInfo[]];
 
         /**
          * Loads a contact from the remote side.
@@ -3109,7 +3102,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        load_contact_sync(uid: string, extra: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact, string];
+        load_contact_sync(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact, string];
 
         /**
          * Processes given changes by updating local cache content accordingly.
@@ -3121,7 +3114,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        process_changes_sync(created_objects: (BookMetaBackendInfo[] | null), modified_objects: (BookMetaBackendInfo[] | null), removed_objects: (BookMetaBackendInfo[] | null), cancellable: (Gio.Cancellable | null)): boolean;
+        process_changes_sync(created_objects: BookMetaBackendInfo[] | null, modified_objects: BookMetaBackendInfo[] | null, removed_objects: BookMetaBackendInfo[] | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @returns Referenced {@link EDataBook.BookCache}, which is used by `meta_backend`.    Unref it with `g_object_unref()`, when no longer needed.
@@ -3134,7 +3127,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        refresh_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes a contact from the remote side. The `object` is not `null` when
@@ -3150,7 +3143,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_contact_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: (string | null), object: (string | null), opflags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contact_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Determines, whether current source content requires reconnect of the backend.
@@ -3197,7 +3190,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        save_contact_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, contact: EBookContacts.Contact, extra: (string | null), opflags: number, cancellable: (Gio.Cancellable | null)): [boolean, string, string];
+        save_contact_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, contact: EBookContacts.Contact, extra: string | null, opflags: number, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
         /**
          * Schedules refresh of the content of the `meta_backend`. If there's any
@@ -3225,7 +3218,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_sync(expr: (string | null), meta_contact: boolean, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        search_sync(expr: string | null, meta_contact: boolean, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * Searches `meta_backend` with given expression `expr` and returns
@@ -3243,7 +3236,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        search_uids_sync(expr: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        search_uids_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Sets the `cache` as the cache to be used by the `meta_backend`.
@@ -3282,7 +3275,7 @@ export namespace EDataBook {
          * Sets the `sync_tag` for the `meta_backend`.
          * @param sync_tag a sync tag to set, or `null` to unset the old one
          */
-        set_sync_tag(sync_tag: (string | null)): void;
+        set_sync_tag(sync_tag: string | null): void;
 
         /**
          * Splits `objects` into created/modified/removed lists according to current local
@@ -3299,7 +3292,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        split_changes_sync(objects: BookMetaBackendInfo[], cancellable: (Gio.Cancellable | null)): [boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[] | null];
+        split_changes_sync(objects: BookMetaBackendInfo[], cancellable: Gio.Cancellable | null): [boolean, BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[], BookMetaBackendInfo[] | null];
 
         /**
          * Changes all inline photos and logos to URL type in `contact`, which
@@ -3311,7 +3304,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        store_inline_photos_sync(contact: EBookContacts.Contact, cancellable: (Gio.Cancellable | null)): boolean;
+        store_inline_photos_sync(contact: EBookContacts.Contact, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -3322,18 +3315,16 @@ export namespace EDataBook {
              * @signal
              * @run-last
              */
-            "before-insert-contact": (arg0: null, arg1: EBookContacts.Contact, arg2: string, arg3: boolean, arg4: GObject.Object, arg5: null) => (boolean | void);
+            "before-insert-contact": (arg0: null, arg1: EBookContacts.Contact, arg2: string, arg3: boolean, arg4: GObject.Object, arg5: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "before-remove-contact": (arg0: null, arg1: string, arg2: (Gio.Cancellable | null), arg3: null) => (boolean | void);
+            "before-remove-contact": (arg0: null, arg1: string, arg2: Gio.Cancellable | null, arg3: null) => boolean | void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
     }
 
     /**
@@ -3359,9 +3350,9 @@ export namespace EDataBook {
 
         _init(...args: any[]): void;
 
-        static ["new"](path: string, source: (EDataServer.Source | null), cancellable: (Gio.Cancellable | null)): BookSqlite;
+        static ["new"](path: string, source: EDataServer.Source | null, cancellable: Gio.Cancellable | null): BookSqlite;
 
-        static new_full(path: string, source: (EDataServer.Source | null), setup: (EBookContacts.SourceBackendSummarySetup | null), vcard_callback: (bSqlVCardCallback | null), change_callback: (bSqlChangeCallback | null), cancellable: (Gio.Cancellable | null)): BookSqlite;
+        static new_full(path: string, source: EDataServer.Source | null, setup: EBookContacts.SourceBackendSummarySetup | null, vcard_callback: bSqlVCardCallback | null, change_callback: bSqlChangeCallback | null, cancellable: Gio.Cancellable | null): BookSqlite;
 
         // Signals
         /** @signal */
@@ -3394,7 +3385,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_insert_contact(db: null, contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_insert_contact(db: null, contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param db 
@@ -3402,7 +3393,7 @@ export namespace EDataBook {
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_remove_contact(db: null, contact_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_remove_contact(db: null, contact_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -3411,7 +3402,7 @@ export namespace EDataBook {
          * @param replace 
          * @param cancellable 
          */
-        add_contact(contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        add_contact(contact: EBookContacts.Contact, extra: string, replace: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds or replaces contacts in `ebsql`. If `replace_existing` is specified then existing
@@ -3427,7 +3418,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        add_contacts(contacts: EBookContacts.Contact[], extra: (string[] | null), replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        add_contacts(contacts: EBookContacts.Contact[], extra: string[] | null, replace: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Counts how many contacts satisfy the `sexp`.
@@ -3435,7 +3426,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        count_query(sexp: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, number];
+        count_query(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Queries the `ebsql` for the contacts in the given range and order.
@@ -3452,7 +3443,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_query_contacts(sexp: (string | null), sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: (Gio.Cancellable | null)): boolean;
+        dup_query_contacts(sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_contacts: EBookContacts.Contact[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Queries the `ebsql` for a `summary_field` value for contacts in the given range and order.
@@ -3476,7 +3467,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_query_field(summary_field: EBookContacts.ContactField, sexp: (string | null), sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: (Gio.Cancellable | null)): boolean;
+        dup_query_field(summary_field: EBookContacts.ContactField, sexp: string | null, sort_field: EBookContacts.ContactField, sort_type: EBookContacts.BookCursorSortType, n_offset: number, n_limit: number, out_uids: string[], out_values: string[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Queries the `ebsql` for a `summary_field` value for contact with UID `uid`.
@@ -3489,7 +3480,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether succeeded.
          */
-        dup_summary_field(summary_field: EBookContacts.ContactField, uid: string, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        dup_summary_field(summary_field: EBookContacts.ContactField, uid: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Executes an SQLite statement. Use `e_book_sqlite_select()` for
@@ -3498,7 +3489,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        exec(sql_stmt: string, cancellable: (Gio.Cancellable | null)): boolean;
+        exec(sql_stmt: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Fetch the {@link EBookContacts.Contact} specified by `uid` in `ebsql`.
@@ -3578,7 +3569,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        lock(lock_type: bSqlLockType, cancellable: (Gio.Cancellable | null)): boolean;
+        lock(lock_type: bSqlLockType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * References the currently active {@link EDataServer.Collator} for `ebsql`,
@@ -3595,7 +3586,7 @@ export namespace EDataBook {
          * It can be `null` in some cases, like when running tests.
          * @returns A reference to the {@link EDataServer.Source} to which `ebsql` is paired, or `null`.
          */
-        ref_source(): (EDataServer.Source | null);
+        ref_source(): EDataServer.Source | null;
 
         /**
          * Removes the contact indicated by `uid` from `ebsql`.
@@ -3603,7 +3594,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        remove_contact(uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contact(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes the contacts indicated by `uids` from `ebsql`.
@@ -3611,7 +3602,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        remove_contacts(uids: string[], cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contacts(uids: string[], cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Searches `ebsql` for contacts matching the search expression indicated by `sexp`.
@@ -3631,7 +3622,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search(sexp: (string | null), meta_contacts: boolean, cancellable: (Gio.Cancellable | null)): [boolean, bSqlSearchData[]];
+        search(sexp: string | null, meta_contacts: boolean, cancellable: Gio.Cancellable | null): [boolean, bSqlSearchData[]];
 
         /**
          * Similar to `e_book_sqlitedb_search()`, but fetches only a list of contact UIDs.
@@ -3642,7 +3633,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        search_uids(sexp: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        search_uids(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Executes a SELECT statement `sql_stmt` and calls `func` for each row of the result.
@@ -3652,7 +3643,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        select(sql_stmt: string, func: BookSqliteSelectFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        select(sql_stmt: string, func: BookSqliteSelectFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets or replaces the extra data associated with `uid`.
@@ -3660,7 +3651,7 @@ export namespace EDataBook {
          * @param extra The extra data to set
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        set_contact_extra(uid: string, extra: (string | null)): boolean;
+        set_contact_extra(uid: string, extra: string | null): boolean;
 
         /**
          * Sets the value for `key` to be `value`
@@ -3695,7 +3686,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns Whether the new locale was successfully set.
          */
-        set_locale(lc_collate: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_locale(lc_collate: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Releases an exclusive on `ebsql` and finishes a transaction previously
@@ -3854,7 +3845,7 @@ export namespace EDataBook {
          * @param prop_name Property name which changed
          * @param prop_value The new property value
          */
-        report_backend_property_changed(prop_name: string, prop_value: (string | null)): void;
+        report_backend_property_changed(prop_name: string, prop_value: string | null): void;
 
         /**
          * Notifies the clients about an error, which happened out of any client-initiate operation.
@@ -3885,7 +3876,7 @@ export namespace EDataBook {
          * @param error Operation error, if any, automatically freed if passed it
          * @param contact the found {@link EBookContacts.Contact}, or `null`, if it could not be found
          */
-        respond_get_contact(opid: number, error: (GLib.Error | null), contact: (EBookContacts.Contact | null)): void;
+        respond_get_contact(opid: number, error: GLib.Error | null, contact: EBookContacts.Contact | null): void;
 
         /**
          * Finishes a call to get list of {@link EBookContacts.Contact}, which satisfy certain criteria.
@@ -3940,7 +3931,7 @@ export namespace EDataBook {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set appropriately.
          */
-        set_locale(locale: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_locale(locale: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3984,7 +3975,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4028,7 +4019,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4117,7 +4108,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_get_position(cancellable: (Gio.Cancellable | null)): [boolean, number, number];
+        vfunc_get_position(cancellable: Gio.Cancellable | null): [boolean, number, number];
 
         /**
          * The {@link EDataBook.DataBookCursorLoadLocaleFunc} delegate used to reload the locale setting
@@ -4138,7 +4129,7 @@ export namespace EDataBook {
          * @param sexp the search expression to set, or `null` for unfiltered results
          * @virtual
          */
-        vfunc_set_sexp(sexp: (string | null)): boolean;
+        vfunc_set_sexp(sexp: string | null): boolean;
 
         /**
          * Steps `cursor` through its sorted query by a maximum of `count` contacts
@@ -4172,7 +4163,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_step(revision_guard: (string | null), flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): [number, string[] | null];
+        vfunc_step(revision_guard: string | null, flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [number, string[] | null];
 
         // Methods
         /**
@@ -4217,7 +4208,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        load_locale(cancellable: (Gio.Cancellable | null)): [boolean, string];
+        load_locale(cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Recalculates the cursor's total and position, this is meant
@@ -4227,7 +4218,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        recalculate(cancellable: (Gio.Cancellable | null)): boolean;
+        recalculate(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Places `cursor` on the `connection` at `object_path`
@@ -4256,7 +4247,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_alphabetic_index(index: number, locale: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_alphabetic_index(index: number, locale: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the search expression for the cursor
@@ -4264,7 +4255,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_sexp(sexp: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        set_sexp(sexp: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Steps `cursor` through its sorted query by a maximum of `count` contacts
@@ -4298,7 +4289,7 @@ export namespace EDataBook {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns The number of contacts traversed if successful, otherwise -1 is returned and `error` is set.
          */
-        step(revision_guard: (string | null), flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): [number, string[] | null];
+        step(revision_guard: string | null, flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [number, string[] | null];
     }
 
 
@@ -4466,13 +4457,10 @@ export namespace EDataBook {
 
     namespace DataBookDirect {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4529,9 +4517,7 @@ export namespace EDataBook {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EBackend.DataFactory.ConstructorProps, EDataServer.Extensible.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBackend.DataFactory.ConstructorProps, EDataServer.Extensible.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -4554,7 +4540,7 @@ export namespace EDataBook {
 
         _init(...args: any[]): void;
 
-        static ["new"](backend_per_process: number, cancellable: (Gio.Cancellable | null)): DataBookFactory;
+        static ["new"](backend_per_process: number, cancellable: Gio.Cancellable | null): DataBookFactory;
 
         // Signals
         /** @signal */
@@ -4611,7 +4597,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4655,7 +4641,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4825,7 +4811,7 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns array of the read contacts,    or `null`, when not applicable or when the `range_start` it out of bounds.
          */
-        dup_contacts(range_start: number, range_length: number): (EBookContacts.Contact[] | null);
+        dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null;
 
         /**
          * Returns a list of {@link EBookContacts.BookIndices} holding indices of the contacts
@@ -4838,7 +4824,7 @@ export namespace EDataBook {
          * Note: This function can be used only with `E_BOOK_CLIENT_VIEW_FLAGS_MANUAL_QUERY`.
          * @returns list of indices for the view,    or `null` when cannot determine
          */
-        dup_indices(): (EBookContacts.BookIndices | null);
+        dup_indices(): EBookContacts.BookIndices | null;
 
         /**
          * Returns the {@link Gio.DBusConnection} on which the AddressBookView D-Bus
@@ -4850,7 +4836,7 @@ export namespace EDataBook {
         /**
          * @returns Hash table of field names which the listener is interested in. Backends can return fully populated objects, but the listener advertised that it will use only these. Returns `null` for all available fields. Note: The data pointer in the hash table has no special meaning, it's only GINT_TO_POINTER(1) for easier checking. Also, field names are compared case insensitively.
          */
-        get_fields_of_interest(): (GLib.HashTable<string, number> | null);
+        get_fields_of_interest(): GLib.HashTable<string, number> | null;
 
         /**
          * Gets the {@link EBookContacts.BookClientViewFlags} that control the behaviour of `view`.
@@ -4981,7 +4967,7 @@ export namespace EDataBook {
          * if not `null`, with `g_object_unref()`, when no longer needed.
          * @returns The associated {@link EDataBook.BookBackend}.
          */
-        ref_backend(): (BookBackend | null);
+        ref_backend(): BookBackend | null;
 
         /**
          * Sets whether the `view` should do initial notifications
@@ -5064,7 +5050,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5108,19 +5094,16 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace DataBookViewWatcherCache {
         // Signal signatures
-        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {
-        }
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
     }
 
     /**
@@ -5172,26 +5155,23 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns an array of {@link EBookContacts.Contact}-s,    or `null`, when `range_start` is out of bounds.
          */
-        dup_contacts(range_start: number, range_length: number): (EBookContacts.Contact[] | null);
+        dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null;
 
         /**
          * Sets `sort_fields` as fields to sort the contacts by. If `null`,
          * sorts by file-as field. The function assumes ownership of the `sort_fields`.
          * @param sort_fields an {@link EBookContacts.BookClientViewSortFields}, or `null`
          */
-        take_sort_fields(sort_fields: (EBookContacts.BookClientViewSortFields | null)): void;
+        take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void;
     }
 
 
     namespace DataBookViewWatcherMemory {
         // Signal signatures
-        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {
-        }
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
     }
 
     /**
@@ -5243,33 +5223,30 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns an array of {@link EBookContacts.Contact}-s,    or `null`, when `range_start` is out of bounds.
          */
-        dup_contacts(range_start: number, range_length: number): (EBookContacts.Contact[] | null);
+        dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null;
 
         /**
          * Sets a locale to use for sorting. When `null`, or when cannot
          * use the provided locale, tries to use the system locale.
          * @param locale a locale to set, or `null`
          */
-        set_locale(locale: (string | null)): void;
+        set_locale(locale: string | null): void;
 
         /**
          * Sets `sort_fields` as fields to sort the contacts by. If `null`,
          * sorts by file-as field. The function assumes ownership of the `sort_fields`.
          * @param sort_fields an {@link EBookContacts.BookClientViewSortFields}, or `null`
          */
-        take_sort_fields(sort_fields: (EBookContacts.BookClientViewSortFields | null)): void;
+        take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void;
     }
 
 
     namespace DataBookViewWatcherSqlite {
         // Signal signatures
-        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {
-        }
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
     }
 
     /**
@@ -5321,14 +5298,14 @@ export namespace EDataBook {
          * @param range_length how many contacts to retrieve
          * @returns an array of {@link EBookContacts.Contact}-s,    or `null`, when `range_start` is out of bounds.
          */
-        dup_contacts(range_start: number, range_length: number): (EBookContacts.Contact[] | null);
+        dup_contacts(range_start: number, range_length: number): EBookContacts.Contact[] | null;
 
         /**
          * Sets `sort_fields` as fields to sort the contacts by. If `null`,
          * sorts by file-as field. The function assumes ownership of the `sort_fields`.
          * @param sort_fields an {@link EBookContacts.BookClientViewSortFields}, or `null`
          */
-        take_sort_fields(sort_fields: (EBookContacts.BookClientViewSortFields | null)): void;
+        take_sort_fields(sort_fields: EBookContacts.BookClientViewSortFields | null): void;
     }
 
 
@@ -5339,9 +5316,7 @@ export namespace EDataBook {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -5364,7 +5339,7 @@ export namespace EDataBook {
 
         _init(...args: any[]): void;
 
-        static ["new"](cancellable: (Gio.Cancellable | null)): SubprocessBookFactory;
+        static ["new"](cancellable: Gio.Cancellable | null): SubprocessBookFactory;
 
         // Signals
         /** @signal */
@@ -5421,7 +5396,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5465,7 +5440,7 @@ export namespace EDataBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -5537,7 +5512,7 @@ export namespace EDataBook {
          * Free it with `g_free()`, when no longer needed.
          * @returns the system locale, as detected by the `watcher`
          */
-        dup_locale(): (string | null);
+        dup_locale(): string | null;
     }
 
 
@@ -5607,9 +5582,9 @@ export namespace EDataBook {
         static $gtype: GObject.GType<BookCacheCursor>;
 
         // Constructors
-        constructor(book_cache: BookCache, sexp: (string | null), sort_fields: EBookContacts.ContactField[], sort_types: EBookContacts.BookCursorSortType[]);
+        constructor(book_cache: BookCache, sexp: string | null, sort_fields: EBookContacts.ContactField[], sort_types: EBookContacts.BookCursorSortType[]);
 
-        static ["new"](book_cache: BookCache, sexp: (string | null), sort_fields: EBookContacts.ContactField[], sort_types: EBookContacts.BookCursorSortType[]): BookCacheCursor;
+        static ["new"](book_cache: BookCache, sexp: string | null, sort_fields: EBookContacts.ContactField[], sort_types: EBookContacts.BookCursorSortType[]): BookCacheCursor;
     }
 
 
@@ -5652,7 +5627,7 @@ export namespace EDataBook {
             extra: string;
         }>);
 
-        static ["new"](uid: string, vcard: string, extra: (string | null)): BookCacheSearchData;
+        static ["new"](uid: string, vcard: string, extra: string | null): BookCacheSearchData;
 
         // Static methods
         /**
@@ -5666,7 +5641,7 @@ export namespace EDataBook {
         /**
          * @returns Copy of the given `data`. Free it with    `e_book_cache_search_data_free()` when no longer needed.    If the `data` is `null`, then returns `null` as well.
          */
-        copy(): (BookCacheSearchData | null);
+        copy(): BookCacheSearchData | null;
     }
 
 
@@ -5699,7 +5674,7 @@ export namespace EDataBook {
             extra: string;
         }>);
 
-        static ["new"](uid: string, revision: (string | null), object: (string | null), extra: (string | null)): BookMetaBackendInfo;
+        static ["new"](uid: string, revision: string | null, object: string | null, extra: string | null): BookMetaBackendInfo;
 
         // Static methods
         /**
@@ -5713,7 +5688,7 @@ export namespace EDataBook {
         /**
          * @returns Copy of the given `src`. Free it with    `e_book_meta_backend_info_free()` when no longer needed.    If the `src` is `null`, then returns `null` as well.
          */
-        copy(): (BookMetaBackendInfo | null);
+        copy(): BookMetaBackendInfo | null;
     }
 
 

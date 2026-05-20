@@ -341,7 +341,7 @@ export namespace Ipuz {
         static UNSUPPORTED_KIND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1040,12 +1040,12 @@ export namespace Ipuz {
 
         // Constructor properties interface
         interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-            normalized_quote: (string | null);
-            normalizedQuote: (string | null);
-            normalized_source: (string | null);
-            normalizedSource: (string | null);
-            quote: (string | null);
-            source: (string | null);
+            normalized_quote: string | null;
+            normalizedQuote: string | null;
+            normalized_source: string | null;
+            normalizedSource: string | null;
+            quote: string | null;
+            source: string | null;
         }
     }
 
@@ -1220,7 +1220,7 @@ export namespace Ipuz {
          * @read-only
          * @default null
          */
-        get normalized_quote(): (string | null);
+        get normalized_quote(): string | null;
 
         /**
          * String representing the quote of the puzzle. This is built from
@@ -1229,7 +1229,7 @@ export namespace Ipuz {
          * @read-only
          * @default null
          */
-        get normalizedQuote(): (string | null);
+        get normalizedQuote(): string | null;
 
         /**
          * String representing the author and/or title of the quote. It is
@@ -1239,7 +1239,7 @@ export namespace Ipuz {
          * @read-only
          * @default null
          */
-        get normalized_source(): (string | null);
+        get normalized_source(): string | null;
 
         /**
          * String representing the author and/or title of the quote. It is
@@ -1249,7 +1249,7 @@ export namespace Ipuz {
          * @read-only
          * @default null
          */
-        get normalizedSource(): (string | null);
+        get normalizedSource(): string | null;
 
         /**
          * Human readable string representing the quote of the puzzle.
@@ -1259,8 +1259,8 @@ export namespace Ipuz {
          *     in a libipuz extension to the ipuz file format.
          * @default null
          */
-        get quote(): (string | null);
-        set quote(val: (string | null));
+        get quote(): string | null;
+        set quote(val: string | null);
 
         /**
          * Human readable string representing the author and/or title of the quote.
@@ -1270,8 +1270,8 @@ export namespace Ipuz {
          *     in a libipuz extension to the ipuz file format.
          * @default null
          */
-        get source(): (string | null);
-        set source(val: (string | null));
+        get source(): string | null;
+        set source(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1386,7 +1386,7 @@ export namespace Ipuz {
          * grid.
          * @returns the normalized quote of `self`
          */
-        get_normalized_quote(): (string | null);
+        get_normalized_quote(): string | null;
 
         /**
          * Returns the normalized source of `self`. Every character here exists
@@ -1394,13 +1394,13 @@ export namespace Ipuz {
          * of each clue.
          * @returns the normalized source of `self`
          */
-        get_normalized_source(): (string | null);
+        get_normalized_source(): string | null;
 
         /**
          * Returns the quote of `self` as a displayable string.
          * @returns the quote of `self`
          */
-        get_quote(): (string | null);
+        get_quote(): string | null;
 
         /**
          * Returns the quote clue associated with the acrostic.
@@ -1412,13 +1412,13 @@ export namespace Ipuz {
          * compatibility with players that just play crossword puzzles.
          * @returns the quote clue associated with the acrostic
          */
-        get_quote_clue(): (Clue | null);
+        get_quote_clue(): Clue | null;
 
         /**
          * Returns the source of `self` as a displayable string.
          * @returns the source of `self`
          */
-        get_source(): (string | null);
+        get_source(): string | null;
 
         /**
          * Initializes `self` to make sure that at least the first letter of
@@ -1523,7 +1523,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -1610,7 +1610,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -1622,7 +1622,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -1635,7 +1635,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -1644,7 +1644,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -1660,7 +1660,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -1670,7 +1670,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -1725,7 +1725,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -1776,7 +1776,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -1788,7 +1788,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -1802,7 +1802,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -1811,7 +1811,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -1827,7 +1827,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -1837,7 +1837,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -1913,9 +1913,7 @@ export namespace Ipuz {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {}
     }
 
     /**
@@ -1979,7 +1977,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -2066,7 +2064,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -2078,7 +2076,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -2091,7 +2089,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -2100,7 +2098,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -2116,7 +2114,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -2126,7 +2124,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -2181,7 +2179,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -2232,7 +2230,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -2244,7 +2242,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -2258,7 +2256,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -2267,7 +2265,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -2283,7 +2281,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -2293,7 +2291,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -2369,9 +2367,7 @@ export namespace Ipuz {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {}
     }
 
     /**
@@ -2549,7 +2545,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -2636,7 +2632,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -2648,7 +2644,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -2661,7 +2657,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -2670,7 +2666,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -2686,7 +2682,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -2696,7 +2692,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -2751,7 +2747,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -2802,7 +2798,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -2814,7 +2810,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -2828,7 +2824,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -2837,7 +2833,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -2853,7 +2849,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -2863,7 +2859,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -3441,7 +3437,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -3528,7 +3524,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -3540,7 +3536,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -3553,7 +3549,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -3562,7 +3558,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -3578,7 +3574,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -3588,7 +3584,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -3643,7 +3639,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -3694,7 +3690,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -3706,7 +3702,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -3720,7 +3716,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -3729,7 +3725,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -3745,7 +3741,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -3755,7 +3751,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -3831,9 +3827,7 @@ export namespace Ipuz {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {}
     }
 
     /**
@@ -3944,7 +3938,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -4031,7 +4025,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -4043,7 +4037,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -4056,7 +4050,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -4065,7 +4059,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -4081,7 +4075,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -4091,7 +4085,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -4146,7 +4140,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -4197,7 +4191,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -4209,7 +4203,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -4223,7 +4217,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -4232,7 +4226,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -4248,7 +4242,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -4258,7 +4252,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -4334,9 +4328,7 @@ export namespace Ipuz {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Crossword.ConstructorProps, Clues.ConstructorProps {}
     }
 
     /**
@@ -4391,7 +4383,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -4478,7 +4470,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -4490,7 +4482,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -4503,7 +4495,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -4512,7 +4504,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -4528,7 +4520,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -4538,7 +4530,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -4593,7 +4585,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @virtual
          */
-        vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -4644,7 +4636,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @virtual
          */
-        vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -4656,7 +4648,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @virtual
          */
-        vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -4670,7 +4662,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @virtual
          */
-        vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+        vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -4679,7 +4671,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @virtual
          */
-        vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -4695,7 +4687,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @virtual
          */
-        vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+        vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -4705,7 +4697,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @virtual
          */
-        vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.
@@ -5039,7 +5031,7 @@ export namespace Ipuz {
          * @param coord Coordinates for the cell.
          * @returns The cell at `coord`.
          */
-        get_cell(coord: CellCoord): (Cell | null);
+        get_cell(coord: CellCoord): Cell | null;
 
         /**
          * Returns the {@link Ipuz.Guesses} associated with `self`.
@@ -5082,7 +5074,7 @@ export namespace Ipuz {
          * @param guesses The {@link Ipuz.Guesses} to set on self
          * @returns `true`, if guesses matches `self`
          */
-        set_guesses(guesses: (Guesses | null)): boolean;
+        set_guesses(guesses: Guesses | null): boolean;
     }
 
 
@@ -5471,9 +5463,7 @@ export namespace Ipuz {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Nonogram.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Nonogram.ConstructorProps {}
     }
 
     /**
@@ -5660,7 +5650,7 @@ export namespace Ipuz {
             publisher: string;
             puzzle_kind: PuzzleKind;
             puzzleKind: PuzzleKind;
-            styles: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            styles: { [key: string]: any } | GLib.HashTable<never, never>;
             title: string;
             uniqueid: string;
             url: string;
@@ -6084,11 +6074,11 @@ export namespace Ipuz {
 
         _init(...args: any[]): void;
 
-        static new_from_data(data: string, size: (bigint | number)): Puzzle;
+        static new_from_data(data: string, size: bigint | number): Puzzle;
 
         static new_from_file(filename: string): Puzzle;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): Puzzle;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): Puzzle;
 
         // Signals
         /** @signal */
@@ -6518,7 +6508,7 @@ export namespace Ipuz {
          * @param cancellable An optional {@link Gio.Cancellable}
          * @returns `true` if saving was successful.
          */
-        save_to_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): boolean;
+        save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets a non-displayed annotation.
@@ -6788,13 +6778,10 @@ export namespace Ipuz {
 
     namespace PuzzleInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6999,7 +6986,7 @@ export namespace Ipuz {
          * @param preferred_direction The preferred direction to find a clue
          * @returns A clue associated with `cell`, or `null`
          */
-        find_clue(preferred_direction: ClueDirection): (Clue | null);
+        find_clue(preferred_direction: ClueDirection): Clue | null;
 
         /**
          * Returns the {@link Ipuz.CellType} of `cell`.
@@ -7013,7 +7000,7 @@ export namespace Ipuz {
          * @param direction The direction to find a cell
          * @returns The clue of `cell`, or `null`
          */
-        get_clue(direction: ClueDirection): (Clue | null);
+        get_clue(direction: ClueDirection): Clue | null;
 
         /**
          * Returns the initial value of `cell`.
@@ -7075,13 +7062,13 @@ export namespace Ipuz {
          * Returns the current style of cell, or `null`.
          * @returns The current style of cell
          */
-        get_style(): (Style | null);
+        get_style(): Style | null;
 
         /**
          * Returns the style_name of `cell`.
          * @returns The style_name of `cell`
          */
-        get_style_name(): (string | null);
+        get_style_name(): string | null;
 
         /**
          * Refs the cell.
@@ -7105,7 +7092,7 @@ export namespace Ipuz {
          * `clue` is `null`, then the clue is cleared in that direction.
          * @param clue 
          */
-        set_clue(clue: (Clue | null)): void;
+        set_clue(clue: Clue | null): void;
 
         /**
          * Sets the initial value of `cell`.
@@ -7175,7 +7162,7 @@ export namespace Ipuz {
          * @param style An {@link Ipuz.Style}
          * @param style_name The name of the style, or `null`
          */
-        set_style(style: Style, style_name: (string | null)): void;
+        set_style(style: Style, style_name: string | null): void;
 
         /**
          * Sets the style_name of `cell`.
@@ -7223,7 +7210,7 @@ export namespace Ipuz {
          * @param coord2 An {@link Ipuz.CellCoord}
          * @returns `true`, if `coord1` and `coord2` are identical
          */
-        equal(coord2: (CellCoord | null)): boolean;
+        equal(coord2: CellCoord | null): boolean;
 
         /**
          * Frees `coord`.
@@ -7244,10 +7231,7 @@ export namespace Ipuz {
         static $gtype: GObject.GType<CellCoordArray>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CellCoordArray;
 
@@ -7266,7 +7250,7 @@ export namespace Ipuz {
          * @param coord A coordinate to determine the index of
          * @returns The index of `coord`, or -1
          */
-        coord_index(coord: (CellCoord | null)): number;
+        coord_index(coord: CellCoord | null): number;
 
         /**
          * Returns a newly allocated {@link Ipuz.CellCoordArray}. This will
@@ -7285,7 +7269,7 @@ export namespace Ipuz {
          * @param index the index of the coord to return
          * @returns `TRUE` if the index is present, `FALSE` if it is out of bounds.
          */
-        index(index: (bigint | number)): [boolean, CellCoord | null];
+        index(index: bigint | number): [boolean, CellCoord | null];
 
         /**
          * @returns the length of `self`.
@@ -7495,7 +7479,7 @@ export namespace Ipuz {
          * @param charset2 an {@link Ipuz.Charset}
          * @returns `true`, if the charsets have identical characters and character counts.
          */
-        equal(charset2: (Charset | null)): boolean;
+        equal(charset2: Charset | null): boolean;
 
         /**
          * Returns the count of `c`. If `c` is not in `self`, then 0 is returned.
@@ -7557,7 +7541,7 @@ export namespace Ipuz {
          * @param subset an {@link Ipuz.Charset}
          * @returns `true`, if `subset` is a subset of `charset`.
          */
-        subset(subset: (Charset | null)): boolean;
+        subset(subset: Charset | null): boolean;
 
         /**
          * Unrefs a charset, which will be freed when the reference count becomes 0.
@@ -7608,16 +7592,13 @@ export namespace Ipuz {
         static $gtype: GObject.GType<CharsetBuilder>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CharsetBuilder;
 
         static new_for_language(lang: string): CharsetBuilder;
 
-        static new_from_text(text: (string | null)): CharsetBuilder;
+        static new_from_text(text: string | null): CharsetBuilder;
 
         // Methods
         /**
@@ -7734,10 +7715,7 @@ export namespace Ipuz {
         static $gtype: GObject.GType<Clue>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Clue;
 
@@ -7911,7 +7889,7 @@ export namespace Ipuz {
          * Sets the enumeration of `clue` to be `enumeration`.
          * @param enumeration The enumeration of `clue`
          */
-        set_enumeration(enumeration: (Enumeration | null)): void;
+        set_enumeration(enumeration: Enumeration | null): void;
 
         /**
          * Sets the text to display in the list of clues instead of the clue
@@ -7927,7 +7905,7 @@ export namespace Ipuz {
          * The location can be unset by passing in `null` to `location`.
          * @param location Location to set the coord of the clue to
          */
-        set_location(location: (CellCoord | null)): void;
+        set_location(location: CellCoord | null): void;
 
         /**
          * Sets the clue number of `clue` to `number`.
@@ -7992,7 +7970,7 @@ export namespace Ipuz {
          * @param clue_id2 An {@link Ipuz.ClueId}
          * @returns `true`, if `clue_id1` and `clue_id2` are identical
          */
-        equal(clue_id2: (ClueId | null)): boolean;
+        equal(clue_id2: ClueId | null): boolean;
 
         /**
          * Frees `clue_id`.
@@ -8120,7 +8098,7 @@ export namespace Ipuz {
          * @param enumeration2 An {@link Ipuz.Enumeration} to compare with `enumeration1`
          * @returns `true` if the two enumerations match
          */
-        equal(enumeration2: (Enumeration | null)): boolean;
+        equal(enumeration2: Enumeration | null): boolean;
 
         /**
          * Calls `func` for each deliminator in `self`.
@@ -8212,16 +8190,13 @@ export namespace Ipuz {
         static $gtype: GObject.GType<Guesses>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Guesses;
 
         static new_from_file(filename: string): Guesses;
 
-        static new_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): Guesses;
+        static new_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): Guesses;
 
         // Methods
         /**
@@ -8258,7 +8233,7 @@ export namespace Ipuz {
          * Returns (transfer full): a newly allocated checksum of the solution
          * @param salt used to seed the checksum, or `null`
          */
-        get_checksum(salt: (string | null)): string;
+        get_checksum(salt: string | null): string;
 
         /**
          * Returns the guess in the cell at `coord`. If the user hasn't guessed
@@ -8266,7 +8241,7 @@ export namespace Ipuz {
          * @param coord the coordinate to get the guess from
          * @returns the guess at `cell`, or `null`
          */
-        get_guess(coord: CellCoord): (string | null);
+        get_guess(coord: CellCoord): string | null;
 
         /**
          * Returns the height of `guesses`.
@@ -8290,7 +8265,7 @@ export namespace Ipuz {
          * @param index index of the row (IPUZ_CLUE_DIRECTION_ACROSS) or column (IPUZ_CLUE_DIRECTION_DOWN) with which to associate the data.
          * @returns The guess set previously with `ipuz_guesses_set_stride_guess()`, or `null` if the data is not set.
          */
-        get_stride_guess(direction: ClueDirection, index: number): (string | null);
+        get_stride_guess(direction: ClueDirection, index: number): string | null;
 
         /**
          * Returns the width of `guesses`.
@@ -8341,7 +8316,7 @@ export namespace Ipuz {
          * @param coord the coordinate at which to set the guess
          * @param guess A guess, or `null`
          */
-        set_guess(coord: CellCoord, guess: (string | null)): void;
+        set_guess(coord: CellCoord, guess: string | null): void;
 
         /**
          * Sets a `data` string to be associated to a certain row or column.  The
@@ -8355,7 +8330,7 @@ export namespace Ipuz {
          * @param index index of the row (IPUZ_CLUE_DIRECTION_ACROSS) or column (IPUZ_CLUE_DIRECTION_DOWN) with which to associate the data.
          * @param data string that will be associated to the row or column.
          */
-        set_stride_guess(direction: ClueDirection, index: number, data: (string | null)): void;
+        set_stride_guess(direction: ClueDirection, index: number, data: string | null): void;
 
         /**
          * Unrefs `guesses`, which will be freed when the reference count reaches 0.
@@ -8404,7 +8379,7 @@ export namespace Ipuz {
          * @param clue2 An {@link Ipuz.NonogramClue} to compare with `clue1`
          * @returns `true`, if the two clues match
          */
-        equal(clue2: (NonogramClue | null)): boolean;
+        equal(clue2: NonogramClue | null): boolean;
 
         /**
          * clue: An {@link Ipuz.NonogramClue}
@@ -8492,10 +8467,7 @@ export namespace Ipuz {
         static $gtype: GObject.GType<Style>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Style;
 
@@ -8717,7 +8689,7 @@ export namespace Ipuz {
              * @param label an optional label for the newly added clue set
              * @virtual
              */
-            vfunc_add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+            vfunc_add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
             /**
              * Removes all the clues and clue sets of `clues`.
@@ -8768,7 +8740,7 @@ export namespace Ipuz {
              * @param label The label to look for
              * @virtual
              */
-            vfunc_find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+            vfunc_find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
             /**
              * Searches for and returns the clue with `direction` and `number`.
@@ -8780,7 +8752,7 @@ export namespace Ipuz {
              * @param number The number to look for
              * @virtual
              */
-            vfunc_find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+            vfunc_find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
             /**
              * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -8794,7 +8766,7 @@ export namespace Ipuz {
              * @param clue_id An id of a clue
              * @virtual
              */
-            vfunc_get_clue_by_id(clue_id: ClueId): (Clue | null);
+            vfunc_get_clue_by_id(clue_id: ClueId): Clue | null;
 
             /**
              * Returns a string containing the solution of the puzzle for a given
@@ -8803,7 +8775,7 @@ export namespace Ipuz {
              * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
              * @virtual
              */
-            vfunc_get_clue_string_by_id(clue_id: ClueId): (string | null);
+            vfunc_get_clue_string_by_id(clue_id: ClueId): string | null;
 
             /**
              * Returns an array of all clues in the direction of `direction`.
@@ -8819,7 +8791,7 @@ export namespace Ipuz {
              * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
              * @virtual
              */
-            vfunc_get_guess_string_by_id(clue_id: ClueId): (string | null);
+            vfunc_get_guess_string_by_id(clue_id: ClueId): string | null;
 
             /**
              * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -8829,7 +8801,7 @@ export namespace Ipuz {
              * @param clue The {@link Ipuz.Clue} to search for
              * @virtual
              */
-            vfunc_get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+            vfunc_get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
             /**
              * Returns the number of clue sets associated with `clues`.
@@ -8871,9 +8843,7 @@ export namespace Ipuz {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Grid.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Grid.ConstructorProps {}
     }
 
     export interface CluesNamespace {
@@ -8993,7 +8963,7 @@ export namespace Ipuz {
          * @param label an optional label for the newly added clue set
          * @returns the direction of the newly created clue set, or {@link Ipuz.ClueDirection.NONE}
          */
-        add_clue_set(direction: ClueDirection, label: (string | null)): ClueDirection;
+        add_clue_set(direction: ClueDirection, label: string | null): ClueDirection;
 
         /**
          * Removes all the clues and clue sets of `clues`.
@@ -9080,7 +9050,7 @@ export namespace Ipuz {
          * @param label The label to look for
          * @returns The clue with `direction` and `label`, or `null`
          */
-        find_clue_by_label(direction: ClueDirection, label: string): (Clue | null);
+        find_clue_by_label(direction: ClueDirection, label: string): Clue | null;
 
         /**
          * Searches for and returns the clue with `direction` and `number`.
@@ -9092,7 +9062,7 @@ export namespace Ipuz {
          * @param number The number to look for
          * @returns The clue with `direction` and `number`, or `null`
          */
-        find_clue_by_number(direction: ClueDirection, number: number): (Clue | null);
+        find_clue_by_number(direction: ClueDirection, number: number): Clue | null;
 
         /**
          * Calls `func` for each {@link Ipuz.Clue} in `clues`.
@@ -9105,7 +9075,7 @@ export namespace Ipuz {
          * @param clue_id An id of a clue
          * @returns A clue at `clue_id`
          */
-        get_clue_by_id(clue_id: ClueId): (Clue | null);
+        get_clue_by_id(clue_id: ClueId): Clue | null;
 
         /**
          * Returns a string containing the solution of the puzzle for a given
@@ -9114,7 +9084,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the clue string for
          * @returns The solution for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_clue_string_by_id(clue_id: ClueId): (string | null);
+        get_clue_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Returns an array of all clues in the direction of `direction`.
@@ -9130,7 +9100,7 @@ export namespace Ipuz {
          * @param clue_id An {@link Ipuz.ClueId} to get the guesses string for
          * @returns The guesses for the puzzle for `clue_id`. Returns `null` if `clue_id` points to an invalid clue
          */
-        get_guess_string_by_id(clue_id: ClueId): (string | null);
+        get_guess_string_by_id(clue_id: ClueId): string | null;
 
         /**
          * Finds the {@link Ipuz.ClueId} of `clue` within `clues`.
@@ -9140,7 +9110,7 @@ export namespace Ipuz {
          * @param clue The {@link Ipuz.Clue} to search for
          * @returns `true`, if `clue_id` was set to the id of `clue`
          */
-        get_id_by_clue(clue: (Clue | null)): [boolean, ClueId];
+        get_id_by_clue(clue: Clue | null): [boolean, ClueId];
 
         /**
          * Returns the number of clue sets associated with `clues`.

@@ -697,7 +697,7 @@ export namespace AppStreamGlib {
         static NOT_FOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -821,7 +821,7 @@ export namespace AppStreamGlib {
         static NO_SUPPORT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -1658,7 +1658,7 @@ export namespace AppStreamGlib {
         static INVALID_TYPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -1739,7 +1739,7 @@ export namespace AppStreamGlib {
      * @returns the version string, or `null` for error.
      * @since 0.3.5
      */
-    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: (bigint | number)): string;
+    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: bigint | number): string;
 
     /**
      * Repairs .inf file data and opens it as a keyfile.
@@ -1957,7 +1957,7 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_hash(parent: GLib.Node, name: string, attr_key: string, hash: ({ [key: string]: any } | GLib.HashTable<never, never>), insert_flags: NodeInsertFlags): void;
+    function node_insert_hash(parent: GLib.Node, name: string, attr_key: string, hash: { [key: string]: any } | GLib.HashTable<never, never>, insert_flags: NodeInsertFlags): void;
 
     /**
      * Inserts a localized key into the DOM.
@@ -1967,7 +1967,7 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_localized(parent: GLib.Node, name: string, localized: ({ [key: string]: any } | GLib.HashTable<never, never>), insert_flags: NodeInsertFlags): void;
+    function node_insert_localized(parent: GLib.Node, name: string, localized: { [key: string]: any } | GLib.HashTable<never, never>, insert_flags: NodeInsertFlags): void;
 
     /**
      * Converts a node and it's children to XML.
@@ -2115,7 +2115,7 @@ export namespace AppStreamGlib {
      * @returns A new GUID, or `null` if the namespace_id was invalid
      * @since 0.6.13
      */
-    function utils_guid_from_data(namespace_id: string, data: number, data_len: (bigint | number)): string;
+    function utils_guid_from_data(namespace_id: string, data: number, data_len: bigint | number): string;
 
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
@@ -2931,13 +2931,10 @@ export namespace AppStreamGlib {
 
     namespace Agreement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3034,13 +3031,10 @@ export namespace AppStreamGlib {
 
     namespace AgreementSection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3084,7 +3078,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_description(locale: (string | null)): string;
+        get_description(locale: string | null): string;
 
         /**
          * Gets the agreement section kind.
@@ -3097,14 +3091,14 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_name(locale: (string | null)): string;
+        get_name(locale: string | null): string;
 
         /**
          * Sets the agreement section description.
          * @param locale the locale. e.g. "en_GB"
          * @param desc the rating desc, e.g. "GDPR"
          */
-        set_description(locale: (string | null), desc: string): void;
+        set_description(locale: string | null, desc: string): void;
 
         /**
          * Sets the agreement section kind.
@@ -3117,19 +3111,16 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @param name the rating name, e.g. "GDPR"
          */
-        set_name(locale: (string | null), name: string): void;
+        set_name(locale: string | null, name: string): void;
     }
 
 
     namespace App {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3296,7 +3287,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @param keyword the keyword.
          */
-        add_keyword(locale: (string | null), keyword: string): void;
+        add_keyword(locale: string | null, keyword: string): void;
 
         /**
          * Add a kudo the application has obtained.
@@ -3315,7 +3306,7 @@ export namespace AppStreamGlib {
          * @param percentage the percentage completion of the translation, or 0 for unknown
          * @param locale the locale. e.g. "en_GB"
          */
-        add_language(percentage: number, locale: (string | null)): void;
+        add_language(percentage: number, locale: string | null): void;
 
         /**
          * Adds a launchable to an application.
@@ -3328,7 +3319,7 @@ export namespace AppStreamGlib {
          * @param key the metadata key.
          * @param value the value to store.
          */
-        add_metadata(key: string, value: (string | null)): void;
+        add_metadata(key: string, value: string | null): void;
 
         /**
          * Adds a mimetype the application can process.
@@ -3480,7 +3471,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_comment(locale: (string | null)): string;
+        get_comment(locale: string | null): string;
 
         /**
          * Gets the comments set for the application.
@@ -3512,7 +3503,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_description(locale: (string | null)): string;
+        get_description(locale: string | null): string;
 
         /**
          * Gets the descriptions set for the application.
@@ -3525,7 +3516,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_developer_name(locale: (string | null)): string;
+        get_developer_name(locale: string | null): string;
 
         /**
          * Gets the developer_names set for the application.
@@ -3621,7 +3612,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns an array, or `null`
          */
-        get_keywords(locale: (string | null)): string[];
+        get_keywords(locale: string | null): string[];
 
         /**
          * Gets the ID kind.
@@ -3640,7 +3631,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns a percentage value where 0 is unspecified, or -1 for not found
          */
-        get_language(locale: (string | null)): number;
+        get_language(locale: string | null): number;
 
         /**
          * Get a list of all languages.
@@ -3703,7 +3694,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_name(locale: (string | null)): string;
+        get_name(locale: string | null): string;
 
         /**
          * Gets the names set for the application.
@@ -3955,7 +3946,7 @@ export namespace AppStreamGlib {
          * @param flags {@link AppStreamGlib.AppParseFlags}, e.g. {@link AppStreamGlib.AppParseFlags.USE_HEURISTICS}
          * @returns `true` for success
          */
-        parse_data(data: (GLib.Bytes | Uint8Array), flags: number): boolean;
+        parse_data(data: GLib.Bytes | Uint8Array, flags: number): boolean;
 
         /**
          * Parses a desktop or AppData file and populates the application state.
@@ -4022,21 +4013,21 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @param comment the application summary.
          */
-        set_comment(locale: (string | null), comment: string): void;
+        set_comment(locale: string | null, comment: string): void;
 
         /**
          * Sets the application description markup for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param description the application description.
          */
-        set_description(locale: (string | null), description: string): void;
+        set_description(locale: string | null, description: string): void;
 
         /**
          * Sets the application developer name for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param developer_name the application developer name.
          */
-        set_developer_name(locale: (string | null), developer_name: string): void;
+        set_developer_name(locale: string | null, developer_name: string): void;
 
         /**
          * Sets the icon path, where local icons would be found.
@@ -4079,7 +4070,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @param name the application name.
          */
-        set_name(locale: (string | null), name: string): void;
+        set_name(locale: string | null, name: string): void;
 
         /**
          * Sets the application origin.
@@ -4167,7 +4158,7 @@ export namespace AppStreamGlib {
          * @param donor the donor.
          * @param flags any optional {@link AppStreamGlib.AppSubsumeFlags}, e.g. {@link AppStreamGlib.AppSubsumeFlags.NO_OVERWRITE}
          */
-        subsume_full(donor: App, flags: (bigint | number)): void;
+        subsume_full(donor: App, flags: bigint | number): void;
 
         /**
          * Exports a DOM tree to an XML file.
@@ -4175,7 +4166,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` for success
          */
-        to_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Exports a DOM tree to an XML string.
@@ -4194,13 +4185,10 @@ export namespace AppStreamGlib {
 
     namespace Bundle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4304,13 +4292,10 @@ export namespace AppStreamGlib {
 
     namespace Checksum {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4414,13 +4399,10 @@ export namespace AppStreamGlib {
 
     namespace ContentRating {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4504,7 +4486,7 @@ export namespace AppStreamGlib {
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          * @param age a CSM age to format
          */
-        static system_format_age(system: ContentRatingSystem, age: number): (string | null);
+        static system_format_age(system: ContentRatingSystem, age: number): string | null;
 
         /**
          * Determine the most appropriate {@link AppStreamGlib.ContentRatingSystem} for the given `locale`.
@@ -4534,7 +4516,7 @@ export namespace AppStreamGlib {
          * {@link AppStreamGlib.ContentRatingSystem.UNKNOWN}.
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          */
-        static system_to_string(system: ContentRatingSystem): (string | null);
+        static system_to_string(system: ContentRatingSystem): string | null;
 
         /**
          * Converts the text representation to an enumerated value.
@@ -4602,13 +4584,10 @@ export namespace AppStreamGlib {
 
     namespace Format {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4700,13 +4679,10 @@ export namespace AppStreamGlib {
 
     namespace Icon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4888,13 +4864,10 @@ export namespace AppStreamGlib {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5086,13 +5059,10 @@ export namespace AppStreamGlib {
 
     namespace Launchable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5172,13 +5142,10 @@ export namespace AppStreamGlib {
 
     namespace Problem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5264,13 +5231,10 @@ export namespace AppStreamGlib {
 
     namespace Provide {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5350,13 +5314,10 @@ export namespace AppStreamGlib {
 
     namespace Release {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5464,7 +5425,7 @@ export namespace AppStreamGlib {
          * @param locale the locale. e.g. "en_GB"
          * @returns markup, or `null` for not set or invalid
          */
-        get_description(locale: (string | null)): string;
+        get_description(locale: string | null): string;
 
         /**
          * Gets the typical install duration.
@@ -5535,20 +5496,20 @@ export namespace AppStreamGlib {
          * @param filename a filename
          * @param blob the {@link GLib.Bytes} data blob
          */
-        set_blob(filename: string, blob: (GLib.Bytes | Uint8Array)): void;
+        set_blob(filename: string, blob: GLib.Bytes | Uint8Array): void;
 
         /**
          * Sets the description release markup.
          * @param locale the locale. e.g. "en_GB"
          * @param description the description markup.
          */
-        set_description(locale: (string | null), description: string): void;
+        set_description(locale: string | null, description: string): void;
 
         /**
          * Sets the typical duration of the install.
          * @param install_duration the install duration in seconds
          */
-        set_install_duration(install_duration: (bigint | number)): void;
+        set_install_duration(install_duration: bigint | number): void;
 
         /**
          * Sets the release kind.
@@ -5561,7 +5522,7 @@ export namespace AppStreamGlib {
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @param size a size in bytes, or 0 for unknown
          */
-        set_size(kind: SizeKind, size: (bigint | number)): void;
+        set_size(kind: SizeKind, size: bigint | number): void;
 
         /**
          * Sets the release state.
@@ -5573,7 +5534,7 @@ export namespace AppStreamGlib {
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
          */
-        set_timestamp(timestamp: (bigint | number)): void;
+        set_timestamp(timestamp: bigint | number): void;
 
         /**
          * Sets the release urgency.
@@ -5605,13 +5566,10 @@ export namespace AppStreamGlib {
 
     namespace Require {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5758,7 +5716,7 @@ export namespace AppStreamGlib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             date: Review;
             description: string;
-            flags: (bigint | number);
+            flags: bigint | number;
             id: string;
             locale: string;
             rating: number;
@@ -5796,7 +5754,7 @@ export namespace AppStreamGlib {
          * @default 0
          */
         get flags(): number;
-        set flags(val: (bigint | number));
+        set flags(val: bigint | number);
 
         /**
          * @since 0.6.1
@@ -6062,13 +6020,10 @@ export namespace AppStreamGlib {
 
     namespace Screenshot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6138,7 +6093,7 @@ export namespace AppStreamGlib {
          * @param locale the locale, or `null`. e.g. "en_GB"
          * @returns the caption
          */
-        get_caption(locale: (string | null)): string;
+        get_caption(locale: string | null): string;
 
         /**
          * Gets the AsImage closest to the target size. The {@link AppStreamGlib.Image} may not actually
@@ -6162,7 +6117,7 @@ export namespace AppStreamGlib {
          * @param height target height
          * @returns an {@link AppStreamGlib.Image}, or `null`
          */
-        get_image_for_locale(locale: (string | null), width: number, height: number): Image;
+        get_image_for_locale(locale: string | null, width: number, height: number): Image;
 
         /**
          * Gets the images included in the screenshot of all sizes and locales.
@@ -6200,7 +6155,7 @@ export namespace AppStreamGlib {
          * @param locale the locale, or `null`. e.g. "en_GB"
          * @param caption the caption text.
          */
-        set_caption(locale: (string | null), caption: string): void;
+        set_caption(locale: string | null, caption: string): void;
 
         /**
          * Sets the screenshot kind.
@@ -6254,9 +6209,7 @@ export namespace AppStreamGlib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6386,7 +6339,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_bytes(bytes: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): boolean;
+        from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Parses an AppStream XML or DEP-11 YAML file and adds any valid applications
@@ -6403,7 +6356,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_file(file: Gio.File, icon_root: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        from_file(file: Gio.File, icon_root: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Parses AppStream XML file and adds any valid applications to the store.
@@ -6415,7 +6368,7 @@ export namespace AppStreamGlib {
          * @param icon_root the icon path, or `null` for the default.
          * @returns `true` for success
          */
-        from_xml(data: string, icon_root: (string | null)): boolean;
+        from_xml(data: string, icon_root: string | null): boolean;
 
         /**
          * Gets the flags used for adding applications to the store.
@@ -6582,22 +6535,14 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load(flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        load(flags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously loads the store from the default locations.
-         * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
-         * @param cancellable a {@link Gio.Cancellable}.
-         * @param callback A {@link Gio.AsyncReadyCallback}
-         */
-        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously loads the store from the default locations.
@@ -6605,7 +6550,15 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
-        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously loads the store from the default locations.
+         * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback A {@link Gio.AsyncReadyCallback}
+         */
+        load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Retrieve the result of `as_store_load_async()`.
@@ -6620,22 +6573,14 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load_path(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        load_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_path_async(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously loads the store from a specific path.
-         * @param path A path to load
-         * @param cancellable a {@link Gio.Cancellable}.
-         * @param callback A {@link Gio.AsyncReadyCallback}
-         */
-        load_path_async(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_path_async(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously loads the store from a specific path.
@@ -6643,7 +6588,15 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
-        load_path_async(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_path_async(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously loads the store from a specific path.
+         * @param path A path to load
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback A {@link Gio.AsyncReadyCallback}
+         */
+        load_path_async(path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Retrieve the result of `as_store_load_path_async()`.
@@ -6754,7 +6707,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A {@link GLib.String}
          */
-        to_file(file: Gio.File, flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        to_file(file: Gio.File, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Outputs an XML representation of all the applications in the store.
@@ -6775,13 +6728,10 @@ export namespace AppStreamGlib {
 
     namespace Suggest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6861,13 +6811,10 @@ export namespace AppStreamGlib {
 
     namespace Translation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

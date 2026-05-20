@@ -54,9 +54,7 @@ export namespace GdkMacos {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Device.ConstructorProps {}
     }
 
     /**
@@ -105,9 +103,7 @@ export namespace GdkMacos {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Display.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Display.ConstructorProps {}
     }
 
     /**
@@ -156,9 +152,7 @@ export namespace GdkMacos {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
     }
 
     /**
@@ -198,13 +192,10 @@ export namespace GdkMacos {
 
     namespace MacosKeymap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -261,9 +252,7 @@ export namespace GdkMacos {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
     }
 
     /**
@@ -325,9 +314,7 @@ export namespace GdkMacos {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Seat.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Seat.ConstructorProps {}
     }
 
     /**

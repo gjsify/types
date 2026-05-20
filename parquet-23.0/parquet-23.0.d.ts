@@ -134,25 +134,25 @@ export namespace Parquet {
         /**
          * @returns A got {@link Arrow.Schema}.
          */
-        get_schema(): (Arrow.Schema | null);
+        get_schema(): Arrow.Schema | null;
 
         /**
          * @param i The index of the column to be read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.ChunkedArray}.
          */
-        read_column_data(i: number): (Arrow.ChunkedArray | null);
+        read_column_data(i: number): Arrow.ChunkedArray | null;
 
         /**
          * @param row_group_index A row group index to be read.
          * @param column_indices Column indices to be read. `null` means that all columns are read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.Table}.
          */
-        read_row_group(row_group_index: number, column_indices: (number[] | null)): (Arrow.Table | null);
+        read_row_group(row_group_index: number, column_indices: number[] | null): Arrow.Table | null;
 
         /**
          * @returns A read {@link Arrow.Table}.
          */
-        read_table(): (Arrow.Table | null);
+        read_table(): Arrow.Table | null;
 
         /**
          * @param use_threads 
@@ -205,9 +205,9 @@ export namespace Parquet {
 
         _init(...args: any[]): void;
 
-        static new_arrow(schema: Arrow.Schema, sink: Arrow.OutputStream, writer_properties: (WriterProperties | null)): ArrowFileWriter;
+        static new_arrow(schema: Arrow.Schema, sink: Arrow.OutputStream, writer_properties: WriterProperties | null): ArrowFileWriter;
 
-        static new_path(schema: Arrow.Schema, path: string, writer_properties: (WriterProperties | null)): ArrowFileWriter;
+        static new_path(schema: Arrow.Schema, path: string, writer_properties: WriterProperties | null): ArrowFileWriter;
 
         // Signals
         /** @signal */
@@ -275,7 +275,7 @@ export namespace Parquet {
          * @param chunk_size The max number of rows in a row group.
          * @returns `true` on success, `false` if there was an error.
          */
-        write_table(table: Arrow.Table, chunk_size: (bigint | number)): boolean;
+        write_table(table: Arrow.Table, chunk_size: bigint | number): boolean;
     }
 
 
@@ -286,9 +286,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -344,9 +342,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -473,7 +469,7 @@ export namespace Parquet {
         /**
          * @returns The statistics of this column chunk if   it's set, `null` otherwise.
          */
-        get_statistics(): (Statistics | null);
+        get_statistics(): Statistics | null;
 
         /**
          * @returns Total byte size of all the compressed (and potentially   encrypted) data in this column chunk.
@@ -494,9 +490,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -637,7 +631,7 @@ export namespace Parquet {
          * @param index An index of the row group to retrieve.
          * @returns A {@link Parquet.RowGroupMetadata}   at `index` on success, `null` on error.
          */
-        get_row_group(index: number): (RowGroupMetadata | null);
+        get_row_group(index: number): RowGroupMetadata | null;
 
         /**
          * @returns The size of the original thrift encoded metadata footer.
@@ -653,9 +647,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -711,9 +703,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -769,9 +759,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -827,9 +815,7 @@ export namespace Parquet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Statistics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Statistics.ConstructorProps {}
     }
 
     /**
@@ -952,7 +938,7 @@ export namespace Parquet {
          * @param index An index of the column chunk to retrieve.
          * @returns A {@link Parquet.ColumnChunkMetadata}   at `index` on success, `null` on error.
          */
-        get_column_chunk(index: number): (ColumnChunkMetadata | null);
+        get_column_chunk(index: number): ColumnChunkMetadata | null;
 
         /**
          * @returns Byte offset from beginning of file to first page (data or   dictionary) in this row group.   The `file_offset` field that this method exposes is   optional. This method will return 0 if that field is not set to a   meaningful value.
@@ -1073,13 +1059,10 @@ export namespace Parquet {
 
     namespace WriterProperties {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1121,12 +1104,12 @@ export namespace Parquet {
         /**
          * @param path The column path as dot string.
          */
-        disable_dictionary(path: (string | null)): void;
+        disable_dictionary(path: string | null): void;
 
         /**
          * @param path The column path as dot string.
          */
-        enable_dictionary(path: (string | null)): void;
+        enable_dictionary(path: string | null): void;
 
         /**
          * @returns The batch size.
@@ -1163,28 +1146,28 @@ export namespace Parquet {
         /**
          * @param batch_size The batch size.
          */
-        set_batch_size(batch_size: (bigint | number)): void;
+        set_batch_size(batch_size: bigint | number): void;
 
         /**
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
          */
-        set_compression(compression_type: Arrow.CompressionType, path: (string | null)): void;
+        set_compression(compression_type: Arrow.CompressionType, path: string | null): void;
 
         /**
          * @param data_page_size The data page size.
          */
-        set_data_page_size(data_page_size: (bigint | number)): void;
+        set_data_page_size(data_page_size: bigint | number): void;
 
         /**
          * @param limit The dictionary page size limit.
          */
-        set_dictionary_page_size_limit(limit: (bigint | number)): void;
+        set_dictionary_page_size_limit(limit: bigint | number): void;
 
         /**
          * @param length The max row group length.
          */
-        set_max_row_group_length(length: (bigint | number)): void;
+        set_max_row_group_length(length: bigint | number): void;
     }
 
 

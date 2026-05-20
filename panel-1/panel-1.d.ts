@@ -128,7 +128,7 @@ export namespace Panel {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_BOOLEAN__OBJECT_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -138,7 +138,7 @@ export namespace Panel {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_OBJECT__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_OBJECT__OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @gir-type Callback
@@ -163,13 +163,10 @@ export namespace Panel {
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
     }
 
     /**
@@ -215,7 +212,7 @@ export namespace Panel {
          * @param prefix the name of the inserted action group
          * @returns a {@link Gio.ActionGroup} matching `prefix` if   found, otherwise `null`.
          */
-        get_action_group(prefix: string): (Gio.ActionGroup | null);
+        get_action_group(prefix: string): Gio.ActionGroup | null;
 
         /**
          * @param prefix 
@@ -307,7 +304,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -353,7 +350,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -367,7 +364,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -391,7 +388,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -413,7 +410,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -540,7 +537,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -587,7 +584,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -601,7 +598,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -625,7 +622,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -647,7 +644,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -722,9 +719,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Adw.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Adw.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -895,21 +890,21 @@ export namespace Panel {
          * @param parent 
          * @param cancellable 
          */
-        run_async(parent: Gtk.Widget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        run_async(parent: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param parent 
          * @param cancellable 
          * @param callback 
          */
-        run_async(parent: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run_async(parent: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param parent 
          * @param cancellable 
          * @param callback 
          */
-        run_async(parent: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        run_async(parent: Gtk.Widget, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -937,7 +932,7 @@ export namespace Panel {
              * @since 1.2
              * @run-last
              */
-            "adopt-widget": (arg0: Widget) => (boolean | void);
+            "adopt-widget": (arg0: Widget) => boolean | void;
             /**
              * This signal is emitted when a new frame is needed.
              * @signal
@@ -1417,7 +1412,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1425,7 +1420,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1453,13 +1448,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1503,7 +1498,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1512,7 +1507,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1570,7 +1565,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1578,13 +1573,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1600,13 +1595,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1626,7 +1621,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1636,7 +1631,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1647,7 +1642,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1658,7 +1653,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1667,7 +1662,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -1729,7 +1724,7 @@ export namespace Panel {
              * @since 1.4
              * @run-last
              */
-            "add-widget": (arg0: Widget, arg1: Position) => (boolean | void);
+            "add-widget": (arg0: Widget, arg1: Position) => boolean | void;
             /**
              * Creates a new {@link Panel.Frame} to be added to the document grid.
              * @signal
@@ -1814,7 +1809,7 @@ export namespace Panel {
         interface ConstructorProps extends Workspace.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
             dock: Dock;
             grid: Grid;
-            statusbar: (Statusbar | null);
+            statusbar: Statusbar | null;
         }
     }
 
@@ -1838,7 +1833,7 @@ export namespace Panel {
         /**
          * @read-only
          */
-        get statusbar(): (Statusbar | null);
+        get statusbar(): Statusbar | null;
 
         /**
          * Compile-time signal type information.
@@ -1876,7 +1871,7 @@ export namespace Panel {
          * @param position a {@link Panel.Position} or `null`
          * @virtual
          */
-        vfunc_add_widget(widget: Widget, position: (Position | null)): boolean;
+        vfunc_add_widget(widget: Widget, position: Position | null): boolean;
 
         // Methods
         /**
@@ -1885,7 +1880,7 @@ export namespace Panel {
          * @param position a {@link Panel.Position} or `null`
          * @returns `true` if `widget` was added; otherwise `false` and `widget`   will have `g_object_ref_sink()` called and unref'd from an idle   callback.
          */
-        add_widget(widget: Widget, position: (Position | null)): boolean;
+        add_widget(widget: Widget, position: Position | null): boolean;
 
         /**
          * Get the {@link Panel.Dock} for the workspace.
@@ -1903,13 +1898,13 @@ export namespace Panel {
          * Gets the statusbar for the workspace.
          * @returns a {@link Panel.Statusbar}
          */
-        get_statusbar(): (Statusbar | null);
+        get_statusbar(): Statusbar | null;
 
         /**
          * Gets the titlebar for the workspace.
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_titlebar(): (Gtk.Widget | null);
+        get_titlebar(): Gtk.Widget | null;
 
         /**
          * @param titlebar 
@@ -1944,7 +1939,7 @@ export namespace Panel {
              * @since 1.2
              * @run-last
              */
-            "adopt-widget": (arg0: Widget) => (boolean | void);
+            "adopt-widget": (arg0: Widget) => boolean | void;
             /**
              * This signal is emitted when the page widget will be closed.
              * @signal
@@ -1999,9 +1994,9 @@ export namespace Panel {
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
             closeable: boolean;
             empty: boolean;
-            placeholder: (Gtk.Widget | null);
-            visible_child: (Widget | null);
-            visibleChild: (Widget | null);
+            placeholder: Gtk.Widget | null;
+            visible_child: Widget | null;
+            visibleChild: Widget | null;
         }
     }
 
@@ -2030,14 +2025,14 @@ export namespace Panel {
          */
         get empty(): boolean;
 
-        get placeholder(): (Gtk.Widget | null);
-        set placeholder(val: (Gtk.Widget | null));
+        get placeholder(): Gtk.Widget | null;
+        set placeholder(val: Gtk.Widget | null);
 
-        get visible_child(): (Widget | null);
-        set visible_child(val: (Widget | null));
+        get visible_child(): Widget | null;
+        set visible_child(val: Widget | null);
 
-        get visibleChild(): (Widget | null);
-        set visibleChild(val: (Widget | null));
+        get visibleChild(): Widget | null;
+        set visibleChild(val: Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -2111,7 +2106,7 @@ export namespace Panel {
          * Gets the header for the frame.
          * @returns a {@link Panel.FrameHeader} or `null`
          */
-        get_header(): (FrameHeader | null);
+        get_header(): FrameHeader | null;
 
         /**
          * Gets the number of pages in the panel frame.
@@ -2124,7 +2119,7 @@ export namespace Panel {
          * @param n the index of the page
          * @returns a {@link Panel.Widget} or `null`
          */
-        get_page(n: number): (Widget | null);
+        get_page(n: number): Widget | null;
 
         /**
          * Get the pages for the frame.
@@ -2136,7 +2131,7 @@ export namespace Panel {
          * Gets the placeholder widget, if any.
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_placeholder(): (Gtk.Widget | null);
+        get_placeholder(): Gtk.Widget | null;
 
         /**
          * Gets the {@link Panel.Position} for the frame.
@@ -2154,7 +2149,7 @@ export namespace Panel {
          * Gets the widget of the currently visible child.
          * @returns a {@link Panel.Widget} or `null`
          */
-        get_visible_child(): (Widget | null);
+        get_visible_child(): Widget | null;
 
         /**
          * Removes a widget from the frame.
@@ -2173,7 +2168,7 @@ export namespace Panel {
          * Sets the header for the frame, such as a {@link Panel.FrameSwitcher}.
          * @param header a {@link Panel.FrameHeader}
          */
-        set_header(header: (FrameHeader | null)): void;
+        set_header(header: FrameHeader | null): void;
 
         /**
          * Sets the placeholder widget for the frame.
@@ -2182,7 +2177,7 @@ export namespace Panel {
          * to display in the frame.
          * @param placeholder a {@link Gtk.Widget} or `null`
          */
-        set_placeholder(placeholder: (Gtk.Widget | null)): void;
+        set_placeholder(placeholder: Gtk.Widget | null): void;
 
         /**
          * Sets the requested size for the panel frame.
@@ -2249,7 +2244,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2257,7 +2252,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2285,13 +2280,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2335,7 +2330,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2344,7 +2339,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2402,7 +2397,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2410,13 +2405,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2432,13 +2427,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2458,7 +2453,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2468,7 +2463,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2479,7 +2474,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2490,7 +2485,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2499,7 +2494,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2711,8 +2706,8 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
           * @category Inherited from Panel.FrameHeader
          */
-        get frame(): (Frame | null);
-        set frame(val: (Frame | null));
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
 
         /**
          * Requests the user's screen reader to announce the given message.
@@ -2739,7 +2734,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2747,7 +2742,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2775,13 +2770,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2825,7 +2820,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2834,7 +2829,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2892,7 +2887,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2900,13 +2895,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2922,13 +2917,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2948,7 +2943,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2958,7 +2953,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2969,7 +2964,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2980,7 +2975,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2989,7 +2984,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3066,19 +3061,19 @@ export namespace Panel {
          * Gets the frame the header is attached to.
          * @returns a {@link Panel.Frame} or `null`
          */
-        get_frame(): (Frame | null);
+        get_frame(): Frame | null;
 
         /**
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget: (Widget | null)): void;
+        page_changed(widget: Widget | null): void;
 
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame: (Frame | null)): void;
+        set_frame(frame: Frame | null): void;
 
         /**
          * Add a widget into a the prefix area with a priority. The highest
@@ -3110,7 +3105,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget: (Widget | null)): void;
+        vfunc_page_changed(widget: Widget | null): void;
     }
 
 
@@ -3158,9 +3153,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps, FrameHeader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps, FrameHeader.ConstructorProps {}
     }
 
     /**
@@ -3233,8 +3226,8 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
           * @category Inherited from Panel.FrameHeader
          */
-        get frame(): (Frame | null);
-        set frame(val: (Frame | null));
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
 
         /**
          * Requests the user's screen reader to announce the given message.
@@ -3261,7 +3254,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3269,7 +3262,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3297,13 +3290,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3347,7 +3340,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3356,7 +3349,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3414,7 +3407,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3422,13 +3415,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3444,13 +3437,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3470,7 +3463,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -3480,7 +3473,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -3491,7 +3484,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -3502,7 +3495,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -3511,7 +3504,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3600,19 +3593,19 @@ export namespace Panel {
          * Gets the frame the header is attached to.
          * @returns a {@link Panel.Frame} or `null`
          */
-        get_frame(): (Frame | null);
+        get_frame(): Frame | null;
 
         /**
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget: (Widget | null)): void;
+        page_changed(widget: Widget | null): void;
 
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame: (Frame | null)): void;
+        set_frame(frame: Frame | null): void;
 
         /**
          * Add a widget into a the prefix area with a priority. The highest
@@ -3644,7 +3637,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget: (Widget | null)): void;
+        vfunc_page_changed(widget: Widget | null): void;
     }
 
 
@@ -3829,8 +3822,8 @@ export namespace Panel {
          * The frame the header is attached to, or `null`.
           * @category Inherited from Panel.FrameHeader
          */
-        get frame(): (Frame | null);
-        set frame(val: (Frame | null));
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
 
         /**
          * Requests the user's screen reader to announce the given message.
@@ -3857,7 +3850,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3865,7 +3858,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3893,13 +3886,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3943,7 +3936,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3952,7 +3945,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -4010,7 +4003,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4018,13 +4011,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -4040,13 +4033,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4066,7 +4059,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -4076,7 +4069,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -4087,7 +4080,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -4098,7 +4091,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -4107,7 +4100,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4184,19 +4177,19 @@ export namespace Panel {
          * Gets the frame the header is attached to.
          * @returns a {@link Panel.Frame} or `null`
          */
-        get_frame(): (Frame | null);
+        get_frame(): Frame | null;
 
         /**
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget: (Widget | null)): void;
+        page_changed(widget: Widget | null): void;
 
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame: (Frame | null)): void;
+        set_frame(frame: Frame | null): void;
 
         /**
          * Add a widget into a the prefix area with a priority. The highest
@@ -4228,7 +4221,7 @@ export namespace Panel {
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          * @virtual
          */
-        vfunc_page_changed(widget: (Widget | null)): void;
+        vfunc_page_changed(widget: Widget | null): void;
     }
 
 
@@ -4361,7 +4354,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -4407,7 +4400,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -4421,7 +4414,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -4445,7 +4438,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -4467,7 +4460,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -4594,7 +4587,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -4641,7 +4634,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -4655,7 +4648,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -4679,7 +4672,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -4701,7 +4694,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -4806,9 +4799,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -4859,21 +4850,21 @@ export namespace Panel {
          * Request to close, asynchronously. This will display the save dialog.
          * @param cancellable 
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        agree_to_close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Request to close, asynchronously. This will display the save dialog.
          * @param cancellable 
          * @param callback callback called when ready
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null), callback: Gio.AsyncReadyCallback<this>): void;
+        agree_to_close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Request to close, asynchronously. This will display the save dialog.
          * @param cancellable 
          * @param callback callback called when ready
          */
-        agree_to_close_async(cancellable: (Gio.Cancellable | null), callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+        agree_to_close_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -4962,7 +4953,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4970,7 +4961,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -4998,13 +4989,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5048,7 +5039,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -5057,7 +5048,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -5115,7 +5106,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -5123,13 +5114,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -5145,13 +5136,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5171,7 +5162,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -5181,7 +5172,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -5192,7 +5183,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -5203,7 +5194,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -5212,7 +5203,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -5306,9 +5297,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -5415,7 +5404,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -5423,7 +5412,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -5451,13 +5440,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5501,7 +5490,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -5510,7 +5499,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -5568,7 +5557,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -5576,13 +5565,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -5598,13 +5587,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -5624,7 +5613,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -5634,7 +5623,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -5645,7 +5634,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -5656,7 +5645,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -5665,7 +5654,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -5719,13 +5708,10 @@ export namespace Panel {
 
     namespace Inhibitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5923,7 +5909,7 @@ export namespace Panel {
          * @param key the key to get the user value for
          * @returns the user's value, if set
          */
-        get_user_value(key: string): (GLib.Variant | null);
+        get_user_value(key: string): GLib.Variant | null;
 
         /**
          * Gets the value of `key` from the first layer that is modified.
@@ -5983,13 +5969,10 @@ export namespace Panel {
 
     namespace MenuManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6065,7 +6048,7 @@ export namespace Panel {
          * @param id the identifier of the menu item
          * @returns a {@link Gio.Menu} if successful; otherwise   `null` and `position` is unset.
          */
-        find_item_by_id(id: string): [(Gio.Menu | null), number];
+        find_item_by_id(id: string): [Gio.Menu | null, number];
 
         /**
          * @param menu_id 
@@ -6165,7 +6148,7 @@ export namespace Panel {
             iconName: string;
             menu_model: Gio.MenuModel;
             menuModel: Gio.MenuModel;
-            popover: (Gtk.Popover | null);
+            popover: Gtk.Popover | null;
             progress: number;
         }
     }
@@ -6231,8 +6214,8 @@ export namespace Panel {
         /**
          * The popover to show.
          */
-        get popover(): (Gtk.Popover | null);
-        set popover(val: (Gtk.Popover | null));
+        get popover(): Gtk.Popover | null;
+        set popover(val: Gtk.Popover | null);
 
         /**
          * The current progress value.
@@ -6291,7 +6274,7 @@ export namespace Panel {
          * Gets the current popover or `null` if none is setup.
          * @returns a {@link Gtk.Popover} or `null`
          */
-        get_popover(): (Gtk.Popover | null);
+        get_popover(): Gtk.Popover | null;
 
         /**
          * Gets the progress value displayed in the omni bar.
@@ -6310,7 +6293,7 @@ export namespace Panel {
          * Sets the omnibar popover, that will appear when clicking on the omni bar.
          * @param popover a {@link Gtk.Popover} or `null`
          */
-        set_popover(popover: (Gtk.Popover | null)): void;
+        set_popover(popover: Gtk.Popover | null): void;
 
         /**
          * Sets the progress value displayed in the omni bar.
@@ -6355,16 +6338,16 @@ export namespace Panel {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * The name of the action with which this widget should be associated.
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /**
          * The target value of the actionable widget's action.
@@ -6405,7 +6388,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6413,7 +6396,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -6441,13 +6424,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6491,7 +6474,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -6500,7 +6483,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -6558,7 +6541,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6566,13 +6549,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -6588,13 +6571,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6611,13 +6594,13 @@ export namespace Panel {
          * Gets the action name for `actionable`.
          * @returns the action name
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @returns the current target value
          */
-        get_action_target_value(): (GLib.Variant | null);
+        get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -6635,7 +6618,7 @@ export namespace Panel {
          * associated with the window.
          * @param action_name an action name
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -6658,7 +6641,7 @@ export namespace Panel {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -6674,13 +6657,13 @@ export namespace Panel {
          * Gets the action name for `actionable`.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
          * @virtual
          */
-        vfunc_get_action_target_value(): (GLib.Variant | null);
+        vfunc_get_action_target_value(): GLib.Variant | null;
 
         /**
          * Specifies the name of the action with which this widget should be
@@ -6699,7 +6682,7 @@ export namespace Panel {
          * @param action_name an action name
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -6723,7 +6706,7 @@ export namespace Panel {
          * @param target_value a {@link GLib.Variant} to set as the target value
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Gets the ID of the `buildable` object.
@@ -6732,7 +6715,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -6742,7 +6725,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -6753,7 +6736,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -6764,7 +6747,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -6773,7 +6756,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -6868,9 +6851,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -6927,7 +6908,7 @@ export namespace Panel {
          * @param nth the child position
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_nth_child(nth: number): (Gtk.Widget | null);
+        get_nth_child(nth: number): Gtk.Widget | null;
 
         /**
          * Inserts a widget at position in the paned.
@@ -7014,7 +6995,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -7022,7 +7003,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -7050,13 +7031,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -7100,7 +7081,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -7109,7 +7090,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -7167,7 +7148,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -7175,13 +7156,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -7197,13 +7178,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -7223,7 +7204,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -7233,7 +7214,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -7244,7 +7225,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -7255,7 +7236,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -7264,7 +7245,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -7560,7 +7541,7 @@ export namespace Panel {
          * Convert a {@link Panel.Position} to a {@link GLib.Variant}.
          * @returns the new {@link GLib.Variant} containing the positon values
          */
-        to_variant(): (GLib.Variant | null);
+        to_variant(): GLib.Variant | null;
     }
 
 
@@ -7601,7 +7582,7 @@ export namespace Panel {
              * @signal
              * @run-last
              */
-            save: (arg0: Gio.Task) => (boolean | void);
+            save: (arg0: Gio.Task) => boolean | void;
             "notify::icon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::is-draft": (pspec: GObject.ParamSpec) => void;
@@ -7612,14 +7593,14 @@ export namespace Panel {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon: (Gio.Icon | null);
-            icon_name: (string | null);
-            iconName: (string | null);
+            icon: Gio.Icon | null;
+            icon_name: string | null;
+            iconName: string | null;
             is_draft: boolean;
             isDraft: boolean;
             progress: number;
-            subtitle: (string | null);
-            title: (string | null);
+            subtitle: string | null;
+            title: string | null;
         }
     }
 
@@ -7638,8 +7619,8 @@ export namespace Panel {
          * Alternatively, you can use {@link Panel.SaveDelegate.icon_name} for a
          * named icon.
          */
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * The "icon-name" property contains the name of an icon to use when
@@ -7650,8 +7631,8 @@ export namespace Panel {
          * an icon name.
          * @default null
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * The "icon-name" property contains the name of an icon to use when
@@ -7662,8 +7643,8 @@ export namespace Panel {
          * an icon name.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * The "is-draft" property indicates that the document represented by the
@@ -7695,8 +7676,8 @@ export namespace Panel {
          * that the file will be saved within.
          * @default null
          */
-        get subtitle(): (string | null);
-        set subtitle(val: (string | null));
+        get subtitle(): string | null;
+        set subtitle(val: string | null);
 
         /**
          * The "title" property contains the title of the document being saved.
@@ -7704,8 +7685,8 @@ export namespace Panel {
          * `file.txt`.
          * @default null
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -7758,7 +7739,7 @@ export namespace Panel {
          * @param callback 
          * @virtual
          */
-        vfunc_save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -7775,13 +7756,13 @@ export namespace Panel {
          * Gets the {@link Gio.Icon} for the save delegate, or `null` if unset.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         /**
          * Gets the icon name for the save delegate.
          * @returns the icon name or `null`
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         get_is_draft(): boolean;
 
@@ -7791,30 +7772,30 @@ export namespace Panel {
          * Gets the subtitle for the save delegate.
          * @returns the subtitle or `null`
          */
-        get_subtitle(): (string | null);
+        get_subtitle(): string | null;
 
         /**
          * Gets the title for the save delegate.
          * @returns the title or `null`
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @param cancellable 
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -7825,13 +7806,13 @@ export namespace Panel {
          * Sets the {@link Gio.Icon} for the save delegate. Pass `null` to unset.
          * @param icon a {@link Gio.Icon} or `null`
          */
-        set_icon(icon: (Gio.Icon | null)): void;
+        set_icon(icon: Gio.Icon | null): void;
 
         /**
          * Sets the icon name for the save delegate. Pass `null` to unset.
          * @param icon the icon name or `null`
          */
-        set_icon_name(icon: (string | null)): void;
+        set_icon_name(icon: string | null): void;
 
         /**
          * @param is_draft 
@@ -7847,13 +7828,13 @@ export namespace Panel {
          * Sets the subtitle for the save delegate. Pass `null` to unset.
          * @param subtitle the subtitle or `null`
          */
-        set_subtitle(subtitle: (string | null)): void;
+        set_subtitle(subtitle: string | null): void;
 
         /**
          * Sets the title for the save delegate. Pass `null` to unset.
          * @param title the title or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
     }
 
 
@@ -8001,19 +7982,19 @@ export namespace Panel {
         /**
          * @param cancellable 
          */
-        run_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        run_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        run_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        run_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -8029,13 +8010,10 @@ export namespace Panel {
 
     namespace Session {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8086,7 +8064,7 @@ export namespace Panel {
          * @param position the index of the item
          * @returns The {@link Panel.SessionItem} at `position`   or `null` if there is no item at that position.
          */
-        get_item(position: number): (SessionItem | null);
+        get_item(position: number): SessionItem | null;
 
         get_n_items(): number;
 
@@ -8101,7 +8079,7 @@ export namespace Panel {
          * @param id the id of the item
          * @returns an {@link Panel.SessionItem} or `null`
          */
-        lookup_by_id(id: string): (SessionItem | null);
+        lookup_by_id(id: string): SessionItem | null;
 
         /**
          * @param item 
@@ -8143,13 +8121,13 @@ export namespace Panel {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            id: (string | null);
-            module_name: (string | null);
-            moduleName: (string | null);
-            position: (Position | null);
-            type_hint: (string | null);
-            typeHint: (string | null);
-            workspace: (string | null);
+            id: string | null;
+            module_name: string | null;
+            moduleName: string | null;
+            position: Position | null;
+            type_hint: string | null;
+            typeHint: string | null;
+            workspace: string | null;
         }
     }
 
@@ -8163,41 +8141,41 @@ export namespace Panel {
         /**
          * @default null
          */
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
         /**
          * @default null
          */
-        get module_name(): (string | null);
-        set module_name(val: (string | null));
+        get module_name(): string | null;
+        set module_name(val: string | null);
 
         /**
          * @default null
          */
-        get moduleName(): (string | null);
-        set moduleName(val: (string | null));
+        get moduleName(): string | null;
+        set moduleName(val: string | null);
 
-        get position(): (Position | null);
-        set position(val: (Position | null));
-
-        /**
-         * @default null
-         */
-        get type_hint(): (string | null);
-        set type_hint(val: (string | null));
+        get position(): Position | null;
+        set position(val: Position | null);
 
         /**
          * @default null
          */
-        get typeHint(): (string | null);
-        set typeHint(val: (string | null));
+        get type_hint(): string | null;
+        set type_hint(val: string | null);
 
         /**
          * @default null
          */
-        get workspace(): (string | null);
-        set workspace(val: (string | null));
+        get typeHint(): string | null;
+        set typeHint(val: string | null);
+
+        /**
+         * @default null
+         */
+        get workspace(): string | null;
+        set workspace(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -8233,7 +8211,7 @@ export namespace Panel {
          * Gets the id for the session item, if any.
          * @returns a string containing the id; otherwise `null`
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * Retrieves the metadata value for `key`.
@@ -8244,31 +8222,31 @@ export namespace Panel {
          * @param expected_type a {@link GLib.VariantType} or `null`
          * @returns a non-floating {@link GLib.Variant} which should   be released with `g_variant_unref()`; otherwise `null`.
          */
-        get_metadata_value(key: string, expected_type: (GLib.VariantType | null)): (GLib.Variant | null);
+        get_metadata_value(key: string, expected_type: GLib.VariantType | null): GLib.Variant | null;
 
         /**
          * Gets the module-name that created an item.
          * @returns a module-name or `null`
          */
-        get_module_name(): (string | null);
+        get_module_name(): string | null;
 
         /**
          * Gets the {@link Panel.Position} for the item.
          * @returns a {@link Panel.Position} or `null`
          */
-        get_position(): (Position | null);
+        get_position(): Position | null;
 
         /**
          * Gets the type hint for an item.
          * @returns a type-hint or `null`
          */
-        get_type_hint(): (string | null);
+        get_type_hint(): string | null;
 
         /**
          * Gets the workspace id for the item.
          * @returns a workspace or `null`
          */
-        get_workspace(): (string | null);
+        get_workspace(): string | null;
 
         /**
          * If the item contains a metadata value for `key`.
@@ -8295,7 +8273,7 @@ export namespace Panel {
          * not be expected to come across multiple items with the same id.
          * @param id an optional identifier for the item
          */
-        set_id(id: (string | null)): void;
+        set_id(id: string | null): void;
 
         /**
          * Sets the value for metadata `key`.
@@ -8304,7 +8282,7 @@ export namespace Panel {
          * @param key the metadata key
          * @param value the value for `key` or `null`
          */
-        set_metadata_value(key: string, value: (GLib.Variant | null)): void;
+        set_metadata_value(key: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the module-name for the session item.
@@ -8313,13 +8291,13 @@ export namespace Panel {
          * the item when decoding them at project load time.
          * @param module_name the module name owning the item
          */
-        set_module_name(module_name: (string | null)): void;
+        set_module_name(module_name: string | null): void;
 
         /**
          * Sets the position for `self`, if any.
          * @param position a {@link Panel.Position} or `null`
          */
-        set_position(position: (Position | null)): void;
+        set_position(position: Position | null): void;
 
         /**
          * Sets the type-hint value for the item.
@@ -8328,7 +8306,7 @@ export namespace Panel {
          * an object when loading session items.
          * @param type_hint a type hint string for the item
          */
-        set_type_hint(type_hint: (string | null)): void;
+        set_type_hint(type_hint: string | null): void;
 
         /**
          * Sets the workspace id for the item.
@@ -8336,7 +8314,7 @@ export namespace Panel {
          * This is generally used to tie an item to a specific workspace.
          * @param workspace a workspace string for the item
          */
-        set_workspace(workspace: (string | null)): void;
+        set_workspace(workspace: string | null): void;
     }
 
 
@@ -8543,7 +8521,7 @@ export namespace Panel {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping | null, set_mapping: Gio.SettingsBindSetMapping | null): void;
 
         /**
          * @param key 
@@ -8581,7 +8559,7 @@ export namespace Panel {
          * @param key the key to get the user value for
          * @returns the user's value, if set
          */
-        get_user_value(key: string): (GLib.Variant | null);
+        get_user_value(key: string): GLib.Variant | null;
 
         /**
          * @param key 
@@ -8700,7 +8678,7 @@ export namespace Panel {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -8746,7 +8724,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -8760,7 +8738,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -8784,7 +8762,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -8806,7 +8784,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -8933,7 +8911,7 @@ export namespace Panel {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -8980,7 +8958,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -8994,7 +8972,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -9018,7 +8996,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -9040,7 +9018,7 @@ export namespace Panel {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -9135,9 +9113,7 @@ export namespace Panel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -9245,7 +9221,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -9253,7 +9229,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -9281,13 +9257,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -9331,7 +9307,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -9340,7 +9316,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -9398,7 +9374,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -9406,13 +9382,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -9428,13 +9404,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -9454,7 +9430,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -9464,7 +9440,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -9475,7 +9451,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -9486,7 +9462,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -9495,7 +9471,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -9714,7 +9690,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -9722,7 +9698,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -9750,13 +9726,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -9800,7 +9776,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -9809,7 +9785,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -9867,7 +9843,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -9875,13 +9851,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -9897,13 +9873,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -9923,7 +9899,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -9933,7 +9909,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -9944,7 +9920,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -9955,7 +9931,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -9964,7 +9940,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -10170,7 +10146,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -10178,7 +10154,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -10206,13 +10182,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -10256,7 +10232,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -10265,7 +10241,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -10323,7 +10299,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -10331,13 +10307,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -10353,13 +10329,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -10379,7 +10355,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -10389,7 +10365,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -10400,7 +10376,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -10411,7 +10387,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -10420,7 +10396,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -10482,7 +10458,7 @@ export namespace Panel {
              * @signal
              * @run-last
              */
-            "get-default-focus": () => (Gtk.Widget | null);
+            "get-default-focus": () => Gtk.Widget | null;
             /**
              * The "presented" signal is emitted when the widget is brought
              * to the front of a frame.
@@ -10547,22 +10523,22 @@ export namespace Panel {
             busy: boolean;
             can_maximize: boolean;
             canMaximize: boolean;
-            child: (Gtk.Widget | null);
-            icon: (Gio.Icon | null);
-            icon_name: (string | null);
-            iconName: (string | null);
+            child: Gtk.Widget | null;
+            icon: Gio.Icon | null;
+            icon_name: string | null;
+            iconName: string | null;
             id: string;
             kind: string;
-            menu_model: (Gio.MenuModel | null);
-            menuModel: (Gio.MenuModel | null);
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
             modified: boolean;
             needs_attention: boolean;
             needsAttention: boolean;
             reorderable: boolean;
-            save_delegate: (SaveDelegate | null);
-            saveDelegate: (SaveDelegate | null);
-            title: (string | null);
-            tooltip: (string | null);
+            save_delegate: SaveDelegate | null;
+            saveDelegate: SaveDelegate | null;
+            title: string | null;
+            tooltip: string | null;
         }
     }
 
@@ -10596,28 +10572,28 @@ export namespace Panel {
         /**
          * The child inside this widget.
          */
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * The icon for this widget.
          */
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * The icon name for this widget.
          * @default null
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * The icon name for this widget.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * @default null
@@ -10635,15 +10611,15 @@ export namespace Panel {
          * A menu model to display additional options for the page to the user via
          * menus.
          */
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
         /**
          * A menu model to display additional options for the page to the user via
          * menus.
          */
-        get menuModel(): (Gio.MenuModel | null);
-        set menuModel(val: (Gio.MenuModel | null));
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
 
         /**
          * @default false
@@ -10672,29 +10648,29 @@ export namespace Panel {
         /**
          * The save delegate attached to this widget.
          */
-        get save_delegate(): (SaveDelegate | null);
-        set save_delegate(val: (SaveDelegate | null));
+        get save_delegate(): SaveDelegate | null;
+        set save_delegate(val: SaveDelegate | null);
 
         /**
          * The save delegate attached to this widget.
          */
-        get saveDelegate(): (SaveDelegate | null);
-        set saveDelegate(val: (SaveDelegate | null));
+        get saveDelegate(): SaveDelegate | null;
+        set saveDelegate(val: SaveDelegate | null);
 
         /**
          * The title for this widget.
          * @default null
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * The tooltip to display in tabs for the widget.
          * @since 1.2
          * @default null
          */
-        get tooltip(): (string | null);
-        set tooltip(val: (string | null));
+        get tooltip(): string | null;
+        set tooltip(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -10731,7 +10707,7 @@ export namespace Panel {
          * @param parameter_type the parameter type
          * @param activate callback to use when the action is activated
          */
-        static install_action(action_name: string, parameter_type: (string | null), activate: Gtk.WidgetActionActivateFunc): void;
+        static install_action(action_name: string, parameter_type: string | null, activate: Gtk.WidgetActionActivateFunc): void;
 
         /**
          * @param action_name name of the action
@@ -10748,7 +10724,7 @@ export namespace Panel {
          * return the {@link Gtk.TextView} inside your widgetry.
          * @virtual
          */
-        vfunc_get_default_focus(): (Gtk.Widget | null);
+        vfunc_get_default_focus(): Gtk.Widget | null;
 
         /**
          * @virtual
@@ -10779,7 +10755,7 @@ export namespace Panel {
          * Gets the child widget of the panel.
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         /**
          * Discovers the widget that should be focused as the default widget
@@ -10789,19 +10765,19 @@ export namespace Panel {
          * return the {@link Gtk.TextView} inside your widgetry.
          * @returns the default widget to focus within   the {@link Panel.Widget}.
          */
-        get_default_focus(): (Gtk.Widget | null);
+        get_default_focus(): Gtk.Widget | null;
 
         /**
          * Gets a {@link Gio.Icon} for the widget.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         /**
          * Gets the icon name for the widget.
          * @returns the icon name or `null`
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the id of the panel widget.
@@ -10818,7 +10794,7 @@ export namespace Panel {
          * for the page to the user via menus.
          * @returns a {@link Gio.MenuModel}
          */
-        get_menu_model(): (Gio.MenuModel | null);
+        get_menu_model(): Gio.MenuModel | null;
 
         /**
          * Gets the modified status of a panel widget
@@ -10832,7 +10808,7 @@ export namespace Panel {
          * Gets teh position of the widget within the dock.
          * @returns a {@link Panel.Position} or `null` if the   widget isn't within a {@link Panel.Frame}.
          */
-        get_position(): (Position | null);
+        get_position(): Position | null;
 
         get_reorderable(): boolean;
 
@@ -10845,19 +10821,19 @@ export namespace Panel {
          * Document editors might use this to save the file to disk.
          * @returns a {@link Panel.SaveDelegate} or `null`
          */
-        get_save_delegate(): (SaveDelegate | null);
+        get_save_delegate(): SaveDelegate | null;
 
         /**
          * Gets the title for the widget.
          * @returns the title or `null`
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Gets the tooltip for the widget.
          * @returns the tooltip or `null`
          */
-        get_tooltip(): (string | null);
+        get_tooltip(): string | null;
 
         /**
          * @param prefix 
@@ -10886,19 +10862,19 @@ export namespace Panel {
          * Sets the child widget of the panel.
          * @param child a {@link Gtk.Widget} or `null`
          */
-        set_child(child: (Gtk.Widget | null)): void;
+        set_child(child: Gtk.Widget | null): void;
 
         /**
          * Sets a {@link Gio.Icon} for the widget.
          * @param icon a {@link Gio.Icon} or `null`
          */
-        set_icon(icon: (Gio.Icon | null)): void;
+        set_icon(icon: Gio.Icon | null): void;
 
         /**
          * Sets the icon name for the widget.
          * @param icon_name the icon name or `null`
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the id of the panel widget.
@@ -10910,7 +10886,7 @@ export namespace Panel {
          * Sets the kind of the widget.
          * @param kind the kind of this widget
          */
-        set_kind(kind: (string | null)): void;
+        set_kind(kind: string | null): void;
 
         /**
          * Sets the {@link Gio.MenuModel} for the widget.
@@ -10919,7 +10895,7 @@ export namespace Panel {
          * for the page to the user via menus.
          * @param menu_model a {@link Gio.MenuModel}
          */
-        set_menu_model(menu_model: (Gio.MenuModel | null)): void;
+        set_menu_model(menu_model: Gio.MenuModel | null): void;
 
         /**
          * Sets the modified status of a panel widget.
@@ -10946,19 +10922,19 @@ export namespace Panel {
          * Document editors might use this to save the file to disk.
          * @param save_delegate a {@link Panel.SaveDelegate} or `null`
          */
-        set_save_delegate(save_delegate: (SaveDelegate | null)): void;
+        set_save_delegate(save_delegate: SaveDelegate | null): void;
 
         /**
          * Sets the title for the widget.
          * @param title the title or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
 
         /**
          * Sets the tooltip for the widget to be displayed in tabs.
          * @param tooltip the tooltip or `null`
          */
-        set_tooltip(tooltip: (string | null)): void;
+        set_tooltip(tooltip: string | null): void;
 
         unmark_busy(): void;
 
@@ -11009,7 +10985,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -11017,7 +10993,7 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -11045,13 +11021,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -11095,7 +11071,7 @@ export namespace Panel {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -11104,7 +11080,7 @@ export namespace Panel {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -11162,7 +11138,7 @@ export namespace Panel {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -11170,13 +11146,13 @@ export namespace Panel {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -11192,13 +11168,13 @@ export namespace Panel {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -11218,7 +11194,7 @@ export namespace Panel {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -11228,7 +11204,7 @@ export namespace Panel {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -11239,7 +11215,7 @@ export namespace Panel {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -11250,7 +11226,7 @@ export namespace Panel {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -11259,7 +11235,7 @@ export namespace Panel {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -11380,14 +11356,14 @@ export namespace Panel {
          * Finds the workbench that contains `widget`.
          * @param widget a {@link Gtk.Widget}
          */
-        static find_from_widget(widget: Gtk.Widget): (Workbench | null);
+        static find_from_widget(widget: Gtk.Widget): Workbench | null;
 
         /**
          * @param action_name a prefixed action name, such as "project.open"
          * @param parameter_type the parameter type
          * @param activate callback to use when the action is activated
          */
-        static install_action(action_name: string, parameter_type: (string | null), activate: ActionActivateFunc): void;
+        static install_action(action_name: string, parameter_type: string | null, activate: ActionActivateFunc): void;
 
         /**
          * @param action_name name of the action
@@ -11406,7 +11382,7 @@ export namespace Panel {
          * @param callback 
          * @virtual
          */
-        vfunc_unload_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_unload_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param result 
@@ -11433,7 +11409,7 @@ export namespace Panel {
          * @param workspace_type 
          * @returns a {@link Panel.Workspace} or `null`
          */
-        find_workspace_typed(workspace_type: GObject.GType): (Workspace | null);
+        find_workspace_typed(workspace_type: GObject.GType): Workspace | null;
 
         /**
          * @param workspace 
@@ -11589,14 +11565,14 @@ export namespace Panel {
          * Finds the workspace that contains `widget`.
          * @param widget a {@link Gtk.Widget}
          */
-        static find_from_widget(widget: Gtk.Widget): (Workspace | null);
+        static find_from_widget(widget: Gtk.Widget): Workspace | null;
 
         /**
          * @param action_name a prefixed action name, such as "project.open"
          * @param parameter_type the parameter type
          * @param activate callback to use when the action is activated
          */
-        static install_action(action_name: string, parameter_type: (string | null), activate: ActionActivateFunc): void;
+        static install_action(action_name: string, parameter_type: string | null, activate: ActionActivateFunc): void;
 
         /**
          * @param args 
@@ -11629,7 +11605,7 @@ export namespace Panel {
          * Gets the {@link Panel.Workbench} `self` is a part of.
          * @returns a {@link Panel.Workbench}, or `null`
          */
-        get_workbench(): (Workbench | null);
+        get_workbench(): Workbench | null;
 
         /**
          * Inhibits one or more particular actions in the session.
@@ -11641,7 +11617,7 @@ export namespace Panel {
          * @param reason the reason for the inhibit
          * @returns a {@link Panel.Inhibitor} or `null`
          */
-        inhibit(flags: Gtk.ApplicationInhibitFlags, reason: string): (Inhibitor | null);
+        inhibit(flags: Gtk.ApplicationInhibitFlags, reason: string): Inhibitor | null;
 
         /**
          * @param id 
@@ -11846,13 +11822,13 @@ export namespace Panel {
              * @param widget a {@link Panel.Widget} or `null` if no page is visible
              * @virtual
              */
-            vfunc_page_changed(widget: (Widget | null)): void;
+            vfunc_page_changed(widget: Widget | null): void;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-            frame: (Frame | null);
+            frame: Frame | null;
         }
     }
 
@@ -11870,8 +11846,8 @@ export namespace Panel {
         /**
          * The frame the header is attached to, or `null`.
          */
-        get frame(): (Frame | null);
-        set frame(val: (Frame | null));
+        get frame(): Frame | null;
+        set frame(val: Frame | null);
 
         // Methods
         /**
@@ -11901,19 +11877,19 @@ export namespace Panel {
          * Gets the frame the header is attached to.
          * @returns a {@link Panel.Frame} or `null`
          */
-        get_frame(): (Frame | null);
+        get_frame(): Frame | null;
 
         /**
          * Notifies the header that the visible page has changed.
          * @param widget a {@link Panel.Widget} or `null` if no page is visible
          */
-        page_changed(widget: (Widget | null)): void;
+        page_changed(widget: Widget | null): void;
 
         /**
          * Sets the frame the header is attached to.
          * @param frame a {@link Panel.Frame} or `null`
          */
-        set_frame(frame: (Frame | null)): void;
+        set_frame(frame: Frame | null): void;
     }
 
 

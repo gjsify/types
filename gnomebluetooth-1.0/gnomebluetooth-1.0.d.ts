@@ -606,7 +606,7 @@ export namespace GnomeBluetooth {
          * @param value An empty {@link GObject.Value} to set.
          * @returns `true` if the `value` has been set.
          */
-        get_selected_device_info(field: string, value: (GObject.Value | any)): boolean;
+        get_selected_device_info(field: string, value: GObject.Value | any): boolean;
 
         /**
          * Returns whether the selected device is connected to this computer.
@@ -819,15 +819,15 @@ export namespace GnomeBluetooth {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -907,7 +907,7 @@ export namespace GnomeBluetooth {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -931,7 +931,7 @@ export namespace GnomeBluetooth {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -955,7 +955,7 @@ export namespace GnomeBluetooth {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -979,7 +979,7 @@ export namespace GnomeBluetooth {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1004,7 +1004,7 @@ export namespace GnomeBluetooth {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1029,7 +1029,7 @@ export namespace GnomeBluetooth {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1093,7 +1093,7 @@ export namespace GnomeBluetooth {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1103,7 +1103,7 @@ export namespace GnomeBluetooth {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1438,7 +1438,7 @@ export namespace GnomeBluetooth {
          * @param connect Whether try to connect or disconnect from services on a device
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * When the connection operation is finished, `callback` will be called. You can
@@ -1449,7 +1449,7 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * When the connection operation is finished, `callback` will be called. You can
@@ -1460,7 +1460,7 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the connection operation. See `bluetooth_client_connect_service()`.
@@ -1736,9 +1736,7 @@ export namespace GnomeBluetooth {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**

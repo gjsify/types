@@ -144,7 +144,7 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_async(uri: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+        request_async(uri: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous load of the file's contents.
@@ -158,7 +158,7 @@ export namespace GrlNet {
          * @param length The length of the contents or `null` if it is not needed
          * @returns `true` if the request was successfull. If `false` an error occurred.
          */
-        request_finish(result: Gio.AsyncResult, content: string, length: (bigint | number)): boolean;
+        request_finish(result: Gio.AsyncResult, content: string, length: bigint | number): boolean;
 
         /**
          * Sets if cache must be used. Note that this will only work if caching is

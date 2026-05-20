@@ -937,7 +937,7 @@ export namespace GTop {
      * @param arg an argument specific for the process type
      * @returns an array of process     ids
      */
-    function glibtop_get_proclist(buf: glibtop_proclist, which: (bigint | number), arg: (bigint | number)): number[];
+    function glibtop_get_proclist(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
 
     /**
      * @param buf 
@@ -972,7 +972,7 @@ export namespace GTop {
      * @param features 
      * @param flags 
      */
-    function glibtop_init_r(features: (bigint | number), flags: number): [glibtop, glibtop];
+    function glibtop_init_r(features: bigint | number, flags: number): [glibtop, glibtop];
 
     /**
      * @param host 
@@ -1187,7 +1187,7 @@ export namespace GTop {
          * @param which a #GLIBTOP_* constant specifying process type
          * @param arg an argument specific for the process type
          */
-        static get_proclist(buf: glibtop_proclist, which: (bigint | number), arg: (bigint | number)): number[];
+        static get_proclist(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
 
         /**
          * @param buf 
@@ -1222,7 +1222,7 @@ export namespace GTop {
          * @param features 
          * @param flags 
          */
-        static init_r(features: (bigint | number), flags: number): [glibtop, glibtop];
+        static init_r(features: bigint | number, flags: number): [glibtop, glibtop];
 
         /**
          * @param host 
@@ -1244,7 +1244,7 @@ export namespace GTop {
          * @param recv_size 
          * @param recv_buf 
          */
-        call_l(command: number, send_size: (bigint | number), send_buf: null, recv_size: (bigint | number), recv_buf: null): null;
+        call_l(command: number, send_size: bigint | number, send_buf: null, recv_size: bigint | number, recv_buf: null): null;
 
         /**
          * @param command 
@@ -1253,7 +1253,7 @@ export namespace GTop {
          * @param recv_size 
          * @param recv_buf 
          */
-        call_s(command: number, send_size: (bigint | number), send_buf: null, recv_size: (bigint | number), recv_buf: null): null;
+        call_s(command: number, send_size: bigint | number, send_buf: null, recv_size: bigint | number, recv_buf: null): null;
 
         close_p(): void;
 
@@ -1362,7 +1362,7 @@ export namespace GTop {
          * @param data_ptr 
          * @param data_size 
          */
-        get_parameter_l(parameter: number, data_ptr: null, data_size: (bigint | number)): number;
+        get_parameter_l(parameter: number, data_ptr: null, data_size: bigint | number): number;
 
         /**
          * @param buf 
@@ -1525,7 +1525,7 @@ export namespace GTop {
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_l(buf: glibtop_proclist, which: (bigint | number), arg: (bigint | number)): number[];
+        get_proclist_l(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
 
         /**
          * @param buf a {@link GTop.glibtop_proclist}
@@ -1533,7 +1533,7 @@ export namespace GTop {
          * @param arg an argument specific for the process type
          * @returns an array of process     ids
          */
-        get_proclist_s(buf: glibtop_proclist, which: (bigint | number), arg: (bigint | number)): number[];
+        get_proclist_s(buf: glibtop_proclist, which: bigint | number, arg: bigint | number): number[];
 
         /**
          * @param buf 
@@ -1586,35 +1586,35 @@ export namespace GTop {
          * @param features 
          * @param flags 
          */
-        init_p(features: (bigint | number), flags: number): void;
+        init_p(features: bigint | number, flags: number): void;
 
         /**
          * @param program_name 
          * @param features 
          * @param flags 
          */
-        open_l(program_name: string, features: (bigint | number), flags: number): void;
+        open_l(program_name: string, features: bigint | number, flags: number): void;
 
         /**
          * @param program_name 
          * @param features 
          * @param flags 
          */
-        open_p(program_name: string, features: (bigint | number), flags: number): void;
+        open_p(program_name: string, features: bigint | number, flags: number): void;
 
         /**
          * @param program_name 
          * @param features 
          * @param flags 
          */
-        open_s(program_name: string, features: (bigint | number), flags: number): void;
+        open_s(program_name: string, features: bigint | number, flags: number): void;
 
         /**
          * @param parameter 
          * @param data_ptr 
          * @param data_size 
          */
-        set_parameter_l(parameter: number, data_ptr: null, data_size: (bigint | number)): void;
+        set_parameter_l(parameter: number, data_ptr: null, data_size: bigint | number): void;
     }
 
 

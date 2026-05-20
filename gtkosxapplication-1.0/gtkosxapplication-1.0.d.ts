@@ -54,7 +54,7 @@ export namespace GtkosxApplication {
              * @signal
              * @action
              */
-            NSApplicationBlockTermination: () => (boolean | void);
+            NSApplicationBlockTermination: () => boolean | void;
             /**
              * @signal
              * @action
@@ -64,7 +64,7 @@ export namespace GtkosxApplication {
              * @signal
              * @action
              */
-            NSApplicationOpenFile: (arg0: string) => (boolean | void);
+            NSApplicationOpenFile: (arg0: string) => boolean | void;
             /**
              * @signal
              * @action
@@ -78,9 +78,7 @@ export namespace GtkosxApplication {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -450,10 +448,7 @@ export namespace GtkosxApplication {
         items: null[];
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 

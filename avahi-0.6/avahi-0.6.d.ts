@@ -338,7 +338,7 @@ export namespace Avahi {
          * @param rdata 
          * @param size 
          */
-        add_record(flags: AvahiCore.PublishFlags, name: string, type: number, ttl: number, rdata: null, size: (bigint | number)): boolean;
+        add_record(flags: AvahiCore.PublishFlags, name: string, type: number, ttl: number, rdata: null, size: bigint | number): boolean;
 
         /**
          * @param _interface 
@@ -351,7 +351,7 @@ export namespace Avahi {
          * @param rdata 
          * @param size 
          */
-        add_record_full(_interface: AvahiCore.IfIndex, protocol: AvahiCore.Protocol, flags: AvahiCore.PublishFlags, name: string, clazz: number, type: number, ttl: number, rdata: null, size: (bigint | number)): boolean;
+        add_record_full(_interface: AvahiCore.IfIndex, protocol: AvahiCore.Protocol, flags: AvahiCore.PublishFlags, name: string, clazz: number, type: number, ttl: number, rdata: null, size: bigint | number): boolean;
 
         /**
          * @param client 
@@ -792,7 +792,7 @@ export namespace Avahi {
          * @param value 
          * @param size 
          */
-        set_arbitrary(key: string, value: number, size: (bigint | number)): boolean;
+        set_arbitrary(key: string, value: number, size: bigint | number): boolean;
 
         thaw(): boolean;
     }

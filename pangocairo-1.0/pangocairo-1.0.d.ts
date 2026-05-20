@@ -37,7 +37,7 @@ export namespace PangoCairo {
      * @returns the font options previously set on the   context, or `null` if no options have been set. This value is   owned by the context and must not be modified or freed.
      * @since 1.10
      */
-    function context_get_font_options(context: Pango.Context): (cairo.FontOptions | null);
+    function context_get_font_options(context: Pango.Context): cairo.FontOptions | null;
 
     /**
      * Gets the resolution for the context.
@@ -58,7 +58,7 @@ export namespace PangoCairo {
      * @param options a `cairo_font_options_t`, or `null` to unset   any previously set options. A copy is made.
      * @since 1.10
      */
-    function context_set_font_options(context: Pango.Context, options: (cairo.FontOptions | null)): void;
+    function context_set_font_options(context: Pango.Context, options: cairo.FontOptions | null): void;
 
     /**
      * Sets the resolution for the context.
@@ -81,7 +81,7 @@ export namespace PangoCairo {
      * @param func Callback function for rendering attributes of   type {@link Pango.AttrType.SHAPE}, or `null` to disable shape rendering.
      * @since 1.18
      */
-    function context_set_shape_renderer(context: Pango.Context, func: (ShapeRendererFunc | null)): void;
+    function context_set_shape_renderer(context: Pango.Context, func: ShapeRendererFunc | null): void;
 
     /**
      * Creates a context object set up to match the current transformation
@@ -190,7 +190,7 @@ export namespace PangoCairo {
      * @returns the newly allocated   {@link Pango.FontMap} of suitable type which should be freed with   `g_object_unref()`, or `null` if the requested cairo font backend   is not supported / compiled in.
      * @since 1.18
      */
-    function font_map_new_for_font_type(fonttype: cairo.FontType): (Pango.FontMap | null);
+    function font_map_new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
 
     /**
      * Adds the glyphs in `glyphs` to the current path in the specified
@@ -332,9 +332,7 @@ export namespace PangoCairo {
     namespace Font {
 
         // Constructor properties interface
-        interface ConstructorProps extends Pango.Font.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pango.Font.ConstructorProps {}
     }
 
     export interface FontNamespace {
@@ -359,7 +357,7 @@ export namespace PangoCairo {
          * `cairo_scaled_font_reference()`.
          * @returns the `cairo_scaled_font_t`   used by `font`
          */
-        get_scaled_font(): (cairo.ScaledFont | null);
+        get_scaled_font(): cairo.ScaledFont | null;
     }
 
 
@@ -370,9 +368,7 @@ export namespace PangoCairo {
     namespace FontMap {
 
         // Constructor properties interface
-        interface ConstructorProps extends Pango.FontMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Pango.FontMap.ConstructorProps {}
     }
 
     export interface FontMapNamespace {
@@ -425,7 +421,7 @@ export namespace PangoCairo {
         * in fact in most of those cases, just use {@link PangoCairo.FontMap.get_default}.
         * @param fonttype desired {@link cairo.FontType}
         */
-        new_for_font_type(fonttype: cairo.FontType): (Pango.FontMap | null);
+        new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
     }
     /**
      * {@link PangoCairo.FontMap} is an interface exported by font maps for

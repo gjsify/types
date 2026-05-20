@@ -124,7 +124,7 @@ export namespace GtkSource {
      * @param limit location of last possible `match_start`, or `null` for start of buffer.
      * @returns whether a match was found.
      */
-    function iter_backward_search(iter: Gtk.TextIter, str: string, flags: SearchFlags, match_start: Gtk.TextIter, match_end: (Gtk.TextIter | null), limit: (Gtk.TextIter | null)): boolean;
+    function iter_backward_search(iter: Gtk.TextIter, str: string, flags: SearchFlags, match_start: Gtk.TextIter, match_end: Gtk.TextIter | null, limit: Gtk.TextIter | null): boolean;
 
     /**
      * Searches forward for `str`. Any match is returned by setting
@@ -154,7 +154,7 @@ export namespace GtkSource {
      * @param limit bound for the search, or `null` for the end of the buffer.
      * @returns whether a match was found.
      */
-    function iter_forward_search(iter: Gtk.TextIter, str: string, flags: SearchFlags, match_start: (Gtk.TextIter | null), match_end: (Gtk.TextIter | null), limit: (Gtk.TextIter | null)): boolean;
+    function iter_forward_search(iter: Gtk.TextIter, str: string, flags: SearchFlags, match_start: Gtk.TextIter | null, match_end: Gtk.TextIter | null, limit: Gtk.TextIter | null): boolean;
 
     /**
      * @gir-type Callback
@@ -433,7 +433,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ["new"](table: (Gtk.TextTagTable | null)): Buffer;
+        static ["new"](table: Gtk.TextTagTable | null): Buffer;
 
         static new_with_language(language: Language): Buffer;
 
@@ -487,7 +487,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        backward_iter_to_source_mark(iter: Gtk.TextIter, category: (string | null)): boolean;
+        backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
         /**
          * Marks the beginning of a not undoable action on the buffer,
@@ -519,7 +519,7 @@ export namespace GtkSource {
          * @param where location to place the mark.
          * @returns a new {@link GtkSource.Mark}, owned by the buffer.
          */
-        create_source_mark(name: (string | null), category: string, where: Gtk.TextIter): Mark;
+        create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark;
 
         /**
          * Marks the end of a not undoable action on the buffer.  When the
@@ -552,7 +552,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        forward_iter_to_source_mark(iter: Gtk.TextIter, category: (string | null)): boolean;
+        forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
         /**
          * Determines whether bracket match highlighting is activated for the
@@ -643,7 +643,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param category category to search for, or `null`.
          */
-        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: (string | null)): void;
+        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: string | null): void;
 
         /**
          * Controls the bracket match highlighting function in the buffer.  If
@@ -677,7 +677,7 @@ export namespace GtkSource {
          * The buffer holds a reference to `language`.
          * @param language a {@link GtkSource.Language} to set, or `null`.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
 
         /**
          * Sets the number of undo levels for user actions the buffer will
@@ -701,14 +701,14 @@ export namespace GtkSource {
          * style scheme is used.
          * @param scheme a {@link GtkSource.StyleScheme} or `null`.
          */
-        set_style_scheme(scheme: (StyleScheme | null)): void;
+        set_style_scheme(scheme: StyleScheme | null): void;
 
         /**
          * Set the buffer undo manager. If `manager` is `null` the default undo manager
          * will be set.
          * @param manager A {@link GtkSource.UndoManager} or `null`.
          */
-        set_undo_manager(manager: (UndoManager | null)): void;
+        set_undo_manager(manager: UndoManager | null): void;
 
         /**
          * Undoes the last user action which modified the buffer.  Use
@@ -1363,7 +1363,7 @@ export namespace GtkSource {
          * @param view a {@link Gtk.TextView} on which the info window should be positioned.
          * @param iter a {@link Gtk.TextIter}.
          */
-        move_to_iter(view: Gtk.TextView, iter: (Gtk.TextIter | null)): void;
+        move_to_iter(view: Gtk.TextView, iter: Gtk.TextIter | null): void;
 
         process_resize(): void;
 
@@ -1386,7 +1386,7 @@ export namespace GtkSource {
          * be created and added to the window.
          * @param widget a {@link Gtk.Widget}.
          */
-        set_widget(widget: (Gtk.Widget | null)): void;
+        set_widget(widget: Gtk.Widget | null): void;
 
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
@@ -1499,11 +1499,11 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: string, text: string, icon: (GdkPixbuf.Pixbuf | null), info: (string | null)): CompletionItem;
+        static ["new"](label: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem;
 
-        static new_from_stock(label: (string | null), text: string, stock: string, info: (string | null)): CompletionItem;
+        static new_from_stock(label: string | null, text: string, stock: string, info: string | null): CompletionItem;
 
-        static new_with_markup(markup: string, text: string, icon: (GdkPixbuf.Pixbuf | null), info: (string | null)): CompletionItem;
+        static new_with_markup(markup: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem;
 
         // Signals
         /** @signal */
@@ -1656,7 +1656,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-tooltip": (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gtk.Tooltip) => (boolean | void);
+            "query-tooltip": (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gtk.Tooltip) => boolean | void;
             "notify::view": (pspec: GObject.ParamSpec) => void;
             "notify::window-type": (pspec: GObject.ParamSpec) => void;
         }
@@ -1773,7 +1773,7 @@ export namespace GtkSource {
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterDataFunc} to use.
          */
-        set_cell_data_func(renderer: Gtk.CellRenderer, func: (GutterDataFunc | null)): void;
+        set_cell_data_func(renderer: Gtk.CellRenderer, func: GutterDataFunc | null): void;
 
         /**
          * Sets the {@link GtkSource.GutterSizeFunc} to use for `renderer`. This function is
@@ -1782,7 +1782,7 @@ export namespace GtkSource {
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterSizeFunc} to use.
          */
-        set_cell_size_func(renderer: Gtk.CellRenderer, func: (GutterSizeFunc | null)): void;
+        set_cell_size_func(renderer: Gtk.CellRenderer, func: GutterSizeFunc | null): void;
     }
 
 
@@ -2036,7 +2036,7 @@ export namespace GtkSource {
          * @param content_type a content type (as in GIO API), or `null`.
          * @returns a {@link GtkSource.Language}, or `null` if there is no suitable language for given `filename` and/or `content_type`. Return value is owned by `lm` and should not be freed.
          */
-        guess_language(filename: (string | null), content_type: (string | null)): Language;
+        guess_language(filename: string | null, content_type: string | null): Language;
 
         /**
          * Sets the list of directories where the `lm` looks for
@@ -2053,7 +2053,7 @@ export namespace GtkSource {
          * </note>
          * @param dirs a `null`-terminated array of strings or `null`.
          */
-        set_search_path(dirs: (string[] | null)): void;
+        set_search_path(dirs: string[] | null): void;
     }
 
 
@@ -2767,7 +2767,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for the footer text, or `null`.
          */
-        set_footer_font_name(font_name: (string | null)): void;
+        set_footer_font_name(font_name: string | null): void;
 
         /**
          * Sets strftime like header format strings, to be printed on the
@@ -2793,7 +2793,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the footer.
          * @param right a format string to print on the right of the footer.
          */
-        set_footer_format(separator: boolean, left: (string | null), center: (string | null), right: (string | null)): void;
+        set_footer_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
         /**
          * Sets the font for printing the page header. If
@@ -2809,7 +2809,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for header text, or `null`.
          */
-        set_header_font_name(font_name: (string | null)): void;
+        set_header_font_name(font_name: string | null): void;
 
         /**
          * Sets strftime like header format strings, to be printed on the
@@ -2835,7 +2835,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the header.
          * @param right a format string to print on the right of the header.
          */
-        set_header_format(separator: boolean, left: (string | null), center: (string | null), right: (string | null)): void;
+        set_header_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
         /**
          * Sets whether the printed text will be highlighted according to the
@@ -2868,7 +2868,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for line numbers, or `null`.
          */
-        set_line_numbers_font_name(font_name: (string | null)): void;
+        set_line_numbers_font_name(font_name: string | null): void;
 
         /**
          * Sets whether you want to print a footer in each page.  The
@@ -3390,7 +3390,7 @@ export namespace GtkSource {
          * If `path` is `null`, the search path is reset to default.
          * @param path a `null`-terminated array of strings or `null`.
          */
-        set_search_path(path: (string[] | null)): void;
+        set_search_path(path: string[] | null): void;
     }
 
 
@@ -3915,7 +3915,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param color background color or `null` to unset it.
          */
-        set_mark_category_background(category: string, color: (Gdk.Color | null)): void;
+        set_mark_category_background(category: string, color: Gdk.Color | null): void;
 
         /**
          * Sets the icon to be used for `category` to the named theme item `name`.
@@ -3923,7 +3923,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param name the themed icon name, or `null`.
          */
-        set_mark_category_icon_from_icon_name(category: string, name: (string | null)): void;
+        set_mark_category_icon_from_icon_name(category: string, name: string | null): void;
 
         /**
          * Sets the icon to be used for `category` to `pixbuf`.
@@ -3931,7 +3931,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`.
          */
-        set_mark_category_icon_from_pixbuf(category: string, pixbuf: (GdkPixbuf.Pixbuf | null)): void;
+        set_mark_category_icon_from_pixbuf(category: string, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * Sets the icon to be used for `category` to the stock item `stock_id`.
@@ -3939,7 +3939,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param stock_id the stock id, or `null`.
          */
-        set_mark_category_icon_from_stock(category: string, stock_id: (string | null)): void;
+        set_mark_category_icon_from_stock(category: string, stock_id: string | null): void;
 
         /**
          * Associates a given `pixbuf` with a given mark `category`.
@@ -3947,7 +3947,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`.
          */
-        set_mark_category_pixbuf(category: string, pixbuf: (GdkPixbuf.Pixbuf | null)): void;
+        set_mark_category_pixbuf(category: string, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * Set the `priority` for the given mark `category`. When there are
@@ -3988,14 +3988,14 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
          */
-        set_mark_category_tooltip_func(category: string, func: (ViewMarkTooltipFunc | null)): void;
+        set_mark_category_tooltip_func(category: string, func: ViewMarkTooltipFunc | null): void;
 
         /**
          * See `gtk_source_view_set_mark_category_tooltip_func()` for more information.
          * @param category a mark category.
          * @param markup_func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
          */
-        set_mark_category_tooltip_markup_func(category: string, markup_func: (ViewMarkTooltipFunc | null)): void;
+        set_mark_category_tooltip_markup_func(category: string, markup_func: ViewMarkTooltipFunc | null): void;
 
         /**
          * Sets the position of the right margin in the given `view`.
@@ -4325,9 +4325,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CompletionProposalNamespace {
@@ -4494,9 +4492,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CompletionProviderNamespace {
@@ -4656,9 +4652,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface UndoManagerNamespace {

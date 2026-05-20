@@ -61,13 +61,10 @@ export namespace CMenu {
 
     namespace DesktopAppInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {}
     }
 
     /**
@@ -149,7 +146,7 @@ export namespace CMenu {
          * which contains the Flatpak App ID
          * @returns the flatpak app id or `null`
          */
-        get_flatpak_app_id(): (string | null);
+        get_flatpak_app_id(): string | null;
 
         /**
          * Gets the generic name from the destkop file.
@@ -183,7 +180,7 @@ export namespace CMenu {
          * @param key the key to look up
          * @returns a newly allocated string, or `null` if the key     is not found
          */
-        get_locale_string(key: string): (string | null);
+        get_locale_string(key: string): string | null;
 
         /**
          * Gets the value of the NoDisplay key, which helps determine if the
@@ -208,7 +205,7 @@ export namespace CMenu {
          * @param desktop_env a string specifying a desktop name
          * @returns `true` if the `info` should be shown in `desktop_env` according to the `OnlyShowIn` and `NotShowIn` keys, `false` otherwise.
          */
-        get_show_in(desktop_env: (string | null)): boolean;
+        get_show_in(desktop_env: string | null): boolean;
 
         /**
          * Retrieves the StartupWMClass field from `info`. This represents the
@@ -257,7 +254,7 @@ export namespace CMenu {
          * @param action_name the name of the action as from   `g_desktop_app_info_list_actions()`
          * @param launch_context a {@link Gio.AppLaunchContext}
          */
-        launch_action(action_name: string, launch_context: (Gio.AppLaunchContext | null)): void;
+        launch_action(action_name: string, launch_context: Gio.AppLaunchContext | null): void;
 
         /**
          * Returns the list of "additional application actions" supported on the
@@ -322,13 +319,13 @@ export namespace CMenu {
          * started.
          * @returns a string containing the `appinfo`’s   commandline, or `NULL` if this information is not available
          */
-        get_commandline(): (string | null);
+        get_commandline(): string | null;
 
         /**
          * Gets a human-readable description of an installed application.
          * @returns a string containing a description of the application `appinfo`, or `NULL` if none.
          */
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * Gets the display name of the application. The display name is often more
@@ -351,7 +348,7 @@ export namespace CMenu {
          * Gets the icon for the application.
          * @returns the default {@link Gio.Icon} for   `appinfo` or `NULL` if there is no default icon.
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         /**
          * Gets the ID of an application. An id is a string that identifies the
@@ -362,7 +359,7 @@ export namespace CMenu {
          * been constructed.
          * @returns a string containing the application’s ID.
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * Gets the installed name of the application.
@@ -414,7 +411,7 @@ export namespace CMenu {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch(files: (Gio.File[] | null), context: (Gio.AppLaunchContext | null)): boolean;
+        launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
 
         /**
          * Launches the application. This passes the `uris` to the launched application
@@ -433,7 +430,7 @@ export namespace CMenu {
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
-        launch_uris(uris: (string[] | null), context: (Gio.AppLaunchContext | null)): boolean;
+        launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
 
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
@@ -446,21 +443,7 @@ export namespace CMenu {
          * @param context the launch context
          * @param cancellable a {@link Gio.Cancellable}
          */
-        launch_uris_async(uris: (string[] | null), context: (Gio.AppLaunchContext | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Async version of {@link Gio.AppInfo.launch_uris}.
-         * 
-         * The `callback` is invoked immediately after the application launch, but it
-         * waits for activation in case of D-Bus–activated applications and also provides
-         * extended error information for sandboxed applications, see notes for
-         * {@link Gio.AppInfo.launch_default_for_uri_async}.
-         * @param uris a list of URIs to launch.
-         * @param context the launch context
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
-         */
-        launch_uris_async(uris: (string[] | null), context: (Gio.AppLaunchContext | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
@@ -474,7 +457,21 @@ export namespace CMenu {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          */
-        launch_uris_async(uris: (string[] | null), context: (Gio.AppLaunchContext | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Async version of {@link Gio.AppInfo.launch_uris}.
+         * 
+         * The `callback` is invoked immediately after the application launch, but it
+         * waits for activation in case of D-Bus–activated applications and also provides
+         * extended error information for sandboxed applications, see notes for
+         * {@link Gio.AppInfo.launch_default_for_uri_async}.
+         * @param uris a list of URIs to launch.
+         * @param context the launch context
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
+         */
+        launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
@@ -586,13 +583,13 @@ export namespace CMenu {
          * started.
          * @virtual
          */
-        vfunc_get_commandline(): (string | null);
+        vfunc_get_commandline(): string | null;
 
         /**
          * Gets a human-readable description of an installed application.
          * @virtual
          */
-        vfunc_get_description(): (string | null);
+        vfunc_get_description(): string | null;
 
         /**
          * Gets the display name of the application. The display name is often more
@@ -615,7 +612,7 @@ export namespace CMenu {
          * Gets the icon for the application.
          * @virtual
          */
-        vfunc_get_icon(): (Gio.Icon | null);
+        vfunc_get_icon(): Gio.Icon | null;
 
         /**
          * Gets the ID of an application. An id is a string that identifies the
@@ -626,7 +623,7 @@ export namespace CMenu {
          * been constructed.
          * @virtual
          */
-        vfunc_get_id(): (string | null);
+        vfunc_get_id(): string | null;
 
         /**
          * Gets the installed name of the application.
@@ -678,7 +675,7 @@ export namespace CMenu {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch(files: (Gio.File[] | null), context: (Gio.AppLaunchContext | null)): boolean;
+        vfunc_launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
 
         /**
          * Launches the application. This passes the `uris` to the launched application
@@ -697,7 +694,7 @@ export namespace CMenu {
          * @param context the launch context
          * @virtual
          */
-        vfunc_launch_uris(uris: (string[] | null), context: (Gio.AppLaunchContext | null)): boolean;
+        vfunc_launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
 
         /**
          * Async version of {@link Gio.AppInfo.launch_uris}.
@@ -712,7 +709,7 @@ export namespace CMenu {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          * @virtual
          */
-        vfunc_launch_uris_async(uris: (string[] | null), context: (Gio.AppLaunchContext | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.

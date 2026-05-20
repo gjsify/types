@@ -450,7 +450,7 @@ export namespace Retro {
      * @param log_level the log level, either from {@link GLib.LogLevelFlags} or a user-defined level
      * @param message the message to log
      */
-    function g_log(sender: Core, log_domain: (string | null), log_level: GLib.LogLevelFlags, message: string): void;
+    function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string): void;
 
     function gtk_get_resource(): Gio.Resource;
 
@@ -491,13 +491,10 @@ export namespace Retro {
 
     namespace ControllerIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -564,7 +561,7 @@ export namespace Retro {
              * @signal
              * @run-last
              */
-            message: (arg0: string, arg1: number) => (boolean | void);
+            message: (arg0: string, arg1: number) => boolean | void;
             /**
              * The ::options-set signal is emitted when the core sets the
              * options during boot.
@@ -579,7 +576,7 @@ export namespace Retro {
              * @signal
              * @run-last
              */
-            shutdown: () => (boolean | void);
+            shutdown: () => boolean | void;
             /**
              * The ::video-output signal is emitted each time a new video frame is emitted
              * by the core.
@@ -911,7 +908,7 @@ export namespace Retro {
          * @param port the port number
          * @param controller a {@link Retro.Controller}
          */
-        set_controller(port: number, controller: (Controller | null)): void;
+        set_controller(port: number, controller: Controller | null): void;
 
         /**
          * Sets the current media index.
@@ -928,13 +925,13 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @param controller a {@link Retro.Controller}
          */
-        set_default_controller(controller_type: ControllerType, controller: (Controller | null)): void;
+        set_default_controller(controller_type: ControllerType, controller: Controller | null): void;
 
         /**
          * Sets the widget whose key events will be forwarded to `self`.
          * @param widget a {@link Gtk.Widget}, or `null`
          */
-        set_keyboard(widget: (Gtk.Widget | null)): void;
+        set_keyboard(widget: Gtk.Widget | null): void;
 
         /**
          * Sets the medias to load into the core.
@@ -949,7 +946,7 @@ export namespace Retro {
          * @param memory_type the type of memory
          * @param bytes a {@link GLib.Bytes}
          */
-        set_memory(memory_type: MemoryType, bytes: (GLib.Bytes | Uint8Array)): void;
+        set_memory(memory_type: MemoryType, bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * @param runahead 
@@ -968,7 +965,7 @@ export namespace Retro {
          * Sets the state of the `self`.
          * @param bytes a {@link GLib.Bytes}
          */
-        set_state(bytes: (GLib.Bytes | Uint8Array)): void;
+        set_state(bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * Sets the system directory of the core.
@@ -983,13 +980,10 @@ export namespace Retro {
 
     namespace CoreDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1033,21 +1027,21 @@ export namespace Retro {
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_md5(firmware: string): (string | null);
+        get_firmware_md5(firmware: string): string | null;
 
         /**
          * Gets the demanded path to the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_path(firmware: string): (string | null);
+        get_firmware_path(firmware: string): string | null;
 
         /**
          * Gets the SHA512 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_sha512(firmware: string): (string | null);
+        get_firmware_sha512(firmware: string): string | null;
 
         /**
          * Gets the list of firmwares used by the core for this platform.
@@ -1060,7 +1054,7 @@ export namespace Retro {
          * Gets the icon, or `null` if it doesn't exist.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         /**
          * Gets the ID of `self`.
@@ -1098,19 +1092,19 @@ export namespace Retro {
          * Gets the module file name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_module(): (string | null);
+        get_module(): string | null;
 
         /**
          * Gets the module file, or `null` if it doesn't exist.
          * @returns a {@link Gio.File} or `null`
          */
-        get_module_file(): (Gio.File | null);
+        get_module_file(): Gio.File | null;
 
         /**
          * Gets the name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets whether the platform supports all of the given MIME types.
@@ -1331,7 +1325,7 @@ export namespace Retro {
          * Sets the `self` as the default controllers of `core`.
          * @param core a {@link Retro.Core}
          */
-        set_as_default_controller(core: (Core | null)): void;
+        set_as_default_controller(core: Core | null): void;
 
         /**
          * Sets whether the pointer should be grabbed when clicking on the view. This
@@ -1345,7 +1339,7 @@ export namespace Retro {
          * Sets `core` as the {@link Retro.Core} handled by `self`.
          * @param core a {@link Retro.Core}, or `null`
          */
-        set_core(core: (Core | null)): void;
+        set_core(core: Core | null): void;
 
         /**
          * Sets the video filter to use to render the core's video on `self`.
@@ -1358,7 +1352,7 @@ export namespace Retro {
          * an empty configuration.
          * @param mapping a {@link Retro.KeyJoypadMapping}
          */
-        set_key_joypad_mapping(mapping: (KeyJoypadMapping | null)): void;
+        set_key_joypad_mapping(mapping: KeyJoypadMapping | null): void;
 
         /**
          * Sets `pixbuf` as the currently displayed video frame.
@@ -1381,13 +1375,10 @@ export namespace Retro {
 
     namespace KeyJoypadMapping {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1526,7 +1517,7 @@ export namespace Retro {
          * Sets `core` as the {@link Retro.Core} handled by `self`.
          * @param core a {@link Retro.Core}, or `null`
          */
-        set_core(core: (Core | null)): void;
+        set_core(core: Core | null): void;
 
         /**
          * Sets the speed rate at which to run the core.
@@ -1548,13 +1539,10 @@ export namespace Retro {
 
     namespace ModuleIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1598,7 +1586,7 @@ export namespace Retro {
          * or `null` if the end was reached.
          * @returns a {@link Retro.CoreDescriptor}, or `null`
          */
-        get(): (CoreDescriptor | null);
+        get(): CoreDescriptor | null;
 
         /**
          * Fetch the next {@link Retro.ModuleIterator}.
@@ -1610,13 +1598,10 @@ export namespace Retro {
 
     namespace ModuleQuery {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1674,9 +1659,7 @@ export namespace Retro {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1748,13 +1731,10 @@ export namespace Retro {
 
     namespace OptionIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1911,10 +1891,7 @@ export namespace Retro {
         static $gtype: GObject.GType<Input>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Input;
 
@@ -1984,7 +1961,7 @@ export namespace Retro {
              * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
              * @virtual
              */
-            vfunc_get_capabilities(): (bigint | number);
+            vfunc_get_capabilities(): bigint | number;
 
             /**
              * Gets the main type of the controller.
@@ -2016,9 +1993,7 @@ export namespace Retro {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ControllerNamespace {

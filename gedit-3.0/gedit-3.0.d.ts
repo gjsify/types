@@ -68,7 +68,7 @@ export namespace Gedit {
      * @param line_pos the line position to place the cursor
      * @param column_pos the line column to place the cursor
      */
-    function commands_load_location(window: Window, location: Gio.File, encoding: (GtkSource.Encoding | null), line_pos: number, column_pos: number): void;
+    function commands_load_location(window: Window, location: Gio.File, encoding: GtkSource.Encoding | null, line_pos: number, column_pos: number): void;
 
     /**
      * Loads `locations`. Ignore non-existing locations.
@@ -79,7 +79,7 @@ export namespace Gedit {
      * @param column_pos the line column to place the cursor
      * @returns the locations that were loaded.
      */
-    function commands_load_locations(window: Window, locations: Gio.File[], encoding: (GtkSource.Encoding | null), line_pos: number, column_pos: number): Document[];
+    function commands_load_locations(window: Window, locations: Gio.File[], encoding: GtkSource.Encoding | null, line_pos: number, column_pos: number): Document[];
 
     /**
      * Asynchronously save all documents belonging to `window`. The result of the
@@ -109,7 +109,7 @@ export namespace Gedit {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @since 3.14
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Asynchronously save the `document`. `document` must belong to `window`. The
      * source object of the async task is `document` (which will be the first
@@ -123,7 +123,7 @@ export namespace Gedit {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 3.14
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Document> | null)): void;
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Document> | null): void;
     /**
      * Asynchronously save the `document`. `document` must belong to `window`. The
      * source object of the async task is `document` (which will be the first
@@ -137,7 +137,7 @@ export namespace Gedit {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      * @since 3.14
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Document> | null)): (globalThis.Promise<boolean> | void);
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Document> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes an asynchronous document saving operation started with
@@ -350,9 +350,7 @@ export namespace Gedit {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -424,7 +422,7 @@ export namespace Gedit {
          * @param screen 
          * @returns the new {@link Gedit.Window}
          */
-        create_window(screen: (Gdk.Screen | null)): Window;
+        create_window(screen: Gdk.Screen | null): Window;
 
         /**
          * Returns all the documents currently open in {@link Gedit.App}.
@@ -699,7 +697,7 @@ export namespace Gedit {
         /**
          * @param lang 
          */
-        set_language(lang: (GtkSource.Language | null)): void;
+        set_language(lang: GtkSource.Language | null): void;
 
         /**
          * Sets the new search context for the document. Use this function only when the
@@ -713,7 +711,7 @@ export namespace Gedit {
          * use `gedit_document_get_search_context()`.
          * @param search_context the new {@link GtkSource.SearchContext}
          */
-        set_search_context(search_context: (GtkSource.SearchContext | null)): void;
+        set_search_context(search_context: GtkSource.SearchContext | null): void;
     }
 
 
@@ -897,7 +895,7 @@ export namespace Gedit {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -925,7 +923,7 @@ export namespace Gedit {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -959,7 +957,7 @@ export namespace Gedit {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1010,7 +1008,7 @@ export namespace Gedit {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1047,7 +1045,7 @@ export namespace Gedit {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1102,7 +1100,7 @@ export namespace Gedit {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1274,7 +1272,7 @@ export namespace Gedit {
          * Returns whether `object_path` is a valid object path
          * @param object_path the object path
          */
-        static is_valid_object_path(object_path: (string | null)): boolean;
+        static is_valid_object_path(object_path: string | null): boolean;
 
         /**
          * @param gtype 
@@ -1294,7 +1292,7 @@ export namespace Gedit {
          * @param object_path the object path
          * @param method the method
          */
-        static type_identifier(object_path: (string | null), method: (string | null)): string;
+        static type_identifier(object_path: string | null, method: string | null): string;
 
         // Methods
         /**
@@ -1347,9 +1345,7 @@ export namespace Gedit {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1603,9 +1599,7 @@ export namespace Gedit {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -1982,9 +1976,7 @@ export namespace Gedit {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -2259,7 +2251,7 @@ export namespace Gedit {
          * @param jump_to `true` to set the new {@link Gedit.Tab} as active
          * @returns a new {@link Gedit.Tab}
          */
-        create_tab_from_location(location: Gio.File, encoding: (GtkSource.Encoding | null), line_pos: number, column_pos: number, create: boolean, jump_to: boolean): Tab;
+        create_tab_from_location(location: Gio.File, encoding: GtkSource.Encoding | null, line_pos: number, column_pos: number, create: boolean, jump_to: boolean): Tab;
 
         /**
          * @param stream a {@link Gio.InputStream}
@@ -2269,7 +2261,7 @@ export namespace Gedit {
          * @param jump_to `true` to set the new {@link Gedit.Tab} as active
          * @returns a new {@link Gedit.Tab}
          */
-        create_tab_from_stream(stream: Gio.InputStream, encoding: (GtkSource.Encoding | null), line_pos: number, column_pos: number, jump_to: boolean): Tab;
+        create_tab_from_stream(stream: Gio.InputStream, encoding: GtkSource.Encoding | null, line_pos: number, column_pos: number, jump_to: boolean): Tab;
 
         /**
          * Gets the active {@link Gedit.Document}.
@@ -2435,7 +2427,7 @@ export namespace Gedit {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2481,7 +2473,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2495,7 +2487,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2519,7 +2511,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2541,7 +2533,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2668,7 +2660,7 @@ export namespace Gedit {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2715,7 +2707,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2729,7 +2721,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2753,7 +2745,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2775,7 +2767,7 @@ export namespace Gedit {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2851,7 +2843,7 @@ export namespace Gedit {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -2907,7 +2899,7 @@ export namespace Gedit {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.

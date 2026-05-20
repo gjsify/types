@@ -38,14 +38,14 @@ export namespace CambalachePrivate {
      * @param property_name 
      * @param value 
      */
-    function container_child_set_property_from_string(container: Gtk.Container, child: Gtk.Widget, property_name: string, value: (string | null)): void;
+    function container_child_set_property_from_string(container: Gtk.Container, child: Gtk.Widget, property_name: string, value: string | null): void;
 
     /**
      * @param object 
      * @param property_name 
      * @param value 
      */
-    function object_set_property_from_string(object: GObject.Object, property_name: string, value: (string | null)): void;
+    function object_set_property_from_string(object: GObject.Object, property_name: string, value: string | null): void;
 
     /**
      * @param widget 

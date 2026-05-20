@@ -336,7 +336,7 @@ export namespace Camel {
         static ERROR_GENERIC: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -439,7 +439,7 @@ export namespace Camel {
         static SUMMARY_INVALID: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -934,7 +934,7 @@ export namespace Camel {
         static NOT_CONNECTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1000,7 +1000,7 @@ export namespace Camel {
         static NO_FOLDER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1408,7 +1408,7 @@ export namespace Camel {
      * @param _in input text
      * @returns the minimum charset or NULL for US_ASCII.
      */
-    function charset_best(_in: number[]): (string | null);
+    function charset_best(_in: number[]): string | null;
 
     /**
      * @param isocharset a canonicalised ISO charset
@@ -1432,7 +1432,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns -1 on error;
      */
-    function cipher_canonical_to_stream(part: MimePart, flags: number, ostream: Stream, cancellable: (Gio.Cancellable | null)): number;
+    function cipher_canonical_to_stream(part: MimePart, flags: number, ostream: Stream, cancellable: Gio.Cancellable | null): number;
 
     /**
      * Gets a named property `name` value for the given `cert_info`.
@@ -1453,7 +1453,7 @@ export namespace Camel {
      * @param value_clone a clone function for the `value`
      * @since 3.22
      */
-    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: null, value_clone: (CipherCloneFunc | null)): void;
+    function cipher_certinfo_set_property(cert_info: CipherCertInfo, name: string, value: null, value_clone: CipherCloneFunc | null): void;
 
     /**
      * @param _in 
@@ -1492,7 +1492,7 @@ export namespace Camel {
      * @param bt a {@link GLib.String} with a raw backtrace, or `null`
      * @since 3.30
      */
-    function debug_demangle_backtrace(bt: (GLib.String | null)): GLib.String | null;
+    function debug_demangle_backtrace(bt: GLib.String | null): GLib.String | null;
 
     /**
      * Call this when you're done with your debug output.  If and only if
@@ -1505,7 +1505,7 @@ export namespace Camel {
      * @returns Current backtrace, or `null`, if cannot determine it. Note: Getting backtraces only works if the library was configured with --enable-backtraces. See also `camel_debug_get_raw_backtrace()`
      * @since 3.12
      */
-    function debug_get_backtrace(): (GLib.String | null);
+    function debug_get_backtrace(): GLib.String | null;
 
     /**
      * Gets current raw backtrace leading to this function call.
@@ -1516,7 +1516,7 @@ export namespace Camel {
      * @returns Current raw backtrace, or `null`, if cannot determine it. Note: Getting backtraces only works if the library was configured with --enable-backtraces. See also `camel_debug_get_backtrace()`
      * @since 3.30
      */
-    function debug_get_raw_backtrace(): (GLib.String | null);
+    function debug_get_raw_backtrace(): GLib.String | null;
 
     /**
      * Init camel debug.
@@ -1612,7 +1612,7 @@ export namespace Camel {
      * @param len total-len to decode.
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_fixed_string(_in: null, str: string, len: (bigint | number)): number;
+    function file_util_decode_fixed_string(_in: null, str: string, len: bigint | number): number;
 
     /**
      * Decode a gint64 type.
@@ -1621,7 +1621,7 @@ export namespace Camel {
      * @returns 0 on success, -1 on failure.
      * @since 3.50
      */
-    function file_util_decode_gint64(_in: null, dest: (bigint | number)): number;
+    function file_util_decode_gint64(_in: null, dest: bigint | number): number;
 
     /**
      * Decode an gsize type.
@@ -1629,7 +1629,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_gsize(_in: null, dest: (bigint | number)): number;
+    function file_util_decode_gsize(_in: null, dest: bigint | number): number;
 
     /**
      * Decode an off_t type.
@@ -1637,7 +1637,7 @@ export namespace Camel {
      * @param dest pointer to a variable to put the value in
      * @returns 0 on success, -1 on failure.
      */
-    function file_util_decode_off_t(_in: null, dest: (bigint | number)): number;
+    function file_util_decode_off_t(_in: null, dest: bigint | number): number;
 
     /**
      * Decode a normal string from the input file.
@@ -1653,7 +1653,7 @@ export namespace Camel {
      * @param dest pointer to a variable to store the value in
      * @returns 0 on success, -1 on error.
      */
-    function file_util_decode_time_t(_in: null, dest: (bigint | number)): number;
+    function file_util_decode_time_t(_in: null, dest: bigint | number): number;
 
     /**
      * Retrieve an encoded uint32 from a file.
@@ -1681,7 +1681,7 @@ export namespace Camel {
      * @param len total-len of str to store
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_fixed_string(out: null, str: string, len: (bigint | number)): number;
+    function file_util_encode_fixed_string(out: null, str: string, len: bigint | number): number;
 
     /**
      * Encode a gint64 type.
@@ -1690,7 +1690,7 @@ export namespace Camel {
      * @returns 0 on success, -1 on error.
      * @since 3.50
      */
-    function file_util_encode_gint64(out: null, value: (bigint | number)): number;
+    function file_util_encode_gint64(out: null, value: bigint | number): number;
 
     /**
      * Encode an gsize type.
@@ -1698,7 +1698,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_gsize(out: null, value: (bigint | number)): number;
+    function file_util_encode_gsize(out: null, value: bigint | number): number;
 
     /**
      * Encode an off_t type.
@@ -1706,7 +1706,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_off_t(out: null, value: (bigint | number)): number;
+    function file_util_encode_off_t(out: null, value: bigint | number): number;
 
     /**
      * Encode a normal string and save it in the output file.
@@ -1722,7 +1722,7 @@ export namespace Camel {
      * @param value value to output
      * @returns 0 on success, -1 on error.
      */
-    function file_util_encode_time_t(out: null, value: (bigint | number)): number;
+    function file_util_encode_time_t(out: null, value: bigint | number): number;
 
     /**
      * Utility function to save an uint32 to a file.
@@ -1784,7 +1784,7 @@ export namespace Camel {
      * @returns a newly allocated #addrinfo. Free it    with `camel_freeaddrinfo()` when done with it.
      * @since 2.22
      */
-    function getaddrinfo(name: string, service: string, hints: null, cancellable: (Gio.Cancellable | null)): null;
+    function getaddrinfo(name: string, service: string, hints: null, cancellable: Gio.Cancellable | null): null;
 
     /**
      * @param _in 
@@ -1796,7 +1796,7 @@ export namespace Camel {
      * @param _in 
      * @param headerlen 
      */
-    function header_address_fold(_in: string, headerlen: (bigint | number)): string;
+    function header_address_fold(_in: string, headerlen: bigint | number): string;
 
     /**
      * TODO: Document me.
@@ -1880,7 +1880,7 @@ export namespace Camel {
      * @param _in 
      * @param headerlen 
      */
-    function header_fold(_in: string, headerlen: (bigint | number)): string;
+    function header_fold(_in: string, headerlen: bigint | number): string;
 
     /**
      * Decodes a header which contains rfc2047 encoded-word tokens that
@@ -1898,7 +1898,7 @@ export namespace Camel {
      * @param tz_offset Timezone offset
      * @returns a valid string representation of the date.
      */
-    function header_format_date(date: (bigint | number), tz_offset: number): string;
+    function header_format_date(date: bigint | number, tz_offset: number): string;
 
     /**
      * @param _in 
@@ -1931,7 +1931,7 @@ export namespace Camel {
      * @param domain domain to use (like "example.com") for the ID suffix; can be `null`
      * @returns Unique message ID.
      */
-    function header_msgid_generate(domain: (string | null)): string;
+    function header_msgid_generate(domain: string | null): string;
 
     /**
      * @param _in 
@@ -1950,7 +1950,7 @@ export namespace Camel {
      * @param _in a header param value to decode
      * @returns Decode list of parameters.    Free with `camel_header_param_list_free()` when done with it.
      */
-    function header_param_list_decode(_in: (string | null)): null;
+    function header_param_list_decode(_in: string | null): null;
 
     /**
      * @param params 
@@ -2004,7 +2004,7 @@ export namespace Camel {
      * @param headers a {@link Camel.NameValueArray} with headers
      * @returns The mailing list header, or `null`, if none is found
      */
-    function headers_dup_mailing_list(headers: NameValueArray): (string | null);
+    function headers_dup_mailing_list(headers: NameValueArray): string | null;
 
     /**
      * Converts IDN (Internationalized Domain Name) into ASCII representation.
@@ -2014,7 +2014,7 @@ export namespace Camel {
      * @returns Newly allocated string with only ASCII letters   describing the `host` or `null`, when the `host` is `null`. Free the returned   string with `g_free()` when no longer needed.
      * @since 3.16
      */
-    function host_idna_to_ascii(host: (string | null)): (string | null);
+    function host_idna_to_ascii(host: string | null): string | null;
 
     /**
      * Check whether the `hostname` requires conversion to ASCII. That can
@@ -2055,7 +2055,7 @@ export namespace Camel {
      * @param tm the #tm to store the result in
      * @param offset the `gint` to store the offset in
      */
-    function localtime_with_offset(tt: (bigint | number), tm: null, offset: number): void;
+    function localtime_with_offset(tt: bigint | number, tm: null, offset: number): void;
 
     /**
      * Create an exclusive lock using .lock semantics.
@@ -2230,7 +2230,7 @@ export namespace Camel {
      * @param own whether the string pool will own the memory pointed to by       `string`, if `string` is not yet in the pool
      * @returns a canonicalized copy of `string`
      */
-    function pstring_add(string: (string | null), own: boolean): (string | null);
+    function pstring_add(string: string | null, own: boolean): string | null;
 
     /**
      * Returns whether the `string` exists in the string pool.
@@ -2240,7 +2240,7 @@ export namespace Camel {
      * @returns Whether the `string` exists in the string pool
      * @since 3.22
      */
-    function pstring_contains(string: (string | null)): boolean;
+    function pstring_contains(string: string | null): boolean;
 
     /**
      * Dumps to stdout memory statistic about the string pool.
@@ -2253,7 +2253,7 @@ export namespace Camel {
      * zero it will be deallocated.  `null` and the empty string are special cased.
      * @param string string to free
      */
-    function pstring_free(string: (string | null)): void;
+    function pstring_free(string: string | null): void;
 
     /**
      * Returns the canonicalized copy of `string` without increasing its
@@ -2265,7 +2265,7 @@ export namespace Camel {
      * @returns a canonicalized copy of `string`
      * @since 2.24
      */
-    function pstring_peek(string: (string | null)): (string | null);
+    function pstring_peek(string: string | null): string | null;
 
     /**
      * Create a new pooled string entry for `strings`.  A pooled string
@@ -2278,7 +2278,7 @@ export namespace Camel {
      * @param string string to copy
      * @returns a canonicalized copy of `string`
      */
-    function pstring_strdup(string: (string | null)): (string | null);
+    function pstring_strdup(string: string | null): string | null;
 
     /**
      * Decodes a block of quoted-printable encoded data. Performs a
@@ -2288,7 +2288,7 @@ export namespace Camel {
      * @param saveme leftover bits that have not yet been decoded
      * @returns the number of bytes decoded
      */
-    function quoted_decode_step(_in: (Uint8Array | string), out: (Uint8Array | string), saveme: number[]): [number, Uint8Array, number[]];
+    function quoted_decode_step(_in: Uint8Array | string, out: Uint8Array | string, saveme: number[]): [number, Uint8Array, number[]];
 
     /**
      * Quoted-printable encodes a block of text. Call this when finished
@@ -2299,7 +2299,7 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function quoted_encode_close(_in: (Uint8Array | string), out: (Uint8Array | string), save: number[]): [number, Uint8Array, number[]];
+    function quoted_encode_close(_in: Uint8Array | string, out: Uint8Array | string, save: number[]): [number, Uint8Array, number[]];
 
     /**
      * Quoted-printable encodes a block of text. Performs an 'encode
@@ -2310,7 +2310,7 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function quoted_encode_step(_in: (Uint8Array | string), out: (Uint8Array | string), save: number[]): [number, Uint8Array, number[]];
+    function quoted_encode_step(_in: Uint8Array | string, out: Uint8Array | string, save: number[]): [number, Uint8Array, number[]];
 
     /**
      * Cancellable libc `read()` replacement.
@@ -2323,7 +2323,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes read or -1 on fail. On failure, errno will be set appropriately.
      */
-    function read(fd: number, buf: string, n: (bigint | number), cancellable: (Gio.Cancellable | null)): number;
+    function read(fd: number, buf: string, n: bigint | number, cancellable: Gio.Cancellable | null): number;
 
     /**
      * @param header 
@@ -2362,7 +2362,7 @@ export namespace Camel {
      * @returns decoded header value, suitable for text comparison.    Free the returned pointer with `g_free()` when done with it.
      * @since 3.22
      */
-    function search_get_header_decoded(header_name: string, header_value: string, default_charset: (string | null)): string;
+    function search_get_header_decoded(header_name: string, header_value: string, default_charset: string | null): string;
 
     /**
      * @param headers a {@link Camel.NameValueArray}
@@ -2370,7 +2370,7 @@ export namespace Camel {
      * @returns The `headers`, decoded where needed.    Free the returned pointer with `g_free()` when done with it.
      * @since 3.28
      */
-    function search_get_headers_decoded(headers: NameValueArray, default_charset: (string | null)): string;
+    function search_get_headers_decoded(headers: NameValueArray, default_charset: string | null): string;
 
     /**
      * @param header_name A header name, like "Subject"
@@ -2461,7 +2461,7 @@ export namespace Camel {
      * @returns `true`, when the `str` is `null`, an empty string or when    it contains only ASCII letters.
      * @since 3.44
      */
-    function string_is_all_ascii(str: (string | null)): boolean;
+    function string_is_all_ascii(str: string | null): boolean;
 
     /**
      * @param haystack 
@@ -2502,7 +2502,7 @@ export namespace Camel {
      * @returns `src_time` modified by the given parameters as date, with    the time part being beginning of the day.
      * @since 3.24
      */
-    function time_value_apply(src_time: (bigint | number), unit: TimeUnit, value: number): number;
+    function time_value_apply(src_time: bigint | number, unit: TimeUnit, value: number): number;
 
     /**
      * @param string 
@@ -2595,7 +2595,7 @@ export namespace Camel {
      * @param escape_extra additional characters beyond " \"%#<>{}|\^[]`" to escape (or `null`)
      * @returns the encoded string
      */
-    function url_encode(part: string, escape_extra: (string | null)): string;
+    function url_encode(part: string, escape_extra: string | null): string;
 
     /**
      * @param _in 
@@ -2683,7 +2683,7 @@ export namespace Camel {
      * @returns Valid UTF-8 string, with replaced incorrect letters.    Free it with `g_free()`, when no longer needed.
      * @since 3.34
      */
-    function utf8_make_valid_len(text: string, text_len: (bigint | number)): string;
+    function utf8_make_valid_len(text: string, text_len: bigint | number): string;
 
     /**
      * Output a 32 bit unicode character as UTF-8 octets.  At most 4 octets will
@@ -2720,7 +2720,7 @@ export namespace Camel {
      * @returns The read number, or the `default_value`, if the `bdata_ptr` doesn't    point to a number.
      * @since 3.24
      */
-    function util_bdata_get_number(bdata_ptr: string, default_value: (bigint | number)): number;
+    function util_bdata_get_number(bdata_ptr: string, default_value: bigint | number): number;
 
     /**
      * Reads a string data from the `bdata_ptr` and moves the `bdata_ptr`
@@ -2742,7 +2742,7 @@ export namespace Camel {
      * @param value a value to store
      * @since 3.24
      */
-    function util_bdata_put_number(bdata_str: GLib.String, value: (bigint | number)): void;
+    function util_bdata_put_number(bdata_str: GLib.String, value: bigint | number): void;
 
     /**
      * Puts the string `value` at the end of the `bdata_str`. In case the `bdata_str`
@@ -2782,7 +2782,7 @@ export namespace Camel {
      * @returns a newly allocated string with encoded `display_name`    and `header_name`
      * @since 3.42
      */
-    function util_encode_user_header_setting(display_name: (string | null), header_name: string): string;
+    function util_encode_user_header_setting(display_name: string | null, header_name: string): string;
 
     /**
      * Fill `info` 's user-headers with the user-defined headers from
@@ -2825,7 +2825,7 @@ export namespace Camel {
      * @returns the `email_address` with only ASCII letters,    if such conversion is needed or `null`, when no conversion was    required. See: `camel_hostname_utils_requires_ascii()`, `camel_internet_address_sanitize_ascii_domain()`,    `camel_utils_sanitize_ascii_domain_in_url_str()`
      * @since 3.44
      */
-    function utils_sanitize_ascii_domain_in_address(email_address: (string | null), do_format: boolean): (string | null);
+    function utils_sanitize_ascii_domain_in_address(email_address: string | null, do_format: boolean): string | null;
 
     /**
      * Checks whether the host name of the `url` requires conversion
@@ -2844,7 +2844,7 @@ export namespace Camel {
      * @returns converted `url_str` to ASCII host name, or `null`, when    no conversion was needed. See: `camel_hostname_utils_requires_ascii()`, `camel_utils_sanitize_ascii_domain_in_url()`
      * @since 3.44
      */
-    function utils_sanitize_ascii_domain_in_url_str(url_str: (string | null)): (string | null);
+    function utils_sanitize_ascii_domain_in_url_str(url_str: string | null): string | null;
 
     /**
      * Uudecodes a chunk of data. Performs a 'decode step' on a chunk of
@@ -2855,7 +2855,7 @@ export namespace Camel {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes decoded
      */
-    function uudecode_step(_in: (Uint8Array | string), out: (Uint8Array | string), save: number[]): [number, Uint8Array, number[]];
+    function uudecode_step(_in: Uint8Array | string, out: Uint8Array | string, save: number[]): [number, Uint8Array, number[]];
 
     /**
      * Uuencodes a chunk of data. Call this when finished encoding data
@@ -2866,7 +2866,7 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function uuencode_close(_in: (Uint8Array | string), out: (Uint8Array | string), uubuf: (Uint8Array | string), save: number[]): [number, Uint8Array, Uint8Array, number[]];
+    function uuencode_close(_in: Uint8Array | string, out: Uint8Array | string, uubuf: Uint8Array | string, save: number[]): [number, Uint8Array, Uint8Array, number[]];
 
     /**
      * Uuencodes a chunk of data. Performs an 'encode step', only encodes
@@ -2879,7 +2879,7 @@ export namespace Camel {
      * @param save leftover bits that have not yet been encoded
      * @returns the number of bytes encoded
      */
-    function uuencode_step(_in: (Uint8Array | string), out: (Uint8Array | string), uubuf: (Uint8Array | string), save: number[]): [number, Uint8Array, Uint8Array, number[]];
+    function uuencode_step(_in: Uint8Array | string, out: Uint8Array | string, uubuf: Uint8Array | string, save: number[]): [number, Uint8Array, Uint8Array, number[]];
 
     /**
      * Cancellable libc `write()` replacement.
@@ -2892,7 +2892,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes written or -1 on fail. On failure, errno will be set appropriately.
      */
-    function write(fd: number, buf: string, n: (bigint | number), cancellable: (Gio.Cancellable | null)): number;
+    function write(fd: number, buf: string, n: bigint | number, cancellable: Gio.Cancellable | null): number;
 
     /**
      * Performs a 'decode step' on a chunk of yEncoded data of length
@@ -2907,7 +2907,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes decoded
      */
-    function ydecode_step(_in: (Uint8Array | string)): [number, Uint8Array, number, number, number];
+    function ydecode_step(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
 
     /**
      * Call this function when finished encoding data with
@@ -2921,7 +2921,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes encoded.
      */
-    function yencode_close(_in: (Uint8Array | string)): [number, Uint8Array, number, number, number];
+    function yencode_close(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
 
     /**
      * Performs an yEncode 'encode step' on a chunk of raw data of length
@@ -2936,7 +2936,7 @@ export namespace Camel {
      * @param _in input buffer
      * @returns the number of bytes encoded
      */
-    function yencode_step(_in: (Uint8Array | string)): [number, Uint8Array, number, number, number];
+    function yencode_step(_in: Uint8Array | string): [number, Uint8Array, number, number, number];
 
     /**
      * @gir-type Callback
@@ -3012,7 +3012,7 @@ export namespace Camel {
      * @gir-type Callback
      */
     interface ForeachPartFunc {
-        (message: MimeMessage, part: MimePart, parent_part: (MimePart | null)): boolean;
+        (message: MimeMessage, part: MimePart, parent_part: MimePart | null): boolean;
     }
 
     /**
@@ -3040,7 +3040,7 @@ export namespace Camel {
      * @gir-type Callback
      */
     interface SessionCallback {
-        (session: Session, cancellable: (Gio.Cancellable | null)): void;
+        (session: Session, cancellable: Gio.Cancellable | null): void;
     }
 
     /**
@@ -3735,13 +3735,10 @@ export namespace Camel {
 
     namespace Address {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3893,13 +3890,10 @@ export namespace Camel {
 
     namespace BlockFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3922,7 +3916,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](path: string, flags: number, version: string, block_size: (bigint | number)): BlockFile;
+        static ["new"](path: string, flags: number, version: string, block_size: bigint | number): BlockFile;
 
         // Signals
         /** @signal */
@@ -4038,13 +4032,10 @@ export namespace Camel {
 
     namespace CertDB {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4122,7 +4113,7 @@ export namespace Camel {
          * @param fingerprint a fingerprint of a certificate
          * @returns a {@link Camel.Cert} corresponding to the pair of `hostname`   and `fingerprint`, or `null`, if no such certificate is stored in the `certdb`.
          */
-        get_host(hostname: string, fingerprint: string): (Cert | null);
+        get_host(hostname: string, fingerprint: string): Cert | null;
 
         /**
          * Gathers a list of known certificates. Each certificate in the returned {@link GLib.SList}
@@ -4170,7 +4161,7 @@ export namespace Camel {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            session: (Session | null);
+            session: Session | null;
         }
     }
 
@@ -4184,7 +4175,7 @@ export namespace Camel {
         /**
          * @construct-only
          */
-        get session(): (Session | null);
+        get session(): Session | null;
 
         /**
          * Compile-time signal type information.
@@ -4200,7 +4191,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](session: (Session | null)): CipherContext;
+        static ["new"](session: Session | null): CipherContext;
 
         // Signals
         /** @signal */
@@ -4226,7 +4217,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): CipherValidity;
+        vfunc_decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
 
         /**
          * Encrypts the clear-text `ipart` and writes the resulting cipher-text to `opart`.
@@ -4239,7 +4230,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_encrypt_sync(userid: (string | null), recipients: string[], ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_encrypt_sync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param hash 
@@ -4264,7 +4255,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_sign_sync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_sign_sync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Verifies the signature.
@@ -4272,7 +4263,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_verify_sync(ipart: MimePart, cancellable: (Gio.Cancellable | null)): CipherValidity;
+        vfunc_verify_sync(ipart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
 
         // Methods
         /**
@@ -4286,7 +4277,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<CipherValidity>;
+        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<CipherValidity>;
 
         /**
          * Asynchronously decrypts `ipart` into `opart`.
@@ -4300,7 +4291,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously decrypts `ipart` into `opart`.
@@ -4314,7 +4305,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CipherValidity> | void);
+        decrypt(ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CipherValidity> | void;
 
         /**
          * Finishes the operation started with `camel_cipher_context_decrypt()`.
@@ -4330,7 +4321,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a validity/encryption status, or `null` on error
          */
-        decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): CipherValidity;
+        decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
 
         /**
          * Asynchronously encrypts the clear-text `ipart` and
@@ -4348,26 +4339,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        encrypt(userid: (string | null), recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously encrypts the clear-text `ipart` and
-         * writes the resulting cipher-text to `opart`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_cipher_context_encrypt_finish()` to get the result of
-         * the operation.
-         * 
-         * Note: The `userid` is unused, `null` should be passed for it.
-         * @param userid unused
-         * @param recipients an array of recipient key IDs and/or email addresses
-         * @param ipart clear-text {@link Camel.MimePart}
-         * @param opart cipher-text {@link Camel.MimePart}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        encrypt(userid: (string | null), recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        encrypt(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously encrypts the clear-text `ipart` and
@@ -4386,7 +4358,26 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        encrypt(userid: (string | null), recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        encrypt(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously encrypts the clear-text `ipart` and
+         * writes the resulting cipher-text to `opart`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_cipher_context_encrypt_finish()` to get the result of
+         * the operation.
+         * 
+         * Note: The `userid` is unused, `null` should be passed for it.
+         * @param userid unused
+         * @param recipients an array of recipient key IDs and/or email addresses
+         * @param ipart clear-text {@link Camel.MimePart}
+         * @param opart cipher-text {@link Camel.MimePart}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        encrypt(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_cipher_context_encrypt()`.
@@ -4406,12 +4397,12 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        encrypt_sync(userid: (string | null), recipients: string[], ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): boolean;
+        encrypt_sync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @returns a {@link Camel.Session} the `context` had been created with
          */
-        get_session(): (Session | null);
+        get_session(): Session | null;
 
         /**
          * @param hash 
@@ -4437,7 +4428,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously converts the (unsigned) part `ipart` into a new
@@ -4454,7 +4445,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously converts the (unsigned) part `ipart` into a new
@@ -4471,7 +4462,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_cipher_context_sign()`.
@@ -4491,7 +4482,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        sign_sync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: (Gio.Cancellable | null)): boolean;
+        sign_sync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously verifies the signature.
@@ -4503,20 +4494,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        verify(ipart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<CipherValidity>;
-
-        /**
-         * Asynchronously verifies the signature.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_cipher_context_verify_finish()` to get the result of
-         * the operation.
-         * @param ipart the {@link Camel.MimePart} to verify
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        verify(ipart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        verify(ipart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<CipherValidity>;
 
         /**
          * Asynchronously verifies the signature.
@@ -4529,7 +4507,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        verify(ipart: MimePart, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CipherValidity> | void);
+        verify(ipart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously verifies the signature.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_cipher_context_verify_finish()` to get the result of
+         * the operation.
+         * @param ipart the {@link Camel.MimePart} to verify
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        verify(ipart: MimePart, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CipherValidity> | void;
 
         /**
          * Finishes the operation started with `camel_cipher_context_verify()`.
@@ -4544,19 +4535,16 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.CipherValidity} structure containing information about the integrity of the input stream, or `null` on failure to execute at all
          */
-        verify_sync(ipart: MimePart, cancellable: (Gio.Cancellable | null)): CipherValidity;
+        verify_sync(ipart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
     }
 
 
     namespace DB {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4600,7 +4588,7 @@ export namespace Camel {
          * Frees the `record` and all of its associated data.
          * @param record a {@link Camel.MIRecord}
          */
-        static camel_mir_free(record: (MIRecord | null)): void;
+        static camel_mir_free(record: MIRecord | null): void;
 
         static error_quark(): GLib.Quark;
 
@@ -4608,7 +4596,7 @@ export namespace Camel {
          * Frees a string previosuly returned by `camel_db_sqlize_string()`.
          * @param string a string to free
          */
-        static free_sqlized_string(string: (string | null)): void;
+        static free_sqlized_string(string: string | null): void;
 
         /**
          * Traverses column name from index `index` into an enum
@@ -4621,12 +4609,12 @@ export namespace Camel {
          * @param index an index to start with, between 0 and `ncols`
          * @param col_names column names to traverse
          */
-        static get_column_ident(hash: ({ [key: string]: any } | GLib.HashTable<never, never>), index: number, col_names: string[]): [DBKnownColumnNames, GLib.HashTable<never, never>];
+        static get_column_ident(hash: { [key: string]: any } | GLib.HashTable<never, never>, index: number, col_names: string[]): [DBKnownColumnNames, GLib.HashTable<never, never>];
 
         /**
          * @param raw_name raw name to find the column name for
          */
-        static get_column_name(raw_name: string): (string | null);
+        static get_column_name(raw_name: string): string | null;
 
         /**
          * Instructs sqlite to release its memory, if possible. This can be avoided
@@ -4785,13 +4773,13 @@ export namespace Camel {
          * @param folder_name full name of the folder
          * @returns An array   of the UID-s of the deleted messages in the given folder. Use   `camel_pstring_free()` to free the elements.
          */
-        get_folder_deleted_uids(folder_name: string): (string[] | null);
+        get_folder_deleted_uids(folder_name: string): string[] | null;
 
         /**
          * @param folder_name full name of the folder
          * @returns An array   of the UID-s of the junk messages in the given folder. Use   `camel_pstring_free()` to free the elements.
          */
-        get_folder_junk_uids(folder_name: string): (string[] | null);
+        get_folder_junk_uids(folder_name: string): string[] | null;
 
         /**
          * Fills hash with uid->GUINT_TO_POINTER (flag). Use `camel_pstring_free()`
@@ -4802,7 +4790,7 @@ export namespace Camel {
          * @param hash a hash table to fill
          * @returns 0 on success, -1 on error
          */
-        get_folder_uids(folder_name: string, sort_by: (string | null), collate: (string | null), hash: ({ [key: string]: any } | GLib.HashTable<string, number>)): number;
+        get_folder_uids(folder_name: string, sort_by: string | null, collate: string | null, hash: { [key: string]: any } | GLib.HashTable<string, number>): number;
 
         /**
          * Runs a `cdb` maintenance, which includes vacuum, if necessary.
@@ -5065,7 +5053,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for access, or -1 to disable access expiry.
          */
-        set_expire_access(when: (bigint | number)): void;
+        set_expire_access(when: bigint | number): void;
 
         /**
          * Set the cache expiration policy for aged entries.
@@ -5079,7 +5067,7 @@ export namespace Camel {
          * age acts as a hard limit on cache entries.
          * @param when Timeout for age expiry, or -1 to disable.
          */
-        set_expire_age(when: (bigint | number)): void;
+        set_expire_age(when: bigint | number): void;
 
         /**
          * Sets whether expire of cache data is enabled.
@@ -5102,13 +5090,10 @@ export namespace Camel {
 
     namespace DataWrapper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5153,7 +5138,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_construct_from_input_stream_sync(input_stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_construct_from_input_stream_sync(input_stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Constructs the content of `data_wrapper` from the given `stream`.
@@ -5161,7 +5146,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_construct_from_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_construct_from_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Writes the decoded data content to `output_stream`.
@@ -5177,7 +5162,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_decode_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_decode_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): bigint | number;
 
         /**
          * Writes the decoded data content to `stream`.
@@ -5193,7 +5178,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_decode_to_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_decode_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): bigint | number;
 
         /**
          * @virtual
@@ -5203,7 +5188,7 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_mime_type_field(): (ContentType | null);
+        vfunc_get_mime_type_field(): ContentType | null;
 
         /**
          * @virtual
@@ -5231,7 +5216,7 @@ export namespace Camel {
          * @param mime_type a {@link Camel.ContentType}
          * @virtual
          */
-        vfunc_set_mime_type_field(mime_type: (ContentType | null)): void;
+        vfunc_set_mime_type_field(mime_type: ContentType | null): void;
 
         /**
          * Writes the content of `data_wrapper` to `output_stream` in a
@@ -5248,7 +5233,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_write_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): bigint | number;
 
         /**
          * Writes the content of `data_wrapper` to `stream` in a machine-independent
@@ -5267,7 +5252,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write_to_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_write_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): bigint | number;
 
         // Methods
         /**
@@ -5277,7 +5262,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns how many bytes the `data_wrapper` would use when saved,   or -1 on error.
          */
-        calculate_decoded_size_sync(cancellable: (Gio.Cancellable | null)): number;
+        calculate_decoded_size_sync(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Calculates size of the `data_wrapper` by saving it to a null-stream
@@ -5286,7 +5271,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns how many bytes the `data_wrapper` would use when saved,   or -1 on error.
          */
-        calculate_size_sync(cancellable: (Gio.Cancellable | null)): number;
+        calculate_size_sync(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Constructs the content of `data_wrapper` from `data` of length `data_len`.
@@ -5295,7 +5280,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_data_sync(data: never, data_len: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        construct_from_data_sync(data: never, data_len: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
@@ -5307,20 +5292,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_construct_from_input_stream_finish()` to get the
-         * result of the operation.
-         * @param input_stream a {@link Gio.InputStream}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
@@ -5333,7 +5305,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously constructs the content of `data_wrapper` from `input_stream`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_construct_from_input_stream_finish()` to get the
+         * result of the operation.
+         * @param input_stream a {@link Gio.InputStream}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        construct_from_input_stream(input_stream: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with
@@ -5349,7 +5334,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_input_stream_sync(input_stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): boolean;
+        construct_from_input_stream_sync(input_stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously constructs the content of `data_wrapper` from the given
@@ -5362,21 +5347,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        construct_from_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously constructs the content of `data_wrapper` from the given
-         * `stream`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_construct_from_stream_finish()` to get the result
-         * of the operation.
-         * @param stream an input {@link Camel.Stream}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        construct_from_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        construct_from_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously constructs the content of `data_wrapper` from the given
@@ -5390,7 +5361,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        construct_from_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        construct_from_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously constructs the content of `data_wrapper` from the given
+         * `stream`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_construct_from_stream_finish()` to get the result
+         * of the operation.
+         * @param stream an input {@link Camel.Stream}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        construct_from_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with
@@ -5406,7 +5391,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): boolean;
+        construct_from_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously writes the decoded data content to `output_stream`.
@@ -5418,20 +5403,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Asynchronously writes the decoded data content to `output_stream`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_decode_to_output_stream_finish()` to get the result
-         * of the operation.
-         * @param output_stream a {@link Gio.OutputStream}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously writes the decoded data content to `output_stream`.
@@ -5444,7 +5416,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously writes the decoded data content to `output_stream`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_decode_to_output_stream_finish()` to get the result
+         * of the operation.
+         * @param output_stream a {@link Gio.OutputStream}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        decode_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with
@@ -5468,7 +5453,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          */
-        decode_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): number;
+        decode_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Asynchronously writes the decoded data content to `stream`.
@@ -5480,20 +5465,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        decode_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Asynchronously writes the decoded data content to `stream`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_decode_to_stream_finish()` to get the result of
-         * the operation.
-         * @param stream a {@link Camel.Stream} for decoded data to be written to
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        decode_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        decode_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously writes the decoded data content to `stream`.
@@ -5506,7 +5478,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        decode_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        decode_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously writes the decoded data content to `stream`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_decode_to_stream_finish()` to get the result of
+         * the operation.
+         * @param stream a {@link Camel.Stream} for decoded data to be written to
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        decode_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with `camel_data_wrapper_decode_to_stream()`.
@@ -5529,7 +5514,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          */
-        decode_to_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): number;
+        decode_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Returns the {@link GLib.ByteArray} being used to hold the contents of `data_wrapper`.
@@ -5552,7 +5537,7 @@ export namespace Camel {
         /**
          * @returns the parsed form of the data wrapper's MIME type
          */
-        get_mime_type_field(): (ContentType | null);
+        get_mime_type_field(): ContentType | null;
 
         /**
          * @returns whether `data_wrapper` is "offline" (data stored remotely) or not. Some optional code paths may choose to not operate on offline data.
@@ -5585,7 +5570,7 @@ export namespace Camel {
          * It suffers from the same flaws as `camel_data_wrapper_set_mime_type()`.
          * @param mime_type a {@link Camel.ContentType}
          */
-        set_mime_type_field(mime_type: (ContentType | null)): void;
+        set_mime_type_field(mime_type: ContentType | null): void;
 
         /**
          * Sets whether the `data_wrapper` is "offline". It applies only to this
@@ -5602,7 +5587,7 @@ export namespace Camel {
          * It suffers from the same flaws as `camel_data_wrapper_set_mime_type()`.
          * @param mime_type a {@link Camel.ContentType}
          */
-        take_mime_type_field(mime_type: (ContentType | null)): void;
+        take_mime_type_field(mime_type: ContentType | null): void;
 
         /**
          * Asynchronously writes the content of `data_wrapper` to `output_stream` in
@@ -5615,21 +5600,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Asynchronously writes the content of `data_wrapper` to `output_stream` in
-         * a machine-independent format appropriate for the data.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_write_to_output_stream_finish()` to get the result
-         * of the operation.
-         * @param output_stream a {@link Gio.OutputStream}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously writes the content of `data_wrapper` to `output_stream` in
@@ -5643,7 +5614,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously writes the content of `data_wrapper` to `output_stream` in
+         * a machine-independent format appropriate for the data.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_write_to_output_stream_finish()` to get the result
+         * of the operation.
+         * @param output_stream a {@link Gio.OutputStream}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        write_to_output_stream(output_stream: Gio.OutputStream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with
@@ -5668,7 +5653,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          */
-        write_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): number;
+        write_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Asynchronously writes the content of `data_wrapper` to `stream` in a
@@ -5683,23 +5668,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        write_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Asynchronously writes the content of `data_wrapper` to `stream` in a
-         * machine-independent format appropriate for the data.  It should be
-         * possible to construct an equivalent data wrapper object later by
-         * passing this stream to `camel_data_wrapper_construct_from_stream()`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_data_wrapper_write_to_stream_finish()` to get the result of
-         * the operation.
-         * @param stream a {@link Camel.Stream} for writed data to be written to
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        write_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously writes the content of `data_wrapper` to `stream` in a
@@ -5715,7 +5684,23 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        write_to_stream(stream: Stream, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        write_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously writes the content of `data_wrapper` to `stream` in a
+         * machine-independent format appropriate for the data.  It should be
+         * possible to construct an equivalent data wrapper object later by
+         * passing this stream to `camel_data_wrapper_construct_from_stream()`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_data_wrapper_write_to_stream_finish()` to get the result of
+         * the operation.
+         * @param stream a {@link Camel.Stream} for writed data to be written to
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        write_to_stream(stream: Stream, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with `camel_data_wrapper_write_to_stream()`.
@@ -5741,19 +5726,16 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          */
-        write_to_stream_sync(stream: Stream, cancellable: (Gio.Cancellable | null)): number;
+        write_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): number;
     }
 
 
     namespace FilterDriver {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5810,7 +5792,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
          */
-        filter_folder(folder: Folder, cache: UIDCache, uids: (string[] | null), remove: boolean, cancellable: (Gio.Cancellable | null)): number;
+        filter_folder(folder: Folder, cache: UIDCache, uids: string[] | null, remove: boolean, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Filters an mbox file based on rules defined in the FilterDriver
@@ -5821,7 +5803,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
          */
-        filter_mbox(mbox: string, original_source_url: (string | null), cancellable: (Gio.Cancellable | null)): number;
+        filter_mbox(mbox: string, original_source_url: string | null, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Filters a message based on rules defined in the FilterDriver
@@ -5838,7 +5820,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
          */
-        filter_message(message: (MimeMessage | null), info: (MessageInfo | null), uid: (string | null), source: (Folder | null), store_uid: (string | null), original_store_uid: (string | null), cancellable: (Gio.Cancellable | null)): number;
+        filter_message(message: MimeMessage | null, info: MessageInfo | null, uid: string | null, source: Folder | null, store_uid: string | null, original_store_uid: string | null, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Flush all of the only-once filter actions.
@@ -5857,7 +5839,7 @@ export namespace Camel {
          * its own reference for the folder.
          * @param def a default {@link Camel.Folder}
          */
-        set_default_folder(def: (Folder | null)): void;
+        set_default_folder(def: Folder | null): void;
 
         /**
          * Sets a log file to use for logging.
@@ -6195,7 +6177,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_append_message_sync(message: MimeMessage, info: (MessageInfo | null), cancellable: (Gio.Cancellable | null)): [boolean, string];
+        vfunc_append_message_sync(message: MimeMessage, info: MessageInfo | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Emits the {@link Camel.Folder.SignalSignatures.changed | Camel.Folder::changed} signal from an idle source on the
@@ -6222,7 +6204,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_count_by_expression(expression: string, cancellable: (Gio.Cancellable | null)): number;
+        vfunc_count_by_expression(expression: string, cancellable: Gio.Cancellable | null): number;
 
         /**
          * @virtual
@@ -6239,7 +6221,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_expunge_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_expunge_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Frees the summary array returned by `camel_folder_get_summary()`.
@@ -6289,7 +6271,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_message_cached(message_uid: string, cancellable: (Gio.Cancellable | null)): (MimeMessage | null);
+        vfunc_get_message_cached(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage | null;
 
         /**
          * @virtual
@@ -6307,7 +6289,7 @@ export namespace Camel {
          * @param uid the uid of a message
          * @virtual
          */
-        vfunc_get_message_info(uid: string): (MessageInfo | null);
+        vfunc_get_message_info(uid: string): MessageInfo | null;
 
         /**
          * Gets the message corresponding to `message_uid` from `folder`.
@@ -6315,7 +6297,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_message_sync(message_uid: string, cancellable: (Gio.Cancellable | null)): MimeMessage;
+        vfunc_get_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage;
 
         /**
          * @param uid the UID of a message in `folder`
@@ -6345,7 +6327,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_quota_info_sync(cancellable: (Gio.Cancellable | null)): FolderQuotaInfo;
+        vfunc_get_quota_info_sync(cancellable: Gio.Cancellable | null): FolderQuotaInfo;
 
         /**
          * This returns the summary information for the folder. This array
@@ -6399,14 +6381,14 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_purge_message_cache_sync(start_uid: string, end_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_purge_message_cache_sync(start_uid: string, end_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronizes a folder's summary with its backing store.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_refresh_info_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_info_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Marks `folder` as renamed.
@@ -6433,7 +6415,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_search_by_expression(expression: string, cancellable: (Gio.Cancellable | null)): string[];
+        vfunc_search_by_expression(expression: string, cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Search a subset of uid's for an expression match.
@@ -6442,7 +6424,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_search_by_uids(expression: string, uids: string[], cancellable: (Gio.Cancellable | null)): string[];
+        vfunc_search_by_uids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Free the result of a search as gotten by `camel_folder_search_by_expression()`
@@ -6497,7 +6479,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_synchronize_message_sync(message_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_synchronize_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronizes any changes that have been made to `folder` to its
@@ -6506,7 +6488,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_synchronize_sync(expunge: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Thaws the folder and emits any pending folder_changed
@@ -6525,7 +6507,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_transfer_messages_to_sync(message_uids: string[], destination: Folder, delete_originals: boolean, cancellable: (Gio.Cancellable | null)): [boolean, string[] | null];
+        vfunc_transfer_messages_to_sync(message_uids: string[], destination: Folder, delete_originals: boolean, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
         // Methods
         /**
@@ -6540,7 +6522,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        append_message(message: MimeMessage, info: (MessageInfo | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        append_message(message: MimeMessage, info: MessageInfo | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Appends `message` to `folder` asynchronously.  Only the flag and tag data
@@ -6555,7 +6537,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        append_message(message: MimeMessage, info: (MessageInfo | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        append_message(message: MimeMessage, info: MessageInfo | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Appends `message` to `folder` asynchronously.  Only the flag and tag data
@@ -6570,7 +6552,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        append_message(message: MimeMessage, info: (MessageInfo | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        append_message(message: MimeMessage, info: MessageInfo | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes the operation started with `camel_folder_append_message_finish()`.
@@ -6587,7 +6569,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        append_message_sync(message: MimeMessage, info: (MessageInfo | null), cancellable: (Gio.Cancellable | null)): [boolean, string];
+        append_message_sync(message: MimeMessage, info: MessageInfo | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Emits the {@link Camel.Folder.SignalSignatures.changed | Camel.Folder::changed} signal from an idle source on the
@@ -6612,7 +6594,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an interger
          */
-        count_by_expression(expression: string, cancellable: (Gio.Cancellable | null)): number;
+        count_by_expression(expression: string, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Marks `folder` as deleted and performs any required cleanup.
@@ -6657,7 +6639,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        expunge(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        expunge(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes messages which have been marked as "DELETED".
@@ -6668,7 +6650,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        expunge(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        expunge(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously deletes messages which have been marked as "DELETED".
@@ -6679,7 +6661,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        expunge(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        expunge(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_folder_expunge()`.
@@ -6693,7 +6675,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        expunge_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        expunge_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Frees the provided array and its contents. Used by {@link Camel.Folder}
@@ -6800,7 +6782,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<MimeMessage>;
+        get_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<MimeMessage>;
 
         /**
          * Asynchronously gets the message corresponding to `message_uid` from `folder`.
@@ -6812,7 +6794,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets the message corresponding to `message_uid` from `folder`.
@@ -6824,7 +6806,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<MimeMessage> | void);
+        get_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<MimeMessage> | void;
 
         /**
          * Gets the message corresponding to `message_uid` from the `folder` cache,
@@ -6838,7 +6820,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a cached {@link Camel.MimeMessage} corresponding    to the requested UID
          */
-        get_message_cached(message_uid: string, cancellable: (Gio.Cancellable | null)): (MimeMessage | null);
+        get_message_cached(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage | null;
 
         /**
          * @returns the number of messages in the folder, or -1 if unknown
@@ -6863,7 +6845,7 @@ export namespace Camel {
          * @param uid the uid of a message
          * @returns The summary information for the   indicated message, or `null` if the uid does not exist. Free the returned   object with `g_object_unref()`, when done with it.
          */
-        get_message_info(uid: string): (MessageInfo | null);
+        get_message_info(uid: string): MessageInfo | null;
 
         /**
          * Gets the message corresponding to `message_uid` from `folder`.
@@ -6871,7 +6853,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.MimeMessage} corresponding to the requested UID
          */
-        get_message_sync(message_uid: string, cancellable: (Gio.Cancellable | null)): MimeMessage;
+        get_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage;
 
         /**
          * @param uid the UID of a message in `folder`
@@ -6906,7 +6888,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_quota_info(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<FolderQuotaInfo>;
+        get_quota_info(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<FolderQuotaInfo>;
 
         /**
          * Asynchronously gets a list of known quotas for `folder`.
@@ -6918,7 +6900,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_quota_info(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_quota_info(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets a list of known quotas for `folder`.
@@ -6930,7 +6912,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_quota_info(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<FolderQuotaInfo> | void);
+        get_quota_info(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<FolderQuotaInfo> | void;
 
         /**
          * Finishes the operation started with `camel_folder_get_quota_info()`.
@@ -6953,7 +6935,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.FolderQuotaInfo}, or `null` on error
          */
-        get_quota_info_sync(cancellable: (Gio.Cancellable | null)): FolderQuotaInfo;
+        get_quota_info_sync(cancellable: Gio.Cancellable | null): FolderQuotaInfo;
 
         /**
          * This returns the summary information for the folder. This array
@@ -7020,7 +7002,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Delete the local cache of all messages between these uids.
@@ -7034,7 +7016,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Delete the local cache of all messages between these uids.
@@ -7048,7 +7030,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        purge_message_cache(start_uid: string, end_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_folder_purge_message_cache()`.
@@ -7064,7 +7046,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        purge_message_cache_sync(start_uid: string, end_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        purge_message_cache_sync(start_uid: string, end_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously synchronizes a folder's summary with its backing store.
@@ -7074,18 +7056,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        refresh_info(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously synchronizes a folder's summary with its backing store.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_folder_refresh_info_finish()` to get the result of the operation.
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        refresh_info(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_info(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously synchronizes a folder's summary with its backing store.
@@ -7096,7 +7067,18 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        refresh_info(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_info(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously synchronizes a folder's summary with its backing store.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_folder_refresh_info_finish()` to get the result of the operation.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        refresh_info(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_folder_refresh_info()`.
@@ -7110,7 +7092,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        refresh_info_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_info_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Marks `folder` as renamed.
@@ -7130,7 +7112,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.PtrArray} of uids of matching messages. The caller must free the list and each of the elements when it is done.
          */
-        search_by_expression(expression: string, cancellable: (Gio.Cancellable | null)): string[];
+        search_by_expression(expression: string, cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Search a subset of uid's for an expression match.
@@ -7139,7 +7121,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.PtrArray} of uids of matching messages. The caller must free the list and each of the elements when it is done.
          */
-        search_by_uids(expression: string, uids: string[], cancellable: (Gio.Cancellable | null)): string[];
+        search_by_uids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Free the result of a search as gotten by `camel_folder_search_by_expression()`
@@ -7240,7 +7222,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Synchronizes any changes that have been made to `folder` to its backing
@@ -7253,7 +7235,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Synchronizes any changes that have been made to `folder` to its backing
@@ -7266,7 +7248,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_folder_synchronize()`.
@@ -7287,7 +7269,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        synchronize_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        synchronize_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously ensure that a message identified by `message_uid` has been
@@ -7302,7 +7284,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        synchronize_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously ensure that a message identified by `message_uid` has been
@@ -7317,7 +7299,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize_message(message_uid: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        synchronize_message(message_uid: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_folder_synchronize_message()`.
@@ -7334,7 +7316,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        synchronize_message_sync(message_uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        synchronize_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronizes any changes that have been made to `folder` to its
@@ -7343,7 +7325,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        synchronize_sync(expunge: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets a {@link Camel.FolderSummary} of the folder. It consumes the `summary`.
@@ -7375,7 +7357,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(string[] | null)>;
+        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
 
         /**
          * Asynchronously copies or moves messages from one folder to another.
@@ -7392,7 +7374,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously copies or moves messages from one folder to another.
@@ -7409,7 +7391,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(string[] | null)> | void);
+        transfer_messages_to(message_uids: string[], destination: Folder, delete_originals: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[] | null> | void;
 
         /**
          * Finishes the operation started with `camel_folder_transfer_messages_to()`.
@@ -7428,7 +7410,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        transfer_messages_to_sync(message_uids: string[], destination: Folder, delete_originals: boolean, cancellable: (Gio.Cancellable | null)): [boolean, string[] | null];
+        transfer_messages_to_sync(message_uids: string[], destination: Folder, delete_originals: boolean, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
         /**
          * Unlocks `folder`, previously locked with `camel_folder_lock()`.
@@ -7439,13 +7421,10 @@ export namespace Camel {
 
     namespace FolderSearch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7490,7 +7469,7 @@ export namespace Camel {
          * @param t Initial time
          * @param months number of months to add or subtract
          */
-        static util_add_months(t: (bigint | number), months: number): number;
+        static util_add_months(t: bigint | number, months: number): number;
 
         /**
          * Compares date portion of the two date-time values, first converted
@@ -7498,7 +7477,7 @@ export namespace Camel {
          * @param datetime1 a time_t-like value of the first date-time
          * @param datetime2 a time_t-like value of the second date-time
          */
-        static util_compare_date(datetime1: (bigint | number), datetime2: (bigint | number)): number;
+        static util_compare_date(datetime1: bigint | number, datetime2: bigint | number): number;
 
         /**
          * Calculates a hash of the Message-ID header value `message_id`.
@@ -7523,18 +7502,18 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns Number of messages that match the query.
          */
-        count(expr: string, cancellable: (Gio.Cancellable | null)): number;
+        count(expr: string, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Frees result of `camel_folder_search_search()` call.
          * @param result a result to free
          */
-        free_result(result: (string[] | null)): void;
+        free_result(result: string[] | null): void;
 
         /**
          * @returns the currently processing {@link Camel.MessageInfo}
          */
-        get_current_message_info(): (MessageInfo | null);
+        get_current_message_info(): MessageInfo | null;
 
         /**
          * @returns the current summary, and array   of message info UID-s to use.
@@ -7569,7 +7548,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.PtrArray} with matching UIDs,    or `null` on error. Use `camel_folder_search_free_result()` to free it when    no longer needed.
          */
-        search(expr: string, uids: string[], cancellable: (Gio.Cancellable | null)): string[];
+        search(expr: string, uids: string[], cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Set the index representing the contents of all messages
@@ -7578,14 +7557,14 @@ export namespace Camel {
          * body-contains function.
          * @param body_index a {@link Camel.Index}
          */
-        set_body_index(body_index: (Index | null)): void;
+        set_body_index(body_index: Index | null): void;
 
         /**
          * Sets, or unsets, the `info` as the currently processing {@link Camel.MessageInfo}.
          * The function adds its own reference to `info`, if not `null`.
          * @param info a {@link Camel.MessageInfo}
          */
-        set_current_message_info(info: (MessageInfo | null)): void;
+        set_current_message_info(info: MessageInfo | null): void;
 
         /**
          * Set the folder attribute of the search. This can be used to perform a slow-search
@@ -7617,7 +7596,7 @@ export namespace Camel {
          * assumes ownership of the `info`, if not `null`.
          * @param info a {@link Camel.MessageInfo}
          */
-        take_current_message_info(info: (MessageInfo | null)): void;
+        take_current_message_info(info: MessageInfo | null): void;
     }
 
 
@@ -7798,7 +7777,7 @@ export namespace Camel {
          * @param uid a uid
          * @virtual
          */
-        vfunc_message_info_from_uid(uid: string): (MessageInfo | null);
+        vfunc_message_info_from_uid(uid: string): MessageInfo | null;
 
         /**
          * Create a new info record from a header.
@@ -7895,7 +7874,7 @@ export namespace Camel {
          * @param uid a uid
          * @returns the summary item, or `null` if the uid `uid` is not available See `camel_folder_summary_get_info_flags()`.
          */
-        get(uid: string): (MessageInfo | null);
+        get(uid: string): MessageInfo | null;
 
         /**
          * Obtain a copy of the summary array.  This is done atomically,
@@ -7941,7 +7920,7 @@ export namespace Camel {
         /**
          * @returns a {@link Camel.Index} used to index body content.
          */
-        get_index(): (Index | null);
+        get_index(): Index | null;
 
         /**
          * Retrieve CamelMessageInfo::flags for a message info with UID `uid`.
@@ -8069,7 +8048,7 @@ export namespace Camel {
          * @param uid a message UID to look for
          * @returns a {@link Camel.MessageInfo} for the given `uid`,    if it's currently loaded in memory, or `null` otherwise. Unref the non-NULL    info with `g_object_unref()` when done with it.
          */
-        peek_loaded(uid: string): (MessageInfo | null);
+        peek_loaded(uid: string): MessageInfo | null;
 
         /**
          * Loads all infos into memory, if they are not yet and ensures
@@ -8126,7 +8105,7 @@ export namespace Camel {
          * not set (the default), no indexing of body content will take place.
          * @param index a {@link Camel.Index}
          */
-        set_index(index: (Index | null)): void;
+        set_index(index: Index | null): void;
 
         /**
          * Set the next minimum uid available.  This can be used to
@@ -8140,7 +8119,7 @@ export namespace Camel {
          * change the 'dirty' flag of the `summary`.
          * @param timestamp a timestamp to set
          */
-        set_timestamp(timestamp: (bigint | number)): void;
+        set_timestamp(timestamp: bigint | number): void;
 
         /**
          * Sets version of the `summary`.
@@ -8238,7 +8217,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](session: (Session | null)): GpgContext;
+        static ["new"](session: Session | null): GpgContext;
 
         // Signals
         /** @signal */
@@ -8269,7 +8248,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        get_key_data_info_sync(data: number, data_size: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null)): [boolean, GpgKeyInfo[]];
+        get_key_data_info_sync(data: number, data_size: bigint | number, flags: number, cancellable: Gio.Cancellable | null): [boolean, GpgKeyInfo[]];
 
         /**
          * Returns, whether gpg can locate keys using Web Key Directory (WKD) lookup
@@ -8297,7 +8276,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        get_public_key_info_sync(keyid: string, flags: number, cancellable: (Gio.Cancellable | null)): [boolean, GpgKeyInfo[]];
+        get_public_key_info_sync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [boolean, GpgKeyInfo[]];
 
         /**
          * Returns a public key with `keyid`.
@@ -8313,7 +8292,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        get_public_key_sync(keyid: string, flags: number, cancellable: (Gio.Cancellable | null)): [boolean, number, number];
+        get_public_key_sync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [boolean, number, number];
 
         /**
          * Checks whether there exists a public key with `keyid`.
@@ -8323,7 +8302,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether the key could be found
          */
-        has_public_key_sync(keyid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        has_public_key_sync(keyid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Imports a (public) key provided in a binary form stored in the `data`
@@ -8334,7 +8313,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        import_key_sync(data: number, data_size: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        import_key_sync(data: number, data_size: bigint | number, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the `always_trust` flag on the gpg context which is used for
@@ -8352,7 +8331,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        set_key_trust_sync(keyid: string, trust: GpgTrust, cancellable: (Gio.Cancellable | null)): boolean;
+        set_key_trust_sync(keyid: string, trust: GpgTrust, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the `locate_keys` on the gpg context which is used to instruct
@@ -8372,13 +8351,10 @@ export namespace Camel {
 
     namespace HTMLParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8428,7 +8404,7 @@ export namespace Camel {
          * @param values an output {@link GLib.PtrArray} with values, or `null`
          * @returns a {@link GLib.PtrArray} of parsed attributes
          */
-        attr_list(values: (string[] | null)): [string[], string[] | null];
+        attr_list(values: string[] | null): [string[], string[] | null];
 
         /**
          * @param lenp 
@@ -8460,13 +8436,10 @@ export namespace Camel {
 
     namespace Index {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8520,7 +8493,7 @@ export namespace Camel {
          * @param name a name to add
          * @virtual
          */
-        vfunc_add_name(name: string): (IndexName | null);
+        vfunc_add_name(name: string): IndexName | null;
 
         /**
          * @virtual
@@ -8543,13 +8516,13 @@ export namespace Camel {
          * @param word a word to find
          * @virtual
          */
-        vfunc_find(word: string): (IndexCursor | null);
+        vfunc_find(word: string): IndexCursor | null;
 
         /**
          * @param name a name to find
          * @virtual
          */
-        vfunc_find_name(name: string): (IndexCursor | null);
+        vfunc_find_name(name: string): IndexCursor | null;
 
         /**
          * @param name 
@@ -8571,7 +8544,7 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_words(): (IndexCursor | null);
+        vfunc_words(): IndexCursor | null;
 
         /**
          * @param idn 
@@ -8584,7 +8557,7 @@ export namespace Camel {
          * @param name a name to add
          * @returns a {@link Camel.IndexName} with    added given `name`, or `null`, when the `name` could not be    added.
          */
-        add_name(name: string): (IndexName | null);
+        add_name(name: string): IndexName | null;
 
         compress(): number;
 
@@ -8606,13 +8579,13 @@ export namespace Camel {
          * @param word a word to find
          * @returns a {@link Camel.IndexCursor} object with    the given `word`, or `null`, when not found
          */
-        find(word: string): (IndexCursor | null);
+        find(word: string): IndexCursor | null;
 
         /**
          * @param name a name to find
          * @returns a {@link Camel.IndexCursor} with    the given `name`, or `null`< when not found.
          */
-        find_name(name: string): (IndexCursor | null);
+        find_name(name: string): IndexCursor | null;
 
         /**
          * @param name 
@@ -8634,7 +8607,7 @@ export namespace Camel {
         /**
          * @returns a {@link Camel.IndexCursor} containing    all words of the `index`, or `null`, when there are none
          */
-        words(): (IndexCursor | null);
+        words(): IndexCursor | null;
 
         /**
          * @param idn 
@@ -8645,13 +8618,10 @@ export namespace Camel {
 
     namespace IndexCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8703,13 +8673,10 @@ export namespace Camel {
 
     namespace IndexName {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8758,7 +8725,7 @@ export namespace Camel {
          * @param len 
          * @virtual
          */
-        vfunc_add_buffer(buffer: string, len: number): (bigint | number);
+        vfunc_add_buffer(buffer: string, len: number): bigint | number;
 
         /**
          * @param word 
@@ -8771,7 +8738,7 @@ export namespace Camel {
          * @param buffer 
          * @param len 
          */
-        add_buffer(buffer: string, len: (bigint | number)): number;
+        add_buffer(buffer: string, len: bigint | number): number;
 
         /**
          * @param word 
@@ -8782,13 +8749,10 @@ export namespace Camel {
 
     namespace InternetAddress {
         // Signal signatures
-        interface SignalSignatures extends Address.SignalSignatures {
-        }
+        interface SignalSignatures extends Address.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Address.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Address.ConstructorProps {}
     }
 
     /**
@@ -8837,7 +8801,7 @@ export namespace Camel {
          * @param name the unencoded real name associated with the address
          * @param addr the routing address
          */
-        static encode_address(len: (number | null), name: string, addr: string): string;
+        static encode_address(len: number | null, name: string, addr: string): string;
 
         /**
          * Function to format a single address, suitable for display.
@@ -8896,13 +8860,10 @@ export namespace Camel {
 
     namespace KeyFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8950,7 +8911,7 @@ export namespace Camel {
          * @param records Records, allocated, must be freed with g_free, if != NULL.
          * @returns -1 on io error.
          */
-        read(start: _block_t, records: (_key_t[] | null)): number;
+        read(start: _block_t, records: _key_t[] | null): number;
 
         /**
          * @param path 
@@ -8969,13 +8930,10 @@ export namespace Camel {
 
     namespace KeyTable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9240,7 +9198,7 @@ export namespace Camel {
 
         // Constructor properties interface
         interface ConstructorProps extends DataWrapper.ConstructorProps {
-            content: (DataWrapper | null);
+            content: DataWrapper | null;
         }
     }
 
@@ -9251,8 +9209,8 @@ export namespace Camel {
         static $gtype: GObject.GType<Medium>;
 
         // Properties
-        get content(): (DataWrapper | null);
-        set content(val: (DataWrapper | null));
+        get content(): DataWrapper | null;
+        set content(val: DataWrapper | null);
 
         /**
          * Compile-time signal type information.
@@ -9303,7 +9261,7 @@ export namespace Camel {
          * without its headers.
          * @virtual
          */
-        vfunc_get_content(): (DataWrapper | null);
+        vfunc_get_content(): DataWrapper | null;
 
         /**
          * Gets the value of the named header in the medium, or `null` if
@@ -9315,7 +9273,7 @@ export namespace Camel {
          * @param name the name of the header
          * @virtual
          */
-        vfunc_get_header(name: string): (string | null);
+        vfunc_get_header(name: string): string | null;
 
         /**
          * Gets an array of all header name/value pairs. The values will be
@@ -9338,7 +9296,7 @@ export namespace Camel {
          * @param content a {@link Camel.DataWrapper} object
          * @virtual
          */
-        vfunc_set_content(content: (DataWrapper | null)): void;
+        vfunc_set_content(content: DataWrapper | null): void;
 
         /**
          * Sets the value of a header.  Any other occurances of the header
@@ -9348,7 +9306,7 @@ export namespace Camel {
          * @param value value of the header
          * @virtual
          */
-        vfunc_set_header(name: string, value: (string | null)): void;
+        vfunc_set_header(name: string, value: string | null): void;
 
         // Methods
         /**
@@ -9371,7 +9329,7 @@ export namespace Camel {
          * without its headers.
          * @returns a {@link Camel.DataWrapper} containing `medium`'s content. Can return `null`.
          */
-        get_content(): (DataWrapper | null);
+        get_content(): DataWrapper | null;
 
         /**
          * Gets the value of the named header in the medium, or `null` if
@@ -9383,7 +9341,7 @@ export namespace Camel {
          * @param name the name of the header
          * @returns the value of the named header, or `null`
          */
-        get_header(name: string): (string | null);
+        get_header(name: string): string | null;
 
         /**
          * Gets an array of all header name/value pairs. The values will be
@@ -9404,7 +9362,7 @@ export namespace Camel {
          * Sets the content of `medium` to be `content`.
          * @param content a {@link Camel.DataWrapper} object
          */
-        set_content(content: (DataWrapper | null)): void;
+        set_content(content: DataWrapper | null): void;
 
         /**
          * Sets the value of a header.  Any other occurances of the header
@@ -9413,7 +9371,7 @@ export namespace Camel {
          * @param name name of the header
          * @param value value of the header
          */
-        set_header(name: string, value: (string | null)): void;
+        set_header(name: string, value: string | null): void;
     }
 
 
@@ -9449,10 +9407,10 @@ export namespace Camel {
             abort_notifications: boolean;
             abortNotifications: boolean;
             cc: string;
-            date_received: (bigint | number);
-            dateReceived: (bigint | number);
-            date_sent: (bigint | number);
-            dateSent: (bigint | number);
+            date_received: bigint | number;
+            dateReceived: bigint | number;
+            date_sent: bigint | number;
+            dateSent: bigint | number;
             dirty: boolean;
             flags: MessageFlags;
             folder_flagged: boolean;
@@ -9460,23 +9418,23 @@ export namespace Camel {
             folder_flagged_stamp: number;
             folderFlaggedStamp: number;
             from: string;
-            headers: (NameValueArray | null);
-            message_id: (bigint | number);
-            messageId: (bigint | number);
+            headers: NameValueArray | null;
+            message_id: bigint | number;
+            messageId: bigint | number;
             mlist: string;
-            preview: (string | null);
-            references: (never[] | null);
+            preview: string | null;
+            references: never[] | null;
             size: number;
             subject: string;
             summary: FolderSummary;
             to: string;
             uid: string;
-            user_flags: (NamedFlags | null);
-            userFlags: (NamedFlags | null);
-            user_headers: (NameValueArray | null);
-            userHeaders: (NameValueArray | null);
-            user_tags: (NameValueArray | null);
-            userTags: (NameValueArray | null);
+            user_flags: NamedFlags | null;
+            userFlags: NamedFlags | null;
+            user_headers: NameValueArray | null;
+            userHeaders: NameValueArray | null;
+            user_tags: NameValueArray | null;
+            userTags: NameValueArray | null;
         }
     }
 
@@ -9523,7 +9481,7 @@ export namespace Camel {
          * @default 0
          */
         get date_received(): number;
-        set date_received(val: (bigint | number));
+        set date_received(val: bigint | number);
 
         /**
          * Received date of the associated message.
@@ -9531,7 +9489,7 @@ export namespace Camel {
          * @default 0
          */
         get dateReceived(): number;
-        set dateReceived(val: (bigint | number));
+        set dateReceived(val: bigint | number);
 
         /**
          * Sent Date of the associated message.
@@ -9539,7 +9497,7 @@ export namespace Camel {
          * @default 0
          */
         get date_sent(): number;
-        set date_sent(val: (bigint | number));
+        set date_sent(val: bigint | number);
 
         /**
          * Sent Date of the associated message.
@@ -9547,7 +9505,7 @@ export namespace Camel {
          * @default 0
          */
         get dateSent(): number;
-        set dateSent(val: (bigint | number));
+        set dateSent(val: bigint | number);
 
         /**
          * Flag, whether the info is changed and requires save to disk.
@@ -9622,8 +9580,8 @@ export namespace Camel {
          * Headers of the associated message. Can be `null`.
          * @since 3.24
          */
-        get headers(): (NameValueArray | null);
-        set headers(val: (NameValueArray | null));
+        get headers(): NameValueArray | null;
+        set headers(val: NameValueArray | null);
 
         /**
          * Encoded Message-ID of the associated message as a guint64 number,
@@ -9632,7 +9590,7 @@ export namespace Camel {
          * @default 0
          */
         get message_id(): number;
-        set message_id(val: (bigint | number));
+        set message_id(val: bigint | number);
 
         /**
          * Encoded Message-ID of the associated message as a guint64 number,
@@ -9641,7 +9599,7 @@ export namespace Camel {
          * @default 0
          */
         get messageId(): number;
-        set messageId(val: (bigint | number));
+        set messageId(val: bigint | number);
 
         /**
          * Mailing list address of the associated message.
@@ -9656,8 +9614,8 @@ export namespace Camel {
          * @since 3.42
          * @default null
          */
-        get preview(): (string | null);
-        set preview(val: (string | null));
+        get preview(): string | null;
+        set preview(val: string | null);
 
         /**
          * Encoded In-Reply-To and References headers of the associated message
@@ -9665,8 +9623,8 @@ export namespace Camel {
          * cast to {@link Camel.SummaryMessageID}.
          * @since 3.24
          */
-        get references(): (never[] | null);
-        set references(val: (never[] | null));
+        get references(): never[] | null;
+        set references(val: never[] | null);
 
         /**
          * Size of the associated message.
@@ -9714,8 +9672,8 @@ export namespace Camel {
          * can only be set or not.
          * @since 3.24
          */
-        get user_flags(): (NamedFlags | null);
-        set user_flags(val: (NamedFlags | null));
+        get user_flags(): NamedFlags | null;
+        set user_flags(val: NamedFlags | null);
 
         /**
          * User flags for the associated message. Can be `null`.
@@ -9723,22 +9681,22 @@ export namespace Camel {
          * can only be set or not.
          * @since 3.24
          */
-        get userFlags(): (NamedFlags | null);
-        set userFlags(val: (NamedFlags | null));
+        get userFlags(): NamedFlags | null;
+        set userFlags(val: NamedFlags | null);
 
         /**
          * User-defined headers of the associated message. Can be `null`.
          * @since 3.42
          */
-        get user_headers(): (NameValueArray | null);
-        set user_headers(val: (NameValueArray | null));
+        get user_headers(): NameValueArray | null;
+        set user_headers(val: NameValueArray | null);
 
         /**
          * User-defined headers of the associated message. Can be `null`.
          * @since 3.42
          */
-        get userHeaders(): (NameValueArray | null);
-        set userHeaders(val: (NameValueArray | null));
+        get userHeaders(): NameValueArray | null;
+        set userHeaders(val: NameValueArray | null);
 
         /**
          * User tags for the associated message. Can be `null`.
@@ -9746,8 +9704,8 @@ export namespace Camel {
          * can contain various values.
          * @since 3.24
          */
-        get user_tags(): (NameValueArray | null);
-        set user_tags(val: (NameValueArray | null));
+        get user_tags(): NameValueArray | null;
+        set user_tags(val: NameValueArray | null);
 
         /**
          * User tags for the associated message. Can be `null`.
@@ -9755,8 +9713,8 @@ export namespace Camel {
          * can contain various values.
          * @since 3.24
          */
-        get userTags(): (NameValueArray | null);
-        set userTags(val: (NameValueArray | null));
+        get userTags(): NameValueArray | null;
+        set userTags(val: NameValueArray | null);
 
         /**
          * Compile-time signal type information.
@@ -9772,9 +9730,9 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](summary: (FolderSummary | null)): MessageInfo;
+        static ["new"](summary: FolderSummary | null): MessageInfo;
 
-        static new_from_headers(summary: (FolderSummary | null), headers: NameValueArray): MessageInfo;
+        static new_from_headers(summary: FolderSummary | null, headers: NameValueArray): MessageInfo;
 
         // Signals
         /** @signal */
@@ -9797,17 +9755,17 @@ export namespace Camel {
          * @param assign_summary parent {@link Camel.FolderSummary} object, or `null`, to set on the clone
          * @virtual
          */
-        vfunc_clone(assign_summary: (FolderSummary | null)): MessageInfo;
+        vfunc_clone(assign_summary: FolderSummary | null): MessageInfo;
 
         /**
          * @virtual
          */
-        vfunc_dup_user_flags(): (NamedFlags | null);
+        vfunc_dup_user_flags(): NamedFlags | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_user_tags(): (NameValueArray | null);
+        vfunc_dup_user_tags(): NameValueArray | null;
 
         /**
          * @virtual
@@ -9817,12 +9775,12 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_date_received(): (bigint | number);
+        vfunc_get_date_received(): bigint | number;
 
         /**
          * @virtual
          */
-        vfunc_get_date_sent(): (bigint | number);
+        vfunc_get_date_sent(): bigint | number;
 
         /**
          * @virtual
@@ -9837,14 +9795,14 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_headers(): (NameValueArray | null);
+        vfunc_get_headers(): NameValueArray | null;
 
         /**
          * Encoded Message-ID of the associated message as a guint64 number,
          * partial MD5 sum. The value can be cast to {@link Camel.SummaryMessageID}.
          * @virtual
          */
-        vfunc_get_message_id(): (bigint | number);
+        vfunc_get_message_id(): bigint | number;
 
         /**
          * @virtual
@@ -9854,7 +9812,7 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_preview(): (string | null);
+        vfunc_get_preview(): string | null;
 
         /**
          * Gets encoded In-Reply-To and References headers of the associated
@@ -9862,7 +9820,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @virtual
          */
-        vfunc_get_references(): ((bigint | number)[] | null);
+        vfunc_get_references(): (bigint | number)[] | null;
 
         /**
          * @virtual
@@ -9888,29 +9846,29 @@ export namespace Camel {
         /**
          * @virtual
          */
-        vfunc_get_user_flags(): (NamedFlags | null);
+        vfunc_get_user_flags(): NamedFlags | null;
 
         /**
          * @param name header name
          * @virtual
          */
-        vfunc_get_user_header(name: string): (string | null);
+        vfunc_get_user_header(name: string): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_user_headers(): (NameValueArray | null);
+        vfunc_get_user_headers(): NameValueArray | null;
 
         /**
          * @param name user tag name
          * @virtual
          */
-        vfunc_get_user_tag(name: string): (string | null);
+        vfunc_get_user_tag(name: string): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_user_tags(): (NameValueArray | null);
+        vfunc_get_user_tags(): NameValueArray | null;
 
         /**
          * Load content of `mi` from the data stored in `record`. The `bdata_ptr` points
@@ -9923,7 +9881,7 @@ export namespace Camel {
          * @param bdata_ptr a backend specific data (bdata) pointer
          * @virtual
          */
-        vfunc_load(record: (MIRecord | null), bdata_ptr: string): boolean;
+        vfunc_load(record: MIRecord | null, bdata_ptr: string): boolean;
 
         /**
          * Save the `mi` content to the message info record `record`. It can populate all
@@ -9933,7 +9891,7 @@ export namespace Camel {
          * @param bdata_str a {@link GLib.String} with a string to save as backend specific data (bdata)
          * @virtual
          */
-        vfunc_save(record: (MIRecord | null), bdata_str: GLib.String): boolean;
+        vfunc_save(record: MIRecord | null, bdata_str: GLib.String): boolean;
 
         /**
          * Sets CC from the associated message.
@@ -9948,7 +9906,7 @@ export namespace Camel {
          * @param cc a CC to set
          * @virtual
          */
-        vfunc_set_cc(cc: (string | null)): boolean;
+        vfunc_set_cc(cc: string | null): boolean;
 
         /**
          * Sets received date (the Received header) of the associated message.
@@ -10008,7 +9966,7 @@ export namespace Camel {
          * @param from a From to set
          * @virtual
          */
-        vfunc_set_from(from: (string | null)): boolean;
+        vfunc_set_from(from: string | null): boolean;
 
         /**
          * Sets encoded Message-ID of the associated message as a guint64 number,
@@ -10039,7 +9997,7 @@ export namespace Camel {
          * @param mlist a message list address to set
          * @virtual
          */
-        vfunc_set_mlist(mlist: (string | null)): boolean;
+        vfunc_set_mlist(mlist: string | null): boolean;
 
         /**
          * Set `preview` as the body preview of the associated message. Use `null` or an empty
@@ -10050,7 +10008,7 @@ export namespace Camel {
          * @param preview message body preview, or `null`
          * @virtual
          */
-        vfunc_set_preview(preview: (string | null)): boolean;
+        vfunc_set_preview(preview: string | null): boolean;
 
         /**
          * Sets size of the associated message.
@@ -10080,7 +10038,7 @@ export namespace Camel {
          * @param subject a Subject to set
          * @virtual
          */
-        vfunc_set_subject(subject: (string | null)): boolean;
+        vfunc_set_subject(subject: string | null): boolean;
 
         /**
          * Sets To from the associated message.
@@ -10095,7 +10053,7 @@ export namespace Camel {
          * @param to a To to set
          * @virtual
          */
-        vfunc_set_to(to: (string | null)): boolean;
+        vfunc_set_to(to: string | null): boolean;
 
         /**
          * Change `state` of the flag named `name`. Unlike user tags, user flags
@@ -10121,7 +10079,7 @@ export namespace Camel {
          * @param value header value, or `null`
          * @virtual
          */
-        vfunc_set_user_header(name: string, value: (string | null)): boolean;
+        vfunc_set_user_header(name: string, value: string | null): boolean;
 
         /**
          * Set user tag `name` to `value`, or remove it, if `value` is `null`.
@@ -10133,7 +10091,7 @@ export namespace Camel {
          * @param value user tag value, or `null` to remove the user tag
          * @virtual
          */
-        vfunc_set_user_tag(name: string, value: (string | null)): boolean;
+        vfunc_set_user_tag(name: string, value: string | null): boolean;
 
         /**
          * Takes headers of the associated message.
@@ -10151,7 +10109,7 @@ export namespace Camel {
          * @param headers headers to set, as {@link Camel.NameValueArray}, or `null`
          * @virtual
          */
-        vfunc_take_headers(headers: (NameValueArray | null)): boolean;
+        vfunc_take_headers(headers: NameValueArray | null): boolean;
 
         /**
          * Takes encoded In-Reply-To and References headers of the associated message
@@ -10171,7 +10129,7 @@ export namespace Camel {
          * @param references a references to set
          * @virtual
          */
-        vfunc_take_references(references: ((bigint | number)[] | null)): boolean;
+        vfunc_take_references(references: (bigint | number)[] | null): boolean;
 
         /**
          * Takes all the `user_flags`, which replaces any current user flags on the `mi`.
@@ -10187,7 +10145,7 @@ export namespace Camel {
          * @param user_flags user flags to set
          * @virtual
          */
-        vfunc_take_user_flags(user_flags: (NamedFlags | null)): boolean;
+        vfunc_take_user_flags(user_flags: NamedFlags | null): boolean;
 
         /**
          * Takes user-defined message headers of the associated message.
@@ -10200,7 +10158,7 @@ export namespace Camel {
          * @param headers headers to set, as {@link Camel.NameValueArray}, or `null`
          * @virtual
          */
-        vfunc_take_user_headers(headers: (NameValueArray | null)): boolean;
+        vfunc_take_user_headers(headers: NameValueArray | null): boolean;
 
         /**
          * Takes all the `user_tags`, which replaces any current user tags on the `mi`.
@@ -10216,7 +10174,7 @@ export namespace Camel {
          * @param user_tags user tags to set
          * @virtual
          */
-        vfunc_take_user_tags(user_tags: (NameValueArray | null)): boolean;
+        vfunc_take_user_tags(user_tags: NameValueArray | null): boolean;
 
         // Methods
         /**
@@ -10226,7 +10184,7 @@ export namespace Camel {
          * @param assign_summary parent {@link Camel.FolderSummary} object, or `null`, to set on the clone
          * @returns a new {@link Camel.MessageInfo} object, clone of the `mi`
          */
-        clone(assign_summary: (FolderSummary | null)): MessageInfo;
+        clone(assign_summary: FolderSummary | null): MessageInfo;
 
         /**
          * Dumps the mesasge info `mi` to stdout. This is meand for debugging
@@ -10238,12 +10196,12 @@ export namespace Camel {
          * Duplicates array of headers for the `mi`.
          * @returns All the message headers of the associated   message, or `null`, when none are available. Free returned array with   `camel_name_value_array_free()` when no longer needed.
          */
-        dup_headers(): (NameValueArray | null);
+        dup_headers(): NameValueArray | null;
 
         /**
          * @returns Body preview of the associated    message, or `null`, when not available. Free the returned string    with `g_free()`, when no longer needed.
          */
-        dup_preview(): (string | null);
+        dup_preview(): string | null;
 
         /**
          * Duplicates encoded In-Reply-To and References headers of the associated
@@ -10251,34 +10209,34 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available. Free returned   array with `g_array_unref()` when no longer needed.
          */
-        dup_references(): ((bigint | number)[] | null);
+        dup_references(): (bigint | number)[] | null;
 
         /**
          * @returns A newly allocated {@link Camel.NamedFlags} with   all the currently set user flags on the `mi`. Free the returned structure   with `camel_named_flags_free()` when no londer needed.
          */
-        dup_user_flags(): (NamedFlags | null);
+        dup_user_flags(): NamedFlags | null;
 
         /**
          * @param name header name
          * @returns Value of the header named `name` from    the user-defined message headers of the associated message, or `null`,    when not available. Free the returned string with `g_free()`, when no longer    needed.
          */
-        dup_user_header(name: string): (string | null);
+        dup_user_header(name: string): string | null;
 
         /**
          * @returns All the user-defined message headers    of the associated message, or `null`, when none are available. Free returned    array with `camel_name_value_array_free()` when no longer needed.
          */
-        dup_user_headers(): (NameValueArray | null);
+        dup_user_headers(): NameValueArray | null;
 
         /**
          * @param name user tag name
          * @returns Value of the user tag as newly allocated   string, or `null` when it is not set. Free it with `g_free()` when no longer needed.
          */
-        dup_user_tag(name: string): (string | null);
+        dup_user_tag(name: string): string | null;
 
         /**
          * @returns a newly allocated {@link Camel.NameValueArray} containing all set   user tags of the `mi`. Free it with `camel_name_value_array_free()` when no longer needed.
          */
-        dup_user_tags(): (NameValueArray | null);
+        dup_user_tags(): NameValueArray | null;
 
         /**
          * Freezes all the notifications until the `camel_message_info_thaw_notifications()` is called.
@@ -10345,7 +10303,7 @@ export namespace Camel {
         /**
          * @returns All the message headers of the associated   message, or `null`, when none are available.
          */
-        get_headers(): (NameValueArray | null);
+        get_headers(): NameValueArray | null;
 
         /**
          * Encoded Message-ID of the associated message as a guint64 number,
@@ -10367,7 +10325,7 @@ export namespace Camel {
         /**
          * @returns Body preview of the associated    message, or `null`, when not available.
          */
-        get_preview(): (string | null);
+        get_preview(): string | null;
 
         /**
          * Gets encoded In-Reply-To and References headers of the associated
@@ -10375,7 +10333,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available.
          */
-        get_references(): ((bigint | number)[] | null);
+        get_references(): (bigint | number)[] | null;
 
         /**
          * @returns Size of the associated message.
@@ -10407,29 +10365,29 @@ export namespace Camel {
         /**
          * @returns A {@link Camel.NamedFlags} with all the currently set   user flags on the `mi`. Do not modify it.
          */
-        get_user_flags(): (NamedFlags | null);
+        get_user_flags(): NamedFlags | null;
 
         /**
          * @param name header name
          * @returns Value of the header named `name` from    the user-defined message headers of the associated message, or `null`,    when not available.
          */
-        get_user_header(name: string): (string | null);
+        get_user_header(name: string): string | null;
 
         /**
          * @returns All the user-defined message headers    of the associated message, or `null`, when none are available.
          */
-        get_user_headers(): (NameValueArray | null);
+        get_user_headers(): NameValueArray | null;
 
         /**
          * @param name user tag name
          * @returns Value of the user tag, or `null` when   it is not set.
          */
-        get_user_tag(name: string): (string | null);
+        get_user_tag(name: string): string | null;
 
         /**
          * @returns a {@link Camel.NameValueArray} containing all set   user tags of the `mi`. Do not modify it.
          */
-        get_user_tags(): (NameValueArray | null);
+        get_user_tags(): NameValueArray | null;
 
         /**
          * Load content of `mi` from the data stored in `record`. The `bdata_ptr` points
@@ -10507,7 +10465,7 @@ export namespace Camel {
          * @param cc a CC to set
          * @returns Whether the value changed.
          */
-        set_cc(cc: (string | null)): boolean;
+        set_cc(cc: string | null): boolean;
 
         /**
          * Sets received date (the Received header) of the associated message.
@@ -10522,7 +10480,7 @@ export namespace Camel {
          * @param date_received a received date to set
          * @returns Whether the value changed.
          */
-        set_date_received(date_received: (bigint | number)): boolean;
+        set_date_received(date_received: bigint | number): boolean;
 
         /**
          * Sets sent date (the Date header) of the associated message.
@@ -10537,7 +10495,7 @@ export namespace Camel {
          * @param date_sent a sent date to set
          * @returns Whether the value changed.
          */
-        set_date_sent(date_sent: (bigint | number)): boolean;
+        set_date_sent(date_sent: bigint | number): boolean;
 
         /**
          * Marks the `mi` as dirty, which means a save to the local summary
@@ -10586,7 +10544,7 @@ export namespace Camel {
          * @param from a From to set
          * @returns Whether the value changed.
          */
-        set_from(from: (string | null)): boolean;
+        set_from(from: string | null): boolean;
 
         /**
          * Sets encoded Message-ID of the associated message as a guint64 number,
@@ -10602,7 +10560,7 @@ export namespace Camel {
          * @param message_id a message id to set
          * @returns Whether the value changed.
          */
-        set_message_id(message_id: (bigint | number)): boolean;
+        set_message_id(message_id: bigint | number): boolean;
 
         /**
          * Sets mesage list address from the associated message.
@@ -10617,7 +10575,7 @@ export namespace Camel {
          * @param mlist a message list address to set
          * @returns Whether the value changed.
          */
-        set_mlist(mlist: (string | null)): boolean;
+        set_mlist(mlist: string | null): boolean;
 
         /**
          * Set `preview` as the body preview of the associated message. Use `null` or an empty
@@ -10628,7 +10586,7 @@ export namespace Camel {
          * @param preview message body preview, or `null`
          * @returns Whether the value changed.
          */
-        set_preview(preview: (string | null)): boolean;
+        set_preview(preview: string | null): boolean;
 
         /**
          * Sets size of the associated message.
@@ -10658,7 +10616,7 @@ export namespace Camel {
          * @param subject a Subject to set
          * @returns Whether the value changed.
          */
-        set_subject(subject: (string | null)): boolean;
+        set_subject(subject: string | null): boolean;
 
         /**
          * Sets To from the associated message.
@@ -10673,7 +10631,7 @@ export namespace Camel {
          * @param to a To to set
          * @returns Whether the value changed.
          */
-        set_to(to: (string | null)): boolean;
+        set_to(to: string | null): boolean;
 
         /**
          * Changes UID of the `mi` to `uid`. If it changes, the 'dirty' flag
@@ -10708,7 +10666,7 @@ export namespace Camel {
          * @param value header value, or `null`
          * @returns Whether the value changed.
          */
-        set_user_header(name: string, value: (string | null)): boolean;
+        set_user_header(name: string, value: string | null): boolean;
 
         /**
          * Set user tag `name` to `value`, or remove it, if `value` is `null`.
@@ -10720,7 +10678,7 @@ export namespace Camel {
          * @param value user tag value, or `null` to remove the user tag
          * @returns Whether the `mi` changed.
          */
-        set_user_tag(name: string, value: (string | null)): boolean;
+        set_user_tag(name: string, value: string | null): boolean;
 
         /**
          * Takes headers of the associated message.
@@ -10738,7 +10696,7 @@ export namespace Camel {
          * @param headers headers to set, as {@link Camel.NameValueArray}, or `null`
          * @returns Whether the value changed.
          */
-        take_headers(headers: (NameValueArray | null)): boolean;
+        take_headers(headers: NameValueArray | null): boolean;
 
         /**
          * Takes encoded In-Reply-To and References headers of the associated message
@@ -10758,7 +10716,7 @@ export namespace Camel {
          * @param references a references to set
          * @returns Whether the value changed.
          */
-        take_references(references: ((bigint | number)[] | null)): boolean;
+        take_references(references: (bigint | number)[] | null): boolean;
 
         /**
          * Takes all the `user_flags`, which replaces any current user flags on the `mi`.
@@ -10774,7 +10732,7 @@ export namespace Camel {
          * @param user_flags user flags to set
          * @returns Whether the message info changed.
          */
-        take_user_flags(user_flags: (NamedFlags | null)): boolean;
+        take_user_flags(user_flags: NamedFlags | null): boolean;
 
         /**
          * Takes user-defined message headers of the associated message.
@@ -10787,7 +10745,7 @@ export namespace Camel {
          * @param headers headers to set, as {@link Camel.NameValueArray}, or `null`
          * @returns Whether the value changed.
          */
-        take_user_headers(headers: (NameValueArray | null)): boolean;
+        take_user_headers(headers: NameValueArray | null): boolean;
 
         /**
          * Takes all the `user_tags`, which replaces any current user tags on the `mi`.
@@ -10803,7 +10761,7 @@ export namespace Camel {
          * @param user_tags user tags to set
          * @returns Whether the `mi` changed.
          */
-        take_user_tags(user_tags: (NameValueArray | null)): boolean;
+        take_user_tags(user_tags: NameValueArray | null): boolean;
 
         /**
          * Reverses the call of the `camel_message_info_freeze_notifications()`.
@@ -10842,9 +10800,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MessageInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MessageInfo.ConstructorProps {}
     }
 
     /**
@@ -10884,13 +10840,10 @@ export namespace Camel {
 
     namespace MimeFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -10981,7 +10934,7 @@ export namespace Camel {
          * Note: New calls replace old data.
          * @param data data buffer to backup
          */
-        backup(data: (Uint8Array | string)): void;
+        backup(data: Uint8Array | string): void;
 
         /**
          * Passes the input buffer, `in`, through `filter` and generates an
@@ -10992,7 +10945,7 @@ export namespace Camel {
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        complete(_in: (Uint8Array | string), prespace: (bigint | number)): [Uint8Array, number];
+        complete(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
 
         /**
          * Passes the input buffer, `in`, through `filter` and generates an
@@ -11000,7 +10953,7 @@ export namespace Camel {
          * @param _in input buffer
          * @param prespace amount of prespace
          */
-        filter(_in: (Uint8Array | string), prespace: (bigint | number)): [Uint8Array, number];
+        filter(_in: Uint8Array | string, prespace: bigint | number): [Uint8Array, number];
 
         /**
          * Resets the state on `filter` so that it may be used again.
@@ -11013,19 +10966,16 @@ export namespace Camel {
          * @param size requested amount of storage space
          * @param keep `true` to keep existing buffered data or `false` otherwise
          */
-        set_size(size: (bigint | number), keep: number): void;
+        set_size(size: bigint | number, keep: number): void;
     }
 
 
     namespace MimeFilterBasic {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11070,13 +11020,10 @@ export namespace Camel {
 
     namespace MimeFilterBestenc {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11142,13 +11089,10 @@ export namespace Camel {
 
     namespace MimeFilterCRLF {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11207,13 +11151,10 @@ export namespace Camel {
 
     namespace MimeFilterCanon {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11258,13 +11199,10 @@ export namespace Camel {
 
     namespace MimeFilterCharset {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11309,13 +11247,10 @@ export namespace Camel {
 
     namespace MimeFilterEnriched {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11360,13 +11295,10 @@ export namespace Camel {
 
     namespace MimeFilterFrom {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11408,13 +11340,10 @@ export namespace Camel {
 
     namespace MimeFilterGZip {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11459,13 +11388,10 @@ export namespace Camel {
 
     namespace MimeFilterHTML {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11507,13 +11433,10 @@ export namespace Camel {
 
     namespace MimeFilterIndex {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11571,13 +11494,10 @@ export namespace Camel {
 
     namespace MimeFilterLinewrap {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11622,13 +11542,10 @@ export namespace Camel {
 
     namespace MimeFilterPgp {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11670,13 +11587,10 @@ export namespace Camel {
 
     namespace MimeFilterProgress {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11700,7 +11614,7 @@ export namespace Camel {
 
         _init(...args: any[]): void;
 
-        static ["new"](cancellable: (Gio.Cancellable | null), total: (bigint | number)): MimeFilterProgress;
+        static ["new"](cancellable: Gio.Cancellable | null, total: bigint | number): MimeFilterProgress;
 
         // Conflicted with Camel.MimeFilter.new
         static ["new"](...args: never[]): any;
@@ -11722,13 +11636,10 @@ export namespace Camel {
 
     namespace MimeFilterToHTML {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11773,13 +11684,10 @@ export namespace Camel {
 
     namespace MimeFilterWindows {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11842,13 +11750,10 @@ export namespace Camel {
 
     namespace MimeFilterYenc {
         // Signal signatures
-        interface SignalSignatures extends MimeFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends MimeFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimeFilter.ConstructorProps {}
     }
 
     /**
@@ -11927,9 +11832,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MimePart.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MimePart.ConstructorProps {}
     }
 
     /**
@@ -11993,7 +11896,7 @@ export namespace Camel {
          * returns `false`.
          * @param callback a {@link Camel.ForeachPartFunc} callback to call for each part
          */
-        foreach_part(callback: (ForeachPartFunc | null)): void;
+        foreach_part(callback: ForeachPartFunc | null): void;
 
         /**
          * Get the date and UTC offset of a message.
@@ -12013,45 +11916,45 @@ export namespace Camel {
          * Get the from address of a message.
          * @returns the from address of the message
          */
-        get_from(): (InternetAddress | null);
+        get_from(): InternetAddress | null;
 
         /**
          * Get the message-id of a message.
          * @returns the message-id of a message
          */
-        get_message_id(): (string | null);
+        get_message_id(): string | null;
 
         /**
          * Get a MIME part by id from a message.
          * @param content_id content-id to search for
          * @returns the MIME part with the requested id, or `null` if not found
          */
-        get_part_by_content_id(content_id: string): (MimePart | null);
+        get_part_by_content_id(content_id: string): MimePart | null;
 
         /**
          * Get the message recipients of a specified type.
          * @param type recipient type
          * @returns the requested recipients
          */
-        get_recipients(type: string): (InternetAddress | null);
+        get_recipients(type: string): InternetAddress | null;
 
         /**
          * Get the Reply-To of a message.
          * @returns the Reply-To address of the message
          */
-        get_reply_to(): (InternetAddress | null);
+        get_reply_to(): InternetAddress | null;
 
         /**
          * Get the UID of the source account of the message.
          * @returns the uid of the source account
          */
-        get_source(): (string | null);
+        get_source(): string | null;
 
         /**
          * Get the UTF-8 subject text of a message.
          * @returns the message subject
          */
-        get_subject(): (string | null);
+        get_subject(): string | null;
 
         /**
          * Find out if a message contains 8bit or binary encoded parts.
@@ -12089,56 +11992,53 @@ export namespace Camel {
          * @param date a time_t date or `CAMEL_MESSAGE_DATE_CURRENT` to use the current local date and time
          * @param offset an offset from UTC in decimal number using the +HHMM format (for instance an offset   of -10:45 is -1045). If `date` set to `CAMEL_MESSAGE_DATE_CURRENT`, this parameter is ignored
          */
-        set_date(date: (bigint | number), offset: number): void;
+        set_date(date: bigint | number, offset: number): void;
 
         /**
          * Set the from address of a message.
          * @param from a {@link Camel.InternetAddress} object
          */
-        set_from(from: (InternetAddress | null)): void;
+        set_from(from: InternetAddress | null): void;
 
         /**
          * Set the message-id on a message.
          * @param message_id id of the message, or `null` to generate a new one using the from address
          */
-        set_message_id(message_id: (string | null)): void;
+        set_message_id(message_id: string | null): void;
 
         /**
          * Set the recipients of a message.
          * @param type recipient type (one of #CAMEL_RECIPIENT_TYPE_TO, #CAMEL_RECIPIENT_TYPE_CC, or #CAMEL_RECIPIENT_TYPE_BCC)
          * @param recipients a {@link Camel.InternetAddress} with the recipient addresses set or `null`   to remove the already defined one
          */
-        set_recipients(type: string, recipients: (InternetAddress | null)): void;
+        set_recipients(type: string, recipients: InternetAddress | null): void;
 
         /**
          * Set the Reply-To of a message.
          * @param reply_to a {@link Camel.InternetAddress} object
          */
-        set_reply_to(reply_to: (InternetAddress | null)): void;
+        set_reply_to(reply_to: InternetAddress | null): void;
 
         /**
          * Set the UID of the source account of the message.
          * @param source_uid the uid of the source account
          */
-        set_source(source_uid: (string | null)): void;
+        set_source(source_uid: string | null): void;
 
         /**
          * Set the subject text of a message.
          * @param subject UTF-8 message subject
          */
-        set_subject(subject: (string | null)): void;
+        set_subject(subject: string | null): void;
     }
 
 
     namespace MimeParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -12198,7 +12098,7 @@ export namespace Camel {
          * Get the content type defined in the current part.
          * @returns A content_type structure, or `null` if there is no content-type defined for this part of state of the parser.
          */
-        content_type(): (ContentType | null);
+        content_type(): ContentType | null;
 
         /**
          * Drop the last step call.  This should only be used
@@ -12216,7 +12116,7 @@ export namespace Camel {
          * until the next call to `camel_mime_parser_step()`, or `camel_mime_parser_drop_step()`.
          * @returns The headers, or `null`, if there are no headers defined for the current part or state. Free it with `camel_name_value_array_free()`.
          */
-        dup_headers(): (NameValueArray | null);
+        dup_headers(): NameValueArray | null;
 
         errno(): number;
 
@@ -12250,7 +12150,7 @@ export namespace Camel {
          * state, or any deeper state.
          * @returns The From line, or `null` if called out of context.
          */
-        from_line(): (string | null);
+        from_line(): string | null;
 
         /**
          * Lookup a header by name.
@@ -12258,14 +12158,14 @@ export namespace Camel {
          * @param offset Pointer that can receive the offset of the header in the stream from the start of parsing.
          * @returns The header value, or `null` if the header is not defined.
          */
-        header(name: string, offset: number): (string | null);
+        header(name: string, offset: number): string | null;
 
         /**
          * Convenience function creates a {@link Gio.MemoryInputStream} from `bytes` and hands
          * it off to `camel_mime_parser_init_with_input_stream()`.
          * @param bytes a {@link GLib.Bytes} containing the message content
          */
-        init_with_bytes(bytes: (GLib.Bytes | Uint8Array)): void;
+        init_with_bytes(bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * Initialise the scanner with an fd.  The scanner's offsets
@@ -12301,14 +12201,14 @@ export namespace Camel {
          * CAMEL_MIME_PARSER_STATE_MULTIPART_END.
          * @returns The postface text, or `null` if there wasn't any.
          */
-        postface(): (string | null);
+        postface(): string | null;
 
         /**
          * Retrieve the preface text for the current multipart.
          * Can only be used when the state is CAMEL_MIME_PARSER_STATE_MULTIPART_END.
          * @returns The preface text, or `null` if there wasn't any.
          */
-        preface(): (string | null);
+        preface(): string | null;
 
         /**
          * Pre-load a new parser state.  Used to post-parse multipart content
@@ -12333,7 +12233,7 @@ export namespace Camel {
          * @param len The length of data to read
          * @returns The number of bytes available, or -1 on error.
          */
-        read(len: (bigint | number)): [number, Uint8Array];
+        read(len: bigint | number): [number, Uint8Array];
 
         /**
          * Tell the scanner if it should scan "^From " lines or not.
@@ -12369,7 +12269,7 @@ export namespace Camel {
          * @param whence SEEK_SET, SEEK_CUR, SEEK_END
          * @returns The new seek offset, or -1 on an error (for example, trying to seek on a non-seekable stream or file descriptor).
          */
-        seek(offset: (bigint | number), whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
 
         /**
          * @param matchstr 
@@ -12398,7 +12298,7 @@ export namespace Camel {
          * @param databuffer Pointer to accept a pointer to the data associated with this step (if any).  May be `null`, in which case datalength is also ingored.
          * @returns The current new state of the parser is returned.
          */
-        step(databuffer?: (Uint8Array | string)): [MimeParserState, Uint8Array];
+        step(databuffer?: Uint8Array | string): [MimeParserState, Uint8Array];
 
         /**
          * Get the stream, if any, the parser has been initialised
@@ -12407,7 +12307,7 @@ export namespace Camel {
          * the seek position in between).
          * @returns The stream from `camel_mime_parser_init_with_stream()`, or NULL if the parser is reading from a file descriptor or is uninitialised.
          */
-        stream(): (Stream | null);
+        stream(): Stream | null;
 
         /**
          * Return the current scanning offset.  The meaning of this
@@ -12473,12 +12373,12 @@ export namespace Camel {
 
         // Constructor properties interface
         interface ConstructorProps extends Medium.ConstructorProps {
-            content_id: (string | null);
-            contentId: (string | null);
-            content_md5: (string | null);
-            contentMd5: (string | null);
-            description: (string | null);
-            disposition: (string | null);
+            content_id: string | null;
+            contentId: string | null;
+            content_md5: string | null;
+            contentMd5: string | null;
+            description: string | null;
+            disposition: string | null;
         }
     }
 
@@ -12492,38 +12392,38 @@ export namespace Camel {
         /**
          * @default null
          */
-        get content_id(): (string | null);
-        set content_id(val: (string | null));
+        get content_id(): string | null;
+        set content_id(val: string | null);
 
         /**
          * @default null
          */
-        get contentId(): (string | null);
-        set contentId(val: (string | null));
+        get contentId(): string | null;
+        set contentId(val: string | null);
 
         /**
          * @default null
          */
-        get content_md5(): (string | null);
-        set content_md5(val: (string | null));
+        get content_md5(): string | null;
+        set content_md5(val: string | null);
 
         /**
          * @default null
          */
-        get contentMd5(): (string | null);
-        set contentMd5(val: (string | null));
+        get contentMd5(): string | null;
+        set contentMd5(val: string | null);
 
         /**
          * @default null
          */
-        get description(): (string | null);
-        set description(val: (string | null));
+        get description(): string | null;
+        set description(val: string | null);
 
         /**
          * @default null
          */
-        get disposition(): (string | null);
-        set disposition(val: (string | null));
+        get disposition(): string | null;
+        set disposition(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -12561,7 +12461,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_construct_from_parser_sync(parser: MimeParser, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_construct_from_parser_sync(parser: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -12570,7 +12470,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        construct_content_from_parser(mp: MimeParser, cancellable: (Gio.Cancellable | null)): boolean;
+        construct_content_from_parser(mp: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously constructs a MIME part from a parser.
@@ -12582,20 +12482,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously constructs a MIME part from a parser.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_mime_part_construct_from_parser_finish()` to get the result of
-         * the operation.
-         * @param parser a {@link Camel.MimeParser}
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously constructs a MIME part from a parser.
@@ -12608,7 +12495,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously constructs a MIME part from a parser.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_mime_part_construct_from_parser_finish()` to get the result of
+         * the operation.
+         * @param parser a {@link Camel.MimeParser}
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        construct_from_parser(parser: MimeParser, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_mime_part_construct_from_parser()`.
@@ -12623,56 +12523,56 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        construct_from_parser_sync(parser: MimeParser, cancellable: (Gio.Cancellable | null)): boolean;
+        construct_from_parser_sync(parser: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Get the disposition of the MIME part as a structure.
          * Returned pointer is owned by `mime_part`.
          * @returns the disposition structure
          */
-        get_content_disposition(): (ContentDisposition | null);
+        get_content_disposition(): ContentDisposition | null;
 
         /**
          * Get the content-id field of a MIME part.
          * @returns the content-id field of the MIME part
          */
-        get_content_id(): (string | null);
+        get_content_id(): string | null;
 
         /**
          * Get the Content-Languages set on the MIME part.
          * @returns a {@link GLib.List} of languages
          */
-        get_content_languages(): (string[] | null);
+        get_content_languages(): string[] | null;
 
         /**
          * Get the content-location field of a MIME part.
          * @returns the content-location field of a MIME part
          */
-        get_content_location(): (string | null);
+        get_content_location(): string | null;
 
         /**
          * Get the content-md5 field of the MIME part.
          * @returns the content-md5 field of the MIME part
          */
-        get_content_md5(): (string | null);
+        get_content_md5(): string | null;
 
         /**
          * Get the Content-Type of a MIME part.
          * @returns the parsed {@link Camel.ContentType} of the MIME part
          */
-        get_content_type(): (ContentType | null);
+        get_content_type(): ContentType | null;
 
         /**
          * Get the description of the MIME part.
          * @returns the description
          */
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * Get the disposition of the MIME part.
          * @returns the disposition
          */
-        get_disposition(): (string | null);
+        get_disposition(): string | null;
 
         /**
          * Get the Content-Transfer-Encoding of a MIME part.
@@ -12684,7 +12584,7 @@ export namespace Camel {
          * Get the filename of a MIME part.
          * @returns the filename of the MIME part
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * Utility function used to set the content of a mime part object to
@@ -12694,7 +12594,7 @@ export namespace Camel {
          * @param data data to put into the part
          * @param type Content-Type of the data
          */
-        set_content(data: (Uint8Array | null), type: (string | null)): void;
+        set_content(data: Uint8Array | null, type: string | null): void;
 
         /**
          * @param args 
@@ -12706,31 +12606,31 @@ export namespace Camel {
          * Set the content-id field on a MIME part.
          * @param contentid content id
          */
-        set_content_id(contentid: (string | null)): void;
+        set_content_id(contentid: string | null): void;
 
         /**
          * Set the Content-Languages field of a MIME part.
          * @param content_languages list of languages
          */
-        set_content_languages(content_languages: (string[] | null)): void;
+        set_content_languages(content_languages: string[] | null): void;
 
         /**
          * Set the content-location field of the MIME part.
          * @param location the content-location value of the MIME part
          */
-        set_content_location(location: (string | null)): void;
+        set_content_location(location: string | null): void;
 
         /**
          * Set the content-md5 field of the MIME part.
          * @param md5sum the md5sum of the MIME part
          */
-        set_content_md5(md5sum: (string | null)): void;
+        set_content_md5(md5sum: string | null): void;
 
         /**
          * Set the content-type on a MIME part.
          * @param content_type content-type string
          */
-        set_content_type(content_type: (string | null)): void;
+        set_content_type(content_type: string | null): void;
 
         /**
          * Set a description on the MIME part.
@@ -12742,7 +12642,7 @@ export namespace Camel {
          * Set a disposition on the MIME part.
          * @param disposition disposition of the MIME part
          */
-        set_disposition(disposition: (string | null)): void;
+        set_disposition(disposition: string | null): void;
 
         /**
          * Set the Content-Transfer-Encoding to use on a MIME part.
@@ -12754,19 +12654,16 @@ export namespace Camel {
          * Set the filename on a MIME part.
          * @param filename filename given to the MIME part
          */
-        set_filename(filename: (string | null)): void;
+        set_filename(filename: string | null): void;
     }
 
 
     namespace Multipart {
         // Signal signatures
-        interface SignalSignatures extends DataWrapper.SignalSignatures {
-        }
+        interface SignalSignatures extends DataWrapper.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DataWrapper.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataWrapper.ConstructorProps {}
     }
 
     /**
@@ -12833,7 +12730,7 @@ export namespace Camel {
          * @param index a zero-based index indicating the part to get
          * @virtual
          */
-        vfunc_get_part(index: number): (MimePart | null);
+        vfunc_get_part(index: number): MimePart | null;
 
         /**
          * Sets the message boundary for `multipart` to `boundary`. This should
@@ -12843,7 +12740,7 @@ export namespace Camel {
          * @param boundary the message boundary, or `null`
          * @virtual
          */
-        vfunc_set_boundary(boundary: (string | null)): void;
+        vfunc_set_boundary(boundary: string | null): void;
 
         // Methods
         /**
@@ -12873,7 +12770,7 @@ export namespace Camel {
          * @param index a zero-based index indicating the part to get
          * @returns the indicated subpart, or `null`
          */
-        get_part(index: number): (MimePart | null);
+        get_part(index: number): MimePart | null;
 
         /**
          * Returns the postface text for `multipart`.
@@ -12894,7 +12791,7 @@ export namespace Camel {
          * be used.
          * @param boundary the message boundary, or `null`
          */
-        set_boundary(boundary: (string | null)): void;
+        set_boundary(boundary: string | null): void;
 
         /**
          * Set the postface text for this multipart.  Will be written out after
@@ -12918,13 +12815,10 @@ export namespace Camel {
 
     namespace MultipartEncrypted {
         // Signal signatures
-        interface SignalSignatures extends Multipart.SignalSignatures {
-        }
+        interface SignalSignatures extends Multipart.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Multipart.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Multipart.ConstructorProps {}
     }
 
     /**
@@ -12966,13 +12860,10 @@ export namespace Camel {
 
     namespace MultipartSigned {
         // Signal signatures
-        interface SignalSignatures extends Multipart.SignalSignatures {
-        }
+        interface SignalSignatures extends Multipart.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Multipart.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Multipart.ConstructorProps {}
     }
 
     /**
@@ -13035,13 +12926,10 @@ export namespace Camel {
 
     namespace NNTPAddress {
         // Signal signatures
-        interface SignalSignatures extends Address.SignalSignatures {
-        }
+        interface SignalSignatures extends Address.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Address.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Address.ConstructorProps {}
     }
 
     /**
@@ -13099,13 +12987,10 @@ export namespace Camel {
 
     namespace NullOutputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.OutputStream.ConstructorProps {}
     }
 
     /**
@@ -13338,7 +13223,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_downsync_sync(expression: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_downsync_sync(expression: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -13360,7 +13245,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        downsync(expression: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        downsync(expression: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Synchronizes messages in `folder` described by the search `expression` to
@@ -13374,7 +13259,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        downsync(expression: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        downsync(expression: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Synchronizes messages in `folder` described by the search `expression` to
@@ -13388,7 +13273,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        downsync(expression: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        downsync(expression: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_offline_folder_downsync()`.
@@ -13404,7 +13289,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        downsync_sync(expression: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        downsync_sync(expression: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         get_offline_sync(): ThreeState;
 
@@ -13695,7 +13580,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        prepare_for_offline_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        prepare_for_offline_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Check whether the `store` requires synchronization for offline usage.
@@ -13713,7 +13598,7 @@ export namespace Camel {
          * @param io_priority the I/O priority for the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        set_online(online: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        set_online(online: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * An asynchronous variant of `camel_offline_store_set_online_sync()`.
@@ -13723,7 +13608,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        set_online(online: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_online(online: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * An asynchronous variant of `camel_offline_store_set_online_sync()`.
@@ -13733,7 +13618,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        set_online(online: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_online(online: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_offline_store_set_online()`.
@@ -13748,7 +13633,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. See: camel_offline_store_set_online
          */
-        set_online_sync(online: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        set_online_sync(online: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
@@ -13790,9 +13675,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.Cancellable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.Cancellable.ConstructorProps {}
     }
 
     /**
@@ -13817,7 +13700,7 @@ export namespace Camel {
 
         static ["new"](): Operation;
 
-        static new_proxy(cancellable: (Gio.Cancellable | null)): Operation;
+        static new_proxy(cancellable: Gio.Cancellable | null): Operation;
 
         // Signals
         /** @signal */
@@ -13842,7 +13725,7 @@ export namespace Camel {
          * function does nothing and returns silently.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        static pop_message(cancellable: (Gio.Cancellable | null)): void;
+        static pop_message(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Report progress on the current operation.  `percent` reports the current
@@ -13854,7 +13737,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param percent percent complete, 0 to 100.
          */
-        static progress(cancellable: (Gio.Cancellable | null), percent: number): void;
+        static progress(cancellable: Gio.Cancellable | null, percent: number): void;
 
         // Virtual methods
         /**
@@ -13868,13 +13751,10 @@ export namespace Camel {
 
     namespace PartitionTable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -13935,13 +13815,10 @@ export namespace Camel {
 
     namespace SExp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -14003,7 +13880,7 @@ export namespace Camel {
          * without the 'WHERE' keyword.
          * @param sexp a search expression to convert
          */
-        static to_sql_sexp(sexp: string): (string | null);
+        static to_sql_sexp(sexp: string): string | null;
 
         // Methods
         /**
@@ -14017,13 +13894,13 @@ export namespace Camel {
         /**
          * @returns Set error string on the `sexp`, or `null`, when none is set
          */
-        error(): (string | null);
+        error(): string | null;
 
         /**
          * @param start 
          * @param end 
          */
-        evaluate_occur_times(start: (bigint | number), end: (bigint | number)): boolean;
+        evaluate_occur_times(start: bigint | number, end: bigint | number): boolean;
 
         /**
          * Prepares to scan a file.
@@ -14052,7 +13929,7 @@ export namespace Camel {
          * when the `result` is `null`.
          * @param result a {@link Camel.SExpResult} to free
          */
-        result_free(result: (SExpResult | null)): void;
+        result_free(result: SExpResult | null): void;
 
         /**
          * Frees an array of results.
@@ -14076,9 +13953,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CipherContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CipherContext.ConstructorProps {}
     }
 
     /**
@@ -14226,7 +14101,7 @@ export namespace Camel {
         /**
          * @param mechanism the SASL mechanism to get an authtype for
          */
-        static authtype(mechanism: string): (ServiceAuthType | null);
+        static authtype(mechanism: string): ServiceAuthType | null;
 
         /**
          * @param include_plain whether or not to include the PLAIN mechanism
@@ -14239,7 +14114,7 @@ export namespace Camel {
          * also treated as XOAUTH2, even their real name is different.
          * @param mechanism an authentication mechanism
          */
-        static is_xoauth2_alias(mechanism: (string | null)): boolean;
+        static is_xoauth2_alias(mechanism: string | null): boolean;
 
         // Virtual methods
         /**
@@ -14253,13 +14128,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_challenge_sync(token: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): (Uint8Array | null);
+        vfunc_challenge_sync(token: Uint8Array | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
 
         /**
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_try_empty_password_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_try_empty_password_sync(cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -14274,7 +14149,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        challenge(token: (Uint8Array | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Uint8Array | null)>;
+        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
 
         /**
          * If `token` is `null`, asynchronously generate the initial SASL message
@@ -14289,7 +14164,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        challenge(token: (Uint8Array | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * If `token` is `null`, asynchronously generate the initial SASL message
@@ -14304,7 +14179,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        challenge(token: (Uint8Array | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Uint8Array | null)> | void);
+        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array | null> | void;
 
         /**
          * As with `camel_sasl_challenge()`, but the challenge `token` and the
@@ -14317,21 +14192,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        challenge_base64(token: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * As with `camel_sasl_challenge()`, but the challenge `token` and the
-         * response are both base64-encoded.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_sasl_challenge_base64_finish()` to get the result of
-         * the operation.
-         * @param token a base64-encoded token
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        challenge_base64(token: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        challenge_base64(token: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * As with `camel_sasl_challenge()`, but the challenge `token` and the
@@ -14345,7 +14206,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        challenge_base64(token: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        challenge_base64(token: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * As with `camel_sasl_challenge()`, but the challenge `token` and the
+         * response are both base64-encoded.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_sasl_challenge_base64_finish()` to get the result of
+         * the operation.
+         * @param token a base64-encoded token
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        challenge_base64(token: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes the operation started with `camel_sasl_challenge_base64()`.
@@ -14361,7 +14236,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the base64-encoded response
          */
-        challenge_base64_sync(token: string, cancellable: (Gio.Cancellable | null)): string;
+        challenge_base64_sync(token: string, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Finishes the operation started with `camel_sasl_challenge()`.  Free the
@@ -14369,7 +14244,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the SASL response or `null`.  If an error occurred, `error` will also be set.
          */
-        challenge_finish(result: Gio.AsyncResult): (Uint8Array | null);
+        challenge_finish(result: Gio.AsyncResult): Uint8Array | null;
 
         /**
          * If `token` is `null`, generate the initial SASL message to send to
@@ -14382,7 +14257,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the SASL response or `null`. If an error occurred, `error` will also be set.
          */
-        challenge_sync(token: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): (Uint8Array | null);
+        challenge_sync(token: Uint8Array | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
 
         /**
          * @returns whether or not `sasl` has successfully authenticated the user. This will be `true` after it returns the last needed response. The caller must still pass that information on to the server and verify that it has accepted it.
@@ -14410,7 +14285,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        try_empty_password(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        try_empty_password(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously determine whether `sasl` can be used for password-less
@@ -14423,7 +14298,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        try_empty_password(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        try_empty_password(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously determine whether `sasl` can be used for password-less
@@ -14436,7 +14311,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        try_empty_password(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        try_empty_password(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_sasl_try_empty_password()`.
@@ -14449,7 +14324,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether or not `sasl` can attempt to authenticate without a password being provided by the caller. This will be `true` for an authentication method which can attempt to use single-sign-on credentials, but which can fall back to using a provided password so it still has the `need_password` flag set in its description.
          */
-        try_empty_password_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        try_empty_password_sync(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -14463,9 +14338,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14518,9 +14391,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14568,9 +14439,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14618,9 +14487,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14667,7 +14534,7 @@ export namespace Camel {
          * @param override_host Host name to use during challenge processing; can be `null`
          * @param override_user User name to use during challenge processing; can be `null`
          */
-        override_host_and_user(override_host: (string | null), override_user: (string | null)): void;
+        override_host_and_user(override_host: string | null, override_user: string | null): void;
     }
 
 
@@ -14681,9 +14548,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14731,9 +14596,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14781,9 +14644,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14831,9 +14692,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14881,9 +14740,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Sasl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sasl.ConstructorProps {}
     }
 
     /**
@@ -14931,9 +14788,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
     }
 
     /**
@@ -14981,9 +14836,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
     }
 
     /**
@@ -15031,9 +14884,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
     }
 
     /**
@@ -15089,8 +14940,8 @@ export namespace Camel {
         interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
             connection_status: ServiceConnectionStatus;
             connectionStatus: ServiceConnectionStatus;
-            display_name: (string | null);
-            displayName: (string | null);
+            display_name: string | null;
+            displayName: string | null;
             password: string;
             provider: Provider;
             proxy_resolver: Gio.ProxyResolver;
@@ -15123,14 +14974,14 @@ export namespace Camel {
         /**
          * @default null
          */
-        get display_name(): (string | null);
-        set display_name(val: (string | null));
+        get display_name(): string | null;
+        set display_name(val: string | null);
 
         /**
          * @default null
          */
-        get displayName(): (string | null);
-        set displayName(val: (string | null));
+        get displayName(): string | null;
+        set displayName(val: string | null);
 
         /**
          * @default null
@@ -15212,7 +15063,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_authenticate_sync(mechanism: (string | null), cancellable: (Gio.Cancellable | null)): AuthenticationResult;
+        vfunc_authenticate_sync(mechanism: string | null, cancellable: Gio.Cancellable | null): AuthenticationResult;
 
         /**
          * Connects `service` to a remote server using the information in its
@@ -15223,7 +15074,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_connect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Disconnect from the service. If `clean` is `false`, it should not
@@ -15238,7 +15089,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_disconnect_sync(clean: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_disconnect_sync(clean: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This gets the name of the service in a "friendly" (suitable for
@@ -15256,7 +15107,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_query_auth_types_sync(cancellable: (Gio.Cancellable | null)): ServiceAuthType[];
+        vfunc_query_auth_types_sync(cancellable: Gio.Cancellable | null): ServiceAuthType[];
 
         // Methods
         /**
@@ -15274,7 +15125,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        authenticate(mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<AuthenticationResult>;
+        authenticate(mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthenticationResult>;
 
         /**
          * Asynchronously attempts to authenticate `service` using `mechanism` and,
@@ -15292,7 +15143,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        authenticate(mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        authenticate(mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously attempts to authenticate `service` using `mechanism` and,
@@ -15310,7 +15161,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        authenticate(mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<AuthenticationResult> | void);
+        authenticate(mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<AuthenticationResult> | void;
 
         /**
          * Finishes the operation started with `camel_service_authenticate()`.
@@ -15350,7 +15201,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the authentication result
          */
-        authenticate_sync(mechanism: (string | null), cancellable: (Gio.Cancellable | null)): AuthenticationResult;
+        authenticate_sync(mechanism: string | null, cancellable: Gio.Cancellable | null): AuthenticationResult;
 
         /**
          * Asynchronously connects `service` to a remote server using the information
@@ -15368,26 +15219,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        connect(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously connects `service` to a remote server using the information
-         * in its {@link Camel.Service.settings} instance.
-         * 
-         * If a connect operation is already in progress when this function is
-         * called, its results will be reflected in this connect operation.
-         * 
-         * If any disconnect operations are in progress when this function is
-         * called, they will be cancelled.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_service_connect_finish()` to get the result of the
-         * operation.
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        connect(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously connects `service` to a remote server using the information
@@ -15406,7 +15238,26 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        connect(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously connects `service` to a remote server using the information
+         * in its {@link Camel.Service.settings} instance.
+         * 
+         * If a connect operation is already in progress when this function is
+         * called, its results will be reflected in this connect operation.
+         * 
+         * If any disconnect operations are in progress when this function is
+         * called, they will be cancelled.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_service_connect_finish()` to get the result of the
+         * operation.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        connect(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param args 
@@ -15429,7 +15280,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the connection is made or `false` otherwise
          */
-        connect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * If a disconnect operation is already in progress when this function is
@@ -15445,24 +15296,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        disconnect(clean: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * If a disconnect operation is already in progress when this function is
-         * called, its results will be reflected in this disconnect operation.
-         * 
-         * If any connect operations are in progress when this function is called,
-         * they will be cancelled.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_service_disconnect_finish()` to get the result of the
-         * operation.
-         * @param clean whether or not to try to disconnect cleanly
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        disconnect(clean: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        disconnect(clean: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * If a disconnect operation is already in progress when this function is
@@ -15479,7 +15313,24 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        disconnect(clean: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        disconnect(clean: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * If a disconnect operation is already in progress when this function is
+         * called, its results will be reflected in this disconnect operation.
+         * 
+         * If any connect operations are in progress when this function is called,
+         * they will be cancelled.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_service_disconnect_finish()` to get the result of the
+         * operation.
+         * @param clean whether or not to try to disconnect cleanly
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        disconnect(clean: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param args 
@@ -15507,7 +15358,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the connection was severed or `false` otherwise
          */
-        disconnect_sync(clean: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        disconnect_sync(clean: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Thread-safe variation of `camel_service_get_display_name()`.
@@ -15516,7 +15367,7 @@ export namespace Camel {
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link Camel.Service.display_name}
          */
-        dup_display_name(): (string | null);
+        dup_display_name(): string | null;
 
         /**
          * Thread-safe variation of `camel_service_get_password()`.
@@ -15542,7 +15393,7 @@ export namespace Camel {
          * description of the type of service (IMAP, SMTP, etc.).
          * @returns the display name for `service`, or `null`
          */
-        get_display_name(): (string | null);
+        get_display_name(): string | null;
 
         /**
          * This gets the name of the service in a "friendly" (suitable for
@@ -15615,7 +15466,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        query_auth_types(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<ServiceAuthType[]>;
+        query_auth_types(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceAuthType[]>;
 
         /**
          * Asynchronously obtains a list of authentication types supported by
@@ -15628,7 +15479,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        query_auth_types(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_auth_types(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously obtains a list of authentication types supported by
@@ -15641,7 +15492,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        query_auth_types(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ServiceAuthType[]> | void);
+        query_auth_types(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ServiceAuthType[]> | void;
 
         /**
          * Finishes the operation started with `camel_service_query_auth_types()`.
@@ -15657,7 +15508,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a list of {@link Camel.ServiceAuthType} structs
          */
-        query_auth_types_sync(cancellable: (Gio.Cancellable | null)): ServiceAuthType[];
+        query_auth_types_sync(cancellable: Gio.Cancellable | null): ServiceAuthType[];
 
         /**
          * Adds `task` to a queue of waiting tasks with the same source object.
@@ -15682,7 +15533,7 @@ export namespace Camel {
          * be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.ProxyResolver}, or `null`
          */
-        ref_proxy_resolver(): (Gio.ProxyResolver | null);
+        ref_proxy_resolver(): Gio.ProxyResolver | null;
 
         /**
          * Returns the {@link Camel.Session} associated with the service.
@@ -15711,7 +15562,7 @@ export namespace Camel {
          * description of the type of service (IMAP, SMTP, etc.).
          * @param display_name a valid UTF-8 string, or `null`
          */
-        set_display_name(display_name: (string | null)): void;
+        set_display_name(display_name: string | null): void;
 
         /**
          * Sets the password for `service`.  Use this function to cache the password
@@ -15727,7 +15578,7 @@ export namespace Camel {
          * that may require a network connection.
          * @param proxy_resolver a {@link Gio.ProxyResolver}, or `null` for the default
          */
-        set_proxy_resolver(proxy_resolver: (Gio.ProxyResolver | null)): void;
+        set_proxy_resolver(proxy_resolver: Gio.ProxyResolver | null): void;
 
         /**
          * Associates a new {@link Camel.Settings} instance with the service.
@@ -15737,7 +15588,7 @@ export namespace Camel {
          * set to defaults.
          * @param settings an instance derviced from {@link Camel.Settings}, or `null`
          */
-        set_settings(settings: (Settings | null)): void;
+        set_settings(settings: Settings | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -15781,7 +15632,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -15825,7 +15676,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -15836,12 +15687,12 @@ export namespace Camel {
              * @signal
              * @run-last
              */
-            "job-finished": (arg0: (Gio.Cancellable | null), arg1: GLib.Error) => void;
+            "job-finished": (arg0: Gio.Cancellable | null, arg1: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "job-started": (arg0: (Gio.Cancellable | null)) => void;
+            "job-started": (arg0: Gio.Cancellable | null) => void;
             /**
              * This purpose of this signal is to propagate a server-issued alert
              * message from `service` to a user interface.  The `type` hints at the
@@ -15860,8 +15711,8 @@ export namespace Camel {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            junk_filter: (JunkFilter | null);
-            junkFilter: (JunkFilter | null);
+            junk_filter: JunkFilter | null;
+            junkFilter: JunkFilter | null;
             main_context: GLib.MainContext;
             mainContext: GLib.MainContext;
             network_monitor: Gio.NetworkMonitor;
@@ -15881,11 +15732,11 @@ export namespace Camel {
         static $gtype: GObject.GType<Session>;
 
         // Properties
-        get junk_filter(): (JunkFilter | null);
-        set junk_filter(val: (JunkFilter | null));
+        get junk_filter(): JunkFilter | null;
+        set junk_filter(val: JunkFilter | null);
 
-        get junkFilter(): (JunkFilter | null);
-        set junkFilter(val: (JunkFilter | null));
+        get junkFilter(): JunkFilter | null;
+        set junkFilter(val: JunkFilter | null);
 
         /**
          * @read-only
@@ -15999,7 +15850,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_addressbook_contains_sync(book_uid: string, email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_addressbook_contains_sync(book_uid: string, email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Authenticates `service`, which may involve repeated calls to
@@ -16015,7 +15866,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_authenticate_sync(service: Service, mechanism: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_authenticate_sync(service: Service, mechanism: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This function is used by a {@link Camel.Service} to tell the application
@@ -16042,7 +15893,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_forward_to_sync(folder: Folder, message: MimeMessage, address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_forward_to_sync(folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The optional `for_folder` can be used to determine which filters
@@ -16051,7 +15902,7 @@ export namespace Camel {
          * @param for_folder an optional {@link Camel.Folder}, for which the filter driver will run, or `null`
          * @virtual
          */
-        vfunc_get_filter_driver(type: string, for_folder: (Folder | null)): FilterDriver;
+        vfunc_get_filter_driver(type: string, for_folder: Folder | null): FilterDriver;
 
         /**
          * Obtains the OAuth 2.0 access token for `service` along with its expiry
@@ -16062,7 +15913,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_oauth2_access_token_sync(service: Service, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+        vfunc_get_oauth2_access_token_sync(service: Service, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
         /**
          * This function is used by a {@link Camel.Service} to ask the application and
@@ -16114,20 +15965,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_recipient_certificates_sync(flags: number, recipients: string[], cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        vfunc_get_recipient_certificates_sync(flags: number, recipients: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * @param cancellable 
          * @param error 
          * @virtual
          */
-        vfunc_job_finished(cancellable: (Gio.Cancellable | null), error: GLib.Error): void;
+        vfunc_job_finished(cancellable: Gio.Cancellable | null, error: GLib.Error): void;
 
         /**
          * @param cancellable 
          * @virtual
          */
-        vfunc_job_started(cancellable: (Gio.Cancellable | null)): void;
+        vfunc_job_started(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Looks up for the `name` in address books.
@@ -16211,7 +16062,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the `email_address` could be found in the `book_uid`
          */
-        addressbook_contains_sync(book_uid: string, email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        addressbook_contains_sync(book_uid: string, email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously authenticates `service`, which may involve repeated calls
@@ -16228,25 +16079,7 @@ export namespace Camel {
          * @param io_priority the I/O priority for the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        authenticate(service: Service, mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously authenticates `service`, which may involve repeated calls
-         * to `camel_service_authenticate()` or `camel_service_authenticate_sync()`.
-         * A {@link Camel.Session} subclass is largely responsible for implementing this,
-         * and should handle things like user prompts and secure password storage.
-         * These issues are out-of-scope for Camel.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_session_authenticate_finish()` to get the result of
-         * the operation.
-         * @param service a {@link Camel.Service}
-         * @param mechanism a SASL mechanism name, or `null`
-         * @param io_priority the I/O priority for the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        authenticate(service: Service, mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        authenticate(service: Service, mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously authenticates `service`, which may involve repeated calls
@@ -16264,7 +16097,25 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        authenticate(service: Service, mechanism: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        authenticate(service: Service, mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously authenticates `service`, which may involve repeated calls
+         * to `camel_service_authenticate()` or `camel_service_authenticate_sync()`.
+         * A {@link Camel.Session} subclass is largely responsible for implementing this,
+         * and should handle things like user prompts and secure password storage.
+         * These issues are out-of-scope for Camel.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_session_authenticate_finish()` to get the result of
+         * the operation.
+         * @param service a {@link Camel.Service}
+         * @param mechanism a SASL mechanism name, or `null`
+         * @param io_priority the I/O priority for the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        authenticate(service: Service, mechanism: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_session_authenticate()`.
@@ -16290,7 +16141,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        authenticate_sync(service: Service, mechanism: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        authenticate_sync(service: Service, mechanism: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This function is used by a {@link Camel.Service} to tell the application
@@ -16320,7 +16171,7 @@ export namespace Camel {
          * @param io_priority the I/O priority for the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously forwards `message` in `folder` to the email address(s)
@@ -16336,7 +16187,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously forwards `message` in `folder` to the email address(s)
@@ -16352,7 +16203,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        forward_to(folder: Folder, message: MimeMessage, address: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_session_forward_to()`.
@@ -16373,7 +16224,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        forward_to_sync(folder: Folder, message: MimeMessage, address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        forward_to_sync(folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The optional `for_folder` can be used to determine which filters
@@ -16382,7 +16233,7 @@ export namespace Camel {
          * @param for_folder an optional {@link Camel.Folder}, for which the filter driver will run, or `null`
          * @returns a filter driver, loaded with applicable rules
          */
-        get_filter_driver(type: string, for_folder: (Folder | null)): FilterDriver;
+        get_filter_driver(type: string, for_folder: Folder | null): FilterDriver;
 
         /**
          * Returns the {@link Camel.JunkFilter} instance used to classify messages as
@@ -16393,7 +16244,7 @@ export namespace Camel {
          * junk filtering to take place.
          * @returns a {@link Camel.JunkFilter}, or `null`
          */
-        get_junk_filter(): (JunkFilter | null);
+        get_junk_filter(): JunkFilter | null;
 
         /**
          * @returns Currently used junk    headers as a hash table, previously set by `camel_session_set_junk_headers()`.
@@ -16409,7 +16260,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        get_oauth2_access_token_sync(service: Service, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+        get_oauth2_access_token_sync(service: Service, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
         /**
          * @returns whether or not `session` is online
@@ -16466,7 +16317,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded, or better whether no fatal error happened.
          */
-        get_recipient_certificates_sync(flags: number, recipients: string[], cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        get_recipient_certificates_sync(flags: number, recipients: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Returns the base directory under which to store user-specific mail cache.
@@ -16549,7 +16400,7 @@ export namespace Camel {
          * @param uid a unique identifier string
          * @returns a {@link Camel.Service} instance, or `null`
          */
-        ref_service(uid: string): (Service | null);
+        ref_service(uid: string): Service | null;
 
         /**
          * Looks up a {@link Camel.Service} by trying to match its {@link Camel.URL} against the
@@ -16565,7 +16416,7 @@ export namespace Camel {
          * @param type a {@link Camel.ProviderType}
          * @returns a {@link Camel.Service} instance, or `null`
          */
-        ref_service_by_url(url: URL, type: ProviderType): (Service | null);
+        ref_service_by_url(url: URL, type: ProviderType): Service | null;
 
         /**
          * Removes a {@link Camel.Service} previously added by `camel_session_add_service()`.
@@ -16591,7 +16442,7 @@ export namespace Camel {
          * junk filtering to take place.
          * @param junk_filter a {@link Camel.JunkFilter}, or `null`
          */
-        set_junk_filter(junk_filter: (JunkFilter | null)): void;
+        set_junk_filter(junk_filter: JunkFilter | null): void;
 
         /**
          * @param headers 
@@ -16605,7 +16456,7 @@ export namespace Camel {
          * availability and whether a server is reachable.
          * @param network_monitor a {@link Gio.NetworkMonitor} or `null`
          */
-        set_network_monitor(network_monitor: (Gio.NetworkMonitor | null)): void;
+        set_network_monitor(network_monitor: Gio.NetworkMonitor | null): void;
 
         /**
          * Sets the online status of `session` to `online`.
@@ -16668,13 +16519,10 @@ export namespace Camel {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -16820,9 +16668,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -16875,7 +16721,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_create_folder_sync(parent_name: (string | null), folder_name: string, cancellable: (Gio.Cancellable | null)): (FolderInfo | null);
+        vfunc_create_folder_sync(parent_name: string | null, folder_name: string, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
         /**
          * Deletes the folder described by `folder_name`.  The folder must be empty.
@@ -16883,7 +16729,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_delete_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_delete_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Emits the {@link Camel.Store.SignalSignatures.folder_created | Camel.Store::folder-created} signal from an idle source on
@@ -16972,7 +16818,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_folder_info_sync(top: (string | null), flags: StoreGetFolderInfoFlags, cancellable: (Gio.Cancellable | null)): (FolderInfo | null);
+        vfunc_get_folder_info_sync(top: string | null, flags: StoreGetFolderInfoFlags, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
         /**
          * Gets a specific folder object from `store` by name.
@@ -16981,28 +16827,28 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_folder_sync(folder_name: string, flags: StoreGetFolderFlags, cancellable: (Gio.Cancellable | null)): (Folder | null);
+        vfunc_get_folder_sync(folder_name: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Gets the folder in `store` into which new mail is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_inbox_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        vfunc_get_inbox_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Gets the folder in `store` into which junk is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_junk_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        vfunc_get_junk_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Gets the folder in `store` into which trash is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_trash_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        vfunc_get_trash_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Runs initial setup for the `store`. It's meant to preset some
@@ -17022,7 +16868,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_initial_setup_sync(cancellable: (Gio.Cancellable | null)): [boolean, { [key: string]: any } | GLib.HashTable<string, string>];
+        vfunc_initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: any } | GLib.HashTable<string, string>];
 
         /**
          * Renames the folder described by `old_name` to `new_name`.
@@ -17031,7 +16877,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_rename_folder_sync(old_name: string, new_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_rename_folder_sync(old_name: string, new_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronizes any changes that have been made to `store` and its folders
@@ -17040,7 +16886,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_synchronize_sync(expunge: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
@@ -17064,7 +16910,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        create_folder(parent_name: (string | null), folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(FolderInfo | null)>;
+        create_folder(parent_name: string | null, folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<FolderInfo | null>;
 
         /**
          * Asynchronously creates a new folder as a child of an existing folder.
@@ -17078,7 +16924,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        create_folder(parent_name: (string | null), folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_folder(parent_name: string | null, folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously creates a new folder as a child of an existing folder.
@@ -17092,7 +16938,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        create_folder(parent_name: (string | null), folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(FolderInfo | null)> | void);
+        create_folder(parent_name: string | null, folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<FolderInfo | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_create_folder()`.
@@ -17101,7 +16947,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns info about the created folder, or `null` on error
          */
-        create_folder_finish(result: Gio.AsyncResult): (FolderInfo | null);
+        create_folder_finish(result: Gio.AsyncResult): FolderInfo | null;
 
         /**
          * Creates a new folder as a child of an existing folder.
@@ -17113,7 +16959,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns info about the created folder, or `null` on error
          */
-        create_folder_sync(parent_name: (string | null), folder_name: string, cancellable: (Gio.Cancellable | null)): (FolderInfo | null);
+        create_folder_sync(parent_name: string | null, folder_name: string, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
         /**
          * Deletes local data for the given `folder_name`. The folder should
@@ -17136,7 +16982,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        delete_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        delete_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes the folder described by `folder_name`.  The
@@ -17149,7 +16995,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        delete_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously deletes the folder described by `folder_name`.  The
@@ -17162,7 +17008,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        delete_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_store_delete_folder()`.
@@ -17177,7 +17023,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        delete_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        delete_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Returns a {@link GLib.PtrArray} of all the opened folders for the `store`. The caller owns
@@ -17268,7 +17114,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Folder | null)>;
+        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
 
         /**
          * Asynchronously gets a specific folder object from `store` by name.
@@ -17281,7 +17127,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets a specific folder object from `store` by name.
@@ -17294,14 +17140,14 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Folder | null)> | void);
+        get_folder(folder_name: string, flags: StoreGetFolderFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Folder | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_get_folder()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the requested {@link Camel.Folder} object, or `null` on error
          */
-        get_folder_finish(result: Gio.AsyncResult): (Folder | null);
+        get_folder_finish(result: Gio.AsyncResult): Folder | null;
 
         /**
          * Asynchronously fetches information about the folder structure of `store`,
@@ -17316,23 +17162,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_folder_info(top: (string | null), flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(FolderInfo | null)>;
-
-        /**
-         * Asynchronously fetches information about the folder structure of `store`,
-         * starting with `top`.  For details of the behavior, see
-         * `camel_store_get_folder_info_sync()`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_store_get_folder_info_finish()` to get the result of
-         * the operation.
-         * @param top the name of the folder to start from
-         * @param flags various CAMEL_STORE_FOLDER_INFO_* flags to control behavior
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_folder_info(top: (string | null), flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_folder_info(top: string | null, flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<FolderInfo | null>;
 
         /**
          * Asynchronously fetches information about the folder structure of `store`,
@@ -17348,7 +17178,23 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_folder_info(top: (string | null), flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(FolderInfo | null)> | void);
+        get_folder_info(top: string | null, flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously fetches information about the folder structure of `store`,
+         * starting with `top`.  For details of the behavior, see
+         * `camel_store_get_folder_info_sync()`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_store_get_folder_info_finish()` to get the result of
+         * the operation.
+         * @param top the name of the folder to start from
+         * @param flags various CAMEL_STORE_FOLDER_INFO_* flags to control behavior
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_folder_info(top: string | null, flags: StoreGetFolderInfoFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<FolderInfo | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_get_folder_info()`.
@@ -17357,7 +17203,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Camel.FolderInfo} tree, or `null` on error
          */
-        get_folder_info_finish(result: Gio.AsyncResult): (FolderInfo | null);
+        get_folder_info_finish(result: Gio.AsyncResult): FolderInfo | null;
 
         /**
          * This fetches information about the folder structure of `store`,
@@ -17386,7 +17232,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.FolderInfo} tree, or `null` on error
          */
-        get_folder_info_sync(top: (string | null), flags: StoreGetFolderInfoFlags, cancellable: (Gio.Cancellable | null)): (FolderInfo | null);
+        get_folder_info_sync(top: string | null, flags: StoreGetFolderInfoFlags, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
         /**
          * Gets a specific folder object from `store` by name.
@@ -17395,7 +17241,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the requested {@link Camel.Folder} object, or `null` on error
          */
-        get_folder_sync(folder_name: string, flags: StoreGetFolderFlags, cancellable: (Gio.Cancellable | null)): (Folder | null);
+        get_folder_sync(folder_name: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * @returns a {@link Camel.ObjectBag} of opened {@link Camel.Folder}<!-- -->s
@@ -17411,7 +17257,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_inbox_folder(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Folder | null)>;
+        get_inbox_folder(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
 
         /**
          * Asynchronously gets the folder in `store` into which new mail is delivered.
@@ -17423,7 +17269,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_inbox_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_inbox_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets the folder in `store` into which new mail is delivered.
@@ -17435,21 +17281,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_inbox_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Folder | null)> | void);
+        get_inbox_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Folder | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_get_inbox_folder()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the inbox folder for `store`, or `null` on error or if no such folder exists
          */
-        get_inbox_folder_finish(result: Gio.AsyncResult): (Folder | null);
+        get_inbox_folder_finish(result: Gio.AsyncResult): Folder | null;
 
         /**
          * Gets the folder in `store` into which new mail is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the inbox folder for `store`, or `null` on error or if no such folder exists
          */
-        get_inbox_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        get_inbox_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Asynchronously gets the folder in `store` into which junk is delivered.
@@ -17460,19 +17306,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_junk_folder(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Folder | null)>;
-
-        /**
-         * Asynchronously gets the folder in `store` into which junk is delivered.
-         * 
-         * When the operation is finished, `callback` will be called.  You can
-         * then call `camel_store_get_junk_folder_finish()` to get the result of
-         * the operation.
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_junk_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_junk_folder(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
 
         /**
          * Asynchronously gets the folder in `store` into which junk is delivered.
@@ -17484,21 +17318,33 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_junk_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Folder | null)> | void);
+        get_junk_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously gets the folder in `store` into which junk is delivered.
+         * 
+         * When the operation is finished, `callback` will be called.  You can
+         * then call `camel_store_get_junk_folder_finish()` to get the result of
+         * the operation.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_junk_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Folder | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_get_junk_folder()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the junk folder for `store`, or `null` on error or if no such folder exists
          */
-        get_junk_folder_finish(result: Gio.AsyncResult): (Folder | null);
+        get_junk_folder_finish(result: Gio.AsyncResult): Folder | null;
 
         /**
          * Gets the folder in `store` into which junk is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the junk folder for `store`, or `null` on error or if no such folder exists
          */
-        get_junk_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        get_junk_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * @returns Permissions of the `store`, a bit-or of {@link Camel.StorePermissionFlags}
@@ -17514,7 +17360,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_trash_folder(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Folder | null)>;
+        get_trash_folder(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Folder | null>;
 
         /**
          * Asynchronously gets the folder in `store` into which trash is delivered.
@@ -17526,7 +17372,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_trash_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_trash_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously gets the folder in `store` into which trash is delivered.
@@ -17538,21 +17384,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_trash_folder(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Folder | null)> | void);
+        get_trash_folder(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Folder | null> | void;
 
         /**
          * Finishes the operation started with `camel_store_get_trash_folder()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the trash folder for `store`, or `null` on error or if no such folder exists
          */
-        get_trash_folder_finish(result: Gio.AsyncResult): (Folder | null);
+        get_trash_folder_finish(result: Gio.AsyncResult): Folder | null;
 
         /**
          * Gets the folder in `store` into which trash is delivered.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the trash folder for `store`, or `null` on error or if no such folder exists
          */
-        get_trash_folder_sync(cancellable: (Gio.Cancellable | null)): (Folder | null);
+        get_trash_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
         /**
          * Runs initial setup for the `store` asynchronously.
@@ -17565,21 +17411,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        initial_setup(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable<string, string>>;
-
-        /**
-         * Runs initial setup for the `store` asynchronously.
-         * 
-         * When the operation is finished, `callback` will be called. You can then
-         * call `camel_store_initial_setup_finish()` to get the result of the operation.
-         * 
-         * The `store` advertises support of this function by including
-         * CAMEL_STORE_SUPPORTS_INITIAL_SETUP in CamelStore::flags.
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        initial_setup(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<string, string>>;
 
         /**
          * Runs initial setup for the `store` asynchronously.
@@ -17593,7 +17425,21 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        initial_setup(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable<string, string>> | void);
+        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Runs initial setup for the `store` asynchronously.
+         * 
+         * When the operation is finished, `callback` will be called. You can then
+         * call `camel_store_initial_setup_finish()` to get the result of the operation.
+         * 
+         * The `store` advertises support of this function by including
+         * CAMEL_STORE_SUPPORTS_INITIAL_SETUP in CamelStore::flags.
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, string>> | void;
 
         /**
          * Finishes the operation started with `camel_store_initial_setup()`.
@@ -17624,7 +17470,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        initial_setup_sync(cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<string, string>];
+        initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
 
         /**
          * Checks the state of the current CamelDB used for the `store` and eventually
@@ -17643,7 +17489,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously renames the folder described by `old_name` to `new_name`.
@@ -17656,7 +17502,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously renames the folder described by `old_name` to `new_name`.
@@ -17669,7 +17515,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        rename_folder(old_name: string, new_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_store_rename_folder()`.
@@ -17685,7 +17531,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        rename_folder_sync(old_name: string, new_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        rename_folder_sync(old_name: string, new_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets flags for the `store`, a bit-or of {@link Camel.StoreFlags}.
@@ -17709,7 +17555,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Synchronizes any changes that have been made to `store` and its folders
@@ -17722,7 +17568,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Synchronizes any changes that have been made to `store` and its folders
@@ -17735,7 +17581,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        synchronize(expunge: boolean, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        synchronize(expunge: boolean, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_store_synchronize()`.
@@ -17751,7 +17597,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        synchronize_sync(expunge: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -17795,7 +17641,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -17839,7 +17685,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
@@ -17967,13 +17813,10 @@ export namespace Camel {
 
     namespace StoreSummary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -18071,7 +17914,7 @@ export namespace Camel {
          * @param path item path
          * @returns the newly added record or `null` if the `path` already exists
          */
-        add_from_path(path: string): (StoreInfo | null);
+        add_from_path(path: string): StoreInfo | null;
 
         /**
          * Obtain a copy of the summary array.  This is done atomically,
@@ -18233,7 +18076,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_close(cancellable: (Gio.Cancellable | null)): number;
+        vfunc_close(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Tests if there are bytes left to read on the `stream` object.
@@ -18247,7 +18090,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_flush(cancellable: (Gio.Cancellable | null)): number;
+        vfunc_flush(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Attempts to read up to `n` bytes from `stream` into `buffer`.
@@ -18255,7 +18098,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_read(buffer: number[], cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_read(buffer: number[], cancellable: Gio.Cancellable | null): bigint | number;
 
         /**
          * Attempts to write up to `n` bytes of `buffer` into `stream`.
@@ -18263,7 +18106,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_write(buffer: number[], cancellable: (Gio.Cancellable | null)): (bigint | number);
+        vfunc_write(buffer: number[], cancellable: Gio.Cancellable | null): bigint | number;
 
         // Methods
         /**
@@ -18271,7 +18114,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0 on success or -1 on error.
          */
-        close(cancellable: (Gio.Cancellable | null)): number;
+        close(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Tests if there are bytes left to read on the `stream` object.
@@ -18285,7 +18128,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0 on success or -1 on fail along with setting `error`
          */
-        flush(cancellable: (Gio.Cancellable | null)): number;
+        flush(cancellable: Gio.Cancellable | null): number;
 
         /**
          * Attempts to read up to `n` bytes from `stream` into `buffer`.
@@ -18293,7 +18136,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes actually read, or -1 on error and set errno.
          */
-        read(buffer: number[], cancellable: (Gio.Cancellable | null)): number;
+        read(buffer: number[], cancellable: Gio.Cancellable | null): number;
 
         /**
          * Returns the {@link Gio.IOStream} for `stream`.  This is only valid if `stream` was
@@ -18304,7 +18147,7 @@ export namespace Camel {
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.IOStream}, or `null`
          */
-        ref_base_stream(): (Gio.IOStream | null);
+        ref_base_stream(): Gio.IOStream | null;
 
         /**
          * Replaces the {@link Gio.IOStream} passed to `camel_stream_new()` with `base_stream`.
@@ -18320,7 +18163,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written to the stream, or -1 on error along with setting errno.
          */
-        write(buffer: number[], cancellable: (Gio.Cancellable | null)): number;
+        write(buffer: number[], cancellable: Gio.Cancellable | null): number;
 
         /**
          * Writes the string to the stream.
@@ -18328,7 +18171,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of characters written or -1 on error.
          */
-        write_string(string: string, cancellable: (Gio.Cancellable | null)): number;
+        write_string(string: string, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Write all of a stream (until eos) into another stream, in a
@@ -18337,7 +18180,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 on error, or the number of bytes successfully copied across streams.
          */
-        write_to_stream(output_stream: Stream, cancellable: (Gio.Cancellable | null)): number;
+        write_to_stream(output_stream: Stream, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18372,7 +18215,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -18394,7 +18237,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18429,13 +18272,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -18451,7 +18294,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -18462,9 +18305,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -18539,7 +18380,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of characters read, or 0 for end of file, and -1 on error.
          */
-        gets(buf: number[], cancellable: (Gio.Cancellable | null)): number;
+        gets(buf: number[], cancellable: Gio.Cancellable | null): number;
 
         /**
          * This function reads a complete newline-terminated line from the stream
@@ -18548,7 +18389,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the line read, which the caller must free when done with, or `null` on eof. If an error occurs, `error` will be set.
          */
-        read_line(cancellable: (Gio.Cancellable | null)): (string | null);
+        read_line(cancellable: Gio.Cancellable | null): string | null;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18583,7 +18424,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -18605,7 +18446,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18640,13 +18481,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -18662,7 +18503,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -18673,9 +18514,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -18769,7 +18608,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -18791,7 +18630,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18826,13 +18665,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -18848,7 +18687,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -18859,9 +18698,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -18937,7 +18774,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -18959,7 +18796,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -18994,13 +18831,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -19016,7 +18853,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -19027,9 +18864,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -19054,9 +18889,9 @@ export namespace Camel {
 
         static ["new"](): StreamMem;
 
-        static new_with_buffer(buffer: (Uint8Array | string)): StreamMem;
+        static new_with_buffer(buffer: Uint8Array | string): StreamMem;
 
-        static new_with_byte_array(buffer: (Uint8Array | string)): StreamMem;
+        static new_with_byte_array(buffer: Uint8Array | string): StreamMem;
 
         // Signals
         /** @signal */
@@ -19081,7 +18916,7 @@ export namespace Camel {
          * and so may have resource implications to consider.
          * @param buffer a memory buffer
          */
-        set_buffer(buffer: (Uint8Array | string)): void;
+        set_buffer(buffer: Uint8Array | string): void;
 
         /**
          * Set `buffer` to be the backing data to the existing {@link Camel.StreamMem}, `mem`.
@@ -19090,7 +18925,7 @@ export namespace Camel {
          * be freed separately from `mem`.
          * @param buffer a {@link GLib.ByteArray}
          */
-        set_byte_array(buffer: (Uint8Array | string)): void;
+        set_byte_array(buffer: Uint8Array | string): void;
 
         /**
          * Mark the memory stream as secure.  At the very least this means the
@@ -19132,7 +18967,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -19154,7 +18989,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -19189,13 +19024,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -19211,7 +19046,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -19222,9 +19057,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -19306,7 +19139,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -19328,7 +19161,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -19363,13 +19196,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -19385,7 +19218,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -19396,9 +19229,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -19481,7 +19312,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -19503,7 +19334,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -19538,13 +19369,13 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -19560,19 +19391,16 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace TextIndex {
         // Signal signatures
-        interface SignalSignatures extends Index.SignalSignatures {
-        }
+        interface SignalSignatures extends Index.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Index.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Index.ConstructorProps {}
     }
 
     /**
@@ -19638,13 +19466,10 @@ export namespace Camel {
 
     namespace TextIndexCursor {
         // Signal signatures
-        interface SignalSignatures extends IndexCursor.SignalSignatures {
-        }
+        interface SignalSignatures extends IndexCursor.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends IndexCursor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IndexCursor.ConstructorProps {}
     }
 
     /**
@@ -19684,13 +19509,10 @@ export namespace Camel {
 
     namespace TextIndexKeyCursor {
         // Signal signatures
-        interface SignalSignatures extends IndexCursor.SignalSignatures {
-        }
+        interface SignalSignatures extends IndexCursor.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends IndexCursor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IndexCursor.ConstructorProps {}
     }
 
     /**
@@ -19730,13 +19552,10 @@ export namespace Camel {
 
     namespace TextIndexName {
         // Signal signatures
-        interface SignalSignatures extends IndexName.SignalSignatures {
-        }
+        interface SignalSignatures extends IndexName.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends IndexName.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IndexName.ConstructorProps {}
     }
 
     /**
@@ -19789,9 +19608,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -19834,7 +19651,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: (Gio.Cancellable | null)): [boolean, boolean];
+        vfunc_send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
         // Methods
         /**
@@ -19857,7 +19674,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Sends the message asynchronously to the given recipients, regardless of
@@ -19873,7 +19690,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sends the message asynchronously to the given recipients, regardless of
@@ -19889,7 +19706,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_to(message: MimeMessage, from: Address, recipients: Address, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_transport_send_to()`.
@@ -19908,7 +19725,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success or `false` on error
          */
-        send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: (Gio.Cancellable | null)): [boolean, boolean];
+        send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
         /**
          * Sets whether should request Delivery Status Notification
@@ -19959,7 +19776,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -20003,7 +19820,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
@@ -20033,9 +19850,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VeeFolder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VeeFolder.ConstructorProps {}
     }
 
     /**
@@ -20086,13 +19901,10 @@ export namespace Camel {
 
     namespace VeeDataCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -20175,7 +19987,7 @@ export namespace Camel {
          * @param vee_message_uid a message UID in the virtual folder
          * @returns a referenced {@link Camel.VeeMessageInfoData},    which corresponds to the given `vee_message_uid`, or `null`, when no such    message info with that virtual UID exists. Unref it with `g_object_unref()`,    when no longer needed.
          */
-        get_message_info_data_by_vuid(vee_message_uid: string): (VeeMessageInfoData | null);
+        get_message_info_data_by_vuid(vee_message_uid: string): VeeMessageInfoData | null;
 
         /**
          * Returns a {@link Camel.VeeSubfolderData} for the given `folder`.
@@ -20276,7 +20088,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_add_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_add_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param subfolder 
@@ -20291,7 +20103,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_rebuild_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_rebuild_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Removed the source folder, `subfolder`, from the virtual folder, `vfolder`.
@@ -20299,7 +20111,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_remove_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_remove_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Sets an SExp expression to be used for this `vfolder`
@@ -20314,7 +20126,7 @@ export namespace Camel {
          * @param subfolder source CamelFolder to add to `vfolder`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        add_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        add_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Adds the `mi_data` to the `vfolder`. The `changes` can be
@@ -20324,7 +20136,7 @@ export namespace Camel {
          * @param mi_data a {@link Camel.VeeMessageInfoData} to add
          * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
          */
-        add_vuid(mi_data: null, changes: (FolderChangeInfo | null)): void;
+        add_vuid(mi_data: null, changes: FolderChangeInfo | null): void;
 
         /**
          * Initializes internal structures of the `vf`. This is meant to be
@@ -20361,7 +20173,7 @@ export namespace Camel {
          * @param vee_message_uid a virtual message info UID
          * @returns a {@link Camel.Folder} to which the `vee_message_uid`    belongs, or `null`, when it could not be found.
          */
-        get_vee_uid_folder(vee_message_uid: string): (Folder | null);
+        get_vee_uid_folder(vee_message_uid: string): Folder | null;
 
         /**
          * The next `subfolder`-'s 'changed' event will be silently ignored. This
@@ -20386,7 +20198,7 @@ export namespace Camel {
          * @param subfolder source CamelFolder to add to `vfolder`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        rebuild_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        rebuild_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Returns a {@link GLib.List} of all folders of this `vfolder`, which
@@ -20404,7 +20216,7 @@ export namespace Camel {
          * @param subfolder source CamelFolder to remove from `vfolder`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        remove_folder(subfolder: Folder, cancellable: (Gio.Cancellable | null)): void;
+        remove_folder(subfolder: Folder, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Make sure the next `subfolder`-'s 'changed' event will not be silently ignored.
@@ -20423,7 +20235,7 @@ export namespace Camel {
          * @param mi_data a {@link Camel.VeeMessageInfoData} to remove
          * @param changes an optional {@link Camel.FolderChangeInfo} to update with the made change, or `null`
          */
-        remove_vuid(mi_data: null, changes: (FolderChangeInfo | null)): void;
+        remove_vuid(mi_data: null, changes: FolderChangeInfo | null): void;
 
         /**
          * Sets whether the `vfolder` can automatically update when of its
@@ -20443,7 +20255,7 @@ export namespace Camel {
          * @param folders a {@link GLib.List} of {@link Camel.Folder} to add
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        set_folders(folders: Folder[], cancellable: (Gio.Cancellable | null)): void;
+        set_folders(folders: Folder[], cancellable: Gio.Cancellable | null): void;
     }
 
 
@@ -20475,9 +20287,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MessageInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MessageInfo.ConstructorProps {}
     }
 
     /**
@@ -20533,13 +20343,10 @@ export namespace Camel {
 
     namespace VeeMessageInfoData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -20721,7 +20528,7 @@ export namespace Camel {
          * synchronously.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        rebuild_unmatched_folder(cancellable: (Gio.Cancellable | null)): void;
+        rebuild_unmatched_folder(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Sets whether the Unmatched folder processing is enabled.
@@ -20745,13 +20552,10 @@ export namespace Camel {
 
     namespace VeeSubfolderData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -20818,9 +20622,7 @@ export namespace Camel {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FolderSummary.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FolderSummary.ConstructorProps {}
     }
 
     /**
@@ -21041,7 +20843,7 @@ export namespace Camel {
         /**
          * @param der_data 
          */
-        save_cert_file(der_data: (Uint8Array | string)): boolean;
+        save_cert_file(der_data: Uint8Array | string): boolean;
 
         unref(): void;
     }
@@ -21083,7 +20885,7 @@ export namespace Camel {
          * Finds the minimum charset for this string NULL means US-ASCII.
          * @param _in input text
          */
-        static best(_in: number[]): (string | null);
+        static best(_in: number[]): string | null;
 
         /**
          * @param isocharset a canonicalised ISO charset
@@ -21196,7 +20998,7 @@ export namespace Camel {
          * @param cert_data_clone a copy function for `cert_data`, to copy the data; required, when `cert_data` is not `null`
          * @returns Index of the added certinfo; -1 on error
          */
-        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: null, cert_data_clone: (CipherCloneFunc | null)): number;
+        add_certinfo_ex(mode: CipherValidityMode, name: string, email: string, cert_data: null, cert_data_clone: CipherCloneFunc | null): number;
 
         clear(): void;
 
@@ -21237,7 +21039,7 @@ export namespace Camel {
          * @param value a property value, or `null`
          * @param value_clone a clone function for the `value`
          */
-        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: null, value_clone: (CipherCloneFunc | null)): void;
+        set_certinfo_property(mode: CipherValidityMode, info_index: number, name: string, value: null, value_clone: CipherCloneFunc | null): void;
 
         /**
          * @param description 
@@ -21735,9 +21537,9 @@ export namespace Camel {
         next: null;
 
         // Constructors
-        constructor(name: string, used: (bigint | number), total: (bigint | number));
+        constructor(name: string, used: bigint | number, total: bigint | number);
 
-        static ["new"](name: string, used: (bigint | number), total: (bigint | number)): FolderQuotaInfo;
+        static ["new"](name: string, used: bigint | number, total: bigint | number): FolderQuotaInfo;
 
         // Methods
         /**
@@ -21867,7 +21669,7 @@ export namespace Camel {
          * Copies the `src` to a new {@link Camel.GpgKeyInfo} structure.
          * @returns a copy of the `src`, or `null`,    when the `src` is also `null`
          */
-        copy(): (GpgKeyInfo | null);
+        copy(): GpgKeyInfo | null;
 
         /**
          * Frees the `info` previously allocated by `camel_gpg_context_get_public_key_info_sync()`,
@@ -21961,7 +21763,7 @@ export namespace Camel {
          * @param _in 
          * @param headerlen 
          */
-        static fold(_in: string, headerlen: (bigint | number)): string;
+        static fold(_in: string, headerlen: bigint | number): string;
 
         /**
          * TODO: Document me.
@@ -22048,7 +21850,7 @@ export namespace Camel {
         /**
          * @param _in a header param value to decode
          */
-        static list_decode(_in: (string | null)): null;
+        static list_decode(_in: string | null): null;
 
         /**
          * @param params 
@@ -22346,7 +22148,7 @@ export namespace Camel {
         /**
          * @returns a copy of `src`, or `null`, if `src` was `null`
          */
-        copy(): (MessageContentInfo | null);
+        copy(): MessageContentInfo | null;
 
         /**
          * @param depth 
@@ -22732,10 +22534,7 @@ export namespace Camel {
         static $gtype: GObject.GType<NameValueArray>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): NameValueArray;
 
@@ -22771,7 +22570,7 @@ export namespace Camel {
          * @param compare_type a compare type, one of {@link Camel.CompareType}
          * @returns Whether the two {@link Camel.NameValueArray} have the same content.
          */
-        equal(array_b: (NameValueArray | null), compare_type: CompareType): boolean;
+        equal(array_b: NameValueArray | null, compare_type: CompareType): boolean;
 
         /**
          * Frees the `array`, previously allocated by `camel_name_value_array_new()`,
@@ -22798,7 +22597,7 @@ export namespace Camel {
          * @param index an index
          * @returns Name of the element at the given `index`,    or `null` on error. See: camel_name_value_array_get, camel_name_value_array_get_value
          */
-        get_name(index: number): (string | null);
+        get_name(index: number): string | null;
 
         /**
          * Returns the value of the first element named `name`, or `null` when there
@@ -22808,14 +22607,14 @@ export namespace Camel {
          * @param name a name
          * @returns Value of the first element named `name`, or `null`. See: camel_name_value_array_get, camel_name_value_array_get_name
          */
-        get_named(compare_type: CompareType, name: string): (string | null);
+        get_named(compare_type: CompareType, name: string): string | null;
 
         /**
          * Returns the value of the element at index `index`.
          * @param index an index
          * @returns Value of the element at the given `index`,    or `null` on error. See: camel_name_value_array_get, camel_name_value_array_get_name
          */
-        get_value(index: number): (string | null);
+        get_value(index: number): string | null;
 
         /**
          * Removes element at index `index`.
@@ -22884,10 +22683,7 @@ export namespace Camel {
         static $gtype: GObject.GType<NamedFlags>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): NamedFlags;
 
@@ -22917,7 +22713,7 @@ export namespace Camel {
          * @param named_flags_b the second {@link Camel.NamedFlags}
          * @returns Whether the two {@link Camel.NamedFlags} have the same content.
          */
-        equal(named_flags_b: (NamedFlags | null)): boolean;
+        equal(named_flags_b: NamedFlags | null): boolean;
 
         /**
          * Frees memory associated iwth the `named_flags`. Does nothing,
@@ -22929,7 +22725,7 @@ export namespace Camel {
          * @param index an index of an element
          * @returns Name of the flag in at the given `index`,   or `null` on error.
          */
-        get(index: number): (string | null);
+        get(index: number): string | null;
 
         /**
          * @returns Length of the array, aka how many named flags are stored there.
@@ -24147,7 +23943,7 @@ export namespace Camel {
          * @param part a URL part
          * @param escape_extra additional characters beyond " \"%#<>{}|\^[]`" to escape (or `null`)
          */
-        static encode(part: string, escape_extra: (string | null)): string;
+        static encode(part: string, escape_extra: string | null): string;
 
         /**
          * @param _in 
@@ -24204,7 +24000,7 @@ export namespace Camel {
          * @param name name of the param
          * @returns the value of a param if found or `null` otherwise
          */
-        get_param(name: string): (string | null);
+        get_param(name: string): string | null;
 
         /**
          * @returns the url hash
@@ -24441,10 +24237,7 @@ export namespace Camel {
         static $gtype: GObject.GType<WeakRefGroup>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): WeakRefGroup;
 
@@ -24599,7 +24392,7 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_classify(message: MimeMessage, cancellable: (Gio.Cancellable | null)): JunkStatus;
+            vfunc_classify(message: MimeMessage, cancellable: Gio.Cancellable | null): JunkStatus;
 
             /**
              * Instructs `junk_filter` to classify `message` as junk.  If using an
@@ -24611,7 +24404,7 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_learn_junk(message: MimeMessage, cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_learn_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
             /**
              * Instructs `junk_filter` to classify `message` as not junk.  If using an
@@ -24623,7 +24416,7 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_learn_not_junk(message: MimeMessage, cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_learn_not_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
             /**
              * Instructs `junk_filter` to flush any in-memory caches to disk, if
@@ -24634,14 +24427,12 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_synchronize(cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_synchronize(cancellable: Gio.Cancellable | null): boolean;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface JunkFilterNamespace {
@@ -24664,7 +24455,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the junk status determined by `junk_filter`
          */
-        classify(message: MimeMessage, cancellable: (Gio.Cancellable | null)): JunkStatus;
+        classify(message: MimeMessage, cancellable: Gio.Cancellable | null): JunkStatus;
 
         /**
          * Instructs `junk_filter` to classify `message` as junk.  If using an
@@ -24676,7 +24467,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `message` was successfully classified
          */
-        learn_junk(message: MimeMessage, cancellable: (Gio.Cancellable | null)): boolean;
+        learn_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Instructs `junk_filter` to classify `message` as not junk.  If using an
@@ -24688,7 +24479,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `message` was successfully classified
          */
-        learn_not_junk(message: MimeMessage, cancellable: (Gio.Cancellable | null)): boolean;
+        learn_not_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Instructs `junk_filter` to flush any in-memory caches to disk, if
@@ -24699,7 +24490,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `junk_filter` was successfully synchronized
          */
-        synchronize(cancellable: (Gio.Cancellable | null)): boolean;
+        synchronize(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -24724,7 +24515,7 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_connect_sync(cancellable: (Gio.Cancellable | null)): Gio.IOStream;
+            vfunc_connect_sync(cancellable: Gio.Cancellable | null): Gio.IOStream;
 
             /**
              * @param args 
@@ -24750,7 +24541,7 @@ export namespace Camel {
              * @param method a {@link Camel.NetworkSecurityMethod}
              * @virtual
              */
-            vfunc_get_service_name(method: NetworkSecurityMethod): (string | null);
+            vfunc_get_service_name(method: NetworkSecurityMethod): string | null;
         }
 
 
@@ -24801,7 +24592,7 @@ export namespace Camel {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        can_reach(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        can_reach(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously attempts to determine whether or not the host described by
@@ -24816,7 +24607,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        can_reach(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        can_reach(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously attempts to determine whether or not the host described by
@@ -24831,7 +24622,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        can_reach(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        can_reach(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_network_service_can_reach()`.
@@ -24854,7 +24645,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether the host for `service` can be reached
          */
-        can_reach_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        can_reach_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Attempts to establish a network connection to the server described by
@@ -24865,7 +24656,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Gio.IOStream}, or `null` on error
          */
-        connect_sync(cancellable: (Gio.Cancellable | null)): Gio.IOStream;
+        connect_sync(cancellable: Gio.Cancellable | null): Gio.IOStream;
 
         /**
          * @param args 
@@ -24899,7 +24690,7 @@ export namespace Camel {
          * @param method a {@link Camel.NetworkSecurityMethod}
          * @returns the network service name for `service` and `method`, or `null`
          */
-        get_service_name(method: NetworkSecurityMethod): (string | null);
+        get_service_name(method: NetworkSecurityMethod): string | null;
 
         /**
          * Returns the socket endpoint for the network service to which `service`
@@ -24917,7 +24708,7 @@ export namespace Camel {
          * from the `service`'s {@link Camel.NetworkSettings}.
          * @param connectable a {@link Gio.SocketConnectable}, or `null`
          */
-        set_connectable(connectable: (Gio.SocketConnectable | null)): void;
+        set_connectable(connectable: Gio.SocketConnectable | null): void;
 
         /**
          * Creates a {@link Gio.TlsClientConnection} wrapping `base_stream`, which is
@@ -24929,7 +24720,7 @@ export namespace Camel {
          * @param base_stream a {@link Gio.IOStream}
          * @returns the new {@link Gio.TlsClientConnection}, or `null` on error
          */
-        starttls(base_stream: Gio.IOStream): (Gio.IOStream | null);
+        starttls(base_stream: Gio.IOStream): Gio.IOStream | null;
 
         // Virtual methods - generated with overloads due to conflicts
 
@@ -24950,7 +24741,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @virtual
      */
-    vfunc_connect_sync(cancellable: (Gio.Cancellable | null)): Gio.IOStream;
+    vfunc_connect_sync(cancellable: Gio.Cancellable | null): Gio.IOStream;
         /**
          * Connects `service` to a remote server using the information in its
          * {@link Camel.Service.settings} instance.
@@ -24968,7 +24759,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @virtual
      */
-    vfunc_connect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+    vfunc_connect_sync(cancellable: Gio.Cancellable | null): boolean;
         /**
          * Returns the default network port number for `service` and the security
          * method `method`, as defined in /etc/services.  For example, the default
@@ -25000,7 +24791,7 @@ export namespace Camel {
      * @param method a {@link Camel.NetworkSecurityMethod}
      * @virtual
      */
-    vfunc_get_service_name(method: NetworkSecurityMethod): (string | null);
+    vfunc_get_service_name(method: NetworkSecurityMethod): string | null;
     }
 
 
@@ -25012,8 +24803,8 @@ export namespace Camel {
 
         // Constructor properties interface
         interface ConstructorProps extends Settings.ConstructorProps {
-            auth_mechanism: (string | null);
-            authMechanism: (string | null);
+            auth_mechanism: string | null;
+            authMechanism: string | null;
             host: string;
             port: number;
             security_method: NetworkSecurityMethod;
@@ -25036,14 +24827,14 @@ export namespace Camel {
         /**
          * @default null
          */
-        get auth_mechanism(): (string | null);
-        set auth_mechanism(val: (string | null));
+        get auth_mechanism(): string | null;
+        set auth_mechanism(val: string | null);
 
         /**
          * @default null
          */
-        get authMechanism(): (string | null);
-        set authMechanism(val: (string | null));
+        get authMechanism(): string | null;
+        set authMechanism(val: string | null);
 
         get host(): string;
         set host(val: string);
@@ -25080,7 +24871,7 @@ export namespace Camel {
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link Camel.NetworkSettings.auth_mechanism}
          */
-        dup_auth_mechanism(): (string | null);
+        dup_auth_mechanism(): string | null;
 
         /**
          * Thread-safe variation of `camel_network_settings_get_host()`.
@@ -25113,7 +24904,7 @@ export namespace Camel {
          * Often this refers to a SASL mechanism such as "LOGIN" or "GSSAPI".
          * @returns the authentication mechanism name
          */
-        get_auth_mechanism(): (string | null);
+        get_auth_mechanism(): string | null;
 
         /**
          * Returns the host name used to authenticate to a network service.
@@ -25147,7 +24938,7 @@ export namespace Camel {
          * stripped of leading and trailing whitespace.
          * @param auth_mechanism an authentication mechanism name, or `null`
          */
-        set_auth_mechanism(auth_mechanism: (string | null)): void;
+        set_auth_mechanism(auth_mechanism: string | null): void;
 
         /**
          * Sets the host name used to authenticate to a network service.  The
@@ -25155,7 +24946,7 @@ export namespace Camel {
          * leading and trailing whitespace.
          * @param host a host name, or `null`
          */
-        set_host(host: (string | null)): void;
+        set_host(host: string | null): void;
 
         /**
          * Sets the port number used to authenticate to a network service.
@@ -25177,7 +24968,7 @@ export namespace Camel {
          * leading and trailing whitespace.
          * @param user a user name, or `null`
          */
-        set_user(user: (string | null)): void;
+        set_user(user: string | null): void;
     }
 
 
@@ -25226,7 +25017,7 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_subscribe_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_subscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
             /**
              * Unsubscribes from the folder described by `folder_name`.
@@ -25234,14 +25025,12 @@ export namespace Camel {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_unsubscribe_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_unsubscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Store.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Store.ConstructorProps {}
     }
 
     export interface SubscribableNamespace {
@@ -25290,7 +25079,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        subscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        subscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously subscribes to the folder described by `folder_name`.
@@ -25303,7 +25092,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        subscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        subscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously subscribes to the folder described by `folder_name`.
@@ -25316,7 +25105,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        subscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        subscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_subscribable_subscribe_folder()`.
@@ -25331,7 +25120,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        subscribe_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        subscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously unsubscribes from the folder described by `folder_name`.
@@ -25343,20 +25132,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously unsubscribes from the folder described by `folder_name`.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `camel_subscribable_unsubscribe_folder_finish()` to get the result of
-         * the operation.
-         * @param folder_name full path of the folder
-         * @param io_priority the I/O priority of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously unsubscribes from the folder described by `folder_name`.
@@ -25369,7 +25145,20 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously unsubscribes from the folder described by `folder_name`.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `camel_subscribable_unsubscribe_folder_finish()` to get the result of
+         * the operation.
+         * @param folder_name full path of the folder
+         * @param io_priority the I/O priority of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        unsubscribe_folder(folder_name: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `camel_subscribable_unsubscribe_folder()`.
@@ -25384,7 +25173,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        unsubscribe_folder_sync(folder_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        unsubscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
