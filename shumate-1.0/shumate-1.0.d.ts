@@ -47,7 +47,7 @@ export namespace Shumate {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -191,7 +191,7 @@ export namespace Shumate {
         static UNSUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -232,7 +232,7 @@ export namespace Shumate {
         static OFFLINE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -421,7 +421,7 @@ export namespace Shumate {
      * This API is not thread-safe and should only be called from the main thread.
      * @param new_user_agent the new user agent, or `null` to reset to the default
      */
-    function set_user_agent(new_user_agent: (string | null)): void;
+    function set_user_agent(new_user_agent: string | null): void;
 
     /**
      * @returns a {@link GLib.Quark}
@@ -438,7 +438,7 @@ export namespace Shumate {
      * @gir-type Callback
      */
     interface VectorSpriteFallbackFunc {
-        (sprite_sheet: VectorSpriteSheet, name: string, scale: number): (VectorSprite | null);
+        (sprite_sheet: VectorSpriteSheet, name: string, scale: number): VectorSprite | null;
     }
 
     namespace Compass {
@@ -485,7 +485,7 @@ export namespace Shumate {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            viewport: (Viewport | null);
+            viewport: Viewport | null;
         }
     }
 
@@ -511,8 +511,8 @@ export namespace Shumate {
         /**
          * The viewport to use.
          */
-        get viewport(): (Viewport | null);
-        set viewport(val: (Viewport | null));
+        get viewport(): Viewport | null;
+        set viewport(val: Viewport | null);
 
         /**
          * Compile-time signal type information.
@@ -528,7 +528,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static ["new"](viewport: (Viewport | null)): Compass;
+        static ["new"](viewport: Viewport | null): Compass;
 
         // Signals
         /** @signal */
@@ -548,13 +548,13 @@ export namespace Shumate {
          * Gets the viewport used by the compass.
          * @returns The {@link Shumate.Viewport} used by the compass
          */
-        get_viewport(): (Viewport | null);
+        get_viewport(): Viewport | null;
 
         /**
          * Sets the compass viewport.
          * @param viewport a {@link Viewport}
          */
-        set_viewport(viewport: (Viewport | null)): void;
+        set_viewport(viewport: Viewport | null): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -601,7 +601,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -609,7 +609,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -637,13 +637,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -687,7 +687,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -696,7 +696,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -754,7 +754,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -762,13 +762,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -784,13 +784,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -810,7 +810,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -820,7 +820,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -831,7 +831,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -842,7 +842,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -851,7 +851,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -911,9 +911,7 @@ export namespace Shumate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
     }
 
     /**
@@ -1128,7 +1126,7 @@ export namespace Shumate {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          * @virtual
          */
-        vfunc_get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the final result of a request started with
@@ -1136,7 +1134,7 @@ export namespace Shumate {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @virtual
          */
-        vfunc_get_tile_data_finish(result: Gio.AsyncResult): (GLib.Bytes | null);
+        vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
 
         /**
          * Begins a request for a tile.
@@ -1146,7 +1144,7 @@ export namespace Shumate {
          * @param cancellable for cancelling the request
          * @virtual
          */
-        vfunc_start_request(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): DataSourceRequest;
+        vfunc_start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
 
         // Methods
         /**
@@ -1173,7 +1171,7 @@ export namespace Shumate {
          * @param zoom_level the Z coordinate to fetch
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Bytes | null)>;
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes | null>;
 
         /**
          * Gets the data for the tile at the given coordinates.
@@ -1188,7 +1186,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the data for the tile at the given coordinates.
@@ -1203,7 +1201,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Bytes | null)> | void);
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Bytes | null> | void;
 
         /**
          * Gets the final result of a request started with
@@ -1211,7 +1209,7 @@ export namespace Shumate {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns The requested data, or `null` if an error occurred
          */
-        get_tile_data_finish(result: Gio.AsyncResult): (GLib.Bytes | null);
+        get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
 
         /**
          * Sets the data source's maximum zoom level.
@@ -1233,7 +1231,7 @@ export namespace Shumate {
          * @param cancellable for cancelling the request
          * @returns a {@link DataSourceRequest} object for tracking the request.
          */
-        start_request(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): DataSourceRequest;
+        start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
     }
 
 
@@ -1251,8 +1249,8 @@ export namespace Shumate {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed: boolean;
-            data: (GLib.Bytes | null);
-            error: (GLib.Error | null);
+            data: GLib.Bytes | null;
+            error: GLib.Error | null;
             x: number;
             y: number;
             zoom_level: number;
@@ -1302,14 +1300,14 @@ export namespace Shumate {
          * @since 1.1
          * @read-only
          */
-        get data(): (GLib.Bytes | null);
+        get data(): GLib.Bytes | null;
 
         /**
          * The error that occurred during the request, if any.
          * @since 1.1
          * @read-only
          */
-        get error(): (GLib.Error | null);
+        get error(): GLib.Error | null;
 
         /**
          * The X coordinate of the requested tile.
@@ -1391,7 +1389,7 @@ export namespace Shumate {
          * @param data the data to emit
          * @param complete `true` to also complete the request, `false` otherwise
          */
-        emit_data(data: (GLib.Bytes | Uint8Array), complete: boolean): void;
+        emit_data(data: GLib.Bytes | Uint8Array, complete: boolean): void;
 
         /**
          * Emits a fatal error in response to the request. This completes the request,
@@ -1407,7 +1405,7 @@ export namespace Shumate {
          * Gets the latest data from the request.
          * @returns The latest data, if any.
          */
-        get_data(): (GLib.Bytes | null);
+        get_data(): GLib.Bytes | null;
 
         /**
          * @param args 
@@ -1419,7 +1417,7 @@ export namespace Shumate {
          * Gets the latest error from the request.
          * @returns The latest error, if any.
          */
-        get_error(): (GLib.Error | null);
+        get_error(): GLib.Error | null;
 
         /**
          * Gets the X coordinate of the requested tile.
@@ -1549,7 +1547,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static new_full(size_limit: number, cache_key: string, cache_dir: (string | null)): FileCache;
+        static new_full(size_limit: number, cache_key: string, cache_dir: string | null): FileCache;
 
         // Signals
         /** @signal */
@@ -1591,7 +1589,7 @@ export namespace Shumate {
          * @param zoom_level the zoom level of the tile
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[GLib.Bytes, string, (GLib.DateTime | null)]>;
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
 
         /**
          * Gets tile data from the cache, if it is available.
@@ -1601,7 +1599,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets tile data from the cache, if it is available.
@@ -1611,7 +1609,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[GLib.Bytes, string, (GLib.DateTime | null)]> | void);
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
 
         /**
          * Gets the tile data from a completed `shumate_file_cache_get_tile_async()`
@@ -1642,7 +1640,7 @@ export namespace Shumate {
          * the size limit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        purge_cache_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        purge_cache_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
@@ -1650,7 +1648,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        purge_cache_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        purge_cache_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
@@ -1658,7 +1656,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        purge_cache_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        purge_cache_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of an async operation started using
@@ -1683,7 +1681,7 @@ export namespace Shumate {
          * @param etag an ETag string, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          */
-        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array, etag: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Stores a tile in the cache.
@@ -1695,7 +1693,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array, etag: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Stores a tile in the cache.
@@ -1707,7 +1705,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array, etag: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the success value of a completed `shumate_file_cache_store_tile_async()`
@@ -1818,7 +1816,7 @@ export namespace Shumate {
          * enabled in the GTK inspector.
          * @virtual
          */
-        vfunc_get_debug_text(): (string | null);
+        vfunc_get_debug_text(): string | null;
 
         // Methods
         /**
@@ -1872,7 +1870,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1880,7 +1878,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1908,13 +1906,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1958,7 +1956,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1967,7 +1965,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2025,7 +2023,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2033,13 +2031,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2055,13 +2053,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2081,7 +2079,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2091,7 +2089,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2102,7 +2100,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2113,7 +2111,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2122,7 +2120,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2373,7 +2371,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2381,7 +2379,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2409,13 +2407,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2459,7 +2457,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2468,7 +2466,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2526,7 +2524,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2534,13 +2532,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2556,13 +2554,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2582,7 +2580,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2592,7 +2590,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2603,7 +2601,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2614,7 +2612,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2623,7 +2621,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3353,7 +3351,7 @@ export namespace Shumate {
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_above(layer: Layer, next_sibling: (Layer | null)): void;
+        insert_layer_above(layer: Layer, next_sibling: Layer | null): void;
 
         /**
          * Adds `layer` to `self` behind `next_sibling` or, if `next_sibling` is `null`, at
@@ -3361,7 +3359,7 @@ export namespace Shumate {
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_behind(layer: Layer, next_sibling: (Layer | null)): void;
+        insert_layer_behind(layer: Layer, next_sibling: Layer | null): void;
 
         /**
          * Removes the given layer from the view
@@ -3458,7 +3456,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3466,7 +3464,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3494,13 +3492,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3544,7 +3542,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3553,7 +3551,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3611,7 +3609,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3619,13 +3617,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3641,13 +3639,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3667,7 +3665,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -3677,7 +3675,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -3688,7 +3686,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -3699,7 +3697,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -3708,7 +3706,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4048,7 +4046,7 @@ export namespace Shumate {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          * @virtual
          */
-        vfunc_fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
@@ -4064,7 +4062,7 @@ export namespace Shumate {
          * @param tile a {@link Shumate.Tile}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
@@ -4072,7 +4070,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
@@ -4080,7 +4078,7 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
@@ -4261,13 +4259,10 @@ export namespace Shumate {
 
     namespace MapSourceRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -4323,7 +4318,7 @@ export namespace Shumate {
          * @param id the id of the {@link Shumate.MapSource}
          * @returns the {@link Shumate.MapSource} or `null` if no map source has been found
          */
-        get_by_id(id: string): (MapSource | null);
+        get_by_id(id: string): MapSource | null;
 
         /**
          * Populates the {@link Shumate.MapSourceRegistry} with a default set of sources.
@@ -4376,7 +4371,7 @@ export namespace Shumate {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -4416,7 +4411,7 @@ export namespace Shumate {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -4492,7 +4487,7 @@ export namespace Shumate {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Location.ConstructorProps {
-            child: (Gtk.Widget | null);
+            child: Gtk.Widget | null;
             selectable: boolean;
             x_hotspot: number;
             xHotspot: number;
@@ -4527,8 +4522,8 @@ export namespace Shumate {
         /**
          * The child widget of the marker
          */
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
         /**
          * The selectable state of the marker
@@ -4625,7 +4620,7 @@ export namespace Shumate {
          * Retrieves the current child of `marker`.
          * @returns a {@link Gtk.Widget}.
          */
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
         get_draggable(): boolean;
 
@@ -4653,7 +4648,7 @@ export namespace Shumate {
          * Sets the child widget of `marker`.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child: (Gtk.Widget | null)): void;
+        set_child(child: Gtk.Widget | null): void;
 
         /**
          * @param value 
@@ -4736,7 +4731,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4744,7 +4739,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -4772,13 +4767,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4822,7 +4817,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -4831,7 +4826,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -4889,7 +4884,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4897,13 +4892,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -4919,13 +4914,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4945,7 +4940,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -4955,7 +4950,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -4966,7 +4961,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -4977,7 +4972,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -4986,7 +4981,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -5590,13 +5585,13 @@ export namespace Shumate {
          * Set the path's fill color.
          * @param color The path's fill color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color: (Gdk.RGBA | null)): void;
+        set_fill_color(color: Gdk.RGBA | null): void;
 
         /**
          * Set the path's outline color.
          * @param color The path's outline color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_outline_color(color: (Gdk.RGBA | null)): void;
+        set_outline_color(color: Gdk.RGBA | null): void;
 
         /**
          * Sets the width of the outline
@@ -5614,7 +5609,7 @@ export namespace Shumate {
          * Set the path's stroke color.
          * @param color The path's stroke color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color: (Gdk.RGBA | null)): void;
+        set_stroke_color(color: Gdk.RGBA | null): void;
 
         /**
          * Sets the width of the stroke
@@ -5671,9 +5666,7 @@ export namespace Shumate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Marker.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Location.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Marker.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Location.ConstructorProps {}
     }
 
     /**
@@ -5913,7 +5906,7 @@ export namespace Shumate {
             max_width: number;
             maxWidth: number;
             unit: Unit;
-            viewport: (Viewport | null);
+            viewport: Viewport | null;
         }
     }
 
@@ -5959,8 +5952,8 @@ export namespace Shumate {
         /**
          * The viewport to use.
          */
-        get viewport(): (Viewport | null);
-        set viewport(val: (Viewport | null));
+        get viewport(): Viewport | null;
+        set viewport(val: Viewport | null);
 
         /**
          * Compile-time signal type information.
@@ -5976,7 +5969,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static ["new"](viewport: (Viewport | null)): Scale;
+        static ["new"](viewport: Viewport | null): Scale;
 
         // Signals
         /** @signal */
@@ -6008,7 +6001,7 @@ export namespace Shumate {
          * Gets the viewport used by the scale.
          * @returns The {@link Shumate.Viewport} used by the scale
          */
-        get_viewport(): (Viewport | null);
+        get_viewport(): Viewport | null;
 
         /**
          * Sets the maximum width of the scale on the screen in pixels
@@ -6026,7 +6019,7 @@ export namespace Shumate {
          * Sets the scale viewport.
          * @param viewport a {@link Shumate.Viewport}
          */
-        set_viewport(viewport: (Viewport | null)): void;
+        set_viewport(viewport: Viewport | null): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -6073,7 +6066,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6081,7 +6074,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -6109,13 +6102,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6159,7 +6152,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -6168,7 +6161,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -6226,7 +6219,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6234,13 +6227,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -6256,13 +6249,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6282,7 +6275,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -6292,7 +6285,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -6303,7 +6296,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -6314,7 +6307,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -6323,7 +6316,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -6438,7 +6431,7 @@ export namespace Shumate {
             baseMapLayer: MapLayer;
             compass: Compass;
             license: License;
-            map: (Map | any);
+            map: Map | any;
             map_source: MapSource;
             mapSource: MapSource;
             scale: Scale;
@@ -6636,7 +6629,7 @@ export namespace Shumate {
          * Sets the source for the base map.
          * @param map_source a {@link MapSource}
          */
-        set_map_source(map_source: (MapSource | null)): void;
+        set_map_source(map_source: MapSource | null): void;
 
         /**
          * Sets whether or not the zoom buttons are shown.
@@ -6689,7 +6682,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6697,7 +6690,7 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -6725,13 +6718,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6775,7 +6768,7 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -6784,7 +6777,7 @@ export namespace Shumate {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -6842,7 +6835,7 @@ export namespace Shumate {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -6850,13 +6843,13 @@ export namespace Shumate {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -6872,13 +6865,13 @@ export namespace Shumate {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -6898,7 +6891,7 @@ export namespace Shumate {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -6908,7 +6901,7 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -6919,7 +6912,7 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -6930,7 +6923,7 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -6939,7 +6932,7 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -7252,7 +7245,7 @@ export namespace Shumate {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fade_in: boolean;
             fadeIn: boolean;
-            paintable: (Gdk.Paintable | null);
+            paintable: Gdk.Paintable | null;
             scale_factor: number;
             scaleFactor: number;
             size: number;
@@ -7289,8 +7282,8 @@ export namespace Shumate {
         /**
          * The {@link Gdk.Paintable} backing the tile
          */
-        get paintable(): (Gdk.Paintable | null);
-        set paintable(val: (Gdk.Paintable | null));
+        get paintable(): Gdk.Paintable | null;
+        set paintable(val: Gdk.Paintable | null);
 
         /**
          * The scale factor of the widget the tile will be displayed in.
@@ -7392,7 +7385,7 @@ export namespace Shumate {
          * Get the {@link Gdk.Paintable} representing this tile.
          * @returns A {@link Gdk.Paintable}
          */
-        get_paintable(): (Gdk.Paintable | null);
+        get_paintable(): Gdk.Paintable | null;
 
         /**
          * Gets the scale factor of the tile.
@@ -7567,13 +7560,10 @@ export namespace Shumate {
 
     namespace VectorReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7604,7 +7594,7 @@ export namespace Shumate {
 
         _init(...args: any[]): void;
 
-        static ["new"](bytes: (GLib.Bytes | Uint8Array)): VectorReader;
+        static ["new"](bytes: GLib.Bytes | Uint8Array): VectorReader;
 
         // Signals
         /** @signal */
@@ -8055,7 +8045,7 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -8099,7 +8089,7 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -8120,8 +8110,8 @@ export namespace Shumate {
             scaleFactor: number;
             source_paintable: Gdk.Paintable;
             sourcePaintable: Gdk.Paintable;
-            source_rect: (Gdk.Rectangle | null);
-            sourceRect: (Gdk.Rectangle | null);
+            source_rect: Gdk.Rectangle | null;
+            sourceRect: Gdk.Rectangle | null;
             width: number;
         }
     }
@@ -8185,14 +8175,14 @@ export namespace Shumate {
          * @since 1.1
          * @construct-only
          */
-        get source_rect(): (Gdk.Rectangle | null);
+        get source_rect(): Gdk.Rectangle | null;
 
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
          * @construct-only
          */
-        get sourceRect(): (Gdk.Rectangle | null);
+        get sourceRect(): Gdk.Rectangle | null;
 
         /**
          * The width at which the sprite should be drawn, in pixels.
@@ -8218,7 +8208,7 @@ export namespace Shumate {
 
         static ["new"](source_paintable: Gdk.Paintable): VectorSprite;
 
-        static new_full(source_paintable: Gdk.Paintable, width: number, height: number, scale_factor: number, source_rect: (Gdk.Rectangle | null)): VectorSprite;
+        static new_full(source_paintable: Gdk.Paintable, width: number, height: number, scale_factor: number, source_rect: Gdk.Rectangle | null): VectorSprite;
 
         // Signals
         /** @signal */
@@ -8259,7 +8249,7 @@ export namespace Shumate {
          * Gets the source rectangle of the sprite.
          * @returns the sprite's source rectangle, or `null` if the entire paintable is used
          */
-        get_source_rect(): (Gdk.Rectangle | null);
+        get_source_rect(): Gdk.Rectangle | null;
 
         /**
          * Gets the width at which the sprite should be drawn.
@@ -8540,13 +8530,10 @@ export namespace Shumate {
 
     namespace VectorSpriteSheet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8649,7 +8636,7 @@ export namespace Shumate {
          * @param scale the scale factor of the icon
          * @returns a {@link VectorSprite}, or `null` if the icon does not exist.
          */
-        get_sprite(name: string, scale: number): (VectorSprite | null);
+        get_sprite(name: string, scale: number): VectorSprite | null;
 
         /**
          * Sets a fallback function to generate sprites.
@@ -8666,7 +8653,7 @@ export namespace Shumate {
          * `fallback` may be `null` to clear the fallback function.
          * @param fallback a {@link ShumateVectorSpriteFallbackFunc} or `null`
          */
-        set_fallback(fallback: (VectorSpriteFallbackFunc | null)): void;
+        set_fallback(fallback: VectorSpriteFallbackFunc | null): void;
     }
 
 
@@ -8696,8 +8683,8 @@ export namespace Shumate {
             maxZoomLevel: number;
             min_zoom_level: number;
             minZoomLevel: number;
-            reference_map_source: (MapSource | null);
-            referenceMapSource: (MapSource | null);
+            reference_map_source: MapSource | null;
+            referenceMapSource: MapSource | null;
             rotation: number;
             zoom_level: number;
             zoomLevel: number;
@@ -8746,14 +8733,14 @@ export namespace Shumate {
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get reference_map_source(): (MapSource | null);
-        set reference_map_source(val: (MapSource | null));
+        get reference_map_source(): MapSource | null;
+        set reference_map_source(val: MapSource | null);
 
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get referenceMapSource(): (MapSource | null);
-        set referenceMapSource(val: (MapSource | null));
+        get referenceMapSource(): MapSource | null;
+        set referenceMapSource(val: MapSource | null);
 
         /**
          * The rotation of the map view, in radians clockwise from up being due north
@@ -8822,7 +8809,7 @@ export namespace Shumate {
          * Get the reference map source
          * @returns the reference {@link Shumate.MapSource} or `null` when none has been set.
          */
-        get_reference_map_source(): (MapSource | null);
+        get_reference_map_source(): MapSource | null;
 
         /**
          * Gets the current rotation
@@ -8861,7 +8848,7 @@ export namespace Shumate {
          * Set the reference map source
          * @param map_source a {@link Shumate.MapSource} or `null` to set none.
          */
-        set_reference_map_source(map_source: (MapSource | null)): void;
+        set_reference_map_source(map_source: MapSource | null): void;
 
         /**
          * Sets the rotation
@@ -9095,10 +9082,7 @@ export namespace Shumate {
         static $gtype: GObject.GType<VectorValue>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): VectorValue;
 
@@ -9106,7 +9090,7 @@ export namespace Shumate {
 
         static new_color(color: Gdk.RGBA): VectorValue;
 
-        static new_from_value(value: (GObject.Value | any)): VectorValue;
+        static new_from_value(value: GObject.Value | any): VectorValue;
 
         static new_number(number: number): VectorValue;
 

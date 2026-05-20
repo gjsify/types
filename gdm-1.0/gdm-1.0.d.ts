@@ -56,7 +56,7 @@ export namespace Gdm {
     /**
      * @param cancellable 
      */
-    function goto_login_session_sync(cancellable: (Gio.Cancellable | null)): boolean;
+    function goto_login_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
     function greeter_interface_info(): Gio.DBusInterfaceInfo;
 
@@ -121,9 +121,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Chooser.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Chooser.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -168,7 +166,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ChooserProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ChooserProxy> | null): void;
 
         /**
          * @param args 
@@ -184,7 +182,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ChooserProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ChooserProxy> | null): void;
 
         /**
          * @param args 
@@ -195,19 +193,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -217,27 +215,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          * @param callback 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_hostname 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -248,7 +246,7 @@ export namespace Gdm {
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -313,7 +311,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -356,7 +354,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -399,7 +397,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -465,7 +463,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -479,7 +477,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -494,13 +492,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -516,7 +514,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -560,7 +558,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -604,7 +602,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -615,9 +613,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Chooser.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Chooser.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -656,19 +652,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -678,27 +674,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          * @param callback 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_hostname 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -709,7 +705,7 @@ export namespace Gdm {
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -738,7 +734,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -753,13 +749,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -775,19 +771,16 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -834,7 +827,7 @@ export namespace Gdm {
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_chooser(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Chooser>;
+        get_chooser(cancellable: Gio.Cancellable | null): globalThis.Promise<Chooser>;
 
         /**
          * Gets a {@link Gdm.Chooser} object that can be used to
@@ -842,7 +835,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_chooser(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_chooser(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets a {@link Gdm.Chooser} object that can be used to
@@ -850,7 +843,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_chooser(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Chooser> | void);
+        get_chooser(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Chooser> | void;
 
         /**
          * Finishes an operation started with
@@ -867,22 +860,14 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.Chooser} or `null` if caller is not a chooser
          */
-        get_chooser_sync(cancellable: (Gio.Cancellable | null)): Chooser;
+        get_chooser_sync(cancellable: Gio.Cancellable | null): Chooser;
 
         /**
          * Gets a {@link Gdm.Greeter} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_greeter(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Greeter>;
-
-        /**
-         * Gets a {@link Gdm.Greeter} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_greeter(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_greeter(cancellable: Gio.Cancellable | null): globalThis.Promise<Greeter>;
 
         /**
          * Gets a {@link Gdm.Greeter} object that can be used to
@@ -890,7 +875,15 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_greeter(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Greeter> | void);
+        get_greeter(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets a {@link Gdm.Greeter} object that can be used to
+         * verify a user's local account.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_greeter(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Greeter> | void;
 
         /**
          * Finishes an operation started with
@@ -908,22 +901,14 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.Greeter} or `null` if caller is not a greeter
          */
-        get_greeter_sync(cancellable: (Gio.Cancellable | null)): Greeter;
+        get_greeter_sync(cancellable: Gio.Cancellable | null): Greeter;
 
         /**
          * Gets a {@link Gdm.RemoteGreeter} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_remote_greeter(cancellable: (Gio.Cancellable | null)): globalThis.Promise<RemoteGreeter>;
-
-        /**
-         * Gets a {@link Gdm.RemoteGreeter} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_remote_greeter(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_remote_greeter(cancellable: Gio.Cancellable | null): globalThis.Promise<RemoteGreeter>;
 
         /**
          * Gets a {@link Gdm.RemoteGreeter} object that can be used to
@@ -931,7 +916,15 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_remote_greeter(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<RemoteGreeter> | void);
+        get_remote_greeter(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets a {@link Gdm.RemoteGreeter} object that can be used to
+         * verify a user's local account.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_remote_greeter(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RemoteGreeter> | void;
 
         /**
          * Finishes an operation started with
@@ -948,22 +941,14 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.RemoteGreeter} or `null` if caller is not remote
          */
-        get_remote_greeter_sync(cancellable: (Gio.Cancellable | null)): RemoteGreeter;
+        get_remote_greeter_sync(cancellable: Gio.Cancellable | null): RemoteGreeter;
 
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_user_verifier(cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserVerifier>;
-
-        /**
-         * Gets a {@link Gdm.UserVerifier} object that can be used to
-         * verify a user's local account.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_user_verifier(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_user_verifier(cancellable: Gio.Cancellable | null): globalThis.Promise<UserVerifier>;
 
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
@@ -971,7 +956,15 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_user_verifier(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserVerifier> | void);
+        get_user_verifier(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets a {@link Gdm.UserVerifier} object that can be used to
+         * verify a user's local account.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_user_verifier(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserVerifier> | void;
 
         /**
          * Gets a {@link Gdm.UserVerifierChoiceList} object that can be used to
@@ -994,7 +987,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if not connected
          */
-        get_user_verifier_sync(cancellable: (Gio.Cancellable | null)): UserVerifier;
+        get_user_verifier_sync(cancellable: Gio.Cancellable | null): UserVerifier;
 
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
@@ -1002,16 +995,7 @@ export namespace Gdm {
          * @param username user to reauthenticate
          * @param cancellable a {@link Gio.Cancellable}
          */
-        open_reauthentication_channel(username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserVerifier>;
-
-        /**
-         * Gets a {@link Gdm.UserVerifier} object that can be used to
-         * reauthenticate an already logged in user.
-         * @param username user to reauthenticate
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        open_reauthentication_channel(username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_reauthentication_channel(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<UserVerifier>;
 
         /**
          * Gets a {@link Gdm.UserVerifier} object that can be used to
@@ -1020,7 +1004,16 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        open_reauthentication_channel(username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserVerifier> | void);
+        open_reauthentication_channel(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets a {@link Gdm.UserVerifier} object that can be used to
+         * reauthenticate an already logged in user.
+         * @param username user to reauthenticate
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        open_reauthentication_channel(username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserVerifier> | void;
 
         /**
          * Finishes an operation started with
@@ -1038,7 +1031,7 @@ export namespace Gdm {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if `username` is not already logged in.
          */
-        open_reauthentication_channel_sync(username: string, cancellable: (Gio.Cancellable | null)): UserVerifier;
+        open_reauthentication_channel_sync(username: string, cancellable: Gio.Cancellable | null): UserVerifier;
 
         /**
          * Enables GDM's pam extensions.  Currently, only
@@ -1064,9 +1057,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Greeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Greeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1111,7 +1102,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<GreeterProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GreeterProxy> | null): void;
 
         /**
          * @param args 
@@ -1127,7 +1118,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<GreeterProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GreeterProxy> | null): void;
 
         /**
          * @param args 
@@ -1139,21 +1130,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1164,24 +1155,24 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_enabled 
@@ -1197,27 +1188,27 @@ export namespace Gdm {
          * @param out_delay 
          * @param cancellable 
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_session 
          * @param cancellable 
          * @param callback 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1228,27 +1219,27 @@ export namespace Gdm {
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session_sync(arg_session: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_username 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1259,22 +1250,14 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -1282,7 +1265,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_should_start_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1294,7 +1285,7 @@ export namespace Gdm {
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -1467,7 +1458,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1510,7 +1501,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1553,7 +1544,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1619,7 +1610,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1633,7 +1624,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1648,13 +1639,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -1670,7 +1661,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -1714,7 +1705,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1758,7 +1749,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1769,9 +1760,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Greeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Greeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -1811,21 +1800,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1836,24 +1825,24 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_enabled 
@@ -1869,27 +1858,27 @@ export namespace Gdm {
          * @param out_delay 
          * @param cancellable 
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_session 
          * @param cancellable 
          * @param callback 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1900,27 +1889,27 @@ export namespace Gdm {
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session_sync(arg_session: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_username 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1931,22 +1920,14 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -1954,7 +1935,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_should_start_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -1966,7 +1955,7 @@ export namespace Gdm {
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -2103,7 +2092,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2118,13 +2107,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2140,7 +2129,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -2160,9 +2149,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Manager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Manager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -2207,7 +2194,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -2223,7 +2210,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ManagerProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -2242,21 +2229,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -2269,24 +2256,24 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -2298,27 +2285,27 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_session_sync(out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -2329,27 +2316,27 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -2360,7 +2347,7 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -2465,7 +2452,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2508,7 +2495,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2551,7 +2538,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2617,7 +2604,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2631,7 +2618,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2646,13 +2633,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -2668,7 +2655,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -2712,7 +2699,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2756,7 +2743,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2768,9 +2755,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Manager.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Manager.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -2817,21 +2802,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -2844,24 +2829,24 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -2873,27 +2858,27 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_session_sync(out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -2904,27 +2889,27 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -2935,7 +2920,7 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -3004,7 +2989,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3019,13 +3004,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3041,7 +3026,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -3060,9 +3045,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -3107,7 +3090,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<RemoteGreeterProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null): void;
 
         /**
          * @param args 
@@ -3123,7 +3106,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<RemoteGreeterProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<RemoteGreeterProxy> | null): void;
 
         /**
          * @param args 
@@ -3134,19 +3117,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -3156,7 +3139,7 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -3209,7 +3192,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3252,7 +3235,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3295,7 +3278,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3361,7 +3344,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3375,7 +3358,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3390,13 +3373,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3412,7 +3395,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -3456,7 +3439,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3500,7 +3483,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -3511,9 +3494,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, RemoteGreeter.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -3552,19 +3533,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -3574,7 +3555,7 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -3591,7 +3572,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3606,13 +3587,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3628,7 +3609,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -3647,9 +3628,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -3694,7 +3673,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null): void;
 
         /**
          * @param args 
@@ -3710,7 +3689,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierChoiceListProxy> | null): void;
 
         /**
          * @param args 
@@ -3723,7 +3702,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -3731,7 +3710,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -3739,7 +3718,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -3751,7 +3730,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -3821,7 +3800,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3864,7 +3843,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3907,7 +3886,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3973,7 +3952,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3987,7 +3966,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4002,13 +3981,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4024,7 +4003,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -4068,7 +4047,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4112,7 +4091,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4123,9 +4102,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifierChoiceList.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -4166,7 +4143,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -4174,7 +4151,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -4182,7 +4159,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4194,7 +4171,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -4228,7 +4205,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4243,13 +4220,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4265,7 +4242,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -4284,9 +4261,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifier.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, UserVerifier.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -4331,7 +4306,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<UserVerifierProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null): void;
 
         /**
          * @param args 
@@ -4347,7 +4322,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<UserVerifierProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UserVerifierProxy> | null): void;
 
         /**
          * @param args 
@@ -4360,7 +4335,7 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -4368,7 +4343,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -4376,7 +4351,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4388,27 +4363,27 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4420,7 +4395,7 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -4428,7 +4403,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -4436,7 +4411,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4448,30 +4423,30 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4481,27 +4456,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_cancel_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          * @param callback 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_extensions 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -4512,7 +4487,7 @@ export namespace Gdm {
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -4742,7 +4717,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4785,7 +4760,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4828,7 +4803,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4894,7 +4869,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -4908,7 +4883,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4923,13 +4898,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4945,7 +4920,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -4989,7 +4964,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5033,7 +5008,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -5044,9 +5019,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifier.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, UserVerifier.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -5087,7 +5060,7 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5095,7 +5068,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -5103,7 +5076,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5115,27 +5088,27 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5147,7 +5120,7 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5155,7 +5128,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -5163,7 +5136,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5175,30 +5148,30 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5208,27 +5181,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_cancel_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          * @param callback 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_extensions 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5239,7 +5212,7 @@ export namespace Gdm {
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -5433,7 +5406,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5448,13 +5421,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5470,7 +5443,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -5489,9 +5462,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, WorkerManager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, WorkerManager.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -5536,7 +5507,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<WorkerManagerProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -5552,7 +5523,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<WorkerManagerProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<WorkerManagerProxy> | null): void;
 
         /**
          * @param args 
@@ -5566,7 +5537,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5575,7 +5546,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -5584,7 +5555,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -5599,24 +5570,24 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_hello(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_hello(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_hello(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5626,22 +5597,14 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_hello_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5649,7 +5612,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_info 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5661,7 +5632,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5669,7 +5640,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -5677,7 +5648,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -5691,29 +5662,21 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5721,7 +5684,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_problem 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -5733,22 +5704,14 @@ export namespace Gdm {
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_query 
          * @param cancellable 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -5756,7 +5719,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_query 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -5770,7 +5741,7 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -5892,7 +5863,7 @@ export namespace Gdm {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -5935,7 +5906,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -5978,7 +5949,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6044,7 +6015,7 @@ export namespace Gdm {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6058,7 +6029,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -6073,13 +6044,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -6095,7 +6066,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -6139,7 +6110,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -6183,7 +6154,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -6194,9 +6165,7 @@ export namespace Gdm {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, WorkerManager.ConstructorProps, Gio.DBusInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, WorkerManager.ConstructorProps, Gio.DBusInterface.ConstructorProps {}
     }
 
     /**
@@ -6238,7 +6207,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -6247,7 +6216,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -6256,7 +6225,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -6271,24 +6240,24 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_hello(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_hello(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_hello(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -6298,22 +6267,14 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_hello_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -6321,7 +6282,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_info 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -6333,7 +6302,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -6341,7 +6310,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -6349,7 +6318,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -6363,29 +6332,21 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -6393,7 +6354,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_problem 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -6405,22 +6374,14 @@ export namespace Gdm {
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_query 
          * @param cancellable 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -6428,7 +6389,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_query 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -6442,7 +6411,7 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -6528,7 +6497,7 @@ export namespace Gdm {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -6543,13 +6512,13 @@ export namespace Gdm {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -6565,7 +6534,7 @@ export namespace Gdm {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -6815,9 +6784,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ChooserNamespace {
@@ -6839,19 +6806,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -6861,27 +6828,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_hostname 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_hostname 
          * @param cancellable 
          * @param callback 
          */
-        call_select_hostname(arg_hostname: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_hostname 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_hostname(arg_hostname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -6892,7 +6859,7 @@ export namespace Gdm {
          * @param arg_hostname 
          * @param cancellable 
          */
-        call_select_hostname_sync(arg_hostname: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_hostname_sync(arg_hostname: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -6993,9 +6960,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface GreeterNamespace {
@@ -7018,21 +6983,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_auto_login(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_auto_login(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7043,24 +7008,24 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_auto_login_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_get_timed_login_details(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_get_timed_login_details(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_enabled 
@@ -7076,27 +7041,27 @@ export namespace Gdm {
          * @param out_delay 
          * @param cancellable 
          */
-        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_get_timed_login_details_sync(out_enabled: boolean, out_username: string, out_delay: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_session 
          * @param cancellable 
          * @param callback 
          */
-        call_select_session(arg_session: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_session(arg_session: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7107,27 +7072,27 @@ export namespace Gdm {
          * @param arg_session 
          * @param cancellable 
          */
-        call_select_session_sync(arg_session: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_username 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_select_user(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_username 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_select_user(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7138,22 +7103,14 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_select_user_sync(arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_should_start_session 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -7161,7 +7118,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_should_start_session 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_start_session_when_ready(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7173,7 +7138,7 @@ export namespace Gdm {
          * @param arg_should_start_session 
          * @param cancellable 
          */
-        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -7315,21 +7280,21 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_username 
          * @param cancellable 
          * @param callback 
          */
-        call_open_reauthentication_channel(arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_reauthentication_channel(arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -7342,24 +7307,24 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_reauthentication_channel_sync(arg_username: string, out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_open_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_open_session(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_open_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_open_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_address 
@@ -7371,27 +7336,27 @@ export namespace Gdm {
          * @param out_address 
          * @param cancellable 
          */
-        call_open_session_sync(out_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_open_session_sync(out_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_display(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_display(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7402,27 +7367,27 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_display_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_display_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_details 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_details 
          * @param cancellable 
          * @param callback 
          */
-        call_register_session(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_details 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_register_session(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7433,7 +7398,7 @@ export namespace Gdm {
          * @param arg_details 
          * @param cancellable 
          */
-        call_register_session_sync(arg_details: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        call_register_session_sync(arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -7489,9 +7454,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RemoteGreeterNamespace {
@@ -7513,19 +7476,19 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_disconnect(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7535,7 +7498,7 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_disconnect_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -7665,9 +7628,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface UserVerifierNamespace {
@@ -7691,7 +7652,7 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -7699,7 +7660,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -7707,7 +7668,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_answer_query(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7719,27 +7680,27 @@ export namespace Gdm {
          * @param arg_answer 
          * @param cancellable 
          */
-        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification(arg_service_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_begin_verification(arg_service_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7751,7 +7712,7 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -7759,7 +7720,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -7767,7 +7728,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_begin_verification_for_user(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7779,30 +7740,30 @@ export namespace Gdm {
          * @param arg_username 
          * @param cancellable 
          */
-        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param cancellable 
          */
-        call_begin_verification_sync(arg_service_name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_cancel(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7812,27 +7773,27 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_cancel_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_extensions 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_extensions 
          * @param cancellable 
          * @param callback 
          */
-        call_enable_extensions(arg_extensions: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_extensions 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_enable_extensions(arg_extensions: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -7843,7 +7804,7 @@ export namespace Gdm {
          * @param arg_extensions 
          * @param cancellable 
          */
-        call_enable_extensions_sync(arg_extensions: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -7960,9 +7921,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface UserVerifierChoiceListNamespace {
@@ -7986,7 +7945,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -7994,7 +7953,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -8002,7 +7961,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_select_choice(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -8014,7 +7973,7 @@ export namespace Gdm {
          * @param arg_choice 
          * @param cancellable 
          */
-        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 
@@ -8092,9 +8051,7 @@ export namespace Gdm {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WorkerManagerNamespace {
@@ -8119,7 +8076,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -8128,7 +8085,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -8137,7 +8094,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_choice_list_query(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -8152,24 +8109,24 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        call_hello(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        call_hello(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_hello(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        call_hello(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_hello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        call_hello(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -8179,22 +8136,14 @@ export namespace Gdm {
         /**
          * @param cancellable 
          */
-        call_hello_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_info 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -8202,7 +8151,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_info 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_info(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -8214,7 +8171,7 @@ export namespace Gdm {
          * @param arg_query 
          * @param cancellable 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -8222,7 +8179,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param arg_service_name 
@@ -8230,7 +8187,7 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -8244,29 +8201,21 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_info 
          * @param cancellable 
          */
-        call_info_sync(arg_service_name: string, arg_info: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_problem 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -8274,7 +8223,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_problem(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_problem 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_problem(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res 
@@ -8286,22 +8243,14 @@ export namespace Gdm {
          * @param arg_problem 
          * @param cancellable 
          */
-        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param arg_service_name 
          * @param arg_query 
          * @param cancellable 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param arg_service_name 
-         * @param arg_query 
-         * @param cancellable 
-         * @param callback 
-         */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param arg_service_name 
@@ -8309,7 +8258,15 @@ export namespace Gdm {
          * @param cancellable 
          * @param callback 
          */
-        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param arg_service_name 
+         * @param arg_query 
+         * @param cancellable 
+         * @param callback 
+         */
+        call_secret_info_query(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param out_answer 
@@ -8323,7 +8280,7 @@ export namespace Gdm {
          * @param out_answer 
          * @param cancellable 
          */
-        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: (Gio.Cancellable | null)): boolean;
+        call_secret_info_query_sync(arg_service_name: string, arg_query: string, out_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param invocation 

@@ -26,13 +26,10 @@ export namespace GVncPulse {
 
     namespace AudioPulse {
         // Signal signatures
-        interface SignalSignatures extends GVnc.BaseAudio.SignalSignatures {
-        }
+        interface SignalSignatures extends GVnc.BaseAudio.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GVnc.BaseAudio.ConstructorProps, GVnc.Audio.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GVnc.BaseAudio.ConstructorProps, GVnc.Audio.ConstructorProps {}
     }
 
     /**

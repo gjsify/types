@@ -124,7 +124,7 @@ export namespace XreaderDocument {
         static ENCRYPTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -819,7 +819,7 @@ export namespace XreaderDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: (bigint | number)): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
 
         /**
          * Set the name of `annot`.
@@ -1465,7 +1465,7 @@ export namespace XreaderDocument {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, description: string, mtime: GLib.DateTime, ctime: GLib.DateTime, size: (bigint | number), data: null): Attachment;
+        static ["new"](name: string, description: string, mtime: GLib.DateTime, ctime: GLib.DateTime, size: bigint | number, data: null): Attachment;
 
         // Signals
         /** @signal */
@@ -1509,13 +1509,10 @@ export namespace XreaderDocument {
 
     namespace Document {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1834,13 +1831,10 @@ export namespace XreaderDocument {
 
     namespace FormField {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1891,13 +1885,10 @@ export namespace XreaderDocument {
 
     namespace FormFieldButton {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -1946,13 +1937,10 @@ export namespace XreaderDocument {
 
     namespace FormFieldChoice {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2011,13 +1999,10 @@ export namespace XreaderDocument {
 
     namespace FormFieldSignature {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2062,13 +2047,10 @@ export namespace XreaderDocument {
 
     namespace FormFieldText {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -2129,13 +2111,10 @@ export namespace XreaderDocument {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2194,13 +2173,10 @@ export namespace XreaderDocument {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2658,13 +2634,10 @@ export namespace XreaderDocument {
 
     namespace Page {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2715,13 +2688,10 @@ export namespace XreaderDocument {
 
     namespace RenderContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3549,9 +3519,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AsyncRendererNamespace {
@@ -3613,9 +3581,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAnnotationsNamespace {
@@ -3673,9 +3639,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAttachmentsNamespace {
@@ -3715,9 +3679,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFindNamespace {
@@ -3771,9 +3733,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFontsNamespace {
@@ -3899,9 +3859,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFormsNamespace {
@@ -3992,9 +3950,7 @@ export namespace XreaderDocument {
     namespace DocumentImages {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentImagesNamespace {
@@ -4046,9 +4002,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLayersNamespace {
@@ -4106,9 +4060,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLinksNamespace {
@@ -4172,9 +4124,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentPrintNamespace {
@@ -4221,9 +4171,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentSecurityNamespace {
@@ -4280,9 +4228,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTextNamespace {
@@ -4337,9 +4283,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentThumbnailsNamespace {
@@ -4382,9 +4326,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTransitionNamespace {
@@ -4451,9 +4393,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileExporterNamespace {
@@ -4529,9 +4469,7 @@ export namespace XreaderDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SelectionNamespace {

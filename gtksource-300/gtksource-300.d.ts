@@ -116,7 +116,7 @@ export namespace GtkSource {
         static NOT_BOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -197,7 +197,7 @@ export namespace GtkSource {
         static CONVERSION_FALLBACK: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -225,7 +225,7 @@ export namespace GtkSource {
         static EXTERNALLY_MODIFIED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -539,7 +539,7 @@ export namespace GtkSource {
      * @returns a string intended to be shown in the UI,   that describes a bracket matching. `null` is returned on   {@link GtkSource.BracketMatchType.NONE}.
      * @since 299.0
      */
-    function utils_get_bracket_matched_message(iter: Gtk.TextIter, state: BracketMatchType): (string | null);
+    function utils_get_bracket_matched_message(iter: Gtk.TextIter, state: BracketMatchType): string | null;
 
     /**
      * Use this function before `gtk_source_search_settings_set_search_text()`, to
@@ -839,13 +839,13 @@ export namespace GtkSource {
             highlightSyntax: boolean;
             implicit_trailing_newline: boolean;
             implicitTrailingNewline: boolean;
-            language: (Language | null);
+            language: Language | null;
             max_undo_levels: number;
             maxUndoLevels: number;
-            style_scheme: (StyleScheme | null);
-            styleScheme: (StyleScheme | null);
-            undo_manager: (UndoManager | null);
-            undoManager: (UndoManager | null);
+            style_scheme: StyleScheme | null;
+            styleScheme: StyleScheme | null;
+            undo_manager: UndoManager | null;
+            undoManager: UndoManager | null;
         }
     }
 
@@ -926,8 +926,8 @@ export namespace GtkSource {
         get implicitTrailingNewline(): boolean;
         set implicitTrailingNewline(val: boolean);
 
-        get language(): (Language | null);
-        set language(val: (Language | null));
+        get language(): Language | null;
+        set language(val: Language | null);
 
         /**
          * Number of undo levels for the buffer. -1 means no limit. This property
@@ -950,22 +950,22 @@ export namespace GtkSource {
          * foreground, background, cursor color, current line color, and matching
          * brackets style.
          */
-        get style_scheme(): (StyleScheme | null);
-        set style_scheme(val: (StyleScheme | null));
+        get style_scheme(): StyleScheme | null;
+        set style_scheme(val: StyleScheme | null);
 
         /**
          * Style scheme. It contains styles for syntax highlighting, optionally
          * foreground, background, cursor color, current line color, and matching
          * brackets style.
          */
-        get styleScheme(): (StyleScheme | null);
-        set styleScheme(val: (StyleScheme | null));
+        get styleScheme(): StyleScheme | null;
+        set styleScheme(val: StyleScheme | null);
 
-        get undo_manager(): (UndoManager | null);
-        set undo_manager(val: (UndoManager | null));
+        get undo_manager(): UndoManager | null;
+        set undo_manager(val: UndoManager | null);
 
-        get undoManager(): (UndoManager | null);
-        set undoManager(val: (UndoManager | null));
+        get undoManager(): UndoManager | null;
+        set undoManager(val: UndoManager | null);
 
         /**
          * Compile-time signal type information.
@@ -981,7 +981,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ["new"](table: (Gtk.TextTagTable | null)): Buffer;
+        static ["new"](table: Gtk.TextTagTable | null): Buffer;
 
         static new_with_language(language: Language): Buffer;
 
@@ -1034,7 +1034,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        backward_iter_to_source_mark(iter: Gtk.TextIter, category: (string | null)): boolean;
+        backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
         /**
          * Marks the beginning of a not undoable action on the buffer,
@@ -1074,7 +1074,7 @@ export namespace GtkSource {
          * @param where location to place the mark.
          * @returns a new {@link GtkSource.Mark}, owned by the buffer.
          */
-        create_source_mark(name: (string | null), category: string, where: Gtk.TextIter): Mark;
+        create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark;
 
         /**
          * Marks the end of a not undoable action on the buffer.  When the
@@ -1107,7 +1107,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
          */
-        forward_iter_to_source_mark(iter: Gtk.TextIter, category: (string | null)): boolean;
+        forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
         /**
          * Get all defined context classes at `iter`.
@@ -1143,7 +1143,7 @@ export namespace GtkSource {
          * unreferenced by the user.
          * @returns the {@link GtkSource.Language} associated with the buffer, or `null`.
          */
-        get_language(): (Language | null);
+        get_language(): Language | null;
 
         /**
          * Determines the number of undo levels the buffer will track for buffer edits.
@@ -1158,7 +1158,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
          */
-        get_source_marks_at_iter(iter: Gtk.TextIter, category: (string | null)): Mark[];
+        get_source_marks_at_iter(iter: Gtk.TextIter, category: string | null): Mark[];
 
         /**
          * Returns the list of marks of the given category at `line`.
@@ -1167,7 +1167,7 @@ export namespace GtkSource {
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
          */
-        get_source_marks_at_line(line: number, category: (string | null)): Mark[];
+        get_source_marks_at_line(line: number, category: string | null): Mark[];
 
         /**
          * Returns the {@link GtkSource.StyleScheme} associated with the buffer,
@@ -1175,7 +1175,7 @@ export namespace GtkSource {
          * The returned object should not be unreferenced by the user.
          * @returns the {@link GtkSource.StyleScheme} associated with the buffer, or `null`.
          */
-        get_style_scheme(): (StyleScheme | null);
+        get_style_scheme(): StyleScheme | null;
 
         /**
          * Returns the {@link GtkSource.UndoManager} associated with the buffer,
@@ -1183,7 +1183,7 @@ export namespace GtkSource {
          * unreferenced by the user.
          * @returns the {@link GtkSource.UndoManager} associated with the buffer, or `null`.
          */
-        get_undo_manager(): (UndoManager | null);
+        get_undo_manager(): UndoManager | null;
 
         /**
          * Moves backward to the next toggle (on or off) of the context class. If no
@@ -1245,7 +1245,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param category category to search for, or `null`.
          */
-        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: (string | null)): void;
+        remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: string | null): void;
 
         /**
          * Controls the bracket match highlighting function in the buffer.  If
@@ -1300,7 +1300,7 @@ export namespace GtkSource {
          * The buffer holds a reference to `language`.
          * @param language a {@link GtkSource.Language} to set, or `null`.
          */
-        set_language(language: (Language | null)): void;
+        set_language(language: Language | null): void;
 
         /**
          * Sets the number of undo levels for user actions the buffer will
@@ -1330,14 +1330,14 @@ export namespace GtkSource {
          * The buffer holds a reference to `scheme`.
          * @param scheme a {@link GtkSource.StyleScheme} or `null`.
          */
-        set_style_scheme(scheme: (StyleScheme | null)): void;
+        set_style_scheme(scheme: StyleScheme | null): void;
 
         /**
          * Set the buffer undo manager. If `manager` is `null` the default undo manager
          * will be set.
          * @param manager A {@link GtkSource.UndoManager} or `null`.
          */
-        set_undo_manager(manager: (UndoManager | null)): void;
+        set_undo_manager(manager: UndoManager | null): void;
 
         /**
          * Sort the lines of text between the specified iterators.
@@ -1474,7 +1474,7 @@ export namespace GtkSource {
             showHeaders: boolean;
             show_icons: boolean;
             showIcons: boolean;
-            view: (View | null);
+            view: View | null;
         }
     }
 
@@ -1624,7 +1624,7 @@ export namespace GtkSource {
          * The {@link GtkSource.View} bound to the completion object.
          * @construct-only
          */
-        get view(): (View | null);
+        get view(): View | null;
 
         /**
          * Compile-time signal type information.
@@ -1726,7 +1726,7 @@ export namespace GtkSource {
          * @param position a {@link Gtk.TextIter}, or `null`.
          * @returns a new {@link GtkSource.CompletionContext}. The reference being returned is a 'floating' reference, so if you invoke `gtk_source_completion_start()` with this context you don't need to unref it.
          */
-        create_context(position: (Gtk.TextIter | null)): CompletionContext;
+        create_context(position: Gtk.TextIter | null): CompletionContext;
 
         /**
          * The info widget is the window where the completion displays optional extra
@@ -1747,7 +1747,7 @@ export namespace GtkSource {
          * destroyed.
          * @returns The {@link GtkSource.View} associated with `completion`, or `null`.
          */
-        get_view(): (View | null);
+        get_view(): View | null;
 
         /**
          * Hides the completion if it is active (visible).
@@ -1775,7 +1775,7 @@ export namespace GtkSource {
          * @param context The {@link GtkSource.CompletionContext} with which to start the completion.
          * @returns `true` if it was possible to the show completion window.
          */
-        start(providers: (CompletionProvider[] | null), context: CompletionContext): boolean;
+        start(providers: CompletionProvider[] | null, context: CompletionContext): boolean;
 
         /**
          * Unblock interactive completion. This can be used after using
@@ -1882,7 +1882,7 @@ export namespace GtkSource {
          * @param proposals The list of proposals to add.
          * @param finished Whether the provider is finished adding proposals.
          */
-        add_proposals(provider: CompletionProvider, proposals: (CompletionProposal[] | null), finished: boolean): void;
+        add_proposals(provider: CompletionProvider, proposals: CompletionProposal[] | null, finished: boolean): void;
 
         /**
          * Get the context activation.
@@ -1980,9 +1980,7 @@ export namespace GtkSource {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2029,19 +2027,16 @@ export namespace GtkSource {
          * @param view a {@link Gtk.TextView} on which the info window should be positioned.
          * @param iter a {@link Gtk.TextIter}.
          */
-        move_to_iter(view: Gtk.TextView, iter: (Gtk.TextIter | null)): void;
+        move_to_iter(view: Gtk.TextView, iter: Gtk.TextIter | null): void;
     }
 
 
     namespace CompletionItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {}
     }
 
     /**
@@ -2083,37 +2078,37 @@ export namespace GtkSource {
         /**
          * @param gicon the {@link Gio.Icon}, or `null`.
          */
-        set_gicon(gicon: (Gio.Icon | null)): void;
+        set_gicon(gicon: Gio.Icon | null): void;
 
         /**
          * @param icon the {@link GdkPixbuf.Pixbuf}, or `null`.
          */
-        set_icon(icon: (GdkPixbuf.Pixbuf | null)): void;
+        set_icon(icon: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * @param info the info, or `null`.
          */
-        set_info(info: (string | null)): void;
+        set_info(info: string | null): void;
 
         /**
          * @param label the label, or `null`.
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param markup the markup, or `null`.
          */
-        set_markup(markup: (string | null)): void;
+        set_markup(markup: string | null): void;
 
         /**
          * @param text the text, or `null`.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * Emits the {@link GtkSource.CompletionProposal.SignalSignatures.changed | GtkSource.CompletionProposal::changed} signal on `proposal`. This
@@ -2134,17 +2129,17 @@ export namespace GtkSource {
         /**
          * @returns the {@link Gio.Icon} for the icon of `proposal`.
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         /**
          * @returns a {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
          */
-        get_icon(): (GdkPixbuf.Pixbuf | null);
+        get_icon(): GdkPixbuf.Pixbuf | null;
 
         /**
          * @returns the icon name of `proposal`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets extra information associated to the proposal. This information will be
@@ -2152,7 +2147,7 @@ export namespace GtkSource {
          * selected proposal.
          * @returns a newly-allocated string containing   extra information of `proposal`, or `null` if no extra information is   associated to `proposal`.
          */
-        get_info(): (string | null);
+        get_info(): string | null;
 
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
@@ -2160,7 +2155,7 @@ export namespace GtkSource {
          * implement `gtk_source_completion_proposal_get_markup()`.
          * @returns a new string containing the label of   `proposal`.
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
@@ -2168,7 +2163,7 @@ export namespace GtkSource {
          * `gtk_source_completion_proposal_get_label()` if implemented.
          * @returns a new string containing the label of   `proposal` with markup.
          */
-        get_markup(): (string | null);
+        get_markup(): string | null;
 
         /**
          * Gets the text of `proposal`. The text that is inserted into the text buffer
@@ -2179,7 +2174,7 @@ export namespace GtkSource {
          * `gtk_source_completion_provider_activate_proposal()`.
          * @returns a new string containing the text of   `proposal`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Gets the hash value of `proposal`. This is used to (together with
@@ -2211,21 +2206,21 @@ export namespace GtkSource {
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_gicon(): (Gio.Icon | null);
+        vfunc_get_gicon(): Gio.Icon | null;
 
         /**
          * The virtual function pointer for `gtk_source_completion_proposal_get_icon()`.
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_icon(): (GdkPixbuf.Pixbuf | null);
+        vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
 
         /**
          * The virtual function pointer for `gtk_source_completion_proposal_get_icon_name()`.
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets extra information associated to the proposal. This information will be
@@ -2233,7 +2228,7 @@ export namespace GtkSource {
          * selected proposal.
          * @virtual
          */
-        vfunc_get_info(): (string | null);
+        vfunc_get_info(): string | null;
 
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
@@ -2241,7 +2236,7 @@ export namespace GtkSource {
          * implement `gtk_source_completion_proposal_get_markup()`.
          * @virtual
          */
-        vfunc_get_label(): (string | null);
+        vfunc_get_label(): string | null;
 
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
@@ -2249,7 +2244,7 @@ export namespace GtkSource {
          * `gtk_source_completion_proposal_get_label()` if implemented.
          * @virtual
          */
-        vfunc_get_markup(): (string | null);
+        vfunc_get_markup(): string | null;
 
         /**
          * Gets the text of `proposal`. The text that is inserted into the text buffer
@@ -2260,7 +2255,7 @@ export namespace GtkSource {
          * `gtk_source_completion_provider_activate_proposal()`.
          * @virtual
          */
-        vfunc_get_text(): (string | null);
+        vfunc_get_text(): string | null;
 
         /**
          * Gets the hash value of `proposal`. This is used to (together with
@@ -2286,8 +2281,8 @@ export namespace GtkSource {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             compression_type: CompressionType;
             compressionType: CompressionType;
-            encoding: (Encoding | null);
-            location: (Gio.File | null);
+            encoding: Encoding | null;
+            location: Gio.File | null;
             newline_type: NewlineType;
             newlineType: NewlineType;
             read_only: boolean;
@@ -2324,14 +2319,14 @@ export namespace GtkSource {
          * @since 3.14
          * @read-only
          */
-        get encoding(): (Encoding | null);
+        get encoding(): Encoding | null;
 
         /**
          * The {@link Gio.File}.
          * @since 3.14
          */
-        get location(): (Gio.File | null);
-        set location(val: (Gio.File | null));
+        get location(): Gio.File | null;
+        set location(val: Gio.File | null);
 
         /**
          * The line ending type.
@@ -2426,12 +2421,12 @@ export namespace GtkSource {
         /**
          * @returns the current value of the   {@link GtkSource.File.encoding} property.
          */
-        get_encoding(): (Encoding | null);
+        get_encoding(): Encoding | null;
 
         /**
          * @returns the current value of the   {@link GtkSource.File.location} property.
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * @returns the current value of the {@link GtkSource.File.newline_type} property.
@@ -2474,7 +2469,7 @@ export namespace GtkSource {
          * Sets the {@link GtkSource.File.location} property.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location: (Gio.File | null)): void;
+        set_location(location: Gio.File | null): void;
     }
 
 
@@ -2490,13 +2485,13 @@ export namespace GtkSource {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Buffer | null);
-            file: (File | null);
-            input_stream: (Gio.InputStream | null);
-            inputStream: (Gio.InputStream | null);
-            location: (Gio.File | null);
-            max_size: (bigint | number);
-            maxSize: (bigint | number);
+            buffer: Buffer | null;
+            file: File | null;
+            input_stream: Gio.InputStream | null;
+            inputStream: Gio.InputStream | null;
+            location: Gio.File | null;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -2513,7 +2508,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get buffer(): (Buffer | null);
+        get buffer(): Buffer | null;
 
         /**
          * The {@link GtkSource.File}. The {@link GtkSource.FileLoader} object has a weak
@@ -2521,7 +2516,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get file(): (File | null);
+        get file(): File | null;
 
         /**
          * The {@link Gio.InputStream} to load. Useful for reading stdin. If this property
@@ -2529,7 +2524,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get input_stream(): (Gio.InputStream | null);
+        get input_stream(): Gio.InputStream | null;
 
         /**
          * The {@link Gio.InputStream} to load. Useful for reading stdin. If this property
@@ -2537,7 +2532,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get inputStream(): (Gio.InputStream | null);
+        get inputStream(): Gio.InputStream | null;
 
         /**
          * The {@link Gio.File} to load, or `null` to load the contents from the
@@ -2548,7 +2543,7 @@ export namespace GtkSource {
          * @since 3.14
          * @construct-only
          */
-        get location(): (Gio.File | null);
+        get location(): Gio.File | null;
 
         /**
          * The maximum number of bytes to read.
@@ -2559,7 +2554,7 @@ export namespace GtkSource {
          * @default 200000000
          */
         get max_size(): number;
-        set max_size(val: (bigint | number));
+        set max_size(val: bigint | number);
 
         /**
          * The maximum number of bytes to read.
@@ -2570,7 +2565,7 @@ export namespace GtkSource {
          * @default 200000000
          */
         get maxSize(): number;
-        set maxSize(val: (bigint | number));
+        set maxSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2607,7 +2602,7 @@ export namespace GtkSource {
         /**
          * @returns the value of the   {@link GtkSource.FileLoader.buffer} property.
          */
-        get_buffer(): (Buffer | null);
+        get_buffer(): Buffer | null;
 
         /**
          * @returns the detected compression type.
@@ -2622,17 +2617,17 @@ export namespace GtkSource {
         /**
          * @returns the value of the   {@link GtkSource.FileLoader.file} property.
          */
-        get_file(): (File | null);
+        get_file(): File | null;
 
         /**
          * @returns the value of the   {@link GtkSource.FileLoader.input_stream} property.
          */
-        get_input_stream(): (Gio.InputStream | null);
+        get_input_stream(): Gio.InputStream | null;
 
         /**
          * @returns the value of the   {@link GtkSource.FileLoader.location} property.
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * @returns the value of the {@link GtkSource.FileLoader.max_size} property.
@@ -2652,7 +2647,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the file or input stream contents into the
@@ -2663,7 +2658,7 @@ export namespace GtkSource {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads asynchronously the file or input stream contents into the
@@ -2674,7 +2669,7 @@ export namespace GtkSource {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file loading started with `gtk_source_file_loader_load_async()`.
@@ -2707,7 +2702,7 @@ export namespace GtkSource {
          * Sets the {@link GtkSource.FileLoader.max_size} property.
          * @param max_size the new value.
          */
-        set_max_size(max_size: (bigint | number)): void;
+        set_max_size(max_size: bigint | number): void;
     }
 
 
@@ -2892,7 +2887,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2902,7 +2897,7 @@ export namespace GtkSource {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2912,7 +2907,7 @@ export namespace GtkSource {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file saving started with `gtk_source_file_saver_save_async()`.
@@ -2940,7 +2935,7 @@ export namespace GtkSource {
          * By default the encoding is taken from the {@link GtkSource.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding: (Encoding | null)): void;
+        set_encoding(encoding: Encoding | null): void;
 
         /**
          * @param flags the new flags.
@@ -3032,7 +3027,7 @@ export namespace GtkSource {
          * @param y The y position to get identified.
          * @returns the renderer at (x, y) or `null`.
          */
-        get_renderer_at_pos(x: number, y: number): (GutterRenderer | null);
+        get_renderer_at_pos(x: number, y: number): GutterRenderer | null;
 
         /**
          * @returns the associated {@link GtkSource.View}.
@@ -3091,7 +3086,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-activatable": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: Gdk.Event) => (boolean | void);
+            "query-activatable": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: Gdk.Event) => boolean | void;
             /**
              * The ::query-data signal is emitted when the renderer needs
              * to be filled with data just before a cell is drawn. This can
@@ -3107,7 +3102,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-tooltip": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: number, arg3: number, arg4: Gtk.Tooltip) => (boolean | void);
+            "query-tooltip": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: number, arg3: number, arg4: Gtk.Tooltip) => boolean | void;
             /**
              * The ::queue-draw signal is emitted when the renderer needs
              * to be redrawn. Use `gtk_source_gutter_renderer_queue_draw()`
@@ -3318,14 +3313,14 @@ export namespace GtkSource {
          * @param old_buffer the old {@link Gtk.TextBuffer}.
          * @virtual
          */
-        vfunc_change_buffer(old_buffer: (Gtk.TextBuffer | null)): void;
+        vfunc_change_buffer(old_buffer: Gtk.TextBuffer | null): void;
 
         /**
          * This is called when the text view changes for `renderer`.
          * @param old_view the old {@link Gtk.TextView}.
          * @virtual
          */
-        vfunc_change_view(old_view: (Gtk.TextView | null)): void;
+        vfunc_change_view(old_view: Gtk.TextView | null): void;
 
         /**
          * Main renderering method. Implementations should implement this method to draw
@@ -3567,7 +3562,7 @@ export namespace GtkSource {
          * renderer will not have a background color.
          * @param color a {@link Gdk.RGBA} or `null`
          */
-        set_background(color: (Gdk.RGBA | null)): void;
+        set_background(color: Gdk.RGBA | null): void;
 
         /**
          * Set the padding of the gutter renderer. Both `xpad` and `ypad` can be
@@ -3695,17 +3690,17 @@ export namespace GtkSource {
         /**
          * @param icon the icon, or `null`.
          */
-        set_gicon(icon: (Gio.Icon | null)): void;
+        set_gicon(icon: Gio.Icon | null): void;
 
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * @param pixbuf the pixbuf, or `null`.
          */
-        set_pixbuf(pixbuf: (GdkPixbuf.Pixbuf | null)): void;
+        set_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
     }
 
 
@@ -3894,7 +3889,7 @@ export namespace GtkSource {
          * retrieve the "globs" metadata property and split it into an array.
          * @returns a newly-allocated `null` terminated array containing the globs or `null` if no globs are found. The returned array must be freed with `g_strfreev()`.
          */
-        get_globs(): (string[] | null);
+        get_globs(): string[] | null;
 
         /**
          * Returns whether the language should be hidden from the user.
@@ -3914,7 +3909,7 @@ export namespace GtkSource {
          * @param name metadata property name.
          * @returns value of property `name` stored in the metadata of `language` or `null` if language does not contain the specified metadata property. The returned string is owned by `language` and should not be freed or modified.
          */
-        get_metadata(name: string): (string | null);
+        get_metadata(name: string): string | null;
 
         /**
          * Returns the mime types associated to this language. This is just
@@ -3923,7 +3918,7 @@ export namespace GtkSource {
          * array.
          * @returns a newly-allocated `null` terminated array containing the mime types or `null` if no mime types are found. The returned array must be freed with `g_strfreev()`.
          */
-        get_mime_types(): (string[] | null);
+        get_mime_types(): string[] | null;
 
         /**
          * Returns the localized name of the language.
@@ -3949,20 +3944,20 @@ export namespace GtkSource {
          * @param style_id a style ID.
          * @returns the ID of the style to use if the specified `style_id` is not present in the current style scheme or `null` if the style has no fallback defined. The returned string is owned by the `language` and must not be modified.
          */
-        get_style_fallback(style_id: string): (string | null);
+        get_style_fallback(style_id: string): string | null;
 
         /**
          * Returns the ids of the styles defined by this `language`.
          * @returns a newly-allocated `null` terminated array containing ids of the styles defined by this `language` or `null` if no style is defined. The returned array must be freed with `g_strfreev()`.
          */
-        get_style_ids(): (string[] | null);
+        get_style_ids(): string[] | null;
 
         /**
          * Returns the name of the style with ID `style_id` defined by this `language`.
          * @param style_id a style ID.
          * @returns the name of the style with ID `style_id` defined by this `language` or `null` if the style has no name or there is no style with ID `style_id` defined by this `language`. The returned string is owned by the `language` and must not be modified.
          */
-        get_style_name(style_id: string): (string | null);
+        get_style_name(style_id: string): string | null;
     }
 
 
@@ -3975,8 +3970,8 @@ export namespace GtkSource {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            language_ids: (string[] | null);
-            languageIds: (string[] | null);
+            language_ids: string[] | null;
+            languageIds: string[] | null;
             search_path: string[];
             searchPath: string[];
         }
@@ -3992,12 +3987,12 @@ export namespace GtkSource {
         /**
          * @read-only
          */
-        get language_ids(): (string[] | null);
+        get language_ids(): string[] | null;
 
         /**
          * @read-only
          */
-        get languageIds(): (string[] | null);
+        get languageIds(): string[] | null;
 
         get search_path(): string[];
         set search_path(val: string[]);
@@ -4047,13 +4042,13 @@ export namespace GtkSource {
          * @param id a language id.
          * @returns a {@link GtkSource.Language}, or `null` if there is no language identified by the given `id`. Return value is owned by `lm` and should not be freed.
          */
-        get_language(id: string): (Language | null);
+        get_language(id: string): Language | null;
 
         /**
          * Returns the ids of the available languages.
          * @returns a `null`-terminated array of strings containing the ids of the available languages or `null` if no language is available. The array is sorted alphabetically according to the language name. The array is owned by `lm` and must not be modified.
          */
-        get_language_ids(): (string[] | null);
+        get_language_ids(): string[] | null;
 
         /**
          * Gets the list directories where `lm` looks for language files.
@@ -4098,7 +4093,7 @@ export namespace GtkSource {
          * @param content_type a content type (as in GIO API), or `null`.
          * @returns a {@link GtkSource.Language}, or `null` if there is no suitable language for given `filename` and/or `content_type`. Return value is owned by `lm` and should not be freed.
          */
-        guess_language(filename: (string | null), content_type: (string | null)): (Language | null);
+        guess_language(filename: string | null, content_type: string | null): Language | null;
 
         /**
          * Sets the list of directories where the `lm` looks for
@@ -4115,7 +4110,7 @@ export namespace GtkSource {
          * </note>
          * @param dirs a `null`-terminated array of strings or `null`.
          */
-        set_search_path(dirs: (string[] | null)): void;
+        set_search_path(dirs: string[] | null): void;
     }
 
 
@@ -4195,7 +4190,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or `null`.
          * @returns the next {@link GtkSource.Mark}, or `null`.
          */
-        next(category: (string | null)): (Mark | null);
+        next(category: string | null): Mark | null;
 
         /**
          * Returns the previous {@link GtkSource.Mark} in the buffer or `null` if the mark
@@ -4205,7 +4200,7 @@ export namespace GtkSource {
          * @param category a string specifying the mark category, or `null`.
          * @returns the previous {@link GtkSource.Mark}, or `null`.
          */
-        prev(category: string): (Mark | null);
+        prev(category: string): Mark | null;
     }
 
 
@@ -5033,7 +5028,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for the footer text, or `null`.
          */
-        set_footer_font_name(font_name: (string | null)): void;
+        set_footer_font_name(font_name: string | null): void;
 
         /**
          * See `gtk_source_print_compositor_set_header_format()` for more information
@@ -5043,7 +5038,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the footer.
          * @param right a format string to print on the right of the footer.
          */
-        set_footer_format(separator: boolean, left: (string | null), center: (string | null), right: (string | null)): void;
+        set_footer_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
         /**
          * Sets the font for printing the page header. If
@@ -5059,7 +5054,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for header text, or `null`.
          */
-        set_header_font_name(font_name: (string | null)): void;
+        set_header_font_name(font_name: string | null): void;
 
         /**
          * Sets strftime like header format strings, to be printed on the
@@ -5088,7 +5083,7 @@ export namespace GtkSource {
          * @param center a format string to print on the center of the header.
          * @param right a format string to print on the right of the header.
          */
-        set_header_format(separator: boolean, left: (string | null), center: (string | null), right: (string | null)): void;
+        set_header_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
         /**
          * Sets whether the printed text will be highlighted according to the
@@ -5121,7 +5116,7 @@ export namespace GtkSource {
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for line numbers, or `null`.
          */
-        set_line_numbers_font_name(font_name: (string | null)): void;
+        set_line_numbers_font_name(font_name: string | null): void;
 
         /**
          * Sets whether you want to print a footer in each page.  The
@@ -5208,7 +5203,7 @@ export namespace GtkSource {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Gtk.TextBuffer | null);
+            buffer: Gtk.TextBuffer | null;
         }
     }
 
@@ -5225,7 +5220,7 @@ export namespace GtkSource {
          * @since 3.22
          * @construct-only
          */
-        get buffer(): (Gtk.TextBuffer | null);
+        get buffer(): Gtk.TextBuffer | null;
 
         /**
          * Compile-time signal type information.
@@ -5261,7 +5256,7 @@ export namespace GtkSource {
          * Adds `region_to_add` to `region`. `region_to_add` is not modified.
          * @param region_to_add the {@link GtkSource.Region} to add to `region`, or `null`.
          */
-        add_region(region_to_add: (Region | null)): void;
+        add_region(region_to_add: Region | null): void;
 
         /**
          * Adds the subregion delimited by `_start` and `_end` to `region`.
@@ -5279,7 +5274,7 @@ export namespace GtkSource {
         /**
          * @returns the {@link Gtk.TextBuffer}.
          */
-        get_buffer(): (Gtk.TextBuffer | null);
+        get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * Initializes a {@link GtkSource.RegionIter} to the first subregion of `region`. If
@@ -5293,7 +5288,7 @@ export namespace GtkSource {
          * @param region2 a {@link GtkSource.Region}, or `null`.
          * @returns the intersection as a {@link GtkSource.Region}   object.
          */
-        intersect_region(region2: (Region | null)): (Region | null);
+        intersect_region(region2: Region | null): Region | null;
 
         /**
          * Returns the intersection between `region` and the subregion delimited by
@@ -5302,7 +5297,7 @@ export namespace GtkSource {
          * @param _end the end of the subregion.
          * @returns the intersection as a new   {@link GtkSource.Region}.
          */
-        intersect_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): (Region | null);
+        intersect_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): Region | null;
 
         /**
          * Returns whether the `region` is empty. A `null` `region` is considered empty.
@@ -5315,7 +5310,7 @@ export namespace GtkSource {
          * modified.
          * @param region_to_subtract the {@link GtkSource.Region} to subtract from   `region`, or `null`.
          */
-        subtract_region(region_to_subtract: (Region | null)): void;
+        subtract_region(region_to_subtract: Region | null): void;
 
         /**
          * Subtracts the subregion delimited by `_start` and `_end` from `region`.
@@ -5331,7 +5326,7 @@ export namespace GtkSource {
          * doesn't include a newline character at the end of the string.
          * @returns a string represention of `region`. Free   with `g_free()` when no longer needed.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
     }
 
 
@@ -5461,7 +5456,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ["new"](buffer: Buffer, settings: (SearchSettings | null)): SearchContext;
+        static ["new"](buffer: Buffer, settings: SearchSettings | null): SearchContext;
 
         // Signals
         /** @signal */
@@ -5507,7 +5502,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        backward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Gtk.TextIter | null), (Gtk.TextIter | null), boolean]>;
+        backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
 
         /**
          * The asynchronous version of `gtk_source_search_context_backward()`.
@@ -5524,7 +5519,7 @@ export namespace GtkSource {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        backward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * The asynchronous version of `gtk_source_search_context_backward()`.
@@ -5541,7 +5536,7 @@ export namespace GtkSource {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        backward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Gtk.TextIter | null), (Gtk.TextIter | null), boolean]> | void);
+        backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
 
         /**
          * Finishes a backward search started with
@@ -5584,7 +5579,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        forward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Gtk.TextIter | null), (Gtk.TextIter | null), boolean]>;
+        forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]>;
 
         /**
          * The asynchronous version of `gtk_source_search_context_forward()`.
@@ -5601,7 +5596,7 @@ export namespace GtkSource {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        forward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * The asynchronous version of `gtk_source_search_context_forward()`.
@@ -5618,7 +5613,7 @@ export namespace GtkSource {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        forward_async(iter: Gtk.TextIter, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Gtk.TextIter | null), (Gtk.TextIter | null), boolean]> | void);
+        forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null, boolean]> | void;
 
         /**
          * Finishes a forward search started with
@@ -5673,7 +5668,7 @@ export namespace GtkSource {
          * Free the return value with `g_error_free()`.
          * @returns the {@link GLib.Error}, or `null` if the pattern is valid.
          */
-        get_regex_error(): (GLib.Error | null);
+        get_regex_error(): GLib.Error | null;
 
         /**
          * @returns the search settings.
@@ -5724,7 +5719,7 @@ export namespace GtkSource {
          * `gtk_source_search_context_set_highlight()`.
          * @param match_style a {@link GtkSource.Style}, or `null`.
          */
-        set_match_style(match_style: (Style | null)): void;
+        set_match_style(match_style: Style | null): void;
     }
 
 
@@ -5746,8 +5741,8 @@ export namespace GtkSource {
             caseSensitive: boolean;
             regex_enabled: boolean;
             regexEnabled: boolean;
-            search_text: (string | null);
-            searchText: (string | null);
+            search_text: string | null;
+            searchText: string | null;
             wrap_around: boolean;
             wrapAround: boolean;
         }
@@ -5819,8 +5814,8 @@ export namespace GtkSource {
          * @since 3.10
          * @default null
          */
-        get search_text(): (string | null);
-        set search_text(val: (string | null));
+        get search_text(): string | null;
+        set search_text(val: string | null);
 
         /**
          * A search string, or `null` if the search is disabled. If the regular
@@ -5829,8 +5824,8 @@ export namespace GtkSource {
          * @since 3.10
          * @default null
          */
-        get searchText(): (string | null);
-        set searchText(val: (string | null));
+        get searchText(): string | null;
+        set searchText(val: string | null);
 
         /**
          * For a forward search, continue at the beginning of the buffer if no
@@ -5904,7 +5899,7 @@ export namespace GtkSource {
          * this function.
          * @returns the text to search, or `null` if the search is disabled.
          */
-        get_search_text(): (string | null);
+        get_search_text(): string | null;
 
         /**
          * @returns whether to wrap around the search.
@@ -5947,7 +5942,7 @@ export namespace GtkSource {
          * this function.
          * @param search_text the nul-terminated text to search, or `null` to disable the search.
          */
-        set_search_text(search_text: (string | null)): void;
+        set_search_text(search_text: string | null): void;
 
         /**
          * Enables or disables the wrap around search. If `wrap_around` is `true`, the
@@ -6108,7 +6103,7 @@ export namespace GtkSource {
          * convenient to use.
          * @param matrix the new matrix value, or `null`.
          */
-        set_matrix(matrix: (GLib.Variant | null)): void;
+        set_matrix(matrix: GLib.Variant | null): void;
 
         /**
          * Modifies the {@link GtkSource.SpaceDrawer.matrix} property at the specified
@@ -6122,13 +6117,10 @@ export namespace GtkSource {
 
     namespace StyleScheme {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6168,12 +6160,12 @@ export namespace GtkSource {
         /**
          * @returns the `scheme` description, a human-readable (translated)   string to present to the user.
          */
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * @returns `scheme` file name if the scheme was created parsing a   style scheme file, or `null` in the other cases.
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * @returns the `scheme` ID, a unique string used to identify the style scheme in   a {@link GtkSource.StyleSchemeManager}.
@@ -6194,7 +6186,7 @@ export namespace GtkSource {
          * @param style_id ID of the style to retrieve.
          * @returns the {@link GtkSource.Style} which corresponds to   `style_id` in the `scheme`, or `null` if not found.
          */
-        get_style(style_id: string): (Style | null);
+        get_style(style_id: string): Style | null;
     }
 
 
@@ -6211,9 +6203,7 @@ export namespace GtkSource {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6273,7 +6263,7 @@ export namespace GtkSource {
          * @param scheme_id style scheme ID to find.
          * @returns the {@link GtkSource.StyleScheme} object   corresponding to `scheme_id`, or `null` if not found.
          */
-        get_scheme(scheme_id: string): (StyleScheme | null);
+        get_scheme(scheme_id: string): StyleScheme | null;
 
         /**
          * @returns a list of   all the {@link GtkSource.StyleScheme}'s that are part of `manager`. The list is   sorted alphabetically according to the scheme name.
@@ -6313,7 +6303,7 @@ export namespace GtkSource {
          * So the list of paths must be set in priority order, from highest to lowest.
          * @param path a `null`-terminated array of   strings, or `null` to reset the search path to its default value.
          */
-        set_search_path(path: (string[] | null)): void;
+        set_search_path(path: string[] | null): void;
     }
 
 
@@ -6472,7 +6462,7 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null)): Tag;
+        static ["new"](name: string | null): Tag;
 
         // Signals
         /** @signal */
@@ -7327,7 +7317,7 @@ export namespace GtkSource {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -7341,7 +7331,7 @@ export namespace GtkSource {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -7445,10 +7435,7 @@ export namespace GtkSource {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](charset: string): Encoding;
 
@@ -7517,7 +7504,7 @@ export namespace GtkSource {
          * @param enc2 a {@link GtkSource.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equal.
          */
-        equals(enc2: (Encoding | null)): boolean;
+        equals(enc2: Encoding | null): boolean;
 
         free(): void;
 
@@ -7742,10 +7729,7 @@ export namespace GtkSource {
         static $gtype: GObject.GType<RegionIter>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**
@@ -7977,21 +7961,21 @@ export namespace GtkSource {
              *   By default, `null` is returned.
              * @virtual
              */
-            vfunc_get_gicon(): (Gio.Icon | null);
+            vfunc_get_gicon(): Gio.Icon | null;
 
             /**
              * The virtual function pointer for `gtk_source_completion_proposal_get_icon()`.
              *   By default, `null` is returned.
              * @virtual
              */
-            vfunc_get_icon(): (GdkPixbuf.Pixbuf | null);
+            vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
 
             /**
              * The virtual function pointer for `gtk_source_completion_proposal_get_icon_name()`.
              *   By default, `null` is returned.
              * @virtual
              */
-            vfunc_get_icon_name(): (string | null);
+            vfunc_get_icon_name(): string | null;
 
             /**
              * Gets extra information associated to the proposal. This information will be
@@ -7999,7 +7983,7 @@ export namespace GtkSource {
              * selected proposal.
              * @virtual
              */
-            vfunc_get_info(): (string | null);
+            vfunc_get_info(): string | null;
 
             /**
              * Gets the label of `proposal`. The label is shown in the list of proposals as
@@ -8007,7 +7991,7 @@ export namespace GtkSource {
              * implement `gtk_source_completion_proposal_get_markup()`.
              * @virtual
              */
-            vfunc_get_label(): (string | null);
+            vfunc_get_label(): string | null;
 
             /**
              * Gets the label of `proposal` with markup. The label is shown in the list of
@@ -8015,7 +7999,7 @@ export namespace GtkSource {
              * `gtk_source_completion_proposal_get_label()` if implemented.
              * @virtual
              */
-            vfunc_get_markup(): (string | null);
+            vfunc_get_markup(): string | null;
 
             /**
              * Gets the text of `proposal`. The text that is inserted into the text buffer
@@ -8026,7 +8010,7 @@ export namespace GtkSource {
              * `gtk_source_completion_provider_activate_proposal()`.
              * @virtual
              */
-            vfunc_get_text(): (string | null);
+            vfunc_get_text(): string | null;
 
             /**
              * Gets the hash value of `proposal`. This is used to (together with
@@ -8039,9 +8023,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CompletionProposalNamespace {
@@ -8073,17 +8055,17 @@ export namespace GtkSource {
         /**
          * @returns the {@link Gio.Icon} for the icon of `proposal`.
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         /**
          * @returns a {@link GdkPixbuf.Pixbuf} with the icon of `proposal`.
          */
-        get_icon(): (GdkPixbuf.Pixbuf | null);
+        get_icon(): GdkPixbuf.Pixbuf | null;
 
         /**
          * @returns the icon name of `proposal`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets extra information associated to the proposal. This information will be
@@ -8091,7 +8073,7 @@ export namespace GtkSource {
          * selected proposal.
          * @returns a newly-allocated string containing   extra information of `proposal`, or `null` if no extra information is   associated to `proposal`.
          */
-        get_info(): (string | null);
+        get_info(): string | null;
 
         /**
          * Gets the label of `proposal`. The label is shown in the list of proposals as
@@ -8099,7 +8081,7 @@ export namespace GtkSource {
          * implement `gtk_source_completion_proposal_get_markup()`.
          * @returns a new string containing the label of   `proposal`.
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * Gets the label of `proposal` with markup. The label is shown in the list of
@@ -8107,7 +8089,7 @@ export namespace GtkSource {
          * `gtk_source_completion_proposal_get_label()` if implemented.
          * @returns a new string containing the label of   `proposal` with markup.
          */
-        get_markup(): (string | null);
+        get_markup(): string | null;
 
         /**
          * Gets the text of `proposal`. The text that is inserted into the text buffer
@@ -8118,7 +8100,7 @@ export namespace GtkSource {
          * `gtk_source_completion_provider_activate_proposal()`.
          * @returns a new string containing the text of   `proposal`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Gets the hash value of `proposal`. This is used to (together with
@@ -8169,19 +8151,19 @@ export namespace GtkSource {
              * Gets the {@link Gio.Icon} for the icon of `provider`.
              * @virtual
              */
-            vfunc_get_gicon(): (Gio.Icon | null);
+            vfunc_get_gicon(): Gio.Icon | null;
 
             /**
              * Get the {@link GdkPixbuf.Pixbuf} for the icon of the `provider`.
              * @virtual
              */
-            vfunc_get_icon(): (GdkPixbuf.Pixbuf | null);
+            vfunc_get_icon(): GdkPixbuf.Pixbuf | null;
 
             /**
              * Gets the icon name of `provider`.
              * @virtual
              */
-            vfunc_get_icon_name(): (string | null);
+            vfunc_get_icon_name(): string | null;
 
             /**
              * Get a customized info widget to show extra information of a proposal.
@@ -8202,7 +8184,7 @@ export namespace GtkSource {
              * @param proposal a currently selected {@link GtkSource.CompletionProposal}.
              * @virtual
              */
-            vfunc_get_info_widget(proposal: CompletionProposal): (Gtk.Widget | null);
+            vfunc_get_info_widget(proposal: CompletionProposal): Gtk.Widget | null;
 
             /**
              * Get the delay in milliseconds before starting interactive completion for
@@ -8281,9 +8263,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CompletionProviderNamespace {
@@ -8323,19 +8303,19 @@ export namespace GtkSource {
          * Gets the {@link Gio.Icon} for the icon of `provider`.
          * @returns The icon to be used for the provider,          or `null` if the provider does not have a special icon.
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         /**
          * Get the {@link GdkPixbuf.Pixbuf} for the icon of the `provider`.
          * @returns The icon to be used for the provider,          or `null` if the provider does not have a special icon.
          */
-        get_icon(): (GdkPixbuf.Pixbuf | null);
+        get_icon(): GdkPixbuf.Pixbuf | null;
 
         /**
          * Gets the icon name of `provider`.
          * @returns The icon name to be used for the provider,          or `null` if the provider does not have a special icon.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Get a customized info widget to show extra information of a proposal.
@@ -8356,7 +8336,7 @@ export namespace GtkSource {
          * @param proposal a currently selected {@link GtkSource.CompletionProposal}.
          * @returns a custom {@link Gtk.Widget} to show extra information about `proposal`, or `null` if the provider does not have a special info widget.
          */
-        get_info_widget(proposal: CompletionProposal): (Gtk.Widget | null);
+        get_info_widget(proposal: CompletionProposal): Gtk.Widget | null;
 
         /**
          * Get the delay in milliseconds before starting interactive completion for
@@ -8501,9 +8481,7 @@ export namespace GtkSource {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface UndoManagerNamespace {

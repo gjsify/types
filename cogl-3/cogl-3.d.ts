@@ -750,7 +750,7 @@ export namespace Cogl {
      * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
      * @deprecated since 1.16: Use `cogl_framebuffer_clear()` api instead
      */
-    function clear(color: Color, buffers: (bigint | number)): void;
+    function clear(color: Color, buffers: bigint | number): void;
 
     /**
      * @param name 
@@ -2351,8 +2351,7 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2414,8 +2413,7 @@ export namespace Cogl {
 
     namespace Offscreen {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2471,10 +2469,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Color>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Color;
 
@@ -2747,10 +2742,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Material>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Material;
 
@@ -3709,7 +3701,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        project_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        project_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a rotation matrix that applies a rotation
@@ -3799,7 +3791,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        transform_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        transform_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a transform matrix that translates along
@@ -3944,9 +3936,7 @@ export namespace Cogl {
     namespace Texture {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TextureNamespace {

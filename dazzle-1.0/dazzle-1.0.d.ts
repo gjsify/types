@@ -270,7 +270,7 @@ export namespace Dazzle {
      * @returns a {@link Gio.Cancellable} or `null`
      * @since 3.28
      */
-    function cancellable_chain(self: (Gio.Cancellable | null), other: (Gio.Cancellable | null)): (Gio.Cancellable | null);
+    function cancellable_chain(self: Gio.Cancellable | null, other: Gio.Cancellable | null): Gio.Cancellable | null;
 
     function counter_arena_get_default(): CounterArena;
 
@@ -336,7 +336,7 @@ export namespace Dazzle {
      * @param to_value 
      * @param user_data 
      */
-    function g_time_span_to_label_mapping(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: null): boolean;
+    function g_time_span_to_label_mapping(binding: GObject.Binding, from_value: GObject.Value | any, to_value: GObject.Value | any, user_data: null): boolean;
 
     /**
      * @param data 
@@ -406,7 +406,7 @@ export namespace Dazzle {
      * @param type 
      * @returns A widget or `null`
      */
-    function gtk_widget_find_child_typed(widget: Gtk.Widget, type: GObject.GType): (Gtk.Widget | null);
+    function gtk_widget_find_child_typed(widget: Gtk.Widget, type: GObject.GType): Gtk.Widget | null;
 
     /**
      * This is similar to `gtk_widget_get_ancestor()`, but looks for relatives
@@ -415,7 +415,7 @@ export namespace Dazzle {
      * @param relative_type the type of widget to locate
      * @returns A {@link Gtk.Widget} or `null`.
      */
-    function gtk_widget_get_relative(widget: Gtk.Widget, relative_type: GObject.GType): (Gtk.Widget | null);
+    function gtk_widget_get_relative(widget: Gtk.Widget, relative_type: GObject.GType): Gtk.Widget | null;
 
     /**
      * @param widget 
@@ -446,7 +446,7 @@ export namespace Dazzle {
      * @param from_widget A {@link Gtk.Widget} containing the groups to copy
      * @param mux_key a unique key to represent the muxing
      */
-    function gtk_widget_mux_action_groups(widget: Gtk.Widget, from_widget: Gtk.Widget, mux_key: (string | null)): void;
+    function gtk_widget_mux_action_groups(widget: Gtk.Widget, from_widget: Gtk.Widget, mux_key: string | null): void;
 
     /**
      * @param widget 
@@ -762,7 +762,7 @@ export namespace Dazzle {
          * @param pspec A {@link GObject.ParamSpec} of `target` or a {@link Gtk.Widget}<!-- -->'s parent.
          * @param value The new value for the property at the end of the animation.
          */
-        add_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        add_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * Start the animation. When the animation stops, the internal reference will
@@ -1042,7 +1042,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ApplicationWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            fullscreen: (boolean | any);
+            fullscreen: boolean | any;
             titlebar_animation: TitlebarAnimation;
             titlebarAnimation: TitlebarAnimation;
         }
@@ -1247,7 +1247,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -1293,7 +1293,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -1307,7 +1307,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1331,7 +1331,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1353,7 +1353,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -1480,7 +1480,7 @@ export namespace Dazzle {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -1527,7 +1527,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -1541,7 +1541,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1565,7 +1565,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1587,7 +1587,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -1663,7 +1663,7 @@ export namespace Dazzle {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -1719,7 +1719,7 @@ export namespace Dazzle {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -1780,9 +1780,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1830,7 +1828,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            source: (GObject.Object | null);
+            source: GObject.Object | null;
         }
     }
 
@@ -1853,8 +1851,8 @@ export namespace Dazzle {
         /**
          * The source object used for binding properties.
          */
-        get source(): (GObject.Object | null);
-        set source(val: (GObject.Object | null));
+        get source(): GObject.Object | null;
+        set source(val: GObject.Object | null);
 
         /**
          * Compile-time signal type information.
@@ -1918,7 +1916,7 @@ export namespace Dazzle {
          * @param transform_to a {@link GObject.Closure} wrapping the     transformation function from the source object to the `target`,     or `null` to use the default
          * @param transform_from a {@link GObject.Closure} wrapping the     transformation function from the `target` to the source object,     or `null` to use the default
          */
-        bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: (GObject.Closure | null), transform_from: (GObject.Closure | null)): void;
+        bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: GObject.Closure | null, transform_from: GObject.Closure | null): void;
 
         /**
          * Gets the source object used for binding properties.
@@ -1934,7 +1932,7 @@ export namespace Dazzle {
          * Note: All properties that have been bound must exist on `source`.
          * @param source the source {@link GObject.Object}
          */
-        set_source(source: (GObject.Object | null)): void;
+        set_source(source: GObject.Object | null): void;
     }
 
 
@@ -2191,7 +2189,7 @@ export namespace Dazzle {
          * @param nth the index of the child starting from 0
          * @returns A {@link Gtk.Widget} or `null`
          */
-        get_nth_child(nth: number): (Gtk.Widget | null);
+        get_nth_child(nth: number): Gtk.Widget | null;
 
         /**
          * @param max_width_request 
@@ -2565,7 +2563,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameter_type(): (GLib.VariantType | null);
+        get parameter_type(): GLib.VariantType | null;
 
         /**
          * The type of the parameter that must be given when activating the
@@ -2575,7 +2573,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameterType(): (GLib.VariantType | null);
+        get parameterType(): GLib.VariantType | null;
 
         /**
          * The state of the action, or `NULL` if the action is stateless.
@@ -2583,7 +2581,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state(): (GLib.Variant | null);
+        get state(): GLib.Variant | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -2592,7 +2590,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state_type(): (GLib.VariantType | null);
+        get state_type(): GLib.VariantType | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -2601,7 +2599,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get stateType(): (GLib.VariantType | null);
+        get stateType(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -2613,7 +2611,7 @@ export namespace Dazzle {
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
-        activate(parameter: (GLib.Variant | null)): void;
+        activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -2657,7 +2655,7 @@ export namespace Dazzle {
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
          */
-        get_parameter_type(): (GLib.VariantType | null);
+        get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -2670,7 +2668,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
          */
-        get_state(): (GLib.Variant | null);
+        get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -2693,7 +2691,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
          */
-        get_state_hint(): (GLib.Variant | null);
+        get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -2710,7 +2708,7 @@ export namespace Dazzle {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
          */
-        get_state_type(): (GLib.VariantType | null);
+        get_state_type(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -2723,7 +2721,7 @@ export namespace Dazzle {
          * @param parameter the parameter to the activation
          * @virtual
          */
-        vfunc_activate(parameter: (GLib.Variant | null)): void;
+        vfunc_activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -2768,7 +2766,7 @@ export namespace Dazzle {
          * {@link GLib.Variant}, but `NULL` instead.
          * @virtual
          */
-        vfunc_get_parameter_type(): (GLib.VariantType | null);
+        vfunc_get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -2781,7 +2779,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state(): (GLib.Variant | null);
+        vfunc_get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -2804,7 +2802,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state_hint(): (GLib.Variant | null);
+        vfunc_get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -2821,7 +2819,7 @@ export namespace Dazzle {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @virtual
          */
-        vfunc_get_state_type(): (GLib.VariantType | null);
+        vfunc_get_state_type(): GLib.VariantType | null;
     }
 
 
@@ -3085,9 +3083,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -3130,7 +3126,7 @@ export namespace Dazzle {
          * Gets the currently viewed arena, if any.
          * @returns A {@link Dazzle.CounterArena} or `null`.
          */
-        get_arena(): (CounterArena | null);
+        get_arena(): CounterArena | null;
 
         /**
          * @param arena 
@@ -3190,7 +3186,7 @@ export namespace Dazzle {
         interface ConstructorProps extends GraphView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             max_samples: number;
             maxSamples: number;
-            timespan: (bigint | number);
+            timespan: bigint | number;
         }
     }
 
@@ -3233,7 +3229,7 @@ export namespace Dazzle {
 
         _init(...args: any[]): void;
 
-        static new_full(timespan: (bigint | number), max_samples: number): CpuGraph;
+        static new_full(timespan: bigint | number, max_samples: number): CpuGraph;
 
         // Signals
         /** @signal */
@@ -3260,9 +3256,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GraphModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GraphModel.ConstructorProps {}
     }
 
     /**
@@ -3372,7 +3366,7 @@ export namespace Dazzle {
          * @param path {@link Gtk.WidgetPath} to query
          * @returns The icon factory to use for `path`, or `null`
          */
-        get_icon_factory(path: Gtk.WidgetPath): (Gtk.IconFactory | null);
+        get_icon_factory(path: Gtk.WidgetPath): Gtk.IconFactory | null;
 
         /**
          * Returns the style settings affecting a widget defined by `path`, or `null` if
@@ -3380,7 +3374,7 @@ export namespace Dazzle {
          * @param path {@link Gtk.WidgetPath} to query
          * @returns a {@link Gtk.StyleProperties} containing the style settings affecting `path`
          */
-        get_style(path: Gtk.WidgetPath): (Gtk.StyleProperties | null);
+        get_style(path: Gtk.WidgetPath): Gtk.StyleProperties | null;
 
         /**
          * Looks up a widget style property as defined by `provider` for
@@ -3398,7 +3392,7 @@ export namespace Dazzle {
          * @param path {@link Gtk.WidgetPath} to query
          * @virtual
          */
-        vfunc_get_icon_factory(path: Gtk.WidgetPath): (Gtk.IconFactory | null);
+        vfunc_get_icon_factory(path: Gtk.WidgetPath): Gtk.IconFactory | null;
 
         /**
          * Returns the style settings affecting a widget defined by `path`, or `null` if
@@ -3406,7 +3400,7 @@ export namespace Dazzle {
          * @param path {@link Gtk.WidgetPath} to query
          * @virtual
          */
-        vfunc_get_style(path: Gtk.WidgetPath): (Gtk.StyleProperties | null);
+        vfunc_get_style(path: Gtk.WidgetPath): Gtk.StyleProperties | null;
 
         /**
          * Looks up a widget style property as defined by `provider` for
@@ -3532,7 +3526,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -3572,7 +3566,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -3614,9 +3608,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3677,24 +3669,24 @@ export namespace Dazzle {
         /**
          * @param cancellable 
          */
-        execute(cancellable: (Gio.Cancellable | null)): boolean;
+        execute(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -3862,7 +3854,7 @@ export namespace Dazzle {
          * Gets the center widget for the dock.
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_center_widget(): (Gtk.Widget | null);
+        get_center_widget(): Gtk.Widget | null;
 
         /**
          * @returns A {@link Gtk.Widget}
@@ -3937,19 +3929,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -3959,7 +3951,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -3998,7 +3990,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -4028,7 +4020,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -4065,13 +4057,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -4081,7 +4073,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -4125,7 +4117,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -4152,7 +4144,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -4349,19 +4341,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -4371,7 +4363,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -4410,7 +4402,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -4440,7 +4432,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -4477,13 +4469,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -4493,7 +4485,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -4537,7 +4529,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -4564,7 +4556,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -4607,9 +4599,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4753,9 +4743,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -4870,19 +4858,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -4892,7 +4880,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -4931,7 +4919,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -4961,7 +4949,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -4998,13 +4986,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -5014,7 +5002,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -5058,7 +5046,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -5085,7 +5073,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -5284,19 +5272,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -5306,7 +5294,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -5345,7 +5333,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -5375,7 +5363,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -5412,13 +5400,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -5428,7 +5416,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -5472,7 +5460,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -5499,7 +5487,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -5575,9 +5563,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MultiPaned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MultiPaned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -5678,19 +5664,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -5700,7 +5686,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -5739,7 +5725,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -5769,7 +5755,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -5806,13 +5792,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -5822,7 +5808,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -5866,7 +5852,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -5893,7 +5879,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -6222,7 +6208,7 @@ export namespace Dazzle {
             edge: Gtk.PositionType;
             show_pinned_button: boolean;
             showPinnedButton: boolean;
-            style: (TabStyle | any);
+            style: TabStyle | any;
         }
     }
 
@@ -6255,9 +6241,9 @@ export namespace Dazzle {
          * @default Dazzle.TabStyle.ICONS | Dazzle.TabStyle.TEXT
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get style(): (TabStyle | any);
+        get style(): TabStyle | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set style(val: (TabStyle | any));
+        set style(val: TabStyle | any);
 
         /**
          * Compile-time signal type information.
@@ -6385,19 +6371,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -6407,7 +6393,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -6446,7 +6432,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -6476,7 +6462,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -6513,13 +6499,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -6529,7 +6515,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -6573,7 +6559,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -6600,7 +6586,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -6940,19 +6926,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -6962,7 +6948,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -7001,7 +6987,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -7031,7 +7017,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -7068,13 +7054,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -7084,7 +7070,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -7128,7 +7114,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -7155,7 +7141,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -7264,9 +7250,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -7368,19 +7352,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -7390,7 +7374,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -7429,7 +7413,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -7459,7 +7443,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -7496,13 +7480,13 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_icon_name(): (string | null);
+        vfunc_get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -7512,7 +7496,7 @@ export namespace Dazzle {
          * widgets.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * @param old_manager 
@@ -7556,7 +7540,7 @@ export namespace Dazzle {
          * may be returned.
          * @virtual
          */
-        vfunc_ref_gicon(): (Gio.Icon | null);
+        vfunc_ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -7583,7 +7567,7 @@ export namespace Dazzle {
          * @param manager A {@link Dazzle.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -7711,9 +7695,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -8117,7 +8099,7 @@ export namespace Dazzle {
             createFolders: boolean;
             do_overwrite_confirmation: boolean;
             doOverwriteConfirmation: boolean;
-            file: (Gio.File | null);
+            file: Gio.File | null;
             filter: Gtk.FileFilter;
             local_only: boolean;
             localOnly: boolean;
@@ -8166,8 +8148,8 @@ export namespace Dazzle {
         get doOverwriteConfirmation(): boolean;
         set doOverwriteConfirmation(val: boolean);
 
-        get file(): (Gio.File | null);
-        set file(val: (Gio.File | null));
+        get file(): Gio.File | null;
+        set file(val: Gio.File | null);
 
         get filter(): Gtk.FileFilter;
         set filter(val: Gtk.FileFilter);
@@ -8254,7 +8236,7 @@ export namespace Dazzle {
          * Returns the currently selected file or `null` if there is no selection.
          * @returns A {@link Gio.File} or `null`.
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * @param file 
@@ -8336,27 +8318,27 @@ export namespace Dazzle {
          * @param io_priority 
          * @param cancellable 
          */
-        execute(io_priority: number, cancellable: (Gio.Cancellable | null)): boolean;
+        execute(io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param io_priority 
          * @param cancellable 
          */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param io_priority 
-         * @param cancellable 
-         * @param callback 
-         */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param io_priority 
          * @param cancellable 
          * @param callback 
          */
-        execute_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param io_priority 
+         * @param cancellable 
+         * @param callback 
+         */
+        execute_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -8381,13 +8363,10 @@ export namespace Dazzle {
 
     namespace FuzzyIndex {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8431,7 +8410,7 @@ export namespace Dazzle {
          * @param key 
          * @returns A {@link GLib.Variant} or `null`.
          */
-        get_metadata(key: string): (GLib.Variant | null);
+        get_metadata(key: string): GLib.Variant | null;
 
         /**
          * @param key 
@@ -8452,27 +8431,27 @@ export namespace Dazzle {
          * @param file 
          * @param cancellable 
          */
-        load_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param callback 
-         */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param callback 
          */
-        load_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param callback 
+         */
+        load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -8484,7 +8463,7 @@ export namespace Dazzle {
          * @param max_matches 
          * @param cancellable 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * @param query 
@@ -8492,7 +8471,7 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param query 
@@ -8500,7 +8479,7 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        query_async(query: string, max_matches: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes an asynchronous request to `dzl_fuzzy_index_query_async()`.
@@ -8581,7 +8560,7 @@ export namespace Dazzle {
          * @param document_id 
          * @returns A {@link GLib.Variant}
          */
-        get_document(document_id: (bigint | number)): GLib.Variant;
+        get_document(document_id: bigint | number): GLib.Variant;
 
         /**
          * Inserts `document` into the index using `key` as the lookup key.
@@ -8627,14 +8606,14 @@ export namespace Dazzle {
          * @param key 
          * @param value 
          */
-        set_metadata_uint64(key: string, value: (bigint | number)): void;
+        set_metadata_uint64(key: string, value: bigint | number): void;
 
         /**
          * @param file 
          * @param io_priority 
          * @param cancellable 
          */
-        write(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): boolean;
+        write(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Builds and writes the index to `file`. The file format is a
@@ -8644,18 +8623,7 @@ export namespace Dazzle {
          * @param io_priority The priority for IO operations
          * @param cancellable An optional {@link Gio.Cancellable} or `null`
          */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Builds and writes the index to `file`. The file format is a
-         * GVariant on disk and can be loaded and searched using
-         * {@link Dazzle.FuzzyIndex}.
-         * @param file A {@link Gio.File} to write the index to
-         * @param io_priority The priority for IO operations
-         * @param cancellable An optional {@link Gio.Cancellable} or `null`
-         * @param callback A callback for completion or `null`
-         */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Builds and writes the index to `file`. The file format is a
@@ -8666,7 +8634,18 @@ export namespace Dazzle {
          * @param cancellable An optional {@link Gio.Cancellable} or `null`
          * @param callback A callback for completion or `null`
          */
-        write_async(file: Gio.File, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Builds and writes the index to `file`. The file format is a
+         * GVariant on disk and can be loaded and searched using
+         * {@link Dazzle.FuzzyIndex}.
+         * @param file A {@link Gio.File} to write the index to
+         * @param io_priority The priority for IO operations
+         * @param cancellable An optional {@link Gio.Cancellable} or `null`
+         * @param callback A callback for completion or `null`
+         */
+        write_async(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -8818,7 +8797,7 @@ export namespace Dazzle {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -8861,7 +8840,7 @@ export namespace Dazzle {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -8904,7 +8883,7 @@ export namespace Dazzle {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -8964,7 +8943,7 @@ export namespace Dazzle {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -9013,7 +8992,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -9053,7 +9032,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -9361,7 +9340,7 @@ export namespace Dazzle {
          * @param cr 
          * @param area 
          */
-        render(table: GraphModel, x_begin: (bigint | number), x_end: (bigint | number), y_begin: number, y_end: number, cr: cairo.Context, area: cairo.RectangleInt): void;
+        render(table: GraphModel, x_begin: bigint | number, x_end: bigint | number, y_begin: number, y_end: number, cr: cairo.Context, area: cairo.RectangleInt): void;
 
         /**
          * @param table 
@@ -9395,7 +9374,7 @@ export namespace Dazzle {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             max_samples: number;
             maxSamples: number;
-            timespan: (bigint | number);
+            timespan: bigint | number;
             value_max: number;
             valueMax: number;
             value_min: number;
@@ -9426,7 +9405,7 @@ export namespace Dazzle {
          * @default 60000000
          */
         get timespan(): number;
-        set timespan(val: (bigint | number));
+        set timespan(val: bigint | number);
 
         /**
          * @default 100
@@ -9492,7 +9471,7 @@ export namespace Dazzle {
          * @param column 
          * @param value 
          */
-        static iter_get_value(iter: GraphModelIter, column: number, value: (GObject.Value | any)): void;
+        static iter_get_value(iter: GraphModelIter, column: number, value: GObject.Value | any): void;
 
         /**
          * @param iter 
@@ -9505,7 +9484,7 @@ export namespace Dazzle {
          * @param column the column to set
          * @param value the new value for the column
          */
-        static iter_set(iter: GraphModelIter, column: number, value: (GObject.Value | any)): void;
+        static iter_set(iter: GraphModelIter, column: number, value: GObject.Value | any): void;
 
         // Methods
         /**
@@ -9534,7 +9513,7 @@ export namespace Dazzle {
         /**
          * @param timestamp Time of new event
          */
-        push(timestamp: (bigint | number)): GraphModelIter;
+        push(timestamp: bigint | number): GraphModelIter;
 
         /**
          * @param n_rows 
@@ -9595,7 +9574,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            model: (GraphModel | null);
+            model: GraphModel | null;
         }
     }
 
@@ -9606,8 +9585,8 @@ export namespace Dazzle {
         static $gtype: GObject.GType<GraphView>;
 
         // Properties
-        get model(): (GraphModel | null);
-        set model(val: (GraphModel | null));
+        get model(): GraphModel | null;
+        set model(val: GraphModel | null);
 
         /**
          * Compile-time signal type information.
@@ -9648,7 +9627,7 @@ export namespace Dazzle {
          * Gets the {@link Dazzle.GraphView.model} property.
          * @returns An {@link Dazzle.GraphModel} or `null`.
          */
-        get_model(): (GraphModel | null);
+        get_model(): GraphModel | null;
 
         /**
          * @param model 
@@ -9659,13 +9638,10 @@ export namespace Dazzle {
 
     namespace JoinedMenu {
         // Signal signatures
-        interface SignalSignatures extends Gio.MenuModel.SignalSignatures {
-        }
+        interface SignalSignatures extends Gio.MenuModel.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.MenuModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.MenuModel.ConstructorProps {}
     }
 
     /**
@@ -9871,7 +9847,7 @@ export namespace Dazzle {
         /**
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         get_property_name(): string;
 
@@ -9943,9 +9919,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -9985,15 +9959,15 @@ export namespace Dazzle {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -10009,7 +9983,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -10033,7 +10007,7 @@ export namespace Dazzle {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -10057,7 +10031,7 @@ export namespace Dazzle {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -10081,7 +10055,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -10106,7 +10080,7 @@ export namespace Dazzle {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -10131,7 +10105,7 @@ export namespace Dazzle {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -10265,7 +10239,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -10305,7 +10279,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -10401,7 +10375,7 @@ export namespace Dazzle {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -10501,7 +10475,7 @@ export namespace Dazzle {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -10518,7 +10492,7 @@ export namespace Dazzle {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -10542,7 +10516,7 @@ export namespace Dazzle {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -10636,7 +10610,7 @@ export namespace Dazzle {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -10714,7 +10688,7 @@ export namespace Dazzle {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -10731,7 +10705,7 @@ export namespace Dazzle {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -10755,7 +10729,7 @@ export namespace Dazzle {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -10939,7 +10913,7 @@ export namespace Dazzle {
             iconName: string;
             menu_id: string;
             menuId: string;
-            model: (Gio.MenuModel | null);
+            model: Gio.MenuModel | null;
             show_accels: boolean;
             showAccels: boolean;
             show_arrow: boolean;
@@ -10990,8 +10964,8 @@ export namespace Dazzle {
          */
         set menuId(val: string);
 
-        get model(): (Gio.MenuModel | null);
-        set model(val: (Gio.MenuModel | null));
+        get model(): Gio.MenuModel | null;
+        set model(val: Gio.MenuModel | null);
 
         /**
          * @default false
@@ -11055,7 +11029,7 @@ export namespace Dazzle {
 
         _init(...args: any[]): void;
 
-        static new_with_model(icon_name: string, model: (Gio.MenuModel | null)): MenuButton;
+        static new_with_model(icon_name: string, model: Gio.MenuModel | null): MenuButton;
 
         // Signals
         /** @signal */
@@ -11074,7 +11048,7 @@ export namespace Dazzle {
         /**
          * @returns A {@link Dazzle.MenuButton} or `null`.
          */
-        get_model(): (Gio.MenuModel | null);
+        get_model(): Gio.MenuModel | null;
 
         get_show_accels(): boolean;
 
@@ -11188,13 +11162,10 @@ export namespace Dazzle {
 
     namespace MenuManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11415,7 +11386,7 @@ export namespace Dazzle {
          * @param y y coordinate
          * @returns a {@link Gtk.Widget} or `null`
          */
-        get_at_point(x: number, y: number): (Gtk.Widget | null);
+        get_at_point(x: number, y: number): Gtk.Widget | null;
 
         get_n_children(): number;
 
@@ -11447,13 +11418,10 @@ export namespace Dazzle {
 
     namespace Path {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11504,7 +11472,7 @@ export namespace Dazzle {
          * @param index 
          * @returns An {@link Dazzle.PathElement}.
          */
-        get_element(index: number): (PathElement | null);
+        get_element(index: number): PathElement | null;
 
         /**
          * @returns The elements of the path.
@@ -11593,7 +11561,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            path: (Path | any);
+            path: Path | any;
         }
     }
 
@@ -11692,10 +11660,10 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon_name: (string | null);
-            iconName: (string | null);
+            icon_name: string | null;
+            iconName: string | null;
             id: string;
-            title: (string | null);
+            title: string | null;
         }
     }
 
@@ -11713,7 +11681,7 @@ export namespace Dazzle {
          * @construct-only
          * @default null
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * The icon-name of the icon to display next to the path element
@@ -11722,7 +11690,7 @@ export namespace Dazzle {
          * @construct-only
          * @default null
          */
-        get iconName(): (string | null);
+        get iconName(): string | null;
 
         /**
          * The id property is an application specific identifier for the
@@ -11740,7 +11708,7 @@ export namespace Dazzle {
          * @construct-only
          * @default null
          */
-        get title(): (string | null);
+        get title(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -11756,7 +11724,7 @@ export namespace Dazzle {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: (string | null), icon_name: (string | null), title: string): PathElement;
+        static ["new"](id: string | null, icon_name: string | null, title: string): PathElement;
 
         // Signals
         /** @signal */
@@ -11777,7 +11745,7 @@ export namespace Dazzle {
          * path bar to display an icon next to the element of the path.
          * @returns The icon-name for the {@link Dazzle.PathElement}.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the id for the element. Generally, a path is built of
@@ -11793,7 +11761,7 @@ export namespace Dazzle {
          * path bar to display text representing the element of the path.
          * @returns The title for the {@link Dazzle.PathElement}.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
     }
 
 
@@ -11967,7 +11935,7 @@ export namespace Dazzle {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             keywords: string;
-            path: (string | any);
+            path: string | any;
             priority: number;
             schema_id: string;
             schemaId: string;
@@ -12365,9 +12333,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ColumnLayout.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ColumnLayout.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -12671,7 +12637,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        set_map(map: { [key: string]: any } | GLib.HashTable<never, never>): void;
     }
 
 
@@ -12779,7 +12745,7 @@ export namespace Dazzle {
          * @param group_name 
          * @returns An {@link Dazzle.PreferencesGroup} or `null`.
          */
-        get_group(group_name: string): (PreferencesGroup | null);
+        get_group(group_name: string): PreferencesGroup | null;
 
         /**
          * @param spec 
@@ -12789,7 +12755,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        set_map(map: { [key: string]: any } | GLib.HashTable<never, never>): void;
     }
 
 
@@ -13205,7 +13171,7 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: (string | null), priority: number): number;
+        add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -13268,7 +13234,7 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -13295,13 +13261,13 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param widget_id 
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_widget(widget_id: number): (Gtk.Widget | null);
+        get_widget(widget_id: number): Gtk.Widget | null;
 
         /**
          * @param widget_id 
@@ -13312,7 +13278,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        set_page(page_name: string, map: { [key: string]: any } | GLib.HashTable<never, never>): void;
 
         /**
          * @param page_name 
@@ -13322,7 +13288,7 @@ export namespace Dazzle {
          * @param priority 
          * @virtual
          */
-        vfunc_add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: (string | null), priority: number): number;
+        vfunc_add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -13391,7 +13357,7 @@ export namespace Dazzle {
          * @param priority 
          * @virtual
          */
-        vfunc_add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        vfunc_add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -13420,13 +13386,13 @@ export namespace Dazzle {
          * @param priority 
          * @virtual
          */
-        vfunc_add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        vfunc_add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param widget_id 
          * @virtual
          */
-        vfunc_get_widget(widget_id: number): (Gtk.Widget | null);
+        vfunc_get_widget(widget_id: number): Gtk.Widget | null;
 
         /**
          * @param widget_id 
@@ -13495,9 +13461,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -13702,15 +13666,15 @@ export namespace Dazzle {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -13790,7 +13754,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -13814,7 +13778,7 @@ export namespace Dazzle {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -13838,7 +13802,7 @@ export namespace Dazzle {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -13862,7 +13826,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -13887,7 +13851,7 @@ export namespace Dazzle {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -13912,7 +13876,7 @@ export namespace Dazzle {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -13976,7 +13940,7 @@ export namespace Dazzle {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -13986,7 +13950,7 @@ export namespace Dazzle {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -14590,7 +14554,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -14636,7 +14600,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -14650,7 +14614,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -14674,7 +14638,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -14696,7 +14660,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -14823,7 +14787,7 @@ export namespace Dazzle {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -14870,7 +14834,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -14884,7 +14848,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -14908,7 +14872,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -14930,7 +14894,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -15263,7 +15227,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -15303,7 +15267,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -15340,7 +15304,7 @@ export namespace Dazzle {
              * @since 3.28
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: (Gio.File | null), arg2: Gio.FileMonitorEvent) => void;
+            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -15418,19 +15382,19 @@ export namespace Dazzle {
         /**
          * @param cancellable 
          */
-        start_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        start_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        start_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        start_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        start_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        start_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -15502,9 +15466,7 @@ export namespace Dazzle {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -15828,7 +15790,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameter_type(): (GLib.VariantType | null);
+        get parameter_type(): GLib.VariantType | null;
 
         /**
          * The type of the parameter that must be given when activating the
@@ -15838,7 +15800,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameterType(): (GLib.VariantType | null);
+        get parameterType(): GLib.VariantType | null;
 
         /**
          * The state of the action, or `NULL` if the action is stateless.
@@ -15846,7 +15808,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state(): (GLib.Variant | null);
+        get state(): GLib.Variant | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -15855,7 +15817,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state_type(): (GLib.VariantType | null);
+        get state_type(): GLib.VariantType | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -15864,7 +15826,7 @@ export namespace Dazzle {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get stateType(): (GLib.VariantType | null);
+        get stateType(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -15876,7 +15838,7 @@ export namespace Dazzle {
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
-        activate(parameter: (GLib.Variant | null)): void;
+        activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -15920,7 +15882,7 @@ export namespace Dazzle {
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
          */
-        get_parameter_type(): (GLib.VariantType | null);
+        get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -15933,7 +15895,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
          */
-        get_state(): (GLib.Variant | null);
+        get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -15956,7 +15918,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
          */
-        get_state_hint(): (GLib.Variant | null);
+        get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -15973,7 +15935,7 @@ export namespace Dazzle {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
          */
-        get_state_type(): (GLib.VariantType | null);
+        get_state_type(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -15986,7 +15948,7 @@ export namespace Dazzle {
          * @param parameter the parameter to the activation
          * @virtual
          */
-        vfunc_activate(parameter: (GLib.Variant | null)): void;
+        vfunc_activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -16031,7 +15993,7 @@ export namespace Dazzle {
          * {@link GLib.Variant}, but `NULL` instead.
          * @virtual
          */
-        vfunc_get_parameter_type(): (GLib.VariantType | null);
+        vfunc_get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -16044,7 +16006,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state(): (GLib.Variant | null);
+        vfunc_get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -16067,7 +16029,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state_hint(): (GLib.Variant | null);
+        vfunc_get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -16084,7 +16046,7 @@ export namespace Dazzle {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @virtual
          */
-        vfunc_get_state_type(): (GLib.VariantType | null);
+        vfunc_get_state_type(): GLib.VariantType | null;
     }
 
 
@@ -16525,7 +16487,7 @@ export namespace Dazzle {
          * @param signal_name the name of the signal
          * @param values The   values to use when calling the signal.
          */
-        add_signalv(accel: string, signal_name: string, values: (GObject.Value[] | null)): void;
+        add_signalv(accel: string, signal_name: string, values: GObject.Value[] | null): void;
 
         get_name(): string;
 
@@ -16533,7 +16495,7 @@ export namespace Dazzle {
          * @param data 
          * @param len 
          */
-        load_from_data(data: string, len: (bigint | number)): boolean;
+        load_from_data(data: string, len: bigint | number): boolean;
 
         /**
          * @param resource_path 
@@ -16578,9 +16540,9 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            context: (ShortcutContext | null);
-            current_chord: (ShortcutChord | null);
-            currentChord: (ShortcutChord | null);
+            context: ShortcutContext | null;
+            current_chord: ShortcutChord | null;
+            currentChord: ShortcutChord | null;
             manager: ShortcutManager;
             widget: Gtk.Widget;
         }
@@ -16596,17 +16558,17 @@ export namespace Dazzle {
         /**
          * @read-only
          */
-        get context(): (ShortcutContext | null);
+        get context(): ShortcutContext | null;
 
         /**
          * @read-only
          */
-        get current_chord(): (ShortcutChord | null);
+        get current_chord(): ShortcutChord | null;
 
         /**
          * @read-only
          */
-        get currentChord(): (ShortcutChord | null);
+        get currentChord(): ShortcutChord | null;
 
         get manager(): ShortcutManager;
         set manager(val: ShortcutManager);
@@ -16660,7 +16622,7 @@ export namespace Dazzle {
          * If no controller is found, `null` is returned.
          * @param widget 
          */
-        static try_find(widget: Gtk.Widget): (ShortcutController | null);
+        static try_find(widget: Gtk.Widget): ShortcutController | null;
 
         // Methods
         /**
@@ -16695,7 +16657,7 @@ export namespace Dazzle {
          * single or series of {@link Gdk.EventKey}.
          * @returns A {@link Dazzle.ShortcutContext} or `null`.
          */
-        get_context(): (ShortcutContext | null);
+        get_context(): ShortcutContext | null;
 
         /**
          * Controllers can have a different context for a particular phase, which allows
@@ -16704,7 +16666,7 @@ export namespace Dazzle {
          * @param phase the phase for the shorcut delivery
          * @returns A {@link Dazzle.ShortcutContext} or `null`.
          */
-        get_context_for_phase(phase: ShortcutPhase): (ShortcutContext | null);
+        get_context_for_phase(phase: ShortcutPhase): ShortcutContext | null;
 
         /**
          * This method gets the {@link Dazzle.ShortcutController.current_chord} property.
@@ -16715,7 +16677,7 @@ export namespace Dazzle {
          * individual widget controller level.
          * @returns A {@link Dazzle.ShortcutChord} or `null`.
          */
-        get_current_chord(): (ShortcutChord | null);
+        get_current_chord(): ShortcutChord | null;
 
         /**
          * Gets the {@link Dazzle.ShortcutManager} associated with this controller.
@@ -16744,7 +16706,7 @@ export namespace Dazzle {
          * a parent theme if it inherits from one).
          * @param name The name of the context
          */
-        set_context_by_name(name: (string | null)): void;
+        set_context_by_name(name: string | null): void;
 
         /**
          * Sets the {@link Dazzle.ShortcutController.manager} property.
@@ -16753,7 +16715,7 @@ export namespace Dazzle {
          * for the process.
          * @param manager A {@link Dazzle.ShortcutManager} or `null`
          */
-        set_manager(manager: (ShortcutManager | null)): void;
+        set_manager(manager: ShortcutManager | null): void;
     }
 
 
@@ -16813,7 +16775,7 @@ export namespace Dazzle {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             accelerator: string;
-            chord: (ShortcutChord | null);
+            chord: ShortcutChord | null;
         }
     }
 
@@ -16830,8 +16792,8 @@ export namespace Dazzle {
         get accelerator(): string;
         set accelerator(val: string);
 
-        get chord(): (ShortcutChord | null);
-        set chord(val: (ShortcutChord | null));
+        get chord(): ShortcutChord | null;
+        set chord(val: ShortcutChord | null);
 
         /**
          * Compile-time signal type information.
@@ -16869,7 +16831,7 @@ export namespace Dazzle {
          * Gets the chord for the label, or `null`.
          * @returns A {@link Dazzle.ShortcutChord} or `null`
          */
-        get_chord(): (ShortcutChord | null);
+        get_chord(): ShortcutChord | null;
 
         /**
          * @param accelerator 
@@ -17021,7 +16983,7 @@ export namespace Dazzle {
          * @param shortcuts shortcuts to add
          * @param translation_domain the gettext domain to use for translations
          */
-        add_shortcut_entries(shortcuts: ShortcutEntry[], translation_domain: (string | null)): void;
+        add_shortcut_entries(shortcuts: ShortcutEntry[], translation_domain: string | null): void;
 
         /**
          * Adds shortcuts registered with the {@link Dazzle.ShortcutManager} to the
@@ -17050,7 +17012,7 @@ export namespace Dazzle {
          * @param theme_name the name of a theme or `null` of the internal theme
          * @returns A {@link Dazzle.ShortcutTheme} or `null`.
          */
-        get_theme_by_name(theme_name: (string | null)): (ShortcutTheme | null);
+        get_theme_by_name(theme_name: string | null): ShortcutTheme | null;
 
         get_theme_name(): string;
 
@@ -17078,7 +17040,7 @@ export namespace Dazzle {
         /**
          * @param cancellable 
          */
-        reload(cancellable: (Gio.Cancellable | null)): void;
+        reload(cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param directory 
@@ -17143,7 +17105,7 @@ export namespace Dazzle {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -17187,7 +17149,7 @@ export namespace Dazzle {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the type of the items in `list`.
@@ -17228,7 +17190,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -17268,7 +17230,7 @@ export namespace Dazzle {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -17396,7 +17358,7 @@ export namespace Dazzle {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -17417,7 +17379,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17427,7 +17389,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -17436,7 +17398,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -17472,7 +17434,7 @@ export namespace Dazzle {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -17488,7 +17450,7 @@ export namespace Dazzle {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -17510,7 +17472,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -17521,7 +17483,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -17530,7 +17492,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -17695,7 +17657,7 @@ export namespace Dazzle {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -17795,7 +17757,7 @@ export namespace Dazzle {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -17812,7 +17774,7 @@ export namespace Dazzle {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -17836,7 +17798,7 @@ export namespace Dazzle {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -17930,7 +17892,7 @@ export namespace Dazzle {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -18008,7 +17970,7 @@ export namespace Dazzle {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -18025,7 +17987,7 @@ export namespace Dazzle {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -18049,7 +18011,7 @@ export namespace Dazzle {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -18494,8 +18456,8 @@ export namespace Dazzle {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
-            parent_name: (string | null);
-            parentName: (string | null);
+            parent_name: string | null;
+            parentName: string | null;
             subtitle: string;
             title: string;
         }
@@ -18517,14 +18479,14 @@ export namespace Dazzle {
         /**
          * @default null
          */
-        get parent_name(): (string | null);
-        set parent_name(val: (string | null));
+        get parent_name(): string | null;
+        set parent_name(val: string | null);
 
         /**
          * @default null
          */
-        get parentName(): (string | null);
-        set parentName(val: (string | null));
+        get parentName(): string | null;
+        set parentName(val: string | null);
 
         /**
          * @default null
@@ -18597,7 +18559,7 @@ export namespace Dazzle {
          * @param widget 
          * @returns An {@link Dazzle.ShortcutContext} or `null`.
          */
-        find_default_context(widget: Gtk.Widget): (ShortcutContext | null);
+        find_default_context(widget: Gtk.Widget): ShortcutContext | null;
 
         /**
          * @param detailed_action_name 
@@ -18616,7 +18578,7 @@ export namespace Dazzle {
          * the parent {@link Dazzle.ShortcutTheme}.
          * @returns A {@link Dazzle.ShortcutTheme} or `null`.
          */
-        get_parent(): (ShortcutTheme | null);
+        get_parent(): ShortcutTheme | null;
 
         /**
          * Gets the name of the parent shortcut theme.
@@ -18626,7 +18588,7 @@ export namespace Dazzle {
          * copy-on-write (CoW).
          * @returns The name of the parent theme, or `null` if none is set.
          */
-        get_parent_name(): (string | null);
+        get_parent_name(): string | null;
 
         get_subtitle(): string;
 
@@ -18636,19 +18598,19 @@ export namespace Dazzle {
          * @param data 
          * @param len 
          */
-        load_from_data(data: string, len: (bigint | number)): boolean;
+        load_from_data(data: string, len: bigint | number): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        load_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
          */
-        load_from_path(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        load_from_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
@@ -18659,19 +18621,19 @@ export namespace Dazzle {
          * @param file 
          * @param cancellable 
          */
-        save_to_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        save_to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
          */
-        save_to_path(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        save_to_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        save_to_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): boolean;
+        save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param detailed_action_name 
@@ -18688,7 +18650,7 @@ export namespace Dazzle {
          * @param accel the shortcut accelerator
          * @param phase the phase to activate within, or 0 for the default
          */
-        set_accel_for_command(command: (string | null), accel: (string | null), phase: ShortcutPhase): void;
+        set_accel_for_command(command: string | null, accel: string | null, phase: ShortcutPhase): void;
 
         /**
          * @param detailed_action_name 
@@ -18705,7 +18667,7 @@ export namespace Dazzle {
          * @param chord the chord for the command
          * @param phase the phase to activate within, or 0 for the default
          */
-        set_chord_for_command(command: (string | null), chord: (ShortcutChord | null), phase: ShortcutPhase): void;
+        set_chord_for_command(command: string | null, chord: ShortcutChord | null, phase: ShortcutPhase): void;
 
         /**
          * @param parent_name 
@@ -18774,7 +18736,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            theme: (ShortcutTheme | null);
+            theme: ShortcutTheme | null;
         }
     }
 
@@ -18785,8 +18747,8 @@ export namespace Dazzle {
         static $gtype: GObject.GType<ShortcutThemeEditor>;
 
         // Properties
-        get theme(): (ShortcutTheme | null);
-        set theme(val: (ShortcutTheme | null));
+        get theme(): ShortcutTheme | null;
+        set theme(val: ShortcutTheme | null);
 
         /**
          * Compile-time signal type information.
@@ -18822,7 +18784,7 @@ export namespace Dazzle {
          * Gets the shortcut theme if one hsa been set.
          * @returns An {@link Dazzle.ShortcutTheme} or `null`
          */
-        get_theme(): (ShortcutTheme | null);
+        get_theme(): ShortcutTheme | null;
 
         /**
          * @param theme 
@@ -18842,11 +18804,11 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            accel: (string | null);
-            command_id: (string | null);
-            commandId: (string | null);
-            title: (string | null);
-            widget: (Gtk.Widget | null);
+            accel: string | null;
+            command_id: string | null;
+            commandId: string | null;
+            title: string | null;
+            widget: Gtk.Widget | null;
         }
     }
 
@@ -18860,20 +18822,20 @@ export namespace Dazzle {
         /**
          * @default null
          */
-        get accel(): (string | null);
-        set accel(val: (string | null));
+        get accel(): string | null;
+        set accel(val: string | null);
 
         /**
          * @default null
          */
-        get command_id(): (string | null);
-        set command_id(val: (string | null));
+        get command_id(): string | null;
+        set command_id(val: string | null);
 
         /**
          * @default null
          */
-        get commandId(): (string | null);
-        set commandId(val: (string | null));
+        get commandId(): string | null;
+        set commandId(val: string | null);
 
         /**
          * The "title" property contains an alternate title for the tooltip
@@ -18881,11 +18843,11 @@ export namespace Dazzle {
          * @since 3.32
          * @default null
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
-        get widget(): (Gtk.Widget | null);
-        set widget(val: (Gtk.Widget | null));
+        get widget(): Gtk.Widget | null;
+        set widget(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -18922,31 +18884,31 @@ export namespace Dazzle {
          * the commands accel.
          * @returns an override accel, or `null`
          */
-        get_accel(): (string | null);
+        get_accel(): string | null;
 
         /**
          * Gets the {@link Dazzle.ShortcutTooltip.command_id} property.
          * @returns a string containing the command id
          */
-        get_command_id(): (string | null);
+        get_command_id(): string | null;
 
         /**
          * Gets the {@link Dazzle.ShortcutTooltip.title} property, if set.
          * @returns a string containing the title, or `null`
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Gets the {@link Gtk.Widget} that the shortcut-tooltip is wrapping.
          * @returns a {@link Gtk.Widget} or `null` if unset
          */
-        get_widget(): (Gtk.Widget | null);
+        get_widget(): Gtk.Widget | null;
 
         /**
          * Allows overriding the accel that is used.
          * @param accel Sets the accelerator to use, or `null` to unset   and use the default
          */
-        set_accel(accel: (string | null)): void;
+        set_accel(accel: string | null): void;
 
         /**
          * This sets the {@link Dazzle.ShortcutTooltip.command_id} property which denotes which
@@ -18962,7 +18924,7 @@ export namespace Dazzle {
          * shortcut manager.
          * @param title a title for the tooltip, or `null`
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
 
         /**
          * Sets the widget to connect to the {@link Gtk.Widget.SignalSignatures.query_tooltip | Gtk.Widget::query-tooltip} signal.
@@ -18971,7 +18933,7 @@ export namespace Dazzle {
          * message matching the shortcut from {@link Dazzle.ShortcutTooltip.command_id}.
          * @param widget a {@link Gtk.Widget} or `null`
          */
-        set_widget(widget: (Gtk.Widget | null)): void;
+        set_widget(widget: Gtk.Widget | null): void;
     }
 
 
@@ -19166,7 +19128,7 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            "change-current-page": (arg0: number) => (boolean | void);
+            "change-current-page": (arg0: number) => boolean | void;
             "notify::max-height": (pspec: GObject.ParamSpec) => void;
             "notify::section-name": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -19897,7 +19859,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            target: (GObject.Object | null);
+            target: GObject.Object | null;
             target_type: GObject.GTypeInput;
             targetType: GObject.GTypeInput;
         }
@@ -19931,8 +19893,8 @@ export namespace Dazzle {
         /**
          * The target instance used when connecting signals.
          */
-        get target(): (GObject.Object | null);
-        set target(val: (GObject.Object | null));
+        get target(): GObject.Object | null;
+        set target(val: GObject.Object | null);
 
         /**
          * The GType of the target property.
@@ -20027,7 +19989,7 @@ export namespace Dazzle {
          * disconnected from that object prior to connecting to `target`.
          * @param target The target instance used     when connecting signals.
          */
-        set_target(target: (GObject.Object | null)): void;
+        set_target(target: GObject.Object | null): void;
 
         /**
          * Unblocks all signal handlers managed by `self` so they will be
@@ -20186,7 +20148,7 @@ export namespace Dazzle {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -20207,7 +20169,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20217,7 +20179,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20226,7 +20188,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20262,7 +20224,7 @@ export namespace Dazzle {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -20278,7 +20240,7 @@ export namespace Dazzle {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -20300,7 +20262,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20311,7 +20273,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -20320,7 +20282,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -20392,7 +20354,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => (boolean | void);
+            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -20911,7 +20873,7 @@ export namespace Dazzle {
          * @param property 
          * @param value 
          */
-        add_propertyv(state: string, object: null, property: string, value: (GObject.Value | any)): void;
+        add_propertyv(state: string, object: null, property: string, value: GObject.Value | any): void;
 
         /**
          * @param state 
@@ -20942,7 +20904,7 @@ export namespace Dazzle {
          * @param state the name of the state to check
          * @returns `true` if `self` is currently set to `state`.
          */
-        is_state(state: (string | null)): boolean;
+        is_state(state: string | null): boolean;
 
         /**
          * Sets the {@link Dazzle.StateMachine.state} property.
@@ -20963,7 +20925,7 @@ export namespace Dazzle {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -20984,7 +20946,7 @@ export namespace Dazzle {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -20994,7 +20956,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -21003,7 +20965,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21039,7 +21001,7 @@ export namespace Dazzle {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -21055,7 +21017,7 @@ export namespace Dazzle {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -21077,7 +21039,7 @@ export namespace Dazzle {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -21088,7 +21050,7 @@ export namespace Dazzle {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -21097,7 +21059,7 @@ export namespace Dazzle {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -21170,12 +21132,12 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon: (Gio.Icon | null);
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             id: string;
-            secondary_icon: (Gio.Icon | null);
-            secondaryIcon: (Gio.Icon | null);
+            secondary_icon: Gio.Icon | null;
+            secondaryIcon: Gio.Icon | null;
             secondary_icon_name: string;
             secondaryIconName: string;
             subtitle: string;
@@ -21193,7 +21155,7 @@ export namespace Dazzle {
         /**
          * @read-only
          */
-        get icon(): (Gio.Icon | null);
+        get icon(): Gio.Icon | null;
 
         /**
          * @default null
@@ -21216,12 +21178,12 @@ export namespace Dazzle {
         /**
          * @read-only
          */
-        get secondary_icon(): (Gio.Icon | null);
+        get secondary_icon(): Gio.Icon | null;
 
         /**
          * @read-only
          */
-        get secondaryIcon(): (Gio.Icon | null);
+        get secondaryIcon(): Gio.Icon | null;
 
         /**
          * @default null
@@ -21281,7 +21243,7 @@ export namespace Dazzle {
          * Gets the icon for the suggestion, if any.
          * @virtual
          */
-        vfunc_get_icon(): (Gio.Icon | null);
+        vfunc_get_icon(): Gio.Icon | null;
 
         /**
          * This function allows subclasses to dynamicly generate content for the
@@ -21293,13 +21255,13 @@ export namespace Dazzle {
          * @param widget a widget that may contain the surface
          * @virtual
          */
-        vfunc_get_icon_surface(widget: Gtk.Widget): (cairo.Surface | null);
+        vfunc_get_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
         /**
          * Gets the secondary icon for the suggestion, if any.
          * @virtual
          */
-        vfunc_get_secondary_icon(): (Gio.Icon | null);
+        vfunc_get_secondary_icon(): Gio.Icon | null;
 
         /**
          * This function allows subclasses to dynamicly generate content for the
@@ -21311,7 +21273,7 @@ export namespace Dazzle {
          * @param widget a widget that may contain the surface
          * @virtual
          */
-        vfunc_get_secondary_icon_surface(widget: Gtk.Widget): (cairo.Surface | null);
+        vfunc_get_secondary_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
         /**
          * This function is meant to be used to replace the text in the entry with text
@@ -21323,7 +21285,7 @@ export namespace Dazzle {
          * @param typed_text the text that was typed into the entry
          * @virtual
          */
-        vfunc_replace_typed_text(typed_text: string): (string | null);
+        vfunc_replace_typed_text(typed_text: string): string | null;
 
         /**
          * This function requests potential text to append to `typed_text` to make it
@@ -21333,14 +21295,14 @@ export namespace Dazzle {
          * @param typed_text The user entered text
          * @virtual
          */
-        vfunc_suggest_suffix(typed_text: string): (string | null);
+        vfunc_suggest_suffix(typed_text: string): string | null;
 
         // Methods
         /**
          * Gets the icon for the suggestion, if any.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_icon_name(): string;
 
@@ -21354,7 +21316,7 @@ export namespace Dazzle {
          * @param widget a widget that may contain the surface
          * @returns a {@link cairo.Surface} or `null`
          */
-        get_icon_surface(widget: Gtk.Widget): (cairo.Surface | null);
+        get_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
         get_id(): string;
 
@@ -21362,7 +21324,7 @@ export namespace Dazzle {
          * Gets the secondary icon for the suggestion, if any.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_secondary_icon(): (Gio.Icon | null);
+        get_secondary_icon(): Gio.Icon | null;
 
         get_secondary_icon_name(): string;
 
@@ -21376,7 +21338,7 @@ export namespace Dazzle {
          * @param widget a widget that may contain the surface
          * @returns a {@link cairo.Surface} or `null`
          */
-        get_secondary_icon_surface(widget: Gtk.Widget): (cairo.Surface | null);
+        get_secondary_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
         get_subtitle(): string;
 
@@ -21392,7 +21354,7 @@ export namespace Dazzle {
          * @param typed_text the text that was typed into the entry
          * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
          */
-        replace_typed_text(typed_text: string): (string | null);
+        replace_typed_text(typed_text: string): string | null;
 
         /**
          * @param icon_name 
@@ -21427,7 +21389,7 @@ export namespace Dazzle {
          * @param typed_text The user entered text
          * @returns Suffix to append to `typed_text`   or `null` to leave it unchanged.
          */
-        suggest_suffix(typed_text: string): (string | null);
+        suggest_suffix(typed_text: string): string | null;
     }
 
 
@@ -21707,8 +21669,8 @@ export namespace Dazzle {
             activate_on_single_click: boolean;
             activateOnSingleClick: boolean;
             compact: boolean;
-            model: (Gio.ListModel | null);
-            suggestion: (Suggestion | null);
+            model: Gio.ListModel | null;
+            suggestion: Suggestion | null;
             typed_text: string;
             typedText: string;
         }
@@ -21751,15 +21713,15 @@ export namespace Dazzle {
         get compact(): boolean;
         set compact(val: boolean);
 
-        get model(): (Gio.ListModel | null);
-        set model(val: (Gio.ListModel | null));
+        get model(): Gio.ListModel | null;
+        set model(val: Gio.ListModel | null);
 
         /**
          * The "suggestion" property is the currently selected suggestion, if any.
          * @since 3.30
          */
-        get suggestion(): (Suggestion | null);
-        set suggestion(val: (Suggestion | null));
+        get suggestion(): Suggestion | null;
+        set suggestion(val: Suggestion | null);
 
         /**
          * @read-only
@@ -21851,7 +21813,7 @@ export namespace Dazzle {
          * Gets the model being visualized.
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * Gets the result display widget for the entry. This is currently
@@ -21864,7 +21826,7 @@ export namespace Dazzle {
          * Gets the currently selected suggestion.
          * @returns An {@link Dazzle.Suggestion} or `null`.
          */
-        get_suggestion(): (Suggestion | null);
+        get_suggestion(): Suggestion | null;
 
         get_typed_text(): string;
 
@@ -21893,7 +21855,7 @@ export namespace Dazzle {
          * that the popover should be allowed to grow.
          * @param func A function to call to position the popover, or `null` to set the default.
          */
-        set_position_func(func: (SuggestionPositionFunc | null)): void;
+        set_position_func(func: SuggestionPositionFunc | null): void;
 
         /**
          * @param suggestion 
@@ -21951,7 +21913,7 @@ export namespace Dazzle {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -21979,7 +21941,7 @@ export namespace Dazzle {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -22229,7 +22191,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
-            suggestion: (Suggestion | null);
+            suggestion: Suggestion | null;
         }
     }
 
@@ -22240,8 +22202,8 @@ export namespace Dazzle {
         static $gtype: GObject.GType<SuggestionEntryBuffer>;
 
         // Properties
-        get suggestion(): (Suggestion | null);
-        set suggestion(val: (Suggestion | null));
+        get suggestion(): Suggestion | null;
+        set suggestion(val: Suggestion | null);
 
         /**
          * Compile-time signal type information.
@@ -22282,7 +22244,7 @@ export namespace Dazzle {
          * text in the entry.
          * @returns An {@link Dazzle.Suggestion} or `null`.
          */
-        get_suggestion(): (Suggestion | null);
+        get_suggestion(): Suggestion | null;
 
         get_typed_length(): number;
 
@@ -22296,7 +22258,7 @@ export namespace Dazzle {
          * text for what might be inserted should they activate the current item.
          * @param suggestion An {@link Dazzle.Suggestion} or `null`
          */
-        set_suggestion(suggestion: (Suggestion | null)): void;
+        set_suggestion(suggestion: Suggestion | null): void;
     }
 
 
@@ -22392,10 +22354,10 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            model: (Suggestion | null);
-            relative_to: (Gtk.Widget | null);
-            relativeTo: (Gtk.Widget | null);
-            selected: (Suggestion | null);
+            model: Suggestion | null;
+            relative_to: Gtk.Widget | null;
+            relativeTo: Gtk.Widget | null;
+            selected: Suggestion | null;
             subtitle_ellipsize: Pango.EllipsizeMode;
             subtitleEllipsize: Pango.EllipsizeMode;
             title_ellipsize: Pango.EllipsizeMode;
@@ -22410,17 +22372,17 @@ export namespace Dazzle {
         static $gtype: GObject.GType<SuggestionPopover>;
 
         // Properties
-        get model(): (Suggestion | null);
-        set model(val: (Suggestion | null));
+        get model(): Suggestion | null;
+        set model(val: Suggestion | null);
 
-        get relative_to(): (Gtk.Widget | null);
-        set relative_to(val: (Gtk.Widget | null));
+        get relative_to(): Gtk.Widget | null;
+        set relative_to(val: Gtk.Widget | null);
 
-        get relativeTo(): (Gtk.Widget | null);
-        set relativeTo(val: (Gtk.Widget | null));
+        get relativeTo(): Gtk.Widget | null;
+        set relativeTo(val: Gtk.Widget | null);
 
-        get selected(): (Suggestion | null);
-        set selected(val: (Suggestion | null));
+        get selected(): Suggestion | null;
+        set selected(val: Suggestion | null);
 
         /**
          * @default Pango.EllipsizeMode.END
@@ -22482,18 +22444,18 @@ export namespace Dazzle {
          * Gets the model being visualized.
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_relative_to(): (Gtk.Widget | null);
+        get_relative_to(): Gtk.Widget | null;
 
         /**
          * Gets the currently selected suggestion.
          * @returns An {@link Dazzle.Suggestion} or `null`.
          */
-        get_selected(): (Suggestion | null);
+        get_selected(): Suggestion | null;
 
         /**
          * @param amount 
@@ -22733,9 +22695,9 @@ export namespace Dazzle {
             can_close: boolean;
             canClose: boolean;
             edge: Gtk.PositionType;
-            style: (TabStyle | any);
+            style: TabStyle | any;
             title: string;
-            widget: ((Gtk.Widget | null) | any);
+            widget: Gtk.Widget | null | any;
         }
     }
 
@@ -22774,9 +22736,9 @@ export namespace Dazzle {
          * @default Dazzle.TabStyle.ICONS | Dazzle.TabStyle.TEXT
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get style(): (TabStyle | any);
+        get style(): TabStyle | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set style(val: (TabStyle | any));
+        set style(val: TabStyle | any);
 
         /**
          * @default null
@@ -22785,7 +22747,7 @@ export namespace Dazzle {
         set title(val: string);
 
     // This accessor conflicts with a property or field in a parent class or interface.
-         widget: (Gtk.Widget | null) | any;
+         widget: Gtk.Widget | null | any;
 
         /**
          * Compile-time signal type information.
@@ -22836,7 +22798,7 @@ export namespace Dazzle {
         /**
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_widget(): (Gtk.Widget | null);
+        get_widget(): Gtk.Widget | null;
 
         /**
          * @param active 
@@ -22888,15 +22850,15 @@ export namespace Dazzle {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -22912,7 +22874,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -22936,7 +22898,7 @@ export namespace Dazzle {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -22960,7 +22922,7 @@ export namespace Dazzle {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -22984,7 +22946,7 @@ export namespace Dazzle {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -23009,7 +22971,7 @@ export namespace Dazzle {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -23034,7 +22996,7 @@ export namespace Dazzle {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -23112,8 +23074,8 @@ export namespace Dazzle {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             edge: Gtk.PositionType;
-            stack: (Gtk.Stack | null);
-            style: (TabStyle | any);
+            stack: Gtk.Stack | null;
+            style: TabStyle | any;
         }
     }
 
@@ -23130,16 +23092,16 @@ export namespace Dazzle {
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
 
-        get stack(): (Gtk.Stack | null);
-        set stack(val: (Gtk.Stack | null));
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * @default Dazzle.TabStyle.ICONS | Dazzle.TabStyle.TEXT
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get style(): (TabStyle | any);
+        get style(): TabStyle | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set style(val: (TabStyle | any));
+        set style(val: TabStyle | any);
 
         /**
          * Compile-time signal type information.
@@ -23181,7 +23143,7 @@ export namespace Dazzle {
         /**
          * @returns A {@link Gtk.Stack} or `null`.
          */
-        get_stack(): (Gtk.Stack | null);
+        get_stack(): Gtk.Stack | null;
 
         get_style(): TabStyle;
 
@@ -23266,8 +23228,8 @@ export namespace Dazzle {
             populateCallbackData: never;
             populate_callback_data_destroy: never;
             populateCallbackDataDestroy: never;
-            time_to_live: (bigint | number);
-            timeToLive: (bigint | number);
+            time_to_live: bigint | number;
+            timeToLive: bigint | number;
             value_copy_func: never;
             valueCopyFunc: never;
             value_destroy_func: never;
@@ -23360,7 +23322,7 @@ export namespace Dazzle {
          * @construct-only
          * @default 30000
          */
-        set time_to_live(val: (bigint | number));
+        set time_to_live(val: bigint | number);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -23370,7 +23332,7 @@ export namespace Dazzle {
          * @construct-only
          * @default 30000
          */
-        set timeToLive(val: (bigint | number));
+        set timeToLive(val: bigint | number);
 
         /**
          * @construct-only
@@ -23432,7 +23394,7 @@ export namespace Dazzle {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -23440,7 +23402,7 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param key 
@@ -23448,7 +23410,7 @@ export namespace Dazzle {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<null> | void;
 
         /**
          * Finish a call to `dzl_task_cache_get_async()`.
@@ -23478,13 +23440,10 @@ export namespace Dazzle {
 
     namespace ThemeManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -23766,9 +23725,9 @@ export namespace Dazzle {
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
             always_expand: boolean;
             alwaysExpand: boolean;
-            context_menu: (Gio.MenuModel | null);
-            contextMenu: (Gio.MenuModel | null);
-            root: (TreeNode | null);
+            context_menu: Gio.MenuModel | null;
+            contextMenu: Gio.MenuModel | null;
+            root: TreeNode | null;
             selection: TreeNode;
             show_icons: boolean;
             showIcons: boolean;
@@ -23794,14 +23753,14 @@ export namespace Dazzle {
          */
         get alwaysExpand(): boolean;
 
-        get context_menu(): (Gio.MenuModel | null);
-        set context_menu(val: (Gio.MenuModel | null));
+        get context_menu(): Gio.MenuModel | null;
+        set context_menu(val: Gio.MenuModel | null);
 
-        get contextMenu(): (Gio.MenuModel | null);
-        set contextMenu(val: (Gio.MenuModel | null));
+        get contextMenu(): Gio.MenuModel | null;
+        set contextMenu(val: Gio.MenuModel | null);
 
-        get root(): (TreeNode | null);
-        set root(val: (TreeNode | null));
+        get root(): TreeNode | null;
+        set root(val: TreeNode | null);
 
         get selection(): TreeNode;
         set selection(val: TreeNode);
@@ -23879,7 +23838,7 @@ export namespace Dazzle {
          * @param find_func A callback to locate the child
          * @returns A {@link Dazzle.TreeNode} or `null`.
          */
-        find_child_node(node: TreeNode, find_func: TreeFindFunc): (TreeNode | null);
+        find_child_node(node: TreeNode, find_func: TreeFindFunc): TreeNode | null;
 
         /**
          * Walks the entire tree looking for the first item that matches given
@@ -23891,26 +23850,26 @@ export namespace Dazzle {
          * @param key the key for `equal_func`
          * @returns A {@link Dazzle.TreeNode} or `null`.
          */
-        find_custom(equal_func: GLib.EqualFunc, key: null): (TreeNode | null);
+        find_custom(equal_func: GLib.EqualFunc, key: null): TreeNode | null;
 
         /**
          * Finds a {@link Dazzle.TreeNode} with an item property matching `item`.
          * @param item A {@link GObject.Object} or `null`.
          * @returns A {@link Dazzle.TreeNode} or `null`.
          */
-        find_item(item: (GObject.Object | null)): (TreeNode | null);
+        find_item(item: GObject.Object | null): TreeNode | null;
 
         /**
          * @returns A {@link Gio.MenuModel} or `null`.
          */
-        get_context_menu(): (Gio.MenuModel | null);
+        get_context_menu(): Gio.MenuModel | null;
 
         /**
          * Retrieves the root node of the tree. The root node is not a visible node
          * in the self, but a placeholder for all other builders to build upon.
          * @returns A {@link Dazzle.TreeNode} or `null`.
          */
-        get_root(): (TreeNode | null);
+        get_root(): TreeNode | null;
 
         /**
          * Gets the currently selected node in the tree.
@@ -24058,7 +24017,7 @@ export namespace Dazzle {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -24072,7 +24031,7 @@ export namespace Dazzle {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -24116,27 +24075,27 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "drag-data-get": (arg0: TreeNode, arg1: Gtk.SelectionData) => (boolean | void);
+            "drag-data-get": (arg0: TreeNode, arg1: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-data-received": (arg0: TreeNode, arg1: TreeDropPosition, arg2: Gdk.DragAction, arg3: Gtk.SelectionData) => (boolean | void);
+            "drag-data-received": (arg0: TreeNode, arg1: TreeDropPosition, arg2: Gdk.DragAction, arg3: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-node-delete": (arg0: TreeNode) => (boolean | void);
+            "drag-node-delete": (arg0: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-node-received": (arg0: TreeNode, arg1: TreeNode, arg2: TreeDropPosition, arg3: Gdk.DragAction, arg4: Gtk.SelectionData) => (boolean | void);
+            "drag-node-received": (arg0: TreeNode, arg1: TreeNode, arg2: TreeDropPosition, arg3: Gdk.DragAction, arg4: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-activated": (arg0: TreeNode) => (boolean | void);
+            "node-activated": (arg0: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -24146,12 +24105,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "node-draggable": (arg0: TreeNode) => (boolean | void);
+            "node-draggable": (arg0: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-droppable": (arg0: TreeNode, arg1: Gtk.SelectionData) => (boolean | void);
+            "node-droppable": (arg0: TreeNode, arg1: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -24182,7 +24141,7 @@ export namespace Dazzle {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            tree: (Tree | null);
+            tree: Tree | null;
         }
     }
 
@@ -24196,7 +24155,7 @@ export namespace Dazzle {
         /**
          * @read-only
          */
-        get tree(): (Tree | null);
+        get tree(): Tree | null;
 
         /**
          * Compile-time signal type information.
@@ -24346,7 +24305,7 @@ export namespace Dazzle {
          * Gets the tree that owns the builder.
          * @returns A {@link Dazzle.Tree} or `null`.
          */
-        get_tree(): (Tree | null);
+        get_tree(): Tree | null;
     }
 
 
@@ -24603,7 +24562,7 @@ export namespace Dazzle {
          * If `null`, the default foreground color should be used.
          * @returns A {@link Gdk.RGBA} or `null`
          */
-        get_foreground_rgba(): (Gdk.RGBA | null);
+        get_foreground_rgba(): Gdk.RGBA | null;
 
         /**
          * Fetch the GIcon, re-render if necessary
@@ -24637,7 +24596,7 @@ export namespace Dazzle {
          * Gets a {@link Gtk.TreePath} for `node`.
          * @returns A {@link Gtk.TreePath} if successful; otherwise `null`.
          */
-        get_path(): (Gtk.TreePath | null);
+        get_path(): Gtk.TreePath | null;
 
         get_reset_on_collapse(): boolean;
 
@@ -24685,7 +24644,7 @@ export namespace Dazzle {
          * @param nth the index of the child
          * @returns a {@link Dazzle.TreeNode} or `null`
          */
-        nth_child(nth: number): (TreeNode | null);
+        nth_child(nth: number): TreeNode | null;
 
         /**
          * Prepends `child` to the list of children owned by `node`.
@@ -24731,7 +24690,7 @@ export namespace Dazzle {
          * If `foreground_rgba` is `null`, the value is reset to the default.
          * @param foreground_rgba A {@link Gdk.RGBA} or `null`
          */
-        set_foreground_rgba(foreground_rgba: (Gdk.RGBA | null)): void;
+        set_foreground_rgba(foreground_rgba: Gdk.RGBA | null): void;
 
         /**
          * @param icon 
@@ -24743,7 +24702,7 @@ export namespace Dazzle {
          * cell of the DzlTree.
          * @param icon_name The icon name.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * An optional object to associate with the node. This is handy to save needing
@@ -24762,7 +24721,7 @@ export namespace Dazzle {
          * cell of the DzlTree.
          * @param text The node text.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * @param use_dim_label 
@@ -24924,7 +24883,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -24970,7 +24929,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -24984,7 +24943,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -25008,7 +24967,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -25030,7 +24989,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -25157,7 +25116,7 @@ export namespace Dazzle {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -25204,7 +25163,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -25218,7 +25177,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -25242,7 +25201,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -25264,7 +25223,7 @@ export namespace Dazzle {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -25647,7 +25606,7 @@ export namespace Dazzle {
          * @param max_matches The max number of matches to return.
          * @returns A newly allocated   {@link GLib.Array} containing `FuzzyMatch` elements. This should be freed when   the caller is done with it using `g_array_unref()`.   It is a programming error to keep the structure around longer than   the `fuzzy` instance.
          */
-        match(needle: string, max_matches: (bigint | number)): FuzzyMutableIndexMatch[];
+        match(needle: string, max_matches: bigint | number): FuzzyMutableIndexMatch[];
 
         ref(): FuzzyMutableIndex;
 
@@ -25806,7 +25765,7 @@ export namespace Dazzle {
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: null): boolean;
+        extract_index(index_: bigint | number, result: null): boolean;
 
         /**
          * @param data 
@@ -26391,10 +26350,7 @@ export namespace Dazzle {
         static $gtype: GObject.GType<Trie>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Trie;
 
@@ -26533,13 +26489,13 @@ export namespace Dazzle {
              * widgets.
              * @virtual
              */
-            vfunc_get_icon_name(): (string | null);
+            vfunc_get_icon_name(): string | null;
 
             /**
              * Gets the dock manager for this dock item.
              * @virtual
              */
-            vfunc_get_manager(): (DockManager | null);
+            vfunc_get_manager(): DockManager | null;
 
             /**
              * Gets the title for the {@link Dazzle.DockItem}.
@@ -26549,7 +26505,7 @@ export namespace Dazzle {
              * widgets.
              * @virtual
              */
-            vfunc_get_title(): (string | null);
+            vfunc_get_title(): string | null;
 
             /**
              * @param old_manager 
@@ -26593,7 +26549,7 @@ export namespace Dazzle {
              * may be returned.
              * @virtual
              */
-            vfunc_ref_gicon(): (Gio.Icon | null);
+            vfunc_ref_gicon(): Gio.Icon | null;
 
             /**
              * This virtual method should remove `child` from `self` if the
@@ -26620,7 +26576,7 @@ export namespace Dazzle {
              * @param manager A {@link Dazzle.DockManager}
              * @virtual
              */
-            vfunc_set_manager(manager: (DockManager | null)): void;
+            vfunc_set_manager(manager: DockManager | null): void;
 
             /**
              * @virtual
@@ -26630,9 +26586,7 @@ export namespace Dazzle {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface DockItemNamespace {
@@ -26699,19 +26653,19 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the dock manager for this dock item.
          * @returns A `DzlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Dazzle.DockItem}, or `null`.
          * @returns A {@link Dazzle.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         /**
          * Gets the title for the {@link Dazzle.DockItem}.
@@ -26721,7 +26675,7 @@ export namespace Dazzle {
          * widgets.
          * @returns A newly allocated string or `null`.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         has_widgets(): boolean;
 
@@ -26760,7 +26714,7 @@ export namespace Dazzle {
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
          */
-        ref_gicon(): (Gio.Icon | null);
+        ref_gicon(): Gio.Icon | null;
 
         /**
          * This virtual method should remove `child` from `self` if the
@@ -26790,7 +26744,7 @@ export namespace Dazzle {
          * Sets the dock manager for this {@link Dazzle.DockItem}.
          * @param manager A {@link Dazzle.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
     }
@@ -26823,9 +26777,7 @@ export namespace Dazzle {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface GraphRendererNamespace {
@@ -26847,7 +26799,7 @@ export namespace Dazzle {
          * @param cr 
          * @param area 
          */
-        render(table: GraphModel, x_begin: (bigint | number), x_end: (bigint | number), y_begin: number, y_end: number, cr: cairo.Context, area: cairo.RectangleInt): void;
+        render(table: GraphModel, x_begin: bigint | number, x_end: bigint | number, y_begin: number, y_end: number, cr: cairo.Context, area: cairo.RectangleInt): void;
     }
 
 
@@ -26871,7 +26823,7 @@ export namespace Dazzle {
              * @param priority 
              * @virtual
              */
-            vfunc_add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: (string | null), priority: number): number;
+            vfunc_add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number;
 
             /**
              * @param page_name 
@@ -26940,7 +26892,7 @@ export namespace Dazzle {
              * @param priority 
              * @virtual
              */
-            vfunc_add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+            vfunc_add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
             /**
              * @param page_name 
@@ -26969,13 +26921,13 @@ export namespace Dazzle {
              * @param priority 
              * @virtual
              */
-            vfunc_add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+            vfunc_add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
             /**
              * @param widget_id 
              * @virtual
              */
-            vfunc_get_widget(widget_id: number): (Gtk.Widget | null);
+            vfunc_get_widget(widget_id: number): Gtk.Widget | null;
 
             /**
              * @param widget_id 
@@ -26993,9 +26945,7 @@ export namespace Dazzle {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PreferencesNamespace {
@@ -27015,7 +26965,7 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: (string | null), priority: number): number;
+        add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -27078,7 +27028,7 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param page_name 
@@ -27105,13 +27055,13 @@ export namespace Dazzle {
          * @param keywords Optional keywords for search
          * @param priority 
          */
-        add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: (string | null), variant_string: (string | null), title: (string | null), subtitle: (string | null), keywords: (string | null), priority: number): number;
+        add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number;
 
         /**
          * @param widget_id 
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_widget(widget_id: number): (Gtk.Widget | null);
+        get_widget(widget_id: number): Gtk.Widget | null;
 
         /**
          * @param widget_id 
@@ -27122,7 +27072,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        set_page(page_name: string, map: { [key: string]: any } | GLib.HashTable<never, never>): void;
     }
 
 

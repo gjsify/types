@@ -70,7 +70,7 @@ export namespace Accounts {
         static READONLY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -314,7 +314,7 @@ export namespace Accounts {
          * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          * @returns an {@link Accounts.AccountSettingIter}.
          */
-        get_settings_iter(key_prefix: (string | null)): AccountSettingIter;
+        get_settings_iter(key_prefix: string | null): AccountSettingIter;
 
         /**
          * Gets the value of the configuration setting `key`: `value` must be a
@@ -323,7 +323,7 @@ export namespace Accounts {
          * @param value an initialized {@link GObject.Value} to receive the setting's value.
          * @returns one of {@link Accounts.SettingSource}: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
          */
-        get_value(key: string, value: (GObject.Value | any)): [SettingSource, unknown];
+        get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
 
         /**
          * Gets the value of the configuration setting `key`.
@@ -367,7 +367,7 @@ export namespace Accounts {
          * care to make sure the desired service is always selected.
          * @param service the {@link Accounts.Service} to select.
          */
-        select_service(service: (Service | null)): void;
+        select_service(service: Service | null): void;
 
         /**
          * Changes the display name for `account` to `display_name`.
@@ -387,7 +387,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
          */
-        set_value(key: string, value: (GObject.Value | null)): void;
+        set_value(key: string, value: GObject.Value | null): void;
 
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
@@ -397,7 +397,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GLib.Variant} holding the new setting's value.
          */
-        set_variant(key: string, value: (GLib.Variant | null)): void;
+        set_variant(key: string, value: GLib.Variant | null): void;
 
         /**
          * Initializes `iter` to iterate over the account settings. If `key_prefix` is
@@ -406,7 +406,7 @@ export namespace Accounts {
          * @param iter an uninitialized {@link Accounts.AccountSettingIter} structure.
          * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          */
-        settings_iter_init(iter: AccountSettingIter, key_prefix: (string | null)): void;
+        settings_iter_init(iter: AccountSettingIter, key_prefix: string | null): void;
 
         /**
          * Creates signature of the `key` with given `token`. The account must be
@@ -428,7 +428,7 @@ export namespace Accounts {
          * `callback` when the operation has been completed.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        store_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        store_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Commit the changed account settings to the account database, and invoke
@@ -436,7 +436,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
          */
-        store_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        store_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Commit the changed account settings to the account database, and invoke
@@ -444,7 +444,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
          */
-        store_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        store_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Commit the changed account settings to the account database, and invoke
@@ -546,7 +546,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -590,7 +590,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -671,7 +671,7 @@ export namespace Accounts {
 
         _init(...args: any[]): void;
 
-        static ["new"](account: Account, service: (Service | null)): AccountService;
+        static ["new"](account: Account, service: Service | null): AccountService;
 
         // Signals
         /** @signal */
@@ -739,7 +739,7 @@ export namespace Accounts {
          * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          * @returns an {@link Accounts.AccountSettingIter}.
          */
-        get_settings_iter(key_prefix: (string | null)): AccountSettingIter;
+        get_settings_iter(key_prefix: string | null): AccountSettingIter;
 
         /**
          * Gets the value of the configuration setting `key`: `value` must be a
@@ -748,7 +748,7 @@ export namespace Accounts {
          * @param value an initialized {@link GObject.Value} to receive the setting's value.
          * @returns one of <type>{@link Accounts.SettingSource}</type>: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
          */
-        get_value(key: string, value: (GObject.Value | any)): [SettingSource, unknown];
+        get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
 
         /**
          * Gets the value of the configuration setting `key`.
@@ -763,7 +763,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
          */
-        set_value(key: string, value: (GObject.Value | null)): void;
+        set_value(key: string, value: GObject.Value | null): void;
 
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
@@ -773,7 +773,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GLib.Variant} holding the new setting's value.
          */
-        set_variant(key: string, value: (GLib.Variant | null)): void;
+        set_variant(key: string, value: GLib.Variant | null): void;
 
         /**
          * Initializes `iter` to iterate over the account settings. If `key_prefix` is
@@ -784,7 +784,7 @@ export namespace Accounts {
          * @param iter an uninitialized {@link Accounts.AccountSettingIter} structure.
          * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          */
-        settings_iter_init(iter: AccountSettingIter, key_prefix: (string | null)): void;
+        settings_iter_init(iter: AccountSettingIter, key_prefix: string | null): void;
     }
 
 
@@ -1191,7 +1191,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1235,7 +1235,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1380,7 +1380,7 @@ export namespace Accounts {
          * @param extra_parameters a {@link GLib.Variant} containing client-specific authentication parameters to be added to the returned dictionary.
          * @returns a floating {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing all the authentication parameters.
          */
-        get_login_parameters(extra_parameters: (GLib.Variant | null)): GLib.Variant;
+        get_login_parameters(extra_parameters: GLib.Variant | null): GLib.Variant;
 
         /**
          * Gets the authentication mechanism.
@@ -1406,7 +1406,7 @@ export namespace Accounts {
          * take precedence.
          * @param parameters a {@link GLib.HashTable} containing the authentication parameters to be added.
          */
-        insert_parameters(parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): void;
+        insert_parameters(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
 
         /**
          * Increment the reference count of `self`.
@@ -1573,7 +1573,7 @@ export namespace Accounts {
          * @param contents location to receive the pointer to the file contents.
          * @param data_offset pointer to receive the offset of the type data.
          */
-        get_file_contents(contents: string, data_offset: (bigint | number)): void;
+        get_file_contents(contents: string, data_offset: bigint | number): void;
 
         /**
          * Gets the translation domain of the {@link Accounts.Service}.
@@ -1667,7 +1667,7 @@ export namespace Accounts {
          * @param contents location to receive the pointer to the file contents.
          * @param len location to receive the length of the file, in bytes.
          */
-        get_file_contents(contents: string, len: (bigint | number)): void;
+        get_file_contents(contents: string, len: bigint | number): void;
 
         /**
          * Get the translation domain of the {@link Accounts.ServiceType}.

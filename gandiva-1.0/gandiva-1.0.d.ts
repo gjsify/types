@@ -86,9 +86,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BooleanNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BooleanNode.ConstructorProps {}
     }
 
     /**
@@ -136,9 +134,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -161,9 +157,9 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (Uint8Array | string)): BinaryLiteralNode;
+        static ["new"](value: Uint8Array | string): BinaryLiteralNode;
 
-        static new_bytes(value: (GLib.Bytes | Uint8Array)): BinaryLiteralNode;
+        static new_bytes(value: GLib.Bytes | Uint8Array): BinaryLiteralNode;
 
         // Signals
         /** @signal */
@@ -194,9 +190,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -250,9 +244,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps {}
     }
 
     /**
@@ -304,9 +296,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -504,9 +494,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -617,13 +605,10 @@ export namespace Gandiva {
 
     namespace FunctionRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -671,7 +656,7 @@ export namespace Gandiva {
          * @param function_signature A {@link Gandiva.FunctionSignature} to be looked up.
          * @returns The native functions associated to the given {@link Gandiva.FunctionSignature}.
          */
-        lookup(function_signature: FunctionSignature): (NativeFunction | null);
+        lookup(function_signature: FunctionSignature): NativeFunction | null;
     }
 
 
@@ -860,9 +845,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -916,9 +899,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -972,9 +953,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -997,7 +976,7 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number)): Int64LiteralNode;
+        static ["new"](value: bigint | number): Int64LiteralNode;
 
         // Signals
         /** @signal */
@@ -1028,9 +1007,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1084,9 +1061,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps {}
     }
 
     /**
@@ -1300,9 +1275,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1350,9 +1323,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BooleanNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BooleanNode.ConstructorProps {}
     }
 
     /**
@@ -1450,7 +1421,7 @@ export namespace Gandiva {
          * @param record_batch A {@link Arrow.RecordBatch}.
          * @returns The {@link Arrow.Array} as the result evaluated on success, `null` on error.
          */
-        evaluate(record_batch: Arrow.RecordBatch): (Arrow.Array[] | null);
+        evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }
 
 
@@ -1462,9 +1433,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1518,9 +1487,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1574,9 +1541,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1630,9 +1595,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**
@@ -1655,7 +1618,7 @@ export namespace Gandiva {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number)): UInt64LiteralNode;
+        static ["new"](value: bigint | number): UInt64LiteralNode;
 
         // Signals
         /** @signal */
@@ -1686,9 +1649,7 @@ export namespace Gandiva {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LiteralNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LiteralNode.ConstructorProps {}
     }
 
     /**

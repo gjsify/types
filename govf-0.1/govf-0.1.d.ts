@@ -36,13 +36,10 @@ export namespace Govf {
 
     namespace Disk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -133,13 +130,10 @@ export namespace Govf {
 
     namespace Package {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -187,7 +181,7 @@ export namespace Govf {
          * @param save_path a file path
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        extract_disk(disk: Disk, save_path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        extract_disk(disk: Disk, save_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Extracts a disk...
@@ -196,7 +190,7 @@ export namespace Govf {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call      when the request is satisfied
          */
-        extract_disk(disk: Disk, save_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        extract_disk(disk: Disk, save_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Extracts a disk...
@@ -205,7 +199,7 @@ export namespace Govf {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call      when the request is satisfied
          */
-        extract_disk(disk: Disk, save_path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        extract_disk(disk: Disk, save_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -224,7 +218,7 @@ export namespace Govf {
          * @param length size of the OVF data
          * @returns `true` if the operation succeeded
          */
-        load_from_data(data: string, length: (bigint | number)): boolean;
+        load_from_data(data: string, length: bigint | number): boolean;
 
         /**
          * Loads an OVF package from an uncompressed .ovf file.
@@ -241,7 +235,7 @@ export namespace Govf {
          * @param filename an .ova file name
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_from_ova_file(filename: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_from_ova_file(filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Loads an OVF package from a compressed .ova file.
@@ -252,7 +246,7 @@ export namespace Govf {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when      the request is satisfied
          */
-        load_from_ova_file(filename: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_from_ova_file(filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads an OVF package from a compressed .ova file.
@@ -263,7 +257,7 @@ export namespace Govf {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when      the request is satisfied
          */
-        load_from_ova_file(filename: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_from_ova_file(filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 

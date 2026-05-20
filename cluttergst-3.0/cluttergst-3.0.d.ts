@@ -110,7 +110,7 @@ export namespace ClutterGst {
      * @param argv A pointer to an array
      * @returns A {@link Clutter.InitError}.
      */
-    function init(argv: (string[] | null)): [Clutter.InitError, string[] | null];
+    function init(argv: string[] | null): [Clutter.InitError, string[] | null];
 
     /**
      * This function does the same work as `clutter_gst_init()`. Additionally, it
@@ -127,7 +127,7 @@ export namespace ClutterGst {
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      * @since 1.0
      */
-    function init_with_args(argv: (string[] | null), parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
+    function init_with_args(argv: string[] | null, parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
 
     /**
      * @gir-type Flags
@@ -997,9 +997,7 @@ export namespace ClutterGst {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1467,7 +1465,7 @@ export namespace ClutterGst {
              * @since 1.4
              * @run-last
              */
-            "should-buffer": (arg0: Gst.Query) => (boolean | void);
+            "should-buffer": (arg0: Gst.Query) => boolean | void;
             "notify::audio-stream": (pspec: GObject.ParamSpec) => void;
             "notify::audio-streams": (pspec: GObject.ParamSpec) => void;
             "notify::buffer-fill": (pspec: GObject.ParamSpec) => void;
@@ -1880,7 +1878,7 @@ export namespace ClutterGst {
          * Sets the buffer duration to be used when buffering network streams.
          * @param duration The new duration
          */
-        set_buffer_duration(duration: (bigint | number)): void;
+        set_buffer_duration(duration: bigint | number): void;
 
         /**
          * Sets the buffer size to be used when buffering network streams.

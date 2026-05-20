@@ -77,7 +77,7 @@ export namespace Tepl {
         static ENCODING_AUTO_DETECTION_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -105,7 +105,7 @@ export namespace Tepl {
         static EXTERNALLY_MODIFIED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -329,7 +329,7 @@ export namespace Tepl {
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 4.6
      */
-    function utils_create_parent_directories(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Parse and break an uri apart in its individual components like the uri
@@ -488,13 +488,10 @@ export namespace Tepl {
 
     namespace AbstractFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -551,7 +548,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @virtual
          */
-        vfunc_create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        vfunc_create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         /**
          * @virtual
@@ -563,7 +560,7 @@ export namespace Tepl {
          * @param tab a {@link Tepl.Tab}.
          * @virtual
          */
-        vfunc_create_tab_label(tab: Tab): (Gtk.Widget | null);
+        vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
 
         // Methods
         /**
@@ -577,7 +574,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
-        create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         /**
          * @returns a new {@link Tepl.Tab}.
@@ -589,7 +586,7 @@ export namespace Tepl {
          * @param tab a {@link Tepl.Tab}.
          * @returns a new {@link Gtk.Widget}, or `null` for the default tab label (“page N” with {@link Gtk.Notebook}).
          */
-        create_tab_label(tab: Tab): (Gtk.Widget | null);
+        create_tab_label(tab: Tab): Gtk.Widget | null;
 
         /**
          * Sets the {@link Tepl.AbstractFactory} singleton. This should be called early in
@@ -606,13 +603,10 @@ export namespace Tepl {
 
     namespace AbstractFactoryVala {
         // Signal signatures
-        interface SignalSignatures extends AbstractFactory.SignalSignatures {
-        }
+        interface SignalSignatures extends AbstractFactory.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AbstractFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AbstractFactory.ConstructorProps {}
     }
 
     /**
@@ -655,7 +649,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @virtual
          */
-        vfunc_create_main_window_vala(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        vfunc_create_main_window_vala(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         // Methods
         /**
@@ -664,7 +658,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
-        create_main_window_vala(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        create_main_window_vala(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         /**
          * Like `tepl_abstract_factory_set_singleton()`, but with (transfer none) for the
@@ -752,7 +746,7 @@ export namespace Tepl {
          * sense of `tepl_application_window_is_main_window()`.
          * @returns the active main {@link Gtk.ApplicationWindow}, or `null`.
          */
-        get_active_main_window(): (Gtk.ApplicationWindow | null);
+        get_active_main_window(): Gtk.ApplicationWindow | null;
 
         /**
          * Returns an initially empty {@link Amtk.ActionInfoStore} reserved for the
@@ -982,7 +976,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -997,8 +991,8 @@ export namespace Tepl {
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
@@ -1014,7 +1008,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -1035,18 +1029,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -1086,7 +1080,7 @@ export namespace Tepl {
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -1540,7 +1534,7 @@ export namespace Tepl {
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location: (Gio.File | null)): void;
+        set_location(location: Gio.File | null): void;
     }
 
 
@@ -1556,13 +1550,13 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Buffer | null);
-            chunk_size: (bigint | number);
-            chunkSize: (bigint | number);
-            file: (File | null);
-            location: (Gio.File | null);
-            max_size: (bigint | number);
-            maxSize: (bigint | number);
+            buffer: Buffer | null;
+            chunk_size: bigint | number;
+            chunkSize: bigint | number;
+            file: File | null;
+            location: Gio.File | null;
+            max_size: bigint | number;
+            maxSize: bigint | number;
         }
     }
 
@@ -1579,7 +1573,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Buffer | null);
+        get buffer(): Buffer | null;
 
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
@@ -1591,7 +1585,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get chunk_size(): number;
-        set chunk_size(val: (bigint | number));
+        set chunk_size(val: bigint | number);
 
         /**
          * The chunk size, in bytes. The content is loaded chunk by chunk. It
@@ -1603,7 +1597,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get chunkSize(): number;
-        set chunkSize(val: (bigint | number));
+        set chunkSize(val: bigint | number);
 
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
@@ -1611,7 +1605,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get file(): (File | null);
+        get file(): File | null;
 
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
@@ -1619,7 +1613,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get location(): (Gio.File | null);
+        get location(): Gio.File | null;
 
         /**
          * The maximum content size, in bytes. Keep in mind that all the
@@ -1630,7 +1624,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get max_size(): number;
-        set max_size(val: (bigint | number));
+        set max_size(val: bigint | number);
 
         /**
          * The maximum content size, in bytes. Keep in mind that all the
@@ -1641,7 +1635,7 @@ export namespace Tepl {
          * @since 1.0
          */
         get maxSize(): number;
-        set maxSize(val: (bigint | number));
+        set maxSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1676,7 +1670,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Tepl.Buffer} to load the content into.
          */
-        get_buffer(): (Buffer | null);
+        get_buffer(): Buffer | null;
 
         /**
          * @returns the chunk size.
@@ -1686,17 +1680,17 @@ export namespace Tepl {
         /**
          * @returns the detected file encoding, or `null`.
          */
-        get_encoding(): (Encoding | null);
+        get_encoding(): Encoding | null;
 
         /**
          * @returns the {@link Tepl.File}.
          */
-        get_file(): (File | null);
+        get_file(): File | null;
 
         /**
          * @returns the {@link Gio.File} to load.
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * @returns the maximum content size, or -1 for unlimited.
@@ -1716,7 +1710,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
@@ -1727,7 +1721,7 @@ export namespace Tepl {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
@@ -1738,7 +1732,7 @@ export namespace Tepl {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file loading started with `tepl_file_loader_load_async()`.
@@ -1750,12 +1744,12 @@ export namespace Tepl {
         /**
          * @param chunk_size the new chunk size.
          */
-        set_chunk_size(chunk_size: (bigint | number)): void;
+        set_chunk_size(chunk_size: bigint | number): void;
 
         /**
          * @param max_size the new maximum size, or -1 for unlimited.
          */
-        set_max_size(max_size: (bigint | number)): void;
+        set_max_size(max_size: bigint | number): void;
     }
 
 
@@ -1820,7 +1814,7 @@ export namespace Tepl {
          * @param key the name of the metadata.
          * @returns the value of the metadata, or `null` if the metadata   doesn't exist. Free with `g_free()`.
          */
-        get(key: string): (string | null);
+        get(key: string): string | null;
 
         /**
          * @returns the {@link Tepl.File} that the metadata belong to.
@@ -1841,7 +1835,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          */
-        load(cancellable: (Gio.Cancellable | null)): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The asynchronous version of `tepl_file_metadata_load()`.
@@ -1854,21 +1848,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * The asynchronous version of `tepl_file_metadata_load()`.
-         * 
-         * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
-         * this function loads the metadata synchronously. A future version might fix
-         * this.
-         * 
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * The asynchronous version of `tepl_file_metadata_load()`.
@@ -1882,7 +1862,21 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * The asynchronous version of `tepl_file_metadata_load()`.
+         * 
+         * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
+         * this function loads the metadata synchronously. A future version might fix
+         * this.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the metadata loading started with `tepl_file_metadata_load_async()`.
@@ -1901,7 +1895,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable: (Gio.Cancellable | null)): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * The asynchronous version of `tepl_file_metadata_save()`.
@@ -1913,20 +1907,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * The asynchronous version of `tepl_file_metadata_save()`.
-         * 
-         * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
-         * function saves the metadata synchronously. A future version might fix this.
-         * 
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * The asynchronous version of `tepl_file_metadata_save()`.
@@ -1939,7 +1920,20 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * The asynchronous version of `tepl_file_metadata_save()`.
+         * 
+         * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
+         * function saves the metadata synchronously. A future version might fix this.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the metadata saving started with `tepl_file_metadata_save_async()`.
@@ -1957,7 +1951,7 @@ export namespace Tepl {
          * @param key the name of the metadata.
          * @param value the value of the metadata, or `null` to unset.
          */
-        set(key: string, value: (string | null)): void;
+        set(key: string, value: string | null): void;
 
         /**
          * @param args 
@@ -2143,7 +2137,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2153,7 +2147,7 @@ export namespace Tepl {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2163,7 +2157,7 @@ export namespace Tepl {
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file saving started with `tepl_file_saver_save_async()`.
@@ -2191,7 +2185,7 @@ export namespace Tepl {
          * By default the encoding is taken from the {@link Tepl.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
          */
-        set_encoding(encoding: (Encoding | null)): void;
+        set_encoding(encoding: Encoding | null): void;
 
         /**
          * @param flags the new flags.
@@ -2216,7 +2210,7 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Gtk.TextBuffer | null);
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -2234,7 +2228,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Gtk.TextBuffer | null);
+        get buffer(): Gtk.TextBuffer | null;
 
         /**
          * Whether the {@link Tepl.FoldRegion} is folded or not.
@@ -2282,7 +2276,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
          */
-        get_buffer(): (Gtk.TextBuffer | null);
+        get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * @returns whether the {@link Tepl.FoldRegion} is folded.
@@ -2321,9 +2315,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
     }
 
     /**
@@ -2427,9 +2419,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.InfoBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.InfoBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2454,7 +2444,7 @@ export namespace Tepl {
 
         static ["new"](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: (string | null)): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
         /** @signal */
@@ -2600,7 +2590,7 @@ export namespace Tepl {
          * @param location a {@link Gio.File}.
          * @returns a {@link Gio.FileInfo} containing the metadata, under the "metadata" namespace. Or `null` if there is no metadata for `location`.
          */
-        get_metadata_for_location(location: Gio.File): (Gio.FileInfo | null);
+        get_metadata_for_location(location: Gio.File): Gio.FileInfo | null;
 
         /**
          * @returns the value of the {@link Tepl.MetadataStore.loaded} property.
@@ -2620,7 +2610,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the content of the store file. You need to call
@@ -2636,7 +2626,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Loads asynchronously the content of the store file. You need to call
@@ -2652,7 +2642,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the metadata loading started with `tepl_metadata_store_load_async()`.
@@ -2677,7 +2667,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
-        save(cancellable: (Gio.Cancellable | null)): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * If you don't call this function, a default internal value is used that should
@@ -2701,7 +2691,7 @@ export namespace Tepl {
          * @param location a {@link Gio.File}.
          * @param metadata a {@link Gio.FileInfo} containing the metadata, or `null` to remove the metadata for `location`.
          */
-        set_metadata_for_location(location: Gio.File, metadata: (Gio.FileInfo | null)): void;
+        set_metadata_for_location(location: Gio.File, metadata: Gio.FileInfo | null): void;
 
         /**
          * The `store_file` must be different for each process. It is advised for your
@@ -2777,9 +2767,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, TabGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, TabGroup.ConstructorProps {}
     }
 
     /**
@@ -2823,7 +2811,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -2838,8 +2826,8 @@ export namespace Tepl {
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
@@ -2855,7 +2843,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -2876,18 +2864,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -2927,7 +2915,7 @@ export namespace Tepl {
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -3140,7 +3128,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
@@ -3149,7 +3137,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * The same as `tepl_tab_save_as_async()`, but without callback.
@@ -3182,7 +3170,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
@@ -3191,7 +3179,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * The same as `tepl_tab_save_async()`, but without callback.
@@ -3224,7 +3212,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -3239,8 +3227,8 @@ export namespace Tepl {
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
@@ -3256,7 +3244,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -3289,18 +3277,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -3340,7 +3328,7 @@ export namespace Tepl {
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -3418,7 +3406,7 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            tab: (Tab | null);
+            tab: Tab | null;
         }
     }
 
@@ -3435,7 +3423,7 @@ export namespace Tepl {
          * @since 3.0
          * @construct-only
          */
-        get tab(): (Tab | null);
+        get tab(): Tab | null;
 
         /**
          * Compile-time signal type information.
@@ -3479,7 +3467,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Tepl.TabLabel.tab}.
          */
-        get_tab(): (Tab | null);
+        get_tab(): Tab | null;
 
         /**
          * Asks {@link Tepl.TabLabel} to update its tooltip. The ::get_tooltip_markup virtual
@@ -3595,9 +3583,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -3745,10 +3731,7 @@ export namespace Tepl {
         static $gtype: GObject.GType<Encoding>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](charset: string): Encoding;
 
@@ -3792,7 +3775,7 @@ export namespace Tepl {
          * @param enc2 a {@link Tepl.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equal.
          */
-        equals(enc2: (Encoding | null)): boolean;
+        equals(enc2: Encoding | null): boolean;
 
         free(): void;
 
@@ -3952,7 +3935,7 @@ export namespace Tepl {
             /**
              * @virtual
              */
-            vfunc_get_active_tab(): (Tab | null);
+            vfunc_get_active_tab(): Tab | null;
 
             /**
              * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -3976,11 +3959,11 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_buffer: (Buffer | null);
+            active_buffer: Buffer | null;
             activeBuffer: Buffer;
-            active_tab: (Tab | null);
+            active_tab: Tab | null;
             activeTab: Tab;
-            active_view: (View | null);
+            active_view: View | null;
             activeView: View;
         }
     }
@@ -4000,7 +3983,7 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -4013,8 +3996,8 @@ export namespace Tepl {
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
@@ -4028,7 +4011,7 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -4049,18 +4032,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.

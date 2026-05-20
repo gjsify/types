@@ -93,17 +93,14 @@ export namespace Thunarx {
     /**
      * @gir-type Alias
      */
-    type FileInfoList = (object | null);
+    type FileInfoList = object | null;
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -441,13 +438,10 @@ export namespace Thunarx {
 
     namespace ProviderFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -516,9 +510,7 @@ export namespace Thunarx {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps, ProviderPlugin.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps, ProviderPlugin.ConstructorProps {}
     }
 
     /**
@@ -1178,7 +1170,7 @@ export namespace Thunarx {
          * implementation, you should also override `thunarx_renamer_save()`.
          * @param settings a {@link GLib.HashTable} which contains the previously saved             settings for `renamer` as key/value pairs of strings.
          */
-        load(settings: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        load(settings: { [key: string]: any } | GLib.HashTable<never, never>): void;
 
         /**
          * Determines the replacement for `text` (which is the relevant
@@ -1218,7 +1210,7 @@ export namespace Thunarx {
          * implementation, you should also override `thunarx_renamer_load()`.
          * @param settings a {@link GLib.HashTable} to which the current settings of `renamer`             should be stored as key/value pairs of strings.
          */
-        save(settings: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        save(settings: { [key: string]: any } | GLib.HashTable<never, never>): void;
 
         /**
          * The URL to the documentation of this {@link Thunarx.Renamer}.
@@ -1510,9 +1502,7 @@ export namespace Thunarx {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileInfoNamespace {
@@ -1674,9 +1664,7 @@ export namespace Thunarx {
     namespace MenuProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuProviderNamespace {
@@ -1697,9 +1685,7 @@ export namespace Thunarx {
     namespace PreferencesProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PreferencesProviderNamespace {
@@ -1720,9 +1706,7 @@ export namespace Thunarx {
     namespace PropertyPageProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertyPageProviderNamespace {
@@ -1933,9 +1917,7 @@ export namespace Thunarx {
     namespace RenamerProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RenamerProviderNamespace {

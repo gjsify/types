@@ -46,7 +46,7 @@ export namespace GtkSpell {
         static BACKEND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -226,7 +226,7 @@ export namespace GtkSpell {
          * @param lang The language to use, as a locale specifier (i.e. "en_US"). If `NULL`, attempt to use the default system locale (LANG).
          * @returns FALSE if there was an error.
          */
-        set_language(lang: (string | null)): boolean;
+        set_language(lang: string | null): boolean;
     }
 
 

@@ -207,7 +207,7 @@ export namespace TrackerControl {
          * the current time.
          * @returns a {@link GLib.SList} which must be freed with `g_slist_free()` and all contained data with `g_free()`. Otherwise `null` is returned if there are no miners.
          */
-        get_available(): (string[] | null);
+        get_available(): string[] | null;
 
         /**
          * Returns the description for the given `miner`.
@@ -228,7 +228,7 @@ export namespace TrackerControl {
          * are miners which are running within a process.
          * @returns a {@link GLib.SList} which must be freed with `g_slist_free()` and all contained data with `g_free()`. Otherwise `null` is returned if there are no miners.
          */
-        get_running(): (string[] | null);
+        get_running(): string[] | null;
 
         /**
          * Returns the current status, progress and remaining time for `miner`.
@@ -247,7 +247,7 @@ export namespace TrackerControl {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, otherwise `false`.
          */
-        index_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        index_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
@@ -256,17 +256,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        index_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
-         * `callback` will be called. You can then call `tracker_miner_manager_index_file_finish()`
-         * to get the result.
-         * @param file a URL valid in GIO of a file to give to the miner for processing
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        index_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
@@ -276,7 +266,17 @@ export namespace TrackerControl {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        index_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Tells the filesystem miner to start indexing the `file`. Once the message has been sent,
+         * `callback` will be called. You can then call `tracker_miner_manager_index_file_finish()`
+         * to get the result.
+         * @param file a URL valid in GIO of a file to give to the miner for processing
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a request to index a file. See `tracker_miner_manager_index_file_async()`
@@ -299,7 +299,7 @@ export namespace TrackerControl {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, otherwise `false`.
          */
-        index_file_for_process(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        index_file_for_process(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This function operates exactly the same way as
@@ -314,23 +314,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        index_file_for_process_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * This function operates exactly the same way as
-         * `tracker_miner_manager_index_file()` with the exception that if the
-         * calling process dies, the indexing is cancelled. This API is useful
-         * for cases where the calling process wants to tie the indexing
-         * operation closely to its own lifetime.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `tracker_miner_manager_index_file_for_process_finish()` to
-         * get the result of the operation.
-         * @param file a URL valid in GIO of a file to give to the miner for processing
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        index_file_for_process_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This function operates exactly the same way as
@@ -346,7 +330,23 @@ export namespace TrackerControl {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        index_file_for_process_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * This function operates exactly the same way as
+         * `tracker_miner_manager_index_file()` with the exception that if the
+         * calling process dies, the indexing is cancelled. This API is useful
+         * for cases where the calling process wants to tie the indexing
+         * operation closely to its own lifetime.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `tracker_miner_manager_index_file_for_process_finish()` to
+         * get the result of the operation.
+         * @param file a URL valid in GIO of a file to give to the miner for processing
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a request to index a file. See `tracker_miner_manager_index_file_for_process_async()`
@@ -462,7 +462,7 @@ export namespace TrackerControl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -506,7 +506,7 @@ export namespace TrackerControl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

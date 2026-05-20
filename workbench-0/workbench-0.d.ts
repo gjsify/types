@@ -77,9 +77,7 @@ export namespace Workbench {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, GtkSource.CompletionProvider.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, GtkSource.CompletionProvider.ConstructorProps {}
     }
 
     /**
@@ -172,7 +170,7 @@ export namespace Workbench {
          * at some point in the future when non-`null`.
          * @returns a title for the provider or `null`
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * This function is used to determine if a character inserted into the text
@@ -213,7 +211,7 @@ export namespace Workbench {
          * @param proposal a {@link GtkSource.CompletionProposal}
          * @returns a {@link GLib.PtrArray} of {@link GtkSource.CompletionProposal} or `null`.
          */
-        list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): (GtkSource.CompletionProposal[] | null);
+        list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): GtkSource.CompletionProposal[] | null;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -226,21 +224,7 @@ export namespace Workbench {
          * @param context a {@link GtkSource.CompletionContext}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.ListModel>;
-
-        /**
-         * Asynchronously requests that the provider populates the completion
-         * results for `context`.
-         * 
-         * For providers that would like to populate a {@link Gio.ListModel} while those
-         * results are displayed to the user,
-         * {@link CompletionContext.set_proposals_for_provider} may be used
-         * to reduce latency until the user sees results.
-         * @param context a {@link GtkSource.CompletionContext}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute upon completion
-         */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -254,7 +238,21 @@ export namespace Workbench {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.ListModel> | void);
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously requests that the provider populates the completion
+         * results for `context`.
+         * 
+         * For providers that would like to populate a {@link Gio.ListModel} while those
+         * results are displayed to the user,
+         * {@link CompletionContext.set_proposals_for_provider} may be used
+         * to reduce latency until the user sees results.
+         * @param context a {@link GtkSource.CompletionContext}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute upon completion
+         */
+        populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.ListModel> | void;
 
         /**
          * Completes an asynchronous operation to populate a completion provider.
@@ -326,7 +324,7 @@ export namespace Workbench {
          * at some point in the future when non-`null`.
          * @virtual
          */
-        vfunc_get_title(): (string | null);
+        vfunc_get_title(): string | null;
 
         /**
          * This function is used to determine if a character inserted into the text
@@ -369,7 +367,7 @@ export namespace Workbench {
          * @param proposal a {@link GtkSource.CompletionProposal}
          * @virtual
          */
-        vfunc_list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): (GtkSource.CompletionProposal[] | null);
+        vfunc_list_alternates(context: GtkSource.CompletionContext, proposal: GtkSource.CompletionProposal): GtkSource.CompletionProposal[] | null;
 
         /**
          * Asynchronously requests that the provider populates the completion
@@ -384,7 +382,7 @@ export namespace Workbench {
          * @param callback a callback to execute upon completion
          * @virtual
          */
-        vfunc_populate_async(context: GtkSource.CompletionContext, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_populate_async(context: GtkSource.CompletionContext, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Completes an asynchronous operation to populate a completion provider.
@@ -421,13 +419,13 @@ export namespace Workbench {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-            cancellable: (Gio.Cancellable | null);
-            context: (GtkSource.CompletionContext | null);
+            cancellable: Gio.Cancellable | null;
+            context: GtkSource.CompletionContext | null;
             item_type: GObject.GTypeInput;
             itemType: GObject.GTypeInput;
             n_items: number;
             nItems: number;
-            provider: (GtkSource.CompletionProvider | null);
+            provider: GtkSource.CompletionProvider | null;
             state: RequestState;
         }
     }
@@ -454,13 +452,13 @@ export namespace Workbench {
         /**
          * @construct-only
          */
-        get cancellable(): (Gio.Cancellable | null);
+        get cancellable(): Gio.Cancellable | null;
 
         /**
          * The {@link GtkSource.CompletionContext} of the request.
          * @construct-only
          */
-        get context(): (GtkSource.CompletionContext | null);
+        get context(): GtkSource.CompletionContext | null;
 
         /**
          * The {@link GtkSource.CompletionProposal} type.
@@ -492,7 +490,7 @@ export namespace Workbench {
          * The {@link GtkSource.CompletionProvider} of the request.
          * @construct-only
          */
-        get provider(): (GtkSource.CompletionProvider | null);
+        get provider(): GtkSource.CompletionProvider | null;
 
         /**
          * The state of the request.
@@ -545,19 +543,19 @@ export namespace Workbench {
          * Get the cancellable for the request.
          * @returns a {@link Gio.Cancellable}
          */
-        get_cancellable(): (Gio.Cancellable | null);
+        get_cancellable(): Gio.Cancellable | null;
 
         /**
          * Get the completion context for the request.
          * @returns a {@link GtkSource.CompletionContext}
          */
-        get_context(): (GtkSource.CompletionContext | null);
+        get_context(): GtkSource.CompletionContext | null;
 
         /**
          * Get the completion provider for the request.
          * @returns a {@link GtkSource.CompletionProvider}
          */
-        get_provider(): (GtkSource.CompletionProvider | null);
+        get_provider(): GtkSource.CompletionProvider | null;
 
         /**
          * Get the state of the request.
@@ -624,7 +622,7 @@ export namespace Workbench {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -664,7 +662,7 @@ export namespace Workbench {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -758,9 +756,7 @@ export namespace Workbench {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.Native.ConstructorProps, Gtk.Root.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -810,13 +806,13 @@ export namespace Workbench {
          * Returns the renderer that is used for this {@link Gtk.Native}.
          * @returns the renderer for `self`
          */
-        get_renderer(): (Gsk.Renderer | null);
+        get_renderer(): Gsk.Renderer | null;
 
         /**
          * Returns the surface of this {@link Gtk.Native}.
          * @returns the surface of `self`
          */
-        get_surface(): (Gdk.Surface | null);
+        get_surface(): Gdk.Surface | null;
 
         /**
          * Retrieves the surface transform of `self`.
@@ -855,7 +851,7 @@ export namespace Workbench {
          * widget.
          * @returns the currently focused widget
          */
-        get_focus(): (Gtk.Widget | null);
+        get_focus(): Gtk.Widget | null;
 
         /**
          * If `focus` is not the current focus widget, and is focusable, sets
@@ -868,7 +864,7 @@ export namespace Workbench {
          * this function.
          * @param focus widget to be the new focus widget, or `null`    to unset the focus widget
          */
-        set_focus(focus: (Gtk.Widget | null)): void;
+        set_focus(focus: Gtk.Widget | null): void;
 
         /**
          * Add a {@link Gtk.ShortcutController} to be managed.

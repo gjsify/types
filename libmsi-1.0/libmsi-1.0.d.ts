@@ -113,7 +113,7 @@ export namespace Libmsi {
         static BADLOCALIZEATTRIB: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -218,7 +218,7 @@ export namespace Libmsi {
         static INVALID_DATATYPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -304,7 +304,7 @@ export namespace Libmsi {
 
         _init(...args: any[]): void;
 
-        static ["new"](path: string, flags: number, persist: (string | null)): Database;
+        static ["new"](path: string, flags: number, persist: string | null): Database;
 
         // Signals
         /** @signal */
@@ -378,7 +378,7 @@ export namespace Libmsi {
          * @param table an optionnal table name
          * @returns `true` on success
          */
-        merge(merge: Database, table: (string | null)): boolean;
+        merge(merge: Database, table: string | null): boolean;
     }
 
 
@@ -455,14 +455,14 @@ export namespace Libmsi {
          * @param rec a {@link Libmsi.Record} containing query arguments, or     `null` if no arguments needed
          * @returns `true` on success
          */
-        execute(rec: (Record | null)): boolean;
+        execute(rec: Record | null): boolean;
 
         /**
          * Return the next query result. `null` is returned when there
          * is no more results.
          * @returns a newly allocated     {@link Libmsi.Record} or `null` when no results or failure.
          */
-        fetch(): (Record | null);
+        fetch(): Record | null;
 
         /**
          * Get column informations, returned as record string fields.
@@ -597,7 +597,7 @@ export namespace Libmsi {
          * @param cancellable optional GCancellable object, `null` to ignore
          * @returns `true` on success
          */
-        set_stream(field: number, input: Gio.InputStream, count: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        set_stream(field: number, input: Gio.InputStream, count: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set the %field value to %val string.
@@ -662,7 +662,7 @@ export namespace Libmsi {
 
         _init(...args: any[]): void;
 
-        static ["new"](database: (Database | null), update_count: number): SummaryInfo;
+        static ["new"](database: Database | null, update_count: number): SummaryInfo;
 
         // Signals
         /** @signal */
@@ -726,7 +726,7 @@ export namespace Libmsi {
          * @param value a value
          * @returns `true` on success
          */
-        set_filetime(prop: Property, value: (bigint | number)): boolean;
+        set_filetime(prop: Property, value: bigint | number): boolean;
 
         /**
          * Set integer property `prop`.

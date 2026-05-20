@@ -423,7 +423,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ["new"](comment: (string | null), created_by: (string | null)): OSMChangeset;
+        static ["new"](comment: string | null, created_by: string | null): OSMChangeset;
 
         // Signals
         /** @signal */
@@ -493,7 +493,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: (bigint | number), version: number, changeset: (bigint | number), longitude: number, latitude: number): OSMNode;
+        static ["new"](id: bigint | number, version: number, changeset: bigint | number, longitude: number, latitude: number): OSMNode;
 
         // Signals
         /** @signal */
@@ -517,9 +517,7 @@ export namespace GnomeMaps {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
     }
 
     /**
@@ -569,8 +567,8 @@ export namespace GnomeMaps {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            changeset: (bigint | number);
-            id: (bigint | number);
+            changeset: bigint | number;
+            id: bigint | number;
             version: number;
         }
     }
@@ -586,13 +584,13 @@ export namespace GnomeMaps {
          * The OSM changeset for the current upload of the object.
          */
         get changeset(): number;
-        set changeset(val: (bigint | number));
+        set changeset(val: bigint | number);
 
         /**
          * The OSM id of the object.
          */
         get id(): number;
-        set id(val: (bigint | number));
+        set id(val: bigint | number);
 
         /**
          * The latest OSM version of the object.
@@ -657,9 +655,7 @@ export namespace GnomeMaps {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OSMObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OSMObject.ConstructorProps {}
     }
 
     /**
@@ -682,7 +678,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: (bigint | number), version: number, changeset: (bigint | number)): OSMRelation;
+        static ["new"](id: bigint | number, version: number, changeset: bigint | number): OSMRelation;
 
         // Signals
         /** @signal */
@@ -703,7 +699,7 @@ export namespace GnomeMaps {
          * @param type 
          * @param ref 
          */
-        add_member(role: string, type: number, ref: (bigint | number)): void;
+        add_member(role: string, type: number, ref: bigint | number): void;
     }
 
 
@@ -716,9 +712,7 @@ export namespace GnomeMaps {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OSMObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OSMObject.ConstructorProps {}
     }
 
     /**
@@ -741,7 +735,7 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: (bigint | number), version: number, changeset: (bigint | number)): OSMWay;
+        static ["new"](id: bigint | number, version: number, changeset: bigint | number): OSMWay;
 
         // Signals
         /** @signal */
@@ -760,7 +754,7 @@ export namespace GnomeMaps {
         /**
          * @param id 
          */
-        add_node_id(id: (bigint | number)): void;
+        add_node_id(id: bigint | number): void;
     }
 
 

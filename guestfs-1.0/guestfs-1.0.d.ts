@@ -667,7 +667,7 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            size: (bigint | number);
+            size: bigint | number;
         }
     }
 
@@ -683,7 +683,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -905,7 +905,7 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             repair: Tristate;
-            superblock: (bigint | number);
+            superblock: bigint | number;
         }
     }
 
@@ -927,7 +927,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get superblock(): number;
-        set superblock(val: (bigint | number));
+        set superblock(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1168,10 +1168,10 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: (bigint | number);
-            size: (bigint | number);
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: (bigint | number);
+            srcoffset: bigint | number;
         }
     }
 
@@ -1193,13 +1193,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: (bigint | number));
+        set destoffset(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * A boolean.
@@ -1211,7 +1211,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: (bigint | number));
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1257,10 +1257,10 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: (bigint | number);
-            size: (bigint | number);
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: (bigint | number);
+            srcoffset: bigint | number;
         }
     }
 
@@ -1282,13 +1282,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: (bigint | number));
+        set destoffset(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * A boolean.
@@ -1300,7 +1300,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: (bigint | number));
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1346,10 +1346,10 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: (bigint | number);
-            size: (bigint | number);
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: (bigint | number);
+            srcoffset: bigint | number;
         }
     }
 
@@ -1371,13 +1371,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: (bigint | number));
+        set destoffset(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * A boolean.
@@ -1389,7 +1389,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: (bigint | number));
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1435,10 +1435,10 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             append: Tristate;
-            destoffset: (bigint | number);
-            size: (bigint | number);
+            destoffset: bigint | number;
+            size: bigint | number;
             sparse: Tristate;
-            srcoffset: (bigint | number);
+            srcoffset: bigint | number;
         }
     }
 
@@ -1460,13 +1460,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get destoffset(): number;
-        set destoffset(val: (bigint | number));
+        set destoffset(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * A boolean.
@@ -1478,7 +1478,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get srcoffset(): number;
-        set srcoffset(val: (bigint | number));
+        set srcoffset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1789,9 +1789,9 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            length: (bigint | number);
-            minimumfreeextent: (bigint | number);
-            offset: (bigint | number);
+            length: bigint | number;
+            minimumfreeextent: bigint | number;
+            offset: bigint | number;
         }
     }
 
@@ -1807,19 +1807,19 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get length(): number;
-        set length(val: (bigint | number));
+        set length(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get minimumfreeextent(): number;
-        set minimumfreeextent(val: (bigint | number));
+        set minimumfreeextent(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get offset(): number;
-        set offset(val: (bigint | number));
+        set offset(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -2149,7 +2149,7 @@ export namespace Guestfs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             obool: Tristate;
             oint: number;
-            oint64: (bigint | number);
+            oint64: bigint | number;
             ostring: string;
         }
     }
@@ -2178,7 +2178,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get oint64(): number;
-        set oint64(val: (bigint | number));
+        set oint64(val: bigint | number);
 
         /**
          * A string.
@@ -3181,9 +3181,9 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            chunk: (bigint | number);
+            chunk: bigint | number;
             level: string;
-            missingbitmap: (bigint | number);
+            missingbitmap: bigint | number;
             nrdevices: number;
             spare: number;
         }
@@ -3201,7 +3201,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get chunk(): number;
-        set chunk(val: (bigint | number));
+        set chunk(val: bigint | number);
 
         /**
          * A string.
@@ -3213,7 +3213,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get missingbitmap(): number;
-        set missingbitmap(val: (bigint | number));
+        set missingbitmap(val: bigint | number);
 
         /**
          * A 32-bit integer.
@@ -3303,39 +3303,39 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            blockscount: (bigint | number);
-            blocksize: (bigint | number);
-            blockspergroup: (bigint | number);
-            bytesperinode: (bigint | number);
+            blockscount: bigint | number;
+            blocksize: bigint | number;
+            blockspergroup: bigint | number;
+            bytesperinode: bigint | number;
             creatoros: string;
             discard: Tristate;
             extent: Tristate;
             filetype: Tristate;
             flexbg: Tristate;
             forcecreate: Tristate;
-            fragsize: (bigint | number);
+            fragsize: bigint | number;
             fstype: string;
             hasjournal: Tristate;
-            inodesize: (bigint | number);
+            inodesize: bigint | number;
             journaldev: Tristate;
             journaldevice: string;
-            journalsize: (bigint | number);
+            journalsize: bigint | number;
             label: string;
             largefile: Tristate;
             lastmounteddir: string;
             lazyitableinit: Tristate;
             lazyjournalinit: Tristate;
-            maxonlineresize: (bigint | number);
+            maxonlineresize: bigint | number;
             mmpupdateinterval: number;
-            numberofgroups: (bigint | number);
-            numberofinodes: (bigint | number);
+            numberofgroups: bigint | number;
+            numberofinodes: bigint | number;
             quota: Tristate;
             quotatype: Tristate;
             reservedblockspercentage: number;
             resizeinode: Tristate;
             sparsesuper: Tristate;
-            stridesize: (bigint | number);
-            stripewidth: (bigint | number);
+            stridesize: bigint | number;
+            stripewidth: bigint | number;
             testfs: Tristate;
             uninitbg: Tristate;
             usagetype: string;
@@ -3356,25 +3356,25 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get blockscount(): number;
-        set blockscount(val: (bigint | number));
+        set blockscount(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get blocksize(): number;
-        set blocksize(val: (bigint | number));
+        set blocksize(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get blockspergroup(): number;
-        set blockspergroup(val: (bigint | number));
+        set blockspergroup(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get bytesperinode(): number;
-        set bytesperinode(val: (bigint | number));
+        set bytesperinode(val: bigint | number);
 
         /**
          * A string.
@@ -3416,7 +3416,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get fragsize(): number;
-        set fragsize(val: (bigint | number));
+        set fragsize(val: bigint | number);
 
         /**
          * A string.
@@ -3434,7 +3434,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get inodesize(): number;
-        set inodesize(val: (bigint | number));
+        set inodesize(val: bigint | number);
 
         /**
          * A boolean.
@@ -3452,7 +3452,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get journalsize(): number;
-        set journalsize(val: (bigint | number));
+        set journalsize(val: bigint | number);
 
         /**
          * A string.
@@ -3488,7 +3488,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get maxonlineresize(): number;
-        set maxonlineresize(val: (bigint | number));
+        set maxonlineresize(val: bigint | number);
 
         /**
          * A 32-bit integer.
@@ -3500,13 +3500,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get numberofgroups(): number;
-        set numberofgroups(val: (bigint | number));
+        set numberofgroups(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get numberofinodes(): number;
-        set numberofinodes(val: (bigint | number));
+        set numberofinodes(val: bigint | number);
 
         /**
          * A boolean.
@@ -3542,13 +3542,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get stridesize(): number;
-        set stridesize(val: (bigint | number));
+        set stridesize(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get stripewidth(): number;
-        set stripewidth(val: (bigint | number));
+        set stripewidth(val: bigint | number);
 
         /**
          * A boolean.
@@ -3715,8 +3715,8 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            allocstart: (bigint | number);
-            bytecount: (bigint | number);
+            allocstart: bigint | number;
+            bytecount: bigint | number;
             datatype: string;
             label: string;
             leafsize: number;
@@ -3738,13 +3738,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get allocstart(): number;
-        set allocstart(val: (bigint | number));
+        set allocstart(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get bytecount(): number;
-        set bytecount(val: (bigint | number));
+        set bytecount(val: bigint | number);
 
         /**
          * A string.
@@ -4140,7 +4140,7 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             force: Tristate;
-            size: (bigint | number);
+            size: bigint | number;
         }
     }
 
@@ -4162,7 +4162,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -4720,9 +4720,7 @@ export namespace Guestfs {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4934,7 +4932,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDomain containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        add_domain(dom: string, optargs: (AddDomain | null)): number;
+        add_domain(dom: string, optargs: AddDomain | null): number;
 
         /**
          * add an image to examine or modify
@@ -5168,7 +5166,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDrive containing optional arguments
          * @returns true on success, false on error
          */
-        add_drive(filename: string, optargs: (AddDrive | null)): boolean;
+        add_drive(filename: string, optargs: AddDrive | null): boolean;
 
         /**
          * add a drive in snapshot mode (read-only)
@@ -5207,7 +5205,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
          */
-        add_drive_scratch(size: (bigint | number), optargs: (AddDriveScratch | null)): boolean;
+        add_drive_scratch(size: bigint | number, optargs: AddDriveScratch | null): boolean;
 
         /**
          * add a drive specifying the QEMU block emulation to use
@@ -5259,7 +5257,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAddLibvirtDom containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        add_libvirt_dom(dom: null, optargs: (AddLibvirtDom | null)): number;
+        add_libvirt_dom(dom: null, optargs: AddLibvirtDom | null): number;
 
         /**
          * clear Augeas path
@@ -5311,7 +5309,7 @@ export namespace Guestfs {
          * @param expr 
          * @returns the returned value, or -1 on error
          */
-        aug_defvar(name: string, expr: (string | null)): number;
+        aug_defvar(name: string, expr: string | null): number;
 
         /**
          * look up the value of an Augeas path
@@ -5491,7 +5489,7 @@ export namespace Guestfs {
          * @param val 
          * @returns the returned value, or -1 on error
          */
-        aug_setm(base: string, sub: (string | null), val: string): number;
+        aug_setm(base: string, sub: string | null, val: string): number;
 
         /**
          * add/remove an Augeas lens transformation
@@ -5506,7 +5504,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsAugTransform containing optional arguments
          * @returns true on success, false on error
          */
-        aug_transform(lens: string, file: string, optargs: (AugTransform | null)): boolean;
+        aug_transform(lens: string, file: string, optargs: AugTransform | null): boolean;
 
         /**
          * test availability of some parts of the API
@@ -5586,7 +5584,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        base64_in(base64file: string, filename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        base64_in(base64file: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * download file and encode as base64
@@ -5598,7 +5596,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        base64_out(filename: string, base64file: string, cancellable: (Gio.Cancellable | null)): boolean;
+        base64_out(filename: string, base64file: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * discard all blocks on a device
@@ -5905,7 +5903,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSFilesystemDefragment containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_filesystem_defragment(path: string, optargs: (BTRFSFilesystemDefragment | null)): boolean;
+        btrfs_filesystem_defragment(path: string, optargs: BTRFSFilesystemDefragment | null): boolean;
 
         /**
          * resize a btrfs filesystem
@@ -5930,7 +5928,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSFilesystemResize containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_filesystem_resize(mountpoint: string, optargs: (BTRFSFilesystemResize | null)): boolean;
+        btrfs_filesystem_resize(mountpoint: string, optargs: BTRFSFilesystemResize | null): boolean;
 
         /**
          * list devices for btrfs filesystem
@@ -5971,7 +5969,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBtrfsFsck containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_fsck(device: string, optargs: (BtrfsFsck | null)): boolean;
+        btrfs_fsck(device: string, optargs: BtrfsFsck | null): boolean;
 
         /**
          * create an image of a btrfs filesystem
@@ -5986,7 +5984,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSImage containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_image(source: string[], image: string, optargs: (BTRFSImage | null)): boolean;
+        btrfs_image(source: string[], image: string, optargs: BTRFSImage | null): boolean;
 
         /**
          * add a qgroup to a parent qgroup
@@ -6040,7 +6038,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        btrfs_qgroup_limit(subvolume: string, size: (bigint | number)): boolean;
+        btrfs_qgroup_limit(subvolume: string, size: bigint | number): boolean;
 
         /**
          * remove a qgroup from its parent qgroup
@@ -6220,7 +6218,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSSubvolumeCreate containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_subvolume_create(dest: string, optargs: (BTRFSSubvolumeCreate | null)): boolean;
+        btrfs_subvolume_create(dest: string, optargs: BTRFSSubvolumeCreate | null): boolean;
 
         /**
          * delete a btrfs subvolume or snapshot
@@ -6273,7 +6271,7 @@ export namespace Guestfs {
          * @param fs 
          * @returns true on success, false on error
          */
-        btrfs_subvolume_set_default(id: (bigint | number), fs: string): boolean;
+        btrfs_subvolume_set_default(id: bigint | number, fs: string): boolean;
 
         /**
          * return detailed information of the subvolume
@@ -6304,7 +6302,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsBTRFSSubvolumeSnapshot containing optional arguments
          * @returns true on success, false on error
          */
-        btrfs_subvolume_snapshot(source: string, dest: string, optargs: (BTRFSSubvolumeSnapshot | null)): boolean;
+        btrfs_subvolume_snapshot(source: string, dest: string, optargs: BTRFSSubvolumeSnapshot | null): boolean;
 
         /**
          * enable extended inode refs
@@ -6545,7 +6543,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        checksums_out(csumtype: string, directory: string, sumsfile: string, cancellable: (Gio.Cancellable | null)): boolean;
+        checksums_out(csumtype: string, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * change file mode
@@ -6659,7 +6657,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        compress_device_out(ctype: string, device: string, zdevice: string, optargs: (CompressDeviceOut | null), cancellable: (Gio.Cancellable | null)): boolean;
+        compress_device_out(ctype: string, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * output compressed file
@@ -6682,7 +6680,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        compress_out(ctype: string, file: string, zfile: string, optargs: (CompressOut | null), cancellable: (Gio.Cancellable | null)): boolean;
+        compress_out(ctype: string, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * add hypervisor parameters
@@ -6699,7 +6697,7 @@ export namespace Guestfs {
          * @param hvvalue 
          * @returns true on success, false on error
          */
-        config(hvparam: string, hvvalue: (string | null)): boolean;
+        config(hvparam: string, hvvalue: string | null): boolean;
 
         /**
          * copy the attributes of a path (file/directory) to another
@@ -6732,7 +6730,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyAttributes containing optional arguments
          * @returns true on success, false on error
          */
-        copy_attributes(src: string, dest: string, optargs: (CopyAttributes | null)): boolean;
+        copy_attributes(src: string, dest: string, optargs: CopyAttributes | null): boolean;
 
         /**
          * copy from source device to destination device
@@ -6769,7 +6767,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyDeviceToDevice containing optional arguments
          * @returns true on success, false on error
          */
-        copy_device_to_device(src: string, dest: string, optargs: (CopyDeviceToDevice | null)): boolean;
+        copy_device_to_device(src: string, dest: string, optargs: CopyDeviceToDevice | null): boolean;
 
         /**
          * copy from source device to destination file
@@ -6781,7 +6779,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyDeviceToFile containing optional arguments
          * @returns true on success, false on error
          */
-        copy_device_to_file(src: string, dest: string, optargs: (CopyDeviceToFile | null)): boolean;
+        copy_device_to_file(src: string, dest: string, optargs: CopyDeviceToFile | null): boolean;
 
         /**
          * copy from source file to destination device
@@ -6793,7 +6791,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyFileToDevice containing optional arguments
          * @returns true on success, false on error
          */
-        copy_file_to_device(src: string, dest: string, optargs: (CopyFileToDevice | null)): boolean;
+        copy_file_to_device(src: string, dest: string, optargs: CopyFileToDevice | null): boolean;
 
         /**
          * copy from source file to destination file
@@ -6810,7 +6808,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCopyFileToFile containing optional arguments
          * @returns true on success, false on error
          */
-        copy_file_to_file(src: string, dest: string, optargs: (CopyFileToFile | null)): boolean;
+        copy_file_to_file(src: string, dest: string, optargs: CopyFileToFile | null): boolean;
 
         /**
          * copy local files or directories into an image
@@ -6857,7 +6855,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        copy_size(src: string, dest: string, size: (bigint | number)): boolean;
+        copy_size(src: string, dest: string, size: bigint | number): boolean;
 
         /**
          * copy a file
@@ -6920,7 +6918,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        cpio_out(directory: string, cpiofile: string, optargs: (CpioOut | null), cancellable: (Gio.Cancellable | null)): boolean;
+        cpio_out(directory: string, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * copy from source to destination using dd
@@ -6976,7 +6974,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        debug_upload(filename: string, tmpname: string, mode: number, cancellable: (Gio.Cancellable | null)): boolean;
+        debug_upload(filename: string, tmpname: string, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * convert device to index
@@ -7061,7 +7059,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsDiskCreate containing optional arguments
          * @returns true on success, false on error
          */
-        disk_create(filename: string, format: string, size: (bigint | number), optargs: (DiskCreate | null)): boolean;
+        disk_create(filename: string, format: string, size: bigint | number, optargs: DiskCreate | null): boolean;
 
         /**
          * detect the disk format of a disk image
@@ -7131,7 +7129,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download(remotefilename: string, filename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        download(remotefilename: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * download the given data units from the disk
@@ -7162,7 +7160,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download_blocks(device: string, start: (bigint | number), stop: (bigint | number), filename: string, optargs: (DownloadBlocks | null), cancellable: (Gio.Cancellable | null)): boolean;
+        download_blocks(device: string, start: bigint | number, stop: bigint | number, filename: string, optargs: DownloadBlocks | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * download a file to the local machine given its inode
@@ -7182,7 +7180,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download_inode(device: string, inode: (bigint | number), filename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        download_inode(device: string, inode: bigint | number, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * download a file to the local machine with offset and size
@@ -7205,7 +7203,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        download_offset(remotefilename: string, filename: string, offset: (bigint | number), size: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        download_offset(remotefilename: string, filename: string, offset: bigint | number, size: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * drop kernel page cache, dentries and inodes
@@ -7265,7 +7263,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsE2fsck containing optional arguments
          * @returns true on success, false on error
          */
-        e2fsck(device: string, optargs: (E2fsck | null)): boolean;
+        e2fsck(device: string, optargs: E2fsck | null): boolean;
 
         /**
          * check an ext2/ext3 filesystem
@@ -7416,7 +7414,7 @@ export namespace Guestfs {
          * @param len 
          * @returns true on success, false on error
          */
-        fallocate64(path: string, len: (bigint | number)): boolean;
+        fallocate64(path: string, len: bigint | number): boolean;
 
         /**
          * test availability of some parts of the API
@@ -7699,7 +7697,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
          */
-        filesystem_walk(device: string, cancellable: (Gio.Cancellable | null)): TSKDirent[];
+        filesystem_walk(device: string, cancellable: Gio.Cancellable | null): TSKDirent[];
 
         /**
          * fill a file with octets
@@ -7801,7 +7799,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        find0(directory: string, files: string, cancellable: (Gio.Cancellable | null)): boolean;
+        find0(directory: string, files: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * search the entries associated to the given inode
@@ -7818,7 +7816,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
          */
-        find_inode(device: string, inode: (bigint | number), cancellable: (Gio.Cancellable | null)): TSKDirent[];
+        find_inode(device: string, inode: bigint | number, cancellable: Gio.Cancellable | null): TSKDirent[];
 
         /**
          * find a filesystem by label
@@ -7900,7 +7898,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsFstrim containing optional arguments
          * @returns true on success, false on error
          */
-        fstrim(mountpoint: string, optargs: (Fstrim | null)): boolean;
+        fstrim(mountpoint: string, optargs: Fstrim | null): boolean;
 
         /**
          * get the additional kernel options
@@ -8412,7 +8410,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsGlobExpand containing optional arguments
          * @returns an array of returned strings, or NULL on error
          */
-        glob_expand(pattern: string, optargs: (GlobExpand | null)): string[];
+        glob_expand(pattern: string, optargs: GlobExpand | null): string[];
 
         /**
          * return lines matching a pattern
@@ -8440,7 +8438,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsGrep containing optional arguments
          * @returns an array of returned strings, or NULL on error
          */
-        grep(regex: string, path: string, optargs: (Grep | null)): string[];
+        grep(regex: string, path: string, optargs: Grep | null): string[];
 
         /**
          * return lines matching a pattern
@@ -8554,7 +8552,7 @@ export namespace Guestfs {
          * @param filename 
          * @returns true on success, false on error
          */
-        hivex_commit(filename: (string | null)): boolean;
+        hivex_commit(filename: string | null): boolean;
 
         /**
          * add a child node
@@ -8569,7 +8567,7 @@ export namespace Guestfs {
          * @param name 
          * @returns the returned value, or -1 on error
          */
-        hivex_node_add_child(parent: (bigint | number), name: string): number;
+        hivex_node_add_child(parent: bigint | number, name: string): number;
 
         /**
          * return list of nodes which are subkeys of node
@@ -8583,7 +8581,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @returns an array of HivexNode objects, or NULL on error
          */
-        hivex_node_children(nodeh: (bigint | number)): HivexNode[];
+        hivex_node_children(nodeh: bigint | number): HivexNode[];
 
         /**
          * delete a node (recursively)
@@ -8597,7 +8595,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @returns true on success, false on error
          */
-        hivex_node_delete_child(nodeh: (bigint | number)): boolean;
+        hivex_node_delete_child(nodeh: bigint | number): boolean;
 
         /**
          * return the named child of node
@@ -8613,7 +8611,7 @@ export namespace Guestfs {
          * @param name 
          * @returns the returned value, or -1 on error
          */
-        hivex_node_get_child(nodeh: (bigint | number), name: string): number;
+        hivex_node_get_child(nodeh: bigint | number, name: string): number;
 
         /**
          * return the named value
@@ -8629,7 +8627,7 @@ export namespace Guestfs {
          * @param key 
          * @returns the returned value, or -1 on error
          */
-        hivex_node_get_value(nodeh: (bigint | number), key: string): number;
+        hivex_node_get_value(nodeh: bigint | number, key: string): number;
 
         /**
          * return the name of the node
@@ -8643,7 +8641,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @returns the returned string, or NULL on error
          */
-        hivex_node_name(nodeh: (bigint | number)): string;
+        hivex_node_name(nodeh: bigint | number): string;
 
         /**
          * return the parent of node
@@ -8657,7 +8655,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @returns the returned value, or -1 on error
          */
-        hivex_node_parent(nodeh: (bigint | number)): number;
+        hivex_node_parent(nodeh: bigint | number): number;
 
         /**
          * set or replace a single value in a node
@@ -8675,7 +8673,7 @@ export namespace Guestfs {
          * @param val an array of binary data
          * @returns true on success, false on error
          */
-        hivex_node_set_value(nodeh: (bigint | number), key: string, t: (bigint | number), val: (Uint8Array | string)): boolean;
+        hivex_node_set_value(nodeh: bigint | number, key: string, t: bigint | number, val: Uint8Array | string): boolean;
 
         /**
          * return list of values attached to node
@@ -8689,7 +8687,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @returns an array of HivexValue objects, or NULL on error
          */
-        hivex_node_values(nodeh: (bigint | number)): HivexValue[];
+        hivex_node_values(nodeh: bigint | number): HivexValue[];
 
         /**
          * open a Windows Registry hive file
@@ -8706,7 +8704,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsHivexOpen containing optional arguments
          * @returns true on success, false on error
          */
-        hivex_open(filename: string, optargs: (HivexOpen | null)): boolean;
+        hivex_open(filename: string, optargs: HivexOpen | null): boolean;
 
         /**
          * return the root node of the hive
@@ -8733,7 +8731,7 @@ export namespace Guestfs {
          * @param valueh 
          * @returns the returned string, or NULL on error
          */
-        hivex_value_key(valueh: (bigint | number)): string;
+        hivex_value_key(valueh: bigint | number): string;
 
         /**
          * return the data field as a UTF-8 string
@@ -8752,7 +8750,7 @@ export namespace Guestfs {
          * @param valueh 
          * @returns the returned string, or NULL on error
          */
-        hivex_value_string(valueh: (bigint | number)): string;
+        hivex_value_string(valueh: bigint | number): string;
 
         /**
          * return the data type from the (key, datatype, data) tuple
@@ -8766,7 +8764,7 @@ export namespace Guestfs {
          * @param valueh 
          * @returns the returned value, or -1 on error
          */
-        hivex_value_type(valueh: (bigint | number)): number;
+        hivex_value_type(valueh: bigint | number): number;
 
         /**
          * return the data field as a UTF-8 string
@@ -8785,7 +8783,7 @@ export namespace Guestfs {
          * @param valueh 
          * @returns the returned string, or NULL on error
          */
-        hivex_value_utf8(valueh: (bigint | number)): string;
+        hivex_value_utf8(valueh: bigint | number): string;
 
         /**
          * return the data field from the (key, datatype, data) tuple
@@ -8801,7 +8799,7 @@ export namespace Guestfs {
          * @param valueh 
          * @returns an array of binary data, or NULL on error
          */
-        hivex_value_value(valueh: (bigint | number)): Uint8Array;
+        hivex_value_value(valueh: bigint | number): Uint8Array;
 
         /**
          * list the contents of a single file in an initrd
@@ -9246,7 +9244,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsInspectGetIcon containing optional arguments
          * @returns an array of binary data, or NULL on error
          */
-        inspect_get_icon(root: string, optargs: (InspectGetIcon | null)): Uint8Array;
+        inspect_get_icon(root: string, optargs: InspectGetIcon | null): Uint8Array;
 
         /**
          * get major version of inspected operating system
@@ -9782,7 +9780,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_exit(cancellable: (Gio.Cancellable | null)): boolean;
+        internal_exit(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * internal test function - do not use
@@ -9808,7 +9806,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_test(str: string, optstr: (string | null), strlist: string[], b: boolean, integer: number, integer64: (bigint | number), filein: string, fileout: string, bufferin: (Uint8Array | string), optargs: (InternalTest | null), cancellable: (Gio.Cancellable | null)): boolean;
+        internal_test(str: string, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: bigint | number, filein: string, fileout: string, bufferin: Uint8Array | string, optargs: InternalTest | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * internal test function - do not use
@@ -9826,7 +9824,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_test_63_optargs(optargs: (InternalTest63Optargs | null), cancellable: (Gio.Cancellable | null)): boolean;
+        internal_test_63_optargs(optargs: InternalTest63Optargs | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * internal test function - do not use
@@ -9858,7 +9856,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        internal_test_only_optargs(optargs: (InternalTestOnlyOptargs | null), cancellable: (Gio.Cancellable | null)): boolean;
+        internal_test_only_optargs(optargs: InternalTestOnlyOptargs | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * internal test function - do not use
@@ -10213,7 +10211,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsBlockdev containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_blockdev(path: string, optargs: (IsBlockdev | null)): number;
+        is_blockdev(path: string, optargs: IsBlockdev | null): number;
 
         /**
          * is busy processing a command
@@ -10241,7 +10239,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsChardev containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_chardev(path: string, optargs: (IsChardev | null)): number;
+        is_chardev(path: string, optargs: IsChardev | null): number;
 
         /**
          * is in configuration state
@@ -10269,7 +10267,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsDir containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_dir(path: string, optargs: (IsDir | null)): number;
+        is_dir(path: string, optargs: IsDir | null): number;
 
         /**
          * test if FIFO (named pipe)
@@ -10286,7 +10284,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsFifo containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_fifo(path: string, optargs: (IsFifo | null)): number;
+        is_fifo(path: string, optargs: IsFifo | null): number;
 
         /**
          * test if a regular file
@@ -10304,7 +10302,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsFile containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_file(path: string, optargs: (IsFile | null)): number;
+        is_file(path: string, optargs: IsFile | null): number;
 
         /**
          * is launching subprocess
@@ -10353,7 +10351,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsIsSocket containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        is_socket(path: string, optargs: (IsSocket | null)): number;
+        is_socket(path: string, optargs: IsSocket | null): number;
 
         /**
          * test if symbolic link
@@ -10544,7 +10542,7 @@ export namespace Guestfs {
          * @param threshold 
          * @returns true on success, false on error
          */
-        journal_set_data_threshold(threshold: (bigint | number)): boolean;
+        journal_set_data_threshold(threshold: bigint | number): boolean;
 
         /**
          * skip forwards or backwards in the journal
@@ -10562,7 +10560,7 @@ export namespace Guestfs {
          * @param skip 
          * @returns the returned value, or -1 on error
          */
-        journal_skip(skip: (bigint | number)): number;
+        journal_skip(skip: bigint | number): number;
 
         /**
          * kill the hypervisor
@@ -11576,7 +11574,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMDCreate containing optional arguments
          * @returns true on success, false on error
          */
-        md_create(name: string, devices: string[], optargs: (MDCreate | null)): boolean;
+        md_create(name: string, devices: string[], optargs: MDCreate | null): boolean;
 
         /**
          * obtain metadata for an MD device
@@ -11729,7 +11727,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMke2fs containing optional arguments
          * @returns true on success, false on error
          */
-        mke2fs(device: string, optargs: (Mke2fs | null)): boolean;
+        mke2fs(device: string, optargs: Mke2fs | null): boolean;
 
         /**
          * make ext2/3/4 filesystem with external journal
@@ -11878,7 +11876,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkfs containing optional arguments
          * @returns true on success, false on error
          */
-        mkfs(fstype: string, device: string, optargs: (Mkfs | null)): boolean;
+        mkfs(fstype: string, device: string, optargs: Mkfs | null): boolean;
 
         /**
          * make a filesystem with block size
@@ -11914,7 +11912,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkfsBtrfs containing optional arguments
          * @returns true on success, false on error
          */
-        mkfs_btrfs(devices: string[], optargs: (MkfsBtrfs | null)): boolean;
+        mkfs_btrfs(devices: string[], optargs: MkfsBtrfs | null): boolean;
 
         /**
          * make lost+found directory on an ext2/3/4 filesystem
@@ -12083,7 +12081,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        mksquashfs(path: string, filename: string, optargs: (Mksquashfs | null), cancellable: (Gio.Cancellable | null)): boolean;
+        mksquashfs(path: string, filename: string, optargs: Mksquashfs | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * create a swap partition
@@ -12096,7 +12094,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMkswap containing optional arguments
          * @returns true on success, false on error
          */
-        mkswap(device: string, optargs: (Mkswap | null)): boolean;
+        mkswap(device: string, optargs: Mkswap | null): boolean;
 
         /**
          * create a swap partition with a label
@@ -12161,7 +12159,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMktemp containing optional arguments
          * @returns the returned string, or NULL on error
          */
-        mktemp(tmpl: string, optargs: (Mktemp | null)): string;
+        mktemp(tmpl: string, optargs: Mktemp | null): string;
 
         /**
          * load a kernel module
@@ -12218,7 +12216,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMount9P containing optional arguments
          * @returns true on success, false on error
          */
-        mount_9p(mounttag: string, mountpoint: string, optargs: (Mount9P | null)): boolean;
+        mount_9p(mounttag: string, mountpoint: string, optargs: Mount9P | null): boolean;
 
         /**
          * mount on the local filesystem
@@ -12250,7 +12248,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMountLocal containing optional arguments
          * @returns true on success, false on error
          */
-        mount_local(localmountpoint: string, optargs: (MountLocal | null)): boolean;
+        mount_local(localmountpoint: string, optargs: MountLocal | null): boolean;
 
         /**
          * run main loop of mount on the local filesystem
@@ -12273,7 +12271,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        mount_local_run(cancellable: (Gio.Cancellable | null)): boolean;
+        mount_local_run(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * mount a file using the loop device
@@ -12445,7 +12443,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        ntfscat_i(device: string, inode: (bigint | number), filename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        ntfscat_i(device: string, inode: bigint | number, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * restore NTFS from backup file
@@ -12461,7 +12459,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        ntfsclone_in(backupfile: string, device: string, cancellable: (Gio.Cancellable | null)): boolean;
+        ntfsclone_in(backupfile: string, device: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * save NTFS to backup file
@@ -12488,7 +12486,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        ntfsclone_out(device: string, backupfile: string, optargs: (NtfscloneOut | null), cancellable: (Gio.Cancellable | null)): boolean;
+        ntfsclone_out(device: string, backupfile: string, optargs: NtfscloneOut | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * fix common errors and force Windows to check NTFS
@@ -12509,7 +12507,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsNtfsfix containing optional arguments
          * @returns true on success, false on error
          */
-        ntfsfix(device: string, optargs: (Ntfsfix | null)): boolean;
+        ntfsfix(device: string, optargs: Ntfsfix | null): boolean;
 
         /**
          * resize an NTFS filesystem
@@ -12542,7 +12540,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsNTFSResizeOpts containing optional arguments
          * @returns true on success, false on error
          */
-        ntfsresize(device: string, optargs: (NTFSResizeOpts | null)): boolean;
+        ntfsresize(device: string, optargs: NTFSResizeOpts | null): boolean;
 
         /**
          * resize an NTFS filesystem (with size)
@@ -12556,7 +12554,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        ntfsresize_size(device: string, size: (bigint | number)): boolean;
+        ntfsresize_size(device: string, size: bigint | number): boolean;
 
         /**
          * parse the environment and set handle flags accordingly
@@ -12612,7 +12610,7 @@ export namespace Guestfs {
          * @param endsect 
          * @returns true on success, false on error
          */
-        part_add(device: string, prlogex: string, startsect: (bigint | number), endsect: (bigint | number)): boolean;
+        part_add(device: string, prlogex: string, startsect: bigint | number, endsect: bigint | number): boolean;
 
         /**
          * delete a partition
@@ -12877,7 +12875,7 @@ export namespace Guestfs {
          * @param endsect 
          * @returns true on success, false on error
          */
-        part_resize(device: string, partnum: number, endsect: (bigint | number)): boolean;
+        part_resize(device: string, partnum: number, endsect: bigint | number): boolean;
 
         /**
          * make a partition bootable
@@ -12943,7 +12941,7 @@ export namespace Guestfs {
          * @param attributes 
          * @returns true on success, false on error
          */
-        part_set_gpt_attributes(device: string, partnum: number, attributes: (bigint | number)): boolean;
+        part_set_gpt_attributes(device: string, partnum: number, attributes: bigint | number): boolean;
 
         /**
          * set the GUID of a GPT partition
@@ -13073,7 +13071,7 @@ export namespace Guestfs {
          * @param offset 
          * @returns an array of binary data, or NULL on error
          */
-        pread(path: string, count: number, offset: (bigint | number)): Uint8Array;
+        pread(path: string, count: number, offset: bigint | number): Uint8Array;
 
         /**
          * read part of a device
@@ -13090,7 +13088,7 @@ export namespace Guestfs {
          * @param offset 
          * @returns an array of binary data, or NULL on error
          */
-        pread_device(device: string, count: number, offset: (bigint | number)): Uint8Array;
+        pread_device(device: string, count: number, offset: bigint | number): Uint8Array;
 
         /**
          * generate a new random UUID for a physical volume
@@ -13170,7 +13168,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        pvresize_size(device: string, size: (bigint | number)): boolean;
+        pvresize_size(device: string, size: bigint | number): boolean;
 
         /**
          * list the LVM physical volumes (PVs)
@@ -13228,7 +13226,7 @@ export namespace Guestfs {
          * @param offset 
          * @returns the returned value, or -1 on error
          */
-        pwrite(path: string, content: (Uint8Array | string), offset: (bigint | number)): number;
+        pwrite(path: string, content: Uint8Array | string, offset: bigint | number): number;
 
         /**
          * write to part of a device
@@ -13247,7 +13245,7 @@ export namespace Guestfs {
          * @param offset 
          * @returns the returned value, or -1 on error
          */
-        pwrite_device(device: string, content: (Uint8Array | string), offset: (bigint | number)): number;
+        pwrite_device(device: string, content: Uint8Array | string, offset: bigint | number): number;
 
         /**
          * read a file
@@ -13373,7 +13371,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRemount containing optional arguments
          * @returns true on success, false on error
          */
-        remount(mountpoint: string, optargs: (Remount | null)): boolean;
+        remount(mountpoint: string, optargs: Remount | null): boolean;
 
         /**
          * remove a disk image
@@ -13464,7 +13462,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        resize2fs_size(device: string, size: (bigint | number)): boolean;
+        resize2fs_size(device: string, size: bigint | number): boolean;
 
         /**
          * remove a file
@@ -13547,7 +13545,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsync containing optional arguments
          * @returns true on success, false on error
          */
-        rsync(src: string, dest: string, optargs: (Rsync | null)): boolean;
+        rsync(src: string, dest: string, optargs: Rsync | null): boolean;
 
         /**
          * synchronize host or remote filesystem with filesystem
@@ -13577,7 +13575,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsyncIn containing optional arguments
          * @returns true on success, false on error
          */
-        rsync_in(remote: string, dest: string, optargs: (RsyncIn | null)): boolean;
+        rsync_in(remote: string, dest: string, optargs: RsyncIn | null): boolean;
 
         /**
          * synchronize filesystem with host or remote filesystem
@@ -13614,7 +13612,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsRsyncOut containing optional arguments
          * @returns true on success, false on error
          */
-        rsync_out(src: string, remote: string, optargs: (RsyncOut | null)): boolean;
+        rsync_out(src: string, remote: string, optargs: RsyncOut | null): boolean;
 
         /**
          * scrub (securely wipe) a device
@@ -13693,7 +13691,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSelinuxRelabel containing optional arguments
          * @returns true on success, false on error
          */
-        selinux_relabel(specfile: string, path: string, optargs: (SelinuxRelabel | null)): boolean;
+        selinux_relabel(specfile: string, path: string, optargs: SelinuxRelabel | null): boolean;
 
         /**
          * add options to kernel command line
@@ -13709,7 +13707,7 @@ export namespace Guestfs {
          * @param append 
          * @returns true on success, false on error
          */
-        set_append(append: (string | null)): boolean;
+        set_append(append: string | null): boolean;
 
         /**
          * set the backend
@@ -13801,7 +13799,7 @@ export namespace Guestfs {
          * @param cachedir 
          * @returns true on success, false on error
          */
-        set_cachedir(cachedir: (string | null)): boolean;
+        set_cachedir(cachedir: string | null): boolean;
 
         /**
          * enable or disable direct appliance mode
@@ -13847,7 +13845,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSetE2attrs containing optional arguments
          * @returns true on success, false on error
          */
-        set_e2attrs(file: string, attrs: string, optargs: (SetE2attrs | null)): boolean;
+        set_e2attrs(file: string, attrs: string, optargs: SetE2attrs | null): boolean;
 
         /**
          * set ext2 file generation of a file
@@ -13859,7 +13857,7 @@ export namespace Guestfs {
          * @param generation 
          * @returns true on success, false on error
          */
-        set_e2generation(file: string, generation: (bigint | number)): boolean;
+        set_e2generation(file: string, generation: bigint | number): boolean;
 
         /**
          * set the ext2/3/4 filesystem label
@@ -13998,7 +13996,7 @@ export namespace Guestfs {
          * @param cred an array of binary data
          * @returns true on success, false on error
          */
-        set_libvirt_requested_credential(index: number, cred: (Uint8Array | string)): boolean;
+        set_libvirt_requested_credential(index: number, cred: Uint8Array | string): boolean;
 
         /**
          * set libvirt credentials supported by calling program
@@ -14072,7 +14070,7 @@ export namespace Guestfs {
          * @param searchpath 
          * @returns true on success, false on error
          */
-        set_path(searchpath: (string | null)): boolean;
+        set_path(searchpath: string | null): boolean;
 
         /**
          * set process group flag
@@ -14128,7 +14126,7 @@ export namespace Guestfs {
          * @param hv 
          * @returns true on success, false on error
          */
-        set_qemu(hv: (string | null)): boolean;
+        set_qemu(hv: string | null): boolean;
 
         /**
          * enable or disable the recovery process
@@ -14190,7 +14188,7 @@ export namespace Guestfs {
          * @param tmpdir 
          * @returns true on success, false on error
          */
-        set_tmpdir(tmpdir: (string | null)): boolean;
+        set_tmpdir(tmpdir: string | null): boolean;
 
         /**
          * enable or disable command traces
@@ -14684,7 +14682,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsSyslinux containing optional arguments
          * @returns true on success, false on error
          */
-        syslinux(device: string, optargs: (Syslinux | null)): boolean;
+        syslinux(device: string, optargs: Syslinux | null): boolean;
 
         /**
          * return last 10 lines of a file
@@ -14739,7 +14737,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tar_in(tarfile: string, directory: string, optargs: (TarIn | null), cancellable: (Gio.Cancellable | null)): boolean;
+        tar_in(tarfile: string, directory: string, optargs: TarIn | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * pack directory into tarfile
@@ -14777,7 +14775,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tar_out(directory: string, tarfile: string, optargs: (TarOut | null), cancellable: (Gio.Cancellable | null)): boolean;
+        tar_out(directory: string, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * unpack compressed tarball to directory
@@ -14789,7 +14787,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tgz_in(tarball: string, directory: string, cancellable: (Gio.Cancellable | null)): boolean;
+        tgz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * pack directory into compressed tarball
@@ -14801,7 +14799,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        tgz_out(directory: string, tarball: string, cancellable: (Gio.Cancellable | null)): boolean;
+        tgz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * update file timestamps or create a new file
@@ -14841,7 +14839,7 @@ export namespace Guestfs {
          * @param size 
          * @returns true on success, false on error
          */
-        truncate_size(path: string, size: (bigint | number)): boolean;
+        truncate_size(path: string, size: bigint | number): boolean;
 
         /**
          * adjust ext2/ext3/ext4 filesystem parameters
@@ -14906,7 +14904,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsTune2FS containing optional arguments
          * @returns true on success, false on error
          */
-        tune2fs(device: string, optargs: (Tune2FS | null)): boolean;
+        tune2fs(device: string, optargs: Tune2FS | null): boolean;
 
         /**
          * get ext2/ext3/ext4 superblock details
@@ -14936,7 +14934,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        txz_in(tarball: string, directory: string, cancellable: (Gio.Cancellable | null)): boolean;
+        txz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * pack directory into compressed tarball
@@ -14951,7 +14949,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        txz_out(directory: string, tarball: string, cancellable: (Gio.Cancellable | null)): boolean;
+        txz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * set file mode creation mask (umask)
@@ -14986,7 +14984,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsUmount containing optional arguments
          * @returns true on success, false on error
          */
-        umount(pathordevice: string, optargs: (Umount | null)): boolean;
+        umount(pathordevice: string, optargs: Umount | null): boolean;
 
         /**
          * unmount all filesystems
@@ -15008,7 +15006,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsUmountLocal containing optional arguments
          * @returns true on success, false on error
          */
-        umount_local(optargs: (UmountLocal | null)): boolean;
+        umount_local(optargs: UmountLocal | null): boolean;
 
         /**
          * upload a file from the local machine
@@ -15023,7 +15021,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        upload(filename: string, remotefilename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        upload(filename: string, remotefilename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * upload a file from the local machine with offset
@@ -15047,7 +15045,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        upload_offset(filename: string, remotefilename: string, offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        upload_offset(filename: string, remotefilename: string, offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * cancel the current upload or download operation
@@ -15107,7 +15105,7 @@ export namespace Guestfs {
          * @param mtnsecs 
          * @returns true on success, false on error
          */
-        utimens(path: string, atsecs: (bigint | number), atnsecs: (bigint | number), mtsecs: (bigint | number), mtnsecs: (bigint | number)): boolean;
+        utimens(path: string, atsecs: bigint | number, atnsecs: bigint | number, mtsecs: bigint | number, mtnsecs: bigint | number): boolean;
 
         /**
          * appliance kernel version
@@ -15476,7 +15474,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @returns true on success, false on error
          */
-        write(path: string, content: (Uint8Array | string)): boolean;
+        write(path: string, content: Uint8Array | string): boolean;
 
         /**
          * append content to end of file
@@ -15489,7 +15487,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @returns true on success, false on error
          */
-        write_append(path: string, content: (Uint8Array | string)): boolean;
+        write_append(path: string, content: Uint8Array | string): boolean;
 
         /**
          * create a file
@@ -15528,7 +15526,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsAdmin containing optional arguments
          * @returns true on success, false on error
          */
-        xfs_admin(device: string, optargs: (XfsAdmin | null)): boolean;
+        xfs_admin(device: string, optargs: XfsAdmin | null): boolean;
 
         /**
          * expand an existing XFS filesystem
@@ -15544,7 +15542,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsGrowfs containing optional arguments
          * @returns true on success, false on error
          */
-        xfs_growfs(path: string, optargs: (XfsGrowfs | null)): boolean;
+        xfs_growfs(path: string, optargs: XfsGrowfs | null): boolean;
 
         /**
          * get geometry of XFS filesystem
@@ -15585,7 +15583,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsXfsRepair containing optional arguments
          * @returns the returned value, or -1 on error
          */
-        xfs_repair(device: string, optargs: (XfsRepair | null)): number;
+        xfs_repair(device: string, optargs: XfsRepair | null): number;
 
         /**
          * destroy previously loaded yara rules
@@ -15623,7 +15621,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
          */
-        yara_load(filename: string, cancellable: (Gio.Cancellable | null)): boolean;
+        yara_load(filename: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * scan a file with the loaded yara rules
@@ -15646,7 +15644,7 @@ export namespace Guestfs {
          * @param cancellable A GCancellable object
          * @returns an array of YaraDetection objects, or NULL on error
          */
-        yara_scan(path: string, cancellable: (Gio.Cancellable | null)): YaraDetection[];
+        yara_scan(path: string, cancellable: Gio.Cancellable | null): YaraDetection[];
 
         /**
          * return lines matching a pattern
@@ -16102,14 +16100,14 @@ export namespace Guestfs {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             errorbehavior: string;
             force: Tristate;
-            group: (bigint | number);
+            group: bigint | number;
             intervalbetweenchecks: number;
             lastmounteddirectory: string;
             maxmountcount: number;
             mountcount: number;
-            reservedblockscount: (bigint | number);
+            reservedblockscount: bigint | number;
             reservedblockspercentage: number;
-            user: (bigint | number);
+            user: bigint | number;
         }
     }
 
@@ -16137,7 +16135,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get group(): number;
-        set group(val: (bigint | number));
+        set group(val: bigint | number);
 
         /**
          * A 32-bit integer.
@@ -16167,7 +16165,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get reservedblockscount(): number;
-        set reservedblockscount(val: (bigint | number));
+        set reservedblockscount(val: bigint | number);
 
         /**
          * A 32-bit integer.
@@ -16179,7 +16177,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get user(): number;
-        set user(val: (bigint | number));
+        set user(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16455,13 +16453,13 @@ export namespace Guestfs {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             datasec: Tristate;
-            datasize: (bigint | number);
+            datasize: bigint | number;
             logsec: Tristate;
-            logsize: (bigint | number);
+            logsize: bigint | number;
             maxpct: number;
-            rtextsize: (bigint | number);
+            rtextsize: bigint | number;
             rtsec: Tristate;
-            rtsize: (bigint | number);
+            rtsize: bigint | number;
         }
     }
 
@@ -16483,7 +16481,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get datasize(): number;
-        set datasize(val: (bigint | number));
+        set datasize(val: bigint | number);
 
         /**
          * A boolean.
@@ -16495,7 +16493,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get logsize(): number;
-        set logsize(val: (bigint | number));
+        set logsize(val: bigint | number);
 
         /**
          * A 32-bit integer.
@@ -16507,7 +16505,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get rtextsize(): number;
-        set rtextsize(val: (bigint | number));
+        set rtextsize(val: bigint | number);
 
         /**
          * A boolean.
@@ -16519,7 +16517,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get rtsize(): number;
-        set rtsize(val: (bigint | number));
+        set rtsize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16569,13 +16567,13 @@ export namespace Guestfs {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            agstride: (bigint | number);
-            bhashsize: (bigint | number);
+            agstride: bigint | number;
+            bhashsize: bigint | number;
             forcegeometry: Tristate;
             forcelogzero: Tristate;
-            ihashsize: (bigint | number);
+            ihashsize: bigint | number;
             logdev: string;
-            maxmem: (bigint | number);
+            maxmem: bigint | number;
             nomodify: Tristate;
             noprefetch: Tristate;
             rtdev: string;
@@ -16594,13 +16592,13 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get agstride(): number;
-        set agstride(val: (bigint | number));
+        set agstride(val: bigint | number);
 
         /**
          * A 64-bit integer.
          */
         get bhashsize(): number;
-        set bhashsize(val: (bigint | number));
+        set bhashsize(val: bigint | number);
 
         /**
          * A boolean.
@@ -16618,7 +16616,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get ihashsize(): number;
-        set ihashsize(val: (bigint | number));
+        set ihashsize(val: bigint | number);
 
         /**
          * A string.
@@ -16630,7 +16628,7 @@ export namespace Guestfs {
          * A 64-bit integer.
          */
         get maxmem(): number;
-        set maxmem(val: (bigint | number));
+        set maxmem(val: bigint | number);
 
         /**
          * A boolean.

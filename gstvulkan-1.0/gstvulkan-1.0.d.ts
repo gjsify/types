@@ -69,7 +69,7 @@ export namespace GstVulkan {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -82,7 +82,7 @@ export namespace GstVulkan {
          * @param format the printf-like format to write into the {@link GLib.Error}
          * @param ___ arguments for `format`
          */
-        static to_g_error(result: Vulkan.Result, error: (GLib.Error | null), format: string, ___: any[]): [Vulkan.Result, GLib.Error | null];
+        static to_g_error(result: Vulkan.Result, error: GLib.Error | null, format: string, ___: any[]): [Vulkan.Result, GLib.Error | null];
     }
 
 
@@ -142,7 +142,7 @@ export namespace GstVulkan {
         static RESOURCE_UNAVAILABLE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -270,7 +270,7 @@ export namespace GstVulkan {
      * @returns a {@link Gst.Memory} object backed by a vulkan buffer          backed by vulkan device memory
      * @since 1.18
      */
-    function vulkan_buffer_memory_alloc(device: VulkanDevice, size: (bigint | number), usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+    function vulkan_buffer_memory_alloc(device: VulkanDevice, size: bigint | number, usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
     /**
      * Initializes the Vulkan buffer memory allocator. It is safe to call this function
@@ -295,7 +295,7 @@ export namespace GstVulkan {
      * @param code 
      * @param size 
      */
-    function vulkan_create_shader(device: VulkanDevice, code: string, size: (bigint | number)): VulkanHandle;
+    function vulkan_create_shader(device: VulkanDevice, code: string, size: bigint | number): VulkanHandle;
 
     /**
      * @param type a {@link GstVulkan.VulkanDisplayType}
@@ -318,7 +318,7 @@ export namespace GstVulkan {
      * @returns whether a {@link GstVulkan.VulkanInstance} exists in `instance_ptr` and if          `display_ptr` is not `null`, whether a {@link GstVulkan.VulkanDisplay} exists in          `display_ptr`
      * @since 1.18
      */
-    function vulkan_ensure_element_data(element: Gst.Element, display_ptr: (VulkanDisplay | null), instance_ptr: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
+    function vulkan_ensure_element_data(element: Gst.Element, display_ptr: VulkanDisplay | null, instance_ptr: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
 
     function vulkan_error_quark(): GLib.Quark;
 
@@ -350,7 +350,7 @@ export namespace GstVulkan {
      * @returns Whether the `query` was successfully responded to from the passed          `display`, `instance`, and `device`.
      * @since 1.18
      */
-    function vulkan_handle_context_query(element: Gst.Element, query: Gst.Query, display: (VulkanDisplay | null), instance: (VulkanInstance | null), device: (VulkanDevice | null)): boolean;
+    function vulkan_handle_context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null, instance: VulkanInstance | null, device: VulkanDevice | null): boolean;
 
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -365,7 +365,7 @@ export namespace GstVulkan {
      * @returns whether the `display` or `instance` could be set successfully
      * @since 1.18
      */
-    function vulkan_handle_set_context(element: Gst.Element, context: Gst.Context, display: (VulkanDisplay | null), instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
+    function vulkan_handle_set_context(element: Gst.Element, context: Gst.Context, display: VulkanDisplay | null, instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
 
     /**
      * Allocated a new {@link GstVulkan.VulkanImageMemory}.
@@ -379,7 +379,7 @@ export namespace GstVulkan {
      * @returns a {@link Gst.Memory} object backed by a vulkan device memory
      * @since 1.18
      */
-    function vulkan_image_memory_alloc(device: VulkanDevice, format: Vulkan.Format, width: (bigint | number), height: (bigint | number), tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+    function vulkan_image_memory_alloc(device: VulkanDevice, format: Vulkan.Format, width: bigint | number, height: bigint | number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
     /**
      * Initializes the Vulkan image memory allocator. It is safe to call this function
@@ -400,7 +400,7 @@ export namespace GstVulkan {
      * @returns a new {@link GstVulkan.VulkanImageMemory} wrapping `image`
      * @since 1.18
      */
-    function vulkan_image_memory_wrapped(device: VulkanDevice, image: Vulkan.Image, format: Vulkan.Format, width: (bigint | number), height: (bigint | number), tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, user_data: null): Gst.Memory;
+    function vulkan_image_memory_wrapped(device: VulkanDevice, image: Vulkan.Image, format: Vulkan.Format, width: bigint | number, height: bigint | number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, user_data: null): Gst.Memory;
 
     /**
      * Performs the steps necessary for executing a context query between only
@@ -421,7 +421,7 @@ export namespace GstVulkan {
      * @returns a {@link Gst.Memory} object backed by a vulkan device memory
      * @since 1.18
      */
-    function vulkan_memory_alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: (bigint | number), mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+    function vulkan_memory_alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: bigint | number, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
     /**
      * @param device a {@link GstVulkan.VulkanDevice}
@@ -594,9 +594,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     /**
@@ -643,9 +641,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
     }
 
     /**
@@ -702,9 +698,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -780,9 +774,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
     /**
@@ -845,9 +837,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -873,7 +863,7 @@ export namespace GstVulkan {
 
         _init(...args: any[]): void;
 
-        static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: (bigint | number)): VulkanDescriptorPool;
+        static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: bigint | number): VulkanDescriptorPool;
 
         // Signals
         /** @signal */
@@ -1005,7 +995,7 @@ export namespace GstVulkan {
          * Iterate over each queue family available on {@link GstVulkan.VulkanDevice}
          * @param func a {@link GstVulkan.VulkanDeviceForEachQueueFunc} to run for each {@link GstVulkan.VulkanQueue}
          */
-        foreach_queue(func: (VulkanDeviceForEachQueueFunc | null)): void;
+        foreach_queue(func: VulkanDeviceForEachQueueFunc | null): void;
 
         /**
          * @returns the {@link GstVulkan.VulkanInstance} used to create this `device`
@@ -1042,9 +1032,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1103,7 +1091,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param display the {@link GstVulkan.VulkanDisplay}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, display: (VulkanDisplay | null)): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null): boolean;
 
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanDisplay} using #GST_QUERY_CONTEXT from the
@@ -1166,9 +1154,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
     /**
@@ -1216,9 +1202,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1286,7 +1270,7 @@ export namespace GstVulkan {
          * @param indices 
          * @param n_indices 
          */
-        set_index_buffer(indices: Gst.Memory, n_indices: (bigint | number)): boolean;
+        set_index_buffer(indices: Gst.Memory, n_indices: bigint | number): boolean;
 
         /**
          * @param in_info 
@@ -1337,9 +1321,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1425,9 +1407,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
     }
 
     /**
@@ -1484,9 +1464,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     /**
@@ -1541,9 +1519,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1594,7 +1570,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param instance the {@link GstVulkan.VulkanInstance}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, instance: (VulkanInstance | null)): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, instance: VulkanInstance | null): boolean;
 
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanInstance} using #GST_QUERY_CONTEXT from the
@@ -1632,9 +1608,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     /**
@@ -1687,7 +1661,7 @@ export namespace GstVulkan {
             device_index: number;
             deviceIndex: number;
             instance: VulkanInstance;
-            name: (string | any);
+            name: string | any;
         }
     }
 
@@ -1717,7 +1691,7 @@ export namespace GstVulkan {
          * @read-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get name(): (string | any);
+        get name(): string | any;
 
         /**
          * Compile-time signal type information.
@@ -1777,9 +1751,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1837,7 +1809,7 @@ export namespace GstVulkan {
          * @param query a {@link Gst.Query} of type #GST_QUERY_CONTEXT
          * @param queue the {@link GstVulkan.VulkanQueue}
          */
-        static handle_context_query(element: Gst.Element, query: Gst.Query, queue: (VulkanQueue | null)): boolean;
+        static handle_context_query(element: Gst.Element, query: Gst.Query, queue: VulkanQueue | null): boolean;
 
         /**
          * Attempt to retrieve a {@link GstVulkan.VulkanQueue} using #GST_QUERY_CONTEXT from the
@@ -1978,9 +1950,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VulkanTrashList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VulkanTrashList.ConstructorProps {}
     }
 
     /**
@@ -2028,9 +1998,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
     }
 
     /**
@@ -2108,7 +2076,7 @@ export namespace GstVulkan {
         /**
          * @param timeout 
          */
-        wait(timeout: (bigint | number)): boolean;
+        wait(timeout: bigint | number): boolean;
     }
 
 
@@ -2121,9 +2089,7 @@ export namespace GstVulkan {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
     }
 
     /**
@@ -2175,7 +2141,7 @@ export namespace GstVulkan {
              * @signal
              * @run-last
              */
-            close: () => (boolean | void);
+            close: () => boolean | void;
             /**
              * @signal
              * @run-last
@@ -2367,7 +2333,7 @@ export namespace GstVulkan {
         /**
          * @param handle 
          */
-        set_window_handle(handle: (bigint | number)): void;
+        set_window_handle(handle: bigint | number): void;
     }
 
 
@@ -2425,7 +2391,7 @@ export namespace GstVulkan {
          * @param usage buffer usage flags
          * @param mem_prop_flags memory properties flags for the backing memory
          */
-        static alloc(device: VulkanDevice, size: (bigint | number), usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+        static alloc(device: VulkanDevice, size: bigint | number, usage: Vulkan.BufferUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
         /**
          * Initializes the Vulkan buffer memory allocator. It is safe to call this function
@@ -2715,7 +2681,7 @@ export namespace GstVulkan {
          * @param instance a {@link GstVulkan.VulkanInstance}
          * @param device a {@link GstVulkan.VulkanInstance}
          */
-        static context_query(element: Gst.Element, query: Gst.Query, display: (VulkanDisplay | null), instance: (VulkanInstance | null), device: (VulkanDevice | null)): boolean;
+        static context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null, instance: VulkanInstance | null, device: VulkanDevice | null): boolean;
 
         /**
          * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -2728,7 +2694,7 @@ export namespace GstVulkan {
          * @param display location of a {@link GstVulkan.VulkanDisplay}
          * @param instance location of a {@link GstVulkan.VulkanInstance}
          */
-        static set_context(element: Gst.Element, context: Gst.Context, display: (VulkanDisplay | null), instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
+        static set_context(element: Gst.Element, context: Gst.Context, display: VulkanDisplay | null, instance: VulkanInstance): [boolean, VulkanDisplay | null, VulkanInstance];
 
         // Methods
         /**
@@ -2843,7 +2809,7 @@ export namespace GstVulkan {
          * @param usage usage flags for the new image
          * @param mem_prop_flags VkDeviceMemory property flags for the new image
          */
-        static alloc(device: VulkanDevice, format: Vulkan.Format, width: (bigint | number), height: (bigint | number), tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+        static alloc(device: VulkanDevice, format: Vulkan.Format, width: bigint | number, height: bigint | number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
         /**
          * Initializes the Vulkan image memory allocator. It is safe to call this function
@@ -2861,7 +2827,7 @@ export namespace GstVulkan {
          * @param usage usage flags of `image`
          * @param user_data user data for `notify`
          */
-        static wrapped(device: VulkanDevice, image: Vulkan.Image, format: Vulkan.Format, width: (bigint | number), height: (bigint | number), tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, user_data: null): Gst.Memory;
+        static wrapped(device: VulkanDevice, image: Vulkan.Image, format: Vulkan.Format, width: bigint | number, height: bigint | number, tiling: Vulkan.ImageTiling, usage: Vulkan.ImageUsageFlags, user_data: null): Gst.Memory;
 
         // Methods
         /**
@@ -2894,7 +2860,7 @@ export namespace GstVulkan {
          * @param size 
          * @param user_data 
          */
-        init(allocator: Gst.Allocator, parent: Gst.Memory, device: VulkanDevice, usage: Vulkan.ImageUsageFlags, params: Gst.AllocationParams, size: (bigint | number), user_data: null): boolean;
+        init(allocator: Gst.Allocator, parent: Gst.Memory, device: VulkanDevice, usage: Vulkan.ImageUsageFlags, params: Gst.AllocationParams, size: bigint | number, user_data: null): boolean;
     }
 
 
@@ -2965,7 +2931,7 @@ export namespace GstVulkan {
          * @param size the size to allocate
          * @param mem_prop_flags 
          */
-        static alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: (bigint | number), mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
+        static alloc(device: VulkanDevice, memory_type_index: number, params: Gst.AllocationParams, size: bigint | number, mem_prop_flags: Vulkan.MemoryPropertyFlags): Gst.Memory;
 
         /**
          * @param device a {@link GstVulkan.VulkanDevice}

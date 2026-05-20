@@ -178,7 +178,7 @@ export namespace Shell {
      * @param height 
      * @param rowstride 
      */
-    function util_create_pixbuf_from_data(data: (Uint8Array | string), colorspace: GdkPixbuf.Colorspace, has_alpha: boolean, bits_per_sample: number, width: number, height: number, rowstride: number): GdkPixbuf.Pixbuf;
+    function util_create_pixbuf_from_data(data: Uint8Array | string, colorspace: GdkPixbuf.Colorspace, has_alpha: boolean, bits_per_sample: number, width: number, height: number, rowstride: number): GdkPixbuf.Pixbuf;
 
     /**
      * Attempts to translate the folder `name` using translations provided
@@ -186,7 +186,7 @@ export namespace Shell {
      * @param name the untranslated folder name
      * @returns a translated string or `null`
      */
-    function util_get_translated_folder_name(name: string): (string | null);
+    function util_get_translated_folder_name(name: string): string | null;
 
     /**
      * A wrapper around `getuid()` so that it can be used from JavaScript. This
@@ -239,7 +239,7 @@ export namespace Shell {
      * @param flags flags from {@link GLib.SpawnFlags}
      * @returns the PID of the child on success, 0 if error is set
      */
-    function util_spawn_async(working_directory: (string | null), argv: string[], envp: (string[] | null), flags: GLib.SpawnFlags): GLib.Pid;
+    function util_spawn_async(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags): GLib.Pid;
 
     /**
      * A wrapper around `g_spawn_async_with_fds()` with async-signal-safe
@@ -254,7 +254,7 @@ export namespace Shell {
      * @param stderr_fd file descriptor to use for child's stderr, or `-1`
      * @returns the PID of the child on success, 0 if error is set
      */
-    function util_spawn_async_with_fds(working_directory: (string | null), argv: string[], envp: (string[] | null), flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number): GLib.Pid;
+    function util_spawn_async_with_fds(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number): GLib.Pid;
 
     /**
      * A wrapper around `g_spawn_async_with_pipes()` with async-signal-safe
@@ -266,7 +266,7 @@ export namespace Shell {
      * @param flags flags from {@link GLib.SpawnFlags}
      * @returns the PID of the child on success, 0 if error is set
      */
-    function util_spawn_async_with_pipes(working_directory: (string | null), argv: string[], envp: (string[] | null), flags: GLib.SpawnFlags): [GLib.Pid, number, number, number];
+    function util_spawn_async_with_pipes(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags): [GLib.Pid, number, number, number];
 
     /**
      * A wrapper around `g_spawn_async_with_pipes_and_fds()` with async-signal-safe
@@ -283,28 +283,28 @@ export namespace Shell {
      * @param target_fds array of FDs to remap    `source_fds` to in the child process
      * @returns the PID of the child on success, 0 if error is set
      */
-    function util_spawn_async_with_pipes_and_fds(working_directory: (string | null), argv: string[], envp: (string[] | null), flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number, source_fds: (number[] | null), target_fds: (number[] | null)): [GLib.Pid, number, number, number];
+    function util_spawn_async_with_pipes_and_fds(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number, source_fds: number[] | null, target_fds: number[] | null): [GLib.Pid, number, number, number];
 
     /**
      * @param unit 
      * @param mode 
      * @param cancellable 
      */
-    function util_start_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function util_start_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * @param unit 
      * @param mode 
      * @param cancellable 
      * @param callback 
      */
-    function util_start_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function util_start_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * @param unit 
      * @param mode 
      * @param cancellable 
      * @param callback 
      */
-    function util_start_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function util_start_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param res 
@@ -316,21 +316,21 @@ export namespace Shell {
      * @param mode 
      * @param cancellable 
      */
-    function util_stop_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function util_stop_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * @param unit 
      * @param mode 
      * @param cancellable 
      * @param callback 
      */
-    function util_stop_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function util_stop_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * @param unit 
      * @param mode 
      * @param cancellable 
      * @param callback 
      */
-    function util_stop_systemd_unit(unit: string, mode: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function util_stop_systemd_unit(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param res 
@@ -341,19 +341,19 @@ export namespace Shell {
      * @param unit 
      * @param cancellable 
      */
-    function util_systemd_unit_exists(unit: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * @param unit 
      * @param cancellable 
      * @param callback 
      */
-    function util_systemd_unit_exists(unit: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * @param unit 
      * @param cancellable 
      * @param callback 
      */
-    function util_systemd_unit_exists(unit: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function util_systemd_unit_exists(unit: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param res 
@@ -368,12 +368,12 @@ export namespace Shell {
      * @param file 
      * @param callback 
      */
-    function util_touch_file_async(file: Gio.File, callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * @param file 
      * @param callback 
      */
-    function util_touch_file_async(file: Gio.File, callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<boolean> | void);
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<boolean> | void;
 
     /**
      * @param file 
@@ -629,7 +629,7 @@ export namespace Shell {
          * @param workspace Start on this workspace, or -1 for default
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null), timestamp: number, workspace: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        activate_action(action_name: string, parameter: GLib.Variant | null, timestamp: number, workspace: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This activates an action using 'org.freedesktop.Application' DBus interface.
@@ -643,7 +643,7 @@ export namespace Shell {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null), timestamp: number, workspace: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null, timestamp: number, workspace: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This activates an action using 'org.freedesktop.Application' DBus interface.
@@ -657,7 +657,7 @@ export namespace Shell {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null), timestamp: number, workspace: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        activate_action(action_name: string, parameter: GLib.Variant | null, timestamp: number, workspace: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finish the asynchronous operation started by `shell_app_activate_action()`
@@ -688,7 +688,7 @@ export namespace Shell {
          * @param window Window to be focused
          * @param timestamp Event timestamp
          */
-        activate_window(window: (Meta.Window | null), timestamp: number): void;
+        activate_window(window: Meta.Window | null, timestamp: number): void;
 
         /**
          * Returns `true` if the app supports opening a new window through
@@ -834,9 +834,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -909,7 +907,7 @@ export namespace Shell {
          * @param wmclass A WM_CLASS value
          * @returns A {@link Shell.App} for `wmclass`
          */
-        lookup_desktop_wmclass(wmclass: (string | null)): App;
+        lookup_desktop_wmclass(wmclass: string | null): App;
 
         /**
          * Find a valid application corresponding to a given
@@ -926,19 +924,16 @@ export namespace Shell {
          * @param wmclass A WM_CLASS value
          * @returns A {@link Shell.App} for `wmclass`
          */
-        lookup_startup_wmclass(wmclass: (string | null)): App;
+        lookup_startup_wmclass(wmclass: string | null): App;
     }
 
 
     namespace AppUsage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1183,9 +1178,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
     }
 
     /**
@@ -1244,7 +1237,7 @@ export namespace Shell {
          * @param code GLSL code
          * @param is_replace whether Cogl code should be replaced by the custom shader
          */
-        add_glsl_snippet(hook: ((SnippetHook | Cogl.SnippetHook) | null), declarations: string, code: string, is_replace: boolean): void;
+        add_glsl_snippet(hook: SnippetHook | Cogl.SnippetHook | null, declarations: string, code: string, is_replace: boolean): void;
 
         /**
          * @param name the uniform name
@@ -1731,14 +1724,14 @@ export namespace Shell {
          * @param property_name Name of the property
          * @param variant A {@link GLib.Variant}, or `null` to unset
          */
-        set_persistent_state(property_name: string, variant: (GLib.Variant | null)): void;
+        set_persistent_state(property_name: string, variant: GLib.Variant | null): void;
 
         /**
          * Change the value of serialized runtime state.
          * @param property_name Name of the property
          * @param variant A {@link GLib.Variant}, or `null` to unset
          */
-        set_runtime_state(property_name: string, variant: (GLib.Variant | null)): void;
+        set_runtime_state(property_name: string, variant: GLib.Variant | null): void;
 
         /**
          * Sets the area of the stage that is responsive to mouse clicks when
@@ -1758,9 +1751,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
     }
 
     /**
@@ -1841,12 +1832,12 @@ export namespace Shell {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gcr.Prompt.ConstructorProps {
             choice_visible: boolean;
             choiceVisible: boolean;
-            confirm_actor: (Clutter.Text | null);
-            confirmActor: (Clutter.Text | null);
+            confirm_actor: Clutter.Text | null;
+            confirmActor: Clutter.Text | null;
             confirm_visible: boolean;
             confirmVisible: boolean;
-            password_actor: (Clutter.Text | null);
-            passwordActor: (Clutter.Text | null);
+            password_actor: Clutter.Text | null;
+            passwordActor: Clutter.Text | null;
             password_visible: boolean;
             passwordVisible: boolean;
             warning_visible: boolean;
@@ -1878,14 +1869,14 @@ export namespace Shell {
         /**
          * Text field for confirmation password
          */
-        get confirm_actor(): (Clutter.Text | null);
-        set confirm_actor(val: (Clutter.Text | null));
+        get confirm_actor(): Clutter.Text | null;
+        set confirm_actor(val: Clutter.Text | null);
 
         /**
          * Text field for confirmation password
          */
-        get confirmActor(): (Clutter.Text | null);
-        set confirmActor(val: (Clutter.Text | null));
+        get confirmActor(): Clutter.Text | null;
+        set confirmActor(val: Clutter.Text | null);
 
         /**
          * Whether the password confirm entry is visible or not.
@@ -1904,14 +1895,14 @@ export namespace Shell {
         /**
          * Text field for password
          */
-        get password_actor(): (Clutter.Text | null);
-        set password_actor(val: (Clutter.Text | null));
+        get password_actor(): Clutter.Text | null;
+        set password_actor(val: Clutter.Text | null);
 
         /**
          * Text field for password
          */
-        get passwordActor(): (Clutter.Text | null);
-        set passwordActor(val: (Clutter.Text | null));
+        get passwordActor(): Clutter.Text | null;
+        set passwordActor(val: Clutter.Text | null);
 
         /**
          * Whether the password entry is visible or not.
@@ -1987,25 +1978,25 @@ export namespace Shell {
          * Get the prompt password text actor
          * @returns the password actor
          */
-        get_confirm_actor(): (Clutter.Text | null);
+        get_confirm_actor(): Clutter.Text | null;
 
         /**
          * Get the prompt password text actor
          * @returns the password actor
          */
-        get_password_actor(): (Clutter.Text | null);
+        get_password_actor(): Clutter.Text | null;
 
         /**
          * Set the prompt password confirmation text actor
          * @param confirm_actor the confirm password actor
          */
-        set_confirm_actor(confirm_actor: (Clutter.Text | null)): void;
+        set_confirm_actor(confirm_actor: Clutter.Text | null): void;
 
         /**
          * Set the prompt password text actor
          * @param password_actor the password actor
          */
-        set_password_actor(password_actor: (Clutter.Text | null)): void;
+        set_password_actor(password_actor: Clutter.Text | null): void;
 
         /**
          * The string handle of the caller's window.
@@ -2237,7 +2228,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm(cancellable: (Gio.Cancellable | null)): Gcr.PromptReply;
+        confirm(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -2247,18 +2238,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gcr.PromptReply>;
-
-        /**
-         * Prompts for confirmation asking a cancel/continue style question.
-         * Set the various properties on the prompt before calling this method to
-         * represent the question correctly.
-         * 
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        confirm_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
 
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -2269,7 +2249,18 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gcr.PromptReply> | void);
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gcr.PromptReply> | void;
 
         /**
          * Complete an operation to prompt for confirmation.
@@ -2297,7 +2288,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm_run(cancellable: (Gio.Cancellable | null)): Gcr.PromptReply;
+        confirm_run(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
         /**
          * Get the string handle of the caller's window.
@@ -2417,7 +2408,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password(cancellable: (Gio.Cancellable | null)): string;
+        password(cancellable: Gio.Cancellable | null): string;
 
         /**
          * Prompts for password. Set the various properties on the prompt before calling
@@ -2426,17 +2417,7 @@ export namespace Shell {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Prompts for password. Set the various properties on the prompt before calling
-         * this method to explain which password should be entered.
-         * 
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        password_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Prompts for password. Set the various properties on the prompt before calling
@@ -2446,7 +2427,17 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Complete an operation to prompt for a password.
@@ -2479,7 +2470,7 @@ export namespace Shell {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password_run(cancellable: (Gio.Cancellable | null)): string;
+        password_run(cancellable: Gio.Cancellable | null): string;
 
         /**
          * Reset the contents and properties of the prompt.
@@ -2525,7 +2516,7 @@ export namespace Shell {
          * If this is `null`, then no additional choice is being displayed.
          * @param choice_label the additional choice or `null`
          */
-        set_choice_label(choice_label: (string | null)): void;
+        set_choice_label(choice_label: string | null): void;
 
         /**
          * Set the label for the continue button.
@@ -2582,7 +2573,7 @@ export namespace Shell {
          * If this string is `null` then no warning is displayed.
          * @param warning the warning or `null`
          */
-        set_warning(warning: (string | null)): void;
+        set_warning(warning: string | null): void;
 
         /**
          * close a prompt
@@ -2600,7 +2591,7 @@ export namespace Shell {
          * @param callback called when the operation completes
          * @virtual
          */
-        vfunc_prompt_confirm_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_prompt_confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Complete an operation to prompt for confirmation.
@@ -2622,7 +2613,7 @@ export namespace Shell {
          * @param callback called when the operation completes
          * @virtual
          */
-        vfunc_prompt_password_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_prompt_password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Complete an operation to prompt for a password.
@@ -2660,9 +2651,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.MountOperation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.MountOperation.ConstructorProps {}
     }
 
     /**
@@ -2731,9 +2720,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NM.SecretAgentOld.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NM.SecretAgentOld.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -2786,25 +2773,25 @@ export namespace Shell {
         /**
          * @param service 
          */
-        search_vpn_plugin(service: string): globalThis.Promise<(NM.VpnPluginInfo | null)>;
+        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo | null>;
 
         /**
          * @param service 
          * @param callback 
          */
-        search_vpn_plugin(service: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param service 
          * @param callback 
          */
-        search_vpn_plugin(service: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(NM.VpnPluginInfo | null)> | void);
+        search_vpn_plugin(service: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<NM.VpnPluginInfo | null> | void;
 
         /**
          * @param result 
          * @returns The found plugin or `null`
          */
-        search_vpn_plugin_finish(result: Gio.AsyncResult): (NM.VpnPluginInfo | null);
+        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
 
         /**
          * @param request_id 
@@ -2853,7 +2840,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2896,7 +2883,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2939,7 +2926,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2999,7 +2986,7 @@ export namespace Shell {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3051,7 +3038,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3095,19 +3082,16 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace PerfLog {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3259,7 +3243,7 @@ export namespace Shell {
          * @param name name of the event
          * @param arg the argument
          */
-        event_x(name: string, arg: (bigint | number)): void;
+        event_x(name: string, arg: bigint | number): void;
 
         /**
          * Replays the log by calling the given function for each event
@@ -3286,7 +3270,7 @@ export namespace Shell {
          * @param name name of the statistic
          * @param value new value for the statistic
          */
-        update_statistic_x(name: string, value: (bigint | number)): void;
+        update_statistic_x(name: string, value: bigint | number): void;
     }
 
 
@@ -3306,9 +3290,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PolkitAgent.Listener.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PolkitAgent.Listener.ConstructorProps {}
     }
 
     /**
@@ -3375,9 +3357,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3436,14 +3416,14 @@ export namespace Shell {
          * @param stream the stream to write the PNG image into
          * @param callback function to call returning success or failure
          */
-        static composite_to_stream(texture: Cogl.Texture, x: number, y: number, width: number, height: number, scale: number, cursor: (Cogl.Texture | null), cursor_x: number, cursor_y: number, cursor_scale: number, stream: Gio.OutputStream, callback: (Gio.AsyncReadyCallback<Screenshot> | null)): void;
+        static composite_to_stream(texture: Cogl.Texture, x: number, y: number, width: number, height: number, scale: number, cursor: Cogl.Texture | null, cursor_x: number, cursor_y: number, cursor_scale: number, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<Screenshot> | null): void;
 
         /**
          * Finish the asynchronous operation started by
          * shell_screenshot_composite_to_stream () and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          */
-        static composite_to_stream_finish(result: Gio.AsyncResult): (GdkPixbuf.Pixbuf | null);
+        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
 
         // Methods
         /**
@@ -3459,7 +3439,7 @@ export namespace Shell {
          * @param y The Y coordinate to pick
          * @param callback function to call returning success or failure of the async grabbing
          */
-        pick_color(x: number, y: number, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Picks the pixel at `x`, `y` and returns its color as {@link Cogl.Color}.
@@ -3467,7 +3447,7 @@ export namespace Shell {
          * @param y The Y coordinate to pick
          * @param callback function to call returning success or failure of the async grabbing
          */
-        pick_color(x: number, y: number, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Cogl.Color> | void);
+        pick_color(x: number, y: number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Cogl.Color> | void;
 
         /**
          * Finish the asynchronous operation started by `shell_screenshot_pick_color()`
@@ -3492,7 +3472,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Takes a screenshot of the whole screen
@@ -3501,7 +3481,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Mtk.Rectangle> | void);
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Mtk.Rectangle> | void;
 
         /**
          * Takes a screenshot of the passed in area and saves it
@@ -3524,7 +3504,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_area(x: number, y: number, width: number, height: number, stream: Gio.OutputStream, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        screenshot_area(x: number, y: number, width: number, height: number, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Takes a screenshot of the passed in area and saves it
@@ -3536,7 +3516,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_area(x: number, y: number, width: number, height: number, stream: Gio.OutputStream, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Mtk.Rectangle> | void);
+        screenshot_area(x: number, y: number, width: number, height: number, stream: Gio.OutputStream, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Mtk.Rectangle> | void;
 
         /**
          * Finish the asynchronous operation started by `shell_screenshot_screenshot_area()`
@@ -3557,19 +3537,19 @@ export namespace Shell {
         /**
          * Takes a screenshot of the whole screen as {@link Clutter.Content}.
          */
-        screenshot_stage_to_content(): globalThis.Promise<[Clutter.Content, number, (Clutter.Content | null), (Graphene.Point | null), number]>;
+        screenshot_stage_to_content(): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]>;
 
         /**
          * Takes a screenshot of the whole screen as {@link Clutter.Content}.
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_stage_to_content(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Takes a screenshot of the whole screen as {@link Clutter.Content}.
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_stage_to_content(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Clutter.Content, number, (Clutter.Content | null), (Graphene.Point | null), number]> | void);
+        screenshot_stage_to_content(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
 
         /**
          * Finish the asynchronous operation started by
@@ -3596,7 +3576,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_window(include_frame: boolean, include_cursor: boolean, stream: Gio.OutputStream, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        screenshot_window(include_frame: boolean, include_cursor: boolean, stream: Gio.OutputStream, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Takes a screenshot of the focused window (optionally omitting the frame)
@@ -3606,7 +3586,7 @@ export namespace Shell {
          * @param stream The stream for the screenshot
          * @param callback function to call returning success or failure of the async grabbing
          */
-        screenshot_window(include_frame: boolean, include_cursor: boolean, stream: Gio.OutputStream, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Mtk.Rectangle> | void);
+        screenshot_window(include_frame: boolean, include_cursor: boolean, stream: Gio.OutputStream, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Mtk.Rectangle> | void;
 
         /**
          * Finish the asynchronous operation started by `shell_screenshot_screenshot_window()`
@@ -3627,9 +3607,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {}
     }
 
     /**
@@ -3757,9 +3735,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Bin.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Bin.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {}
     }
 
     /**
@@ -3884,9 +3860,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends St.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends St.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {}
     }
 
     /**
@@ -4203,7 +4177,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "filter-keybinding": (arg0: Meta.KeyBinding) => (boolean | void);
+            "filter-keybinding": (arg0: Meta.KeyBinding) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4262,9 +4236,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4547,7 +4519,7 @@ export namespace Shell {
          * @param window the {@link Meta.Window}
          * @returns The newly created actor drawing `window`
          */
-        add_window(window: Meta.Window): (Clutter.Actor | null);
+        add_window(window: Meta.Window): Clutter.Actor | null;
 
         /**
          * Gets an array of all MetaWindows that were added to the layout

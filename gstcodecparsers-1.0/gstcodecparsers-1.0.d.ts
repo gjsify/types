@@ -3667,7 +3667,7 @@ export namespace GstCodecParsers {
      * @returns the {@link GstCodecParsers.LcevcMeta} with lowest id (usually 0) or `null` when there is no such metadata on `buffer`.
      * @since 1.26
      */
-    function buffer_get_lcevc_meta(buffer: Gst.Buffer): (LcevcMeta | null);
+    function buffer_get_lcevc_meta(buffer: Gst.Buffer): LcevcMeta | null;
 
     /**
      * Find the {@link GstCodecParsers.LcevcMeta} on `buffer` with the given `id`.
@@ -3679,7 +3679,7 @@ export namespace GstCodecParsers {
      * @returns the {@link GstCodecParsers.LcevcMeta} with `id` or `null` when there is no such metadata on `buffer`.
      * @since 1.26
      */
-    function buffer_get_lcevc_meta_id(buffer: Gst.Buffer, id: number): (LcevcMeta | null);
+    function buffer_get_lcevc_meta_id(buffer: Gst.Buffer, id: number): LcevcMeta | null;
 
     /**
      * Parses `data` and fills `packet` with the information of the next packet
@@ -3692,7 +3692,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function h263_parse(packet: Mpeg4Packet, data: number, offset: number, size: (bigint | number)): Mpeg4ParseResult;
+    function h263_parse(packet: Mpeg4Packet, data: number, offset: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Generating the according h264 bit stream of an aud.
@@ -3719,7 +3719,7 @@ export namespace GstCodecParsers {
      * @returns a {@link GstCodecParsers.H264BitWriterResult}
      * @since 1.22
      */
-    function h264_bit_writer_convert_to_nal(nal_prefix_size: number, packetized: boolean, has_startcode: boolean, add_trailings: boolean, raw_data: number, raw_size: (bigint | number), nal_size: number): [H264BitWriterResult, number, number];
+    function h264_bit_writer_convert_to_nal(nal_prefix_size: number, packetized: boolean, has_startcode: boolean, add_trailings: boolean, raw_data: number, raw_size: bigint | number, nal_size: number): [H264BitWriterResult, number, number];
 
     /**
      * Generates the according h264 bit stream nal bitstream of a filler with `size`.
@@ -3846,7 +3846,7 @@ export namespace GstCodecParsers {
      * @returns a {@link GstCodecParsers.H264ParserResult}
      * @since 1.22.9
      */
-    function h264_parser_identify_and_split_nalu_avc(nalparser: H264NalParser, data: number, offset: number, size: (bigint | number), nal_length_size: number, nalus: H264NalUnit[]): [H264ParserResult, number];
+    function h264_parser_identify_and_split_nalu_avc(nalparser: H264NalParser, data: number, offset: number, size: bigint | number, nal_length_size: number, nalus: H264NalUnit[]): [H264ParserResult, number];
 
     /**
      * Parses the headers of an Annex B coded NAL unit from `data` and puts the
@@ -3858,7 +3858,7 @@ export namespace GstCodecParsers {
      * @param nalu The {@link GstCodecParsers.H264NalUnit} to store the identified NAL unit in
      * @returns a {@link GstCodecParsers.H264ParserResult}
      */
-    function h264_parser_identify_nalu(nalparser: H264NalParser, data: number, offset: number, size: (bigint | number), nalu: H264NalUnit): H264ParserResult;
+    function h264_parser_identify_nalu(nalparser: H264NalParser, data: number, offset: number, size: bigint | number, nalu: H264NalUnit): H264ParserResult;
 
     /**
      * Parses the headers of an AVC coded NAL unit from `data` and puts the result
@@ -3871,7 +3871,7 @@ export namespace GstCodecParsers {
      * @param nalu The {@link GstCodecParsers.H264NalUnit} to store the identified NAL unit in
      * @returns a {@link GstCodecParsers.H264ParserResult}
      */
-    function h264_parser_identify_nalu_avc(nalparser: H264NalParser, data: number, offset: number, size: (bigint | number), nal_length_size: number, nalu: H264NalUnit): H264ParserResult;
+    function h264_parser_identify_nalu_avc(nalparser: H264NalParser, data: number, offset: number, size: bigint | number, nal_length_size: number, nalu: H264NalUnit): H264ParserResult;
 
     /**
      * Parses `data` and fills `nalu` from the next nalu data from `data`.
@@ -3888,7 +3888,7 @@ export namespace GstCodecParsers {
      * @param nalu The {@link GstCodecParsers.H264NalUnit} where to store parsed nal headers
      * @returns a {@link GstCodecParsers.H264ParserResult}
      */
-    function h264_parser_identify_nalu_unchecked(nalparser: H264NalParser, data: number, offset: number, size: (bigint | number), nalu: H264NalUnit): H264ParserResult;
+    function h264_parser_identify_nalu_unchecked(nalparser: H264NalParser, data: number, offset: number, size: bigint | number, nalu: H264NalUnit): H264ParserResult;
 
     /**
      * Copy `au` into new {@link Gst.Buffer} and insert `sei` into the {@link Gst.Buffer}.
@@ -3900,7 +3900,7 @@ export namespace GstCodecParsers {
      * @returns a SEI inserted {@link Gst.Buffer} or `null`   if cannot figure out proper position to insert a `sei`
      * @since 1.18
      */
-    function h264_parser_insert_sei(nalparser: H264NalParser, au: Gst.Buffer, sei: Gst.Memory): (Gst.Buffer | null);
+    function h264_parser_insert_sei(nalparser: H264NalParser, au: Gst.Buffer, sei: Gst.Memory): Gst.Buffer | null;
 
     /**
      * Copy `au` into new {@link Gst.Buffer} and insert `sei` into the {@link Gst.Buffer}.
@@ -3914,7 +3914,7 @@ export namespace GstCodecParsers {
      * @returns a SEI inserted {@link Gst.Buffer} or `null`   if cannot figure out proper position to insert a `sei`
      * @since 1.18
      */
-    function h264_parser_insert_sei_avc(nalparser: H264NalParser, nal_length_size: number, au: Gst.Buffer, sei: Gst.Memory): (Gst.Buffer | null);
+    function h264_parser_insert_sei_avc(nalparser: H264NalParser, nal_length_size: number, au: Gst.Buffer, sei: Gst.Memory): Gst.Buffer | null;
 
     /**
      * Parses AVCDecoderConfigurationRecord data and fill into `config`.
@@ -3928,7 +3928,7 @@ export namespace GstCodecParsers {
      * @returns a {@link GstCodecParsers.H264ParserResult}
      * @since 1.22
      */
-    function h264_parser_parse_decoder_config_record(nalparser: H264NalParser, data: number, size: (bigint | number)): [H264ParserResult, H264DecoderConfigRecord];
+    function h264_parser_parse_decoder_config_record(nalparser: H264NalParser, data: number, size: bigint | number): [H264ParserResult, H264DecoderConfigRecord];
 
     /**
      * This function should be called in the case one doesn't need to
@@ -4087,7 +4087,7 @@ export namespace GstCodecParsers {
      * @returns the name for `slice_type` or `null` on error
      * @since 1.24
      */
-    function h264_slice_type_to_string(slice_type: H264SliceType): (string | null);
+    function h264_slice_type_to_string(slice_type: H264SliceType): string | null;
 
     /**
      * Calculate framerate of a video sequence using `sps` VUI information,
@@ -4188,7 +4188,7 @@ export namespace GstCodecParsers {
      * @returns the name for `profile` or `null` on error
      * @since 1.18
      */
-    function h265_profile_to_string(profile: H265Profile): (string | null);
+    function h265_profile_to_string(profile: H265Profile): string | null;
 
     /**
      * Converts quantization matrix `quant` from uprightdiagonal scan order to
@@ -4301,7 +4301,7 @@ export namespace GstCodecParsers {
      * @returns the name for `slice_type` or `null` on error
      * @since 1.24
      */
-    function h265_slice_type_to_string(slice_type: H265SliceType): (string | null);
+    function h265_slice_type_to_string(slice_type: H265SliceType): string | null;
 
     /**
      * Parses `data`, and fills the `aps` structure.
@@ -4356,7 +4356,7 @@ export namespace GstCodecParsers {
      * @returns the name for `profile` or `null` on error
      * @since 1.26
      */
-    function h266_profile_to_string(profile: H266Profile): (string | null);
+    function h266_profile_to_string(profile: H266Profile): string | null;
 
     /**
      * @param colorspace_string 
@@ -4448,7 +4448,7 @@ export namespace GstCodecParsers {
      * @returns a {@link GstCodecParsers.JpegBitWriterResult}
      * @since 1.26
      */
-    function jpeg_bit_writer_segment_with_data(marker: JpegMarker, seg_data: (number | null), seg_size: number, size: number): [JpegBitWriterResult, number, number];
+    function jpeg_bit_writer_segment_with_data(marker: JpegMarker, seg_data: number | null, seg_size: number, size: number): [JpegBitWriterResult, number, number];
 
     /**
      * Fills in `huf_tables` with the default AC/DC Huffman tables, as
@@ -4475,7 +4475,7 @@ export namespace GstCodecParsers {
      * @returns TRUE if a packet start code was found.
      * @since 1.6
      */
-    function jpeg_parse(data: number, size: (bigint | number), offset: number): [boolean, JpegSegment];
+    function jpeg_parse(data: number, size: bigint | number, offset: number): [boolean, JpegSegment];
 
     /**
      * Gets the {@link GObject.GType} of the LCEVC meta API.
@@ -4502,7 +4502,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse(packet: Mpeg4Packet, skip_user_data: boolean, vop: Mpeg4VideoObjectPlane, data: number, offset: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse(packet: Mpeg4Packet, skip_user_data: boolean, vop: Mpeg4VideoObjectPlane, data: number, offset: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parses `data` containing the group of video object plane packet, and fills
@@ -4512,7 +4512,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse_group_of_vop(gov: Mpeg4GroupOfVOP, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_group_of_vop(gov: Mpeg4GroupOfVOP, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parses `data` containing the video object layer packet, and fills
@@ -4523,7 +4523,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse_video_object_layer(vol: Mpeg4VideoObjectLayer, vo: Mpeg4VisualObject, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_video_object_layer(vol: Mpeg4VideoObjectLayer, vo: Mpeg4VisualObject, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parses `data` containing the video object plane packet, and fills the `vol`
@@ -4535,7 +4535,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse_video_object_plane(vop: Mpeg4VideoObjectPlane, sprite_trajectory: Mpeg4SpriteTrajectory, vol: Mpeg4VideoObjectLayer, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_video_object_plane(vop: Mpeg4VideoObjectPlane, sprite_trajectory: Mpeg4SpriteTrajectory, vol: Mpeg4VideoObjectLayer, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parsers `data` containing the video packet header
@@ -4547,14 +4547,14 @@ export namespace GstCodecParsers {
      * @param data The data to parse, should be set after the resync marker.
      * @param size The size of the data to parse
      */
-    function mpeg4_parse_video_packet_header(videopackethdr: Mpeg4VideoPacketHdr, vol: Mpeg4VideoObjectLayer, vop: Mpeg4VideoObjectPlane, sprite_trajectory: Mpeg4SpriteTrajectory, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_video_packet_header(videopackethdr: Mpeg4VideoPacketHdr, vol: Mpeg4VideoObjectLayer, vop: Mpeg4VideoObjectPlane, sprite_trajectory: Mpeg4SpriteTrajectory, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * @param shorthdr 
      * @param data 
      * @param size 
      */
-    function mpeg4_parse_video_plane_short_header(shorthdr: Mpeg4VideoPlaneShortHdr, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_video_plane_short_header(shorthdr: Mpeg4VideoPlaneShortHdr, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parses `data` containing the visual object packet, and fills
@@ -4565,7 +4565,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse_visual_object(vo: Mpeg4VisualObject, signal_type: Mpeg4VideoSignalType, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_visual_object(vo: Mpeg4VisualObject, signal_type: Mpeg4VideoSignalType, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * Parses `data` containing the visual object sequence packet, and fills
@@ -4575,7 +4575,7 @@ export namespace GstCodecParsers {
      * @param size The size of the `data` to parse
      * @returns a {@link GstCodecParsers.Mpeg4ParseResult}
      */
-    function mpeg4_parse_visual_object_sequence(vos: Mpeg4VisualObjectSequence, data: number, size: (bigint | number)): Mpeg4ParseResult;
+    function mpeg4_parse_visual_object_sequence(vos: Mpeg4VisualObjectSequence, data: number, size: bigint | number): Mpeg4ParseResult;
 
     /**
      * @param hdr 
@@ -4598,7 +4598,7 @@ export namespace GstCodecParsers {
      * @param offset The offset from which to start parsing
      * @returns TRUE if a packet start code was found, otherwise FALSE.
      */
-    function mpeg_video_parse(packet: MpegVideoPacket, data: number, size: (bigint | number), offset: number): boolean;
+    function mpeg_video_parse(packet: MpegVideoPacket, data: number, size: bigint | number, offset: number): boolean;
 
     /**
      * Converts quantization matrix `quant` from zigzag scan order to
@@ -4649,7 +4649,7 @@ export namespace GstCodecParsers {
      * @param size the size of `data`
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_identify_next_bdu(data: number, size: (bigint | number)): [VC1ParserResult, VC1BDU];
+    function vc1_identify_next_bdu(data: number, size: bigint | number): [VC1ParserResult, VC1BDU];
 
     /**
      * Parses `data`, and sets `entrypoint` fields.
@@ -4658,7 +4658,7 @@ export namespace GstCodecParsers {
      * @param seqhdr The {@link GstCodecParsers.VC1SeqHdr} currently being parsed
      * @returns a {@link GstCodecParsers.VC1EntryPointHdr}
      */
-    function vc1_parse_entry_point_header(data: number, size: (bigint | number), seqhdr: VC1SeqHdr): [VC1ParserResult, VC1EntryPointHdr];
+    function vc1_parse_entry_point_header(data: number, size: bigint | number, seqhdr: VC1SeqHdr): [VC1ParserResult, VC1EntryPointHdr];
 
     /**
      * Parses `data`, and fills `fieldhdr` fields.
@@ -4669,7 +4669,7 @@ export namespace GstCodecParsers {
      * @param bitplanes The {@link GstCodecParsers.VC1BitPlanes} to store bitplanes in or `null`
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_field_header(data: number, size: (bigint | number), fieldhdr: VC1FrameHdr, seqhdr: VC1SeqHdr, bitplanes: VC1BitPlanes): VC1ParserResult;
+    function vc1_parse_field_header(data: number, size: bigint | number, fieldhdr: VC1FrameHdr, seqhdr: VC1SeqHdr, bitplanes: VC1BitPlanes): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `entrypoint` fields.
@@ -4680,7 +4680,7 @@ export namespace GstCodecParsers {
      * @param bitplanes The {@link GstCodecParsers.VC1BitPlanes} to store bitplanes in or `null`
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_frame_header(data: number, size: (bigint | number), framehdr: VC1FrameHdr, seqhdr: VC1SeqHdr, bitplanes: VC1BitPlanes): VC1ParserResult;
+    function vc1_parse_frame_header(data: number, size: bigint | number, framehdr: VC1FrameHdr, seqhdr: VC1SeqHdr, bitplanes: VC1BitPlanes): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `framelayer` fields.
@@ -4689,7 +4689,7 @@ export namespace GstCodecParsers {
      * @param framelayer The {@link GstCodecParsers.VC1FrameLayer} to fill.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_frame_layer(data: number, size: (bigint | number), framelayer: VC1FrameLayer): VC1ParserResult;
+    function vc1_parse_frame_layer(data: number, size: bigint | number, framelayer: VC1FrameLayer): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `seqhdr` fields.
@@ -4698,7 +4698,7 @@ export namespace GstCodecParsers {
      * @param seqhdr The {@link GstCodecParsers.VC1SeqHdr} to set.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_sequence_header(data: number, size: (bigint | number), seqhdr: VC1SeqHdr): VC1ParserResult;
+    function vc1_parse_sequence_header(data: number, size: bigint | number, seqhdr: VC1SeqHdr): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `structa` fields.
@@ -4707,7 +4707,7 @@ export namespace GstCodecParsers {
      * @param structa The {@link GstCodecParsers.VC1SeqStructA} to set.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_sequence_header_struct_a(data: number, size: (bigint | number), structa: VC1SeqStructA): VC1ParserResult;
+    function vc1_parse_sequence_header_struct_a(data: number, size: bigint | number, structa: VC1SeqStructA): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `structb` fields.
@@ -4716,7 +4716,7 @@ export namespace GstCodecParsers {
      * @param structb The {@link GstCodecParsers.VC1SeqStructB} to set.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_sequence_header_struct_b(data: number, size: (bigint | number), structb: VC1SeqStructB): VC1ParserResult;
+    function vc1_parse_sequence_header_struct_b(data: number, size: bigint | number, structb: VC1SeqStructB): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `structc` fields.
@@ -4725,7 +4725,7 @@ export namespace GstCodecParsers {
      * @param structc The {@link GstCodecParsers.VC1SeqStructC} to set.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_sequence_header_struct_c(data: number, size: (bigint | number), structc: VC1SeqStructC): VC1ParserResult;
+    function vc1_parse_sequence_header_struct_c(data: number, size: bigint | number, structc: VC1SeqStructC): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `seqlayer` fields.
@@ -4734,7 +4734,7 @@ export namespace GstCodecParsers {
      * @param seqlayer The {@link GstCodecParsers.VC1SeqLayer} to set.
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      */
-    function vc1_parse_sequence_layer(data: number, size: (bigint | number), seqlayer: VC1SeqLayer): VC1ParserResult;
+    function vc1_parse_sequence_layer(data: number, size: bigint | number, seqlayer: VC1SeqLayer): VC1ParserResult;
 
     /**
      * Parses `data`, and fills `slicehdr` fields.
@@ -4745,7 +4745,7 @@ export namespace GstCodecParsers {
      * @returns a {@link GstCodecParsers.VC1ParserResult}
      * @since 1.2
      */
-    function vc1_parse_slice_header(data: number, size: (bigint | number), slicehdr: VC1SliceHdr, seqhdr: VC1SeqHdr): VC1ParserResult;
+    function vc1_parse_slice_header(data: number, size: bigint | number, slicehdr: VC1SliceHdr, seqhdr: VC1SeqHdr): VC1ParserResult;
 
     /**
      * Parameters of Constrained Directional Enhancement Filter (CDEF).
@@ -6413,10 +6413,7 @@ export namespace GstCodecParsers {
         static $gtype: GObject.GType<H264NalParser>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**
@@ -8109,10 +8106,7 @@ export namespace GstCodecParsers {
         static $gtype: GObject.GType<H265Parser>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**
@@ -8133,7 +8127,7 @@ export namespace GstCodecParsers {
          * @param consumed the size of consumed bytes
          * @returns a {@link GstCodecParsers.H265ParserResult}
          */
-        identify_and_split_nalu_hevc(data: number, offset: number, size: (bigint | number), nal_length_size: number, nalus: H265NalUnit[], consumed: (bigint | number)): H265ParserResult;
+        identify_and_split_nalu_hevc(data: number, offset: number, size: bigint | number, nal_length_size: number, nalus: H265NalUnit[], consumed: bigint | number): H265ParserResult;
 
         /**
          * Parses `data` and fills `nalu` from the next nalu data from `data`
@@ -8143,7 +8137,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H265NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H265ParserResult}
          */
-        identify_nalu(data: number, offset: number, size: (bigint | number), nalu: H265NalUnit): H265ParserResult;
+        identify_nalu(data: number, offset: number, size: bigint | number, nalu: H265NalUnit): H265ParserResult;
 
         /**
          * Parses `data` and sets `nalu`.
@@ -8154,7 +8148,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H265NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H265ParserResult}
          */
-        identify_nalu_hevc(data: number, offset: number, size: (bigint | number), nal_length_size: number, nalu: H265NalUnit): H265ParserResult;
+        identify_nalu_hevc(data: number, offset: number, size: bigint | number, nal_length_size: number, nalu: H265NalUnit): H265ParserResult;
 
         /**
          * Parses `data` and fills `nalu` from the next nalu data from `data`.
@@ -8170,7 +8164,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H265NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H265ParserResult}
          */
-        identify_nalu_unchecked(data: number, offset: number, size: (bigint | number), nalu: H265NalUnit): H265ParserResult;
+        identify_nalu_unchecked(data: number, offset: number, size: bigint | number, nalu: H265NalUnit): H265ParserResult;
 
         /**
          * Copy `au` into new {@link Gst.Buffer} and insert `sei` into the {@link Gst.Buffer}.
@@ -8180,7 +8174,7 @@ export namespace GstCodecParsers {
          * @param sei a {@link Gst.Memory} containing a SEI nal
          * @returns a SEI inserted {@link Gst.Buffer} or `null`   if cannot figure out proper position to insert a `sei`
          */
-        insert_sei(au: Gst.Buffer, sei: Gst.Memory): (Gst.Buffer | null);
+        insert_sei(au: Gst.Buffer, sei: Gst.Memory): Gst.Buffer | null;
 
         /**
          * Copy `au` into new {@link Gst.Buffer} and insert `sei` into the {@link Gst.Buffer}.
@@ -8192,7 +8186,7 @@ export namespace GstCodecParsers {
          * @param sei a {@link Gst.Memory} containing a SEI nal
          * @returns a SEI inserted {@link Gst.Buffer} or `null`   if cannot figure out proper position to insert a `sei`
          */
-        insert_sei_hevc(nal_length_size: number, au: Gst.Buffer, sei: Gst.Memory): (Gst.Buffer | null);
+        insert_sei_hevc(nal_length_size: number, au: Gst.Buffer, sei: Gst.Memory): Gst.Buffer | null;
 
         /**
          * Link SPS and PPS of `parser` to `slice`. `slice` must be valid and parsed
@@ -8212,7 +8206,7 @@ export namespace GstCodecParsers {
          * @param size the size of `data`
          * @returns a {@link GstCodecParsers.H265ParserResult}
          */
-        parse_decoder_config_record(data: number, size: (bigint | number)): [H265ParserResult, H265DecoderConfigRecord];
+        parse_decoder_config_record(data: number, size: bigint | number): [H265ParserResult, H265DecoderConfigRecord];
 
         /**
          * This function should be called in the case one doesn't need to
@@ -10772,7 +10766,7 @@ export namespace GstCodecParsers {
          * @param consumed the size of consumed bytes
          * @returns a {@link GstCodecParsers.H266ParserResult}
          */
-        identify_and_split_nalu_vvc(data: number, offset: number, size: (bigint | number), nal_length_size: number, nalus: H266NalUnit[], consumed: (bigint | number)): H266ParserResult;
+        identify_and_split_nalu_vvc(data: number, offset: number, size: bigint | number, nal_length_size: number, nalus: H266NalUnit[], consumed: bigint | number): H266ParserResult;
 
         /**
          * Parses `data` and fills `nalu` from the next nalu data from `data`
@@ -10782,7 +10776,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H266NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H266ParserResult}
          */
-        identify_nalu(data: number, offset: number, size: (bigint | number), nalu: H266NalUnit): H266ParserResult;
+        identify_nalu(data: number, offset: number, size: bigint | number, nalu: H266NalUnit): H266ParserResult;
 
         /**
          * Parses `data` and fills `nalu` from the next nalu data from `data`.
@@ -10798,7 +10792,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H266NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H266ParserResult}
          */
-        identify_nalu_unchecked(data: number, offset: number, size: (bigint | number), nalu: H266NalUnit): H266ParserResult;
+        identify_nalu_unchecked(data: number, offset: number, size: bigint | number, nalu: H266NalUnit): H266ParserResult;
 
         /**
          * Parses `data` and sets `nalu`.
@@ -10809,7 +10803,7 @@ export namespace GstCodecParsers {
          * @param nalu The {@link GstCodecParsers.H266NalUnit} where to store parsed nal headers
          * @returns a {@link GstCodecParsers.H266ParserResult}
          */
-        identify_nalu_vvc(data: number, offset: number, size: (bigint | number), nal_length_size: number, nalu: H266NalUnit): H266ParserResult;
+        identify_nalu_vvc(data: number, offset: number, size: bigint | number, nal_length_size: number, nalu: H266NalUnit): H266ParserResult;
 
         /**
          * Parses `data`, and fills the `aps` structure.
@@ -10845,7 +10839,7 @@ export namespace GstCodecParsers {
          * @param size the size of `data`
          * @returns a {@link GstCodecParsers.H266ParserResult}
          */
-        parse_decoder_config_record(data: number, size: (bigint | number)): [H266ParserResult, H266DecoderConfigRecord];
+        parse_decoder_config_record(data: number, size: bigint | number): [H266ParserResult, H266DecoderConfigRecord];
 
         /**
          * This function should be called in the case one doesn't need to
@@ -14433,7 +14427,7 @@ export namespace GstCodecParsers {
          * @param size The size of the `data` to parse
          * @returns a {@link GstCodecParsers.Vp8ParserResult}
          */
-        parse_frame_header(frame_hdr: Vp8FrameHdr, data: number, size: (bigint | number)): Vp8ParserResult;
+        parse_frame_header(frame_hdr: Vp8FrameHdr, data: number, size: bigint | number): Vp8ParserResult;
     }
 
 
@@ -14794,7 +14788,7 @@ export namespace GstCodecParsers {
          * @param size The size of the `data` to parse
          * @returns a {@link GstCodecParsers.Vp9ParserResult}
          */
-        parse_frame_header(frame_hdr: Vp9FrameHdr, data: number, size: (bigint | number)): Vp9ParserResult;
+        parse_frame_header(frame_hdr: Vp9FrameHdr, data: number, size: bigint | number): Vp9ParserResult;
 
         /**
          * Parses the VP9 bitstream contained in `data`, and fills in `superframe_info`
@@ -14808,7 +14802,7 @@ export namespace GstCodecParsers {
          * @param size The size of the `data` to parse
          * @returns a {@link GstCodecParsers.Vp9ParserResult}
          */
-        parse_superframe_info(superframe_info: Vp9SuperframeInfo, data: number, size: (bigint | number)): Vp9ParserResult;
+        parse_superframe_info(superframe_info: Vp9SuperframeInfo, data: number, size: bigint | number): Vp9ParserResult;
     }
 
 

@@ -43,7 +43,7 @@ export namespace GSSDP {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -194,9 +194,9 @@ export namespace GSSDP {
 
         _init(...args: any[]): void;
 
-        static ["new"](main_context: (GLib.MainContext | null), iface: (string | null)): Client;
+        static ["new"](main_context: GLib.MainContext | null, iface: string | null): Client;
 
-        static new_with_port(iface: (string | null), msearch_port: number): Client;
+        static new_with_port(iface: string | null, msearch_port: number): Client;
 
         // Signals
         /** @signal */
@@ -329,7 +329,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -373,7 +373,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

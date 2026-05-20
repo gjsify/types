@@ -120,7 +120,7 @@ export namespace SpiceClientGLib {
         static USB_SERVICE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -369,7 +369,7 @@ export namespace SpiceClientGLib {
      * @param size data length in bytes
      * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: (bigint | number)): void;
+    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: bigint | number): void;
 
     /**
      * Release the clipboard (for example, when the client loses the
@@ -409,7 +409,7 @@ export namespace SpiceClientGLib {
      * @since 0.6
      * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_selection_notify(channel: MainChannel, selection: number, type: number, data: number, size: (bigint | number)): void;
+    function main_clipboard_selection_notify(channel: MainChannel, selection: number, type: number, data: number, size: bigint | number): void;
 
     /**
      * Release the clipboard (for example, when the client loses the
@@ -441,7 +441,7 @@ export namespace SpiceClientGLib {
      * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
      * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
-    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
     /**
      * See: `spice_main_channel_file_copy_async()`
      * @param channel a {@link SpiceClientGLib.MainChannel}
@@ -452,7 +452,7 @@ export namespace SpiceClientGLib {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
      * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
-    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<MainChannel> | null)): void;
+    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<MainChannel> | null): void;
     /**
      * See: `spice_main_channel_file_copy_async()`
      * @param channel a {@link SpiceClientGLib.MainChannel}
@@ -463,7 +463,7 @@ export namespace SpiceClientGLib {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
      * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
-    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<MainChannel> | null)): (globalThis.Promise<boolean> | void);
+    function main_file_copy_async(channel: MainChannel, sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<MainChannel> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes copying the file started with
@@ -580,7 +580,7 @@ export namespace SpiceClientGLib {
      * @since 0.15
      * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
-    function port_write_async(port: PortChannel, buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+    function port_write_async(port: PortChannel, buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
@@ -593,7 +593,7 @@ export namespace SpiceClientGLib {
      * @since 0.15
      * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
-    function port_write_async(port: PortChannel, buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<PortChannel> | null)): void;
+    function port_write_async(port: PortChannel, buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PortChannel> | null): void;
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
@@ -606,7 +606,7 @@ export namespace SpiceClientGLib {
      * @since 0.15
      * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
-    function port_write_async(port: PortChannel, buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<PortChannel> | null)): (globalThis.Promise<number> | void);
+    function port_write_async(port: PortChannel, buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PortChannel> | null): globalThis.Promise<number> | void;
 
     /**
      * Finishes a port write operation.
@@ -626,7 +626,7 @@ export namespace SpiceClientGLib {
      * @param time stream timestamp
      * @deprecated since 0.35: use `spice_record_channel_send_data()` instead.
      */
-    function record_send_data(channel: RecordChannel, data: null, bytes: (bigint | number), time: number): void;
+    function record_send_data(channel: RecordChannel, data: null, bytes: bigint | number, time: number): void;
 
     /**
      * Set various properties on `session`, according to the commandline
@@ -668,7 +668,7 @@ export namespace SpiceClientGLib {
     /**
      * @gir-type Alias
      */
-    type VReader = (object | null);
+    type VReader = object | null;
 
     /**
      * @gir-type Flags
@@ -777,7 +777,7 @@ export namespace SpiceClientGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](session: Session, context: (GLib.MainContext | null), name: (string | null)): Audio;
+        static ["new"](session: Session, context: GLib.MainContext | null, name: string | null): Audio;
 
         // Signals
         /** @signal */
@@ -803,7 +803,7 @@ export namespace SpiceClientGLib {
          * @param session the {@link SpiceClientGLib.Session} to connect to
          * @param context a {@link GLib.MainContext} to attach to (or `null` for default).
          */
-        static get(session: Session, context: (GLib.MainContext | null)): Audio;
+        static get(session: Session, context: GLib.MainContext | null): Audio;
 
         // Virtual methods
         /**
@@ -818,7 +818,7 @@ export namespace SpiceClientGLib {
          * @param callback 
          * @virtual
          */
-        vfunc_get_playback_volume_info_async(cancellable: (Gio.Cancellable | null), main_channel: MainChannel, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_playback_volume_info_async(cancellable: Gio.Cancellable | null, main_channel: MainChannel, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param res 
@@ -835,7 +835,7 @@ export namespace SpiceClientGLib {
          * @param callback 
          * @virtual
          */
-        vfunc_get_record_volume_info_async(cancellable: (Gio.Cancellable | null), main_channel: MainChannel, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_record_volume_info_async(cancellable: Gio.Cancellable | null, main_channel: MainChannel, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param res 
@@ -884,8 +884,8 @@ export namespace SpiceClientGLib {
             socket: Gio.Socket;
             spice_session: Session;
             spiceSession: Session;
-            total_read_bytes: (bigint | number);
-            totalReadBytes: (bigint | number);
+            total_read_bytes: bigint | number;
+            totalReadBytes: bigint | number;
         }
     }
 
@@ -1074,7 +1074,7 @@ export namespace SpiceClientGLib {
          * operation.
          * @param cancellable optional GCancellable object, `null` to ignore
          */
-        flush_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        flush_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Forces an asynchronous write of all user-space buffered data for
@@ -1086,7 +1086,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
          */
-        flush_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        flush_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Forces an asynchronous write of all user-space buffered data for
@@ -1098,7 +1098,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
          */
-        flush_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        flush_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes flushing a channel.
@@ -1311,7 +1311,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @since 0.36
              */
-            "gst-video-overlay": (arg0: Gst.Pipeline) => (boolean | void);
+            "gst-video-overlay": (arg0: Gst.Pipeline) => boolean | void;
             /**
              * @signal
              * @since 0.35
@@ -1489,10 +1489,10 @@ export namespace SpiceClientGLib {
             file: Gio.File;
             id: number;
             progress: number;
-            total_bytes: (bigint | number);
-            totalBytes: (bigint | number);
-            transferred_bytes: (bigint | number);
-            transferredBytes: (bigint | number);
+            total_bytes: bigint | number;
+            totalBytes: bigint | number;
+            transferred_bytes: bigint | number;
+            transferredBytes: bigint | number;
         }
     }
 
@@ -1737,7 +1737,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
              * @run-last
              */
-            "main-clipboard-grab": (arg0: null, arg1: number) => (boolean | void);
+            "main-clipboard-grab": (arg0: null, arg1: number) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1752,7 +1752,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-request instead.
              * @run-last
              */
-            "main-clipboard-request": (arg0: number) => (boolean | void);
+            "main-clipboard-request": (arg0: number) => boolean | void;
             /**
              * Informs that clipboard selection data are available.
              * @signal
@@ -1767,7 +1767,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-grab": (arg0: number, arg1: null, arg2: number) => (boolean | void);
+            "main-clipboard-selection-grab": (arg0: number, arg1: null, arg2: number) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1782,7 +1782,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-request": (arg0: number, arg1: number) => (boolean | void);
+            "main-clipboard-selection-request": (arg0: number, arg1: number) => boolean | void;
             /**
              * Notify when the mouse mode has changed.
              * @signal
@@ -2014,7 +2014,7 @@ export namespace SpiceClientGLib {
          * @param data clipboard data
          * @param size data length in bytes
          */
-        clipboard_selection_notify(selection: number, type: number, data: number, size: (bigint | number)): void;
+        clipboard_selection_notify(selection: number, type: number, data: number, size: bigint | number): void;
 
         /**
          * Release the clipboard (for example, when the client loses the
@@ -2060,7 +2060,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          */
-        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): globalThis.Promise<boolean>;
+        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
         /**
          * Copies the file `sources` to guest
@@ -2092,7 +2092,7 @@ export namespace SpiceClientGLib {
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Copies the file `sources` to guest
@@ -2124,7 +2124,7 @@ export namespace SpiceClientGLib {
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes copying the file started with
@@ -2414,7 +2414,7 @@ export namespace SpiceClientGLib {
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
          */
-        write_async(buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+        write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
@@ -2425,7 +2425,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional GCancellable object, NULL to ignore
          * @param callback callback to call when the request is satisfied
          */
-        write_async(buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
@@ -2436,7 +2436,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional GCancellable object, NULL to ignore
          * @param callback callback to call when the request is satisfied
          */
-        write_async(buffer: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes a port write operation.
@@ -2527,21 +2527,21 @@ export namespace SpiceClientGLib {
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
          */
-        query_status_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<QmpStatus>;
+        query_status_async(cancellable: Gio.Cancellable | null): globalThis.Promise<QmpStatus>;
 
         /**
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
          */
-        query_status_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_status_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
          */
-        query_status_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<QmpStatus> | void);
+        query_status_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<QmpStatus> | void;
 
         /**
          * Finish the asynchronous status query.
@@ -2555,7 +2555,7 @@ export namespace SpiceClientGLib {
          * @param action a VM action
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        vm_action_async(action: QmpPortVmAction, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Request the VM to perform an action.
@@ -2563,7 +2563,7 @@ export namespace SpiceClientGLib {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
          */
-        vm_action_async(action: QmpPortVmAction, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request the VM to perform an action.
@@ -2571,7 +2571,7 @@ export namespace SpiceClientGLib {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
          */
-        vm_action_async(action: QmpPortVmAction, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous VM action and returns the result.
@@ -2683,7 +2683,7 @@ export namespace SpiceClientGLib {
          * @param bytes size of `data`
          * @param time stream timestamp
          */
-        send_data(data: null, bytes: (bigint | number), time: number): void;
+        send_data(data: null, bytes: bigint | number, time: number): void;
     }
 
 
@@ -2755,7 +2755,7 @@ export namespace SpiceClientGLib {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ca: (Uint8Array | string);
+            ca: Uint8Array | string;
             ca_file: string;
             caFile: string;
             cache_size: number;
@@ -2789,7 +2789,7 @@ export namespace SpiceClientGLib {
             port: string;
             protocol: number;
             proxy: string;
-            pubkey: (Uint8Array | string);
+            pubkey: Uint8Array | string;
             read_only: boolean;
             readOnly: boolean;
             secure_channels: string[];
@@ -2831,7 +2831,7 @@ export namespace SpiceClientGLib {
          * @since 0.15
          */
         get ca(): Uint8Array;
-        set ca(val: (Uint8Array | string));
+        set ca(val: Uint8Array | string);
 
         /**
          * File holding the CA certificates for the host the client is
@@ -3052,7 +3052,7 @@ export namespace SpiceClientGLib {
         set proxy(val: string);
 
         get pubkey(): Uint8Array;
-        set pubkey(val: (Uint8Array | string));
+        set pubkey(val: Uint8Array | string);
 
         /**
          * Whether this connection is read-only mode.
@@ -3329,9 +3329,7 @@ export namespace SpiceClientGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Channel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Channel.ConstructorProps {}
     }
 
     /**
@@ -3400,9 +3398,7 @@ export namespace SpiceClientGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3859,7 +3855,7 @@ export namespace SpiceClientGLib {
          * @param device a {@link SpiceClientGLib.UsbDevice} to redirect
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        connect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        connect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously connects the `device`. When completed, `callback` will be called.
@@ -3869,7 +3865,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        connect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously connects the `device`. When completed, `callback` will be called.
@@ -3879,7 +3875,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        connect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async operation. See `spice_usb_device_manager_connect_device_async()`.
@@ -3901,7 +3897,7 @@ export namespace SpiceClientGLib {
          * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        disconnect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously disconnects the `device`. When completed, `callback` will be called.
@@ -3911,7 +3907,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        disconnect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously disconnects the `device`. When completed, `callback` will be called.
@@ -3921,7 +3917,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        disconnect_device_async(device: UsbDevice, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async operation. See `spice_usb_device_manager_disconnect_device_async()`.
@@ -3941,7 +3937,7 @@ export namespace SpiceClientGLib {
          * @param filter filter string for selecting which devices to return,      see {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter      string format
          * @returns a %GPtrArray array of %SpiceUsbDevice
          */
-        get_devices_with_filter(filter: (string | null)): UsbDevice[];
+        get_devices_with_filter(filter: string | null): UsbDevice[];
 
         /**
          * Finds if the `device` is connected.
@@ -3998,7 +3994,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4042,7 +4038,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4057,9 +4053,7 @@ export namespace SpiceClientGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Channel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Channel.ConstructorProps {}
     }
 
     /**
@@ -4107,9 +4101,7 @@ export namespace SpiceClientGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PortChannel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PortChannel.ConstructorProps {}
     }
 
     /**
@@ -4582,7 +4574,7 @@ export namespace SpiceClientGLib {
          * @param format an optional `printf()` format string with positional parameters
          * @returns a newly-allocated string holding the description, or `null` if failed
          */
-        get_description(format: (string | null)): string;
+        get_description(format: string | null): string;
 
         /**
          * Finds the %libusb_device associated with the `device`.

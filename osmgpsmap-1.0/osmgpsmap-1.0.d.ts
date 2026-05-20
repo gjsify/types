@@ -1965,9 +1965,7 @@ export namespace OsmGpsMap {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MapLayerNamespace {

@@ -85,7 +85,7 @@ export namespace GjsPrivate {
      * @param property 
      * @param value 
      */
-    function gtk_container_child_set_property(container: GObject.Object, child: GObject.Object, property: string, value: (GObject.Value | any)): void;
+    function gtk_container_child_set_property(container: GObject.Object, child: GObject.Object, property: string, value: GObject.Value | any): void;
 
     /**
      * @param sort_func 
@@ -153,7 +153,7 @@ export namespace GjsPrivate {
      * @param start_position 
      * @param match_options 
      */
-    function regex_match_all_full(regex: GLib.Regex, bytes: (Uint8Array | string), start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
+    function regex_match_all_full(regex: GLib.Regex, bytes: Uint8Array | string, start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
 
     /**
      * @param regex 
@@ -161,7 +161,7 @@ export namespace GjsPrivate {
      * @param start_position 
      * @param match_options 
      */
-    function regex_match_full(regex: GLib.Regex, bytes: (Uint8Array | string), start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
+    function regex_match_full(regex: GLib.Regex, bytes: Uint8Array | string, start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
 
     /**
      * @param category 
@@ -292,7 +292,7 @@ export namespace GjsPrivate {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -307,13 +307,13 @@ export namespace GjsPrivate {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -329,7 +329,7 @@ export namespace GjsPrivate {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 

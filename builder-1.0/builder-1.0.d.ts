@@ -102,9 +102,7 @@ export namespace Builder {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -160,7 +158,7 @@ export namespace Builder {
          * @param plugin_name The name of the plugin.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        get_worker_async(plugin_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.DBusProxy>;
+        get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>;
 
         /**
          * Asynchronously requests a {@link Gio.DBusProxy} to a service provided in a worker
@@ -176,7 +174,7 @@ export namespace Builder {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`.
          */
-        get_worker_async(plugin_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests a {@link Gio.DBusProxy} to a service provided in a worker
@@ -192,7 +190,7 @@ export namespace Builder {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`.
          */
-        get_worker_async(plugin_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.DBusProxy> | void);
+        get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.DBusProxy> | void;
 
         /**
          * Completes an asynchronous request to get a proxy to a worker process.
@@ -206,7 +204,7 @@ export namespace Builder {
          * @param additional_files A {@link GLib.PtrArray} of {@link Gio.File} or `null`.
          * @param cancellable 
          */
-        open_project_async(file: Gio.File, additional_files: (Gio.File[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open_project_async(file: Gio.File, additional_files: Gio.File[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param file A {@link Gio.File}.
@@ -214,7 +212,7 @@ export namespace Builder {
          * @param cancellable 
          * @param callback 
          */
-        open_project_async(file: Gio.File, additional_files: (Gio.File[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_project_async(file: Gio.File, additional_files: Gio.File[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file A {@link Gio.File}.
@@ -222,7 +220,7 @@ export namespace Builder {
          * @param cancellable 
          * @param callback 
          */
-        open_project_async(file: Gio.File, additional_files: (Gio.File[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_project_async(file: Gio.File, additional_files: Gio.File[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -294,9 +292,7 @@ export namespace Builder {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -489,7 +485,7 @@ export namespace Builder {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-            root: (TreeNode | null);
+            root: TreeNode | null;
             selection: TreeNode;
             show_icons: boolean;
             showIcons: boolean;
@@ -503,8 +499,8 @@ export namespace Builder {
         static $gtype: GObject.GType<Tree>;
 
         // Properties
-        get root(): (TreeNode | null);
-        set root(val: (TreeNode | null));
+        get root(): TreeNode | null;
+        set root(val: TreeNode | null);
 
         get selection(): TreeNode;
         set selection(val: TreeNode);
@@ -576,7 +572,7 @@ export namespace Builder {
          * @param find_func A callback to locate the child
          * @returns A {@link Builder.TreeNode} or `null`.
          */
-        find_child_node(node: TreeNode, find_func: TreeFindFunc): (TreeNode | null);
+        find_child_node(node: TreeNode, find_func: TreeFindFunc): TreeNode | null;
 
         /**
          * Walks the entire tree looking for the first item that matches given
@@ -588,21 +584,21 @@ export namespace Builder {
          * @param key the key for `equal_func`
          * @returns A {@link Builder.TreeNode} or `null`.
          */
-        find_custom(equal_func: GLib.EqualFunc, key: null): (TreeNode | null);
+        find_custom(equal_func: GLib.EqualFunc, key: null): TreeNode | null;
 
         /**
          * Finds a {@link Builder.TreeNode} with an item property matching `item`.
          * @param item A {@link GObject.Object} or `null`.
          * @returns A {@link Builder.TreeNode} or `null`.
          */
-        find_item(item: (GObject.Object | null)): (TreeNode | null);
+        find_item(item: GObject.Object | null): TreeNode | null;
 
         /**
          * Retrieves the root node of the tree. The root node is not a visible node
          * in the self, but a placeholder for all other builders to build upon.
          * @returns A {@link Builder.TreeNode} or `null`.
          */
-        get_root(): (TreeNode | null);
+        get_root(): TreeNode | null;
 
         /**
          * Gets the currently selected node in the tree.
@@ -740,7 +736,7 @@ export namespace Builder {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -754,7 +750,7 @@ export namespace Builder {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -793,7 +789,7 @@ export namespace Builder {
              * @signal
              * @run-last
              */
-            "node-activated": (arg0: TreeNode) => (boolean | void);
+            "node-activated": (arg0: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -819,7 +815,7 @@ export namespace Builder {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            tree: (Tree | null);
+            tree: Tree | null;
         }
     }
 
@@ -833,7 +829,7 @@ export namespace Builder {
         /**
          * @read-only
          */
-        get tree(): (Tree | null);
+        get tree(): Tree | null;
 
         /**
          * Compile-time signal type information.
@@ -911,7 +907,7 @@ export namespace Builder {
          * Gets the tree that owns the builder.
          * @returns A {@link Builder.Tree} or `null`.
          */
-        get_tree(): (Tree | null);
+        get_tree(): Tree | null;
     }
 
 
@@ -1112,7 +1108,7 @@ export namespace Builder {
          * Gets a {@link Gtk.TreePath} for `node`.
          * @returns A {@link Gtk.TreePath} if successful; otherwise `null`.
          */
-        get_path(): (Gtk.TreePath | null);
+        get_path(): Gtk.TreePath | null;
 
         get_text(): string;
 
@@ -1416,7 +1412,7 @@ export namespace Builder {
          * Gets the controls for the view.
          * @returns A {@link Gtk.Widget}.
          */
-        get_controls(): (Gtk.Widget | null);
+        get_controls(): Gtk.Widget | null;
 
         /**
          * Gets the document for the view.
@@ -1522,9 +1518,7 @@ export namespace Builder {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1579,7 +1573,7 @@ export namespace Builder {
          * @param document_type 
          * @returns The first document   matching `document_type` or `null`.
          */
-        find_document_typed(document_type: GObject.GType): (Document | null);
+        find_document_typed(document_type: GObject.GType): Document | null;
 
         /**
          * @param document 
@@ -1590,19 +1584,19 @@ export namespace Builder {
          * Gets the last focused {@link Builder.ViewStack}.
          * @returns A {@link Builder.ViewStack} or `null`.
          */
-        get_last_focus(): (Gtk.Widget | null);
+        get_last_focus(): Gtk.Widget | null;
 
         /**
          * @param stack 
          * @returns The view stack.
          */
-        get_stack_after(stack: ViewStack): (ViewStack | null);
+        get_stack_after(stack: ViewStack): ViewStack | null;
 
         /**
          * @param stack 
          * @returns The view stack.
          */
-        get_stack_before(stack: ViewStack): (ViewStack | null);
+        get_stack_before(stack: ViewStack): ViewStack | null;
 
         /**
          * Fetches all of the stacks in the grid. The resulting {@link GLib.List} should be
@@ -1682,7 +1676,7 @@ export namespace Builder {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            active_view: (View | null);
+            active_view: View | null;
             activeView: View;
         }
     }
@@ -1694,8 +1688,8 @@ export namespace Builder {
         static $gtype: GObject.GType<ViewStack>;
 
         // Properties
-        get active_view(): (View | null);
-        set active_view(val: (View | null));
+        get active_view(): View | null;
+        set active_view(val: View | null);
 
         get activeView(): View;
         set activeView(val: View);
@@ -1734,13 +1728,13 @@ export namespace Builder {
          * @param document_type 
          * @returns A {@link Builder.Document} or `null`.
          */
-        find_document_typed(document_type: GObject.GType): (Document | null);
+        find_document_typed(document_type: GObject.GType): Document | null;
 
         /**
          * @param document 
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        find_with_document(document: Document): (Gtk.Widget | null);
+        find_with_document(document: Document): Gtk.Widget | null;
 
         /**
          * @param document 
@@ -1755,7 +1749,7 @@ export namespace Builder {
         /**
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_active_view(): (Gtk.Widget | null);
+        get_active_view(): Gtk.Widget | null;
 
         /**
          * Gets the views belonging to this {@link Builder.ViewStack}.
@@ -1944,21 +1938,21 @@ export namespace Builder {
          * @param force_rebuild 
          * @param cancellable 
          */
-        build_async(force_rebuild: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        build_async(force_rebuild: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param force_rebuild 
          * @param cancellable 
          * @param callback 
          */
-        build_async(force_rebuild: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        build_async(force_rebuild: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param force_rebuild 
          * @param cancellable 
          * @param callback 
          */
-        build_async(force_rebuild: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        build_async(force_rebuild: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2092,7 +2086,7 @@ export namespace Builder {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2138,7 +2132,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2152,7 +2146,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2176,7 +2170,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2198,7 +2192,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2325,7 +2319,7 @@ export namespace Builder {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -2372,7 +2366,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -2386,7 +2380,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -2410,7 +2404,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -2432,7 +2426,7 @@ export namespace Builder {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -2508,7 +2502,7 @@ export namespace Builder {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -2564,7 +2558,7 @@ export namespace Builder {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -2665,9 +2659,7 @@ export namespace Builder {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ApplicationAddinNamespace {
@@ -2741,7 +2733,7 @@ export namespace Builder {
              * @param callback 
              * @virtual
              */
-            vfunc_save_as_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -2755,7 +2747,7 @@ export namespace Builder {
              * @param callback 
              * @virtual
              */
-            vfunc_save_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -2827,21 +2819,21 @@ export namespace Builder {
          * @param toplevel 
          * @param cancellable 
          */
-        save_as_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param toplevel 
          * @param cancellable 
          * @param callback 
          */
-        save_as_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param toplevel 
          * @param cancellable 
          * @param callback 
          */
-        save_as_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2852,21 +2844,21 @@ export namespace Builder {
          * @param toplevel 
          * @param cancellable 
          */
-        save_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param toplevel 
          * @param cancellable 
          * @param callback 
          */
-        save_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param toplevel 
          * @param cancellable 
          * @param callback 
          */
-        save_async(toplevel: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -2908,9 +2900,7 @@ export namespace Builder {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditorViewAddinNamespace {

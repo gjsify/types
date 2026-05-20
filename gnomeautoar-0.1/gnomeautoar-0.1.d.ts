@@ -387,18 +387,18 @@ export namespace GnomeAutoar {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: (bigint | number);
-            completedSize: (bigint | number);
+            completed_size: bigint | number;
+            completedSize: bigint | number;
             create_top_level_directory: boolean;
             createTopLevelDirectory: boolean;
             files: number;
-            notify_interval: (bigint | number);
-            notifyInterval: (bigint | number);
+            notify_interval: bigint | number;
+            notifyInterval: bigint | number;
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
             outputIsDest: boolean;
-            size: (bigint | number);
+            size: bigint | number;
             source_files: never;
             sourceFiles: never;
         }
@@ -457,13 +457,13 @@ export namespace GnomeAutoar {
          * @default 100000
          */
         get notify_interval(): number;
-        set notify_interval(val: (bigint | number));
+        set notify_interval(val: bigint | number);
 
         /**
          * @default 100000
          */
         get notifyInterval(): number;
-        set notifyInterval(val: (bigint | number));
+        set notifyInterval(val: bigint | number);
 
         /**
          * @construct-only
@@ -616,7 +616,7 @@ export namespace GnomeAutoar {
          * interval to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: (bigint | number)): void;
+        set_notify_interval(notify_interval: bigint | number): void;
 
         /**
          * By default {@link GnomeAutoar.Compressor.output_is_dest} is set to `false`, which means
@@ -646,7 +646,7 @@ export namespace GnomeAutoar {
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable: (Gio.Cancellable | null)): void;
+        start(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Asynchronously runs the archive creating work. You should connect to
@@ -656,7 +656,7 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable: (Gio.Cancellable | null)): void;
+        start_async(cancellable: Gio.Cancellable | null): void;
     }
 
 
@@ -732,12 +732,12 @@ export namespace GnomeAutoar {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: (bigint | number);
-            completedSize: (bigint | number);
+            completed_size: bigint | number;
+            completedSize: bigint | number;
             delete_after_extraction: boolean;
             deleteAfterExtraction: boolean;
-            notify_interval: (bigint | number);
-            notifyInterval: (bigint | number);
+            notify_interval: bigint | number;
+            notifyInterval: bigint | number;
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
@@ -746,8 +746,8 @@ export namespace GnomeAutoar {
             sourceFile: Gio.File;
             total_files: number;
             totalFiles: number;
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -798,13 +798,13 @@ export namespace GnomeAutoar {
          * @default 100000
          */
         get notify_interval(): number;
-        set notify_interval(val: (bigint | number));
+        set notify_interval(val: bigint | number);
 
         /**
          * @default 100000
          */
         get notifyInterval(): number;
-        set notifyInterval(val: (bigint | number));
+        set notifyInterval(val: bigint | number);
 
         /**
          * @construct-only
@@ -970,7 +970,7 @@ export namespace GnomeAutoar {
          * to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: (bigint | number)): void;
+        set_notify_interval(notify_interval: bigint | number): void;
 
         /**
          * By default {@link GnomeAutoar.Extractor.output_is_dest} is set to `false`, which means
@@ -1002,7 +1002,7 @@ export namespace GnomeAutoar {
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable: (Gio.Cancellable | null)): void;
+        start(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Asynchronously runs the archive extracting work. You should connect to
@@ -1012,7 +1012,7 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable: (Gio.Cancellable | null)): void;
+        start_async(cancellable: Gio.Cancellable | null): void;
     }
 
 

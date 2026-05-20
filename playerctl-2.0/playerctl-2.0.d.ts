@@ -481,7 +481,7 @@ export namespace Playerctl {
             playerInstance: string;
             player_name: string;
             playerName: string;
-            position: (bigint | number);
+            position: bigint | number;
             shuffle: boolean;
             source: Source;
             status: string;
@@ -667,9 +667,9 @@ export namespace Playerctl {
 
         _init(...args: any[]): void;
 
-        static ["new"](player_name: (string | null)): Player;
+        static ["new"](player_name: string | null): Player;
 
-        static new_for_source(player_name: (string | null), source: Source): Player;
+        static new_for_source(player_name: string | null, source: Source): Player;
 
         static new_from_name(player_name: PlayerName): Player;
 
@@ -759,13 +759,13 @@ export namespace Playerctl {
          * @param property the property from the metadata to print
          * @returns The artist from the metadata of the current track
          */
-        print_metadata_prop(property: (string | null)): string;
+        print_metadata_prop(property: string | null): string;
 
         /**
          * Command the player to seek forward by offset given in microseconds.
          * @param offset the offset to seek forward to in microseconds
          */
-        seek(offset: (bigint | number)): void;
+        seek(offset: bigint | number): void;
 
         /**
          * Set the loop status of the player. Can be set to either None, Track, or Playlist.
@@ -777,7 +777,7 @@ export namespace Playerctl {
          * Sets the absolute position of the current track to the given position in microseconds.
          * @param position The absolute position in the track to set as the position
          */
-        set_position(position: (bigint | number)): void;
+        set_position(position: bigint | number): void;
 
         /**
          * Request to set the shuffle state of the player, either on or off.

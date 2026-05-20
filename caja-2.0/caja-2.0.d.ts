@@ -229,13 +229,10 @@ export namespace Caja {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -612,9 +609,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ColumnProviderNamespace {
@@ -654,9 +649,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConfigurableNamespace {
@@ -742,7 +735,7 @@ export namespace Caja {
              *   See `caja_file_info_get_mount()` for details.
              * @virtual
              */
-            vfunc_get_mount(): (Gio.Mount | null);
+            vfunc_get_mount(): Gio.Mount | null;
 
             /**
              * Returns the file name as a string.
@@ -756,14 +749,14 @@ export namespace Caja {
              *   See `caja_file_info_get_parent_info()` for details.
              * @virtual
              */
-            vfunc_get_parent_info(): (FileInfo | null);
+            vfunc_get_parent_info(): FileInfo | null;
 
             /**
              * Returns the file parent location as a {@link Gio.File}.
              *   See `caja_file_info_get_parent_location()` for details.
              * @virtual
              */
-            vfunc_get_parent_location(): (Gio.File | null);
+            vfunc_get_parent_location(): Gio.File | null;
 
             /**
              * Returns the file parent URI as a string.
@@ -826,9 +819,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileInfoNamespace {
@@ -892,19 +883,19 @@ export namespace Caja {
         /**
          * @returns a {@link Gio.Mount} for the mount of `file`,   or `null` if `file` has no mount
          */
-        get_mount(): (Gio.Mount | null);
+        get_mount(): Gio.Mount | null;
 
         get_name(): string;
 
         /**
          * @returns a {@link Caja.FileInfo} for the parent of `file`,   or `null` if `file` has no parent
          */
-        get_parent_info(): (FileInfo | null);
+        get_parent_info(): FileInfo | null;
 
         /**
          * @returns a {@link Gio.File} for the parent location of `file`,   or `null` if `file` has no parent
          */
-        get_parent_location(): (Gio.File | null);
+        get_parent_location(): Gio.File | null;
 
         get_parent_uri(): string;
 
@@ -963,9 +954,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface InfoProviderNamespace {
@@ -1023,9 +1012,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LocationWidgetProviderNamespace {
@@ -1089,9 +1076,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuProviderNamespace {
@@ -1155,9 +1140,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertyPageProviderNamespace {
@@ -1248,9 +1231,7 @@ export namespace Caja {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WidgetViewProviderNamespace {

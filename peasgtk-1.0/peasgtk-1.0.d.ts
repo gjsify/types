@@ -132,7 +132,7 @@ export namespace PeasGtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](engine: (Peas.Engine | null)): PluginManager;
+        static ["new"](engine: Peas.Engine | null): PluginManager;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -312,7 +312,7 @@ export namespace PeasGtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](engine: (Peas.Engine | null)): PluginManagerView;
+        static ["new"](engine: Peas.Engine | null): PluginManagerView;
 
         // Conflicted with Gtk.TreeView.new
         static ["new"](...args: never[]): any;
@@ -342,7 +342,7 @@ export namespace PeasGtk {
          * Returns the currently selected plugin, or `null` if a plugin is not selected.
          * @returns the selected plugin.
          */
-        get_selected_plugin(): (Peas.PluginInfo | null);
+        get_selected_plugin(): Peas.PluginInfo | null;
 
         /**
          * Returns if builtin plugins should be shown.
@@ -458,7 +458,7 @@ export namespace PeasGtk {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -472,7 +472,7 @@ export namespace PeasGtk {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -552,9 +552,7 @@ export namespace PeasGtk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConfigurableNamespace {

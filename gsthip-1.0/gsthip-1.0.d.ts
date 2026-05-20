@@ -84,7 +84,7 @@ export namespace GstHip {
      * @returns Whether the `query` was successfully responded to from the passed          `context`.
      * @since 1.28
      */
-    function hip_handle_context_query(element: Gst.Element, query: Gst.Query, device: (HipDevice | null)): boolean;
+    function hip_handle_context_query(element: Gst.Element, query: Gst.Query, device: HipDevice | null): boolean;
 
     /**
      * Helper function for implementing {@link Gst.ElementClass}.set_context() in
@@ -118,7 +118,7 @@ export namespace GstHip {
      * @returns Compiled kernel blob or `null` if failed.  *
      * @since 1.28
      */
-    function hip_rtc_compile(device: HipDevice, source: string, options: string, num_options: number): (string | null);
+    function hip_rtc_compile(device: HipDevice, source: string, options: string, num_options: number): string | null;
 
     /**
      * Opens `vendor` specific runtime compiler libraries
@@ -152,9 +152,7 @@ export namespace GstHip {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     /**
@@ -210,7 +208,7 @@ export namespace GstHip {
          * @param info a {@link GstVideo.VideoInfo}
          * @returns a newly allocated {@link GstHip.HipMemory} or `null` if allocation failed
          */
-        alloc(device: HipDevice, info: GstVideo.VideoInfo): (Gst.Memory | null);
+        alloc(device: HipDevice, info: GstVideo.VideoInfo): Gst.Memory | null;
 
         /**
          * @param args 
@@ -235,9 +233,7 @@ export namespace GstHip {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
     }
 
     /**
@@ -418,9 +414,7 @@ export namespace GstHip {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -477,9 +471,7 @@ export namespace GstHip {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends HipAllocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends HipAllocator.ConstructorProps {}
     }
 
     /**
@@ -652,7 +644,7 @@ export namespace GstHip {
          * Gets HIP stream object associated with `mem`
          * @returns a {@link GstHip.HipStream} or `null` if default HIP stream is in use
          */
-        get_stream(): (HipStream | null);
+        get_stream(): HipStream | null;
 
         /**
          * Creates hipTextureObject_t with given parameters
@@ -667,7 +659,7 @@ export namespace GstHip {
          * Sets `event` to `mem` for later synchronization operation
          * @param event a {@link GstHip.HipEvent}
          */
-        set_event(event: (HipEvent | null)): void;
+        set_event(event: HipEvent | null): void;
 
         /**
          * Waits for device synchronization by using previously configured {@link GstHip.HipEvent}

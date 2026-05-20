@@ -232,9 +232,7 @@ export namespace ColordGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -379,7 +377,7 @@ export namespace ColordGtk {
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Colord.Profile>;
+        get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<Colord.Profile>;
 
         /**
          * Gets the screen profile that should be used for the widget,
@@ -394,7 +392,7 @@ export namespace ColordGtk {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the screen profile that should be used for the widget,
@@ -409,7 +407,7 @@ export namespace ColordGtk {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_profile(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Colord.Profile> | void);
+        get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Colord.Profile> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -428,7 +426,7 @@ export namespace ColordGtk {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
          */
-        get_profile_sync(widget: Gtk.Widget, cancellable: (Gio.Cancellable | null)): Colord.Profile;
+        get_profile_sync(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): Colord.Profile;
     }
 
 

@@ -77,9 +77,7 @@ export namespace Cally {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps, Atk.Component.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
     /**
@@ -196,7 +194,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -342,7 +340,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -430,9 +428,7 @@ export namespace Cally {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Actor.ConstructorProps, Atk.Component.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Actor.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
     /**
@@ -551,7 +547,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -697,7 +693,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -785,9 +781,7 @@ export namespace Cally {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps {}
     }
 
     /**
@@ -860,9 +854,7 @@ export namespace Cally {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Actor.ConstructorProps, Atk.Component.ConstructorProps, Atk.Window.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Actor.ConstructorProps, Atk.Component.ConstructorProps, Atk.Window.ConstructorProps {}
     }
 
     /**
@@ -984,7 +976,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -1130,7 +1122,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -1218,9 +1210,7 @@ export namespace Cally {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Actor.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps, Atk.EditableText.ConstructorProps, Atk.Text.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Actor.ConstructorProps, Atk.Action.ConstructorProps, Atk.Component.ConstructorProps, Atk.EditableText.ConstructorProps, Atk.Text.ConstructorProps {}
     }
 
     /**
@@ -1274,7 +1264,7 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): (string | null);
+        get_description(i: number): string | null;
 
         /**
          * @param args 
@@ -1308,14 +1298,14 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): (string | null);
+        get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): (string | null);
+        get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -1343,7 +1333,7 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): (string | null);
+        get_name(i: number): string | null;
 
         /**
          * @param args 
@@ -1377,7 +1367,7 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): (string | null);
+        vfunc_get_description(i: number): string | null;
 
         /**
          * @param args 
@@ -1412,14 +1402,14 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): (string | null);
+        vfunc_get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): (string | null);
+        vfunc_get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -1447,7 +1437,7 @@ export namespace Cally {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): (string | null);
+        vfunc_get_name(i: number): string | null;
 
         /**
          * @param args 
@@ -1546,7 +1536,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -1692,7 +1682,7 @@ export namespace Cally {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -2011,7 +2001,7 @@ export namespace Cally {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [(string | null), number, number];
+        get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [string | null, number, number];
 
         /**
          * Gets the specified text.
@@ -2270,7 +2260,7 @@ export namespace Cally {
          * @param granularity An {@link Atk.TextGranularity}
          * @virtual
          */
-        vfunc_get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [(string | null), number, number];
+        vfunc_get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [string | null, number, number];
 
         /**
          * Gets the specified text.
@@ -2417,13 +2407,10 @@ export namespace Cally {
 
     namespace Util {
         // Signal signatures
-        interface SignalSignatures extends Atk.Util.SignalSignatures {
-        }
+        interface SignalSignatures extends Atk.Util.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.Util.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.Util.ConstructorProps {}
     }
 
     /**

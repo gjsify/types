@@ -242,7 +242,7 @@ export namespace NM {
         static USERCANCELED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -312,7 +312,7 @@ export namespace NM {
         static OBJECT_CREATION_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -534,7 +534,7 @@ export namespace NM {
         static INVALIDPROPERTY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -669,7 +669,7 @@ export namespace NM {
         static ENCRYPTION_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -750,7 +750,7 @@ export namespace NM {
         static INVALIDARGUMENT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1564,7 +1564,7 @@ export namespace NM {
         static MISSINGPLUGIN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1707,7 +1707,7 @@ export namespace NM {
         static NOSECRETS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -2850,7 +2850,7 @@ export namespace NM {
         static FEATUREREMOVED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -3421,7 +3421,7 @@ export namespace NM {
         static INTERACTIVENOTSUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -6090,7 +6090,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.46
      */
-    function ethtool_optname_is_channels(optname: (string | null)): boolean;
+    function ethtool_optname_is_channels(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for a coalesce setting.
@@ -6098,7 +6098,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.26
      */
-    function ethtool_optname_is_coalesce(optname: (string | null)): boolean;
+    function ethtool_optname_is_coalesce(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for an eee setting.
@@ -6106,7 +6106,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.46
      */
-    function ethtool_optname_is_eee(optname: (string | null)): boolean;
+    function ethtool_optname_is_eee(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for an offload feature.
@@ -6114,7 +6114,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid Note that `nm_ethtool_optname_is_feature()` was first added to the libnm header files in 1.14.0 but forgot to actually add to the library. This happened belatedly in 1.20.0 and the stable versions 1.18.2, 1.16.4 and 1.14.8 (with linker version "libnm_1_14_8").
      * @since 1.20
      */
-    function ethtool_optname_is_feature(optname: (string | null)): boolean;
+    function ethtool_optname_is_feature(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for a fec setting.
@@ -6122,7 +6122,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.52
      */
-    function ethtool_optname_is_fec(optname: (string | null)): boolean;
+    function ethtool_optname_is_fec(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for a pause setting.
@@ -6130,7 +6130,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.32
      */
-    function ethtool_optname_is_pause(optname: (string | null)): boolean;
+    function ethtool_optname_is_pause(optname: string | null): boolean;
 
     /**
      * Checks whether `optname` is a valid option name for a ring setting.
@@ -6138,7 +6138,7 @@ export namespace NM {
      * @returns `true`, if `optname` is valid
      * @since 1.26
      */
-    function ethtool_optname_is_ring(optname: (string | null)): boolean;
+    function ethtool_optname_is_ring(optname: string | null): boolean;
 
     /**
      * Validates a route attribute, i.e. checks that the attribute is a known one
@@ -6164,7 +6164,7 @@ export namespace NM {
      * @returns the new {@link NM.IPRoutingRule} or `null` on error.
      * @since 1.18
      */
-    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): IPRoutingRule;
+    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): IPRoutingRule;
 
     /**
      * Tries to create a NMConnection from a keyfile. The resulting keyfile is
@@ -6176,7 +6176,7 @@ export namespace NM {
      * @returns on success, returns the created connection.
      * @since 1.30
      */
-    function keyfile_read(keyfile: GLib.KeyFile, base_dir: string, handler_flags: KeyfileHandlerFlags, handler: (KeyfileReadHandler | null)): Connection;
+    function keyfile_read(keyfile: GLib.KeyFile, base_dir: string, handler_flags: KeyfileHandlerFlags, handler: KeyfileReadHandler | null): Connection;
 
     /**
      * `connection` should verify as a valid profile according to
@@ -6189,7 +6189,7 @@ export namespace NM {
      * @returns a new {@link GLib.KeyFile} or `null` on error.
      * @since 1.30
      */
-    function keyfile_write(connection: Connection, handler_flags: KeyfileHandlerFlags, handler: (KeyfileWriteHandler | null)): GLib.KeyFile;
+    function keyfile_write(connection: Connection, handler_flags: KeyfileHandlerFlags, handler: KeyfileWriteHandler | null): GLib.KeyFile;
 
     function manager_error_quark(): GLib.Quark;
 
@@ -6232,7 +6232,7 @@ export namespace NM {
      * @returns `true` if the input key is a valid base64 encoded key   with `required_key_len` bytes.
      * @since 1.16
      */
-    function utils_base64secret_decode(base64_key: string, required_key_len: (bigint | number)): [boolean, number];
+    function utils_base64secret_decode(base64_key: string, required_key_len: bigint | number): [boolean, number];
 
     /**
      * Converts the byte array `src` into a hexadecimal string. If `final_len` is
@@ -6242,7 +6242,7 @@ export namespace NM {
      * @param final_len an index where to cut off the returned string, or -1
      * @returns the textual form of `bytes`
      */
-    function utils_bin2hexstr(src: (Uint8Array | string), final_len: number): string;
+    function utils_bin2hexstr(src: Uint8Array | string, final_len: number): string;
 
     /**
      * Convert bonding mode from integer value to descriptive name.
@@ -6360,7 +6360,7 @@ export namespace NM {
      * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
      * @deprecated since 1.46: use `nm_utils_ssid_to_utf8()` or `nm_utils_bin2hexstr()`.
      */
-    function utils_escape_ssid(ssid: (Uint8Array | string)): string;
+    function utils_escape_ssid(ssid: Uint8Array | string): string;
 
     /**
      * Tests if `filename` has a valid extension for an X.509 certificate file
@@ -6396,7 +6396,7 @@ export namespace NM {
      * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
      * @returns the full path to the helper, if found, or `null` if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
      */
-    function utils_file_search_in_paths(progname: string, try_first: (string | null), paths: (string | null), file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
+    function utils_file_search_in_paths(progname: string, try_first: string | null, paths: string | null, file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
 
     /**
      * Format attributes to a string.
@@ -6406,7 +6406,7 @@ export namespace NM {
      * @returns the string representing attributes, or `null`    in case there are no attributes
      * @since 1.8
      */
-    function utils_format_variant_attributes(attributes: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), attr_separator: number, key_value_separator: number): string;
+    function utils_format_variant_attributes(attributes: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, attr_separator: number, key_value_separator: number): string;
 
     /**
      * Gets current time in milliseconds of CLOCK_BOOTTIME.
@@ -6432,7 +6432,7 @@ export namespace NM {
      * @param length the expected length in bytes of the result
      * @returns a new {@link GLib.ByteArray}, or `null` if `asc` couldn't be parsed
      */
-    function utils_hwaddr_atoba(asc: string, length: (bigint | number)): Uint8Array;
+    function utils_hwaddr_atoba(asc: string, length: bigint | number): Uint8Array;
 
     /**
      * Parses `asc` and converts it to binary form in `buffer`.
@@ -6441,7 +6441,7 @@ export namespace NM {
      * @param buffer buffer to store the result into
      * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
      */
-    function utils_hwaddr_aton(asc: string, buffer: (Uint8Array | string)): number;
+    function utils_hwaddr_aton(asc: string, buffer: Uint8Array | string): number;
 
     /**
      * Parses `asc` to see if it is a valid hardware address of the given
@@ -6451,7 +6451,7 @@ export namespace NM {
      * @param length the length of address that `asc` is expected to convert to   (or -1 to accept any length up to `NM_UTILS_HWADDR_LEN_MAX`)
      * @returns the canonicalized address if `asc` appears to   be a valid hardware address of the indicated length, `null` if not.
      */
-    function utils_hwaddr_canonical(asc: string, length: (bigint | number)): string;
+    function utils_hwaddr_canonical(asc: string, length: bigint | number): string;
 
     /**
      * Returns the length in octets of a hardware address of type `type`.
@@ -6493,14 +6493,14 @@ export namespace NM {
      * @param hwaddr2_len size of `hwaddr2`, or -1 if `hwaddr2` is ASCII
      * @returns `true` if `hwaddr1` and `hwaddr2` are equivalent, `false` if they are   different (or either of them is invalid).
      */
-    function utils_hwaddr_matches(hwaddr1: null, hwaddr1_len: (bigint | number), hwaddr2: null, hwaddr2_len: (bigint | number)): boolean;
+    function utils_hwaddr_matches(hwaddr1: null, hwaddr1_len: bigint | number, hwaddr2: null, hwaddr2_len: bigint | number): boolean;
 
     /**
      * Converts `addr` to textual form.
      * @param addr a binary hardware address
      * @returns the textual form of `addr`
      */
-    function utils_hwaddr_ntoa(addr: (Uint8Array | string)): string;
+    function utils_hwaddr_ntoa(addr: Uint8Array | string): string;
 
     /**
      * Parses `asc` to see if it is a valid hardware address of the given
@@ -6509,7 +6509,7 @@ export namespace NM {
      * @param length the length of address that `asc` is expected to convert to   (or -1 to accept any length up to `NM_UTILS_HWADDR_LEN_MAX`)
      * @returns `true` if `asc` appears to be a valid hardware address   of the indicated length, `false` if not.
      */
-    function utils_hwaddr_valid(asc: string, length: (bigint | number)): boolean;
+    function utils_hwaddr_valid(asc: string, length: bigint | number): boolean;
 
     /**
      * Validate the network interface name.
@@ -6517,7 +6517,7 @@ export namespace NM {
      * @returns `true` if interface name is valid, otherwise `false` is returned. Before 1.20, this function did not accept `null` as `name` argument. If you   want to run against older versions of libnm, don't pass `null`.
      * @deprecated since 1.6: Use `nm_utils_is_valid_iface_name()` instead, with better error reporting.
      */
-    function utils_iface_valid_name(name: (string | null)): boolean;
+    function utils_iface_valid_name(name: string | null): boolean;
 
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'aau' representing a list of
@@ -6544,7 +6544,7 @@ export namespace NM {
      * @param gateway the gateway IP address
      * @returns a new floating {@link GLib.Variant} representing `addresses`.
      */
-    function utils_ip4_addresses_to_variant(addresses: IPAddress[], gateway: (string | null)): GLib.Variant;
+    function utils_ip4_addresses_to_variant(addresses: IPAddress[], gateway: string | null): GLib.Variant;
 
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'au' representing a list of
@@ -6636,7 +6636,7 @@ export namespace NM {
      * @param gateway the gateway IP address
      * @returns a new floating {@link GLib.Variant} representing `addresses`.
      */
-    function utils_ip6_addresses_to_variant(addresses: IPAddress[], gateway: (string | null)): GLib.Variant;
+    function utils_ip6_addresses_to_variant(addresses: IPAddress[], gateway: string | null): GLib.Variant;
 
     /**
      * Utility function to convert a {@link GLib.Variant} of type 'aay' representing a list of
@@ -6756,7 +6756,7 @@ export namespace NM {
      * @param ssid pointer to a buffer containing the SSID data
      * @returns `true` if the SSID is "empty", `false` if it is not
      */
-    function utils_is_empty_ssid(ssid: (Uint8Array | string)): boolean;
+    function utils_is_empty_ssid(ssid: Uint8Array | string): boolean;
 
     /**
      * @param str the JSON string to test
@@ -6771,7 +6771,7 @@ export namespace NM {
      * @returns `true` if `str` is a UUID, `false` if not In older versions, `nm_utils_is_uuid()` did not accept `null` as `str` argument. Don't pass `null` if you run against older versions of libnm.
      * @deprecated since 1.32: older versions of NetworkManager had a wrong   understanding of what makes a valid UUID. This function can thus   accept some inputs as valid, which in fact are not valid UUIDs.
      */
-    function utils_is_uuid(str: (string | null)): boolean;
+    function utils_is_uuid(str: string | null): boolean;
 
     /**
      * Validate the network interface name.
@@ -6782,7 +6782,7 @@ export namespace NM {
      * @returns `true` if interface name is valid, otherwise `false` is returned. Before 1.20, this function did not accept `null` as `name` argument. If you   want to run against older versions of libnm, don't pass `null`.
      * @since 1.6
      */
-    function utils_is_valid_iface_name(name: (string | null)): boolean;
+    function utils_is_valid_iface_name(name: string | null): boolean;
 
     /**
      * Parse attributes from a string.
@@ -6842,7 +6842,7 @@ export namespace NM {
      * @param ignore_trailing_null `true` to ignore one trailing NULL byte
      * @returns `true` if the SSIDs are the same, `false` if they are not
      */
-    function utils_same_ssid(ssid1: (Uint8Array | string), ssid2: (Uint8Array | string), ignore_trailing_null: boolean): boolean;
+    function utils_same_ssid(ssid1: Uint8Array | string, ssid2: Uint8Array | string, ignore_trailing_null: boolean): boolean;
 
     /**
      * Given a set of device capabilities, and a desired security type to check
@@ -6905,7 +6905,7 @@ export namespace NM {
      * @param ssid pointer to a buffer containing the SSID data
      * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using `g_free()`. Returns `null` on errors.
      */
-    function utils_ssid_to_utf8(ssid: (Uint8Array | string)): string;
+    function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
 
     /**
      * Parses the tc style string action representation of the queueing
@@ -7101,21 +7101,21 @@ export namespace NM {
      * @gir-type Callback
      */
     interface SecretAgentOldDeleteSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error: (GLib.Error | null)): void;
+        (agent: SecretAgentOld, connection: Connection, error: GLib.Error | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SecretAgentOldGetSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, secrets: (GLib.Variant | null), error: (GLib.Error | null)): void;
+        (agent: SecretAgentOld, connection: Connection, secrets: GLib.Variant | null, error: GLib.Error | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SecretAgentOldSaveSecretsFunc {
-        (agent: SecretAgentOld, connection: Connection, error: (GLib.Error | null)): void;
+        (agent: SecretAgentOld, connection: Connection, error: GLib.Error | null): void;
     }
 
     /**
@@ -8806,7 +8806,7 @@ export namespace NM {
             mode: __80211Mode;
             rsn_flags: __80211ApSecurityFlags;
             rsnFlags: __80211ApSecurityFlags;
-            ssid: (GLib.Bytes | Uint8Array);
+            ssid: GLib.Bytes | Uint8Array;
             strength: number;
             wpa_flags: __80211ApSecurityFlags;
             wpaFlags: __80211ApSecurityFlags;
@@ -9454,7 +9454,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            created: (bigint | number);
+            created: bigint | number;
             devices: Device[];
             rollback_timeout: number;
             rollbackTimeout: number;
@@ -10249,7 +10249,7 @@ export namespace NM {
 
         _init(...args: any[]): void;
 
-        static ["new"](cancellable: (Gio.Cancellable | null)): Client;
+        static ["new"](cancellable: Gio.Cancellable | null): Client;
 
         static new_finish(result: Gio.AsyncResult): Client;
 
@@ -10295,7 +10295,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the client is created
          */
-        static new_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Client> | null)): void;
+        static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
 
         /**
          * @param result a {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `nm_client_wait_shutdown()`
@@ -10325,7 +10325,7 @@ export namespace NM {
          * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of `null` should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a {@link NM.AccessPoint} or {@link NM.WimaxNsp} owned by `device`, which you can   get using `nm_object_get_path()`, and which will be used to complete the   details of the newly added connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        activate_connection_async(connection: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<ActiveConnection>;
+        activate_connection_async(connection: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<ActiveConnection>;
 
         /**
          * Asynchronously starts a connection to a particular network using the
@@ -10350,7 +10350,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        activate_connection_async(connection: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        activate_connection_async(connection: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously starts a connection to a particular network using the
@@ -10375,7 +10375,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        activate_connection_async(connection: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ActiveConnection> | void);
+        activate_connection_async(connection: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ActiveConnection> | void;
 
         /**
          * Gets the result of a call to `nm_client_activate_connection_async()`.
@@ -10412,7 +10412,7 @@ export namespace NM {
          * @param options a {@link GLib.Variant} containing a dictionary with options, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        add_and_activate_connection2(partial: (Connection | null), device: (Device | null), specific_object: (string | null), options: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[ActiveConnection, (GLib.Variant | null)]>;
+        add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<[ActiveConnection, GLib.Variant | null]>;
 
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -10443,7 +10443,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        add_and_activate_connection2(partial: (Connection | null), device: (Device | null), specific_object: (string | null), options: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -10474,7 +10474,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        add_and_activate_connection2(partial: (Connection | null), device: (Device | null), specific_object: (string | null), options: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[ActiveConnection, (GLib.Variant | null)]> | void);
+        add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[ActiveConnection, GLib.Variant | null]> | void;
 
         /**
          * Gets the result of a call to `nm_client_add_and_activate_connection2()`.
@@ -10502,7 +10502,7 @@ export namespace NM {
          * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of `null` should be used   (ie, no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a {@link NM.AccessPoint} or {@link NM.WimaxNsp} owned by `device`, which you can   get using `nm_object_get_path()`, and which will be used to complete the   details of the newly added connection.   If the variant is floating, it will be consumed.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        add_and_activate_connection_async(partial: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<ActiveConnection>;
+        add_and_activate_connection_async(partial: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<ActiveConnection>;
 
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -10521,7 +10521,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        add_and_activate_connection_async(partial: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_and_activate_connection_async(partial: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Adds a new connection using the given details (if any) as a template,
@@ -10540,7 +10540,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
          */
-        add_and_activate_connection_async(partial: (Connection | null), device: (Device | null), specific_object: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ActiveConnection> | void);
+        add_and_activate_connection_async(partial: Connection | null, device: Device | null, specific_object: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ActiveConnection> | void;
 
         /**
          * Gets the result of a call to `nm_client_add_and_activate_connection_async()`.
@@ -10560,7 +10560,7 @@ export namespace NM {
          * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to `true`,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to `false`, the function   under the hood always calls AddConnection2().
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: (GLib.Variant | null), ignore_out_result: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[RemoteConnection, (GLib.Variant | null)]>;
+        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<[RemoteConnection, GLib.Variant | null]>;
 
         /**
          * Call AddConnection2() D-Bus API asynchronously.
@@ -10571,7 +10571,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: (GLib.Variant | null), ignore_out_result: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Call AddConnection2() D-Bus API asynchronously.
@@ -10582,7 +10582,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: (GLib.Variant | null), ignore_out_result: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[RemoteConnection, (GLib.Variant | null)]> | void);
+        add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[RemoteConnection, GLib.Variant | null]> | void;
 
         /**
          * @param result the {@link Gio.AsyncResult}
@@ -10609,7 +10609,7 @@ export namespace NM {
          * @param save_to_disk whether to immediately save the connection to disk
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<RemoteConnection>;
+        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<RemoteConnection>;
 
         /**
          * Requests that the remote settings service add the given settings to a new
@@ -10631,7 +10631,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the remote settings service add the given settings to a new
@@ -10653,7 +10653,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<RemoteConnection> | void);
+        add_connection_async(connection: Connection, save_to_disk: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<RemoteConnection> | void;
 
         /**
          * Gets the result of a call to `nm_client_add_connection_async()`.
@@ -10672,7 +10672,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the (new) current connectivity state
          */
-        check_connectivity(cancellable: (Gio.Cancellable | null)): ConnectivityState;
+        check_connectivity(cancellable: Gio.Cancellable | null): ConnectivityState;
 
         /**
          * Asynchronously updates the network connectivity state and invokes
@@ -10681,17 +10681,7 @@ export namespace NM {
          * re-checking, and `nm_client_check_connectivity()`, which blocks.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        check_connectivity_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<ConnectivityState>;
-
-        /**
-         * Asynchronously updates the network connectivity state and invokes
-         * `callback` when complete. Contrast `nm_client_get_connectivity()`,
-         * which (immediately) returns the most recent known state without
-         * re-checking, and `nm_client_check_connectivity()`, which blocks.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback callback to call with the result
-         */
-        check_connectivity_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        check_connectivity_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ConnectivityState>;
 
         /**
          * Asynchronously updates the network connectivity state and invokes
@@ -10701,7 +10691,17 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback callback to call with the result
          */
-        check_connectivity_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ConnectivityState> | void);
+        check_connectivity_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously updates the network connectivity state and invokes
+         * `callback` when complete. Contrast `nm_client_get_connectivity()`,
+         * which (immediately) returns the most recent known state without
+         * re-checking, and `nm_client_check_connectivity()`, which blocks.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback callback to call with the result
+         */
+        check_connectivity_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ConnectivityState> | void;
 
         /**
          * Retrieves the result of an `nm_client_check_connectivity_async()`
@@ -10718,7 +10718,7 @@ export namespace NM {
          * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Resets the timeout for the checkpoint with path `checkpoint_path`
@@ -10728,7 +10728,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Resets the timeout for the checkpoint with path `checkpoint_path`
@@ -10738,7 +10738,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_client_checkpoint_adjust_rollback_timeout()`.
@@ -10757,7 +10757,7 @@ export namespace NM {
          * @param flags creation flags
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Checkpoint>;
+        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<Checkpoint>;
 
         /**
          * Creates a checkpoint of the current networking configuration
@@ -10770,7 +10770,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Creates a checkpoint of the current networking configuration
@@ -10783,7 +10783,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Checkpoint> | void);
+        checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Checkpoint> | void;
 
         /**
          * Gets the result of a call to `nm_client_checkpoint_create()`.
@@ -10797,7 +10797,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_destroy(checkpoint_path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Destroys an existing checkpoint without performing a rollback.
@@ -10805,7 +10805,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_destroy(checkpoint_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Destroys an existing checkpoint without performing a rollback.
@@ -10813,7 +10813,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_destroy(checkpoint_path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_client_checkpoint_destroy()`.
@@ -10827,7 +10827,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_rollback(checkpoint_path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.HashTable<string, number>>;
+        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<string, number>>;
 
         /**
          * Performs the rollback of a checkpoint before the timeout is reached.
@@ -10835,7 +10835,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_rollback(checkpoint_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Performs the rollback of a checkpoint before the timeout is reached.
@@ -10843,7 +10843,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_rollback(checkpoint_path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable<string, number>> | void);
+        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, number>> | void;
 
         /**
          * Gets the result of a call to `nm_client_checkpoint_rollback()`.
@@ -10898,7 +10898,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: (GLib.Variant | null), reply_type: (GLib.VariantType | null), timeout_msec: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
         /**
          * Call `g_dbus_connection_call()` on the current name owner with the specified
@@ -10918,7 +10918,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
          */
-        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: (GLib.Variant | null), reply_type: (GLib.VariantType | null), timeout_msec: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Call `g_dbus_connection_call()` on the current name owner with the specified
@@ -10938,7 +10938,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
          */
-        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: (GLib.Variant | null), reply_type: (GLib.VariantType | null), timeout_msec: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+        dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * Gets the result of a call to `nm_client_dbus_call()`.
@@ -10957,7 +10957,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Like `nm_client_dbus_call()` but calls "Set" on the standard "org.freedesktop.DBus.Properties"
@@ -10970,7 +10970,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
          */
-        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Like `nm_client_dbus_call()` but calls "Set" on the standard "org.freedesktop.DBus.Properties"
@@ -10983,7 +10983,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
          */
-        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_client_dbus_set_property()`.
@@ -10998,22 +10998,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns success or failure
          */
-        deactivate_connection(active: ActiveConnection, cancellable: (Gio.Cancellable | null)): boolean;
+        deactivate_connection(active: ActiveConnection, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously deactivates an active {@link NM.ActiveConnection}.
          * @param active the {@link NM.ActiveConnection} to deactivate
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        deactivate_connection_async(active: ActiveConnection, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously deactivates an active {@link NM.ActiveConnection}.
-         * @param active the {@link NM.ActiveConnection} to deactivate
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the deactivation has completed
-         */
-        deactivate_connection_async(active: ActiveConnection, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        deactivate_connection_async(active: ActiveConnection, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deactivates an active {@link NM.ActiveConnection}.
@@ -11021,7 +11013,15 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the deactivation has completed
          */
-        deactivate_connection_async(active: ActiveConnection, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        deactivate_connection_async(active: ActiveConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously deactivates an active {@link NM.ActiveConnection}.
+         * @param active the {@link NM.ActiveConnection} to deactivate
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the deactivation has completed
+         */
+        deactivate_connection_async(active: ActiveConnection, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_client_deactivate_connection_async()`.
@@ -11284,7 +11284,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success. Warning: before libnm 1.22, the boolean return value was inconsistent.   That is made worse, because when running against certain server versions   before 1.20, the server would return wrong values for success/failure.   This means, if you use this function in libnm before 1.22, you are advised   to ignore the boolean return value and only look at `failures` and `error`.   With libnm >= 1.22, the boolean return value corresponds to whether `error` was   set. Note that even in the success case, you might have individual `failures`.   With 1.22, the return value is consistent with `nm_client_load_connections_finish()`.
          */
-        load_connections(filenames: string[], cancellable: (Gio.Cancellable | null)): [boolean, string];
+        load_connections(filenames: string[], cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Requests that the remote settings service asynchronously load or reload the
@@ -11294,18 +11294,7 @@ export namespace NM {
          * @param filenames `null`-terminated array of filenames to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        load_connections_async(filenames: string[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
-
-        /**
-         * Requests that the remote settings service asynchronously load or reload the
-         * given files, adding or updating the connections described within.
-         * 
-         * See `nm_client_load_connections()` for more details.
-         * @param filenames `null`-terminated array of filenames to load
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the operation completes
-         */
-        load_connections_async(filenames: string[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_connections_async(filenames: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * Requests that the remote settings service asynchronously load or reload the
@@ -11316,7 +11305,18 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the operation completes
          */
-        load_connections_async(filenames: string[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        load_connections_async(filenames: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Requests that the remote settings service asynchronously load or reload the
+         * given files, adding or updating the connections described within.
+         * 
+         * See `nm_client_load_connections()` for more details.
+         * @param filenames `null`-terminated array of filenames to load
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the operation completes
+         */
+        load_connections_async(filenames: string[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Gets the result of an `nm_client_load_connections_async()` call.
@@ -11351,7 +11351,7 @@ export namespace NM {
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reload(flags: ManagerReloadFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Reload NetworkManager's configuration and perform certain updates, like
@@ -11363,7 +11363,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        reload(flags: ManagerReloadFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Reload NetworkManager's configuration and perform certain updates, like
@@ -11375,7 +11375,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        reload(flags: ManagerReloadFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Requests that the remote settings service reload all connection
@@ -11384,7 +11384,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on failure
          */
-        reload_connections(cancellable: (Gio.Cancellable | null)): boolean;
+        reload_connections(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Requests that the remote settings service begin reloading all connection
@@ -11392,16 +11392,7 @@ export namespace NM {
          * in-memory state matches the on-disk state.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reload_connections_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Requests that the remote settings service begin reloading all connection
-         * files from disk, adding, updating, and removing connections until the
-         * in-memory state matches the on-disk state.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the reload operation completes
-         */
-        reload_connections_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reload_connections_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the remote settings service begin reloading all connection
@@ -11410,7 +11401,16 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reload operation completes
          */
-        reload_connections_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reload_connections_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Requests that the remote settings service begin reloading all connection
+         * files from disk, adding, updating, and removing connections until the
+         * in-memory state matches the on-disk state.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the reload operation completes
+         */
+        reload_connections_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of an `nm_client_reload_connections_async()` call.
@@ -11433,7 +11433,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if the request was successful, `false` if it failed
          */
-        save_hostname(hostname: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        save_hostname(hostname: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Requests that the machine's persistent hostname be set to the specified value
@@ -11441,16 +11441,7 @@ export namespace NM {
          * @param hostname the new persistent hostname to set, or `null` to   clear any existing persistent hostname
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_hostname_async(hostname: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Requests that the machine's persistent hostname be set to the specified value
-         * or cleared.
-         * @param hostname the new persistent hostname to set, or `null` to   clear any existing persistent hostname
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the operation completes
-         */
-        save_hostname_async(hostname: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_hostname_async(hostname: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests that the machine's persistent hostname be set to the specified value
@@ -11459,7 +11450,16 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the operation completes
          */
-        save_hostname_async(hostname: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_hostname_async(hostname: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Requests that the machine's persistent hostname be set to the specified value
+         * or cleared.
+         * @param hostname the new persistent hostname to set, or `null` to   clear any existing persistent hostname
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the operation completes
+         */
+        save_hostname_async(hostname: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of an `nm_client_save_hostname_async()` call.
@@ -11474,7 +11474,7 @@ export namespace NM {
          * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (`null` or an empty string for no change)
          * @returns `true` on success, `false` otherwise
          */
-        set_logging(level: (string | null), domains: (string | null)): boolean;
+        set_logging(level: string | null, domains: string | null): boolean;
 
         /**
          * The way to stop {@link NM.Client} is by unrefing it. That will cancel all
@@ -11528,7 +11528,7 @@ export namespace NM {
          * @param cancellable the {@link Gio.Cancellable} to abort the shutdown.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request   is satisfied or `null` if you don't care about the result of the   method invocation.
          */
-        wait_shutdown(integrate_maincontext: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait_shutdown(integrate_maincontext: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Determines whether WiMAX is enabled.
@@ -11624,7 +11624,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -11667,7 +11667,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -11710,7 +11710,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -11770,7 +11770,7 @@ export namespace NM {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -11822,7 +11822,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -11866,7 +11866,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -12435,22 +12435,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        ["delete"](cancellable: (Gio.Cancellable | null)): boolean;
+        ["delete"](cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously begins deleting the software device. Hardware devices can't
          * be deleted.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously begins deleting the software device. Hardware devices can't
-         * be deleted.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when delete operation completes
-         */
-        delete_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously begins deleting the software device. Hardware devices can't
@@ -12458,7 +12450,15 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when delete operation completes
          */
-        delete_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously begins deleting the software device. Hardware devices can't
+         * be deleted.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when delete operation completes
+         */
+        delete_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_device_delete_async()`.
@@ -12474,7 +12474,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        disconnect(cancellable: (Gio.Cancellable | null)): boolean;
+        disconnect(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param args 
@@ -12488,7 +12488,7 @@ export namespace NM {
          * manual network connection request.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        disconnect_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        disconnect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously begins disconnecting the device if currently connected, and
@@ -12497,7 +12497,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the disconnect operation completes
          */
-        disconnect_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        disconnect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously begins disconnecting the device if currently connected, and
@@ -12506,7 +12506,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the disconnect operation completes
          */
-        disconnect_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        disconnect_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_device_disconnect_async()`.
@@ -12541,22 +12541,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a %NMConnection with the currently applied settings   or `null` on error. The connection is as received from D-Bus and might not validate according to `nm_connection_verify()`.
          */
-        get_applied_connection(flags: number, cancellable: (Gio.Cancellable | null)): [Connection, number];
+        get_applied_connection(flags: number, cancellable: Gio.Cancellable | null): [Connection, number];
 
         /**
          * Asynchronously begins and gets the currently applied connection.
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_applied_connection_async(flags: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Connection, (bigint | number)]>;
-
-        /**
-         * Asynchronously begins and gets the currently applied connection.
-         * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the reapply operation completes
-         */
-        get_applied_connection_async(flags: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Connection, bigint | number]>;
 
         /**
          * Asynchronously begins and gets the currently applied connection.
@@ -12564,7 +12556,15 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
          */
-        get_applied_connection_async(flags: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Connection, (bigint | number)]> | void);
+        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously begins and gets the currently applied connection.
+         * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the reapply operation completes
+         */
+        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Connection, bigint | number]> | void;
 
         /**
          * Gets the result of a call to `nm_device_get_applied_connection_async()`.
@@ -12814,7 +12814,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        reapply(connection: (Connection | null), version_id: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+        reapply(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously begins an attempt to update device with changes to the
@@ -12824,18 +12824,7 @@ export namespace NM {
          * @param flags always set this to zero
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        reapply_async(connection: (Connection | null), version_id: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously begins an attempt to update device with changes to the
-         * currently active connection made since it was last applied.
-         * @param connection the {@link NM.Connection} to replace the applied   settings with or `null` to reuse existing
-         * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows one to catch concurrent   accesses.
-         * @param flags always set this to zero
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the reapply operation completes
-         */
-        reapply_async(connection: (Connection | null), version_id: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously begins an attempt to update device with changes to the
@@ -12846,7 +12835,18 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
          */
-        reapply_async(connection: (Connection | null), version_id: (bigint | number), flags: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously begins an attempt to update device with changes to the
+         * currently active connection made since it was last applied.
+         * @param connection the {@link NM.Connection} to replace the applied   settings with or `null` to reuse existing
+         * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows one to catch concurrent   accesses.
+         * @param flags always set this to zero
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the reapply operation completes
+         */
+        reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_device_reapply_async()`.
@@ -13446,9 +13446,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     /**
@@ -14528,9 +14526,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     /**
@@ -14623,8 +14619,8 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Device.ConstructorProps {
-            cipher_suite: (bigint | number);
-            cipherSuite: (bigint | number);
+            cipher_suite: bigint | number;
+            cipherSuite: bigint | number;
             encoding_sa: number;
             encodingSa: number;
             encrypt: boolean;
@@ -14638,7 +14634,7 @@ export namespace NM {
             replay_protect: boolean;
             replayProtect: boolean;
             scb: boolean;
-            sci: (bigint | number);
+            sci: bigint | number;
             validation: string;
             window: number;
         }
@@ -15524,9 +15520,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     /**
@@ -15702,9 +15696,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     /**
@@ -15916,13 +15908,13 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Device.ConstructorProps {
-            group: (bigint | number);
+            group: bigint | number;
             mode: string;
             multi_queue: boolean;
             multiQueue: boolean;
             no_pi: boolean;
             noPi: boolean;
-            owner: (bigint | number);
+            owner: bigint | number;
             vnet_hdr: boolean;
             vnetHdr: boolean;
         }
@@ -16850,8 +16842,8 @@ export namespace NM {
             active_access_point: AccessPoint;
             activeAccessPoint: AccessPoint;
             bitrate: number;
-            last_scan: (bigint | number);
-            lastScan: (bigint | number);
+            last_scan: bigint | number;
+            lastScan: bigint | number;
             mode: __80211Mode;
             perm_hw_address: string;
             permHwAddress: string;
@@ -17047,7 +17039,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        request_scan(cancellable: (Gio.Cancellable | null)): boolean;
+        request_scan(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
@@ -17055,16 +17047,7 @@ export namespace NM {
          * that for the scan to complete.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        request_scan_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Request NM to scan for access points on `device`. Note that `callback` will be
-         * called immediately after requesting the scan, and it may take some time after
-         * that for the scan to complete.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the scan has been requested
-         */
-        request_scan_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_scan_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
@@ -17073,7 +17056,16 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the scan has been requested
          */
-        request_scan_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_scan_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Request NM to scan for access points on `device`. Note that `callback` will be
+         * called immediately after requesting the scan, and it may take some time after
+         * that for the scan to complete.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the scan has been requested
+         */
+        request_scan_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_device_wifi_request_scan_async()` and
@@ -17095,7 +17087,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        request_scan_options(options: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        request_scan_options(options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Request NM to scan for access points on `device`. Note that `callback` will be
@@ -17111,7 +17103,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the scan has been requested
          */
-        request_scan_options_async(options: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_scan_options_async(options: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
 
 
@@ -17241,7 +17233,7 @@ export namespace NM {
          * @param options optional options passed to StartFind.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        start_find(options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Request NM to search for Wi-Fi P2P peers on `device`. Note that the call
@@ -17254,7 +17246,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        start_find(options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request NM to search for Wi-Fi P2P peers on `device`. Note that the call
@@ -17267,7 +17259,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        start_find(options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finish an operation started by `nm_device_wifi_p2p_start_find()`.
@@ -17280,21 +17272,21 @@ export namespace NM {
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        stop_find(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        stop_find(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        stop_find(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        stop_find(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
          */
-        stop_find(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        stop_find(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finish an operation started by `nm_device_wifi_p2p_stop_find()`.
@@ -17637,8 +17629,8 @@ export namespace NM {
             fwmark: number;
             listen_port: number;
             listenPort: number;
-            public_key: (GLib.Bytes | Uint8Array);
-            publicKey: (GLib.Bytes | Uint8Array);
+            public_key: GLib.Bytes | Uint8Array;
+            publicKey: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -17782,9 +17774,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps {}
     }
 
     /**
@@ -17835,7 +17825,7 @@ export namespace NM {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             family: number;
-            options: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            options: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -18188,8 +18178,8 @@ export namespace NM {
             filename: string;
             flags: number;
             unsaved: boolean;
-            version_id: (bigint | number);
-            versionId: (bigint | number);
+            version_id: bigint | number;
+            versionId: bigint | number;
             visible: boolean;
         }
     }
@@ -18294,7 +18284,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        commit_changes(save_to_disk: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        commit_changes(save_to_disk: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously sends any local changes to the settings and properties of
@@ -18304,18 +18294,7 @@ export namespace NM {
          * @param save_to_disk whether to save the changes to persistent storage
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        commit_changes_async(save_to_disk: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously sends any local changes to the settings and properties of
-         * `connection` to NetworkManager. If `save` is `true`, the updated connection will
-         * be saved to disk; if `false`, then only the in-memory representation will be
-         * changed.
-         * @param save_to_disk whether to save the changes to persistent storage
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the commit operation completes
-         */
-        commit_changes_async(save_to_disk: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        commit_changes_async(save_to_disk: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously sends any local changes to the settings and properties of
@@ -18326,7 +18305,18 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the commit operation completes
          */
-        commit_changes_async(save_to_disk: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        commit_changes_async(save_to_disk: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously sends any local changes to the settings and properties of
+         * `connection` to NetworkManager. If `save` is `true`, the updated connection will
+         * be saved to disk; if `false`, then only the in-memory representation will be
+         * changed.
+         * @param save_to_disk whether to save the changes to persistent storage
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the commit operation completes
+         */
+        commit_changes_async(save_to_disk: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_remote_connection_commit_changes_async()`.
@@ -18340,27 +18330,27 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        ["delete"](cancellable: (Gio.Cancellable | null)): boolean;
+        ["delete"](cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously deletes the connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        delete_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously deletes the connection.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the delete operation completes
-         */
-        delete_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes the connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the delete operation completes
          */
-        delete_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously deletes the connection.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the delete operation completes
+         */
+        delete_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_remote_connection_delete_async()`.
@@ -18386,22 +18376,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GLib.Variant} of type `NM_VARIANT_TYPE_CONNECTION` containing `connection`'s secrets, or `null` on error. Warning: NMClient contains a cache of objects on D-Bus. This cache gets updated   with D-Bus signals when iterating the GMainContext. This function performs a   (pseudo) blocking D-Bus call. Aside blocking, the result will not be in sync   and not be ordered with the content of the NMClient cache.   This function used to be deprecated between 1.22 and 1.38 releases.
          */
-        get_secrets(setting_name: string, cancellable: (Gio.Cancellable | null)): GLib.Variant;
+        get_secrets(setting_name: string, cancellable: Gio.Cancellable | null): GLib.Variant;
 
         /**
          * Asynchronously requests the connection's secrets.
          * @param setting_name the {@link NM.Setting} object name to get secrets for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_secrets_async(setting_name: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
-
-        /**
-         * Asynchronously requests the connection's secrets.
-         * @param setting_name the {@link NM.Setting} object name to get secrets for
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the secret request completes
-         */
-        get_secrets_async(setting_name: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_secrets_async(setting_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
         /**
          * Asynchronously requests the connection's secrets.
@@ -18409,7 +18391,15 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the secret request completes
          */
-        get_secrets_async(setting_name: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+        get_secrets_async(setting_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously requests the connection's secrets.
+         * @param setting_name the {@link NM.Setting} object name to get secrets for
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the secret request completes
+         */
+        get_secrets_async(setting_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * Gets the result of a call to `nm_remote_connection_get_secrets_async()`.
@@ -18447,22 +18437,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
          */
-        save(cancellable: (Gio.Cancellable | null)): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Saves the connection to disk if the connection has changes that have not yet
          * been written to disk, or if the connection has never been saved.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Saves the connection to disk if the connection has changes that have not yet
-         * been written to disk, or if the connection has never been saved.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to be called when the save operation completes
-         */
-        save_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Saves the connection to disk if the connection has changes that have not yet
@@ -18470,7 +18452,15 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the save operation completes
          */
-        save_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Saves the connection to disk if the connection has changes that have not yet
+         * been written to disk, or if the connection has never been saved.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to be called when the save operation completes
+         */
+        save_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_remote_connection_save_async()`.
@@ -18486,7 +18476,7 @@ export namespace NM {
          * @param args optional arguments.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        update2(settings: (GLib.Variant | null), flags: SettingsUpdate2Flags, args: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+        update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
         /**
          * Asynchronously calls the Update2() D-Bus method.
@@ -18496,7 +18486,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the commit operation completes
          */
-        update2(settings: (GLib.Variant | null), flags: SettingsUpdate2Flags, args: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls the Update2() D-Bus method.
@@ -18506,7 +18496,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the commit operation completes
          */
-        update2(settings: (GLib.Variant | null), flags: SettingsUpdate2Flags, args: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+        update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * Gets the result of a call to `nm_remote_connection_commit_changes_async()`.
@@ -18534,7 +18524,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func: (SettingClearSecretsWithFlagsFn | null)): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
 
         /**
          * Deletes all of `connection`'s settings.
@@ -18853,7 +18843,7 @@ export namespace NM {
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
          */
-        get_settings(): (Setting[] | null);
+        get_settings(): Setting[] | null;
 
         /**
          * A shortcut to return the UUID from the connection's {@link NM.SettingConnection}.
@@ -18893,7 +18883,7 @@ export namespace NM {
          * secrets are needed.
          * @returns the setting name of the {@link NM.Setting} object which has   invalid or missing secrets
          */
-        need_secrets(): [(string | null), string[] | null];
+        need_secrets(): [string | null, string[] | null];
 
         /**
          * Does some basic normalization and fixup of well known inconsistencies
@@ -18907,7 +18897,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
+        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -19294,7 +19284,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if registration was successful, `false` on error. Since 1.24, this can no longer fail unless the `cancellable` gets cancelled. Contrary to `nm_secret_agent_old_register_async()`, this also does not wait for the registration to succeed. You cannot synchronously (without iterating the caller's GMainContext) wait for registration. Since 1.24, registration is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `true` or `nm_secret_agent_old_enable()`.
          */
-        register(cancellable: (Gio.Cancellable | null)): boolean;
+        register(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
@@ -19313,27 +19303,7 @@ export namespace NM {
          * you want to check and ensure that the agent is registered.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        register_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
-         * manager, indicating to NetworkManager that the agent is able to provide and
-         * save secrets for connections on behalf of its user.
-         * 
-         * Since 1.24, registration cannot fail and is idempotent. It has
-         * the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `true`
-         * or `nm_secret_agent_old_enable()`.
-         * 
-         * Since 1.24, the asynchronous result indicates whether the instance is successfully
-         * registered. In any case, this call enables the agent and it will automatically
-         * try to register and handle secret requests. A failure of this function only indicates
-         * that currently the instance might not be ready (but since it will automatically
-         * try to recover, it might be ready in a moment afterwards). Use this function if
-         * you want to check and ensure that the agent is registered.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to call when the agent is registered
-         */
-        register_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        register_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
@@ -19353,7 +19323,27 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the agent is registered
          */
-        register_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        register_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously registers the {@link NM.SecretAgentOld} with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent is able to provide and
+         * save secrets for connections on behalf of its user.
+         * 
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `true`
+         * or `nm_secret_agent_old_enable()`.
+         * 
+         * Since 1.24, the asynchronous result indicates whether the instance is successfully
+         * registered. In any case, this call enables the agent and it will automatically
+         * try to register and handle secret requests. A failure of this function only indicates
+         * that currently the instance might not be ready (but since it will automatically
+         * try to recover, it might be ready in a moment afterwards). Use this function if
+         * you want to check and ensure that the agent is registered.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to call when the agent is registered
+         */
+        register_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_secret_agent_old_register_async()`.
@@ -19377,7 +19367,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if unregistration was successful, `false` on error Since 1.24, registration cannot fail and is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false` or `nm_secret_agent_old_enable()`.
          */
-        unregister(cancellable: (Gio.Cancellable | null)): boolean;
+        unregister(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
@@ -19389,20 +19379,7 @@ export namespace NM {
          * or `nm_secret_agent_old_enable()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        unregister_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
-         * manager, indicating to NetworkManager that the agent will no longer provide
-         * or store secrets on behalf of this user.
-         * 
-         * Since 1.24, registration cannot fail and is idempotent. It has
-         * the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false`
-         * or `nm_secret_agent_old_enable()`.
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to call when the agent is unregistered
-         */
-        unregister_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unregister_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
@@ -19415,7 +19392,20 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the agent is unregistered
          */
-        unregister_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unregister_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously unregisters the {@link NM.SecretAgentOld} with the NetworkManager secret
+         * manager, indicating to NetworkManager that the agent will no longer provide
+         * or store secrets on behalf of this user.
+         * 
+         * Since 1.24, registration cannot fail and is idempotent. It has
+         * the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false`
+         * or `nm_secret_agent_old_enable()`.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to call when the agent is unregistered
+         */
+        unregister_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result of a call to `nm_secret_agent_old_unregister_async()`.
@@ -19464,7 +19454,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -19507,7 +19497,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -19550,7 +19540,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -19610,7 +19600,7 @@ export namespace NM {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -19662,7 +19652,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -19706,7 +19696,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -19809,7 +19799,7 @@ export namespace NM {
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
          * @returns `true` if the settings contain the same values, `false` if they do not
          */
-        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: ({ [key: string]: any } | GLib.HashTable<string, number>)): [boolean, GLib.HashTable<string, number>];
+        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: any } | GLib.HashTable<string, number>): [boolean, GLib.HashTable<string, number>];
 
         /**
          * Duplicates a {@link NM.Setting}.
@@ -19850,7 +19840,7 @@ export namespace NM {
         /**
          * @param predicate the predicate for which names   should be clear.   If the predicate returns `true` for an option name, the option   gets removed. If `null`, all options will be removed.
          */
-        option_clear_by_name(predicate: (UtilsPredicateStr | null)): void;
+        option_clear_by_name(predicate: UtilsPredicateStr | null): void;
 
         /**
          * @param opt_name the option name to request.
@@ -19862,7 +19852,7 @@ export namespace NM {
          * Gives the name of all set options.
          * @returns A `null` terminated array of key names. If no names are present, this returns   `null`. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
          */
-        option_get_all_names(): (string[] | null);
+        option_get_all_names(): string[] | null;
 
         /**
          * @param opt_name the option to get
@@ -19887,7 +19877,7 @@ export namespace NM {
          * @param opt_name the option name to set
          * @param variant the variant to set.
          */
-        option_set(opt_name: string, variant: (GLib.Variant | null)): void;
+        option_set(opt_name: string, variant: GLib.Variant | null): void;
 
         /**
          * Like `nm_setting_option_set()` to set a boolean GVariant.
@@ -19929,7 +19919,7 @@ export namespace NM {
          * @param connection the {@link NM.Connection} that `setting` came from, or   `null` if `setting` is being verified in isolation.
          * @returns `true` if the setting is valid, `false` if it is not
          */
-        verify(connection: (Connection | null)): boolean;
+        verify(connection: Connection | null): boolean;
 
         /**
          * Verifies the secrets in the setting.
@@ -19940,7 +19930,7 @@ export namespace NM {
          * @param connection the {@link NM.Connection} that `setting` came from, or   `null` if `setting` is being verified in isolation.
          * @returns `true` if the setting secrets are valid, `false` if they are not
          */
-        verify_secrets(connection: (Connection | null)): boolean;
+        verify_secrets(connection: Connection | null): boolean;
     }
 
 
@@ -20074,16 +20064,16 @@ export namespace NM {
             anonymousIdentity: string;
             auth_timeout: number;
             authTimeout: number;
-            ca_cert: (GLib.Bytes | Uint8Array);
-            caCert: (GLib.Bytes | Uint8Array);
+            ca_cert: GLib.Bytes | Uint8Array;
+            caCert: GLib.Bytes | Uint8Array;
             ca_cert_password: string;
             caCertPassword: string;
             ca_cert_password_flags: SettingSecretFlags;
             caCertPasswordFlags: SettingSecretFlags;
             ca_path: string;
             caPath: string;
-            client_cert: (GLib.Bytes | Uint8Array);
-            clientCert: (GLib.Bytes | Uint8Array);
+            client_cert: GLib.Bytes | Uint8Array;
+            clientCert: GLib.Bytes | Uint8Array;
             client_cert_password: string;
             clientCertPassword: string;
             client_cert_password_flags: SettingSecretFlags;
@@ -20102,8 +20092,8 @@ export namespace NM {
             password: string;
             password_flags: SettingSecretFlags;
             passwordFlags: SettingSecretFlags;
-            password_raw: (GLib.Bytes | Uint8Array);
-            passwordRaw: (GLib.Bytes | Uint8Array);
+            password_raw: GLib.Bytes | Uint8Array;
+            passwordRaw: GLib.Bytes | Uint8Array;
             password_raw_flags: SettingSecretFlags;
             passwordRawFlags: SettingSecretFlags;
             phase1_auth_flags: number;
@@ -20120,16 +20110,16 @@ export namespace NM {
             phase2Auth: string;
             phase2_autheap: string;
             phase2Autheap: string;
-            phase2_ca_cert: (GLib.Bytes | Uint8Array);
-            phase2CaCert: (GLib.Bytes | Uint8Array);
+            phase2_ca_cert: GLib.Bytes | Uint8Array;
+            phase2CaCert: GLib.Bytes | Uint8Array;
             phase2_ca_cert_password: string;
             phase2CaCertPassword: string;
             phase2_ca_cert_password_flags: SettingSecretFlags;
             phase2CaCertPasswordFlags: SettingSecretFlags;
             phase2_ca_path: string;
             phase2CaPath: string;
-            phase2_client_cert: (GLib.Bytes | Uint8Array);
-            phase2ClientCert: (GLib.Bytes | Uint8Array);
+            phase2_client_cert: GLib.Bytes | Uint8Array;
+            phase2ClientCert: GLib.Bytes | Uint8Array;
             phase2_client_cert_password: string;
             phase2ClientCertPassword: string;
             phase2_client_cert_password_flags: SettingSecretFlags;
@@ -20138,8 +20128,8 @@ export namespace NM {
             phase2DomainMatch: string;
             phase2_domain_suffix_match: string;
             phase2DomainSuffixMatch: string;
-            phase2_private_key: (GLib.Bytes | Uint8Array);
-            phase2PrivateKey: (GLib.Bytes | Uint8Array);
+            phase2_private_key: GLib.Bytes | Uint8Array;
+            phase2PrivateKey: GLib.Bytes | Uint8Array;
             phase2_private_key_password: string;
             phase2PrivateKeyPassword: string;
             phase2_private_key_password_flags: SettingSecretFlags;
@@ -20149,8 +20139,8 @@ export namespace NM {
             pin: string;
             pin_flags: SettingSecretFlags;
             pinFlags: SettingSecretFlags;
-            private_key: (GLib.Bytes | Uint8Array);
-            privateKey: (GLib.Bytes | Uint8Array);
+            private_key: GLib.Bytes | Uint8Array;
+            privateKey: GLib.Bytes | Uint8Array;
             private_key_password: string;
             privateKeyPassword: string;
             private_key_password_flags: SettingSecretFlags;
@@ -20242,7 +20232,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_ca_cert()` function instead.
          */
         get ca_cert(): GLib.Bytes;
-        set ca_cert(val: (GLib.Bytes | Uint8Array));
+        set ca_cert(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the CA certificate if used by the EAP method specified in the
@@ -20264,7 +20254,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_ca_cert()` function instead.
          */
         get caCert(): GLib.Bytes;
-        set caCert(val: (GLib.Bytes | Uint8Array));
+        set caCert(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to access the CA certificate stored in
@@ -20341,7 +20331,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_client_cert()` function instead.
          */
         get client_cert(): GLib.Bytes;
-        set client_cert(val: (GLib.Bytes | Uint8Array));
+        set client_cert(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the client certificate if used by the EAP method specified in
@@ -20358,7 +20348,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_client_cert()` function instead.
          */
         get clientCert(): GLib.Bytes;
-        set clientCert(val: (GLib.Bytes | Uint8Array));
+        set clientCert(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to access the client certificate stored in
@@ -20546,7 +20536,7 @@ export namespace NM {
          * property are specified, {@link NM.Setting8021x.password} is preferred.
          */
         get password_raw(): GLib.Bytes;
-        set password_raw(val: (GLib.Bytes | Uint8Array));
+        set password_raw(val: GLib.Bytes | Uint8Array);
 
         /**
          * Password used for EAP authentication methods, given as a byte array to
@@ -20555,7 +20545,7 @@ export namespace NM {
          * property are specified, {@link NM.Setting8021x.password} is preferred.
          */
         get passwordRaw(): GLib.Bytes;
-        set passwordRaw(val: (GLib.Bytes | Uint8Array));
+        set passwordRaw(val: GLib.Bytes | Uint8Array);
 
         /**
          * Flags indicating how to handle the {@link NM.Setting8021x.password_raw} property.
@@ -20762,7 +20752,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_ca_cert()` function instead.
          */
         get phase2_ca_cert(): GLib.Bytes;
-        set phase2_ca_cert(val: (GLib.Bytes | Uint8Array));
+        set phase2_ca_cert(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the "phase 2" CA certificate if used by the EAP method specified
@@ -20785,7 +20775,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_ca_cert()` function instead.
          */
         get phase2CaCert(): GLib.Bytes;
-        set phase2CaCert(val: (GLib.Bytes | Uint8Array));
+        set phase2CaCert(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to access the "phase2" CA certificate stored in
@@ -20865,7 +20855,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_client_cert()` function instead.
          */
         get phase2_client_cert(): GLib.Bytes;
-        set phase2_client_cert(val: (GLib.Bytes | Uint8Array));
+        set phase2_client_cert(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the "phase 2" client certificate if used by the EAP method
@@ -20885,7 +20875,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_client_cert()` function instead.
          */
         get phase2ClientCert(): GLib.Bytes;
-        set phase2ClientCert(val: (GLib.Bytes | Uint8Array));
+        set phase2ClientCert(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to access the "phase2" client certificate stored in
@@ -21006,7 +20996,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_private_key()` function instead.
          */
         get phase2_private_key(): GLib.Bytes;
-        set phase2_private_key(val: (GLib.Bytes | Uint8Array));
+        set phase2_private_key(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the "phase 2" inner private key when the
@@ -21033,7 +21023,7 @@ export namespace NM {
          * `nm_setting_802_1x_set_phase2_private_key()` function instead.
          */
         get phase2PrivateKey(): GLib.Bytes;
-        set phase2PrivateKey(val: (GLib.Bytes | Uint8Array));
+        set phase2PrivateKey(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to decrypt the "phase 2" private key specified in the
@@ -21152,7 +21142,7 @@ export namespace NM {
          * private key data.
          */
         get private_key(): GLib.Bytes;
-        set private_key(val: (GLib.Bytes | Uint8Array));
+        set private_key(val: GLib.Bytes | Uint8Array);
 
         /**
          * Contains the private key when the {@link NM.Setting8021x.eap} property is set to
@@ -21184,7 +21174,7 @@ export namespace NM {
          * private key data.
          */
         get privateKey(): GLib.Bytes;
-        set privateKey(val: (GLib.Bytes | Uint8Array));
+        set privateKey(val: GLib.Bytes | Uint8Array);
 
         /**
          * The password used to decrypt the private key specified in the
@@ -21315,7 +21305,7 @@ export namespace NM {
          * @param pdata the data pointer
          * @param length the length of the data
          */
-        static check_cert_scheme(pdata: null, length: (bigint | number)): Setting8021xCKScheme;
+        static check_cert_scheme(pdata: null, length: bigint | number): Setting8021xCKScheme;
 
         // Methods
         /**
@@ -22295,7 +22285,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            options: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            options: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -22313,7 +22303,7 @@ export namespace NM {
          * (ie, [a-zA-Z0-9]).
          */
         get options(): GLib.HashTable<string, string>;
-        set options(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set options(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -22351,7 +22341,7 @@ export namespace NM {
          * @param name the name of the option to validate
          * @param value the value of the option to validate.
          */
-        static validate_option(name: string, value: (string | null)): boolean;
+        static validate_option(name: string, value: string | null): boolean;
 
         // Methods
         /**
@@ -22408,7 +22398,7 @@ export namespace NM {
          * The `setting` argument is unused and may be passed as `null`.
          * @returns a `null`-terminated array of strings of valid bond options.
          */
-        get_valid_options(): (string[] | null);
+        get_valid_options(): string[] | null;
 
         /**
          * Remove the bonding option referenced by `name` from the internal option
@@ -22568,18 +22558,18 @@ export namespace NM {
             multicastHashMax: number;
             multicast_last_member_count: number;
             multicastLastMemberCount: number;
-            multicast_last_member_interval: (bigint | number);
-            multicastLastMemberInterval: (bigint | number);
-            multicast_membership_interval: (bigint | number);
-            multicastMembershipInterval: (bigint | number);
+            multicast_last_member_interval: bigint | number;
+            multicastLastMemberInterval: bigint | number;
+            multicast_membership_interval: bigint | number;
+            multicastMembershipInterval: bigint | number;
             multicast_querier: boolean;
             multicastQuerier: boolean;
-            multicast_querier_interval: (bigint | number);
-            multicastQuerierInterval: (bigint | number);
-            multicast_query_interval: (bigint | number);
-            multicastQueryInterval: (bigint | number);
-            multicast_query_response_interval: (bigint | number);
-            multicastQueryResponseInterval: (bigint | number);
+            multicast_querier_interval: bigint | number;
+            multicastQuerierInterval: bigint | number;
+            multicast_query_interval: bigint | number;
+            multicastQueryInterval: bigint | number;
+            multicast_query_response_interval: bigint | number;
+            multicastQueryResponseInterval: bigint | number;
             multicast_query_use_ifaddr: boolean;
             multicastQueryUseIfaddr: boolean;
             multicast_router: string;
@@ -22588,8 +22578,8 @@ export namespace NM {
             multicastSnooping: boolean;
             multicast_startup_query_count: number;
             multicastStartupQueryCount: number;
-            multicast_startup_query_interval: (bigint | number);
-            multicastStartupQueryInterval: (bigint | number);
+            multicast_startup_query_interval: bigint | number;
+            multicastStartupQueryInterval: bigint | number;
             priority: number;
             stp: boolean;
             vlan_default_pvid: number;
@@ -22784,7 +22774,7 @@ export namespace NM {
          * @default 100
          */
         get multicast_last_member_interval(): number;
-        set multicast_last_member_interval(val: (bigint | number));
+        set multicast_last_member_interval(val: bigint | number);
 
         /**
          * Set interval (in deciseconds) between queries to find remaining
@@ -22792,7 +22782,7 @@ export namespace NM {
          * @default 100
          */
         get multicastLastMemberInterval(): number;
-        set multicastLastMemberInterval(val: (bigint | number));
+        set multicastLastMemberInterval(val: bigint | number);
 
         /**
          * Set delay (in deciseconds) after which the bridge will
@@ -22801,7 +22791,7 @@ export namespace NM {
          * @default 26000
          */
         get multicast_membership_interval(): number;
-        set multicast_membership_interval(val: (bigint | number));
+        set multicast_membership_interval(val: bigint | number);
 
         /**
          * Set delay (in deciseconds) after which the bridge will
@@ -22810,7 +22800,7 @@ export namespace NM {
          * @default 26000
          */
         get multicastMembershipInterval(): number;
-        set multicastMembershipInterval(val: (bigint | number));
+        set multicastMembershipInterval(val: bigint | number);
 
         /**
          * Enable or disable sending of multicast queries by the bridge.
@@ -22834,7 +22824,7 @@ export namespace NM {
          * @default 25500
          */
         get multicast_querier_interval(): number;
-        set multicast_querier_interval(val: (bigint | number));
+        set multicast_querier_interval(val: bigint | number);
 
         /**
          * If no queries are seen after this delay (in deciseconds) has passed,
@@ -22842,7 +22832,7 @@ export namespace NM {
          * @default 25500
          */
         get multicastQuerierInterval(): number;
-        set multicastQuerierInterval(val: (bigint | number));
+        set multicastQuerierInterval(val: bigint | number);
 
         /**
          * Interval (in deciseconds) between queries sent
@@ -22850,7 +22840,7 @@ export namespace NM {
          * @default 12500
          */
         get multicast_query_interval(): number;
-        set multicast_query_interval(val: (bigint | number));
+        set multicast_query_interval(val: bigint | number);
 
         /**
          * Interval (in deciseconds) between queries sent
@@ -22858,7 +22848,7 @@ export namespace NM {
          * @default 12500
          */
         get multicastQueryInterval(): number;
-        set multicastQueryInterval(val: (bigint | number));
+        set multicastQueryInterval(val: bigint | number);
 
         /**
          * Set the Max Response Time/Max Response Delay
@@ -22866,7 +22856,7 @@ export namespace NM {
          * @default 1000
          */
         get multicast_query_response_interval(): number;
-        set multicast_query_response_interval(val: (bigint | number));
+        set multicast_query_response_interval(val: bigint | number);
 
         /**
          * Set the Max Response Time/Max Response Delay
@@ -22874,7 +22864,7 @@ export namespace NM {
          * @default 1000
          */
         get multicastQueryResponseInterval(): number;
-        set multicastQueryResponseInterval(val: (bigint | number));
+        set multicastQueryResponseInterval(val: bigint | number);
 
         /**
          * If enabled the bridge's own IP address is used as
@@ -22960,7 +22950,7 @@ export namespace NM {
          * @default 3125
          */
         get multicast_startup_query_interval(): number;
-        set multicast_startup_query_interval(val: (bigint | number));
+        set multicast_startup_query_interval(val: bigint | number);
 
         /**
          * Sets the time (in deciseconds) between queries sent out
@@ -22968,7 +22958,7 @@ export namespace NM {
          * @default 3125
          */
         get multicastStartupQueryInterval(): number;
-        set multicastStartupQueryInterval(val: (bigint | number));
+        set multicastStartupQueryInterval(val: bigint | number);
 
         /**
          * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
@@ -23676,7 +23666,7 @@ export namespace NM {
             slaveType: string;
             stable_id: string;
             stableId: string;
-            timestamp: (bigint | number);
+            timestamp: bigint | number;
             type: string;
             uuid: string;
             wait_activation_delay: number;
@@ -24477,7 +24467,7 @@ export namespace NM {
          * @default 0
          */
         get timestamp(): number;
-        set timestamp(val: (bigint | number));
+        set timestamp(val: bigint | number);
 
         /**
          * Base type of the connection. For hardware-dependent connections, should
@@ -24623,7 +24613,7 @@ export namespace NM {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid. If the permission was already present in the list, it will not be added a second time but `true` will be returned. Note that before 1.28, in this case `false` would be returned.
          */
-        add_permission(ptype: string, pitem: string, detail: (string | null)): boolean;
+        add_permission(ptype: string, pitem: string, detail: string | null): boolean;
 
         /**
          * Adds a new secondary connection UUID to the setting.
@@ -24902,7 +24892,7 @@ export namespace NM {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
          */
-        remove_permission_by_value(ptype: string, pitem: string, detail: (string | null)): boolean;
+        remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
 
         /**
          * Removes the secondary connection UUID at index `idx`.
@@ -25417,9 +25407,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Setting.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Setting.ConstructorProps {}
     }
 
     /**
@@ -25467,9 +25455,7 @@ export namespace NM {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Setting.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Setting.ConstructorProps {}
     }
 
     /**
@@ -27630,8 +27616,8 @@ export namespace NM {
             replaceLocalRule: Ternary;
             required_timeout: number;
             requiredTimeout: number;
-            route_metric: (bigint | number);
-            routeMetric: (bigint | number);
+            route_metric: bigint | number;
+            routeMetric: bigint | number;
             route_table: number;
             routeTable: number;
             routed_dns: number;
@@ -28451,7 +28437,7 @@ export namespace NM {
          * @default -1
          */
         get route_metric(): number;
-        set route_metric(val: (bigint | number));
+        set route_metric(val: bigint | number);
 
         /**
          * The default metric for routes that don't explicitly specify a metric.
@@ -28467,7 +28453,7 @@ export namespace NM {
          * @default -1
          */
         get routeMetric(): number;
-        set routeMetric(val: (bigint | number));
+        set routeMetric(val: bigint | number);
 
         /**
          * Enable policy routing (source routing) and set the routing table used when adding routes.
@@ -29706,14 +29692,14 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            gro_max_size: (bigint | number);
-            groMaxSize: (bigint | number);
-            gso_max_segments: (bigint | number);
-            gsoMaxSegments: (bigint | number);
-            gso_max_size: (bigint | number);
-            gsoMaxSize: (bigint | number);
-            tx_queue_length: (bigint | number);
-            txQueueLength: (bigint | number);
+            gro_max_size: bigint | number;
+            groMaxSize: bigint | number;
+            gso_max_segments: bigint | number;
+            gsoMaxSegments: bigint | number;
+            gso_max_size: bigint | number;
+            gsoMaxSize: bigint | number;
+            tx_queue_length: bigint | number;
+            txQueueLength: bigint | number;
         }
     }
 
@@ -29734,7 +29720,7 @@ export namespace NM {
          * @default -1
          */
         get gro_max_size(): number;
-        set gro_max_size(val: (bigint | number));
+        set gro_max_size(val: bigint | number);
 
         /**
          * The maximum size of a packet built by the Generic Receive Offload stack for
@@ -29744,7 +29730,7 @@ export namespace NM {
          * @default -1
          */
         get groMaxSize(): number;
-        set groMaxSize(val: (bigint | number));
+        set groMaxSize(val: bigint | number);
 
         /**
          * The maximum segments of a Generic Segment Offload packet the device should accept.
@@ -29754,7 +29740,7 @@ export namespace NM {
          * @default -1
          */
         get gso_max_segments(): number;
-        set gso_max_segments(val: (bigint | number));
+        set gso_max_segments(val: bigint | number);
 
         /**
          * The maximum segments of a Generic Segment Offload packet the device should accept.
@@ -29764,7 +29750,7 @@ export namespace NM {
          * @default -1
          */
         get gsoMaxSegments(): number;
-        set gsoMaxSegments(val: (bigint | number));
+        set gsoMaxSegments(val: bigint | number);
 
         /**
          * The maximum size of a Generic Segment Offload packet the device should accept.
@@ -29774,7 +29760,7 @@ export namespace NM {
          * @default -1
          */
         get gso_max_size(): number;
-        set gso_max_size(val: (bigint | number));
+        set gso_max_size(val: bigint | number);
 
         /**
          * The maximum size of a Generic Segment Offload packet the device should accept.
@@ -29784,7 +29770,7 @@ export namespace NM {
          * @default -1
          */
         get gsoMaxSize(): number;
-        set gsoMaxSize(val: (bigint | number));
+        set gsoMaxSize(val: bigint | number);
 
         /**
          * The size of the transmit queue for the device, in number of packets. The value
@@ -29793,7 +29779,7 @@ export namespace NM {
          * @default -1
          */
         get tx_queue_length(): number;
-        set tx_queue_length(val: (bigint | number));
+        set tx_queue_length(val: bigint | number);
 
         /**
          * The size of the transmit queue for the device, in number of packets. The value
@@ -29802,7 +29788,7 @@ export namespace NM {
          * @default -1
          */
         get txQueueLength(): number;
-        set txQueueLength(val: (bigint | number));
+        set txQueueLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -30662,7 +30648,7 @@ export namespace NM {
             channel: number;
             dhcp_anycast_address: string;
             dhcpAnycastAddress: string;
-            ssid: (GLib.Bytes | Uint8Array);
+            ssid: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -30707,7 +30693,7 @@ export namespace NM {
          * SSID of the mesh network to join.
          */
         get ssid(): GLib.Bytes;
-        set ssid(val: (GLib.Bytes | Uint8Array));
+        set ssid(val: GLib.Bytes | Uint8Array);
 
         /**
          * Compile-time signal type information.
@@ -31119,7 +31105,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -31136,7 +31122,7 @@ export namespace NM {
          * @since 1.30
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -31175,14 +31161,14 @@ export namespace NM {
          * characters. They key must also not start with "NM.".
          * @param key the key to check
          */
-        static check_key(key: (string | null)): boolean;
+        static check_key(key: string | null): boolean;
 
         /**
          * Checks whether `val` is a valid user data value. This means,
          * value is not `null`, not too large and valid UTF-8.
          * @param val the value to check
          */
-        static check_val(val: (string | null)): boolean;
+        static check_val(val: string | null): boolean;
 
         // Methods
         /**
@@ -31206,7 +31192,7 @@ export namespace NM {
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
          */
-        set_data(key: string, val: (string | null)): void;
+        set_data(key: string, val: string | null): void;
 
         /**
          * @param args 
@@ -31323,7 +31309,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -31343,7 +31329,7 @@ export namespace NM {
          * @since 1.42
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -31396,7 +31382,7 @@ export namespace NM {
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
          */
-        set_data(key: string, val: (string | null)): void;
+        set_data(key: string, val: string | null): void;
 
         /**
          * @param args 
@@ -32272,8 +32258,8 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            subnet_id: (bigint | number);
-            subnetId: (bigint | number);
+            subnet_id: bigint | number;
+            subnetId: bigint | number;
         }
     }
 
@@ -32295,7 +32281,7 @@ export namespace NM {
          * @default -1
          */
         get subnet_id(): number;
-        set subnet_id(val: (bigint | number));
+        set subnet_id(val: bigint | number);
 
         /**
          * The subnet ID to use on the interface from the prefix delegation received via
@@ -32306,7 +32292,7 @@ export namespace NM {
          * @default -1
          */
         get subnetId(): number;
-        set subnetId(val: (bigint | number));
+        set subnetId(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -32504,8 +32490,8 @@ export namespace NM {
             baud: number;
             bits: number;
             parity: SettingSerialParity;
-            send_delay: (bigint | number);
-            sendDelay: (bigint | number);
+            send_delay: bigint | number;
+            sendDelay: bigint | number;
             stopbits: number;
         }
     }
@@ -32546,14 +32532,14 @@ export namespace NM {
          * @default 0
          */
         get send_delay(): number;
-        set send_delay(val: (bigint | number));
+        set send_delay(val: bigint | number);
 
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          * @default 0
          */
         get sendDelay(): number;
-        set sendDelay(val: (bigint | number));
+        set sendDelay(val: bigint | number);
 
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
@@ -34054,7 +34040,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
         }
     }
 
@@ -34074,7 +34060,7 @@ export namespace NM {
          * @since 1.8
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Compile-time signal type information.
@@ -34146,7 +34132,7 @@ export namespace NM {
          * @param val the value to set or `null` to clear a key.
          * @returns `true` if the operation was successful. The operation   can fail if `key` or `val` are not valid strings according   to `nm_setting_user_check_key()` and `nm_setting_user_check_val()`.
          */
-        set_data(key: string, val: (string | null)): boolean;
+        set_data(key: string, val: string | null): boolean;
 
         /**
          * @param args 
@@ -34483,9 +34469,9 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            data: { [key: string]: any } | GLib.HashTable<string, string>;
             persistent: boolean;
-            secrets: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            secrets: { [key: string]: any } | GLib.HashTable<string, string>;
             service_type: string;
             serviceType: string;
             timeout: number;
@@ -34507,7 +34493,7 @@ export namespace NM {
          * values must be strings.
          */
         get data(): GLib.HashTable<string, string>;
-        set data(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * If the VPN service supports persistence, and this property is `true`,
@@ -34523,7 +34509,7 @@ export namespace NM {
          * passwords or private keys.  Both keys and values must be strings.
          */
         get secrets(): GLib.HashTable<string, string>;
-        set secrets(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set secrets(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * D-Bus service name of the VPN plugin that this setting uses to connect to
@@ -34620,7 +34606,7 @@ export namespace NM {
          * @param key a name that uniquely identifies the given value `item`
          * @param item the value to be referenced by `key`
          */
-        add_data_item(key: string, item: (string | null)): void;
+        add_data_item(key: string, item: string | null): void;
 
         /**
          * Establishes a relationship between `key` and `secret` internally in the
@@ -34632,7 +34618,7 @@ export namespace NM {
          * @param key a name that uniquely identifies the given secret `secret`
          * @param secret the secret to be referenced by `key`
          */
-        add_secret(key: string, secret: (string | null)): void;
+        add_secret(key: string, secret: string | null): void;
 
         /**
          * Iterates all data items stored in this setting.  It is safe to add, remove,
@@ -34662,7 +34648,7 @@ export namespace NM {
          * Retrieves every data key inside `setting`, as an array.
          * @returns a   `null`-terminated array containing each data key or `null` if   there are no data items.
          */
-        get_data_keys(): (string[] | null);
+        get_data_keys(): string[] | null;
 
         /**
          * Gets number of key/value pairs of VPN configuration data.
@@ -34693,7 +34679,7 @@ export namespace NM {
          * Retrieves every secret key inside `setting`, as an array.
          * @returns a   `null`-terminated array containing each secret key or `null` if   there are no secrets.
          */
-        get_secret_keys(): (string[] | null);
+        get_secret_keys(): string[] | null;
 
         /**
          * Returns the service name of the VPN, which identifies the specific VPN
@@ -35156,8 +35142,8 @@ export namespace NM {
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
             peer: string;
-            wfd_ies: (GLib.Bytes | Uint8Array);
-            wfdIes: (GLib.Bytes | Uint8Array);
+            wfd_ies: GLib.Bytes | Uint8Array;
+            wfdIes: GLib.Bytes | Uint8Array;
             wps_method: number;
             wpsMethod: number;
         }
@@ -35191,7 +35177,7 @@ export namespace NM {
          * @since 1.16
          */
         get wfd_ies(): GLib.Bytes;
-        set wfd_ies(val: (GLib.Bytes | Uint8Array));
+        set wfd_ies(val: GLib.Bytes | Uint8Array);
 
         /**
          * The Wi-Fi Display (WFD) Information Elements (IEs) to set.
@@ -35203,7 +35189,7 @@ export namespace NM {
          * @since 1.16
          */
         get wfdIes(): GLib.Bytes;
-        set wfdIes(val: (GLib.Bytes | Uint8Array));
+        set wfdIes(val: GLib.Bytes | Uint8Array);
 
         /**
          * Flags indicating which mode of WPS is to be used.
@@ -35681,7 +35667,7 @@ export namespace NM {
          * @param public_key the public key for looking up the   peer.
          * @returns the {@link NM.WireGuardPeer} instance with a   matching public key. If no such peer exists, `null` is returned.
          */
-        get_peer_by_public_key(public_key: string): [(WireGuardPeer | null), number];
+        get_peer_by_public_key(public_key: string): [WireGuardPeer | null, number];
 
         /**
          * @returns whether automatically add peer routes.
@@ -35770,8 +35756,8 @@ export namespace NM {
             port: string;
             s390_nettype: string;
             s390Nettype: string;
-            s390_options: ({ [key: string]: any } | GLib.HashTable<string, string>);
-            s390Options: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            s390_options: { [key: string]: any } | GLib.HashTable<string, string>;
+            s390Options: { [key: string]: any } | GLib.HashTable<string, string>;
             s390_subchannels: string[];
             s390Subchannels: string[];
             speed: number;
@@ -36073,7 +36059,7 @@ export namespace NM {
          * and applies it to the interface.
          */
         get s390_options(): GLib.HashTable<string, string>;
-        set s390_options(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set s390_options(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Dictionary of key/value pairs of s390-specific device options.  Both keys
@@ -36086,7 +36072,7 @@ export namespace NM {
          * and applies it to the interface.
          */
         get s390Options(): GLib.HashTable<string, string>;
-        set s390Options(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+        set s390Options(val: { [key: string]: any } | GLib.HashTable<string, string>);
 
         /**
          * Identifies specific subchannels that this network device uses for
@@ -36478,7 +36464,7 @@ export namespace NM {
             rate: number;
             seen_bssids: string[];
             seenBssids: string[];
-            ssid: (GLib.Bytes | Uint8Array);
+            ssid: GLib.Bytes | Uint8Array;
             tx_power: number;
             txPower: number;
             wake_on_wlan: number;
@@ -36899,7 +36885,7 @@ export namespace NM {
          * SSID of the Wi-Fi network. Must be specified.
          */
         get ssid(): GLib.Bytes;
-        set ssid(val: (GLib.Bytes | Uint8Array));
+        set ssid(val: GLib.Bytes | Uint8Array);
 
         /**
          * This property is not implemented and has no effect.
@@ -37994,13 +37980,10 @@ export namespace NM {
 
     namespace SimpleConnection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Connection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Connection.ConstructorProps {}
     }
 
     /**
@@ -38075,7 +38058,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func: (SettingClearSecretsWithFlagsFn | null)): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
 
         /**
          * Deletes all of `connection`'s settings.
@@ -38394,7 +38377,7 @@ export namespace NM {
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
          */
-        get_settings(): (Setting[] | null);
+        get_settings(): Setting[] | null;
 
         /**
          * A shortcut to return the UUID from the connection's {@link NM.SettingConnection}.
@@ -38434,7 +38417,7 @@ export namespace NM {
          * secrets are needed.
          * @returns the setting name of the {@link NM.Setting} object which has   invalid or missing secrets
          */
-        need_secrets(): [(string | null), string[] | null];
+        need_secrets(): [string | null, string[] | null];
 
         /**
          * Does some basic normalization and fixup of well known inconsistencies
@@ -38448,7 +38431,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
+        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -38720,7 +38703,7 @@ export namespace NM {
 
         static new_from_file(filename: string): VpnPluginInfo;
 
-        static new_search_file(name: (string | null), service: (string | null)): VpnPluginInfo;
+        static new_search_file(name: string | null, service: string | null): VpnPluginInfo;
 
         static new_with_data(filename: string, keyfile: GLib.KeyFile): VpnPluginInfo;
 
@@ -38860,7 +38843,7 @@ export namespace NM {
          * Set the internal plugin instance. If `null`, only clear the previous instance.
          * @param plugin plugin instance
          */
-        set_editor_plugin(plugin: (VpnEditorPlugin | null)): void;
+        set_editor_plugin(plugin: VpnEditorPlugin | null): void;
 
         /**
          * @returns `true` if the supports hints for secret requests, otherwise `false`
@@ -38919,7 +38902,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -38963,7 +38946,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -39088,7 +39071,7 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<never, never>), secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: { [key: string]: any } | GLib.HashTable<never, never>, secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
@@ -39256,7 +39239,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -39300,7 +39283,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -39445,7 +39428,7 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: ({ [key: string]: any } | GLib.HashTable<never, never>), secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: { [key: string]: any } | GLib.HashTable<never, never>, secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
@@ -39626,7 +39609,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -39670,7 +39653,7 @@ export namespace NM {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -39705,8 +39688,8 @@ export namespace NM {
             name: string;
             serial: string;
             strength: number;
-            wfd_ies: (GLib.Bytes | Uint8Array);
-            wfdIes: (GLib.Bytes | Uint8Array);
+            wfd_ies: GLib.Bytes | Uint8Array;
+            wfdIes: GLib.Bytes | Uint8Array;
         }
     }
 
@@ -40510,7 +40493,7 @@ export namespace NM {
          * @param name the name of an address attribute
          * @param value the value
          */
-        set_attribute(name: string, value: (GLib.Variant | null)): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the IP address prefix property of this address object.
@@ -40538,11 +40521,11 @@ export namespace NM {
         static $gtype: GObject.GType<IPRoute>;
 
         // Constructors
-        constructor(family: number, dest: string, prefix: number, next_hop: (string | null), metric: (bigint | number));
+        constructor(family: number, dest: string, prefix: number, next_hop: string | null, metric: bigint | number);
 
-        static ["new"](family: number, dest: string, prefix: number, next_hop: (string | null), metric: (bigint | number)): IPRoute;
+        static ["new"](family: number, dest: string, prefix: number, next_hop: string | null, metric: bigint | number): IPRoute;
 
-        static new_binary(family: number, dest: null, prefix: number, next_hop: null, metric: (bigint | number)): IPRoute;
+        static new_binary(family: number, dest: null, prefix: number, next_hop: null, metric: bigint | number): IPRoute;
 
         // Static methods
         /**
@@ -40637,7 +40620,7 @@ export namespace NM {
          * @param name the name of a route attribute
          * @param value the value
          */
-        set_attribute(name: string, value: (GLib.Variant | null)): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the destination property of this route object.
@@ -40652,7 +40635,7 @@ export namespace NM {
          * Sets the metric property of this route object.
          * @param metric the route metric (or -1 for "default")
          */
-        set_metric(metric: (bigint | number)): void;
+        set_metric(metric: bigint | number): void;
 
         /**
          * Sets the next-hop property of this route object.
@@ -40662,7 +40645,7 @@ export namespace NM {
          * it.
          * @param next_hop the route's next hop, as a string
          */
-        set_next_hop(next_hop: (string | null)): void;
+        set_next_hop(next_hop: string | null): void;
 
         /**
          * Sets the prefix property of this route object.
@@ -40695,14 +40678,14 @@ export namespace NM {
          * @param to_string_flags {@link NM.IPRoutingRuleAsStringFlags} for controlling the   string conversion.
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          */
-        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): IPRoutingRule;
+        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): IPRoutingRule;
 
         // Methods
         /**
          * @param other the other {@link NM.IPRoutingRule} instance to compare
          * @returns zero, a positive, or a negative integer to indicate   equality or how the arguments compare.
          */
-        cmp(other: (IPRoutingRule | null)): number;
+        cmp(other: IPRoutingRule | null): number;
 
         /**
          * @returns the set action.
@@ -40852,7 +40835,7 @@ export namespace NM {
          * @param from the from/src address to set.   The address family must match.
          * @param len the corresponding prefix length of the address.
          */
-        set_from(from: (string | null), len: number): void;
+        set_from(from: string | null, len: number): void;
 
         /**
          * @param fwmark the fwmark
@@ -40867,7 +40850,7 @@ export namespace NM {
          * representation you'd get double backslashes.
          * @param iifname the iifname to set or `null` to unset.
          */
-        set_iifname(iifname: (string | null)): void;
+        set_iifname(iifname: string | null): void;
 
         /**
          * @param invert the new value to set
@@ -40886,7 +40869,7 @@ export namespace NM {
          * representation you'd get double backslashes.
          * @param oifname the oifname to set or `null` to unset.
          */
-        set_oifname(oifname: (string | null)): void;
+        set_oifname(oifname: string | null): void;
 
         /**
          * A valid priority ranges from 0 to `G_MAXUINT32`. "-1" is also allowed
@@ -40894,7 +40877,7 @@ export namespace NM {
          * other value.
          * @param priority the priority to set
          */
-        set_priority(priority: (bigint | number)): void;
+        set_priority(priority: bigint | number): void;
 
         /**
          * @param start the start port to set.
@@ -40918,7 +40901,7 @@ export namespace NM {
          * @param to the to/dst address to set.   The address family must match.
          * @param len the corresponding prefix length of the address.   If `to` is `null`, this valid is ignored.
          */
-        set_to(to: (string | null), len: number): void;
+        set_to(to: string | null, len: number): void;
 
         /**
          * @param tos the tos to set
@@ -40941,7 +40924,7 @@ export namespace NM {
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
          */
-        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: (GLib.HashTable<never, never> | null)): string;
+        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): string;
 
         /**
          * Decreases the reference count of the instance and destroys
@@ -41054,10 +41037,7 @@ export namespace NM {
         static $gtype: GObject.GType<LldpNeighbor>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): LldpNeighbor;
 
@@ -41125,9 +41105,9 @@ export namespace NM {
         static $gtype: GObject.GType<Range>;
 
         // Constructors
-        constructor(start: (bigint | number), end: (bigint | number));
+        constructor(start: bigint | number, end: bigint | number);
 
-        static ["new"](start: (bigint | number), end: (bigint | number)): Range;
+        static ["new"](start: bigint | number, end: bigint | number): Range;
 
         // Static methods
         /**
@@ -41587,7 +41567,7 @@ export namespace NM {
          * @param name the name of a route attribute
          * @param value the value
          */
-        set_attribute(name: string, value: (GLib.Variant | null)): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the protocol for the given VLAN.
@@ -41662,7 +41642,7 @@ export namespace NM {
          * @param name the name of an action attribute
          * @param value the value
          */
-        set_attribute(name: string, value: (GLib.Variant | null)): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Decreases the reference count of the object.  If the reference count
@@ -41733,7 +41713,7 @@ export namespace NM {
          * @param name the name of an qdisc attribute
          * @param value the value
          */
-        set_attribute(name: string, value: (GLib.Variant | null)): void;
+        set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the queueing discipline handle.
@@ -41986,10 +41966,7 @@ export namespace NM {
         static $gtype: GObject.GType<WireGuardPeer>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): WireGuardPeer;
 
@@ -42020,14 +41997,14 @@ export namespace NM {
          * @param compare_flags {@link NM.SettingCompareFlags} to affect the comparison.
          * @returns zero of the two instances are equivalent or   a non-zero integer otherwise. This defines a total ordering   over the peers. Whether a peer is sealed or not, does not   affect the comparison.
          */
-        cmp(b: (WireGuardPeer | null), compare_flags: SettingCompareFlags): number;
+        cmp(b: WireGuardPeer | null, compare_flags: SettingCompareFlags): number;
 
         /**
          * @param idx the index from zero to (allowed-ips-len - 1) to   retrieve.
          * @param out_is_valid `true` if the returned value is a valid allowed-ip   setting.   This parameter is wrongly not marked as (out) argument, it is   thus not accessible via introspection. This cannot be fixed without   breaking API for introspection users.
          * @returns the allowed-ip setting at index `idx`.   If `idx` is out of range, `null` will be returned.
          */
-        get_allowed_ip(idx: number, out_is_valid: (boolean | null)): (string | null);
+        get_allowed_ip(idx: number, out_is_valid: boolean | null): string | null;
 
         /**
          * @returns the number of allowed-ips entries.
@@ -42131,7 +42108,7 @@ export namespace NM {
          * @param accept_invalid whether to allow setting the key to an invalid   value. If `false`, `self` is unchanged if the key is invalid   and if `false` is returned.
          * @returns `true` if the preshared-key is valid, otherwise `false`.   `null` is considered a valid value.   If the key is invalid, it depends on `accept_invalid` whether the   previous value was reset.
          */
-        set_preshared_key(preshared_key: (string | null), accept_invalid: boolean): boolean;
+        set_preshared_key(preshared_key: string | null, accept_invalid: boolean): boolean;
 
         /**
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
@@ -42148,7 +42125,7 @@ export namespace NM {
          * @param accept_invalid if `true` and `public_key` is not `null` and   invalid, then do not modify the instance.
          * @returns `true` if the key was valid or `null`. Returns   `false` for invalid keys. Depending on `accept_invalid`   will an invalid key be set or not.
          */
-        set_public_key(public_key: (string | null), accept_invalid: boolean): boolean;
+        set_public_key(public_key: string | null, accept_invalid: boolean): boolean;
 
         /**
          * Drop a reference to `self`. If the last reference is dropped,
@@ -42190,9 +42167,7 @@ export namespace NM {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ConnectionNamespace {
@@ -42226,7 +42201,7 @@ export namespace NM {
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not. If `null`, all secrets are cleared.
          */
-        clear_secrets_with_flags(func: (SettingClearSecretsWithFlagsFn | null)): void;
+        clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn | null): void;
 
         /**
          * Deletes all of `connection`'s settings.
@@ -42545,7 +42520,7 @@ export namespace NM {
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
          */
-        get_settings(): (Setting[] | null);
+        get_settings(): Setting[] | null;
 
         /**
          * A shortcut to return the UUID from the connection's {@link NM.SettingConnection}.
@@ -42585,7 +42560,7 @@ export namespace NM {
          * secrets are needed.
          * @returns the setting name of the {@link NM.Setting} object which has   invalid or missing secrets
          */
-        need_secrets(): [(string | null), string[] | null];
+        need_secrets(): [string | null, string[] | null];
 
         /**
          * Does some basic normalization and fixup of well known inconsistencies
@@ -42599,7 +42574,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: (GLib.HashTable<string, never> | null)): [boolean, boolean];
+        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -42716,9 +42691,7 @@ export namespace NM {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface VpnEditorNamespace {
@@ -42905,7 +42878,7 @@ export namespace NM {
          * @param vt_size the size of the buffer. Can be 0 to only query the   size of plugin's VT.
          * @returns the actual size of the `plugin`'s virtual function table.
          */
-        get_vt(vt_size: (bigint | number)): [number, VpnEditorPluginVT];
+        get_vt(vt_size: bigint | number): [number, VpnEditorPluginVT];
 
         /**
          * @param path full path to the file to attempt to read into a new {@link NM.Connection}
@@ -42919,7 +42892,7 @@ export namespace NM {
          * reference as the plugin-info might also reference the editor-plugin.
          * @param plugin_info a {@link NM.VpnPluginInfo} instance or `null`
          */
-        set_plugin_info(plugin_info: (VpnPluginInfo | null)): void;
+        set_plugin_info(plugin_info: VpnPluginInfo | null): void;
     }
 
 

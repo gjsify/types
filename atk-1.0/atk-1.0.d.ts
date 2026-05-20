@@ -1836,7 +1836,7 @@ export namespace Atk {
      * @param index_ The index of the required value
      * @returns a string containing the value; this string should not be freed; `null` is returned if there are no values maintained for the attr value.
      */
-    function text_attribute_get_value(attr: TextAttribute, index_: number): (string | null);
+    function text_attribute_get_value(attr: TextAttribute, index_: number): string | null;
 
     /**
      * Associate `name` with a new {@link Atk.TextAttribute}
@@ -1952,9 +1952,7 @@ export namespace Atk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2275,7 +2273,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): (string | null);
+        get_description(i: number): string | null;
 
         /**
          * Gets the keybinding which can be used to activate this action, if one
@@ -2303,14 +2301,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): (string | null);
+        get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): (string | null);
+        get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -2338,7 +2336,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): (string | null);
+        get_name(i: number): string | null;
 
         /**
          * Sets a description of the specified action of the object.
@@ -2360,7 +2358,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): (string | null);
+        vfunc_get_description(i: number): string | null;
 
         /**
          * Gets the keybinding which can be used to activate this action, if one
@@ -2388,14 +2386,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): (string | null);
+        vfunc_get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): (string | null);
+        vfunc_get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -2423,7 +2421,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): (string | null);
+        vfunc_get_name(i: number): string | null;
 
         /**
          * Sets a description of the specified action of the object.
@@ -2437,13 +2435,10 @@ export namespace Atk {
 
     namespace Misc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2560,9 +2555,7 @@ export namespace Atk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Action.ConstructorProps, Component.ConstructorProps, Document.ConstructorProps, EditableText.ConstructorProps, Hypertext.ConstructorProps, Image.ConstructorProps, Selection.ConstructorProps, Table.ConstructorProps, TableCell.ConstructorProps, Text.ConstructorProps, Value.ConstructorProps, Window.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Action.ConstructorProps, Component.ConstructorProps, Document.ConstructorProps, EditableText.ConstructorProps, Hypertext.ConstructorProps, Image.ConstructorProps, Selection.ConstructorProps, Table.ConstructorProps, TableCell.ConstructorProps, Text.ConstructorProps, Value.ConstructorProps, Window.ConstructorProps {}
     }
 
     /**
@@ -2618,7 +2611,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): (string | null);
+        get_description(i: number): string | null;
 
         /**
          * @param args 
@@ -2652,14 +2645,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): (string | null);
+        get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): (string | null);
+        get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -2687,7 +2680,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): (string | null);
+        get_name(i: number): string | null;
 
         /**
          * @param args 
@@ -2721,7 +2714,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_description(i: number): (string | null);
+        vfunc_get_description(i: number): string | null;
 
         /**
          * @param args 
@@ -2756,14 +2749,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_keybinding(i: number): (string | null);
+        vfunc_get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_localized_name(i: number): (string | null);
+        vfunc_get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -2791,7 +2784,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @virtual
          */
-        vfunc_get_name(i: number): (string | null);
+        vfunc_get_name(i: number): string | null;
 
         /**
          * @param args 
@@ -2896,7 +2889,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -3049,7 +3042,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -3117,7 +3110,7 @@ export namespace Atk {
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
          */
-        get_attribute_value(attribute_name: string): (string | null);
+        get_attribute_value(attribute_name: string): string | null;
 
         /**
          * Gets an AtkAttributeSet which describes document-wide
@@ -3206,7 +3199,7 @@ export namespace Atk {
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @virtual
          */
-        vfunc_get_document_attribute_value(attribute_name: string): (string | null);
+        vfunc_get_document_attribute_value(attribute_name: string): string | null;
 
         /**
          * Gets an AtkAttributeSet which describes document-wide
@@ -3438,7 +3431,7 @@ export namespace Atk {
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
          */
-        get_image_locale(): (string | null);
+        get_image_locale(): string | null;
 
         /**
          * Gets the position of the image in the form of a point specifying the
@@ -3477,7 +3470,7 @@ export namespace Atk {
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @virtual
          */
-        vfunc_get_image_locale(): (string | null);
+        vfunc_get_image_locale(): string | null;
 
         /**
          * Gets the position of the image in the form of a point specifying the
@@ -3554,7 +3547,7 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns an {@link Atk.Object} representing the selected accessible, or `null` if `selection` does not implement this interface.
          */
-        ref_selection(i: number): (Object | null);
+        ref_selection(i: number): Object | null;
 
         /**
          * Removes the specified child of the object from the object's selection.
@@ -3616,7 +3609,7 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @virtual
          */
-        vfunc_ref_selection(i: number): (Object | null);
+        vfunc_ref_selection(i: number): Object | null;
 
         /**
          * Removes the specified child of the object from the object's selection.
@@ -3655,7 +3648,7 @@ export namespace Atk {
          * Gets the caption for the `table`.
          * @returns a AtkObject* representing the table caption, or `null` if value does not implement this interface.
          */
-        get_caption(): (Object | null);
+        get_caption(): Object | null;
 
         /**
          * Gets a `gint` representing the column at the specified `index_`.
@@ -3685,7 +3678,7 @@ export namespace Atk {
          * @param column a `gint` representing a column in the table
          * @returns a AtkObject* representing the specified column header, or `null` if value does not implement this interface.
          */
-        get_column_header(column: number): (Object | null);
+        get_column_header(column: number): Object | null;
 
         /**
          * Gets a `gint` representing the index at the specified `row` and
@@ -3720,7 +3713,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in `table`
          * @returns a gchar* representing the row description, or `null` if value does not implement this interface.
          */
-        get_row_description(row: number): (string | null);
+        get_row_description(row: number): string | null;
 
         /**
          * Gets the number of rows occupied by the accessible object
@@ -3736,7 +3729,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in the table
          * @returns a AtkObject* representing the specified row header, or `null` if value does not implement this interface.
          */
-        get_row_header(row: number): (Object | null);
+        get_row_header(row: number): Object | null;
 
         /**
          * Gets the selected columns of the table by initializing **selected with
@@ -3885,7 +3878,7 @@ export namespace Atk {
          * Gets the caption for the `table`.
          * @virtual
          */
-        vfunc_get_caption(): (Object | null);
+        vfunc_get_caption(): Object | null;
 
         /**
          * Gets a `gint` representing the column at the specified `index_`.
@@ -3915,7 +3908,7 @@ export namespace Atk {
          * @param column a `gint` representing a column in the table
          * @virtual
          */
-        vfunc_get_column_header(column: number): (Object | null);
+        vfunc_get_column_header(column: number): Object | null;
 
         /**
          * Gets a `gint` representing the index at the specified `row` and
@@ -3950,7 +3943,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in `table`
          * @virtual
          */
-        vfunc_get_row_description(row: number): (string | null);
+        vfunc_get_row_description(row: number): string | null;
 
         /**
          * Gets the number of rows occupied by the accessible object
@@ -3966,7 +3959,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in the table
          * @virtual
          */
-        vfunc_get_row_header(row: number): (Object | null);
+        vfunc_get_row_header(row: number): Object | null;
 
         /**
          * Gets the selected columns of the table by initializing **selected with
@@ -4320,7 +4313,7 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+        get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
         /**
          * Gets the specified text.
@@ -4564,7 +4557,7 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @virtual
          */
-        vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+        vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
         /**
          * Gets the specified text.
@@ -4735,7 +4728,7 @@ export namespace Atk {
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): (Range | null);
+        get_range(): Range | null;
 
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -4756,7 +4749,7 @@ export namespace Atk {
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: (GObject.Value | any)): boolean;
+        set_current_value(value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of this object.
@@ -4816,7 +4809,7 @@ export namespace Atk {
          * Gets the range of this object.
          * @virtual
          */
-        vfunc_get_range(): (Range | null);
+        vfunc_get_range(): Range | null;
 
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -4864,13 +4857,10 @@ export namespace Atk {
 
     namespace NoOpObjectFactory {
         // Signal signatures
-        interface SignalSignatures extends ObjectFactory.SignalSignatures {
-        }
+        interface SignalSignatures extends ObjectFactory.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ObjectFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ObjectFactory.ConstructorProps {}
     }
 
     /**
@@ -6533,13 +6523,10 @@ export namespace Atk {
 
     namespace ObjectFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6643,9 +6630,7 @@ export namespace Atk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
     }
 
     /**
@@ -6795,7 +6780,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -6941,7 +6926,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -7008,13 +6993,10 @@ export namespace Atk {
 
     namespace Registry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7196,13 +7178,10 @@ export namespace Atk {
 
     namespace RelationSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7346,9 +7325,7 @@ export namespace Atk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
     }
 
     /**
@@ -7526,7 +7503,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -7672,7 +7649,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -7739,13 +7716,10 @@ export namespace Atk {
 
     namespace StateSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -7852,7 +7826,7 @@ export namespace Atk {
          * @param compare_set another {@link Atk.StateSet}
          * @returns a new {@link Atk.StateSet} which is the union of the two sets, returning `null` is empty.
          */
-        or_sets(compare_set: StateSet): (StateSet | null);
+        or_sets(compare_set: StateSet): StateSet | null;
 
         /**
          * Removes the state for the specified type from the state set.
@@ -7879,13 +7853,10 @@ export namespace Atk {
 
     namespace Util {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8365,7 +8336,7 @@ export namespace Atk {
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_description(i: number): (string | null);
+            vfunc_get_description(i: number): string | null;
 
             /**
              * Gets the keybinding which can be used to activate this action, if one
@@ -8393,14 +8364,14 @@ export namespace Atk {
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_keybinding(i: number): (string | null);
+            vfunc_get_keybinding(i: number): string | null;
 
             /**
              * Returns the localized name of the specified action of the object.
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_localized_name(i: number): (string | null);
+            vfunc_get_localized_name(i: number): string | null;
 
             /**
              * Gets the number of accessible actions available on the object.
@@ -8428,7 +8399,7 @@ export namespace Atk {
              * @param i the action index corresponding to the action to be performed
              * @virtual
              */
-            vfunc_get_name(i: number): (string | null);
+            vfunc_get_name(i: number): string | null;
 
             /**
              * Sets a description of the specified action of the object.
@@ -8441,9 +8412,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ActionNamespace {
@@ -8488,7 +8457,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a description string, or `null` if `action` does not implement this interface.
          */
-        get_description(i: number): (string | null);
+        get_description(i: number): string | null;
 
         /**
          * Gets the keybinding which can be used to activate this action, if one
@@ -8516,14 +8485,14 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns the keybinding which can be used to activate this action, or `null` if there is no keybinding for this action.
          */
-        get_keybinding(i: number): (string | null);
+        get_keybinding(i: number): string | null;
 
         /**
          * Returns the localized name of the specified action of the object.
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_localized_name(i: number): (string | null);
+        get_localized_name(i: number): string | null;
 
         /**
          * Gets the number of accessible actions available on the object.
@@ -8551,7 +8520,7 @@ export namespace Atk {
          * @param i the action index corresponding to the action to be performed
          * @returns a name string, or `null` if `action` does not implement this interface.
          */
-        get_name(i: number): (string | null);
+        get_name(i: number): string | null;
 
         /**
          * Sets a description of the specified action of the object.
@@ -8659,7 +8628,7 @@ export namespace Atk {
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
              * @virtual
              */
-            vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+            vfunc_ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
             /**
              * Remove the handler specified by `handler_id` from the list of
@@ -8725,9 +8694,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ComponentNamespace {
@@ -8829,7 +8796,7 @@ export namespace Atk {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): (Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: CoordType): Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -8924,7 +8891,7 @@ export namespace Atk {
              * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
              * @virtual
              */
-            vfunc_get_document_attribute_value(attribute_name: string): (string | null);
+            vfunc_get_document_attribute_value(attribute_name: string): string | null;
 
             /**
              * Gets an AtkAttributeSet which describes document-wide
@@ -8983,9 +8950,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentNamespace {
@@ -9013,7 +8978,7 @@ export namespace Atk {
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
          */
-        get_attribute_value(attribute_name: string): (string | null);
+        get_attribute_value(attribute_name: string): string | null;
 
         /**
          * Gets an AtkAttributeSet which describes document-wide
@@ -9161,9 +9126,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EditableTextNamespace {
@@ -9265,9 +9228,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface HyperlinkImplNamespace {
@@ -9336,9 +9297,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface HypertextNamespace {
@@ -9407,7 +9366,7 @@ export namespace Atk {
              * Retrieves the locale identifier associated to the {@link Atk.Image}.
              * @virtual
              */
-            vfunc_get_image_locale(): (string | null);
+            vfunc_get_image_locale(): string | null;
 
             /**
              * Gets the position of the image in the form of a point specifying the
@@ -9441,9 +9400,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ImageNamespace {
@@ -9482,7 +9439,7 @@ export namespace Atk {
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
          */
-        get_image_locale(): (string | null);
+        get_image_locale(): string | null;
 
         /**
          * Gets the position of the image in the form of a point specifying the
@@ -9520,9 +9477,7 @@ export namespace Atk {
     namespace ImplementorIface {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ImplementorIfaceNamespace {
@@ -9597,7 +9552,7 @@ export namespace Atk {
              * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
              * @virtual
              */
-            vfunc_ref_selection(i: number): (Object | null);
+            vfunc_ref_selection(i: number): Object | null;
 
             /**
              * Removes the specified child of the object from the object's selection.
@@ -9621,9 +9576,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SelectionNamespace {
@@ -9694,7 +9647,7 @@ export namespace Atk {
          * @param i a `gint` specifying the index in the selection set.  (e.g. the ith selection as opposed to the ith child).
          * @returns an {@link Atk.Object} representing the selected accessible, or `null` if `selection` does not implement this interface.
          */
-        ref_selection(i: number): (Object | null);
+        ref_selection(i: number): Object | null;
 
         /**
          * Removes the specified child of the object from the object's selection.
@@ -9757,14 +9710,12 @@ export namespace Atk {
              * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
              * @virtual
              */
-            vfunc_get_uri(mime_type: string): (string | null);
+            vfunc_get_uri(mime_type: string): string | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface StreamableContentNamespace {
@@ -9828,7 +9779,7 @@ export namespace Atk {
          * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
          * @returns Returns a string representing a URI, or `null` if no corresponding URI can be constructed.
          */
-        get_uri(mime_type: string): (string | null);
+        get_uri(mime_type: string): string | null;
     }
 
 
@@ -9881,7 +9832,7 @@ export namespace Atk {
              * Gets the caption for the `table`.
              * @virtual
              */
-            vfunc_get_caption(): (Object | null);
+            vfunc_get_caption(): Object | null;
 
             /**
              * Gets a `gint` representing the column at the specified `index_`.
@@ -9911,7 +9862,7 @@ export namespace Atk {
              * @param column a `gint` representing a column in the table
              * @virtual
              */
-            vfunc_get_column_header(column: number): (Object | null);
+            vfunc_get_column_header(column: number): Object | null;
 
             /**
              * Gets a `gint` representing the index at the specified `row` and
@@ -9946,7 +9897,7 @@ export namespace Atk {
              * @param row a `gint` representing a row in `table`
              * @virtual
              */
-            vfunc_get_row_description(row: number): (string | null);
+            vfunc_get_row_description(row: number): string | null;
 
             /**
              * Gets the number of rows occupied by the accessible object
@@ -9962,7 +9913,7 @@ export namespace Atk {
              * @param row a `gint` representing a row in the table
              * @virtual
              */
-            vfunc_get_row_header(row: number): (Object | null);
+            vfunc_get_row_header(row: number): Object | null;
 
             /**
              * Gets the selected columns of the table by initializing **selected with
@@ -10107,9 +10058,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TableNamespace {
@@ -10170,7 +10119,7 @@ export namespace Atk {
          * Gets the caption for the `table`.
          * @returns a AtkObject* representing the table caption, or `null` if value does not implement this interface.
          */
-        get_caption(): (Object | null);
+        get_caption(): Object | null;
 
         /**
          * Gets a `gint` representing the column at the specified `index_`.
@@ -10200,7 +10149,7 @@ export namespace Atk {
          * @param column a `gint` representing a column in the table
          * @returns a AtkObject* representing the specified column header, or `null` if value does not implement this interface.
          */
-        get_column_header(column: number): (Object | null);
+        get_column_header(column: number): Object | null;
 
         /**
          * Gets a `gint` representing the index at the specified `row` and
@@ -10235,7 +10184,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in `table`
          * @returns a gchar* representing the row description, or `null` if value does not implement this interface.
          */
-        get_row_description(row: number): (string | null);
+        get_row_description(row: number): string | null;
 
         /**
          * Gets the number of rows occupied by the accessible object
@@ -10251,7 +10200,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in the table
          * @returns a AtkObject* representing the specified row header, or `null` if value does not implement this interface.
          */
-        get_row_header(row: number): (Object | null);
+        get_row_header(row: number): Object | null;
 
         /**
          * Gets the selected columns of the table by initializing **selected with
@@ -10426,9 +10375,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface TableCellNamespace {
@@ -10650,7 +10597,7 @@ export namespace Atk {
              * @param granularity An {@link Atk.TextGranularity}
              * @virtual
              */
-            vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+            vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
             /**
              * Gets the specified text.
@@ -10796,9 +10743,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface TextNamespace {
@@ -10979,7 +10924,7 @@ export namespace Atk {
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
          */
-        get_string_at_offset(offset: number, granularity: TextGranularity): [(string | null), number, number];
+        get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
         /**
          * Gets the specified text.
@@ -11149,7 +11094,7 @@ export namespace Atk {
              * Gets the range of this object.
              * @virtual
              */
-            vfunc_get_range(): (Range | null);
+            vfunc_get_range(): Range | null;
 
             /**
              * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -11196,9 +11141,7 @@ export namespace Atk {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ValueNamespace {
@@ -11388,7 +11331,7 @@ export namespace Atk {
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): (Range | null);
+        get_range(): Range | null;
 
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -11409,7 +11352,7 @@ export namespace Atk {
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: (GObject.Value | any)): boolean;
+        set_current_value(value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of this object.
@@ -11439,9 +11382,7 @@ export namespace Atk {
     namespace Window {
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     export interface WindowNamespace {
@@ -11485,7 +11426,7 @@ export namespace Atk {
      * See `atk_object_ref_state_set` and `atk_object_notify_state_change`
      * @gir-type Alias
      */
-    type State = (bigint | number);
+    type State = bigint | number;
 
     /**
      * Name of the imported GIR library

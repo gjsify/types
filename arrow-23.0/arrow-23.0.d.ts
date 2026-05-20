@@ -355,7 +355,7 @@ export namespace Arrow {
         static ALREADY_EXISTS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1192,7 +1192,7 @@ export namespace Arrow {
      * @returns `true` on success, `false` on error.
      * @since 7.0.0
      */
-    function s3_initialize(options: (S3GlobalOptions | null)): boolean;
+    function s3_initialize(options: S3GlobalOptions | null): boolean;
 
     /**
      * @returns `true` if Apache Arrow C++ is built with S3 support, `false`   otherwise.
@@ -1207,9 +1207,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
     /**
@@ -1232,7 +1230,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](aggregations: Aggregation[], keys: (string[] | null)): AggregateNodeOptions;
+        static ["new"](aggregations: Aggregation[], keys: string[] | null): AggregateNodeOptions;
 
         // Signals
         /** @signal */
@@ -1319,7 +1317,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](_function: string, options: (FunctionOptions | null), input: string, output: string): Aggregation;
+        static ["new"](_function: string, options: FunctionOptions | null, input: string, output: string): Aggregation;
 
         // Signals
         /** @signal */
@@ -1352,8 +1350,8 @@ export namespace Arrow {
             array: never;
             buffer1: Buffer;
             buffer2: Buffer;
-            null_bitmap: (Buffer | null);
-            nullBitmap: (Buffer | null);
+            null_bitmap: Buffer | null;
+            nullBitmap: Buffer | null;
             parent: Array;
             value_data_type: DataType;
             valueDataType: DataType;
@@ -1385,12 +1383,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        get null_bitmap(): (Buffer | null);
+        get null_bitmap(): Buffer | null;
 
         /**
          * @construct-only
          */
-        get nullBitmap(): (Buffer | null);
+        get nullBitmap(): Buffer | null;
 
         /**
          * @construct-only
@@ -1439,7 +1437,7 @@ export namespace Arrow {
          * @param c_abi_array A `struct ArrowArray *`.
          * @param data_type A {@link Arrow.DataType} of the C ABI array.
          */
-        static ["import"](c_abi_array: never, data_type: DataType): (Array | null);
+        static ["import"](c_abi_array: never, data_type: DataType): Array | null;
 
         // Methods
         /**
@@ -1447,35 +1445,35 @@ export namespace Arrow {
          * @param options A {@link Arrow.CastOptions}.
          * @returns A newly created casted array on success, `null` on error.
          */
-        cast(target_data_type: DataType, options: (CastOptions | null)): (Array | null);
+        cast(target_data_type: DataType, options: CastOptions | null): Array | null;
 
         /**
          * @param other_arrays A {@link Arrow.Array} to be   concatenated.
          * @returns The concatenated array.
          */
-        concatenate(other_arrays: Array[]): (Array | null);
+        concatenate(other_arrays: Array[]): Array | null;
 
         /**
          * @param options A {@link Arrow.CountOptions}.
          * @returns The number of target values on success. If an error is occurred,   the returned value is untrustful value.
          */
-        count(options: (CountOptions | null)): number;
+        count(options: CountOptions | null): number;
 
         /**
          * @returns A {@link Arrow.StructArray} of `{input type "values", int64_t "counts"}`   on success, `null` on error.
          */
-        count_values(): (StructArray | null);
+        count_values(): StructArray | null;
 
         /**
          * @returns A newly created {@link Arrow.DictionaryArray} for the `array` on success,   `null` on error.
          */
-        dictionary_encode(): (DictionaryArray | null);
+        dictionary_encode(): DictionaryArray | null;
 
         /**
          * @param other_array A {@link Arrow.Array} to be compared.
          * @returns The string representation of   the difference between two arrays as unified format. If there is   no difference, the return value is `null`.   It should be freed with `g_free()` when no longer needed.
          */
-        diff_unified(other_array: Array): (string | null);
+        diff_unified(other_array: Array): string | null;
 
         /**
          * @param other_array A {@link Arrow.Array} to be compared.
@@ -1494,7 +1492,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.EqualOptions} to custom how to compare.
          * @returns `true` if both of them have the same data, `false`   otherwise.
          */
-        equal_options(other_array: Array, options: (EqualOptions | null)): boolean;
+        equal_options(other_array: Array, options: EqualOptions | null): boolean;
 
         /**
          * @param start_index The start index of `array` to be used.
@@ -1504,7 +1502,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.EqualOptions} to custom how to compare.
          * @returns `true` if both of them have the same data in the range,   `false` otherwise.
          */
-        equal_range(start_index: (bigint | number), other_array: Array, other_start_index: (bigint | number), end_index: (bigint | number), options: (EqualOptions | null)): boolean;
+        equal_range(start_index: bigint | number, other_array: Array, other_start_index: bigint | number, end_index: bigint | number, options: EqualOptions | null): boolean;
 
         /**
          * @returns `true` on success, `false` on error.
@@ -1516,7 +1514,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Array} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter(filter: BooleanArray, options: (FilterOptions | null)): (Array | null);
+        filter(filter: BooleanArray, options: FilterOptions | null): Array | null;
 
         /**
          * @returns The number of rows in the array.
@@ -1531,7 +1529,7 @@ export namespace Arrow {
         /**
          * @returns The bitmap that indicates null   value indices for the array as {@link Arrow.Buffer} or `null` when   `garrow_array_get_n_nulls()` returns 0.
          */
-        get_null_bitmap(): (Buffer | null);
+        get_null_bitmap(): Buffer | null;
 
         /**
          * @returns The number of values in the array.
@@ -1557,73 +1555,73 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.Array}.
          * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right array.
          */
-        is_in(right: Array): (BooleanArray | null);
+        is_in(right: Array): BooleanArray | null;
 
         /**
          * @param right A right hand side {@link Arrow.ChunkedArray}.
          * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right chunked array.
          */
-        is_in_chunked_array(right: ChunkedArray): (BooleanArray | null);
+        is_in_chunked_array(right: ChunkedArray): BooleanArray | null;
 
         /**
          * @param i The index of the target value.
          * @returns Whether the `i`-th value is null or not.
          */
-        is_null(i: (bigint | number)): boolean;
+        is_null(i: bigint | number): boolean;
 
         /**
          * @param i The index of the target value.
          * @returns Whether the `i`-th value is valid (not null) or not.
          */
-        is_valid(i: (bigint | number)): boolean;
+        is_valid(i: bigint | number): boolean;
 
         /**
          * @param options A {@link Arrow.RunEndEncodeOptions}.
          * @returns A newly created `GArrowRunEndEncodeArray` for the `array` on success,   `null` on error.
          */
-        run_end_encode(options: (RunEndEncodeOptions | null)): (RunEndEncodedArray | null);
+        run_end_encode(options: RunEndEncodeOptions | null): RunEndEncodedArray | null;
 
         /**
          * @param offset The offset of sub {@link Arrow.Array}.
          * @param length The length of sub {@link Arrow.Array}.
          * @returns The sub {@link Arrow.Array}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.Array} shares   values with the base {@link Arrow.Array}.
          */
-        slice(offset: (bigint | number), length: (bigint | number)): Array;
+        slice(offset: bigint | number, length: bigint | number): Array;
 
         /**
          * @param order The order for sort.
          * @returns The indices that would sort   an array in the specified order on success, `null` on error.
          */
-        sort_indices(order: SortOrder): (UInt64Array | null);
+        sort_indices(order: SortOrder): UInt64Array | null;
 
         /**
          * @returns The indices that would sort   an array in ascending order on success, `null` on error.
          */
-        sort_to_indices(): (UInt64Array | null);
+        sort_to_indices(): UInt64Array | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Array} taken from   an array of values at indices in input array or `null` on error.
          */
-        take(indices: Array, options: (TakeOptions | null)): (Array | null);
+        take(indices: Array, options: TakeOptions | null): Array | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
          */
-        take_chunked_array(indices: ChunkedArray, options: (TakeOptions | null)): (ChunkedArray | null);
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
 
         /**
          * @returns The formatted array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
 
         /**
          * @returns A newly created unique elements array on success, `null` on error.
          */
-        unique(): (Array | null);
+        unique(): Array | null;
 
         /**
          * @returns `true` on success, `false` on error.
@@ -1639,7 +1637,7 @@ export namespace Arrow {
          * @param return_type A {@link Arrow.DataType} of the returned view.
          * @returns A zero-copy view of this array   with the given type. This method checks if the `return_type` are   layout-compatible.
          */
-        view(return_type: DataType): (Array | null);
+        view(return_type: DataType): Array | null;
     }
 
 
@@ -1712,7 +1710,7 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_empty_values(n: (bigint | number)): boolean;
+        append_empty_values(n: bigint | number): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -1725,7 +1723,7 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_nulls(n: (bigint | number)): boolean;
+        append_nulls(n: bigint | number): boolean;
 
         /**
          * @returns The built {@link Arrow.Array} on success,   `null` on error.
@@ -1772,7 +1770,7 @@ export namespace Arrow {
          * @param additional_capacity The additional capacity to be reserved.
          * @returns `true` on success, `false` if there was an error.
          */
-        reserve(additional_capacity: (bigint | number)): boolean;
+        reserve(additional_capacity: bigint | number): boolean;
 
         reset(): void;
 
@@ -1780,7 +1778,7 @@ export namespace Arrow {
          * @param capacity A new capacity.
          * @returns `true` on success, `false` if there was an error.
          */
-        resize(capacity: (bigint | number)): boolean;
+        resize(capacity: bigint | number): boolean;
     }
 
 
@@ -2094,9 +2092,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -2204,9 +2200,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -2325,9 +2319,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -2350,7 +2342,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), value_offsets: Buffer, value_data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): BinaryArray;
+        static ["new"](length: bigint | number, value_offsets: Buffer, value_data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): BinaryArray;
 
         // Signals
         /** @signal */
@@ -2385,7 +2377,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
 
@@ -2396,9 +2388,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -2441,19 +2431,19 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (Uint8Array | string)): boolean;
+        append(value: Uint8Array | string): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Uint8Array | string)): boolean;
+        append_value(value: Uint8Array | string): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value_bytes(value: (GLib.Bytes | Uint8Array)): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -2462,7 +2452,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -2473,9 +2463,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -2522,9 +2510,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -2575,19 +2561,19 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Uint8Array | string)): boolean;
+        append_value(value: Uint8Array | string): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value_bytes(value: (GLib.Bytes | Uint8Array)): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -2621,9 +2607,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
     /**
@@ -2675,9 +2659,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -2700,7 +2682,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), views: Buffer, data_buffers: Buffer[], null_bitmap: (Buffer | null), n_nulls: (bigint | number), offset: (bigint | number)): BinaryViewArray;
+        static ["new"](length: bigint | number, views: Buffer, data_buffers: Buffer[], null_bitmap: Buffer | null, n_nulls: bigint | number, offset: bigint | number): BinaryViewArray;
 
         // Signals
         /** @signal */
@@ -2720,7 +2702,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
 
@@ -2731,9 +2713,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -2785,9 +2765,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PrimitiveArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
     /**
@@ -2810,7 +2788,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): BooleanArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): BooleanArray;
 
         // Signals
         /** @signal */
@@ -2836,7 +2814,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): boolean;
+        get_value(i: bigint | number): boolean;
 
         /**
          * @returns The raw boolean values.   It should be freed with `g_free()` when no longer needed.
@@ -2869,9 +2847,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -2929,7 +2905,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: boolean[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: boolean[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -2940,9 +2916,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -2990,9 +2964,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -3049,8 +3021,8 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: never;
-            data: (GLib.Bytes | Uint8Array);
-            parent: (Buffer | null);
+            data: GLib.Bytes | Uint8Array;
+            parent: Buffer | null;
         }
     }
 
@@ -3069,12 +3041,12 @@ export namespace Arrow {
         /**
          * @construct-only
          */
-        set data(val: (GLib.Bytes | Uint8Array));
+        set data(val: GLib.Bytes | Uint8Array);
 
         /**
          * @construct-only
          */
-        get parent(): (Buffer | null);
+        get parent(): Buffer | null;
 
         /**
          * Compile-time signal type information.
@@ -3090,9 +3062,9 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (Uint8Array | string)): Buffer;
+        static ["new"](data: Uint8Array | string): Buffer;
 
-        static new_bytes(data: (GLib.Bytes | Uint8Array)): Buffer;
+        static new_bytes(data: GLib.Bytes | Uint8Array): Buffer;
 
         // Signals
         /** @signal */
@@ -3113,7 +3085,7 @@ export namespace Arrow {
          * @param size The number of bytes to be copied from the start.
          * @returns A newly copied {@link Arrow.Buffer} on success, `null` on error.
          */
-        copy(start: (bigint | number), size: (bigint | number)): (Buffer | null);
+        copy(start: bigint | number, size: bigint | number): Buffer | null;
 
         /**
          * @param other_buffer A {@link Arrow.Buffer} to be compared.
@@ -3126,7 +3098,7 @@ export namespace Arrow {
          * @param n_bytes The number of first bytes to be compared.
          * @returns `true` if both of them have the same data in the first   `n_bytes`, `false` otherwise.
          */
-        equal_n_bytes(other_buffer: Buffer, n_bytes: (bigint | number)): boolean;
+        equal_n_bytes(other_buffer: Buffer, n_bytes: bigint | number): boolean;
 
         /**
          * @returns The number of bytes that where allocated for the buffer in   total.
@@ -3147,12 +3119,12 @@ export namespace Arrow {
         /**
          * @returns The data of the buffer. If the   buffer is immutable, it returns `null`. The data is owned by the   buffer. You should not free the data.
          */
-        get_mutable_data(): (GLib.Bytes | null);
+        get_mutable_data(): GLib.Bytes | null;
 
         /**
          * @returns The parent {@link Arrow.Buffer} or `null`.
          */
-        get_parent(): (Buffer | null);
+        get_parent(): Buffer | null;
 
         /**
          * @returns The number of bytes that might have valid data.
@@ -3169,7 +3141,7 @@ export namespace Arrow {
          * @param size The number of bytes of the sliced data.
          * @returns A newly created {@link Arrow.Buffer} that shares   data of the base {@link Arrow.Buffer}. The created {@link Arrow.Buffer} has data   start with offset from the base buffer data and are the specified   bytes size.
          */
-        slice(offset: (bigint | number), size: (bigint | number)): Buffer;
+        slice(offset: bigint | number, size: bigint | number): Buffer;
     }
 
 
@@ -3242,9 +3214,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
     /**
@@ -3312,7 +3282,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -3671,7 +3641,7 @@ export namespace Arrow {
         /**
          * @returns The column names.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
          */
-        get_column_names(): (string[] | null);
+        get_column_names(): string[] | null;
 
         /**
          * @returns The column name and value type mapping of the options.
@@ -3681,12 +3651,12 @@ export namespace Arrow {
         /**
          * @returns The values to be processed as false.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
          */
-        get_false_values(): (string[] | null);
+        get_false_values(): string[] | null;
 
         /**
          * @returns The values to be processed as null.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
          */
-        get_null_values(): (string[] | null);
+        get_null_values(): string[] | null;
 
         /**
          * @returns The list of `GArrowTimestampParsers` to be used.
@@ -3696,7 +3666,7 @@ export namespace Arrow {
         /**
          * @returns The values to be processed as true.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
          */
-        get_true_values(): (string[] | null);
+        get_true_values(): string[] | null;
 
         /**
          * @param column_names The column names (if empty, will be read from first   row after `skip_rows`)
@@ -3776,7 +3746,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](input: InputStream, options: (CSVReadOptions | null)): CSVReader;
+        static ["new"](input: InputStream, options: CSVReadOptions | null): CSVReader;
 
         // Signals
         /** @signal */
@@ -3795,7 +3765,7 @@ export namespace Arrow {
         /**
          * @returns A read {@link Arrow.Table} or `null` on error.
          */
-        read(): (Table | null);
+        read(): Table | null;
     }
 
 
@@ -3979,9 +3949,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
     }
 
     /**
@@ -4004,7 +3972,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](sink: OutputStream, schema: Schema, options: (CSVWriteOptions | null)): CSVWriter;
+        static ["new"](sink: OutputStream, schema: Schema, options: CSVWriteOptions | null): CSVWriter;
 
         // Signals
         /** @signal */
@@ -4023,13 +3991,10 @@ export namespace Arrow {
 
     namespace CallExpression {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {
-        }
+        interface SignalSignatures extends Expression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Expression.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
     /**
@@ -4052,7 +4017,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](_function: string, _arguments: Expression[], options: (FunctionOptions | null)): CallExpression;
+        static ["new"](_function: string, _arguments: Expression[], options: FunctionOptions | null): CallExpression;
 
         // Signals
         /** @signal */
@@ -4326,13 +4291,13 @@ export namespace Arrow {
         /**
          * @param c_abi_array_stream A `struct ArrowArrayStream *`.
          */
-        static ["import"](c_abi_array_stream: never): (ChunkedArray | null);
+        static ["import"](c_abi_array_stream: never): ChunkedArray | null;
 
         // Methods
         /**
          * @returns The combined array that has   all data in all chunks.
          */
-        combine(): (Array | null);
+        combine(): Array | null;
 
         /**
          * @param other_chunked_array A {@link Arrow.ChunkedArray} to be compared.
@@ -4350,14 +4315,14 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.ChunkedArray} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter(filter: BooleanArray, options: (FilterOptions | null)): (ChunkedArray | null);
+        filter(filter: BooleanArray, options: FilterOptions | null): ChunkedArray | null;
 
         /**
          * @param filter The values indicates which values should be filtered out.
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.ChunkedArray} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter_chunked_array(filter: ChunkedArray, options: (FilterOptions | null)): (ChunkedArray | null);
+        filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): ChunkedArray | null;
 
         /**
          * @param i The index of the target chunk.
@@ -4405,32 +4370,32 @@ export namespace Arrow {
          * @param length The length of sub {@link Arrow.ChunkedArray}.
          * @returns The sub {@link Arrow.ChunkedArray}. It covers only from   `offset` to `offset + length` range. The sub {@link Arrow.ChunkedArray} shares   values with the base {@link Arrow.ChunkedArray}.
          */
-        slice(offset: (bigint | number), length: (bigint | number)): ChunkedArray;
+        slice(offset: bigint | number, length: bigint | number): ChunkedArray;
 
         /**
          * @param order The order for sort.
          * @returns The indices that would sort   a chunked array in the specified order on success, `null` on error.
          */
-        sort_indices(order: SortOrder): (UInt64Array | null);
+        sort_indices(order: SortOrder): UInt64Array | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
          */
-        take(indices: Array, options: (TakeOptions | null)): (ChunkedArray | null);
+        take(indices: Array, options: TakeOptions | null): ChunkedArray | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
          */
-        take_chunked_array(indices: ChunkedArray, options: (TakeOptions | null)): (ChunkedArray | null);
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
 
         /**
          * @returns The formatted chunked array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
     }
 
 
@@ -4646,7 +4611,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: (bigint | number)): (Buffer | null);
+        read(n_bytes: bigint | number): Buffer | null;
 
         /**
          * @param args 
@@ -4658,7 +4623,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: (bigint | number)): (GLib.Bytes | null);
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
         /**
          * @param args 
@@ -4759,7 +4724,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -4958,7 +4923,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: never): (DataType | null);
+        static ["import"](c_abi_schema: never): DataType | null;
 
         // Methods
         /**
@@ -5001,9 +4966,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -5026,7 +4989,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Date32Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Date32Array;
 
         // Signals
         /** @signal */
@@ -5046,7 +5009,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -5062,9 +5025,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -5122,7 +5083,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -5133,9 +5094,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
     /**
@@ -5183,9 +5142,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -5243,9 +5200,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -5268,7 +5223,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Date64Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Date64Array;
 
         // Signals
         /** @signal */
@@ -5288,7 +5243,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -5304,9 +5259,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -5349,13 +5302,13 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -5364,7 +5317,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -5375,9 +5328,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
     /**
@@ -5425,9 +5376,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -5450,7 +5399,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number)): Date64Scalar;
+        static ["new"](value: bigint | number): Date64Scalar;
 
         // Signals
         /** @signal */
@@ -5739,9 +5688,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PrimitiveArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
     /**
@@ -5764,7 +5711,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): DayTimeIntervalArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): DayTimeIntervalArray;
 
         // Signals
         /** @signal */
@@ -5784,12 +5731,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): DayMillisecond;
+        get_value(i: bigint | number): DayMillisecond;
 
         /**
          * @returns The list of {@link Arrow.DayMillisecond}.
          */
-        get_values(): (DayMillisecond[] | null);
+        get_values(): DayMillisecond[] | null;
     }
 
 
@@ -5800,9 +5747,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -5854,7 +5799,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: DayMillisecond[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: DayMillisecond[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -5865,9 +5810,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntervalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
     /**
@@ -5915,9 +5858,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -6001,7 +5942,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: (bigint | number)): Decimal128;
+        static new_integer(data: bigint | number): Decimal128;
 
         static new_string(data: string): Decimal128;
 
@@ -6033,7 +5974,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal128}.
          * @returns The divided value of   these decimals or `null` on error.
          */
-        divide(right: Decimal128): [(Decimal128 | null), Decimal128 | null];
+        divide(right: Decimal128): [Decimal128 | null, Decimal128 | null];
 
         /**
          * @param other_decimal A {@link Arrow.Decimal128} to be compared.
@@ -6099,7 +6040,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          */
-        rescale(original_scale: number, new_scale: number): (Decimal128 | null);
+        rescale(original_scale: number, new_scale: number): Decimal128 | null;
 
         /**
          * @returns The binary representation of the decimal.
@@ -6136,9 +6077,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
     /**
@@ -6179,13 +6118,13 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: (bigint | number)): string;
+        format_value(i: bigint | number): string;
 
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): Decimal128;
+        get_value(i: bigint | number): Decimal128;
 
         /**
          * @param args 
@@ -6202,9 +6141,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -6253,7 +6190,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Decimal128 | null)): boolean;
+        append_value(value: Decimal128 | null): boolean;
 
         /**
          * @param args 
@@ -6268,7 +6205,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal128[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: Decimal128[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param args 
@@ -6285,9 +6222,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DecimalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
     /**
@@ -6436,7 +6371,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: (bigint | number)): Decimal256;
+        static new_integer(data: bigint | number): Decimal256;
 
         static new_string(data: string): Decimal256;
 
@@ -6468,7 +6403,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal256}.
          * @returns The divided value of   these decimals or `null` on error.
          */
-        divide(right: Decimal256): [(Decimal256 | null), Decimal256 | null];
+        divide(right: Decimal256): [Decimal256 | null, Decimal256 | null];
 
         /**
          * @param other_decimal A {@link Arrow.Decimal256} to be compared.
@@ -6528,7 +6463,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          */
-        rescale(original_scale: number, new_scale: number): (Decimal256 | null);
+        rescale(original_scale: number, new_scale: number): Decimal256 | null;
 
         /**
          * @returns The binary representation of the decimal.
@@ -6560,9 +6495,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
     /**
@@ -6603,13 +6536,13 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: (bigint | number)): string;
+        format_value(i: bigint | number): string;
 
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): Decimal256;
+        get_value(i: bigint | number): Decimal256;
 
         /**
          * @param args 
@@ -6626,9 +6559,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -6671,7 +6602,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Decimal256 | null)): boolean;
+        append_value(value: Decimal256 | null): boolean;
 
         /**
          * @param args 
@@ -6686,7 +6617,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal256[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: Decimal256[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param args 
@@ -6703,9 +6634,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DecimalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
     /**
@@ -6854,7 +6783,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: (bigint | number)): Decimal32;
+        static new_integer(data: bigint | number): Decimal32;
 
         static new_string(data: string): Decimal32;
 
@@ -6886,7 +6815,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal32}.
          * @returns The divided value of   these decimals or `null` on error.
          */
-        divide(right: Decimal32): [(Decimal32 | null), Decimal32 | null];
+        divide(right: Decimal32): [Decimal32 | null, Decimal32 | null];
 
         /**
          * @param other_decimal A {@link Arrow.Decimal32} to be compared.
@@ -6952,7 +6881,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          */
-        rescale(original_scale: number, new_scale: number): (Decimal32 | null);
+        rescale(original_scale: number, new_scale: number): Decimal32 | null;
 
         /**
          * @returns The binary representation of the decimal.
@@ -6989,9 +6918,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
     /**
@@ -7032,13 +6959,13 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: (bigint | number)): string;
+        format_value(i: bigint | number): string;
 
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): Decimal32;
+        get_value(i: bigint | number): Decimal32;
 
         /**
          * @param args 
@@ -7055,9 +6982,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -7100,7 +7025,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Decimal32 | null)): boolean;
+        append_value(value: Decimal32 | null): boolean;
 
         /**
          * @param args 
@@ -7115,7 +7040,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal32[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: Decimal32[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param args 
@@ -7132,9 +7057,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DecimalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
     /**
@@ -7283,7 +7206,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static new_integer(data: (bigint | number)): Decimal64;
+        static new_integer(data: bigint | number): Decimal64;
 
         static new_string(data: string): Decimal64;
 
@@ -7315,7 +7238,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal64}.
          * @returns The divided value of   these decimals or `null` on error.
          */
-        divide(right: Decimal64): [(Decimal64 | null), Decimal64 | null];
+        divide(right: Decimal64): [Decimal64 | null, Decimal64 | null];
 
         /**
          * @param other_decimal A {@link Arrow.Decimal64} to be compared.
@@ -7381,7 +7304,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          */
-        rescale(original_scale: number, new_scale: number): (Decimal64 | null);
+        rescale(original_scale: number, new_scale: number): Decimal64 | null;
 
         /**
          * @returns The binary representation of the decimal.
@@ -7418,9 +7341,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
     }
 
     /**
@@ -7461,13 +7382,13 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The formatted `i`-th value.   It should be freed with `g_free()` when no longer needed.
          */
-        format_value(i: (bigint | number)): string;
+        format_value(i: bigint | number): string;
 
         /**
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): Decimal64;
+        get_value(i: bigint | number): Decimal64;
 
         /**
          * @param args 
@@ -7484,9 +7405,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -7529,7 +7448,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Decimal64 | null)): boolean;
+        append_value(value: Decimal64 | null): boolean;
 
         /**
          * @param args 
@@ -7544,7 +7463,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: Decimal64[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: Decimal64[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param args 
@@ -7561,9 +7480,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DecimalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DecimalDataType.ConstructorProps {}
     }
 
     /**
@@ -7681,9 +7598,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedSizeBinaryDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedSizeBinaryDataType.ConstructorProps {}
     }
 
     /**
@@ -7810,7 +7725,7 @@ export namespace Arrow {
          * @param i The index of the offset of the value in the union.
          * @returns The offset of the i-th value.
          */
-        get_value_offset(i: (bigint | number)): number;
+        get_value_offset(i: bigint | number): number;
     }
 
 
@@ -7821,9 +7736,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -7846,7 +7759,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: (DenseUnionDataType | null)): DenseUnionArrayBuilder;
+        static ["new"](data_type: DenseUnionDataType | null): DenseUnionArrayBuilder;
 
         // Signals
         /** @signal */
@@ -7870,9 +7783,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionDataType.ConstructorProps {}
     }
 
     /**
@@ -7895,7 +7806,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](fields: Field[], type_codes: (Uint8Array | string)): DenseUnionDataType;
+        static ["new"](fields: Field[], type_codes: Uint8Array | string): DenseUnionDataType;
 
         // Signals
         /** @signal */
@@ -7921,9 +7832,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionScalar.ConstructorProps {}
     }
 
     /**
@@ -8054,9 +7963,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -8191,9 +8098,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -8216,7 +8121,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): DoubleArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): DoubleArray;
 
         // Signals
         /** @signal */
@@ -8236,7 +8141,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -8257,9 +8162,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -8317,7 +8220,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -8328,9 +8231,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
     /**
@@ -8378,9 +8279,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -8438,9 +8337,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -8463,7 +8360,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DurationDataType, length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): DurationArray;
+        static ["new"](data_type: DurationDataType, length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): DurationArray;
 
         // Signals
         /** @signal */
@@ -8483,7 +8380,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -8499,9 +8396,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -8544,7 +8439,7 @@ export namespace Arrow {
          * @param value The elapsed time in 64-bit signed integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -8553,7 +8448,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -8564,9 +8459,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
     /**
@@ -8620,9 +8513,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -8645,7 +8536,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DurationDataType, value: (bigint | number)): DurationScalar;
+        static ["new"](data_type: DurationDataType, value: bigint | number): DurationScalar;
 
         // Signals
         /** @signal */
@@ -8881,7 +8772,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](executor: (Executor | null)): ExecuteContext;
+        static ["new"](executor: Executor | null): ExecuteContext;
 
         // Signals
         /** @signal */
@@ -9060,7 +8951,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: (ExecuteContext | null)): ExecutePlan;
+        static ["new"](context: ExecuteContext | null): ExecutePlan;
 
         // Signals
         /** @signal */
@@ -9221,13 +9112,10 @@ export namespace Arrow {
 
     namespace Expression {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9427,7 +9315,7 @@ export namespace Arrow {
          *   to deserialize later.
          * @virtual
          */
-        vfunc_serialize(): (GLib.Bytes | Uint8Array);
+        vfunc_serialize(): GLib.Bytes | Uint8Array;
 
         // Methods
         /**
@@ -9535,9 +9423,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -9910,7 +9796,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: never): (Field | null);
+        static ["import"](c_abi_schema: never): Field | null;
 
         // Methods
         /**
@@ -9932,7 +9818,7 @@ export namespace Arrow {
         /**
          * @returns The   metadata in the field.   It should be freed with `g_hash_table_unref()` when no longer needed.
          */
-        get_metadata(): (GLib.HashTable<string, string> | null);
+        get_metadata(): GLib.HashTable<string, string> | null;
 
         /**
          * @returns The name of the field.
@@ -9969,25 +9855,22 @@ export namespace Arrow {
          * @param metadata An additional associated metadata.
          * @returns The new field that also has the given   metadata. If both of the existing metadata and the given metadata   have the same keys, the values in the given metadata are used.
          */
-        with_merged_metadata(metadata: ({ [key: string]: any } | GLib.HashTable<string, string>)): Field;
+        with_merged_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
 
         /**
          * @param metadata A new associated metadata.
          * @returns The new field with the given metadata.
          */
-        with_metadata(metadata: ({ [key: string]: any } | GLib.HashTable<string, string>)): Field;
+        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
     }
 
 
     namespace FieldExpression {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {
-        }
+        interface SignalSignatures extends Expression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Expression.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
     /**
@@ -10046,9 +9929,9 @@ export namespace Arrow {
             dir_name: string;
             dirName: string;
             extension: string;
-            mtime: (bigint | number);
+            mtime: bigint | number;
             path: string;
-            size: (bigint | number);
+            size: bigint | number;
             type: FileType;
         }
     }
@@ -10101,7 +9984,7 @@ export namespace Arrow {
          * @default -1
          */
         get mtime(): number;
-        set mtime(val: (bigint | number));
+        set mtime(val: bigint | number);
 
         /**
          * The full file path in the file system.
@@ -10117,7 +10000,7 @@ export namespace Arrow {
          * @default -1
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * The type of the entry.
@@ -10187,9 +10070,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     /**
@@ -10244,9 +10125,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OutputStream.ConstructorProps, File.ConstructorProps, Writable.ConstructorProps {}
     }
 
     /**
@@ -10314,7 +10193,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -10498,7 +10377,7 @@ export namespace Arrow {
          * object.
          * @param uri An URI to specify file system with options. If you only have an   absolute path, `g_filename_to_uri()` will help you.
          */
-        static create(uri: string): (FileSystem | null);
+        static create(uri: string): FileSystem | null;
 
         // Methods
         /**
@@ -10562,7 +10441,7 @@ export namespace Arrow {
          * @param path The path of the target.
          * @returns A {@link Arrow.FileInfo}.
          */
-        get_file_info(path: string): (FileInfo | null);
+        get_file_info(path: string): FileInfo | null;
 
         /**
          * Get information same as `garrow_file_system_get_file_info()`
@@ -10606,21 +10485,21 @@ export namespace Arrow {
          * @param path The path of the output stream.
          * @returns A newly created {@link Arrow.OutputStream}   for appending.
          */
-        open_append_stream(path: string): (OutputStream | null);
+        open_append_stream(path: string): OutputStream | null;
 
         /**
          * Open an input file for random access reading.
          * @param path The path of the input file.
          * @returns A newly created   {@link Arrow.SeekableInputStream}.
          */
-        open_input_file(path: string): (SeekableInputStream | null);
+        open_input_file(path: string): SeekableInputStream | null;
 
         /**
          * Open an input stream for sequential reading.
          * @param path The path of the input stream.
          * @returns A newly created   {@link Arrow.InputStream}.
          */
-        open_input_stream(path: string): (InputStream | null);
+        open_input_stream(path: string): InputStream | null;
 
         /**
          * Open an output stream for sequential writing.
@@ -10628,7 +10507,7 @@ export namespace Arrow {
          * @param path The path of the output stream.
          * @returns A newly created   {@link Arrow.OutputStream}.
          */
-        open_output_stream(path: string): (OutputStream | null);
+        open_output_stream(path: string): OutputStream | null;
     }
 
 
@@ -10639,9 +10518,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
     /**
@@ -10758,8 +10635,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends ExtensionDataType.ConstructorProps {
-            n_dimensions: (bigint | number);
-            nDimensions: (bigint | number);
+            n_dimensions: bigint | number;
+            nDimensions: bigint | number;
         }
     }
 
@@ -10796,7 +10673,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](value_type: DataType, shape: (bigint | number)[], permutation: ((bigint | number)[] | null), dim_names: (string[] | null)): FixedShapeTensorDataType;
+        static ["new"](value_type: DataType, shape: (bigint | number)[], permutation: (bigint | number)[] | null, dim_names: string[] | null): FixedShapeTensorDataType;
 
         // Signals
         /** @signal */
@@ -10846,9 +10723,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PrimitiveArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
     /**
@@ -10871,7 +10746,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: FixedSizeBinaryDataType, length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): FixedSizeBinaryArray;
+        static ["new"](data_type: FixedSizeBinaryDataType, length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): FixedSizeBinaryArray;
 
         // Signals
         /** @signal */
@@ -10896,7 +10771,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
 
         /**
          * @returns All values as a {@link GLib.Bytes}.
@@ -10912,9 +10787,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -10957,13 +10830,13 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Uint8Array | null)): boolean;
+        append_value(value: Uint8Array | null): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value_bytes(value: (GLib.Bytes | Uint8Array)): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -10972,7 +10845,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -10984,7 +10857,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values_packed(values: (GLib.Bytes | Uint8Array), is_valids: (boolean[] | null)): boolean;
+        append_values_packed(values: GLib.Bytes | Uint8Array, is_valids: boolean[] | null): boolean;
     }
 
 
@@ -10995,9 +10868,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -11052,9 +10923,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
     /**
@@ -11144,7 +11013,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, length: (bigint | number), values: Array, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): FixedSizeListArray;
+        static ["new"](data_type: DataType, length: bigint | number, values: Array, null_bitmap: Buffer | null, n_nulls: bigint | number): FixedSizeListArray;
 
         // Signals
         /** @signal */
@@ -11169,19 +11038,19 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th list.
          */
-        get_value(i: (bigint | number)): Array;
+        get_value(i: bigint | number): Array;
 
         /**
          * @param i The index of the target value (unused, as all lists have the same size).
          * @returns The fixed size of each list.
          */
-        get_value_length(i: (bigint | number)): number;
+        get_value_length(i: bigint | number): number;
 
         /**
          * @param i The index of the offset of the target value.
          * @returns The target offset in the array containing the list's values.
          */
-        get_value_offset(i: (bigint | number)): number;
+        get_value_offset(i: bigint | number): number;
 
         /**
          * @returns The data type of value in each list.
@@ -11208,9 +11077,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -11334,9 +11201,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -11392,9 +11257,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -11417,7 +11280,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): FloatArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): FloatArray;
 
         // Signals
         /** @signal */
@@ -11437,7 +11300,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -11458,9 +11321,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -11518,7 +11379,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -11529,9 +11390,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
     /**
@@ -11579,9 +11438,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -11634,9 +11491,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericDataType.ConstructorProps {}
     }
 
     /**
@@ -11746,12 +11601,12 @@ export namespace Arrow {
          * @param context A {@link Arrow.ExecuteContext} for the execution.
          * @returns A return value of the execution as {@link Arrow.Datum} on success, `null` on error.
          */
-        execute(args: Datum[], options: (FunctionOptions | null), context: (ExecuteContext | null)): (Datum | null);
+        execute(args: Datum[], options: FunctionOptions | null, context: ExecuteContext | null): Datum | null;
 
         /**
          * @returns The default options of this   function if exists, `null` otherwise.
          */
-        get_default_options(): (FunctionOptions | null);
+        get_default_options(): FunctionOptions | null;
 
         /**
          * @returns The function documentation.
@@ -11851,13 +11706,10 @@ export namespace Arrow {
 
     namespace FunctionOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11898,7 +11750,7 @@ export namespace Arrow {
          * @param other_options A {@link Arrow.FunctionOptions} to be compared.
          * @returns `true` if both of them have the same values, `false`   otherwise.
          */
-        equal(other_options: (FunctionOptions | null)): boolean;
+        equal(other_options: FunctionOptions | null): boolean;
 
         /**
          * @returns The formatted options.   It should be freed with `g_free()` when no longer needed.
@@ -11914,9 +11766,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -12106,7 +11956,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -12117,9 +11967,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -12169,9 +12017,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -12194,7 +12040,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): HalfFloatArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): HalfFloatArray;
 
         // Signals
         /** @signal */
@@ -12214,7 +12060,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -12230,9 +12076,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -12284,7 +12128,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -12295,9 +12139,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
     }
 
     /**
@@ -12345,9 +12187,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -12400,9 +12240,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
     /**
@@ -12462,9 +12300,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TimestampParser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TimestampParser.ConstructorProps {}
     }
 
     /**
@@ -12623,7 +12459,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be advanced.
          * @returns `true` on success, `false` on error.
          */
-        advance(n_bytes: (bigint | number)): boolean;
+        advance(n_bytes: bigint | number): boolean;
 
         /**
          * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
@@ -12636,12 +12472,12 @@ export namespace Arrow {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns {@link Arrow.RecordBatch} on success, `null` on error.
          */
-        read_record_batch(schema: Schema, options: (ReadOptions | null)): (RecordBatch | null);
+        read_record_batch(schema: Schema, options: ReadOptions | null): RecordBatch | null;
 
         /**
          * @returns {@link Arrow.Tensor} on success, `null` on error.
          */
-        read_tensor(): (Tensor | null);
+        read_tensor(): Tensor | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -12667,7 +12503,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: (bigint | number)): (Buffer | null);
+        read(n_bytes: bigint | number): Buffer | null;
 
         /**
          * @param args 
@@ -12679,7 +12515,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: (bigint | number)): (GLib.Bytes | null);
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
         /**
          * @param args 
@@ -12701,9 +12537,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -12726,7 +12560,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Int16Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Int16Array;
 
         // Signals
         /** @signal */
@@ -12746,7 +12580,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -12767,9 +12601,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -12827,7 +12659,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -12838,9 +12670,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -12888,9 +12718,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -12948,9 +12776,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -12973,7 +12799,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Int32Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Int32Array;
 
         // Signals
         /** @signal */
@@ -12993,7 +12819,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -13014,9 +12840,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -13074,7 +12898,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -13085,9 +12909,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -13135,9 +12957,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -13195,9 +13015,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -13220,7 +13038,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Int64Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Int64Array;
 
         // Signals
         /** @signal */
@@ -13240,7 +13058,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -13261,9 +13079,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -13306,13 +13122,13 @@ export namespace Arrow {
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -13321,7 +13137,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -13332,9 +13148,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -13382,9 +13196,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -13407,7 +13219,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number)): Int64Scalar;
+        static ["new"](value: bigint | number): Int64Scalar;
 
         // Signals
         /** @signal */
@@ -13442,9 +13254,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -13467,7 +13277,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Int8Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Int8Array;
 
         // Signals
         /** @signal */
@@ -13487,7 +13297,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -13508,9 +13318,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -13568,7 +13376,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (Uint8Array | string), is_valids: (boolean[] | null)): boolean;
+        append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
 
 
@@ -13579,9 +13387,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -13629,9 +13435,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -13684,9 +13488,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -13729,13 +13531,13 @@ export namespace Arrow {
          * @param value A int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value A int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -13744,7 +13546,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -13755,9 +13557,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericDataType.ConstructorProps {}
     }
 
     /**
@@ -13808,9 +13608,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
     /**
@@ -14042,7 +13840,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](input: InputStream, options: (JSONReadOptions | null)): JSONReader;
+        static ["new"](input: InputStream, options: JSONReadOptions | null): JSONReader;
 
         // Signals
         /** @signal */
@@ -14061,7 +13859,7 @@ export namespace Arrow {
         /**
          * @returns A read {@link Arrow.Table} or `null` on error.
          */
-        read(): (Table | null);
+        read(): Table | null;
     }
 
 
@@ -14161,9 +13959,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -14186,7 +13982,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), value_offsets: Buffer, value_data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): LargeBinaryArray;
+        static ["new"](length: bigint | number, value_offsets: Buffer, value_data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): LargeBinaryArray;
 
         // Signals
         /** @signal */
@@ -14221,7 +14017,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
 
@@ -14232,9 +14028,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -14277,13 +14071,13 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (Uint8Array | string)): boolean;
+        append_value(value: Uint8Array | string): boolean;
 
         /**
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value_bytes(value: (GLib.Bytes | Uint8Array)): boolean;
+        append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -14292,7 +14086,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -14303,9 +14097,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -14354,9 +14146,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
     /**
@@ -14446,7 +14236,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, length: (bigint | number), value_offsets: Buffer, values: Array, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): LargeListArray;
+        static ["new"](data_type: DataType, length: bigint | number, value_offsets: Buffer, values: Array, null_bitmap: Buffer | null, n_nulls: bigint | number): LargeListArray;
 
         // Signals
         /** @signal */
@@ -14466,18 +14256,18 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th list.
          */
-        get_value(i: (bigint | number)): Array;
+        get_value(i: bigint | number): Array;
 
         /**
          * @param i 
          */
-        get_value_length(i: (bigint | number)): number;
+        get_value_length(i: bigint | number): number;
 
         /**
          * @param i The index of the offset of the target value.
          * @returns The target offset in the array containing the list's values.
          */
-        get_value_offset(i: (bigint | number)): number;
+        get_value_offset(i: bigint | number): number;
 
         /**
          * @returns The target offsets in the array containing the list's values.
@@ -14509,9 +14299,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -14569,9 +14357,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -14626,9 +14412,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseListScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
     /**
@@ -14680,9 +14464,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LargeBinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LargeBinaryArray.ConstructorProps {}
     }
 
     /**
@@ -14705,7 +14487,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), value_offsets: Buffer, value_data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): LargeStringArray;
+        static ["new"](length: bigint | number, value_offsets: Buffer, value_data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): LargeStringArray;
 
         // Signals
         /** @signal */
@@ -14725,7 +14507,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th UTF-8 encoded string.
          */
-        get_string(i: (bigint | number)): string;
+        get_string(i: bigint | number): string;
     }
 
 
@@ -14736,9 +14518,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LargeBinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LargeBinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -14788,7 +14568,7 @@ export namespace Arrow {
          * @param length The length of `value`.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_string_len(value: string, length: (bigint | number)): boolean;
+        append_string_len(value: string, length: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -14797,7 +14577,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_strings(values: string[], is_valids: (boolean[] | null)): boolean;
+        append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -14808,9 +14588,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -14859,9 +14637,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
     /**
@@ -14951,7 +14727,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, length: (bigint | number), value_offsets: Buffer, values: Array, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): ListArray;
+        static ["new"](data_type: DataType, length: bigint | number, value_offsets: Buffer, values: Array, null_bitmap: Buffer | null, n_nulls: bigint | number): ListArray;
 
         // Signals
         /** @signal */
@@ -14971,18 +14747,18 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The i-th list.
          */
-        get_value(i: (bigint | number)): Array;
+        get_value(i: bigint | number): Array;
 
         /**
          * @param i The index of the length of the target value.
          * @returns The target length in the array containing the list's values.
          */
-        get_value_length(i: (bigint | number)): number;
+        get_value_length(i: bigint | number): number;
 
         /**
          * @param i 
          */
-        get_value_offset(i: (bigint | number)): number;
+        get_value_offset(i: bigint | number): number;
 
         /**
          * @returns The target offsets in the array containing the list's values.
@@ -15014,9 +14790,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -15079,9 +14853,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseListDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseListDataType.ConstructorProps {}
     }
 
     /**
@@ -15199,9 +14971,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseListScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
     /**
@@ -15254,9 +15024,9 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             return_fixed_size_list: ListSliceReturnFixedSizeList;
             returnFixedSizeList: ListSliceReturnFixedSizeList;
-            start: (bigint | number);
-            step: (bigint | number);
-            stop: (bigint | number);
+            start: bigint | number;
+            step: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -15297,7 +15067,7 @@ export namespace Arrow {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         /**
          * Slicing step.
@@ -15305,7 +15075,7 @@ export namespace Arrow {
          * @default 1
          */
         get step(): number;
-        set step(val: (bigint | number));
+        set step(val: bigint | number);
 
         /**
          * Optional stop of list slicing. If not set (value is
@@ -15314,7 +15084,7 @@ export namespace Arrow {
          * @default -1
          */
         get stop(): number;
-        set stop(val: (bigint | number));
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -15349,13 +15119,10 @@ export namespace Arrow {
 
     namespace LiteralExpression {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {
-        }
+        interface SignalSignatures extends Expression.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Expression.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Expression.ConstructorProps {}
     }
 
     /**
@@ -15402,9 +15169,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -15427,7 +15192,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](options: (LocalFileSystemOptions | null)): LocalFileSystem;
+        static ["new"](options: LocalFileSystemOptions | null): LocalFileSystem;
 
         // Signals
         /** @signal */
@@ -15515,13 +15280,10 @@ export namespace Arrow {
 
     namespace MakeStructOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {
-        }
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FunctionOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {}
     }
 
     /**
@@ -15567,7 +15329,7 @@ export namespace Arrow {
          * @param nullability Whether the field is nullable.
          * @param metadata A {@link GLib.HashTable} for the field's   metadata, or `null`.
          */
-        add_field(name: string, nullability: boolean, metadata: (GLib.HashTable<string, string> | null)): void;
+        add_field(name: string, nullability: boolean, metadata: GLib.HashTable<string, string> | null): void;
     }
 
 
@@ -15668,9 +15430,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -15721,7 +15481,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(offsets: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(offsets: number[], is_valids: boolean[] | null): boolean;
 
         /**
          * @returns The {@link Arrow.ArrayBuilder} for item values.
@@ -15747,9 +15507,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ListDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ListDataType.ConstructorProps {}
     }
 
     /**
@@ -15861,7 +15619,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](query_key: (Scalar | null), occurrence: MapLookupOccurrence): MapLookupOptions;
+        static ["new"](query_key: Scalar | null, occurrence: MapLookupOccurrence): MapLookupOptions;
 
         // Signals
         /** @signal */
@@ -15887,9 +15645,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseListScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseListScalar.ConstructorProps {}
     }
 
     /**
@@ -16014,9 +15770,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SeekableInputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     /**
@@ -16142,9 +15896,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -16194,7 +15946,7 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             min_count: number;
             minCount: number;
-            n: (bigint | number);
+            n: bigint | number;
             skip_nulls: boolean;
             skipNulls: boolean;
         }
@@ -16229,7 +15981,7 @@ export namespace Arrow {
          * @default 1
          */
         get n(): number;
-        set n(val: (bigint | number));
+        set n(val: bigint | number);
 
         /**
          * Whether NULLs are skipped or not.
@@ -16290,7 +16042,7 @@ export namespace Arrow {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             day: number;
             month: number;
-            nanosecond: (bigint | number);
+            nanosecond: bigint | number;
         }
     }
 
@@ -16323,7 +16075,7 @@ export namespace Arrow {
          * @default 0
          */
         get nanosecond(): number;
-        set nanosecond(val: (bigint | number));
+        set nanosecond(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -16339,7 +16091,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](month: number, day: number, nanosecond: (bigint | number)): MonthDayNano;
+        static ["new"](month: number, day: number, nanosecond: bigint | number): MonthDayNano;
 
         // Signals
         /** @signal */
@@ -16375,9 +16127,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PrimitiveArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
     /**
@@ -16400,7 +16150,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): MonthDayNanoIntervalArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): MonthDayNanoIntervalArray;
 
         // Signals
         /** @signal */
@@ -16420,12 +16170,12 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): MonthDayNano;
+        get_value(i: bigint | number): MonthDayNano;
 
         /**
          * @returns The list of {@link Arrow.MonthDayNano}.
          */
-        get_values(): (MonthDayNano[] | null);
+        get_values(): MonthDayNano[] | null;
     }
 
 
@@ -16436,9 +16186,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -16490,7 +16238,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: MonthDayNano[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: MonthDayNano[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -16501,9 +16249,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntervalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
     /**
@@ -16551,9 +16297,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -16611,9 +16355,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -16636,7 +16378,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): MonthIntervalArray;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): MonthIntervalArray;
 
         // Signals
         /** @signal */
@@ -16656,7 +16398,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -16672,9 +16414,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -16726,7 +16466,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -16737,9 +16477,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntervalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntervalDataType.ConstructorProps {}
     }
 
     /**
@@ -16787,9 +16525,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -16844,9 +16580,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Buffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Buffer.ConstructorProps {}
     }
 
     /**
@@ -16869,9 +16603,9 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (Uint8Array | string)): MutableBuffer;
+        static ["new"](data: Uint8Array | string): MutableBuffer;
 
-        static new_bytes(data: (GLib.Bytes | Uint8Array)): MutableBuffer;
+        static new_bytes(data: GLib.Bytes | Uint8Array): MutableBuffer;
 
         // Signals
         /** @signal */
@@ -16892,7 +16626,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` otherwise.
          */
-        set_data(offset: (bigint | number), data: (Uint8Array | string)): boolean;
+        set_data(offset: bigint | number, data: Uint8Array | string): boolean;
 
         /**
          * @param args 
@@ -16905,7 +16639,7 @@ export namespace Arrow {
          * @param size The number of bytes of the sliced data.
          * @returns A newly created {@link Arrow.MutableBuffer} that   shares data of the base {@link Arrow.MutableBuffer}. The created   {@link Arrow.MutableBuffer} has data start with offset from the base   buffer data and are the specified bytes size.
          */
-        slice(offset: (bigint | number), size: (bigint | number)): MutableBuffer;
+        slice(offset: bigint | number, size: bigint | number): MutableBuffer;
     }
 
 
@@ -16921,9 +16655,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -16946,7 +16678,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number)): NullArray;
+        static ["new"](length: bigint | number): NullArray;
 
         // Signals
         /** @signal */
@@ -16970,9 +16702,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -17019,9 +16749,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -17136,9 +16864,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -17190,9 +16916,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PrimitiveArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
     }
 
     /**
@@ -17243,9 +16967,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -17353,12 +17075,12 @@ export namespace Arrow {
         /**
          * @returns The field indexes to be read.
          */
-        get_field_indexes(): (number[] | null);
+        get_field_indexes(): number[] | null;
 
         /**
          * @returns The field indices to be read.
          */
-        get_field_indices(): (number[] | null);
+        get_field_indices(): number[] | null;
 
         /**
          * @returns The number of rows in the file.
@@ -17374,27 +17096,27 @@ export namespace Arrow {
          * @param i The stripe index to be read.
          * @returns A newly read stripe as   {@link Arrow.RecordBatch} or `null` on error.
          */
-        read_stripe(i: (bigint | number)): (RecordBatch | null);
+        read_stripe(i: bigint | number): RecordBatch | null;
 
         /**
          * @returns A newly read stripes as   {@link Arrow.Table} or `null` on error.
          */
-        read_stripes(): (Table | null);
+        read_stripes(): Table | null;
 
         /**
          * @returns A newly read type as   {@link Arrow.Schema} or `null` on error.
          */
-        read_type(): (Schema | null);
+        read_type(): Schema | null;
 
         /**
          * @param field_indexes The field indexes to be read.
          */
-        set_field_indexes(field_indexes: (number[] | null)): void;
+        set_field_indexes(field_indexes: number[] | null): void;
 
         /**
          * @param field_indices The field indices to be read.
          */
-        set_field_indices(field_indices: (number[] | null)): void;
+        set_field_indices(field_indices: number[] | null): void;
     }
 
 
@@ -17467,7 +17189,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.WriteOptions}.
          * @returns The number of written bytes on success, -1 on error.
          */
-        write_record_batch(record_batch: RecordBatch, options: (WriteOptions | null)): number;
+        write_record_batch(record_batch: RecordBatch, options: WriteOptions | null): number;
 
         /**
          * @param tensor A {@link Arrow.Tensor} to be written.
@@ -17505,7 +17227,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -17522,7 +17244,7 @@ export namespace Arrow {
             lean_left_on_odd_padding: boolean;
             leanLeftOnOddPadding: boolean;
             padding: string;
-            width: (bigint | number);
+            width: bigint | number;
         }
     }
 
@@ -17567,7 +17289,7 @@ export namespace Arrow {
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -17608,7 +17330,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            periods: (bigint | number);
+            periods: bigint | number;
         }
     }
 
@@ -17625,7 +17347,7 @@ export namespace Arrow {
          * @default 1
          */
         get periods(): number;
-        set periods(val: (bigint | number));
+        set periods(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -17669,7 +17391,7 @@ export namespace Arrow {
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             null_placement: NullPlacement;
             nullPlacement: NullPlacement;
-            pivot: (bigint | number);
+            pivot: bigint | number;
         }
     }
 
@@ -17702,7 +17424,7 @@ export namespace Arrow {
          * @default 0
          */
         get pivot(): number;
-        set pivot(val: (bigint | number));
+        set pivot(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -17831,9 +17553,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -17889,9 +17609,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
     /**
@@ -17914,7 +17632,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](expressions: Expression[], names: (string[] | null)): ProjectNodeOptions;
+        static ["new"](expressions: Expression[], names: string[] | null): ProjectNodeOptions;
 
         // Signals
         /** @signal */
@@ -18393,7 +18111,7 @@ export namespace Arrow {
          * @param c_abi_array A `struct ArrowArray *`.
          * @param schema A {@link Arrow.Schema} of the C ABI array.
          */
-        static ["import"](c_abi_array: never, schema: Schema): (RecordBatch | null);
+        static ["import"](c_abi_array: never, schema: Schema): RecordBatch | null;
 
         // Methods
         /**
@@ -18402,7 +18120,7 @@ export namespace Arrow {
          * @param column The column to be added.
          * @returns The newly allocated   {@link Arrow.RecordBatch} that has a new column or `null` on error.
          */
-        add_column(i: number, field: Field, column: Array): (RecordBatch | null);
+        add_column(i: number, field: Field, column: Array): RecordBatch | null;
 
         /**
          * @param other_record_batch A {@link Arrow.RecordBatch} to be compared.
@@ -18427,19 +18145,19 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.RecordBatch} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter(filter: BooleanArray, options: (FilterOptions | null)): (RecordBatch | null);
+        filter(filter: BooleanArray, options: FilterOptions | null): RecordBatch | null;
 
         /**
          * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
          * @returns The i-th column in the record batch   on success, `null` on out of index.
          */
-        get_column_data(i: number): (Array | null);
+        get_column_data(i: number): Array | null;
 
         /**
          * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
          * @returns The name of the i-th column in the record batch   on success, `null` on out of index
          */
-        get_column_name(i: number): (string | null);
+        get_column_name(i: number): string | null;
 
         /**
          * @returns The number of columns in the record batch.
@@ -18460,38 +18178,38 @@ export namespace Arrow {
          * @param i The index of the new column.
          * @returns The newly allocated   {@link Arrow.RecordBatch} that doesn't have the column or `null` on error.
          */
-        remove_column(i: number): (RecordBatch | null);
+        remove_column(i: number): RecordBatch | null;
 
         /**
          * @param options A {@link Arrow.WriteOptions}.
          * @returns The newly allocated   {@link Arrow.Buffer} that contains a serialized record batch or `null` on   error.
          */
-        serialize(options: (WriteOptions | null)): (Buffer | null);
+        serialize(options: WriteOptions | null): Buffer | null;
 
         /**
          * @param offset The offset of sub {@link Arrow.RecordBatch}.
          * @param length The length of sub {@link Arrow.RecordBatch}.
          * @returns The sub {@link Arrow.RecordBatch}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.RecordBatch} shares values with the base   {@link Arrow.RecordBatch}.
          */
-        slice(offset: (bigint | number), length: (bigint | number)): RecordBatch;
+        slice(offset: bigint | number, length: bigint | number): RecordBatch;
 
         /**
          * @param options The options to be used.
          * @returns The indices that would sort   a record batch with the specified options on success, `null` on error.
          */
-        sort_indices(options: SortOptions): (UInt64Array | null);
+        sort_indices(options: SortOptions): UInt64Array | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
          */
-        take(indices: Array, options: (TakeOptions | null)): (RecordBatch | null);
+        take(indices: Array, options: TakeOptions | null): RecordBatch | null;
 
         /**
          * @returns The formatted record batch content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
 
         /**
          * @returns `true` on success, `false` on error.
@@ -18574,13 +18292,13 @@ export namespace Arrow {
          * @param i The column index. If it's negative, index is counted backward   from the end of the columns. `-1` means the last column.
          * @returns The {@link Arrow.ArrayBuilder} for   the `i`-th column on success, `null` on out of index.
          */
-        get_column_builder(i: number): (ArrayBuilder | null);
+        get_column_builder(i: number): ArrayBuilder | null;
 
         /**
          * @param i The field index. If it's negative, index is counted backward   from the end of the fields. `-1` means the last field.
          * @returns The {@link Arrow.ArrayBuilder} for   the `i`-th field on success, `null` on out of index.
          */
-        get_field(i: number): (ArrayBuilder | null);
+        get_field(i: number): ArrayBuilder | null;
 
         /**
          * @returns The initial capacity for array builders.
@@ -18605,7 +18323,7 @@ export namespace Arrow {
         /**
          * @param capacity The new initial capacity for array builders.
          */
-        set_initial_capacity(capacity: (bigint | number)): void;
+        set_initial_capacity(capacity: bigint | number): void;
     }
 
 
@@ -18734,7 +18452,7 @@ export namespace Arrow {
          * @param i The index of the target record batch.
          * @returns The i-th record batch in the file or `null` on error.
          */
-        get_record_batch(i: number): (RecordBatch | null);
+        get_record_batch(i: number): RecordBatch | null;
 
         /**
          * @returns The schema in the file.
@@ -18750,7 +18468,7 @@ export namespace Arrow {
          * @param i The index of the target record batch.
          * @returns The i-th record batch in the file or `null` on error.
          */
-        read_record_batch(i: number): (RecordBatch | null);
+        read_record_batch(i: number): RecordBatch | null;
     }
 
 
@@ -18761,9 +18479,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {}
     }
 
     /**
@@ -18866,7 +18582,7 @@ export namespace Arrow {
         /**
          * @returns The next {@link Arrow.RecordBatch}, or `null` when the iterator is completed.
          */
-        next(): (RecordBatch | null);
+        next(): RecordBatch | null;
 
         /**
          * @returns A {@link GLib.List} contains every moved elements from the iterator.
@@ -18926,7 +18642,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](record_batches: RecordBatch[], schema: (Schema | null)): RecordBatchReader;
+        static ["new"](record_batches: RecordBatch[], schema: Schema | null): RecordBatchReader;
 
         // Signals
         /** @signal */
@@ -18945,7 +18661,7 @@ export namespace Arrow {
         /**
          * @param c_abi_array_stream A `struct ArrowArrayStream *`.
          */
-        static ["import"](c_abi_array_stream: never): (RecordBatchReader | null);
+        static ["import"](c_abi_array_stream: never): RecordBatchReader | null;
 
         // Methods
         /**
@@ -18956,7 +18672,7 @@ export namespace Arrow {
         /**
          * @returns The next record batch in the stream or `null` on end of stream.
          */
-        get_next_record_batch(): (RecordBatch | null);
+        get_next_record_batch(): RecordBatch | null;
 
         /**
          * @returns The schema in the stream.
@@ -18971,17 +18687,17 @@ export namespace Arrow {
         /**
          * @returns The all record batches in the stream as {@link Arrow.Table}.
          */
-        read_all(): (Table | null);
+        read_all(): Table | null;
 
         /**
          * @returns The next record batch in the stream or `null` on end of stream.
          */
-        read_next(): (RecordBatch | null);
+        read_next(): RecordBatch | null;
 
         /**
          * @returns The next record batch in the stream or `null` on end of stream.
          */
-        read_next_record_batch(): (RecordBatch | null);
+        read_next_record_batch(): RecordBatch | null;
     }
 
 
@@ -18993,9 +18709,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchReader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
     /**
@@ -19045,9 +18759,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
     }
 
     /**
@@ -19180,8 +18892,8 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             replacement: string;
-            start: (bigint | number);
-            stop: (bigint | number);
+            start: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -19205,7 +18917,7 @@ export namespace Arrow {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         /**
          * Index to stop slicing at.
@@ -19213,7 +18925,7 @@ export namespace Arrow {
          * @default 0
          */
         get stop(): number;
-        set stop(val: (bigint | number));
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -19256,8 +18968,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_replacements: (bigint | number);
-            maxReplacements: (bigint | number);
+            max_replacements: bigint | number;
+            maxReplacements: bigint | number;
             pattern: string;
             replacement: string;
         }
@@ -19276,7 +18988,7 @@ export namespace Arrow {
          * @default -1
          */
         get max_replacements(): number;
-        set max_replacements(val: (bigint | number));
+        set max_replacements(val: bigint | number);
 
         /**
          * Max number of substrings to replace (-1 means unbounded).
@@ -19284,7 +18996,7 @@ export namespace Arrow {
          * @default -1
          */
         get maxReplacements(): number;
-        set maxReplacements(val: (bigint | number));
+        set maxReplacements(val: bigint | number);
 
         /**
          * Pattern to match, literal, or regular expression depending on which kernel is used.
@@ -19340,9 +19052,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MutableBuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MutableBuffer.ConstructorProps {}
     }
 
     /**
@@ -19365,7 +19075,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](initial_size: (bigint | number)): ResizableBuffer;
+        static ["new"](initial_size: bigint | number): ResizableBuffer;
 
         // Conflicted with Arrow.MutableBuffer.new
         static ["new"](...args: never[]): any;
@@ -19388,13 +19098,13 @@ export namespace Arrow {
          * @param new_capacity The new buffer capacity in bytes.
          * @returns `true` on success, `false` if there was an error.
          */
-        reserve(new_capacity: (bigint | number)): boolean;
+        reserve(new_capacity: bigint | number): boolean;
 
         /**
          * @param new_size The new buffer size in bytes.
          * @returns `true` on success, `false` if there was an error.
          */
-        resize(new_size: (bigint | number)): boolean;
+        resize(new_size: bigint | number): boolean;
     }
 
 
@@ -19466,8 +19176,8 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             mode: RoundMode;
-            n_digits: (bigint | number);
-            nDigits: (bigint | number);
+            n_digits: bigint | number;
+            nDigits: bigint | number;
         }
     }
 
@@ -19492,7 +19202,7 @@ export namespace Arrow {
          * @default 0
          */
         get n_digits(): number;
-        set n_digits(val: (bigint | number));
+        set n_digits(val: bigint | number);
 
         /**
          * The rounding precision (number of digits to round to).
@@ -19500,7 +19210,7 @@ export namespace Arrow {
          * @default 0
          */
         get nDigits(): number;
-        set nDigits(val: (bigint | number));
+        set nDigits(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -19784,7 +19494,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](run_end_data_type: (DataType | null)): RunEndEncodeOptions;
+        static ["new"](run_end_data_type: DataType | null): RunEndEncodeOptions;
 
         // Signals
         /** @signal */
@@ -19858,7 +19568,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, logical_length: (bigint | number), run_ends: Array, values: Array, logical_offset: (bigint | number)): RunEndEncodedArray;
+        static ["new"](data_type: DataType, logical_length: bigint | number, run_ends: Array, values: Array, logical_offset: bigint | number): RunEndEncodedArray;
 
         // Signals
         /** @signal */
@@ -19877,7 +19587,7 @@ export namespace Arrow {
         /**
          * @returns A newly decoded {@link Arrow.Array} for the `array` on success,   `null` on error.
          */
-        decode(): (Array | null);
+        decode(): Array | null;
 
         /**
          * @returns Find the physical length of this array.   The physical length of an run-end encoded array is the number of   physical values (and run-ends) necessary to represent the logical   range of values from offset to length.   Avoid calling this function if the physical length can be   established in some other way (e.g. when iterating over the runs   sequentially until the end). This function uses binary-search, so   it has a O(log N) cost.
@@ -19918,9 +19628,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -19978,9 +19686,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileSystem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileSystem.ConstructorProps {}
     }
 
     /**
@@ -20158,7 +19864,7 @@ export namespace Arrow {
          * @param data_type A {@link Arrow.DataType} for the parsed scalar.
          * @param data Data to be parsed.
          */
-        static parse(data_type: DataType, data: (Uint8Array | string)): (Scalar | null);
+        static parse(data_type: DataType, data: Uint8Array | string): Scalar | null;
 
         // Methods
         /**
@@ -20166,7 +19872,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.CastOptions}.
          * @returns A newly created casted scalar on success, `null` on error.
          */
-        cast(data_type: DataType, options: (CastOptions | null)): (Scalar | null);
+        cast(data_type: DataType, options: CastOptions | null): Scalar | null;
 
         /**
          * @param other_scalar A {@link Arrow.Scalar} to be compared.
@@ -20179,7 +19885,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.EqualOptions}.
          * @returns `true` if both of them have the same data, `false`   otherwise.
          */
-        equal_options(other_scalar: Scalar, options: (EqualOptions | null)): boolean;
+        equal_options(other_scalar: Scalar, options: EqualOptions | null): boolean;
 
         /**
          * @returns The {@link Arrow.DataType} for the scalar.
@@ -20397,7 +20103,7 @@ export namespace Arrow {
         /**
          * @param c_abi_schema A `struct ArrowSchema *`.
          */
-        static ["import"](c_abi_schema: never): (Schema | null);
+        static ["import"](c_abi_schema: never): Schema | null;
 
         // Methods
         /**
@@ -20405,7 +20111,7 @@ export namespace Arrow {
          * @param field The field to be added.
          * @returns The newly allocated {@link Arrow.Schema} that has a new field or `null` on error.
          */
-        add_field(i: number, field: Field): (Schema | null);
+        add_field(i: number, field: Field): Schema | null;
 
         /**
          * @param other_schema A {@link Arrow.Schema} to be compared.
@@ -20444,7 +20150,7 @@ export namespace Arrow {
         /**
          * @returns The   metadata in the schema.   It should be freed with `g_hash_table_unref()` when no longer needed.
          */
-        get_metadata(): (GLib.HashTable<string, string> | null);
+        get_metadata(): GLib.HashTable<string, string> | null;
 
         /**
          * @returns `true` if the schema has metadata, `false` otherwise.
@@ -20460,14 +20166,14 @@ export namespace Arrow {
          * @param i The index of the field to be removed.
          * @returns The newly allocated {@link Arrow.Schema} that doesn't have the field or `null` on error.
          */
-        remove_field(i: number): (Schema | null);
+        remove_field(i: number): Schema | null;
 
         /**
          * @param i The index of the field to be replaced.
          * @param field The newly added {@link Arrow.Field}.
          * @returns The newly allocated {@link Arrow.Schema} that has `field` as the `i`-th field or `null` on error.
          */
-        replace_field(i: number, field: Field): (Schema | null);
+        replace_field(i: number, field: Field): Schema | null;
 
         /**
          * @returns The string representation of the schema.
@@ -20484,7 +20190,7 @@ export namespace Arrow {
          * @param metadata A new associated metadata.
          * @returns The new schema with the given metadata.
          */
-        with_metadata(metadata: ({ [key: string]: any } | GLib.HashTable<string, string>)): Schema;
+        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Schema;
     }
 
 
@@ -20495,9 +20201,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends InputStream.ConstructorProps, File.ConstructorProps, Readable.ConstructorProps {}
     }
 
     /**
@@ -20548,21 +20252,21 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be peeked.
          * @returns The data of the buffer, up to the   indicated number. The data becomes invalid after any operation on   the stream. If the stream is unbuffered, the data is empty.   It should be freed with `g_bytes_unref()` when no longer needed.
          */
-        peek(n_bytes: (bigint | number)): GLib.Bytes;
+        peek(n_bytes: bigint | number): GLib.Bytes;
 
         /**
          * @param position The read start position.
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read_at(position: (bigint | number), n_bytes: (bigint | number)): (Buffer | null);
+        read_at(position: bigint | number, n_bytes: bigint | number): Buffer | null;
 
         /**
          * @param position The read start position.
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on   success, `null` if there was an error.
          */
-        read_at_bytes(position: (bigint | number), n_bytes: (bigint | number)): (GLib.Bytes | null);
+        read_at_bytes(position: bigint | number, n_bytes: bigint | number): GLib.Bytes | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -20588,7 +20292,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: (bigint | number)): (Buffer | null);
+        read(n_bytes: bigint | number): Buffer | null;
 
         /**
          * @param args 
@@ -20600,7 +20304,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: (bigint | number)): (GLib.Bytes | null);
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
         /**
          * @param args 
@@ -20618,7 +20322,7 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            k: (bigint | number);
+            k: bigint | number;
         }
     }
 
@@ -20635,7 +20339,7 @@ export namespace Arrow {
          * @default -1
          */
         get k(): number;
-        set k(val: (bigint | number));
+        set k(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -20753,7 +20457,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](value_set: (Datum | null)): SetLookupOptions;
+        static ["new"](value_set: Datum | null): SetLookupOptions;
 
         // Signals
         /** @signal */
@@ -20777,9 +20481,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
     }
 
     /**
@@ -20933,9 +20635,9 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            start: (bigint | number);
-            step: (bigint | number);
-            stop: (bigint | number);
+            start: bigint | number;
+            step: bigint | number;
+            stop: bigint | number;
         }
     }
 
@@ -20952,7 +20654,7 @@ export namespace Arrow {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         /**
          * Slice step.
@@ -20960,7 +20662,7 @@ export namespace Arrow {
          * @default 1
          */
         get step(): number;
-        set step(val: (bigint | number));
+        set step(val: bigint | number);
 
         /**
          * Index to stop slicing at (exclusive).
@@ -20968,7 +20670,7 @@ export namespace Arrow {
          * @default 0
          */
         get stop(): number;
-        set stop(val: (bigint | number));
+        set stop(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -21146,13 +20848,10 @@ export namespace Arrow {
 
     namespace SortOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {
-        }
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FunctionOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {}
     }
 
     /**
@@ -21175,7 +20874,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](sort_keys: (SortKey[] | null)): SortOptions;
+        static ["new"](sort_keys: SortKey[] | null): SortOptions;
 
         // Signals
         /** @signal */
@@ -21302,9 +21001,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionArray.ConstructorProps {}
     }
 
     /**
@@ -21353,9 +21050,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -21378,7 +21073,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: (SparseUnionDataType | null)): SparseUnionArrayBuilder;
+        static ["new"](data_type: SparseUnionDataType | null): SparseUnionArrayBuilder;
 
         // Signals
         /** @signal */
@@ -21402,9 +21097,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionDataType.ConstructorProps {}
     }
 
     /**
@@ -21427,7 +21120,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](fields: Field[], type_codes: (Uint8Array | string)): SparseUnionDataType;
+        static ["new"](fields: Field[], type_codes: Uint8Array | string): SparseUnionDataType;
 
         // Signals
         /** @signal */
@@ -21453,9 +21146,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends UnionScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends UnionScalar.ConstructorProps {}
     }
 
     /**
@@ -21504,8 +21195,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_splits: (bigint | number);
-            maxSplits: (bigint | number);
+            max_splits: bigint | number;
+            maxSplits: bigint | number;
             reverse: boolean;
         }
     }
@@ -21523,7 +21214,7 @@ export namespace Arrow {
          * @default -1
          */
         get max_splits(): number;
-        set max_splits(val: (bigint | number));
+        set max_splits(val: bigint | number);
 
         /**
          * Maximum number of splits allowed, or unlimited when -1.
@@ -21531,7 +21222,7 @@ export namespace Arrow {
          * @default -1
          */
         get maxSplits(): number;
-        set maxSplits(val: (bigint | number));
+        set maxSplits(val: bigint | number);
 
         /**
          * Start splitting from the end of the string (only relevant when max_splits != -1).
@@ -21582,8 +21273,8 @@ export namespace Arrow {
 
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
-            max_splits: (bigint | number);
-            maxSplits: (bigint | number);
+            max_splits: bigint | number;
+            maxSplits: bigint | number;
             pattern: string;
             reverse: boolean;
         }
@@ -21600,13 +21291,13 @@ export namespace Arrow {
          * @default -1
          */
         get max_splits(): number;
-        set max_splits(val: (bigint | number));
+        set max_splits(val: bigint | number);
 
         /**
          * @default -1
          */
         get maxSplits(): number;
-        set maxSplits(val: (bigint | number));
+        set maxSplits(val: bigint | number);
 
         /**
          * The exact substring to split on.
@@ -21702,7 +21393,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](listener: StreamListener, options: (ReadOptions | null)): StreamDecoder;
+        static ["new"](listener: StreamListener, options: ReadOptions | null): StreamDecoder;
 
         // Signals
         /** @signal */
@@ -21738,7 +21429,7 @@ export namespace Arrow {
          * @param bytes A {@link GLib.Bytes} to be decoded.
          * @returns `true` on success, `false` if there was an error.
          */
-        consume_bytes(bytes: (GLib.Bytes | Uint8Array)): boolean;
+        consume_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * This method is provided for users who want to optimize performance.
@@ -21803,7 +21494,7 @@ export namespace Arrow {
         /**
          * @returns The shared {@link Arrow.Schema} of   the record batches in the stream.
          */
-        get_schema(): (Schema | null);
+        get_schema(): Schema | null;
 
         /**
          * Reset the internal status.
@@ -21817,13 +21508,10 @@ export namespace Arrow {
 
     namespace StreamListener {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -21872,7 +21560,7 @@ export namespace Arrow {
          * @param metadata A decoded metadata.
          * @virtual
          */
-        vfunc_on_record_batch_decoded(record_batch: RecordBatch, metadata: (GLib.HashTable<string, string> | null)): boolean;
+        vfunc_on_record_batch_decoded(record_batch: RecordBatch, metadata: GLib.HashTable<string, string> | null): boolean;
 
         /**
          * Processes a decoded schema.
@@ -21895,7 +21583,7 @@ export namespace Arrow {
          * @param metadata A decoded metadata.
          * @returns `true` on success, `false` on error.
          */
-        on_record_batch_decoded(record_batch: RecordBatch, metadata: (GLib.HashTable<string, string> | null)): boolean;
+        on_record_batch_decoded(record_batch: RecordBatch, metadata: GLib.HashTable<string, string> | null): boolean;
 
         /**
          * Processes a decoded schema.
@@ -21987,9 +21675,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BinaryArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BinaryArray.ConstructorProps {}
     }
 
     /**
@@ -22012,7 +21698,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), value_offsets: Buffer, value_data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): StringArray;
+        static ["new"](length: bigint | number, value_offsets: Buffer, value_data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): StringArray;
 
         // Signals
         /** @signal */
@@ -22032,7 +21718,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th UTF-8 encoded string.
          */
-        get_string(i: (bigint | number)): string;
+        get_string(i: bigint | number): string;
     }
 
 
@@ -22043,9 +21729,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BinaryArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BinaryArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -22116,7 +21800,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_strings(values: string[], is_valids: (boolean[] | null)): boolean;
+        append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -22127,9 +21811,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -22176,9 +21858,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -22229,7 +21909,7 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_indices(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
 
         /**
          * @param value A string value.
@@ -22269,9 +21949,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
     }
 
     /**
@@ -22323,9 +22001,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BinaryViewArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BinaryViewArray.ConstructorProps {}
     }
 
     /**
@@ -22348,7 +22024,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), views: Buffer, data_buffers: Buffer[], null_bitmap: (Buffer | null), n_nulls: (bigint | number), offset: (bigint | number)): StringViewArray;
+        static ["new"](length: bigint | number, views: Buffer, data_buffers: Buffer[], null_bitmap: Buffer | null, n_nulls: bigint | number, offset: bigint | number): StringViewArray;
 
         // Signals
         /** @signal */
@@ -22368,7 +22044,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): GLib.Bytes;
+        get_value(i: bigint | number): GLib.Bytes;
     }
 
 
@@ -22379,9 +22055,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BinaryViewDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BinaryViewDataType.ConstructorProps {}
     }
 
     /**
@@ -22514,9 +22188,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TimestampParser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TimestampParser.ConstructorProps {}
     }
 
     /**
@@ -22574,9 +22246,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Array.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Array.ConstructorProps {}
     }
 
     /**
@@ -22599,7 +22269,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, length: (bigint | number), fields: Array[], null_bitmap: (Buffer | null), n_nulls: (bigint | number)): StructArray;
+        static ["new"](data_type: DataType, length: bigint | number, fields: Array[], null_bitmap: Buffer | null, n_nulls: bigint | number): StructArray;
 
         // Signals
         /** @signal */
@@ -22640,9 +22310,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -22711,9 +22379,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -22756,13 +22422,13 @@ export namespace Arrow {
          * @param i The index of the target field.
          * @returns The field at the index in the struct data type or `null` on not found.
          */
-        get_field(i: number): (Field | null);
+        get_field(i: number): Field | null;
 
         /**
          * @param name The name of the target field.
          * @returns The field that has the name in the struct data type or `null` on not found.
          */
-        get_field_by_name(name: string): (Field | null);
+        get_field_by_name(name: string): Field | null;
 
         /**
          * @param name The name of the target field.
@@ -22857,9 +22523,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -23164,19 +22828,19 @@ export namespace Arrow {
          * @param chunked_array The column data to be added.
          * @returns The newly allocated   {@link Arrow.Table} that has a new column or `null` on error.
          */
-        add_column(i: number, field: Field, chunked_array: ChunkedArray): (Table | null);
+        add_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
 
         /**
          * @returns The {@link Arrow.Table} with   chunks combined, or `null` on error.
          */
-        combine_chunks(): (Table | null);
+        combine_chunks(): Table | null;
 
         /**
          * @param other_tables The tables to be concatenated.
          * @param options The options to customize concatenation.
          * @returns The table concatenated vertically.
          */
-        concatenate(other_tables: Table[], options: (TableConcatenateOptions | null)): (Table | null);
+        concatenate(other_tables: Table[], options: TableConcatenateOptions | null): Table | null;
 
         /**
          * @param other_table A {@link Arrow.Table} to be compared.
@@ -23196,20 +22860,20 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Table} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter(filter: BooleanArray, options: (FilterOptions | null)): (Table | null);
+        filter(filter: BooleanArray, options: FilterOptions | null): Table | null;
 
         /**
          * @param filter The values indicates which values should be filtered out.
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Table} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
          */
-        filter_chunked_array(filter: ChunkedArray, options: (FilterOptions | null)): (Table | null);
+        filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): Table | null;
 
         /**
          * @param i The index of the target column. If it's negative, index is   counted backward from the end of the columns. `-1` means the last   column.
          * @returns The i-th column's data in the table.
          */
-        get_column_data(i: number): (ChunkedArray | null);
+        get_column_data(i: number): ChunkedArray | null;
 
         /**
          * @returns The number of columns in the table.
@@ -23230,7 +22894,7 @@ export namespace Arrow {
          * @param i The index of the column to be removed.
          * @returns The newly allocated   {@link Arrow.Table} that doesn't have the column or `null` on error.
          */
-        remove_column(i: number): (Table | null);
+        remove_column(i: number): Table | null;
 
         /**
          * @param i The index of the column to be replaced.
@@ -23238,39 +22902,39 @@ export namespace Arrow {
          * @param chunked_array The newly added column data.
          * @returns The newly allocated {@link Arrow.Table} that has `column` as the `i`-th column or `null` on error.
          */
-        replace_column(i: number, field: Field, chunked_array: ChunkedArray): (Table | null);
+        replace_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
 
         /**
          * @param offset The offset of sub {@link Arrow.Table}. If the offset is negative,   the offset is counted from the last.
          * @param length The length of sub {@link Arrow.Table}.
          * @returns The sub {@link Arrow.Table}. It covers   only from `offset` to `offset + length` range. The sub   {@link Arrow.Table} shares values with the base   {@link Arrow.Table}.
          */
-        slice(offset: (bigint | number), length: (bigint | number)): Table;
+        slice(offset: bigint | number, length: bigint | number): Table;
 
         /**
          * @param options The options to be used.
          * @returns The indices that would sort   a table with the specified options on success, `null` on error.
          */
-        sort_indices(options: SortOptions): (UInt64Array | null);
+        sort_indices(options: SortOptions): UInt64Array | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Table} taken from   an array of values at indices in input array or `null` on error.
          */
-        take(indices: Array, options: (TakeOptions | null)): (Table | null);
+        take(indices: Array, options: TakeOptions | null): Table | null;
 
         /**
          * @param indices The indices of values to take.
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Table} taken from   an array of values at indices in chunked array or `null` on error.
          */
-        take_chunked_array(indices: ChunkedArray, options: (TakeOptions | null)): (Table | null);
+        take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): Table | null;
 
         /**
          * @returns The formatted table content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
 
         /**
          * Validate the given table. This is a cheap validation.
@@ -23290,7 +22954,7 @@ export namespace Arrow {
          * @param properties The properties for this write.
          * @returns `true` on success, `false` if there was an error.
          */
-        write_as_feather(sink: OutputStream, properties: (FeatherWriteProperties | null)): boolean;
+        write_as_feather(sink: OutputStream, properties: FeatherWriteProperties | null): boolean;
     }
 
 
@@ -23302,9 +22966,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends RecordBatchReader.ConstructorProps {
-
-        }
+        interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
     }
 
     /**
@@ -23353,7 +23015,7 @@ export namespace Arrow {
          * depending on actual chunking characteristics of each table column.
          * @param max_chunk_size The maximum chunk size of record batches.
          */
-        set_max_chunk_size(max_chunk_size: (bigint | number)): void;
+        set_max_chunk_size(max_chunk_size: bigint | number): void;
     }
 
 
@@ -23523,13 +23185,10 @@ export namespace Arrow {
 
     namespace TakeOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {
-        }
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FunctionOptions.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FunctionOptions.ConstructorProps {}
     }
 
     /**
@@ -23576,9 +23235,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
     }
 
     /**
@@ -23661,7 +23318,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: DataType, data: Buffer, shape: (bigint | number)[], strides: ((bigint | number)[] | null), dimension_names: (string[] | null)): Tensor;
+        static ["new"](data_type: DataType, data: Buffer, shape: (bigint | number)[], strides: (bigint | number)[] | null, dimension_names: string[] | null): Tensor;
 
         // Signals
         /** @signal */
@@ -23753,9 +23410,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Executor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Executor.ConstructorProps {}
     }
 
     /**
@@ -23807,9 +23462,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -23832,7 +23485,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: Time32DataType, length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Time32Array;
+        static ["new"](data_type: Time32DataType, length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Time32Array;
 
         // Signals
         /** @signal */
@@ -23852,7 +23505,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -23868,9 +23521,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -23928,7 +23579,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -23939,9 +23590,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TimeDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TimeDataType.ConstructorProps {}
     }
 
     /**
@@ -23989,9 +23638,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -24049,9 +23696,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -24074,7 +23719,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: Time64DataType, length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): Time64Array;
+        static ["new"](data_type: Time64DataType, length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): Time64Array;
 
         // Signals
         /** @signal */
@@ -24094,7 +23739,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -24110,9 +23755,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -24155,13 +23798,13 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -24170,7 +23813,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -24181,9 +23824,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TimeDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TimeDataType.ConstructorProps {}
     }
 
     /**
@@ -24231,9 +23872,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -24256,7 +23895,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: Time64DataType, value: (bigint | number)): Time64Scalar;
+        static ["new"](data_type: Time64DataType, value: bigint | number): Time64Scalar;
 
         // Signals
         /** @signal */
@@ -24286,9 +23925,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TemporalDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TemporalDataType.ConstructorProps {}
     }
 
     /**
@@ -24344,9 +23981,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -24369,7 +24004,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: TimestampDataType, length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): TimestampArray;
+        static ["new"](data_type: TimestampDataType, length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): TimestampArray;
 
         // Signals
         /** @signal */
@@ -24389,7 +24024,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -24405,9 +24040,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -24450,13 +24083,13 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -24465,7 +24098,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -24518,7 +24151,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](unit: TimeUnit, time_zone: (GLib.TimeZone | null)): TimestampDataType;
+        static ["new"](unit: TimeUnit, time_zone: GLib.TimeZone | null): TimestampDataType;
 
         // Signals
         /** @signal */
@@ -24608,9 +24241,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -24633,7 +24264,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_type: TimestampDataType, value: (bigint | number)): TimestampScalar;
+        static ["new"](data_type: TimestampDataType, value: bigint | number): TimestampScalar;
 
         // Signals
         /** @signal */
@@ -24725,9 +24356,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -24750,7 +24379,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): UInt16Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): UInt16Array;
 
         // Signals
         /** @signal */
@@ -24770,7 +24399,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -24791,9 +24420,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -24851,7 +24478,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -24862,9 +24489,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -24912,9 +24537,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -24972,9 +24595,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -24997,7 +24618,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): UInt32Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): UInt32Array;
 
         // Signals
         /** @signal */
@@ -25017,7 +24638,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -25038,9 +24659,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -25098,7 +24717,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: number[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -25109,9 +24728,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -25159,9 +24776,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -25219,9 +24834,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -25244,7 +24857,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): UInt64Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): UInt64Array;
 
         // Signals
         /** @signal */
@@ -25264,7 +24877,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -25285,9 +24898,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -25330,13 +24941,13 @@ export namespace Arrow {
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -25345,7 +24956,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -25356,9 +24967,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -25406,9 +25015,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -25431,7 +25038,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](value: (bigint | number)): UInt64Scalar;
+        static ["new"](value: bigint | number): UInt64Scalar;
 
         // Signals
         /** @signal */
@@ -25466,9 +25073,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NumericArray.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NumericArray.ConstructorProps {}
     }
 
     /**
@@ -25491,7 +25096,7 @@ export namespace Arrow {
 
         _init(...args: any[]): void;
 
-        static ["new"](length: (bigint | number), data: Buffer, null_bitmap: (Buffer | null), n_nulls: (bigint | number)): UInt8Array;
+        static ["new"](length: bigint | number, data: Buffer, null_bitmap: Buffer | null, n_nulls: bigint | number): UInt8Array;
 
         // Signals
         /** @signal */
@@ -25511,7 +25116,7 @@ export namespace Arrow {
          * @param i The index of the target value.
          * @returns The `i`-th value.
          */
-        get_value(i: (bigint | number)): number;
+        get_value(i: bigint | number): number;
 
         /**
          * @returns The raw values.
@@ -25532,9 +25137,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -25592,7 +25195,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (Uint8Array | string), is_valids: (boolean[] | null)): boolean;
+        append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
 
 
@@ -25603,9 +25206,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends IntegerDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends IntegerDataType.ConstructorProps {}
     }
 
     /**
@@ -25653,9 +25254,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Scalar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Scalar.ConstructorProps {}
     }
 
     /**
@@ -25708,9 +25307,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -25753,13 +25350,13 @@ export namespace Arrow {
          * @param value A unsigned int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append(value: (bigint | number)): boolean;
+        append(value: bigint | number): boolean;
 
         /**
          * @param value A unsigned int value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: (bigint | number)): boolean;
+        append_value(value: bigint | number): boolean;
 
         /**
          * Append multiple values at once. It's more efficient than multiple
@@ -25768,7 +25365,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_values(values: (bigint | number)[], is_valids: (boolean[] | null)): boolean;
+        append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
 
 
@@ -25838,9 +25435,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ExtensionDataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ExtensionDataType.ConstructorProps {}
     }
 
     /**
@@ -25948,19 +25543,19 @@ export namespace Arrow {
          * @param i The index of the physical child ID containing value in the union.
          * @returns The physical child ID containing the i-th value.
          */
-        get_child_id(i: (bigint | number)): number;
+        get_child_id(i: bigint | number): number;
 
         /**
          * @param i The index of the field in the union.
          * @returns The i-th field values as a   {@link Arrow.Array} or `null` on out of range.
          */
-        get_field(i: number): (Array | null);
+        get_field(i: number): Array | null;
 
         /**
          * @param i The index of the logical type code of the value in the union.
          * @returns The i-th logical type code of the value.
          */
-        get_type_code(i: (bigint | number)): number;
+        get_type_code(i: bigint | number): number;
     }
 
 
@@ -25971,9 +25566,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ArrayBuilder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
     }
 
     /**
@@ -26015,7 +25608,7 @@ export namespace Arrow {
          * @param field_name A field name for new child.
          * @returns The type ID for the appended child.
          */
-        append_child(child: ArrayBuilder, field_name: (string | null)): number;
+        append_child(child: ArrayBuilder, field_name: string | null): number;
 
         /**
          * Append an element to the union array.
@@ -26042,9 +25635,7 @@ export namespace Arrow {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataType.ConstructorProps {}
     }
 
     /**
@@ -26085,7 +25676,7 @@ export namespace Arrow {
          * @param i The index of the target field.
          * @returns The field at the index in the union data type or `null` on not found.
          */
-        get_field(i: number): (Field | null);
+        get_field(i: number): Field | null;
 
         /**
          * @returns The fields of the union data type.
@@ -26636,7 +26227,7 @@ export namespace Arrow {
         // Constructor properties interface
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
             padding: string;
-            width: (bigint | number);
+            width: bigint | number;
         }
     }
 
@@ -26661,7 +26252,7 @@ export namespace Arrow {
          * @default 0
          */
         get width(): number;
-        set width(val: (bigint | number));
+        set width(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -28417,9 +28008,7 @@ export namespace Arrow {
     namespace File {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileNamespace {
@@ -28461,9 +28050,7 @@ export namespace Arrow {
     namespace Readable {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ReadableNamespace {
@@ -28480,13 +28067,13 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
          */
-        read(n_bytes: (bigint | number)): (Buffer | null);
+        read(n_bytes: bigint | number): Buffer | null;
 
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          */
-        read_bytes(n_bytes: (bigint | number)): (GLib.Bytes | null);
+        read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
     }
 
 
@@ -28497,9 +28084,7 @@ export namespace Arrow {
     namespace Writable {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WritableNamespace {
@@ -28522,7 +28107,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -28533,9 +28118,7 @@ export namespace Arrow {
     namespace WritableFile {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface WritableFileNamespace {
@@ -28553,7 +28136,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
          */
-        write_at(position: (bigint | number), data: (Uint8Array | string)): boolean;
+        write_at(position: bigint | number, data: Uint8Array | string): boolean;
     }
 
 
@@ -28564,7 +28147,7 @@ export namespace Arrow {
     /**
      * @gir-type Alias
      */
-    type TimePoint = (bigint | number);
+    type TimePoint = bigint | number;
 
     /**
      * Name of the imported GIR library

@@ -89,7 +89,7 @@ export namespace Skk {
         static KEYSYM_NOT_FOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -103,7 +103,7 @@ export namespace Skk {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -4283,7 +4283,7 @@ export namespace Skk {
      * @gir-type Callback
      */
     interface GetTime {
-        (): (bigint | number);
+        (): bigint | number;
     }
 
     /**
@@ -4588,9 +4588,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dict.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
     /**
@@ -4637,9 +4635,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dict.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
     /**
@@ -4686,9 +4682,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dict.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
     /**
@@ -4735,9 +4729,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dict.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
     /**
@@ -4784,9 +4776,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Dict.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Dict.ConstructorProps {}
     }
 
     /**
@@ -4836,7 +4826,7 @@ export namespace Skk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            name: (string | null);
+            name: string | null;
             code: string;
             modifiers: ModifierType;
         }
@@ -4849,8 +4839,8 @@ export namespace Skk {
         static $gtype: GObject.GType<KeyEvent>;
 
         // Properties
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         get code(): string;
         set code(val: string);
@@ -4872,7 +4862,7 @@ export namespace Skk {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null), code: string, modifiers: ModifierType): KeyEvent;
+        static ["new"](name: string | null, code: string, modifiers: ModifierType): KeyEvent;
 
         static from_string(key: string): KeyEvent;
 
@@ -4901,7 +4891,7 @@ export namespace Skk {
          */
         base_equal(key: KeyEvent): boolean;
 
-        get_name(): (string | null);
+        get_name(): string | null;
 
         get_code(): string;
 
@@ -4924,9 +4914,7 @@ export namespace Skk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4967,7 +4955,7 @@ export namespace Skk {
          * @param key 
          * @virtual
          */
-        vfunc_filter_key_event(key: KeyEvent): (KeyEvent | null);
+        vfunc_filter_key_event(key: KeyEvent): KeyEvent | null;
 
         /**
          * @virtual
@@ -4978,7 +4966,7 @@ export namespace Skk {
         /**
          * @param key 
          */
-        filter_key_event(key: KeyEvent): (KeyEvent | null);
+        filter_key_event(key: KeyEvent): KeyEvent | null;
 
         reset(): void;
     }
@@ -5046,7 +5034,7 @@ export namespace Skk {
         /**
          * @param name 
          */
-        static find_rule(name: string): (RuleMetadata | null);
+        static find_rule(name: string): RuleMetadata | null;
 
         static list(): RuleMetadata[];
 
@@ -5061,11 +5049,11 @@ export namespace Skk {
             /**
              * @signal
              */
-            "retrieve-surrounding-text": (arg0: string, arg1: number) => (boolean | void);
+            "retrieve-surrounding-text": (arg0: string, arg1: number) => boolean | void;
             /**
              * @signal
              */
-            "delete-surrounding-text": (arg0: number, arg1: number) => (boolean | void);
+            "delete-surrounding-text": (arg0: number, arg1: number) => boolean | void;
             "notify::candidates": (pspec: GObject.ParamSpec) => void;
             "notify::input-mode": (pspec: GObject.ParamSpec) => void;
             "notify::auto-start-henkan-keywords": (pspec: GObject.ParamSpec) => void;
@@ -5279,7 +5267,7 @@ export namespace Skk {
             midasi: string;
             okuri: boolean;
             text: string;
-            annotation: (string | null);
+            annotation: string | null;
             output: string;
         }
     }
@@ -5300,8 +5288,8 @@ export namespace Skk {
         get text(): string;
         set text(val: string);
 
-        get annotation(): (string | null);
-        set annotation(val: (string | null));
+        get annotation(): string | null;
+        set annotation(val: string | null);
 
         get output(): string;
         set output(val: string);
@@ -5320,7 +5308,7 @@ export namespace Skk {
 
         _init(...args: any[]): void;
 
-        static ["new"](midasi: string, okuri: boolean, text: string, annotation: (string | null), output: (string | null)): Candidate;
+        static ["new"](midasi: string, okuri: boolean, text: string, annotation: string | null, output: string | null): Candidate;
 
         // Signals
         /** @signal */
@@ -5349,12 +5337,12 @@ export namespace Skk {
          */
         set_text(value: string): void;
 
-        get_annotation(): (string | null);
+        get_annotation(): string | null;
 
         /**
          * @param value 
          */
-        set_annotation(value: (string | null)): void;
+        set_annotation(value: string | null): void;
 
         get_output(): string;
 
@@ -5629,13 +5617,10 @@ export namespace Skk {
 
     namespace NicolaKeyEventFilter {
         // Signal signatures
-        interface SignalSignatures extends KeyEventFilter.SignalSignatures {
-        }
+        interface SignalSignatures extends KeyEventFilter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyEventFilter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
     }
 
     /**
@@ -5906,7 +5891,7 @@ export namespace Skk {
          * @param type 
          * @param name 
          */
-        locate_map_file(type: string, name: string): (string | null);
+        locate_map_file(type: string, name: string): string | null;
     }
 
 

@@ -488,7 +488,7 @@ export namespace GtkFrdp {
          * @param port 
          * @param cancellable 
          */
-        connect(hostname: string, port: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        connect(hostname: string, port: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param hostname 
@@ -496,7 +496,7 @@ export namespace GtkFrdp {
          * @param cancellable 
          * @param callback 
          */
-        connect(hostname: string, port: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect(hostname: string, port: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param hostname 
@@ -504,7 +504,7 @@ export namespace GtkFrdp {
          * @param cancellable 
          * @param callback 
          */
-        connect(hostname: string, port: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect(hostname: string, port: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param args 

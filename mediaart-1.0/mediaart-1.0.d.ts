@@ -56,7 +56,7 @@ export namespace MediaArt {
         static RENAME_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -91,7 +91,7 @@ export namespace MediaArt {
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
      */
-    function buffer_to_jpeg(buffer: number, len: (bigint | number), buffer_mime: string, target: string): boolean;
+    function buffer_to_jpeg(buffer: number, len: bigint | number, buffer_mime: string, target: string): boolean;
 
     /**
      * @returns A {@link GLib.Quark} representing the type of {@link GLib.Error} for {@link MediaArt.Process} failures.
@@ -140,7 +140,7 @@ export namespace MediaArt {
      * @returns `true` if `cache_file` or `local_file` were returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_file(artist: (string | null), title: (string | null), prefix: (string | null), file: (Gio.File | null)): [boolean, Gio.File | null, Gio.File | null];
+    function get_file(artist: string | null, title: string | null, prefix: string | null, file: Gio.File | null): [boolean, Gio.File | null, Gio.File | null];
 
     /**
      * This function calls `media_art_get_file()` by creating a {@link Gio.File} for
@@ -156,7 +156,7 @@ export namespace MediaArt {
      * @returns `true` if `cache_path` or `local_uri` were returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_path(artist: (string | null), title: (string | null), prefix: (string | null), uri: (string | null)): [boolean, string, string];
+    function get_path(artist: string | null, title: string | null, prefix: string | null, uri: string | null): [boolean, string, string];
 
     /**
      * This function facilitates a plugin&apos;s need to create any
@@ -185,7 +185,7 @@ export namespace MediaArt {
      * @returns `TRUE` on success, otherwise `FALSE`.
      * @since 0.2.0
      */
-    function remove(artist: string, album: (string | null)): boolean;
+    function remove(artist: string, album: string | null): boolean;
 
     /**
      * Strip a albumname or artistname string to prepare it for calculating the
@@ -224,13 +224,10 @@ export namespace MediaArt {
 
     namespace Process {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -289,7 +286,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: string, artist: (string | null), title: (string | null)): boolean;
+        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string, artist: string | null, title: string | null): boolean;
 
         /**
          * Process `file` and check if media art exists and if it is up to date
@@ -326,7 +323,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null)): boolean;
+        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null): boolean;
 
         /**
          * This function calls `media_art_process_file()`, but takes the `uri` as
@@ -339,7 +336,7 @@ export namespace MediaArt {
          * @param title The title for `uri` or `null`
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
          */
-        uri(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null)): boolean;
+        uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -383,7 +380,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -427,7 +424,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

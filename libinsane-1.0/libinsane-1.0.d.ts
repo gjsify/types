@@ -78,7 +78,7 @@ export namespace Libinsane {
         static OFFLINE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -178,13 +178,10 @@ export namespace Libinsane {
 
     namespace Api {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -246,13 +243,10 @@ export namespace Libinsane {
 
     namespace DeviceDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -307,13 +301,10 @@ export namespace Libinsane {
 
     namespace Item {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -380,13 +371,10 @@ export namespace Libinsane {
 
     namespace OptionDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -452,19 +440,16 @@ export namespace Libinsane {
         /**
          * @param value 
          */
-        set_value(value: (GObject.Value | any)): SetFlag;
+        set_value(value: GObject.Value | any): SetFlag;
     }
 
 
     namespace ScanParameters {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -513,13 +498,10 @@ export namespace Libinsane {
 
     namespace ScanSession {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -573,13 +555,13 @@ export namespace Libinsane {
          * @param buffer buffer to read data
          * @returns Number of bytes read, or -1 on error
          */
-        read(buffer: (Uint8Array | string)): number;
+        read(buffer: Uint8Array | string): number;
 
         /**
          * @param lng number of bytes wanted
          * @returns a new {@link GLib.Bytes}, or `null` if an error occured
          */
-        read_bytes(lng: (bigint | number)): GLib.Bytes;
+        read_bytes(lng: bigint | number): GLib.Bytes;
     }
 
 
@@ -684,9 +666,7 @@ export namespace Libinsane {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LoggerNamespace {

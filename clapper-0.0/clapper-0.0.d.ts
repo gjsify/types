@@ -329,7 +329,7 @@ export namespace Clapper {
      * @since 0.8
      * @deprecated since 0.10: Use list of enhancer proxies from {@link Clapper.get_global_enhancer_proxies} or   {@link Clapper.Player.enhancer_proxies} and check if any proxy matches your search criteria.
      */
-    function enhancer_check(iface_type: GObject.GType, scheme: string, host: (string | null)): [boolean, string];
+    function enhancer_check(iface_type: GObject.GType, scheme: string, host: string | null): [boolean, string];
 
     /**
      * Get a list of available enhancers in the form of {@link Clapper.EnhancerProxy} objects.
@@ -407,7 +407,7 @@ export namespace Clapper {
      * use {@link Clapper.init_check} instead.
      * @param argv pointer to application's argv
      */
-    function init(argv?: (string[] | null)): string[] | null;
+    function init(argv?: string[] | null): string[] | null;
 
     /**
      * This function does the same thing as {@link Clapper.init}, but instead of
@@ -415,7 +415,7 @@ export namespace Clapper {
      * @param argv pointer to application's argv
      * @returns `true` if Clapper could be initialized, `false` otherwise.
      */
-    function init_check(argv?: (string[] | null)): [boolean, string[] | null];
+    function init_check(argv?: string[] | null): [boolean, string[] | null];
 
     /**
      * @gir-type Flags
@@ -513,13 +513,13 @@ export namespace Clapper {
         interface ConstructorProps extends Stream.ConstructorProps {
             bitrate: number;
             channels: number;
-            codec: (string | null);
-            lang_code: (string | null);
-            langCode: (string | null);
-            lang_name: (string | null);
-            langName: (string | null);
-            sample_format: (string | null);
-            sampleFormat: (string | null);
+            codec: string | null;
+            lang_code: string | null;
+            langCode: string | null;
+            lang_name: string | null;
+            langName: string | null;
+            sample_format: string | null;
+            sampleFormat: string | null;
             sample_rate: number;
             sampleRate: number;
         }
@@ -552,49 +552,49 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get codec(): (string | null);
+        get codec(): string | null;
 
         /**
          * Stream language code in ISO-639 format.
          * @read-only
          * @default null
          */
-        get lang_code(): (string | null);
+        get lang_code(): string | null;
 
         /**
          * Stream language code in ISO-639 format.
          * @read-only
          * @default null
          */
-        get langCode(): (string | null);
+        get langCode(): string | null;
 
         /**
          * Stream language name.
          * @read-only
          * @default null
          */
-        get lang_name(): (string | null);
+        get lang_name(): string | null;
 
         /**
          * Stream language name.
          * @read-only
          * @default null
          */
-        get langName(): (string | null);
+        get langName(): string | null;
 
         /**
          * Stream sample format.
          * @read-only
          * @default null
          */
-        get sample_format(): (string | null);
+        get sample_format(): string | null;
 
         /**
          * Stream sample format.
          * @read-only
          * @default null
          */
-        get sampleFormat(): (string | null);
+        get sampleFormat(): string | null;
 
         /**
          * Stream sample rate (in Hz).
@@ -654,13 +654,13 @@ export namespace Clapper {
          * Get codec used to encode `stream`.
          * @returns the audio codec of stream   or `null` if undetermined.
          */
-        get_codec(): (string | null);
+        get_codec(): string | null;
 
         /**
          * Get an ISO-639 language code of the `stream`.
          * @returns the language code of audio stream.
          */
-        get_lang_code(): (string | null);
+        get_lang_code(): string | null;
 
         /**
          * Get language name of the `stream`.
@@ -669,13 +669,13 @@ export namespace Clapper {
          * locale if possible, with a fallback to a name extracted from tags.
          * @returns the language name of audio stream.
          */
-        get_lang_name(): (string | null);
+        get_lang_name(): string | null;
 
         /**
          * Get sample format of audio `stream`.
          * @returns the sample format of stream   or `null` if undetermined.
          */
-        get_sample_format(): (string | null);
+        get_sample_format(): string | null;
 
         /**
          * Get sample rate of audio `stream` (in Hz).
@@ -800,7 +800,7 @@ export namespace Clapper {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            description: (string | null);
+            description: string | null;
             friendly_name: string;
             friendlyName: string;
             module_dir: string;
@@ -809,7 +809,7 @@ export namespace Clapper {
             moduleName: string;
             target_creation_allowed: boolean;
             targetCreationAllowed: boolean;
-            version: (string | null);
+            version: string | null;
         }
     }
 
@@ -842,7 +842,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get description(): (string | null);
+        get description(): string | null;
 
         /**
          * Name from enhancer plugin info file.
@@ -940,7 +940,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get version(): (string | null);
+        get version(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -992,7 +992,7 @@ export namespace Clapper {
          * Get description from enhancer plugin info file.
          * @returns description of the proxied enhancer.
          */
-        get_description(): (string | null);
+        get_description(): string | null;
 
         /**
          * Get extra data from enhancer plugin info file specified by `key`.
@@ -1002,7 +1002,7 @@ export namespace Clapper {
          * @param key name of the data to lookup
          * @returns extra data value of the proxied enhancer.
          */
-        get_extra_data(key: string): (string | null);
+        get_extra_data(key: string): string | null;
 
         /**
          * Get a name from enhancer plugin info file.
@@ -1044,7 +1044,7 @@ export namespace Clapper {
          * from different threads if needed.
          * @returns A new {@link Gio.Settings} instance for an enhancer.
          */
-        get_settings(): (Gio.Settings | null);
+        get_settings(): Gio.Settings | null;
 
         /**
          * Get whether it is allowed to create instances of enhancer that this proxy targets.
@@ -1060,7 +1060,7 @@ export namespace Clapper {
          * other interface types that given enhancer is using internally.
          * @returns an array of {@link GObject.GType} interfaces.
          */
-        get_target_interfaces(): (GObject.GType[] | null);
+        get_target_interfaces(): GObject.GType[] | null;
 
         /**
          * Get an array of properties in target enhancer.
@@ -1075,20 +1075,20 @@ export namespace Clapper {
          * Applications can not access any other properties that given enhancer is using internally.
          * @returns an array of {@link GObject.ParamSpec} objects.
          */
-        get_target_properties(): (GObject.ParamSpec[] | null);
+        get_target_properties(): GObject.ParamSpec[] | null;
 
         /**
          * Get version string from enhancer plugin info file.
          * @returns version string of the proxied enhancer.
          */
-        get_version(): (string | null);
+        get_version(): string | null;
 
         /**
          * Same as {@link Clapper.EnhancerProxy.set_locally}, but to configure uses
          * {@link GLib.HashTable} with string keys and {@link GObject.Value} as their values.
          * @param table a {@link GLib.HashTable} with property names and values
          */
-        set_locally(table: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): void;
+        set_locally(table: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
 
         /**
          * Set whether to allow instances of proxy target to be created.
@@ -1197,7 +1197,7 @@ export namespace Clapper {
          * @param index an enhancer proxy index
          * @returns The {@link Clapper.EnhancerProxy} at `index`.
          */
-        get_proxy(index: number): (EnhancerProxy | null);
+        get_proxy(index: number): EnhancerProxy | null;
 
         /**
          * Get the {@link Clapper.EnhancerProxy} by module name as defined in its plugin file.
@@ -1207,7 +1207,7 @@ export namespace Clapper {
          * @param module_name an enhancer module name
          * @returns The {@link Clapper.EnhancerProxy} with requested module name.
          */
-        get_proxy_by_module(module_name: string): (EnhancerProxy | null);
+        get_proxy_by_module(module_name: string): EnhancerProxy | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1248,7 +1248,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -1288,7 +1288,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1351,9 +1351,7 @@ export namespace Clapper {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1529,9 +1527,7 @@ export namespace Clapper {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -1591,7 +1587,7 @@ export namespace Clapper {
          * @param data data to fill `harvest`
          * @returns `true` when filled successfully, `false` if taken data was empty.
          */
-        fill(media_type: string, data: (Uint8Array | string)): boolean;
+        fill(media_type: string, data: Uint8Array | string): boolean;
 
         /**
          * A convenience method to fill `harvest` with data from {@link GLib.Bytes}.
@@ -1601,7 +1597,7 @@ export namespace Clapper {
          * @param bytes a {@link GLib.Bytes} to fill `harvest`
          * @returns `true` when filled successfully, `false` if taken data was empty.
          */
-        fill_with_bytes(media_type: string, bytes: (GLib.Bytes | Uint8Array)): boolean;
+        fill_with_bytes(media_type: string, bytes: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * A convenience method to fill `harvest` using a `null` terminated string.
@@ -1620,7 +1616,7 @@ export namespace Clapper {
          * @param key a header name
          * @param value a string {@link GObject.Value} of header
          */
-        headers_set(key: string, value: (GObject.Value | any)): void;
+        headers_set(key: string, value: GObject.Value | any): void;
 
         /**
          * Set date in UTC time until harvested content is expected
@@ -1651,7 +1647,7 @@ export namespace Clapper {
          * @param tag a name of tag to set
          * @param value a {@link GObject.Value} of tag
          */
-        tags_add(tag: string, value: (GObject.Value | any)): void;
+        tags_add(tag: string, value: GObject.Value | any): void;
 
         /**
          * Append a chapter or track name into table of contents.
@@ -1681,7 +1677,7 @@ export namespace Clapper {
             marker_type: MarkerType;
             markerType: MarkerType;
             start: number;
-            title: (string | null);
+            title: string | null;
         }
     }
 
@@ -1761,7 +1757,7 @@ export namespace Clapper {
          * @construct-only
          * @default null
          */
-        get title(): (string | null);
+        get title(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -1777,7 +1773,7 @@ export namespace Clapper {
 
         _init(...args: any[]): void;
 
-        static ["new"](marker_type: MarkerType, title: (string | null), start: number, end: number): Marker;
+        static ["new"](marker_type: MarkerType, title: string | null, start: number, end: number): Marker;
 
         // Signals
         /** @signal */
@@ -1815,7 +1811,7 @@ export namespace Clapper {
          * Get the title of `marker`.
          * @returns the marker title.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
     }
 
 
@@ -1838,18 +1834,18 @@ export namespace Clapper {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            cache_location: (string | null);
-            cacheLocation: (string | null);
-            container_format: (string | null);
-            containerFormat: (string | null);
+            cache_location: string | null;
+            cacheLocation: string | null;
+            container_format: string | null;
+            containerFormat: string | null;
             duration: number;
             id: number;
-            redirect_uri: (string | null);
-            redirectUri: (string | null);
-            suburi: (string | null);
+            redirect_uri: string | null;
+            redirectUri: string | null;
+            suburi: string | null;
             tags: Gst.TagList;
             timeline: Timeline;
-            title: (string | null);
+            title: string | null;
             uri: string;
         }
     }
@@ -1878,7 +1874,7 @@ export namespace Clapper {
          * @construct-only
          * @default null
          */
-        get cache_location(): (string | null);
+        get cache_location(): string | null;
 
         /**
          * Media downloaded cache file location.
@@ -1893,7 +1889,7 @@ export namespace Clapper {
          * @construct-only
          * @default null
          */
-        get cacheLocation(): (string | null);
+        get cacheLocation(): string | null;
 
         /**
          * Media container format.
@@ -1901,7 +1897,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get container_format(): (string | null);
+        get container_format(): string | null;
 
         /**
          * Media container format.
@@ -1909,7 +1905,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get containerFormat(): (string | null);
+        get containerFormat(): string | null;
 
         /**
          * Media duration as a decimal number in seconds.
@@ -1943,7 +1939,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get redirect_uri(): (string | null);
+        get redirect_uri(): string | null;
 
         /**
          * Media permanent redirect URI.
@@ -1959,14 +1955,14 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get redirectUri(): (string | null);
+        get redirectUri(): string | null;
 
         /**
          * Media additional URI.
          * @default null
          */
-        get suburi(): (string | null);
-        set suburi(val: (string | null));
+        get suburi(): string | null;
+        set suburi(val: string | null);
 
         /**
          * A readable list of tags stored in media item.
@@ -1990,7 +1986,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get title(): (string | null);
+        get title(): string | null;
 
         /**
          * Media URI.
@@ -2015,7 +2011,7 @@ export namespace Clapper {
 
         static ["new"](uri: string): MediaItem;
 
-        static new_cached(uri: string, location: (string | null)): MediaItem;
+        static new_cached(uri: string, location: string | null): MediaItem;
 
         static new_from_file(file: Gio.File): MediaItem;
 
@@ -2037,13 +2033,13 @@ export namespace Clapper {
          * Get downloaded cache file location of {@link Clapper.MediaItem}.
          * @returns a cache file location of {@link Clapper.MediaItem}.
          */
-        get_cache_location(): (string | null);
+        get_cache_location(): string | null;
 
         /**
          * Get media item container format.
          * @returns media container format.
          */
-        get_container_format(): (string | null);
+        get_container_format(): string | null;
 
         /**
          * Get media item duration as decimal number in seconds.
@@ -2061,13 +2057,13 @@ export namespace Clapper {
          * Get permanent redirect URI of {@link Clapper.MediaItem}.
          * @returns a redirected URI of {@link Clapper.MediaItem}.
          */
-        get_redirect_uri(): (string | null);
+        get_redirect_uri(): string | null;
 
         /**
          * Get the additional URI of {@link Clapper.MediaItem}.
          * @returns an additional URI of {@link Clapper.MediaItem}.
          */
-        get_suburi(): (string | null);
+        get_suburi(): string | null;
 
         /**
          * Get readable list of tags stored in media item.
@@ -2089,7 +2085,7 @@ export namespace Clapper {
          * extracted from media URI e.g. basename without extension for local files.
          * @returns media title.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Get the URI of {@link Clapper.MediaItem}.
@@ -2142,8 +2138,8 @@ export namespace Clapper {
         interface ConstructorProps extends Feature.ConstructorProps {
             desktop_entry: string;
             desktopEntry: string;
-            fallback_art_url: (string | null);
-            fallbackArtUrl: (string | null);
+            fallback_art_url: string | null;
+            fallbackArtUrl: string | null;
             identity: string;
             own_name: string;
             ownName: string;
@@ -2185,16 +2181,16 @@ export namespace Clapper {
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @default null
          */
-        get fallback_art_url(): (string | null);
-        set fallback_art_url(val: (string | null));
+        get fallback_art_url(): string | null;
+        set fallback_art_url(val: string | null);
 
         /**
          * Fallback artwork to show when media does not provide one.
          * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          * @default null
          */
-        get fallbackArtUrl(): (string | null);
-        set fallbackArtUrl(val: (string | null));
+        get fallbackArtUrl(): string | null;
+        set fallbackArtUrl(val: string | null);
 
         /**
          * A friendly name to identify the media player.
@@ -2262,7 +2258,7 @@ export namespace Clapper {
 
         _init(...args: any[]): void;
 
-        static ["new"](own_name: string, identity: string, desktop_entry: (string | null)): Mpris;
+        static ["new"](own_name: string, identity: string, desktop_entry: string | null): Mpris;
 
         // Signals
         /** @signal */
@@ -2282,7 +2278,7 @@ export namespace Clapper {
          * Get fallback art URL earlier set by user.
          * @returns fallback art URL.
          */
-        get_fallback_art_url(): (string | null);
+        get_fallback_art_url(): string | null;
 
         /**
          * Get whether remote `MPRIS` clients can control {@link Clapper.Queue}.
@@ -2294,7 +2290,7 @@ export namespace Clapper {
          * Set fallback artwork to show when media does not provide one.
          * @param art_url an art URL
          */
-        set_fallback_art_url(art_url: (string | null)): void;
+        set_fallback_art_url(art_url: string | null): void;
 
         /**
          * Set whether remote MPRIS clients can control {@link Clapper.Queue}.
@@ -2332,7 +2328,7 @@ export namespace Clapper {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error, arg1: (string | null)) => void;
+            error: (arg0: GLib.Error, arg1: string | null) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2358,7 +2354,7 @@ export namespace Clapper {
              * @signal
              * @run-last
              */
-            "missing-plugin": (arg0: string, arg1: (string | null)) => void;
+            "missing-plugin": (arg0: string, arg1: string | null) => void;
             /**
              * A seeking operation has finished. Player is now at playback position after seek.
              * @signal
@@ -2371,7 +2367,7 @@ export namespace Clapper {
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error, arg1: (string | null)) => void;
+            warning: (arg0: GLib.Error, arg1: string | null) => void;
             "notify::adaptive-bandwidth": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-max-bitrate": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-min-bitrate": (pspec: GObject.ParamSpec) => void;
@@ -2958,8 +2954,8 @@ export namespace Clapper {
             currentAudioDecoder: Gst.Element;
             current_video_decoder: Gst.Element;
             currentVideoDecoder: Gst.Element;
-            download_dir: (string | null);
-            downloadDir: (string | null);
+            download_dir: string | null;
+            downloadDir: string | null;
             download_enabled: boolean;
             downloadEnabled: boolean;
             enhancer_proxies: EnhancerProxyList;
@@ -3221,8 +3217,8 @@ export namespace Clapper {
          * @since 0.8
          * @default null
          */
-        get download_dir(): (string | null);
-        set download_dir(val: (string | null));
+        get download_dir(): string | null;
+        set download_dir(val: string | null);
 
         /**
          * A directory that `player` will use to download network content
@@ -3232,8 +3228,8 @@ export namespace Clapper {
          * @since 0.8
          * @default null
          */
-        get downloadDir(): (string | null);
-        set downloadDir(val: (string | null));
+        get downloadDir(): string | null;
+        set downloadDir(val: string | null);
 
         /**
          * Whether progressive download buffering is enabled.
@@ -3584,7 +3580,7 @@ export namespace Clapper {
          * Get path to a directory set for media downloads.
          * @returns the path of a directory   set for media downloads or `null` if no directory was set yet.
          */
-        get_download_dir(): (string | null);
+        get_download_dir(): string | null;
 
         /**
          * Get whether progressive download buffering is enabled.
@@ -3789,7 +3785,7 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as audio filter.
          * @param element a {@link Gst.Element} or `null` for none.
          */
-        set_audio_filter(element: (Gst.Element | null)): void;
+        set_audio_filter(element: Gst.Element | null): void;
 
         /**
          * Set synchronisation offset between the audio stream and video.
@@ -3804,7 +3800,7 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as audio sink.
          * @param element a {@link Gst.Element} or `null` to use default.
          */
-        set_audio_sink(element: (Gst.Element | null)): void;
+        set_audio_sink(element: Gst.Element | null): void;
 
         /**
          * Set the autoplay state of the player.
@@ -3877,13 +3873,13 @@ export namespace Clapper {
          * Set {@link Gst.Element} to be used as video filter.
          * @param element a {@link Gst.Element} or `null` for none.
          */
-        set_video_filter(element: (Gst.Element | null)): void;
+        set_video_filter(element: Gst.Element | null): void;
 
         /**
          * Set {@link Gst.Element} to be used as video sink.
          * @param element a {@link Gst.Element} or `null` to use default.
          */
-        set_video_sink(element: (Gst.Element | null)): void;
+        set_video_sink(element: Gst.Element | null): void;
 
         /**
          * Set the volume of the player.
@@ -3921,8 +3917,8 @@ export namespace Clapper {
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
-            current_item: (MediaItem | null);
-            currentItem: (MediaItem | null);
+            current_item: MediaItem | null;
+            currentItem: MediaItem | null;
             gapless: boolean;
             instant: boolean;
             n_items: number;
@@ -3958,13 +3954,13 @@ export namespace Clapper {
          * Currently selected media item for playback.
          * @read-only
          */
-        get current_item(): (MediaItem | null);
+        get current_item(): MediaItem | null;
 
         /**
          * Currently selected media item for playback.
          * @read-only
          */
-        get currentItem(): (MediaItem | null);
+        get currentItem(): MediaItem | null;
 
         /**
          * Use gapless progression.
@@ -4070,7 +4066,7 @@ export namespace Clapper {
          * Get the currently selected {@link Clapper.MediaItem}.
          * @returns The current {@link Clapper.MediaItem}.
          */
-        get_current_item(): (MediaItem | null);
+        get_current_item(): MediaItem | null;
 
         /**
          * Get if {@link Clapper.Queue} is set to use gapless progression.
@@ -4111,7 +4107,7 @@ export namespace Clapper {
          * @param item a {@link Clapper.MediaItem}
          * @param after_item a {@link Clapper.MediaItem} after which to   insert `item` or `null` to prepend
          */
-        insert_item_after(item: MediaItem, after_item: (MediaItem | null)): void;
+        insert_item_after(item: MediaItem, after_item: MediaItem | null): void;
 
         /**
          * Checks if given {@link Clapper.MediaItem} is currently selected.
@@ -4162,7 +4158,7 @@ export namespace Clapper {
          * @param item a {@link Clapper.MediaItem} or `null` to unselect
          * @returns `true` if item could be selected/unselected,   `false` if it was not in the queue.
          */
-        select_item(item: (MediaItem | null)): boolean;
+        select_item(item: MediaItem | null): boolean;
 
         /**
          * Selects next {@link Clapper.MediaItem} from `queue` for playback.
@@ -4227,7 +4223,7 @@ export namespace Clapper {
          * @param index an item index
          * @returns The removed {@link Clapper.MediaItem} at `index`.
          */
-        steal_index(index: number): (MediaItem | null);
+        steal_index(index: number): MediaItem | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -4268,7 +4264,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -4308,7 +4304,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -4576,7 +4572,7 @@ export namespace Clapper {
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             stream_type: StreamType;
             streamType: StreamType;
-            title: (string | null);
+            title: string | null;
         }
     }
 
@@ -4607,7 +4603,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get title(): (string | null);
+        get title(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -4647,7 +4643,7 @@ export namespace Clapper {
          * @param tags an updated {@link Gst.TagList} if changed
          * @virtual
          */
-        vfunc_internal_stream_updated(caps: (Gst.Caps | null), tags: (Gst.TagList | null)): void;
+        vfunc_internal_stream_updated(caps: Gst.Caps | null, tags: Gst.TagList | null): void;
 
         // Methods
         /**
@@ -4660,7 +4656,7 @@ export namespace Clapper {
          * Get the title of `stream`, if any.
          * @returns title of stream.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
     }
 
 
@@ -4678,8 +4674,8 @@ export namespace Clapper {
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Gst.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             current_index: number;
             currentIndex: number;
-            current_stream: (Stream | null);
-            currentStream: (Stream | null);
+            current_stream: Stream | null;
+            currentStream: Stream | null;
             n_streams: number;
             nStreams: number;
         }
@@ -4711,13 +4707,13 @@ export namespace Clapper {
          * Currently selected stream.
          * @read-only
          */
-        get current_stream(): (Stream | null);
+        get current_stream(): Stream | null;
 
         /**
          * Currently selected stream.
          * @read-only
          */
-        get currentStream(): (Stream | null);
+        get currentStream(): Stream | null;
 
         /**
          * Number of streams in the list.
@@ -4771,7 +4767,7 @@ export namespace Clapper {
          * Get the currently selected {@link Clapper.Stream}.
          * @returns The current {@link Clapper.Stream}.
          */
-        get_current_stream(): (Stream | null);
+        get_current_stream(): Stream | null;
 
         /**
          * Get the number of streams in {@link Clapper.StreamList}.
@@ -4790,7 +4786,7 @@ export namespace Clapper {
          * @param index a stream index
          * @returns The {@link Clapper.Stream} at `index`.
          */
-        get_stream(index: number): (Stream | null);
+        get_stream(index: number): Stream | null;
 
         /**
          * Selects {@link Clapper.Stream} at `index` from `list` as current one.
@@ -4845,7 +4841,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -4885,7 +4881,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -4953,10 +4949,10 @@ export namespace Clapper {
 
         // Constructor properties interface
         interface ConstructorProps extends Stream.ConstructorProps {
-            lang_code: (string | null);
-            langCode: (string | null);
-            lang_name: (string | null);
-            langName: (string | null);
+            lang_code: string | null;
+            langCode: string | null;
+            lang_name: string | null;
+            langName: string | null;
         }
     }
 
@@ -4973,28 +4969,28 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get lang_code(): (string | null);
+        get lang_code(): string | null;
 
         /**
          * Stream language code in ISO-639 format.
          * @read-only
          * @default null
          */
-        get langCode(): (string | null);
+        get langCode(): string | null;
 
         /**
          * Stream language name.
          * @read-only
          * @default null
          */
-        get lang_name(): (string | null);
+        get lang_name(): string | null;
 
         /**
          * Stream language name.
          * @read-only
          * @default null
          */
-        get langName(): (string | null);
+        get langName(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -5028,7 +5024,7 @@ export namespace Clapper {
          * Get an ISO-639 language code of the `stream`.
          * @returns the language code of subtitle stream.
          */
-        get_lang_code(): (string | null);
+        get_lang_code(): string | null;
 
         /**
          * Get language name of the `stream`.
@@ -5037,7 +5033,7 @@ export namespace Clapper {
          * locale if possible, with a fallback to a name extracted from tags.
          * @returns the language name of subtitle stream.
          */
-        get_lang_name(): (string | null);
+        get_lang_name(): string | null;
     }
 
 
@@ -5049,9 +5045,7 @@ export namespace Clapper {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     /**
@@ -5190,7 +5184,7 @@ export namespace Clapper {
          * @param index a marker index
          * @returns The {@link Clapper.Marker} at `index`.
          */
-        get_marker(index: number): (Marker | null);
+        get_marker(index: number): Marker | null;
 
         /**
          * Get the number of markers in {@link Clapper.Timeline}.
@@ -5252,7 +5246,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -5292,7 +5286,7 @@ export namespace Clapper {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -5365,11 +5359,11 @@ export namespace Clapper {
         // Constructor properties interface
         interface ConstructorProps extends Stream.ConstructorProps {
             bitrate: number;
-            codec: (string | null);
+            codec: string | null;
             fps: number;
             height: number;
-            pixel_format: (string | null);
-            pixelFormat: (string | null);
+            pixel_format: string | null;
+            pixelFormat: string | null;
             width: number;
         }
     }
@@ -5394,7 +5388,7 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get codec(): (string | null);
+        get codec(): string | null;
 
         /**
          * Stream FPS.
@@ -5415,14 +5409,14 @@ export namespace Clapper {
          * @read-only
          * @default null
          */
-        get pixel_format(): (string | null);
+        get pixel_format(): string | null;
 
         /**
          * Stream pixel format.
          * @read-only
          * @default null
          */
-        get pixelFormat(): (string | null);
+        get pixelFormat(): string | null;
 
         /**
          * Stream width.
@@ -5469,7 +5463,7 @@ export namespace Clapper {
          * Get codec used to encode `stream`.
          * @returns the video codec of stream   or `null` if undetermined.
          */
-        get_codec(): (string | null);
+        get_codec(): string | null;
 
         /**
          * Get number of frames per second in video `stream`.
@@ -5487,7 +5481,7 @@ export namespace Clapper {
          * Get pixel format of video `stream`.
          * @returns the pixel format of stream   or `null` if undetermined.
          */
-        get_pixel_format(): (string | null);
+        get_pixel_format(): string | null;
 
         /**
          * Get width of video `stream`.
@@ -5622,9 +5616,7 @@ export namespace Clapper {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ExtractableNamespace {
@@ -5667,9 +5659,7 @@ export namespace Clapper {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PlaylistableNamespace {
@@ -5807,9 +5797,7 @@ export namespace Clapper {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Object.ConstructorProps {}
     }
 
     export interface ReactableNamespace {
@@ -5847,7 +5835,7 @@ export namespace Clapper {
          * as these functions are all serialized into your implementation thread.
          * @returns A reference to the parent {@link Clapper.Player}.
          */
-        get_player(): (Player | null);
+        get_player(): Player | null;
 
         /**
          * A convenience function that within application main thread synchronously appends

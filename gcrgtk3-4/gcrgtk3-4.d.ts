@@ -88,7 +88,7 @@ export namespace GcrGtk3 {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            certificate: (Gcr.Certificate | null);
+            certificate: Gcr.Certificate | null;
         }
     }
 
@@ -99,8 +99,8 @@ export namespace GcrGtk3 {
         static $gtype: GObject.GType<CertificateWidget>;
 
         // Properties
-        get certificate(): (Gcr.Certificate | null);
-        set certificate(val: (Gcr.Certificate | null));
+        get certificate(): Gcr.Certificate | null;
+        set certificate(val: Gcr.Certificate | null);
 
         /**
          * Compile-time signal type information.
@@ -116,7 +116,7 @@ export namespace GcrGtk3 {
 
         _init(...args: any[]): void;
 
-        static ["new"](certificate: (Gcr.Certificate | null)): CertificateWidget;
+        static ["new"](certificate: Gcr.Certificate | null): CertificateWidget;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -139,13 +139,13 @@ export namespace GcrGtk3 {
          * Get the certificate displayed in the widget.
          * @returns the certificate
          */
-        get_certificate(): (Gcr.Certificate | null);
+        get_certificate(): Gcr.Certificate | null;
 
         /**
          * Set the certificate displayed in the widget
          * @param certificate the certificate to display
          */
-        set_certificate(certificate: (Gcr.Certificate | null)): void;
+        set_certificate(certificate: Gcr.Certificate | null): void;
 
         /**
          * The orientation of the orientable.
@@ -179,9 +179,7 @@ export namespace GcrGtk3 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {}
     }
 
     /**

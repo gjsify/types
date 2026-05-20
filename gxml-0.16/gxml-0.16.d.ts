@@ -127,7 +127,7 @@ export namespace GXml {
         static TYPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -143,7 +143,7 @@ export namespace GXml {
         static INVALID_FILE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -205,7 +205,7 @@ export namespace GXml {
         static DATA_CLONE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -221,7 +221,7 @@ export namespace GXml {
         static INVALID_TEXT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -239,7 +239,7 @@ export namespace GXml {
         static WRITER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -257,7 +257,7 @@ export namespace GXml {
         static INVALID_STREAM_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -271,7 +271,7 @@ export namespace GXml {
         static INVALIDATION_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -287,7 +287,7 @@ export namespace GXml {
         static STR_TO_VALUE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -303,7 +303,7 @@ export namespace GXml {
         static PARSE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -361,7 +361,7 @@ export namespace GXml {
         static INVALID_CTXT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -659,16 +659,13 @@ export namespace GXml {
 
     namespace DomNodeFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     interface AcceptNode {
         (node: Node): number;
     }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -721,9 +718,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -924,7 +919,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends DomEventInit.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -936,7 +931,7 @@ export namespace GXml {
 
         // Properties
         get detail(): unknown;
-        set detail(val: (GObject.Value | any));
+        set detail(val: GObject.Value | any);
 
         /**
          * Compile-time signal type information.
@@ -973,7 +968,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_detail(value: (GObject.Value | any)): void;
+        set_detail(value: GObject.Value | any): void;
     }
 
 
@@ -1195,13 +1190,10 @@ export namespace GXml {
 
     namespace DomErrorName {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1265,9 +1257,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -1510,9 +1500,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomNode.ConstructorProps, DomAttr.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomNode.ConstructorProps, DomAttr.ConstructorProps {}
     }
 
     /**
@@ -1810,9 +1798,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseCollection.ConstructorProps, GomCollection.ConstructorProps {}
     }
 
     /**
@@ -2912,9 +2898,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomNode.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomNode.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps {}
     }
 
     /**
@@ -2983,7 +2967,7 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3010,7 +2994,7 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3029,7 +3013,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -3048,7 +3032,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -3075,7 +3059,7 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        read_from_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3102,7 +3086,7 @@ export namespace GXml {
          * @param str 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3549,13 +3533,10 @@ export namespace GXml {
 
     namespace GomImplementation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
     }
 
     /**
@@ -3652,9 +3633,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomNode.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomNode.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {}
     }
 
     /**
@@ -3769,9 +3748,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomNode.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocumentFragment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomNode.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocumentFragment.ConstructorProps {}
     }
 
     /**
@@ -4025,7 +4002,7 @@ export namespace GXml {
          * @param uri 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_uri_async(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4056,7 +4033,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4087,7 +4064,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4114,7 +4091,7 @@ export namespace GXml {
          * @param str 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4133,7 +4110,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -4160,7 +4137,7 @@ export namespace GXml {
          * @param f 
          * @param _callback_ 
          */
-        write_file_async(f: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_file_async(f: Gio.File, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4187,7 +4164,7 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4206,7 +4183,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -4838,9 +4815,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
     }
 
     /**
@@ -5008,9 +4983,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEventTarget.ConstructorProps, DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEventTarget.ConstructorProps, DomNode.ConstructorProps {}
     }
 
     /**
@@ -5511,9 +5484,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {}
     }
 
     /**
@@ -5678,9 +5649,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
     }
 
     /**
@@ -5727,9 +5696,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
     }
 
     /**
@@ -5946,9 +5913,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomDouble.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomDouble.ConstructorProps {}
     }
 
     /**
@@ -6003,9 +5968,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
     }
 
     /**
@@ -6060,9 +6023,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
     }
 
     /**
@@ -6195,9 +6156,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
     }
 
     /**
@@ -6608,9 +6567,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
     }
 
     /**
@@ -6659,9 +6616,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
     }
 
     /**
@@ -6881,9 +6836,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -6932,9 +6885,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -6983,9 +6934,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7034,9 +6983,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7085,9 +7032,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7136,9 +7081,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7187,9 +7130,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7238,9 +7179,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7289,9 +7228,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7478,9 +7415,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomBoolean.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomBoolean.ConstructorProps {}
     }
 
     /**
@@ -7529,9 +7464,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7580,9 +7513,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7631,9 +7562,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -7948,7 +7877,7 @@ export namespace GXml {
             minOccurs: string;
             name: string;
             nillable: boolean;
-            ref: (string | any);
+            ref: string | any;
             substitution_group: DomTokenList;
             substitutionGroup: DomTokenList;
             target_namespace: string;
@@ -8201,9 +8130,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomElement.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomElement.ConstructorProps {}
     }
 
     /**
@@ -8378,9 +8305,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -8429,9 +8354,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -8480,9 +8403,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -8594,9 +8515,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
     }
 
     /**
@@ -8645,9 +8564,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
     }
 
     /**
@@ -8770,9 +8687,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdList.ConstructorProps {}
     }
 
     /**
@@ -8823,9 +8738,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdList.ConstructorProps {}
     }
 
     /**
@@ -8876,9 +8789,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdList.ConstructorProps {}
     }
 
     /**
@@ -8929,9 +8840,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdList.ConstructorProps {}
     }
 
     /**
@@ -8982,9 +8891,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomXsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomXsdList.ConstructorProps {}
     }
 
     /**
@@ -9034,9 +8941,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps, DomChildNode.ConstructorProps, DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps, DomChildNode.ConstructorProps, DomCharacterData.ConstructorProps {}
     }
 
     /**
@@ -9236,9 +9141,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomText.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomText.ConstructorProps {}
     }
 
     /**
@@ -9426,9 +9329,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomProcessingInstruction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomProcessingInstruction.ConstructorProps {}
     }
 
     /**
@@ -9598,9 +9499,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomComment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GomCharacterData.ConstructorProps, DomComment.ConstructorProps {}
     }
 
     /**
@@ -9768,9 +9667,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNode.ConstructorProps, Attribute.ConstructorProps, DomAttr.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNode.ConstructorProps, Attribute.ConstructorProps, DomAttr.ConstructorProps {}
     }
 
     /**
@@ -9959,9 +9856,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNode.ConstructorProps, CDATA.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNode.ConstructorProps, CDATA.ConstructorProps {}
     }
 
     /**
@@ -10031,9 +9926,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNonDocumentChildNode.ConstructorProps, Character.ConstructorProps, DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNonDocumentChildNode.ConstructorProps, Character.ConstructorProps, DomCharacterData.ConstructorProps {}
     }
 
     /**
@@ -10215,9 +10108,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNode.ConstructorProps, DomChildNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNode.ConstructorProps, DomChildNode.ConstructorProps {}
     }
 
     /**
@@ -10280,9 +10171,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {}
     }
 
     /**
@@ -10377,9 +10266,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GCharacterData.ConstructorProps, Comment.ConstructorProps, DomComment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GCharacterData.ConstructorProps, Comment.ConstructorProps, DomComment.ConstructorProps {}
     }
 
     /**
@@ -10583,9 +10470,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNode.ConstructorProps, Document.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps, XPathContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNode.ConstructorProps, Document.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps, XPathContext.ConstructorProps {}
     }
 
     /**
@@ -11324,13 +11209,10 @@ export namespace GXml {
 
     namespace GImplementation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
     }
 
     /**
@@ -11434,9 +11316,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GChildNode.ConstructorProps, DomNode.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GChildNode.ConstructorProps, DomNode.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {}
     }
 
     /**
@@ -11552,9 +11432,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GDocument.ConstructorProps, DomDocumentFragment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GDocument.ConstructorProps, DomDocumentFragment.ConstructorProps {}
     }
 
     /**
@@ -11608,9 +11486,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {}
     }
 
     /**
@@ -11764,9 +11640,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {}
     }
 
     /**
@@ -11932,9 +11806,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {}
     }
 
     /**
@@ -12124,9 +11996,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GDomTokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GDomTokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {}
     }
 
     /**
@@ -12322,9 +12192,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -12457,9 +12325,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {}
     }
 
     /**
@@ -12696,7 +12562,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GDomEvent.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -12748,7 +12614,7 @@ export namespace GXml {
          * @param cancelable 
          * @param detail 
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: (GObject.Value | any)): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
 
         get_detail(): unknown;
     }
@@ -12766,9 +12632,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {}
     }
 
     /**
@@ -13160,9 +13024,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GNonDocumentChildNode.ConstructorProps, DomParentNode.ConstructorProps, DomElement.ConstructorProps, Element.ConstructorProps, XPathContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GNonDocumentChildNode.ConstructorProps, DomParentNode.ConstructorProps, DomElement.ConstructorProps, Element.ConstructorProps, XPathContext.ConstructorProps {}
     }
 
     /**
@@ -13745,9 +13607,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
     }
 
     /**
@@ -13908,9 +13768,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.MapEntry.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.MapEntry.ConstructorProps {}
     }
 
     /**
@@ -13959,9 +13817,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {}
     }
 
     /**
@@ -14133,9 +13989,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps, DomNodeList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps, DomNodeList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -14274,9 +14128,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.BidirIterator.ConstructorProps, Gee.ListIterator.ConstructorProps, Gee.BidirListIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.BidirIterator.ConstructorProps, Gee.ListIterator.ConstructorProps, Gee.BidirListIterator.ConstructorProps {}
     }
 
     /**
@@ -14418,7 +14270,7 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -14523,7 +14375,7 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -14660,9 +14512,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractList.ConstructorProps {}
     }
 
     /**
@@ -14710,9 +14560,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.ListIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.ListIterator.ConstructorProps {}
     }
 
     /**
@@ -14854,7 +14702,7 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -14959,7 +14807,7 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -15053,9 +14901,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Namespace.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Namespace.ConstructorProps {}
     }
 
     /**
@@ -15874,9 +15720,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GCharacterData.ConstructorProps, ProcessingInstruction.ConstructorProps, DomProcessingInstruction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GCharacterData.ConstructorProps, ProcessingInstruction.ConstructorProps, DomProcessingInstruction.ConstructorProps {}
     }
 
     /**
@@ -16056,9 +15900,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GCharacterData.ConstructorProps, Text.ConstructorProps, DomText.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GCharacterData.ConstructorProps, Text.ConstructorProps, DomText.ConstructorProps {}
     }
 
     /**
@@ -16270,9 +16112,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {}
     }
 
     /**
@@ -16413,9 +16253,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
     }
 
     /**
@@ -16477,13 +16315,10 @@ export namespace GXml {
 
     namespace SerializableBool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
     }
 
     /**
@@ -16602,9 +16437,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SerializableObjectModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SerializableObjectModel.ConstructorProps {}
     }
 
     /**
@@ -16653,13 +16486,10 @@ export namespace GXml {
 
     namespace SerializableDouble {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
     }
 
     /**
@@ -16785,13 +16615,10 @@ export namespace GXml {
 
     namespace SerializableEnum {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
     }
 
     /**
@@ -16919,13 +16746,10 @@ export namespace GXml {
 
     namespace SerializableFloat {
         // Signal signatures
-        interface SignalSignatures extends SerializableDouble.SignalSignatures {
-        }
+        interface SignalSignatures extends SerializableDouble.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends SerializableDouble.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SerializableDouble.ConstructorProps {}
     }
 
     /**
@@ -16990,8 +16814,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
-            ignoredSerializableProperties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
         }
     }
 
@@ -17003,10 +16827,10 @@ export namespace GXml {
 
         // Properties
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         /**
          * Compile-time signal type information.
@@ -17193,7 +17017,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>)): void;
+        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
 
         /**
          * @read-only
@@ -17330,8 +17154,8 @@ export namespace GXml {
             primary_keys: Gee.Collection;
             primaryKeys: Gee.Collection;
             size: number;
-            ignored_serializable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
-            ignoredSerializableProperties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
         }
     }
 
@@ -17388,10 +17212,10 @@ export namespace GXml {
         get size(): number;
 
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         /**
          * Compile-time signal type information.
@@ -17629,7 +17453,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>)): void;
+        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
 
         /**
          * @read-only
@@ -17749,7 +17573,7 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -17854,7 +17678,7 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -17943,8 +17767,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
-            ignoredSerializableProperties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
         }
     }
 
@@ -17956,10 +17780,10 @@ export namespace GXml {
 
         // Properties
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         /**
          * Compile-time signal type information.
@@ -18153,7 +17977,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>)): void;
+        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
 
         /**
          * @read-only
@@ -18283,8 +18107,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.TreeMap.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
-            ignoredSerializableProperties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
         }
     }
 
@@ -18296,10 +18120,10 @@ export namespace GXml {
 
         // Properties
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         /**
          * Compile-time signal type information.
@@ -18486,7 +18310,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>)): void;
+        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
 
         /**
          * @read-only
@@ -18600,13 +18424,10 @@ export namespace GXml {
 
     namespace SerializableInt {
         // Signal signatures
-        interface SignalSignatures extends SerializableDouble.SignalSignatures {
-        }
+        interface SignalSignatures extends SerializableDouble.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends SerializableDouble.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SerializableDouble.ConstructorProps {}
     }
 
     /**
@@ -18665,8 +18486,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Serializable.ConstructorProps {
-            ignored_serializable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
-            ignoredSerializableProperties: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
         }
     }
 
@@ -18678,10 +18499,10 @@ export namespace GXml {
 
         // Properties
         get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>));
+        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
 
         /**
          * Compile-time signal type information.
@@ -18850,7 +18671,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: ({ [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>)): void;
+        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
 
         /**
          * @read-only
@@ -18938,13 +18759,10 @@ export namespace GXml {
 
     namespace SerializableValueList {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
     }
 
     /**
@@ -19123,9 +18941,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Attribute.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Attribute.ConstructorProps {}
     }
 
     /**
@@ -19228,9 +19044,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, CDATA.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, CDATA.ConstructorProps {}
     }
 
     /**
@@ -19298,9 +19112,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Comment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Comment.ConstructorProps {}
     }
 
     /**
@@ -19385,9 +19197,7 @@ export namespace GXml {
     }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Document.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Document.ConstructorProps {}
     }
 
     /**
@@ -19726,9 +19536,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Element.ConstructorProps {}
     }
 
     /**
@@ -19908,9 +19716,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Namespace.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Namespace.ConstructorProps {}
     }
 
     /**
@@ -20262,9 +20068,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps {}
     }
 
     /**
@@ -20320,9 +20124,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, ProcessingInstruction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, ProcessingInstruction.ConstructorProps {}
     }
 
     /**
@@ -20418,9 +20220,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TNode.ConstructorProps, Text.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TNode.ConstructorProps, Text.ConstructorProps {}
     }
 
     /**
@@ -20491,9 +20291,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {}
     }
 
     /**
@@ -20555,7 +20353,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_child_nodes_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_child_nodes_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20600,7 +20398,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20619,7 +20417,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -20650,7 +20448,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20681,7 +20479,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20712,7 +20510,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20743,7 +20541,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_string_async(str: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_string_async(str: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -20770,7 +20568,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -20797,7 +20595,7 @@ export namespace GXml {
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21280,10 +21078,7 @@ export namespace GXml {
         static $gtype: GObject.GType<Enumeration>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Enumeration;
 
@@ -23928,9 +23723,7 @@ export namespace GXml {
     namespace DocumentType {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTypeNamespace {
@@ -24327,9 +24120,7 @@ export namespace GXml {
     namespace DomComment {
 
         // Constructor properties interface
-        interface ConstructorProps extends DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomCharacterData.ConstructorProps {}
     }
 
     export interface DomCommentNamespace {
@@ -24364,9 +24155,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomNonElementParentNodeNamespace {
@@ -24613,9 +24402,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomChildNodeNamespace {
@@ -25704,9 +25491,7 @@ export namespace GXml {
     namespace DomXMLDocument {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomXMLDocumentNamespace {
@@ -25762,9 +25547,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomImplementationNamespace {
@@ -25807,9 +25590,7 @@ export namespace GXml {
     namespace DomDocumentFragment {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomDocumentFragmentNamespace {
@@ -25938,9 +25719,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomHtmlDocumentNamespace {
@@ -26321,9 +26100,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomEventTargetNamespace {
@@ -26378,9 +26155,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomEventListenerNamespace {
@@ -26651,7 +26426,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -26677,7 +26452,7 @@ export namespace GXml {
          * @param cancelable 
          * @param detail 
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: (GObject.Value | any)): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
 
         get_detail(): unknown;
     }
@@ -26715,9 +26490,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomMutationObserverNamespace {
@@ -28124,9 +27897,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementNamespace {
@@ -28168,9 +27939,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementPairKeyNamespace {
@@ -28219,9 +27988,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementThreeKeyNamespace {
@@ -28328,9 +28095,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface GomObjectNamespace {
@@ -28846,9 +28611,7 @@ export namespace GXml {
     namespace Entity {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface EntityNamespace {
@@ -29197,7 +28960,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29216,7 +28979,7 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -29247,7 +29010,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29278,7 +29041,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_file_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29309,7 +29072,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29340,7 +29103,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        read_string_async(str: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_string_async(str: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29367,7 +29130,7 @@ export namespace GXml {
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -29394,7 +29157,7 @@ export namespace GXml {
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -29903,9 +29666,7 @@ export namespace GXml {
     namespace IXsdTypeDef {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeDefNamespace {
@@ -30076,9 +29837,7 @@ export namespace GXml {
     namespace IXsdTypeList {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeListNamespace {
@@ -30099,9 +29858,7 @@ export namespace GXml {
     namespace IXsdTypeUnion {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeUnionNamespace {
@@ -30176,9 +29933,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinExclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinExclusiveNamespace {
@@ -30199,9 +29954,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinInclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinInclusiveNamespace {
@@ -30222,9 +29975,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxExclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxExclusiveNamespace {
@@ -30245,9 +29996,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxInclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxInclusiveNamespace {
@@ -30268,9 +30017,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionTotalDigits {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionTotalDigitsNamespace {
@@ -30291,9 +30038,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionFractionDigits {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionFractionDigitsNamespace {
@@ -30314,9 +30059,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionLengthNamespace {
@@ -30337,9 +30080,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinLengthNamespace {
@@ -30360,9 +30101,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxLengthNamespace {
@@ -30557,9 +30296,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionPattern {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionPatternNamespace {
@@ -30580,9 +30317,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionAssertion {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionAssertionNamespace {
@@ -30603,9 +30338,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionExplicitTimezone {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionExplicitTimezoneNamespace {
@@ -31130,7 +30863,7 @@ export namespace GXml {
             minOccurs: string;
             name: string;
             nillable: boolean;
-            ref: (string | any);
+            ref: string | any;
             substitution_group: DomTokenList;
             substitutionGroup: DomTokenList;
             target_namespace: string;
@@ -31360,9 +31093,7 @@ export namespace GXml {
     namespace IXsdAnnotation {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAnnotationNamespace {
@@ -31437,9 +31168,7 @@ export namespace GXml {
     namespace IXsdSimpleContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdSimpleContentNamespace {
@@ -31460,9 +31189,7 @@ export namespace GXml {
     namespace IXsdComplexContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdComplexContentNamespace {
@@ -31483,9 +31210,7 @@ export namespace GXml {
     namespace IXsdOpenContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdOpenContentNamespace {
@@ -31560,9 +31285,7 @@ export namespace GXml {
     namespace IXsdAttribute {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAttributeNamespace {
@@ -31583,9 +31306,7 @@ export namespace GXml {
     namespace IXsdAttributeGroup {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAttributeGroupNamespace {
@@ -31769,9 +31490,7 @@ export namespace GXml {
     namespace IXsdListElements {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListElementsNamespace {
@@ -31792,9 +31511,7 @@ export namespace GXml {
     namespace IXsdListSimpleTypes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListSimpleTypesNamespace {
@@ -31815,9 +31532,7 @@ export namespace GXml {
     namespace IXsdListComplexTypes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListComplexTypesNamespace {
@@ -31838,9 +31553,7 @@ export namespace GXml {
     namespace IXsdListAttributes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListAttributesNamespace {
@@ -31861,9 +31574,7 @@ export namespace GXml {
     namespace IXsdListAttributesGroup {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListAttributesGroupNamespace {
@@ -31884,9 +31595,7 @@ export namespace GXml {
     namespace IXsdListTypeRestrictionEnumerations {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListTypeRestrictionEnumerationsNamespace {
@@ -31907,9 +31616,7 @@ export namespace GXml {
     namespace IXsdListTypeRestrictionWhiteSpaces {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListTypeRestrictionWhiteSpacesNamespace {
@@ -32049,11 +31756,11 @@ export namespace GXml {
         * @param str 
         * @param dest 
         */
-        string_to_gvalue(str: string, dest: (GObject.Value | any)): [boolean, unknown];
+        string_to_gvalue(str: string, dest: GObject.Value | any): [boolean, unknown];
         /**
         * @param val 
         */
-        gvalue_to_string(val: (GObject.Value | any)): string;
+        gvalue_to_string(val: GObject.Value | any): string;
     }
     /**
      * @gir-type Interface
@@ -32190,9 +31897,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SerializableCollectionNamespace {
@@ -32245,9 +31950,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SerializableMapDualKeyNamespace {
@@ -32286,9 +31989,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SerializableMapKeyNamespace {
@@ -32347,9 +32048,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SerializablePropertyNamespace {
@@ -32475,9 +32174,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface XPathContextNamespace {

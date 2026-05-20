@@ -196,7 +196,7 @@ export namespace RestExtras {
         /**
          * @param params 
          */
-        sign(params: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<never, never>): string;
     }
 
 
@@ -209,7 +209,7 @@ export namespace RestExtras {
 
         // Constructor properties interface
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
-            upload: (boolean | any);
+            upload: boolean | any;
         }
     }
 
@@ -398,7 +398,7 @@ export namespace RestExtras {
         /**
          * @param params 
          */
-        sign(params: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+        sign(params: { [key: string]: any } | GLib.HashTable<never, never>): string;
     }
 
 
@@ -409,9 +409,7 @@ export namespace RestExtras {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {}
     }
 
     /**
@@ -552,7 +550,7 @@ export namespace RestExtras {
          * @param weak_object an object instance used to tie the life cycle of the proxy to
          * @returns `true`, or `false` if the file could not be opened
          */
-        upload_async(filename: string, fields: ({ [key: string]: any } | GLib.HashTable<never, never>), incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean;
+        upload_async(filename: string, fields: { [key: string]: any } | GLib.HashTable<never, never>, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean;
     }
 
 

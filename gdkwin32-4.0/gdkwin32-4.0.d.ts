@@ -98,9 +98,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Texture.ConstructorProps, Gdk.Paintable.ConstructorProps, Gio.Icon.ConstructorProps, Gio.LoadableIcon.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Texture.ConstructorProps, Gdk.Paintable.ConstructorProps, Gio.Icon.ConstructorProps, Gio.LoadableIcon.ConstructorProps {}
     }
 
     /**
@@ -365,7 +363,7 @@ export namespace GdkWin32 {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
-        equal(icon2: (Gio.Icon | null)): boolean;
+        equal(icon2: Gio.Icon | null): boolean;
 
         /**
          * Gets a hash for an icon.
@@ -381,7 +379,7 @@ export namespace GdkWin32 {
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
-        serialize(): (GLib.Variant | null);
+        serialize(): GLib.Variant | null;
 
         /**
          * Generates a textual representation of `icon` that can be used for
@@ -402,14 +400,14 @@ export namespace GdkWin32 {
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
 
         /**
          * Checks if two icons are equal.
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @virtual
          */
-        vfunc_equal(icon2: (Gio.Icon | null)): boolean;
+        vfunc_equal(icon2: Gio.Icon | null): boolean;
 
         /**
          * Gets a hash for an icon.
@@ -425,7 +423,7 @@ export namespace GdkWin32 {
          * (as opposed to over the network), and within the same file system namespace.
          * @virtual
          */
-        vfunc_serialize(): (GLib.Variant | null);
+        vfunc_serialize(): GLib.Variant | null;
 
         /**
          * Serializes the `icon` into string tokens.
@@ -441,7 +439,7 @@ export namespace GdkWin32 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
-        load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -450,17 +448,7 @@ export namespace GdkWin32 {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(size: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Gio.InputStream, string]>;
-
-        /**
-         * Loads an icon asynchronously. To finish this function, see
-         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
-         * version of this function, see `g_loadable_icon_load()`.
-         * @param size an integer.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -470,7 +458,17 @@ export namespace GdkWin32 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        load_async(size: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Gio.InputStream, string]> | void);
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.InputStream, string]> | void;
 
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -486,7 +484,7 @@ export namespace GdkWin32 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -497,7 +495,7 @@ export namespace GdkWin32 {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -522,17 +520,17 @@ export namespace GdkWin32 {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            color_state: (Gdk.ColorState | null);
-            colorState: (Gdk.ColorState | null);
+            color_state: Gdk.ColorState | null;
+            colorState: Gdk.ColorState | null;
             fence: never;
-            fence_wait: (bigint | number);
-            fenceWait: (bigint | number);
+            fence_wait: bigint | number;
+            fenceWait: bigint | number;
             premultiplied: boolean;
             resource: never;
-            update_region: (cairo.Region | null);
-            updateRegion: (cairo.Region | null);
-            update_texture: (Gdk.Texture | null);
-            updateTexture: (Gdk.Texture | null);
+            update_region: cairo.Region | null;
+            updateRegion: cairo.Region | null;
+            update_texture: Gdk.Texture | null;
+            updateTexture: Gdk.Texture | null;
         }
     }
 
@@ -560,15 +558,15 @@ export namespace GdkWin32 {
          * The color state of the texture.
          * @since 4.20
          */
-        get color_state(): (Gdk.ColorState | null);
-        set color_state(val: (Gdk.ColorState | null));
+        get color_state(): Gdk.ColorState | null;
+        set color_state(val: Gdk.ColorState | null);
 
         /**
          * The color state of the texture.
          * @since 4.20
          */
-        get colorState(): (Gdk.ColorState | null);
-        set colorState(val: (Gdk.ColorState | null));
+        get colorState(): Gdk.ColorState | null;
+        set colorState(val: Gdk.ColorState | null);
 
         /**
          * The optional `ID3D12Fence` to wait on before using the resource.
@@ -583,7 +581,7 @@ export namespace GdkWin32 {
          * @default 0
          */
         get fence_wait(): number;
-        set fence_wait(val: (bigint | number));
+        set fence_wait(val: bigint | number);
 
         /**
          * The value the fence should wait on
@@ -591,7 +589,7 @@ export namespace GdkWin32 {
          * @default 0
          */
         get fenceWait(): number;
-        set fenceWait(val: (bigint | number));
+        set fenceWait(val: bigint | number);
 
         /**
          * Whether the alpha channel is premultiplied into the others.
@@ -614,29 +612,29 @@ export namespace GdkWin32 {
          * The update region for {@link Gdk.D3d12TextureBuilder.update_texture}.
          * @since 4.20
          */
-        get update_region(): (cairo.Region | null);
-        set update_region(val: (cairo.Region | null));
+        get update_region(): cairo.Region | null;
+        set update_region(val: cairo.Region | null);
 
         /**
          * The update region for {@link Gdk.D3d12TextureBuilder.update_texture}.
          * @since 4.20
          */
-        get updateRegion(): (cairo.Region | null);
-        set updateRegion(val: (cairo.Region | null));
+        get updateRegion(): cairo.Region | null;
+        set updateRegion(val: cairo.Region | null);
 
         /**
          * The texture {@link Gdk.D3d12TextureBuilder.update_region} is an update for.
          * @since 4.20
          */
-        get update_texture(): (Gdk.Texture | null);
-        set update_texture(val: (Gdk.Texture | null));
+        get update_texture(): Gdk.Texture | null;
+        set update_texture(val: Gdk.Texture | null);
 
         /**
          * The texture {@link Gdk.D3d12TextureBuilder.update_region} is an update for.
          * @since 4.20
          */
-        get updateTexture(): (Gdk.Texture | null);
-        set updateTexture(val: (Gdk.Texture | null));
+        get updateTexture(): Gdk.Texture | null;
+        set updateTexture(val: Gdk.Texture | null);
 
         /**
          * Compile-time signal type information.
@@ -688,13 +686,13 @@ export namespace GdkWin32 {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
-        build(data: null): (Gdk.Texture | null);
+        build(data: null): Gdk.Texture | null;
 
         /**
          * Gets the color state previously set via `gdk_d3d12_texture_builder_set_color_state()`.
          * @returns the color state
          */
-        get_color_state(): (Gdk.ColorState | null);
+        get_color_state(): Gdk.ColorState | null;
 
         /**
          * Returns the value that GTK should wait for on the fence
@@ -714,14 +712,14 @@ export namespace GdkWin32 {
          * `null` if none was set.
          * @returns The region
          */
-        get_update_region(): (cairo.Region | null);
+        get_update_region(): cairo.Region | null;
 
         /**
          * Gets the texture previously set via `gdk_d3d12_texture_builder_set_update_texture()` or
          * `null` if none was set.
          * @returns The texture
          */
-        get_update_texture(): (Gdk.Texture | null);
+        get_update_texture(): Gdk.Texture | null;
 
         /**
          * Sets the color state for the texture.
@@ -731,7 +729,7 @@ export namespace GdkWin32 {
          * If you don't know what colorstates are, this is probably the right thing.
          * @param color_state a {@link Gdk.ColorState} or `NULL` to unset the colorstate.
          */
-        set_color_state(color_state: (Gdk.ColorState | null)): void;
+        set_color_state(color_state: Gdk.ColorState | null): void;
 
         /**
          * Sets the value that GTK should wait on on the given fence before using the
@@ -740,7 +738,7 @@ export namespace GdkWin32 {
          * When no fence is set, this value has no effect.
          * @param fence_wait the value to wait on
          */
-        set_fence_wait(fence_wait: (bigint | number)): void;
+        set_fence_wait(fence_wait: bigint | number): void;
 
         /**
          * Sets whether the data is premultiplied.
@@ -764,14 +762,14 @@ export namespace GdkWin32 {
          * An example would be a screen recording where only the mouse pointer moves.
          * @param region the region to update
          */
-        set_update_region(region: (cairo.Region | null)): void;
+        set_update_region(region: cairo.Region | null): void;
 
         /**
          * Sets the texture to be updated by this texture. See
          * {@link Gdk.D3d12TextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
          */
-        set_update_texture(texture: (Gdk.Texture | null)): void;
+        set_update_texture(texture: Gdk.Texture | null): void;
     }
 
 
@@ -786,9 +784,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Display.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Display.ConstructorProps {}
     }
 
     /**
@@ -866,7 +862,7 @@ export namespace GdkWin32 {
          * @param name the name of the cursor theme to use, or `null`   to unset a previously set value
          * @param size the cursor size to use, or 0 to keep the previous size
          */
-        set_cursor_theme(name: (string | null), size: number): void;
+        set_cursor_theme(name: string | null, size: number): void;
     }
 
 
@@ -877,9 +873,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {}
     }
 
     /**
@@ -930,9 +924,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Drag.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Drag.ConstructorProps {}
     }
 
     /**
@@ -981,9 +973,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
     }
 
     /**
@@ -1110,9 +1100,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
     }
 
     /**
@@ -1175,9 +1163,7 @@ export namespace GdkWin32 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Surface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Surface.ConstructorProps {}
     }
 
     /**

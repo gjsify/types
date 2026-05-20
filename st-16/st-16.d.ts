@@ -221,7 +221,7 @@ export namespace St {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -648,7 +648,7 @@ export namespace St {
 
         _init(...args: any[]): void;
 
-        static ["new"](actor: (Clutter.Actor | null), value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): Adjustment;
+        static ["new"](actor: Clutter.Actor | null, value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): Adjustment;
 
         // Signals
         /** @signal */
@@ -732,7 +732,7 @@ export namespace St {
          * @param name a transition name
          * @returns a {@link Clutter.Transition}
          */
-        get_transition(name: string): (Clutter.Transition | null);
+        get_transition(name: string): Clutter.Transition | null;
 
         /**
          * Retrieves the maximum value of the adjustment.
@@ -852,7 +852,7 @@ export namespace St {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -874,7 +874,7 @@ export namespace St {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -1066,7 +1066,7 @@ export namespace St {
          * Gets the {@link Clutter.Actor} child for `bin`.
          * @returns a {@link Clutter.Actor}, or `null`
          */
-        get_child(): (A | null);
+        get_child(): A | null;
 
         /**
          * Sets `child` as the child of `bin`.
@@ -1074,19 +1074,16 @@ export namespace St {
          * If `bin` already has a child, the previous child is removed.
          * @param child a {@link Clutter.Actor}, or `null`
          */
-        set_child(child: (A | null)): void;
+        set_child(child: A | null): void;
     }
 
 
     namespace BorderImage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1523,8 +1520,8 @@ export namespace St {
             button_mask: ButtonMask;
             buttonMask: ButtonMask;
             checked: boolean;
-            icon_name: (string | null);
-            iconName: (string | null);
+            icon_name: string | null;
+            iconName: string | null;
             label: string;
             pressed: boolean;
             toggle_mode: boolean;
@@ -1572,15 +1569,15 @@ export namespace St {
          * The icon name of the {@link St.Button}.
          * @default null
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * The icon name of the {@link St.Button}.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * The label of the {@link St.Button}.
@@ -1685,7 +1682,7 @@ export namespace St {
          * the return value will be `null`.
          * @returns the icon name of the button
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Get the text displayed on the button. If the label is empty, an empty string
@@ -1732,7 +1729,7 @@ export namespace St {
          * Sets the text displayed on the button.
          * @param text text to set the label to
          */
-        set_label(text: (string | null)): void;
+        set_label(text: string | null): void;
 
         /**
          * Enables or disables toggle mode for the button. In toggle mode, the checked
@@ -1745,13 +1742,10 @@ export namespace St {
 
     namespace Clipboard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1831,7 +1825,7 @@ export namespace St {
          * @param mimetype content mimetype
          * @param bytes content data
          */
-        set_content(type: ClipboardType, mimetype: string, bytes: (GLib.Bytes | Uint8Array)): void;
+        set_content(type: ClipboardType, mimetype: string, bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * Sets text as the current contents of the clipboard.
@@ -1934,9 +1928,7 @@ export namespace St {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {}
     }
 
     /**
@@ -2146,18 +2138,18 @@ export namespace St {
         interface ConstructorProps extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
             clutter_text: Clutter.Text;
             clutterText: Clutter.Text;
-            hint_actor: (Clutter.Actor | null);
-            hintActor: (Clutter.Actor | null);
-            hint_text: (string | null);
-            hintText: (string | null);
+            hint_actor: Clutter.Actor | null;
+            hintActor: Clutter.Actor | null;
+            hint_text: string | null;
+            hintText: string | null;
             input_hints: Clutter.InputContentHintFlags;
             inputHints: Clutter.InputContentHintFlags;
             input_purpose: Clutter.InputContentPurpose;
             inputPurpose: Clutter.InputContentPurpose;
-            primary_icon: (Clutter.Actor | null);
-            primaryIcon: (Clutter.Actor | null);
-            secondary_icon: (Clutter.Actor | null);
-            secondaryIcon: (Clutter.Actor | null);
+            primary_icon: Clutter.Actor | null;
+            primaryIcon: Clutter.Actor | null;
+            secondary_icon: Clutter.Actor | null;
+            secondaryIcon: Clutter.Actor | null;
             text: string;
         }
     }
@@ -2196,31 +2188,31 @@ export namespace St {
          * A {@link Clutter.Actor} to display when the entry is empty and unfocused. Setting
          * this will replace the actor displaying {@link St.Entry.hint_text}.
          */
-        get hint_actor(): (Clutter.Actor | null);
-        set hint_actor(val: (Clutter.Actor | null));
+        get hint_actor(): Clutter.Actor | null;
+        set hint_actor(val: Clutter.Actor | null);
 
         /**
          * A {@link Clutter.Actor} to display when the entry is empty and unfocused. Setting
          * this will replace the actor displaying {@link St.Entry.hint_text}.
          */
-        get hintActor(): (Clutter.Actor | null);
-        set hintActor(val: (Clutter.Actor | null));
+        get hintActor(): Clutter.Actor | null;
+        set hintActor(val: Clutter.Actor | null);
 
         /**
          * The text to display when the entry is empty and unfocused. Setting this
          * will replace the actor of {@link St.Entry.SignalSignatures.hint_actor | St.Entry::hint-actor}.
          * @default null
          */
-        get hint_text(): (string | null);
-        set hint_text(val: (string | null));
+        get hint_text(): string | null;
+        set hint_text(val: string | null);
 
         /**
          * The text to display when the entry is empty and unfocused. Setting this
          * will replace the actor of {@link St.Entry.SignalSignatures.hint_actor | St.Entry::hint-actor}.
          * @default null
          */
-        get hintText(): (string | null);
-        set hintText(val: (string | null));
+        get hintText(): string | null;
+        set hintText(val: string | null);
 
         /**
          * The {@link Clutter.InputContentHintFlags} providing additional hints (beyond
@@ -2259,26 +2251,26 @@ export namespace St {
         /**
          * The {@link Clutter.Actor} acting as the primary icon at the start of the {@link St.Entry}.
          */
-        get primary_icon(): (Clutter.Actor | null);
-        set primary_icon(val: (Clutter.Actor | null));
+        get primary_icon(): Clutter.Actor | null;
+        set primary_icon(val: Clutter.Actor | null);
 
         /**
          * The {@link Clutter.Actor} acting as the primary icon at the start of the {@link St.Entry}.
          */
-        get primaryIcon(): (Clutter.Actor | null);
-        set primaryIcon(val: (Clutter.Actor | null));
+        get primaryIcon(): Clutter.Actor | null;
+        set primaryIcon(val: Clutter.Actor | null);
 
         /**
          * The {@link Clutter.Actor} acting as the secondary icon at the end of the {@link St.Entry}.
          */
-        get secondary_icon(): (Clutter.Actor | null);
-        set secondary_icon(val: (Clutter.Actor | null));
+        get secondary_icon(): Clutter.Actor | null;
+        set secondary_icon(val: Clutter.Actor | null);
 
         /**
          * The {@link Clutter.Actor} acting as the secondary icon at the end of the {@link St.Entry}.
          */
-        get secondaryIcon(): (Clutter.Actor | null);
-        set secondaryIcon(val: (Clutter.Actor | null));
+        get secondaryIcon(): Clutter.Actor | null;
+        set secondaryIcon(val: Clutter.Actor | null);
 
         /**
          * The current text value of the {@link St.Entry}.
@@ -2301,7 +2293,7 @@ export namespace St {
 
         _init(...args: any[]): void;
 
-        static ["new"](text: (string | null)): Entry;
+        static ["new"](text: string | null): Entry;
 
         // Conflicted with Clutter.Actor.new
         static ["new"](...args: never[]): any;
@@ -2341,7 +2333,7 @@ export namespace St {
          * Get the value of the {@link St.Entry.hint_actor} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_hint_actor(): (Clutter.Actor | null);
+        get_hint_actor(): Clutter.Actor | null;
 
         /**
          * Gets the text that is displayed when the entry is empty and unfocused or
@@ -2351,7 +2343,7 @@ export namespace St {
          * {@link St.Entry.hint_actor} is not a {@link St.Label}.
          * @returns the current value of the hint property
          */
-        get_hint_text(): (string | null);
+        get_hint_text(): string | null;
 
         /**
          * Gets the value of the {@link St.Entry.input_hints} property.
@@ -2369,13 +2361,13 @@ export namespace St {
          * Get the value of the {@link St.Entry.primary_icon} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_primary_icon(): (Clutter.Actor | null);
+        get_primary_icon(): Clutter.Actor | null;
 
         /**
          * Get the value of the {@link St.Entry.secondary_icon} property.
          * @returns a {@link Clutter.Actor}
          */
-        get_secondary_icon(): (Clutter.Actor | null);
+        get_secondary_icon(): Clutter.Actor | null;
 
         /**
          * Get the text displayed on the entry. If `entry` is empty, an empty string will
@@ -2388,7 +2380,7 @@ export namespace St {
          * Set the hint actor of the entry to `hint_actor`.
          * @param hint_actor a {@link Clutter.Actor}
          */
-        set_hint_actor(hint_actor: (Clutter.Actor | null)): void;
+        set_hint_actor(hint_actor: Clutter.Actor | null): void;
 
         /**
          * Sets the text to display when the entry is empty and unfocused. When the
@@ -2396,7 +2388,7 @@ export namespace St {
          * A value of `null` unsets the hint.
          * @param text text to set as the entry hint
          */
-        set_hint_text(text: (string | null)): void;
+        set_hint_text(text: string | null): void;
 
         /**
          * Sets the {@link St.Entry.input_hints} property, which
@@ -2417,32 +2409,29 @@ export namespace St {
          * Set the primary icon of the entry to `icon`.
          * @param icon a {@link Clutter.Actor}
          */
-        set_primary_icon(icon: (Clutter.Actor | null)): void;
+        set_primary_icon(icon: Clutter.Actor | null): void;
 
         /**
          * Set the secondary icon of the entry to `icon`.
          * @param icon an {@link Clutter.Actor}
          */
-        set_secondary_icon(icon: (Clutter.Actor | null)): void;
+        set_secondary_icon(icon: Clutter.Actor | null): void;
 
         /**
          * Sets the text displayed on the entry. If `text` is `null`, the {@link Clutter.Text}
          * will instead be set to an empty string.
          * @param text text to set the entry to
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
     }
 
 
     namespace FocusManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2586,9 +2575,7 @@ export namespace St {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends WidgetAccessible.ConstructorProps, Atk.Component.ConstructorProps, Atk.Value.ConstructorProps {
-
-        }
+        interface ConstructorProps extends WidgetAccessible.ConstructorProps, Atk.Component.ConstructorProps, Atk.Value.ConstructorProps {}
     }
 
     /**
@@ -2669,7 +2656,7 @@ export namespace St {
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
          */
-        get_range(): (Atk.Range | null);
+        get_range(): Atk.Range | null;
 
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -2690,7 +2677,7 @@ export namespace St {
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
          */
-        set_current_value(value: (GObject.Value | any)): boolean;
+        set_current_value(value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of this object.
@@ -2750,7 +2737,7 @@ export namespace St {
          * Gets the range of this object.
          * @virtual
          */
-        vfunc_get_range(): (Atk.Range | null);
+        vfunc_get_range(): Atk.Range | null;
 
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
@@ -2894,9 +2881,9 @@ export namespace St {
             fallbackGicon: Gio.Icon;
             fallback_icon_name: string;
             fallbackIconName: string;
-            gicon: (Gio.Icon | null);
-            icon_name: (string | null);
-            iconName: (string | null);
+            gicon: Gio.Icon | null;
+            icon_name: string | null;
+            iconName: string | null;
             icon_size: number;
             iconSize: number;
             is_symbolic: boolean;
@@ -2946,22 +2933,22 @@ export namespace St {
         /**
          * The {@link Gio.Icon} being displayed by this {@link St.Icon}.
          */
-        get gicon(): (Gio.Icon | null);
-        set gicon(val: (Gio.Icon | null));
+        get gicon(): Gio.Icon | null;
+        set gicon(val: Gio.Icon | null);
 
         /**
          * The name of the icon if the icon being displayed is a {@link Gio.ThemedIcon}.
          * @default null
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * The name of the icon if the icon being displayed is a {@link Gio.ThemedIcon}.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * The size of the icon, if greater than `0`. Otherwise the icon size is derived
@@ -3038,14 +3025,14 @@ export namespace St {
          * Gets the current {@link Gio.Icon} in use.
          * @returns The current {@link Gio.Icon}, if set, otherwise `null`
          */
-        get_gicon(): (Gio.Icon | null);
+        get_gicon(): Gio.Icon | null;
 
         /**
          * This is a convenience method to get the icon name of the current icon, if it
          * is currently a {@link Gio.ThemedIcon}, or `null` otherwise.
          * @returns The name of the icon or `null`
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the explicit size set using `st_icon_set_icon_size()` for the icon.
@@ -3065,7 +3052,7 @@ export namespace St {
          * texture will be visible for the fallback icon.
          * @param fallback_gicon the fallback {@link Gio.Icon}
          */
-        set_fallback_gicon(fallback_gicon: (Gio.Icon | null)): void;
+        set_fallback_gicon(fallback_gicon: Gio.Icon | null): void;
 
         /**
          * This is a convenience method to set the fallback {@link Gio.Icon} to a {@link Gio.ThemedIcon}
@@ -3074,14 +3061,14 @@ export namespace St {
          * be visible for the fallback icon.
          * @param fallback_icon_name the name of the fallback icon
          */
-        set_fallback_icon_name(fallback_icon_name: (string | null)): void;
+        set_fallback_icon_name(fallback_icon_name: string | null): void;
 
         /**
          * Sets a {@link Gio.Icon} to show for the icon. If `gicon` is `null` or fails to load,
          * the fallback icon set using `st_icon_set_fallback_icon()` will be shown.
          * @param gicon a {@link Gio.Icon}
          */
-        set_gicon(gicon: (Gio.Icon | null)): void;
+        set_gicon(gicon: Gio.Icon | null): void;
 
         /**
          * This is a convenience method to set the {@link Gio.Icon} to a {@link Gio.ThemedIcon} created
@@ -3089,7 +3076,7 @@ export namespace St {
          * fails to load, the fallback icon will be shown.
          * @param icon_name the name of the icon
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets an explicit size for the icon. Setting `size` to -1 will use the size
@@ -3102,13 +3089,10 @@ export namespace St {
 
     namespace IconInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3179,7 +3163,7 @@ export namespace St {
          * Gets the filename for the icon.
          * @returns the filename for the icon.     The return value is owned by GTK+ and should not be modified     or freed.
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * Checks if the icon is symbolic or not.
@@ -3215,7 +3199,7 @@ export namespace St {
          * version of this call.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        load_icon_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<GdkPixbuf.Pixbuf>;
+        load_icon_async(cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>;
 
         /**
          * Asynchronously load, render and scale an icon previously looked up
@@ -3226,7 +3210,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the     request is satisfied
          */
-        load_icon_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_icon_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously load, render and scale an icon previously looked up
@@ -3237,7 +3221,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the     request is satisfied
          */
-        load_icon_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GdkPixbuf.Pixbuf> | void);
+        load_icon_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
 
         /**
          * Finishes an async icon load, see `st_icon_info_load_icon_async()`.
@@ -3277,7 +3261,7 @@ export namespace St {
          * @param colors an {@link St.IconColors} representing the foreground, error and     success colors of the icon
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          */
-        load_symbolic_async(colors: IconColors, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]>;
+        load_symbolic_async(colors: IconColors, cancellable: Gio.Cancellable | null): globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]>;
 
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
@@ -3289,7 +3273,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the     request is satisfied
          */
-        load_symbolic_async(colors: IconColors, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_symbolic_async(colors: IconColors, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously load, render and scale a symbolic icon previously looked up
@@ -3301,7 +3285,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the     request is satisfied
          */
-        load_symbolic_async(colors: IconColors, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]> | void);
+        load_symbolic_async(colors: IconColors, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GdkPixbuf.Pixbuf, boolean]> | void;
 
         /**
          * Finishes an async icon load, see `st_icon_info_load_symbolic_async()`.
@@ -3326,9 +3310,7 @@ export namespace St {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3421,7 +3403,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object containing information about the icon
          */
-        choose_icon(icon_names: string[], size: number, flags: IconLookupFlags): (IconInfo | null);
+        choose_icon(icon_names: string[], size: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Looks up a named icon for a particular window scale and returns
@@ -3439,7 +3421,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object     containing information about the icon.
          */
-        choose_icon_for_scale(icon_names: string[], size: number, scale: number, flags: IconLookupFlags): (IconInfo | null);
+        choose_icon_for_scale(icon_names: string[], size: number, scale: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Returns an array of integers describing the sizes at which
@@ -3485,7 +3467,7 @@ export namespace St {
          * @param context a string identifying a particular type of           icon, or `null` to list all icons.
          * @returns a {@link GLib.List} list     holding the names of all the icons in the theme. You must     first free each element in the list with `g_free()`, then     free the list itself with `g_list_free()`.
          */
-        list_icons(context: (string | null)): string[];
+        list_icons(context: string | null): string[];
 
         /**
          * Looks up an icon in an icon theme, scales it to the given size
@@ -3505,7 +3487,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
          */
-        load_icon(icon_name: string, size: number, flags: IconLookupFlags): (GdkPixbuf.Pixbuf | null);
+        load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null;
 
         /**
          * Looks up an icon in an icon theme for a particular window scale,
@@ -3527,7 +3509,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
          */
-        load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): (GdkPixbuf.Pixbuf | null);
+        load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null;
 
         /**
          * Looks up an icon and returns a {@link St.IconInfo} containing information
@@ -3544,7 +3526,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} containing     information about the icon.
          */
-        lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags): (IconInfo | null);
+        lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Looks up an icon and returns a {@link St.IconInfo} containing information
@@ -3556,7 +3538,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} containing     information about the icon.
          */
-        lookup_by_gicon_for_scale(icon: Gio.Icon, size: number, scale: number, flags: IconLookupFlags): (IconInfo | null);
+        lookup_by_gicon_for_scale(icon: Gio.Icon, size: number, scale: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Looks up a named icon and returns a {@link St.IconInfo} containing
@@ -3575,7 +3557,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object     containing information about the icon.
          */
-        lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): (IconInfo | null);
+        lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Looks up a named icon for a particular window scale and returns a
@@ -3589,7 +3571,7 @@ export namespace St {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link St.IconInfo} object     containing information about the icon.
          */
-        lookup_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): (IconInfo | null);
+        lookup_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): IconInfo | null;
 
         /**
          * Prepends a directory to the search path.
@@ -3742,7 +3724,7 @@ export namespace St {
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
          */
-        set_bytes(cogl_context: Cogl.Context, data: (GLib.Bytes | Uint8Array), pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
+        set_bytes(cogl_context: Cogl.Context, data: GLib.Bytes | Uint8Array, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
         /**
          * Sets the image data to be displayed by `content`.
@@ -3783,7 +3765,7 @@ export namespace St {
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
          */
-        set_data(cogl_context: Cogl.Context, data: (Uint8Array | string), pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
+        set_data(cogl_context: Cogl.Context, data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
         /**
          * @param args 
@@ -3890,7 +3872,7 @@ export namespace St {
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
-        equal(icon2: (Gio.Icon | null)): boolean;
+        equal(icon2: Gio.Icon | null): boolean;
 
         /**
          * Gets a hash for an icon.
@@ -3906,7 +3888,7 @@ export namespace St {
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
-        serialize(): (GLib.Variant | null);
+        serialize(): GLib.Variant | null;
 
         /**
          * Generates a textual representation of `icon` that can be used for
@@ -3927,14 +3909,14 @@ export namespace St {
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
 
         /**
          * Checks if two icons are equal.
          * @param icon2 pointer to the second {@link Gio.Icon}.
          * @virtual
          */
-        vfunc_equal(icon2: (Gio.Icon | null)): boolean;
+        vfunc_equal(icon2: Gio.Icon | null): boolean;
 
         /**
          * Gets a hash for an icon.
@@ -3950,7 +3932,7 @@ export namespace St {
          * (as opposed to over the network), and within the same file system namespace.
          * @virtual
          */
-        vfunc_serialize(): (GLib.Variant | null);
+        vfunc_serialize(): GLib.Variant | null;
 
         /**
          * Serializes the `icon` into string tokens.
@@ -3966,7 +3948,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
          */
-        load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+        load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -3975,17 +3957,7 @@ export namespace St {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(size: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Gio.InputStream, string]>;
-
-        /**
-         * Loads an icon asynchronously. To finish this function, see
-         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
-         * version of this function, see `g_loadable_icon_load()`.
-         * @param size an integer.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -3995,7 +3967,17 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        load_async(size: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Gio.InputStream, string]> | void);
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Loads an icon asynchronously. To finish this function, see
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
+         * @param size an integer.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_async(size: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.InputStream, string]> | void;
 
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -4011,7 +3993,7 @@ export namespace St {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_load(size: number, cancellable: (Gio.Cancellable | null)): [Gio.InputStream, string];
+        vfunc_load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
         /**
          * Loads an icon asynchronously. To finish this function, see
@@ -4022,7 +4004,7 @@ export namespace St {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_load_async(size: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_load_async(size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
@@ -4175,7 +4157,7 @@ export namespace St {
 
         _init(...args: any[]): void;
 
-        static ["new"](text: (string | null)): Label;
+        static ["new"](text: string | null): Label;
 
         // Conflicted with Clutter.Actor.new
         static ["new"](...args: never[]): any;
@@ -4211,7 +4193,7 @@ export namespace St {
          * Sets the text displayed by the label.
          * @param text text to set the label to
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
     }
 
 
@@ -4707,7 +4689,7 @@ export namespace St {
 
         // Constructor properties interface
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
-            child: (Scrollable | null);
+            child: Scrollable | null;
             enable_mouse_scrolling: boolean;
             enableMouseScrolling: boolean;
             hadjustment: Adjustment;
@@ -4740,8 +4722,8 @@ export namespace St {
         /**
          * The child {@link St.Scrollable} of the {@link St.ScrollView} container.
          */
-        get child(): (Scrollable | null);
-        set child(val: (Scrollable | null));
+        get child(): Scrollable | null;
+        set child(val: Scrollable | null);
 
         /**
          * Whether to enable automatic mouse wheel scrolling.
@@ -4873,7 +4855,7 @@ export namespace St {
          * Gets the {@link St.Scrollable} content of `scroll`.
          * @returns a {@link St.Scrollable}, or `null`
          */
-        get_child(): (Scrollable | null);
+        get_child(): Scrollable | null;
 
         /**
          * Get the step increment of the horizontal plane.
@@ -4921,7 +4903,7 @@ export namespace St {
          * If `scroll` already has a child, the previous child is removed.
          * @param child a {@link St.Scrollable}, or `null`
          */
-        set_child(child: (Scrollable | null)): void;
+        set_child(child: Scrollable | null): void;
 
         /**
          * Set the step increment of the horizontal plane to `column_size`.
@@ -5360,13 +5342,10 @@ export namespace St {
 
     namespace SpinnerContent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {}
     }
 
     /**
@@ -5518,9 +5497,7 @@ export namespace St {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5595,7 +5572,7 @@ export namespace St {
          * @param resource_scale Resource scale factor
          * @returns A new {@link Clutter.Actor} for the icon, or `null` if not found
          */
-        load_gicon(theme_node: (ThemeNode | null), icon: Gio.Icon, size: number, paint_scale: number, resource_scale: number): (Clutter.Actor | null);
+        load_gicon(theme_node: ThemeNode | null, icon: Gio.Icon, size: number, paint_scale: number, resource_scale: number): Clutter.Actor | null;
 
         /**
          * Rescan the current icon theme, if necessary.
@@ -5904,13 +5881,10 @@ export namespace St {
 
     namespace ThemeNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5949,7 +5923,7 @@ export namespace St {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: ThemeContext, parent_node: (ThemeNode | null), theme: (Theme | null), element_type: GObject.GType, element_id: (string | null), element_class: (string | null), pseudo_class: (string | null), inline_style: string): ThemeNode;
+        static ["new"](context: ThemeContext, parent_node: ThemeNode | null, theme: Theme | null, element_type: GObject.GType, element_id: string | null, element_class: string | null, pseudo_class: string | null, inline_style: string): ThemeNode;
 
         // Signals
         /** @signal */
@@ -6052,7 +6026,7 @@ export namespace St {
          * Gets the value for the -st-background-image-shadow style property
          * @returns the node's background image shadow, or   `null` if node has no such shadow
          */
-        get_background_image_shadow(): (Shadow | null);
+        get_background_image_shadow(): Shadow | null;
 
         /**
          * Gets the box used to paint the actor's background, including the area
@@ -6091,7 +6065,7 @@ export namespace St {
          * Gets the value for the box-shadow style property
          * @returns the node's shadow, or `null`   if node has no shadow
          */
-        get_box_shadow(): (Shadow | null);
+        get_box_shadow(): Shadow | null;
 
         /**
          * Generically looks up a property containing a single color value. When
@@ -6278,7 +6252,7 @@ export namespace St {
          * Gets the parent themed element node.
          * @returns the parent {@link St.ThemeNode}, or `null` if  this is the root node of the tree of theme elements.
          */
-        get_parent(): (ThemeNode | null);
+        get_parent(): ThemeNode | null;
 
         /**
          * Get the list of pseudo-classes for `node` (eg. `:focused`).
@@ -6299,7 +6273,7 @@ export namespace St {
          * @param property_name The name of the shadow property
          * @returns the shadow, or `null` if the property was   not found.
          */
-        get_shadow(property_name: string): (Shadow | null);
+        get_shadow(property_name: string): Shadow | null;
 
         /**
          * Get the text alignment of `node`.
@@ -6317,7 +6291,7 @@ export namespace St {
          * Gets the value for the text-shadow style property
          * @returns the node's text-shadow, or `null`   if node has no text-shadow
          */
-        get_text_shadow(): (Shadow | null);
+        get_text_shadow(): Shadow | null;
 
         /**
          * Gets the theme stylesheet set that styles this node
@@ -6342,7 +6316,7 @@ export namespace St {
          * @param property_name The name of the string property
          * @returns the newly allocated value if found.  If `property_name` is not found, a warning will be logged and `null`  will be returned.
          */
-        get_url(property_name: string): (Gio.File | null);
+        get_url(property_name: string): Gio.File | null;
 
         /**
          * Gets the total vertical padding (top + bottom padding), in physical pixels.
@@ -6445,7 +6419,7 @@ export namespace St {
          * @param other a different {@link St.ThemeNode}
          * @returns `true` if the two theme nodes paint identically. `false` if the   two nodes potentially paint differently.
          */
-        paint_equal(other: (ThemeNode | null)): boolean;
+        paint_equal(other: ThemeNode | null): boolean;
 
         /**
          * Serialize `node` to a string of its {@link GObject.GType} name, CSS ID, classes and
@@ -6804,7 +6778,7 @@ export namespace St {
             labelActor: Clutter.Actor;
             pseudo_class: string;
             pseudoClass: string;
-            style: (string | null);
+            style: string | null;
             style_class: string;
             styleClass: string;
             track_hover: boolean;
@@ -6879,8 +6853,8 @@ export namespace St {
          * Inline style information for the actor as a ';'-separated list of
          * CSS properties.
          */
-        get style(): (string | null);
-        set style(val: (string | null));
+        get style(): string | null;
+        set style(val: string | null);
 
         /**
          * The style-class of the actor for use in styling.
@@ -6957,7 +6931,7 @@ export namespace St {
          * @param direction the direction focus is moving in
          * @virtual
          */
-        vfunc_navigate_focus(from: (Clutter.Actor | null), direction: DirectionType): boolean;
+        vfunc_navigate_focus(from: Clutter.Actor | null, direction: DirectionType): boolean;
 
         /**
          * Asks the widget to pop-up a context menu by emitting {@link St.Widget.SignalSignatures.popup_menu | St.Widget::popup-menu}.
@@ -7023,7 +6997,7 @@ export namespace St {
          * Get the current inline style string. See `st_widget_set_style()`.
          * @returns The inline style string, or `null`. The   string is owned by the {@link St.Widget} and should not be modified or freed.
          */
-        get_style(): (string | null);
+        get_style(): string | null;
 
         /**
          * Get the current style class name
@@ -7105,7 +7079,7 @@ export namespace St {
          * @param wrap_around whether focus should wrap around
          * @returns `true` if `clutter_actor_grab_key_focus()` has been called on an actor. `false` if not.
          */
-        navigate_focus(from: (Clutter.Actor | null), direction: DirectionType, wrap_around: boolean): boolean;
+        navigate_focus(from: Clutter.Actor | null, direction: DirectionType, wrap_around: boolean): boolean;
 
         /**
          * Paint the background of the widget. This is meant to be called by
@@ -7175,7 +7149,7 @@ export namespace St {
          * determined from the stylesheets of the current theme.
          * @param style a inline style string, or `null`
          */
-        set_style(style: (string | null)): void;
+        set_style(style: string | null): void;
 
         /**
          * Set the style class name list. `style_class_list` can either be
@@ -7184,7 +7158,7 @@ export namespace St {
          * `st_widget_remove_style_class_name()`.
          * @param style_class_list a new style class list string
          */
-        set_style_class_name(style_class_list: (string | null)): void;
+        set_style_class_name(style_class_list: string | null): void;
 
         /**
          * Set the style pseudo class list. `pseudo_class_list` can either be
@@ -7193,7 +7167,7 @@ export namespace St {
          * `st_widget_remove_style_pseudo_class()`.
          * @param pseudo_class_list a new pseudo class list string
          */
-        set_style_pseudo_class(pseudo_class_list: (string | null)): void;
+        set_style_pseudo_class(pseudo_class_list: string | null): void;
 
         /**
          * Enables hover tracking on the {@link St.Widget}.
@@ -7239,7 +7213,7 @@ export namespace St {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -7261,7 +7235,7 @@ export namespace St {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -7332,9 +7306,7 @@ export namespace St {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.ActorAccessible.ConstructorProps, Atk.Component.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.ActorAccessible.ConstructorProps, Atk.Component.ConstructorProps {}
     }
 
     /**
@@ -7445,7 +7417,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @returns a reference to the accessible child, if one exists
          */
-        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of
@@ -7591,7 +7563,7 @@ export namespace St {
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
          * @virtual
          */
-        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): (Atk.Object | null);
+        vfunc_ref_accessible_at_point(x: number, y: number, coord_type: Atk.CoordType): Atk.Object | null;
 
         /**
          * Remove the handler specified by `handler_id` from the list of

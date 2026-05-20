@@ -94,7 +94,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static NOT_IMPLEMENTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -108,7 +108,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static NOT_FOUND: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -126,7 +126,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static OUT_OF_RANGE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -144,7 +144,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static PLAYSPEED_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -164,7 +164,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static INTERNAL_SERVER_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -180,7 +180,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         static SPEED_NOT_PRESENT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -215,7 +215,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
-            duration: (bigint | number);
+            duration: bigint | number;
             bitrate: number;
             sample_freq: number;
             sampleFreq: number;
@@ -234,7 +234,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         get bitrate(): number;
         set bitrate(val: number);
@@ -292,7 +292,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_duration(value: (bigint | number)): void;
+        set_duration(value: bigint | number): void;
 
         get_bitrate(): number;
 
@@ -359,9 +359,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaFileItem.ConstructorProps, VisualItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaFileItem.ConstructorProps, VisualItem.ConstructorProps {}
     }
 
     /**
@@ -495,8 +493,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace LogicalExpression {
         // Signal signatures
-        interface SignalSignatures extends SearchExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends SearchExpression.SignalSignatures {}
     }
 
     /**
@@ -527,13 +524,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace MediaArtStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -570,13 +564,13 @@ interface IconInfo extends RygelCore.IconInfo {}
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-        static get_default(): (MediaArtStore | null);
+        static get_default(): MediaArtStore | null;
 
         // Methods
         /**
          * @param item 
          */
-        lookup_media_art(item: MusicItem): (Thumbnail | null);
+        lookup_media_art(item: MusicItem): Thumbnail | null;
 
         /**
          * @param item 
@@ -584,7 +578,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param data 
          * @param mime 
          */
-        add(item: MusicItem, file: Gio.File, data: (Uint8Array | string), mime: string): void;
+        add(item: MusicItem, file: Gio.File, data: Uint8Array | string, mime: string): void;
 
         /**
          * @param item 
@@ -606,9 +600,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
     }
 
     /**
@@ -785,9 +777,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ImageItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ImageItem.ConstructorProps {}
     }
 
     /**
@@ -829,8 +819,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace RelationalExpression {
         // Signal signatures
-        interface SignalSignatures extends SearchExpression.SignalSignatures {
-        }
+        interface SignalSignatures extends SearchExpression.SignalSignatures {}
     }
 
     /**
@@ -861,7 +850,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param str 
          */
-        compare_string(str: (string | null)): boolean;
+        compare_string(str: string | null): boolean;
 
         /**
          * @param integer 
@@ -900,9 +889,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaContainer.ConstructorProps, SearchableContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaContainer.ConstructorProps, SearchableContainer.ConstructorProps {}
     }
 
     /**
@@ -928,7 +915,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](id: string, parent: (MediaContainer | null), title: string): SimpleContainer;
+        static ["new"](id: string, parent: MediaContainer | null, title: string): SimpleContainer;
 
         static root(title: string): SimpleContainer;
 
@@ -985,7 +972,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param sort_criteria 
          * @param cancellable 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(MediaObjects | null), number]>;
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[MediaObjects | null, number]>;
 
         /**
          * @param expression 
@@ -995,7 +982,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param expression 
@@ -1005,12 +992,12 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(MediaObjects | null), number]> | void);
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[MediaObjects | null, number]> | void;
 
         /**
          * @param _res_ 
          */
-        search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+        search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
         /**
          * @param expression 
@@ -1019,17 +1006,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param sort_criteria 
          * @param cancellable 
          */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(MediaObjects | null), number]>;
-
-        /**
-         * @param expression 
-         * @param offset 
-         * @param max_count 
-         * @param sort_criteria 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[MediaObjects | null, number]>;
 
         /**
          * @param expression 
@@ -1039,37 +1016,47 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(MediaObjects | null), number]> | void);
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param expression 
+         * @param offset 
+         * @param max_count 
+         * @param sort_criteria 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[MediaObjects | null, number]> | void;
 
         /**
          * @param _res_ 
          */
-        simple_search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+        simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
         /**
          * @param id 
          * @param cancellable 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(MediaObject | null)>;
-
-        /**
-         * @param id 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(MediaObject | null)> | void);
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param id 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<MediaObject | null> | void;
 
         /**
          * @param _res_ 
          */
-        find_object_finish(_res_: Gio.AsyncResult): (MediaObject | null);
+        find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
         get_search_classes(): Gee.ArrayList;
 
@@ -1087,13 +1074,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+        vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
         /**
          * @virtual
@@ -1110,8 +1097,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace Subtitle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -1170,8 +1156,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace Thumbnail {
         // Signal signatures
-        interface SignalSignatures extends RygelCore.IconInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends RygelCore.IconInfo.SignalSignatures {}
     }
 
     /**
@@ -1563,13 +1548,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_get_children(offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_get_children_finish(_res_: Gio.AsyncResult): (MediaObjects | null);
+        vfunc_get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
 
         /**
          * @param id 
@@ -1577,13 +1562,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_find_object_finish(_res_: Gio.AsyncResult): (MediaObject | null);
+        vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
         // Methods
         /**
@@ -1592,7 +1577,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param sort_criteria 
          * @param cancellable 
          */
-        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(MediaObjects | null)>;
+        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObjects | null>;
 
         /**
          * @param offset 
@@ -1601,7 +1586,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param offset 
@@ -1610,44 +1595,44 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(MediaObjects | null)> | void);
+        get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<MediaObjects | null> | void;
 
         /**
          * @param _res_ 
          */
-        get_children_finish(_res_: Gio.AsyncResult): (MediaObjects | null);
+        get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
 
         /**
          * @param id 
          * @param cancellable 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(MediaObject | null)>;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(MediaObject | null)> | void);
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<MediaObject | null> | void;
 
         /**
          * @param _res_ 
          */
-        find_object_finish(_res_: Gio.AsyncResult): (MediaObject | null);
+        find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
         /**
          * @param object 
          * @param event_type 
          * @param sub_tree_update 
          */
-        updated(object: (MediaObject | null), event_type: ObjectEventType, sub_tree_update: boolean): void;
+        updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void;
 
         get_child_count(): number;
 
@@ -1782,7 +1767,7 @@ interface IconInfo extends RygelCore.IconInfo {}
             mimeType: string;
             dlna_profile: string;
             dlnaProfile: string;
-            size: (bigint | number);
+            size: bigint | number;
             place_holder: boolean;
             placeHolder: boolean;
         }
@@ -1808,7 +1793,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         set dlnaProfile(val: string);
 
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         get place_holder(): boolean;
         set place_holder(val: boolean);
@@ -1861,7 +1846,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_add_engine_resources(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1890,12 +1875,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        add_engine_resources(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        add_engine_resources(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_engine_resources(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1926,7 +1911,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_size(value: (bigint | number)): void;
+        set_size(value: bigint | number): void;
 
         get_place_holder(): boolean;
 
@@ -1964,7 +1949,7 @@ interface IconInfo extends RygelCore.IconInfo {}
             upnpClass: string;
             date: string;
             creator: string;
-            modified: (bigint | number);
+            modified: bigint | number;
             object_update_id: number;
             objectUpdateId: number;
             artist: string;
@@ -2007,7 +1992,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         set creator(val: string);
 
         get modified(): number;
-        set modified(val: (bigint | number));
+        set modified(val: bigint | number);
 
         get object_update_id(): number;
         set object_update_id(val: number);
@@ -2078,7 +2063,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param replacement_pairs 
          * @param source_string 
          */
-        static apply_replacements(replacement_pairs: ({ [key: string]: any } | GLib.HashTable<string, string>), source_string: (string | null)): (string | null);
+        static apply_replacements(replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>, source_string: string | null): string | null;
 
         // Virtual methods
         /**
@@ -2092,14 +2077,14 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param http_server 
          * @virtual
          */
-        vfunc_serialize(serializer: Serializer, http_server: HTTPServer): (GUPnPAV.DIDLLiteObject | null);
+        vfunc_serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
 
         /**
          * @param request 
          * @param resource 
          * @virtual
          */
-        vfunc_create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): (DataSource | null);
+        vfunc_create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null;
 
         /**
          * @param didl_object 
@@ -2122,7 +2107,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         // Methods
         get_uris(): Gee.List;
 
-        get_primary_uri(): (string | null);
+        get_primary_uri(): string | null;
 
         /**
          * @param uri 
@@ -2132,41 +2117,41 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param cancellable 
          */
-        get_writable(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Gio.File | null)>;
+        get_writable(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File | null>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        get_writable(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_writable(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        get_writable(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Gio.File | null)> | void);
+        get_writable(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File | null> | void;
 
         /**
          * @param _res_ 
          */
-        get_writable_finish(_res_: Gio.AsyncResult): (Gio.File | null);
+        get_writable_finish(_res_: Gio.AsyncResult): Gio.File | null;
 
         /**
          * @param cancellable 
          */
-        get_writables(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gee.ArrayList>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        get_writables(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_writables(cancellable: Gio.Cancellable | null): globalThis.Promise<Gee.ArrayList>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        get_writables(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gee.ArrayList> | void);
+        get_writables(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        get_writables(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gee.ArrayList> | void;
 
         /**
          * @param _res_ 
@@ -2178,13 +2163,13 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param resource_name 
          */
-        get_resource_by_name(resource_name: string): (MediaResource | null);
+        get_resource_by_name(resource_name: string): MediaResource | null;
 
         /**
          * @param serializer 
          * @param http_server 
          */
-        serialize(serializer: Serializer, http_server: HTTPServer): (GUPnPAV.DIDLLiteObject | null);
+        serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
 
         /**
          * @param didl_object 
@@ -2196,7 +2181,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param request 
          * @param resource 
          */
-        create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): (DataSource | null);
+        create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null;
 
         /**
          * @param didl_object 
@@ -2261,7 +2246,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_modified(value: (bigint | number)): void;
+        set_modified(value: bigint | number): void;
 
         get_object_update_id(): number;
 
@@ -2340,10 +2325,10 @@ interface IconInfo extends RygelCore.IconInfo {}
             import_uri: string;
             importUri: string;
             extension: string;
-            size: (bigint | number);
-            cleartext_size: (bigint | number);
-            cleartextSize: (bigint | number);
-            duration: (bigint | number);
+            size: bigint | number;
+            cleartext_size: bigint | number;
+            cleartextSize: bigint | number;
+            duration: bigint | number;
             bitrate: number;
             bits_per_sample: number;
             bitsPerSample: number;
@@ -2390,16 +2375,16 @@ interface IconInfo extends RygelCore.IconInfo {}
         set extension(val: string);
 
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         get cleartext_size(): number;
-        set cleartext_size(val: (bigint | number));
+        set cleartext_size(val: bigint | number);
 
         get cleartextSize(): number;
-        set cleartextSize(val: (bigint | number));
+        set cleartextSize(val: bigint | number);
 
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         get bitrate(): number;
         set bitrate(val: number);
@@ -2517,7 +2502,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param didl_resource 
          * @param replacements 
          */
-        serialize(didl_resource: GUPnPAV.DIDLLiteResource, replacements: (GLib.HashTable<string, string> | null)): GUPnPAV.DIDLLiteResource;
+        serialize(didl_resource: GUPnPAV.DIDLLiteResource, replacements: GLib.HashTable<string, string> | null): GUPnPAV.DIDLLiteResource;
 
         /**
          * @param pi 
@@ -2527,7 +2512,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param replacements 
          */
-        get_protocol_info(replacements: (GLib.HashTable<string, string> | null)): GUPnPAV.ProtocolInfo;
+        get_protocol_info(replacements: GLib.HashTable<string, string> | null): GUPnPAV.ProtocolInfo;
 
         supports_arbitrary_byte_seek(): boolean;
 
@@ -2561,12 +2546,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param flags 
          */
-        is_dlna_protocol_flag_set(flags: (bigint | number)): boolean;
+        is_dlna_protocol_flag_set(flags: bigint | number): boolean;
 
         /**
          * @param flags 
          */
-        is_dlna_operation_mode_set(flags: (bigint | number)): boolean;
+        is_dlna_operation_mode_set(flags: bigint | number): boolean;
 
         to_string(): string;
 
@@ -2596,21 +2581,21 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_size(value: (bigint | number)): void;
+        set_size(value: bigint | number): void;
 
         get_cleartext_size(): number;
 
         /**
          * @param value 
          */
-        set_cleartext_size(value: (bigint | number)): void;
+        set_cleartext_size(value: bigint | number): void;
 
         get_duration(): number;
 
         /**
          * @param value 
          */
-        set_duration(value: (bigint | number)): void;
+        set_duration(value: bigint | number): void;
 
         get_bitrate(): number;
 
@@ -2838,8 +2823,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace SearchExpression {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2969,9 +2953,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3023,13 +3005,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_get_resources_for_item(item: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_get_resources_for_item_finish(_res_: Gio.AsyncResult): (Gee.List | null);
+        vfunc_get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null;
 
         /**
          * @param item 
@@ -3037,13 +3019,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param replacements 
          * @virtual
          */
-        vfunc_create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: GLib.HashTable<string, string>): (DataSource | null);
+        vfunc_create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: GLib.HashTable<string, string>): DataSource | null;
 
         /**
          * @param uri 
          * @virtual
          */
-        vfunc_create_data_source_for_uri(uri: string): (DataSource | null);
+        vfunc_create_data_source_for_uri(uri: string): DataSource | null;
 
         /**
          * @virtual
@@ -3056,36 +3038,36 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param item 
          */
-        get_resources_for_item(item: MediaObject): globalThis.Promise<(Gee.List | null)>;
+        get_resources_for_item(item: MediaObject): globalThis.Promise<Gee.List | null>;
 
         /**
          * @param item 
          * @param _callback_ 
          */
-        get_resources_for_item(item: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param item 
          * @param _callback_ 
          */
-        get_resources_for_item(item: MediaObject, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Gee.List | null)> | void);
+        get_resources_for_item(item: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gee.List | null> | void;
 
         /**
          * @param _res_ 
          */
-        get_resources_for_item_finish(_res_: Gio.AsyncResult): (Gee.List | null);
+        get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null;
 
         /**
          * @param item 
          * @param resource 
          * @param replacements 
          */
-        create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: ({ [key: string]: any } | GLib.HashTable<string, string>)): (DataSource | null);
+        create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: { [key: string]: any } | GLib.HashTable<string, string>): DataSource | null;
 
         /**
          * @param uri 
          */
-        create_data_source_for_uri(uri: string): (DataSource | null);
+        create_data_source_for_uri(uri: string): DataSource | null;
 
         get_internal_protocol_schemes(): string[];
     }
@@ -3093,13 +3075,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace HTTPSeekRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3161,9 +3140,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaFileItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaFileItem.ConstructorProps {}
     }
 
     /**
@@ -3217,9 +3194,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GUPnP.Service.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
     }
 
     /**
@@ -3281,14 +3256,14 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            range_length: (bigint | number);
-            rangeLength: (bigint | number);
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -3300,28 +3275,28 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get range_length(): number;
-        set range_length(val: (bigint | number));
+        set range_length(val: bigint | number);
 
         get rangeLength(): number;
-        set rangeLength(val: (bigint | number));
+        set rangeLength(val: bigint | number);
 
         get total_size(): number;
-        set total_size(val: (bigint | number));
+        set total_size(val: bigint | number);
 
         get totalSize(): number;
-        set totalSize(val: (bigint | number));
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -3370,14 +3345,14 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_start_byte(value: (bigint | number)): void;
+        set_start_byte(value: bigint | number): void;
 
         get_end_byte(): number;
 
         /**
          * @param value 
          */
-        set_end_byte(value: (bigint | number)): void;
+        set_end_byte(value: bigint | number): void;
 
         get_range_length(): number;
 
@@ -3386,7 +3361,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_total_size(value: (bigint | number)): void;
+        set_total_size(value: bigint | number): void;
     }
 
 
@@ -3401,14 +3376,14 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            range_length: (bigint | number);
-            rangeLength: (bigint | number);
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -3420,28 +3395,28 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get range_length(): number;
-        set range_length(val: (bigint | number));
+        set range_length(val: bigint | number);
 
         get rangeLength(): number;
-        set rangeLength(val: (bigint | number));
+        set rangeLength(val: bigint | number);
 
         get total_size(): number;
-        set total_size(val: (bigint | number));
+        set total_size(val: bigint | number);
 
         get totalSize(): number;
-        set totalSize(val: (bigint | number));
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -3457,7 +3432,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](start_byte: (bigint | number), end_byte: (bigint | number), total_size: (bigint | number)): HTTPByteSeekResponse;
+        static ["new"](start_byte: bigint | number, end_byte: bigint | number, total_size: bigint | number): HTTPByteSeekResponse;
 
         static from_request(request: HTTPByteSeekRequest): HTTPByteSeekResponse;
 
@@ -3480,14 +3455,14 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_start_byte(value: (bigint | number)): void;
+        set_start_byte(value: bigint | number): void;
 
         get_end_byte(): number;
 
         /**
          * @param value 
          */
-        set_end_byte(value: (bigint | number)): void;
+        set_end_byte(value: bigint | number): void;
 
         get_range_length(): number;
 
@@ -3496,7 +3471,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_total_size(value: (bigint | number)): void;
+        set_total_size(value: bigint | number): void;
     }
 
 
@@ -3570,12 +3545,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @virtual
          */
-        vfunc_get_resource_size(): (bigint | number);
+        vfunc_get_resource_size(): bigint | number;
 
         /**
          * @virtual
          */
-        vfunc_get_resource_duration(): (bigint | number);
+        vfunc_get_resource_duration(): bigint | number;
 
         /**
          * @virtual
@@ -3637,13 +3612,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace HTTPGet {
         // Signal signatures
-        interface SignalSignatures extends HTTPRequest.SignalSignatures {
-        }
+        interface SignalSignatures extends HTTPRequest.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends HTTPRequest.ConstructorProps {
-
-        }
+        interface ConstructorProps extends HTTPRequest.ConstructorProps {}
     }
 
     /**
@@ -3709,7 +3681,7 @@ interface IconInfo extends RygelCore.IconInfo {}
             thumbnailIndex: number;
             subtitle_index: number;
             subtitleIndex: number;
-            resource_name: (string | null);
+            resource_name: string | null;
             resourceName: string;
             http_server: HTTPServer;
             httpServer: HTTPServer;
@@ -3742,8 +3714,8 @@ interface IconInfo extends RygelCore.IconInfo {}
         get subtitleIndex(): number;
         set subtitleIndex(val: number);
 
-        get resource_name(): (string | null);
-        set resource_name(val: (string | null));
+        get resource_name(): string | null;
+        set resource_name(val: string | null);
 
         get resourceName(): string;
         set resourceName(val: string);
@@ -3774,7 +3746,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](object: MediaObject, http_server: HTTPServer, thumbnail_index: number, subtitle_index: number, resource_name: (string | null)): HTTPItemURI;
+        static ["new"](object: MediaObject, http_server: HTTPServer, thumbnail_index: number, subtitle_index: number, resource_name: string | null): HTTPItemURI;
 
         static from_string(uri: string, http_server: HTTPServer): HTTPItemURI;
 
@@ -3815,12 +3787,12 @@ interface IconInfo extends RygelCore.IconInfo {}
          */
         set_subtitle_index(value: number): void;
 
-        get_resource_name(): (string | null);
+        get_resource_name(): string | null;
 
         /**
          * @param value 
          */
-        set_resource_name(value: (string | null)): void;
+        set_resource_name(value: string | null): void;
 
         get_http_server(): HTTPServer;
 
@@ -3845,9 +3817,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {}
     }
 
     /**
@@ -3901,7 +3871,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_handle(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_handle(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -3913,7 +3883,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_find_item(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_find_item(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -3927,12 +3897,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        handle(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        handle(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        handle(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        handle(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3944,12 +3914,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        find_item(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_item(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        find_item(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        find_item(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3965,7 +3935,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param status 
          * @param reason 
          */
-        end(status: number, reason: (string | null)): void;
+        end(status: number, reason: string | null): void;
 
         /** @category Inherited from RygelCore.StateMachine */
         get cancellable(): Gio.Cancellable;
@@ -3976,12 +3946,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3999,7 +3969,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4095,7 +4065,7 @@ interface IconInfo extends RygelCore.IconInfo {}
         vfunc_end(aborted: boolean, status: number): void;
 
         // Methods
-        preroll(): (Gee.List | null);
+        preroll(): Gee.List | null;
 
         /**
          * @param aborted 
@@ -4116,12 +4086,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4139,7 +4109,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4162,13 +4132,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace HTTPResponseElement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4344,12 +4311,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        run(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        run(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4367,7 +4334,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param _callback_ 
          * @virtual
          */
-        vfunc_run(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_run(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4390,13 +4357,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace HTTPTimeSeekRequest {
         // Signal signatures
-        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
-        }
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-
-        }
+        interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
     }
 
     /**
@@ -4473,22 +4437,22 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_time: (bigint | number);
-            startTime: (bigint | number);
-            end_time: (bigint | number);
-            endTime: (bigint | number);
-            range_duration: (bigint | number);
-            rangeDuration: (bigint | number);
-            total_duration: (bigint | number);
-            totalDuration: (bigint | number);
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            response_length: (bigint | number);
-            responseLength: (bigint | number);
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
+            start_time: bigint | number;
+            startTime: bigint | number;
+            end_time: bigint | number;
+            endTime: bigint | number;
+            range_duration: bigint | number;
+            rangeDuration: bigint | number;
+            total_duration: bigint | number;
+            totalDuration: bigint | number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            response_length: bigint | number;
+            responseLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -4500,52 +4464,52 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get start_time(): number;
-        set start_time(val: (bigint | number));
+        set start_time(val: bigint | number);
 
         get startTime(): number;
-        set startTime(val: (bigint | number));
+        set startTime(val: bigint | number);
 
         get end_time(): number;
-        set end_time(val: (bigint | number));
+        set end_time(val: bigint | number);
 
         get endTime(): number;
-        set endTime(val: (bigint | number));
+        set endTime(val: bigint | number);
 
         get range_duration(): number;
-        set range_duration(val: (bigint | number));
+        set range_duration(val: bigint | number);
 
         get rangeDuration(): number;
-        set rangeDuration(val: (bigint | number));
+        set rangeDuration(val: bigint | number);
 
         get total_duration(): number;
-        set total_duration(val: (bigint | number));
+        set total_duration(val: bigint | number);
 
         get totalDuration(): number;
-        set totalDuration(val: (bigint | number));
+        set totalDuration(val: bigint | number);
 
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get response_length(): number;
-        set response_length(val: (bigint | number));
+        set response_length(val: bigint | number);
 
         get responseLength(): number;
-        set responseLength(val: (bigint | number));
+        set responseLength(val: bigint | number);
 
         get total_size(): number;
-        set total_size(val: (bigint | number));
+        set total_size(val: bigint | number);
 
         get totalSize(): number;
-        set totalSize(val: (bigint | number));
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -4561,13 +4525,13 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](start_time: (bigint | number), end_time: (bigint | number), total_duration: (bigint | number), start_byte: (bigint | number), end_byte: (bigint | number), total_size: (bigint | number)): HTTPTimeSeekResponse;
+        static ["new"](start_time: bigint | number, end_time: bigint | number, total_duration: bigint | number, start_byte: bigint | number, end_byte: bigint | number, total_size: bigint | number): HTTPTimeSeekResponse;
 
-        static time_only(start_time: (bigint | number), end_time: (bigint | number), total_duration: (bigint | number)): HTTPTimeSeekResponse;
+        static time_only(start_time: bigint | number, end_time: bigint | number, total_duration: bigint | number): HTTPTimeSeekResponse;
 
-        static with_length(start_time: (bigint | number), end_time: (bigint | number), total_duration: (bigint | number), start_byte: (bigint | number), end_byte: (bigint | number), total_size: (bigint | number), response_length: (bigint | number)): HTTPTimeSeekResponse;
+        static with_length(start_time: bigint | number, end_time: bigint | number, total_duration: bigint | number, start_byte: bigint | number, end_byte: bigint | number, total_size: bigint | number, response_length: bigint | number): HTTPTimeSeekResponse;
 
-        static from_request(time_seek_request: HTTPTimeSeekRequest, total_duration: (bigint | number)): HTTPTimeSeekResponse;
+        static from_request(time_seek_request: HTTPTimeSeekRequest, total_duration: bigint | number): HTTPTimeSeekResponse;
 
         // Signals
         /** @signal */
@@ -4661,9 +4625,9 @@ interface IconInfo extends RygelCore.IconInfo {}
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        add_item(): (GUPnPAV.DIDLLiteItem | null);
+        add_item(): GUPnPAV.DIDLLiteItem | null;
 
-        add_container(): (GUPnPAV.DIDLLiteContainer | null);
+        add_container(): GUPnPAV.DIDLLiteContainer | null;
 
         /**
          * @param filter_string 
@@ -4676,8 +4640,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace PlaySpeed {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -4802,13 +4765,10 @@ interface IconInfo extends RygelCore.IconInfo {}
 
     namespace PlaySpeedResponse {
         // Signal signatures
-        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
-        }
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-
-        }
+        interface ConstructorProps extends HTTPResponseElement.ConstructorProps {}
     }
 
     /**
@@ -4872,14 +4832,14 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            range_length: (bigint | number);
-            rangeLength: (bigint | number);
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
         }
     }
 
@@ -4891,28 +4851,28 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get range_length(): number;
-        set range_length(val: (bigint | number));
+        set range_length(val: bigint | number);
 
         get rangeLength(): number;
-        set rangeLength(val: (bigint | number));
+        set rangeLength(val: bigint | number);
 
         get total_size(): number;
-        set total_size(val: (bigint | number));
+        set total_size(val: bigint | number);
 
         get totalSize(): number;
-        set totalSize(val: (bigint | number));
+        set totalSize(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -4978,16 +4938,16 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Constructor properties interface
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            range_length: (bigint | number);
-            rangeLength: (bigint | number);
-            total_size: (bigint | number);
-            totalSize: (bigint | number);
-            encrypted_length: (bigint | number);
-            encryptedLength: (bigint | number);
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
+            total_size: bigint | number;
+            totalSize: bigint | number;
+            encrypted_length: bigint | number;
+            encryptedLength: bigint | number;
         }
     }
 
@@ -4999,34 +4959,34 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         // Properties
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get range_length(): number;
-        set range_length(val: (bigint | number));
+        set range_length(val: bigint | number);
 
         get rangeLength(): number;
-        set rangeLength(val: (bigint | number));
+        set rangeLength(val: bigint | number);
 
         get total_size(): number;
-        set total_size(val: (bigint | number));
+        set total_size(val: bigint | number);
 
         get totalSize(): number;
-        set totalSize(val: (bigint | number));
+        set totalSize(val: bigint | number);
 
         get encrypted_length(): number;
-        set encrypted_length(val: (bigint | number));
+        set encrypted_length(val: bigint | number);
 
         get encryptedLength(): number;
-        set encryptedLength(val: (bigint | number));
+        set encryptedLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5042,9 +5002,9 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](start_byte: (bigint | number), end_byte: (bigint | number), total_size: (bigint | number), encrypted_length: (bigint | number)): DTCPCleartextResponse;
+        static ["new"](start_byte: bigint | number, end_byte: bigint | number, total_size: bigint | number, encrypted_length: bigint | number): DTCPCleartextResponse;
 
-        static from_request(request: DTCPCleartextRequest, encrypted_length: (bigint | number)): DTCPCleartextResponse;
+        static from_request(request: DTCPCleartextRequest, encrypted_length: bigint | number): DTCPCleartextResponse;
 
         // Signals
         /** @signal */
@@ -5073,19 +5033,16 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param value 
          */
-        set_encrypted_length(value: (bigint | number)): void;
+        set_encrypted_length(value: bigint | number): void;
     }
 
 
     namespace DLNAAvailableSeekRangeRequest {
         // Signal signatures
-        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
-        }
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
-
-        }
+        interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
     }
 
     /**
@@ -5149,16 +5106,16 @@ interface IconInfo extends RygelCore.IconInfo {}
         // Constructor properties interface
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
             mode: number;
-            start_time: (bigint | number);
-            startTime: (bigint | number);
-            end_time: (bigint | number);
-            endTime: (bigint | number);
-            start_byte: (bigint | number);
-            startByte: (bigint | number);
-            end_byte: (bigint | number);
-            endByte: (bigint | number);
-            range_length: (bigint | number);
-            rangeLength: (bigint | number);
+            start_time: bigint | number;
+            startTime: bigint | number;
+            end_time: bigint | number;
+            endTime: bigint | number;
+            start_byte: bigint | number;
+            startByte: bigint | number;
+            end_byte: bigint | number;
+            endByte: bigint | number;
+            range_length: bigint | number;
+            rangeLength: bigint | number;
         }
     }
 
@@ -5173,34 +5130,34 @@ interface IconInfo extends RygelCore.IconInfo {}
         set mode(val: number);
 
         get start_time(): number;
-        set start_time(val: (bigint | number));
+        set start_time(val: bigint | number);
 
         get startTime(): number;
-        set startTime(val: (bigint | number));
+        set startTime(val: bigint | number);
 
         get end_time(): number;
-        set end_time(val: (bigint | number));
+        set end_time(val: bigint | number);
 
         get endTime(): number;
-        set endTime(val: (bigint | number));
+        set endTime(val: bigint | number);
 
         get start_byte(): number;
-        set start_byte(val: (bigint | number));
+        set start_byte(val: bigint | number);
 
         get startByte(): number;
-        set startByte(val: (bigint | number));
+        set startByte(val: bigint | number);
 
         get end_byte(): number;
-        set end_byte(val: (bigint | number));
+        set end_byte(val: bigint | number);
 
         get endByte(): number;
-        set endByte(val: (bigint | number));
+        set endByte(val: bigint | number);
 
         get range_length(): number;
-        set range_length(val: (bigint | number));
+        set range_length(val: bigint | number);
 
         get rangeLength(): number;
-        set rangeLength(val: (bigint | number));
+        set rangeLength(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -5216,9 +5173,9 @@ interface IconInfo extends RygelCore.IconInfo {}
 
         _init(...args: any[]): void;
 
-        static ["new"](mode: number, start_time: (bigint | number), end_time: (bigint | number), start_byte: (bigint | number), end_byte: (bigint | number)): DLNAAvailableSeekRangeResponse;
+        static ["new"](mode: number, start_time: bigint | number, end_time: bigint | number, start_byte: bigint | number, end_byte: bigint | number): DLNAAvailableSeekRangeResponse;
 
-        static time_only(mode: number, start_time: (bigint | number), end_time: (bigint | number)): DLNAAvailableSeekRangeResponse;
+        static time_only(mode: number, start_time: bigint | number, end_time: bigint | number): DLNAAvailableSeekRangeResponse;
 
         // Signals
         /** @signal */
@@ -5859,13 +5816,13 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
              * @virtual
              */
-            vfunc_search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+            vfunc_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
             /**
              * @virtual
@@ -5911,7 +5868,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param sort_criteria 
          * @param cancellable 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(MediaObjects | null), number]>;
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[MediaObjects | null, number]>;
 
         /**
          * @param expression 
@@ -5921,7 +5878,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param expression 
@@ -5931,12 +5888,12 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(MediaObjects | null), number]> | void);
+        search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[MediaObjects | null, number]> | void;
 
         /**
          * @param _res_ 
          */
-        search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+        search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
         /**
          * @param expression 
@@ -5945,17 +5902,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param sort_criteria 
          * @param cancellable 
          */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(MediaObjects | null), number]>;
-
-        /**
-         * @param expression 
-         * @param offset 
-         * @param max_count 
-         * @param sort_criteria 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[MediaObjects | null, number]>;
 
         /**
          * @param expression 
@@ -5965,37 +5912,47 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param cancellable 
          * @param _callback_ 
          */
-        simple_search(expression: (SearchExpression | null), offset: number, max_count: number, sort_criteria: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(MediaObjects | null), number]> | void);
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param expression 
+         * @param offset 
+         * @param max_count 
+         * @param sort_criteria 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[MediaObjects | null, number]> | void;
 
         /**
          * @param _res_ 
          */
-        simple_search_finish(_res_: Gio.AsyncResult): [(MediaObjects | null), number];
+        simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
         /**
          * @param id 
          * @param cancellable 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(MediaObject | null)>;
-
-        /**
-         * @param id 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_object(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<MediaObject | null>;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        find_object(id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(MediaObject | null)> | void);
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param id 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        find_object(id: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<MediaObject | null> | void;
 
         /**
          * @param _res_ 
          */
-        find_object_finish(_res_: Gio.AsyncResult): (MediaObject | null);
+        find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
         get_search_classes(): Gee.ArrayList;
 
@@ -6023,7 +5980,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_add_child(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_add_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6036,7 +5993,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_remove_child(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6063,9 +6020,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaContainer.ConstructorProps {}
     }
 
     export interface TrackableContainerNamespace {
@@ -6083,12 +6038,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        clear(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        clear(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        clear(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        clear(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6104,13 +6059,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param object 
          * @param _callback_ 
          */
-        add_child(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param object 
          * @param _callback_ 
          */
-        add_child(object: MediaObject, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6126,13 +6081,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param object 
          * @param _callback_ 
          */
-        add_child_tracked(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param object 
          * @param _callback_ 
          */
-        add_child_tracked(object: MediaObject, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_child_tracked(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6148,13 +6103,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param object 
          * @param _callback_ 
          */
-        remove_child(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param object 
          * @param _callback_ 
          */
-        remove_child(object: MediaObject, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_child(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6170,13 +6125,13 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param object 
          * @param _callback_ 
          */
-        remove_child_tracked(object: MediaObject, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param object 
          * @param _callback_ 
          */
-        remove_child_tracked(object: MediaObject, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_child_tracked(object: MediaObject, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6201,9 +6156,7 @@ interface IconInfo extends RygelCore.IconInfo {}
     namespace TrackableItem {
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaItem.ConstructorProps {}
     }
 
     export interface TrackableItemNamespace {
@@ -6362,7 +6315,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_add_item(item: MediaFileItem, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6376,7 +6329,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_add_container(container: MediaContainer, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_add_container(container: MediaContainer, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6390,7 +6343,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_add_reference(object: MediaObject, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_add_reference(object: MediaObject, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6404,7 +6357,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_remove_item(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_remove_item(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6418,7 +6371,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_remove_container(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_remove_container(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6472,21 +6425,21 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param item 
          * @param cancellable 
          */
-        add_item(item: MediaFileItem, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param item 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_item(item: MediaFileItem, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param item 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_item(item: MediaFileItem, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6497,21 +6450,21 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param container 
          * @param cancellable 
          */
-        add_container(container: MediaContainer, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        add_container(container: MediaContainer, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param container 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_container(container: MediaContainer, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_container(container: MediaContainer, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param container 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_container(container: MediaContainer, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        add_container(container: MediaContainer, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6522,21 +6475,21 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param object 
          * @param cancellable 
          */
-        add_reference(object: MediaObject, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        add_reference(object: MediaObject, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param object 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_reference(object: MediaObject, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_reference(object: MediaObject, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param object 
          * @param cancellable 
          * @param _callback_ 
          */
-        add_reference(object: MediaObject, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        add_reference(object: MediaObject, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -6547,21 +6500,21 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param id 
          * @param cancellable 
          */
-        remove_item(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        remove_item(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        remove_item(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_item(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        remove_item(id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_item(id: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6572,21 +6525,21 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param id 
          * @param cancellable 
          */
-        remove_container(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        remove_container(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        remove_container(id: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_container(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param id 
          * @param cancellable 
          * @param _callback_ 
          */
-        remove_container(id: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        remove_container(id: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -6619,7 +6572,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param playspeed 
              * @virtual
              */
-            vfunc_preroll(seek: (HTTPSeekRequest | null), playspeed: (PlaySpeedRequest | null)): (Gee.List | null);
+            vfunc_preroll(seek: HTTPSeekRequest | null, playspeed: PlaySpeedRequest | null): Gee.List | null;
 
             /**
              * @virtual
@@ -6644,9 +6597,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DataSourceNamespace {
@@ -6663,7 +6614,7 @@ interface IconInfo extends RygelCore.IconInfo {}
          * @param seek 
          * @param playspeed 
          */
-        preroll(seek: (HTTPSeekRequest | null), playspeed: (PlaySpeedRequest | null)): (Gee.List | null);
+        preroll(seek: HTTPSeekRequest | null, playspeed: PlaySpeedRequest | null): Gee.List | null;
 
         start(): void;
 
@@ -6691,7 +6642,7 @@ interface IconInfo extends RygelCore.IconInfo {}
              * @param _callback_ 
              * @virtual
              */
-            vfunc_commit(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -6702,9 +6653,7 @@ interface IconInfo extends RygelCore.IconInfo {}
 
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaObject.ConstructorProps {}
     }
 
     export interface UpdatableObjectNamespace {
@@ -6722,12 +6671,12 @@ interface IconInfo extends RygelCore.IconInfo {}
         /**
          * @param _callback_ 
          */
-        commit(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        commit(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        commit(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        commit(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 

@@ -502,7 +502,7 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_authenticate_sync(credentials: EDataServer.NamedParameters, out_certificate_pem: string, out_certificate_errors: Gio.TlsCertificateFlags, cancellable: (Gio.Cancellable | null)): EDataServer.SourceAuthenticationResult;
+        vfunc_authenticate_sync(credentials: EDataServer.NamedParameters, out_certificate_pem: string, out_certificate_errors: Gio.TlsCertificateFlags, cancellable: Gio.Cancellable | null): EDataServer.SourceAuthenticationResult;
 
         /**
          * Provides destination server host name and port to which
@@ -539,7 +539,7 @@ export namespace EBackend {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: (GLib.Error | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously calls the `e_backend_credentials_required_sync()` on the `backend`,
@@ -554,7 +554,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: (GLib.Error | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls the `e_backend_credentials_required_sync()` on the `backend`,
@@ -569,7 +569,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: (GLib.Error | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_backend_credentials_required()`.
@@ -596,7 +596,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: (GLib.Error | null), cancellable: (Gio.Cancellable | null)): boolean;
+        credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Makes sure that the "online" property is updated, that is, if there
@@ -604,7 +604,7 @@ export namespace EBackend {
          * and the only state will be updated as well.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        ensure_online_state_updated(cancellable: (Gio.Cancellable | null)): void;
+        ensure_online_state_updated(cancellable: Gio.Cancellable | null): void;
 
         /**
          * Makes sure that the associated ESource::connection-status is connected. This is
@@ -670,7 +670,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable} instance, or `null`
          * @returns `true`, when destination server address is reachable or    the backend doesn't provide destination address; `false` if    the backend destination server cannot be reached currently.
          */
-        is_destination_reachable(cancellable: (Gio.Cancellable | null)): boolean;
+        is_destination_reachable(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Let's the `backend` know that it'll be shut down shortly, no client connects
@@ -691,7 +691,7 @@ export namespace EBackend {
          * must be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.SocketConnectable}, or `null`
          */
-        ref_connectable(): (Gio.SocketConnectable | null);
+        ref_connectable(): Gio.SocketConnectable | null;
 
         /**
          * Returns the {@link GLib.MainContext} on which event sources for `backend` are to
@@ -710,7 +710,7 @@ export namespace EBackend {
          * without it is run.
          * @param credentials a credentials to use to authenticate, or `null`
          */
-        schedule_authenticate(credentials: (EDataServer.NamedParameters | null)): void;
+        schedule_authenticate(credentials: EDataServer.NamedParameters | null): void;
 
         /**
          * Asynchronously invokes `e_backend_credentials_required()`, but installs its
@@ -725,7 +725,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param who_calls an identification who calls this
          */
-        schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: (GLib.Error | null), cancellable: (Gio.Cancellable | null), who_calls: (string | null)): void;
+        schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, who_calls: string | null): void;
 
         /**
          * Sets the socket endpoint for the network service to which `backend` is
@@ -758,7 +758,7 @@ export namespace EBackend {
          * @param parameters an {@link EDataServer.NamedParameters} with values for the trust prompt
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null)): globalThis.Promise<EDataServer.TrustPromptResponse>;
+        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): globalThis.Promise<EDataServer.TrustPromptResponse>;
 
         /**
          * Initiates a user trust prompt with given `parameters`.
@@ -769,7 +769,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Initiates a user trust prompt with given `parameters`.
@@ -780,7 +780,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<EDataServer.TrustPromptResponse> | void);
+        trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EDataServer.TrustPromptResponse> | void;
 
         /**
          * Finishes the operation started with `e_backend_trust_prompt()`.
@@ -798,7 +798,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.TrustPromptResponse} what user responded Note: The function can return also {@link EDataServer.TrustPromptResponse.UNKNOWN},    it's on error or if user closes the trust prompt dialog with other    than the offered buttons. Usual behaviour in such case is to treat    it as a temporary reject.
          */
-        trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null)): EDataServer.TrustPromptResponse;
+        trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): EDataServer.TrustPromptResponse;
     }
 
 
@@ -809,9 +809,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
     }
 
     /**
@@ -909,12 +907,12 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "before-put": (arg0: string, arg1: string, arg2: string, arg3: CacheColumnValues, arg4: boolean, arg5: (Gio.Cancellable | null), arg6: null) => (boolean | void);
+            "before-put": (arg0: string, arg1: string, arg2: string, arg3: CacheColumnValues, arg4: boolean, arg5: Gio.Cancellable | null, arg6: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "before-remove": (arg0: string, arg1: (Gio.Cancellable | null), arg2: null) => (boolean | void);
+            "before-remove": (arg0: string, arg1: Gio.Cancellable | null, arg2: null) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -923,9 +921,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -983,20 +979,20 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_put(uid: string, revision: string, object: string, other_columns: CacheColumnValues, is_replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_put(uid: string, revision: string, object: string, other_columns: CacheColumnValues, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param uid 
          * @param cancellable 
          * @virtual
          */
-        vfunc_before_remove(uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_before_remove(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable 
          * @virtual
          */
-        vfunc_clear_offline_changes_locked(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_clear_offline_changes_locked(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Erases the cache and all of its content from the disk.
@@ -1015,14 +1011,14 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_put_locked(uid: string, revision: string, object: string, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_put_locked(uid: string, revision: string, object: string, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param uid 
          * @param cancellable 
          * @virtual
          */
-        vfunc_remove_locked(uid: string, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_remove_locked(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @virtual
@@ -1043,7 +1039,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        clear_offline_changes(cancellable: (Gio.Cancellable | null)): boolean;
+        clear_offline_changes(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Checkes whether the `cache` contains an object with
@@ -1095,7 +1091,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        foreach(deleted_flag: CacheDeletedFlag, where_clause: (string | null), func: CacheForeachFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        foreach(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Calls `func` for each found object, which satisfies the criteria for both
@@ -1113,7 +1109,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        foreach_update(deleted_flag: CacheDeletedFlag, where_clause: (string | null), func: CacheUpdateFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        foreach_update(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheUpdateFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Freezes automatic revision change for the `cache`. The function
@@ -1135,14 +1131,14 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
          */
-        get(uid: string, cancellable: (Gio.Cancellable | null)): [(string | null), string, CacheColumnValues | null];
+        get(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
         /**
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Count of objects stored in the `cache`.
          */
-        get_count(deleted_flag: CacheDeletedFlag, cancellable: (Gio.Cancellable | null)): number;
+        get_count(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): number;
 
         /**
          * @returns a filename of the `cache`, with which it had been initialized.
@@ -1162,7 +1158,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
          */
-        get_object_include_deleted(uid: string, cancellable: (Gio.Cancellable | null)): [(string | null), string, CacheColumnValues | null];
+        get_object_include_deleted(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
         /**
          * Gets a list of objects stored in the `cache`, optionally together with
@@ -1176,7 +1172,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
          */
-        get_objects(deleted_flag: CacheDeletedFlag, cancellable: (Gio.Cancellable | null)): [boolean, string[], string[] | null];
+        get_objects(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
         /**
          * Gathers the list of all offline changes being done so far.
@@ -1186,14 +1182,14 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cache_offline_change_free);    when no longer needed.
          */
-        get_offline_changes(cancellable: (Gio.Cancellable | null)): CacheOfflineChange[];
+        get_offline_changes(cancellable: Gio.Cancellable | null): CacheOfflineChange[];
 
         /**
          * @param uid a unique identifier of an object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Current offline state {@link EBackend.OfflineState} for the given object.    It returns {@link EBackend.OfflineState.UNKNOWN} when the object could not be    found or other error happened.
          */
-        get_offline_state(uid: string, cancellable: (Gio.Cancellable | null)): OfflineState;
+        get_offline_state(uid: string, cancellable: Gio.Cancellable | null): OfflineState;
 
         /**
          * @returns An SQLite3 database pointer. It is owned by the `cache`.
@@ -1212,7 +1208,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
          */
-        get_uids(deleted_flag: CacheDeletedFlag, cancellable: (Gio.Cancellable | null)): [boolean, string[], string[] | null];
+        get_uids(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
         /**
          * @returns A cache data version. This is meant to be used by the descendants.
@@ -1231,7 +1227,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        initialize_sync(filename: string, other_columns: (CacheColumnInfo[] | null), cancellable: (Gio.Cancellable | null)): boolean;
+        initialize_sync(filename: string, other_columns: CacheColumnInfo[] | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @returns Whether automatic revision change for the `cache`    is currently frozen.
@@ -1261,7 +1257,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        put(uid: string, revision: (string | null), object: string, other_columns: (CacheColumnValues | null), offline_flag: CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        put(uid: string, revision: string | null, object: string, other_columns: CacheColumnValues | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes the object with the given `uid` from the `cache`. Based on the `offline_flag`,
@@ -1273,14 +1269,14 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove(uid: string, offline_flag: CacheOfflineFlag, cancellable: (Gio.Cancellable | null)): boolean;
+        remove(uid: string, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes all objects from the `cache` in one call.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_all(cancellable: (Gio.Cancellable | null)): boolean;
+        remove_all(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets a `value` of the user `key`, or deletes it, if the `value` is `null`.
@@ -1288,7 +1284,7 @@ export namespace EBackend {
          * @param value a value to set, or `null` to delete the key
          * @returns Whether succeeded.
          */
-        set_key(key: string, value: (string | null)): boolean;
+        set_key(key: string, value: string | null): boolean;
 
         /**
          * Sets an integer `value` for the user `key`.
@@ -1305,7 +1301,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        set_offline_state(uid: string, state: OfflineState, cancellable: (Gio.Cancellable | null)): boolean;
+        set_offline_state(uid: string, state: OfflineState, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the `revision` of the whole `cache`. This is not meant to be
@@ -1313,7 +1309,7 @@ export namespace EBackend {
          * when needed. The descendants can listen to "revision-changed" signal.
          * @param revision a revision to set; use `null` to unset it
          */
-        set_revision(revision: (string | null)): void;
+        set_revision(revision: string | null): void;
 
         /**
          * Sets a cache data version. This is meant to be used by the descendants.
@@ -1329,14 +1325,14 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        sqlite_exec(sql_stmt: string, cancellable: (Gio.Cancellable | null)): boolean;
+        sqlite_exec(sql_stmt: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Runs vacuum (compacts the database file), if needed.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't mean that the vacuum had been run,    only that no error happened during the call.
          */
-        sqlite_maybe_vacuum(cancellable: (Gio.Cancellable | null)): boolean;
+        sqlite_maybe_vacuum(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Executes a SELECT statement `sql_stmt` and calls `func` for each row of the result.
@@ -1346,7 +1342,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        sqlite_select(sql_stmt: string, func: CacheSelectFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        sqlite_select(sql_stmt: string, func: CacheSelectFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Thaws automatic revision change for the `cache`. It's the pair
@@ -1501,7 +1497,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        count_keys_sync(cancellable: (Gio.Cancellable | null)): [boolean, number];
+        count_keys_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Calls `func` for each stored key in the `self`, providing
@@ -1510,7 +1506,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        foreach_sync(func: CacheKeysForeachFunc, cancellable: (Gio.Cancellable | null)): boolean;
+        foreach_sync(func: CacheKeysForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets an {@link EBackend.Cache}, with which the `self` had been created.
@@ -1532,7 +1528,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_ref_count_sync(key: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+        get_ref_count_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
         /**
          * Gets a stored value with given `key`, which had been previously put
@@ -1543,7 +1539,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_sync(key: string, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        get_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Gets a table name, with which the `self` had been created.
@@ -1562,7 +1558,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        init_table_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        init_table_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Puts the `key` and `value` into the `self`. The function adds a new or
@@ -1573,14 +1569,14 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        put_sync(key: string, value: string, inc_ref_counts: number, cancellable: (Gio.Cancellable | null)): boolean;
+        put_sync(key: string, value: string, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes all stored keys from the `self`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_all_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        remove_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Dereferences use count of the `key` by `dec_ref_counts` and removes it
@@ -1594,7 +1590,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        remove_sync(key: string, dec_ref_counts: number, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_sync(key: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1605,9 +1601,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.Extension.ConstructorProps, EDataServer.Extensible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.Extension.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
     }
 
     /**
@@ -1834,7 +1828,7 @@ export namespace EBackend {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_create_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes the operation started with `e_collection_backend_create_resource()`.
@@ -1865,7 +1859,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_create_resource_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_create_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously deletes a server-side resource described by `source`.
@@ -1884,7 +1878,7 @@ export namespace EBackend {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_delete_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes the operation started with `e_collection_backend_delete_resource()`.
@@ -1909,7 +1903,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_delete_resource_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_delete_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Extracts the resource ID for `child_source`, which is supposed to be a
@@ -1922,7 +1916,7 @@ export namespace EBackend {
          * @param child_source an {@link EDataServer.Source} managed by `backend`
          * @virtual
          */
-        vfunc_dup_resource_id(child_source: EDataServer.Source): (string | null);
+        vfunc_dup_resource_id(child_source: EDataServer.Source): string | null;
 
         /**
          * @virtual
@@ -1964,7 +1958,7 @@ export namespace EBackend {
          * 
          * @returns a list    of previously used sources
          */
-        claim_all_resources(): (EDataServer.Source[] | null);
+        claim_all_resources(): EDataServer.Source[] | null;
 
         /**
          * Asynchronously creates a server-side resource described by `source`.
@@ -1987,31 +1981,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        create_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously creates a server-side resource described by `source`.
-         * For example, if `source` describes a new calendar, an equivalent calendar
-         * is created on the server.
-         * 
-         * It is the implementor's responsibility to examine `source` and determine
-         * what the equivalent server-side resource would be.  If this cannot be
-         * determined without ambiguity, the function must return an error.
-         * 
-         * After the server-side resource is successfully created, the implementor
-         * must also add an {@link EDataServer.Source} to `backend`'s {@link EBackend.CollectionBackend.server}.  This
-         * can either be done immediately or in response to some "resource created"
-         * notification from the server.  The added {@link EDataServer.Source} can be `source` itself
-         * or a different {@link EDataServer.Source} instance that describes the new resource.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_collection_backend_create_resource_finish()` to get the result of
-         * the operation.
-         * @param source an {@link EDataServer.Source}
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        create_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously creates a server-side resource described by `source`.
@@ -2035,7 +2005,31 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        create_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously creates a server-side resource described by `source`.
+         * For example, if `source` describes a new calendar, an equivalent calendar
+         * is created on the server.
+         * 
+         * It is the implementor's responsibility to examine `source` and determine
+         * what the equivalent server-side resource would be.  If this cannot be
+         * determined without ambiguity, the function must return an error.
+         * 
+         * After the server-side resource is successfully created, the implementor
+         * must also add an {@link EDataServer.Source} to `backend`'s {@link EBackend.CollectionBackend.server}.  This
+         * can either be done immediately or in response to some "resource created"
+         * notification from the server.  The added {@link EDataServer.Source} can be `source` itself
+         * or a different {@link EDataServer.Source} instance that describes the new resource.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_collection_backend_create_resource_finish()` to get the result of
+         * the operation.
+         * @param source an {@link EDataServer.Source}
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_collection_backend_create_resource()`.
@@ -2066,7 +2060,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        create_resource_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): boolean;
+        create_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously deletes a server-side resource described by `source`.
@@ -2083,25 +2077,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        delete_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously deletes a server-side resource described by `source`.
-         * The `source` must be a child of `backend`'s collection {@link EBackend.Backend.source}.
-         * 
-         * After the server-side resource is successfully deleted, the implementor
-         * must also remove `source` from the `backend`'s {@link EBackend.CollectionBackend.server}.
-         * This can either be done immediately or in response to some "resource
-         * deleted" notification from the server.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_collection_backend_delete_resource_finish()` to get the result of
-         * the operation.
-         * @param source an {@link EDataServer.Source}
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        delete_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes a server-side resource described by `source`.
@@ -2119,7 +2095,25 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        delete_resource(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously deletes a server-side resource described by `source`.
+         * The `source` must be a child of `backend`'s collection {@link EBackend.Backend.source}.
+         * 
+         * After the server-side resource is successfully deleted, the implementor
+         * must also remove `source` from the `backend`'s {@link EBackend.CollectionBackend.server}.
+         * This can either be done immediately or in response to some "resource
+         * deleted" notification from the server.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_collection_backend_delete_resource_finish()` to get the result of
+         * the operation.
+         * @param source an {@link EDataServer.Source}
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the operation started with `e_collection_backend_delete_resource()`.
@@ -2144,7 +2138,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        delete_resource_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): boolean;
+        delete_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Extracts the resource ID for `child_source`, which is supposed to be a
@@ -2157,7 +2151,7 @@ export namespace EBackend {
          * @param child_source an {@link EDataServer.Source} managed by `backend`
          * @returns a newly-allocated resource ID for `child_source`,    or `null`
          */
-        dup_resource_id(child_source: EDataServer.Source): (string | null);
+        dup_resource_id(child_source: EDataServer.Source): string | null;
 
         /**
          * Freezes populate of the backend's content. This is used to avoid calling
@@ -2278,7 +2272,7 @@ export namespace EBackend {
          * be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.ProxyResolver}, or `null`
          */
-        ref_proxy_resolver(): (Gio.ProxyResolver | null);
+        ref_proxy_resolver(): Gio.ProxyResolver | null;
 
         /**
          * Returns the {@link EBackend.SourceRegistryServer} to which `backend` belongs.
@@ -2311,9 +2305,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BackendFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BackendFactory.ConstructorProps {}
     }
 
     /**
@@ -2419,9 +2411,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
     }
 
     /**
@@ -2677,7 +2667,7 @@ export namespace EBackend {
          * @param source 
          * @virtual
          */
-        vfunc_create_backend(backend_factory: BackendFactory, source: EDataServer.Source): (Backend | null);
+        vfunc_create_backend(backend_factory: BackendFactory, source: EDataServer.Source): Backend | null;
 
         /**
          * @param backend 
@@ -2685,7 +2675,7 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_open_backend(backend: Backend, connection: Gio.DBusConnection, cancellable: (Gio.Cancellable | null)): string;
+        vfunc_open_backend(backend: Backend, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): string;
 
         // Methods
         /**
@@ -2715,7 +2705,7 @@ export namespace EBackend {
          * @param source 
          * @returns a newly-created {@link EBackend.Backend}
          */
-        create_backend(backend_factory: BackendFactory, source: EDataServer.Source): (Backend | null);
+        create_backend(backend_factory: BackendFactory, source: EDataServer.Source): Backend | null;
 
         get_backend_per_process(): number;
 
@@ -2750,7 +2740,7 @@ export namespace EBackend {
          * @param connection 
          * @param cancellable 
          */
-        open_backend(backend: Backend, connection: Gio.DBusConnection, cancellable: (Gio.Cancellable | null)): string;
+        open_backend(backend: Backend, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Returns the {@link EBackend.BackendFactory} for "`backend_name`:`extension_name`", or
@@ -2763,7 +2753,7 @@ export namespace EBackend {
          * @param extension_name an extension name
          * @returns the {@link EBackend.BackendFactory} for `hash_key`,    or `null`
          */
-        ref_backend_factory(backend_name: string, extension_name: string): (BackendFactory | null);
+        ref_backend_factory(backend_name: string, extension_name: string): BackendFactory | null;
 
         /**
          * Spawns a new subprocess for a backend type and returns the object path
@@ -2848,7 +2838,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2892,7 +2882,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2992,7 +2982,7 @@ export namespace EBackend {
          * @param key the hash key of the object to find
          * @returns the object corresponding to `key`
          */
-        get_object(key: string): (string | null);
+        get_object(key: string): string | null;
 
         /**
          * Returns a list of objects in `cache`.  The objects are owned by `cache` and
@@ -3055,7 +3045,7 @@ export namespace EBackend {
         // Constructor properties interface
         interface ConstructorProps extends EDataServer.Source.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ProxyResolver.ConstructorProps {
             exported: boolean;
-            file: (Gio.File | null);
+            file: Gio.File | null;
             oauth2_support: OAuth2Support;
             oauth2Support: OAuth2Support;
             remote_creatable: boolean;
@@ -3091,7 +3081,7 @@ export namespace EBackend {
          * The key file for the data source
          * @construct-only
          */
-        get file(): (Gio.File | null);
+        get file(): Gio.File | null;
 
         /**
          * The object providing OAuth 2.0 support
@@ -3203,12 +3193,12 @@ export namespace EBackend {
 
         _init(...args: any[]): void;
 
-        static ["new"](server: SourceRegistryServer, file: (Gio.File | null)): ServerSideSource;
+        static ["new"](server: SourceRegistryServer, file: Gio.File | null): ServerSideSource;
 
         // Conflicted with EDataServer.Source.new
         static ["new"](...args: never[]): any;
 
-        static new_memory_only(server: SourceRegistryServer, uid: (string | null)): ServerSideSource;
+        static new_memory_only(server: SourceRegistryServer, uid: string | null): ServerSideSource;
 
         // Signals
         /** @signal */
@@ -3240,7 +3230,7 @@ export namespace EBackend {
          * Note the data source file itself is not created here, only its name.
          * @param uid unique identifier for a data source, or `null`
          */
-        static new_user_file(uid: (string | null)): Gio.File;
+        static new_user_file(uid: string | null): Gio.File;
 
         /**
          * Extracts a unique identity string from the base name of `file`.
@@ -3248,7 +3238,7 @@ export namespace EBackend {
          * function sets `error` and returns `null`.
          * @param file a {@link Gio.File} for a data source
          */
-        static uid_from_file(file: Gio.File): (string | null);
+        static uid_from_file(file: Gio.File): string | null;
 
         // Methods
         /**
@@ -3266,7 +3256,7 @@ export namespace EBackend {
          * which changes are saved.  Note the `source` may not have a {@link Gio.File}.
          * @returns the {@link Gio.File} for `source`, or `null`
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * Returns the {@link GLib.Node} representing the `source`'s hierarchical placement,
@@ -3278,7 +3268,7 @@ export namespace EBackend {
          * and this therefore function may be replaced at some later date.
          * @returns a {@link GLib.Node}, or `null`
          */
-        get_node(): (GLib.Node | null);
+        get_node(): GLib.Node | null;
 
         /**
          * Returns the {@link EBackend.SourceRegistryServer} to which `source` belongs.
@@ -3309,7 +3299,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        load(cancellable: (Gio.Cancellable | null)): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Returns the object implementing the {@link EBackend.OAuth2SupportInterface},
@@ -3319,7 +3309,7 @@ export namespace EBackend {
          * Unreference the object with `g_object_unref()` when finished with it.
          * @returns an {@link EBackend.OAuth2Support} object, or `null`
          */
-        ref_oauth2_support(): (OAuth2Support | null);
+        ref_oauth2_support(): OAuth2Support | null;
 
         /**
          * Indicates whether `source` supports OAuth 2.0 authentication.
@@ -3334,7 +3324,7 @@ export namespace EBackend {
          * which implements the {@link EBackend.OAuth2SupportInterface}.
          * @param oauth2_support an {@link EBackend.OAuth2Support} object, or `null`
          */
-        set_oauth2_support(oauth2_support: (OAuth2Support | null)): void;
+        set_oauth2_support(oauth2_support: OAuth2Support | null): void;
 
         /**
          * Indicates whether `source` can be used to create resources on a remote
@@ -3448,7 +3438,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3492,7 +3482,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Checks if `resolver` can be used on this system. (This is used
@@ -3522,7 +3512,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
          */
-        lookup(uri: string, cancellable: (Gio.Cancellable | null)): string[];
+        lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
@@ -3530,16 +3520,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        lookup_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
-
-        /**
-         * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
-         * details.
-         * @param uri a URI representing the destination to connect to
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback callback to call after resolution completes
-         */
-        lookup_async(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        lookup_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
@@ -3548,7 +3529,16 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
          */
-        lookup_async(uri: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
+         * details.
+         * @param uri a URI representing the destination to connect to
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback callback to call after resolution completes
+         */
+        lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Call this function to obtain the array of proxy URIs when
@@ -3587,7 +3577,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_lookup(uri: string, cancellable: (Gio.Cancellable | null)): string[];
+        vfunc_lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Asynchronous lookup of proxy. See `g_proxy_resolver_lookup()` for more
@@ -3597,7 +3587,7 @@ export namespace EBackend {
          * @param callback callback to call after resolution completes
          * @virtual
          */
-        vfunc_lookup_async(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Call this function to obtain the array of proxy URIs when
@@ -3617,9 +3607,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.SourceCredentialsProvider.ConstructorProps, EDataServer.Extensible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.SourceCredentialsProvider.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
     }
 
     /**
@@ -3738,16 +3726,14 @@ export namespace EBackend {
              * @since 3.8
              * @run-last
              */
-            "tweak-key-file": (arg0: GLib.KeyFile, arg1: string) => (boolean | void);
+            "tweak-key-file": (arg0: GLib.KeyFile, arg1: string) => boolean | void;
             "notify::backend-per-process": (pspec: GObject.ParamSpec) => void;
             "notify::registry": (pspec: GObject.ParamSpec) => void;
             "notify::reload-supported": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DataFactory.ConstructorProps, OAuth2Support.ConstructorProps, EDataServer.Extensible.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DataFactory.ConstructorProps, OAuth2Support.ConstructorProps, EDataServer.Extensible.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -3852,7 +3838,7 @@ export namespace EBackend {
          * @param extension_name the extension name to find
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
          */
-        find_extension(source: EDataServer.Source, extension_name: string): (EDataServer.Source | null);
+        find_extension(source: EDataServer.Source, extension_name: string): EDataServer.Source | null;
 
         /**
          * @returns an {@link EDataServer.OAuth2Services} instance owned by `server`
@@ -3878,7 +3864,7 @@ export namespace EBackend {
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
          */
-        list_sources(extension_name: (string | null)): EDataServer.Source[];
+        list_sources(extension_name: string | null): EDataServer.Source[];
 
         /**
          * Loads data source key files in `path`.  Because multiple errors can
@@ -3912,7 +3898,7 @@ export namespace EBackend {
          * @param flags initial permission flags for the data source
          * @returns the newly-added {@link EDataServer.Source}, or `null` on error
          */
-        load_file(file: Gio.File, flags: SourcePermissionFlags): (EDataServer.Source | null);
+        load_file(file: Gio.File, flags: SourcePermissionFlags): EDataServer.Source | null;
 
         /**
          * Loads data source key files from `resource` by enumerating the children
@@ -3941,7 +3927,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @returns the {@link EBackend.CollectionBackend} for `source`, or `null`
          */
-        ref_backend(source: EDataServer.Source): (CollectionBackend | null);
+        ref_backend(source: EDataServer.Source): CollectionBackend | null;
 
         /**
          * Returns the {@link EBackend.CollectionBackendFactory} for `source`, if available.
@@ -3956,7 +3942,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @returns the {@link EBackend.CollectionBackendFactory} for `source`,    or `null`
          */
-        ref_backend_factory(source: EDataServer.Source): (CollectionBackendFactory | null);
+        ref_backend_factory(source: EDataServer.Source): CollectionBackendFactory | null;
 
         /**
          * @param args 
@@ -3978,7 +3964,7 @@ export namespace EBackend {
          * Free the returned object with `g_object_unref()`, when no longer needed.
          * @returns the default {@link EBackend.OAuth2Support},    or `null`, when none exists
          */
-        ref_oauth2_support(): (OAuth2Support | null);
+        ref_oauth2_support(): OAuth2Support | null;
 
         /**
          * Looks up an {@link EDataServer.Source} in `server` by its unique identifier string.
@@ -3988,7 +3974,7 @@ export namespace EBackend {
          * @param uid a unique identifier string
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
          */
-        ref_source(uid: string): (EDataServer.Source | null);
+        ref_source(uid: string): EDataServer.Source | null;
 
         /**
          * Removes `source` and all of its descendants from `server`.
@@ -4006,7 +3992,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[string, number]>;
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -4019,7 +4005,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -4032,7 +4018,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[string, number]> | void);
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
         /**
          * Finishes the operation started with `e_oauth2_support_get_access_token()`.
@@ -4054,7 +4040,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_access_token_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+        get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -4068,7 +4054,7 @@ export namespace EBackend {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes the operation started with `e_oauth2_support_get_access_token()`.
@@ -4090,7 +4076,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+        vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
         /**
          * Initializes the object implementing the interface.
@@ -4134,7 +4120,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4178,7 +4164,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -4264,7 +4250,7 @@ export namespace EBackend {
          * @param cancellable 
          * @virtual
          */
-        vfunc_open_data(backend: Backend, connection: Gio.DBusConnection, data: null, cancellable: (Gio.Cancellable | null)): string;
+        vfunc_open_data(backend: Backend, connection: Gio.DBusConnection, data: null, cancellable: Gio.Cancellable | null): string;
 
         // Methods
         /**
@@ -4294,7 +4280,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a newly allocated string that represents the {@link EBackend.Backend}          data D-Bus object path.
          */
-        open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable: (Gio.Cancellable | null)): string;
+        open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Returns either a newly-created or existing {@link EBackend.Backend} for {@link EDataServer.Source}.
@@ -4314,7 +4300,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EBackend.Backend} for `source`, or `null`
          */
-        ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable: (Gio.Cancellable | null)): (Backend | null);
+        ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable: Gio.Cancellable | null): Backend | null;
 
         /**
          * Installs a toggle reference on the backend, that can receive a signal to
@@ -4366,7 +4352,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -4410,19 +4396,16 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace UserPrompter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4479,7 +4462,7 @@ export namespace EBackend {
          * @param in_parameters optional parameters to pass to extension; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        extension_prompt(dialog_name: string, in_parameters: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+        extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously prompt a user for a decision on an extension-provided dialog.
@@ -4497,7 +4480,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        extension_prompt(dialog_name: string, in_parameters: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously prompt a user for a decision on an extension-provided dialog.
@@ -4515,7 +4498,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        extension_prompt(dialog_name: string, in_parameters: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with `e_user_prompter_extension_prompt()`.
@@ -4532,7 +4515,7 @@ export namespace EBackend {
          * @param out_values Where to store values from the extension, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
          */
-        extension_prompt_finish(result: Gio.AsyncResult, out_values: (EDataServer.NamedParameters | null)): number;
+        extension_prompt_finish(result: Gio.AsyncResult, out_values: EDataServer.NamedParameters | null): number;
 
         /**
          * Synchronously prompt a user for a decision on an extension-provided dialog.
@@ -4556,7 +4539,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
          */
-        extension_prompt_sync(dialog_name: string, in_parameters: (EDataServer.NamedParameters | null), out_values: (EDataServer.NamedParameters | null), cancellable: (Gio.Cancellable | null)): number;
+        extension_prompt_sync(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, out_values: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Asynchronously prompt a user for a decision.
@@ -4577,29 +4560,7 @@ export namespace EBackend {
          * @param button_captions captions of buttons to    use in the message; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        prompt(type: (string | null), title: (string | null), primary_text: (string | null), secondary_text: (string | null), use_markup: boolean, button_captions: (string[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * Asynchronously prompt a user for a decision.
-         * 
-         * The `type` can be one of "info", "warning", "question" or "error", to include
-         * an icon in the message prompt; anything else results in no icon in the message.
-         * 
-         * If `button_captions` is `null` or empty list, then only one button is shown in
-         * the prompt, a "Dismiss" button.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_user_prompter_prompt_finish()` to get the result of the operation.
-         * @param type type of the prompt; can be `null`
-         * @param title window title of the prompt; can be `null`
-         * @param primary_text primary text of the prompt; can be `null`
-         * @param secondary_text secondary text of the prompt; can be `null`
-         * @param use_markup whether both texts are with markup
-         * @param button_captions captions of buttons to    use in the message; can be `null`
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        prompt(type: (string | null), title: (string | null), primary_text: (string | null), secondary_text: (string | null), use_markup: boolean, button_captions: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * Asynchronously prompt a user for a decision.
@@ -4621,7 +4582,29 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        prompt(type: (string | null), title: (string | null), primary_text: (string | null), secondary_text: (string | null), use_markup: boolean, button_captions: (string[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously prompt a user for a decision.
+         * 
+         * The `type` can be one of "info", "warning", "question" or "error", to include
+         * an icon in the message prompt; anything else results in no icon in the message.
+         * 
+         * If `button_captions` is `null` or empty list, then only one button is shown in
+         * the prompt, a "Dismiss" button.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_user_prompter_prompt_finish()` to get the result of the operation.
+         * @param type type of the prompt; can be `null`
+         * @param title window title of the prompt; can be `null`
+         * @param primary_text primary text of the prompt; can be `null`
+         * @param secondary_text secondary text of the prompt; can be `null`
+         * @param use_markup whether both texts are with markup
+         * @param button_captions captions of buttons to    use in the message; can be `null`
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Finishes the operation started with `e_user_prompter_prompt()`.
@@ -4651,7 +4634,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0-based index of a button being used by a user as a response,   corresponding to `button_captions` list.
          */
-        prompt_sync(type: (string | null), title: (string | null), primary_text: (string | null), secondary_text: (string | null), use_markup: boolean, button_captions: (string[] | null), cancellable: (Gio.Cancellable | null)): number;
+        prompt_sync(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null): number;
     }
 
 
@@ -4662,13 +4645,11 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            prompt: (arg0: number, arg1: (string | null), arg2: (string | null), arg3: (string | null), arg4: (string | null), arg5: boolean, arg6: (string[] | null)) => void;
+            prompt: (arg0: number, arg1: string | null, arg2: string | null, arg3: string | null, arg4: string | null, arg5: boolean, arg6: string[] | null) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DBusServer.ConstructorProps, EDataServer.Extensible.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DBusServer.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
     }
 
     /**
@@ -4734,7 +4715,7 @@ export namespace EBackend {
          * @param response Response of the prompt
          * @param extension_values For extension prompts can pass extra return values
          */
-        response(prompt_id: number, response: number, extension_values: (EDataServer.NamedParameters | null)): void;
+        response(prompt_id: number, response: number, extension_values: EDataServer.NamedParameters | null): void;
 
         /**
          * Returns a list of {@link EDataServer.Extension} objects bound to `extensible` whose
@@ -4772,9 +4753,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
     }
 
     /**
@@ -4833,7 +4812,7 @@ export namespace EBackend {
          * @param parameters Optional extension parameters for the dialog, as passed by a caller
          * @virtual
          */
-        vfunc_prompt(prompt_id: number, dialog_name: string, parameters: (EDataServer.NamedParameters | null)): boolean;
+        vfunc_prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean;
 
         // Methods
         /**
@@ -4855,7 +4834,7 @@ export namespace EBackend {
          * @param parameters Optional extension parameters for the dialog, as passed by a caller
          * @returns Whether dialog was found and shown.
          */
-        prompt(prompt_id: number, dialog_name: string, parameters: (EDataServer.NamedParameters | null)): boolean;
+        prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean;
 
         /**
          * A conveniente wrapper function around `e_user_prompter_server_response()`,
@@ -4867,7 +4846,7 @@ export namespace EBackend {
          * @param response Response of the prompt
          * @param values Additional response values, if extension defines any
          */
-        response(prompt_id: number, response: number, values: (EDataServer.NamedParameters | null)): void;
+        response(prompt_id: number, response: number, values: EDataServer.NamedParameters | null): void;
     }
 
 
@@ -4884,9 +4863,7 @@ export namespace EBackend {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CollectionBackend.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CollectionBackend.ConstructorProps {}
     }
 
     /**
@@ -4935,7 +4912,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @virtual
          */
-        vfunc_get_resource_id(source: EDataServer.Source): (string | null);
+        vfunc_get_resource_id(source: EDataServer.Source): string | null;
 
         /**
          * @param source an {@link EDataServer.Source}
@@ -4957,7 +4934,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.SourceAuthenticationResult} describing whether discovery on given    addresses succeeded.
          */
-        discover_sync(calendar_url: (string | null), contacts_url: (string | null), credentials: EDataServer.NamedParameters, cancellable: (Gio.Cancellable | null)): [EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags | null];
+        discover_sync(calendar_url: string | null, contacts_url: string | null, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): [EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags | null];
 
         /**
          * Verifies that the `source` is expected here and returns its resource ID,
@@ -4968,7 +4945,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @returns a resource ID corresponding to `source`,    or `null`, when the `source` should be removed.
          */
-        get_resource_id(source: EDataServer.Source): (string | null);
+        get_resource_id(source: EDataServer.Source): string | null;
 
         /**
          * @param source an {@link EDataServer.Source}
@@ -5030,7 +5007,7 @@ export namespace EBackend {
             index_name: string;
         }>);
 
-        static ["new"](name: string, type: string, index_name: (string | null)): CacheColumnInfo;
+        static ["new"](name: string, type: string, index_name: string | null): CacheColumnInfo;
 
         // Static methods
         /**
@@ -5044,7 +5021,7 @@ export namespace EBackend {
         /**
          * @returns Copy of the given `info`.    Free it with `e_cache_column_info_free()` when no longer needed.    If the `info` is `null`, then returns `null` as well.
          */
-        copy(): (CacheColumnInfo | null);
+        copy(): CacheColumnInfo | null;
     }
 
 
@@ -5055,10 +5032,7 @@ export namespace EBackend {
         static $gtype: GObject.GType<CacheColumnValues>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CacheColumnValues;
 
@@ -5104,7 +5078,7 @@ export namespace EBackend {
          * @param name a column name
          * @returns Stored value for the column named `name`,    or `null`, if no such column values is stored.
          */
-        lookup(name: string): (string | null);
+        lookup(name: string): string | null;
 
         /**
          * Puts the `value` for column `name`. If contains a value for the same
@@ -5113,7 +5087,7 @@ export namespace EBackend {
          * @param name a column name
          * @param value a column value
          */
-        put(name: string, value: (string | null)): void;
+        put(name: string, value: string | null): void;
 
         /**
          * Removes value for the column named `name` from `other_columns`.
@@ -5134,7 +5108,7 @@ export namespace EBackend {
          * @param name a column name
          * @param value a column value
          */
-        take(name: string, value: (string | null)): void;
+        take(name: string, value: string | null): void;
 
         /**
          * Puts the `value` for column `name`. If contains a value for the same
@@ -5143,7 +5117,7 @@ export namespace EBackend {
          * @param name a column name
          * @param value a column value
          */
-        take_value(name: string, value: (string | null)): void;
+        take_value(name: string, value: string | null): void;
     }
 
 
@@ -5178,9 +5152,9 @@ export namespace EBackend {
         state: OfflineState;
 
         // Constructors
-        constructor(uid: string, revision: (string | null), object: (string | null), state: OfflineState);
+        constructor(uid: string, revision: string | null, object: string | null, state: OfflineState);
 
-        static ["new"](uid: string, revision: (string | null), object: (string | null), state: OfflineState): CacheOfflineChange;
+        static ["new"](uid: string, revision: string | null, object: string | null, state: OfflineState): CacheOfflineChange;
 
         // Static methods
         /**
@@ -5194,7 +5168,7 @@ export namespace EBackend {
         /**
          * @returns Copy of the given `change`.    Free it with `e_cache_offline_change_free()` when no longer    needed. If the `change` is `null`, then returns `null` as well.
          */
-        copy(): (CacheOfflineChange | null);
+        copy(): CacheOfflineChange | null;
     }
 
 
@@ -5405,7 +5379,7 @@ export namespace EBackend {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
              * @virtual
              */
-            vfunc_get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Finishes the operation started with `e_oauth2_support_get_access_token()`.
@@ -5427,14 +5401,12 @@ export namespace EBackend {
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @virtual
              */
-            vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+            vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface OAuth2SupportNamespace {
@@ -5458,7 +5430,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[string, number]>;
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -5471,7 +5443,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously obtains the OAuth 2.0 access token for `source` along
@@ -5484,7 +5456,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_access_token(source: EDataServer.Source, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[string, number]> | void);
+        get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
         /**
          * Finishes the operation started with `e_oauth2_support_get_access_token()`.
@@ -5506,7 +5478,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          */
-        get_access_token_sync(source: EDataServer.Source, cancellable: (Gio.Cancellable | null)): [boolean, string, number];
+        get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
     }
 
 

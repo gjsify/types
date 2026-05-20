@@ -254,7 +254,7 @@ export namespace GeglGtk3 {
          * Change the {@link Gegl.Node} to display
          * @param node a {@link Gegl.Node} instance or `null`
          */
-        set_node(node: (Gegl.Node | null)): void;
+        set_node(node: Gegl.Node | null): void;
 
         /**
          * Setter for the :scale property

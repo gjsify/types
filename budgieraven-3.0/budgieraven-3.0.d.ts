@@ -86,9 +86,7 @@ export namespace BudgieRaven {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -191,7 +189,7 @@ export namespace BudgieRaven {
              * @param settings Settings for this new instance
              * @virtual
              */
-            vfunc_new_widget_instance(uuid: string, settings: (Gio.Settings | null)): RavenWidget;
+            vfunc_new_widget_instance(uuid: string, settings: Gio.Settings | null): RavenWidget;
 
             /**
              * @virtual
@@ -201,9 +199,7 @@ export namespace BudgieRaven {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface RavenPluginNamespace {
@@ -221,7 +217,7 @@ export namespace BudgieRaven {
          * @param settings Settings for this new instance
          * @returns A newly initialized Raven widget
          */
-        new_widget_instance(uuid: string, settings: (Gio.Settings | null)): RavenWidget;
+        new_widget_instance(uuid: string, settings: Gio.Settings | null): RavenWidget;
 
         /**
          * @returns Whether this plugin supports per-instance settings

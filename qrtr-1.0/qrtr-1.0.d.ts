@@ -209,7 +209,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished.
          */
-        static ["new"](lookup_timeout_ms: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Bus> | null)): void;
+        static ["new"](lookup_timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Bus> | null): void;
 
         // Methods
         /**
@@ -225,7 +225,7 @@ export namespace Qrtr {
          * Gets a list of all the {@link Qrtr.Node} objects in the bus.
          * @returns a list of  {@link Qrtr.Node} elements. The caller should free the result by using  `g_list_free_full()` with `g_object_unref()` as {@link GLib.DestroyNotify}.
          */
-        get_nodes(): (Node[] | null);
+        get_nodes(): Node[] | null;
 
         /**
          * Get the {@link Qrtr.Node} with node ID `node_id`, without increasing the reference count
@@ -242,7 +242,7 @@ export namespace Qrtr {
          * the reference count on the returned object or the list.
          * @returns a list of  {@link Qrtr.Node} elements. The caller should not free the result, it is  owned by `self`.
          */
-        peek_nodes(): (Node[] | null);
+        peek_nodes(): Node[] | null;
 
         /**
          * Asynchronously waits for the node with ID `node_id`.
@@ -254,20 +254,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          */
-        wait_for_node(node_id: number, timeout_ms: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Node>;
-
-        /**
-         * Asynchronously waits for the node with ID `node_id`.
-         * 
-         * When the operation is finished `callback` will be called. You can then call
-         * `qrtr_bus_wait_for_node_finish()` to get the result of the
-         * operation.
-         * @param node_id the QRTR bus node ID to lookup.
-         * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
-         * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
-         */
-        wait_for_node(node_id: number, timeout_ms: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Node>;
 
         /**
          * Asynchronously waits for the node with ID `node_id`.
@@ -280,7 +267,20 @@ export namespace Qrtr {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        wait_for_node(node_id: number, timeout_ms: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Node> | void);
+        wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously waits for the node with ID `node_id`.
+         * 
+         * When the operation is finished `callback` will be called. You can then call
+         * `qrtr_bus_wait_for_node_finish()` to get the result of the
+         * operation.
+         * @param node_id the QRTR bus node ID to lookup.
+         * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
+         * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Node> | void;
 
         /**
          * Finishes an operation started with `qrtr_bus_wait_for_node()`.
@@ -329,7 +329,7 @@ export namespace Qrtr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -372,7 +372,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -415,7 +415,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -475,7 +475,7 @@ export namespace Qrtr {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -566,7 +566,7 @@ export namespace Qrtr {
 
         _init(...args: any[]): void;
 
-        static ["new"](node: Node, port: number, cancellable: (Gio.Cancellable | null)): Client;
+        static ["new"](node: Node, port: number, cancellable: Gio.Cancellable | null): Client;
 
         // Signals
         /** @signal */
@@ -607,7 +607,7 @@ export namespace Qrtr {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` if the message is sent, or `false` if `error` is set.
          */
-        send(message: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): boolean;
+        send(message: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -651,7 +651,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -695,7 +695,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -876,7 +876,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          */
-        wait_for_services(services: number[], timeout_ms: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously waits until all the services listed in `services` are present
@@ -893,7 +893,7 @@ export namespace Qrtr {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        wait_for_services(services: number[], timeout_ms: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously waits until all the services listed in `services` are present
@@ -910,7 +910,7 @@ export namespace Qrtr {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        wait_for_services(services: number[], timeout_ms: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `qrtr_node_wait_for_services()`.

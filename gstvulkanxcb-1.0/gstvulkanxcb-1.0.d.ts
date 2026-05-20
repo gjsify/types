@@ -35,9 +35,7 @@ export namespace GstVulkanXCB {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {}
     }
 
     /**
@@ -63,7 +61,7 @@ export namespace GstVulkanXCB {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null)): VulkanDisplayXCB;
+        static ["new"](name: string | null): VulkanDisplayXCB;
 
         // Conflicted with GstVulkan.VulkanDisplay.new
         static ["new"](...args: never[]): any;

@@ -39,7 +39,7 @@ export namespace Vsqlite {
         static INVALID_FILE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -53,9 +53,7 @@ export namespace Vsqlite {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}
     }
 
     /**
@@ -143,7 +141,7 @@ export namespace Vsqlite {
         /**
          * @param _callback_ 
          */
-        close(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -160,7 +158,7 @@ export namespace Vsqlite {
         /**
          * @param _callback_ 
          */
-        open(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Vda.ConnectionStatus> | void);
+        open(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Vda.ConnectionStatus> | void;
 
         /**
          * @param _res_ 
@@ -182,7 +180,7 @@ export namespace Vsqlite {
          * @param cnc_string 
          * @param _callback_ 
          */
-        open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Vda.ConnectionStatus> | void);
+        open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Vda.ConnectionStatus> | void;
 
         /**
          * @param _res_ 

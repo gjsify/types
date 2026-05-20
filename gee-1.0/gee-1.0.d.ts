@@ -860,9 +860,7 @@ export namespace Gee {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {}
     }
 
     /**
@@ -1032,9 +1030,7 @@ export namespace Gee {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {}
     }
 
     /**
@@ -3133,9 +3129,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Iterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Iterator.ConstructorProps {}
     }
 
     export interface BidirIteratorNamespace {
@@ -3331,9 +3325,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ComparableNamespace {
@@ -3414,9 +3406,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Queue.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Queue.ConstructorProps {}
     }
 
     export interface DequeNamespace {
@@ -3552,9 +3542,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IteratorNamespace {
@@ -3785,9 +3773,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends BidirIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BidirIterator.ConstructorProps {}
     }
 
     export interface ListIteratorNamespace {
@@ -4137,9 +4123,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MapIteratorNamespace {
@@ -4323,9 +4307,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Collection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Collection.ConstructorProps {}
     }
 
     export interface MultiSetNamespace {
@@ -4560,9 +4542,7 @@ export namespace Gee {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Set.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Set.ConstructorProps {}
     }
 
     export interface SortedSetNamespace {

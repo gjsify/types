@@ -67,7 +67,7 @@ export namespace Template {
         static NOT_A_FUNCTION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -249,7 +249,7 @@ export namespace Template {
 
         _init(...args: any[]): void;
 
-        static ["new"](locator: (TemplateLocator | null)): Template;
+        static ["new"](locator: TemplateLocator | null): Template;
 
         // Signals
         /** @signal */
@@ -279,14 +279,14 @@ export namespace Template {
          * @param cancellable An optional cancellable for the operation.
          * @returns `true` if successful, otherwise `false` and `error` is set.
          */
-        expand(stream: Gio.OutputStream, scope: (Scope | null), cancellable: (Gio.Cancellable | null)): boolean;
+        expand(stream: Gio.OutputStream, scope: Scope | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Expands the template and returns the result as a string.
          * @param scope A {@link Template.Scope} or `null`.
          * @returns A newly allocated string, or `null` upon failure.
          */
-        expand_string(scope: (Scope | null)): string;
+        expand_string(scope: Scope | null): string;
 
         /**
          * Gets the template locator used when resolving template includes.
@@ -298,25 +298,25 @@ export namespace Template {
          * @param stream 
          * @param cancellable 
          */
-        parse(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): boolean;
+        parse(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        parse_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        parse_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
          */
-        parse_path(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        parse_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
          */
-        parse_resource(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        parse_resource(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param input 
@@ -332,13 +332,10 @@ export namespace Template {
 
     namespace TemplateLocator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -426,10 +423,7 @@ export namespace Template {
         static $gtype: GObject.GType<Scope>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Scope;
 
@@ -441,7 +435,7 @@ export namespace Template {
          * @param name 
          * @returns a string or `null`
          */
-        dup_string(name: string): (string | null);
+        dup_string(name: string): string | null;
 
         /**
          * If the symbol could not be found, it will be allocated.
@@ -469,7 +463,7 @@ export namespace Template {
          * @param name 
          * @returns A {@link Template.Symbol} or `null`.
          */
-        peek(name: string): (Symbol | null);
+        peek(name: string): Symbol | null;
 
         ref(): Scope;
 
@@ -479,7 +473,7 @@ export namespace Template {
          * @param version the version of `namespace_` to import
          * @returns `true` if successful; otherwise `false`
          */
-        require(namespace_: string, version: (string | null)): boolean;
+        require(namespace_: string, version: string | null): boolean;
 
         /**
          * If the symbol already exists, it will be overwritten.
@@ -488,7 +482,7 @@ export namespace Template {
          * @param name the name of the symbol
          * @param symbol An {@link Template.Symbol} or `null`.
          */
-        set(name: string, symbol: (Symbol | null)): void;
+        set(name: string, symbol: Symbol | null): void;
 
         /**
          * Sets the value of the symbol named `name` to a gboolean value of `value`.
@@ -514,7 +508,7 @@ export namespace Template {
          * @param name a name for the symbol
          * @param value a {@link GObject.Object} or `null`.
          */
-        set_object(name: string, value: (GObject.Object | null)): void;
+        set_object(name: string, value: GObject.Object | null): void;
 
         /**
          * @param resolver 
@@ -526,21 +520,21 @@ export namespace Template {
          * @param name a name for the symbol
          * @param value A string or `null`.
          */
-        set_string(name: string, value: (string | null)): void;
+        set_string(name: string, value: string | null): void;
 
         /**
          * Sets the value of the symbol named `name` to the strv `value`.
          * @param name a name for the symbol
          * @param value the value to set it to, or `null`
          */
-        set_strv(name: string, value: (string[] | null)): void;
+        set_strv(name: string, value: string[] | null): void;
 
         /**
          * Sets the contents of the symbol named `name` to the value `value`.
          * @param name a name for the symbol
          * @param value A {@link GObject.Value} or `null`
          */
-        set_value(name: string, value: (GObject.Value | null)): void;
+        set_value(name: string, value: GObject.Value | null): void;
 
         /**
          * Sets the value of the symbol named `name` to the variant `value`.
@@ -549,7 +543,7 @@ export namespace Template {
          * @param name a name for the symbol
          * @param value the variant to set it to, or `null`
          */
-        set_variant(name: string, value: (GLib.Variant | null)): void;
+        set_variant(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the symbol named `name` to `symbol` in `scope`.
@@ -559,7 +553,7 @@ export namespace Template {
          * @param name The name of the symbol
          * @param symbol A {@link Template.Symbol} or `null`
          */
-        take(name: string, symbol: (Symbol | null)): void;
+        take(name: string, symbol: Symbol | null): void;
 
         unref(): void;
     }
@@ -572,10 +566,7 @@ export namespace Template {
         static $gtype: GObject.GType<Symbol>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Symbol;
 
@@ -594,7 +585,7 @@ export namespace Template {
          * Sets the value to the object `v_object`.
          * @param v_object a {@link GObject.Object} or `null`.
          */
-        assign_object(v_object: (GObject.Object | null)): void;
+        assign_object(v_object: GObject.Object | null): void;
 
         /**
          * @param v_string 
@@ -605,12 +596,12 @@ export namespace Template {
          * Sets the value to the strv `strv`.
          * @param strv the value to set, or `null`
          */
-        assign_strv(strv: (string[] | null)): void;
+        assign_strv(strv: string[] | null): void;
 
         /**
          * @param value 
          */
-        assign_value(value: (GObject.Value | any)): void;
+        assign_value(value: GObject.Value | any): void;
 
         /**
          * Sets the value to the {@link GLib.Variant} `v_variant`.
@@ -618,7 +609,7 @@ export namespace Template {
          * If `v_variant` has a floating reference, it is consumed.
          * @param v_variant a {@link GLib.Variant} or `null`.
          */
-        assign_variant(v_variant: (GLib.Variant | null)): void;
+        assign_variant(v_variant: GLib.Variant | null): void;
 
         get_boxed(): null;
 
@@ -632,7 +623,7 @@ export namespace Template {
         /**
          * @param value 
          */
-        get_value(value: (GObject.Value | any)): void;
+        get_value(value: GObject.Value | any): void;
 
         /**
          * @param type 
@@ -662,10 +653,7 @@ export namespace Template {
         static $gtype: GObject.GType<Expr>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static new_boolean(value: boolean): Expr;
 
@@ -687,7 +675,7 @@ export namespace Template {
 
         static new_stmt_list(stmts: Expr[]): Expr;
 
-        static new_string(value: string, length: (bigint | number)): Expr;
+        static new_string(value: string, length: bigint | number): Expr;
 
         static new_symbol_assign(symbol: string, right: Expr): Expr;
 
@@ -706,7 +694,7 @@ export namespace Template {
          * @param scope 
          * @param return_value 
          */
-        ["eval"](scope: Scope, return_value: (GObject.Value | any)): boolean;
+        ["eval"](scope: Scope, return_value: GObject.Value | any): boolean;
 
         /**
          * @param params 

@@ -83,7 +83,7 @@ export namespace EBookContacts {
         static NO_SPACE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -542,7 +542,7 @@ export namespace EBookContacts {
         static TOO_LONG: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -992,7 +992,7 @@ export namespace EBookContacts {
      * @param in_address a string representing a mailing address
      * @returns A new {@link EBookContacts.AddressWestern} structure, or `null` if    the parsing failed or when the `in_address` was `null`.
      */
-    function address_western_parse(in_address: (string | null)): (AddressWestern | null);
+    function address_western_parse(in_address: string | null): AddressWestern | null;
 
     /**
      * @param code an {@link EBookContacts.BookClientError} code to create
@@ -1000,7 +1000,7 @@ export namespace EBookContacts {
      * @returns a new {@link GLib.Error} containing an E_BOOK_CLIENT_ERROR of the given `code`. If the `custom_msg` is NULL, then the error message is the one returned from `e_book_client_error_to_string()` for the `code`, otherwise the given message is used. Returned pointer should be freed with `g_error_free()`.
      * @since 3.2
      */
-    function book_client_error_create(code: BookClientError, custom_msg: (string | null)): GLib.Error;
+    function book_client_error_create(code: BookClientError, custom_msg: string | null): GLib.Error;
 
     function book_client_error_quark(): GLib.Quark;
 
@@ -1122,7 +1122,7 @@ export namespace EBookContacts {
      * @param new_contact a new {@link EBookContacts.Contact}, or `null`
      * @since 3.48
      */
-    function book_util_diff_categories(old_contact: (Contact | null), new_contact: (Contact | null)): [GLib.HashTable<string, number>, GLib.HashTable<string, number>];
+    function book_util_diff_categories(old_contact: Contact | null, new_contact: Contact | null): [GLib.HashTable<string, number>, GLib.HashTable<string, number>];
 
     /**
      * Parses the `email_address` and calls `func` for each found address.
@@ -1172,7 +1172,7 @@ export namespace EBookContacts {
      * @returns a new {@link EBookContacts.ContactCert} populated    with the data from the `source`, or `null`, when the source contains    unknown information.
      * @since 3.60
      */
-    function contact_cert_from_attr(source: VCardAttribute): (ContactCert | null);
+    function contact_cert_from_attr(source: VCardAttribute): ContactCert | null;
 
     /**
      * Creates a new {@link EBookContacts.ContactDate} based on `str`.
@@ -1205,7 +1205,7 @@ export namespace EBookContacts {
      * @returns a vCard string representation of the `sex`, or `null`,    when the value is not recognized
      * @since 3.60
      */
-    function contact_gender_sex_to_string(sex: ContactGenderSex): (string | null);
+    function contact_gender_sex_to_string(sex: ContactGenderSex): string | null;
 
     /**
      * Creates a new {@link EBookContacts.ContactGeo}, which has set latitude
@@ -1215,7 +1215,7 @@ export namespace EBookContacts {
      * @returns a new {@link EBookContacts.ContactGeo}, or `null`,    when cannot convert the `latitude` or `longitude` to a double.
      * @since 3.60
      */
-    function contact_geo_from_string(latitude: string, longitude: string): (ContactGeo | null);
+    function contact_geo_from_string(latitude: string, longitude: string): ContactGeo | null;
 
     /**
      * Creates a new {@link EBookContacts.ContactName} based on the parsed `name_str`.
@@ -1249,7 +1249,7 @@ export namespace EBookContacts {
      * @returns The quality of matching for the two phone numbers.
      * @since 3.8
      */
-    function phone_number_compare_strings_with_region(first_number: string, second_number: string, region_code: (string | null)): PhoneNumberMatch;
+    function phone_number_compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch;
 
     function phone_number_error_quark(): GLib.Quark;
 
@@ -1270,7 +1270,7 @@ export namespace EBookContacts {
      * @returns a new {@link EBookContacts.PhoneNumber} instance on success, or `null` on error. Call `e_phone_number_free()` to release this instance.
      * @since 3.8
      */
-    function phone_number_from_string(phone_number: string, region_code: (string | null)): PhoneNumber;
+    function phone_number_from_string(phone_number: string, region_code: string | null): PhoneNumber;
 
     /**
      * Retrieves the preferred country calling code for `region_code`,
@@ -1282,7 +1282,7 @@ export namespace EBookContacts {
      * @returns a valid country calling code, or zero if an unknown region code was passed.
      * @since 3.8
      */
-    function phone_number_get_country_code_for_region(region_code: (string | null)): number;
+    function phone_number_get_country_code_for_region(region_code: string | null): number;
 
     /**
      * Retrieves the current two-letter country code that's used by default for
@@ -1339,7 +1339,7 @@ export namespace EBookContacts {
     /**
      * @gir-type Alias
      */
-    type ContactAttrList = (object | null);
+    type ContactAttrList = object | null;
 
     /**
      * @gir-type Flags
@@ -1513,13 +1513,10 @@ export namespace EBookContacts {
 
     namespace BookIndicesUpdater {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1576,7 +1573,7 @@ export namespace EBookContacts {
          * then unsets them.
          * @returns current indices, or `null`, when none had been set yet
          */
-        get_indices(): (BookIndices | null);
+        get_indices(): BookIndices | null;
 
         /**
          * Notifies the `self` that an existing contact with UID `uid` had been removed
@@ -1599,7 +1596,7 @@ export namespace EBookContacts {
          * @param indices an {@link EBookContacts.BookIndices}, or `null`
          * @returns whether the indices changed
          */
-        take_indices(indices: (BookIndices | null)): boolean;
+        take_indices(indices: BookIndices | null): boolean;
     }
 
 
@@ -3688,7 +3685,7 @@ export namespace EBookContacts {
          * Gets a scheme (like "icq:") for the corresponding IM `field`.
          * @param field an {@link EBookContacts.ContactField}, one of E_CONTACT_IM_....
          */
-        static impp_field_to_scheme(field: ContactField): (string | null);
+        static impp_field_to_scheme(field: ContactField): string | null;
 
         /**
          * Tries to find one of the predefined {@link EBookContacts.ContactField} for
@@ -3725,7 +3722,7 @@ export namespace EBookContacts {
          * Not every attribute has it set, thus a `null` is a valid return value.
          * @param field_id an {@link EBookContacts.ContactField}
          */
-        static vcard_attribute_fallback(field_id: ContactField): (string | null);
+        static vcard_attribute_fallback(field_id: ContactField): string | null;
 
         // Methods
         /**
@@ -3735,7 +3732,7 @@ export namespace EBookContacts {
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
          */
-        convert(to_version: VCardVersion): (Contact | null);
+        convert(to_version: VCardVersion): Contact | null;
 
         /**
          * Creates a copy of `contact`.
@@ -3917,13 +3914,10 @@ export namespace EBookContacts {
 
     namespace VCard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4073,7 +4067,7 @@ export namespace EBookContacts {
          * @param len length of `str`, or -1 if `str` is `null` terminated
          * @param uid a unique ID string
          */
-        construct_full(str: string, len: (bigint | number), uid: (string | null)): void;
+        construct_full(str: string, len: bigint | number, uid: string | null): void;
 
         /**
          * Constructs the existing {@link EBookContacts.VCard}, `evc`, setting its vCard data to `str`, and
@@ -4084,7 +4078,7 @@ export namespace EBookContacts {
          * @param str a vCard string
          * @param uid a unique ID string
          */
-        construct_with_uid(str: string, uid: (string | null)): void;
+        construct_with_uid(str: string, uid: string | null): void;
 
         /**
          * Converts the `self` into the vCard version `to_version` and returns a converted
@@ -4093,7 +4087,7 @@ export namespace EBookContacts {
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
          */
-        convert(to_version: VCardVersion): (VCard | null);
+        convert(to_version: VCardVersion): VCard | null;
 
         /**
          * Exports `evc` to a string representation conforming to vCard
@@ -4141,7 +4135,7 @@ export namespace EBookContacts {
          * @param name the name of the attribute to get
          * @returns An {@link EBookContacts.VCardAttribute} if found, or `null`.
          */
-        get_attribute(name: string): (VCardAttribute | null);
+        get_attribute(name: string): VCardAttribute | null;
 
         /**
          * Similar to `e_vcard_get_attribute()` but this method will not attempt to
@@ -4149,7 +4143,7 @@ export namespace EBookContacts {
          * @param name the name of the attribute to get
          * @returns An {@link EBookContacts.VCardAttribute} if found, or `null`.
          */
-        get_attribute_if_parsed(name: string): (VCardAttribute | null);
+        get_attribute_if_parsed(name: string): VCardAttribute | null;
 
         /**
          * Gets the list of all attributes from `evcard`. The list and its
@@ -4169,7 +4163,7 @@ export namespace EBookContacts {
          * @param name an attribute name
          * @returns a new {@link GLib.List}    of {@link EBookContacts.VCardAttribute} objects, which are named `name` and stored in the `self`, or `null`,    when the `self` does not contain any such attribute. The attributes are in the list    in the order as they appear in the `self`.
          */
-        get_attributes_by_name(name: string): (VCardAttribute[] | null);
+        get_attributes_by_name(name: string): VCardAttribute[] | null;
 
         /**
          * Gets a vCard version of the `self`. The {@link EBookContacts.VCardVersion.UNKNOWN}
@@ -4200,7 +4194,7 @@ export namespace EBookContacts {
          * @param attr_group group name of attributes to be removed
          * @param attr_name name of the arributes to be removed
          */
-        remove_attributes(attr_group: (string | null), attr_name: string): void;
+        remove_attributes(attr_group: string | null, attr_name: string): void;
 
         /**
          * Exports `self` to a string representation. To use a specific vCard version
@@ -4213,7 +4207,7 @@ export namespace EBookContacts {
          * @param x_name the attribute name, which starts with "X-"
          * @returns Value of attribute `x_name`, or `null`,    when there is no such attribute. Free the returned pointer with `g_free()`,    when no longer needed.
          */
-        util_dup_x_attribute(x_name: string): (string | null);
+        util_dup_x_attribute(x_name: string): string | null;
 
         /**
          * Sets an "X-" attribute `x_name` to value `value` in `vcard`, or
@@ -4221,7 +4215,7 @@ export namespace EBookContacts {
          * @param x_name the attribute name, which starts with "X-"
          * @param value the value to set, or `null` to unset
          */
-        util_set_x_attribute(x_name: string, value: (string | null)): void;
+        util_set_x_attribute(x_name: string, value: string | null): void;
     }
 
 
@@ -4265,7 +4259,7 @@ export namespace EBookContacts {
          * structure of type {@link EBookContacts.AddressWestern}.
          * @param in_address a string representing a mailing address
          */
-        static parse(in_address: (string | null)): (AddressWestern | null);
+        static parse(in_address: string | null): AddressWestern | null;
 
         // Methods
         /**
@@ -4591,7 +4585,7 @@ export namespace EBookContacts {
          * is a URI to some server).
          * @param source a source {@link EBookContacts.VCardAttribute}
          */
-        static from_attr(source: VCardAttribute): (ContactCert | null);
+        static from_attr(source: VCardAttribute): ContactCert | null;
 
         // Methods
         /**
@@ -4745,7 +4739,7 @@ export namespace EBookContacts {
          * @param flags bit-or of {@link EBookContacts.ContactDateTimeFlags}
          * @returns a new date/time string, or `null`,    when `self` is `null` or when all members are unset.
          */
-        to_string(for_version: VCardVersion, flags: ContactDateTimeFlags): (string | null);
+        to_string(for_version: VCardVersion, flags: ContactDateTimeFlags): string | null;
     }
 
 
@@ -4781,7 +4775,7 @@ export namespace EBookContacts {
          * Converts the `sex` into a string, as used by the vCard 4.0 standard.
          * @param sex an {@link EBookContacts.ContactGenderSex}
          */
-        static sex_to_string(sex: ContactGenderSex): (string | null);
+        static sex_to_string(sex: ContactGenderSex): string | null;
 
         // Methods
         /**
@@ -4789,7 +4783,7 @@ export namespace EBookContacts {
          * Free it with `e_contact_gender_free()`, when no longer needed.
          * @returns a new copy of    the `self`, or `null` when the `self` is `null`
          */
-        copy(): (ContactGender | null);
+        copy(): ContactGender | null;
 
         /**
          * Frees the `self`. Does nothing, when `self` is `null`.
@@ -4826,7 +4820,7 @@ export namespace EBookContacts {
          * @param latitude a text representation of the latitude
          * @param longitude a text representation of the longitude
          */
-        static from_string(latitude: string, longitude: string): (ContactGeo | null);
+        static from_string(latitude: string, longitude: string): ContactGeo | null;
 
         // Methods
         /**
@@ -4934,25 +4928,25 @@ export namespace EBookContacts {
          * Gets the `photo`'s data.
          * @returns the inlined image in the {@link EBookContacts.ContactPhoto}, or `null` if it has not been set.
          */
-        get_inlined(): (Uint8Array | null);
+        get_inlined(): Uint8Array | null;
 
         /**
          * Gets the `photo`'s mime type.
          * @returns the MIME type of the image, or `null` if it has not been set.
          */
-        get_mime_type(): (string | null);
+        get_mime_type(): string | null;
 
         /**
          * Gets the `photo`'s URI.
          * @returns the URI of the image, or `null` if it has not been set
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Sets the `photo`'s inlined data.
          * @param data the inlined image data
          */
-        set_inlined(data: (Uint8Array | string)): void;
+        set_inlined(data: Uint8Array | string): void;
 
         /**
          * Sets the `photo`'s mime type.
@@ -5054,7 +5048,7 @@ export namespace EBookContacts {
          * @param second_number the second EPhoneNumber to compare
          * @param region_code a two-letter country code, or `null`
          */
-        static compare_strings_with_region(first_number: string, second_number: string, region_code: (string | null)): PhoneNumberMatch;
+        static compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch;
 
         static error_quark(): GLib.Quark;
 
@@ -5073,7 +5067,7 @@ export namespace EBookContacts {
          * @param phone_number the phone number to parse
          * @param region_code a two-letter country code, or `null`
          */
-        static from_string(phone_number: string, region_code: (string | null)): PhoneNumber;
+        static from_string(phone_number: string, region_code: string | null): PhoneNumber;
 
         /**
          * Retrieves the preferred country calling code for `region_code`,
@@ -5083,7 +5077,7 @@ export namespace EBookContacts {
          * `e_phone_number_get_default_region()` is used.
          * @param region_code a two-letter country code, a locale name, or `null`
          */
-        static get_country_code_for_region(region_code: (string | null)): number;
+        static get_country_code_for_region(region_code: string | null): number;
 
         /**
          * Retrieves the current two-letter country code that's used by default for
@@ -5131,7 +5125,7 @@ export namespace EBookContacts {
          * @param source an optional location for storing the phone number's origin, or `null`
          * @returns A valid country calling code, or zero if no code is known.
          */
-        get_country_code(source: (PhoneNumberCountrySource | null)): number;
+        get_country_code(source: PhoneNumberCountrySource | null): number;
 
         /**
          * Queries the national portion of `phone_number` without any call-out
@@ -5170,9 +5164,9 @@ export namespace EBookContacts {
         static $gtype: GObject.GType<VCardAttribute>;
 
         // Constructors
-        constructor(attr_group: (string | null), attr_name: string);
+        constructor(attr_group: string | null, attr_name: string);
 
-        static ["new"](attr_group: (string | null), attr_name: string): VCardAttribute;
+        static ["new"](attr_group: string | null, attr_name: string): VCardAttribute;
 
         // Methods
         /**
@@ -5239,7 +5233,7 @@ export namespace EBookContacts {
          * Gets the group name of `attr`.
          * @returns The attribute's group name, or `null`.
          */
-        get_group(): (string | null);
+        get_group(): string | null;
 
         /**
          * Gets how many values the `attr` holds.
@@ -5262,7 +5256,7 @@ export namespace EBookContacts {
          * @param index an index of the value to receive, counting from zero
          * @returns a value at index `index`, or `null`, when out of bounds.
          */
-        get_nth_value(index: number): (string | null);
+        get_nth_value(index: number): string | null;
 
         /**
          * Gets the list of values for the paramater `name` from `attr`. The list and its
@@ -5271,7 +5265,7 @@ export namespace EBookContacts {
          * @param name a parameter name
          * @returns A list of string elements representing the parameter's values, or `null`.
          */
-        get_param(name: string): (string[] | null);
+        get_param(name: string): string[] | null;
 
         /**
          * Gets the list of parameters (of type {@link EBookContacts.VCardAttributeParam}) from `attr`. The
@@ -5291,7 +5285,7 @@ export namespace EBookContacts {
          * `false`). Use `e_vcard_attribute_get_values()` in such cases instead.
          * @returns A newly allocated string representing the value, or `null` if the attribute has no value.
          */
-        get_value(): (string | null);
+        get_value(): string | null;
 
         /**
          * Gets the value of a single-valued {@link EBookContacts.VCardAttribute}, `attr`, decoding
@@ -5303,7 +5297,7 @@ export namespace EBookContacts {
          * `false`). Use `e_vcard_attribute_get_values_decoded()` in such cases instead.
          * @returns A newly allocated {@link GLib.String} representing the value, or `null` if the attribute has no value.
          */
-        get_value_decoded(): (GLib.String | null);
+        get_value_decoded(): GLib.String | null;
 
         /**
          * Gets the ordered list of values from `attr`. The list and its

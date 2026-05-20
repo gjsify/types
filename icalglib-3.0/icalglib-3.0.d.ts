@@ -1109,7 +1109,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer with the target size.
      * @since 1.0
      */
-    function memory_new_buffer(size: (bigint | number)): null;
+    function memory_new_buffer(size: bigint | number): null;
 
     /**
      * Resizes the buffer to the target size.
@@ -1118,7 +1118,7 @@ export namespace ICalGLib {
      * @returns The buffer after being resized.
      * @since 1.0
      */
-    function memory_resize_buffer(buf: null, size: (bigint | number)): null;
+    function memory_resize_buffer(buf: null, size: bigint | number): null;
 
     /**
      * A wrapper around strdup. Partly to trap calls to strdup, partly because in -ansi, gcc on Red Hat claims
@@ -1135,7 +1135,7 @@ export namespace ICalGLib {
      * @returns The newly created buffer
      * @since 1.0
      */
-    function memory_tmp_buffer(size: (bigint | number)): null;
+    function memory_tmp_buffer(size: bigint | number): null;
 
     /**
      * Like strdup, but the buffer is on the ring.
@@ -1163,7 +1163,7 @@ export namespace ICalGLib {
      * @returns If successful, return the array. NULL if failed.
      * @since 1.0
      */
-    function recur_expand_recurrence(rule: string, start: (bigint | number), count: number): number[];
+    function recur_expand_recurrence(rule: string, start: bigint | number, count: number): number[];
 
     /**
      * Returns the code for a request status.
@@ -1269,9 +1269,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1340,9 +1338,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1366,9 +1362,9 @@ export namespace ICalGLib {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: (GLib.Bytes | Uint8Array)): Attach;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Attach;
 
-        static new_from_data(data: string, free_fn: (GLib.Func | null)): Attach;
+        static new_from_data(data: string, free_fn: GLib.Func | null): Attach;
 
         static new_from_url(url: string): Attach;
 
@@ -1390,7 +1386,7 @@ export namespace ICalGLib {
          * Gets the data, if the {@link ICalGLib.Attach} is built from the data.
          * @returns The data component of the `attach`. `null` if it is built from url or there is an error.
          */
-        get_data(): (string | null);
+        get_data(): string | null;
 
         /**
          * @param args 
@@ -1408,7 +1404,7 @@ export namespace ICalGLib {
          * Gets the url, if the {@link ICalGLib.Attach} is built from the url.
          * @returns The url component of the `attach`. `null` if it is built from data or there is an error.
          */
-        get_url(): (string | null);
+        get_url(): string | null;
     }
 
 
@@ -1423,9 +1419,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1494,9 +1488,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1673,7 +1665,7 @@ export namespace ICalGLib {
          * Applies the same manipulation on every tzid in {@link ICalGLib.Component}.
          * @param callback The callback function
          */
-        foreach_tzid(callback: (ComponentForeachTZIDFunc | null)): void;
+        foreach_tzid(callback: ComponentForeachTZIDFunc | null): void;
 
         /**
          * Gets the comment of the {@link ICalGLib.Component}.
@@ -1734,14 +1726,14 @@ export namespace ICalGLib {
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns The first {@link ICalGLib.Component}.
          */
-        get_first_component(kind: ComponentKind): (Component | null);
+        get_first_component(kind: ComponentKind): Component | null;
 
         /**
          * Gets the first {@link ICalGLib.Property} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @returns The first {@link ICalGLib.Property}.
          */
-        get_first_property(kind: PropertyKind): (Property | null);
+        get_first_property(kind: PropertyKind): Property | null;
 
         /**
          * For VCOMPONENT: Returns a reference to the first VEVENT, VTODO or VJOURNAL.
@@ -1753,7 +1745,7 @@ export namespace ICalGLib {
          * Returns the first VEVENT, VTODO or VJOURNAL sub-component of cop, or comp if it is one of those types.
          * @returns The first VEVENT, VTODO or VJOURNAL sub-component.
          */
-        get_inner(): (Component | null);
+        get_inner(): Component | null;
 
         /**
          * Gets the location of the {@link ICalGLib.Component}.
@@ -1772,20 +1764,20 @@ export namespace ICalGLib {
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns The next {@link ICalGLib.Component}.
          */
-        get_next_component(kind: ComponentKind): (Component | null);
+        get_next_component(kind: ComponentKind): Component | null;
 
         /**
          * Gets the next {@link ICalGLib.Property} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @returns The next {@link ICalGLib.Property}.
          */
-        get_next_property(kind: PropertyKind): (Property | null);
+        get_next_property(kind: PropertyKind): Property | null;
 
         /**
          * Gets the parent component of the `component`.
          * @returns The parent {@link ICalGLib.Component} of the `component`.
          */
-        get_parent(): (Component | null);
+        get_parent(): Component | null;
 
         /**
          * Gets the recurrenceid of the {@link ICalGLib.Component}.
@@ -1828,7 +1820,7 @@ export namespace ICalGLib {
          * @param tzid A string representing timezone
          * @returns A {@link ICalGLib.Timezone}.
          */
-        get_timezone(tzid: string): (Timezone | null);
+        get_timezone(tzid: string): Timezone | null;
 
         /**
          * Gets the uid of the {@link ICalGLib.Component}.
@@ -1932,7 +1924,7 @@ export namespace ICalGLib {
          * Sets the `parent` {@link ICalGLib.Component} of the specified `component`.
          * @param parent An {@link ICalGLib.Component}, a new parent
          */
-        set_parent(parent: (Component | null)): void;
+        set_parent(parent: Component | null): void;
 
         /**
          * Sets the recurrenceid of the {@link ICalGLib.Component}.
@@ -1988,9 +1980,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2067,9 +2057,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2224,9 +2212,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2505,9 +2491,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2696,37 +2680,37 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_altrep(): (string | null);
+        get_altrep(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_charset(): (string | null);
+        get_charset(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_cn(): (string | null);
+        get_cn(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_cutype(): (ParameterCutype | null);
+        get_cutype(): ParameterCutype | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_delegatedfrom(): (string | null);
+        get_delegatedfrom(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_delegatedto(): (string | null);
+        get_delegatedto(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_dir(): (string | null);
+        get_dir(): string | null;
 
         /**
          * @returns The {@link ICalGLib.ParameterDisplay} value of the `param`
@@ -2736,7 +2720,7 @@ export namespace ICalGLib {
         /**
          * @returns The string value of the `param`
          */
-        get_email(): (string | null);
+        get_email(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2761,49 +2745,49 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_fmttype(): (string | null);
+        get_fmttype(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_iana(): (string | null);
+        get_iana(): string | null;
 
         /**
          * Gets the iana_name property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
          */
-        get_iana_name(): (string | null);
+        get_iana_name(): string | null;
 
         /**
          * Gets the iana_value property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
          */
-        get_iana_value(): (string | null);
+        get_iana_value(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * @returns The string value of the `param`
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_latency(): (string | null);
+        get_latency(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2813,33 +2797,33 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_localize(): (string | null);
+        get_localize(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_managedid(): (string | null);
+        get_managedid(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_member(): (string | null);
+        get_member(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_modified(): (string | null);
+        get_modified(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_options(): (string | null);
+        get_options(): string | null;
 
         /**
          * Gets the parent {@link ICalGLib.Property} of the specified {@link ICalGLib.Parameter}.
          * @returns The parent {@link ICalGLib.Property}
          */
-        get_parent(): (Property | null);
+        get_parent(): Property | null;
 
         /**
          * @returns The type of the `value`
@@ -2854,7 +2838,7 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_publiccomment(): (string | null);
+        get_publiccomment(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2864,7 +2848,7 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_reason(): (string | null);
+        get_reason(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2909,17 +2893,17 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_schedulestatus(): (string | null);
+        get_schedulestatus(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_sentby(): (string | null);
+        get_sentby(): string | null;
 
         /**
          * @returns The property of the `value`
          */
-        get_size(): (string | null);
+        get_size(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2934,7 +2918,7 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_tzid(): (string | null);
+        get_tzid(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2944,7 +2928,7 @@ export namespace ICalGLib {
         /**
          * @returns The property of the `value`
          */
-        get_x(): (string | null);
+        get_x(): string | null;
 
         /**
          * @returns The type of the `value`
@@ -2960,13 +2944,13 @@ export namespace ICalGLib {
          * Gets the xname property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
          */
-        get_xname(): (string | null);
+        get_xname(): string | null;
 
         /**
          * Gets the xvalue property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
          */
-        get_xvalue(): (string | null);
+        get_xvalue(): string | null;
 
         /**
          * Checks whether native parts of two `ICalParameters` have the same name.
@@ -3138,7 +3122,7 @@ export namespace ICalGLib {
          * Sets the parent {@link ICalGLib.Property} of an {@link ICalGLib.Parameter}.
          * @param property The parent {@link ICalGLib.Property}
          */
-        set_parent(property: (Property | null)): void;
+        set_parent(property: Property | null): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
@@ -3280,9 +3264,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -3335,14 +3317,14 @@ export namespace ICalGLib {
          * @param str A line of string representation of the {@link ICalGLib.Component}
          * @returns The complete {@link ICalGLib.Component}.
          */
-        add_line(str: (string | null)): (Component | null);
+        add_line(str: string | null): Component | null;
 
         /**
          * We won't get a clean exit if some components did not have an "END" tag. Clear off any component that
          * may be left in the list.
          * @returns The root {@link ICalGLib.Component} in `parser`.
          */
-        clean(): (Component | null);
+        clean(): Component | null;
 
         /**
          * Frees a {@link ICalGLib.Parser}.
@@ -3384,9 +3366,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -3495,9 +3475,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4030,7 +4008,7 @@ export namespace ICalGLib {
          * @param comp An {@link ICalGLib.Component}
          * @returns Get a DATE or DATE-TIME property as an {@link ICalGLib.Time}.
          */
-        get_datetime_with_component(comp: (Component | null)): Time;
+        get_datetime_with_component(comp: Component | null): Time;
 
         /**
          * Gets the decreed of {@link ICalGLib.Property}.
@@ -4252,7 +4230,7 @@ export namespace ICalGLib {
          * in {@link ICalGLib.Property}.
          * @returns The parent {@link ICalGLib.Component} of {@link ICalGLib.Property}.
          */
-        get_parent(): (Component | null);
+        get_parent(): Component | null;
 
         /**
          * Gets the percentcomplete of {@link ICalGLib.Property}.
@@ -4564,7 +4542,7 @@ export namespace ICalGLib {
          * Gets the name of x property.
          * @returns The name of x property.
          */
-        get_x_name(): (string | null);
+        get_x_name(): string | null;
 
         /**
          * Gets the xlicclass of {@link ICalGLib.Property}.
@@ -5016,7 +4994,7 @@ export namespace ICalGLib {
          * Sets the parent {@link ICalGLib.Component} of the specified {@link ICalGLib.Property}.
          * @param component An {@link ICalGLib.Component}
          */
-        set_parent(component: (Component | null)): void;
+        set_parent(component: Component | null): void;
 
         /**
          * Sets the percentcomplete for the {@link ICalGLib.Property}.
@@ -5392,9 +5370,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5462,9 +5438,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5903,9 +5877,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5988,9 +5960,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6016,13 +5986,13 @@ export namespace ICalGLib {
 
         static ["new"](): Time;
 
-        static new_current_with_zone(zone: (Timezone | null)): Time;
+        static new_current_with_zone(zone: Timezone | null): Time;
 
         static new_from_day_of_year(day: number, year: number): Time;
 
         static new_from_string(str: string): Time;
 
-        static new_from_timet_with_zone(v: (bigint | number), is_date: number, zone: (Timezone | null)): Time;
+        static new_from_timet_with_zone(v: bigint | number, is_date: number, zone: Timezone | null): Time;
 
         static new_null_date(): Time;
 
@@ -6105,7 +6075,7 @@ export namespace ICalGLib {
          * @param zone The timezone
          * @returns The time as seconds past the UNIX epoch
          */
-        as_timet_with_zone(zone: (Timezone | null)): number;
+        as_timet_with_zone(zone: Timezone | null): number;
 
         /**
          * Creates a new {@link ICalGLib.Time}, copy of `timetype`.
@@ -6133,27 +6103,27 @@ export namespace ICalGLib {
          * @param zone The target timezone
          * @returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
          */
-        compare_date_only_tz(b: Time, zone: (Timezone | null)): number;
+        compare_date_only_tz(b: Time, zone: Timezone | null): number;
 
         /**
          * Convert time from one timezone to another.
          * @param from_zone From timezone
          * @param to_zone To timezone
          */
-        convert_timezone(from_zone: (Timezone | null), to_zone: (Timezone | null)): void;
+        convert_timezone(from_zone: Timezone | null, to_zone: Timezone | null): void;
 
         /**
          * Converts `tt` to `zone` and return new {@link ICalGLib.Time} object.
          * @param zone The target timezone
          * @returns The converted {@link ICalGLib.Time}
          */
-        convert_to_zone(zone: (Timezone | null)): Time;
+        convert_to_zone(zone: Timezone | null): Time;
 
         /**
          * Converts `tt` to `zone` and store the result into `tt`.
          * @param zone The target timezone
          */
-        convert_to_zone_inplace(zone: (Timezone | null)): void;
+        convert_to_zone_inplace(zone: Timezone | null): void;
 
         /**
          * Returns the day of the week of the given time. Sunday is 1.
@@ -6219,7 +6189,7 @@ export namespace ICalGLib {
          * Returns the tzid, or NULL for a floating time.
          * @returns The tzid of {@link ICalGLib.Time}, or NULL if floating type
          */
-        get_tzid(): (string | null);
+        get_tzid(): string | null;
 
         /**
          * Gets the year of {@link ICalGLib.Time}.
@@ -6332,7 +6302,7 @@ export namespace ICalGLib {
          * Sets the timezone of the `tt`.
          * @param zone The timezone
          */
-        set_timezone(zone: (Timezone | null)): void;
+        set_timezone(zone: Timezone | null): void;
 
         /**
          * Sets the year of {@link ICalGLib.Time}.
@@ -6373,9 +6343,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6401,7 +6369,7 @@ export namespace ICalGLib {
 
         static ["new"](dtstart: Time, dtend: Time, is_busy: number): TimeSpan;
 
-        static new_timet(start: (bigint | number), end: (bigint | number), is_busy: boolean): TimeSpan;
+        static new_timet(start: bigint | number, end: bigint | number, is_busy: boolean): TimeSpan;
 
         // Signals
         /** @signal */
@@ -6459,7 +6427,7 @@ export namespace ICalGLib {
          * Sets the end of {@link ICalGLib.TimeSpan}.
          * @param end The end
          */
-        set_end(end: (bigint | number)): void;
+        set_end(end: bigint | number): void;
 
         /**
          * Sets the is_busy of {@link ICalGLib.TimeSpan}.
@@ -6471,7 +6439,7 @@ export namespace ICalGLib {
          * Sets the start of {@link ICalGLib.TimeSpan}.
          * @param start The start
          */
-        set_start(start: (bigint | number)): void;
+        set_start(start: bigint | number): void;
     }
 
 
@@ -6486,9 +6454,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6561,20 +6527,20 @@ export namespace ICalGLib {
          * Returns a single builtin timezone, given its Olson city name.
          * @param location The location representing the timezone
          */
-        static get_builtin_timezone(location: (string | null)): (Timezone | null);
+        static get_builtin_timezone(location: string | null): Timezone | null;
 
         /**
          * Returns a single builtin timezone, given its offset.
          * @param offset The offset used to get the {@link ICalGLib.Timezone}
          * @param tzname The reference {@link ICalGLib.Timezone} name
          */
-        static get_builtin_timezone_from_offset(offset: number, tzname: (string | null)): Timezone;
+        static get_builtin_timezone_from_offset(offset: number, tzname: string | null): Timezone;
 
         /**
          * Returns a single builtin timezone, given its TZID.
          * @param tzid The tzid name
          */
-        static get_builtin_timezone_from_tzid(tzid: (string | null)): Timezone;
+        static get_builtin_timezone_from_tzid(tzid: string | null): Timezone;
 
         /**
          * Returns a list of builtin timezones.
@@ -6670,7 +6636,7 @@ export namespace ICalGLib {
          * Returns the city name of a timezone, or `null`, when none is set or when `zone` is also `null`.
          * @returns The location of the {@link ICalGLib.Timezone}, or `null`
          */
-        get_location(): (string | null);
+        get_location(): string | null;
 
         /**
          * Returns the longitude of a builtin timezone.
@@ -6682,7 +6648,7 @@ export namespace ICalGLib {
          * Returns the TZID of a timezone, or `null`, when none is set or when `zone` is also `null`.
          * @returns The timezone id, or `null`
          */
-        get_tzid(): (string | null);
+        get_tzid(): string | null;
 
         /**
          * Returns the TZNAME properties used in the latest STANDARD and DAYLIGHT components. If they are the same
@@ -6690,7 +6656,7 @@ export namespace ICalGLib {
          * this may also return NULL.
          * @returns The timezone name
          */
-        get_tznames(): (string | null);
+        get_tznames(): string | null;
 
         /**
          * Calculates the UTC offset of a given local time in the given timezone.  It is the number of seconds to
@@ -6698,7 +6664,7 @@ export namespace ICalGLib {
          * @param tt The local time
          * @returns UTC offset of the `zone`
          */
-        get_utc_offset(tt: (Time | null)): [number, number];
+        get_utc_offset(tt: Time | null): [number, number];
 
         /**
          * Calculates the UTC offset of a given UTC time in the given timezone.  It is the number of seconds to
@@ -6732,9 +6698,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6825,9 +6789,7 @@ export namespace ICalGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6943,13 +6905,13 @@ export namespace ICalGLib {
          * Extracts the original character string encoded by the above function.
          * @param szText A string
          */
-        static decode_ical_string(szText: string): (string | null);
+        static decode_ical_string(szText: string): string | null;
 
         /**
          * Encodes a character string in ical format, escape certain characters, etc.
          * @param szText A string
          */
-        static encode_ical_string(szText: string): (string | null);
+        static encode_ical_string(szText: string): string | null;
 
         /**
          * Converts a string to {@link ICalGLib.ValueKind}.
@@ -7005,13 +6967,13 @@ export namespace ICalGLib {
          * Gets the attach of {@link ICalGLib.Value}.
          * @returns The attach within {@link ICalGLib.Value}
          */
-        get_attach(): (Attach | null);
+        get_attach(): Attach | null;
 
         /**
          * Gets the binary of {@link ICalGLib.Value}.
          * @returns The binary within {@link ICalGLib.Value}
          */
-        get_binary(): (string | null);
+        get_binary(): string | null;
 
         /**
          * Gets the boolean of {@link ICalGLib.Value}.
@@ -7029,7 +6991,7 @@ export namespace ICalGLib {
          * Gets the caladdress of {@link ICalGLib.Value}.
          * @returns The caladdress within {@link ICalGLib.Value}
          */
-        get_caladdress(): (string | null);
+        get_caladdress(): string | null;
 
         /**
          * Gets the carlevel of {@link ICalGLib.Value}.
@@ -7053,31 +7015,31 @@ export namespace ICalGLib {
          * Gets the date of {@link ICalGLib.Value}.
          * @returns The date within {@link ICalGLib.Value}
          */
-        get_date(): (Time | null);
+        get_date(): Time | null;
 
         /**
          * Gets the datetime of {@link ICalGLib.Value}.
          * @returns The datetime within {@link ICalGLib.Value}
          */
-        get_datetime(): (Time | null);
+        get_datetime(): Time | null;
 
         /**
          * Gets the datetimedate (DATE-TIME or DATE) of {@link ICalGLib.Value}.
          * @returns The datetimedate within {@link ICalGLib.Value}
          */
-        get_datetimedate(): (Time | null);
+        get_datetimedate(): Time | null;
 
         /**
          * Gets the datetimeperiod of {@link ICalGLib.Value}.
          * @returns The datetimeperiod within {@link ICalGLib.Value}
          */
-        get_datetimeperiod(): (Datetimeperiod | null);
+        get_datetimeperiod(): Datetimeperiod | null;
 
         /**
          * Gets the duration of {@link ICalGLib.Value}.
          * @returns The duration within {@link ICalGLib.Value}
          */
-        get_duration(): (Duration | null);
+        get_duration(): Duration | null;
 
         /**
          * Gets the float of {@link ICalGLib.Value}.
@@ -7089,7 +7051,7 @@ export namespace ICalGLib {
          * Gets the geo of {@link ICalGLib.Value}.
          * @returns The geo within {@link ICalGLib.Value}
          */
-        get_geo(): (Geo | null);
+        get_geo(): Geo | null;
 
         /**
          * Gets the integer of {@link ICalGLib.Value}.
@@ -7107,13 +7069,13 @@ export namespace ICalGLib {
          * Gets the parent {@link ICalGLib.Property} of the specified {@link ICalGLib.Value}.
          * @returns The parent {@link ICalGLib.Property}
          */
-        get_parent(): (Property | null);
+        get_parent(): Property | null;
 
         /**
          * Gets the period of {@link ICalGLib.Value}.
          * @returns The period within {@link ICalGLib.Value}
          */
-        get_period(): (Period | null);
+        get_period(): Period | null;
 
         /**
          * Gets the pollcompletion of {@link ICalGLib.Value}.
@@ -7131,7 +7093,7 @@ export namespace ICalGLib {
          * Gets the query of {@link ICalGLib.Value}.
          * @returns The query within {@link ICalGLib.Value}
          */
-        get_query(): (string | null);
+        get_query(): string | null;
 
         /**
          * Gets the querylevel of {@link ICalGLib.Value}.
@@ -7143,13 +7105,13 @@ export namespace ICalGLib {
          * Gets the recur of {@link ICalGLib.Value}.
          * @returns The recur within {@link ICalGLib.Value}
          */
-        get_recur(): (Recurrence | null);
+        get_recur(): Recurrence | null;
 
         /**
          * Gets the requeststatus of {@link ICalGLib.Value}.
          * @returns The requeststatus within {@link ICalGLib.Value}
          */
-        get_requeststatus(): (Reqstat | null);
+        get_requeststatus(): Reqstat | null;
 
         /**
          * Gets the status of {@link ICalGLib.Value}.
@@ -7161,7 +7123,7 @@ export namespace ICalGLib {
          * Gets the string of {@link ICalGLib.Value}.
          * @returns The string within {@link ICalGLib.Value}
          */
-        get_string(): (string | null);
+        get_string(): string | null;
 
         /**
          * Gets the taskmode of {@link ICalGLib.Value}.
@@ -7173,7 +7135,7 @@ export namespace ICalGLib {
          * Gets the text of {@link ICalGLib.Value}.
          * @returns The text within {@link ICalGLib.Value}
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Gets the transp of {@link ICalGLib.Value}.
@@ -7185,13 +7147,13 @@ export namespace ICalGLib {
          * Gets the trigger of {@link ICalGLib.Value}.
          * @returns The trigger within {@link ICalGLib.Value}
          */
-        get_trigger(): (Trigger | null);
+        get_trigger(): Trigger | null;
 
         /**
          * Gets the uri of {@link ICalGLib.Value}.
          * @returns The uri within {@link ICalGLib.Value}
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Gets the utcoffset of {@link ICalGLib.Value}.
@@ -7203,7 +7165,7 @@ export namespace ICalGLib {
          * Gets the x of {@link ICalGLib.Value}.
          * @returns The x within {@link ICalGLib.Value}
          */
-        get_x(): (string | null);
+        get_x(): string | null;
 
         /**
          * Gets the xlicclass of {@link ICalGLib.Value}.
@@ -7346,7 +7308,7 @@ export namespace ICalGLib {
          * Sets the parent property of a value.
          * @param property The parent {@link ICalGLib.Property}
          */
-        set_parent(property: (Property | null)): void;
+        set_parent(property: Property | null): void;
 
         /**
          * Sets the period in the {@link ICalGLib.Value}.

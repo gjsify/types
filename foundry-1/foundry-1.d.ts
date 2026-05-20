@@ -42,7 +42,7 @@ export namespace Foundry {
         static INVALID_SDK: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -319,7 +319,7 @@ export namespace Foundry {
         static REMOTE_BRANCH_NAME: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -739,7 +739,7 @@ export namespace Foundry {
     /**
      * @param model 
      */
-    function flatten_list_model_new(model: (Gio.ListModel | null)): Gio.ListModel;
+    function flatten_list_model_new(model: Gio.ListModel | null): Gio.ListModel;
 
     /**
      * This helper function can do a fuzzy match for you giving a haystack and
@@ -755,7 +755,7 @@ export namespace Foundry {
      * @returns `true` if `haystack` matched `casefold_needle`, otherwise `false`.
      * @since 1.1
      */
-    function fuzzy_match(haystack: (string | null), casefold_needle: string): [boolean, number];
+    function fuzzy_match(haystack: string | null, casefold_needle: string): [boolean, number];
 
     function get_default_arch(): string;
 
@@ -804,7 +804,7 @@ export namespace Foundry {
      * @param bytes a {@link GLib.Bytes}
      * @returns a {@link Dex.Future} that resolves to   a {@link Json.Node} or rejects with error.
      */
-    function json_node_from_bytes(bytes: (GLib.Bytes | Uint8Array)): Dex.Future;
+    function json_node_from_bytes(bytes: GLib.Bytes | Uint8Array): Dex.Future;
 
     /**
      * @param strv 
@@ -901,13 +901,13 @@ export namespace Foundry {
      * @param model 
      * @param future a {@link Dex.Future} or `null`
      */
-    function list_model_set_future(model: Gio.ListModel, future: (Dex.Future | null)): void;
+    function list_model_set_future(model: Gio.ListModel, future: Dex.Future | null): void;
 
     /**
      * @param model a {@link Gio.ListModel}
      * @param map_func 
      */
-    function map_list_model_new(model: (Gio.ListModel | null), map_func: ListModelMapFunc): Gio.ListModel;
+    function map_list_model_new(model: Gio.ListModel | null, map_func: ListModelMapFunc): Gio.ListModel;
 
     /**
      * Similar to `g_mkdir_with_parents()` but runs on a dedicated thread.
@@ -1008,7 +1008,7 @@ export namespace Foundry {
      * @param stdin_bytes the standard input buffer
      * @returns a {@link Dex.Future} that resolves to a string
      */
-    function subprocess_communicate(subprocess: Gio.Subprocess, stdin_bytes: (GLib.Bytes | null)): Dex.Future;
+    function subprocess_communicate(subprocess: Gio.Subprocess, stdin_bytes: GLib.Bytes | null): Dex.Future;
 
     /**
      * Like `g_subprocess_communicate_utf8()` but only supports stdout and is
@@ -1285,7 +1285,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](action_name: string, action_target: (GLib.Variant | null)): ActionIntent;
+        static ["new"](action_name: string, action_target: GLib.Variant | null): ActionIntent;
 
         // Signals
         /** @signal */
@@ -1311,19 +1311,16 @@ export namespace Foundry {
          * Gets a copy of the action target parameters.
          * @returns a {@link GLib.Variant} with the action target,   or `null` if no target is set
          */
-        dup_action_target(): (GLib.Variant | null);
+        dup_action_target(): GLib.Variant | null;
     }
 
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
     }
 
     /**
@@ -1381,7 +1378,7 @@ export namespace Foundry {
          * @param prefix the name of the inserted action group
          * @returns a {@link Gio.ActionGroup} matching `prefix` if   found, otherwise `null`.
          */
-        get_action_group(prefix: string): (Gio.ActionGroup | null);
+        get_action_group(prefix: string): Gio.ActionGroup | null;
 
         /**
          * @param action 
@@ -1484,7 +1481,7 @@ export namespace Foundry {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -1530,7 +1527,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -1544,7 +1541,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1568,7 +1565,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1590,7 +1587,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -1717,7 +1714,7 @@ export namespace Foundry {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -1764,7 +1761,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -1778,7 +1775,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -1802,7 +1799,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -1824,7 +1821,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -1884,9 +1881,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -1967,7 +1962,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -1994,7 +1989,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -2024,7 +2019,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -2056,7 +2051,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -2065,7 +2060,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -2101,7 +2096,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -2127,7 +2122,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -2245,12 +2240,12 @@ export namespace Foundry {
          * Gets the pipeline for which the addin belongs.
          * @returns a [class@Foundry.BuildPipeline   or `null` if the pipeline has been destroyed.
          */
-        dup_pipeline(): (BuildPipeline | null);
+        dup_pipeline(): BuildPipeline | null;
 
         /**
          * @returns a {@link Peas.PluginInfo}
          */
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -2276,7 +2271,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -2303,7 +2298,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -2333,7 +2328,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -2365,7 +2360,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -2374,7 +2369,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -2410,7 +2405,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -2436,7 +2431,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -2523,12 +2518,12 @@ export namespace Foundry {
         /**
          * @returns the directory for the build or `null`
          */
-        dup_directory(): (string | null);
+        dup_directory(): string | null;
 
         /**
          * @returns an array of build flags or `null`
          */
-        dup_flags(): (string[] | null);
+        dup_flags(): string[] | null;
     }
 
 
@@ -2815,7 +2810,7 @@ export namespace Foundry {
          * @param cancellable a {@link Dex.Cancellable}
          * @returns a {@link Foundry.BuildProgress}
          */
-        build(phase: BuildPipelinePhase, pty_fd: number, cancellable: (Dex.Cancellable | null)): BuildProgress;
+        build(phase: BuildPipelinePhase, pty_fd: number, cancellable: Dex.Cancellable | null): BuildProgress;
 
         /**
          * Clean the build pipeline. (e.g. `make clean`)
@@ -2824,7 +2819,7 @@ export namespace Foundry {
          * @param cancellable a {@link Dex.Cancellable}
          * @returns a {@link Foundry.BuildProgress}
          */
-        clean(phase: BuildPipelinePhase, pty_fd: number, cancellable: (Dex.Cancellable | null)): BuildProgress;
+        clean(phase: BuildPipelinePhase, pty_fd: number, cancellable: Dex.Cancellable | null): BuildProgress;
 
         /**
          * @param program the name of a program such as "meson"
@@ -2836,14 +2831,14 @@ export namespace Foundry {
          * Gets the joined form of all append paths (e.g. "a:b:c").
          * @returns the joined append paths, or `null`
          */
-        dup_append_path(): (string | null);
+        dup_append_path(): string | null;
 
         dup_arch(): string;
 
         /**
          * Get the expected build system for the pipeline.
          */
-        dup_build_system(): (string | null);
+        dup_build_system(): string | null;
 
         /**
          * Gets the directory where the project should be built.
@@ -2867,7 +2862,7 @@ export namespace Foundry {
          * Gets the joined form of all prepend paths (e.g. "a:b:c").
          * @returns the joined prepend paths, or `null`
          */
-        dup_prepend_path(): (string | null);
+        dup_prepend_path(): string | null;
 
         /**
          * Gets the SDK to use for the platform.
@@ -2943,7 +2938,7 @@ export namespace Foundry {
          * @param cancellable a {@link Dex.Cancellable}
          * @returns a {@link Foundry.BuildProgress}
          */
-        purge(phase: BuildPipelinePhase, pty_fd: number, cancellable: (Dex.Cancellable | null)): BuildProgress;
+        purge(phase: BuildPipelinePhase, pty_fd: number, cancellable: Dex.Cancellable | null): BuildProgress;
 
         /**
          * Query information about the state of all stages in the pipeline
@@ -3003,7 +2998,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -3043,7 +3038,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -3092,7 +3087,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -3119,7 +3114,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -3149,7 +3144,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -3181,7 +3176,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -3190,7 +3185,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -3226,7 +3221,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -3252,7 +3247,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -3398,7 +3393,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -3425,7 +3420,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -3455,7 +3450,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -3487,7 +3482,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -3496,7 +3491,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -3532,7 +3527,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -3558,7 +3553,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -3766,17 +3761,17 @@ export namespace Foundry {
         /**
          * @returns the kind of the stage such as "flatpak"
          */
-        dup_kind(): (string | null);
+        dup_kind(): string | null;
 
         /**
          * @returns a {@link Foundry.BuildPipeline} or `null`
          */
-        dup_pipeline(): (BuildPipeline | null);
+        dup_pipeline(): BuildPipeline | null;
 
         /**
          * @returns the title of the stage
          */
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Locates the compiler flags used to when compiling `file`.
@@ -3866,7 +3861,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -3893,7 +3888,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -3923,7 +3918,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -3955,7 +3950,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -3964,7 +3959,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -4000,7 +3995,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -4026,7 +4021,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -4131,13 +4126,10 @@ export namespace Foundry {
 
     namespace CliCommandTree {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4212,13 +4204,10 @@ export namespace Foundry {
 
     namespace CliCommandTreeAddin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4407,7 +4396,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_context(): (Context | null);
+        dup_context(): Context | null;
     }
 
 
@@ -4527,7 +4516,7 @@ export namespace Foundry {
          * @param phase the phase of the pipeline.
          * @virtual
          */
-        vfunc_prepare(pipeline: (BuildPipeline | null), launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
+        vfunc_prepare(pipeline: BuildPipeline | null, launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
 
         // Methods
         /**
@@ -4541,14 +4530,14 @@ export namespace Foundry {
         /**
          * @returns a string array of arguments for   the command to run.
          */
-        dup_argv(): (string[] | null);
+        dup_argv(): string[] | null;
 
         dup_cwd(): string;
 
         /**
          * @returns a string array containing the   environment of `null`.
          */
-        dup_environ(): (string[] | null);
+        dup_environ(): string[] | null;
 
         dup_id(): string;
 
@@ -4566,7 +4555,7 @@ export namespace Foundry {
          * @param phase the phase of the pipeline.
          * @returns a {@link Dex.Future} that resolves to any value   when the preparation has completed. Otherwise rejects with error.
          */
-        prepare(pipeline: (BuildPipeline | null), launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
+        prepare(pipeline: BuildPipeline | null, launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
 
         /**
          * @param argv 
@@ -4622,7 +4611,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -4649,7 +4638,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -4679,7 +4668,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -4711,7 +4700,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -4720,7 +4709,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -4756,7 +4745,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -4782,7 +4771,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -4805,13 +4794,10 @@ export namespace Foundry {
 
     namespace CommandLine {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4872,7 +4858,7 @@ export namespace Foundry {
          * Currrently, this only returns an auth provider if the command line
          * client provides a TTY.
          */
-        dup_auth_provider(): (AuthProvider | null);
+        dup_auth_provider(): AuthProvider | null;
 
         get_directory(): string;
 
@@ -4944,9 +4930,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -4989,7 +4973,7 @@ export namespace Foundry {
          * @param command_id an identifier matching a {@link Foundry.Command.id}
          * @returns a {@link Foundry.Command} or `null`
          */
-        find_command(command_id: string): (Command | null);
+        find_command(command_id: string): Command | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -5030,7 +5014,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -5070,7 +5054,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -5104,9 +5088,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -5208,7 +5190,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -5248,7 +5230,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -5297,7 +5279,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -5324,7 +5306,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -5354,7 +5336,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -5386,7 +5368,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -5395,7 +5377,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -5431,7 +5413,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -5457,7 +5439,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -5577,7 +5559,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, phase: BuildPipelinePhase, build_command: (Command | null), clean_command: (Command | null), purge_command: (Command | null), query_file: (Gio.File | null), phony: boolean): CommandStage;
+        static ["new"](context: Context, phase: BuildPipelinePhase, build_command: Command | null, clean_command: Command | null, purge_command: Command | null, query_file: Gio.File | null, phony: boolean): CommandStage;
 
         // Signals
         /** @signal */
@@ -5596,34 +5578,31 @@ export namespace Foundry {
         /**
          * @returns a {@link Foundry.Command}
          */
-        dup_build_command(): (Command | null);
+        dup_build_command(): Command | null;
 
         /**
          * @returns a {@link Foundry.Command}
          */
-        dup_clean_command(): (Command | null);
+        dup_clean_command(): Command | null;
 
         /**
          * @returns a {@link Foundry.Command}
          */
-        dup_purge_command(): (Command | null);
+        dup_purge_command(): Command | null;
 
         /**
          * @returns the file to check for completion    or `null` if unset.
          */
-        dup_query_file(): (Gio.File | null);
+        dup_query_file(): Gio.File | null;
     }
 
 
     namespace CompileCommands {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5671,7 +5650,7 @@ export namespace Foundry {
          * @param system_includes system include dirs if any
          * @returns A string array or `null` if   there was a failure to locate or parse the command.
          */
-        lookup(file: Gio.File, system_includes: string): [(string[] | null), Gio.File | null];
+        lookup(file: Gio.File, system_includes: string): [string[] | null, Gio.File | null];
     }
 
 
@@ -5785,7 +5764,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * If the proposal supports inserting a snippet, then this contains
@@ -5794,12 +5773,12 @@ export namespace Foundry {
          * The format should be in `GtkSourceSnippet` format.
          * @virtual
          */
-        vfunc_dup_snippet_text(): (string | null);
+        vfunc_dup_snippet_text(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_typed_text(): (string | null);
+        vfunc_dup_typed_text(): string | null;
 
         // Methods
         dup_after(): string;
@@ -5808,7 +5787,7 @@ export namespace Foundry {
 
         dup_details(): string;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         /**
          * If the proposal supports inserting a snippet, then this contains
@@ -5816,9 +5795,9 @@ export namespace Foundry {
          * 
          * The format should be in `GtkSourceSnippet` format.
          */
-        dup_snippet_text(): (string | null);
+        dup_snippet_text(): string | null;
 
-        dup_typed_text(): (string | null);
+        dup_typed_text(): string | null;
     }
 
 
@@ -5969,7 +5948,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -5996,7 +5975,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -6026,7 +6005,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -6058,7 +6037,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -6067,7 +6046,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -6103,7 +6082,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -6129,7 +6108,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -6208,7 +6187,7 @@ export namespace Foundry {
          * Gets the file that is to be completed.
          * @virtual
          */
-        vfunc_dup_file(): (Gio.File | null);
+        vfunc_dup_file(): Gio.File | null;
 
         /**
          * Gets the language identifier for the completion request, such as "c" or "js".
@@ -6216,12 +6195,12 @@ export namespace Foundry {
          * The language identifiers are expected to match GtkSourceView language identifiers.
          * @virtual
          */
-        vfunc_dup_language_id(): (string | null);
+        vfunc_dup_language_id(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_word(): (string | null);
+        vfunc_dup_word(): string | null;
 
         /**
          * @virtual
@@ -6241,7 +6220,7 @@ export namespace Foundry {
         /**
          * Gets the file that is to be completed.
          */
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
         /**
          * Gets the language identifier for the completion request, such as "c" or "js".
@@ -6249,12 +6228,12 @@ export namespace Foundry {
          * The language identifiers are expected to match GtkSourceView language identifiers.
          * @returns the language identifier or `null`
          */
-        dup_language_id(): (string | null);
+        dup_language_id(): string | null;
 
         /**
          * @returns the word to complete
          */
-        dup_word(): (string | null);
+        dup_word(): string | null;
 
         get_activation(): CompletionActivation;
 
@@ -6413,7 +6392,7 @@ export namespace Foundry {
          * The build system the configuration specifies to be used.
          * @virtual
          */
-        vfunc_dup_build_system(): (string | null);
+        vfunc_dup_build_system(): string | null;
 
         /**
          * Determines where the project build should occur.
@@ -6429,20 +6408,20 @@ export namespace Foundry {
          * configuring the project for a build.
          * @virtual
          */
-        vfunc_dup_config_opts(): (string[] | null);
+        vfunc_dup_config_opts(): string[] | null;
 
         /**
          * Gets the default command for the config, if any.
          * @virtual
          */
-        vfunc_dup_default_command(): (Command | null);
+        vfunc_dup_default_command(): Command | null;
 
         /**
          * Gets the environment variables to use for a particular locality.
          * @param locality 
          * @virtual
          */
-        vfunc_dup_environ(locality: Locality): (string[] | null);
+        vfunc_dup_environ(locality: Locality): string[] | null;
 
         /**
          * Tries to locate the preferred SDK for a configuration and device.
@@ -6483,7 +6462,7 @@ export namespace Foundry {
          * The build system the configuration specifies to be used.
          * @returns a build system or `null`
          */
-        dup_build_system(): (string | null);
+        dup_build_system(): string | null;
 
         /**
          * Determines where the project build should occur.
@@ -6499,25 +6478,25 @@ export namespace Foundry {
          * configuring the project for a build.
          * @returns the config options for   configuring the project.
          */
-        dup_config_opts(): (string[] | null);
+        dup_config_opts(): string[] | null;
 
         /**
          * Gets the default command for the config, if any.
          * @returns a {@link Foundry.Config} or `null`.
          */
-        dup_default_command(): (Command | null);
+        dup_default_command(): Command | null;
 
         /**
          * Gets the environment variables to use for a particular locality.
          * @param locality 
          * @returns an array of UTF-8 encoded strings   or `null` to use the default environment.
          */
-        dup_environ(locality: Locality): (string[] | null);
+        dup_environ(locality: Locality): string[] | null;
 
         /**
          * @returns the identifier of the config
          */
-        dup_id(): (string | null);
+        dup_id(): string | null;
 
         /**
          * Gets the user-visible name for the configuration.
@@ -6528,7 +6507,7 @@ export namespace Foundry {
         /**
          * Gets the provider which provides this config.
          */
-        dup_provider(): (ConfigProvider | null);
+        dup_provider(): ConfigProvider | null;
 
         get_active(): boolean;
 
@@ -6600,7 +6579,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -6627,7 +6606,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -6657,7 +6636,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -6689,7 +6668,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -6698,7 +6677,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -6734,7 +6713,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -6760,7 +6739,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -6837,14 +6816,14 @@ export namespace Foundry {
          * Gets the active configuration
          * @returns a {@link Foundry.Config} or `null`
          */
-        dup_config(): (Config | null);
+        dup_config(): Config | null;
 
         /**
          * Looks through available configs to find one matching `config_id`.
          * @param config_id an identifier matching a {@link Foundry.Config.id}
          * @returns a {@link Foundry.Config} or `null`
          */
-        find_config(config_id: string): (Config | null);
+        find_config(config_id: string): Config | null;
 
         /**
          * Sets the active configuration for the config manager.
@@ -6894,7 +6873,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -6934,7 +6913,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -6968,9 +6947,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -7072,7 +7049,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -7112,7 +7089,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -7161,7 +7138,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -7188,7 +7165,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -7218,7 +7195,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -7250,7 +7227,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -7259,7 +7236,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -7295,7 +7272,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -7321,7 +7298,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -7767,9 +7744,9 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](foundry_dir: string, project_dir: (string | null), flags: ContextFlags, cancellable: (Dex.Cancellable | null)): Context;
+        static ["new"](foundry_dir: string, project_dir: string | null, flags: ContextFlags, cancellable: Dex.Cancellable | null): Context;
 
-        static new_for_user(cancellable: (Dex.Cancellable | null)): Context;
+        static new_for_user(cancellable: Dex.Cancellable | null): Context;
 
         // Signals
         /** @signal */
@@ -7790,7 +7767,7 @@ export namespace Foundry {
          * @param path the starting path
          * @param cancellable an optional cancellable
          */
-        static discover(path: string, cancellable: (Dex.Cancellable | null)): Dex.Future;
+        static discover(path: string, cancellable: Dex.Cancellable | null): Dex.Future;
 
         static error_quark(): GLib.Quark;
 
@@ -7823,7 +7800,7 @@ export namespace Foundry {
          * checks this value) by using {@link Foundry.BuildPipeline.build_system}.
          * @returns a build-system name or `null`
          */
-        dup_build_system(): (string | null);
+        dup_build_system(): string | null;
 
         /**
          * Gets the {@link Foundry.CommandManager} instance.
@@ -7849,7 +7826,7 @@ export namespace Foundry {
          */
         dup_debugger_manager(): DebuggerManager;
 
-        dup_default_license(): (License | null);
+        dup_default_license(): License | null;
 
         /**
          * Gets the {@link Foundry.DependencyManager} instance.
@@ -7982,7 +7959,7 @@ export namespace Foundry {
          */
         dup_text_manager(): TextManager;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Gets the {@link Foundry.TweakManager} instance.
@@ -8020,7 +7997,7 @@ export namespace Foundry {
          * @param schema_path an optional schema path
          * @returns a {@link Foundry.Settings}
          */
-        load_settings(schema_id: string, schema_path: (string | null)): Settings;
+        load_settings(schema_id: string, schema_path: string | null): Settings;
 
         /**
          * Checks if network is currently allowed.
@@ -8126,7 +8103,7 @@ export namespace Foundry {
          * the reference count of the resulting {@link Foundry.Context} by 1.
          * @returns a {@link Foundry.Context} or `null`
          */
-        dup_context(): (Context | null);
+        dup_context(): Context | null;
 
         /**
          * Creates a new {@link Foundry.Inhibitor} that will keep the
@@ -8164,7 +8141,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -8191,7 +8168,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -8221,7 +8198,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -8253,7 +8230,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -8262,7 +8239,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -8298,7 +8275,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -8324,7 +8301,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -8352,9 +8329,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -8406,7 +8381,7 @@ export namespace Foundry {
          * Gets the D-Bus address of the embedded D-Bus server.
          * @returns A D-Bus server address if started   successfully otherwise `null`.
          */
-        dup_address(): (string | null);
+        dup_address(): string | null;
 
         /**
          * Ensures the GDBusServer is running and provides the address.
@@ -8506,9 +8481,9 @@ export namespace Foundry {
          */
         call(node: Json.Node): Dex.Future;
 
-        dup_stream(): (Gio.IOStream | null);
+        dup_stream(): Gio.IOStream | null;
 
-        dup_subprocess(): (Gio.Subprocess | null);
+        dup_subprocess(): Gio.Subprocess | null;
 
         get_quirks(): DapDebuggerQuirk;
 
@@ -8690,7 +8665,7 @@ export namespace Foundry {
          * Gets a copy of the primary thread (the first thread created by the debugger).
          * @virtual
          */
-        vfunc_dup_primary_thread(): (DebuggerThread | null);
+        vfunc_dup_primary_thread(): DebuggerThread | null;
 
         /**
          * @param event 
@@ -8821,7 +8796,7 @@ export namespace Foundry {
          * @param end_address 
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.DebuggerInstruction}.
          */
-        disassemble(begin_address: (bigint | number), end_address: (bigint | number)): Dex.Future;
+        disassemble(begin_address: bigint | number, end_address: bigint | number): Dex.Future;
 
         /**
          * Gets a name for the provider that is expected to be displayed to
@@ -8834,7 +8809,7 @@ export namespace Foundry {
          * Gets a copy of the primary thread (the first thread created by the debugger).
          * @returns a {@link Foundry.DebuggerThread} or `null`
          */
-        dup_primary_thread(): (DebuggerThread | null);
+        dup_primary_thread(): DebuggerThread | null;
 
         /**
          * This should only be used by debugger implementations.
@@ -8960,7 +8935,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -8987,7 +8962,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -9017,7 +8992,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -9049,7 +9024,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -9058,7 +9033,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -9094,7 +9069,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -9120,7 +9095,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -9195,7 +9170,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](_debugger: (Debugger | null), thread: (DebuggerThread | null)): DebuggerActions;
+        static ["new"](_debugger: Debugger | null, thread: DebuggerThread | null): DebuggerActions;
 
         // Signals
         /** @signal */
@@ -9215,26 +9190,26 @@ export namespace Foundry {
          * Gets the debugger instance.
          * @returns the debugger instance
          */
-        dup_debugger(): (Debugger | null);
+        dup_debugger(): Debugger | null;
 
         /**
          * Gets the debugger thread.
          * @returns the debugger thread
          */
-        dup_thread(): (DebuggerThread | null);
+        dup_thread(): DebuggerThread | null;
 
         /**
          * Sets the debugger instance.
          * @param _debugger the debugger instance
          */
-        set_debugger(_debugger: (Debugger | null)): void;
+        set_debugger(_debugger: Debugger | null): void;
 
         /**
          * Sets the debugger thread and connects to its "changed" signal
          * to update action states.
          * @param thread the debugger thread
          */
-        set_thread(thread: (DebuggerThread | null)): void;
+        set_thread(thread: DebuggerThread | null): void;
 
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
@@ -9307,7 +9282,7 @@ export namespace Foundry {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -9353,7 +9328,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -9367,7 +9342,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -9391,7 +9366,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -9413,7 +9388,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -9540,7 +9515,7 @@ export namespace Foundry {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -9587,7 +9562,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -9601,7 +9576,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -9625,7 +9600,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -9647,7 +9622,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -9707,9 +9682,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DebuggerTrap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DebuggerTrap.ConstructorProps {}
     }
 
     /**
@@ -9755,9 +9728,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DebuggerTrap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DebuggerTrap.ConstructorProps {}
     }
 
     /**
@@ -9798,13 +9769,10 @@ export namespace Foundry {
 
     namespace DebuggerEvent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -9855,8 +9823,8 @@ export namespace Foundry {
             display_text: string;
             displayText: string;
             "function": string;
-            instruction_pointer: (bigint | number);
-            instructionPointer: (bigint | number);
+            instruction_pointer: bigint | number;
+            instructionPointer: bigint | number;
         }
     }
 
@@ -9939,7 +9907,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_get_instruction_pointer(): (bigint | number);
+        vfunc_get_instruction_pointer(): bigint | number;
 
         // Methods
         dup_display_text(): string;
@@ -10008,13 +9976,13 @@ export namespace Foundry {
          * The message string from the debugger instance.
          * @virtual
          */
-        vfunc_dup_message(): (string | null);
+        vfunc_dup_message(): string | null;
 
         // Methods
         /**
          * The message string from the debugger instance.
          */
-        dup_message(): (string | null);
+        dup_message(): string | null;
     }
 
 
@@ -10025,9 +9993,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -10077,13 +10043,13 @@ export namespace Foundry {
          * @param command a {@link Foundry.Command}
          * @returns a {@link Dex.Future} that resolves to an   {@link Foundry.DebuggerProvider}.
          */
-        discover(pipeline: (BuildPipeline | null), command: Command): Dex.Future;
+        discover(pipeline: BuildPipeline | null, command: Command): Dex.Future;
 
         /**
          * @param module_name module name of the plugin
          * @returns a {@link Foundry.DebuggerProvider}
          */
-        find(module_name: string): (DebuggerProvider | null);
+        find(module_name: string): DebuggerProvider | null;
     }
 
 
@@ -10099,12 +10065,12 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            begin_address: (bigint | number);
-            beginAddress: (bigint | number);
-            end_address: (bigint | number);
-            endAddress: (bigint | number);
+            begin_address: bigint | number;
+            beginAddress: bigint | number;
+            end_address: bigint | number;
+            endAddress: bigint | number;
             mode: number;
-            offset: (bigint | number);
+            offset: bigint | number;
             path: string;
         }
     }
@@ -10207,7 +10173,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_get_offset(): (bigint | number);
+        vfunc_get_offset(): bigint | number;
 
         /**
          * @param begin_address 
@@ -10227,7 +10193,7 @@ export namespace Foundry {
          * @param beign_address 
          * @param end_address 
          */
-        get_range(beign_address: (bigint | number), end_address: (bigint | number)): void;
+        get_range(beign_address: bigint | number, end_address: bigint | number): void;
     }
 
 
@@ -10452,10 +10418,10 @@ export namespace Foundry {
          * @param command a {@link Foundry.Command}
          * @virtual
          */
-        vfunc_supports(pipeline: (BuildPipeline | null), command: Command): Dex.Future;
+        vfunc_supports(pipeline: BuildPipeline | null, command: Command): Dex.Future;
 
         // Methods
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * @param pipeline a {@link Foundry.BuildPipeline}
@@ -10467,7 +10433,7 @@ export namespace Foundry {
          * @param command a {@link Foundry.Command}
          * @returns a {@link Dex.Future} that resolves to an integer   `G_TYPE_INT` of the priority of the debugger (larger value is higher   priority) or rejects with error.
          */
-        supports(pipeline: (BuildPipeline | null), command: Command): Dex.Future;
+        supports(pipeline: BuildPipeline | null, command: Command): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -10493,7 +10459,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -10520,7 +10486,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -10550,7 +10516,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -10582,7 +10548,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -10591,7 +10557,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -10627,7 +10593,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -10653,7 +10619,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -10799,8 +10765,8 @@ export namespace Foundry {
             end_line_offset: number;
             endLineOffset: number;
             id: string;
-            instruction_pointer: (bigint | number);
-            instructionPointer: (bigint | number);
+            instruction_pointer: bigint | number;
+            instructionPointer: bigint | number;
             module_id: string;
             moduleId: string;
             name: string;
@@ -10974,12 +10940,12 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_source(): (DebuggerSource | null);
+        vfunc_dup_source(): DebuggerSource | null;
 
         /**
          * @virtual
          */
-        vfunc_get_instruction_pointer(): (bigint | number);
+        vfunc_get_instruction_pointer(): bigint | number;
 
         /**
          * @param begin_line 
@@ -11012,7 +10978,7 @@ export namespace Foundry {
 
         dup_name(): string;
 
-        dup_source(): (DebuggerSource | null);
+        dup_source(): DebuggerSource | null;
 
         get_instruction_pointer(): number;
 
@@ -11105,7 +11071,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_trap(): (DebuggerTrap | null);
+        vfunc_dup_trap(): DebuggerTrap | null;
 
         /**
          * @virtual
@@ -11123,7 +11089,7 @@ export namespace Foundry {
         vfunc_get_signal(): number;
 
         // Methods
-        dup_trap(): (DebuggerTrap | null);
+        dup_trap(): DebuggerTrap | null;
 
         get_exit_code(): number;
 
@@ -11135,13 +11101,10 @@ export namespace Foundry {
 
     namespace DebuggerTarget {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -11663,7 +11626,7 @@ export namespace Foundry {
          * Gets the identifier for this trap (such as breakpoint number).
          * @virtual
          */
-        vfunc_dup_id(): (string | null);
+        vfunc_dup_id(): string | null;
 
         /**
          * @virtual
@@ -11689,7 +11652,7 @@ export namespace Foundry {
         /**
          * Gets the identifier for this trap (such as breakpoint number).
          */
-        dup_id(): (string | null);
+        dup_id(): string | null;
 
         is_armed(): boolean;
 
@@ -11720,8 +11683,8 @@ export namespace Foundry {
             access: DebuggerWatchAccess;
             disposition: DebuggerTrapDisposition;
             "function": string;
-            instruction_pointer: (bigint | number);
-            instructionPointer: (bigint | number);
+            instruction_pointer: bigint | number;
+            instructionPointer: bigint | number;
             kind: DebuggerTrapKind;
             line: number;
             line_offset: number;
@@ -11769,13 +11732,13 @@ export namespace Foundry {
          * @default 0
          */
         get instruction_pointer(): number;
-        set instruction_pointer(val: (bigint | number));
+        set instruction_pointer(val: bigint | number);
 
         /**
          * @default 0
          */
         get instructionPointer(): number;
-        set instructionPointer(val: (bigint | number));
+        set instructionPointer(val: bigint | number);
 
         /**
          * @default Foundry.DebuggerTrapKind.BREAKPOINT
@@ -11861,7 +11824,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        copy(): (DebuggerTrapParams | null);
+        copy(): DebuggerTrapParams | null;
 
         dup_function(): string;
 
@@ -11901,7 +11864,7 @@ export namespace Foundry {
         /**
          * @param instruction_pointer 
          */
-        set_instruction_pointer(instruction_pointer: (bigint | number)): void;
+        set_instruction_pointer(instruction_pointer: bigint | number): void;
 
         /**
          * @param kind 
@@ -12020,17 +11983,17 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_type_name(): (string | null);
+        vfunc_dup_type_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_value(): (string | null);
+        vfunc_dup_value(): string | null;
 
         /**
          * If the number of children is known, it will be set to `n_children`. Otherwise
@@ -12054,11 +12017,11 @@ export namespace Foundry {
         vfunc_read_memory(offset: number, count: number): Dex.Future;
 
         // Methods
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
-        dup_type_name(): (string | null);
+        dup_type_name(): string | null;
 
-        dup_value(): (string | null);
+        dup_value(): string | null;
 
         /**
          * If the number of children is known, it will be set to `n_children`. Otherwise
@@ -12079,7 +12042,7 @@ export namespace Foundry {
          * @param count number of bytes to read, must be > 0
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes} or rejects with error. Sicne: 1.1
          */
-        read_memory(offset: (bigint | number), count: (bigint | number)): Dex.Future;
+        read_memory(offset: bigint | number, count: bigint | number): Dex.Future;
     }
 
 
@@ -12090,9 +12053,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DebuggerTrap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DebuggerTrap.ConstructorProps {}
     }
 
     /**
@@ -12227,7 +12188,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_provider(): (DependencyProvider | null);
+        vfunc_dup_provider(): DependencyProvider | null;
 
         // Methods
         dup_kind(): string;
@@ -12236,7 +12197,7 @@ export namespace Foundry {
 
         dup_name(): string;
 
-        dup_provider(): (DependencyProvider | null);
+        dup_provider(): DependencyProvider | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -12262,7 +12223,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -12289,7 +12250,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -12319,7 +12280,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -12351,7 +12312,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -12360,7 +12321,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -12396,7 +12357,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -12422,7 +12383,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -12450,9 +12411,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -12576,7 +12535,7 @@ export namespace Foundry {
          * @param parent a {@link Foundry.Dependency} or `null`
          * @virtual
          */
-        vfunc_list_dependencies(config: Config, parent: (Dependency | null)): Dex.Future;
+        vfunc_list_dependencies(config: Config, parent: Dependency | null): Dex.Future;
 
         /**
          * @param config 
@@ -12605,7 +12564,7 @@ export namespace Foundry {
          * @param parent a {@link Foundry.Dependency} or `null`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Dependency} or rejects with   an error.
          */
-        list_dependencies(config: Config, parent: (Dependency | null)): Dex.Future;
+        list_dependencies(config: Config, parent: Dependency | null): Dex.Future;
 
         /**
          * @param config 
@@ -12639,7 +12598,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -12666,7 +12625,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -12696,7 +12655,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -12728,7 +12687,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -12737,7 +12696,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -12773,7 +12732,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -12799,7 +12758,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -12906,7 +12865,7 @@ export namespace Foundry {
          * @param cancellable an optional {@link Dex.Cancellable} for cancellation
          * @virtual
          */
-        vfunc_prepare(launcher: ProcessLauncher, pipeline: BuildPipeline, pty_fd: number, cancellable: (Dex.Cancellable | null)): Dex.Future;
+        vfunc_prepare(launcher: ProcessLauncher, pipeline: BuildPipeline, pty_fd: number, cancellable: Dex.Cancellable | null): Dex.Future;
 
         /**
          * Checks if the deploy strategy is supported for the current configuration.
@@ -12942,7 +12901,7 @@ export namespace Foundry {
          * @param cancellable an optional {@link Dex.Cancellable} for cancellation
          * @returns a {@link Dex.Future} that resolves to any value.
          */
-        prepare(launcher: ProcessLauncher, pipeline: BuildPipeline, pty_fd: number, cancellable: (Dex.Cancellable | null)): Dex.Future;
+        prepare(launcher: ProcessLauncher, pipeline: BuildPipeline, pty_fd: number, cancellable: Dex.Cancellable | null): Dex.Future;
 
         /**
          * Checks if the deploy strategy is supported for the current configuration.
@@ -12974,7 +12933,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -13001,7 +12960,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -13031,7 +12990,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -13063,7 +13022,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -13072,7 +13031,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -13108,7 +13067,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -13134,7 +13093,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -13276,7 +13235,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -13303,7 +13262,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -13333,7 +13292,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -13365,7 +13324,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -13374,7 +13333,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -13410,7 +13369,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -13436,7 +13395,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -13643,14 +13602,14 @@ export namespace Foundry {
          * Typically this is a {@link Foundry.LocalDevice} unless targeting a non-local device.
          * @returns a {@link Foundry.Device} or `null`
          */
-        dup_device(): (Device | null);
+        dup_device(): Device | null;
 
         /**
          * Looks through available devices to find one matching `device_id`.
          * @param device_id an identifier matching a {@link Foundry.Device.id}
          * @returns a {@link Foundry.Device} or `null`
          */
-        find_device(device_id: string): (Device | null);
+        find_device(device_id: string): Device | null;
 
         /**
          * @param device 
@@ -13696,7 +13655,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -13736,7 +13695,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -13770,9 +13729,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -13874,7 +13831,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -13914,7 +13871,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -13963,7 +13920,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -13990,7 +13947,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -14020,7 +13977,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -14052,7 +14009,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -14061,7 +14018,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -14097,7 +14054,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -14123,7 +14080,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -14318,29 +14275,29 @@ export namespace Foundry {
         /**
          * @returns a {@link Gio.File} or `null`
          */
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
         /**
          * Get the markup for the diagnostic, if any.
          */
-        dup_markup(): (Markup | null);
+        dup_markup(): Markup | null;
 
         /**
          * Gets the message for the diagnostic, if any.
          * @returns a message string or `null`
          */
-        dup_message(): (string | null);
+        dup_message(): string | null;
 
         /**
          * Gets the path for the diagnostic, if any.
          * @returns a string or `null`
          */
-        dup_path(): (string | null);
+        dup_path(): string | null;
 
         /**
          * Gets the {@link Foundry.Diagnostic.rule_id} property.
          */
-        dup_rule_id(): (string | null);
+        dup_rule_id(): string | null;
 
         /**
          * @param right 
@@ -14369,7 +14326,7 @@ export namespace Foundry {
          * Gets the available {@link Foundry.DiagnosticFix} for the diagnostic.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.DiagnosticFix}
          */
-        list_fixes(): (Gio.ListModel | null);
+        list_fixes(): Gio.ListModel | null;
 
         /**
          * Gets the available ranges as a {@link Gio.ListModel} of {@link Foundry.DiagnosticRange}.
@@ -14463,9 +14420,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -14520,7 +14475,7 @@ export namespace Foundry {
          * @param language the language identifier for `file`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Diagnostic}.
          */
-        diagnose(file: (Gio.File | null), contents: (GLib.Bytes | null), language: (string | null)): Dex.Future;
+        diagnose(file: Gio.File | null, contents: GLib.Bytes | null, language: string | null): Dex.Future;
 
         /**
          * @param file a {@link Gio.File}
@@ -14615,7 +14570,7 @@ export namespace Foundry {
          * @param language the language code such as "c"
          * @virtual
          */
-        vfunc_diagnose(file: (Gio.File | null), contents: (GLib.Bytes | null), language: (string | null)): Dex.Future;
+        vfunc_diagnose(file: Gio.File | null, contents: GLib.Bytes | null, language: string | null): Dex.Future;
 
         /**
          * Gets a name for the provider that is expected to be displayed to
@@ -14648,7 +14603,7 @@ export namespace Foundry {
          * @param language the language code such as "c"
          * @returns a {@link Dex.Future} that resolves to a {@link Gio.ListModel}   of {@link Foundry.Diagnostic}.
          */
-        diagnose(file: (Gio.File | null), contents: (GLib.Bytes | null), language: (string | null)): Dex.Future;
+        diagnose(file: Gio.File | null, contents: GLib.Bytes | null, language: string | null): Dex.Future;
 
         /**
          * Gets a name for the provider that is expected to be displayed to
@@ -14657,7 +14612,7 @@ export namespace Foundry {
          */
         dup_name(): string;
 
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Lists all diagnostics known to the provider for the project.
@@ -14699,7 +14654,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -14726,7 +14681,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -14756,7 +14711,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -14788,7 +14743,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -14797,7 +14752,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -14833,7 +14788,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -14859,7 +14814,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -15058,9 +15013,9 @@ export namespace Foundry {
         static error_quark(): GLib.Quark;
 
         // Methods
-        dup_argv(): (string[] | null);
+        dup_argv(): string[] | null;
 
-        dup_environ(): (string[] | null);
+        dup_environ(): string[] | null;
 
         /**
          * @param argv 
@@ -15097,7 +15052,7 @@ export namespace Foundry {
             ignored: boolean;
             info: Gio.FileInfo;
             name: string;
-            size: (bigint | number);
+            size: bigint | number;
             status: VcsFileStatus;
             symbolic_icon: Gio.Icon;
             symbolicIcon: Gio.Icon;
@@ -15213,7 +15168,7 @@ export namespace Foundry {
 
         dup_name(): string;
 
-        dup_symbolic_icon(): (Gio.Icon | null);
+        dup_symbolic_icon(): Gio.Icon | null;
 
         get_file_type(): Gio.FileType;
 
@@ -15380,7 +15335,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -15420,7 +15375,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -15469,7 +15424,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -15496,7 +15451,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -15526,7 +15481,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -15558,7 +15513,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -15567,7 +15522,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -15603,7 +15558,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -15629,7 +15584,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -15664,9 +15619,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -15733,19 +15686,19 @@ export namespace Foundry {
         /**
          * @param cancellable 
          */
-        execute_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        execute_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        execute_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -15755,7 +15708,7 @@ export namespace Foundry {
         /**
          * @param cancellable 
          */
-        execute_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        execute_sync(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -15868,7 +15821,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: (GLib.Bytes | Uint8Array)): DoapFile;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): DoapFile;
 
         static new_from_file(file: Gio.File): DoapFile;
 
@@ -16056,7 +16009,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Foundry.DoapFile} or `null`
          */
-        dup_doap_file(): (DoapFile | null);
+        dup_doap_file(): DoapFile | null;
     }
 
 
@@ -16208,42 +16161,42 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_deprecated_in(): (string | null);
+        vfunc_dup_deprecated_in(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_menu_icon(): (Gio.Icon | null);
+        vfunc_dup_menu_icon(): Gio.Icon | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_menu_title(): (string | null);
+        vfunc_dup_menu_title(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_section_title(): (string | null);
+        vfunc_dup_section_title(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_since_version(): (string | null);
+        vfunc_dup_since_version(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_uri(): (string | null);
+        vfunc_dup_uri(): string | null;
 
         /**
          * @param other 
@@ -16277,24 +16230,24 @@ export namespace Foundry {
          * @param attribute 
          * @virtual
          */
-        vfunc_query_attribute(attribute: string): (string | null);
+        vfunc_query_attribute(attribute: string): string | null;
 
         // Methods
-        dup_deprecated_in(): (string | null);
+        dup_deprecated_in(): string | null;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
-        dup_menu_icon(): (Gio.Icon | null);
+        dup_menu_icon(): Gio.Icon | null;
 
-        dup_menu_title(): (string | null);
+        dup_menu_title(): string | null;
 
-        dup_section_title(): (string | null);
+        dup_section_title(): string | null;
 
-        dup_since_version(): (string | null);
+        dup_since_version(): string | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
-        dup_uri(): (string | null);
+        dup_uri(): string | null;
 
         /**
          * @param other 
@@ -16323,7 +16276,7 @@ export namespace Foundry {
          * but are not required by plugins to implement.
          * @param attribute 
          */
-        query_attribute(attribute: string): (string | null);
+        query_attribute(attribute: string): string | null;
     }
 
 
@@ -16427,14 +16380,14 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_subtitle(): (string | null);
+        vfunc_dup_subtitle(): string | null;
 
         /**
          * Gets tags for the documentation which may be useful to show the
          * user to help them make better selections.
          * @virtual
          */
-        vfunc_dup_tags(): (string[] | null);
+        vfunc_dup_tags(): string[] | null;
 
         /**
          * @virtual
@@ -16462,13 +16415,13 @@ export namespace Foundry {
         // Methods
         dup_id(): string;
 
-        dup_subtitle(): (string | null);
+        dup_subtitle(): string | null;
 
         /**
          * Gets tags for the documentation which may be useful to show the
          * user to help them make better selections.
          */
-        dup_tags(): (string[] | null);
+        dup_tags(): string[] | null;
 
         dup_title(): string;
 
@@ -16511,7 +16464,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -16538,7 +16491,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -16568,7 +16521,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -16600,7 +16553,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -16609,7 +16562,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -16645,7 +16598,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -16671,7 +16624,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -16980,7 +16933,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -17020,7 +16973,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -17230,7 +17183,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -17257,7 +17210,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -17287,7 +17240,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -17319,7 +17272,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -17328,7 +17281,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -17364,7 +17317,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -17390,7 +17343,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -17653,7 +17606,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_identifier(): string;
 
@@ -17748,7 +17701,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](context: (Context | null), engine: (Peas.Engine | null), interface_type: GObject.GType, key: string, value: (string | null)): Extension;
+        static ["new"](context: Context | null, engine: Peas.Engine | null, interface_type: GObject.GType, key: string, value: string | null): Extension;
 
         // Signals
         /** @signal */
@@ -17816,7 +17769,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -17843,7 +17796,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -17873,7 +17826,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -17905,7 +17858,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -17914,7 +17867,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -17950,7 +17903,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -17976,7 +17929,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -18182,7 +18135,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -18222,7 +18175,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -18271,7 +18224,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -18298,7 +18251,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -18328,7 +18281,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -18360,7 +18313,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -18369,7 +18322,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -18405,7 +18358,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -18431,7 +18384,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -18459,9 +18412,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -18514,7 +18465,7 @@ export namespace Foundry {
          * @param filename optional filename
          * @returns A {@link Gio.Icon} or `null`
          */
-        find_symbolic_icon(content_type: (string | null), filename: (string | null)): (Gio.Icon | null);
+        find_symbolic_icon(content_type: string | null, filename: string | null): Gio.Icon | null;
 
         /**
          * Attempts to guess the language of `file`, `content_type`, or `contents`.
@@ -18525,7 +18476,7 @@ export namespace Foundry {
          * @param contents a {@link GLib.Bytes} of file contents or `null`
          * @returns a {@link Dex.Future} that resolves to a string   containing the language identifier, or rejects with error.
          */
-        guess_language(file: (Gio.File | null), content_type: (string | null), contents: (GLib.Bytes | null)): Dex.Future;
+        guess_language(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | null): Dex.Future;
 
         list_languages(): string[];
 
@@ -18707,7 +18658,7 @@ export namespace Foundry {
         // Methods
         dup_file(): Gio.File;
 
-        dup_other_file(): (Gio.File | null);
+        dup_other_file(): Gio.File | null;
 
         get_event(): Gio.FileMonitorEvent;
     }
@@ -18859,13 +18810,13 @@ export namespace Foundry {
          * Gets the text after the search text.
          * @virtual
          */
-        vfunc_dup_after_context(): (string | null);
+        vfunc_dup_after_context(): string | null;
 
         /**
          * Gets the text before the search text.
          * @virtual
          */
-        vfunc_dup_before_context(): (string | null);
+        vfunc_dup_before_context(): string | null;
 
         /**
          * Gets a copy of the file associated with the search match.
@@ -18877,7 +18828,7 @@ export namespace Foundry {
          * Gets the matched text.
          * @virtual
          */
-        vfunc_dup_text(): (string | null);
+        vfunc_dup_text(): string | null;
 
         /**
          * Gets the length of the search text in characters.
@@ -18902,13 +18853,13 @@ export namespace Foundry {
          * Gets the text after the search text.
          * @returns the text after the match, or `null`
          */
-        dup_after_context(): (string | null);
+        dup_after_context(): string | null;
 
         /**
          * Gets the text before the search text.
          * @returns the text before the match, or `null`
          */
-        dup_before_context(): (string | null);
+        dup_before_context(): string | null;
 
         /**
          * Gets a copy of the file associated with the search match.
@@ -18920,13 +18871,13 @@ export namespace Foundry {
          * Gets the icon for the file associated with the search match.
          * @returns a {@link Gio.Icon} or `null`
          */
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the matched text.
          * @returns the matched text, or `null`
          */
-        dup_text(): (string | null);
+        dup_text(): string | null;
 
         /**
          * Gets the length of the search text in characters.
@@ -19147,7 +19098,7 @@ export namespace Foundry {
          * The patterns use shell-style globbing (e.g. "*.o").
          * @returns a newly allocated array of excluded file   patterns, or `null` if not set. Free with `g_strfreev()` when no longer needed.
          */
-        dup_excluded_patterns(): (string[] | null);
+        dup_excluded_patterns(): string[] | null;
 
         /**
          * Gets a copy of the required file patterns.
@@ -19157,13 +19108,13 @@ export namespace Foundry {
          * The patterns use shell-style globbing (e.g. "*.c", "*.h").
          * @returns a newly allocated array of required file   patterns, or `null` if not set. Free with `g_strfreev()` when no longer needed.
          */
-        dup_required_patterns(): (string[] | null);
+        dup_required_patterns(): string[] | null;
 
         /**
          * Gets a copy of the search text.
          * @returns a newly allocated copy of the search text,   or `null` if not set
          */
-        dup_search_text(): (string | null);
+        dup_search_text(): string | null;
 
         /**
          * Gets whether the search should be case sensitive.
@@ -19235,7 +19186,7 @@ export namespace Foundry {
          * The patterns use shell-style globbing (e.g. "*.o").
          * @param excluded_patterns array of excluded file patterns
          */
-        set_excluded_patterns(excluded_patterns: (string | null)): void;
+        set_excluded_patterns(excluded_patterns: string | null): void;
 
         /**
          * Sets whether the search should match whole words only.
@@ -19263,13 +19214,13 @@ export namespace Foundry {
          * The patterns use shell-style globbing (e.g. "*.c", "*.h").
          * @param required_patterns array of required file patterns
          */
-        set_required_patterns(required_patterns: (string | null)): void;
+        set_required_patterns(required_patterns: string | null): void;
 
         /**
          * Sets the search text.
          * @param search_text the text to search for
          */
-        set_search_text(search_text: (string | null)): void;
+        set_search_text(search_text: string | null): void;
 
         /**
          * Sets whether the search should use regular expressions.
@@ -19366,7 +19317,7 @@ export namespace Foundry {
         vfunc_search(options: FileSearchOptions, operation: Operation): Dex.Future;
 
         // Methods
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Performs the requested search.
@@ -19410,7 +19361,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -19437,7 +19388,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -19467,7 +19418,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -19499,7 +19450,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -19508,7 +19459,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -19544,7 +19495,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -19570,7 +19521,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -19593,13 +19544,10 @@ export namespace Foundry {
 
     namespace FileSearchReplacement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -19662,13 +19610,10 @@ export namespace Foundry {
 
     namespace FlatpakArchOptions {
         // Signal signatures
-        interface SignalSignatures extends FlatpakSerializable.SignalSignatures {
-        }
+        interface SignalSignatures extends FlatpakSerializable.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FlatpakSerializable.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FlatpakSerializable.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -19708,9 +19653,9 @@ export namespace Foundry {
         /**
          * @param arch 
          */
-        dup_arch(arch: string): (FlatpakOptions | null);
+        dup_arch(arch: string): FlatpakOptions | null;
 
-        dup_arches(): (string[] | null);
+        dup_arches(): string[] | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -19736,7 +19681,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -19763,7 +19708,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -19793,7 +19738,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -19825,7 +19770,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -19834,7 +19779,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -19870,7 +19815,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -19896,7 +19841,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -20176,7 +20121,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -20203,7 +20148,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -20233,7 +20178,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -20265,7 +20210,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -20274,7 +20219,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -20310,7 +20255,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -20336,7 +20281,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -20364,9 +20309,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -20441,7 +20384,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -20481,7 +20424,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -20610,7 +20553,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -20650,7 +20593,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -20699,7 +20642,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -20726,7 +20669,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -20756,7 +20699,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -20788,7 +20731,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -20797,7 +20740,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -20833,7 +20776,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -20859,7 +20802,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -21490,15 +21433,15 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_build_options(): (FlatpakOptions | null);
+        dup_build_options(): FlatpakOptions | null;
 
         dup_command(): string;
 
-        dup_finish_args(): (string[] | null);
+        dup_finish_args(): string[] | null;
 
         dup_id(): string;
 
-        dup_modules(): (FlatpakModules | null);
+        dup_modules(): FlatpakModules | null;
 
         dup_runtime(): string;
 
@@ -21530,7 +21473,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -21557,7 +21500,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -21587,7 +21530,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -21619,7 +21562,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -21628,7 +21571,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -21664,7 +21607,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -21690,7 +21633,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -22118,19 +22061,19 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_build_commands(): (string[] | null);
+        dup_build_commands(): string[] | null;
 
-        dup_build_options(): (FlatpakOptions | null);
+        dup_build_options(): FlatpakOptions | null;
 
         dup_buildsystem(): string;
 
-        dup_config_opts(): (string[] | null);
+        dup_config_opts(): string[] | null;
 
-        dup_modules(): (FlatpakModules | null);
+        dup_modules(): FlatpakModules | null;
 
         dup_name(): string;
 
-        dup_sources(): (FlatpakSources | null);
+        dup_sources(): FlatpakSources | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -22156,7 +22099,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -22183,7 +22126,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -22213,7 +22156,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -22245,7 +22188,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -22254,7 +22197,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -22290,7 +22233,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -22316,7 +22259,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -22344,9 +22287,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -22386,7 +22327,7 @@ export namespace Foundry {
         /**
          * @param project_dir the directory of the project
          */
-        find_primary(project_dir: Gio.File): (FlatpakModule | null);
+        find_primary(project_dir: Gio.File): FlatpakModule | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -22427,7 +22368,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -22467,7 +22408,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -22850,9 +22791,9 @@ export namespace Foundry {
         // Methods
         dup_append_path(): string;
 
-        dup_build_args(): (string[] | null);
+        dup_build_args(): string[] | null;
 
-        dup_env(): (string[] | null);
+        dup_env(): string[] | null;
 
         dup_prepend_path(): string;
 
@@ -22880,7 +22821,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -22907,7 +22848,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -22937,7 +22878,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -22969,7 +22910,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -22978,7 +22919,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -23014,7 +22955,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -23040,7 +22981,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -23063,13 +23004,10 @@ export namespace Foundry {
 
     namespace FlatpakSerializable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -23115,12 +23053,12 @@ export namespace Foundry {
         /**
          * @param property 
          */
-        dup_x_string(property: string): (string | null);
+        dup_x_string(property: string): string | null;
 
         /**
          * @param property 
          */
-        dup_x_strv(property: string): (string[] | null);
+        dup_x_strv(property: string): string[] | null;
 
         /**
          * @param path 
@@ -23152,7 +23090,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -23179,7 +23117,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -23209,7 +23147,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -23241,7 +23179,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -23250,7 +23188,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -23286,7 +23224,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -23312,7 +23250,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -23408,9 +23346,9 @@ export namespace Foundry {
         // Methods
         dup_dest(): string;
 
-        dup_only_arches(): (string[] | null);
+        dup_only_arches(): string[] | null;
 
-        dup_skip_arches(): (string[] | null);
+        dup_skip_arches(): string[] | null;
 
         /**
          * @param dest 
@@ -23451,7 +23389,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -23478,7 +23416,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -23508,7 +23446,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -23540,7 +23478,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -23549,7 +23487,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -23585,7 +23523,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -23611,7 +23549,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -24702,9 +24640,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends FlatpakList.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -24779,7 +24715,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -24819,7 +24755,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -24936,7 +24872,7 @@ export namespace Foundry {
         vfunc_find_user(): Dex.Future;
 
         // Methods
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Find the {@link Foundry.ForgeProject} that represents the current project.
@@ -24974,7 +24910,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -25001,7 +24937,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -25031,7 +24967,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -25063,7 +24999,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -25072,7 +25008,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -25108,7 +25044,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -25134,7 +25070,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -25277,59 +25213,59 @@ export namespace Foundry {
          * Gets a copy of the user who authored the issue.
          * @virtual
          */
-        vfunc_dup_author(): (ForgeUser | null);
+        vfunc_dup_author(): ForgeUser | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_created_at(): (GLib.DateTime | null);
+        vfunc_dup_created_at(): GLib.DateTime | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_description(): (string | null);
+        vfunc_dup_description(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_id(): (string | null);
+        vfunc_dup_id(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_online_url(): (string | null);
+        vfunc_dup_online_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_state(): (string | null);
+        vfunc_dup_state(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         // Methods
         /**
          * Gets a copy of the user who authored the issue.
          * @returns a {@link Foundry.ForgeUser}, or `null`
          */
-        dup_author(): (ForgeUser | null);
+        dup_author(): ForgeUser | null;
 
         /**
          * @returns a {@link GLib.DateTime}
          */
-        dup_created_at(): (GLib.DateTime | null);
+        dup_created_at(): GLib.DateTime | null;
 
-        dup_description(): (string | null);
+        dup_description(): string | null;
 
-        dup_id(): (string | null);
+        dup_id(): string | null;
 
-        dup_online_url(): (string | null);
+        dup_online_url(): string | null;
 
-        dup_state(): (string | null);
+        dup_state(): string | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
     }
 
 
@@ -25527,7 +25463,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -25567,7 +25503,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -25649,17 +25585,17 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_forge(): (Forge | null);
+        dup_forge(): Forge | null;
 
         /**
          * @param forge_id the id of the forge
          */
-        find_by_id(forge_id: string): (Forge | null);
+        find_by_id(forge_id: string): Forge | null;
 
         /**
          * @param forge a {@link Foundry.Forge}
          */
-        set_forge(forge: (Forge | null)): void;
+        set_forge(forge: Forge | null): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -25700,7 +25636,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -25740,7 +25676,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -25889,86 +25825,86 @@ export namespace Foundry {
          * Gets a copy of the user who authored the merge request.
          * @virtual
          */
-        vfunc_dup_author(): (ForgeUser | null);
+        vfunc_dup_author(): ForgeUser | null;
 
         /**
          * Gets a copy of the date and time when the merge request was created.
          * @virtual
          */
-        vfunc_dup_created_at(): (GLib.DateTime | null);
+        vfunc_dup_created_at(): GLib.DateTime | null;
 
         /**
          * Gets a copy of the merge request description.
          * @virtual
          */
-        vfunc_dup_description(): (string | null);
+        vfunc_dup_description(): string | null;
 
         /**
          * Gets a copy of the merge request identifier.
          * @virtual
          */
-        vfunc_dup_id(): (string | null);
+        vfunc_dup_id(): string | null;
 
         /**
          * Gets a copy of the URL to view the merge request online.
          * @virtual
          */
-        vfunc_dup_online_url(): (string | null);
+        vfunc_dup_online_url(): string | null;
 
         /**
          * Gets a copy of the merge request state (e.g. "open", "closed", "merged").
          * @virtual
          */
-        vfunc_dup_state(): (string | null);
+        vfunc_dup_state(): string | null;
 
         /**
          * Gets a copy of the merge request title.
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         // Methods
         /**
          * Gets a copy of the user who authored the merge request.
          * @returns a {@link Foundry.ForgeUser}, or `null`
          */
-        dup_author(): (ForgeUser | null);
+        dup_author(): ForgeUser | null;
 
         /**
          * Gets a copy of the date and time when the merge request was created.
          * @returns a {@link GLib.DateTime}, or `null`
          */
-        dup_created_at(): (GLib.DateTime | null);
+        dup_created_at(): GLib.DateTime | null;
 
         /**
          * Gets a copy of the merge request description.
          * @returns the description, or `null`
          */
-        dup_description(): (string | null);
+        dup_description(): string | null;
 
         /**
          * Gets a copy of the merge request identifier.
          * @returns the merge request ID, or `null`
          */
-        dup_id(): (string | null);
+        dup_id(): string | null;
 
         /**
          * Gets a copy of the URL to view the merge request online.
          * @returns the online URL, or `null`
          */
-        dup_online_url(): (string | null);
+        dup_online_url(): string | null;
 
         /**
          * Gets a copy of the merge request state (e.g. "open", "closed", "merged").
          * @returns the state, or `null`
          */
-        dup_state(): (string | null);
+        dup_state(): string | null;
 
         /**
          * Gets a copy of the merge request title.
          * @returns the title, or `null`
          */
-        dup_title(): (string | null);
+        dup_title(): string | null;
     }
 
 
@@ -26101,46 +26037,46 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_avatar_url(): (string | null);
+        vfunc_dup_avatar_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_description(): (string | null);
+        vfunc_dup_description(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_issues_url(): (string | null);
+        vfunc_dup_issues_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_merge_requests_url(): (string | null);
+        vfunc_dup_merge_requests_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_online_url(): (string | null);
+        vfunc_dup_online_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         /**
          * Queries the forge for a list of issues in the project.
          * @param query 
          * @virtual
          */
-        vfunc_list_issues(query: (ForgeQuery | null)): Dex.Future;
+        vfunc_list_issues(query: ForgeQuery | null): Dex.Future;
 
         /**
          * Queries the forge for a list of merge requests in the project.
          * @param query 
          * @virtual
          */
-        vfunc_list_merge_requests(query: (ForgeQuery | null)): Dex.Future;
+        vfunc_list_merge_requests(query: ForgeQuery | null): Dex.Future;
 
         /**
          * @virtual
@@ -26148,31 +26084,31 @@ export namespace Foundry {
         vfunc_load_avatar(): Dex.Future;
 
         // Methods
-        dup_avatar_url(): (string | null);
+        dup_avatar_url(): string | null;
 
-        dup_description(): (string | null);
+        dup_description(): string | null;
 
-        dup_issues_url(): (string | null);
+        dup_issues_url(): string | null;
 
-        dup_merge_requests_url(): (string | null);
+        dup_merge_requests_url(): string | null;
 
-        dup_online_url(): (string | null);
+        dup_online_url(): string | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Queries the forge for a list of issues in the project.
          * @param query 
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeListing} or rejects with error.
          */
-        list_issues(query: (ForgeQuery | null)): Dex.Future;
+        list_issues(query: ForgeQuery | null): Dex.Future;
 
         /**
          * Queries the forge for a list of merge requests in the project.
          * @param query 
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeListing} or rejects with error.
          */
-        list_merge_requests(query: (ForgeQuery | null)): Dex.Future;
+        list_merge_requests(query: ForgeQuery | null): Dex.Future;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes} or rejects with error.
@@ -26279,7 +26215,7 @@ export namespace Foundry {
          * Gets the keywords for the query.
          * @returns the keywords string
          */
-        dup_keywords(): (string | null);
+        dup_keywords(): string | null;
 
         /**
          * Gets the keywords scope for the query.
@@ -26287,20 +26223,20 @@ export namespace Foundry {
          * Multiple scopes are supported by separating with a comma.
          * @returns the keywords scope string
          */
-        dup_keywords_scope(): (string | null);
+        dup_keywords_scope(): string | null;
 
         /**
          * Gets the states for the query.
          * 
          * Multiple states are supported by separating with a comma.
          */
-        dup_state(): (string | null);
+        dup_state(): string | null;
 
         /**
          * Sets the keywords for the query.
          * @param keywords the keywords to set
          */
-        set_keywords(keywords: (string | null)): void;
+        set_keywords(keywords: string | null): void;
 
         /**
          * Sets the keywords scope for the query.
@@ -26308,7 +26244,7 @@ export namespace Foundry {
          * You may specify multiple scopes with a comma.
          * @param keywords_scope the keywords scope to set
          */
-        set_keywords_scope(keywords_scope: (string | null)): void;
+        set_keywords_scope(keywords_scope: string | null): void;
 
         /**
          * Sets the allowed states for the query.
@@ -26431,32 +26367,32 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_avatar_url(): (string | null);
+        vfunc_dup_avatar_url(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_bio(): (string | null);
+        vfunc_dup_bio(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_handle(): (string | null);
+        vfunc_dup_handle(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_location(): (string | null);
+        vfunc_dup_location(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_online_url(): (string | null);
+        vfunc_dup_online_url(): string | null;
 
         /**
          * @virtual
@@ -26464,17 +26400,17 @@ export namespace Foundry {
         vfunc_load_avatar(): Dex.Future;
 
         // Methods
-        dup_avatar_url(): (string | null);
+        dup_avatar_url(): string | null;
 
-        dup_bio(): (string | null);
+        dup_bio(): string | null;
 
-        dup_handle(): (string | null);
+        dup_handle(): string | null;
 
-        dup_location(): (string | null);
+        dup_location(): string | null;
 
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
-        dup_online_url(): (string | null);
+        dup_online_url(): string | null;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes} or rejects with error.
@@ -26485,13 +26421,10 @@ export namespace Foundry {
 
     namespace Gir {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -26546,7 +26479,7 @@ export namespace Foundry {
         /**
          * @param namespace_name 
          */
-        get_namespace(namespace_name: string): (GirNode | null);
+        get_namespace(namespace_name: string): GirNode | null;
 
         get_repository(): GirNode;
 
@@ -26556,13 +26489,10 @@ export namespace Foundry {
 
     namespace GirNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -26617,7 +26547,7 @@ export namespace Foundry {
          * @param type 
          * @param name 
          */
-        find_child(type: GirNodeType, name: string): (GirNode | null);
+        find_child(type: GirNodeType, name: string): GirNode | null;
 
         /**
          * @param attribute 
@@ -26627,7 +26557,7 @@ export namespace Foundry {
         /**
          * Gets a list of children of this node in the Gir file.
          */
-        get_children(): (GirNode[] | null);
+        get_children(): GirNode[] | null;
 
         get_content(): string;
 
@@ -26635,7 +26565,7 @@ export namespace Foundry {
 
         get_node_type(): GirNodeType;
 
-        get_parent(): (GirNode | null);
+        get_parent(): GirNode | null;
 
         get_tag_name(): string;
 
@@ -26665,7 +26595,7 @@ export namespace Foundry {
          * ```
          * @param type the type of node to collect
          */
-        list_children_typed(type: GirNodeType): (GirNode[] | null);
+        list_children_typed(type: GirNodeType): GirNode[] | null;
     }
 
 
@@ -26676,9 +26606,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsBlame.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsBlame.ConstructorProps {}
     }
 
     /**
@@ -26742,9 +26670,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsBranch.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsBranch.ConstructorProps {}
     }
 
     /**
@@ -26907,7 +26833,7 @@ export namespace Foundry {
 
         dup_author_name(): string;
 
-        dup_directory(): (Gio.File | null);
+        dup_directory(): Gio.File | null;
 
         dup_remote_branch_name(): string;
 
@@ -26967,9 +26893,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsCommit.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsCommit.ConstructorProps {}
     }
 
     /**
@@ -27212,7 +27136,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](vcs: GitVcs, parent: (GitCommit | null), context_lines: number): GitCommitBuilder;
+        static ["new"](vcs: GitVcs, parent: GitCommit | null, context_lines: number): GitCommitBuilder;
 
         // Signals
         /** @signal */
@@ -27238,37 +27162,37 @@ export namespace Foundry {
          * Gets the author email address that will be used for the commit.
          * @returns the author email, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
          */
-        dup_author_email(): (string | null);
+        dup_author_email(): string | null;
 
         /**
          * Gets the author name that will be used for the commit.
          * @returns the author name, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
          */
-        dup_author_name(): (string | null);
+        dup_author_name(): string | null;
 
         /**
          * Gets the commit message that will be used for the commit.
          * @returns the commit message, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
          */
-        dup_message(): (string | null);
+        dup_message(): string | null;
 
         /**
          * Gets the signing format that will be used for signing the commit.
          * @returns the signing format (e.g. "gpg" or   "ssh"), or `null` if not set. The caller should free the returned string   with `g_free()` when done.
          */
-        dup_signing_format(): (string | null);
+        dup_signing_format(): string | null;
 
         /**
          * Gets the signing key identifier that will be used for signing the commit.
          * @returns the signing key identifier, or `null`   if not set. The caller should free the returned string with `g_free()`   when done.
          */
-        dup_signing_key(): (string | null);
+        dup_signing_key(): string | null;
 
         /**
          * Gets the timestamp that will be used for the commit.
          * @returns a {@link GLib.DateTime} representing   the commit timestamp, or `null` if not set. The caller should free the   returned object with `g_date_time_unref()` when done.
          */
-        dup_when(): (GLib.DateTime | null);
+        dup_when(): GLib.DateTime | null;
 
         /**
          * Checks whether the builder has sufficient information to create a commit.
@@ -27370,7 +27294,7 @@ export namespace Foundry {
          * used when creating the commit.
          * @param author_email the author email to use, or `null` to unset
          */
-        set_author_email(author_email: (string | null)): void;
+        set_author_email(author_email: string | null): void;
 
         /**
          * Sets the author name that will be used for the commit.
@@ -27379,7 +27303,7 @@ export namespace Foundry {
          * used when creating the commit.
          * @param author_name the author name to use, or `null` to unset
          */
-        set_author_name(author_name: (string | null)): void;
+        set_author_name(author_name: string | null): void;
 
         /**
          * Sets the commit message that will be used for the commit.
@@ -27389,7 +27313,7 @@ export namespace Foundry {
          * property.
          * @param message the commit message to use, or `null` to unset
          */
-        set_message(message: (string | null)): void;
+        set_message(message: string | null): void;
 
         /**
          * Sets the signing format that will be used for signing the commit.
@@ -27398,7 +27322,7 @@ export namespace Foundry {
          * If set to `null`, defaults to "gpg".
          * @param signing_format the signing format to use (e.g. "gpg" or "ssh"), or `null` for default
          */
-        set_signing_format(signing_format: (string | null)): void;
+        set_signing_format(signing_format: string | null): void;
 
         /**
          * Sets the signing key identifier that will be used for signing the commit.
@@ -27407,7 +27331,7 @@ export namespace Foundry {
          * format. If set to `null`, the commit will not be signed.
          * @param signing_key the signing key identifier to use, or `null` to disable signing
          */
-        set_signing_key(signing_key: (string | null)): void;
+        set_signing_key(signing_key: string | null): void;
 
         /**
          * Sets the timestamp that will be used for the commit.
@@ -27416,7 +27340,7 @@ export namespace Foundry {
          * the commit. The builder takes ownership of `when`.
          * @param when the timestamp to use for the commit, or `null` to use current time
          */
-        set_when(when: (GLib.DateTime | null)): void;
+        set_when(when: GLib.DateTime | null): void;
 
         /**
          * Stages the file using the version from the stored diff/delta.
@@ -27476,9 +27400,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsDelta.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsDelta.ConstructorProps {}
     }
 
     /**
@@ -27518,13 +27440,10 @@ export namespace Foundry {
 
     namespace GitDiff {
         // Signal signatures
-        interface SignalSignatures extends VcsDiff.SignalSignatures {
-        }
+        interface SignalSignatures extends VcsDiff.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsDiff.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsDiff.ConstructorProps {}
     }
 
     /**
@@ -27573,9 +27492,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsDiffHunk.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsDiffHunk.ConstructorProps {}
     }
 
     /**
@@ -27625,9 +27542,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsDiffLine.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsDiffLine.ConstructorProps {}
     }
 
     /**
@@ -27673,9 +27588,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsFile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsFile.ConstructorProps {}
     }
 
     /**
@@ -27722,9 +27635,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsReference.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsReference.ConstructorProps {}
     }
 
     /**
@@ -27770,9 +27681,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsRemote.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsRemote.ConstructorProps {}
     }
 
     /**
@@ -27819,9 +27728,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsSignature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsSignature.ConstructorProps {}
     }
 
     /**
@@ -27868,9 +27775,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsStats.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsStats.ConstructorProps {}
     }
 
     /**
@@ -28013,7 +27918,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_path(): string;
 
@@ -28025,13 +27930,10 @@ export namespace Foundry {
 
     namespace GitStatusList {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -28106,7 +28008,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -28146,7 +28048,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -28182,9 +28084,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsTag.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsTag.ConstructorProps {}
     }
 
     /**
@@ -28229,9 +28129,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VcsTree.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VcsTree.ConstructorProps {}
     }
 
     /**
@@ -28282,9 +28180,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Vcs.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Vcs.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -28334,7 +28230,7 @@ export namespace Foundry {
          * @param author_email 
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} or rejects with error.
          */
-        commit(message: string, author_name: (string | null), author_email: (string | null)): Dex.Future;
+        commit(message: string, author_name: string | null, author_email: string | null): Dex.Future;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.GitStatusEntry}.
@@ -28360,14 +28256,14 @@ export namespace Foundry {
          * @param bytes the bytes to sign
          * @returns a {@link Dex.Future} that resolves to a   armor contained string.
          */
-        sign_bytes(signing_format: string, signing_key: string, bytes: (GLib.Bytes | Uint8Array)): Dex.Future;
+        sign_bytes(signing_format: string, signing_key: string, bytes: GLib.Bytes | Uint8Array): Dex.Future;
 
         /**
          * @param entry a {@link Foundry.GitStatusEntry}
          * @param contents optional contents to use instead of what is in   the working tree.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
          */
-        stage_entry(entry: GitStatusEntry, contents: (GLib.Bytes | null)): Dex.Future;
+        stage_entry(entry: GitStatusEntry, contents: GLib.Bytes | null): Dex.Future;
 
         /**
          * Stashes the current working directory changes.
@@ -28465,20 +28361,20 @@ export namespace Foundry {
          * @param location a {@link Foundry.TextIter}
          * @virtual
          */
-        vfunc_populate(location: TextIter): (Dex.Future | null);
+        vfunc_populate(location: TextIter): Dex.Future | null;
 
         // Methods
-        dup_buffer(): (TextBuffer | null);
+        dup_buffer(): TextBuffer | null;
 
-        dup_document(): (TextDocument | null);
+        dup_document(): TextDocument | null;
 
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * @param location a {@link Foundry.TextIter}
          * @returns a {@link Dex.Future} that resolves   to a {@link Gio.ListModel} of {@link Foundry.Markup}.
          */
-        populate(location: TextIter): (Dex.Future | null);
+        populate(location: TextIter): Dex.Future | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -28504,7 +28400,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -28531,7 +28427,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -28561,7 +28457,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -28593,7 +28489,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -28602,7 +28498,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -28638,7 +28534,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -28664,7 +28560,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -28828,7 +28724,7 @@ export namespace Foundry {
 
         dup_title(): string;
 
-        dup_validator(): (InputValidator | null);
+        dup_validator(): InputValidator | null;
 
         /**
          * @returns a {@link Dex.Future} that resolves to any   value or rejects with error.
@@ -28962,7 +28858,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: string, validator: (InputValidator | null), choices: Gio.ListModel): InputCombo;
+        static ["new"](title: string, subtitle: string, validator: InputValidator | null, choices: Gio.ListModel): InputCombo;
 
         // Signals
         /** @signal */
@@ -28978,12 +28874,12 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_choice(): (InputChoice | null);
+        dup_choice(): InputChoice | null;
 
         /**
          * @returns a {@link Gio.ListModel} of   {@link Foundry.InputChoice}.
          */
-        list_choices(): (Gio.ListModel | null);
+        list_choices(): Gio.ListModel | null;
 
         /**
          * @param choice 
@@ -29046,7 +28942,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: string, validator: (InputValidator | null), file_type: Gio.FileType, value: (Gio.File | null)): InputFile;
+        static ["new"](title: string, subtitle: string, validator: InputValidator | null, file_type: Gio.FileType, value: Gio.File | null): InputFile;
 
         // Signals
         /** @signal */
@@ -29062,7 +28958,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_value(): (Gio.File | null);
+        dup_value(): Gio.File | null;
 
         get_file_type(): Gio.FileType;
 
@@ -29123,7 +29019,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: (string | null), validator: (InputValidator | null), value: (string | null), monospace: boolean): InputFont;
+        static ["new"](title: string, subtitle: string | null, validator: InputValidator | null, value: string | null, monospace: boolean): InputFont;
 
         // Signals
         /** @signal */
@@ -29159,9 +29055,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -29184,7 +29078,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), subtitle: (string | null), validator: (InputValidator | null), children: Input[]): InputGroup;
+        static ["new"](title: string | null, subtitle: string | null, validator: InputValidator | null, children: Input[]): InputGroup;
 
         // Signals
         /** @signal */
@@ -29246,7 +29140,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: string, validator: (InputValidator | null), value: string): InputPassword;
+        static ["new"](title: string, subtitle: string, validator: InputValidator | null, value: string): InputPassword;
 
         // Signals
         /** @signal */
@@ -29344,7 +29238,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: (string | null), validator: (InputValidator | null), value: number, lower: number, upper: number, n_digits: number): InputSpin;
+        static ["new"](title: string, subtitle: string | null, validator: InputValidator | null, value: number, lower: number, upper: number, n_digits: number): InputSpin;
 
         // Signals
         /** @signal */
@@ -29417,7 +29311,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: string, validator: (InputValidator | null), value: boolean): InputSwitch;
+        static ["new"](title: string, subtitle: string, validator: InputValidator | null, value: boolean): InputSwitch;
 
         // Signals
         /** @signal */
@@ -29484,7 +29378,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: string, subtitle: (string | null), validator: (InputValidator | null), value: (string | null)): InputText;
+        static ["new"](title: string, subtitle: string | null, validator: InputValidator | null, value: string | null): InputText;
 
         // Signals
         /** @signal */
@@ -29511,13 +29405,10 @@ export namespace Foundry {
 
     namespace InputValidator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -29571,13 +29462,10 @@ export namespace Foundry {
 
     namespace InputValidatorDelegate {
         // Signal signatures
-        interface SignalSignatures extends InputValidator.SignalSignatures {
-        }
+        interface SignalSignatures extends InputValidator.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends InputValidator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends InputValidator.ConstructorProps {}
     }
 
     /**
@@ -29675,13 +29563,10 @@ export namespace Foundry {
 
     namespace Intent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -29738,7 +29623,7 @@ export namespace Foundry {
          * @param attribute the attribute name
          * @returns the string value, or `null` if not found or not a string
          */
-        dup_attribute_string(attribute: string): (string | null);
+        dup_attribute_string(attribute: string): string | null;
 
         /**
          * Gets the attribute value as a string. The returned string is owned
@@ -29788,7 +29673,7 @@ export namespace Foundry {
          * @param attribute the attribute name
          * @param value the {@link GObject.Value} to set
          */
-        set_attribute_value(attribute: string, value: (GObject.Value | any)): void;
+        set_attribute_value(attribute: string, value: GObject.Value | any): void;
     }
 
 
@@ -29799,9 +29684,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -29889,7 +29772,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -29916,7 +29799,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -29946,7 +29829,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -29978,7 +29861,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -29987,7 +29870,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -30023,7 +29906,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -30049,7 +29932,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -30077,9 +29960,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -30144,9 +30025,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LlmResource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LlmResource.ConstructorProps {}
     }
 
     /**
@@ -30198,7 +30077,7 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends LlmResource.ConstructorProps {
-            node: (Json.Node | null);
+            node: Json.Node | null;
         }
     }
 
@@ -30209,8 +30088,8 @@ export namespace Foundry {
         static $gtype: GObject.GType<JsonLlmResource>;
 
         // Properties
-        get node(): (Json.Node | null);
-        set node(val: (Json.Node | null));
+        get node(): Json.Node | null;
+        set node(val: Json.Node | null);
 
         /**
          * Compile-time signal type information.
@@ -30242,17 +30121,17 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_node(): (Json.Node | null);
+        get_node(): Json.Node | null;
 
         /**
          * @param node 
          */
-        set_node(node: (Json.Node | null)): void;
+        set_node(node: Json.Node | null): void;
 
         /**
          * @param node 
          */
-        take_node(node: (Json.Node | null)): void;
+        take_node(node: Json.Node | null): void;
     }
 
 
@@ -30263,9 +30142,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -30335,7 +30212,7 @@ export namespace Foundry {
          * @param expire_at when the new key should expire, or `null`
          * @virtual
          */
-        vfunc_rotate(host: string, service_name: string, secret: string, expire_at: (GLib.DateTime | null)): Dex.Future;
+        vfunc_rotate(host: string, service_name: string, secret: string, expire_at: GLib.DateTime | null): Dex.Future;
 
         // Methods
         /**
@@ -30365,7 +30242,7 @@ export namespace Foundry {
          * @param expire_at when the new key should expire, or `null`
          * @returns a {@link Dex.Future} that resolves to a string   containing the replacement secret, or rejects with an error
          */
-        rotate(host: string, service_name: string, secret: string, expire_at: (GLib.DateTime | null)): Dex.Future;
+        rotate(host: string, service_name: string, secret: string, expire_at: GLib.DateTime | null): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -30391,7 +30268,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -30418,7 +30295,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -30448,7 +30325,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -30480,7 +30357,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -30489,7 +30366,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -30525,7 +30402,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -30551,7 +30428,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -30583,8 +30460,8 @@ export namespace Foundry {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
-            meson_id: (string | null);
-            mesonId: (string | null);
+            meson_id: string | null;
+            mesonId: string | null;
             name: string;
         }
     }
@@ -30607,13 +30484,13 @@ export namespace Foundry {
          * @construct-only
          * @default null
          */
-        get meson_id(): (string | null);
+        get meson_id(): string | null;
 
         /**
          * @construct-only
          * @default null
          */
-        get mesonId(): (string | null);
+        get mesonId(): string | null;
 
         /**
          * @construct-only
@@ -30666,7 +30543,7 @@ export namespace Foundry {
 
         get_id(): string;
 
-        get_meson_id(): (string | null);
+        get_meson_id(): string | null;
 
         get_name(): string;
 
@@ -30681,9 +30558,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -30731,7 +30606,7 @@ export namespace Foundry {
          * @param contents a {@link GLib.Bytes} of file contents or `null`
          * @virtual
          */
-        vfunc_guess(file: (Gio.File | null), content_type: (string | null), contents: (GLib.Bytes | null)): Dex.Future;
+        vfunc_guess(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | null): Dex.Future;
 
         /**
          * Gets a list of known languages by their language identifier.
@@ -30749,7 +30624,7 @@ export namespace Foundry {
          * @param contents a {@link GLib.Bytes} of file contents or `null`
          * @returns a {@link Dex.Future} that resolves to   a string containing the source code language or rejects with   a new {@link GLib.Error}.
          */
-        guess(file: (Gio.File | null), content_type: (string | null), contents: (GLib.Bytes | null)): Dex.Future;
+        guess(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | null): Dex.Future;
 
         /**
          * Gets a list of known languages by their language identifier.
@@ -30780,7 +30655,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -30807,7 +30682,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -30837,7 +30712,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -30869,7 +30744,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -30878,7 +30753,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -30914,7 +30789,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -30940,7 +30815,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -30977,11 +30852,11 @@ export namespace Foundry {
             id: string;
             snippet_text: string;
             snippetText: string;
-            snippet_text_bytes: (GLib.Bytes | Uint8Array);
-            snippetTextBytes: (GLib.Bytes | Uint8Array);
+            snippet_text_bytes: GLib.Bytes | Uint8Array;
+            snippetTextBytes: GLib.Bytes | Uint8Array;
             text: string;
-            text_bytes: (GLib.Bytes | Uint8Array);
-            textBytes: (GLib.Bytes | Uint8Array);
+            text_bytes: GLib.Bytes | Uint8Array;
+            textBytes: GLib.Bytes | Uint8Array;
             title: string;
         }
     }
@@ -31075,7 +30950,7 @@ export namespace Foundry {
         /**
          * @param id the SPDX identifier
          */
-        static find(id: string): (License | null);
+        static find(id: string): License | null;
 
         /**
          * Get a {@link Gio.ListModel} of all {@link Foundry.License}.
@@ -31085,9 +30960,9 @@ export namespace Foundry {
         // Methods
         dup_id(): string;
 
-        dup_snippet_text(): (GLib.Bytes | null);
+        dup_snippet_text(): GLib.Bytes | null;
 
-        dup_text(): (GLib.Bytes | null);
+        dup_text(): GLib.Bytes | null;
 
         dup_title(): string;
     }
@@ -31189,13 +31064,10 @@ export namespace Foundry {
 
     namespace LlmCompletion {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -31326,7 +31198,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_text(): (string | null);
+        vfunc_dup_text(): string | null;
 
         /**
          * @virtual
@@ -31334,7 +31206,7 @@ export namespace Foundry {
         vfunc_is_done(): boolean;
 
         // Methods
-        dup_text(): (string | null);
+        dup_text(): string | null;
     }
 
 
@@ -31433,7 +31305,7 @@ export namespace Foundry {
          * List the available history of the conversation.
          * @virtual
          */
-        vfunc_list_history(): (Gio.ListModel | null);
+        vfunc_list_history(): Gio.ListModel | null;
 
         /**
          * Reset the conversation to the initial state.
@@ -31477,7 +31349,7 @@ export namespace Foundry {
          * List the available history of the conversation.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.LlmMessage}.
          */
-        list_history(): (Gio.ListModel | null);
+        list_history(): Gio.ListModel | null;
 
         /**
          * Reset the conversation to the initial state.
@@ -31518,9 +31390,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -31638,7 +31508,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -31678,7 +31548,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -31786,7 +31656,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_list_tool_calls(): (Gio.ListModel | null);
+        vfunc_list_tool_calls(): Gio.ListModel | null;
 
         // Methods
         /**
@@ -31805,7 +31675,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Gio.ListModel} of   {@link Foundry.LlmToolCall} or `null`
          */
-        list_tool_calls(): (Gio.ListModel | null);
+        list_tool_calls(): Gio.ListModel | null;
     }
 
 
@@ -31884,7 +31754,7 @@ export namespace Foundry {
          * @param system the system prompt for the chat
          * @virtual
          */
-        vfunc_chat(system: (string | null)): Dex.Future;
+        vfunc_chat(system: string | null): Dex.Future;
 
         /**
          * Requests completion using `roles` and `messages`.
@@ -31921,7 +31791,7 @@ export namespace Foundry {
          * @param system the system prompt for the chat
          * @returns a {@link Dex.Future} that resolves   to a {@link Foundry.LlmConversation} or rejects with error.
          */
-        chat(system: (string | null)): Dex.Future;
+        chat(system: string | null): Dex.Future;
 
         /**
          * Requests completion using `roles` and `messages`.
@@ -31970,7 +31840,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -31997,7 +31867,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -32027,7 +31897,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32059,7 +31929,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -32068,7 +31938,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -32104,7 +31974,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32130,7 +32000,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -32243,7 +32113,7 @@ export namespace Foundry {
          */
         dup_name(): string;
 
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * List the models available from the provider.
@@ -32287,7 +32157,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -32314,7 +32184,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -32344,7 +32214,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32376,7 +32246,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -32385,7 +32255,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -32421,7 +32291,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32447,7 +32317,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -32592,25 +32462,25 @@ export namespace Foundry {
          * Gets the content type for the resource.
          * @virtual
          */
-        vfunc_dup_content_type(): (string | null);
+        vfunc_dup_content_type(): string | null;
 
         /**
          * Gets the description for the resource.
          * @virtual
          */
-        vfunc_dup_description(): (string | null);
+        vfunc_dup_description(): string | null;
 
         /**
          * Gets the name for the resource.
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * Gets the URI for the resource.
          * @virtual
          */
-        vfunc_dup_uri(): (string | null);
+        vfunc_dup_uri(): string | null;
 
         /**
          * Loads the bytes for the resource.
@@ -32636,25 +32506,25 @@ export namespace Foundry {
          * Gets the content type for the resource.
          * @returns a newly allocated string containing   the content type, or `null` if not available
          */
-        dup_content_type(): (string | null);
+        dup_content_type(): string | null;
 
         /**
          * Gets the description for the resource.
          * @returns a newly allocated string containing   the description, or `null` if not available
          */
-        dup_description(): (string | null);
+        dup_description(): string | null;
 
         /**
          * Gets the name for the resource.
          * @returns a newly allocated string containing   the name, or `null` if not available
          */
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
         /**
          * Gets the URI for the resource.
          * @returns a newly allocated string containing   the URI, or `null` if not available
          */
-        dup_uri(): (string | null);
+        dup_uri(): string | null;
 
         /**
          * Emits the "changed" signal.
@@ -32770,7 +32640,7 @@ export namespace Foundry {
          * This should describe what the function does.
          * @virtual
          */
-        vfunc_dup_description(): (string | null);
+        vfunc_dup_description(): string | null;
 
         /**
          * Gets the "name" of tool which may be provided to the model.
@@ -32778,7 +32648,7 @@ export namespace Foundry {
          * This is often a descriptive function name like "getWeather".
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         // Methods
         /**
@@ -32797,20 +32667,20 @@ export namespace Foundry {
          * 
          * This should describe what the function does.
          */
-        dup_description(): (string | null);
+        dup_description(): string | null;
 
         /**
          * Gets the "name" of tool which may be provided to the model.
          * 
          * This is often a descriptive function name like "getWeather".
          */
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
         /**
          * Gets a list of parmaeters for the tool which must be
          * supplied when calling {@link Foundry.LlmTool.call}.
          */
-        list_parameters(): (GObject.ParamSpec[] | null);
+        list_parameters(): GObject.ParamSpec[] | null;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -32836,7 +32706,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -32863,7 +32733,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -32893,7 +32763,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32925,7 +32795,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -32934,7 +32804,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -32970,7 +32840,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -32996,7 +32866,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -33157,9 +33027,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Device.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Device.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -33208,9 +33076,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -33291,7 +33157,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -33331,7 +33197,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -33553,7 +33419,7 @@ export namespace Foundry {
          * @param params parameters for the method call
          * @returns a {@link Dex.Future} that resolves when   a reply is received for the method call.
          */
-        call(method: string, params: (Json.Node | null)): Dex.Future;
+        call(method: string, params: Json.Node | null): Dex.Future;
 
         /**
          * If `params` is floating, the reference will be consumed.
@@ -33561,7 +33427,7 @@ export namespace Foundry {
          * @param params parameters for the notification
          * @returns a {@link Dex.Future} that resolves when   the notification has been sent.
          */
-        notify(method: string, params: (Json.Node | null)): Dex.Future;
+        notify(method: string, params: Json.Node | null): Dex.Future;
 
         /**
          * @param args 
@@ -33604,7 +33470,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -33631,7 +33497,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -33661,7 +33527,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -33693,7 +33559,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -33702,7 +33568,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -33738,7 +33604,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -33764,7 +33630,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -33796,9 +33662,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CompletionProposal.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CompletionProposal.ConstructorProps {}
     }
 
     /**
@@ -33845,9 +33709,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CompletionProvider.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CompletionProvider.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -33892,9 +33754,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -33986,7 +33846,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -34026,7 +33886,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -34120,10 +33980,10 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_initialization_options(): (Json.Node | null);
+        vfunc_dup_initialization_options(): Json.Node | null;
 
         // Methods
-        dup_initialization_options(): (Json.Node | null);
+        dup_initialization_options(): Json.Node | null;
 
         /**
          * @returns a {@link Peas.PluginInfo}
@@ -34133,7 +33993,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Foundry.LspServer} or `null`
          */
-        dup_server(): (LspServer | null);
+        dup_server(): LspServer | null;
 
         /**
          * @param server 
@@ -34179,7 +34039,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -34219,7 +34079,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -34268,7 +34128,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -34295,7 +34155,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -34325,7 +34185,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -34357,7 +34217,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -34366,7 +34226,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -34402,7 +34262,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -34428,7 +34288,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -34526,7 +34386,7 @@ export namespace Foundry {
          * @param launcher 
          * @virtual
          */
-        vfunc_prepare(pipeline: (BuildPipeline | null), launcher: ProcessLauncher): Dex.Future;
+        vfunc_prepare(pipeline: BuildPipeline | null, launcher: ProcessLauncher): Dex.Future;
 
         /**
          * @param language_id 
@@ -34548,7 +34408,7 @@ export namespace Foundry {
          * @param launcher 
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.LspClient} or rejects with error
          */
-        prepare(pipeline: (BuildPipeline | null), launcher: ProcessLauncher): Dex.Future;
+        prepare(pipeline: BuildPipeline | null, launcher: ProcessLauncher): Dex.Future;
 
         /**
          * @param language_id 
@@ -34579,7 +34439,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -34606,7 +34466,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -34636,7 +34496,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -34668,7 +34528,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -34677,7 +34537,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -34713,7 +34573,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -34739,7 +34599,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -34769,7 +34629,7 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            contents: (GLib.Bytes | Uint8Array);
+            contents: GLib.Bytes | Uint8Array;
             kind: MarkupKind;
         }
     }
@@ -34806,7 +34666,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](contents: (GLib.Bytes | Uint8Array), kind: MarkupKind): Markup;
+        static ["new"](contents: GLib.Bytes | Uint8Array, kind: MarkupKind): Markup;
 
         static new_plaintext(message: string): Markup;
 
@@ -34832,7 +34692,7 @@ export namespace Foundry {
 
         get_kind(): MarkupKind;
 
-        to_string(): [(string | null), number];
+        to_string(): [string | null, number];
     }
 
 
@@ -34843,9 +34703,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -34912,7 +34770,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -34939,7 +34797,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -34969,7 +34827,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -35001,7 +34859,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -35010,7 +34868,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -35046,7 +34904,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -35072,7 +34930,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -35101,9 +34959,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SearchProvider.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SearchProvider.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -35159,9 +35015,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SearchResult.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SearchResult.ConstructorProps {}
     }
 
     /**
@@ -35208,13 +35062,10 @@ export namespace Foundry {
 
     namespace ModelManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -35259,26 +35110,26 @@ export namespace Foundry {
          * @param model a {@link Gio.ListModel}
          * @virtual
          */
-        vfunc_flatten(model: (Gio.ListModel | null)): Gio.ListModel;
+        vfunc_flatten(model: Gio.ListModel | null): Gio.ListModel;
 
         /**
          * @param model a {@link Gio.ListModel}
          * @param map_func 
          * @virtual
          */
-        vfunc_map(model: (Gio.ListModel | null), map_func: ListModelMapFunc): Gio.ListModel;
+        vfunc_map(model: Gio.ListModel | null, map_func: ListModelMapFunc): Gio.ListModel;
 
         // Methods
         /**
          * @param model a {@link Gio.ListModel}
          */
-        flatten(model: (Gio.ListModel | null)): Gio.ListModel;
+        flatten(model: Gio.ListModel | null): Gio.ListModel;
 
         /**
          * @param model a {@link Gio.ListModel}
          * @param map_func 
          */
-        map(model: (Gio.ListModel | null), map_func: ListModelMapFunc): Gio.ListModel;
+        map(model: Gio.ListModel | null, map_func: ListModelMapFunc): Gio.ListModel;
 
         set_default(): void;
     }
@@ -35297,9 +35148,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Vcs.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Vcs.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -35342,13 +35191,10 @@ export namespace Foundry {
 
     namespace OnTypeDiagnostics {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -35441,7 +35287,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -35481,7 +35327,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -35510,13 +35356,10 @@ export namespace Foundry {
 
     namespace OnTypeFormatter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -35669,9 +35512,9 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_content_type(): (string | null);
+        dup_content_type(): string | null;
 
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
     }
 
 
@@ -35784,7 +35627,7 @@ export namespace Foundry {
          * @param total_num_bytes 
          * @param user_data 
          */
-        static file_progress(current_num_bytes: (bigint | number), total_num_bytes: (bigint | number), user_data: null): void;
+        static file_progress(current_num_bytes: bigint | number, total_num_bytes: bigint | number, user_data: null): void;
 
         // Methods
         /**
@@ -35798,7 +35641,7 @@ export namespace Foundry {
 
         complete(): void;
 
-        dup_auth_provider(): (AuthProvider | null);
+        dup_auth_provider(): AuthProvider | null;
 
         dup_subtitle(): string;
 
@@ -35941,7 +35784,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -35981,7 +35824,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -36010,13 +35853,10 @@ export namespace Foundry {
 
     namespace PathCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -36078,7 +35918,7 @@ export namespace Foundry {
          * @param program_name the name of the program
          * @param program_path the path for the program
          */
-        insert(program_name: string, program_path: (string | null)): void;
+        insert(program_name: string, program_path: string | null): void;
 
         /**
          * `true` is returned when an entry is found in the cache. That entry
@@ -36099,9 +35939,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BuildAddin.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BuildAddin.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -36156,9 +35994,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends LspProvider.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends LspProvider.ConstructorProps<A>, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -36233,7 +36069,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -36273,7 +36109,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -36313,9 +36149,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -36370,13 +36204,10 @@ export namespace Foundry {
 
     namespace ProcessLauncher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -36619,9 +36450,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Template.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Template.ConstructorProps {}
     }
 
     /**
@@ -36667,9 +36496,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -36772,7 +36599,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -36812,7 +36639,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -36861,7 +36688,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -36888,7 +36715,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -36918,7 +36745,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -36950,7 +36777,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -36959,7 +36786,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -36995,7 +36822,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -37021,7 +36848,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -37117,7 +36944,7 @@ export namespace Foundry {
         vfunc_rename(iter: TextIter, new_name: string): Dex.Future;
 
         // Methods
-        dup_buffer(): (TextBuffer | null);
+        dup_buffer(): TextBuffer | null;
 
         dup_document(): TextDocument;
 
@@ -37159,7 +36986,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -37186,7 +37013,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -37216,7 +37043,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -37248,7 +37075,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -37257,7 +37084,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -37293,7 +37120,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -37319,7 +37146,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -37347,9 +37174,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -37541,7 +37366,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Peas.PluginInfo}
          */
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Requests the application exit.
@@ -37587,7 +37412,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -37614,7 +37439,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -37644,7 +37469,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -37676,7 +37501,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -37685,7 +37510,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -37721,7 +37546,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -37747,7 +37572,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -37913,7 +37738,7 @@ export namespace Foundry {
          * @param option 
          * @virtual
          */
-        vfunc_dup_config_option(option: SdkConfigOption): (string | null);
+        vfunc_dup_config_option(option: SdkConfigOption): string | null;
 
         /**
          * Gets whether the SDK has reached end of life.
@@ -37927,7 +37752,7 @@ export namespace Foundry {
          * @param cancellable a {@link Dex.Cancellable}
          * @virtual
          */
-        vfunc_install(operation: Operation, cancellable: (Dex.Cancellable | null)): Dex.Future;
+        vfunc_install(operation: Operation, cancellable: Dex.Cancellable | null): Dex.Future;
 
         /**
          * Prepares `launcher` to be able to build applications.
@@ -37942,7 +37767,7 @@ export namespace Foundry {
          * @param phase the phase of the build
          * @virtual
          */
-        vfunc_prepare_to_build(pipeline: (BuildPipeline | null), launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
+        vfunc_prepare_to_build(pipeline: BuildPipeline | null, launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
 
         /**
          * Prepares `launcher` to be able to run applications.
@@ -37953,7 +37778,7 @@ export namespace Foundry {
          * @param launcher the launcher to prepare
          * @virtual
          */
-        vfunc_prepare_to_run(pipeline: (BuildPipeline | null), launcher: ProcessLauncher): Dex.Future;
+        vfunc_prepare_to_run(pipeline: BuildPipeline | null, launcher: ProcessLauncher): Dex.Future;
 
         /**
          * This function should be implemented by SDKs so that you can convert
@@ -37967,7 +37792,7 @@ export namespace Foundry {
          * @param path the path within the SDK to be translated
          * @virtual
          */
-        vfunc_translate_path(pipeline: (BuildPipeline | null), path: string): Dex.Future;
+        vfunc_translate_path(pipeline: BuildPipeline | null, path: string): Dex.Future;
 
         // Methods
         /**
@@ -37981,7 +37806,7 @@ export namespace Foundry {
          * @param argv the arguments to run
          * @returns a {@link Dex.Future} that resolves to a UTF-8   encoded string or rejects with error.
          */
-        build_simple(pipeline: (BuildPipeline | null), argv: string): Dex.Future;
+        build_simple(pipeline: BuildPipeline | null, argv: string): Dex.Future;
 
         /**
          * Looks for `program` within the SDK.
@@ -38011,7 +37836,7 @@ export namespace Foundry {
          * @param option 
          * @returns a string containing the config    option or `null` if unset.
          */
-        dup_config_option(option: SdkConfigOption): (string | null);
+        dup_config_option(option: SdkConfigOption): string | null;
 
         /**
          * Gets the user-visible id for the SDK.
@@ -38049,7 +37874,7 @@ export namespace Foundry {
          * @param cancellable a {@link Dex.Cancellable}
          * @returns a {@link Dex.Future} that resolves to   a boolean.
          */
-        install(operation: Operation, cancellable: (Dex.Cancellable | null)): Dex.Future;
+        install(operation: Operation, cancellable: Dex.Cancellable | null): Dex.Future;
 
         /**
          * Prepares `launcher` to be able to build applications.
@@ -38064,7 +37889,7 @@ export namespace Foundry {
          * @param phase the phase of the build
          * @returns a {@link Dex.Future}
          */
-        prepare_to_build(pipeline: (BuildPipeline | null), launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
+        prepare_to_build(pipeline: BuildPipeline | null, launcher: ProcessLauncher, phase: BuildPipelinePhase): Dex.Future;
 
         /**
          * Prepares `launcher` to be able to run applications.
@@ -38075,7 +37900,7 @@ export namespace Foundry {
          * @param launcher the launcher to prepare
          * @returns a {@link Dex.Future}
          */
-        prepare_to_run(pipeline: (BuildPipeline | null), launcher: ProcessLauncher): Dex.Future;
+        prepare_to_run(pipeline: BuildPipeline | null, launcher: ProcessLauncher): Dex.Future;
 
         /**
          * Set the architecture of the SDK.
@@ -38131,7 +37956,7 @@ export namespace Foundry {
          * @param path the path within the SDK to be translated
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.File} or rejects with error.
          */
-        translate_path(pipeline: (BuildPipeline | null), path: string): Dex.Future;
+        translate_path(pipeline: BuildPipeline | null, path: string): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -38157,7 +37982,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -38184,7 +38009,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -38214,7 +38039,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -38246,7 +38071,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -38255,7 +38080,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -38291,7 +38116,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -38317,7 +38142,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -38396,14 +38221,14 @@ export namespace Foundry {
          * This is generally used for build pipelines, terminal shells, and more.
          * @returns a {@link Foundry.Sdk} or `null`
          */
-        dup_sdk(): (Sdk | null);
+        dup_sdk(): Sdk | null;
 
         /**
          * Find a SDK by its identifier.
          * @param sdk_id the identifier of the SDK
          * @returns a {@link Foundry.Sdk} or `null`
          */
-        find_by_id(sdk_id: string): (Dex.Future | null);
+        find_by_id(sdk_id: string): Dex.Future | null;
 
         /**
          * @param sdk 
@@ -38449,7 +38274,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -38489,7 +38314,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -38523,9 +38348,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Contextual.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -38648,7 +38471,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -38688,7 +38511,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -38737,7 +38560,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -38764,7 +38587,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -38794,7 +38617,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -38826,7 +38649,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -38835,7 +38658,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -38871,7 +38694,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -38897,7 +38720,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -38925,9 +38748,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -39057,7 +38878,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Peas.PluginInfo}
          */
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * @param request 
@@ -39089,7 +38910,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -39116,7 +38937,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -39146,7 +38967,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -39178,7 +38999,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -39187,7 +39008,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -39223,7 +39044,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -39249,7 +39070,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -39339,9 +39160,9 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_categories(): (string[] | null);
+        dup_categories(): string[] | null;
 
-        dup_search_text(): (string | null);
+        dup_search_text(): string | null;
 
         /**
          * @param category 
@@ -39382,7 +39203,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -39409,7 +39230,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -39439,7 +39260,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -39471,7 +39292,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -39480,7 +39301,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -39516,7 +39337,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -39542,7 +39363,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -39661,12 +39482,12 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context}
          * @virtual
          */
-        vfunc_create_intent(context: Context): (Intent | null);
+        vfunc_create_intent(context: Context): Intent | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * @virtual
@@ -39708,9 +39529,9 @@ export namespace Foundry {
          * {@link Foundry.IntentManager.dispatch}.
          * @param context a {@link Foundry.Context}
          */
-        create_intent(context: Context): (Intent | null);
+        create_intent(context: Context): Intent | null;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_subtitle(): string;
 
@@ -39746,9 +39567,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -39822,7 +39641,7 @@ export namespace Foundry {
          * @param expire_at when the new key should expire, or `null`
          * @returns a {@link Dex.Future} that resolves to   the new API key as a string on success; or rejects with error.
          */
-        rotate_api_key(host: string, service: string, expire_at: (GLib.DateTime | null)): Dex.Future;
+        rotate_api_key(host: string, service: string, expire_at: GLib.DateTime | null): Dex.Future;
 
         /**
          * Stores an API key in secret storage.
@@ -39842,9 +39661,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -39896,7 +39713,7 @@ export namespace Foundry {
          * @param parameter_type 
          * @param activate 
          */
-        static install_action(action_name: string, parameter_type: (string | null), activate: ServiceAction): void;
+        static install_action(action_name: string, parameter_type: string | null, activate: ServiceAction): void;
 
         /**
          * @param action_prefix 
@@ -39951,7 +39768,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -39978,7 +39795,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -40008,7 +39825,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -40040,7 +39857,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -40049,7 +39866,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -40085,7 +39902,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -40111,7 +39928,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -40255,7 +40072,7 @@ export namespace Foundry {
          * @param get_mapping variant to value mapping
          * @param set_mapping value to variant mapping
          */
-        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: (Gio.SettingsBindGetMapping | null), set_mapping: (Gio.SettingsBindSetMapping | null)): void;
+        bind_with_mapping(key: string, object: null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping | null, set_mapping: Gio.SettingsBindSetMapping | null): void;
 
         /**
          * Gets the underlying {@link Gio.Settings} used for the respective layer.
@@ -40294,7 +40111,7 @@ export namespace Foundry {
         /**
          * @param key 
          */
-        get_strv(key: string): (string[] | null);
+        get_strv(key: string): string[] | null;
 
         /**
          * @param key 
@@ -40423,7 +40240,7 @@ export namespace Foundry {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -40469,7 +40286,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -40483,7 +40300,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -40507,7 +40324,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -40529,7 +40346,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -40656,7 +40473,7 @@ export namespace Foundry {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -40703,7 +40520,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -40717,7 +40534,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -40741,7 +40558,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -40763,7 +40580,7 @@ export namespace Foundry {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -40838,7 +40655,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -40865,7 +40682,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -40895,7 +40712,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -40927,7 +40744,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -40936,7 +40753,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -40972,7 +40789,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -40998,7 +40815,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -41027,9 +40844,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends LlmMessage.ConstructorProps {
-
-        }
+        interface ConstructorProps extends LlmMessage.ConstructorProps {}
     }
 
     /**
@@ -41148,7 +40963,7 @@ export namespace Foundry {
          * @param string 
          * @param len 
          */
-        static new_for_string(string: string, len: (bigint | number)): TextBuffer;
+        static new_for_string(string: string, len: bigint | number): TextBuffer;
 
         // Methods
         /**
@@ -41160,7 +40975,7 @@ export namespace Foundry {
          * @param text 
          * @param text_len 
          */
-        set_text(text: string, text_len: (bigint | number)): void;
+        set_text(text: string, text_len: bigint | number): void;
 
         /**
          * Adds a new commit notify handler.
@@ -41181,13 +40996,13 @@ export namespace Foundry {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @returns a {@link GLib.Bytes} or `null`
          */
-        dup_contents(): (GLib.Bytes | null);
+        dup_contents(): GLib.Bytes | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
          * such as "c" or "js".
          */
-        dup_language_id(): (string | null);
+        dup_language_id(): string | null;
 
         emit_changed(): void;
 
@@ -41202,7 +41017,7 @@ export namespace Foundry {
          * @param iter 
          * @param offset 
          */
-        get_iter_at_offset(iter: TextIter, offset: (bigint | number)): void;
+        get_iter_at_offset(iter: TextIter, offset: bigint | number): void;
 
         /**
          * @param iter 
@@ -41242,14 +41057,14 @@ export namespace Foundry {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @virtual
          */
-        vfunc_dup_contents(): (GLib.Bytes | null);
+        vfunc_dup_contents(): GLib.Bytes | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
          * such as "c" or "js".
          * @virtual
          */
-        vfunc_dup_language_id(): (string | null);
+        vfunc_dup_language_id(): string | null;
 
         /**
          * Gets the number of changes that have occurred to `buffer`.
@@ -41257,7 +41072,7 @@ export namespace Foundry {
          * This is generally just a monotonic number.
          * @virtual
          */
-        vfunc_get_change_count(): (bigint | number);
+        vfunc_get_change_count(): bigint | number;
 
         /**
          * @param iter 
@@ -41358,7 +41173,7 @@ export namespace Foundry {
          * Gets the icon representing the symbol.
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the locator to find the location of the symbol.
@@ -41370,7 +41185,7 @@ export namespace Foundry {
          * Gets the name of the symbol.
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * Find the parent symbol, if any.
@@ -41396,7 +41211,7 @@ export namespace Foundry {
          * Gets the icon representing the symbol.
          * @returns a {@link Gio.Icon} or `null`
          */
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the locator to find the location of the symbol.
@@ -41408,7 +41223,7 @@ export namespace Foundry {
          * Gets the name of the symbol.
          * @returns a string or `null`
          */
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
         /**
          * Find the parent symbol, if any.
@@ -41602,7 +41417,7 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
         get_line(): number;
 
@@ -41621,7 +41436,7 @@ export namespace Foundry {
          * within `contents`.
          * @param contents 
          */
-        locate(contents: (GLib.Bytes | Uint8Array)): (SymbolLocator | null);
+        locate(contents: GLib.Bytes | Uint8Array): SymbolLocator | null;
     }
 
 
@@ -41632,9 +41447,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -41680,14 +41493,14 @@ export namespace Foundry {
          * @param line_offset the character offset (starting from 0)
          * @virtual
          */
-        vfunc_find_symbol_at(file: Gio.File, contents: (GLib.Bytes | null), line: number, line_offset: number): Dex.Future;
+        vfunc_find_symbol_at(file: Gio.File, contents: GLib.Bytes | null, line: number, line_offset: number): Dex.Future;
 
         /**
          * @param file a {@link Gio.File}
          * @param contents optional modified contents for the file
          * @virtual
          */
-        vfunc_list_symbols(file: Gio.File, contents: (GLib.Bytes | null)): Dex.Future;
+        vfunc_list_symbols(file: Gio.File, contents: GLib.Bytes | null): Dex.Future;
 
         // Methods
         /**
@@ -41697,14 +41510,14 @@ export namespace Foundry {
          * @param line_offset the character offset (starting from 0)
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.Symbol} or rejects with error
          */
-        find_symbol_at(file: Gio.File, contents: (GLib.Bytes | null), line: number, line_offset: number): Dex.Future;
+        find_symbol_at(file: Gio.File, contents: GLib.Bytes | null, line: number, line_offset: number): Dex.Future;
 
         /**
          * @param file a {@link Gio.File}
          * @param contents optional modified contents for the file
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Symbol} or rejects with error
          */
-        list_symbols(file: Gio.File, contents: (GLib.Bytes | null)): Dex.Future;
+        list_symbols(file: Gio.File, contents: GLib.Bytes | null): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -41730,7 +41543,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -41757,7 +41570,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -41787,7 +41600,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -41819,7 +41632,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -41828,7 +41641,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -41864,7 +41677,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -41890,7 +41703,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -41999,13 +41812,13 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_input(): (Input | null);
+        vfunc_dup_input(): Input | null;
 
         /**
          * Gets tags describing the template such as "meson" or "flatpak".
          * @virtual
          */
-        vfunc_dup_tags(): (string[] | null);
+        vfunc_dup_tags(): string[] | null;
 
         /**
          * Expands the template based on the input parameters provided to the template.
@@ -42018,12 +41831,12 @@ export namespace Foundry {
 
         dup_id(): string;
 
-        dup_input(): (Input | null);
+        dup_input(): Input | null;
 
         /**
          * Gets tags describing the template such as "meson" or "flatpak".
          */
-        dup_tags(): (string[] | null);
+        dup_tags(): string[] | null;
 
         /**
          * Expands the template based on the input parameters provided to the template.
@@ -42035,13 +41848,10 @@ export namespace Foundry {
 
     namespace TemplateManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -42085,7 +41895,7 @@ export namespace Foundry {
          * @param template_id 
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.Template} or rejects with error.
          */
-        find_template(context: (Context | null), template_id: string): Dex.Future;
+        find_template(context: Context | null, template_id: string): Dex.Future;
 
         /**
          * Queries all {@link Foundry.TemplateProvider} for available
@@ -42101,7 +41911,7 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context} or `null`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CodeTemplate}
          */
-        list_code_templates(context: (Context | null)): Dex.Future;
+        list_code_templates(context: Context | null): Dex.Future;
 
         /**
          * Queries all {@link Foundry.TemplateProvider} for available
@@ -42122,7 +41932,7 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context} or `null`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Template}.
          */
-        list_templates(context: (Context | null)): Dex.Future;
+        list_templates(context: Context | null): Dex.Future;
     }
 
 
@@ -42136,7 +41946,7 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            contents: (GLib.Bytes | Uint8Array);
+            contents: GLib.Bytes | Uint8Array;
             file: Gio.File;
             mode: number;
         }
@@ -42179,7 +41989,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](file: Gio.File, contents: (GLib.Bytes | Uint8Array), mode: number): TemplateOutput;
+        static ["new"](file: Gio.File, contents: GLib.Bytes | Uint8Array, mode: number): TemplateOutput;
 
         static new_directory(file: Gio.File): TemplateOutput;
 
@@ -42216,13 +42026,10 @@ export namespace Foundry {
 
     namespace TemplateProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -42267,7 +42074,7 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context} or `null`
          * @virtual
          */
-        vfunc_list_code_templates(context: (Context | null)): Dex.Future;
+        vfunc_list_code_templates(context: Context | null): Dex.Future;
 
         /**
          * @virtual
@@ -42283,7 +42090,7 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context} or `null`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CodeTemplate} or rejects   with error.
          */
-        list_code_templates(context: (Context | null)): Dex.Future;
+        list_code_templates(context: Context | null): Dex.Future;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.ProjectTemplate} or rejects   with error.
@@ -42402,7 +42209,7 @@ export namespace Foundry {
 
         _init(...args: any[]): void;
 
-        static ["new"](command: Command, override_environment: (string | null)): TerminalLauncher;
+        static ["new"](command: Command, override_environment: string | null): TerminalLauncher;
 
         // Signals
         /** @signal */
@@ -42422,7 +42229,7 @@ export namespace Foundry {
 
         dup_command(): Command;
 
-        dup_override_environment(): (string[] | null);
+        dup_override_environment(): string[] | null;
 
         /**
          * The `pty_fd` is duplicated and therefore may be closed by the
@@ -42441,9 +42248,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -42584,7 +42389,7 @@ export namespace Foundry {
          * Get the suites for which this test belongs.
          * @virtual
          */
-        vfunc_dup_suites(): (string[] | null);
+        vfunc_dup_suites(): string[] | null;
 
         /**
          * @virtual
@@ -42599,7 +42404,7 @@ export namespace Foundry {
         /**
          * Get the suites for which this test belongs.
          */
-        dup_suites(): (string[] | null);
+        dup_suites(): string[] | null;
 
         dup_title(): string;
 
@@ -42627,7 +42432,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -42654,7 +42459,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -42684,7 +42489,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -42716,7 +42521,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -42725,7 +42530,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -42761,7 +42566,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -42787,7 +42592,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -42815,9 +42620,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Service.ConstructorProps, Gio.ListModel.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -42920,7 +42723,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -42960,7 +42763,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -42994,9 +42797,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -43072,7 +42873,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -43099,7 +42900,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -43129,7 +42930,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -43161,7 +42962,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -43170,7 +42971,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -43206,7 +43007,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -43232,7 +43033,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -43312,7 +43113,7 @@ export namespace Foundry {
         /**
          * Gets the name of the suite if any.
          */
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -43353,7 +43154,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -43393,7 +43194,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -43427,9 +43228,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -43481,7 +43280,7 @@ export namespace Foundry {
          * @param crlf 
          * @virtual
          */
-        vfunc_load(buffer: TextBuffer, file: Gio.File, operation: (Operation | null), encoding: (string | null), crlf: (string | null)): Dex.Future;
+        vfunc_load(buffer: TextBuffer, file: Gio.File, operation: Operation | null, encoding: string | null, crlf: string | null): Dex.Future;
 
         /**
          * @param buffer 
@@ -43491,7 +43290,7 @@ export namespace Foundry {
          * @param crlf 
          * @virtual
          */
-        vfunc_save(buffer: TextBuffer, file: Gio.File, operation: (Operation | null), encoding: (string | null), crlf: (string | null)): Dex.Future;
+        vfunc_save(buffer: TextBuffer, file: Gio.File, operation: Operation | null, encoding: string | null, crlf: string | null): Dex.Future;
 
         // Methods
         create_buffer(): TextBuffer;
@@ -43503,7 +43302,7 @@ export namespace Foundry {
          * @param encoding 
          * @param crlf 
          */
-        load(buffer: TextBuffer, file: Gio.File, operation: (Operation | null), encoding: (string | null), crlf: (string | null)): Dex.Future;
+        load(buffer: TextBuffer, file: Gio.File, operation: Operation | null, encoding: string | null, crlf: string | null): Dex.Future;
 
         /**
          * @param buffer 
@@ -43512,7 +43311,7 @@ export namespace Foundry {
          * @param encoding 
          * @param crlf 
          */
-        save(buffer: TextBuffer, file: Gio.File, operation: (Operation | null), encoding: (string | null), crlf: (string | null)): Dex.Future;
+        save(buffer: TextBuffer, file: Gio.File, operation: Operation | null, encoding: string | null, crlf: string | null): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -43538,7 +43337,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -43565,7 +43364,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -43595,7 +43394,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -43627,7 +43426,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -43636,7 +43435,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -43672,7 +43471,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -43698,7 +43497,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -43863,15 +43662,15 @@ export namespace Foundry {
          * Gets the underlying {@link Gio.File}.
          * @returns a {@link Gio.File} or `null`
          */
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the title for the document.
          * @returns a string or `null`
          */
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Convenience function to get the URI of a file.
@@ -43884,7 +43683,7 @@ export namespace Foundry {
          * This is the value for "Module=" in the `.plugin` file.
          * @param module_name the name of the plugin module
          */
-        find_addin(module_name: string): (TextDocumentAddin | null);
+        find_addin(module_name: string): TextDocumentAddin | null;
 
         /**
          * Queries {@link Foundry.SymbolProvider} for a symbol at the
@@ -43895,7 +43694,7 @@ export namespace Foundry {
          */
         find_symbol_at(line: number, line_offset: number): Dex.Future;
 
-        list_addins(): (Gio.ListModel | null);
+        list_addins(): Gio.ListModel | null;
 
         /**
          * Queries {@link Foundry.TextDocumentAddin} for actions that are
@@ -43923,14 +43722,14 @@ export namespace Foundry {
         /**
          * @param operation an operation to update with progress
          */
-        save(operation: (Operation | null)): Dex.Future;
+        save(operation: Operation | null): Dex.Future;
 
         /**
          * @param file a {@link Gio.File} of where to save the document
          * @param operation an operation to update with progress
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
          */
-        save_as(file: Gio.File, operation: (Operation | null)): Dex.Future;
+        save_as(file: Gio.File, operation: Operation | null): Dex.Future;
 
         /**
          * Watches the document for changes and updates diagnostics in the
@@ -43978,7 +43777,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -44005,7 +43804,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -44035,7 +43834,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44067,7 +43866,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44076,7 +43875,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -44112,7 +43911,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44138,7 +43937,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44312,7 +44111,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -44339,7 +44138,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -44369,7 +44168,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44401,7 +44200,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44410,7 +44209,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -44446,7 +44245,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44472,7 +44271,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44495,13 +44294,10 @@ export namespace Foundry {
 
     namespace TextEdit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -44550,13 +44346,13 @@ export namespace Foundry {
          * Gets the underlying {@link Gio.File} if any.
          * @returns a {@link Gio.File} or `null`
          */
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
         /**
          * Gets the replacement text if any.
          * @returns a string or `null`
          */
-        dup_replacement(): (string | null);
+        dup_replacement(): string | null;
 
         /**
          * @param begin_line 
@@ -44654,7 +44450,7 @@ export namespace Foundry {
          */
         can_format_range(): boolean;
 
-        dup_buffer(): (TextBuffer | null);
+        dup_buffer(): TextBuffer | null;
 
         dup_document(): TextDocument;
 
@@ -44694,7 +44490,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -44721,7 +44517,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -44751,7 +44547,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44783,7 +44579,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44792,7 +44588,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -44828,7 +44624,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -44854,7 +44650,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -44900,9 +44696,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -44950,7 +44744,7 @@ export namespace Foundry {
          * @param operation a {@link Foundry.Operation}
          * @returns a {@link Dex.Future} that resolves to   any value or rejects with error.
          */
-        apply_edits(edits: Gio.ListModel, operation: (Operation | null)): Dex.Future;
+        apply_edits(edits: Gio.ListModel, operation: Operation | null): Dex.Future;
 
         /**
          * @returns a {@link Gio.ListModel} of {@link Foundry.TextDocument}
@@ -44964,7 +44758,7 @@ export namespace Foundry {
          * @param encoding an optional encoding charset
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.TextDocument}.
          */
-        load(file: Gio.File, operation: Operation, encoding: (string | null)): Dex.Future;
+        load(file: Gio.File, operation: Operation, encoding: string | null): Dex.Future;
     }
 
 
@@ -45660,7 +45454,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -45687,7 +45481,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -45717,7 +45511,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -45749,7 +45543,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -45758,7 +45552,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -45794,7 +45588,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -45820,7 +45614,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -45935,9 +45729,9 @@ export namespace Foundry {
         /**
          * The document the settings should represent, if any.
          */
-        dup_document(): (TextDocument | null);
+        dup_document(): TextDocument | null;
 
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * @param setting 
@@ -45948,7 +45742,7 @@ export namespace Foundry {
          * @param setting 
          * @param value 
          */
-        get_setting(setting: TextSetting, value: (GObject.Value | any)): boolean;
+        get_setting(setting: TextSetting, value: GObject.Value | any): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -45974,7 +45768,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -46001,7 +45795,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -46031,7 +45825,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -46063,7 +45857,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -46072,7 +45866,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -46108,7 +45902,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -46134,7 +45928,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -46162,9 +45956,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends AuthProvider.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AuthProvider.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -46309,7 +46101,7 @@ export namespace Foundry {
          * @param context a {@link Foundry.Context}
          * @virtual
          */
-        vfunc_create_input(context: Context): (Input | null);
+        vfunc_create_input(context: Context): Input | null;
 
         /**
          * @virtual
@@ -46319,7 +46111,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * @virtual
@@ -46350,11 +46142,11 @@ export namespace Foundry {
         /**
          * @param context a {@link Foundry.Context}
          */
-        create_input(context: Context): (Input | null);
+        create_input(context: Context): Input | null;
 
         dup_display_hint(): string;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         dup_path(): string;
 
@@ -46375,9 +46167,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Service.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -46424,7 +46214,7 @@ export namespace Foundry {
          * @param path the tweaks path
          * @returns A {@link Dex.Future} that resolves to   a {@link Gio.ListModel} of {@link Foundry.Tweak}.
          */
-        list_children(path: string): (Dex.Future | null);
+        list_children(path: string): Dex.Future | null;
     }
 
 
@@ -46435,9 +46225,7 @@ export namespace Foundry {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Contextual.ConstructorProps, Json.Serializable.ConstructorProps {}
     }
 
     /**
@@ -46513,7 +46301,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -46540,7 +46328,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -46570,7 +46358,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -46602,7 +46390,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -46611,7 +46399,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -46647,7 +46435,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -46673,7 +46461,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -46696,13 +46484,10 @@ export namespace Foundry {
 
     namespace UnixFDMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -46929,7 +46714,7 @@ export namespace Foundry {
          * @param bytes optional contents for the file
          * @virtual
          */
-        vfunc_blame(file: VcsFile, bytes: (GLib.Bytes | null)): Dex.Future;
+        vfunc_blame(file: VcsFile, bytes: GLib.Bytes | null): Dex.Future;
 
         /**
          * @param file a {@link Foundry.VcsFile}
@@ -47063,14 +46848,14 @@ export namespace Foundry {
          * @param bytes optional contents for the file
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsBlame} or rejects with error
          */
-        blame(file: VcsFile, bytes: (GLib.Bytes | null)): Dex.Future;
+        blame(file: VcsFile, bytes: GLib.Bytes | null): Dex.Future;
 
         /**
          * @param file a {@link Foundry.VcsFile}
          * @param contents the contents of the file
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsLineChanges} or rejects with error.
          */
-        describe_line_changes(file: VcsFile, contents: (GLib.Bytes | Uint8Array)): Dex.Future;
+        describe_line_changes(file: VcsFile, contents: GLib.Bytes | Uint8Array): Dex.Future;
 
         /**
          * Diffs two {@link Foundry.VcsTree} resulting in a {@link Foundry.VcsDiff}
@@ -47218,7 +47003,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -47245,7 +47030,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -47275,7 +47060,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -47307,7 +47092,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -47316,7 +47101,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -47352,7 +47137,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -47378,7 +47163,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -47462,7 +47247,7 @@ export namespace Foundry {
          * @param line the line number, starting from 0
          * @virtual
          */
-        vfunc_query_line(line: number): (VcsSignature | null);
+        vfunc_query_line(line: number): VcsSignature | null;
 
         /**
          * Update the blame using the contents in `bytes`.
@@ -47472,7 +47257,7 @@ export namespace Foundry {
          * @param bytes data for the blame or `null` to reset to file defaults
          * @virtual
          */
-        vfunc_update(bytes: (GLib.Bytes | null)): Dex.Future;
+        vfunc_update(bytes: GLib.Bytes | null): Dex.Future;
 
         // Methods
         /**
@@ -47492,7 +47277,7 @@ export namespace Foundry {
          * @param line the line number, starting from 0
          * @returns a {@link Foundry.VcsSignature} or `null`   if there is no commit related to the changes on `line`.
          */
-        query_line(line: number): (VcsSignature | null);
+        query_line(line: number): VcsSignature | null;
 
         /**
          * Update the blame using the contents in `bytes`.
@@ -47502,7 +47287,7 @@ export namespace Foundry {
          * @param bytes data for the blame or `null` to reset to file defaults
          * @returns a {@link Dex.Future} that resolves   to any value or rejects with error
          */
-        update(bytes: (GLib.Bytes | null)): Dex.Future;
+        update(bytes: GLib.Bytes | null): Dex.Future;
     }
 
 
@@ -47694,22 +47479,22 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_author(): (VcsSignature | null);
+        vfunc_dup_author(): VcsSignature | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_committer(): (VcsSignature | null);
+        vfunc_dup_committer(): VcsSignature | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_id(): (string | null);
+        vfunc_dup_id(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         /**
          * Counts the number of parents of the commit
@@ -47738,13 +47523,13 @@ export namespace Foundry {
         vfunc_load_tree(): Dex.Future;
 
         // Methods
-        dup_author(): (VcsSignature | null);
+        dup_author(): VcsSignature | null;
 
-        dup_committer(): (VcsSignature | null);
+        dup_committer(): VcsSignature | null;
 
-        dup_id(): (string | null);
+        dup_id(): string | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Counts the number of parents of the commit
@@ -47928,13 +47713,10 @@ export namespace Foundry {
 
     namespace VcsDiff {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -48111,7 +47893,7 @@ export namespace Foundry {
          * The header for the hunk which is the part after the second "@@".
          * @virtual
          */
-        vfunc_dup_header(): (string | null);
+        vfunc_dup_header(): string | null;
 
         /**
          * Gets the number of lines in the new file for this hunk.
@@ -48147,7 +47929,7 @@ export namespace Foundry {
         /**
          * The header for the hunk which is the part after the second "@@".
          */
-        dup_header(): (string | null);
+        dup_header(): string | null;
 
         /**
          * Gets the number of lines in the new file for this hunk.
@@ -48196,7 +47978,7 @@ export namespace Foundry {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             has_newline: boolean;
             hasNewline: boolean;
-            length: (bigint | number);
+            length: bigint | number;
             new_line: number;
             newLine: number;
             old_line: number;
@@ -48308,7 +48090,7 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_get_length(): (bigint | number);
+        vfunc_get_length(): bigint | number;
 
         /**
          * @virtual
@@ -48429,13 +48211,10 @@ export namespace Foundry {
 
     namespace VcsLineChanges {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -48557,7 +48336,7 @@ export namespace Foundry {
          * Get the active {@link Foundry.Vcs}.
          * @returns a {@link Foundry.Vcs}
          */
-        dup_vcs(): (Vcs | null);
+        dup_vcs(): Vcs | null;
 
         /**
          * Looks through available VCS providers to find one matching `module_name`.
@@ -48567,14 +48346,14 @@ export namespace Foundry {
          * @param module_name the module name to match against plugin info
          * @returns a {@link Foundry.VcsProvider} or `null`
          */
-        find_provider(module_name: string): (VcsProvider | null);
+        find_provider(module_name: string): VcsProvider | null;
 
         /**
          * Looks through available vcss to find one matching `vcs_id`.
          * @param vcs_id an identifier matching a {@link Foundry.Vcs.id}
          * @returns a {@link Foundry.Vcs} or `null`
          */
-        find_vcs(vcs_id: string): (Vcs | null);
+        find_vcs(vcs_id: string): Vcs | null;
 
         /**
          * @param vcs 
@@ -48620,7 +48399,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -48660,7 +48439,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -48786,7 +48565,7 @@ export namespace Foundry {
          * Gets the plugin the provider belongs to.
          * @returns a {@link Peas.PluginInfo} or `null`
          */
-        dup_plugin_info(): (Peas.PluginInfo | null);
+        dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
          * Initialize a repository for the current project.
@@ -48851,7 +48630,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -48891,7 +48670,7 @@ export namespace Foundry {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -48940,7 +48719,7 @@ export namespace Foundry {
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
          */
-        default_deserialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
+        default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.serialize_property}
@@ -48967,7 +48746,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the   serialized property
          */
-        default_serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Asks a {@link Json.Serializable} implementation to deserialize the
@@ -48997,7 +48776,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @returns the property description
          */
-        find_property(name: string): (GObject.ParamSpec | null);
+        find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -49029,7 +48808,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @returns a node containing the serialized property
          */
-        serialize_property(property_name: string, value: (GObject.Value | any), pspec: GObject.ParamSpec): (Json.Node | null);
+        serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -49038,7 +48817,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param value the property value to set
          */
-        set_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -49074,7 +48853,7 @@ export namespace Foundry {
          * @param name the name of the property
          * @virtual
          */
-        vfunc_find_property(name: string): (GObject.ParamSpec | null);
+        vfunc_find_property(name: string): GObject.ParamSpec | null;
 
         /**
          * Calls the {@link Json.Serializable.get_property} implementation
@@ -49100,7 +48879,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @virtual
          */
-        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): (Json.Node | null);
+        vfunc_serialize_property(property_name: string, value: unknown, pspec: GObject.ParamSpec): Json.Node | null;
 
         /**
          * Calls the {@link Json.Serializable.set_property} implementation
@@ -49309,17 +49088,17 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_uri(): (string | null);
+        vfunc_dup_uri(): string | null;
 
         // Methods
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
-        dup_uri(): (string | null);
+        dup_uri(): string | null;
     }
 
 
@@ -49394,24 +49173,24 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_dup_email(): (string | null);
+        vfunc_dup_email(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_name(): (string | null);
+        vfunc_dup_name(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_when(): (GLib.DateTime | null);
+        vfunc_dup_when(): GLib.DateTime | null;
 
         // Methods
-        dup_email(): (string | null);
+        dup_email(): string | null;
 
-        dup_name(): (string | null);
+        dup_name(): string | null;
 
-        dup_when(): (GLib.DateTime | null);
+        dup_when(): GLib.DateTime | null;
     }
 
 
@@ -49425,10 +49204,10 @@ export namespace Foundry {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            deletions: (bigint | number);
-            files_changed: (bigint | number);
-            filesChanged: (bigint | number);
-            insertions: (bigint | number);
+            deletions: bigint | number;
+            files_changed: bigint | number;
+            filesChanged: bigint | number;
+            insertions: bigint | number;
         }
     }
 
@@ -49494,17 +49273,17 @@ export namespace Foundry {
         /**
          * @virtual
          */
-        vfunc_get_deletions(): (bigint | number);
+        vfunc_get_deletions(): bigint | number;
 
         /**
          * @virtual
          */
-        vfunc_get_files_changed(): (bigint | number);
+        vfunc_get_files_changed(): bigint | number;
 
         /**
          * @virtual
          */
-        vfunc_get_insertions(): (bigint | number);
+        vfunc_get_insertions(): bigint | number;
 
         // Methods
         get_deletions(): number;
@@ -49750,7 +49529,7 @@ export namespace Foundry {
          * Gets a copy of the URI string.
          * @returns a newly allocated copy of the URI string,   or `null` if no URI is set
          */
-        dup_uri(): (string | null);
+        dup_uri(): string | null;
     }
 
 
@@ -49891,10 +49670,7 @@ export namespace Foundry {
         static $gtype: GObject.GType<CliOptions>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CliOptions;
 
@@ -49931,7 +49707,7 @@ export namespace Foundry {
          * @param key 
          * @param value 
          */
-        get_int64(key: string, value: (bigint | number)): boolean;
+        get_int64(key: string, value: bigint | number): boolean;
 
         /**
          * @param key 
@@ -49991,7 +49767,7 @@ export namespace Foundry {
          * @param key 
          * @param value 
          */
-        set_int64(key: string, value: (bigint | number)): void;
+        set_int64(key: string, value: bigint | number): void;
 
         /**
          * @param key 
@@ -50284,7 +50060,7 @@ export namespace Foundry {
          * @param description 
          * @param text_edits {@link Gio.ListModel} of {@link Foundry.TextEdit}
          */
-        add_fix(description: (string | null), text_edits: Gio.ListModel): void;
+        add_fix(description: string | null, text_edits: Gio.ListModel): void;
 
         /**
          * @param begin_line 
@@ -50297,7 +50073,7 @@ export namespace Foundry {
         /**
          * @returns a {@link Foundry.Diagnostic} or `null`
          */
-        end(): (Diagnostic | null);
+        end(): Diagnostic | null;
 
         ref(): DiagnosticBuilder;
 
@@ -50787,7 +50563,7 @@ export namespace Foundry {
          * quality of results.
          * @returns a string containing the suggested   clone directory name, or `null`.
          */
-        get_clone_name(): (string | null);
+        get_clone_name(): string | null;
 
         get_host(): string;
 
@@ -51396,12 +51172,12 @@ export namespace Foundry {
          * @param line 
          * @param line_offset 
          */
-        move_to_line_and_offset(line: (bigint | number), line_offset: (bigint | number)): boolean;
+        move_to_line_and_offset(line: bigint | number, line_offset: bigint | number): boolean;
 
         /**
          * @param offset 
          */
-        set_offset(offset: (bigint | number)): void;
+        set_offset(offset: bigint | number): void;
 
         starts_line(): boolean;
     }
@@ -51437,18 +51213,15 @@ export namespace Foundry {
         static $gtype: GObject.GType<Triplet>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](full_name: string): Triplet;
 
         static new_from_system(): Triplet;
 
-        static new_with_quadruplet(arch: string, vendor: (string | null), kernel: (string | null), operating_system: (string | null)): Triplet;
+        static new_with_quadruplet(arch: string, vendor: string | null, kernel: string | null, operating_system: string | null): Triplet;
 
-        static new_with_triplet(arch: string, kernel: (string | null), operating_system: (string | null)): Triplet;
+        static new_with_triplet(arch: string, kernel: string | null, operating_system: string | null): Triplet;
 
         // Methods
         /**
@@ -51468,19 +51241,19 @@ export namespace Foundry {
          * Gets name of the kernel of the machine
          * @returns The name of the kernel of the machine
          */
-        get_kernel(): (string | null);
+        get_kernel(): string | null;
 
         /**
          * Gets name of the operating system of the machine
          * @returns The name of the operating system of the machine
          */
-        get_operating_system(): (string | null);
+        get_operating_system(): string | null;
 
         /**
          * Gets the vendor name of the machine
          * @returns The vendor name of the machine
          */
-        get_vendor(): (string | null);
+        get_vendor(): string | null;
 
         /**
          * Gets whether this is the same architecture as the system
@@ -51666,14 +51439,14 @@ export namespace Foundry {
              * Gets the contents of the buffer as a {@link GLib.Bytes}.
              * @virtual
              */
-            vfunc_dup_contents(): (GLib.Bytes | null);
+            vfunc_dup_contents(): GLib.Bytes | null;
 
             /**
              * Gets the GtkSourceView-style identifier for the language of the buffer
              * such as "c" or "js".
              * @virtual
              */
-            vfunc_dup_language_id(): (string | null);
+            vfunc_dup_language_id(): string | null;
 
             /**
              * Gets the number of changes that have occurred to `buffer`.
@@ -51681,7 +51454,7 @@ export namespace Foundry {
              * This is generally just a monotonic number.
              * @virtual
              */
-            vfunc_get_change_count(): (bigint | number);
+            vfunc_get_change_count(): bigint | number;
 
             /**
              * @param iter 
@@ -51760,13 +51533,13 @@ export namespace Foundry {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @returns a {@link GLib.Bytes} or `null`
          */
-        dup_contents(): (GLib.Bytes | null);
+        dup_contents(): GLib.Bytes | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
          * such as "c" or "js".
          */
-        dup_language_id(): (string | null);
+        dup_language_id(): string | null;
 
         emit_changed(): void;
 
@@ -51781,7 +51554,7 @@ export namespace Foundry {
          * @param iter 
          * @param offset 
          */
-        get_iter_at_offset(iter: TextIter, offset: (bigint | number)): void;
+        get_iter_at_offset(iter: TextIter, offset: bigint | number): void;
 
         /**
          * @param iter 

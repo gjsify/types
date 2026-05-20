@@ -90,13 +90,13 @@ export namespace Nautilus {
      * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
      * @returns a {@link Nautilus.FileInfo}
      */
-    function file_info_lookup(location: Gio.File): (FileInfo | null);
+    function file_info_lookup(location: Gio.File): FileInfo | null;
 
     /**
      * @param uri the URI to lookup the file info for
      * @returns a {@link Nautilus.FileInfo}
      */
-    function file_info_lookup_for_uri(uri: string): (FileInfo | null);
+    function file_info_lookup_for_uri(uri: string): FileInfo | null;
 
     /**
      * @param update_complete 
@@ -205,13 +205,10 @@ export namespace Nautilus {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -258,7 +255,7 @@ export namespace Nautilus {
         /**
          * @returns the provided {@link Nautilus.MenuItem} list
          */
-        get_items(): (MenuItem[] | null);
+        get_items(): MenuItem[] | null;
     }
 
 
@@ -336,7 +333,7 @@ export namespace Nautilus {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, label: string, tip: (string | null), icon: (string | null)): MenuItem;
+        static ["new"](name: string, label: string, tip: string | null, icon: string | null): MenuItem;
 
         // Signals
         /** @signal */
@@ -527,9 +524,7 @@ export namespace Nautilus {
     namespace ColumnProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ColumnProviderNamespace {
@@ -545,7 +540,7 @@ export namespace Nautilus {
         /**
          * @returns the provided {@link Nautilus.Column} objects
          */
-        get_columns(): (Column[] | null);
+        get_columns(): Column[] | null;
     }
 
 
@@ -602,7 +597,7 @@ export namespace Nautilus {
             /**
              * @virtual
              */
-            vfunc_get_mount(): (Gio.Mount | null);
+            vfunc_get_mount(): Gio.Mount | null;
 
             /**
              * @virtual
@@ -614,12 +609,12 @@ export namespace Nautilus {
              * only for files already cached by Nautilus.
              * @virtual
              */
-            vfunc_get_parent_info(): (FileInfo | null);
+            vfunc_get_parent_info(): FileInfo | null;
 
             /**
              * @virtual
              */
-            vfunc_get_parent_location(): (Gio.File | null);
+            vfunc_get_parent_location(): Gio.File | null;
 
             /**
              * @virtual
@@ -666,9 +661,7 @@ export namespace Nautilus {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileInfoNamespace {
@@ -693,11 +686,11 @@ export namespace Nautilus {
         /**
         * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
         */
-        lookup(location: Gio.File): (FileInfo | null);
+        lookup(location: Gio.File): FileInfo | null;
         /**
         * @param uri the URI to lookup the file info for
         */
-        lookup_for_uri(uri: string): (FileInfo | null);
+        lookup_for_uri(uri: string): FileInfo | null;
     }
     /**
      * @gir-type Interface
@@ -735,7 +728,7 @@ export namespace Nautilus {
         /**
          * @returns a {@link Gio.Mount} for the mount of `file_info`,                                      or `null` if `file_info` has no mount
          */
-        get_mount(): (Gio.Mount | null);
+        get_mount(): Gio.Mount | null;
 
         get_name(): string;
 
@@ -744,12 +737,12 @@ export namespace Nautilus {
          * only for files already cached by Nautilus.
          * @returns a {@link Nautilus.FileInfo} for the parent of `file_info`,                                      or `null` if `file_info` has no parent.
          */
-        get_parent_info(): (FileInfo | null);
+        get_parent_info(): FileInfo | null;
 
         /**
          * @returns a {@link Gio.File} for the parent location of `file_info`,   or `null` if `file_info` has no parent
          */
-        get_parent_location(): (Gio.File | null);
+        get_parent_location(): Gio.File | null;
 
         get_parent_uri(): string;
 
@@ -785,9 +778,7 @@ export namespace Nautilus {
     namespace InfoProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface InfoProviderNamespace {
@@ -828,9 +819,7 @@ export namespace Nautilus {
     namespace LocationWidgetProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LocationWidgetProviderNamespace {
@@ -848,7 +837,7 @@ export namespace Nautilus {
          * @param window parent {@link Gtk.Window}
          * @returns the location widget for `provider` at `uri`
          */
-        get_widget(uri: string, window: Gtk.Widget): (Gtk.Widget | null);
+        get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null;
     }
 
 
@@ -859,9 +848,7 @@ export namespace Nautilus {
     namespace MenuProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuProviderNamespace {
@@ -884,14 +871,14 @@ export namespace Nautilus {
          * @param current_folder the folder for which background items are requested
          * @returns the provided list of {@link Nautilus.MenuItem}.
          */
-        get_background_items(window: Gtk.Widget, current_folder: FileInfo): (MenuItem[] | null);
+        get_background_items(window: Gtk.Widget, current_folder: FileInfo): MenuItem[] | null;
 
         /**
          * @param window the parent {@link Gtk.Widget} window
          * @param files a list of {@link Nautilus.FileInfo}
          * @returns the provided list of {@link Nautilus.MenuItem}.
          */
-        get_file_items(window: Gtk.Widget, files: FileInfo[]): (MenuItem[] | null);
+        get_file_items(window: Gtk.Widget, files: FileInfo[]): MenuItem[] | null;
     }
 
 
@@ -902,9 +889,7 @@ export namespace Nautilus {
     namespace PropertyPageProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertyPageProviderNamespace {
@@ -926,7 +911,7 @@ export namespace Nautilus {
          * @param files a {@link GLib.List} of {@link Nautilus.FileInfo}
          * @returns A {@link GLib.List} of allocated {@link Nautilus.PropertyPage} items.
          */
-        get_pages(files: FileInfo[]): (PropertyPage[] | null);
+        get_pages(files: FileInfo[]): PropertyPage[] | null;
     }
 
 

@@ -165,7 +165,7 @@ export namespace Flatpak {
         static NOT_AUTHORIZED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -216,7 +216,7 @@ export namespace Flatpak {
         static WINDOW_DESTROYED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -404,7 +404,7 @@ export namespace Flatpak {
      * @returns a GPtrArray of   {@link Flatpak.Installation} instances
      * @since 0.8
      */
-    function get_system_installations(cancellable: (Gio.Cancellable | null)): Installation[];
+    function get_system_installations(cancellable: Gio.Cancellable | null): Installation[];
 
     function portal_error_quark(): GLib.Quark;
 
@@ -735,13 +735,10 @@ export namespace Flatpak {
 
     namespace Installation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -764,13 +761,13 @@ export namespace Flatpak {
 
         _init(...args: any[]): void;
 
-        static new_for_path(path: Gio.File, user: boolean, cancellable: (Gio.Cancellable | null)): Installation;
+        static new_for_path(path: Gio.File, user: boolean, cancellable: Gio.Cancellable | null): Installation;
 
-        static new_system(cancellable: (Gio.Cancellable | null)): Installation;
+        static new_system(cancellable: Gio.Cancellable | null): Installation;
 
-        static new_system_with_id(id: (string | null), cancellable: (Gio.Cancellable | null)): Installation;
+        static new_system_with_id(id: string | null, cancellable: Gio.Cancellable | null): Installation;
 
-        static new_user(cancellable: (Gio.Cancellable | null)): Installation;
+        static new_user(cancellable: Gio.Cancellable | null): Installation;
 
         // Signals
         /** @signal */
@@ -804,7 +801,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the modifications have been committed successfully
          */
-        add_remote(remote: Remote, if_needed: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+        add_remote(remote: Remote, if_needed: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Remove all OSTree refs from the local flatpak repository which are not
@@ -819,7 +816,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        cleanup_local_refs_sync(cancellable: (Gio.Cancellable | null)): boolean;
+        cleanup_local_refs_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets monitor object for the installation. The returned file monitor will
@@ -828,7 +825,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.FileMonitor} instance, or `null` on error
          */
-        create_monitor(cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+        create_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
         /**
          * Drops all internal (in-memory) caches. For instance, this may be needed to pick up new or changed
@@ -836,7 +833,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on error
          */
-        drop_caches(cancellable: (Gio.Cancellable | null)): boolean;
+        drop_caches(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Obtains the metadata file from a commit.
@@ -848,7 +845,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the flatpak metadata file,   or `null` if an error occurred
          */
-        fetch_remote_metadata_sync(remote_name: string, ref: Ref, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        fetch_remote_metadata_sync(remote_name: string, ref: Ref, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
         /**
          * Gets the current remote branch of a ref in the remote.
@@ -860,7 +857,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} instance, or `null`
          */
-        fetch_remote_ref_sync(remote_name: string, kind: RefKind, name: string, arch: (string | null), branch: (string | null), cancellable: (Gio.Cancellable | null)): RemoteRef;
+        fetch_remote_ref_sync(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): RemoteRef;
 
         /**
          * Gets the current remote branch of a ref in the remote.
@@ -873,7 +870,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} instance, or `null`
          */
-        fetch_remote_ref_sync_full(remote_name: string, kind: RefKind, name: string, arch: (string | null), branch: (string | null), flags: QueryFlags, cancellable: (Gio.Cancellable | null)): RemoteRef;
+        fetch_remote_ref_sync_full(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef;
 
         /**
          * Gets information about the maximum amount of data that needs to be transferred
@@ -891,7 +888,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
          */
-        fetch_remote_size_sync(remote_name: string, ref: Ref, cancellable: (Gio.Cancellable | null)): [boolean, number, number];
+        fetch_remote_size_sync(remote_name: string, ref: Ref, cancellable: Gio.Cancellable | null): [boolean, number, number];
 
         /**
          * Get a global configuration option for the installation, see
@@ -900,7 +897,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The (newly allocated) value, or `null` on error ({@link GLib.KeyFileError.KEY_NOT_FOUND} error if key is not set)
          */
-        get_config(key: string, cancellable: (Gio.Cancellable | null)): string;
+        get_config(key: string, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Get the last build of reference `name` that was installed with
@@ -910,7 +907,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an {@link Flatpak.InstalledRef}
          */
-        get_current_installed_app(name: string, cancellable: (Gio.Cancellable | null)): InstalledRef;
+        get_current_installed_app(name: string, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * Get the default languages used by the installation to decide which
@@ -960,7 +957,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an {@link Flatpak.InstalledRef}, or `null` if an error occurred
          */
-        get_installed_ref(kind: RefKind, name: string, arch: (string | null), branch: (string | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        get_installed_ref(kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * Returns whether the installation is for a user-specific location.
@@ -1002,7 +999,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.Remote} instance, or `null` with `error`   set
          */
-        get_remote_by_name(name: string, cancellable: (Gio.Cancellable | null)): Remote;
+        get_remote_by_name(name: string, cancellable: Gio.Cancellable | null): Remote;
 
         /**
          * Returns the type of storage of the installation for `self`.
@@ -1033,7 +1030,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          */
-        install(remote_name: string, kind: RefKind, name: string, arch: (string | null), branch: (string | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        install(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * This is an old deprecated function, you should use
@@ -1047,7 +1044,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          */
-        install_bundle(file: Gio.File, progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        install_bundle(file: Gio.File, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * This is an old deprecated function, you should use
@@ -1074,7 +1071,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          */
-        install_full(flags: InstallFlags, remote_name: string, kind: RefKind, name: string, arch: (string | null), branch: (string | null), subpaths: (string[] | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        install_full(flags: InstallFlags, remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * This is an old deprecated function, you should use
@@ -1092,7 +1089,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} if the remote has been added successfully, `null` on error.
          */
-        install_ref_file(ref_file_data: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): RemoteRef;
+        install_ref_file(ref_file_data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): RemoteRef;
 
         /**
          * Launch an installed application.
@@ -1107,7 +1104,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
          */
-        launch(name: string, arch: (string | null), branch: (string | null), commit: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        launch(name: string, arch: string | null, branch: string | null, commit: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Launch an installed application.
@@ -1129,14 +1126,14 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
          */
-        launch_full(flags: LaunchFlags, name: string, arch: (string | null), branch: (string | null), commit: (string | null), instance_out: (Instance | null), cancellable: (Gio.Cancellable | null)): boolean;
+        launch_full(flags: LaunchFlags, name: string, arch: string | null, branch: string | null, commit: string | null, instance_out: Instance | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Lists the installed references.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_installed_refs(cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_installed_refs(cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Lists the installed references of a specific kind.
@@ -1144,7 +1141,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_installed_refs_by_kind(kind: RefKind, cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_installed_refs_by_kind(kind: RefKind, cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Lists the installed apps and runtimes that have an update available, either
@@ -1161,7 +1158,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances, or `null` on error
          */
-        list_installed_refs_for_update(cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_installed_refs_for_update(cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Lists all the locally installed refs that are related to `ref`. These are
@@ -1182,7 +1179,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          */
-        list_installed_related_refs_sync(remote_name: string, ref: string, cancellable: (Gio.Cancellable | null)): RelatedRef[];
+        list_installed_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
         /**
          * Lists the installed references that are pinned, meaning they will not be
@@ -1195,7 +1192,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_pinned_refs(arch: (string | null), cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_pinned_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Lists all the applications and runtimes in a remote.
@@ -1203,7 +1200,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RemoteRef} instances
          */
-        list_remote_refs_sync(remote_or_uri: string, cancellable: (Gio.Cancellable | null)): RemoteRef[];
+        list_remote_refs_sync(remote_or_uri: string, cancellable: Gio.Cancellable | null): RemoteRef[];
 
         /**
          * Lists all the applications and runtimes in a remote.
@@ -1212,7 +1209,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RemoteRef} instances
          */
-        list_remote_refs_sync_full(remote_or_uri: string, flags: QueryFlags, cancellable: (Gio.Cancellable | null)): RemoteRef[];
+        list_remote_refs_sync_full(remote_or_uri: string, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef[];
 
         /**
          * Lists all the available refs on `remote_name` that are related to `ref`, and
@@ -1240,7 +1237,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          */
-        list_remote_related_refs_for_installed_sync(remote_name: string, ref: string, cancellable: (Gio.Cancellable | null)): RelatedRef[];
+        list_remote_related_refs_for_installed_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
         /**
          * Lists all the available refs on `remote_name` that are related to
@@ -1262,7 +1259,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          */
-        list_remote_related_refs_sync(remote_name: string, ref: string, cancellable: (Gio.Cancellable | null)): RelatedRef[];
+        list_remote_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
         /**
          * Lists the static remotes, in priority (highest first) order. For same
@@ -1270,7 +1267,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.Remote} instances
          */
-        list_remotes(cancellable: (Gio.Cancellable | null)): Remote[];
+        list_remotes(cancellable: Gio.Cancellable | null): Remote[];
 
         /**
          * Lists only the remotes whose type is included in the `types` argument.
@@ -1282,7 +1279,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.Remote} instances
          */
-        list_remotes_by_type(types: RemoteType[], cancellable: (Gio.Cancellable | null)): Remote[];
+        list_remotes_by_type(types: RemoteType[], cancellable: Gio.Cancellable | null): Remote[];
 
         /**
          * Lists the installed references that are not 'used'.
@@ -1295,7 +1292,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_unused_refs(arch: (string | null), cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_unused_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Like `flatpak_installation_list_unused_refs()` but supports an extensible set
@@ -1314,7 +1311,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_unused_refs_with_options(arch: (string | null), metadata_injection: (GLib.HashTable<never, never> | null), options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): InstalledRef[];
+        list_unused_refs_with_options(arch: string | null, metadata_injection: GLib.HashTable<never, never> | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Loads the metadata overrides file for an application.
@@ -1322,7 +1319,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the contents of the overrides files,    or `null` if an error occurred
          */
-        load_app_overrides(app_id: string, cancellable: (Gio.Cancellable | null)): string;
+        load_app_overrides(app_id: string, cancellable: Gio.Cancellable | null): string;
 
         /**
          * Saves changes in the `remote` object.
@@ -1330,7 +1327,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the modifications have been committed successfully
          */
-        modify_remote(remote: Remote, cancellable: (Gio.Cancellable | null)): boolean;
+        modify_remote(remote: Remote, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Remove all orphaned OSTree objects from the underlying OSTree repo in
@@ -1338,7 +1335,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        prune_local_repo(cancellable: (Gio.Cancellable | null)): boolean;
+        prune_local_repo(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Remove the OSTree ref given by `remote_name`:`ref` from the local flatpak
@@ -1355,7 +1352,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        remove_local_ref_sync(remote_name: string, ref: string, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_local_ref_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes the remote with the given name from the installation.
@@ -1363,7 +1360,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the remote has been removed successfully
          */
-        remove_remote(name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_remote(name: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Run the trigger commands to update the files exported by the apps in
@@ -1374,7 +1371,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        run_triggers(cancellable: (Gio.Cancellable | null)): boolean;
+        run_triggers(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set a global configuration option for the installation, currently
@@ -1387,7 +1384,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the option was set correctly
          */
-        set_config_sync(key: string, value: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_config_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This method can be used to prevent interactive authorization dialogs to appear
@@ -1413,7 +1410,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        uninstall(kind: RefKind, name: string, arch: (string | null), branch: (string | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): boolean;
+        uninstall(kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This is an old deprecated function, you should use
@@ -1430,7 +1427,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          */
-        uninstall_full(flags: UninstallFlags, kind: RefKind, name: string, arch: (string | null), branch: (string | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): boolean;
+        uninstall_full(flags: UninstallFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This is an old deprecated function, you should use
@@ -1453,7 +1450,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
          */
-        update(flags: UpdateFlags, kind: RefKind, name: string, arch: (string | null), branch: (string | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        update(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * Updates the local copy of appstream for `remote_name` for the specified `arch`.
@@ -1464,7 +1461,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, or `false` on error
          */
-        update_appstream_full_sync(remote_name: string, arch: (string | null), progress: (ProgressCallback | null), out_changed: (boolean | null), cancellable: (Gio.Cancellable | null)): boolean;
+        update_appstream_full_sync(remote_name: string, arch: string | null, progress: ProgressCallback | null, out_changed: boolean | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Updates the local copy of appstream for `remote_name` for the specified `arch`.
@@ -1475,7 +1472,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, or `false` on error
          */
-        update_appstream_sync(remote_name: string, arch: (string | null), out_changed: (boolean | null), cancellable: (Gio.Cancellable | null)): boolean;
+        update_appstream_sync(remote_name: string, arch: string | null, out_changed: boolean | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This is an old deprecated function, you should use
@@ -1499,7 +1496,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
          */
-        update_full(flags: UpdateFlags, kind: RefKind, name: string, arch: (string | null), branch: (string | null), subpaths: (string[] | null), progress: (ProgressCallback | null), cancellable: (Gio.Cancellable | null)): InstalledRef;
+        update_full(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
         /**
          * Updates the local configuration of a remote repository by fetching
@@ -1509,7 +1506,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the remote has been updated successfully
          */
-        update_remote_sync(name: string, cancellable: (Gio.Cancellable | null)): boolean;
+        update_remote_sync(name: string, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1540,10 +1537,10 @@ export namespace Flatpak {
 
         // Constructor properties interface
         interface ConstructorProps extends Ref.ConstructorProps {
-            appdata_content_rating: (GLib.HashTable<never, never> | null);
-            appdataContentRating: (GLib.HashTable<never, never> | null);
-            appdata_content_rating_type: (string | null);
-            appdataContentRatingType: (string | null);
+            appdata_content_rating: GLib.HashTable<never, never> | null;
+            appdataContentRating: GLib.HashTable<never, never> | null;
+            appdata_content_rating_type: string | null;
+            appdataContentRatingType: string | null;
             appdata_license: string;
             appdataLicense: string;
             appdata_name: string;
@@ -1558,12 +1555,12 @@ export namespace Flatpak {
             endOfLife: string;
             end_of_life_rebase: string;
             endOfLifeRebase: string;
-            installed_size: (bigint | number);
-            installedSize: (bigint | number);
+            installed_size: bigint | number;
+            installedSize: bigint | number;
             is_current: boolean;
             isCurrent: boolean;
-            latest_commit: (string | null);
-            latestCommit: (string | null);
+            latest_commit: string | null;
+            latestCommit: string | null;
             origin: string;
             subpaths: string[];
         }
@@ -1579,24 +1576,24 @@ export namespace Flatpak {
         /**
          * @construct-only
          */
-        get appdata_content_rating(): (GLib.HashTable<never, never> | null);
+        get appdata_content_rating(): GLib.HashTable<never, never> | null;
 
         /**
          * @construct-only
          */
-        get appdataContentRating(): (GLib.HashTable<never, never> | null);
-
-        /**
-         * @construct-only
-         * @default null
-         */
-        get appdata_content_rating_type(): (string | null);
+        get appdataContentRating(): GLib.HashTable<never, never> | null;
 
         /**
          * @construct-only
          * @default null
          */
-        get appdataContentRatingType(): (string | null);
+        get appdata_content_rating_type(): string | null;
+
+        /**
+         * @construct-only
+         * @default null
+         */
+        get appdataContentRatingType(): string | null;
 
         /**
          * @construct-only
@@ -1686,13 +1683,13 @@ export namespace Flatpak {
          * @default 0
          */
         get installed_size(): number;
-        set installed_size(val: (bigint | number));
+        set installed_size(val: bigint | number);
 
         /**
          * @default 0
          */
         get installedSize(): number;
-        set installedSize(val: (bigint | number));
+        set installedSize(val: bigint | number);
 
         /**
          * @default false
@@ -1709,14 +1706,14 @@ export namespace Flatpak {
         /**
          * @default null
          */
-        get latest_commit(): (string | null);
-        set latest_commit(val: (string | null));
+        get latest_commit(): string | null;
+        set latest_commit(val: string | null);
 
         /**
          * @default null
          */
-        get latestCommit(): (string | null);
-        set latestCommit(val: (string | null));
+        get latestCommit(): string | null;
+        set latestCommit(val: string | null);
 
         /**
          * @default null
@@ -1762,14 +1759,14 @@ export namespace Flatpak {
          * `flatpak_installed_ref_get_appdata_content_rating_type()`).
          * @returns the content rating or `null`
          */
-        get_appdata_content_rating(): (GLib.HashTable<string, string> | null);
+        get_appdata_content_rating(): GLib.HashTable<string, string> | null;
 
         /**
          * Returns the content rating type from the appdata. For example, `oars-1.0` or
          * `oars-1.1`.
          * @returns the content rating type or `null`
          */
-        get_appdata_content_rating_type(): (string | null);
+        get_appdata_content_rating_type(): string | null;
 
         /**
          * Returns the license field from the appdata.
@@ -1835,7 +1832,7 @@ export namespace Flatpak {
          * Gets the latest commit of the ref.
          * @returns the latest commit
          */
-        get_latest_commit(): (string | null);
+        get_latest_commit(): string | null;
 
         /**
          * Gets the origin of the ref.
@@ -1854,26 +1851,23 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the compressed appdata file,     or `null` if an error occurred
          */
-        load_appdata(cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        load_appdata(cancellable: Gio.Cancellable | null): GLib.Bytes;
 
         /**
          * Loads the metadata file for this ref.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the metadata file,     or `null` if an error occurred
          */
-        load_metadata(cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+        load_metadata(cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
 
 
     namespace Instance {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1922,7 +1916,7 @@ export namespace Flatpak {
          * Note that this may return `null` for sandboxes that don't have an application.
          * @returns the application ID or `null`
          */
-        get_app(): (string | null);
+        get_app(): string | null;
 
         /**
          * Gets the architecture of the application running in the instance.
@@ -2331,7 +2325,7 @@ export namespace Flatpak {
 
         static ["new"](name: string): Remote;
 
-        static new_from_file(name: string, data: (GLib.Bytes | Uint8Array)): Remote;
+        static new_from_file(name: string, data: GLib.Bytes | Uint8Array): Remote;
 
         // Signals
         /** @signal */
@@ -2353,7 +2347,7 @@ export namespace Flatpak {
          * @param arch which architecture to fetch (default: current architecture)
          * @returns a {@link Gio.File}
          */
-        get_appstream_dir(arch: (string | null)): Gio.File;
+        get_appstream_dir(arch: string | null): Gio.File;
 
         /**
          * Returns the timestamp file that will be updated whenever the appstream information
@@ -2361,13 +2355,13 @@ export namespace Flatpak {
          * @param arch which architecture to fetch (default: current architecture)
          * @returns a {@link Gio.File}
          */
-        get_appstream_timestamp(arch: (string | null)): Gio.File;
+        get_appstream_timestamp(arch: string | null): Gio.File;
 
         /**
          * Returns the repository collection ID of this remote, if set.
          * @returns the collection ID, or `null` if unset
          */
-        get_collection_id(): (string | null);
+        get_collection_id(): string | null;
 
         /**
          * Returns the comment of the remote.
@@ -2474,7 +2468,7 @@ export namespace Flatpak {
          * effect.
          * @param collection_id The new collection ID, or `null` to unset
          */
-        set_collection_id(collection_id: (string | null)): void;
+        set_collection_id(collection_id: string | null): void;
 
         /**
          * Sets the comment of this remote.
@@ -2534,7 +2528,7 @@ export namespace Flatpak {
          * effect.
          * @param gpg_key a {@link GLib.Bytes} with gpg binary key data
          */
-        set_gpg_key(gpg_key: (GLib.Bytes | Uint8Array)): void;
+        set_gpg_key(gpg_key: GLib.Bytes | Uint8Array): void;
 
         /**
          * Sets the gpg_verify config of this remote. See `flatpak_remote_get_gpg_verify()`.
@@ -2648,15 +2642,15 @@ export namespace Flatpak {
 
         // Constructor properties interface
         interface ConstructorProps extends Ref.ConstructorProps {
-            download_size: (bigint | number);
-            downloadSize: (bigint | number);
+            download_size: bigint | number;
+            downloadSize: bigint | number;
             end_of_life: string;
             endOfLife: string;
             end_of_life_rebase: string;
             endOfLifeRebase: string;
-            installed_size: (bigint | number);
-            installedSize: (bigint | number);
-            metadata: (GLib.Bytes | null);
+            installed_size: bigint | number;
+            installedSize: bigint | number;
+            metadata: GLib.Bytes | null;
             remote_name: string;
             remoteName: string;
         }
@@ -2720,7 +2714,7 @@ export namespace Flatpak {
         /**
          * @construct-only
          */
-        get metadata(): (GLib.Bytes | null);
+        get metadata(): GLib.Bytes | null;
 
         /**
          * @construct-only
@@ -2792,7 +2786,7 @@ export namespace Flatpak {
          * Returns the app metadata from the metadata cache of the ref.
          * @returns a {@link GLib.Bytes} with the metadata file contents or `null`
          */
-        get_metadata(): (GLib.Bytes | null);
+        get_metadata(): GLib.Bytes | null;
 
         /**
          * Gets the remote name of the ref.
@@ -2812,7 +2806,7 @@ export namespace Flatpak {
              * @signal
              * @run-last
              */
-            "add-new-remote": (arg0: TransactionRemoteReason, arg1: string, arg2: string, arg3: string) => (boolean | void);
+            "add-new-remote": (arg0: TransactionRemoteReason, arg1: string, arg2: string, arg3: string) => boolean | void;
             /**
              * The ::basic-auth-start signal gets emitted when a basic user/password
              * authentication is needed during the operation. If the caller handles this
@@ -2828,7 +2822,7 @@ export namespace Flatpak {
              * @since 1.5.2
              * @run-last
              */
-            "basic-auth-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => (boolean | void);
+            "basic-auth-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
             /**
              * The ::choose-remote-for-ref signal gets emitted when a
              * remote needs to be selected during the execution of the transaction.
@@ -2857,7 +2851,7 @@ export namespace Flatpak {
              * @since 1.3.2
              * @run-last
              */
-            "end-of-lifed-with-rebase": (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => (boolean | void);
+            "end-of-lifed-with-rebase": (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => boolean | void;
             /**
              * The ::install-authenticator signal gets emitted if, as part of
              * resolving the transaction, we need to use an authenticator, but the authentication
@@ -2886,14 +2880,14 @@ export namespace Flatpak {
              * @signal
              * @run-last
              */
-            "operation-done": (arg0: TransactionOperation, arg1: (string | null), arg2: TransactionResult) => void;
+            "operation-done": (arg0: TransactionOperation, arg1: string | null, arg2: TransactionResult) => void;
             /**
              * The ::operation-error signal gets emitted when an error occurs during the
              * execution of the transaction.
              * @signal
              * @run-last
              */
-            "operation-error": (arg0: TransactionOperation, arg1: GLib.Error, arg2: TransactionErrorDetails) => (boolean | void);
+            "operation-error": (arg0: TransactionOperation, arg1: GLib.Error, arg2: TransactionErrorDetails) => boolean | void;
             /**
              * The ::ready signal is emitted when all the refs involved in the operation
              * have been resolved to commits, and the required authentication for all ops is gotten.
@@ -2902,7 +2896,7 @@ export namespace Flatpak {
              * @signal
              * @run-last
              */
-            ready: () => (boolean | void);
+            ready: () => boolean | void;
             /**
              * The ::ready-pre-auth signal is emitted when all the refs involved in the
              * transaction have been resolved to commits, but we might not necessarily
@@ -2919,7 +2913,7 @@ export namespace Flatpak {
              * @since 1.9.1
              * @run-last
              */
-            "ready-pre-auth": () => (boolean | void);
+            "ready-pre-auth": () => boolean | void;
             /**
              * The ::webflow-done signal gets emitted when the authentication
              * finished the webflow, independent of the reason and results.  If
@@ -2949,7 +2943,7 @@ export namespace Flatpak {
              * @since 1.5.1
              * @run-last
              */
-            "webflow-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => (boolean | void);
+            "webflow-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
             "notify::installation": (pspec: GObject.ParamSpec) => void;
             "notify::no-interaction": (pspec: GObject.ParamSpec) => void;
         }
@@ -3009,7 +3003,7 @@ export namespace Flatpak {
 
         _init(...args: any[]): void;
 
-        static new_for_installation(installation: Installation, cancellable: (Gio.Cancellable | null)): Transaction;
+        static new_for_installation(installation: Installation, cancellable: Gio.Cancellable | null): Transaction;
 
         // Signals
         /** @signal */
@@ -3125,7 +3119,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_run(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_run(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param options 
@@ -3186,7 +3180,7 @@ export namespace Flatpak {
          * @param subpaths subpaths to install, or the  empty list or `null` to pull all subpaths
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_install(remote: string, ref: string, subpaths: (string[] | null)): boolean;
+        add_install(remote: string, ref: string, subpaths: string[] | null): boolean;
 
         /**
          * Adds installing the given bundle to this transaction.
@@ -3194,14 +3188,14 @@ export namespace Flatpak {
          * @param gpg_data GPG key with which to check bundle signatures, or  `null` to use the key embedded in the bundle (if any)
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_install_bundle(file: Gio.File, gpg_data: (GLib.Bytes | null)): boolean;
+        add_install_bundle(file: Gio.File, gpg_data: GLib.Bytes | null): boolean;
 
         /**
          * Adds installing the given flatpakref to this transaction.
          * @param flatpakref_data data from a flatpakref file
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_install_flatpakref(flatpakref_data: (GLib.Bytes | Uint8Array)): boolean;
+        add_install_flatpakref(flatpakref_data: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Install a Flatpak from a container image. The image is specified
@@ -3216,7 +3210,7 @@ export namespace Flatpak {
          * @param image_location location string to install from.
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_install_image(image_location: (string | null)): boolean;
+        add_install_image(image_location: string | null): boolean;
 
         /**
          * Adds updating the `previous_ids` of the given ref to this transaction, via either
@@ -3235,7 +3229,7 @@ export namespace Flatpak {
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_rebase(remote: string, ref: string, subpaths: (string | null), previous_ids: (string[] | null)): boolean;
+        add_rebase(remote: string, ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
         /**
          * Adds updating the `previous_ids` of the given `new_ref` to this transaction,
@@ -3260,7 +3254,7 @@ export namespace Flatpak {
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_rebase_and_uninstall(remote: string, new_ref: string, old_ref: string, subpaths: (string | null), previous_ids: (string[] | null)): boolean;
+        add_rebase_and_uninstall(remote: string, new_ref: string, old_ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
         /**
          * Adds a set of images to be used as source for installation. This is similar
@@ -3273,7 +3267,7 @@ export namespace Flatpak {
          * @param location source of images for installation
          * @param cancellable 
          */
-        add_sideload_image_collection(location: string, cancellable: (Gio.Cancellable | null)): boolean;
+        add_sideload_image_collection(location: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Adds an extra local ostree repo as source for installation. This is
@@ -3307,7 +3301,7 @@ export namespace Flatpak {
          * @param commit the commit to update to, or `null` to use the latest
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_update(ref: string, subpaths: (string[] | null), commit: (string | null)): boolean;
+        add_update(ref: string, subpaths: string[] | null, commit: string | null): boolean;
 
         /**
          * Finishes (or aborts) an ongoing basic auth request.
@@ -3381,7 +3375,7 @@ export namespace Flatpak {
          * @param ref a ref
          * @returns the {@link Flatpak.TransactionOperation} for `ref`, or   `null` with `error` set
          */
-        get_operation_for_ref(remote: (string | null), ref: string): TransactionOperation;
+        get_operation_for_ref(remote: string | null, ref: string): TransactionOperation;
 
         /**
          * Gets the list of operations. Skipped operations are not included. The order
@@ -3419,7 +3413,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if an error occurred
          */
-        run(cancellable: (Gio.Cancellable | null)): boolean;
+        run(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * When this is set to `true`, Flatpak will automatically install the debug info
@@ -3590,7 +3584,7 @@ export namespace Flatpak {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3634,19 +3628,16 @@ export namespace Flatpak {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace TransactionOperation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3793,7 +3784,7 @@ export namespace Flatpak {
          * {@link Flatpak.Transaction} is alive.
          * @returns the   `FlatpakTransactionOperations` this one is related to (may be `null` or an   empty array, which are equivalent)
          */
-        get_related_to_ops(): (TransactionOperation[] | null);
+        get_related_to_ops(): TransactionOperation[] | null;
 
         /**
          * Gets the remote that the operation applies to.
@@ -3842,9 +3833,7 @@ export namespace Flatpak {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

@@ -104,7 +104,7 @@ export namespace Hex {
      * @param file file to initialize the buffer with, or `null`
      * @returns a pointer to a valid implementation of a {@link Hex.Buffer} interface, pre-cast as type {@link Hex.Buffer}, or `null` if the operation failed. Starting with 4.2, if a specific backend is requested, and the system supports plugins as a whole but cannot load that specified plugin, `null` will be returned as though the operation failed, so as to customize the fallback scheme programmatically.
      */
-    function buffer_util_new(plugin: (string | null), file: (Gio.File | null)): Buffer;
+    function buffer_util_new(plugin: string | null, file: Gio.File | null): Buffer;
 
     /**
      * Bitwise flags for search options that can be combined as desired.
@@ -261,7 +261,7 @@ export namespace Hex {
          * @param pos offset position of the {@link Hex.Document} data to compare with `what`
          * @returns 0 if the comparison is an exact match; otherwise, a non-zero   value comparable to `strcmp()`.
          */
-        compare_data(what: (Uint8Array | string), pos: (bigint | number)): number;
+        compare_data(what: Uint8Array | string, pos: bigint | number): number;
 
         /**
          * Full version of {@link Hex.Document.compare_data} to allow data
@@ -272,7 +272,7 @@ export namespace Hex {
          * @param pos offset position of the {@link Hex.Document} data to compare with the   string contained in the `find_data` structure
          * @returns 0 if the comparison is an exact match; otherwise, a non-zero   value is returned.
          */
-        compare_data_full(find_data: DocumentFindData, pos: (bigint | number)): number;
+        compare_data_full(find_data: DocumentFindData, pos: bigint | number): number;
 
         /**
          * Delete data at `offset` of `length` within the buffer.
@@ -280,7 +280,7 @@ export namespace Hex {
          * @param len length in bytes of the data to be set
          * @param undoable whether the operation should be undoable
          */
-        delete_data(offset: (bigint | number), len: (bigint | number), undoable: boolean): void;
+        delete_data(offset: bigint | number, len: bigint | number, undoable: boolean): void;
 
         /**
          * Export the {@link Hex.Document} to HTML.
@@ -293,7 +293,7 @@ export namespace Hex {
          * @param cpw characters per word (for grouping of nibbles)
          * @returns `true` if the operation was successful; `false` otherwise.
          */
-        export_html(html_path: string, base_name: string, start: (bigint | number), end: (bigint | number), cpl: number, lpp: number, cpw: number): boolean;
+        export_html(html_path: string, base_name: string, start: bigint | number, end: bigint | number, cpl: number, lpp: number, cpw: number): boolean;
 
         /**
          * Find a string backwards in a {@link Hex.Document}.
@@ -306,7 +306,7 @@ export namespace Hex {
          * @param what a pointer to the data to   search within the {@link Hex.Document}
          * @returns `true` if `what` was found by the requested operation; `false`   otherwise.
          */
-        find_backward(start: (bigint | number), what: (Uint8Array | string)): [boolean, number];
+        find_backward(start: bigint | number, what: Uint8Array | string): [boolean, number];
 
         /**
          * Non-blocking version of {@link Hex.Document.find_backward}. This is the
@@ -318,20 +318,7 @@ export namespace Hex {
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable 
          */
-        find_backward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null)): [globalThis.Promise<DocumentFindData>, number];
-
-        /**
-         * Non-blocking version of {@link Hex.Document.find_backward}. This is the
-         * function that should generally be used by a GUI client to find a string
-         * backwards in a {@link Hex.Document}.
-         * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to   search within the {@link Hex.Document}
-         * @param found_msg message intended to be displayed by the client if the string   is found
-         * @param not_found_msg message intended to be displayed by the client if the string   is not found
-         * @param cancellable 
-         * @param callback function to be called when the operation is   complete
-         */
-        find_backward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): number;
+        find_backward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null): [globalThis.Promise<DocumentFindData>, number];
 
         /**
          * Non-blocking version of {@link Hex.Document.find_backward}. This is the
@@ -344,7 +331,20 @@ export namespace Hex {
          * @param cancellable 
          * @param callback function to be called when the operation is   complete
          */
-        find_backward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): [(globalThis.Promise<DocumentFindData> | void), number];
+        find_backward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): number;
+
+        /**
+         * Non-blocking version of {@link Hex.Document.find_backward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * backwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable 
+         * @param callback function to be called when the operation is   complete
+         */
+        find_backward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): [globalThis.Promise<DocumentFindData> | void, number];
 
         /**
          * Full version of {@link Hex.Document.find_backward} which allows for
@@ -364,7 +364,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          */
-        find_backward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DocumentFindData>;
+        find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentFindData>;
 
         /**
          * Non-blocking version of {@link Hex.Document.find_backward_full}.
@@ -372,7 +372,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        find_backward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Non-blocking version of {@link Hex.Document.find_backward_full}.
@@ -380,7 +380,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        find_backward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DocumentFindData> | void);
+        find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentFindData> | void;
 
         /**
          * Obtain the result of a completed asynchronous find operation (forwards or
@@ -401,7 +401,7 @@ export namespace Hex {
          * @param what a pointer to the data to   search within the {@link Hex.Document}
          * @returns `true` if `what` was found by the requested operation; `false`   otherwise.
          */
-        find_forward(start: (bigint | number), what: (Uint8Array | string)): [boolean, number];
+        find_forward(start: bigint | number, what: Uint8Array | string): [boolean, number];
 
         /**
          * Non-blocking version of {@link Hex.Document.find_forward}. This is the
@@ -413,20 +413,7 @@ export namespace Hex {
          * @param not_found_msg message intended to be displayed by the client if the string   is not found
          * @param cancellable 
          */
-        find_forward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null)): [globalThis.Promise<DocumentFindData>, number];
-
-        /**
-         * Non-blocking version of {@link Hex.Document.find_forward}. This is the
-         * function that should generally be used by a GUI client to find a string
-         * forwards in a {@link Hex.Document}.
-         * @param start starting offset byte of the payload to commence the search
-         * @param what a pointer to the data to   search within the {@link Hex.Document}
-         * @param found_msg message intended to be displayed by the client if the string   is found
-         * @param not_found_msg message intended to be displayed by the client if the string   is not found
-         * @param cancellable 
-         * @param callback function to be called when the operation is   complete
-         */
-        find_forward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): number;
+        find_forward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null): [globalThis.Promise<DocumentFindData>, number];
 
         /**
          * Non-blocking version of {@link Hex.Document.find_forward}. This is the
@@ -439,7 +426,20 @@ export namespace Hex {
          * @param cancellable 
          * @param callback function to be called when the operation is   complete
          */
-        find_forward_async(start: (bigint | number), what: (Uint8Array | string), found_msg: string, not_found_msg: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): [(globalThis.Promise<DocumentFindData> | void), number];
+        find_forward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): number;
+
+        /**
+         * Non-blocking version of {@link Hex.Document.find_forward}. This is the
+         * function that should generally be used by a GUI client to find a string
+         * forwards in a {@link Hex.Document}.
+         * @param start starting offset byte of the payload to commence the search
+         * @param what a pointer to the data to   search within the {@link Hex.Document}
+         * @param found_msg message intended to be displayed by the client if the string   is found
+         * @param not_found_msg message intended to be displayed by the client if the string   is not found
+         * @param cancellable 
+         * @param callback function to be called when the operation is   complete
+         */
+        find_forward_async(start: bigint | number, what: Uint8Array | string, found_msg: string, not_found_msg: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): [globalThis.Promise<DocumentFindData> | void, number];
 
         /**
          * Full version of {@link Hex.Document.find_forward} which allows for
@@ -459,7 +459,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          */
-        find_forward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null)): globalThis.Promise<DocumentFindData>;
+        find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentFindData>;
 
         /**
          * Non-blocking version of {@link Hex.Document.find_forward_full}.
@@ -467,7 +467,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        find_forward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Non-blocking version of {@link Hex.Document.find_forward_full}.
@@ -475,7 +475,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        find_forward_full_async(find_data: DocumentFindData, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DocumentFindData> | void);
+        find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentFindData> | void;
 
         /**
          * Get the {@link Hex.Buffer} connected with the {@link Hex.Document}.
@@ -512,7 +512,7 @@ export namespace Hex {
          * the operation completes.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        read_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        read_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Read the {@link Gio.File} into the buffer connected to the {@link Hex.Document} object.
@@ -524,7 +524,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Read the {@link Gio.File} into the buffer connected to the {@link Hex.Document} object.
@@ -536,7 +536,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        read_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Obtain the result of a completed file read operation.
@@ -574,7 +574,7 @@ export namespace Hex {
          * @param insert `true` if the operation should be insert mode, `false` if in   overwrite mode
          * @param undoable whether the operation should be undoable
          */
-        set_byte(val: number, offset: (bigint | number), insert: boolean, undoable: boolean): void;
+        set_byte(val: number, offset: bigint | number, insert: boolean, undoable: boolean): void;
 
         /**
          * A convenience wrapper for {@link Hex.Buffer.set_data}. See the
@@ -584,7 +584,7 @@ export namespace Hex {
          * @param data a pointer to the data being   provided
          * @param undoable whether the operation should be undoable
          */
-        set_data(offset: (bigint | number), rep_len: (bigint | number), data: (Uint8Array | string), undoable: boolean): void;
+        set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string, undoable: boolean): void;
 
         /**
          * @param args 
@@ -613,7 +613,7 @@ export namespace Hex {
          * @param insert `true` if the operation should be insert mode, `false` if in   overwrite mode
          * @param undoable whether the operation should be undoable
          */
-        set_nibble(val: number, offset: (bigint | number), lower_nibble: boolean, insert: boolean, undoable: boolean): void;
+        set_nibble(val: number, offset: bigint | number, lower_nibble: boolean, insert: boolean, undoable: boolean): void;
 
         /**
          * Perform an undo operation.
@@ -639,7 +639,7 @@ export namespace Hex {
          * value in your {@link Gio.AsyncReadyCallback} function.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        write_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        write_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Write the buffer to the pre-existing {@link Gio.File} connected to the {@link Hex.Document}
@@ -653,7 +653,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Write the buffer to the pre-existing {@link Gio.File} connected to the {@link Hex.Document}
@@ -667,7 +667,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Obtain the result of a completed write-to-file operation.
@@ -704,7 +704,7 @@ export namespace Hex {
          * @param file {@link Gio.File} to be written to
          * @param cancellable a {@link Gio.Cancellable}
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Write the buffer to `file` asynchronously. This can be used for a 'Save As'
@@ -718,7 +718,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Write the buffer to `file` asynchronously. This can be used for a 'Save As'
@@ -732,7 +732,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
     }
 
 
@@ -940,7 +940,7 @@ export namespace Hex {
          * @param color A custom color to set for the mark, or `NULL` to use the   default
          * @returns A pointer to a {@link Hex.WidgetMark} object, owned by the {@link Hex.Widget}.
          */
-        add_mark(start: (bigint | number), end: (bigint | number), color: (Gdk.RGBA | null)): WidgetMark;
+        add_mark(start: bigint | number, end: bigint | number, color: Gdk.RGBA | null): WidgetMark;
 
         /**
          * Clear the selection (if any). Any autohighlights will remain intact.
@@ -984,7 +984,7 @@ export namespace Hex {
          * Get the value of the byte at requested offset position.
          * @param offset index of the requested byte within the whole of the buffer
          */
-        get_byte(offset: (bigint | number)): number;
+        get_byte(offset: bigint | number): number;
 
         /**
          * Get the cursor position.
@@ -1045,7 +1045,7 @@ export namespace Hex {
          * @param search search   string to auto-highlight
          * @returns a newly created {@link Hex.WidgetAutoHighlight}   structure, owned by the {@link Hex.Widget}
          */
-        insert_autohighlight(search: (Uint8Array | string)): WidgetAutoHighlight;
+        insert_autohighlight(search: Uint8Array | string): WidgetAutoHighlight;
 
         /**
          * Full version of {@link Hex.Widget.insert_autohighlight} which allows
@@ -1055,7 +1055,7 @@ export namespace Hex {
          * @param flags {@link Hex.SearchFlags} to specify match type
          * @returns a newly created {@link Hex.WidgetAutoHighlight}   structure, owned by the {@link Hex.Widget}
          */
-        insert_autohighlight_full(search: (Uint8Array | string), flags: SearchFlags): WidgetAutoHighlight;
+        insert_autohighlight_full(search: Uint8Array | string, flags: SearchFlags): WidgetAutoHighlight;
 
         /**
          * Paste clipboard data to widget at position of cursor.
@@ -1075,7 +1075,7 @@ export namespace Hex {
          * Move cursor to `index`.
          * @param index where the cursor should be moved to, as offset by byte within   the buffer
          */
-        set_cursor(index: (bigint | number)): void;
+        set_cursor(index: bigint | number): void;
 
         /**
          * @param args 
@@ -1088,7 +1088,7 @@ export namespace Hex {
          * @param col_x column to which the cursor should be moved
          * @param line_y line to which the cursor should be moved, by absolute value, within   the whole buffer (not just the currently visible part)
          */
-        set_cursor_by_row_and_col(col_x: number, line_y: (bigint | number)): void;
+        set_cursor_by_row_and_col(col_x: number, line_y: bigint | number): void;
 
         /**
          * Set whether ASCII control characters are shown in the ASCII display.
@@ -1139,7 +1139,7 @@ export namespace Hex {
          * @param start starting offset by byte within the buffer
          * @param end ending offset by byte within the buffer
          */
-        set_selection(start: (bigint | number), end: (bigint | number)): void;
+        set_selection(start: bigint | number, end: bigint | number): void;
 
         /**
          * Set whether the ASCII column of the widget should be shown.
@@ -1209,7 +1209,7 @@ export namespace Hex {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1217,7 +1217,7 @@ export namespace Hex {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1245,13 +1245,13 @@ export namespace Hex {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1295,7 +1295,7 @@ export namespace Hex {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1304,7 +1304,7 @@ export namespace Hex {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1362,7 +1362,7 @@ export namespace Hex {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1370,13 +1370,13 @@ export namespace Hex {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1392,13 +1392,13 @@ export namespace Hex {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1418,7 +1418,7 @@ export namespace Hex {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1428,7 +1428,7 @@ export namespace Hex {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1439,7 +1439,7 @@ export namespace Hex {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1450,7 +1450,7 @@ export namespace Hex {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1459,7 +1459,7 @@ export namespace Hex {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -1758,7 +1758,7 @@ export namespace Hex {
              * Get the size of the payload of the buffer, in bytes.
              * @virtual
              */
-            vfunc_get_payload_size(): (bigint | number);
+            vfunc_get_payload_size(): bigint | number;
 
             /**
              * Read the {@link Gio.File}, previously set, into the buffer. This method will block
@@ -1775,7 +1775,7 @@ export namespace Hex {
              * @param callback function to be called when the operation is   complete
              * @virtual
              */
-            vfunc_read_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Obtain the result of a completed file read operation.
@@ -1826,7 +1826,7 @@ export namespace Hex {
              * @param callback function to be called when the operation is   complete
              * @virtual
              */
-            vfunc_write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * Obtain the result of a completed write-to-file operation.
@@ -1878,7 +1878,7 @@ export namespace Hex {
         * @param plugin the name of the plugin, or `null`
         * @param file file to initialize the buffer with, or `null`
         */
-        util_new(plugin: (string | null), file: (Gio.File | null)): Buffer;
+        util_new(plugin: string | null, file: Gio.File | null): Buffer;
     }
     /**
      * {@link Hex.Buffer} is an interface which can be implemented to act as a buffer
@@ -1913,7 +1913,7 @@ export namespace Hex {
          * @param offset offset position of the data being requested within the payload
          * @returns the 8-bit character located at `offset` within the payload, or '\0'
          */
-        get_byte(offset: (bigint | number)): number;
+        get_byte(offset: bigint | number): number;
 
         /**
          * Get data of a particular size at a particular offset within the buffer.
@@ -1921,7 +1921,7 @@ export namespace Hex {
          * @param len size in bytes of the requested data
          * @returns a pointer to the data requested, to be freed with `g_free()`.
          */
-        get_data(offset: (bigint | number), len: (bigint | number)): string;
+        get_data(offset: bigint | number, len: bigint | number): string;
 
         /**
          * @param args 
@@ -1948,7 +1948,7 @@ export namespace Hex {
          * version of {@link Hex.Buffer.read}.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        read_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        read_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Read the {@link Gio.File}, previously set, into the buffer. This is the non-blocking
@@ -1956,7 +1956,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Read the {@link Gio.File}, previously set, into the buffer. This is the non-blocking
@@ -1964,7 +1964,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        read_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        read_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Obtain the result of a completed file read operation.
@@ -1988,7 +1988,7 @@ export namespace Hex {
          * @param data a pointer to   the data being provided
          * @returns `true` if the operation was successful; `false` otherwise.
          */
-        set_data(offset: (bigint | number), rep_len: (bigint | number), data: (Uint8Array | string)): boolean;
+        set_data(offset: bigint | number, rep_len: bigint | number, data: Uint8Array | string): boolean;
 
         /**
          * @param args 
@@ -2019,7 +2019,7 @@ export namespace Hex {
          * @param file {@link Gio.File} to write to
          * @param cancellable a {@link Gio.Cancellable}
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Write the buffer to the {@link Gio.File} specified. This is the non-blocking
@@ -2028,7 +2028,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Write the buffer to the {@link Gio.File} specified. This is the non-blocking
@@ -2037,7 +2037,7 @@ export namespace Hex {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
          */
-        write_to_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_to_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Obtain the result of a completed write-to-file operation.

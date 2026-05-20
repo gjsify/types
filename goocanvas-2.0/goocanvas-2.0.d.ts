@@ -473,12 +473,12 @@ export namespace GooCanvas {
     /**
      * @gir-type Alias
      */
-    type CairoMatrix = (object | null);
+    type CairoMatrix = object | null;
 
     /**
      * @gir-type Alias
      */
-    type CairoPattern = (object | null);
+    type CairoPattern = object | null;
 
     /**
      * @gir-type Flags
@@ -982,7 +982,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+        static marshal_BOOLEAN__BOXED(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -992,7 +992,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1002,7 +1002,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_BOOLEAN__OBJECT_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+        static marshal_BOOLEAN__OBJECT_BOXED(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1012,7 +1012,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+        static marshal_VOID__INT_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * @param closure 
@@ -1022,7 +1022,7 @@ export namespace GooCanvas {
          * @param invocation_hint 
          * @param marshal_data 
          */
-        static marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+        static marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
         /**
          * Parses the given SVG path specification string.
@@ -1305,7 +1305,7 @@ export namespace GooCanvas {
          * @param time the time of the event that lead to the pointer grab. This should  come from the relevant {@link Gdk.Event}.
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab succeeded.
          */
-        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: (Gdk.Cursor | null), time: number): Gdk.GrabStatus;
+        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: Gdk.Cursor | null, time: number): Gdk.GrabStatus;
 
         /**
          * Ungrabs the pointer, if the given item has the pointer grab.
@@ -1348,7 +1348,7 @@ export namespace GooCanvas {
          * @param bounds the area to render, or `null` to render the entire canvas.
          * @param scale the scale to compare with each item's visibility threshold to see if they should be rendered. This only affects items that have their visibility set to {@link GooCanvas.CanvasItemVisibility.VISIBLE_ABOVE_THRESHOLD}.
          */
-        render(cr: cairo.Context, bounds: (CanvasBounds | null), scale: number): void;
+        render(cr: cairo.Context, bounds: CanvasBounds | null, scale: number): void;
 
         /**
          * This function is only intended to be used by subclasses of {@link GooCanvas.Canvas} or
@@ -1546,7 +1546,7 @@ export namespace GooCanvas {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1560,7 +1560,7 @@ export namespace GooCanvas {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1584,13 +1584,10 @@ export namespace GooCanvas {
 
     namespace CanvasAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
-        }
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
     }
 
     /**
@@ -1922,7 +1919,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -2056,7 +2053,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -2083,7 +2080,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -2139,7 +2136,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -2191,7 +2188,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -2611,7 +2608,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -2874,7 +2871,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -2926,7 +2923,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -2939,7 +2936,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -2977,7 +2974,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -3012,7 +3009,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -3183,7 +3180,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -3736,7 +3733,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -3870,7 +3867,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -3897,7 +3894,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -3953,7 +3950,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -4005,7 +4002,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -4425,7 +4422,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -4921,7 +4918,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -4973,7 +4970,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -4986,7 +4983,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -5024,7 +5021,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -5059,7 +5056,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -5230,7 +5227,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -5497,7 +5494,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -5631,7 +5628,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -5658,7 +5655,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -5714,7 +5711,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -5766,7 +5763,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -6186,7 +6183,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -6415,7 +6412,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -6467,7 +6464,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -6480,7 +6477,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -6518,7 +6515,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -6553,7 +6550,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -6724,7 +6721,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -7011,7 +7008,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -7145,7 +7142,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -7172,7 +7169,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -7228,7 +7225,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -7280,7 +7277,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -7700,7 +7697,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -7954,7 +7951,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -8006,7 +8003,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -8019,7 +8016,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -8057,7 +8054,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -8092,7 +8089,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -8263,19 +8260,16 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
     namespace CanvasItemAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
-        }
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
     }
 
     /**
@@ -8696,7 +8690,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -8748,7 +8742,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -8761,7 +8755,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -8799,7 +8793,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -8834,7 +8828,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -9005,7 +8999,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -9590,7 +9584,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -9724,7 +9718,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -9751,7 +9745,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -9807,7 +9801,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -9853,7 +9847,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -10273,7 +10267,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -10556,7 +10550,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -10690,7 +10684,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -10717,7 +10711,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -10773,7 +10767,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -10825,7 +10819,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -11245,7 +11239,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -11480,7 +11474,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -11532,7 +11526,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -11545,7 +11539,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -11583,7 +11577,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -11618,7 +11612,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -11789,7 +11783,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -12106,7 +12100,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -12240,7 +12234,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -12267,7 +12261,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -12323,7 +12317,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -12375,7 +12369,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -12795,7 +12789,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -13079,7 +13073,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -13131,7 +13125,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -13144,7 +13138,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -13182,7 +13176,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -13217,7 +13211,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -13388,7 +13382,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -13662,7 +13656,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -13796,7 +13790,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -13823,7 +13817,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -13879,7 +13873,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -13931,7 +13925,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -14351,7 +14345,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -14592,7 +14586,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -14644,7 +14638,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -14657,7 +14651,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -14695,7 +14689,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -14730,7 +14724,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -14901,19 +14895,16 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
     namespace CanvasStyle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -15023,7 +15014,7 @@ export namespace GooCanvas {
          * @param property_id the property identifier.
          * @param value the value of the property.
          */
-        set_property(property_id: GLib.Quark, value: (GObject.Value | any)): void;
+        set_property(property_id: GLib.Quark, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -15684,7 +15675,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -15818,7 +15809,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -15845,7 +15836,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -15901,7 +15892,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -15953,7 +15944,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -16373,7 +16364,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -16630,7 +16621,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -16682,7 +16673,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -16695,7 +16686,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -16733,7 +16724,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -16768,7 +16759,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
@@ -16939,7 +16930,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
     }
 
 
@@ -17215,7 +17206,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -17349,7 +17340,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -17376,7 +17367,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -17432,7 +17423,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -17484,7 +17475,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -17904,7 +17895,7 @@ export namespace GooCanvas {
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+        vfunc_set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -17922,13 +17913,10 @@ export namespace GooCanvas {
 
     namespace CanvasWidgetAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
-        }
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
     }
 
     /**
@@ -18950,7 +18938,7 @@ export namespace GooCanvas {
              * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
              * @virtual
              */
-            vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+            vfunc_set_transform(transform: cairo.Matrix | null): void;
 
             /**
              * This function is only intended to be used when implementing new canvas
@@ -19151,7 +19139,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns `true` if the item is static. Static items do not move or change
@@ -19285,7 +19273,7 @@ export namespace GooCanvas {
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: (CanvasItem | null)): void;
+        lower(below: CanvasItem | null): void;
 
         /**
          * Moves a child item to a new stack position within the container.
@@ -19312,7 +19300,7 @@ export namespace GooCanvas {
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: (CanvasItem | null)): void;
+        raise(above: CanvasItem | null): void;
 
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
@@ -19368,7 +19356,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Notifies the item that it is static. Static items do not move or change
@@ -19420,7 +19408,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
@@ -19616,7 +19604,7 @@ export namespace GooCanvas {
              * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
              * @virtual
              */
-            vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+            vfunc_set_transform(transform: cairo.Matrix | null): void;
         }
 
 
@@ -19762,7 +19750,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * Gets the number of children of the container.
@@ -19814,7 +19802,7 @@ export namespace GooCanvas {
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: (CanvasItemModel | null)): void;
+        lower(below: CanvasItemModel | null): void;
 
         /**
          * Moves a child to a new stack position.
@@ -19827,7 +19815,7 @@ export namespace GooCanvas {
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: (CanvasItemModel | null)): void;
+        raise(above: CanvasItemModel | null): void;
 
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
@@ -19865,7 +19853,7 @@ export namespace GooCanvas {
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
 
         /**
          * This function is only intended to be used when implementing new canvas
@@ -19900,7 +19888,7 @@ export namespace GooCanvas {
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: (cairo.Matrix | null)): void;
+        set_transform(transform: cairo.Matrix | null): void;
 
         /**
          * Skews the model's coordinate system along the x axis by the given amount,

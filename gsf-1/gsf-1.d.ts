@@ -100,7 +100,7 @@ export namespace Gsf {
         static INVALID_DATA: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -506,7 +506,7 @@ export namespace Gsf {
      * @param len max length of data to decode
      * @returns the number of bytes converted
      */
-    function base64_decode_simple(data: (Uint8Array | string), len: (bigint | number)): number;
+    function base64_decode_simple(data: Uint8Array | string, len: bigint | number): number;
 
     /**
      * Decodes a chunk of base64 encoded data
@@ -517,7 +517,7 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes converted
      */
-    function base64_decode_step(_in: (Uint8Array | string), len: (bigint | number), out: (Uint8Array | string), state: number, save: number): [number, number, number];
+    function base64_decode_step(_in: Uint8Array | string, len: bigint | number, out: Uint8Array | string, state: number, save: number): [number, number, number];
 
     /**
      * This funcion should be called to when finished encoding everything, to
@@ -529,7 +529,7 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns a count of the number of bytes in the final block.
      */
-    function base64_encode_close(_in: (Uint8Array | string), break_lines: boolean, out: (Uint8Array | string), state: number, save: number): [number, number, number];
+    function base64_encode_close(_in: Uint8Array | string, break_lines: boolean, out: Uint8Array | string, state: number, save: number): [number, number, number];
 
     /**
      * Encodes data from `data` back into `data` using base64 encoding.
@@ -537,7 +537,7 @@ export namespace Gsf {
      * @param len max length of data to encode
      * @returns the number of bytes encoded
      */
-    function base64_encode_simple(data: (Uint8Array | string), len: (bigint | number)): number;
+    function base64_encode_simple(data: Uint8Array | string, len: bigint | number): number;
 
     /**
      * Performs an 'encode step', only encodes blocks of 3 characters from `in` into
@@ -551,7 +551,7 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes encoded
      */
-    function base64_encode_step(_in: (Uint8Array | string), len: (bigint | number), break_lines: boolean, out: (Uint8Array | string), state: number, save: number): [number, number, number];
+    function base64_encode_step(_in: Uint8Array | string, len: bigint | number, break_lines: boolean, out: Uint8Array | string, state: number, save: number): [number, number, number];
 
     /**
      * @param flag 
@@ -638,7 +638,7 @@ export namespace Gsf {
      * @param ptr memory area to be dumped.
      * @param len how many bytes will be dumped.
      */
-    function mem_dump(ptr: number, len: (bigint | number)): void;
+    function mem_dump(ptr: number, len: bigint | number): void;
 
     /**
      * @param codepage 
@@ -668,7 +668,7 @@ export namespace Gsf {
      * @param lang Language id, i.e., locale name.
      * @returns the LID (Language Identifier) for the input language. 	If lang is `null`, return 0x0400 ("-none-"), and not 0x0000 ("no proofing")
      */
-    function msole_lid_for_language(lang: (string | null)): number;
+    function msole_lid_for_language(lang: string | null): number;
 
     /**
      * @param lid numerical language id
@@ -780,12 +780,12 @@ export namespace Gsf {
      * @param value A GValue of type {@link Gsf.DocPropVector}.
      * @returns A {@link GLib.Array} of {@link GObject.Value}
      */
-    function value_get_docprop_array(value: (GObject.Value | any)): (GObject.Value[] | null);
+    function value_get_docprop_array(value: GObject.Value | any): GObject.Value[] | null;
 
     /**
      * @param value 
      */
-    function value_get_docprop_varray(value: (GObject.Value | any)): GObject.ValueArray;
+    function value_get_docprop_varray(value: GObject.Value | any): GObject.ValueArray;
 
     /**
      * This function returns a pointer to the GsfDocPropVector structure in `value`.
@@ -793,7 +793,7 @@ export namespace Gsf {
      * @param value A GValue of type {@link Gsf.DocPropVector}.
      * @returns A pointer to the {@link Gsf.DocPropVector} structure in `value`
      */
-    function value_get_docprop_vector(value: (GObject.Value | any)): DocPropVector;
+    function value_get_docprop_vector(value: GObject.Value | any): DocPropVector;
 
     /**
      * Decompresses VBA stream.
@@ -813,7 +813,7 @@ export namespace Gsf {
      * @param format `true` to reformat the output.
      * @returns status from xmlSaveFormatFileTo.
      */
-    function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: (string | null), format: boolean): number;
+    function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: string | null, format: boolean): number;
 
     /**
      * Try to parse `str` as a value of type `t` into `res`.
@@ -822,7 +822,7 @@ export namespace Gsf {
      * @param str Value string
      * @returns True when parsing of `str` as a value of type `t` was succesfull; false otherwise.
      */
-    function xml_gvalue_from_str(res: (GObject.Value | any), t: GObject.GType, str: string): boolean;
+    function xml_gvalue_from_str(res: GObject.Value | any, t: GObject.GType, str: string): boolean;
 
     /**
      * @param input {@link Gsf.Input}
@@ -861,13 +861,10 @@ export namespace Gsf {
 
     namespace Blob {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -893,7 +890,7 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static ["new"](data_to_copy: (Uint8Array | string)): Blob;
+        static ["new"](data_to_copy: Uint8Array | string): Blob;
 
         // Signals
         /** @signal */
@@ -928,13 +925,10 @@ export namespace Gsf {
 
     namespace ClipData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1006,19 +1000,16 @@ export namespace Gsf {
          * @param ret_size Location to return the size of the returned data buffer.
          * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
          */
-        peek_real_data(ret_size: (bigint | number)): null;
+        peek_real_data(ret_size: bigint | number): null;
     }
 
 
     namespace DocMetaData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1071,13 +1062,13 @@ export namespace Gsf {
          * @param name the id.
          * @param value {@link GObject.Value}
          */
-        insert(name: string, value: (GObject.Value | any)): void;
+        insert(name: string, value: GObject.Value | any): void;
 
         /**
          * @param name 
          * @returns the property with `name` in `meta`.  The caller can modify the property value and link but not the name.
          */
-        lookup(name: string): (DocProp | null);
+        lookup(name: string): DocProp | null;
 
         /**
          * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
@@ -1117,7 +1108,7 @@ export namespace Gsf {
          * @param name 
          * @returns the property with `name` in `meta`.
          */
-        steal(name: string): (DocProp | null);
+        steal(name: string): DocProp | null;
 
         /**
          * @param prop {@link Gsf.DocProp}
@@ -1141,13 +1132,10 @@ export namespace Gsf {
 
     namespace DocPropVector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1190,7 +1178,7 @@ export namespace Gsf {
          * Insert a copy of `value` as the last element of `vector`.
          * @param value The GValue to add to `vector`
          */
-        append(value: (GObject.Value | any)): void;
+        append(value: GObject.Value | any): void;
 
         /**
          * This function returns a string which represents all the GValues in `vector`.
@@ -1215,9 +1203,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -1259,7 +1245,7 @@ export namespace Gsf {
          * @param i zero-based index of child to find.
          * @virtual
          */
-        vfunc_name_by_index(i: number): (string | null);
+        vfunc_name_by_index(i: number): string | null;
 
         /**
          * @virtual
@@ -1303,7 +1289,7 @@ export namespace Gsf {
          * @param i zero-based index of child to find.
          * @returns the utf8 encoded name of the `i`-th child
          */
-        name_by_index(i: number): (string | null);
+        name_by_index(i: number): string | null;
 
         /**
          * @returns the number of children the storage has, or -1 if the storage can not 	have children.
@@ -1325,9 +1311,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Infile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
     /**
@@ -1389,9 +1373,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Infile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
     /**
@@ -1434,13 +1416,13 @@ export namespace Gsf {
          * a collection of names and source code.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        get_modules(): (GLib.HashTable<string, never> | null);
+        get_modules(): GLib.HashTable<string, never> | null;
 
         /**
          * A collection of names and source code which the caller is responsible for destroying.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        steal_modules(): (GLib.HashTable<string, never> | null);
+        steal_modules(): GLib.HashTable<string, never> | null;
     }
 
 
@@ -1457,9 +1439,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Infile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
     /**
@@ -1679,9 +1659,9 @@ export namespace Gsf {
             eof: boolean;
             modtime: GLib.DateTime;
             name: string;
-            position: (bigint | number);
-            remaining: (bigint | number);
-            size: (bigint | number);
+            position: bigint | number;
+            remaining: bigint | number;
+            size: bigint | number;
         }
     }
 
@@ -1783,7 +1763,7 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @virtual
          */
-        vfunc_Dup(): (Input | null);
+        vfunc_Dup(): Input | null;
 
         /**
          * UNIMPLEMENTED BY ANY BACKEND
@@ -1826,13 +1806,13 @@ export namespace Gsf {
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
          */
-        dup(): (Input | null);
+        dup(): Input | null;
 
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
          * @returns a GsfInfile
          */
-        find_vba(): (InfileMSVBA | null);
+        find_vba(): InfileMSVBA | null;
 
         /**
          * @returns A {@link GLib.DateTime} representing when the input was last modified, or `null` if not known.
@@ -1845,7 +1825,7 @@ export namespace Gsf {
          * @param num_bytes number of bytes to read
          * @returns the data read.
          */
-        read(num_bytes: (bigint | number)): Uint8Array;
+        read(num_bytes: bigint | number): Uint8Array;
 
         /**
          * Move the current location in the input stream.
@@ -1866,14 +1846,14 @@ export namespace Gsf {
          * @param container 
          * @returns `true` if the assignment was ok.
          */
-        set_container(container: (Infile | null)): boolean;
+        set_container(container: Infile | null): boolean;
 
         /**
          * protected.
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime: (GLib.DateTime | null)): boolean;
+        set_modtime(modtime: GLib.DateTime | null): boolean;
 
         /**
          * @param st 
@@ -1885,7 +1865,7 @@ export namespace Gsf {
          * @param name the new name of the stream
          * @returns `true` if the assignment was ok.
          */
-        set_name(name: (string | null)): boolean;
+        set_name(name: string | null): boolean;
 
         /**
          * protected.
@@ -1945,8 +1925,8 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {
             raw: boolean;
             source: Input;
-            uncompressed_size: (bigint | number);
-            uncompressedSize: (bigint | number);
+            uncompressed_size: bigint | number;
+            uncompressedSize: bigint | number;
         }
     }
 
@@ -2024,9 +2004,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -2172,9 +2150,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -2197,9 +2173,9 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
-        static ["new"](buf: (Uint8Array | string), needs_free: boolean): InputMemory;
+        static ["new"](buf: Uint8Array | string, needs_free: boolean): InputMemory;
 
-        static new_clone(buf: (Uint8Array | string)): InputMemory;
+        static new_clone(buf: Uint8Array | string): InputMemory;
 
         static new_from_bzip(source: Input): InputMemory;
 
@@ -2233,9 +2209,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -2290,9 +2264,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -2347,9 +2319,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Input.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Input.ConstructorProps {}
     }
 
     /**
@@ -2394,7 +2364,7 @@ export namespace Gsf {
          * can be edited.
          * @returns the string read, or `null` on eof.
          */
-        ascii_gets(): (Uint8Array | null);
+        ascii_gets(): Uint8Array | null;
 
         /**
          * A utility routine to read things line by line from the underlying source.
@@ -2402,7 +2372,7 @@ export namespace Gsf {
          * can be edited.
          * @returns the string read, or `null` on eof.
          */
-        utf8_gets(): (Uint8Array | null);
+        utf8_gets(): Uint8Array | null;
     }
 
 
@@ -2491,9 +2461,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -2648,7 +2616,7 @@ export namespace Gsf {
          * @param clsid Identifier (often a GUID in MS Windows apps)
          * @returns `true` on success.
          */
-        set_class_id(clsid: (Uint8Array | string)): boolean;
+        set_class_id(clsid: Uint8Array | string): boolean;
     }
 
 
@@ -2781,9 +2749,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Outfile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Outfile.ConstructorProps {}
     }
 
     /**
@@ -2959,10 +2925,10 @@ export namespace Gsf {
             container: Outfile;
             is_closed: boolean;
             isClosed: boolean;
-            modtime: (GLib.DateTime | null);
+            modtime: GLib.DateTime | null;
             name: string;
-            position: (bigint | number);
-            size: (bigint | number);
+            position: bigint | number;
+            size: bigint | number;
         }
     }
 
@@ -3001,7 +2967,7 @@ export namespace Gsf {
          * do anything with this property.
          * @construct-only
          */
-        get modtime(): (GLib.DateTime | null);
+        get modtime(): GLib.DateTime | null;
 
         /**
          * @default null
@@ -3117,12 +3083,12 @@ export namespace Gsf {
         /**
          * @returns the last error logged on the output
          */
-        error(): (GLib.Error | null);
+        error(): GLib.Error | null;
 
         /**
          * @returns A {@link GLib.DateTime} representing when the output was last modified
          */
-        get_modtime(): (GLib.DateTime | null);
+        get_modtime(): GLib.DateTime | null;
 
         /**
          * Like fputs, this assumes that the line already ends with a newline
@@ -3150,13 +3116,13 @@ export namespace Gsf {
          * @param container {@link Gsf.Outfile}
          * @returns `true` if the assignment was ok.
          */
-        set_container(container: (Outfile | null)): boolean;
+        set_container(container: Outfile | null): boolean;
 
         /**
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime: (GLib.DateTime | null)): boolean;
+        set_modtime(modtime: GLib.DateTime | null): boolean;
 
         /**
          * <note>This is a utility routine that should only be used by derived
@@ -3164,7 +3130,7 @@ export namespace Gsf {
          * @param name the new name
          * @returns `true` if the assignment was ok.
          */
-        set_name(name: (string | null)): boolean;
+        set_name(name: string | null): boolean;
 
         /**
          * <note>This is a utility routine that should only be used by derived
@@ -3172,7 +3138,7 @@ export namespace Gsf {
          * @param filename the (fs-sys encoded) filename
          * @returns `true` if the assignment was ok.
          */
-        set_name_from_filename(filename: (string | null)): boolean;
+        set_name_from_filename(filename: string | null): boolean;
 
         /**
          * Tell the current position in `output`, similar to
@@ -3187,7 +3153,7 @@ export namespace Gsf {
          * @param data Data to write.
          * @returns `false` on error.
          */
-        write(data: (Uint8Array | string)): boolean;
+        write(data: Uint8Array | string): boolean;
     }
 
 
@@ -3203,9 +3169,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -3387,7 +3351,7 @@ export namespace Gsf {
          * @param field 
          * @param len 
          */
-        write_field(field: string, len: (bigint | number)): boolean;
+        write_field(field: string, len: bigint | number): boolean;
     }
 
 
@@ -3487,9 +3451,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -3545,9 +3507,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -3701,9 +3661,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -3745,12 +3703,12 @@ export namespace Gsf {
         /**
          * @returns The data that has been written to `mem`
          */
-        get_bytes(): (Uint8Array | null);
+        get_bytes(): Uint8Array | null;
 
         /**
          * @returns The data that has been written to `mem`. The caller takes ownership and the buffer belonging to `mem` is set to `null`.
          */
-        steal_bytes(): (Uint8Array | null);
+        steal_bytes(): Uint8Array | null;
     }
 
 
@@ -3766,9 +3724,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Output.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Output.ConstructorProps {}
     }
 
     /**
@@ -3810,13 +3766,10 @@ export namespace Gsf {
 
     namespace SharedMemory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3882,9 +3835,7 @@ export namespace Gsf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Infile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
     /**
@@ -4020,7 +3971,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param data Data to be written
          */
-        add_base64(id: (string | null), data: (Uint8Array | string)): void;
+        add_base64(id: string | null, data: Uint8Array | string): void;
 
         /**
          * dump boolean value `val` to an attribute named `id` or as the nodes content
@@ -4028,7 +3979,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val a boolean
          */
-        add_bool(id: (string | null), val: boolean): void;
+        add_bool(id: string | null, val: boolean): void;
 
         /**
          * dump Color `r`.`g`.`b` to an attribute named `id` or as the nodes content
@@ -4037,7 +3988,7 @@ export namespace Gsf {
          * @param g Green value
          * @param b Blue value
          */
-        add_color(id: (string | null), r: number, g: number, b: number): void;
+        add_color(id: string | null, r: number, g: number, b: number): void;
 
         /**
          * dump `val_utf8` to an attribute named `id` or as the nodes content escaping
@@ -4046,7 +3997,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string
          */
-        add_cstr(id: (string | null), val_utf8: (string | null)): void;
+        add_cstr(id: string | null, val_utf8: string | null): void;
 
         /**
          * dump `val_utf8` to an attribute named `id` without checking to see if
@@ -4056,7 +4007,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string to export
          */
-        add_cstr_unchecked(id: (string | null), val_utf8: (string | null)): void;
+        add_cstr_unchecked(id: string | null, val_utf8: string | null): void;
 
         /**
          * Output the name of value `val` of enumeration type `etype`.
@@ -4064,7 +4015,7 @@ export namespace Gsf {
          * @param etype {@link GObject.GType}
          * @param val enum element number
          */
-        add_enum(id: (string | null), etype: GObject.GType, val: number): void;
+        add_enum(id: string | null, etype: GObject.GType, val: number): void;
 
         /**
          * dump float value `val` to an attribute named `id` or as the nodes
@@ -4074,7 +4025,7 @@ export namespace Gsf {
          * @param val the value
          * @param precision the number of significant digits to use, -1 meaning "enough".
          */
-        add_float(id: (string | null), val: number, precision: number): void;
+        add_float(id: string | null, val: number, precision: number): void;
 
         /**
          * Output the value of `val` as a string.  Does NOT store any type information
@@ -4082,14 +4033,14 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val {@link GObject.Value}
          */
-        add_gvalue(id: (string | null), val: (GObject.Value | any)): void;
+        add_gvalue(id: string | null, val: GObject.Value | any): void;
 
         /**
          * dump integer value `val` to an attribute named `id` or as the nodes content
          * @param id tag id, or `null` for node content
          * @param val the value
          */
-        add_int(id: (string | null), val: number): void;
+        add_int(id: string | null, val: number): void;
 
         /**
          * dump unsigned integer value `val` to an attribute named `id` or as the nodes
@@ -4097,7 +4048,7 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val the value
          */
-        add_uint(id: (string | null), val: number): void;
+        add_uint(id: string | null, val: number): void;
 
         /**
          * Closes/ends an XML element.
@@ -4109,7 +4060,7 @@ export namespace Gsf {
          * Get the {@link Gsf.Output} we are writing to..
          * @returns {@link Gsf.Input}
          */
-        get_output(): (Output | null);
+        get_output(): Output | null;
 
         /**
          * @returns the current state of the pretty-print flag.  Note, that gsf_xml_out_set_pretty_print will return the same value.
@@ -4212,7 +4163,7 @@ export namespace Gsf {
         /**
          * @returns the current link descriptor of `prop`.
          */
-        get_link(): (string | null);
+        get_link(): string | null;
 
         /**
          * @returns the name of the property
@@ -4228,19 +4179,19 @@ export namespace Gsf {
          * Sets `prop`'s link to `link`
          * @param link a link.
          */
-        set_link(link: (string | null)): void;
+        set_link(link: string | null): void;
 
         /**
          * Assigns `val` to `prop`, and unsets and frees the current value.
          * @param val {@link GObject.Value}
          */
-        set_val(val: (GObject.Value | any)): void;
+        set_val(val: GObject.Value | any): void;
 
         /**
          * @param val {@link GObject.Value}
          * @returns the current value of `prop`, and replaces 	it with `val`.
          */
-        swap_val(val: (GObject.Value | any)): unknown;
+        swap_val(val: GObject.Value | any): unknown;
     }
 
 
@@ -4394,13 +4345,13 @@ export namespace Gsf {
         /**
          * @param t 
          */
-        set_time(t: (bigint | number)): void;
+        set_time(t: bigint | number): void;
 
         /**
          * Calls g_value_set_box (value, stamp);
          * @param value {@link GObject.Value}
          */
-        to_value(value: (GObject.Value | any)): void;
+        to_value(value: GObject.Value | any): void;
     }
 
 
@@ -4428,7 +4379,7 @@ export namespace Gsf {
          * @param ns_id the namespace id
          * @returns a pointer to `str` after the namespace if successful, otherwise `null`.
          */
-        check_ns(str: string, ns_id: number): (string | null);
+        check_ns(str: string, ns_id: number): string | null;
 
         /**
          * (New in 1.14.2)
@@ -4562,7 +4513,7 @@ export namespace Gsf {
      * to on the platform
      * @gir-type Alias
      */
-    type gsf_off_t = (bigint | number);
+    type gsf_off_t = bigint | number;
 
     /**
      * Name of the imported GIR library

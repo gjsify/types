@@ -543,9 +543,7 @@ export namespace AnacondaWidgets {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseStandalone.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseStandalone.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1014,9 +1012,7 @@ export namespace AnacondaWidgets {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**

@@ -121,7 +121,7 @@ export namespace PackageKitGlib {
         static LAST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -150,7 +150,7 @@ export namespace PackageKitGlib {
         static CANNOT_START_DAEMON: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -1031,7 +1031,7 @@ export namespace PackageKitGlib {
         static NO_DATA: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -2025,7 +2025,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_cancel(cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_cancel(cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Cancels the offline operation that has been scheduled. If there is no
@@ -2035,7 +2035,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_cancel_with_flags(flags: OfflineFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_cancel_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Clears the last offline operation report, which may be success or failure.
@@ -2046,7 +2046,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_clear_results(cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_clear_results(cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Clears the last offline operation report, which may be success or failure.
@@ -2056,7 +2056,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_clear_results_with_flags(flags: OfflineFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_clear_results_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * An error quark for {@link PackageKitGlib.OfflineError}.
@@ -2080,7 +2080,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
      */
-    function offline_get_action_monitor(cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+    function offline_get_action_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
     /**
      * Gets the package-ids in the prepared transaction.
@@ -2095,7 +2095,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
      */
-    function offline_get_prepared_monitor(cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+    function offline_get_prepared_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
     /**
      * Gets a package sack of the packages in the prepared transaction.
@@ -2116,7 +2116,7 @@ export namespace PackageKitGlib {
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 1.0.12
      */
-    function offline_get_prepared_upgrade_monitor(cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+    function offline_get_prepared_upgrade_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
     /**
      * Gets the name of the prepared system upgrade in the prepared transaction.
@@ -2156,7 +2156,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
      */
-    function offline_trigger(action: OfflineAction, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_trigger(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
@@ -2168,7 +2168,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.0.12
      */
-    function offline_trigger_upgrade(action: OfflineAction, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_trigger_upgrade(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Triggers the offline system upgrade so that the next reboot will perform the
@@ -2179,7 +2179,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_trigger_upgrade_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_trigger_upgrade_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Triggers the offline update so that the next reboot will perform the
@@ -2190,7 +2190,7 @@ export namespace PackageKitGlib {
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
      */
-    function offline_trigger_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: (Gio.Cancellable | null)): boolean;
+    function offline_trigger_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
     function polkit_agent_close(): void;
 
@@ -2415,11 +2415,11 @@ export namespace PackageKitGlib {
         interface ConstructorProps extends Source.ConstructorProps {
             cat_id: string;
             catId: string;
-            icon: (string | null);
-            name: (string | null);
-            parent_id: (string | null);
-            parentId: (string | null);
-            summary: (string | null);
+            icon: string | null;
+            name: string | null;
+            parent_id: string | null;
+            parentId: string | null;
+            summary: string | null;
         }
     }
 
@@ -2448,36 +2448,36 @@ export namespace PackageKitGlib {
          * @since 0.5.4
          * @default null
          */
-        get icon(): (string | null);
-        set icon(val: (string | null));
+        get icon(): string | null;
+        set icon(val: string | null);
 
         /**
          * @since 0.5.4
          * @default null
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * @since 0.5.4
          * @default null
          */
-        get parent_id(): (string | null);
-        set parent_id(val: (string | null));
+        get parent_id(): string | null;
+        set parent_id(val: string | null);
 
         /**
          * @since 0.5.4
          * @default null
          */
-        get parentId(): (string | null);
-        set parentId(val: (string | null));
+        get parentId(): string | null;
+        set parentId(val: string | null);
 
         /**
          * @since 0.5.4
          * @default null
          */
-        get summary(): (string | null);
-        set summary(val: (string | null));
+        get summary(): string | null;
+        set summary(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2513,31 +2513,31 @@ export namespace PackageKitGlib {
          * Gets the icon filename.
          * @returns the string value, or `null` for unset.
          */
-        get_icon(): (string | null);
+        get_icon(): string | null;
 
         /**
          * Gets the id specific to this category.
          * @returns the string value, or `null` for unset.
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * Gets the name.
          * @returns the string value, or `null` for unset.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the parent category id.
          * @returns the string value, or `null` for unset.
          */
-        get_parent_id(): (string | null);
+        get_parent_id(): string | null;
 
         /**
          * Gets the summary.
          * @returns the string value, or `null` for unset.
          */
-        get_summary(): (string | null);
+        get_summary(): string | null;
 
         /**
          * Sets the icon filename.
@@ -2716,7 +2716,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        accept_eula(eula_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        accept_eula(eula_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * We may want to agree to a EULA dialog if one is presented.
@@ -2725,7 +2725,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        accept_eula_async(eula_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_eula_async(eula_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Adopt a transaction.
@@ -2737,7 +2737,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        adopt(transaction_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        adopt(transaction_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Adopt a transaction which allows the caller to monitor the state or cancel it.
@@ -2746,7 +2746,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        adopt_async(transaction_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        adopt_async(transaction_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the packages that depend this one, i.e. child.parent.
@@ -2760,7 +2760,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        depends_on(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        depends_on(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the packages that depend this one, i.e. child->parent.
@@ -2771,7 +2771,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        depends_on_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        depends_on_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Downloads package files to a specified location.
@@ -2784,7 +2784,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        download_packages(package_ids: string[], directory: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        download_packages(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Downloads package files to a specified location.
@@ -2794,7 +2794,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        download_packages_async(package_ids: string[], directory: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        download_packages_async(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -2824,7 +2824,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_categories(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_categories(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get a list of all categories supported.
@@ -2832,7 +2832,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_categories_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_categories_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get details of a package, so more information can be obtained for GUI
@@ -2845,7 +2845,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_details(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_details(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get details of a package, so more information can be obtained for GUI
@@ -2855,7 +2855,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_details_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_details_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get details of a local package, so more information can be obtained for GUI
@@ -2868,7 +2868,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_details_local(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_details_local(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get details of a package, so more information can be obtained for GUI
@@ -2878,7 +2878,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_details_local_async(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_details_local_async(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the client details-with-deps-size value.
@@ -2896,7 +2896,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_distro_upgrades(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_distro_upgrades(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * This method should return a list of distribution upgrades that are available.
@@ -2905,7 +2905,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_distro_upgrades_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_distro_upgrades_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the file list (i.e. a list of files installed) for the specified package.
@@ -2917,7 +2917,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_files(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_files(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the file list (i.e. a list of files installed) for the specified package.
@@ -2926,7 +2926,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_files_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_files_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get file list of a local package, so more information can be obtained for GUI
@@ -2939,7 +2939,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_files_local(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_files_local(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get file list of a package, so more information can be obtained for GUI
@@ -2949,7 +2949,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_files_local_async(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_files_local_async(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets if the transaction client idle value.
@@ -2979,7 +2979,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_old_transactions(number: number, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_old_transactions(number: number, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the old transaction list, mainly used for the transaction viewer.
@@ -2988,7 +2988,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_old_transactions_async(number: number, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_old_transactions_async(number: number, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the list of packages from the backend
@@ -3000,7 +3000,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_packages(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_packages(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the list of packages from the backend
@@ -3009,7 +3009,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_packages_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_packages_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the progress of a transaction.
@@ -3020,22 +3020,14 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_progress(transaction_id: string, cancellable: (Gio.Cancellable | null)): Progress;
+        get_progress(transaction_id: string, cancellable: Gio.Cancellable | null): Progress;
 
         /**
          * Find the current state of a transaction.
          * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_progress_async(transaction_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Progress>;
-
-        /**
-         * Find the current state of a transaction.
-         * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback_ready the function to run on completion
-         */
-        get_progress_async(transaction_id: string, cancellable: (Gio.Cancellable | null), callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_progress_async(transaction_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Progress>;
 
         /**
          * Find the current state of a transaction.
@@ -3043,7 +3035,15 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback_ready the function to run on completion
          */
-        get_progress_async(transaction_id: string, cancellable: (Gio.Cancellable | null), callback_ready?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Progress> | void);
+        get_progress_async(transaction_id: string, cancellable: Gio.Cancellable | null, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Find the current state of a transaction.
+         * @param transaction_id a transaction ID such as "/21_ebcbdaae_data"
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback_ready the function to run on completion
+         */
+        get_progress_async(transaction_id: string, cancellable: Gio.Cancellable | null, callback_ready?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Progress> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -3062,7 +3062,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_repo_list(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_repo_list(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the list of repositories installed on the system.
@@ -3071,7 +3071,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_repo_list_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_repo_list_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get details about the specific update, for instance any CVE urls and
@@ -3084,7 +3084,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_update_detail(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_update_detail(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get details about the specific update, for instance any CVE urls and
@@ -3094,7 +3094,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_update_detail_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_update_detail_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get a list of all the packages that can be updated for all repositories.
@@ -3106,7 +3106,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_updates(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_updates(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get a list of all the packages that can be updated for all repositories.
@@ -3115,7 +3115,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_updates_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_updates_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Install a file locally, and get the deps from the repositories.
@@ -3129,7 +3129,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        install_files(transaction_flags: Bitfield, files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        install_files(transaction_flags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Install a file locally, and get the deps from the repositories.
@@ -3140,7 +3140,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        install_files_async(transaction_flags: Bitfield, files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_files_async(transaction_flags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Install a package of the newest and most correct version.
@@ -3153,7 +3153,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        install_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        install_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Install a package of the newest and most correct version.
@@ -3163,7 +3163,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        install_packages_async(transaction_flags: Bitfield, package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_packages_async(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Install a software repository signature of the newest and most correct version.
@@ -3177,7 +3177,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        install_signature(type: SigTypeEnum, key_id: string, package_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        install_signature(type: SigTypeEnum, key_id: string, package_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Install a software repository signature of the newest and most correct version.
@@ -3188,7 +3188,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        install_signature_async(type: SigTypeEnum, key_id: string, package_id: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_signature_async(type: SigTypeEnum, key_id: string, package_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Refresh the cache, i.e. download new metadata from a remote URL so that
@@ -3203,7 +3203,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        refresh_cache(force: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        refresh_cache(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Refresh the cache, i.e. download new metadata from a remote URL so that
@@ -3215,7 +3215,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        refresh_cache_async(force: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_cache_async(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Remove a package (optionally with dependancies) from the system.
@@ -3232,7 +3232,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        remove_packages(transaction_flags: Bitfield, package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        remove_packages(transaction_flags: Bitfield, package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Remove a package (optionally with dependancies) from the system.
@@ -3246,7 +3246,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        remove_packages_async(transaction_flags: Bitfield, package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_packages_async(transaction_flags: Bitfield, package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This transaction will try to recover from a broken package management system:
@@ -3263,7 +3263,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repair_system(transaction_flags: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repair_system(transaction_flags: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * This transaction will try to recover from a broken package management system:
@@ -3277,7 +3277,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repair_system_async(transaction_flags: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repair_system_async(transaction_flags: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enable or disable the repository.
@@ -3290,7 +3290,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repo_enable(repo_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repo_enable(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Enable or disable the repository.
@@ -3300,7 +3300,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repo_enable_async(repo_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repo_enable_async(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Removes a repo and optionally the packages installed from it.
@@ -3314,7 +3314,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repo_remove(transaction_flags: Bitfield, repo_id: string, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repo_remove(transaction_flags: Bitfield, repo_id: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Removes a repo and optionally the packages installed from it.
@@ -3325,7 +3325,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repo_remove_async(transaction_flags: Bitfield, repo_id: string, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repo_remove_async(transaction_flags: Bitfield, repo_id: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * We may want to set a repository parameter.
@@ -3340,7 +3340,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repo_set_data(repo_id: string, parameter: string, value: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repo_set_data(repo_id: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * We may want to set a repository parameter.
@@ -3352,7 +3352,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repo_set_data_async(repo_id: string, parameter: string, value: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repo_set_data_async(repo_id: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the packages that require this one, i.e. parent.child.
@@ -3366,7 +3366,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        required_by(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        required_by(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the packages that require this one, i.e. parent->child.
@@ -3377,7 +3377,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        required_by_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        required_by_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Resolve a package name into a `package_id`. This can return installed and
@@ -3392,7 +3392,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        resolve(filters: Bitfield, packages: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        resolve(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Resolve a package name into a `package_id`. This can return installed and
@@ -3404,7 +3404,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        resolve_async(filters: Bitfield, packages: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        resolve_async(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Search all detailed summary information to try and find a keyword.
@@ -3419,7 +3419,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_details(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_details(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Search all detailed summary information to try and find a keyword.
@@ -3431,7 +3431,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_details_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_details_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Search for packages that provide a specific file.
@@ -3444,7 +3444,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_files(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_files(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Search for packages that provide a specific file.
@@ -3454,7 +3454,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_files_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_files_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Return all packages in a specific group.
@@ -3467,7 +3467,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_groups(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_groups(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Return all packages in a specific group.
@@ -3477,7 +3477,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_groups_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_groups_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Search all the locally installed files and remote repositories for a package
@@ -3491,7 +3491,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_names(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_names(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Search all the locally installed files and remote repositories for a package
@@ -3502,7 +3502,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_names_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_names_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets the background value for the client. A background transaction
@@ -3550,7 +3550,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        update_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        update_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Update specific packages to the newest available versions.
@@ -3560,7 +3560,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        update_packages_async(transaction_flags: Bitfield, package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_packages_async(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This transaction will upgrade the distro to the next version, which may
@@ -3578,7 +3578,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        upgrade_system(transaction_flags: Bitfield, distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        upgrade_system(transaction_flags: Bitfield, distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * This transaction will update the distro to the next version, which may
@@ -3593,7 +3593,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        upgrade_system_async(transaction_flags: Bitfield, distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        upgrade_system_async(transaction_flags: Bitfield, distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This should return packages that provide the supplied attributes.
@@ -3608,7 +3608,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        what_provides(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        what_provides(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * This should return packages that provide the supplied attributes.
@@ -3620,19 +3620,16 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        what_provides_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        what_provides_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
     }
 
 
     namespace ClientHelper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3774,15 +3771,15 @@ export namespace PackageKitGlib {
             connected: boolean;
             distro_id: string;
             distroId: string;
-            filters: (bigint | number);
-            groups: (bigint | number);
+            filters: bigint | number;
+            groups: bigint | number;
             locked: boolean;
             mime_types: string[];
             mimeTypes: string[];
             network_state: NetworkEnum;
             networkState: NetworkEnum;
-            provides: (bigint | number);
-            roles: (bigint | number);
+            provides: bigint | number;
+            roles: bigint | number;
             version_major: number;
             versionMajor: number;
             version_micro: number;
@@ -3867,14 +3864,14 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get filters(): number;
-        set filters(val: (bigint | number));
+        set filters(val: bigint | number);
 
         /**
          * @since 0.5.2
          * @default 0
          */
         get groups(): number;
-        set groups(val: (bigint | number));
+        set groups(val: bigint | number);
 
         /**
          * @since 0.5.3
@@ -3914,14 +3911,14 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get provides(): number;
-        set provides(val: (bigint | number));
+        set provides(val: bigint | number);
 
         /**
          * @since 0.5.2
          * @default 0
          */
         get roles(): number;
-        set roles(val: (bigint | number));
+        set roles(val: bigint | number);
 
         /**
          * @since 0.5.2
@@ -4045,7 +4042,7 @@ export namespace PackageKitGlib {
          * @param action_id The action ID, for instance "org.freedesktop.PackageKit.install-untrusted"
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        can_authorize_async(action_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<AuthorizeEnum>;
+        can_authorize_async(action_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthorizeEnum>;
 
         /**
          * We may want to know before we run a method if we are going to be denied,
@@ -4054,7 +4051,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        can_authorize_async(action_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        can_authorize_async(action_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * We may want to know before we run a method if we are going to be denied,
@@ -4063,7 +4060,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        can_authorize_async(action_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<AuthorizeEnum> | void);
+        can_authorize_async(action_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<AuthorizeEnum> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4076,28 +4073,28 @@ export namespace PackageKitGlib {
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_daemon_state_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(string | null)>;
+        get_daemon_state_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>;
 
         /**
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_daemon_state_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_daemon_state_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the debugging state from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_daemon_state_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(string | null)> | void);
+        get_daemon_state_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string | null> | void;
 
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          */
-        get_daemon_state_finish(res: Gio.AsyncResult): (string | null);
+        get_daemon_state_finish(res: Gio.AsyncResult): string | null;
 
         /**
          * Gets the properties the daemon supports.
@@ -4106,27 +4103,27 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_properties(cancellable: (Gio.Cancellable | null)): boolean;
+        get_properties(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets global properties from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_properties_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Gets global properties from the daemon.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        get_properties_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_properties_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Gets global properties from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_properties_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        get_properties_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets global properties from the daemon.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        get_properties_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4139,28 +4136,28 @@ export namespace PackageKitGlib {
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_tid_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(string | null)>;
+        get_tid_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>;
 
         /**
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_tid_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_tid_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets a transacton ID from the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_tid_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(string | null)> | void);
+        get_tid_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string | null> | void;
 
         /**
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          */
-        get_tid_finish(res: Gio.AsyncResult): (string | null);
+        get_tid_finish(res: Gio.AsyncResult): string | null;
 
         /**
          * We may want to know how long it has been since we refreshed the cache or
@@ -4168,16 +4165,7 @@ export namespace PackageKitGlib {
          * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_time_since_action_async(role: RoleEnum, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
-
-        /**
-         * We may want to know how long it has been since we refreshed the cache or
-         * retrieved the update list.
-         * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        get_time_since_action_async(role: RoleEnum, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
         /**
          * We may want to know how long it has been since we refreshed the cache or
@@ -4186,7 +4174,16 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_time_since_action_async(role: RoleEnum, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+        get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * We may want to know how long it has been since we refreshed the cache or
+         * retrieved the update list.
+         * @param role the role enum, e.g. {@link PackageKitGlib.RoleEnum.GET_UPDATES}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        get_time_since_action_async(role: RoleEnum, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4202,27 +4199,27 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The list of transaction id's, or `null`, free with `g_strfreev()`
          */
-        get_transaction_list(cancellable: (Gio.Cancellable | null)): string[];
+        get_transaction_list(cancellable: Gio.Cancellable | null): string[];
 
         /**
          * Gets the transactions currently running in the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_transaction_list_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
-
-        /**
-         * Gets the transactions currently running in the daemon.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        get_transaction_list_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_transaction_list_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * Gets the transactions currently running in the daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        get_transaction_list_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        get_transaction_list_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Gets the transactions currently running in the daemon.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        get_transaction_list_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4240,7 +4237,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using `pk_control_set_proxy2()`.
          */
-        set_proxy(proxy_http: string, proxy_ftp: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_proxy(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the network proxy to use in the daemon.
@@ -4255,7 +4252,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the proxy was set correctly
          */
-        set_proxy2(proxy_http: string, proxy_https: string, proxy_ftp: string, proxy_socks: string, no_proxy: string, pac: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_proxy2(proxy_http: string, proxy_https: string, proxy_ftp: string, proxy_socks: string, no_proxy: string, pac: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set a proxy on the PK daemon
@@ -4268,7 +4265,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        set_proxy2_async(proxy_http: string, proxy_https: string, proxy_ftp: string, proxy_socks: string, no_proxy: string, pac: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_proxy2_async(proxy_http: string, proxy_https: string, proxy_ftp: string, proxy_socks: string, no_proxy: string, pac: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Set a proxy on the PK daemon
@@ -4279,19 +4276,7 @@ export namespace PackageKitGlib {
          * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Set a proxy on the PK daemon
-         * 
-         * NOTE: This is just provided for backwards compatibility.
-         * Clients should really be using `pk_control_set_proxy2_async()`.
-         * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080"
-         * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Set a proxy on the PK daemon
@@ -4303,7 +4288,19 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Set a proxy on the PK daemon
+         * 
+         * NOTE: This is just provided for backwards compatibility.
+         * Clients should really be using `pk_control_set_proxy2_async()`.
+         * @param proxy_http a HTTP proxy string such as "username:password@server.lan:8080"
+         * @param proxy_ftp a FTP proxy string such as "server.lan:8080"
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        set_proxy_async(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4319,27 +4316,27 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the suggestion was sent
          */
-        suggest_daemon_quit(cancellable: (Gio.Cancellable | null)): boolean;
+        suggest_daemon_quit(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        suggest_daemon_quit_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Suggests to the daemon that it should quit as soon as possible.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback the function to run on completion
-         */
-        suggest_daemon_quit_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        suggest_daemon_quit_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Suggests to the daemon that it should quit as soon as possible.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
          */
-        suggest_daemon_quit_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        suggest_daemon_quit_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Suggests to the daemon that it should quit as soon as possible.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback the function to run on completion
+         */
+        suggest_daemon_quit_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -4352,13 +4349,10 @@ export namespace PackageKitGlib {
 
     namespace Desktop {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4447,13 +4441,13 @@ export namespace PackageKitGlib {
         // Constructor properties interface
         interface ConstructorProps extends Source.ConstructorProps {
             description: string;
-            download_size: (bigint | number);
-            downloadSize: (bigint | number);
+            download_size: bigint | number;
+            downloadSize: bigint | number;
             group: GroupEnum;
             license: string;
             package_id: string;
             packageId: string;
-            size: (bigint | number);
+            size: bigint | number;
             summary: string;
             url: string;
         }
@@ -4478,14 +4472,14 @@ export namespace PackageKitGlib {
          * @default 18446744073709551615
          */
         get download_size(): number;
-        set download_size(val: (bigint | number));
+        set download_size(val: bigint | number);
 
         /**
          * @since 1.2.4
          * @default 18446744073709551615
          */
         get downloadSize(): number;
-        set downloadSize(val: (bigint | number));
+        set downloadSize(val: bigint | number);
 
         /**
          * @since 0.5.4
@@ -4520,7 +4514,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * @since 0.9.1
@@ -5280,8 +5274,8 @@ export namespace PackageKitGlib {
             license: string;
             package_id: string;
             packageId: string;
-            size: (bigint | number);
-            summary: (string | null);
+            size: bigint | number;
+            summary: string | null;
             update_bugzilla_urls: string[];
             updateBugzillaUrls: string[];
             update_changelog: string;
@@ -5364,14 +5358,14 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get size(): number;
-        set size(val: (bigint | number));
+        set size(val: bigint | number);
 
         /**
          * @since 0.5.4
          * @default null
          */
-        get summary(): (string | null);
-        set summary(val: (string | null));
+        get summary(): string | null;
+        set summary(val: string | null);
 
         /**
          * @since 0.8.1
@@ -5695,7 +5689,7 @@ export namespace PackageKitGlib {
          * Gets the package arch.
          * @returns the arch, or `null` if unset
          */
-        get_arch(): (string | null);
+        get_arch(): string | null;
 
         /**
          * Gets the package data, which is usually the repository ID that contains the
@@ -5703,7 +5697,7 @@ export namespace PackageKitGlib {
          * for local packages that exist on disk but not in a repository.
          * @returns the data, or `null` if unset
          */
-        get_data(): (string | null);
+        get_data(): string | null;
 
         /**
          * @param args 
@@ -5715,7 +5709,7 @@ export namespace PackageKitGlib {
          * Gets the package object ID
          * @returns the ID, or `null` if unset
          */
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * Gets the package object ID
@@ -5727,13 +5721,13 @@ export namespace PackageKitGlib {
          * Gets the package name.
          * @returns the name, or `null` if unset
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the package object ID
          * @returns the summary, or `null` if unset
          */
-        get_summary(): (string | null);
+        get_summary(): string | null;
 
         /**
          * Returns the `package` update severity. Can be one of
@@ -5749,7 +5743,7 @@ export namespace PackageKitGlib {
          * Gets the package version.
          * @returns the version, or `null` if unset
          */
-        get_version(): (string | null);
+        get_version(): string | null;
 
         /**
          * Parses the data to populate the {@link PackageKitGlib.Package}.
@@ -5796,13 +5790,10 @@ export namespace PackageKitGlib {
 
     namespace PackageSack {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5918,7 +5909,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_details(cancellable: (Gio.Cancellable | null)): boolean;
+        get_details(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Merges in details about packages.
@@ -5926,7 +5917,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
-        get_details_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_details_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Returns all the Package IDs in the sack
@@ -5953,7 +5944,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        get_update_detail(cancellable: (Gio.Cancellable | null)): boolean;
+        get_update_detail(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Merges in update details about packages.
@@ -5961,7 +5952,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
-        get_update_detail_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_update_detail_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -6000,7 +5991,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          */
-        resolve(cancellable: (Gio.Cancellable | null)): boolean;
+        resolve(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Merges in details about packages using resolve.
@@ -6008,7 +5999,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback the function to run on completion
          */
-        resolve_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        resolve_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sorts the package sack
@@ -6052,8 +6043,8 @@ export namespace PackageKitGlib {
             allowCancel: boolean;
             caller_active: boolean;
             callerActive: boolean;
-            download_size_remaining: (bigint | number);
-            downloadSizeRemaining: (bigint | number);
+            download_size_remaining: bigint | number;
+            downloadSizeRemaining: bigint | number;
             elapsed_time: number;
             elapsedTime: number;
             item_progress: ItemProgress;
@@ -6068,8 +6059,8 @@ export namespace PackageKitGlib {
             sender: string;
             speed: number;
             status: number;
-            transaction_flags: (bigint | number);
-            transactionFlags: (bigint | number);
+            transaction_flags: bigint | number;
+            transactionFlags: bigint | number;
             transaction_id: string;
             transactionId: string;
             uid: number;
@@ -6121,7 +6112,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get download_size_remaining(): number;
-        set download_size_remaining(val: (bigint | number));
+        set download_size_remaining(val: bigint | number);
 
         /**
          * Number of bytes remaining to download.
@@ -6129,7 +6120,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get downloadSizeRemaining(): number;
-        set downloadSizeRemaining(val: (bigint | number));
+        set downloadSizeRemaining(val: bigint | number);
 
         /**
          * Amount of time the transaction has taken in seconds.
@@ -6248,7 +6239,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get transaction_flags(): number;
-        set transaction_flags(val: (bigint | number));
+        set transaction_flags(val: bigint | number);
 
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} associated with this transaction.
@@ -6256,7 +6247,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get transactionFlags(): number;
-        set transactionFlags(val: (bigint | number));
+        set transactionFlags(val: bigint | number);
 
         /**
          * ID used by this transaction.
@@ -6427,7 +6418,7 @@ export namespace PackageKitGlib {
          * @param download_size_remaining number of bytes remaining to download.
          * @returns `true` if value changed.
          */
-        set_download_size_remaining(download_size_remaining: (bigint | number)): boolean;
+        set_download_size_remaining(download_size_remaining: bigint | number): boolean;
 
         /**
          * Set the amount of time the transaction has taken.
@@ -6504,7 +6495,7 @@ export namespace PackageKitGlib {
          * @param transaction_flags a {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} values.
          * @returns `true` if value changed.
          */
-        set_transaction_flags(transaction_flags: (bigint | number)): boolean;
+        set_transaction_flags(transaction_flags: bigint | number): boolean;
 
         /**
          * Set the ID used by this transaction.
@@ -6894,8 +6885,8 @@ export namespace PackageKitGlib {
             inputs: number;
             progress: Progress;
             role: RoleEnum;
-            transaction_flags: (bigint | number);
-            transactionFlags: (bigint | number);
+            transaction_flags: bigint | number;
+            transactionFlags: bigint | number;
         }
     }
 
@@ -6933,7 +6924,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get transaction_flags(): number;
-        set transaction_flags(val: (bigint | number));
+        set transaction_flags(val: bigint | number);
 
         /**
          * A {@link PackageKitGlib.Bitfield} containing {@link PackageKitGlib.TransactionFlagEnum} for this result.
@@ -6941,7 +6932,7 @@ export namespace PackageKitGlib {
          * @default 0
          */
         get transactionFlags(): number;
-        set transactionFlags(val: (bigint | number));
+        set transactionFlags(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -7460,7 +7451,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        depends_on_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        depends_on_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the list of dependent packages.
@@ -7471,7 +7462,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        depends_on_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        depends_on_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Downloads packages
@@ -7481,7 +7472,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        download_packages_async(package_ids: string[], directory: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        download_packages_async(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Downloads packages
@@ -7491,7 +7482,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        download_packages_sync(package_ids: string[], directory: string, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        download_packages_sync(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Gets the result from the asynchronous function.
@@ -7518,7 +7509,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_categories_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_categories_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the categories available.
@@ -7526,7 +7517,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_categories_sync(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_categories_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Gets details about packages.
@@ -7535,7 +7526,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_details_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_details_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets details about packages.
@@ -7544,7 +7535,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_details_sync(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_details_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the files in a package.
@@ -7553,7 +7544,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_files_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_files_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the files in a package.
@@ -7562,7 +7553,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_files_sync(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_files_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Gets if we are just preparing the transaction for later.
@@ -7583,7 +7574,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_packages_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_packages_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the list of packages.
@@ -7592,7 +7583,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_packages_sync(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_packages_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the list of available repositories.
@@ -7601,7 +7592,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_repo_list_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_repo_list_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the list of available repositories.
@@ -7610,7 +7601,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_repo_list_sync(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_repo_list_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Gets if we are simulating.
@@ -7625,7 +7616,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_update_detail_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_update_detail_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets details about updates.
@@ -7634,7 +7625,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_update_detail_sync(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_update_detail_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Gets the update lists.
@@ -7643,7 +7634,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        get_updates_async(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_updates_async(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Gets the update lists.
@@ -7652,7 +7643,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        get_updates_sync(filters: Bitfield, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        get_updates_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Install a file locally, and get the deps from the repositories.
@@ -7662,7 +7653,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        install_files_async(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_files_async(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -7681,7 +7672,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        install_files_sync(files: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        install_files_sync(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Merges in details about packages using resolve.
@@ -7690,7 +7681,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        install_packages_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        install_packages_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -7708,7 +7699,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        install_packages_sync(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        install_packages_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Refresh the package cache.
@@ -7717,7 +7708,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        refresh_cache_async(force: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_cache_async(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Refresh the package cache.
@@ -7726,7 +7717,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        refresh_cache_sync(force: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        refresh_cache_sync(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Remove a package (optionally with dependencies) from the system.
@@ -7739,7 +7730,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        remove_packages_async(package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_packages_async(package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -7761,7 +7752,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        remove_packages_sync(package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        remove_packages_sync(package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Recover the system from broken dependencies and aborted installations.
@@ -7769,7 +7760,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repair_system_async(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repair_system_async(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -7787,7 +7778,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repair_system_sync(cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repair_system_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Enable or disable a specific repo.
@@ -7797,7 +7788,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        repo_enable_async(repo_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        repo_enable_async(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enable or disable a specific repo.
@@ -7807,7 +7798,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        repo_enable_sync(repo_id: string, enabled: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        repo_enable_sync(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Get the packages this package requires.
@@ -7818,7 +7809,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        required_by_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        required_by_async(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Get the packages this package requires.
@@ -7829,7 +7820,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        required_by_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        required_by_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Resolves a package name to a package-id.
@@ -7839,7 +7830,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        resolve_async(filters: Bitfield, packages: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        resolve_async(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Resolves a package name to a package-id.
@@ -7849,7 +7840,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        resolve_sync(filters: Bitfield, packages: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        resolve_sync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Searches for some package details.
@@ -7859,7 +7850,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_details_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_details_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Searches for some package details.
@@ -7869,7 +7860,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_details_sync(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_details_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Searches for specific files.
@@ -7879,7 +7870,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_files_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_files_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Searches for specific files.
@@ -7889,7 +7880,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_files_sync(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_files_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Searches the group lists.
@@ -7899,7 +7890,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_groups_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_groups_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Searches the group lists.
@@ -7909,7 +7900,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_groups_sync(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_groups_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Searches for a package name.
@@ -7919,7 +7910,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        search_names_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        search_names_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Searches for a package name.
@@ -7929,7 +7920,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        search_names_sync(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        search_names_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * If package downgrades shall be allowed during transaction.
@@ -7970,7 +7961,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        update_packages_async(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_packages_async(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -7988,7 +7979,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        update_packages_sync(package_ids: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        update_packages_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * This transaction will update the distro to the next version, which may
@@ -8002,7 +7993,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        upgrade_system_async(distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        upgrade_system_async(distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param args 
@@ -8022,7 +8013,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        upgrade_system_sync(distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        upgrade_system_sync(distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
         /**
          * Mark a EULA as accepted by the user.
@@ -8046,7 +8037,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @param callback_ready the function to run on completion
          */
-        what_provides_async(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback, callback_ready: (Gio.AsyncReadyCallback<this> | null)): void;
+        what_provides_async(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback, callback_ready: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Find the package that provides some resource.
@@ -8056,7 +8047,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          */
-        what_provides_sync(filters: Bitfield, values: string[], cancellable: (Gio.Cancellable | null), progress_callback: ProgressCallback): Results;
+        what_provides_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
     }
 
 
@@ -8078,9 +8069,7 @@ export namespace PackageKitGlib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -8959,7 +8948,7 @@ export namespace PackageKitGlib {
      * A bitfield capable of storing enumerations with up to 64 values.
      * @gir-type Alias
      */
-    type Bitfield = (bigint | number);
+    type Bitfield = bigint | number;
 
     /**
      * Name of the imported GIR library

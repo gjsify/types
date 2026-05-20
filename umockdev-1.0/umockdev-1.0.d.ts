@@ -33,7 +33,7 @@ export namespace UMockdev {
         static VALUE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -41,13 +41,10 @@ export namespace UMockdev {
 
     namespace Testbed {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -102,7 +99,7 @@ export namespace UMockdev {
          * @param name 
          * @param value 
          */
-        set_attribute_binary(devpath: string, name: string, value: (Uint8Array | string)): void;
+        set_attribute_binary(devpath: string, name: string, value: Uint8Array | string): void;
 
         /**
          * @param devpath 
@@ -129,7 +126,7 @@ export namespace UMockdev {
          * @param devpath 
          * @param name 
          */
-        get_property(devpath: string, name: string): (string | null);
+        get_property(devpath: string, name: string): string | null;
 
         /**
          * @param args 
@@ -171,7 +168,7 @@ export namespace UMockdev {
          * @param attributes 
          * @param properties 
          */
-        add_devicev(subsystem: string, name: string, parent: (string | null), attributes: string[], properties: string[]): (string | null);
+        add_devicev(subsystem: string, name: string, parent: string | null, attributes: string[], properties: string[]): string | null;
 
         /**
          * @param syspath 
@@ -209,7 +206,7 @@ export namespace UMockdev {
          * @param dev 
          * @param recordfile 
          */
-        load_ioctl(dev: (string | null), recordfile: string): boolean;
+        load_ioctl(dev: string | null, recordfile: string): boolean;
 
         /**
          * @param sysfs 
@@ -221,13 +218,13 @@ export namespace UMockdev {
          * @param dev 
          * @param recordfile 
          */
-        load_script(dev: (string | null), recordfile: string): boolean;
+        load_script(dev: string | null, recordfile: string): boolean;
 
         /**
          * @param dev 
          * @param script 
          */
-        load_script_from_string(dev: (string | null), script: string): boolean;
+        load_script_from_string(dev: string | null, script: string): boolean;
 
         /**
          * @param dev 
@@ -245,13 +242,13 @@ export namespace UMockdev {
          * @param dev 
          * @param eventsfile 
          */
-        load_evemu_events(dev: (string | null), eventsfile: string): boolean;
+        load_evemu_events(dev: string | null, eventsfile: string): boolean;
 
         /**
          * @param dev 
          * @param events 
          */
-        load_evemu_events_from_string(dev: (string | null), events: string): boolean;
+        load_evemu_events_from_string(dev: string | null, events: string): boolean;
 
         disable(): void;
 
@@ -268,13 +265,10 @@ export namespace UMockdev {
 
     namespace IoctlData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -318,7 +312,7 @@ export namespace UMockdev {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        compat_ref(): (IoctlData | null);
+        compat_ref(): IoctlData | null;
 
         compat_unref(): void;
 
@@ -326,13 +320,13 @@ export namespace UMockdev {
          * @param offset 
          * @param len 
          */
-        resolve(offset: (bigint | number), len: (bigint | number)): (IoctlData | null);
+        resolve(offset: bigint | number, len: bigint | number): IoctlData | null;
 
         /**
          * @param offset 
          * @param child 
          */
-        set_ptr(offset: (bigint | number), child: IoctlData): boolean;
+        set_ptr(offset: bigint | number, child: IoctlData): boolean;
 
         reload(): boolean;
 
@@ -340,7 +334,7 @@ export namespace UMockdev {
          * @param offset 
          * @param new_data 
          */
-        update(offset: (bigint | number), new_data: (Uint8Array | string)): void;
+        update(offset: bigint | number, new_data: Uint8Array | string): void;
 
         retrieve(): Uint8Array;
     }
@@ -358,7 +352,7 @@ export namespace UMockdev {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             devnode: string;
-            request: (bigint | number);
+            request: bigint | number;
             arg: IoctlData;
             connected: boolean;
         }
@@ -433,7 +427,7 @@ export namespace UMockdev {
          * @param res 
          * @param errno_ 
          */
-        complete(res: (bigint | number), errno_: number): void;
+        complete(res: bigint | number, errno_: number): void;
 
         abort(): void;
     }
@@ -453,9 +447,7 @@ export namespace UMockdev {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

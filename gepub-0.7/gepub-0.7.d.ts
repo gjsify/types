@@ -92,17 +92,14 @@ export namespace Gepub {
      * @param path The path to replace
      * @returns a new {@link GLib.Bytes} containing the updated XML data
      */
-    function utils_replace_resources(content: (GLib.Bytes | Uint8Array), path: string): GLib.Bytes;
+    function utils_replace_resources(content: GLib.Bytes | Uint8Array, path: string): GLib.Bytes;
 
     namespace Archive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -396,7 +393,7 @@ export namespace Gepub {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -440,19 +437,16 @@ export namespace Gepub {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace TextChunk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -747,7 +741,7 @@ export namespace Gepub {
          * Sets `doc` as the document displayed by the widget.
          * @param doc a {@link Gepub.Doc}
          */
-        set_doc(doc: (Doc | null)): void;
+        set_doc(doc: Doc | null): void;
 
         /**
          * Sets the widget custom font family

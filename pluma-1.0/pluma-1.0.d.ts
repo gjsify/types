@@ -92,7 +92,7 @@ export namespace Pluma {
      * @param encoding 
      * @param line_pos 
      */
-    function commands_load_uri(window: Window, uri: string, encoding: (Encoding | null), line_pos: number): void;
+    function commands_load_uri(window: Window, uri: string, encoding: Encoding | null, line_pos: number): void;
 
     /**
      * @param window 
@@ -168,7 +168,7 @@ export namespace Pluma {
      * @param method the method
      * @returns the identifier for `method` at `object_path`
      */
-    function message_type_identifier(object_path: (string | null), method: (string | null)): string;
+    function message_type_identifier(object_path: string | null, method: string | null): string;
 
     /**
      * Returns if `type` is {@link GObject.GType} supported by the message system.
@@ -182,7 +182,7 @@ export namespace Pluma {
      * @param object_path the object path
      * @returns `true` if `object_path` is a valid object path
      */
-    function message_type_is_valid_object_path(object_path: (string | null)): boolean;
+    function message_type_is_valid_object_path(object_path: string | null): boolean;
 
     /**
      * @param view 
@@ -217,7 +217,7 @@ export namespace Pluma {
      * @param path return value pointer for the uri path, or `null`
      * @returns `true` if the uri could be properly decoded, `false` otherwise.
      */
-    function utils_decode_uri(uri: string, scheme: (string | null), user: (string | null), host: (string | null), port: (string | null), path: (string | null)): boolean;
+    function utils_decode_uri(uri: string, scheme: string | null, user: string | null, host: string | null, port: string | null, path: string | null): boolean;
 
     /**
      * Create a list of valid uri's from a uri-list drop.
@@ -235,7 +235,7 @@ export namespace Pluma {
      * @param text 
      * @param length 
      */
-    function utils_escape_underscores(text: string, length: (bigint | number)): string;
+    function utils_escape_underscores(text: string, length: bigint | number): string;
 
     /**
      * Return `true` if the specified gfile has a parent (is not the root), `false`
@@ -583,7 +583,7 @@ export namespace Pluma {
          * @param screen 
          * @returns the new {@link Pluma.Window}
          */
-        create_window(screen: (Gdk.Screen | null)): Window;
+        create_window(screen: Gdk.Screen | null): Window;
 
         /**
          * Retrives the {@link Pluma.Window} currently active.
@@ -638,9 +638,7 @@ export namespace Pluma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -987,7 +985,7 @@ export namespace Pluma {
         /**
          * @returns a new {@link Gio.File}
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * Gets the metadata assigned to `key`.
@@ -1008,7 +1006,7 @@ export namespace Pluma {
         /**
          * @param flags 
          */
-        get_search_text(flags: (number | null)): string;
+        get_search_text(flags: number | null): string;
 
         /**
          * Note: this never returns `null`.
@@ -1089,7 +1087,7 @@ export namespace Pluma {
          * @param match_start 
          * @param match_end 
          */
-        search_backward(start: (Gtk.TextIter | null), end: (Gtk.TextIter | null), match_start: (Gtk.TextIter | null), match_end: (Gtk.TextIter | null)): boolean;
+        search_backward(start: Gtk.TextIter | null, end: Gtk.TextIter | null, match_start: Gtk.TextIter | null, match_end: Gtk.TextIter | null): boolean;
 
         /**
          * @param start 
@@ -1097,12 +1095,12 @@ export namespace Pluma {
          * @param match_start 
          * @param match_end 
          */
-        search_forward(start: (Gtk.TextIter | null), end: (Gtk.TextIter | null), match_start: (Gtk.TextIter | null), match_end: (Gtk.TextIter | null)): boolean;
+        search_forward(start: Gtk.TextIter | null, end: Gtk.TextIter | null, match_start: Gtk.TextIter | null, match_end: Gtk.TextIter | null): boolean;
 
         /**
          * @param content_type 
          */
-        set_content_type(content_type: (string | null)): void;
+        set_content_type(content_type: string | null): void;
 
         /**
          * @param enable 
@@ -1112,12 +1110,12 @@ export namespace Pluma {
         /**
          * @param lang 
          */
-        set_language(lang: (GtkSource.Language | null)): void;
+        set_language(lang: GtkSource.Language | null): void;
 
         /**
          * @param text 
          */
-        set_last_replace_text(text: (string | null)): void;
+        set_last_replace_text(text: string | null): void;
 
         /**
          * @param newline_type 
@@ -1128,12 +1126,12 @@ export namespace Pluma {
          * @param text 
          * @param flags 
          */
-        set_search_text(text: (string | null), flags: number): void;
+        set_search_text(text: string | null, flags: number): void;
 
         /**
          * @param name 
          */
-        set_short_name_for_display(name: (string | null)): void;
+        set_short_name_for_display(name: string | null): void;
 
         /**
          * @param uri 
@@ -1271,7 +1269,7 @@ export namespace Pluma {
         /**
          * @param encoding 
          */
-        set_selected_encoding(encoding: (Encoding | null)): void;
+        set_selected_encoding(encoding: Encoding | null): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -1314,7 +1312,7 @@ export namespace Pluma {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -1342,7 +1340,7 @@ export namespace Pluma {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1376,7 +1374,7 @@ export namespace Pluma {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1427,7 +1425,7 @@ export namespace Pluma {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1464,7 +1462,7 @@ export namespace Pluma {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1519,7 +1517,7 @@ export namespace Pluma {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1719,9 +1717,7 @@ export namespace Pluma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1989,9 +1985,7 @@ export namespace Pluma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2577,7 +2571,7 @@ export namespace Pluma {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: (string | null)): StatusComboBox;
+        static ["new"](label: string | null): StatusComboBox;
 
         // Conflicted with Gtk.EventBox.new
         static ["new"](...args: never[]): any;
@@ -2607,7 +2601,7 @@ export namespace Pluma {
          * @param item 
          * @param text 
          */
-        add_item(item: Gtk.MenuItem, text: (string | null)): void;
+        add_item(item: Gtk.MenuItem, text: string | null): void;
 
         /**
          * @param item 
@@ -2632,12 +2626,12 @@ export namespace Pluma {
          * @param item 
          * @param text 
          */
-        set_item_text(item: Gtk.MenuItem, text: (string | null)): void;
+        set_item_text(item: Gtk.MenuItem, text: string | null): void;
 
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
     }
 
 
@@ -2692,9 +2686,7 @@ export namespace Pluma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2988,19 +2980,19 @@ export namespace Pluma {
              * @action
              * @run-last
              */
-            "reset-searched-text": () => (boolean | void);
+            "reset-searched-text": () => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "start-interactive-goto-line": () => (boolean | void);
+            "start-interactive-goto-line": () => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "start-interactive-search": () => (boolean | void);
+            "start-interactive-search": () => boolean | void;
             "notify::auto-indent": (pspec: GObject.ParamSpec) => void;
             "notify::background-pattern": (pspec: GObject.ParamSpec) => void;
             "notify::completion": (pspec: GObject.ParamSpec) => void;
@@ -3082,9 +3074,7 @@ export namespace Pluma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -3588,7 +3578,7 @@ export namespace Pluma {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -3634,7 +3624,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -3648,7 +3638,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -3672,7 +3662,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -3694,7 +3684,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -3821,7 +3811,7 @@ export namespace Pluma {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -3868,7 +3858,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -3882,7 +3872,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -3906,7 +3896,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -3928,7 +3918,7 @@ export namespace Pluma {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -4004,7 +3994,7 @@ export namespace Pluma {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -4060,7 +4050,7 @@ export namespace Pluma {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -4197,7 +4187,7 @@ export namespace Pluma {
         static $gtype: GObject.GType<MessageType>;
 
         // Constructors
-        constructor(object_path: (string | null), method: (string | null), num_optional: number, ___: any[]);
+        constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
 
         // Static methods
         /**
@@ -4205,7 +4195,7 @@ export namespace Pluma {
          * @param object_path the object path
          * @param method the method
          */
-        static identifier(object_path: (string | null), method: (string | null)): string;
+        static identifier(object_path: string | null, method: string | null): string;
 
         /**
          * Returns if `type` is {@link GObject.GType} supported by the message system.
@@ -4217,7 +4207,7 @@ export namespace Pluma {
          * Returns whether `object_path` is a valid object path
          * @param object_path the object path
          */
-        static is_valid_object_path(object_path: (string | null)): boolean;
+        static is_valid_object_path(object_path: string | null): boolean;
 
         // Methods
         /**

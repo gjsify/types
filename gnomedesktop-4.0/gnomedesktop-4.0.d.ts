@@ -47,7 +47,7 @@ export namespace GnomeDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: (bigint | number)): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
 
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
@@ -74,7 +74,7 @@ export namespace GnomeDesktop {
      * @returns the country name. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_code(code: string, translation: (string | null)): string;
+    function get_country_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the country description for `locale`. If `translation` is
@@ -84,7 +84,7 @@ export namespace GnomeDesktop {
      * @returns the country description. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_locale(locale: string, translation: (string | null)): string;
+    function get_country_from_locale(locale: string, translation: string | null): string;
 
     /**
      * Gets the default input source's type and identifier for a given
@@ -103,7 +103,7 @@ export namespace GnomeDesktop {
      * @returns the language name. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_code(code: string, translation: (string | null)): string;
+    function get_language_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the language description for `locale`. If `translation` is
@@ -113,7 +113,7 @@ export namespace GnomeDesktop {
      * @returns the language description. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_locale(locale: string, translation: (string | null)): string;
+    function get_language_from_locale(locale: string, translation: string | null): string;
 
     /**
      * Returns an integer with the major version of GNOME. Useful for
@@ -134,7 +134,7 @@ export namespace GnomeDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      * @since 3.34
      */
-    function get_translated_modifier(modifier: string, translation: (string | null)): string;
+    function get_translated_modifier(modifier: string, translation: string | null): string;
 
     /**
      * Returns `true` if there are translations for language `code`.
@@ -189,7 +189,7 @@ export namespace GnomeDesktop {
      * @param connection An {@link Gio.DBusConnection} to the session bus, or `null`
      * @param cancellable {@link Gio.Cancellable} to use
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -217,7 +217,7 @@ export namespace GnomeDesktop {
      * @param cancellable {@link Gio.Cancellable} to use
      * @param callback Callback to call when the operation is done
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -245,7 +245,7 @@ export namespace GnomeDesktop {
      * @param cancellable {@link Gio.Cancellable} to use
      * @param callback Callback to call when the operation is done
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finish an asynchronous operation to create a transient scope that was
@@ -267,13 +267,10 @@ export namespace GnomeDesktop {
 
     namespace DesktopThumbnailFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -322,7 +319,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: (bigint | number)): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
         /**
          * Creates a failed thumbnail for the file so that we don't try
@@ -334,7 +331,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          */
-        create_failed_thumbnail(uri: string, mtime: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
@@ -344,18 +341,7 @@ export namespace GnomeDesktop {
          * @param original_mtime the modification time of the original file
          * @param cancellable a Cancellable object
          */
-        create_failed_thumbnail_async(uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
-         * 
-         * Since 43.0
-         * @param uri the uri of a file
-         * @param original_mtime the modification time of the original file
-         * @param cancellable a Cancellable object
-         * @param callback a function that will be called when the task has ended
-         */
-        create_failed_thumbnail_async(uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_failed_thumbnail_async(uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
@@ -366,7 +352,18 @@ export namespace GnomeDesktop {
          * @param cancellable a Cancellable object
          * @param callback a function that will be called when the task has ended
          */
-        create_failed_thumbnail_async(uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        create_failed_thumbnail_async(uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous version of `gnome_desktop_thumbnail_factory_create_failed_thumbnail()`
+         * 
+         * Since 43.0
+         * @param uri the uri of a file
+         * @param original_mtime the modification time of the original file
+         * @param cancellable a Cancellable object
+         * @param callback a function that will be called when the task has ended
+         */
+        create_failed_thumbnail_async(uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result the result of the operation
@@ -384,7 +381,7 @@ export namespace GnomeDesktop {
          * @param cancellable a {@link Gio.Cancellable} object or NULL
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise and error will be set
          */
-        generate_thumbnail(uri: string, mime_type: string, cancellable: (Gio.Cancellable | null)): GdkPixbuf.Pixbuf;
+        generate_thumbnail(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
@@ -394,18 +391,7 @@ export namespace GnomeDesktop {
          * @param mime_type the MIME type of the file
          * @param cancellable a Cancellable object
          */
-        generate_thumbnail_async(uri: string, mime_type: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GdkPixbuf.Pixbuf>;
-
-        /**
-         * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
-         * 
-         * Since 43.0
-         * @param uri the URI of a file
-         * @param mime_type the MIME type of the file
-         * @param cancellable a Cancellable object
-         * @param callback a function that will be called when the task has ended
-         */
-        generate_thumbnail_async(uri: string, mime_type: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        generate_thumbnail_async(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
@@ -416,7 +402,18 @@ export namespace GnomeDesktop {
          * @param cancellable a Cancellable object
          * @param callback a function that will be called when the task has ended
          */
-        generate_thumbnail_async(uri: string, mime_type: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GdkPixbuf.Pixbuf> | void);
+        generate_thumbnail_async(uri: string, mime_type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous version of `gnome_desktop_thumbnail_factory_generate_thumbnail()`
+         * 
+         * Since 43.0
+         * @param uri the URI of a file
+         * @param mime_type the MIME type of the file
+         * @param cancellable a Cancellable object
+         * @param callback a function that will be called when the task has ended
+         */
+        generate_thumbnail_async(uri: string, mime_type: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GdkPixbuf.Pixbuf> | void;
 
         /**
          * @param result the result of the operation
@@ -434,7 +431,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: (bigint | number)): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
         /**
          * Tries to locate an existing thumbnail for the file specified.
@@ -444,7 +441,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: (bigint | number)): string;
+        lookup(uri: string, mtime: bigint | number): string;
 
         /**
          * Saves `thumbnail` at the right place. If the save fails a
@@ -457,7 +454,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
@@ -468,19 +465,7 @@ export namespace GnomeDesktop {
          * @param original_mtime the modification time of the original file
          * @param cancellable a Cancellable object
          */
-        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
-         * 
-         * Since 43.0
-         * @param thumbnail the thumbnail as a pixbuf
-         * @param uri the uri of a file
-         * @param original_mtime the modification time of the original file
-         * @param cancellable a Cancellable object
-         * @param callback a function that will be called when the task has ended
-         */
-        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
@@ -492,7 +477,19 @@ export namespace GnomeDesktop {
          * @param cancellable a Cancellable object
          * @param callback a function that will be called when the task has ended
          */
-        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous version of `gnome_desktop_thumbnail_factory_save_thumbnail()`
+         * 
+         * Since 43.0
+         * @param thumbnail the thumbnail as a pixbuf
+         * @param uri the uri of a file
+         * @param original_mtime the modification time of the original file
+         * @param cancellable a Cancellable object
+         * @param callback a function that will be called when the task has ended
+         */
+        save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result the result of the operation
@@ -504,13 +501,10 @@ export namespace GnomeDesktop {
 
     namespace IdleMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -554,13 +548,13 @@ export namespace GnomeDesktop {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: (bigint | number), callback: (IdleMonitorWatchFunc | null)): number;
+        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback: (IdleMonitorWatchFunc | null)): number;
+        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @returns The current idle time, in milliseconds
@@ -617,7 +611,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -661,19 +655,16 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace PnpIds {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -864,9 +855,7 @@ export namespace GnomeDesktop {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

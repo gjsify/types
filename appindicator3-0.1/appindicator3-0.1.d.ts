@@ -645,7 +645,7 @@ export namespace AppIndicator3 {
          * Wrapper function for property {@link AppIndicator3.Indicator.menu}.
          * @param menu A {@link Gtk.Menu} to set
          */
-        set_menu(menu: (Gtk.Menu | null)): void;
+        set_menu(menu: Gtk.Menu | null): void;
 
         /**
          * Sets the ordering index for the app indicator which effects the
@@ -668,7 +668,7 @@ export namespace AppIndicator3 {
          * Setting `menuitem` to `null` causes to disable this feature.
          * @param menuitem A {@link Gtk.Widget} to be activated on secondary activation
          */
-        set_secondary_activate_target(menuitem: (Gtk.Widget | null)): void;
+        set_secondary_activate_target(menuitem: Gtk.Widget | null): void;
 
         /**
          * Wrapper function for property {@link AppIndicator3.Indicator.status}.
@@ -688,7 +688,7 @@ export namespace AppIndicator3 {
          * Setting `title` to `null` removes the title.
          * @param title Title of the app indicator
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
     }
 
 

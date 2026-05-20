@@ -176,9 +176,7 @@ export namespace Matekbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -304,9 +302,7 @@ export namespace Matekbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -424,9 +420,7 @@ export namespace Matekbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {}
     }
 
     /**

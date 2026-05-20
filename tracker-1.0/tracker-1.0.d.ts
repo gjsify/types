@@ -257,12 +257,12 @@ export namespace Tracker {
         /**
          * @param literal 
          */
-        object_int64(literal: (bigint | number)): void;
+        object_int64(literal: bigint | number): void;
 
         /**
          * @param literal 
          */
-        object_date(literal: (bigint | number)): number;
+        object_date(literal: bigint | number): number;
 
         /**
          * @param literal 
@@ -293,13 +293,10 @@ export namespace Tracker {
 
     namespace SparqlConnection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -521,7 +518,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        query_async(sparql: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlCursor> | void);
+        query_async(sparql: string, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<SparqlCursor> | void;
 
         /**
          * @param _res_ 
@@ -556,7 +553,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        update_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -584,7 +581,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlError[]> | void);
+        update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<SparqlError[]> | void;
 
         /**
          * @param _res_ 
@@ -619,7 +616,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.Variant> | void);
+        update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * @param _res_ 
@@ -650,7 +647,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        load_async(file: Gio.File, cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -677,7 +674,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        statistics_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<SparqlCursor> | void);
+        statistics_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<SparqlCursor> | void;
 
         /**
          * @param _res_ 
@@ -800,7 +797,7 @@ export namespace Tracker {
          * @param column 
          * @virtual
          */
-        vfunc_get_integer(column: number): (bigint | number);
+        vfunc_get_integer(column: number): bigint | number;
 
         /**
          * @param column 
@@ -861,7 +858,7 @@ export namespace Tracker {
          * @param cancellable 
          * @param _callback_ 
          */
-        next_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+        next_async(cancellable: Gio.Cancellable, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
@@ -966,7 +963,7 @@ export namespace Tracker {
         static UNSUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 

@@ -108,14 +108,14 @@ export namespace BraseroMedia {
      * @param with_unit 
      * @param round 
      */
-    function units_get_time_string(time: (bigint | number), with_unit: boolean, round: boolean): string;
+    function units_get_time_string(time: bigint | number, with_unit: boolean, round: boolean): string;
 
     /**
      * @param size 
      * @param with_unit 
      * @param round 
      */
-    function units_get_time_string_from_size(size: (bigint | number), with_unit: boolean, round: boolean): string;
+    function units_get_time_string_from_size(size: bigint | number, with_unit: boolean, round: boolean): string;
 
     /**
      * @gir-type Flags
@@ -638,7 +638,7 @@ export namespace BraseroMedia {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -666,7 +666,7 @@ export namespace BraseroMedia {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -700,7 +700,7 @@ export namespace BraseroMedia {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -751,7 +751,7 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -788,7 +788,7 @@ export namespace BraseroMedia {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -843,7 +843,7 @@ export namespace BraseroMedia {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1003,7 +1003,7 @@ export namespace BraseroMedia {
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_capacity(bytes: (bigint | number), blocks: (bigint | number)): void;
+        get_capacity(bytes: bigint | number, blocks: bigint | number): void;
 
         /**
          * Stores in either `size` (in bytes) or `blocks` (the number of blocks) the size
@@ -1011,7 +1011,7 @@ export namespace BraseroMedia {
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_data_size(bytes: (bigint | number), blocks: (bigint | number)): void;
+        get_data_size(bytes: bigint | number, blocks: bigint | number): void;
 
         /**
          * Gets the {@link BraseroMedia.Drive} in which the medium is inserted.
@@ -1025,7 +1025,7 @@ export namespace BraseroMedia {
          * @param bytes a `gint64` * or NULL
          * @param blocks a `gint64` * or NULL
          */
-        get_free_space(bytes: (bigint | number), blocks: (bigint | number)): void;
+        get_free_space(bytes: bigint | number, blocks: bigint | number): void;
 
         /**
          * Stores in either `bytes` (in bytes) or in `sectors` (in blocks) the address where
@@ -1035,7 +1035,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved.
          */
-        get_last_data_track_address(bytes: (bigint | number), sectors: (bigint | number)): boolean;
+        get_last_data_track_address(bytes: bigint | number, sectors: bigint | number): boolean;
 
         /**
          * Stores in either `bytes` (in bytes) or in `sectors` (in blocks) the space used by
@@ -1044,7 +1044,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved.
          */
-        get_last_data_track_space(bytes: (bigint | number), sectors: (bigint | number)): boolean;
+        get_last_data_track_space(bytes: bigint | number, sectors: bigint | number): boolean;
 
         /**
          * Gets the maximum speed that can be used to write to `medium`.
@@ -1080,7 +1080,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved; FALSE otherwise (usually when track `num` doesn't exist).
          */
-        get_track_address(num: number, bytes: (bigint | number), sectors: (bigint | number)): boolean;
+        get_track_address(num: number, bytes: bigint | number, sectors: bigint | number): boolean;
 
         /**
          * Gets the number of tracks on the medium.
@@ -1096,7 +1096,7 @@ export namespace BraseroMedia {
          * @param sectors a `goffset` * or NULL
          * @returns a `gboolean`. Returns TRUE if information could be retrieved; FALSE otherwise (usually when track `num` doesn't exist).
          */
-        get_track_space(num: number, bytes: (bigint | number), sectors: (bigint | number)): boolean;
+        get_track_space(num: number, bytes: bigint | number, sectors: bigint | number): boolean;
 
         /**
          * Returns the medium type as a string to be displayed in a UI.
@@ -1143,9 +1143,7 @@ export namespace BraseroMedia {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1435,7 +1433,7 @@ export namespace BraseroMedia {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -1463,7 +1461,7 @@ export namespace BraseroMedia {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1497,7 +1495,7 @@ export namespace BraseroMedia {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1548,7 +1546,7 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1585,7 +1583,7 @@ export namespace BraseroMedia {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1640,7 +1638,7 @@ export namespace BraseroMedia {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1685,9 +1683,7 @@ export namespace BraseroMedia {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Medium.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Medium.ConstructorProps {}
     }
 
     /**

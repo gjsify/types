@@ -157,7 +157,7 @@ export namespace TelepathyFarstream {
          * @param channel_proxy a {@link TelepathyGLib.Channel} proxy
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the channel is ready
          */
-        static new_async(channel_proxy: TelepathyGLib.Channel, callback: (Gio.AsyncReadyCallback<Channel> | null)): void;
+        static new_async(channel_proxy: TelepathyGLib.Channel, callback: Gio.AsyncReadyCallback<Channel> | null): void;
 
         // Methods
         /**
@@ -208,7 +208,7 @@ export namespace TelepathyFarstream {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -251,7 +251,7 @@ export namespace TelepathyFarstream {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -294,7 +294,7 @@ export namespace TelepathyFarstream {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -354,7 +354,7 @@ export namespace TelepathyFarstream {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -396,7 +396,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "start-receiving": (arg0: null, arg1: number) => (boolean | void);
+            "start-receiving": (arg0: null, arg1: number) => boolean | void;
             /**
              * This signal is emitted when the connection manager ask to send media.
              * For example, this can be used to open a camera, start recording from a
@@ -405,7 +405,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "start-sending": () => (boolean | void);
+            "start-sending": () => boolean | void;
             /**
              * This signal is emitted when the connection manager wants to tell the
              * application that it is now allowed to stop receiving.

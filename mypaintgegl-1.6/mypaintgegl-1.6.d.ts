@@ -31,10 +31,7 @@ export namespace MyPaintGegl {
         static $gtype: GObject.GType<TiledSurface>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): TiledSurface;
 

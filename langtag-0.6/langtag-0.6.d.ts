@@ -131,7 +131,7 @@ export namespace LangTag {
      * @param error a {@link LangTag.Error}.
      * @returns a {@link LangTag.Tag}, `null` if fails.
      */
-    function tag_convert_from_locale(error: (Error | null)): Tag;
+    function tag_convert_from_locale(error: Error | null): Tag;
 
     /**
      * Convert `locale` to the language tag.
@@ -139,7 +139,7 @@ export namespace LangTag {
      * @param error a {@link LangTag.Error} or `null`.
      * @returns a {@link LangTag.Tag}, `null` if fails.
      */
-    function tag_convert_from_locale_string(locale: string, error: (Error | null)): Tag;
+    function tag_convert_from_locale_string(locale: string, error: Error | null): Tag;
 
     /**
      * @gir-type Callback
@@ -187,14 +187,14 @@ export namespace LangTag {
      * @gir-type Callback
      */
     interface ExtModuleParseFunc {
-        (data: ExtModuleData, subtag: string, error: (Error | null)): Bool;
+        (data: ExtModuleData, subtag: string, error: Error | null): Bool;
     }
 
     /**
      * @gir-type Callback
      */
     interface ExtModulePrecheckFunc {
-        (data: ExtModuleData, tag: Tag, error: (Error | null)): Bool;
+        (data: ExtModuleData, tag: Tag, error: Error | null): Bool;
     }
 
     /**
@@ -237,10 +237,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<Error>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Error;
 
@@ -319,7 +316,7 @@ export namespace LangTag {
             dummy: Pointer[];
         }>);
 
-        static ["new"](size: (bigint | number), finalizer: DestroyFunc): ExtModuleData;
+        static ["new"](size: bigint | number, finalizer: DestroyFunc): ExtModuleData;
 
         // Methods
         /**
@@ -488,10 +485,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<ExtlangDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ExtlangDb;
 
@@ -587,10 +581,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<GrandfatheredDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): GrandfatheredDb;
 
@@ -660,7 +651,7 @@ export namespace LangTag {
          * @param val a location to store the value, or `null`
          * @returns `false` if the end of the object that the iterator is adapted          has been reached.
          */
-        next(key: (Pointer | null), val: (Pointer | null)): Bool;
+        next(key: Pointer | null, val: Pointer | null): Bool;
 
         /**
          * Increases the reference count of `iter`.
@@ -778,10 +769,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<LangDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): LangDb;
 
@@ -816,10 +804,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<List>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): List;
 
@@ -1029,10 +1014,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<RedundantDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): RedundantDb;
 
@@ -1128,10 +1110,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<RegionDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): RegionDb;
 
@@ -1167,10 +1146,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<RelationDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): RelationDb;
 
@@ -1265,10 +1241,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<ScriptDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ScriptDb;
 
@@ -1331,7 +1304,7 @@ export namespace LangTag {
          * @param pos position in `string` where to obtain the byte
          * @returns the byte in `string` at `pos`
          */
-        at(pos: (bigint | number)): number;
+        at(pos: bigint | number): number;
 
         /**
          * Clean up the buffer in `string`.
@@ -1366,12 +1339,12 @@ export namespace LangTag {
          * @param c the byte to replace
          * @returns the same `string` object
          */
-        replace_c(pos: (bigint | number), c: number): String;
+        replace_c(pos: bigint | number, c: number): String;
 
         /**
          * @param len 
          */
-        truncate(len: (bigint | number)): String;
+        truncate(len: bigint | number): String;
 
         /**
          * Decreases the reference count of `string`. when its reference count
@@ -1396,10 +1369,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<Tag>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Tag;
 
@@ -1408,14 +1378,14 @@ export namespace LangTag {
          * Convert current locale to the language tag.
          * @param error a {@link LangTag.Error}.
          */
-        static convert_from_locale(error: (Error | null)): Tag;
+        static convert_from_locale(error: Error | null): Tag;
 
         /**
          * Convert `locale` to the language tag.
          * @param locale a locale string
          * @param error a {@link LangTag.Error} or `null`.
          */
-        static convert_from_locale_string(locale: string, error: (Error | null)): Tag;
+        static convert_from_locale_string(locale: string, error: Error | null): Tag;
 
         // Methods
         /**
@@ -1423,7 +1393,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns a language tag string.
          */
-        canonicalize(error: (Error | null)): string;
+        canonicalize(error: Error | null): string;
 
         /**
          * Canonicalize the language tag in the extlang form
@@ -1431,7 +1401,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns a language tag string.
          */
-        canonicalize_in_extlang_form(error: (Error | null)): string;
+        canonicalize_in_extlang_form(error: Error | null): string;
 
         /**
          * (Re-)Initialize all of the subtag information stored in `tag`.
@@ -1450,7 +1420,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns a locale string or `null` if fails
          */
-        convert_to_locale(error: (Error | null)): string;
+        convert_to_locale(error: Error | null): string;
 
         /**
          * Create a copy instance of `tag`.
@@ -1532,7 +1502,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns a language tag string if any matches, otherwise `null`.
          */
-        lookup(pattern: string, error: (Error | null)): string;
+        lookup(pattern: string, error: Error | null): string;
 
         /**
          * Try matching of `v1` and `v2`. any of subtags in `v2` is allowed to use
@@ -1541,7 +1511,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns `true` if it matches, otherwise `false`.
          */
-        match(v2: string, error: (Error | null)): Bool;
+        match(v2: string, error: Error | null): Bool;
 
         /**
          * Parse `tag_string` and create appropriate instances for subtags.
@@ -1549,7 +1519,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns `true` if it's successfully completed, otherwise `false`.
          */
-        parse(tag_string: string, error: (Error | null)): Bool;
+        parse(tag_string: string, error: Error | null): Bool;
 
         /**
          * Continue to parse a language tag with `tag_string`. please use `lt_tag_parse()`
@@ -1558,7 +1528,7 @@ export namespace LangTag {
          * @param error a {@link LangTag.Error} or `null`.
          * @returns `true` if it's successfully completed, otherwise `false`.
          */
-        parse_with_extra_token(tag_string: string, error: (Error | null)): Bool;
+        parse_with_extra_token(tag_string: string, error: Error | null): Bool;
 
         /**
          * Increases the reference count of `tag`.
@@ -1663,10 +1633,7 @@ export namespace LangTag {
         static $gtype: GObject.GType<VariantDb>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): VariantDb;
 

@@ -249,7 +249,7 @@ export namespace GstValidate {
      * @param issue_id The issue id
      * @returns The issue if found or NULL otherwise
      */
-    function issue_from_id(issue_id: IssueId): (Issue | null);
+    function issue_from_id(issue_id: IssueId): Issue | null;
 
     /**
      * @param scenarios 
@@ -271,7 +271,7 @@ export namespace GstValidate {
      * @param value 
      * @param optional 
      */
-    function object_set_property(reporter: Reporter, object: GObject.Object, property: string, value: (GObject.Value | any), optional: boolean): ActionReturn;
+    function object_set_property(reporter: Reporter, object: GObject.Object, property: string, value: GObject.Value | any, optional: boolean): ActionReturn;
 
     /**
      * @param reporter The {@link GstValidate.Reporter} to use to report errors
@@ -281,7 +281,7 @@ export namespace GstValidate {
      * @param flags The {@link GstValidate.ObjectSetPropertyFlags} to use
      * @since 1.24
      */
-    function object_set_property_full(reporter: Reporter, object: GObject.Object, property: string, value: (GObject.Value | any), flags: ObjectSetPropertyFlags): ActionReturn;
+    function object_set_property_full(reporter: Reporter, object: GObject.Object, property: string, value: GObject.Value | any, flags: ObjectSetPropertyFlags): ActionReturn;
 
     /**
      * @param monitor 
@@ -303,7 +303,7 @@ export namespace GstValidate {
      * @param action The source object to log
      * @param message The message to print out in the GstValidate logging system
      */
-    function print_action(action: (Action | null), message: string): void;
+    function print_action(action: Action | null, message: string): void;
 
     /**
      * Prints the action types details wanted in `wanted_types`
@@ -333,7 +333,7 @@ export namespace GstValidate {
      * @param flags The {@link GstValidate.ActionTypeFlags} to set on the new action type
      * @returns The newly created action type or the already registered action type if it had a higher rank
      */
-    function register_action_type(type_name: string, implementer_namespace: string, _function: ExecuteAction, parameters: (ActionParameter[] | null), description: string, flags: ActionTypeFlags): ActionType;
+    function register_action_type(type_name: string, implementer_namespace: string, _function: ExecuteAction, parameters: ActionParameter[] | null, description: string, flags: ActionTypeFlags): ActionType;
 
     /**
      * @param plugin The {@link Gst.Plugin} that register the action type,                        or NULL for a static element.
@@ -345,7 +345,7 @@ export namespace GstValidate {
      * @param flags The {@link GstValidate.ActionTypeFlags} to be set on the new action type
      * @returns The newly created action type or the already registered action type if it had a higher rank
      */
-    function register_action_type_dynamic(plugin: (Gst.Plugin | null), type_name: string, rank: Gst.Rank, _function: ExecuteAction, parameters: (ActionParameter[] | null), description: string, flags: ActionTypeFlags): ActionType;
+    function register_action_type_dynamic(plugin: Gst.Plugin | null, type_name: string, rank: Gst.Rank, _function: ExecuteAction, parameters: ActionParameter[] | null, description: string, flags: ActionTypeFlags): ActionType;
 
     /**
      * @param incom 
@@ -757,7 +757,7 @@ export namespace GstValidate {
 
         _init(...args: any[]): void;
 
-        static ["new"](bin: Gst.Bin, runner: Runner, parent: (Monitor | null)): BinMonitor;
+        static ["new"](bin: Gst.Bin, runner: Runner, parent: Monitor | null): BinMonitor;
 
         // Signals
         /** @signal */
@@ -776,7 +776,7 @@ export namespace GstValidate {
         /**
          * @returns The {@link GstValidate.Scenario} being executed under `monitor` watch
          */
-        get_scenario(): (Scenario | null);
+        get_scenario(): Scenario | null;
 
         /**
          * Increases the reference count of `object`.
@@ -821,9 +821,7 @@ export namespace GstValidate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
     }
 
     /**
@@ -849,7 +847,7 @@ export namespace GstValidate {
 
         _init(...args: any[]): void;
 
-        static ["new"](element: Gst.Element, runner: Runner, parent: (Monitor | null)): ElementMonitor;
+        static ["new"](element: Gst.Element, runner: Runner, parent: Monitor | null): ElementMonitor;
 
         // Signals
         /** @signal */
@@ -880,18 +878,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -910,7 +908,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -944,7 +942,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -960,7 +958,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -1080,18 +1078,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -1110,7 +1108,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -1144,7 +1142,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -1160,7 +1158,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -1212,9 +1210,7 @@ export namespace GstValidate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
     }
 
     /**
@@ -1287,18 +1283,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -1317,7 +1313,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -1351,7 +1347,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -1367,7 +1363,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -1419,9 +1415,7 @@ export namespace GstValidate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
     }
 
     /**
@@ -1515,18 +1509,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -1545,7 +1539,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -1579,7 +1573,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -1595,7 +1589,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -1652,8 +1646,8 @@ export namespace GstValidate {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
-            object: (GObject.Object | any);
-            pipeline: (Gst.Pipeline | null);
+            object: GObject.Object | any;
+            pipeline: Gst.Pipeline | null;
             validate_parent: Monitor;
             validateParent: Monitor;
             validate_runner: Runner;
@@ -1678,8 +1672,8 @@ export namespace GstValidate {
     // This accessor conflicts with a property or field in a parent class or interface.
          object: GObject.Object | any;
 
-        get pipeline(): (Gst.Pipeline | null);
-        set pipeline(val: (Gst.Pipeline | null));
+        get pipeline(): Gst.Pipeline | null;
+        set pipeline(val: Gst.Pipeline | null);
 
         /**
          * @construct-only
@@ -1750,13 +1744,13 @@ export namespace GstValidate {
          * @param runner The {@link GstValidate.Runner} to use for the new monitor
          * @param parent The parent of the new monitor
          */
-        static factory_create(target: Gst.Object, runner: Runner, parent: (Monitor | null)): Monitor;
+        static factory_create(target: Gst.Object, runner: Runner, parent: Monitor | null): Monitor;
 
         // Virtual methods
         /**
          * @virtual
          */
-        vfunc_get_element(): (Gst.Element | null);
+        vfunc_get_element(): Gst.Element | null;
 
         /**
          * @param media_descriptor 
@@ -1778,22 +1772,22 @@ export namespace GstValidate {
         /**
          * @returns The GstElement associated with `monitor`
          */
-        get_element(): (Gst.Element | null);
+        get_element(): Gst.Element | null;
 
         /**
          * @returns The name of the element associated with `monitor`
          */
-        get_element_name(): (string | null);
+        get_element_name(): string | null;
 
         /**
          * @returns The pipeline in which `monitor` target is in.
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @returns The target object
          */
-        get_target(): (Gst.Object | null);
+        get_target(): Gst.Object | null;
 
         /**
          * @param media_descriptor 
@@ -1804,13 +1798,13 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -1829,7 +1823,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -1863,7 +1857,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -1879,7 +1873,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -2029,18 +2023,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -2059,7 +2053,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -2093,7 +2087,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -2109,7 +2103,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -2165,9 +2159,7 @@ export namespace GstValidate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
     }
 
     /**
@@ -2210,7 +2202,7 @@ export namespace GstValidate {
 
         _init(...args: any[]): void;
 
-        static ["new"](pad: Gst.Pad, runner: Runner, parent: (ElementMonitor | null)): PadMonitor;
+        static ["new"](pad: Gst.Pad, runner: Runner, parent: ElementMonitor | null): PadMonitor;
 
         // Signals
         /** @signal */
@@ -2241,18 +2233,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -2271,7 +2263,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -2305,7 +2297,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -2321,7 +2313,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -2378,9 +2370,7 @@ export namespace GstValidate {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BinMonitor.ConstructorProps, Reporter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BinMonitor.ConstructorProps, Reporter.ConstructorProps {}
     }
 
     /**
@@ -2406,7 +2396,7 @@ export namespace GstValidate {
 
         _init(...args: any[]): void;
 
-        static ["new"](pipeline: Gst.Pipeline, runner: Runner, parent: (Monitor | null)): PipelineMonitor;
+        static ["new"](pipeline: Gst.Pipeline, runner: Runner, parent: Monitor | null): PipelineMonitor;
 
         // Signals
         /** @signal */
@@ -2678,7 +2668,7 @@ export namespace GstValidate {
          * @param pipeline The pipeline to run the scenario on
          * @param scenario_name The name (or path) of the scenario to run
          */
-        static factory_create(runner: Runner, pipeline: Gst.Element, scenario_name: string): (Scenario | null);
+        static factory_create(runner: Runner, pipeline: Gst.Element, scenario_name: string): Scenario | null;
 
         // Methods
         /**
@@ -2708,7 +2698,7 @@ export namespace GstValidate {
         /**
          * @returns The {@link Gst.Pipeline} the scenario is running against
          */
-        get_pipeline(): (Gst.Element | null);
+        get_pipeline(): Gst.Element | null;
 
         /**
          * @param args 
@@ -2726,13 +2716,13 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -2751,7 +2741,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -2785,7 +2775,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param args 
@@ -2801,7 +2791,7 @@ export namespace GstValidate {
         /**
          * @virtual
          */
-        vfunc_get_pipeline(): (Gst.Pipeline | null);
+        vfunc_get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @virtual
@@ -2859,9 +2849,9 @@ export namespace GstValidate {
         name: string;
 
         // Constructors
-        constructor(scenario: (Scenario | null), action_type: ActionType, structure: Gst.Structure, add_to_lists: boolean);
+        constructor(scenario: Scenario | null, action_type: ActionType, structure: Gst.Structure, add_to_lists: boolean);
 
-        static ["new"](scenario: (Scenario | null), action_type: ActionType, structure: Gst.Structure, add_to_lists: boolean): Action;
+        static ["new"](scenario: Scenario | null, action_type: ActionType, structure: Gst.Structure, add_to_lists: boolean): Action;
 
         // Static methods
         /**
@@ -2882,7 +2872,7 @@ export namespace GstValidate {
          * Retrieve the scenario from which `action` is executed.
          * @returns The scenario from which the action is being executed.
          */
-        get_scenario(): (Scenario | null);
+        get_scenario(): Scenario | null;
 
         ref(): Action;
 
@@ -3000,7 +2990,7 @@ export namespace GstValidate {
         /**
          * @param issue_id The issue id
          */
-        static from_id(issue_id: IssueId): (Issue | null);
+        static from_id(issue_id: IssueId): Issue | null;
 
         // Methods
         get_id(): number;
@@ -3110,7 +3100,7 @@ export namespace GstValidate {
         /**
          * @param length 
          */
-        to_string(length: (bigint | number)): string;
+        to_string(length: bigint | number): string;
     }
 
 
@@ -3225,7 +3215,7 @@ export namespace GstValidate {
         /**
          * @returns report dot file name
          */
-        get_dotfile_name(): (string | null);
+        get_dotfile_name(): string | null;
 
         /**
          * @returns report issue
@@ -3267,7 +3257,7 @@ export namespace GstValidate {
         /**
          * @returns report backtrace
          */
-        get_trace(): (string | null);
+        get_trace(): string | null;
 
         print_description(): void;
 
@@ -3347,7 +3337,7 @@ export namespace GstValidate {
             /**
              * @virtual
              */
-            vfunc_get_pipeline(): (Gst.Pipeline | null);
+            vfunc_get_pipeline(): Gst.Pipeline | null;
 
             /**
              * @virtual
@@ -3394,18 +3384,18 @@ export namespace GstValidate {
          * Gets `name` of `reporter`
          * @returns The name of the reporter
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * @returns The {@link Gst.Pipeline}
          */
-        get_pipeline(): (Gst.Pipeline | null);
+        get_pipeline(): Gst.Pipeline | null;
 
         /**
          * @param issue_id The issue id to get the report from
          * @returns The {@link GstValidate.Report}
          */
-        get_report(issue_id: IssueId): (Report | null);
+        get_report(issue_id: IssueId): Report | null;
 
         get_reporting_level(): ReportingDetails;
 
@@ -3424,7 +3414,7 @@ export namespace GstValidate {
         /**
          * @returns The runner
          */
-        get_runner(): (Runner | null);
+        get_runner(): Runner | null;
 
         /**
          * @param name 
@@ -3458,7 +3448,7 @@ export namespace GstValidate {
          * Sets `name` on `reporter`
          * @param name The name of the reporter
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param runner 

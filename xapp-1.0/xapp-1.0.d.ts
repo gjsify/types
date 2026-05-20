@@ -138,7 +138,7 @@ export namespace XApp {
      * @param window The {@link XApp.GtkWindow} to set the icon name for
      * @param file_name The icon path to set, or `null` to unset.
      */
-    function set_window_icon_from_file(window: Gtk.Window, file_name: (string | null)): void;
+    function set_window_icon_from_file(window: Gtk.Window, file_name: string | null): void;
 
     /**
      * Sets the icon name hint for a window manager (like muffin) to make
@@ -151,7 +151,7 @@ export namespace XApp {
      * @param window The {@link XApp.GtkWindow} to set the icon name for
      * @param icon_name The icon name to set, or `null` to unset.
      */
-    function set_window_icon_name(window: Gtk.Window, icon_name: (string | null)): void;
+    function set_window_icon_name(window: Gtk.Window, icon_name: string | null): void;
 
     /**
      * Sets the progress hint for a window manager (like muffin) to make
@@ -195,7 +195,7 @@ export namespace XApp {
      * @param xid The Window to set the icon name for
      * @param file_name The icon path to set, or `null` to unset.
      */
-    function set_xid_icon_from_file(xid: (bigint | number), file_name: (string | null)): void;
+    function set_xid_icon_from_file(xid: bigint | number, file_name: string | null): void;
 
     /**
      * Sets the icon name hint for a window manager (like muffin) to make
@@ -207,7 +207,7 @@ export namespace XApp {
      * @param xid The Window to set the icon name for
      * @param icon_name The icon name to set, or `null` to unset.
      */
-    function set_xid_icon_name(xid: (bigint | number), icon_name: (string | null)): void;
+    function set_xid_icon_name(xid: bigint | number, icon_name: string | null): void;
 
     /**
      * Sets the progress hint for a window manager (like muffin) to make
@@ -227,7 +227,7 @@ export namespace XApp {
      * @param xid The Window to set the progress for
      * @param progress The value to set for progress.
      */
-    function set_xid_progress(xid: (bigint | number), progress: number): void;
+    function set_xid_progress(xid: bigint | number, progress: number): void;
 
     /**
      * Sets the progress pulse hint hint for a window manager (like muffin)
@@ -242,7 +242,7 @@ export namespace XApp {
      * @param xid The Window to set the progress for
      * @param pulse Whether to have pulsing set or not.
      */
-    function set_xid_progress_pulse(xid: (bigint | number), pulse: boolean): void;
+    function set_xid_progress_pulse(xid: bigint | number, pulse: boolean): void;
 
     /**
      * Gets a machine-readable description of the <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> D-Bus interface.
@@ -298,13 +298,10 @@ export namespace XApp {
 
     namespace DarkModeManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -357,9 +354,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -413,7 +408,7 @@ export namespace XApp {
          * @param mimetypes The mimetypes to filter for, or NULL to include all favorites.
          * @returns a new {@link Gtk.ActionGroup} populated with a list of favorites, or NULL             if there are no favorites.
          */
-        create_actions(mimetypes: (string | null)): Gtk.Action[];
+        create_actions(mimetypes: string | null): Gtk.Action[];
 
         /**
          * Generates a GtkMenu widget populated with favorites. The callback will be called when
@@ -422,7 +417,7 @@ export namespace XApp {
          * @param callback (closure user_data): The callback to use when a menu item has been selected.
          * @returns a new {@link Gtk.Menu} populated with a list of favorites, or NULL             if there are no favorites.
          */
-        create_menu(mimetypes: (string | null), callback: FavoritesItemSelectedCallback): Gtk.Widget;
+        create_menu(mimetypes: string | null, callback: FavoritesItemSelectedCallback): Gtk.Widget;
 
         /**
          * Looks for an XAppFavoriteInfo that corresponds to `display_name`.
@@ -444,7 +439,7 @@ export namespace XApp {
          * @param mimetypes The mimetypes to filter by for results
          * @returns a list of `XAppFavoriteInfos`.             Free the list with `g_list_free`, free elements with `xapp_favorite_info_free`.
          */
-        get_favorites(mimetypes: (string[] | null)): FavoriteInfo[];
+        get_favorites(mimetypes: string[] | null): FavoriteInfo[];
 
         /**
          * @returns The number of favorite files
@@ -489,9 +484,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -665,9 +658,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -714,7 +705,7 @@ export namespace XApp {
          * for convenience and compatibility.  Set to `null` to unset.
          * @param file_name The icon path to set, or `null` to unset.
          */
-        set_icon_from_file(file_name: (string | null)): void;
+        set_icon_from_file(file_name: string | null): void;
 
         /**
          * @param args 
@@ -730,7 +721,7 @@ export namespace XApp {
          * for convenience and compatibility.  Set to `null` to unset.
          * @param icon_name The icon name or path to set, or `null` to unset.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the progress hint for a window manager (like muffin) to make
@@ -920,13 +911,13 @@ export namespace XApp {
          * Sets the icon on the {@link XApp.IconChooserButton}.
          * @param category a string representing the category selected by default.
          */
-        set_default_category(category: (string | null)): void;
+        set_default_category(category: string | null): void;
 
         /**
          * Sets the icon on the {@link XApp.IconChooserButton}.
          * @param icon a string representing the icon to be set. This may be an icon name or a file path.
          */
-        set_icon(icon: (string | null)): void;
+        set_icon(icon: string | null): void;
 
         /**
          * Sets the icon size used in the button.
@@ -938,15 +929,15 @@ export namespace XApp {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -1026,7 +1017,7 @@ export namespace XApp {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1050,7 +1041,7 @@ export namespace XApp {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1074,7 +1065,7 @@ export namespace XApp {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -1098,7 +1089,7 @@ export namespace XApp {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1123,7 +1114,7 @@ export namespace XApp {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1148,7 +1139,7 @@ export namespace XApp {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1212,7 +1203,7 @@ export namespace XApp {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1222,7 +1213,7 @@ export namespace XApp {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1715,13 +1706,10 @@ export namespace XApp {
 
     namespace MonitorBlanker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1796,9 +1784,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectManagerClient.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusObjectManager.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectManagerClient.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusObjectManager.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -1829,12 +1815,12 @@ export namespace XApp {
 
         static new_for_bus_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): ObjectManagerClient;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): ObjectManagerClient;
 
         // Conflicted with Gio.DBusObjectManagerClient.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): ObjectManagerClient;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): ObjectManagerClient;
 
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
         static new_sync(...args: never[]): any;
@@ -1860,7 +1846,7 @@ export namespace XApp {
          * @param interface_name Interface name of the remote object or `null` to get the object proxy {@link GObject.GType}.
          * @param user_data User data (unused).
          */
-        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: (string | null), user_data: null): GObject.GType;
+        static get_proxy_type(manager: Gio.DBusObjectManagerClient, object_path: string, interface_name: string | null, user_data: null): GObject.GType;
 
         /**
          * Asynchronously creates {@link Gio.DBusObjectManagerClient} using `xapp_object_manager_client_get_proxy_type()` as the {@link Gio.DBusProxyTypeFunc}. See `g_dbus_object_manager_client_new()` for more details.
@@ -1876,7 +1862,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ObjectManagerClient> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null): void;
 
         /**
          * @param args 
@@ -1898,7 +1884,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<ObjectManagerClient> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ObjectManagerClient> | null): void;
 
         /**
          * @param args 
@@ -1946,7 +1932,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1989,7 +1975,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2032,7 +2018,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2098,7 +2084,7 @@ export namespace XApp {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2115,14 +2101,14 @@ export namespace XApp {
          * @param interface_name D-Bus interface name to look up.
          * @returns A {@link Gio.DBusInterface} instance or `null`. Free   with `g_object_unref()`.
          */
-        get_interface(object_path: string, interface_name: string): (Gio.DBusInterface | null);
+        get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @returns A {@link Gio.DBusObject} or `null`. Free with   `g_object_unref()`.
          */
-        get_object(object_path: string): (Gio.DBusObject | null);
+        get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
@@ -2143,14 +2129,14 @@ export namespace XApp {
          * @param interface_name D-Bus interface name to look up.
          * @virtual
          */
-        vfunc_get_interface(object_path: string, interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @virtual
          */
-        vfunc_get_object(object_path: string): (Gio.DBusObject | null);
+        vfunc_get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
@@ -2236,7 +2222,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2280,7 +2266,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2293,9 +2279,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectProxy.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectProxy.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -2340,8 +2324,8 @@ export namespace XApp {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from XApp.Object
          */
-        get status_icon_interface(): (StatusIconInterface | null);
-        set status_icon_interface(val: (StatusIconInterface | null));
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
 
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
@@ -2349,8 +2333,8 @@ export namespace XApp {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from XApp.Object
          */
-        get statusIconInterface(): (StatusIconInterface | null);
-        set statusIconInterface(val: (StatusIconInterface | null));
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -2358,7 +2342,7 @@ export namespace XApp {
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
          */
-        get_interface(interface_name: string): (Gio.DBusInterface | null);
+        get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -2378,7 +2362,7 @@ export namespace XApp {
          * @param interface_name A D-Bus interface name.
          * @virtual
          */
-        vfunc_get_interface(interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -2410,7 +2394,7 @@ export namespace XApp {
          * Gets the {@link XApp.StatusIconInterface} instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`, if any.
          * @returns A {@link XApp.StatusIconInterface} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_status_icon_interface(): (StatusIconInterface | null);
+        get_status_icon_interface(): StatusIconInterface | null;
     }
 
 
@@ -2422,9 +2406,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusObjectSkeleton.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusObjectSkeleton.ConstructorProps, Gio.DBusObject.ConstructorProps, Object.ConstructorProps {}
     }
 
     /**
@@ -2468,7 +2450,7 @@ export namespace XApp {
          * Sets the {@link XApp.StatusIconInterface} instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`.
          * @param interface_ A {@link XApp.StatusIconInterface} or `null` to clear the interface.
          */
-        set_status_icon_interface(interface_: (StatusIconInterface | null)): void;
+        set_status_icon_interface(interface_: StatusIconInterface | null): void;
 
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
@@ -2476,8 +2458,8 @@ export namespace XApp {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from XApp.Object
          */
-        get status_icon_interface(): (StatusIconInterface | null);
-        set status_icon_interface(val: (StatusIconInterface | null));
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
 
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
@@ -2485,8 +2467,8 @@ export namespace XApp {
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
           * @category Inherited from XApp.Object
          */
-        get statusIconInterface(): (StatusIconInterface | null);
-        set statusIconInterface(val: (StatusIconInterface | null));
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
 
         /**
          * Gets the D-Bus interface with name `interface_name` associated with
@@ -2494,7 +2476,7 @@ export namespace XApp {
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
          */
-        get_interface(interface_name: string): (Gio.DBusInterface | null);
+        get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -2514,7 +2496,7 @@ export namespace XApp {
          * @param interface_name A D-Bus interface name.
          * @virtual
          */
-        vfunc_get_interface(interface_name: string): (Gio.DBusInterface | null);
+        vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
@@ -2546,7 +2528,7 @@ export namespace XApp {
          * Gets the {@link XApp.StatusIconInterface} instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`, if any.
          * @returns A {@link XApp.StatusIconInterface} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_status_icon_interface(): (StatusIconInterface | null);
+        get_status_icon_interface(): StatusIconInterface | null;
     }
 
 
@@ -2637,9 +2619,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2756,7 +2736,7 @@ export namespace XApp {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            stack: (Gtk.Stack | null);
+            stack: Gtk.Stack | null;
         }
     }
 
@@ -2767,8 +2747,8 @@ export namespace XApp {
         static $gtype: GObject.GType<StackSidebar>;
 
         // Properties
-        get stack(): (Gtk.Stack | null);
-        set stack(val: (Gtk.Stack | null));
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * Compile-time signal type information.
@@ -2805,7 +2785,7 @@ export namespace XApp {
          * See `xapp_stack_sidebar_set_stack()`.
          * @returns the associated {@link Gtk.Stack} or     `null` if none has been set explicitly
          */
-        get_stack(): (Gtk.Stack | null);
+        get_stack(): Gtk.Stack | null;
 
         /**
          * Set the {@link Gtk.Stack} associated with this {@link XApp.StackSidebar}.
@@ -3095,7 +3075,7 @@ export namespace XApp {
          * @param _time The event time (or 0)
          * @param panel_position The {@link Gtk.PositionType} for the position of the icon.
          */
-        popup_menu(menu: (Gtk.Menu | null), x: number, y: number, button: number, _time: number, panel_position: number): void;
+        popup_menu(menu: Gtk.Menu | null, x: number, y: number, button: number, _time: number, panel_position: number): void;
 
         /**
          * Sets the icon name or local path to use.
@@ -3115,7 +3095,7 @@ export namespace XApp {
          * button 'highlighting' can behave correctly.
          * @param metadata A json-formatted string of key:values.
          */
-        set_metadata(metadata: (string | null)): void;
+        set_metadata(metadata: string | null): void;
 
         /**
          * Sets the status icon name. This is not shown to users.
@@ -3127,13 +3107,13 @@ export namespace XApp {
          * See the {@link XApp.StatusIcon.primary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
          */
-        set_primary_menu(menu: (Gtk.Menu | null)): void;
+        set_primary_menu(menu: Gtk.Menu | null): void;
 
         /**
          * See the {@link XApp.StatusIcon.secondary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
          */
-        set_secondary_menu(menu: (Gtk.Menu | null)): void;
+        set_secondary_menu(menu: Gtk.Menu | null): void;
 
         /**
          * Sets the tooltip text
@@ -3173,9 +3153,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, StatusIconInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, StatusIconInterface.ConstructorProps {}
     }
 
     /**
@@ -3206,12 +3184,12 @@ export namespace XApp {
 
         static new_for_bus_finish(res: Gio.AsyncResult): StatusIconInterfaceProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): StatusIconInterfaceProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): StatusIconInterfaceProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): StatusIconInterfaceProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): StatusIconInterfaceProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -3244,7 +3222,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null): void;
 
         /**
          * @param args 
@@ -3266,7 +3244,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<StatusIconInterfaceProxy> | null): void;
 
         /**
          * @param args 
@@ -3281,8 +3259,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
@@ -3291,8 +3269,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
@@ -3321,8 +3299,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get label(): (string | null);
-        set label(val: (string | null));
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
@@ -3331,8 +3309,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get metadata(): (string | null);
-        set metadata(val: (string | null));
+        get metadata(): string | null;
+        set metadata(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
@@ -3341,8 +3319,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
@@ -3391,8 +3369,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltip_text(): (string | null);
-        set tooltip_text(val: (string | null));
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
@@ -3401,8 +3379,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltipText(): (string | null);
-        set tooltipText(val: (string | null));
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
@@ -3454,7 +3432,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3497,7 +3475,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3540,7 +3518,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3606,7 +3584,7 @@ export namespace XApp {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -3620,7 +3598,7 @@ export namespace XApp {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3635,13 +3613,13 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -3657,7 +3635,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -3701,7 +3679,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -3745,7 +3723,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -3760,23 +3738,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_button_press_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_button_press_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_button Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param arg_panel_position Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -3792,7 +3754,23 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_button_press_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_button_press_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
@@ -3813,7 +3791,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -3828,23 +3806,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_button Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param arg_panel_position Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -3860,7 +3822,23 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
@@ -3881,7 +3859,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -3894,21 +3872,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
-         * @param arg_delta Argument to pass with the method invocation.
-         * @param arg_orientation Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -3922,7 +3886,21 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
@@ -3941,7 +3919,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -4019,9 +3997,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, StatusIconInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, StatusIconInterface.ConstructorProps {}
     }
 
     /**
@@ -4067,8 +4043,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
@@ -4077,8 +4053,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
@@ -4107,8 +4083,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get label(): (string | null);
-        set label(val: (string | null));
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
@@ -4117,8 +4093,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get metadata(): (string | null);
-        set metadata(val: (string | null));
+        get metadata(): string | null;
+        set metadata(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
@@ -4127,8 +4103,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
@@ -4177,8 +4153,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltip_text(): (string | null);
-        set tooltip_text(val: (string | null));
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
@@ -4187,8 +4163,8 @@ export namespace XApp {
          * @default null
           * @category Inherited from XApp.StatusIconInterface
          */
-        get tooltipText(): (string | null);
-        set tooltipText(val: (string | null));
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
@@ -4204,7 +4180,7 @@ export namespace XApp {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4219,13 +4195,13 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -4241,7 +4217,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -4256,23 +4232,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_button_press_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_button_press_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_button Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param arg_panel_position Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -4288,7 +4248,23 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_button_press_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_button_press_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
@@ -4309,7 +4285,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -4324,23 +4300,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_button Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param arg_panel_position Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -4356,7 +4316,23 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
@@ -4377,7 +4353,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -4390,21 +4366,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
-         * @param arg_delta Argument to pass with the method invocation.
-         * @param arg_orientation Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -4418,7 +4380,21 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
@@ -4437,7 +4413,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -4521,9 +4497,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4676,9 +4650,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, SwitcherooControl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps, SwitcherooControl.ConstructorProps {}
     }
 
     /**
@@ -4709,12 +4681,12 @@ export namespace XApp {
 
         static new_for_bus_finish(res: Gio.AsyncResult): SwitcherooControlProxy;
 
-        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null)): SwitcherooControlProxy;
+        static new_for_bus_sync(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null): SwitcherooControlProxy;
 
         // Conflicted with Gio.DBusProxy.new_for_bus_sync
         static new_for_bus_sync(...args: never[]): any;
 
-        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null)): SwitcherooControlProxy;
+        static new_sync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null): SwitcherooControlProxy;
 
         // Conflicted with Gio.DBusProxy.new_sync
         static new_sync(...args: never[]): any;
@@ -4747,7 +4719,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: (string | null), object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<SwitcherooControlProxy> | null)): void;
+        static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null): void;
 
         /**
          * @param args 
@@ -4769,7 +4741,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<SwitcherooControlProxy> | null)): void;
+        static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<SwitcherooControlProxy> | null): void;
 
         /**
          * @param args 
@@ -4783,8 +4755,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
           * @category Inherited from XApp.SwitcherooControl
          */
-        get gpus(): (GLib.Variant | null);
-        set gpus(val: (GLib.Variant | null));
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
@@ -4866,7 +4838,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4909,7 +4881,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4952,7 +4924,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -5018,7 +4990,7 @@ export namespace XApp {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -5032,7 +5004,7 @@ export namespace XApp {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5047,13 +5019,13 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5069,7 +5041,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Initializes the object implementing the interface.
@@ -5113,7 +5085,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5157,7 +5129,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -5171,9 +5143,7 @@ export namespace XApp {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, SwitcherooControl.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DBusInterfaceSkeleton.ConstructorProps, Gio.DBusInterface.ConstructorProps, SwitcherooControl.ConstructorProps {}
     }
 
     /**
@@ -5218,8 +5188,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
           * @category Inherited from XApp.SwitcherooControl
          */
-        get gpus(): (GLib.Variant | null);
-        set gpus(val: (GLib.Variant | null));
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.
@@ -5265,7 +5235,7 @@ export namespace XApp {
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): (Gio.DBusObject | null);
+        get_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5280,13 +5250,13 @@ export namespace XApp {
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: (Gio.DBusObject | null)): void;
+        set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): (Gio.DBusObject | null);
+        vfunc_dup_object(): Gio.DBusObject | null;
 
         /**
          * Gets D-Bus introspection information for the D-Bus interface
@@ -5302,7 +5272,7 @@ export namespace XApp {
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+        vfunc_set_object(object: Gio.DBusObject | null): void;
     }
 
 
@@ -5575,9 +5545,9 @@ export namespace XApp {
         sensitive: boolean;
 
         // Constructors
-        constructor(visible: boolean, sensitive: boolean, widgets: (Gtk.Widget[] | null));
+        constructor(visible: boolean, sensitive: boolean, widgets: Gtk.Widget[] | null);
 
-        static ["new"](visible: boolean, sensitive: boolean, widgets: (Gtk.Widget[] | null)): VisibilityGroup;
+        static ["new"](visible: boolean, sensitive: boolean, widgets: Gtk.Widget[] | null): VisibilityGroup;
 
         // Methods
         /**
@@ -5645,7 +5615,7 @@ export namespace XApp {
         /**
          * @param widgets The widgets to add to this group, replacing any existing ones.
          */
-        set_widgets(widgets: (Gtk.Widget[] | null)): void;
+        set_widgets(widgets: Gtk.Widget[] | null): void;
 
         /**
          * Show all widgets in the group.
@@ -5658,8 +5628,8 @@ export namespace XApp {
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
-            status_icon_interface: (StatusIconInterface | null);
-            statusIconInterface: (StatusIconInterface | null);
+            status_icon_interface: StatusIconInterface | null;
+            statusIconInterface: StatusIconInterface | null;
         }
     }
 
@@ -5679,23 +5649,23 @@ export namespace XApp {
          * 
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get status_icon_interface(): (StatusIconInterface | null);
-        set status_icon_interface(val: (StatusIconInterface | null));
+        get status_icon_interface(): StatusIconInterface | null;
+        set status_icon_interface(val: StatusIconInterface | null);
 
         /**
          * The {@link XApp.StatusIconInterface} instance corresponding to the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link>, if any.
          * 
          * Connect to the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal to get informed of property changes.
          */
-        get statusIconInterface(): (StatusIconInterface | null);
-        set statusIconInterface(val: (StatusIconInterface | null));
+        get statusIconInterface(): StatusIconInterface | null;
+        set statusIconInterface(val: StatusIconInterface | null);
 
         // Methods
         /**
          * Gets the {@link XApp.StatusIconInterface} instance for the D-Bus interface <link linkend="gdbus-interface-org-x-StatusIcon.top_of_page">org.x.StatusIcon</link> on `object`, if any.
          * @returns A {@link XApp.StatusIconInterface} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
          */
-        get_status_icon_interface(): (StatusIconInterface | null);
+        get_status_icon_interface(): StatusIconInterface | null;
     }
 
 
@@ -5749,19 +5719,19 @@ export namespace XApp {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon_name: (string | null);
-            iconName: (string | null);
+            icon_name: string | null;
+            iconName: string | null;
             icon_size: number;
             iconSize: number;
-            label: (string | null);
-            metadata: (string | null);
-            name: (string | null);
+            label: string | null;
+            metadata: string | null;
+            name: string | null;
             primary_menu_is_open: boolean;
             primaryMenuIsOpen: boolean;
             secondary_menu_is_open: boolean;
             secondaryMenuIsOpen: boolean;
-            tooltip_text: (string | null);
-            tooltipText: (string | null);
+            tooltip_text: string | null;
+            tooltipText: string | null;
             visible: boolean;
         }
     }
@@ -5794,8 +5764,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get icon_name(): (string | null);
-        set icon_name(val: (string | null));
+        get icon_name(): string | null;
+        set icon_name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconName">"IconName"</link>.
@@ -5803,8 +5773,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get iconName(): (string | null);
-        set iconName(val: (string | null));
+        get iconName(): string | null;
+        set iconName(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.IconSize">"IconSize"</link>.
@@ -5830,8 +5800,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get label(): (string | null);
-        set label(val: (string | null));
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Metadata">"Metadata"</link>.
@@ -5839,8 +5809,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get metadata(): (string | null);
-        set metadata(val: (string | null));
+        get metadata(): string | null;
+        set metadata(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Name">"Name"</link>.
@@ -5848,8 +5818,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.PrimaryMenuIsOpen">"PrimaryMenuIsOpen"</link>.
@@ -5893,8 +5863,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get tooltip_text(): (string | null);
-        set tooltip_text(val: (string | null));
+        get tooltip_text(): string | null;
+        set tooltip_text(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.TooltipText">"TooltipText"</link>.
@@ -5902,8 +5872,8 @@ export namespace XApp {
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          * @default null
          */
-        get tooltipText(): (string | null);
-        set tooltipText(val: (string | null));
+        get tooltipText(): string | null;
+        set tooltipText(val: string | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-org-x-StatusIcon.Visible">"Visible"</link>.
@@ -5928,7 +5898,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -5944,7 +5914,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method on `proxy`.
@@ -5960,7 +5930,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_press(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
@@ -5981,7 +5951,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -5996,23 +5966,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
-         * @param arg_x Argument to pass with the method invocation.
-         * @param arg_y Argument to pass with the method invocation.
-         * @param arg_button Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param arg_panel_position Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
@@ -6028,7 +5982,23 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_button_release_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_button_release_sync()` for the synchronous, blocking version of this method.
+         * @param arg_x Argument to pass with the method invocation.
+         * @param arg_y Argument to pass with the method invocation.
+         * @param arg_button Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param arg_panel_position Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_button_release(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
@@ -6049,7 +6019,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -6062,21 +6032,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
-         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
-         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
-         * 
-         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
-         * @param arg_delta Argument to pass with the method invocation.
-         * @param arg_orientation Argument to pass with the method invocation.
-         * @param arg_time Argument to pass with the method invocation.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
-         */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
@@ -6090,7 +6046,21 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
          */
-        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously invokes the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method on `proxy`.
+         * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see `g_main_context_push_thread_default()`).
+         * You can then call `xapp_status_icon_interface_call_scroll_finish()` to get the result of the operation.
+         * 
+         * See `xapp_status_icon_interface_call_scroll_sync()` for the synchronous, blocking version of this method.
+         * @param arg_delta Argument to pass with the method invocation.
+         * @param arg_orientation Argument to pass with the method invocation.
+         * @param arg_time Argument to pass with the method invocation.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         */
+        call_scroll(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
@@ -6109,7 +6079,7 @@ export namespace XApp {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          */
-        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: (Gio.Cancellable | null)): boolean;
+        call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use `g_dbus_method_invocation_return_error()` or similar.
@@ -6145,7 +6115,7 @@ export namespace XApp {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            gpus: (GLib.Variant | null);
+            gpus: GLib.Variant | null;
             has_dual_gpu: boolean;
             hasDualGpu: boolean;
             num_gpus: number;
@@ -6180,8 +6150,8 @@ export namespace XApp {
          * 
          * Since the D-Bus property for this {@link GObject.Object} property is readable but not writable, it is meaningful to read from it on both the client- and service-side. It is only meaningful, however, to write to it on the service-side.
          */
-        get gpus(): (GLib.Variant | null);
-        set gpus(val: (GLib.Variant | null));
+        get gpus(): GLib.Variant | null;
+        set gpus(val: GLib.Variant | null);
 
         /**
          * Represents the D-Bus property <link linkend="gdbus-property-net-hadess-SwitcherooControl.HasDualGpu">"HasDualGpu"</link>.

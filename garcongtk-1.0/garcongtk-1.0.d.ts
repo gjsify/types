@@ -201,7 +201,7 @@ export namespace GarconGtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](garcon_menu: (Garcon.Menu | null)): Menu;
+        static ["new"](garcon_menu: Garcon.Menu | null): Menu;
 
         // Conflicted with Gtk.Menu.new
         static ["new"](...args: never[]): any;

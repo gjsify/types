@@ -301,7 +301,7 @@ export namespace FoundryAdw {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_file(): (Gio.File | null);
+        dup_file(): Gio.File | null;
 
         /**
          * @returns the type of file that should be selected
@@ -523,7 +523,7 @@ export namespace FoundryAdw {
          * Typically, the delegate is a {@link Gtk.Text} widget.
          * @returns the delegate {@link Gtk.Editable}
          */
-        get_delegate(): (Gtk.Editable | null);
+        get_delegate(): Gtk.Editable | null;
 
         /**
          * Retrieves whether `editable` is editable.
@@ -736,7 +736,7 @@ export namespace FoundryAdw {
          * Typically, the delegate is a {@link Gtk.Text} widget.
          * @virtual
          */
-        vfunc_get_delegate(): (Gtk.Editable | null);
+        vfunc_get_delegate(): Gtk.Editable | null;
 
         /**
          * Retrieves the selection bound of the editable.
@@ -849,10 +849,10 @@ export namespace FoundryAdw {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            auxiliary: (Gtk.Widget | null);
+            auxiliary: Gtk.Widget | null;
             can_save: boolean;
             canSave: boolean;
-            content: (Gtk.Widget | null);
+            content: Gtk.Widget | null;
             icon: Gio.Icon;
             needs_attention: boolean;
             needsAttention: boolean;
@@ -868,8 +868,8 @@ export namespace FoundryAdw {
         static $gtype: GObject.GType<Page>;
 
         // Properties
-        get auxiliary(): (Gtk.Widget | null);
-        set auxiliary(val: (Gtk.Widget | null));
+        get auxiliary(): Gtk.Widget | null;
+        set auxiliary(val: Gtk.Widget | null);
 
         /**
          * @read-only
@@ -883,8 +883,8 @@ export namespace FoundryAdw {
          */
         get canSave(): boolean;
 
-        get content(): (Gtk.Widget | null);
-        set content(val: (Gtk.Widget | null));
+        get content(): Gtk.Widget | null;
+        set content(val: Gtk.Widget | null);
 
         /**
          * @read-only
@@ -975,22 +975,22 @@ export namespace FoundryAdw {
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_menu(): (Gio.MenuModel | null);
+        vfunc_dup_menu(): Gio.MenuModel | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_subtitle(): (string | null);
+        vfunc_dup_subtitle(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         /**
          * @virtual
@@ -1017,23 +1017,23 @@ export namespace FoundryAdw {
          */
         action_set_enabled(action_name: string, enabled: boolean): void;
 
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
-        dup_menu(): (Gio.MenuModel | null);
+        dup_menu(): Gio.MenuModel | null;
 
-        dup_subtitle(): (string | null);
+        dup_subtitle(): string | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * Gets the auxiliary widget for the page, if any.
          */
-        get_auxiliary(): (Gtk.Widget | null);
+        get_auxiliary(): Gtk.Widget | null;
 
         /**
          * @returns the content widget
          */
-        get_content(): (Gtk.Widget | null);
+        get_content(): Gtk.Widget | null;
 
         /**
          * Gets whether the page needs attention from the user.
@@ -1128,7 +1128,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1136,7 +1136,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1164,13 +1164,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1214,7 +1214,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1223,7 +1223,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1281,7 +1281,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1289,13 +1289,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1311,13 +1311,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1337,7 +1337,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1347,7 +1347,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1358,7 +1358,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1369,7 +1369,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1378,7 +1378,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -1489,14 +1489,14 @@ export namespace FoundryAdw {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            child: (Gtk.Widget | null);
-            icon: (Gio.Icon | null);
+            child: Gtk.Widget | null;
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             id: string;
             needs_attention: boolean;
             needsAttention: boolean;
-            title: (string | null);
+            title: string | null;
         }
     }
 
@@ -1507,11 +1507,11 @@ export namespace FoundryAdw {
         static $gtype: GObject.GType<Panel>;
 
         // Properties
-        get child(): (Gtk.Widget | null);
-        set child(val: (Gtk.Widget | null));
+        get child(): Gtk.Widget | null;
+        set child(val: Gtk.Widget | null);
 
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -1546,8 +1546,8 @@ export namespace FoundryAdw {
         /**
          * @default null
          */
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1585,9 +1585,9 @@ export namespace FoundryAdw {
         vfunc_presented(): void;
 
         // Methods
-        get_child(): (Gtk.Widget | null);
+        get_child(): Gtk.Widget | null;
 
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_id(): string;
 
@@ -1597,7 +1597,7 @@ export namespace FoundryAdw {
          */
         get_needs_attention(): boolean;
 
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * Emits the "raise" signal on the panel.
@@ -1682,7 +1682,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1690,7 +1690,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -1718,13 +1718,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1768,7 +1768,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -1777,7 +1777,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -1835,7 +1835,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -1843,13 +1843,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -1865,13 +1865,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -1891,7 +1891,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -1901,7 +1901,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -1912,7 +1912,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -1923,7 +1923,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -1932,7 +1932,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2034,7 +2034,7 @@ export namespace FoundryAdw {
             showBottom: boolean;
             show_start: boolean;
             showStart: boolean;
-            workspace: (Workspace | null);
+            workspace: Workspace | null;
         }
     }
 
@@ -2069,8 +2069,8 @@ export namespace FoundryAdw {
         get showStart(): boolean;
         set showStart(val: boolean);
 
-        get workspace(): (Workspace | null);
-        set workspace(val: (Workspace | null));
+        get workspace(): Workspace | null;
+        set workspace(val: Workspace | null);
 
         /**
          * Compile-time signal type information.
@@ -2106,7 +2106,7 @@ export namespace FoundryAdw {
 
         get_show_start(): boolean;
 
-        get_workspace(): (Workspace | null);
+        get_workspace(): Workspace | null;
 
         /**
          * @param bottom 
@@ -2168,7 +2168,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2176,7 +2176,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2204,13 +2204,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2254,7 +2254,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2263,7 +2263,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2321,7 +2321,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2329,13 +2329,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2351,13 +2351,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2377,7 +2377,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2387,7 +2387,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2398,7 +2398,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2409,7 +2409,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2418,7 +2418,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -2514,9 +2514,9 @@ export namespace FoundryAdw {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            root: (PathNavigator | any);
-            selected_item: (PathNavigator | null);
-            selectedItem: (PathNavigator | null);
+            root: PathNavigator | any;
+            selected_item: PathNavigator | null;
+            selectedItem: PathNavigator | null;
         }
     }
 
@@ -2528,15 +2528,15 @@ export namespace FoundryAdw {
 
         // Properties
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get root(): (PathNavigator | any);
+        get root(): PathNavigator | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set root(val: (PathNavigator | any));
+        set root(val: PathNavigator | any);
 
-        get selected_item(): (PathNavigator | null);
-        set selected_item(val: (PathNavigator | null));
+        get selected_item(): PathNavigator | null;
+        set selected_item(val: PathNavigator | null);
 
-        get selectedItem(): (PathNavigator | null);
-        set selectedItem(val: (PathNavigator | null));
+        get selectedItem(): PathNavigator | null;
+        set selectedItem(val: PathNavigator | null);
 
         /**
          * Compile-time signal type information.
@@ -2568,9 +2568,9 @@ export namespace FoundryAdw {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_root(): (PathNavigator | null);
+        dup_root(): PathNavigator | null;
 
-        get_selected_item(): (PathNavigator | null);
+        get_selected_item(): PathNavigator | null;
 
         /**
          * Set a root navigator that will always be shown regardless of the
@@ -2578,7 +2578,7 @@ export namespace FoundryAdw {
          * that you always want to show.
          * @param root a root navigator
          */
-        set_root(root: (PathNavigator | null)): void;
+        set_root(root: PathNavigator | null): void;
 
         /**
          * @param selected_item 
@@ -2630,7 +2630,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2638,7 +2638,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -2666,13 +2666,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2716,7 +2716,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -2725,7 +2725,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -2783,7 +2783,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -2791,13 +2791,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -2813,13 +2813,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -2839,7 +2839,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -2849,7 +2849,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -2860,7 +2860,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -2871,7 +2871,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -2880,7 +2880,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -3002,18 +3002,18 @@ export namespace FoundryAdw {
         /**
          * @virtual
          */
-        vfunc_dup_icon(): (Gio.Icon | null);
+        vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * Gets an intent that can be used to navigate to this path navigator.
          * @virtual
          */
-        vfunc_dup_intent(): (Foundry.Intent | null);
+        vfunc_dup_intent(): Foundry.Intent | null;
 
         /**
          * @virtual
          */
-        vfunc_dup_title(): (string | null);
+        vfunc_dup_title(): string | null;
 
         /**
          * @virtual
@@ -3031,15 +3031,15 @@ export namespace FoundryAdw {
         vfunc_list_siblings(): Dex.Future;
 
         // Methods
-        dup_icon(): (Gio.Icon | null);
+        dup_icon(): Gio.Icon | null;
 
         /**
          * Gets an intent that can be used to navigate to this path navigator.
          * @returns a {@link Foundry.Intent} or `null`
          */
-        dup_intent(): (Foundry.Intent | null);
+        dup_intent(): Foundry.Intent | null;
 
-        dup_title(): (string | null);
+        dup_title(): string | null;
 
         /**
          * @returns a {@link Dex.Future} that resolves   to a {@link FoundryAdw.PathNavigator} or rejects with error.
@@ -3181,7 +3181,7 @@ export namespace FoundryAdw {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        dup_context(): (Foundry.Context | null);
+        dup_context(): Foundry.Context | null;
 
         /**
          * @param context 
@@ -3337,23 +3337,23 @@ export namespace FoundryAdw {
             activate_on_click: boolean;
             activateOnClick: boolean;
             expanded: boolean;
-            expanded_icon: (Gio.Icon | null);
-            expandedIcon: (Gio.Icon | null);
+            expanded_icon: Gio.Icon | null;
+            expandedIcon: Gio.Icon | null;
             expanded_icon_name: string;
             expandedIconName: string;
-            expanded_paintable: (Gdk.Paintable | null);
-            expandedPaintable: (Gdk.Paintable | null);
-            icon: (Gio.Icon | null);
+            expanded_paintable: Gdk.Paintable | null;
+            expandedPaintable: Gdk.Paintable | null;
+            icon: Gio.Icon | null;
             icon_name: string;
             iconName: string;
             ignored: boolean;
-            item: (GObject.Object | null);
-            list_row: (Gtk.TreeListRow | null);
-            listRow: (Gtk.TreeListRow | null);
-            menu_model: (Gio.MenuModel | null);
-            menuModel: (Gio.MenuModel | null);
-            paintable: (Gdk.Paintable | null);
-            suffix: (Gtk.Widget | null);
+            item: GObject.Object | null;
+            list_row: Gtk.TreeListRow | null;
+            listRow: Gtk.TreeListRow | null;
+            menu_model: Gio.MenuModel | null;
+            menuModel: Gio.MenuModel | null;
+            paintable: Gdk.Paintable | null;
+            suffix: Gtk.Widget | null;
             title: string;
             use_markup: boolean;
             useMarkup: boolean;
@@ -3399,11 +3399,11 @@ export namespace FoundryAdw {
          */
         get expanded(): boolean;
 
-        get expanded_icon(): (Gio.Icon | null);
-        set expanded_icon(val: (Gio.Icon | null));
+        get expanded_icon(): Gio.Icon | null;
+        set expanded_icon(val: Gio.Icon | null);
 
-        get expandedIcon(): (Gio.Icon | null);
-        set expandedIcon(val: (Gio.Icon | null));
+        get expandedIcon(): Gio.Icon | null;
+        set expandedIcon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -3417,14 +3417,14 @@ export namespace FoundryAdw {
          */
         set expandedIconName(val: string);
 
-        get expanded_paintable(): (Gdk.Paintable | null);
-        set expanded_paintable(val: (Gdk.Paintable | null));
+        get expanded_paintable(): Gdk.Paintable | null;
+        set expanded_paintable(val: Gdk.Paintable | null);
 
-        get expandedPaintable(): (Gdk.Paintable | null);
-        set expandedPaintable(val: (Gdk.Paintable | null));
+        get expandedPaintable(): Gdk.Paintable | null;
+        set expandedPaintable(val: Gdk.Paintable | null);
 
-        get icon(): (Gio.Icon | null);
-        set icon(val: (Gio.Icon | null));
+        get icon(): Gio.Icon | null;
+        set icon(val: Gio.Icon | null);
 
         /**
          * @write-only
@@ -3447,19 +3447,19 @@ export namespace FoundryAdw {
         /**
          * @read-only
          */
-        get item(): (GObject.Object | null);
+        get item(): GObject.Object | null;
 
-        get list_row(): (Gtk.TreeListRow | null);
-        set list_row(val: (Gtk.TreeListRow | null));
+        get list_row(): Gtk.TreeListRow | null;
+        set list_row(val: Gtk.TreeListRow | null);
 
-        get listRow(): (Gtk.TreeListRow | null);
-        set listRow(val: (Gtk.TreeListRow | null));
+        get listRow(): Gtk.TreeListRow | null;
+        set listRow(val: Gtk.TreeListRow | null);
 
-        get menu_model(): (Gio.MenuModel | null);
-        set menu_model(val: (Gio.MenuModel | null));
+        get menu_model(): Gio.MenuModel | null;
+        set menu_model(val: Gio.MenuModel | null);
 
-        get menuModel(): (Gio.MenuModel | null);
-        set menuModel(val: (Gio.MenuModel | null));
+        get menuModel(): Gio.MenuModel | null;
+        set menuModel(val: Gio.MenuModel | null);
 
         /**
          * The paintable to display for the row.
@@ -3468,11 +3468,11 @@ export namespace FoundryAdw {
          * properties.
          * @since 1.1
          */
-        get paintable(): (Gdk.Paintable | null);
-        set paintable(val: (Gdk.Paintable | null));
+        get paintable(): Gdk.Paintable | null;
+        set paintable(val: Gdk.Paintable | null);
 
-        get suffix(): (Gtk.Widget | null);
-        set suffix(val: (Gtk.Widget | null));
+        get suffix(): Gtk.Widget | null;
+        set suffix(val: Gtk.Widget | null);
 
         /**
          * @default null
@@ -3533,19 +3533,19 @@ export namespace FoundryAdw {
          * Gets the icon for the row when expanded.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_expanded_icon(): (Gio.Icon | null);
+        get_expanded_icon(): Gio.Icon | null;
 
         /**
          * Gets the paintable for the row when expanded.
          * @returns a {@link Gdk.Paintable} or `null`
          */
-        get_expanded_paintable(): (Gdk.Paintable | null);
+        get_expanded_paintable(): Gdk.Paintable | null;
 
         /**
          * Gets the icon for the row.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): (Gio.Icon | null);
+        get_icon(): Gio.Icon | null;
 
         get_ignored(): boolean;
 
@@ -3559,25 +3559,25 @@ export namespace FoundryAdw {
          * Gets the list row for the expander.
          * @returns a {@link Gtk.TreeListRow} or `null`
          */
-        get_list_row(): (Gtk.TreeListRow | null);
+        get_list_row(): Gtk.TreeListRow | null;
 
         /**
          * Sets the menu model to use for context menus.
          * @returns a {@link Gio.MenuModel} or `null`
          */
-        get_menu_model(): (Gio.MenuModel | null);
+        get_menu_model(): Gio.MenuModel | null;
 
         /**
          * Gets the paintable for the row.
          * @returns a {@link Gdk.Paintable} or `null`
          */
-        get_paintable(): (Gdk.Paintable | null);
+        get_paintable(): Gdk.Paintable | null;
 
         /**
          * Get the suffix widget, if any.
          * @returns a {@link Gtk.Widget}
          */
-        get_suffix(): (Gtk.Widget | null);
+        get_suffix(): Gtk.Widget | null;
 
         get_title(): string;
 
@@ -3611,7 +3611,7 @@ export namespace FoundryAdw {
          * properties.
          * @param expanded_paintable a {@link Gdk.Paintable} or `null`
          */
-        set_expanded_paintable(expanded_paintable: (Gdk.Paintable | null)): void;
+        set_expanded_paintable(expanded_paintable: Gdk.Paintable | null): void;
 
         /**
          * @param icon 
@@ -3645,7 +3645,7 @@ export namespace FoundryAdw {
          * properties.
          * @param paintable a {@link Gdk.Paintable} or `null`
          */
-        set_paintable(paintable: (Gdk.Paintable | null)): void;
+        set_paintable(paintable: Gdk.Paintable | null): void;
 
         /**
          * @param suffix 
@@ -3712,7 +3712,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3720,7 +3720,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -3748,13 +3748,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3798,7 +3798,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -3807,7 +3807,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -3865,7 +3865,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -3873,13 +3873,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -3895,13 +3895,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -3921,7 +3921,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -3931,7 +3931,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -3942,7 +3942,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -3953,7 +3953,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -3962,7 +3962,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4070,29 +4070,29 @@ export namespace FoundryAdw {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            active_page: (Page | null);
-            activePage: (Page | null);
-            auxiliary_placeholder: (Gtk.Widget | null);
-            auxiliaryPlaceholder: (Gtk.Widget | null);
+            active_page: Page | null;
+            activePage: Page | null;
+            auxiliary_placeholder: Gtk.Widget | null;
+            auxiliaryPlaceholder: Gtk.Widget | null;
             collapsed: boolean;
-            collapsed_titlebar: (Gtk.Widget | null);
-            collapsedTitlebar: (Gtk.Widget | null);
-            context: (Foundry.Context | null);
+            collapsed_titlebar: Gtk.Widget | null;
+            collapsedTitlebar: Gtk.Widget | null;
+            context: Foundry.Context | null;
             has_auxiliary: boolean;
             hasAuxiliary: boolean;
-            primary_menu: (Gio.MenuModel | null);
-            primaryMenu: (Gio.MenuModel | null);
+            primary_menu: Gio.MenuModel | null;
+            primaryMenu: Gio.MenuModel | null;
             show_auxiliary: boolean;
             showAuxiliary: boolean;
             show_sidebar: boolean;
             showSidebar: boolean;
             show_utilities: boolean;
             showUtilities: boolean;
-            sidebar_titlebar: (Gtk.Widget | null);
-            sidebarTitlebar: (Gtk.Widget | null);
-            status_widget: (Gtk.Widget | null);
-            statusWidget: (Gtk.Widget | null);
-            titlebar: (Gtk.Widget | null);
+            sidebar_titlebar: Gtk.Widget | null;
+            sidebarTitlebar: Gtk.Widget | null;
+            status_widget: Gtk.Widget | null;
+            statusWidget: Gtk.Widget | null;
+            titlebar: Gtk.Widget | null;
         }
     }
 
@@ -4106,18 +4106,18 @@ export namespace FoundryAdw {
         /**
          * @read-only
          */
-        get active_page(): (Page | null);
+        get active_page(): Page | null;
 
         /**
          * @read-only
          */
-        get activePage(): (Page | null);
+        get activePage(): Page | null;
 
-        get auxiliary_placeholder(): (Gtk.Widget | null);
-        set auxiliary_placeholder(val: (Gtk.Widget | null));
+        get auxiliary_placeholder(): Gtk.Widget | null;
+        set auxiliary_placeholder(val: Gtk.Widget | null);
 
-        get auxiliaryPlaceholder(): (Gtk.Widget | null);
-        set auxiliaryPlaceholder(val: (Gtk.Widget | null));
+        get auxiliaryPlaceholder(): Gtk.Widget | null;
+        set auxiliaryPlaceholder(val: Gtk.Widget | null);
 
         /**
          * @read-only
@@ -4125,14 +4125,14 @@ export namespace FoundryAdw {
          */
         get collapsed(): boolean;
 
-        get collapsed_titlebar(): (Gtk.Widget | null);
-        set collapsed_titlebar(val: (Gtk.Widget | null));
+        get collapsed_titlebar(): Gtk.Widget | null;
+        set collapsed_titlebar(val: Gtk.Widget | null);
 
-        get collapsedTitlebar(): (Gtk.Widget | null);
-        set collapsedTitlebar(val: (Gtk.Widget | null));
+        get collapsedTitlebar(): Gtk.Widget | null;
+        set collapsedTitlebar(val: Gtk.Widget | null);
 
-        get context(): (Foundry.Context | null);
-        set context(val: (Foundry.Context | null));
+        get context(): Foundry.Context | null;
+        set context(val: Foundry.Context | null);
 
         /**
          * @read-only
@@ -4146,11 +4146,11 @@ export namespace FoundryAdw {
          */
         get hasAuxiliary(): boolean;
 
-        get primary_menu(): (Gio.MenuModel | null);
-        set primary_menu(val: (Gio.MenuModel | null));
+        get primary_menu(): Gio.MenuModel | null;
+        set primary_menu(val: Gio.MenuModel | null);
 
-        get primaryMenu(): (Gio.MenuModel | null);
-        set primaryMenu(val: (Gio.MenuModel | null));
+        get primaryMenu(): Gio.MenuModel | null;
+        set primaryMenu(val: Gio.MenuModel | null);
 
         /**
          * @default false
@@ -4188,20 +4188,20 @@ export namespace FoundryAdw {
         get showUtilities(): boolean;
         set showUtilities(val: boolean);
 
-        get sidebar_titlebar(): (Gtk.Widget | null);
-        set sidebar_titlebar(val: (Gtk.Widget | null));
+        get sidebar_titlebar(): Gtk.Widget | null;
+        set sidebar_titlebar(val: Gtk.Widget | null);
 
-        get sidebarTitlebar(): (Gtk.Widget | null);
-        set sidebarTitlebar(val: (Gtk.Widget | null));
+        get sidebarTitlebar(): Gtk.Widget | null;
+        set sidebarTitlebar(val: Gtk.Widget | null);
 
-        get status_widget(): (Gtk.Widget | null);
-        set status_widget(val: (Gtk.Widget | null));
+        get status_widget(): Gtk.Widget | null;
+        set status_widget(val: Gtk.Widget | null);
 
-        get statusWidget(): (Gtk.Widget | null);
-        set statusWidget(val: (Gtk.Widget | null));
+        get statusWidget(): Gtk.Widget | null;
+        set statusWidget(val: Gtk.Widget | null);
 
-        get titlebar(): (Gtk.Widget | null);
-        set titlebar(val: (Gtk.Widget | null));
+        get titlebar(): Gtk.Widget | null;
+        set titlebar(val: Gtk.Widget | null);
 
         /**
          * Compile-time signal type information.
@@ -4253,14 +4253,14 @@ export namespace FoundryAdw {
          * @param page_type 
          * @returns the first page that matches, or `null`
          */
-        find_page_typed(page_type: GObject.GType): (Page | null);
+        find_page_typed(page_type: GObject.GType): Page | null;
 
         /**
          * Find the first panel matching `id`.
          * @param id the panel ID to search for
          * @returns the first panel that matches, or `null`
          */
-        find_panel_by_id(id: string): (Panel | null);
+        find_panel_by_id(id: string): Panel | null;
 
         /**
          * Calls `callback` for every {@link FoundryAdw.Page} in the workspace.
@@ -4274,13 +4274,13 @@ export namespace FoundryAdw {
          */
         foreach_panel(callback: GLib.Func): void;
 
-        get_active_page(): (Page | null);
+        get_active_page(): Page | null;
 
         /**
          * Gets the auxiliary placeholder widget.
          * @returns the auxiliary placeholder widget
          */
-        get_auxiliary_placeholder(): (Gtk.Widget | null);
+        get_auxiliary_placeholder(): Gtk.Widget | null;
 
         /**
          * Gets if the workspace is in collapsed form, meaning a narrow
@@ -4290,9 +4290,9 @@ export namespace FoundryAdw {
          */
         get_collapsed(): boolean;
 
-        get_collapsed_titlebar(): (Gtk.Widget | null);
+        get_collapsed_titlebar(): Gtk.Widget | null;
 
-        get_context(): (Foundry.Context | null);
+        get_context(): Foundry.Context | null;
 
         /**
          * Gets if the active page has an auxiliary widget.
@@ -4300,7 +4300,7 @@ export namespace FoundryAdw {
          */
         get_has_auxiliary(): boolean;
 
-        get_primary_menu(): (Gio.MenuModel | null);
+        get_primary_menu(): Gio.MenuModel | null;
 
         /**
          * Gets if the auxiliary should be shown when the workspace is not collapsed.
@@ -4317,11 +4317,11 @@ export namespace FoundryAdw {
          */
         get_show_utilities(): boolean;
 
-        get_sidebar_titlebar(): (Gtk.Widget | null);
+        get_sidebar_titlebar(): Gtk.Widget | null;
 
-        get_status_widget(): (Gtk.Widget | null);
+        get_status_widget(): Gtk.Widget | null;
 
-        get_titlebar(): (Gtk.Widget | null);
+        get_titlebar(): Gtk.Widget | null;
 
         /**
          * @param page 
@@ -4337,7 +4337,7 @@ export namespace FoundryAdw {
          * Sets the auxiliary placeholder widget.
          * @param placeholder the auxiliary placeholder widget
          */
-        set_auxiliary_placeholder(placeholder: (Gtk.Widget | null)): void;
+        set_auxiliary_placeholder(placeholder: Gtk.Widget | null): void;
 
         /**
          * @param collapsed_titlebar 
@@ -4432,7 +4432,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4440,7 +4440,7 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -4468,13 +4468,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4518,7 +4518,7 @@ export namespace FoundryAdw {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -4527,7 +4527,7 @@ export namespace FoundryAdw {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -4585,7 +4585,7 @@ export namespace FoundryAdw {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -4593,13 +4593,13 @@ export namespace FoundryAdw {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -4615,13 +4615,13 @@ export namespace FoundryAdw {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -4641,7 +4641,7 @@ export namespace FoundryAdw {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -4651,7 +4651,7 @@ export namespace FoundryAdw {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -4662,7 +4662,7 @@ export namespace FoundryAdw {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -4673,7 +4673,7 @@ export namespace FoundryAdw {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -4682,7 +4682,7 @@ export namespace FoundryAdw {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this
@@ -4876,9 +4876,7 @@ export namespace FoundryAdw {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Page.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Page.ConstructorProps {}
     }
 
     export interface SplitablePageNamespace {

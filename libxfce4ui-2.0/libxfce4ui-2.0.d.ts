@@ -190,7 +190,7 @@ export namespace Libxfce4ui {
      * @returns #GTK_RESPONSE_CANCEL if cancelled, #GTK_RESPONSE_YES if the user wants to close the window, #GTK_RESPONSE_CLOSE if the user wants to close the tab, and #GTK_RESPONSE_NONE for an error.
      * @since 4.16
      */
-    function dialog_confirm_close_tabs(parent: (Gtk.Window | null), num_tabs: number, show_confirm_box: boolean, confirm_box_checked: (boolean | null)): number;
+    function dialog_confirm_close_tabs(parent: Gtk.Window | null, num_tabs: number, show_confirm_box: boolean, confirm_box_checked: boolean | null): number;
 
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
@@ -206,7 +206,7 @@ export namespace Libxfce4ui {
      * @param offset anchor offset in `page` or `null`.
      * @since 4.10
      */
-    function dialog_show_help(parent: (Gtk.Window | null), component: (string | null), page: (string | null), offset: (string | null)): void;
+    function dialog_show_help(parent: Gtk.Window | null, component: string | null, page: string | null, offset: string | null): void;
 
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
@@ -224,7 +224,7 @@ export namespace Libxfce4ui {
      * @param version alternative version, or `null` to use `xfce_version_string()`.
      * @since 4.12
      */
-    function dialog_show_help_with_version(parent: (Gtk.Window | null), component: (string | null), page: (string | null), offset: (string | null), version: (string | null)): void;
+    function dialog_show_help_with_version(parent: Gtk.Window | null, component: string | null, page: string | null, offset: string | null, version: string | null): void;
 
     /**
      * Similar to gdk_seat_grab but tries to grab the seat five times with 100ms
@@ -236,7 +236,7 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` otherwise.
      * @since 4.18
      */
-    function gdk_device_grab(seat: Gdk.Seat, window: Gdk.Window, capabilities: Gdk.SeatCapabilities, cursor: (Gdk.Cursor | null)): boolean;
+    function gdk_device_grab(seat: Gdk.Seat, window: Gdk.Window, capabilities: Gdk.SeatCapabilities, cursor: Gdk.Cursor | null): boolean;
 
     /**
      * Returns the currently active {@link Gdk.Screen}, that is, the screen which
@@ -305,7 +305,7 @@ export namespace Libxfce4ui {
      * @param label the text of the button, with an underscore                        in front of the mnemonic character.
      * @returns the newly created {@link Gtk.Button} widget.
      */
-    function gtk_button_new_mixed(stock_id: (string | null), label: (string | null)): Gtk.Widget;
+    function gtk_button_new_mixed(stock_id: string | null, label: string | null): Gtk.Widget;
 
     /**
      * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
@@ -319,7 +319,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.CheckMenuItem}.
      * @since 4.16
      */
-    function gtk_check_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+    function gtk_check_menu_item_new(label_text: string, tooltip_text: string | null, accel_path: string | null, callback: GObject.Callback | null, callback_param: GObject.Object | null, active: boolean, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget;
 
     /**
      * Activates the callback function of the {@link Libxfce4ui.GtkActionEntry} that corresponds to `accel_path`. If no such action
@@ -330,7 +330,7 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is TRUE if the action was found, otherwise it is FALSE
      */
-    function gtk_execute_tab_accel(accel_path: string, data: null, entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+    function gtk_execute_tab_accel(accel_path: string, data: null, entries: GtkActionEntry, entry_count: bigint | number): boolean;
 
     /**
      * Creates an Xfce-styled frame. The frame is a {@link Gtk.Frame}, without
@@ -362,7 +362,7 @@ export namespace Libxfce4ui {
      * @returns The matching {@link Libxfce4ui.GtkActionEntry} or NULL if not found
      * @since 4.16
      */
-    function gtk_get_action_entry_by_id(action_entries: GtkActionEntry, n_action_entries: number, id: number): (GtkActionEntry | null);
+    function gtk_get_action_entry_by_id(action_entries: GtkActionEntry, n_action_entries: number, id: number): GtkActionEntry | null;
 
     /**
      * The Tab key is used to navigate the interface by GTK+ so we need to handle shortcuts with the Tab accelerator manually.
@@ -374,7 +374,7 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is GDK_EVENT_STOP (TRUE) if the event was handled, otherwise it is GDK_EVENT_PROPAGATE (FALSE)
      */
-    function gtk_handle_tab_accels(key_event: Gdk.EventKey, accel_group: Gtk.AccelGroup, data: null, entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+    function gtk_handle_tab_accels(key_event: Gdk.EventKey, accel_group: Gtk.AccelGroup, data: null, entries: GtkActionEntry, entry_count: bigint | number): boolean;
 
     /**
      * Convenience method to create a deprecated {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
@@ -389,7 +389,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ImageMenuItem}.
      * @since 4.16
      */
-    function gtk_image_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), image: (Gtk.Widget | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+    function gtk_image_menu_item_new(label_text: string, tooltip_text: string | null, accel_path: string | null, callback: GObject.Callback | null, callback_param: GObject.Object | null, image: Gtk.Widget | null, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget;
 
     /**
      * Convenience method to create a {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
@@ -403,7 +403,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ImageMenuItem}.
      * @since 4.16
      */
-    function gtk_image_menu_item_new_from_icon_name(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), icon_name: (string | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+    function gtk_image_menu_item_new_from_icon_name(label_text: string, tooltip_text: string | null, accel_path: string | null, callback: GObject.Callback | null, callback_param: GObject.Object | null, icon_name: string | null, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget;
 
     /**
      * Sets the `ATK_RELATION_LABEL_FOR` relation on `label` for `widget`, which means
@@ -440,7 +440,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem}.
      * @since 4.16
      */
-    function gtk_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+    function gtk_menu_item_new(label_text: string, tooltip_text: string | null, accel_path: string | null, callback: GObject.Callback | null, callback_param: GObject.Object | null, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget;
 
     /**
      * Method to create a menu item from the passed action entry
@@ -450,7 +450,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
      * @since 4.16
      */
-    function gtk_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), menu_to_append_item: (Gtk.MenuShell | null)): (Gtk.Widget | null);
+    function gtk_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: GObject.Object | null, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget | null;
 
     /**
      * Use the passed accel_path show the related {@link Gtk.AccelLabel} with the correct accelerator on the item.
@@ -458,7 +458,7 @@ export namespace Libxfce4ui {
      * @param accel_path Unique path, used to identify the accelerator, or NULL to show no accelerator
      * @since 4.16
      */
-    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: (string | null)): void;
+    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: string | null): void;
 
     /**
      * Attempts to pop up a {@link Gtk.Menu} for a short duration. Unlike the original
@@ -492,7 +492,7 @@ export namespace Libxfce4ui {
      * @returns `true` if the menu could be mapped, `false` otherwise.
      * @since 4.14
      */
-    function gtk_menu_popup_until_mapped(menu: Gtk.Menu, parent_menu_shell: (Gtk.Widget | null), parent_menu_item: (Gtk.Widget | null), func: (Gtk.MenuPositionFunc | null), button: number, activate_time: number): boolean;
+    function gtk_menu_popup_until_mapped(menu: Gtk.Menu, parent_menu_shell: Gtk.Widget | null, parent_menu_item: Gtk.Widget | null, func: Gtk.MenuPositionFunc | null, button: number, activate_time: number): boolean;
 
     /**
      * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
@@ -507,7 +507,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.CheckMenuItem}.
      * @since 4.16
      */
-    function gtk_radio_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+    function gtk_radio_menu_item_new(label_text: string, tooltip_text: string | null, accel_path: string | null, callback: GObject.Callback | null, callback_param: GObject.Object | null, active: boolean, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget;
 
     /**
      * Method to create a toggle menu item from the passed action entry
@@ -518,7 +518,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
      * @since 4.16
      */
-    function gtk_toggle_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): (Gtk.Widget | null);
+    function gtk_toggle_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: GObject.Object | null, active: boolean, menu_to_append_item: Gtk.MenuShell | null): Gtk.Widget | null;
 
     /**
      * Method to create a toolbar toggle-button from the passed action entry.
@@ -529,7 +529,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ToggleToolButton}
      * @since 4.17.6
      */
-    function gtk_toggle_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), active: boolean, toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
+    function gtk_toggle_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: GObject.Object | null, active: boolean, toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
 
     /**
      * Method to create a toolbar button from the passed action entry.
@@ -539,7 +539,7 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ToolButton}
      * @since 4.16
      */
-    function gtk_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
+    function gtk_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: GObject.Object | null, toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
 
     /**
      * Convenience method to translate the label text and tooltip text of an array of action_entries
@@ -595,7 +595,7 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` if `error` is set.
      * @since 4.16
      */
-    function spawn(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null), child_process: boolean): boolean;
+    function spawn(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null, child_process: boolean): boolean;
 
     /**
      * Executes the given `command_line` and returns `true` if the
@@ -609,7 +609,7 @@ export namespace Libxfce4ui {
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @since 4.16
      */
-    function spawn_command_line(screen: (Gdk.Screen | null), command_line: string, in_terminal: boolean, startup_notify: boolean, child_process: boolean): boolean;
+    function spawn_command_line(screen: Gdk.Screen | null, command_line: string, in_terminal: boolean, startup_notify: boolean, child_process: boolean): boolean;
 
     /**
      * Executes the given `command_line` and returns `true` if the
@@ -622,7 +622,7 @@ export namespace Libxfce4ui {
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn_command_line` instead.
      */
-    function spawn_command_line_on_screen(screen: (Gdk.Screen | null), command_line: string, in_terminal: boolean, startup_notify: boolean): boolean;
+    function spawn_command_line_on_screen(screen: Gdk.Screen | null, command_line: string, in_terminal: boolean, startup_notify: boolean): boolean;
 
     /**
      * Like `gdk_spawn_on_screen()` (GDK 2), but also supports startup notification
@@ -638,7 +638,7 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn` instead.
      */
-    function spawn_on_screen(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null)): boolean;
+    function spawn_on_screen(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null): boolean;
 
     /**
      * Like `xfce_spawn_on_screen()`, but allows to attach a closure to watch the
@@ -680,7 +680,7 @@ export namespace Libxfce4ui {
      * @param child_watch_closure closure that is triggered when the child exists                        or `null`.
      * @returns `true` on success, `false` if `error` is set.
      */
-    function spawn_on_screen_with_child_watch(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null), child_watch_closure: (GObject.Closure | null)): boolean;
+    function spawn_on_screen_with_child_watch(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null, child_watch_closure: GObject.Closure | null): boolean;
 
     /**
      * Moves a widget from one GtkContainer to another, handling reference
@@ -694,13 +694,10 @@ export namespace Libxfce4ui {
 
     namespace ClipboardManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -992,7 +989,7 @@ export namespace Libxfce4ui {
              * @signal
              * @run-last
              */
-            "quit-requested": () => (boolean | void);
+            "quit-requested": () => boolean | void;
             /**
              * Signals the client that it should save a copy of its current state
              * such that it could be restarted later in exactly the same state as
@@ -1653,7 +1650,7 @@ export namespace Libxfce4ui {
          * shown at the top of dialog.
          * @param subtitle the new subtitle for the `titled_dialog`, or `null`.
          */
-        set_subtitle(subtitle: (string | null)): void;
+        set_subtitle(subtitle: string | null): void;
     }
 
 

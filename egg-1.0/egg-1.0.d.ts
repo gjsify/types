@@ -235,7 +235,7 @@ export namespace Egg {
          * @param pspec A {@link GObject.ParamSpec} of `target` or a {@link Gtk.Widget}<!-- -->'s parent.
          * @param value The new value for the property at the end of the animation.
          */
-        add_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        add_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * Start the animation. When the animation stops, the internal reference will
@@ -263,7 +263,7 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            source: (GObject.Object | null);
+            source: GObject.Object | null;
         }
     }
 
@@ -286,8 +286,8 @@ export namespace Egg {
         /**
          * The source object used for binding properties.
          */
-        get source(): (GObject.Object | null);
-        set source(val: (GObject.Object | null));
+        get source(): GObject.Object | null;
+        set source(val: GObject.Object | null);
 
         /**
          * Compile-time signal type information.
@@ -351,7 +351,7 @@ export namespace Egg {
          * @param transform_to a {@link GObject.Closure} wrapping the     transformation function from the source object to the `target`,     or `null` to use the default
          * @param transform_from a {@link GObject.Closure} wrapping the     transformation function from the `target` to the source object,     or `null` to use the default
          */
-        bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: (GObject.Closure | null), transform_from: (GObject.Closure | null)): void;
+        bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: GObject.Closure | null, transform_from: GObject.Closure | null): void;
 
         /**
          * Gets the source object used for binding properties.
@@ -367,7 +367,7 @@ export namespace Egg {
          * Note: All properties that have been bound must exist on `source`.
          * @param source the source {@link GObject.Object}
          */
-        set_source(source: (GObject.Object | null)): void;
+        set_source(source: GObject.Object | null): void;
     }
 
 
@@ -812,9 +812,7 @@ export namespace Egg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1193,7 +1191,7 @@ export namespace Egg {
             createFolders: boolean;
             do_overwrite_confirmation: boolean;
             doOverwriteConfirmation: boolean;
-            file: (Gio.File | null);
+            file: Gio.File | null;
             filter: Gtk.FileFilter;
             local_only: boolean;
             localOnly: boolean;
@@ -1227,8 +1225,8 @@ export namespace Egg {
         get doOverwriteConfirmation(): boolean;
         set doOverwriteConfirmation(val: boolean);
 
-        get file(): (Gio.File | null);
-        set file(val: (Gio.File | null));
+        get file(): Gio.File | null;
+        set file(val: Gio.File | null);
 
         get filter(): Gtk.FileFilter;
         set filter(val: Gtk.FileFilter);
@@ -1288,7 +1286,7 @@ export namespace Egg {
          * Returns the currently selected file or `null` if there is no selection.
          * @returns A {@link Gio.File} or `null`.
          */
-        get_file(): (Gio.File | null);
+        get_file(): Gio.File | null;
 
         /**
          * @param file 
@@ -1433,7 +1431,7 @@ export namespace Egg {
         /**
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         get_property_name(): string;
 
@@ -1448,13 +1446,10 @@ export namespace Egg {
 
     namespace MenuManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1694,9 +1689,7 @@ export namespace Egg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -1892,15 +1885,15 @@ export namespace Egg {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -1980,7 +1973,7 @@ export namespace Egg {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2004,7 +1997,7 @@ export namespace Egg {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2028,7 +2021,7 @@ export namespace Egg {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -2052,7 +2045,7 @@ export namespace Egg {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2077,7 +2070,7 @@ export namespace Egg {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2102,7 +2095,7 @@ export namespace Egg {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -2166,7 +2159,7 @@ export namespace Egg {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -2176,7 +2169,7 @@ export namespace Egg {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -2427,9 +2420,7 @@ export namespace Egg {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2731,7 +2722,7 @@ export namespace Egg {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameter_type(): (GLib.VariantType | null);
+        get parameter_type(): GLib.VariantType | null;
 
         /**
          * The type of the parameter that must be given when activating the
@@ -2741,7 +2732,7 @@ export namespace Egg {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get parameterType(): (GLib.VariantType | null);
+        get parameterType(): GLib.VariantType | null;
 
         /**
          * The state of the action, or `NULL` if the action is stateless.
@@ -2749,7 +2740,7 @@ export namespace Egg {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state(): (GLib.Variant | null);
+        get state(): GLib.Variant | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -2758,7 +2749,7 @@ export namespace Egg {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get state_type(): (GLib.VariantType | null);
+        get state_type(): GLib.VariantType | null;
 
         /**
          * The {@link GLib.VariantType} of the state that the action has, or `NULL` if the
@@ -2767,7 +2758,7 @@ export namespace Egg {
          * @read-only
           * @category Inherited from Gio.Action
          */
-        get stateType(): (GLib.VariantType | null);
+        get stateType(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -2779,7 +2770,7 @@ export namespace Egg {
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
          */
-        activate(parameter: (GLib.Variant | null)): void;
+        activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -2823,7 +2814,7 @@ export namespace Egg {
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
          */
-        get_parameter_type(): (GLib.VariantType | null);
+        get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -2836,7 +2827,7 @@ export namespace Egg {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
          */
-        get_state(): (GLib.Variant | null);
+        get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -2859,7 +2850,7 @@ export namespace Egg {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
          */
-        get_state_hint(): (GLib.Variant | null);
+        get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -2876,7 +2867,7 @@ export namespace Egg {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
          */
-        get_state_type(): (GLib.VariantType | null);
+        get_state_type(): GLib.VariantType | null;
 
         /**
          * Activates the action.
@@ -2889,7 +2880,7 @@ export namespace Egg {
          * @param parameter the parameter to the activation
          * @virtual
          */
-        vfunc_activate(parameter: (GLib.Variant | null)): void;
+        vfunc_activate(parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of `action` to be changed to `value`.
@@ -2934,7 +2925,7 @@ export namespace Egg {
          * {@link GLib.Variant}, but `NULL` instead.
          * @virtual
          */
-        vfunc_get_parameter_type(): (GLib.VariantType | null);
+        vfunc_get_parameter_type(): GLib.VariantType | null;
 
         /**
          * Queries the current state of `action`.
@@ -2947,7 +2938,7 @@ export namespace Egg {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state(): (GLib.Variant | null);
+        vfunc_get_state(): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of
@@ -2970,7 +2961,7 @@ export namespace Egg {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @virtual
          */
-        vfunc_get_state_hint(): (GLib.Variant | null);
+        vfunc_get_state_hint(): GLib.Variant | null;
 
         /**
          * Queries the type of the state of `action`.
@@ -2987,7 +2978,7 @@ export namespace Egg {
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @virtual
          */
-        vfunc_get_state_type(): (GLib.VariantType | null);
+        vfunc_get_state_type(): GLib.VariantType | null;
     }
 
 
@@ -3194,7 +3185,7 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            target: (GObject.Object | null);
+            target: GObject.Object | null;
             target_type: GObject.GTypeInput;
             targetType: GObject.GTypeInput;
         }
@@ -3228,8 +3219,8 @@ export namespace Egg {
         /**
          * The target instance used when connecting signals.
          */
-        get target(): (GObject.Object | null);
-        set target(val: (GObject.Object | null));
+        get target(): GObject.Object | null;
+        set target(val: GObject.Object | null);
 
         /**
          * The GType of the target property.
@@ -3324,7 +3315,7 @@ export namespace Egg {
          * disconnected from that object prior to connecting to `target`.
          * @param target The target instance used     when connecting signals.
          */
-        set_target(target: (GObject.Object | null)): void;
+        set_target(target: GObject.Object | null): void;
 
         /**
          * Unblocks all signal handlers managed by `self` so they will be
@@ -3471,7 +3462,7 @@ export namespace Egg {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -3492,7 +3483,7 @@ export namespace Egg {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -3502,7 +3493,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -3511,7 +3502,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -3547,7 +3538,7 @@ export namespace Egg {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -3563,7 +3554,7 @@ export namespace Egg {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -3585,7 +3576,7 @@ export namespace Egg {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -3596,7 +3587,7 @@ export namespace Egg {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -3605,7 +3596,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -3677,7 +3668,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => (boolean | void);
+            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -4033,7 +4024,7 @@ export namespace Egg {
          * @param property 
          * @param value 
          */
-        add_propertyv(state: string, object: null, property: string, value: (GObject.Value | any)): void;
+        add_propertyv(state: string, object: null, property: string, value: GObject.Value | any): void;
 
         /**
          * @param state 
@@ -4078,7 +4069,7 @@ export namespace Egg {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -4099,7 +4090,7 @@ export namespace Egg {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -4109,7 +4100,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -4118,7 +4109,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -4154,7 +4145,7 @@ export namespace Egg {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -4170,7 +4161,7 @@ export namespace Egg {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -4192,7 +4183,7 @@ export namespace Egg {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -4203,7 +4194,7 @@ export namespace Egg {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -4212,7 +4203,7 @@ export namespace Egg {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -4352,7 +4343,7 @@ export namespace Egg {
          * @param typed_text the text that was typed into the entry
          * @virtual
          */
-        vfunc_replace_typed_text(typed_text: string): (string | null);
+        vfunc_replace_typed_text(typed_text: string): string | null;
 
         /**
          * This function requests potential text to append to `typed_text` to make it
@@ -4362,7 +4353,7 @@ export namespace Egg {
          * @param typed_text The user entered text
          * @virtual
          */
-        vfunc_suggest_suffix(typed_text: string): (string | null);
+        vfunc_suggest_suffix(typed_text: string): string | null;
 
         // Methods
         get_icon_name(): string;
@@ -4383,7 +4374,7 @@ export namespace Egg {
          * @param typed_text the text that was typed into the entry
          * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
          */
-        replace_typed_text(typed_text: string): (string | null);
+        replace_typed_text(typed_text: string): string | null;
 
         /**
          * @param icon_name 
@@ -4413,7 +4404,7 @@ export namespace Egg {
          * @param typed_text The user entered text
          * @returns Suffix to append to `typed_text`   or `null` to leave it unchanged.
          */
-        suggest_suffix(typed_text: string): (string | null);
+        suggest_suffix(typed_text: string): string | null;
     }
 
 
@@ -4548,7 +4539,7 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {
-            model: (Gio.ListModel | null);
+            model: Gio.ListModel | null;
             typed_text: string;
             typedText: string;
         }
@@ -4561,8 +4552,8 @@ export namespace Egg {
         static $gtype: GObject.GType<SuggestionEntry>;
 
         // Properties
-        get model(): (Gio.ListModel | null);
-        set model(val: (Gio.ListModel | null));
+        get model(): Gio.ListModel | null;
+        set model(val: Gio.ListModel | null);
 
         /**
          * @read-only
@@ -4631,13 +4622,13 @@ export namespace Egg {
          * Gets the model being visualized.
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * Gets the currently selected suggestion.
          * @returns An {@link Egg.Suggestion} or `null`.
          */
-        get_suggestion(): (Suggestion | null);
+        get_suggestion(): Suggestion | null;
 
         get_typed_text(): string;
 
@@ -4692,7 +4683,7 @@ export namespace Egg {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -4720,7 +4711,7 @@ export namespace Egg {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -4970,7 +4961,7 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
-            suggestion: (Suggestion | null);
+            suggestion: Suggestion | null;
         }
     }
 
@@ -4981,8 +4972,8 @@ export namespace Egg {
         static $gtype: GObject.GType<SuggestionEntryBuffer>;
 
         // Properties
-        get suggestion(): (Suggestion | null);
-        set suggestion(val: (Suggestion | null));
+        get suggestion(): Suggestion | null;
+        set suggestion(val: Suggestion | null);
 
         /**
          * Compile-time signal type information.
@@ -5021,7 +5012,7 @@ export namespace Egg {
          * text in the entry.
          * @returns An {@link Egg.Suggestion} or `null`.
          */
-        get_suggestion(): (Suggestion | null);
+        get_suggestion(): Suggestion | null;
 
         get_typed_length(): number;
 
@@ -5035,7 +5026,7 @@ export namespace Egg {
          * text for what might be inserted should they activate the current item.
          * @param suggestion An {@link Egg.Suggestion} or `null`
          */
-        set_suggestion(suggestion: (Suggestion | null)): void;
+        set_suggestion(suggestion: Suggestion | null): void;
     }
 
 
@@ -5129,10 +5120,10 @@ export namespace Egg {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            model: (Suggestion | null);
-            relative_to: (Gtk.Widget | null);
+            model: Suggestion | null;
+            relative_to: Gtk.Widget | null;
             relativeTo: Gtk.Widget;
-            selected: (Suggestion | null);
+            selected: Suggestion | null;
         }
     }
 
@@ -5143,17 +5134,17 @@ export namespace Egg {
         static $gtype: GObject.GType<SuggestionPopover>;
 
         // Properties
-        get model(): (Suggestion | null);
-        set model(val: (Suggestion | null));
+        get model(): Suggestion | null;
+        set model(val: Suggestion | null);
 
-        get relative_to(): (Gtk.Widget | null);
-        set relative_to(val: (Gtk.Widget | null));
+        get relative_to(): Gtk.Widget | null;
+        set relative_to(val: Gtk.Widget | null);
 
         get relativeTo(): Gtk.Widget;
         set relativeTo(val: Gtk.Widget);
 
-        get selected(): (Suggestion | null);
-        set selected(val: (Suggestion | null));
+        get selected(): Suggestion | null;
+        set selected(val: Suggestion | null);
 
         /**
          * Compile-time signal type information.
@@ -5191,18 +5182,18 @@ export namespace Egg {
          * Gets the model being visualized.
          * @returns A {@link Gio.ListModel} or `null`.
          */
-        get_model(): (Gio.ListModel | null);
+        get_model(): Gio.ListModel | null;
 
         /**
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_relative_to(): (Gtk.Widget | null);
+        get_relative_to(): Gtk.Widget | null;
 
         /**
          * Gets the currently selected suggestion.
          * @returns An {@link Egg.Suggestion} or `null`.
          */
-        get_selected(): (Suggestion | null);
+        get_selected(): Suggestion | null;
 
         /**
          * @param amount 
@@ -5370,8 +5361,8 @@ export namespace Egg {
             populateCallbackData: never;
             populate_callback_data_destroy: never;
             populateCallbackDataDestroy: never;
-            time_to_live: (bigint | number);
-            timeToLive: (bigint | number);
+            time_to_live: bigint | number;
+            timeToLive: bigint | number;
             value_copy_func: never;
             valueCopyFunc: never;
             value_destroy_func: never;
@@ -5463,7 +5454,7 @@ export namespace Egg {
          * A value of zero indicates no eviction.
          * @construct-only
          */
-        set time_to_live(val: (bigint | number));
+        set time_to_live(val: bigint | number);
 
         /**
          * This is the number of milliseconds before an item should be evicted
@@ -5472,7 +5463,7 @@ export namespace Egg {
          * A value of zero indicates no eviction.
          * @construct-only
          */
-        set timeToLive(val: (bigint | number));
+        set timeToLive(val: bigint | number);
 
         /**
          * @construct-only
@@ -5534,7 +5525,7 @@ export namespace Egg {
          * @param force_update 
          * @param cancellable 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<null>;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<null>;
 
         /**
          * @param key 
@@ -5542,7 +5533,7 @@ export namespace Egg {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param key 
@@ -5550,7 +5541,7 @@ export namespace Egg {
          * @param cancellable 
          * @param callback 
          */
-        get_async(key: null, force_update: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<null> | void);
+        get_async(key: null, force_update: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<null> | void;
 
         /**
          * Finish a call to `egg_task_cache_get_async()`.
@@ -5829,7 +5820,7 @@ export namespace Egg {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -5875,7 +5866,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -5889,7 +5880,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -5913,7 +5904,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -5935,7 +5926,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -6062,7 +6053,7 @@ export namespace Egg {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -6109,7 +6100,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -6123,7 +6114,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -6147,7 +6138,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -6169,7 +6160,7 @@ export namespace Egg {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -6404,7 +6395,7 @@ export namespace Egg {
          * @param index_ 
          * @param result 
          */
-        extract_index(index_: (bigint | number), result: null): boolean;
+        extract_index(index_: bigint | number, result: null): boolean;
 
         /**
          * @param data 

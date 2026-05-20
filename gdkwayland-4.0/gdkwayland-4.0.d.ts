@@ -61,9 +61,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Device.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Device.ConstructorProps {}
     }
 
     /**
@@ -118,7 +116,7 @@ export namespace GdkWayland {
          * {@link Gdk.InputSource.PEN}, {@link Gdk.InputSource.TABLET_PAD}.
          * @returns the `/dev/input/event*`   path of this device
          */
-        get_node_path(): (string | null);
+        get_node_path(): string | null;
 
         /**
          * Returns the `xkb_keymap` of a {@link Gdk.Device}.
@@ -139,9 +137,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Display.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Display.ConstructorProps {}
     }
 
     /**
@@ -198,7 +194,7 @@ export namespace GdkWayland {
          * if no ID has been defined.
          * @returns the startup notification ID for `display`
          */
-        get_startup_notification_id(): (string | null);
+        get_startup_notification_id(): string | null;
 
         /**
          * Returns true if the interface was found in the display
@@ -242,9 +238,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
     }
 
     /**
@@ -302,9 +296,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
     }
 
     /**
@@ -363,9 +355,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Popup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Popup.ConstructorProps {}
     }
 
     /**
@@ -415,7 +405,7 @@ export namespace GdkWayland {
          * @construct-only
           * @category Inherited from Gdk.Popup
          */
-        get parent(): (Gdk.Surface | null);
+        get parent(): Gdk.Surface | null;
 
         /**
          * Returns whether this popup is set to hide on outside clicks.
@@ -427,7 +417,7 @@ export namespace GdkWayland {
          * Returns the parent surface of a popup.
          * @returns the parent surface
          */
-        get_parent(): (Gdk.Surface | null);
+        get_parent(): Gdk.Surface | null;
 
         /**
          * Obtains the position of the popup relative to its parent.
@@ -491,9 +481,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Seat.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Seat.ConstructorProps {}
     }
 
     /**
@@ -550,9 +538,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdk.Surface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdk.Surface.ConstructorProps {}
     }
 
     /**
@@ -627,9 +613,7 @@ export namespace GdkWayland {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Toplevel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Toplevel.ConstructorProps {}
     }
 
     /**
@@ -918,7 +902,7 @@ export namespace GdkWayland {
          * @param y surface Y coordinate of mouse click that began the drag
          * @param timestamp timestamp of mouse click that began the drag (use   {@link Gdk.Event.get_time})
          */
-        begin_resize(edge: Gdk.SurfaceEdge, device: (Gdk.Device | null), button: number, x: number, y: number, timestamp: number): void;
+        begin_resize(edge: Gdk.SurfaceEdge, device: Gdk.Device | null, button: number, x: number, y: number, timestamp: number): void;
 
         /**
          * Sets keyboard focus to `surface`.
@@ -974,7 +958,7 @@ export namespace GdkWayland {
          * by listening to the {@link Gdk.Toplevel.shortcuts_inhibited} property.
          * @param event the {@link Gdk.Event} that is triggering the inhibit   request, or `null` if none is available
          */
-        inhibit_system_shortcuts(event: (Gdk.Event | null)): void;
+        inhibit_system_shortcuts(event: Gdk.Event | null): void;
 
         /**
          * Asks to lower the `toplevel` below other windows.

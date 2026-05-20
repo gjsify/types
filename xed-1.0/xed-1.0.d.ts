@@ -91,7 +91,7 @@ export namespace Xed {
      * @param encoding the {@link GtkSource.Encoding} of `location`
      * @param line_pos the line column to place the cursor when `location` is loaded
      */
-    function commands_load_location(window: Window, location: Gio.File, encoding: (GtkSource.Encoding | null), line_pos: number): void;
+    function commands_load_location(window: Window, location: Gio.File, encoding: GtkSource.Encoding | null, line_pos: number): void;
 
     /**
      * Loads `locataions`. Ignore non-existing locations
@@ -101,7 +101,7 @@ export namespace Xed {
      * @param line_pos the line position to place the cursor
      * @returns the locations that were loaded.
      */
-    function commands_load_locations(window: Window, locations: Gio.File[], encoding: (GtkSource.Encoding | null), line_pos: number): Document[];
+    function commands_load_locations(window: Window, locations: Gio.File[], encoding: GtkSource.Encoding | null, line_pos: number): Document[];
 
     /**
      * Asynchronously save all documents belonging to `window`. The result of the
@@ -130,7 +130,7 @@ export namespace Xed {
      * @param window a {@link Xed.Window}.
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Asynchronously save the `document`. `document` must belong to `window`. The
      * source object of the async task is `document` (which will be the first
@@ -143,7 +143,7 @@ export namespace Xed {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Document> | null)): void;
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Document> | null): void;
     /**
      * Asynchronously save the `document`. `document` must belong to `window`. The
      * source object of the async task is `document` (which will be the first
@@ -156,7 +156,7 @@ export namespace Xed {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation   is finished.
      */
-    function commands_save_document_async(document: Document, window: Window, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Document> | null)): (globalThis.Promise<boolean> | void);
+    function commands_save_document_async(document: Document, window: Window, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Document> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes an asynchronous document saving operation started with
@@ -188,7 +188,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_BOOLEAN__OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -198,7 +198,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_BOOLEAN__VOID(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -208,7 +208,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__BOOLEAN_POINTER(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -218,7 +218,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__BOXED_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__BOXED_BOXED(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -228,7 +228,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -238,7 +238,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_BOXED_FLAGS(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__OBJECT_BOXED_FLAGS(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -248,7 +248,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_BOXED_INT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__OBJECT_BOXED_INT_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -258,7 +258,7 @@ export namespace Xed {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT64_UINT64(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__UINT64_UINT64(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * Get the string identifier for `method` at `object_path`.
@@ -266,7 +266,7 @@ export namespace Xed {
      * @param method the method
      * @returns the identifier for `method` at `object_path`
      */
-    function message_type_identifier(object_path: (string | null), method: (string | null)): string;
+    function message_type_identifier(object_path: string | null, method: string | null): string;
 
     /**
      * Returns if `type` is {@link GObject.GType} supported by the message system.
@@ -280,7 +280,7 @@ export namespace Xed {
      * @param object_path the object path
      * @returns `true` if `object_path` is a valid object path
      */
-    function message_type_is_valid_object_path(object_path: (string | null)): boolean;
+    function message_type_is_valid_object_path(object_path: string | null): boolean;
 
     /**
      * @gir-type Callback
@@ -373,9 +373,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -440,7 +438,7 @@ export namespace Xed {
          * @param screen 
          * @returns the new {@link Xed.Window}
          */
-        create_window(screen: (Gdk.Screen | null)): Window;
+        create_window(screen: Gdk.Screen | null): Window;
 
         /**
          * Returns all the documents currently open in {@link Xed.App}.
@@ -713,7 +711,7 @@ export namespace Xed {
         /**
          * @returns a new {@link Gio.File}
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * Gets the metadata assigned to `key`.
@@ -766,12 +764,12 @@ export namespace Xed {
         /**
          * @param content_type 
          */
-        set_content_type(content_type: (string | null)): void;
+        set_content_type(content_type: string | null): void;
 
         /**
          * @param lang 
          */
-        set_language(lang: (GtkSource.Language | null)): void;
+        set_language(lang: GtkSource.Language | null): void;
 
         /**
          * @param location 
@@ -782,12 +780,12 @@ export namespace Xed {
          * Sets the new search context for the document.
          * @param search_context the new {@link GtkSource.SearchContext}
          */
-        set_search_context(search_context: (GtkSource.SearchContext | null)): void;
+        set_search_context(search_context: GtkSource.SearchContext | null): void;
 
         /**
          * @param short_name the short name to use
          */
-        set_short_name_for_display(short_name: (string | null)): void;
+        set_short_name_for_display(short_name: string | null): void;
     }
 
 
@@ -967,7 +965,7 @@ export namespace Xed {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -995,7 +993,7 @@ export namespace Xed {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1029,7 +1027,7 @@ export namespace Xed {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1080,7 +1078,7 @@ export namespace Xed {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1117,7 +1115,7 @@ export namespace Xed {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1172,7 +1170,7 @@ export namespace Xed {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1303,9 +1301,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {}
     }
 
     /**
@@ -1406,16 +1402,16 @@ export namespace Xed {
         set doOverwriteConfirmation(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extra_widget(): (Gtk.Widget | null);
-        set extra_widget(val: (Gtk.Widget | null));
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extraWidget(): (Gtk.Widget | null);
-        set extraWidget(val: (Gtk.Widget | null));
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get filter(): (Gtk.FileFilter | null);
-        set filter(val: (Gtk.FileFilter | null));
+        get filter(): Gtk.FileFilter | null;
+        set filter(val: Gtk.FileFilter | null);
 
         /**
          * @default true
@@ -1432,12 +1428,12 @@ export namespace Xed {
         set localOnly(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get preview_widget(): (Gtk.Widget | null);
-        set preview_widget(val: (Gtk.Widget | null));
+        get preview_widget(): Gtk.Widget | null;
+        set preview_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get previewWidget(): (Gtk.Widget | null);
-        set previewWidget(val: (Gtk.Widget | null));
+        get previewWidget(): Gtk.Widget | null;
+        set previewWidget(val: Gtk.Widget | null);
 
         /**
          * @default true
@@ -1508,7 +1504,7 @@ export namespace Xed {
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
          */
-        add_choice(id: string, label: string, options: (string[] | null), option_labels: (string[] | null)): void;
+        add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
 
         /**
          * Adds `filter` to the list of filters that the user can select between.
@@ -1575,14 +1571,14 @@ export namespace Xed {
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
          */
-        get_current_folder(): (string | null);
+        get_current_folder(): string | null;
 
         /**
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
          */
-        get_current_folder_file(): (Gio.File | null);
+        get_current_folder_file(): Gio.File | null;
 
         /**
          * Gets the current folder of `chooser` as an URI.
@@ -1597,7 +1593,7 @@ export namespace Xed {
          * usual way to get the selection.
          * @returns the URI for the current folder. Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
          */
-        get_current_folder_uri(): (string | null);
+        get_current_folder_uri(): string | null;
 
         /**
          * Gets the current name in the file selector, as entered by the user in the
@@ -1624,7 +1620,7 @@ export namespace Xed {
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
          */
-        get_extra_widget(): (Gtk.Widget | null);
+        get_extra_widget(): Gtk.Widget | null;
 
         /**
          * Gets the {@link Gio.File} for the currently selected file in
@@ -1647,7 +1643,7 @@ export namespace Xed {
          * folder.
          * @returns The currently selected filename,  or `null` if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -1669,7 +1665,7 @@ export namespace Xed {
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
          */
-        get_filter(): (Gtk.FileFilter | null);
+        get_filter(): Gtk.FileFilter | null;
 
         /**
          * Gets whether only local files can be selected in the
@@ -1683,28 +1679,28 @@ export namespace Xed {
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
          */
-        get_preview_file(): (Gio.File | null);
+        get_preview_file(): Gio.File | null;
 
         /**
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
          */
-        get_preview_filename(): (string | null);
+        get_preview_filename(): string | null;
 
         /**
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview,     or `null` if no file is selected. Free with `g_free()`.
          */
-        get_preview_uri(): (string | null);
+        get_preview_uri(): string | null;
 
         /**
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
          */
-        get_preview_widget(): (Gtk.Widget | null);
+        get_preview_widget(): Gtk.Widget | null;
 
         /**
          * Gets whether the preview widget set by `gtk_file_chooser_set_preview_widget()`
@@ -1737,7 +1733,7 @@ export namespace Xed {
          * folder.
          * @returns The currently selected URI, or `null`    if no file is selected. If `gtk_file_chooser_set_local_only()` is set to    `true` (the default) a local URI will be returned for any FUSE locations.    Free with `g_free()`
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -1765,14 +1761,14 @@ export namespace Xed {
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
          */
-        list_shortcut_folder_uris(): (string[] | null);
+        list_shortcut_folder_uris(): string[] | null;
 
         /**
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders. Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
          */
-        list_shortcut_folders(): (string[] | null);
+        list_shortcut_folders(): string[] | null;
 
         /**
          * Removes a 'choice' that has been added with `gtk_file_chooser_add_choice()`.
@@ -2324,9 +2320,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2594,9 +2588,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -3127,9 +3119,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3298,9 +3288,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3682,9 +3670,7 @@ export namespace Xed {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -4013,7 +3999,7 @@ export namespace Xed {
          * @param jump_to `true` to set the new {@link Xed.Tab} as active
          * @returns a new {@link Xed.Tab}
          */
-        create_tab_from_location(location: Gio.File, encoding: (GtkSource.Encoding | null), line_pos: number, create: boolean, jump_to: boolean): Tab;
+        create_tab_from_location(location: Gio.File, encoding: GtkSource.Encoding | null, line_pos: number, create: boolean, jump_to: boolean): Tab;
 
         /**
          * @param stream the {@link Gio.InputStream}
@@ -4200,7 +4186,7 @@ export namespace Xed {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -4246,7 +4232,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -4260,7 +4246,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -4284,7 +4270,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -4306,7 +4292,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -4433,7 +4419,7 @@ export namespace Xed {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -4480,7 +4466,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -4494,7 +4480,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -4518,7 +4504,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -4540,7 +4526,7 @@ export namespace Xed {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -4616,7 +4602,7 @@ export namespace Xed {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -4672,7 +4658,7 @@ export namespace Xed {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -4767,7 +4753,7 @@ export namespace Xed {
         static $gtype: GObject.GType<MessageType>;
 
         // Constructors
-        constructor(object_path: (string | null), method: (string | null), num_optional: number, ___: any[]);
+        constructor(object_path: string | null, method: string | null, num_optional: number, ___: any[]);
 
         // Static methods
         /**
@@ -4775,7 +4761,7 @@ export namespace Xed {
          * @param object_path the object path
          * @param method the method
          */
-        static identifier(object_path: (string | null), method: (string | null)): string;
+        static identifier(object_path: string | null, method: string | null): string;
 
         /**
          * Returns if `type` is {@link GObject.GType} supported by the message system.
@@ -4787,7 +4773,7 @@ export namespace Xed {
          * Returns whether `object_path` is a valid object path
          * @param object_path the object path
          */
-        static is_valid_object_path(object_path: (string | null)): boolean;
+        static is_valid_object_path(object_path: string | null): boolean;
 
         // Methods
         /**

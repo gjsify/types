@@ -78,7 +78,7 @@ export namespace CambalachePrivate {
      * @param property_name 
      * @param value 
      */
-    function object_set_property_from_string(object: GObject.Object, property_name: string, value: (string | null)): void;
+    function object_set_property_from_string(object: GObject.Object, property_name: string, value: string | null): void;
 
     /**
      * @param widget 
@@ -319,7 +319,7 @@ export namespace CambalachePrivate {
 
         static ["new"](): Svg;
 
-        static new_from_bytes(bytes: (GLib.Bytes | Uint8Array)): Svg;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array): Svg;
 
         static new_from_resource(path: string): Svg;
 
@@ -342,28 +342,28 @@ export namespace CambalachePrivate {
          * the parsing error occurred in.
          * @param error an error in the {@link Gtk.SvgError} domain
          */
-        static error_get_attribute(error: GLib.Error): (string | null);
+        static error_get_attribute(error: GLib.Error): string | null;
 
         /**
          * Returns context information about what XML element
          * the parsing error occurred in.
          * @param error an error in the {@link Gtk.SvgError} domain
          */
-        static error_get_element(error: GLib.Error): (string | null);
+        static error_get_element(error: GLib.Error): string | null;
 
         /**
          * Returns context information about the end position
          * in the document where the parsing error occurred.
          * @param error an error in the {@link Gtk.SvgError} domain
          */
-        static error_get_end(error: GLib.Error): (SvgLocation | null);
+        static error_get_end(error: GLib.Error): SvgLocation | null;
 
         /**
          * Returns context information about the start position
          * in the document where the parsing error occurred.
          * @param error an error in the {@link Gtk.SvgError} domain
          */
-        static error_get_start(error: GLib.Error): (SvgLocation | null);
+        static error_get_start(error: GLib.Error): SvgLocation | null;
 
         static error_quark(): GLib.Quark;
 
@@ -400,7 +400,7 @@ export namespace CambalachePrivate {
          * This clears any previously loaded content.
          * @param bytes the data to load
          */
-        load_from_bytes(bytes: (GLib.Bytes | Uint8Array)): void;
+        load_from_bytes(bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * Stop any playing animations.

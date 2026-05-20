@@ -95,7 +95,7 @@ export namespace Libxfce4windowingui {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Menu.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            window: (Libxfce4windowing.Window | any);
+            window: Libxfce4windowing.Window | any;
         }
     }
 
@@ -111,7 +111,7 @@ export namespace Libxfce4windowingui {
          * @construct-only
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get window(): (Libxfce4windowing.Window | any);
+        get window(): Libxfce4windowing.Window | any;
 
         /**
          * Compile-time signal type information.

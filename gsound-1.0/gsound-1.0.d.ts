@@ -67,7 +67,7 @@ export namespace GSound {
         static DISCONNECTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -406,13 +406,10 @@ export namespace GSound {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -437,7 +434,7 @@ export namespace GSound {
 
         _init(...args: any[]): void;
 
-        static ["new"](cancellable: (Gio.Cancellable | null)): Context;
+        static ["new"](cancellable: Gio.Cancellable | null): Context;
 
         // Signals
         /** @signal */
@@ -459,7 +456,7 @@ export namespace GSound {
          * This function is intented to be used by language bindings.
          * @param attrs Hash table of attrerties
          */
-        cache(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>)): boolean;
+        cache(attrs: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
 
         /**
          * Attempts to open a connection to the backend sound driver. It is recommended
@@ -496,7 +493,7 @@ export namespace GSound {
          * @param attrs Attributes
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          */
-        play_full(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        play_full(attrs: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously request a sound to be played. When playback is finished
@@ -514,7 +511,7 @@ export namespace GSound {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback callback
          */
-        play_full(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        play_full(attrs: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously request a sound to be played. When playback is finished
@@ -532,7 +529,7 @@ export namespace GSound {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback callback
          */
-        play_full(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        play_full(attrs: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * The basic "fire-and-forget" play command. This function will not block, and
@@ -549,7 +546,7 @@ export namespace GSound {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, `false` on error
          */
-        play_simple(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: (Gio.Cancellable | null)): boolean;
+        play_simple(attrs: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set attributes or change attributes on `context`. Subsequent calls to this
@@ -563,7 +560,7 @@ export namespace GSound {
          * @param attrs Hash table of attributes to set
          * @returns `true` if attributes were updated successfully
          */
-        set_attributes(attrs: ({ [key: string]: any } | GLib.HashTable<string, string>)): boolean;
+        set_attributes(attrs: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
 
         /**
          * Sets the libcanberra driver to `driver`, for example "pulse", "alsa" or "null".
@@ -618,7 +615,7 @@ export namespace GSound {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -662,7 +659,7 @@ export namespace GSound {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

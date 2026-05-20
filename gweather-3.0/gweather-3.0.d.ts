@@ -555,7 +555,7 @@ export namespace GWeather {
      * Prior to version 40 no reference was returned.
      * @returns a {@link GWeather.LocationLevel.WORLD} location, or `null` if Locations.xml could not be found or could not be parsed.
      */
-    function location_get_world(): (Location | null);
+    function location_get_world(): Location | null;
 
     /**
      * Returns the location level as a string, useful for debugging
@@ -772,7 +772,7 @@ export namespace GWeather {
 
         _init(...args: any[]): void;
 
-        static ["new"](location: (Location | null)): Info;
+        static ["new"](location: Location | null): Info;
 
         // Signals
         /** @signal */
@@ -1021,7 +1021,7 @@ export namespace GWeather {
          * `info`, you must call `gweather_info_update()` to obtain the new data.
          * @param location a location for which weather is desired
          */
-        set_location(location: (Location | null)): void;
+        set_location(location: Location | null): void;
 
         /**
          * Requests a reload of weather conditions and forecast data from
@@ -1135,7 +1135,7 @@ export namespace GWeather {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.SearchEntry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {
-            location: (Location | null);
+            location: Location | null;
             show_named_timezones: boolean;
             showNamedTimezones: boolean;
             top: Location;
@@ -1151,8 +1151,8 @@ export namespace GWeather {
         static $gtype: GObject.GType<LocationEntry>;
 
         // Properties
-        get location(): (Location | null);
-        set location(val: (Location | null));
+        get location(): Location | null;
+        set location(val: Location | null);
 
         /**
          * @construct-only
@@ -1207,7 +1207,7 @@ export namespace GWeather {
          * `gweather_location_entry_set_location()` or was selected by the user.
          * @returns the selected location (which you must unref when you are done with it), or `null` if no location is selected.
          */
-        get_location(): (Location | null);
+        get_location(): Location | null;
 
         /**
          * Checks whether or not `entry`'s text has been modified by the user.
@@ -1225,7 +1225,7 @@ export namespace GWeather {
          * @param code the METAR station code
          * @returns `true` if `entry`'s location could be set to a matching city, `false` otherwise.
          */
-        set_city(city_name: (string | null), code: string): boolean;
+        set_city(city_name: string | null, code: string): boolean;
 
         /**
          * Sets `entry`'s location to `loc`, and updates the text of the
@@ -1234,7 +1234,7 @@ export namespace GWeather {
          * equal to `loc`, that will be chosen in place of `loc`.
          * @param loc a {@link GWeather.Location} in `entry`, or `null` to clear `entry`
          */
-        set_location(loc: (Location | null)): void;
+        set_location(loc: Location | null): void;
     }
 
 
@@ -1307,7 +1307,7 @@ export namespace GWeather {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
             top: Location;
-            tzid: (string | null);
+            tzid: string | null;
         }
     }
 
@@ -1324,8 +1324,8 @@ export namespace GWeather {
          */
         set top(val: Location);
 
-        get tzid(): (string | null);
-        set tzid(val: (string | null));
+        get tzid(): string | null;
+        set tzid(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1364,14 +1364,14 @@ export namespace GWeather {
          * Gets `menu`'s timezone id.
          * @returns `menu`'s tzid, or `null` if no timezone is selected.
          */
-        get_tzid(): (string | null);
+        get_tzid(): string | null;
 
         /**
          * Sets `menu` to the given `tzid`. If `tzid` is `null`, sets `menu` to
          * "Unknown".
          * @param tzid a tzdata id (eg, "America/New_York")
          */
-        set_tzid(tzid: (string | null)): void;
+        set_tzid(tzid: string | null): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -1414,7 +1414,7 @@ export namespace GWeather {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -1442,7 +1442,7 @@ export namespace GWeather {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1476,7 +1476,7 @@ export namespace GWeather {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1527,7 +1527,7 @@ export namespace GWeather {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1564,7 +1564,7 @@ export namespace GWeather {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1619,7 +1619,7 @@ export namespace GWeather {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1705,9 +1705,9 @@ export namespace GWeather {
         static $gtype: GObject.GType<Location>;
 
         // Constructors
-        constructor(name: string, icao: (string | null), latitude: number, longitude: number);
+        constructor(name: string, icao: string | null, latitude: number, longitude: number);
 
-        static new_detached(name: string, icao: (string | null), latitude: number, longitude: number): Location;
+        static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
 
         // Static methods
         /**
@@ -1722,7 +1722,7 @@ export namespace GWeather {
          * 
          * Prior to version 40 no reference was returned.
          */
-        static get_world(): (Location | null);
+        static get_world(): Location | null;
 
         // Methods
         /**
@@ -1747,7 +1747,7 @@ export namespace GWeather {
          * @param cancellable optional, NULL to ignore
          * @param callback callback function for GAsyncReadyCallback argument for GAsyncResult
          */
-        detect_nearest_city(lat: number, lon: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        detect_nearest_city(lat: number, lon: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Compares two {@link GWeather.Location} and sees if they represent the same
@@ -1817,7 +1817,7 @@ export namespace GWeather {
          * @param func returns true to continue check for                                       the location and false to filter the location out
          * @returns the city closest to (`lat`, `lon`), in the          region or administrative district of `loc` with validation of filter function.
          */
-        find_nearest_city_full(lat: number, lon: number, func: (FilterFunc | null)): Location;
+        find_nearest_city_full(lat: number, lon: number, func: FilterFunc | null): Location;
 
         /**
          * Frees the array of timezones returned by
@@ -1841,14 +1841,14 @@ export namespace GWeather {
          * other locations it will return `null`.
          * @returns `loc`'s city name, or `null`
          */
-        get_city_name(): (string | null);
+        get_city_name(): string | null;
 
         /**
          * Gets the METAR station code associated with a
          * {@link GWeather.LocationLevel.WEATHER_STATION} location.
          * @returns `loc`'s METAR station code, or `null`
          */
-        get_code(): (string | null);
+        get_code(): string | null;
 
         /**
          * Gets `loc`'s coordinates; you must check
@@ -1861,7 +1861,7 @@ export namespace GWeather {
          * region- or world-level location)
          * @returns `loc`'s country code (or `null` if `loc` is a region- or world-level location)
          */
-        get_country(): (string | null);
+        get_country(): string | null;
 
         /**
          * Gets the country name of loc.
@@ -1873,7 +1873,7 @@ export namespace GWeather {
          * and return its name.
          * @returns `loc`'s country name, or `null`
          */
-        get_country_name(): (string | null);
+        get_country_name(): string | null;
 
         /**
          * Determines the distance in kilometers between `loc` and `loc2`.
@@ -1916,7 +1916,7 @@ export namespace GWeather {
          * Prior to version 40 no reference was returned.
          * @returns `loc`'s parent, or `null` if `loc` is a {@link GWeather.LocationLevel.WORLD} node.
          */
-        get_parent(): (Location | null);
+        get_parent(): Location | null;
 
         /**
          * Gets `loc`'s "sort name", which is the name after having
@@ -1934,7 +1934,7 @@ export namespace GWeather {
          * FIXME.
          * @returns `loc`'s timezone, or `null`
          */
-        get_timezone(): (Timezone | null);
+        get_timezone(): Timezone | null;
 
         /**
          * Gets the timezone associated with `loc`, if known, as a string.
@@ -1943,7 +1943,7 @@ export namespace GWeather {
          * parents, do not free it.
          * @returns `loc`'s timezone as a string, or `null`
          */
-        get_timezone_str(): (string | null);
+        get_timezone_str(): string | null;
 
         /**
          * Gets an array of all timezones associated with any location under
@@ -1976,7 +1976,7 @@ export namespace GWeather {
          * @param child The child
          * @returns The next child, or `null`
          */
-        next_child(child: (Location | null)): (Location | null);
+        next_child(child: Location | null): Location | null;
 
         /**
          * Adds 1 to `loc`'s reference count.

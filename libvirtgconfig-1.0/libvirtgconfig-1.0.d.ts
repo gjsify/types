@@ -779,12 +779,12 @@ export namespace LibvirtGConfig {
     /**
      * @param argv pointer to application's argv
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     /**
      * @param argv pointer to application's argv
      */
-    function init_check(argv: (string[] | null)): [boolean, string[] | null];
+    function init_check(argv: string[] | null): [boolean, string[] | null];
 
     /**
      * @gir-type Flags
@@ -809,9 +809,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -877,9 +875,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -965,9 +961,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1021,9 +1015,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1084,9 +1076,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1139,17 +1129,17 @@ export namespace LibvirtGConfig {
         /**
          * @param cores 
          */
-        set_cores(cores: (bigint | number)): void;
+        set_cores(cores: bigint | number): void;
 
         /**
          * @param sockets 
          */
-        set_sockets(sockets: (bigint | number)): void;
+        set_sockets(sockets: bigint | number): void;
 
         /**
          * @param threads 
          */
-        set_threads(threads: (bigint | number)): void;
+        set_threads(threads: bigint | number): void;
     }
 
 
@@ -1161,9 +1151,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1224,9 +1212,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1283,9 +1269,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1336,9 +1320,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1387,9 +1369,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1450,9 +1430,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1512,15 +1490,15 @@ export namespace LibvirtGConfig {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            current_memory: (bigint | number);
-            currentMemory: (bigint | number);
+            current_memory: bigint | number;
+            currentMemory: bigint | number;
             description: string;
             features: string[];
-            memory: (bigint | number);
+            memory: bigint | number;
             name: string;
             title: string;
             uuid: string;
-            vcpu: (bigint | number);
+            vcpu: bigint | number;
         }
     }
 
@@ -1535,13 +1513,13 @@ export namespace LibvirtGConfig {
          * @default 0
          */
         get current_memory(): number;
-        set current_memory(val: (bigint | number));
+        set current_memory(val: bigint | number);
 
         /**
          * @default 0
          */
         get currentMemory(): number;
-        set currentMemory(val: (bigint | number));
+        set currentMemory(val: bigint | number);
 
         /**
          * @default null
@@ -1556,7 +1534,7 @@ export namespace LibvirtGConfig {
          * @default 0
          */
         get memory(): number;
-        set memory(val: (bigint | number));
+        set memory(val: bigint | number);
 
         /**
          * @default null
@@ -1580,7 +1558,7 @@ export namespace LibvirtGConfig {
          * @default 1
          */
         get vcpu(): number;
-        set vcpu(val: (bigint | number));
+        set vcpu(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1683,12 +1661,12 @@ export namespace LibvirtGConfig {
         /**
          * @param klock 
          */
-        set_clock(klock: (DomainClock | null)): void;
+        set_clock(klock: DomainClock | null): void;
 
         /**
          * @param cpu 
          */
-        set_cpu(cpu: (DomainCpu | null)): void;
+        set_cpu(cpu: DomainCpu | null): void;
 
         /**
          * Sets the current amount of RAM allocated to `domain` in kilobytes (i.e.
@@ -1699,7 +1677,7 @@ export namespace LibvirtGConfig {
          * change the available domain memory after creation.
          * @param memory The current amount of RAM in kilobytes.
          */
-        set_current_memory(memory: (bigint | number)): void;
+        set_current_memory(memory: bigint | number): void;
 
         /**
          * @param xml 
@@ -1718,7 +1696,7 @@ export namespace LibvirtGConfig {
         /**
          * @param description 
          */
-        set_description(description: (string | null)): void;
+        set_description(description: string | null): void;
 
         /**
          * @param devices 
@@ -1741,44 +1719,44 @@ export namespace LibvirtGConfig {
          * blocks of 1024 bytes).
          * @param memory The maximum amount of RAM in kilobytes.
          */
-        set_memory(memory: (bigint | number)): void;
+        set_memory(memory: bigint | number): void;
 
         /**
          * @param name 
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param os the os configuration to set
          */
-        set_os(os: (DomainOs | null)): void;
+        set_os(os: DomainOs | null): void;
 
         /**
          * @param pm a `GVirPowerManagement` instance
          */
-        set_power_management(pm: (DomainPowerManagement | null)): void;
+        set_power_management(pm: DomainPowerManagement | null): void;
 
         /**
          * @param seclabel the security label configuration to set
          */
-        set_seclabel(seclabel: (DomainSeclabel | null)): void;
+        set_seclabel(seclabel: DomainSeclabel | null): void;
 
         /**
          * Sets the title of the domain. This is an optional short textual description of the domain. Passing a NULL `title`
          * unsets the current domain title.
          * @param title title of the domain
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
 
         /**
          * @param uuid 
          */
-        set_uuid(uuid: (string | null)): void;
+        set_uuid(uuid: string | null): void;
 
         /**
          * @param vcpu_count 
          */
-        set_vcpus(vcpu_count: (bigint | number)): void;
+        set_vcpus(vcpu_count: bigint | number): void;
 
         /**
          * @param type 
@@ -1795,9 +1773,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -1843,9 +1819,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainAddress.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainAddress.ConstructorProps {}
     }
 
     /**
@@ -1934,9 +1908,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainAddress.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainAddress.ConstructorProps {}
     }
 
     /**
@@ -2000,9 +1972,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2062,9 +2032,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2126,9 +2094,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardev.ConstructorProps {}
     }
 
     /**
@@ -2196,9 +2162,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -2256,9 +2220,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2304,9 +2266,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardevSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
     }
 
     /**
@@ -2367,9 +2327,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardevSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
     }
 
     /**
@@ -2430,9 +2388,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardevSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
     }
 
     /**
@@ -2485,9 +2441,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardevSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
     }
 
     /**
@@ -2540,9 +2494,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -2622,9 +2574,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardev.ConstructorProps {}
     }
 
     /**
@@ -2683,9 +2633,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -2729,7 +2677,7 @@ export namespace LibvirtGConfig {
         /**
          * @param address 
          */
-        set_address(address: (DomainAddress | null)): void;
+        set_address(address: DomainAddress | null): void;
 
         /**
          * @param index 
@@ -2751,9 +2699,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainController.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainController.ConstructorProps {}
     }
 
     /**
@@ -2825,9 +2771,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CapabilitiesCpu.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CapabilitiesCpu.ConstructorProps {}
     }
 
     /**
@@ -2900,9 +2844,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CapabilitiesCpuFeature.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CapabilitiesCpuFeature.ConstructorProps {}
     }
 
     /**
@@ -2963,9 +2905,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CapabilitiesCpuModel.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CapabilitiesCpuModel.ConstructorProps {}
     }
 
     /**
@@ -3018,9 +2958,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -3069,9 +3007,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -3147,7 +3083,7 @@ export namespace LibvirtGConfig {
          * Uses `driver` as the driver configuration for `disk`.
          * @param driver a {@link LibvirtGConfig.DomainDiskDriver}
          */
-        set_driver(driver: (DomainDiskDriver | null)): void;
+        set_driver(driver: DomainDiskDriver | null): void;
 
         /**
          * @param cache_type 
@@ -3219,9 +3155,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -3324,9 +3258,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -3388,7 +3320,7 @@ export namespace LibvirtGConfig {
         /**
          * @param bytes 
          */
-        set_ram_usage(bytes: (bigint | number)): void;
+        set_ram_usage(bytes: bigint | number): void;
 
         /**
          * @param readonly 
@@ -3420,9 +3352,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -3468,9 +3398,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
     }
 
     /**
@@ -3538,9 +3466,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
     }
 
     /**
@@ -3620,9 +3546,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
     }
 
     /**
@@ -3691,9 +3615,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
     }
 
     /**
@@ -3784,9 +3706,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainGraphics.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainGraphics.ConstructorProps {}
     }
 
     /**
@@ -3864,9 +3784,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -3947,9 +3865,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainHostdev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainHostdev.ConstructorProps {}
     }
 
     /**
@@ -4035,9 +3951,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -4105,9 +4019,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -4161,7 +4073,7 @@ export namespace LibvirtGConfig {
         /**
          * @param filterref the filterref to set
          */
-        set_filterref(filterref: (DomainInterfaceFilterref | null)): void;
+        set_filterref(filterref: DomainInterfaceFilterref | null): void;
 
         /**
          * @param ifname 
@@ -4193,9 +4105,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainInterface.ConstructorProps {}
     }
 
     /**
@@ -4254,9 +4164,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4330,9 +4238,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4400,9 +4306,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainInterface.ConstructorProps {}
     }
 
     /**
@@ -4461,9 +4365,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainInterface.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainInterface.ConstructorProps {}
     }
 
     /**
@@ -4516,9 +4418,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -4577,9 +4477,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4661,7 +4559,7 @@ export namespace LibvirtGConfig {
         /**
          * @param cmdline The direct boot commandline
          */
-        set_cmdline(cmdline: (string | null)): void;
+        set_cmdline(cmdline: string | null): void;
 
         /**
          * @param firmware 
@@ -4671,17 +4569,17 @@ export namespace LibvirtGConfig {
         /**
          * @param init 
          */
-        set_init(init: (string | null)): void;
+        set_init(init: string | null): void;
 
         /**
          * @param kernel The kernel path
          */
-        set_kernel(kernel: (string | null)): void;
+        set_kernel(kernel: string | null): void;
 
         /**
          * @param loader 
          */
-        set_loader(loader: (string | null)): void;
+        set_loader(loader: string | null): void;
 
         /**
          * @param machine 
@@ -4696,7 +4594,7 @@ export namespace LibvirtGConfig {
         /**
          * @param ramdisk The ramdisk path
          */
-        set_ramdisk(ramdisk: (string | null)): void;
+        set_ramdisk(ramdisk: string | null): void;
 
         /**
          * @param mode 
@@ -4713,9 +4611,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardev.ConstructorProps {}
     }
 
     /**
@@ -4768,9 +4664,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4834,9 +4728,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardev.ConstructorProps {}
     }
 
     /**
@@ -4883,7 +4775,7 @@ export namespace LibvirtGConfig {
         /**
          * @param address 
          */
-        set_address(address: (DomainAddress | null)): void;
+        set_address(address: DomainAddress | null): void;
 
         /**
          * @param bus 
@@ -4900,9 +4792,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -4949,12 +4839,12 @@ export namespace LibvirtGConfig {
         /**
          * @param label 
          */
-        set_baselabel(label: (string | null)): void;
+        set_baselabel(label: string | null): void;
 
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param model 
@@ -4976,9 +4866,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainChardev.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainChardev.ConstructorProps {}
     }
 
     /**
@@ -5031,9 +4919,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -5074,7 +4960,7 @@ export namespace LibvirtGConfig {
          * @param redirdev 
          * @param address 
          */
-        static set_address(redirdev: DomainRedirdev, address: (DomainAddress | null)): void;
+        static set_address(redirdev: DomainRedirdev, address: DomainAddress | null): void;
     }
 
 
@@ -5086,9 +4972,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainSmartcard.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
     }
 
     /**
@@ -5141,9 +5025,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainSmartcard.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
     }
 
     /**
@@ -5192,12 +5074,12 @@ export namespace LibvirtGConfig {
          * @param cert2 
          * @param cert3 
          */
-        set_certificates(cert1: (string | null), cert2: (string | null), cert3: (string | null)): void;
+        set_certificates(cert1: string | null, cert2: string | null, cert3: string | null): void;
 
         /**
          * @param path 
          */
-        set_database(path: (string | null)): void;
+        set_database(path: string | null): void;
     }
 
 
@@ -5209,9 +5091,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainSmartcard.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
     }
 
     /**
@@ -5270,9 +5150,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5384,9 +5262,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5468,9 +5344,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -5529,9 +5403,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5592,9 +5464,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainTimer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainTimer.ConstructorProps {}
     }
 
     /**
@@ -5647,9 +5517,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainTimer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainTimer.ConstructorProps {}
     }
 
     /**
@@ -5702,9 +5570,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainTimer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainTimer.ConstructorProps {}
     }
 
     /**
@@ -5757,9 +5623,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DomainDevice.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomainDevice.ConstructorProps {}
     }
 
     /**
@@ -5845,9 +5709,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5900,9 +5762,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -5955,9 +5815,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6010,9 +5868,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6140,9 +5996,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6195,9 +6049,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6273,7 +6125,7 @@ export namespace LibvirtGConfig {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param mode 
@@ -6295,9 +6147,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6392,22 +6242,22 @@ export namespace LibvirtGConfig {
         /**
          * @param allocation 
          */
-        set_allocation(allocation: (bigint | number)): void;
+        set_allocation(allocation: bigint | number): void;
 
         /**
          * @param available 
          */
-        set_available(available: (bigint | number)): void;
+        set_available(available: bigint | number): void;
 
         /**
          * @param capacity 
          */
-        set_capacity(capacity: (bigint | number)): void;
+        set_capacity(capacity: bigint | number): void;
 
         /**
          * @param name 
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param type 
@@ -6417,17 +6267,17 @@ export namespace LibvirtGConfig {
         /**
          * @param source 
          */
-        set_source(source: (StoragePoolSource | null)): void;
+        set_source(source: StoragePoolSource | null): void;
 
         /**
          * @param target 
          */
-        set_target(target: (StoragePoolTarget | null)): void;
+        set_target(target: StoragePoolTarget | null): void;
 
         /**
          * @param uuid 
          */
-        set_uuid(uuid: (string | null)): void;
+        set_uuid(uuid: string | null): void;
     }
 
 
@@ -6439,9 +6289,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6566,7 +6414,7 @@ export namespace LibvirtGConfig {
         /**
          * @param name 
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param product 
@@ -6588,9 +6436,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6650,7 +6496,7 @@ export namespace LibvirtGConfig {
         /**
          * @param path 
          */
-        set_path(path: (string | null)): void;
+        set_path(path: string | null): void;
 
         /**
          * @param perms 
@@ -6667,9 +6513,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6716,27 +6560,27 @@ export namespace LibvirtGConfig {
         /**
          * @param allocation 
          */
-        set_allocation(allocation: (bigint | number)): void;
+        set_allocation(allocation: bigint | number): void;
 
         /**
          * @param backing_store 
          */
-        set_backing_store(backing_store: (StorageVolBackingStore | null)): void;
+        set_backing_store(backing_store: StorageVolBackingStore | null): void;
 
         /**
          * @param capacity 
          */
-        set_capacity(capacity: (bigint | number)): void;
+        set_capacity(capacity: bigint | number): void;
 
         /**
          * @param name 
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * @param target 
          */
-        set_target(target: (StorageVolTarget | null)): void;
+        set_target(target: StorageVolTarget | null): void;
     }
 
 
@@ -6748,9 +6592,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6802,7 +6644,7 @@ export namespace LibvirtGConfig {
         /**
          * @param path 
          */
-        set_path(path: (string | null)): void;
+        set_path(path: string | null): void;
     }
 
 
@@ -6814,9 +6656,7 @@ export namespace LibvirtGConfig {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -6863,12 +6703,12 @@ export namespace LibvirtGConfig {
         /**
          * @param compat 
          */
-        set_compat(compat: (string | null)): void;
+        set_compat(compat: string | null): void;
 
         /**
          * @param features 
          */
-        set_features(features: (bigint | number)): void;
+        set_features(features: bigint | number): void;
 
         /**
          * @param format 
@@ -6878,7 +6718,7 @@ export namespace LibvirtGConfig {
         /**
          * @param perms 
          */
-        set_permissions(perms: (StoragePermissions | null)): void;
+        set_permissions(perms: StoragePermissions | null): void;
     }
 
 

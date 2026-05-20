@@ -30,7 +30,7 @@ export namespace GioWin32 {
      * @returns a registry-backed {@link Gio.SettingsBackend}
      * @since 2.78
      */
-    function registry_settings_backend_new(registry_key: (string | null)): Gio.SettingsBackend;
+    function registry_settings_backend_new(registry_key: string | null): Gio.SettingsBackend;
 
     namespace InputStream {
         // Signal signatures

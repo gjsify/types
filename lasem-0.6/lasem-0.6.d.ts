@@ -216,7 +216,7 @@ export namespace Lasem {
      * Free the buffer returned by `lsm_itex_to_mathml`.
      * @param mathml a mathml buffer
      */
-    function itex_free_mathml_buffer(mathml: (string | null)): void;
+    function itex_free_mathml_buffer(mathml: string | null): void;
 
     /**
      * Converts an itex string to a Mathml representation.
@@ -224,7 +224,7 @@ export namespace Lasem {
      * @param size itex string length, -1 if NULL terminated
      * @returns a newly allocated string, NULL on parse error. The returned data must be freed using `lsm_itex_free_mathml_buffer`.
      */
-    function itex_to_mathml(itex: (string | null), size: (bigint | number)): string;
+    function itex_to_mathml(itex: string | null, size: bigint | number): string;
 
     function shutdown(): void;
 
@@ -259,13 +259,10 @@ export namespace Lasem {
 
     namespace DomCharacterData {
         // Signal signatures
-        interface SignalSignatures extends DomNode.SignalSignatures {
-        }
+        interface SignalSignatures extends DomNode.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomNode.ConstructorProps {}
     }
 
     /**
@@ -329,13 +326,10 @@ export namespace Lasem {
 
     namespace DomDocument {
         // Signal signatures
-        interface SignalSignatures extends DomNode.SignalSignatures {
-        }
+        interface SignalSignatures extends DomNode.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomNode.ConstructorProps {}
     }
 
     /**
@@ -363,7 +357,7 @@ export namespace Lasem {
 
         _init(...args: any[]): void;
 
-        static new_from_memory(buffer: string, size: (bigint | number)): DomDocument;
+        static new_from_memory(buffer: string, size: bigint | number): DomDocument;
 
         static new_from_path(path: string): DomDocument;
 
@@ -419,7 +413,7 @@ export namespace Lasem {
          * @param buffer a memory buffer holding xml data
          * @param size size of the xml data, in bytes, -1 if NULL terminated
          */
-        append_from_memory(node: DomNode, buffer: string, size: (bigint | number)): void;
+        append_from_memory(node: DomNode, buffer: string, size: bigint | number): void;
 
         /**
          * Create a new element node with a type corresponding to `tag_name`.
@@ -452,7 +446,7 @@ export namespace Lasem {
          * @param size placeholder for the size of the returned data
          * @returns a newly allocated buffer containing the requested data.
          */
-        get_href_data(href: string, size: (bigint | number)): null;
+        get_href_data(href: string, size: bigint | number): null;
 
         /**
          * Get document URL.
@@ -497,13 +491,10 @@ export namespace Lasem {
 
     namespace DomDocumentFragment {
         // Signal signatures
-        interface SignalSignatures extends DomNode.SignalSignatures {
-        }
+        interface SignalSignatures extends DomNode.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomNode.ConstructorProps {}
     }
 
     /**
@@ -548,13 +539,10 @@ export namespace Lasem {
 
     namespace DomElement {
         // Signal signatures
-        interface SignalSignatures extends DomNode.SignalSignatures {
-        }
+        interface SignalSignatures extends DomNode.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomNode.ConstructorProps {}
     }
 
     /**
@@ -636,13 +624,10 @@ export namespace Lasem {
 
     namespace DomNamedNodeMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -724,13 +709,10 @@ export namespace Lasem {
 
     namespace DomNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -943,13 +925,10 @@ export namespace Lasem {
 
     namespace DomNodeList {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1013,13 +992,10 @@ export namespace Lasem {
 
     namespace DomText {
         // Signal signatures
-        interface SignalSignatures extends DomCharacterData.SignalSignatures {
-        }
+        interface SignalSignatures extends DomCharacterData.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomCharacterData.ConstructorProps {}
     }
 
     /**
@@ -1064,13 +1040,10 @@ export namespace Lasem {
 
     namespace DomView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1428,10 +1401,7 @@ export namespace Lasem {
         properties: null[];
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         init(): void;

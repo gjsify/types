@@ -500,7 +500,7 @@ export namespace Poppler {
         static SIGNING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -1636,7 +1636,7 @@ export namespace Poppler {
      * @returns `TRUE`, if `timet` was set
      * @since 0.12
      */
-    function date_parse(date: string, timet: (bigint | number)): boolean;
+    function date_parse(date: string, timet: bigint | number): boolean;
 
     function error_quark(): GLib.Quark;
 
@@ -1684,7 +1684,7 @@ export namespace Poppler {
      * @returns the named dest
      * @since 0.73
      */
-    function named_dest_from_bytestring(data: (Uint8Array | string)): string;
+    function named_dest_from_bytestring(data: Uint8Array | string): string;
 
     /**
      * Converts a named dest string (e.g. from {@link Poppler.Dest}.named_dest) into a
@@ -1701,7 +1701,7 @@ export namespace Poppler {
      * @returns a new bytestring,   or `null`
      * @since 0.73
      */
-    function named_dest_to_bytestring(name: string): (Uint8Array | null);
+    function named_dest_to_bytestring(name: string): Uint8Array | null;
 
     /**
      * Set NSS directory
@@ -2145,13 +2145,10 @@ export namespace Poppler {
 
     namespace Annot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2260,7 +2257,7 @@ export namespace Poppler {
          * Sets the color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_color(poppler_color: (Color | null)): void;
+        set_color(poppler_color: Color | null): void;
 
         /**
          * Sets the contents of `poppler_annot` to the given value,
@@ -2287,13 +2284,10 @@ export namespace Poppler {
 
     namespace AnnotCircle {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2345,19 +2339,16 @@ export namespace Poppler {
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_interior_color(poppler_color: (Color | null)): void;
+        set_interior_color(poppler_color: Color | null): void;
     }
 
 
     namespace AnnotFileAttachment {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2414,13 +2405,10 @@ export namespace Poppler {
 
     namespace AnnotFreeText {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2479,7 +2467,7 @@ export namespace Poppler {
          * Gets the font description (i.e. font family name, style, weight, stretch and size).
          * @returns a copy of the annotation font description, or NULL if there is no font description set.
          */
-        get_font_desc(): (FontDescription | null);
+        get_font_desc(): FontDescription | null;
 
         /**
          * Retrieves the justification of the text of `poppler_annot`.
@@ -2503,13 +2491,10 @@ export namespace Poppler {
 
     namespace AnnotInk {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2584,13 +2569,10 @@ export namespace Poppler {
 
     namespace AnnotLine {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2643,13 +2625,10 @@ export namespace Poppler {
 
     namespace AnnotMarkup {
         // Signal signatures
-        interface SignalSignatures extends Annot.SignalSignatures {
-        }
+        interface SignalSignatures extends Annot.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Annot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
     /**
@@ -2747,7 +2726,7 @@ export namespace Poppler {
          * Sets the label text of `poppler_annot`, replacing the current one
          * @param label a text string containing the new label, or `null`
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * Sets the opacity of `poppler_annot`. This value applies to
@@ -2783,13 +2762,10 @@ export namespace Poppler {
 
     namespace AnnotMovie {
         // Signal signatures
-        interface SignalSignatures extends Annot.SignalSignatures {
-        }
+        interface SignalSignatures extends Annot.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Annot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
     /**
@@ -2845,13 +2821,10 @@ export namespace Poppler {
 
     namespace AnnotScreen {
         // Signal signatures
-        interface SignalSignatures extends Annot.SignalSignatures {
-        }
+        interface SignalSignatures extends Annot.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Annot.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Annot.ConstructorProps {}
     }
 
     /**
@@ -2901,13 +2874,10 @@ export namespace Poppler {
 
     namespace AnnotSquare {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -2959,19 +2929,16 @@ export namespace Poppler {
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
          */
-        set_interior_color(poppler_color: (Color | null)): void;
+        set_interior_color(poppler_color: Color | null): void;
     }
 
 
     namespace AnnotStamp {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -3035,13 +3002,10 @@ export namespace Poppler {
 
     namespace AnnotText {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -3173,13 +3137,10 @@ export namespace Poppler {
 
     namespace AnnotTextMarkup {
         // Signal signatures
-        interface SignalSignatures extends AnnotMarkup.SignalSignatures {
-        }
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends AnnotMarkup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
     }
 
     /**
@@ -3245,13 +3206,10 @@ export namespace Poppler {
 
     namespace Attachment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3308,7 +3266,7 @@ export namespace Poppler {
         /**
          * @returns The attachment's creation date and time as a {@link GLib.DateTime}, or `null` if the creation date and time is not available.
          */
-        get_ctime(): (GLib.DateTime | null);
+        get_ctime(): GLib.DateTime | null;
 
         /**
          * @returns The attachment's descriptive text.
@@ -3318,7 +3276,7 @@ export namespace Poppler {
         /**
          * @returns The attachment's modification date and time as a {@link GLib.DateTime}, or `null` if the modification date and time is not available.
          */
-        get_mtime(): (GLib.DateTime | null);
+        get_mtime(): GLib.DateTime | null;
 
         /**
          * @returns The attachment's name.
@@ -3756,17 +3714,17 @@ export namespace Poppler {
 
         _init(...args: any[]): void;
 
-        static new_from_bytes(bytes: (GLib.Bytes | Uint8Array), password: (string | null)): Document;
+        static new_from_bytes(bytes: GLib.Bytes | Uint8Array, password: string | null): Document;
 
-        static new_from_data(data: (Uint8Array | string), password: (string | null)): Document;
+        static new_from_data(data: Uint8Array | string, password: string | null): Document;
 
-        static new_from_fd(fd: number, password: (string | null)): Document;
+        static new_from_fd(fd: number, password: string | null): Document;
 
-        static new_from_file(uri: string, password: (string | null)): Document;
+        static new_from_file(uri: string, password: string | null): Document;
 
-        static new_from_gfile(file: Gio.File, password: (string | null), cancellable: (Gio.Cancellable | null)): Document;
+        static new_from_gfile(file: Gio.File, password: string | null, cancellable: Gio.Cancellable | null): Document;
 
-        static new_from_stream(stream: Gio.InputStream, length: (bigint | number), password: (string | null), cancellable: (Gio.Cancellable | null)): Document;
+        static new_from_stream(stream: Gio.InputStream, length: bigint | number, password: string | null, cancellable: Gio.Cancellable | null): Document;
 
         // Signals
         /** @signal */
@@ -3791,7 +3749,7 @@ export namespace Poppler {
          * The return value must be freed with `g_tree_destroy()`.
          * @returns the {@link GLib.Tree}, or `null`
          */
-        create_dests_tree(): (GLib.Tree | null);
+        create_dests_tree(): GLib.Tree | null;
 
         /**
          * Creates a {@link Poppler.Dest} for the named destination `link_name` in `document`.
@@ -3832,7 +3790,7 @@ export namespace Poppler {
          * Returns the date the document was created as a {@link GLib.DateTime}
          * @returns the date the document was created, or `null`
          */
-        get_creation_date_time(): (GLib.DateTime | null);
+        get_creation_date_time(): GLib.DateTime | null;
 
         /**
          * Returns the creator of the document. If the document was converted
@@ -3885,7 +3843,7 @@ export namespace Poppler {
          * Returns the date the document was most recently modified as a {@link GLib.DateTime}
          * @returns the date the document was modified, or `null`
          */
-        get_modification_date_time(): (GLib.DateTime | null);
+        get_modification_date_time(): GLib.DateTime | null;
 
         /**
          * Returns the number of attachments in a loaded document.
@@ -3963,7 +3921,7 @@ export namespace Poppler {
          * Returns the PDF subtype version of `document` as a string.
          * @returns a newly allocated string containing the PDF subtype version of `document`, or `null`
          */
-        get_pdf_subtype_string(): (string | null);
+        get_pdf_subtype_string(): string | null;
 
         /**
          * Updates values referenced by `major_version` & `minor_version` with the
@@ -4067,7 +4025,7 @@ export namespace Poppler {
          * @param fields list of fields to reset
          * @param exclude_fields whether to reset all fields except those in `fields`
          */
-        reset_form(fields: (string[] | null), exclude_fields: boolean): void;
+        reset_form(fields: string[] | null, exclude_fields: boolean): void;
 
         /**
          * Saves `document`. Any change made in the document such as
@@ -4120,14 +4078,14 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param creation_date A new creation date
          */
-        set_creation_date(creation_date: (bigint | number)): void;
+        set_creation_date(creation_date: bigint | number): void;
 
         /**
          * Sets the document's creation date. If `creation_datetime` is `null`,
          * CreationDate entry is removed from the document's Info dictionary.
          * @param creation_datetime A new creation {@link GLib.DateTime}
          */
-        set_creation_date_time(creation_datetime: (GLib.DateTime | null)): void;
+        set_creation_date_time(creation_datetime: GLib.DateTime | null): void;
 
         /**
          * Sets the document's creator. If `creator` is `null`, Creator
@@ -4148,14 +4106,14 @@ export namespace Poppler {
          * entry is removed from the document's Info dictionary.
          * @param modification_date A new modification date
          */
-        set_modification_date(modification_date: (bigint | number)): void;
+        set_modification_date(modification_date: bigint | number): void;
 
         /**
          * Sets the document's modification date. If `modification_datetime` is `null`,
          * ModDate entry is removed from the document's Info dictionary.
          * @param modification_datetime A new modification {@link GLib.DateTime}
          */
-        set_modification_date_time(modification_datetime: (GLib.DateTime | null)): void;
+        set_modification_date_time(modification_datetime: GLib.DateTime | null): void;
 
         /**
          * Sets the document's producer. If `producer` is `null`,
@@ -4183,7 +4141,7 @@ export namespace Poppler {
          * @param signing_data a {@link Poppler.SigningData}
          * @param cancellable a {@link Gio.Cancellable}
          */
-        sign(signing_data: SigningData, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        sign(signing_data: SigningData, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Sign #document using `signing_data`.
@@ -4191,7 +4149,7 @@ export namespace Poppler {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        sign(signing_data: SigningData, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        sign(signing_data: SigningData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sign #document using `signing_data`.
@@ -4199,7 +4157,7 @@ export namespace Poppler {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        sign(signing_data: SigningData, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        sign(signing_data: SigningData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finish poppler_sign_document and get return status or error.
@@ -4212,13 +4170,10 @@ export namespace Poppler {
 
     namespace FontInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4293,13 +4248,10 @@ export namespace Poppler {
 
     namespace FormField {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4509,7 +4461,7 @@ export namespace Poppler {
          * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
          * @param cancellable optional {@link Gio.Cancellable} object
          */
-        signature_validate_async(flags: SignatureValidationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<SignatureInfo>;
+        signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<SignatureInfo>;
 
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
@@ -4517,7 +4469,7 @@ export namespace Poppler {
          * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
          */
-        signature_validate_async(flags: SignatureValidationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
@@ -4525,7 +4477,7 @@ export namespace Poppler {
          * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
          */
-        signature_validate_async(flags: SignatureValidationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<SignatureInfo> | void);
+        signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SignatureInfo> | void;
 
         /**
          * Finishes validation of the cryptographic signature contained in `signature_field`.
@@ -4541,7 +4493,7 @@ export namespace Poppler {
          * @param cancellable optional {@link Gio.Cancellable} object
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          */
-        signature_validate_sync(flags: SignatureValidationFlags, cancellable: (Gio.Cancellable | null)): SignatureInfo;
+        signature_validate_sync(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): SignatureInfo;
 
         text_do_scroll(): boolean;
 
@@ -4591,13 +4543,10 @@ export namespace Poppler {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4678,13 +4627,10 @@ export namespace Poppler {
 
     namespace Media {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4798,13 +4744,10 @@ export namespace Poppler {
 
     namespace Movie {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4920,13 +4863,10 @@ export namespace Poppler {
 
     namespace PSFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5443,13 +5383,10 @@ export namespace Poppler {
 
     namespace StructureElement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6230,10 +6167,7 @@ export namespace Poppler {
         static $gtype: GObject.GType<CertificateInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): CertificateInfo;
 
@@ -6830,9 +6764,9 @@ export namespace Poppler {
         static $gtype: GObject.GType<Path>;
 
         // Constructors
-        constructor(points: Point, n_points: (bigint | number));
+        constructor(points: Point, n_points: bigint | number);
 
-        static new_from_array(points: Point, n_points: (bigint | number)): Path;
+        static new_from_array(points: Point, n_points: bigint | number): Path;
 
         // Methods
         /**
@@ -7086,10 +7020,7 @@ export namespace Poppler {
         static $gtype: GObject.GType<SigningData>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): SigningData;
 

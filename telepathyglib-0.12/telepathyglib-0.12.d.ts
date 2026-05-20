@@ -1377,7 +1377,7 @@ export namespace TelepathyGLib {
         static CAPTCHA_NOT_SUPPORTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -3434,7 +3434,7 @@ export namespace TelepathyGLib {
      * @returns a boolean value for `key`
      * @since 0.7.9
      */
-    function asv_get_boolean(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [boolean, boolean];
+    function asv_get_boolean(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [boolean, boolean];
 
     /**
      * If a value for `key` in `asv` is present and is of the desired type,
@@ -3451,7 +3451,7 @@ export namespace TelepathyGLib {
      * @returns the value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_boxed(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string, type: GObject.GType): null;
+    function asv_get_boxed(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string, type: GObject.GType): null;
 
     /**
      * If a value for `key` in `asv` is present and is an array of bytes
@@ -3468,7 +3468,7 @@ export namespace TelepathyGLib {
      * @returns the string value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_bytes(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): (Uint8Array | null);
+    function asv_get_bytes(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): Uint8Array | null;
 
     /**
      * If a value for `key` in `asv` is present and has any numeric type used by
@@ -3481,7 +3481,7 @@ export namespace TelepathyGLib {
      * @returns the double precision floating-point value of `key`, or 0.0
      * @since 0.7.9
      */
-    function asv_get_double(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [number, boolean];
+    function asv_get_double(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3495,7 +3495,7 @@ export namespace TelepathyGLib {
      * @returns the 32-bit signed integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_int32(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [number, boolean];
+    function asv_get_int32(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3509,7 +3509,7 @@ export namespace TelepathyGLib {
      * @returns the 64-bit signed integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_int64(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [number, boolean];
+    function asv_get_int64(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present and is an object path, return it.
@@ -3524,7 +3524,7 @@ export namespace TelepathyGLib {
      * @returns the object-path value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_object_path(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): (string | null);
+    function asv_get_object_path(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string | null;
 
     /**
      * If a value for `key` in `asv` is present and is a string, return it.
@@ -3539,7 +3539,7 @@ export namespace TelepathyGLib {
      * @returns the string value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_string(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): (string | null);
+    function asv_get_string(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string | null;
 
     /**
      * If a value for `key` in `asv` is present and is an array of strings (strv),
@@ -3555,7 +3555,7 @@ export namespace TelepathyGLib {
      * @returns the `null`-terminated string-array value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_strv(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): (string[] | null);
+    function asv_get_strv(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string[] | null;
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3569,7 +3569,7 @@ export namespace TelepathyGLib {
      * @returns the 32-bit unsigned integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_uint32(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [number, boolean];
+    function asv_get_uint32(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3582,7 +3582,7 @@ export namespace TelepathyGLib {
      * @returns the 64-bit unsigned integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_uint64(asv: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), key: string): [number, boolean];
+    function asv_get_uint64(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
 
     /**
      * Check that the given string is a valid D-Bus bus name of an appropriate
@@ -3662,7 +3662,7 @@ export namespace TelepathyGLib {
      * @param offset the offset within `cls` of a TpDBusPropertiesMixinClass structure
      * @since 0.7.3
      */
-    function dbus_properties_mixin_class_init(cls: typeof GObject.Object, offset: (bigint | number)): void;
+    function dbus_properties_mixin_class_init(cls: typeof GObject.Object, offset: bigint | number): void;
 
     /**
      * Get all the properties of a particular interface. This implementation
@@ -3703,7 +3703,7 @@ export namespace TelepathyGLib {
      * @param properties a `null`-terminated array of (unqualified)  property names whose values have changed.
      * @since 0.15.6
      */
-    function dbus_properties_mixin_emit_properties_changed(object: GObject.Object, interface_name: string, properties: (string | null)): void;
+    function dbus_properties_mixin_emit_properties_changed(object: GObject.Object, interface_name: string, properties: string | null): void;
 
     /**
      * Initialize `value` with the type of the property `property_name` on
@@ -3719,7 +3719,7 @@ export namespace TelepathyGLib {
      * @returns `true` (filling `value`) on success, `false` (setting `error`)  on failure
      * @since 0.7.13
      */
-    function dbus_properties_mixin_get(self: GObject.Object, interface_name: string, property_name: string, value: (GObject.Value | any)): boolean;
+    function dbus_properties_mixin_get(self: GObject.Object, interface_name: string, property_name: string, value: GObject.Value | any): boolean;
 
     /**
      * An implementation of {@link TelepathyGLib.DBusPropertiesMixinGetter} which assumes that
@@ -3731,7 +3731,7 @@ export namespace TelepathyGLib {
      * @param value A GValue pre-initialized to the right type, into which to put  the value
      * @param getter_data The getter_data from the {@link TelepathyGLib.DBusPropertiesMixinPropImpl},  which must be a string containing the GObject property's name
      */
-    function dbus_properties_mixin_getter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), getter_data: null): void;
+    function dbus_properties_mixin_getter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, getter_data: null): void;
 
     /**
      * Declare that the DBus.Properties interface represented by `g_iface`
@@ -3753,7 +3753,7 @@ export namespace TelepathyGLib {
      * @returns `true` on success; `false` (setting `error`) on failure
      * @since 0.15.8
      */
-    function dbus_properties_mixin_set(self: GObject.Object, interface_name: string, property_name: string, value: (GObject.Value | any)): boolean;
+    function dbus_properties_mixin_set(self: GObject.Object, interface_name: string, property_name: string, value: GObject.Value | any): boolean;
 
     /**
      * An implementation of {@link TelepathyGLib.DBusPropertiesMixinSetter} which assumes that the
@@ -3766,7 +3766,7 @@ export namespace TelepathyGLib {
      * @param setter_data The setter_data from the {@link TelepathyGLib.DBusPropertiesMixinPropImpl},  which must be a string containing the GObject property's name
      * @returns `true`
      */
-    function dbus_properties_mixin_setter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: (GObject.Value | any), setter_data: null): boolean;
+    function dbus_properties_mixin_setter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, setter_data: null): boolean;
 
     /**
      * Open the given file for writing and duplicate its file descriptor to
@@ -4121,7 +4121,7 @@ export namespace TelepathyGLib {
      * @since 0.7.1
      * @deprecated since 0.19.1, use `tp_list_connection_managers_async()`
      */
-    function list_connection_managers(bus_daemon: DBusDaemon, callback: ConnectionManagerListCb, weak_object: (GObject.Object | null)): void;
+    function list_connection_managers(bus_daemon: DBusDaemon, callback: ConnectionManagerListCb, weak_object: GObject.Object | null): void;
 
     /**
      * List the available (running or installed) connection managers,
@@ -4130,7 +4130,7 @@ export namespace TelepathyGLib {
      * @param dbus_daemon a {@link TelepathyGLib.DBusDaemon}, or `null` to use  `tp_dbus_daemon_dup()`
      * @since 0.17.6
      */
-    function list_connection_managers_async(dbus_daemon: (DBusDaemon | null)): globalThis.Promise<ConnectionManager[]>;
+    function list_connection_managers_async(dbus_daemon: DBusDaemon | null): globalThis.Promise<ConnectionManager[]>;
     /**
      * List the available (running or installed) connection managers,
      * asynchronously, and wait for their `TP_CONNECTION_MANAGER_FEATURE_CORE`
@@ -4139,7 +4139,7 @@ export namespace TelepathyGLib {
      * @param callback a callback to call with a list of CMs
      * @since 0.17.6
      */
-    function list_connection_managers_async(dbus_daemon: (DBusDaemon | null), callback: (Gio.AsyncReadyCallback<(DBusDaemon | null)> | null)): void;
+    function list_connection_managers_async(dbus_daemon: DBusDaemon | null, callback: Gio.AsyncReadyCallback<DBusDaemon | null> | null): void;
     /**
      * List the available (running or installed) connection managers,
      * asynchronously, and wait for their `TP_CONNECTION_MANAGER_FEATURE_CORE`
@@ -4148,7 +4148,7 @@ export namespace TelepathyGLib {
      * @param callback a callback to call with a list of CMs
      * @since 0.17.6
      */
-    function list_connection_managers_async(dbus_daemon: (DBusDaemon | null), callback: (Gio.AsyncReadyCallback<(DBusDaemon | null)> | null)): (globalThis.Promise<ConnectionManager[]> | void);
+    function list_connection_managers_async(dbus_daemon: DBusDaemon | null, callback: Gio.AsyncReadyCallback<DBusDaemon | null> | null): globalThis.Promise<ConnectionManager[]> | void;
 
     /**
      * Finish listing the available connection managers.
@@ -4173,7 +4173,7 @@ export namespace TelepathyGLib {
      * @param weak_object if not `null`, will be weakly referenced; the callback will   not be called if the object has vanished
      * @since 0.7.1
      */
-    function list_connection_names(bus_daemon: DBusDaemon, callback: ConnectionNameListCb, weak_object: (GObject.Object | null)): void;
+    function list_connection_names(bus_daemon: DBusDaemon, callback: ConnectionNameListCb, weak_object: GObject.Object | null): void;
 
     /**
      * Create a new {@link Gio.SimpleAsyncResult} with no operation result, and call
@@ -4190,7 +4190,7 @@ export namespace TelepathyGLib {
      * @param source_tag the source tag for the {@link Gio.SimpleAsyncResult}
      * @since 0.11.9
      */
-    function simple_async_report_success_in_idle(source: (GObject.Object | null), callback: (Gio.AsyncReadyCallback<(GObject.Object | null)> | null), source_tag: null): void;
+    function simple_async_report_success_in_idle(source: GObject.Object | null, callback: Gio.AsyncReadyCallback<GObject.Object | null> | null, source_tag: null): void;
 
     /**
      * Declare that `g_interface` implements the given D-Bus interface, with the
@@ -4228,7 +4228,7 @@ export namespace TelepathyGLib {
      * @returns `true` if it would be appropriate to present a window
      * @since 0.11.13
      */
-    function user_action_time_should_present(user_action_time: (bigint | number)): [boolean, number];
+    function user_action_time_should_present(user_action_time: bigint | number): [boolean, number];
 
     /**
      * Validate that the provided string is valid UTF8. If not,
@@ -4278,7 +4278,7 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface BaseClientClassObserveChannelsImpl {
-        (client: BaseClient, account: Account, connection: Connection, channels: Channel[], dispatch_operation: (ChannelDispatchOperation | null), requests: ChannelRequest[], context: ObserveChannelsContext): void;
+        (client: BaseClient, account: Account, connection: Connection, channels: Channel[], dispatch_operation: ChannelDispatchOperation | null, requests: ChannelRequest[], context: ObserveChannelsContext): void;
     }
 
     /**
@@ -4460,14 +4460,14 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface ProxyPrepareAsync {
-        (proxy: Proxy, feature: ProxyFeature, callback: (Gio.AsyncReadyCallback<Proxy> | null)): void;
+        (proxy: Proxy, feature: ProxyFeature, callback: Gio.AsyncReadyCallback<Proxy> | null): void;
     }
 
     /**
      * @gir-type Callback
      */
     interface SimpleApproverAddDispatchOperationImpl {
-        (approver: SimpleApprover, account: Account, connection: Connection, channels: Channel[], dispatch_operation: (ChannelDispatchOperation | null), context: AddDispatchOperationContext): void;
+        (approver: SimpleApprover, account: Account, connection: Connection, channels: Channel[], dispatch_operation: ChannelDispatchOperation | null, context: AddDispatchOperationContext): void;
     }
 
     /**
@@ -4481,18 +4481,18 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface SimpleObserverObserveChannelsImpl {
-        (observer: SimpleObserver, account: Account, connection: Connection, channels: Channel[], dispatch_operation: (ChannelDispatchOperation | null), requests: ChannelRequest[], context: ObserveChannelsContext): void;
+        (observer: SimpleObserver, account: Account, connection: Connection, channels: Channel[], dispatch_operation: ChannelDispatchOperation | null, requests: ChannelRequest[], context: ObserveChannelsContext): void;
     }
 
     /**
      * @gir-type Alias
      */
-    type ContactInfoList = (object | null);
+    type ContactInfoList = object | null;
 
     /**
      * @gir-type Alias
      */
-    type ContactInfoSpecList = (object | null);
+    type ContactInfoSpecList = object | null;
 
     /**
      * <![CDATA[         Flags for the various types of anonymity modes.  These modes are solely to         inform the CM of the desired anonymous settings.  It is up to the         CM to determine whether the anonymity modes should be handled within         the CM itself, or whether the network that a CM might be talking to         should be enforcing anonymity.          CMs MAY support only a subset of these modes, and specific         connections MAY support none at all.       ]]>
@@ -5160,7 +5160,7 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "status-changed": (arg0: number, arg1: number, arg2: number, arg3: (string | null), arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "status-changed": (arg0: number, arg1: number, arg2: number, arg3: string | null, arg4: GLib.HashTable<string, GObject.Value>) => void;
             "notify::automatic-presence-type": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status-message": (pspec: GObject.ParamSpec) => void;
@@ -5219,8 +5219,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             connection_error: string;
             connectionError: string;
-            connection_error_details: ({ [key: string]: any } | GLib.HashTable<never, never>);
-            connectionErrorDetails: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            connection_error_details: { [key: string]: any } | GLib.HashTable<never, never>;
+            connectionErrorDetails: { [key: string]: any } | GLib.HashTable<never, never>;
             connection_manager: string;
             connectionManager: string;
             connection_status: number;
@@ -5253,8 +5253,8 @@ export namespace TelepathyGLib {
             requested_status_message: string;
             requestedStatusMessage: string;
             service: string;
-            storage_identifier: (GObject.Value | any);
-            storageIdentifier: (GObject.Value | any);
+            storage_identifier: GObject.Value | any;
+            storageIdentifier: GObject.Value | any;
             storage_identifier_variant: GLib.Variant;
             storageIdentifierVariant: GLib.Variant;
             storage_provider: string;
@@ -6461,7 +6461,7 @@ export namespace TelepathyGLib {
          * re-entered or the account is destroyed.
          * @returns a D-Bus error name, or `null`.
          */
-        dup_detailed_error_vardict(): [(string | null), GLib.Variant | null];
+        dup_detailed_error_vardict(): [string | null, GLib.Variant | null];
 
         /**
          * Returns the parameters of the account, in a variant of type
@@ -6509,7 +6509,7 @@ export namespace TelepathyGLib {
          * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        dup_storage_specific_information_vardict_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        dup_storage_specific_information_vardict_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Makes an asynchronous request of `self`'s StorageSpecificInformation
@@ -6520,7 +6520,7 @@ export namespace TelepathyGLib {
          * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        dup_storage_specific_information_vardict_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+        dup_storage_specific_information_vardict_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * Retrieve the value of the request begun with
@@ -6566,7 +6566,7 @@ export namespace TelepathyGLib {
          * `tp_account_get_avatar_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        get_avatar_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_avatar_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous get of `account`'s avatar. When
@@ -6574,7 +6574,7 @@ export namespace TelepathyGLib {
          * `tp_account_get_avatar_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        get_avatar_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+        get_avatar_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array> | void;
 
         /**
          * Finishes an async get operation of `account`'s avatar.
@@ -6758,7 +6758,7 @@ export namespace TelepathyGLib {
          * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        get_storage_specific_information_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_storage_specific_information_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Makes an asynchronous request of `self`'s StorageSpecificInformation
@@ -6769,7 +6769,7 @@ export namespace TelepathyGLib {
          * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        get_storage_specific_information_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.HashTable<string, GObject.Value>> | void);
+        get_storage_specific_information_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, GObject.Value>> | void;
 
         /**
          * Retrieve the value of the request begun with
@@ -6823,7 +6823,7 @@ export namespace TelepathyGLib {
          * `tp_account_reconnect_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        reconnect_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous reconnect of `account`. When the operation is
@@ -6831,7 +6831,7 @@ export namespace TelepathyGLib {
          * `tp_account_reconnect_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        reconnect_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async reconnect of `account`.
@@ -6853,7 +6853,7 @@ export namespace TelepathyGLib {
          * `tp_account_remove_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        remove_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous removal of `account`. When the operation is
@@ -6861,7 +6861,7 @@ export namespace TelepathyGLib {
          * `tp_account_remove_finish()` to get the result of the operation.
          * @param callback a callback to call when the request is satisfied
          */
-        remove_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async removal of `account`.
@@ -6889,7 +6889,7 @@ export namespace TelepathyGLib {
          * @param message a message for the change, or `null`
          * @param callback a callback to call when the request is satisfied
          */
-        request_presence_async(type: ConnectionPresenceType, status: string, message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_presence_async(type: ConnectionPresenceType, status: string, message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous change of presence on `account`. When the
@@ -6900,7 +6900,7 @@ export namespace TelepathyGLib {
          * @param message a message for the change, or `null`
          * @param callback a callback to call when the request is satisfied
          */
-        request_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async presence change request on `account`.
@@ -6930,7 +6930,7 @@ export namespace TelepathyGLib {
          * @param message a message for the change, or `null`
          * @param callback a callback to call when the request is satisfied
          */
-        set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous change of `account`'s automatic presence. When the
@@ -6942,7 +6942,7 @@ export namespace TelepathyGLib {
          * @param message a message for the change, or `null`
          * @param callback a callback to call when the request is satisfied
          */
-        set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_automatic_presence_async(type: ConnectionPresenceType, status: string, message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous request to change the automatic presence of
@@ -6961,7 +6961,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can be `null`  only if `len` equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar_async(avatar: (Uint8Array | null), mime_type: (string | null)): globalThis.Promise<boolean>;
+        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null): globalThis.Promise<boolean>;
 
         /**
          * Requests an asynchronous change of the Avatar parameter on `self`. When
@@ -6973,7 +6973,7 @@ export namespace TelepathyGLib {
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          * @param callback a callback to call when the request is satisfied
          */
-        set_avatar_async(avatar: (Uint8Array | null), mime_type: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous change of the Avatar parameter on `self`. When
@@ -6985,7 +6985,7 @@ export namespace TelepathyGLib {
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          * @param callback a callback to call when the request is satisfied
          */
-        set_avatar_async(avatar: (Uint8Array | null), mime_type: (string | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async avatar change request on `account`.
@@ -7011,7 +7011,7 @@ export namespace TelepathyGLib {
          * @param connect_automatically new value for the parameter
          * @param callback a callback to call when the request is satisfied
          */
-        set_connect_automatically_async(connect_automatically: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_connect_automatically_async(connect_automatically: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the ConnectAutomatically property of
@@ -7021,7 +7021,7 @@ export namespace TelepathyGLib {
          * @param connect_automatically new value for the parameter
          * @param callback a callback to call when the request is satisfied
          */
-        set_connect_automatically_async(connect_automatically: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_connect_automatically_async(connect_automatically: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of the ConnectAutomatically property.
@@ -7045,7 +7045,7 @@ export namespace TelepathyGLib {
          * @param display_name a new display name, or `null` to unset the display name
          * @param callback a callback to call when the request is satisfied
          */
-        set_display_name_async(display_name: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_display_name_async(display_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the DisplayName property of `account`. When
@@ -7054,7 +7054,7 @@ export namespace TelepathyGLib {
          * @param display_name a new display name, or `null` to unset the display name
          * @param callback a callback to call when the request is satisfied
          */
-        set_display_name_async(display_name: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_display_name_async(display_name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of the DisplayName property.
@@ -7078,7 +7078,7 @@ export namespace TelepathyGLib {
          * @param enabled the new enabled value of `account`
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the Enabled property of `account`. When the
@@ -7087,7 +7087,7 @@ export namespace TelepathyGLib {
          * @param enabled the new enabled value of `account`
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of the Enabled property.
@@ -7111,7 +7111,7 @@ export namespace TelepathyGLib {
          * @param icon_name a new icon name, or `null` to unset the icon name
          * @param callback a callback to call when the request is satisfied
          */
-        set_icon_name_async(icon_name: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_icon_name_async(icon_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the Icon property of `account`. When
@@ -7120,7 +7120,7 @@ export namespace TelepathyGLib {
          * @param icon_name a new icon name, or `null` to unset the icon name
          * @param callback a callback to call when the request is satisfied
          */
-        set_icon_name_async(icon_name: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_icon_name_async(icon_name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of the Icon parameter.
@@ -7144,7 +7144,7 @@ export namespace TelepathyGLib {
          * @param nickname a new nickname to set
          * @param callback a callback to call when the request is satisfied
          */
-        set_nickname_async(nickname: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_nickname_async(nickname: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous change of the Nickname parameter on `account`. When
@@ -7153,7 +7153,7 @@ export namespace TelepathyGLib {
          * @param nickname a new nickname to set
          * @param callback a callback to call when the request is satisfied
          */
-        set_nickname_async(nickname: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_nickname_async(nickname: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async nickname change request on `account`.
@@ -7177,7 +7177,7 @@ export namespace TelepathyGLib {
          * @param service a new service name, or `null` or the empty string to unset the  service name (which will result in the {@link TelepathyGLib.Account.service} property  becoming the same as {@link TelepathyGLib.Account.protocol})
          * @param callback a callback to call when the request is satisfied
          */
-        set_service_async(service: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_service_async(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the Service property on `self`. When
@@ -7186,7 +7186,7 @@ export namespace TelepathyGLib {
          * @param service a new service name, or `null` or the empty string to unset the  service name (which will result in the {@link TelepathyGLib.Account.service} property  becoming the same as {@link TelepathyGLib.Account.protocol})
          * @param callback a callback to call when the request is satisfied
          */
-        set_service_async(service: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_service_async(service: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of the Service parameter.
@@ -7230,7 +7230,7 @@ export namespace TelepathyGLib {
          * @param associate `true` to use this account for `scheme`, or `false` to not use it
          * @param callback a callback to call when the request is satisfied
          */
-        set_uri_scheme_association_async(scheme: string, associate: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_uri_scheme_association_async(scheme: string, associate: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Add `scheme` to the list of additional URI schemes that would be returned
@@ -7249,7 +7249,7 @@ export namespace TelepathyGLib {
          * @param associate `true` to use this account for `scheme`, or `false` to not use it
          * @param callback a callback to call when the request is satisfied
          */
-        set_uri_scheme_association_async(scheme: string, associate: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_uri_scheme_association_async(scheme: string, associate: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Interpret the result of `tp_account_set_uri_scheme_association_async()`.
@@ -7265,7 +7265,7 @@ export namespace TelepathyGLib {
          * @param parameters new  parameters to set on `account`
          * @param unset_parameters list of parameters to unset on `account`
          */
-        update_parameters_async(parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), unset_parameters: string): globalThis.Promise<string[]>;
+        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string): globalThis.Promise<string[]>;
 
         /**
          * Requests an asynchronous update of parameters of `account`. When the
@@ -7275,7 +7275,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_async(parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), unset_parameters: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous update of parameters of `account`. When the
@@ -7285,7 +7285,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_async(parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), unset_parameters: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Finishes an async update of the parameters on `account`.
@@ -7321,7 +7321,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous update of parameters of `account`. When the
@@ -7336,7 +7336,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        update_parameters_vardict_async(parameters: GLib.Variant, unset_parameters: string[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Finishes an async update of the parameters on `account`.
@@ -7479,8 +7479,8 @@ export namespace TelepathyGLib {
             channelRequest: ChannelRequest;
             request_vardict: GLib.Variant;
             requestVardict: GLib.Variant;
-            user_action_time: (bigint | number);
-            userActionTime: (bigint | number);
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -7637,21 +7637,21 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](account: Account, request: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), user_action_time: (bigint | number)): AccountChannelRequest;
+        static ["new"](account: Account, request: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_audio_call(account: Account, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_audio_call(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_audio_video_call(account: Account, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_audio_video_call(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_dbus_tube(account: Account, service_name: string, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_dbus_tube(account: Account, service_name: string, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_file_transfer(account: Account, filename: string, mime_type: (string | null), size: (bigint | number), user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_file_transfer(account: Account, filename: string, mime_type: string | null, size: bigint | number, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_stream_tube(account: Account, service: string, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_stream_tube(account: Account, service: string, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_text(account: Account, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_text(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
-        static new_vardict(account: Account, request: GLib.Variant, user_action_time: (bigint | number)): AccountChannelRequest;
+        static new_vardict(account: Account, request: GLib.Variant, user_action_time: bigint | number): AccountChannelRequest;
 
         // Signals
         /** @signal */
@@ -7683,7 +7683,7 @@ export namespace TelepathyGLib {
          * `tp_cli_channel_call_close()` when it has finished handling it.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        create_and_handle_channel_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Channel | null), (HandleChannelsContext | null)]>;
+        create_and_handle_channel_async(cancellable: Gio.Cancellable | null): globalThis.Promise<[Channel | null, HandleChannelsContext | null]>;
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7702,7 +7702,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        create_and_handle_channel_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7721,7 +7721,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        create_and_handle_channel_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Channel | null), (HandleChannelsContext | null)]> | void);
+        create_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Channel | null, HandleChannelsContext | null]> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -7735,7 +7735,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new reference on a {@link TelepathyGLib.Channel} if the channel was successfully created and you are handling it, otherwise `null`.
          */
-        create_and_handle_channel_finish(result: Gio.AsyncResult): [(Channel | null), HandleChannelsContext | null];
+        create_and_handle_channel_finish(result: Gio.AsyncResult): [Channel | null, HandleChannelsContext | null];
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7753,26 +7753,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        create_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Channel>;
-
-        /**
-         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
-         * channel with the properties defined in {@link TelepathyGLib.AccountChannelRequest.request}
-         * and let the ChannelDispatcher dispatch it to an handler.
-         * `callback` will be called when the channel has been created and dispatched,
-         * or the request has failed.
-         * You can then call `tp_account_channel_request_create_channel_finish()` to
-         * get the result of the operation and a {@link TelepathyGLib.Channel} representing the channel
-         * which has been created. Note that you are <emphasis>not</emphasis> handling
-         * this channel and so should interact with the channel as an Observer.
-         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
-         * the Telepathy book</ulink> for details about how clients should interact
-         * with channels.
-         * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a callback to call when the request is satisfied
-         */
-        create_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Channel>;
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7791,7 +7772,26 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        create_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Channel> | void);
+        create_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in {@link TelepathyGLib.AccountChannelRequest.request}
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call `tp_account_channel_request_create_channel_finish()` to
+         * get the result of the operation and a {@link TelepathyGLib.Channel} representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        create_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Channel> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -7812,7 +7812,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        create_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        create_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7826,7 +7826,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        create_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls CreateChannel on the ChannelDispatcher to create a
@@ -7840,7 +7840,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        create_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        create_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -7878,7 +7878,7 @@ export namespace TelepathyGLib {
          * temporary {@link TelepathyGLib.BaseClient} as the `preferred_handler`.)
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        ensure_and_handle_channel_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Channel | null), (HandleChannelsContext | null)]>;
+        ensure_and_handle_channel_async(cancellable: Gio.Cancellable | null): globalThis.Promise<[Channel | null, HandleChannelsContext | null]>;
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7902,7 +7902,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        ensure_and_handle_channel_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ensure_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7926,7 +7926,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        ensure_and_handle_channel_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Channel | null), (HandleChannelsContext | null)]> | void);
+        ensure_and_handle_channel_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Channel | null, HandleChannelsContext | null]> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -7944,7 +7944,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new reference on a {@link TelepathyGLib.Channel} if the channel was successfully created and you are handling it, otherwise `null`.
          */
-        ensure_and_handle_channel_finish(result: Gio.AsyncResult): [(Channel | null), HandleChannelsContext | null];
+        ensure_and_handle_channel_finish(result: Gio.AsyncResult): [Channel | null, HandleChannelsContext | null];
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -7969,33 +7969,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        ensure_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Channel>;
-
-        /**
-         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
-         * channel with the properties defined in {@link TelepathyGLib.AccountChannelRequest.request}
-         * and let the ChannelDispatcher dispatch it to an handler.
-         * `callback` will be called when the channel has been created and dispatched,
-         * or the request has failed.
-         * You can then call `tp_account_channel_request_create_channel_finish()` to
-         * get the result of the operation and a {@link TelepathyGLib.Channel} representing the channel
-         * which has been created. Note that you are <emphasis>not</emphasis> handling
-         * this channel and so should interact with the channel as an Observer.
-         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
-         * the Telepathy book</ulink> for details about how clients should interact
-         * with channels.
-         * 
-         * If a suitable channel already existed, its handler will be notified that
-         * the channel was requested again (for instance with
-         * {@link TelepathyGLib.AccountChannelRequest.SignalSignatures.re_handled | TelepathyGLib.AccountChannelRequest::re-handled}, {@link TelepathyGLib.BaseClientClassHandleChannelsImpl}
-         * or {@link TelepathyGLib.SimpleHandler.callback}, if it is implemented using Telepathy-GLib),
-         * so that it can re-present the window to the user, for example.
-         * Otherwise, a new channel will be created and dispatched to a handler.
-         * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a callback to call when the request is satisfied
-         */
-        ensure_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ensure_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Channel>;
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -8021,7 +7995,33 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        ensure_and_observe_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Channel> | void);
+        ensure_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
+         * channel with the properties defined in {@link TelepathyGLib.AccountChannelRequest.request}
+         * and let the ChannelDispatcher dispatch it to an handler.
+         * `callback` will be called when the channel has been created and dispatched,
+         * or the request has failed.
+         * You can then call `tp_account_channel_request_create_channel_finish()` to
+         * get the result of the operation and a {@link TelepathyGLib.Channel} representing the channel
+         * which has been created. Note that you are <emphasis>not</emphasis> handling
+         * this channel and so should interact with the channel as an Observer.
+         * See <ulink url="http://telepathy.freedesktop.org/doc/book/sect.channel-dispatcher.clients.html">
+         * the Telepathy book</ulink> for details about how clients should interact
+         * with channels.
+         * 
+         * If a suitable channel already existed, its handler will be notified that
+         * the channel was requested again (for instance with
+         * {@link TelepathyGLib.AccountChannelRequest.SignalSignatures.re_handled | TelepathyGLib.AccountChannelRequest::re-handled}, {@link TelepathyGLib.BaseClientClassHandleChannelsImpl}
+         * or {@link TelepathyGLib.SimpleHandler.callback}, if it is implemented using Telepathy-GLib),
+         * so that it can re-present the window to the user, for example.
+         * Otherwise, a new channel will be created and dispatched to a handler.
+         * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a callback to call when the request is satisfied
+         */
+        ensure_and_observe_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Channel> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -8051,7 +8051,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channel, or `null` to indicate that any handler would be acceptable.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        ensure_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        ensure_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -8074,7 +8074,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        ensure_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ensure_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls EnsureChannel on the ChannelDispatcher to create a
@@ -8097,7 +8097,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the request is satisfied
          */
-        ensure_channel_async(preferred_handler: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ensure_channel_async(preferred_handler: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async channel creation started using
@@ -8229,7 +8229,7 @@ export namespace TelepathyGLib {
          * channel.
          * @param offset the offset into the file at which the transfer will start
          */
-        set_file_transfer_initial_offset(offset: (bigint | number)): void;
+        set_file_transfer_initial_offset(offset: bigint | number): void;
 
         /**
          * Configure this channel request to accompany the file transfer with
@@ -8245,7 +8245,7 @@ export namespace TelepathyGLib {
          * channel.
          * @param timestamp the modification timestamp of the file, in seconds since the  Unix epoch (the beginning of 1970 in the UTC time zone), as returned  by `g_date_time_to_unix()`
          */
-        set_file_transfer_timestamp(timestamp: (bigint | number)): void;
+        set_file_transfer_timestamp(timestamp: bigint | number): void;
 
         /**
          * Configure this channel request to provide other local Telepathy
@@ -8300,7 +8300,7 @@ export namespace TelepathyGLib {
          * instead.
          * @param hints a #TP_HASH_TYPE_STRING_VARIANT_MAP
          */
-        set_hints(hints: ({ [key: string]: any } | GLib.HashTable<never, never>)): void;
+        set_hints(hints: { [key: string]: any } | GLib.HashTable<never, never>): void;
 
         /**
          * Indicate that the contacts listed in `ids` have to be invited to the
@@ -8450,9 +8450,7 @@ export namespace TelepathyGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Proxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Proxy.ConstructorProps {}
     }
 
     /**
@@ -8567,7 +8565,7 @@ export namespace TelepathyGLib {
          * @param parameters parameters  for the new account
          * @param properties properties  for the new account
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): globalThis.Promise<Account>;
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): globalThis.Promise<Account>;
 
         /**
          * Requests an asynchronous create of an account on the account manager
@@ -8590,7 +8588,7 @@ export namespace TelepathyGLib {
          * @param properties properties  for the new account
          * @param callback a callback to call when the request is satisfied
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous create of an account on the account manager
@@ -8613,7 +8611,7 @@ export namespace TelepathyGLib {
          * @param properties properties  for the new account
          * @param callback a callback to call when the request is satisfied
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Account> | void);
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Account> | void;
 
         /**
          * Finishes an async create account operation, and returns a new {@link TelepathyGLib.Account}
@@ -9221,7 +9219,7 @@ export namespace TelepathyGLib {
          * feature.
          * @param callback a function to call when the account has been created
          */
-        create_account_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_account_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Start an asynchronous operation to create the account `self` on the
@@ -9233,7 +9231,7 @@ export namespace TelepathyGLib {
          * feature.
          * @param callback a function to call when the account has been created
          */
-        create_account_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Account> | void);
+        create_account_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Account> | void;
 
         /**
          * Finishes an asynchronous account creation operation and returns a
@@ -9266,7 +9264,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can   be `null` only if %len equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar(avatar: (Uint8Array | null), mime_type: (string | null)): void;
+        set_avatar(avatar: Uint8Array | null, mime_type: string | null): void;
 
         /**
          * Set the connect automatically property of the account on creation
@@ -9499,9 +9497,7 @@ export namespace TelepathyGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SimpleClientFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SimpleClientFactory.ConstructorProps {}
     }
 
     /**
@@ -9526,7 +9522,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: (DBusDaemon | null)): AutomaticClientFactory;
+        static ["new"](dbus: DBusDaemon | null): AutomaticClientFactory;
 
         // Signals
         /** @signal */
@@ -9545,13 +9541,10 @@ export namespace TelepathyGLib {
 
     namespace AutomaticProxyFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
     }
 
     /**
@@ -9611,7 +9604,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that
@@ -10052,7 +10045,7 @@ export namespace TelepathyGLib {
          * @param context a {@link TelepathyGLib.ObserveChannelsContext} representing the context of this  D-Bus call
          * @virtual
          */
-        vfunc_observe_channels(account: Account, connection: Connection, channels: Channel[], dispatch_operation: (ChannelDispatchOperation | null), requests: ChannelRequest[], context: ObserveChannelsContext): void;
+        vfunc_observe_channels(account: Account, connection: Connection, channels: Channel[], dispatch_operation: ChannelDispatchOperation | null, requests: ChannelRequest[], context: ObserveChannelsContext): void;
 
         // Methods
         /**
@@ -10076,7 +10069,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.add_dispatch_operation.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_approver_filter(filter: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): void;
+        add_approver_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
 
         /**
          * Register a new channel class as Approver.ApproverChannelFilter.
@@ -10148,7 +10141,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.handle_channels.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_handler_filter(filter: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): void;
+        add_handler_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
 
         /**
          * Register a new channel class as Handler.HandlerChannelFilter.
@@ -10176,7 +10169,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.observe_channels.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_observer_filter(filter: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): void;
+        add_observer_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
 
         /**
          * Register a new channel class as Observer.ObserverChannelFilter.
@@ -10223,7 +10216,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channels, or `null` to indicate that any handler but `self` would be acceptable.
          */
-        delegate_channels_async(channels: Channel[], user_action_time: (bigint | number), preferred_handler: string): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]>;
+        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]>;
 
         /**
          * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
@@ -10235,7 +10228,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channels, or `null` to indicate that any handler but `self` would be acceptable.
          * @param callback a callback to call when the request is satisfied
          */
-        delegate_channels_async(channels: Channel[], user_action_time: (bigint | number), preferred_handler: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
@@ -10247,7 +10240,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channels, or `null` to indicate that any handler but `self` would be acceptable.
          * @param callback a callback to call when the request is satisfied
          */
-        delegate_channels_async(channels: Channel[], user_action_time: (bigint | number), preferred_handler: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]> | void);
+        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
 
         /**
          * Finishes an async channels delegation request started using
@@ -10807,7 +10800,7 @@ export namespace TelepathyGLib {
          * instead.
          * @returns the bus name of this connection,  or `null`
          */
-        get_bus_name(): (string | null);
+        get_bus_name(): string | null;
 
         /**
          * <!---->
@@ -10828,7 +10821,7 @@ export namespace TelepathyGLib {
          * instead.
          * @returns the object path of this connection,  or `null`
          */
-        get_object_path(): (string | null);
+        get_object_path(): string | null;
 
         /**
          * Return the status of this connection, as set by
@@ -10883,13 +10876,10 @@ export namespace TelepathyGLib {
 
     namespace BasicProxyFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
     }
 
     /**
@@ -10949,7 +10939,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that
@@ -11063,8 +11053,8 @@ export namespace TelepathyGLib {
             mutable_contents: boolean;
             mutableContents: boolean;
             state: number;
-            state_details: ({ [key: string]: any } | GLib.HashTable<never, never>);
-            stateDetails: ({ [key: string]: any } | GLib.HashTable<never, never>);
+            state_details: { [key: string]: any } | GLib.HashTable<never, never>;
+            stateDetails: { [key: string]: any } | GLib.HashTable<never, never>;
             state_reason: CallStateReason;
             stateReason: CallStateReason;
         }
@@ -11322,7 +11312,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.CallState.INITIALISING}.
          * @param callback a callback to call when the operation finishes
          */
-        accept_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * For incoming calls with {@link TelepathyGLib.CallChannel.state} set to
@@ -11335,7 +11325,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.CallState.INITIALISING}.
          * @param callback a callback to call when the operation finishes
          */
-        accept_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_channel_accept_async()`.
@@ -11362,7 +11352,7 @@ export namespace TelepathyGLib {
          * @param initial_direction The initial direction of the content
          * @param callback a callback to call when the operation finishes
          */
-        add_content_async(name: string, type: MediaStreamType, initial_direction: MediaStreamDirection, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_content_async(name: string, type: MediaStreamType, initial_direction: MediaStreamDirection, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request that a new Content of type `type` is added to `self`. Callers should
@@ -11373,7 +11363,7 @@ export namespace TelepathyGLib {
          * @param initial_direction The initial direction of the content
          * @param callback a callback to call when the operation finishes
          */
-        add_content_async(name: string, type: MediaStreamType, initial_direction: MediaStreamDirection, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CallContent> | void);
+        add_content_async(name: string, type: MediaStreamType, initial_direction: MediaStreamDirection, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CallContent> | void;
 
         /**
          * Finishes `tp_call_channel_add_content_async()`.
@@ -11424,7 +11414,7 @@ export namespace TelepathyGLib {
          * @param message a human-readable message to be sent to the remote contact(s)
          * @param callback a callback to call when the operation finishes
          */
-        hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request that the call is ended. All contents will be removed from `self` so
@@ -11434,7 +11424,7 @@ export namespace TelepathyGLib {
          * @param message a human-readable message to be sent to the remote contact(s)
          * @param callback a callback to call when the operation finishes
          */
-        hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        hangup_async(reason: CallStateChangeReason, detailed_reason: string, message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_channel_hangup_async()`.
@@ -11499,7 +11489,7 @@ export namespace TelepathyGLib {
          * @param hold Whether to request a hold or a unhold
          * @param callback a callback to call when the operation finishes
          */
-        request_hold_async(hold: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_hold_async(hold: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests that the connection manager holds or unholds the call. Watch
@@ -11509,7 +11499,7 @@ export namespace TelepathyGLib {
          * @param hold Whether to request a hold or a unhold
          * @param callback a callback to call when the operation finishes
          */
-        request_hold_async(hold: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_hold_async(hold: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes tp_call_channel_request_hold_async
@@ -11525,7 +11515,7 @@ export namespace TelepathyGLib {
          * @param tones a string representation of one or more DTMF events.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Send `tones` on every of `self`'s contents which have the
@@ -11536,7 +11526,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the operation finishes
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Send `tones` on every of `self`'s contents which have the
@@ -11547,7 +11537,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the operation finishes
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_channel_send_tones_async()`.
@@ -11567,14 +11557,14 @@ export namespace TelepathyGLib {
          * been put in a call-waiting style queue.
          * @param callback a callback to call when the operation finishes
          */
-        set_queued_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_queued_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Notifies the CM that the local user is already in a call, so this call has
          * been put in a call-waiting style queue.
          * @param callback a callback to call when the operation finishes
          */
-        set_queued_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_queued_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_channel_set_queued_async()`.
@@ -11591,13 +11581,13 @@ export namespace TelepathyGLib {
          * Indicate that the local user has been alerted about the incoming call.
          * @param callback a callback to call when the operation finishes
          */
-        set_ringing_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_ringing_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Indicate that the local user has been alerted about the incoming call.
          * @param callback a callback to call when the operation finishes
          */
-        set_ringing_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_ringing_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_channel_set_ringing_async()`.
@@ -11806,14 +11796,14 @@ export namespace TelepathyGLib {
          * to be emitted.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Remove the content from the call. This will cause {@link TelepathyGLib.CallContent.SignalSignatures.removed | TelepathyGLib.CallContent::removed}
          * to be emitted.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_content_remove_async()`.
@@ -11829,7 +11819,7 @@ export namespace TelepathyGLib {
          * @param tones a string representation of one or more DTMF events.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Send `tones` DTMF code on `self` content. `self` must have the
@@ -11840,7 +11830,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the operation finishes
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Send `tones` DTMF code on `self` content. `self` must have the
@@ -11851,7 +11841,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a callback to call when the operation finishes
          */
-        send_tones_async(tones: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_tones_async(tones: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_content_send_tones_async()`.
@@ -12043,7 +12033,7 @@ export namespace TelepathyGLib {
          * @param receive the requested receiving state
          * @param callback a callback to call when the operation finishes
          */
-        request_receiving_async(contact: Contact, receive: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_receiving_async(contact: Contact, receive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request that a remote contact stops or starts sending on this stream.
@@ -12057,7 +12047,7 @@ export namespace TelepathyGLib {
          * @param receive the requested receiving state
          * @param callback a callback to call when the operation finishes
          */
-        request_receiving_async(contact: Contact, receive: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_receiving_async(contact: Contact, receive: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_stream_request_receiving_async()`.
@@ -12088,7 +12078,7 @@ export namespace TelepathyGLib {
          * @param send the requested sending state
          * @param callback a callback to call when the operation finishes
          */
-        set_sending_async(send: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_sending_async(send: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Set the stream to start or stop sending media from the local user to other
@@ -12101,7 +12091,7 @@ export namespace TelepathyGLib {
          * @param send the requested sending state
          * @param callback a callback to call when the operation finishes
          */
-        set_sending_async(send: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_sending_async(send: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_call_stream_set_sending_async()`.
@@ -13801,7 +13791,7 @@ export namespace TelepathyGLib {
 
         static ["new"](conn: Connection, object_path: string, optional_channel_type: string, optional_handle_type: HandleType, optional_handle: Handle): Channel;
 
-        static new_from_properties(conn: Connection, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Channel;
+        static new_from_properties(conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
 
         // Signals
         /** @signal */
@@ -13883,7 +13873,7 @@ export namespace TelepathyGLib {
          * the operation.
          * @param callback a callback to call when we closed the channel, or `null`  to ignore any reply
          */
-        close_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Close channel `self`. In most cases, it's generally cleaner to use
@@ -13894,7 +13884,7 @@ export namespace TelepathyGLib {
          * the operation.
          * @param callback a callback to call when we closed the channel, or `null`  to ignore any reply
          */
-        close_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        close_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a call to `tp_channel_leave_async()`.
@@ -13924,7 +13914,7 @@ export namespace TelepathyGLib {
          * the operation.
          * @param callback a callback to call when we left the channel
          */
-        destroy_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        destroy_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Destroy channel `self`.
@@ -13936,7 +13926,7 @@ export namespace TelepathyGLib {
          * the operation.
          * @param callback a callback to call when we left the channel
          */
-        destroy_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        destroy_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a call to `tp_channel_destroy_async()`.
@@ -14279,7 +14269,7 @@ export namespace TelepathyGLib {
          * @param message the join message
          * @param callback a callback to call when we joined the channel
          */
-        join_async(message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        join_async(message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Join channel `self` with `message` as join message.
@@ -14293,7 +14283,7 @@ export namespace TelepathyGLib {
          * @param message the join message
          * @param callback a callback to call when we joined the channel
          */
-        join_async(message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        join_async(message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a call to `tp_channel_join_async()`.
@@ -14335,7 +14325,7 @@ export namespace TelepathyGLib {
          * @param message the leave message
          * @param callback a callback to call when we left the channel
          */
-        leave_async(reason: ChannelGroupChangeReason, message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        leave_async(reason: ChannelGroupChangeReason, message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Leave channel `self` with `reason` as reason and `message` as leave message.
@@ -14353,7 +14343,7 @@ export namespace TelepathyGLib {
          * @param message the leave message
          * @param callback a callback to call when we left the channel
          */
-        leave_async(reason: ChannelGroupChangeReason, message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        leave_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a call to `tp_channel_leave_async()`.
@@ -14387,7 +14377,7 @@ export namespace TelepathyGLib {
          * @param password the password
          * @param callback a callback to call when `password` has been provided
          */
-        provide_password_async(password: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        provide_password_async(password: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Provide `password` so that `self` can be joined.
@@ -14401,7 +14391,7 @@ export namespace TelepathyGLib {
          * @param password the password
          * @param callback a callback to call when `password` has been provided
          */
-        provide_password_async(password: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        provide_password_async(password: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a call to `tp_channel_provide_password_async()`.
@@ -14653,7 +14643,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): ChannelDispatchOperation;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): ChannelDispatchOperation;
 
         // Signals
         /** @signal */
@@ -14713,7 +14703,7 @@ export namespace TelepathyGLib {
          * the channels further in this case.
          * @param callback a callback to call when the call returns
          */
-        claim_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        claim_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to claim channels for handling internally.
@@ -14730,7 +14720,7 @@ export namespace TelepathyGLib {
          * the channels further in this case.
          * @param callback a callback to call when the call returns
          */
-        claim_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        claim_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async call to Claim().
@@ -14784,7 +14774,7 @@ export namespace TelepathyGLib {
          * @param client the {@link TelepathyGLib.BaseClient} claiming `self`
          * @param callback a callback to call when the call returns
          */
-        claim_with_async(client: BaseClient, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        claim_with_async(client: BaseClient, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to claim channels for handling internally.
@@ -14808,7 +14798,7 @@ export namespace TelepathyGLib {
          * @param client the {@link TelepathyGLib.BaseClient} claiming `self`
          * @param callback a callback to call when the call returns
          */
-        claim_with_async(client: BaseClient, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        claim_with_async(client: BaseClient, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async call to Claim() initiated using
@@ -14853,7 +14843,7 @@ export namespace TelepathyGLib {
          * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        close_channels_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to claim channels and close them all right away.
@@ -14872,7 +14862,7 @@ export namespace TelepathyGLib {
          * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        close_channels_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        close_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async operation initiated using
@@ -14917,7 +14907,7 @@ export namespace TelepathyGLib {
          * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        destroy_channels_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        destroy_channels_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to claim channels and destroy them all right away.
@@ -14936,7 +14926,7 @@ export namespace TelepathyGLib {
          * calling this function.
          * @param callback a callback to call when the request has been satisfied
          */
-        destroy_channels_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        destroy_channels_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async operation initiated using
@@ -14975,7 +14965,7 @@ export namespace TelepathyGLib {
          * that they can handle a channel bundle themselves.
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          */
-        handle_with_async(handler: (string | null)): globalThis.Promise<boolean>;
+        handle_with_async(handler: string | null): globalThis.Promise<boolean>;
 
         /**
          * Called by an approver to accept a channel bundle and request that the
@@ -14998,7 +14988,7 @@ export namespace TelepathyGLib {
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          * @param callback a callback to call when the call returns
          */
-        handle_with_async(handler: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        handle_with_async(handler: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to accept a channel bundle and request that the
@@ -15021,7 +15011,7 @@ export namespace TelepathyGLib {
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          * @param callback a callback to call when the call returns
          */
-        handle_with_async(handler: (string | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        handle_with_async(handler: string | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async call to HandleWith().
@@ -15048,7 +15038,7 @@ export namespace TelepathyGLib {
          * @param handler The well-known bus name (starting with #TP_CLIENT_BUS_NAME_BASE) of the channel handler that should handle the channel, or `null` if the client has no preferred channel handler
          * @param user_action_time the time at which user action occurred, or one of the  special values `TP_USER_ACTION_TIME_NOT_USER_ACTION` or  `TP_USER_ACTION_TIME_CURRENT_TIME`
          */
-        handle_with_time_async(handler: (string | null), user_action_time: (bigint | number)): globalThis.Promise<boolean>;
+        handle_with_time_async(handler: string | null, user_action_time: bigint | number): globalThis.Promise<boolean>;
 
         /**
          * A variant of `tp_channel_dispatch_operation_handle_with_async()`
@@ -15069,7 +15059,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or one of the  special values `TP_USER_ACTION_TIME_NOT_USER_ACTION` or  `TP_USER_ACTION_TIME_CURRENT_TIME`
          * @param callback a callback to call when the call returns
          */
-        handle_with_time_async(handler: (string | null), user_action_time: (bigint | number), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        handle_with_time_async(handler: string | null, user_action_time: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * A variant of `tp_channel_dispatch_operation_handle_with_async()`
@@ -15090,7 +15080,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or one of the  special values `TP_USER_ACTION_TIME_NOT_USER_ACTION` or  `TP_USER_ACTION_TIME_CURRENT_TIME`
          * @param callback a callback to call when the call returns
          */
-        handle_with_time_async(handler: (string | null), user_action_time: (bigint | number), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        handle_with_time_async(handler: string | null, user_action_time: bigint | number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async call to HandleWithTime().
@@ -15138,7 +15128,7 @@ export namespace TelepathyGLib {
          * @param message the leave message
          * @param callback a callback to call when the request has been satisfied
          */
-        leave_channels_async(reason: ChannelGroupChangeReason, message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        leave_channels_async(reason: ChannelGroupChangeReason, message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called by an approver to claim channels and leave them all right away.
@@ -15159,7 +15149,7 @@ export namespace TelepathyGLib {
          * @param message the leave message
          * @param callback a callback to call when the request has been satisfied
          */
-        leave_channels_async(reason: ChannelGroupChangeReason, message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        leave_channels_async(reason: ChannelGroupChangeReason, message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async operation initiated using
@@ -15182,9 +15172,7 @@ export namespace TelepathyGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Proxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Proxy.ConstructorProps {}
     }
 
     /**
@@ -15258,7 +15246,7 @@ export namespace TelepathyGLib {
          * @param channel a {@link TelepathyGLib.Channel}
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
          */
-        present_channel_async(channel: Channel, user_action_time: (bigint | number)): globalThis.Promise<boolean>;
+        present_channel_async(channel: Channel, user_action_time: bigint | number): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
@@ -15269,7 +15257,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
          * @param callback a callback to call when the request is satisfied
          */
-        present_channel_async(channel: Channel, user_action_time: (bigint | number), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        present_channel_async(channel: Channel, user_action_time: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously calls PresentChannel on the ChannelDispatcher to ask
@@ -15280,7 +15268,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this presentation request is for some reason not involving user action.
          * @param callback a callback to call when the request is satisfied
          */
-        present_channel_async(channel: Channel, user_action_time: (bigint | number), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        present_channel_async(channel: Channel, user_action_time: bigint | number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async channel presentation request started using
@@ -15621,8 +15609,8 @@ export namespace TelepathyGLib {
             immutablePropertiesVardict: GLib.Variant;
             preferred_handler: string;
             preferredHandler: string;
-            user_action_time: (bigint | number);
-            userActionTime: (bigint | number);
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -15811,7 +15799,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): ChannelRequest;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): ChannelRequest;
 
         // Signals
         /** @signal */
@@ -15890,13 +15878,10 @@ export namespace TelepathyGLib {
 
     namespace ClientMessage {
         // Signal signatures
-        interface SignalSignatures extends Message.SignalSignatures {
-        }
+        interface SignalSignatures extends Message.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Message.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Message.ConstructorProps {}
     }
 
     /**
@@ -17072,7 +17057,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: DBusDaemon, bus_name: (string | null), object_path: (string | null)): Connection;
+        static ["new"](dbus: DBusDaemon, bus_name: string | null, object_path: string | null): Connection;
 
         // Signals
         /** @signal */
@@ -17160,7 +17145,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  include in the group.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_to_group_async(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Add the given `contacts` to the given `group`, creating it if necessary.
@@ -17171,7 +17156,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  include in the group.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        add_to_group_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_add_to_group_async()`
@@ -17201,7 +17186,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  authorize
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        authorize_publication_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * For each of the given `contacts`, request that the local user's presence is
@@ -17213,7 +17198,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  authorize
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        authorize_publication_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_authorize_publication_async()`
@@ -17254,7 +17239,7 @@ export namespace TelepathyGLib {
          * @param report_abusive If `true`, report these contacts as abusive to the server administrators as well as blocking them. See {@link TelepathyGLib.Connection.can_report_abusive} to discover whether reporting abuse is supported. If {@link TelepathyGLib.Connection.can_report_abusive} is `false`, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
-        block_contacts_async(contacts: Contact[], report_abusive: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        block_contacts_async(contacts: Contact[], report_abusive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Direct the server to block `contacts`.
@@ -17262,7 +17247,7 @@ export namespace TelepathyGLib {
          * @param report_abusive If `true`, report these contacts as abusive to the server administrators as well as blocking them. See {@link TelepathyGLib.Connection.can_report_abusive} to discover whether reporting abuse is supported. If {@link TelepathyGLib.Connection.can_report_abusive} is `false`, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
-        block_contacts_async(contacts: Contact[], report_abusive: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        block_contacts_async(contacts: Contact[], report_abusive: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_block_contacts_async()`
@@ -17294,7 +17279,7 @@ export namespace TelepathyGLib {
          * to put the account offline temporarily, or disable it longer-term.
          * @param callback a callback to call when the request is satisfied
          */
-        disconnect_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        disconnect_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Disconnect the connection.
@@ -17306,7 +17291,7 @@ export namespace TelepathyGLib {
          * to put the account offline temporarily, or disable it longer-term.
          * @param callback a callback to call when the request is satisfied
          */
-        disconnect_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        disconnect_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Interpret the result of `tp_connection_disconnect_async()`.
@@ -17327,7 +17312,7 @@ export namespace TelepathyGLib {
          * @param id A strings representing the desired contact by its  identifier in the IM protocol (an XMPP JID, SIP URI, MSN Passport,  AOL screen-name etc.)
          * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be `null` if `n_features` is 0)
          */
-        dup_contact_by_id_async(id: string, features: (ContactFeature[] | null)): globalThis.Promise<Contact>;
+        dup_contact_by_id_async(id: string, features: ContactFeature[] | null): globalThis.Promise<Contact>;
 
         /**
          * Create a {@link TelepathyGLib.Contact} object and make any asynchronous method calls necessary
@@ -17342,7 +17327,7 @@ export namespace TelepathyGLib {
          * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be `null` if `n_features` is 0)
          * @param callback A user callback to call when the contact is ready
          */
-        dup_contact_by_id_async(id: string, features: (ContactFeature[] | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        dup_contact_by_id_async(id: string, features: ContactFeature[] | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Create a {@link TelepathyGLib.Contact} object and make any asynchronous method calls necessary
@@ -17357,7 +17342,7 @@ export namespace TelepathyGLib {
          * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be `null` if `n_features` is 0)
          * @param callback A user callback to call when the contact is ready
          */
-        dup_contact_by_id_async(id: string, features: (ContactFeature[] | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Contact> | void);
+        dup_contact_by_id_async(id: string, features: ContactFeature[] | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Contact> | void;
 
         /**
          * Finishes `tp_connection_dup_contact_by_id_async()`.
@@ -17423,7 +17408,7 @@ export namespace TelepathyGLib {
          * Otherwise, return `null`, without altering `details`.
          * @returns a D-Bus error name, or `null`.
          */
-        dup_detailed_error_vardict(): [(string | null), GLib.Variant | null];
+        dup_detailed_error_vardict(): [string | null, GLib.Variant | null];
 
         /**
          * Return the the {@link TelepathyGLib.Account} associated with this connection. Will return `null`
@@ -17617,7 +17602,7 @@ export namespace TelepathyGLib {
          * @param callback A user callback to call when the contacts are ready
          * @param weak_object An object to pass to the callback, which will be  weakly referenced; if this object is destroyed, the operation will be  cancelled
          */
-        get_contacts_by_handle(handles: number[], features: (number[] | null), callback: ConnectionContactsByHandleCb, weak_object: (GObject.Object | null)): void;
+        get_contacts_by_handle(handles: number[], features: number[] | null, callback: ConnectionContactsByHandleCb, weak_object: GObject.Object | null): void;
 
         /**
          * Create a number of {@link TelepathyGLib.Contact} objects and make asynchronous method calls
@@ -17633,7 +17618,7 @@ export namespace TelepathyGLib {
          * @param callback A user callback to call when the contacts are ready
          * @param weak_object An object to pass to the callback, which will  be weakly referenced; if this object is destroyed, the operation will be  cancelled
          */
-        get_contacts_by_id(ids: string[], features: (ContactFeature[] | null), callback: ConnectionContactsByIdCb, weak_object: (GObject.Object | null)): void;
+        get_contacts_by_id(ids: string[], features: ContactFeature[] | null, callback: ConnectionContactsByIdCb, weak_object: GObject.Object | null): void;
 
         /**
          * If the connection has disconnected, return the D-Bus error name with which
@@ -17643,7 +17628,7 @@ export namespace TelepathyGLib {
          * Otherwise, return `null`, without altering `details`.
          * @returns a D-Bus error name, or `null`.
          */
-        get_detailed_error(): [(string | null), GLib.HashTable<string, GObject.Value> | null];
+        get_detailed_error(): [string | null, GLib.HashTable<string, GObject.Value> | null];
 
         /**
          * <!-- -->
@@ -17769,7 +17754,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        remove_contacts_async(contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Remove the given `contacts` from the contact list entirely. It is
@@ -17780,7 +17765,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        remove_contacts_async(contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_remove_contacts_async()`
@@ -17810,7 +17795,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove from the group.
          * @param callback a callback to call when the operation finishes
          */
-        remove_from_group_async(group: string, contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_from_group_async(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Remove the given `contacts` from the given `group`. If there are no members
@@ -17822,7 +17807,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove from the group.
          * @param callback a callback to call when the operation finishes
          */
-        remove_from_group_async(group: string, contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_from_group_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_remove_from_group_async()`
@@ -17848,7 +17833,7 @@ export namespace TelepathyGLib {
          * @param group the group to remove.
          * @param callback a callback to call when the operation finishes
          */
-        remove_group_async(group: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Remove all members from the given group, then remove the group itself.
@@ -17858,7 +17843,7 @@ export namespace TelepathyGLib {
          * @param group the group to remove.
          * @param callback a callback to call when the operation finishes
          */
-        remove_group_async(group: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_remove_group_async()`
@@ -17894,7 +17879,7 @@ export namespace TelepathyGLib {
          * @param new_name the new name for the group
          * @param callback a callback to call when the operation finishes
          */
-        rename_group_async(old_name: string, new_name: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        rename_group_async(old_name: string, new_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Rename the given `old_name`.
@@ -17909,7 +17894,7 @@ export namespace TelepathyGLib {
          * @param new_name the new name for the group
          * @param callback a callback to call when the operation finishes
          */
-        rename_group_async(old_name: string, new_name: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        rename_group_async(old_name: string, new_name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_rename_group_async()`
@@ -17956,7 +17941,7 @@ export namespace TelepathyGLib {
          * @param message an optional plain-text message from the user, to send to those  `contacts` with the subscription request.
          * @param callback a callback to call when the operation finishes
          */
-        request_subscription_async(contacts: Contact[], message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_subscription_async(contacts: Contact[], message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Request that the given `contacts` allow the local user to subscribe to their
@@ -17969,7 +17954,7 @@ export namespace TelepathyGLib {
          * @param message an optional plain-text message from the user, to send to those  `contacts` with the subscription request.
          * @param callback a callback to call when the operation finishes
          */
-        request_subscription_async(contacts: Contact[], message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_subscription_async(contacts: Contact[], message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_request_subscription_async()`
@@ -18001,7 +17986,7 @@ export namespace TelepathyGLib {
          * @param info a {@link GLib.List} of  {@link TelepathyGLib.ContactInfoField}
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_info_async(info: ContactInfoField[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_contact_info_async(info: ContactInfoField[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous set of the contact info of `self`. When
@@ -18014,7 +17999,7 @@ export namespace TelepathyGLib {
          * @param info a {@link GLib.List} of  {@link TelepathyGLib.ContactInfoField}
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_info_async(info: ContactInfoField[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_contact_info_async(info: ContactInfoField[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of `self` info.
@@ -18044,7 +18029,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects members  for the group. If this set is empty, this method MAY remove the group.
          * @param callback a callback to call when the operation finishes
          */
-        set_group_members_async(group: string, contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_group_members_async(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Add the given `contacts` to the given `group` (creating it if necessary), and
@@ -18056,7 +18041,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects members  for the group. If this set is empty, this method MAY remove the group.
          * @param callback a callback to call when the operation finishes
          */
-        set_group_members_async(group: string, contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_group_members_async(group: string, contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_set_group_members_async()`
@@ -18076,14 +18061,14 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  block
          * @param callback a callback to call when the operation finishes
          */
-        unblock_contacts_async(contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unblock_contacts_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Direct the server to unblock `contacts`.
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  block
          * @param callback a callback to call when the operation finishes
          */
-        unblock_contacts_async(contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unblock_contacts_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_unblock_contacts_async()`
@@ -18111,7 +18096,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unpublish_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Attempt to set the given `contacts`' {@link TelepathyGLib.Contact.publish_state} property to
@@ -18122,7 +18107,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unpublish_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_unpublish_async()`
@@ -18158,7 +18143,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unsubscribe_async(contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Attempt to set the given `contacts`' {@link TelepathyGLib.Contact.subscribe_state} property to
@@ -18169,7 +18154,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects to  remove
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unsubscribe_async(contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_connection_unsubscribe_async()`
@@ -18192,7 +18177,7 @@ export namespace TelepathyGLib {
          * @param callback A user callback to call when the contacts are ready
          * @param weak_object An object to pass to the callback, which will be  weakly referenced; if this object is destroyed, the operation will be  cancelled
          */
-        upgrade_contacts(contacts: Contact[], features: ContactFeature[], callback: ConnectionUpgradeContactsCb, weak_object: (GObject.Object | null)): void;
+        upgrade_contacts(contacts: Contact[], features: ContactFeature[], callback: ConnectionUpgradeContactsCb, weak_object: GObject.Object | null): void;
 
         /**
          * Given several {@link TelepathyGLib.Contact} objects, make asynchronous method calls
@@ -18206,22 +18191,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
          * @param features An array of features that must be  ready for use (if supported) before the callback is called
          */
-        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[]): globalThis.Promise<(Contact[] | null)>;
-
-        /**
-         * Given several {@link TelepathyGLib.Contact} objects, make asynchronous method calls
-         * ensure that all the features specified in `features` are ready for use
-         * (if they are supported at all).
-         * 
-         * It is not an error to put features in `features` even if the connection
-         * manager doesn't support them - users of this method should have a static
-         * list of features they would like to use if possible, and use it for all
-         * connection managers.
-         * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
-         * @param features An array of features that must be  ready for use (if supported) before the callback is called
-         * @param callback A user callback to call when the contacts are ready
-         */
-        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[]): globalThis.Promise<Contact[] | null>;
 
         /**
          * Given several {@link TelepathyGLib.Contact} objects, make asynchronous method calls
@@ -18236,7 +18206,22 @@ export namespace TelepathyGLib {
          * @param features An array of features that must be  ready for use (if supported) before the callback is called
          * @param callback A user callback to call when the contacts are ready
          */
-        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Contact[] | null)> | void);
+        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Given several {@link TelepathyGLib.Contact} objects, make asynchronous method calls
+         * ensure that all the features specified in `features` are ready for use
+         * (if they are supported at all).
+         * 
+         * It is not an error to put features in `features` even if the connection
+         * manager doesn't support them - users of this method should have a static
+         * list of features they would like to use if possible, and use it for all
+         * connection managers.
+         * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
+         * @param features An array of features that must be  ready for use (if supported) before the callback is called
+         * @param callback A user callback to call when the contacts are ready
+         */
+        upgrade_contacts_async(contacts: Contact[], features: ContactFeature[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Contact[] | null> | void;
 
         /**
          * Finishes `tp_connection_upgrade_contacts_async()`.
@@ -18694,7 +18679,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: DBusDaemon, name: string, manager_filename: (string | null)): ConnectionManager;
+        static ["new"](dbus: DBusDaemon, name: string, manager_filename: string | null): ConnectionManager;
 
         // Signals
         /** @signal */
@@ -19423,7 +19408,7 @@ export namespace TelepathyGLib {
          * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_to_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_add_to_group_async()`
@@ -19431,7 +19416,7 @@ export namespace TelepathyGLib {
          * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        add_to_group_async(group: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        add_to_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_add_to_group_async()`
@@ -19451,14 +19436,14 @@ export namespace TelepathyGLib {
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        authorize_publication_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_authorize_publication_async()`
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        authorize_publication_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        authorize_publication_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_authorize_publication_async()`
@@ -19482,7 +19467,7 @@ export namespace TelepathyGLib {
          * @param report_abusive If `true`, report this contact as abusive to the server administrators as well as blocking him. See {@link TelepathyGLib.Connection.can_report_abusive} to discover whether reporting abuse is supported. If {@link TelepathyGLib.Connection.can_report_abusive} is `false`, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
-        block_async(report_abusive: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        block_async(report_abusive: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Block communications with a contact, optionally reporting the contact as
@@ -19491,7 +19476,7 @@ export namespace TelepathyGLib {
          * @param report_abusive If `true`, report this contact as abusive to the server administrators as well as blocking him. See {@link TelepathyGLib.Connection.can_report_abusive} to discover whether reporting abuse is supported. If {@link TelepathyGLib.Connection.can_report_abusive} is `false`, this parameter will be ignored.
          * @param callback a callback to call when the operation finishes
          */
-        block_async(report_abusive: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        block_async(report_abusive: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_block_async()`
@@ -19711,14 +19696,14 @@ export namespace TelepathyGLib {
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_remove_contacts_async()`
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        remove_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_remove_async()`
@@ -19740,7 +19725,7 @@ export namespace TelepathyGLib {
          * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        remove_from_group_async(group: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_from_group_async(group: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_remove_from_group_async()`
@@ -19748,7 +19733,7 @@ export namespace TelepathyGLib {
          * @param group the group to alter.
          * @param callback a callback to call when the operation finishes
          */
-        remove_from_group_async(group: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_from_group_async(group: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_remove_from_group_async()`
@@ -19776,7 +19761,7 @@ export namespace TelepathyGLib {
          * set before its property gets updated and `callback` is called.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        request_contact_info_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        request_contact_info_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Requests an asynchronous request of the contact info of `self`. When
@@ -19798,7 +19783,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback to call when the request is satisfied
          */
-        request_contact_info_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_contact_info_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous request of the contact info of `self`. When
@@ -19820,7 +19805,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback to call when the request is satisfied
          */
-        request_contact_info_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_contact_info_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async request of `self` info. If the operation was successful,
@@ -19843,7 +19828,7 @@ export namespace TelepathyGLib {
          * @param message an optional message
          * @param callback a callback to call when the operation finishes
          */
-        request_subscription_async(message: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        request_subscription_async(message: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_request_subscription_async()`
@@ -19851,7 +19836,7 @@ export namespace TelepathyGLib {
          * @param message an optional message
          * @param callback a callback to call when the operation finishes
          */
-        request_subscription_async(message: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        request_subscription_async(message: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_request_subscription_async()`
@@ -19875,7 +19860,7 @@ export namespace TelepathyGLib {
          * new contact groups inside `callback`.
          * @param groups the set of  groups which the contact should be in (may be `null` if `n_groups` is 0)
          */
-        set_contact_groups_async(groups: (string[] | null)): globalThis.Promise<boolean>;
+        set_contact_groups_async(groups: string[] | null): globalThis.Promise<boolean>;
 
         /**
          * Add `self` to the given groups (creating new groups if necessary), and remove
@@ -19893,7 +19878,7 @@ export namespace TelepathyGLib {
          * @param groups the set of  groups which the contact should be in (may be `null` if `n_groups` is 0)
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_groups_async(groups: (string[] | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_contact_groups_async(groups: string[] | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Add `self` to the given groups (creating new groups if necessary), and remove
@@ -19911,7 +19896,7 @@ export namespace TelepathyGLib {
          * @param groups the set of  groups which the contact should be in (may be `null` if `n_groups` is 0)
          * @param callback a callback to call when the request is satisfied
          */
-        set_contact_groups_async(groups: (string[] | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_contact_groups_async(groups: string[] | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async set of `self` contact groups.
@@ -19931,14 +19916,14 @@ export namespace TelepathyGLib {
          * at once, see `tp_connection_unblock_contacts_async()`.
          * @param callback a callback to call when the operation finishes
          */
-        unblock_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unblock_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Unblock communications with a contact. To unblock more than one contact
          * at once, see `tp_connection_unblock_contacts_async()`.
          * @param callback a callback to call when the operation finishes
          */
-        unblock_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unblock_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_unblock_async()`
@@ -19958,14 +19943,14 @@ export namespace TelepathyGLib {
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unpublish_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_unpublish_async()`
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unpublish_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unpublish_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_unpublish_async()`
@@ -19985,14 +19970,14 @@ export namespace TelepathyGLib {
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        unsubscribe_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Convenience wrapper for `tp_connection_unsubscribe_async()`
          * on a single contact.
          * @param callback a callback to call when the operation finishes
          */
-        unsubscribe_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        unsubscribe_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_contact_unsubscribe_async()`
@@ -20121,7 +20106,7 @@ export namespace TelepathyGLib {
          * @param limit The maximum number of results the server should return, or 0 for the server default.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        static new_async(account: Account, server: string, limit: number, callback: (Gio.AsyncReadyCallback<ContactSearch> | null)): void;
+        static new_async(account: Account, server: string, limit: number, callback: Gio.AsyncReadyCallback<ContactSearch> | null): void;
 
         // Methods
         /**
@@ -20173,7 +20158,7 @@ export namespace TelepathyGLib {
          * @param limit The maximum number of results the server should return, or 0 for the server default.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        reset_async(server: string, limit: number, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reset_async(server: string, limit: number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Resets the contact search object so a new search can be performed.
@@ -20184,7 +20169,7 @@ export namespace TelepathyGLib {
          * @param limit The maximum number of results the server should return, or 0 for the server default.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        reset_async(server: string, limit: number, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        reset_async(server: string, limit: number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * <!-- -->
@@ -20202,7 +20187,7 @@ export namespace TelepathyGLib {
          * call `tp_contact_search_reset_async()`.
          * @param criteria a map from keys returned by `tp_contact_search_get_search_keys()` to values to search for
          */
-        start(criteria: ({ [key: string]: any } | GLib.HashTable<string, string>)): void;
+        start(criteria: { [key: string]: any } | GLib.HashTable<string, string>): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -20244,50 +20229,7 @@ export namespace TelepathyGLib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -20330,7 +20272,50 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -20390,7 +20375,7 @@ export namespace TelepathyGLib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -20497,9 +20482,7 @@ export namespace TelepathyGLib {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Proxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Proxy.ConstructorProps {}
     }
 
     /**
@@ -20767,7 +20750,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param callback a callback to call when the tube has been offered
          */
-        accept_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Accept an incoming D-Bus tube. When the tube has been accepted
@@ -20776,7 +20759,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param callback a callback to call when the tube has been offered
          */
-        accept_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.DBusConnection> | void);
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.DBusConnection> | void;
 
         /**
          * Finishes to accept an incoming D-Bus tube. The returned {@link Gio.DBusConnection}
@@ -20814,7 +20797,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: (GLib.HashTable<never, never> | null)): globalThis.Promise<Gio.DBusConnection>;
+        offer_async(params: GLib.HashTable<never, never> | null): globalThis.Promise<Gio.DBusConnection>;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20824,7 +20807,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<never, never> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        offer_async(params: GLib.HashTable<never, never> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20834,7 +20817,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<never, never> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.DBusConnection> | void);
+        offer_async(params: GLib.HashTable<never, never> | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.DBusConnection> | void;
 
         /**
          * Finishes offering an outgoing D-Bus tube. The returned {@link Gio.DBusConnection}
@@ -20947,7 +20930,7 @@ export namespace TelepathyGLib {
          * objects.
          * @param callback callback to call when the messages have been retrieved
          */
-        get_messages_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Retrieve buffered messages from `self`. Once `callback` is called,
@@ -20955,7 +20938,7 @@ export namespace TelepathyGLib {
          * objects.
          * @param callback callback to call when the messages have been retrieved
          */
-        get_messages_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DebugMessage[]> | void);
+        get_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DebugMessage[]> | void;
 
         /**
          * Finishes `tp_debug_client_set_enabled_async()`.
@@ -20983,7 +20966,7 @@ export namespace TelepathyGLib {
          * @param enabled `true` if debug messages should be published on the bus, `false` otherwise
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_enabled_async(enabled: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Enable or disable publishing of debug messages on the bus by the component
@@ -20991,7 +20974,7 @@ export namespace TelepathyGLib {
          * @param enabled `true` if debug messages should be published on the bus, `false` otherwise
          * @param callback a callback to call when the request is satisfied
          */
-        set_enabled_async(enabled: boolean, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_enabled_async(enabled: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes `tp_debug_client_set_enabled_async()`.
@@ -21168,16 +21151,16 @@ export namespace TelepathyGLib {
             description: string;
             file: Gio.File;
             filename: string;
-            initial_offset: (bigint | number);
-            initialOffset: (bigint | number);
+            initial_offset: bigint | number;
+            initialOffset: bigint | number;
             mime_type: string;
             mimeType: string;
             service_name: string;
             serviceName: string;
-            size: (bigint | number);
+            size: bigint | number;
             state: number;
-            transferred_bytes: (bigint | number);
-            transferredBytes: (bigint | number);
+            transferred_bytes: bigint | number;
+            transferredBytes: bigint | number;
         }
     }
 
@@ -21400,7 +21383,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): FileTransferChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): FileTransferChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -21431,7 +21414,7 @@ export namespace TelepathyGLib {
          * @param file a {@link Gio.File} where the file should be saved
          * @param offset Offset from the start of `file` where transfer begins
          */
-        accept_file_async(file: Gio.File, offset: (bigint | number)): globalThis.Promise<boolean>;
+        accept_file_async(file: Gio.File, offset: bigint | number): globalThis.Promise<boolean>;
 
         /**
          * Accept an incoming file transfer in the
@@ -21443,7 +21426,7 @@ export namespace TelepathyGLib {
          * @param offset Offset from the start of `file` where transfer begins
          * @param callback a callback to call when the transfer has been accepted
          */
-        accept_file_async(file: Gio.File, offset: (bigint | number), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_file_async(file: Gio.File, offset: bigint | number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Accept an incoming file transfer in the
@@ -21455,7 +21438,7 @@ export namespace TelepathyGLib {
          * @param offset Offset from the start of `file` where transfer begins
          * @param callback a callback to call when the transfer has been accepted
          */
-        accept_file_async(file: Gio.File, offset: (bigint | number), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        accept_file_async(file: Gio.File, offset: bigint | number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a call to `tp_file_transfer_channel_accept_file_async()`.
@@ -21552,7 +21535,7 @@ export namespace TelepathyGLib {
          * @param file a {@link Gio.File} to send to the remote contact
          * @param callback a callback to call when the transfer has been accepted
          */
-        provide_file_async(file: Gio.File, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        provide_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Provide a file transfer. This should be called when the file
@@ -21569,7 +21552,7 @@ export namespace TelepathyGLib {
          * @param file a {@link Gio.File} to send to the remote contact
          * @param callback a callback to call when the transfer has been accepted
          */
-        provide_file_async(file: Gio.File, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        provide_file_async(file: Gio.File, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a call to `tp_file_transfer_channel_provide_file_async()`.
@@ -21651,8 +21634,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             requests_satisfied: never[];
             requestsSatisfied: never[];
-            user_action_time: (bigint | number);
-            userActionTime: (bigint | number);
+            user_action_time: bigint | number;
+            userActionTime: bigint | number;
         }
     }
 
@@ -21822,13 +21805,10 @@ export namespace TelepathyGLib {
 
     namespace Message {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -22038,7 +22018,7 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param source a value, encoded as dbus-glib would
          */
-        set(part: number, key: string, source: (GObject.Value | any)): void;
+        set(part: number, key: string, source: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -22093,7 +22073,7 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param i an integer value
          */
-        set_int64(part: number, key: string, i: (bigint | number)): void;
+        set_int64(part: number, key: string, i: bigint | number): void;
 
         /**
          * Set `key` in part `part` of `self` to have `s` as a string value.
@@ -22117,7 +22097,7 @@ export namespace TelepathyGLib {
          * @param key a key in the mapping representing the part
          * @param u an unsigned integer value
          */
-        set_uint64(part: number, key: string, u: (bigint | number)): void;
+        set_uint64(part: number, key: string, u: bigint | number): void;
 
         /**
          * Set `key` in part `part` of `self` to have `value` as its value.
@@ -22645,7 +22625,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<never, never>)): Protocol;
+        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): Protocol;
 
         static new_vardict(dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: GLib.Variant): Protocol;
 
@@ -22813,7 +22793,7 @@ export namespace TelepathyGLib {
          * @param vardict the account parameters as a {@link GLib.Variant} of  type `G_VARIANT_TYPE_VARDICT`. If it is floating, ownership will  be taken, as if via `g_variant_ref_sink()`.
          * @param cancellable may be used to cancel the async request
          */
-        identify_account_async(vardict: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Return a string that could identify the account with the given
@@ -22825,7 +22805,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
-        identify_account_async(vardict: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Return a string that could identify the account with the given
@@ -22837,7 +22817,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
-        identify_account_async(vardict: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        identify_account_async(vardict: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Interpret the result of `tp_protocol_identify_account_async()`.
@@ -22853,7 +22833,7 @@ export namespace TelepathyGLib {
          * @param contact a contact identifier, possibly invalid
          * @param cancellable may be used to cancel the async request
          */
-        normalize_contact_async(contact: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        normalize_contact_async(contact: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Perform best-effort offline contact normalization. This does syntactic
@@ -22863,7 +22843,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
-        normalize_contact_async(contact: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        normalize_contact_async(contact: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Perform best-effort offline contact normalization. This does syntactic
@@ -22873,7 +22853,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when  the request is satisfied
          */
-        normalize_contact_async(contact: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        normalize_contact_async(contact: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Interpret the result of `tp_protocol_normalize_contact_async()`.
@@ -22889,7 +22869,7 @@ export namespace TelepathyGLib {
          * @param uri a contact URI, possibly invalid
          * @param cancellable may be used to cancel the async request
          */
-        normalize_contact_uri_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        normalize_contact_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Perform best-effort offline contact normalization, for a contact in
@@ -22899,7 +22879,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when the request is satisfied
          */
-        normalize_contact_uri_async(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        normalize_contact_uri_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Perform best-effort offline contact normalization, for a contact in
@@ -22909,7 +22889,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when the request is satisfied
          */
-        normalize_contact_uri_async(uri: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        normalize_contact_uri_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Interpret the result of `tp_protocol_normalize_contact_uri_async()`.
@@ -22926,7 +22906,7 @@ export namespace TelepathyGLib {
          * @param value an address that is a value of `field`
          * @param cancellable may be used to cancel the async request
          */
-        normalize_vcard_address_async(field: string, value: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        normalize_vcard_address_async(field: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Perform best-effort offline contact normalization, for a contact in
@@ -22937,7 +22917,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when the request is satisfied
          */
-        normalize_vcard_address_async(field: string, value: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        normalize_vcard_address_async(field: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Perform best-effort offline contact normalization, for a contact in
@@ -22948,7 +22928,7 @@ export namespace TelepathyGLib {
          * @param cancellable may be used to cancel the async request
          * @param callback a callback to call when the request is satisfied
          */
-        normalize_vcard_address_async(field: string, value: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        normalize_vcard_address_async(field: string, value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Interpret the result of `tp_protocol_normalize_vcard_address_async()`.
@@ -23390,7 +23370,7 @@ export namespace TelepathyGLib {
          * must generally call `tp_proxy_prepare_async()` and wait for the result.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        prepare_async(features: (GLib.Quark[] | null)): globalThis.Promise<boolean>;
+        prepare_async(features: GLib.Quark[] | null): globalThis.Promise<boolean>;
 
         /**
          * {@link TelepathyGLib.Proxy} itself does not support any features, but subclasses like
@@ -23445,7 +23425,7 @@ export namespace TelepathyGLib {
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          * @param callback if not `null`, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
          */
-        prepare_async(features: (GLib.Quark[] | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        prepare_async(features: GLib.Quark[] | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * {@link TelepathyGLib.Proxy} itself does not support any features, but subclasses like
@@ -23500,7 +23480,7 @@ export namespace TelepathyGLib {
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          * @param callback if not `null`, called exactly once, when the features have all  been prepared or failed to prepare, or after the proxy is invalidated
          */
-        prepare_async(features: (GLib.Quark[] | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        prepare_async(features: GLib.Quark[] | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Check for error in a call to `tp_proxy_prepare_async()`. An error here
@@ -23515,13 +23495,10 @@ export namespace TelepathyGLib {
 
     namespace RoomInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -23739,7 +23716,7 @@ export namespace TelepathyGLib {
          * @param server the DNS name of the server whose rooms should listed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        static new_async(account: Account, server: string, callback: (Gio.AsyncReadyCallback<RoomList> | null)): void;
+        static new_async(account: Account, server: string, callback: Gio.AsyncReadyCallback<RoomList> | null): void;
 
         // Methods
         /**
@@ -23807,7 +23784,7 @@ export namespace TelepathyGLib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -23850,7 +23827,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -23893,7 +23870,7 @@ export namespace TelepathyGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -23953,7 +23930,7 @@ export namespace TelepathyGLib {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -24179,7 +24156,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: (DBusDaemon | null)): SimpleClientFactory;
+        static ["new"](dbus: DBusDaemon | null): SimpleClientFactory;
 
         // Signals
         /** @signal */
@@ -24240,7 +24217,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_account_features(features: (GLib.Quark[] | null)): void;
+        add_account_features(features: GLib.Quark[] | null): void;
 
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Channel}
@@ -24254,7 +24231,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_channel_features(features: (GLib.Quark[] | null)): void;
+        add_channel_features(features: GLib.Quark[] | null): void;
 
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Connection}
@@ -24268,7 +24245,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_proxy_prepare_async()` themself.
          * @param features an array  of desired features, ending with 0; `null` is equivalent to an array  containing only 0
          */
-        add_connection_features(features: (GLib.Quark[] | null)): void;
+        add_connection_features(features: GLib.Quark[] | null): void;
 
         /**
          * Add `features` to the desired features to be prepared on {@link TelepathyGLib.Contact}
@@ -24279,7 +24256,7 @@ export namespace TelepathyGLib {
          * objects; the user must call `tp_connection_upgrade_contacts()` themself.
          * @param features an array of desired  features (may be `null` if `n_features` is 0)
          */
-        add_contact_features(features: (ContactFeature[] | null)): void;
+        add_contact_features(features: ContactFeature[] | null): void;
 
         /**
          * Return a zero-terminated {@link GLib.Array} containing the {@link TelepathyGLib.Account} features that
@@ -24329,7 +24306,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the account, or `null`.
          * @returns a reference to a {@link TelepathyGLib.Account};  see `tp_account_new()`.
          */
-        ensure_account(object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Account;
+        ensure_account(object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Account;
 
         /**
          * Returns a {@link TelepathyGLib.Channel} proxy for the channel at `object_path` on `connection`.
@@ -24349,7 +24326,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the channel
          * @returns a reference to a {@link TelepathyGLib.Channel};  see `tp_channel_new_from_properties()`.
          */
-        ensure_channel(connection: Connection, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Channel;
+        ensure_channel(connection: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
 
         /**
          * Returns a {@link TelepathyGLib.Connection} proxy for the connection at `object_path`.
@@ -24367,7 +24344,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the connection.
          * @returns a reference to a {@link TelepathyGLib.Connection};  see `tp_connection_new()`.
          */
-        ensure_connection(object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Connection;
+        ensure_connection(object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Connection;
 
         /**
          * Returns a {@link TelepathyGLib.Contact} representing `identifier` (and `handle`) on `connection`.
@@ -24405,7 +24382,7 @@ export namespace TelepathyGLib {
          * @param identifier a string representing the contact's identifier
          * @param callback a callback to call when the operation finishes
          */
-        ensure_contact_by_id_async(connection: Connection, identifier: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ensure_contact_by_id_async(connection: Connection, identifier: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Same as `tp_connection_dup_contact_by_id_async()`, but prepare the
@@ -24415,7 +24392,7 @@ export namespace TelepathyGLib {
          * @param identifier a string representing the contact's identifier
          * @param callback a callback to call when the operation finishes
          */
-        ensure_contact_by_id_async(connection: Connection, identifier: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Contact> | void);
+        ensure_contact_by_id_async(connection: Connection, identifier: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Contact> | void;
 
         /**
          * Finishes `tp_simple_client_factory_ensure_contact_by_id_async()`
@@ -24437,7 +24414,7 @@ export namespace TelepathyGLib {
          * @param connection a {@link TelepathyGLib.Connection} whose {@link TelepathyGLib.Proxy.factory} is this object
          * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
          */
-        upgrade_contacts_async(connection: Connection, contacts: Contact[]): globalThis.Promise<(Contact[] | null)>;
+        upgrade_contacts_async(connection: Connection, contacts: Contact[]): globalThis.Promise<Contact[] | null>;
 
         /**
          * Same as `tp_connection_upgrade_contacts_async()`, but prepare contacts with all
@@ -24447,7 +24424,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
          * @param callback a callback to call when the operation finishes
          */
-        upgrade_contacts_async(connection: Connection, contacts: Contact[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        upgrade_contacts_async(connection: Connection, contacts: Contact[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Same as `tp_connection_upgrade_contacts_async()`, but prepare contacts with all
@@ -24457,7 +24434,7 @@ export namespace TelepathyGLib {
          * @param contacts An array of {@link TelepathyGLib.Contact} objects  associated with `self`
          * @param callback a callback to call when the operation finishes
          */
-        upgrade_contacts_async(connection: Connection, contacts: Contact[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Contact[] | null)> | void);
+        upgrade_contacts_async(connection: Connection, contacts: Contact[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Contact[] | null> | void;
 
         /**
          * Finishes `tp_simple_client_factory_upgrade_contacts_async()`
@@ -24798,7 +24775,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): StreamTubeChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): StreamTubeChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -24830,7 +24807,7 @@ export namespace TelepathyGLib {
          * to get a {@link TelepathyGLib.StreamTubeConnection} connected to the tube.
          * @param callback a callback to call when the tube has been accepted
          */
-        accept_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Accept an incoming stream tube. When the tube has been accepted, `callback`
@@ -24838,7 +24815,7 @@ export namespace TelepathyGLib {
          * to get a {@link TelepathyGLib.StreamTubeConnection} connected to the tube.
          * @param callback a callback to call when the tube has been accepted
          */
-        accept_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<StreamTubeConnection> | void);
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<StreamTubeConnection> | void;
 
         /**
          * Finishes accepting an incoming stream tube. The returned
@@ -24879,7 +24856,7 @@ export namespace TelepathyGLib {
          * the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: (GLib.HashTable<never, never> | null)): globalThis.Promise<boolean>;
+        offer_async(params: GLib.HashTable<never, never> | null): globalThis.Promise<boolean>;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24892,7 +24869,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<never, never> | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        offer_async(params: GLib.HashTable<never, never> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24905,7 +24882,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: (GLib.HashTable<never, never> | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        offer_async(params: GLib.HashTable<never, never> | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes offering an outgoing stream tube.
@@ -25204,7 +25181,7 @@ export namespace TelepathyGLib {
          * signals that the certificate has been accepted.
          * @param callback called on success or failure
          */
-        accept_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        accept_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Accept this certificate, asynchronously. In or after `callback`,
@@ -25214,7 +25191,7 @@ export namespace TelepathyGLib {
          * signals that the certificate has been accepted.
          * @param callback called on success or failure
          */
-        accept_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        accept_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Check the result of `tp_tls_certificate_accept_async()`.
@@ -25237,7 +25214,7 @@ export namespace TelepathyGLib {
          * @param dbus_error a D-Bus error name such as `TP_ERROR_STR_CERT_REVOKED`, or  `null` to derive one from `reason`
          * @param details a variant of type `G_VARIANT_TYPE_VARDICT` containing the details of the rejection, or `null`
          */
-        add_rejection(reason: TLSCertificateRejectReason, dbus_error: string, details: (GLib.Variant | null)): void;
+        add_rejection(reason: TLSCertificateRejectReason, dbus_error: string, details: GLib.Variant | null): void;
 
         /**
          * Return the {@link TelepathyGLib.TLSCertificate.cert_data} property
@@ -25260,7 +25237,7 @@ export namespace TelepathyGLib {
          * @param n the rejection reason to return; if 0, return the same thing as  `tp_tls_certificate_get_detailed_rejection()`
          * @returns a {@link TelepathyGLib.TLSCertificateRejection}, or `null`
          */
-        get_nth_rejection(n: number): (TLSCertificateRejection | null);
+        get_nth_rejection(n: number): TLSCertificateRejection | null;
 
         /**
          * If this certificate has been rejected, return a {@link TelepathyGLib.TLSCertificateRejection}
@@ -25273,7 +25250,7 @@ export namespace TelepathyGLib {
          * it returns `null`.
          * @returns a {@link TelepathyGLib.TLSCertificateRejection}, or `null`
          */
-        get_rejection(): (TLSCertificateRejection | null);
+        get_rejection(): TLSCertificateRejection | null;
 
         /**
          * Return the {@link TelepathyGLib.TLSCertificate.state} property
@@ -25312,7 +25289,7 @@ export namespace TelepathyGLib {
          * signals that the certificate has been rejected.
          * @param callback called on success or failure
          */
-        reject_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reject_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Reject this certificate, asynchronously.
@@ -25329,7 +25306,7 @@ export namespace TelepathyGLib {
          * signals that the certificate has been rejected.
          * @param callback called on success or failure
          */
-        reject_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reject_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Check the result of `tp_tls_certificate_reject_async()`.
@@ -25908,7 +25885,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): TextChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): TextChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -25959,7 +25936,7 @@ export namespace TelepathyGLib {
          * See `tp_text_channel_ack_message_async()` about acknowledging messages.
          * @param callback a callback to call when the messages have been acked
          */
-        ack_all_pending_messages_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ack_all_pending_messages_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Acknowledge all the pending messages. This is equivalent of calling
@@ -25973,7 +25950,7 @@ export namespace TelepathyGLib {
          * See `tp_text_channel_ack_message_async()` about acknowledging messages.
          * @param callback a callback to call when the messages have been acked
          */
-        ack_all_pending_messages_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ack_all_pending_messages_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finish an asynchronous acknowledgement operation of all messages.
@@ -26019,7 +25996,7 @@ export namespace TelepathyGLib {
          * @param message a {@link TelepathyGLib.SignalledMessage}
          * @param callback a callback to call when the message have been acked
          */
-        ack_message_async(message: Message, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ack_message_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Acknowledge `message`. Once the message has been acked, `callback` will be
@@ -26039,7 +26016,7 @@ export namespace TelepathyGLib {
          * @param message a {@link TelepathyGLib.SignalledMessage}
          * @param callback a callback to call when the message have been acked
          */
-        ack_message_async(message: Message, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ack_message_async(message: Message, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes acknowledging a message.
@@ -26077,7 +26054,7 @@ export namespace TelepathyGLib {
          * @param messages a {@link GLib.List} of {@link TelepathyGLib.SignalledMessage}
          * @param callback a callback to call when the message have been acked
          */
-        ack_messages_async(messages: SignalledMessage[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ack_messages_async(messages: SignalledMessage[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Acknowledge all the messages in `messages`.
@@ -26093,7 +26070,7 @@ export namespace TelepathyGLib {
          * @param messages a {@link GLib.List} of {@link TelepathyGLib.SignalledMessage}
          * @param callback a callback to call when the message have been acked
          */
-        ack_messages_async(messages: SignalledMessage[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ack_messages_async(messages: SignalledMessage[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes acknowledging a list of messages.
@@ -26188,7 +26165,7 @@ export namespace TelepathyGLib {
          * @param message a {@link TelepathyGLib.ClientMessage}
          * @param callback a callback to call when the request has been satisfied
          */
-        get_sms_length_async(message: Message, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_sms_length_async(message: Message, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts an async call to get the number of 140 octet chunks required to
@@ -26202,7 +26179,7 @@ export namespace TelepathyGLib {
          * @param message a {@link TelepathyGLib.ClientMessage}
          * @param callback a callback to call when the request has been satisfied
          */
-        get_sms_length_async(message: Message, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, number, number]> | void);
+        get_sms_length_async(message: Message, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, number, number]> | void;
 
         /**
          * Finishes an async SMS length request.
@@ -26234,7 +26211,7 @@ export namespace TelepathyGLib {
          * @param flags flags affecting how the message is sent
          * @param callback a callback to call when the message has been submitted to the server
          */
-        send_message_async(message: Message, flags: MessageSendingFlags, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_message_async(message: Message, flags: MessageSendingFlags, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Submit a message to the server for sending. Once the message has been
@@ -26244,7 +26221,7 @@ export namespace TelepathyGLib {
          * @param flags flags affecting how the message is sent
          * @param callback a callback to call when the message has been submitted to the server
          */
-        send_message_async(message: Message, flags: MessageSendingFlags, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        send_message_async(message: Message, flags: MessageSendingFlags, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Completes a call to `tp_text_channel_send_message_async()`.
@@ -26275,7 +26252,7 @@ export namespace TelepathyGLib {
          * @param state a {@link TelepathyGLib.ChannelChatState} to set
          * @param callback a callback to call when the chat state has been set
          */
-        set_chat_state_async(state: ChannelChatState, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_chat_state_async(state: ChannelChatState, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Set the local state on channel `self` to `state`.
@@ -26285,7 +26262,7 @@ export namespace TelepathyGLib {
          * @param state a {@link TelepathyGLib.ChannelChatState} to set
          * @param callback a callback to call when the chat state has been set
          */
-        set_chat_state_async(state: ChannelChatState, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_chat_state_async(state: ChannelChatState, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes a call to `tp_text_channel_set_chat_state_async()`.
@@ -26713,7 +26690,7 @@ export namespace TelepathyGLib {
          * @param value pointer to an unset (all zeroes) {@link GObject.Value} into which the default's         type and value are written
          * @returns `true` if there is a default value
          */
-        get_default(value: (GObject.Value | any)): boolean;
+        get_default(value: GObject.Value | any): boolean;
 
         /**
          * <!-- -->
@@ -27026,7 +27003,7 @@ export namespace TelepathyGLib {
          * @param cls a subclass of {@link GObject.ObjectClass}
          * @param offset the offset within `cls` of a TpDBusPropertiesMixinClass structure
          */
-        static init(cls: typeof GObject.Object, offset: (bigint | number)): void;
+        static init(cls: typeof GObject.Object, offset: bigint | number): void;
     }
 
 
@@ -27304,10 +27281,7 @@ export namespace TelepathyGLib {
         static $gtype: GObject.GType<Intset>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Intset;
 
@@ -27468,10 +27442,7 @@ export namespace TelepathyGLib {
         static $gtype: GObject.GType<IntsetFastIter>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**
@@ -28032,9 +28003,7 @@ export namespace TelepathyGLib {
     namespace ClientChannelFactory {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ClientChannelFactoryNamespace {
@@ -28062,7 +28031,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that

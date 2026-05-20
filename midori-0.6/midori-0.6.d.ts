@@ -108,7 +108,7 @@ export namespace Midori {
         static TYPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -143,7 +143,7 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Application.ConstructorProps {
-            exec_path: (Gio.File | null);
+            exec_path: Gio.File | null;
             execPath: Gio.File;
         }
     }
@@ -155,8 +155,8 @@ export namespace Midori {
         static $gtype: GObject.GType<App>;
 
         // Properties
-        get exec_path(): (Gio.File | null);
-        set exec_path(val: (Gio.File | null));
+        get exec_path(): Gio.File | null;
+        set exec_path(val: Gio.File | null);
 
         get execPath(): Gio.File;
         set execPath(val: Gio.File);
@@ -191,12 +191,12 @@ export namespace Midori {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_exec_path(): (Gio.File | null);
+        get_exec_path(): Gio.File | null;
 
         /**
          * @param value 
          */
-        set_exec_path(value: (Gio.File | null)): void;
+        set_exec_path(value: Gio.File | null): void;
     }
 
 
@@ -206,7 +206,7 @@ export namespace Midori {
             /**
              * @signal
              */
-            "default-tab": () => (boolean | void);
+            "default-tab": () => boolean | void;
             "notify::web-context": (pspec: GObject.ParamSpec) => void;
             "notify::is-loading": (pspec: GObject.ParamSpec) => void;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
@@ -298,8 +298,8 @@ export namespace Midori {
             webContext: WebKit2.WebContext;
             is_loading: boolean;
             isLoading: boolean;
-            uri: (string | null);
-            tab: (Tab | null);
+            uri: string | null;
+            tab: Tab | null;
             trash: Gio.ListStore;
             is_fullscreen: boolean;
             isFullscreen: boolean;
@@ -327,11 +327,11 @@ export namespace Midori {
         get isLoading(): boolean;
         set isLoading(val: boolean);
 
-        get uri(): (string | null);
-        set uri(val: (string | null));
+        get uri(): string | null;
+        set uri(val: string | null);
 
-        get tab(): (Tab | null);
-        set tab(val: (Tab | null));
+        get tab(): Tab | null;
+        set tab(val: Tab | null);
 
         get trash(): Gio.ListStore;
         set trash(val: Gio.ListStore);
@@ -419,19 +419,19 @@ export namespace Midori {
          */
         set_is_loading(value: boolean): void;
 
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * @param value 
          */
-        set_uri(value: (string | null)): void;
+        set_uri(value: string | null): void;
 
-        get_tab(): (Tab | null);
+        get_tab(): Tab | null;
 
         /**
          * @param value 
          */
-        set_tab(value: (Tab | null)): void;
+        set_tab(value: Tab | null): void;
 
         get_trash(): Gio.ListStore;
 
@@ -538,9 +538,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
     }
 
     /**
@@ -596,7 +594,7 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends DatabaseItem.ConstructorProps {
-            search: (string | null);
+            search: string | null;
         }
     }
 
@@ -607,8 +605,8 @@ export namespace Midori {
         static $gtype: GObject.GType<SuggestionItem>;
 
         // Properties
-        get search(): (string | null);
-        set search(val: (string | null));
+        get search(): string | null;
+        set search(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -624,7 +622,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static for_input(uri: string, title: (string | null)): SuggestionItem;
+        static for_input(uri: string, title: string | null): SuggestionItem;
 
         // Signals
         /** @signal */
@@ -640,12 +638,12 @@ export namespace Midori {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_search(): (string | null);
+        get_search(): string | null;
 
         /**
          * @param value 
          */
-        set_search(value: (string | null)): void;
+        set_search(value: string | null): void;
     }
 
 
@@ -659,7 +657,7 @@ export namespace Midori {
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             incognito: boolean;
-            key: (string | null);
+            key: string | null;
         }
     }
 
@@ -673,8 +671,8 @@ export namespace Midori {
         get incognito(): boolean;
         set incognito(val: boolean);
 
-        get key(): (string | null);
-        set key(val: (string | null));
+        get key(): string | null;
+        set key(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -718,12 +716,12 @@ export namespace Midori {
          */
         set_incognito(value: boolean): void;
 
-        get_key(): (string | null);
+        get_key(): string | null;
 
         /**
          * @param value 
          */
-        set_key(value: (string | null)): void;
+        set_key(value: string | null): void;
 
         /**
          * Gets the type of the items in `list`.
@@ -764,7 +762,7 @@ export namespace Midori {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -804,7 +802,7 @@ export namespace Midori {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -840,8 +838,8 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            database: (Database | null);
-            query: (string | null);
+            database: Database | null;
+            query: string | null;
         }
     }
 
@@ -852,11 +850,11 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseStatement>;
 
         // Properties
-        get database(): (Database | null);
-        set database(val: (Database | null));
+        get database(): Database | null;
+        set database(val: Database | null);
 
-        get query(): (string | null);
-        set query(val: (string | null));
+        get query(): string | null;
+        set query(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -892,13 +890,13 @@ export namespace Midori {
          * @param cancellable 
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         /**
          * @param cancellable 
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         exec(): boolean;
 
@@ -909,7 +907,7 @@ export namespace Midori {
         /**
          * @param name 
          */
-        get_string(name: string): (string | null);
+        get_string(name: string): string | null;
 
         /**
          * @param name 
@@ -921,19 +919,19 @@ export namespace Midori {
          */
         get_double(name: string): number;
 
-        get_database(): (Database | null);
+        get_database(): Database | null;
 
         /**
          * @param value 
          */
-        set_database(value: (Database | null)): void;
+        set_database(value: Database | null): void;
 
-        get_query(): (string | null);
+        get_query(): string | null;
 
         /**
          * @param value 
          */
-        set_query(value: (string | null)): void;
+        set_query(value: string | null): void;
     }
 
 
@@ -949,11 +947,11 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            database: (Database | null);
-            id: (bigint | number);
+            database: Database | null;
+            id: bigint | number;
             uri: string;
-            title: (string | null);
-            date: (bigint | number);
+            title: string | null;
+            date: bigint | number;
         }
     }
 
@@ -964,20 +962,20 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseItem>;
 
         // Properties
-        get database(): (Database | null);
-        set database(val: (Database | null));
+        get database(): Database | null;
+        set database(val: Database | null);
 
         get id(): number;
-        set id(val: (bigint | number));
+        set id(val: bigint | number);
 
         get uri(): string;
         set uri(val: string);
 
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         get date(): number;
-        set date(val: (bigint | number));
+        set date(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -993,7 +991,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static ["new"](uri: string, title: (string | null), date: (bigint | number)): DatabaseItem;
+        static ["new"](uri: string, title: string | null, date: bigint | number): DatabaseItem;
 
         // Signals
         /** @signal */
@@ -1014,31 +1012,31 @@ export namespace Midori {
         /**
          * @param _callback_ 
          */
-        ["delete"](_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        ["delete"](_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        ["delete"](_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ["delete"](_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
          */
         delete_finish(_res_: Gio.AsyncResult): boolean;
 
-        get_database(): (Database | null);
+        get_database(): Database | null;
 
         /**
          * @param value 
          */
-        set_database(value: (Database | null)): void;
+        set_database(value: Database | null): void;
 
         get_id(): number;
 
         /**
          * @param value 
          */
-        set_id(value: (bigint | number)): void;
+        set_id(value: bigint | number): void;
 
         get_uri(): string;
 
@@ -1047,19 +1045,19 @@ export namespace Midori {
          */
         set_uri(value: string): void;
 
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @param value 
          */
-        set_title(value: (string | null)): void;
+        set_title(value: string | null): void;
 
         get_date(): number;
 
         /**
          * @param value 
          */
-        set_date(value: (bigint | number)): void;
+        set_date(value: bigint | number): void;
     }
 
 
@@ -1077,14 +1075,14 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ListModel.ConstructorProps, Loggable.ConstructorProps {
-            table: (string | null);
+            table: string | null;
             path: string;
-            key: (string | null);
+            key: string | null;
             readonly: boolean;
             first_use: boolean;
             firstUse: boolean;
-            last_row_id: (bigint | number);
-            lastRowId: (bigint | number);
+            last_row_id: bigint | number;
+            lastRowId: bigint | number;
             errmsg: string;
         }
     }
@@ -1096,14 +1094,14 @@ export namespace Midori {
         static $gtype: GObject.GType<Database>;
 
         // Properties
-        get table(): (string | null);
-        set table(val: (string | null));
+        get table(): string | null;
+        set table(val: string | null);
 
         get path(): string;
         set path(val: string);
 
-        get key(): (string | null);
-        set key(val: (string | null));
+        get key(): string | null;
+        set key(val: string | null);
 
         get readonly(): boolean;
         set readonly(val: boolean);
@@ -1166,14 +1164,14 @@ export namespace Midori {
          * @param cancellable 
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param item 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_delete(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_delete(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1186,13 +1184,13 @@ export namespace Midori {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_lookup(uri: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_lookup_finish(_res_: Gio.AsyncResult): (DatabaseItem | null);
+        vfunc_lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
 
         /**
          * @param filter 
@@ -1201,20 +1199,20 @@ export namespace Midori {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_query(filter: (string | null), max_items: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_query(filter: string | null, max_items: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
          * @virtual
          */
-        vfunc_query_finish(_res_: Gio.AsyncResult): (DatabaseItem[] | null);
+        vfunc_query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
 
         /**
          * @param item 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_update(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1227,7 +1225,7 @@ export namespace Midori {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_insert(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1240,7 +1238,7 @@ export namespace Midori {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -1252,7 +1250,7 @@ export namespace Midori {
         /**
          * @param cancellable 
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
@@ -1283,13 +1281,13 @@ export namespace Midori {
          * @param item 
          * @param _callback_ 
          */
-        ["delete"](item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        ["delete"](item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param item 
          * @param _callback_ 
          */
-        ["delete"](item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        ["delete"](item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
@@ -1299,24 +1297,24 @@ export namespace Midori {
         /**
          * @param uri 
          */
-        lookup(uri: string): globalThis.Promise<(DatabaseItem | null)>;
+        lookup(uri: string): globalThis.Promise<DatabaseItem | null>;
 
         /**
          * @param uri 
          * @param _callback_ 
          */
-        lookup(uri: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param _callback_ 
          */
-        lookup(uri: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(DatabaseItem | null)> | void);
+        lookup(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DatabaseItem | null> | void;
 
         /**
          * @param _res_ 
          */
-        lookup_finish(_res_: Gio.AsyncResult): (DatabaseItem | null);
+        lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
 
         /**
          * @param item 
@@ -1328,7 +1326,7 @@ export namespace Midori {
          * @param max_items 
          * @param cancellable 
          */
-        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(DatabaseItem[] | null)>;
+        query(filter: string | null, max_items: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<DatabaseItem[] | null>;
 
         /**
          * @param filter 
@@ -1336,7 +1334,7 @@ export namespace Midori {
          * @param cancellable 
          * @param _callback_ 
          */
-        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        query(filter: string | null, max_items: bigint | number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param filter 
@@ -1344,12 +1342,12 @@ export namespace Midori {
          * @param cancellable 
          * @param _callback_ 
          */
-        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(DatabaseItem[] | null)> | void);
+        query(filter: string | null, max_items: bigint | number, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DatabaseItem[] | null> | void;
 
         /**
          * @param _res_ 
          */
-        query_finish(_res_: Gio.AsyncResult): (DatabaseItem[] | null);
+        query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
 
         /**
          * @param item 
@@ -1360,13 +1358,13 @@ export namespace Midori {
          * @param item 
          * @param _callback_ 
          */
-        update(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param item 
          * @param _callback_ 
          */
-        update(item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        update(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
@@ -1382,13 +1380,13 @@ export namespace Midori {
          * @param item 
          * @param _callback_ 
          */
-        insert(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param item 
          * @param _callback_ 
          */
-        insert(item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        insert(item: DatabaseItem, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
@@ -1404,25 +1402,25 @@ export namespace Midori {
          * @param timespan 
          * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param timespan 
          * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 
          */
         clear_finish(_res_: Gio.AsyncResult): boolean;
 
-        get_table(): (string | null);
+        get_table(): string | null;
 
         /**
          * @param value 
          */
-        set_table(value: (string | null)): void;
+        set_table(value: string | null): void;
 
         get_path(): string;
 
@@ -1431,12 +1429,12 @@ export namespace Midori {
          */
         set_path(value: string): void;
 
-        get_key(): (string | null);
+        get_key(): string | null;
 
         /**
          * @param value 
          */
-        set_key(value: (string | null)): void;
+        set_key(value: string | null): void;
 
         get_readonly(): boolean;
 
@@ -1495,7 +1493,7 @@ export namespace Midori {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -1535,7 +1533,7 @@ export namespace Midori {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.
@@ -1627,9 +1625,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps {}
     }
 
     /**
@@ -1710,12 +1706,12 @@ export namespace Midori {
             content_type: string;
             contentType: string;
             icon: Gio.Icon;
-            filename: (string | null);
-            basename: (string | null);
+            filename: string | null;
+            basename: string | null;
             progress: number;
-            download: (WebKit2.Download | null);
+            download: WebKit2.Download | null;
             loading: boolean;
-            error: (string | null);
+            error: string | null;
         }
     }
 
@@ -1741,23 +1737,23 @@ export namespace Midori {
          */
         get icon(): Gio.Icon;
 
-        get filename(): (string | null);
-        set filename(val: (string | null));
+        get filename(): string | null;
+        set filename(val: string | null);
 
-        get basename(): (string | null);
-        set basename(val: (string | null));
+        get basename(): string | null;
+        set basename(val: string | null);
 
         get progress(): number;
         set progress(val: number);
 
-        get download(): (WebKit2.Download | null);
-        set download(val: (WebKit2.Download | null));
+        get download(): WebKit2.Download | null;
+        set download(val: WebKit2.Download | null);
 
         get loading(): boolean;
         set loading(val: boolean);
 
-        get error(): (string | null);
-        set error(val: (string | null));
+        get error(): string | null;
+        set error(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -1769,7 +1765,7 @@ export namespace Midori {
         $signals: DownloadItem.SignalSignatures;
 
         // Fields
-        mime_type: (string | null);
+        mime_type: string | null;
 
         // Constructors
         constructor(properties?: Partial<DownloadItem.ConstructorProps>, ...args: any[]);
@@ -1800,19 +1796,19 @@ export namespace Midori {
 
         get_icon(): Gio.Icon;
 
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * @param value 
          */
-        set_filename(value: (string | null)): void;
+        set_filename(value: string | null): void;
 
-        get_basename(): (string | null);
+        get_basename(): string | null;
 
         /**
          * @param value 
          */
-        set_basename(value: (string | null)): void;
+        set_basename(value: string | null): void;
 
         get_progress(): number;
 
@@ -1821,12 +1817,12 @@ export namespace Midori {
          */
         set_progress(value: number): void;
 
-        get_download(): (WebKit2.Download | null);
+        get_download(): WebKit2.Download | null;
 
         /**
          * @param value 
          */
-        set_download(value: (WebKit2.Download | null)): void;
+        set_download(value: WebKit2.Download | null): void;
 
         get_loading(): boolean;
 
@@ -1835,12 +1831,12 @@ export namespace Midori {
          */
         set_loading(value: boolean): void;
 
-        get_error(): (string | null);
+        get_error(): string | null;
 
         /**
          * @param value 
          */
-        set_error(value: (string | null)): void;
+        set_error(value: string | null): void;
     }
 
 
@@ -2032,7 +2028,7 @@ export namespace Midori {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
             surface: cairo.Surface;
-            uri: (string | null);
+            uri: string | null;
         }
     }
 
@@ -2048,8 +2044,8 @@ export namespace Midori {
          */
         set surface(val: cairo.Surface);
 
-        get uri(): (string | null);
-        set uri(val: (string | null));
+        get uri(): string | null;
+        set uri(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -2084,14 +2080,14 @@ export namespace Midori {
         /**
          * @param value 
          */
-        set_surface(value: (cairo.Surface | null)): void;
+        set_surface(value: cairo.Surface | null): void;
 
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * @param value 
          */
-        set_uri(value: (string | null)): void;
+        set_uri(value: string | null): void;
     }
 
 
@@ -2108,9 +2104,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {}
     }
 
     /**
@@ -2202,9 +2196,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
     }
 
     /**
@@ -2309,9 +2301,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
     }
 
     /**
@@ -2484,9 +2474,9 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            title: (string | null);
+            title: string | null;
             label: Gtk.Label;
-            widget: ((Gtk.Widget | null) | any);
+            widget: Gtk.Widget | null | any;
         }
     }
 
@@ -2497,14 +2487,14 @@ export namespace Midori {
         static $gtype: GObject.GType<LabelWidget>;
 
         // Properties
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         get label(): Gtk.Label;
         set label(val: Gtk.Label);
 
     // This accessor conflicts with a property or field in a parent class or interface.
-         widget: (Gtk.Widget | null) | any;
+         widget: Gtk.Widget | null | any;
 
         /**
          * Compile-time signal type information.
@@ -2520,7 +2510,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static ["new"](title: (string | null), widget: (Gtk.Widget | null)): LabelWidget;
+        static ["new"](title: string | null, widget: Gtk.Widget | null): LabelWidget;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -2539,12 +2529,12 @@ export namespace Midori {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @param value 
          */
-        set_title(value: (string | null)): void;
+        set_title(value: string | null): void;
 
         get_label(): Gtk.Label;
 
@@ -2553,12 +2543,12 @@ export namespace Midori {
          */
         set_label(value: Gtk.Label): void;
 
-        get_widget(): (Gtk.Widget | null);
+        get_widget(): Gtk.Widget | null;
 
         /**
          * @param value 
          */
-        set_widget(value: (Gtk.Widget | null)): void;
+        set_widget(value: Gtk.Widget | null): void;
     }
 
 
@@ -2644,9 +2634,7 @@ export namespace Midori {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
     }
 
     /**
@@ -2906,7 +2894,7 @@ export namespace Midori {
          * @param keywords 
          * @param search 
          */
-        uri_for_search(keywords: (string | null), search: (string | null)): string;
+        uri_for_search(keywords: string | null, search: string | null): string;
 
         get_last_window_width(): number;
 
@@ -3095,14 +3083,14 @@ export namespace Midori {
          * @param value 
          * @param _default_ 
          */
-        set_string(group: string, key: string, value: string, _default_: (string | null)): void;
+        set_string(group: string, key: string, value: string, _default_: string | null): void;
 
         /**
          * @param group 
          * @param key 
          * @param _default_ 
          */
-        get_string(group: string, key: string, _default_: (string | null)): (string | null);
+        get_string(group: string, key: string, _default_: string | null): string | null;
 
         get_filename(): string;
 
@@ -3166,7 +3154,7 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Statusbar.ConstructorProps {
-            label: (string | null);
+            label: string | null;
         }
     }
 
@@ -3177,8 +3165,8 @@ export namespace Midori {
         static $gtype: GObject.GType<Statusbar>;
 
         // Properties
-        get label(): (string | null);
-        set label(val: (string | null));
+        get label(): string | null;
+        set label(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3213,12 +3201,12 @@ export namespace Midori {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * @param value 
          */
-        set_label(value: (string | null)): void;
+        set_label(value: string | null): void;
     }
 
 
@@ -3278,9 +3266,9 @@ export namespace Midori {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             item: DatabaseItem;
-            location: (string | null);
-            regex: (GLib.Regex | null);
-            key: (string | null);
+            location: string | null;
+            regex: GLib.Regex | null;
+            key: string | null;
         }
     }
 
@@ -3294,14 +3282,14 @@ export namespace Midori {
         get item(): DatabaseItem;
         set item(val: DatabaseItem);
 
-        get location(): (string | null);
-        set location(val: (string | null));
+        get location(): string | null;
+        set location(val: string | null);
 
-        get regex(): (GLib.Regex | null);
-        set regex(val: (GLib.Regex | null));
+        get regex(): GLib.Regex | null;
+        set regex(val: GLib.Regex | null);
 
-        get key(): (string | null);
-        set key(val: (string | null));
+        get key(): string | null;
+        set key(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -3343,26 +3331,26 @@ export namespace Midori {
          */
         set_item(value: DatabaseItem): void;
 
-        get_location(): (string | null);
+        get_location(): string | null;
 
         /**
          * @param value 
          */
-        set_location(value: (string | null)): void;
+        set_location(value: string | null): void;
 
-        get_regex(): (GLib.Regex | null);
-
-        /**
-         * @param value 
-         */
-        set_regex(value: (GLib.Regex | null)): void;
-
-        get_key(): (string | null);
+        get_regex(): GLib.Regex | null;
 
         /**
          * @param value 
          */
-        set_key(value: (string | null)): void;
+        set_regex(value: GLib.Regex | null): void;
+
+        get_key(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_key(value: string | null): void;
     }
 
 
@@ -3420,7 +3408,7 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            stack: (Gtk.Stack | null);
+            stack: Gtk.Stack | null;
             show_close_buttons: boolean;
             showCloseButtons: boolean;
         }
@@ -3433,8 +3421,8 @@ export namespace Midori {
         static $gtype: GObject.GType<Switcher>;
 
         // Properties
-        get stack(): (Gtk.Stack | null);
-        set stack(val: (Gtk.Stack | null));
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         get show_close_buttons(): boolean;
         set show_close_buttons(val: boolean);
@@ -3472,12 +3460,12 @@ export namespace Midori {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_stack(): (Gtk.Stack | null);
+        get_stack(): Gtk.Stack | null;
 
         /**
          * @param value 
          */
-        set_stack(value: (Gtk.Stack | null)): void;
+        set_stack(value: Gtk.Stack | null): void;
 
         get_show_close_buttons(): boolean;
 
@@ -3574,16 +3562,16 @@ export namespace Midori {
         interface ConstructorProps extends WebKit2.WebView.ConstructorProps {
             id: string;
             progress: number;
-            can_go_back: (boolean | any);
+            can_go_back: boolean | any;
             canGoBack: boolean;
-            can_go_forward: (boolean | any);
+            can_go_forward: boolean | any;
             canGoForward: boolean;
-            item: (DatabaseItem | null);
+            item: DatabaseItem | null;
             display_uri: string;
             displayUri: string;
             display_title: string;
             displayTitle: string;
-            color: (string | null);
+            color: string | null;
             pinned: boolean;
             secure: boolean;
             link_uri: string;
@@ -3618,8 +3606,8 @@ export namespace Midori {
         get canGoForward(): boolean;
         set canGoForward(val: boolean);
 
-        get item(): (DatabaseItem | null);
-        set item(val: (DatabaseItem | null));
+        get item(): DatabaseItem | null;
+        set item(val: DatabaseItem | null);
 
         get display_uri(): string;
         set display_uri(val: string);
@@ -3633,8 +3621,8 @@ export namespace Midori {
         get displayTitle(): string;
         set displayTitle(val: string);
 
-        get color(): (string | null);
-        set color(val: (string | null));
+        get color(): string | null;
+        set color(val: string | null);
 
         get pinned(): boolean;
         set pinned(val: boolean);
@@ -3665,7 +3653,7 @@ export namespace Midori {
 
         _init(...args: any[]): void;
 
-        static ["new"](related: (Tab | null), web_context: WebKit2.WebContext, uri: (string | null), title: (string | null)): Tab;
+        static ["new"](related: Tab | null, web_context: WebKit2.WebContext, uri: string | null, title: string | null): Tab;
 
         // Conflicted with WebKit2.WebView.new
         static ["new"](...args: never[]): any;
@@ -3707,12 +3695,12 @@ export namespace Midori {
          */
         set_can_go_forward(value: boolean): void;
 
-        get_item(): (DatabaseItem | null);
+        get_item(): DatabaseItem | null;
 
         /**
          * @param value 
          */
-        set_item(value: (DatabaseItem | null)): void;
+        set_item(value: DatabaseItem | null): void;
 
         get_display_uri(): string;
 
@@ -3728,12 +3716,12 @@ export namespace Midori {
          */
         set_display_title(value: string): void;
 
-        get_color(): (string | null);
+        get_color(): string | null;
 
         /**
          * @param value 
          */
-        set_color(value: (string | null)): void;
+        set_color(value: string | null): void;
 
         get_pinned(): boolean;
 
@@ -3819,8 +3807,8 @@ export namespace Midori {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
             tab: Tab;
-            uri: (string | null);
-            title: (string | null);
+            uri: string | null;
+            title: string | null;
             show_close: boolean;
             showClose: boolean;
             active: boolean;
@@ -3837,11 +3825,11 @@ export namespace Midori {
         get tab(): Tab;
         set tab(val: Tab);
 
-        get uri(): (string | null);
-        set uri(val: (string | null));
+        get uri(): string | null;
+        set uri(val: string | null);
 
-        get title(): (string | null);
-        set title(val: (string | null));
+        get title(): string | null;
+        set title(val: string | null);
 
         get show_close(): boolean;
         set show_close(val: boolean);
@@ -3892,19 +3880,19 @@ export namespace Midori {
          */
         set_tab(value: Tab): void;
 
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * @param value 
          */
-        set_uri(value: (string | null)): void;
+        set_uri(value: string | null): void;
 
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @param value 
          */
-        set_title(value: (string | null)): void;
+        set_title(value: string | null): void;
 
         get_show_close(): boolean;
 
@@ -4024,9 +4012,9 @@ export namespace Midori {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
-            key: (string | null);
-            regex: (GLib.Regex | null);
-            location: (string | null);
+            key: string | null;
+            regex: GLib.Regex | null;
+            location: string | null;
             uri: string;
             secure: boolean;
         }
@@ -4039,14 +4027,14 @@ export namespace Midori {
         static $gtype: GObject.GType<Urlbar>;
 
         // Properties
-        get key(): (string | null);
-        set key(val: (string | null));
+        get key(): string | null;
+        set key(val: string | null);
 
-        get regex(): (GLib.Regex | null);
-        set regex(val: (GLib.Regex | null));
+        get regex(): GLib.Regex | null;
+        set regex(val: GLib.Regex | null);
 
-        get location(): (string | null);
-        set location(val: (string | null));
+        get location(): string | null;
+        set location(val: string | null);
 
         get uri(): string;
         set uri(val: string);
@@ -4091,26 +4079,26 @@ export namespace Midori {
 
         popdown(): void;
 
-        get_key(): (string | null);
+        get_key(): string | null;
 
         /**
          * @param value 
          */
-        set_key(value: (string | null)): void;
+        set_key(value: string | null): void;
 
-        get_regex(): (GLib.Regex | null);
-
-        /**
-         * @param value 
-         */
-        set_regex(value: (GLib.Regex | null)): void;
-
-        get_location(): (string | null);
+        get_regex(): GLib.Regex | null;
 
         /**
          * @param value 
          */
-        set_location(value: (string | null)): void;
+        set_regex(value: GLib.Regex | null): void;
+
+        get_location(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_location(value: string | null): void;
 
         get_uri(): string;
 
@@ -4641,7 +4629,7 @@ export namespace Midori {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -4693,13 +4681,13 @@ export namespace Midori {
          * @param timespan 
          * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param timespan 
          * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        clear(timespan: GLib.TimeSpan, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4783,9 +4771,7 @@ export namespace Midori {
     namespace Loggable {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LoggableNamespace {

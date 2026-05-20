@@ -38,7 +38,7 @@ export namespace Gpseq {
         static TRY_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -52,7 +52,7 @@ export namespace Gpseq {
         static DUPLICATE_KEY: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -66,7 +66,7 @@ export namespace Gpseq {
         static NOT_PRESENT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -356,19 +356,19 @@ export namespace Gpseq {
      * @param a 
      * @param b 
      */
-    function overflow_long_add(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_long_add(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param a 
      * @param b 
      */
-    function overflow_long_sub(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_long_sub(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param a 
      * @param b 
      */
-    function overflow_long_mul(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_long_mul(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param a 
@@ -392,19 +392,19 @@ export namespace Gpseq {
      * @param a 
      * @param b 
      */
-    function overflow_int64_add(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_int64_add(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param a 
      * @param b 
      */
-    function overflow_int64_sub(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_int64_sub(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param a 
      * @param b 
      */
-    function overflow_int64_mul(a: (bigint | number), b: (bigint | number)): [boolean, number];
+    function overflow_int64_mul(a: bigint | number, b: bigint | number): [boolean, number];
 
     /**
      * @param g_type 
@@ -452,54 +452,54 @@ export namespace Gpseq {
     /**
      * @param atomic 
      */
-    function atomic_int64_get(atomic: (bigint | number)): [number, number];
+    function atomic_int64_get(atomic: bigint | number): [number, number];
 
     /**
      * @param atomic 
      * @param newval 
      */
-    function atomic_int64_set(atomic: (bigint | number), newval: (bigint | number)): number;
+    function atomic_int64_set(atomic: bigint | number, newval: bigint | number): number;
 
     /**
      * @param atomic 
      */
-    function atomic_int64_inc(atomic: (bigint | number)): number;
+    function atomic_int64_inc(atomic: bigint | number): number;
 
     /**
      * @param atomic 
      */
-    function atomic_int64_dec_and_test(atomic: (bigint | number)): [boolean, number];
+    function atomic_int64_dec_and_test(atomic: bigint | number): [boolean, number];
 
     /**
      * @param atomic 
      * @param oldval 
      * @param newval 
      */
-    function atomic_int64_compare_and_exchange(atomic: (bigint | number), oldval: (bigint | number), newval: (bigint | number)): [boolean, number];
+    function atomic_int64_compare_and_exchange(atomic: bigint | number, oldval: bigint | number, newval: bigint | number): [boolean, number];
 
     /**
      * @param atomic 
      * @param val 
      */
-    function atomic_int64_add(atomic: (bigint | number), val: (bigint | number)): [number, number];
+    function atomic_int64_add(atomic: bigint | number, val: bigint | number): [number, number];
 
     /**
      * @param atomic 
      * @param val 
      */
-    function atomic_int64_and(atomic: (bigint | number), val: (bigint | number)): [number, number];
+    function atomic_int64_and(atomic: bigint | number, val: bigint | number): [number, number];
 
     /**
      * @param atomic 
      * @param val 
      */
-    function atomic_int64_or(atomic: (bigint | number), val: (bigint | number)): [number, number];
+    function atomic_int64_or(atomic: bigint | number, val: bigint | number): [number, number];
 
     /**
      * @param atomic 
      * @param val 
      */
-    function atomic_int64_xor(atomic: (bigint | number), val: (bigint | number)): [number, number];
+    function atomic_int64_xor(atomic: bigint | number, val: bigint | number): [number, number];
 
     /**
      * @gir-type Callback
@@ -749,7 +749,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -801,7 +801,7 @@ export namespace Gpseq {
             root: ForkJoinTask;
             is_root: boolean;
             isRoot: boolean;
-            threshold: (bigint | number);
+            threshold: bigint | number;
             max_depth: number;
             maxDepth: number;
             depth: number;
@@ -1005,8 +1005,7 @@ export namespace Gpseq {
 
     namespace ForkJoinTaskSharedResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -1315,7 +1314,7 @@ export namespace Gpseq {
         /**
          * @param end_time 
          */
-        wait_until(end_time: (bigint | number)): [boolean, null];
+        wait_until(end_time: bigint | number): [boolean, null];
 
         /**
          * @param a_type 
@@ -1606,7 +1605,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -1699,7 +1698,7 @@ export namespace Gpseq {
 
         _init(...args: any[]): void;
 
-        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, iterator: Gee.Iterator, estimated_size: (bigint | number), size_known: boolean): IteratorSpliterator;
+        static ["new"](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, iterator: Gee.Iterator, estimated_size: bigint | number, size_known: boolean): IteratorSpliterator;
 
         static from_collection(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, collection: Gee.Collection): IteratorSpliterator;
 
@@ -1777,7 +1776,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -1946,7 +1945,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -2136,8 +2135,7 @@ export namespace Gpseq {
 
     namespace Promise {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2352,7 +2350,7 @@ export namespace Gpseq {
          * @param size_known 
          * @param env 
          */
-        static of_iterator(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, iterator: Gee.Iterator, estimated_size: (bigint | number), size_known: boolean, env: TaskEnv): Seq;
+        static of_iterator(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, iterator: Gee.Iterator, estimated_size: bigint | number, size_known: boolean, env: TaskEnv): Seq;
 
         /**
          * @param g_type 
@@ -2457,34 +2455,34 @@ export namespace Gpseq {
         /**
          * @param n 
          */
-        skip(n: (bigint | number)): Seq;
+        skip(n: bigint | number): Seq;
 
         /**
          * @param n 
          */
-        limit(n: (bigint | number)): Seq;
+        limit(n: bigint | number): Seq;
 
         /**
          * @param offset 
          * @param length 
          */
-        chop(offset: (bigint | number), length: (bigint | number)): Seq;
+        chop(offset: bigint | number, length: bigint | number): Seq;
 
         /**
          * @param n 
          */
-        skip_ordered(n: (bigint | number)): Seq;
+        skip_ordered(n: bigint | number): Seq;
 
         /**
          * @param n 
          */
-        limit_ordered(n: (bigint | number)): Seq;
+        limit_ordered(n: bigint | number): Seq;
 
         /**
          * @param offset 
          * @param length 
          */
-        chop_ordered(offset: (bigint | number), length: (bigint | number)): Seq;
+        chop_ordered(offset: bigint | number, length: bigint | number): Seq;
 
         /**
          * @param pred 
@@ -3093,7 +3091,7 @@ export namespace Gpseq {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -3198,7 +3196,7 @@ export namespace Gpseq {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -3362,7 +3360,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -3531,7 +3529,7 @@ export namespace Gpseq {
         /**
          * @virtual
          */
-        vfunc_get_estimated_size(): (bigint | number);
+        vfunc_get_estimated_size(): bigint | number;
 
         /**
          * @virtual
@@ -3637,7 +3635,7 @@ export namespace Gpseq {
          * @param threads 
          * @virtual
          */
-        vfunc_resolve_threshold(elements: number, threads: number): (bigint | number);
+        vfunc_resolve_threshold(elements: number, threads: number): bigint | number;
 
         /**
          * @param elements 
@@ -3653,25 +3651,22 @@ export namespace Gpseq {
          * @param elements 
          * @param threads 
          */
-        resolve_threshold(elements: (bigint | number), threads: number): number;
+        resolve_threshold(elements: bigint | number, threads: number): number;
 
         /**
          * @param elements 
          * @param threads 
          */
-        resolve_max_depth(elements: (bigint | number), threads: number): number;
+        resolve_max_depth(elements: bigint | number, threads: number): number;
     }
 
 
     namespace WaitGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3735,7 +3730,7 @@ export namespace Gpseq {
         /**
          * @param end_time 
          */
-        wait_until(end_time: (bigint | number)): boolean;
+        wait_until(end_time: bigint | number): boolean;
     }
 
 
@@ -3894,7 +3889,7 @@ export namespace Gpseq {
         /**
          * @param end_time 
          */
-        wait_termination_until(end_time: (bigint | number)): void;
+        wait_termination_until(end_time: bigint | number): void;
 
         /**
          * @read-only
@@ -4501,9 +4496,7 @@ export namespace Gpseq {
     namespace Channel {
 
         // Constructor properties interface
-        interface ConstructorProps extends Sender.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Sender.ConstructorProps {}
     }
 
     export interface ChannelNamespace {
@@ -4549,7 +4542,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_length(): (bigint | number);
+            vfunc_get_length(): bigint | number;
 
             /**
              * @virtual
@@ -4571,7 +4564,7 @@ export namespace Gpseq {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             capacity: Optional;
-            length: (bigint | number);
+            length: bigint | number;
         }
     }
 
@@ -4785,9 +4778,7 @@ export namespace Gpseq {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends ChannelBase.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ChannelBase.ConstructorProps {}
     }
 
     export interface ReceiverNamespace {
@@ -4806,7 +4797,7 @@ export namespace Gpseq {
         /**
          * @param end_time 
          */
-        recv_until(end_time: (bigint | number)): Result;
+        recv_until(end_time: bigint | number): Result;
 
         try_recv(): Result;
     }
@@ -4908,9 +4899,7 @@ export namespace Gpseq {
     }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.Hashable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.Hashable.ConstructorProps {}
     }
 
     export interface ResultNamespace {
@@ -5038,9 +5027,7 @@ export namespace Gpseq {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends ChannelBase.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ChannelBase.ConstructorProps {}
     }
 
     export interface SenderNamespace {
@@ -5063,7 +5050,7 @@ export namespace Gpseq {
          * @param data 
          * @param end_time 
          */
-        send_until(data: never, end_time: (bigint | number)): Result;
+        send_until(data: never, end_time: bigint | number): Result;
 
         /**
          * @param data 
@@ -5098,7 +5085,7 @@ export namespace Gpseq {
             /**
              * @virtual
              */
-            vfunc_get_estimated_size(): (bigint | number);
+            vfunc_get_estimated_size(): bigint | number;
 
             /**
              * @virtual
@@ -5121,8 +5108,8 @@ export namespace Gpseq {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            estimated_size: (bigint | number);
-            estimatedSize: (bigint | number);
+            estimated_size: bigint | number;
+            estimatedSize: bigint | number;
             is_size_known: boolean;
             isSizeKnown: boolean;
         }
@@ -5209,9 +5196,7 @@ export namespace Gpseq {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SupplierNamespace {
@@ -5309,9 +5294,7 @@ export namespace Gpseq {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ThreadFactoryNamespace {

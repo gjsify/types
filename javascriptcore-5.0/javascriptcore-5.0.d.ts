@@ -378,7 +378,7 @@ export namespace JavaScriptCore {
      * @returns `true` if option was correctly set or `false` otherwise.
      * @since 2.24
      */
-    function options_set_size(option: string, value: (bigint | number)): boolean;
+    function options_set_size(option: string, value: bigint | number): boolean;
 
     /**
      * Set `option` as a string.
@@ -409,14 +409,14 @@ export namespace JavaScriptCore {
      * @gir-type Callback
      */
     interface ClassEnumeratePropertiesFunction {
-        (jsc_class: Class, context: Context, instance: null): (string[] | null);
+        (jsc_class: Class, context: Context, instance: null): string[] | null;
     }
 
     /**
      * @gir-type Callback
      */
     interface ClassGetPropertyFunction {
-        (jsc_class: Class, context: Context, instance: null, name: string): (Value | null);
+        (jsc_class: Class, context: Context, instance: null, name: string): Value | null;
     }
 
     /**
@@ -444,7 +444,7 @@ export namespace JavaScriptCore {
      * @gir-type Callback
      */
     interface OptionsFunc {
-        (option: string, type: OptionType, description: (string | null)): boolean;
+        (option: string, type: OptionType, description: string | null): boolean;
     }
 
     /**
@@ -562,7 +562,7 @@ export namespace JavaScriptCore {
          * @param return_type the {@link GObject.GType} of the constructor return value
          * @returns a {@link JavaScriptCore.Value} representing the class constructor.
          */
-        add_constructor_variadic(name: (string | null), callback: GObject.Callback, return_type: GObject.GType): Value;
+        add_constructor_variadic(name: string | null, callback: GObject.Callback, return_type: GObject.GType): Value;
 
         /**
          * Add a constructor to `jsc_class`. If `name` is `null`, the class name will be used. When <function>new</function>
@@ -581,7 +581,7 @@ export namespace JavaScriptCore {
          * @param parameter_types a list of {@link GObject.GType}<!-- -->s, one for each parameter, or `null`
          * @returns a {@link JavaScriptCore.Value} representing the class constructor.
          */
-        add_constructor(name: (string | null), callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
+        add_constructor(name: string | null, callback: GObject.Callback, return_type: GObject.GType, parameter_types: GObject.GType[] | null): Value;
 
         /**
          * Add method with `name` to `jsc_class`. When the method is called by JavaScript or `jsc_value_object_invoke_method()`,
@@ -614,7 +614,7 @@ export namespace JavaScriptCore {
          * @param return_type the {@link GObject.GType} of the method return value, or `G_TYPE_NONE` if the method is void.
          * @param parameter_types a list of {@link GObject.GType}<!-- -->s, one for each parameter, or `null`
          */
-        add_method(name: string, callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): void;
+        add_method(name: string, callback: GObject.Callback, return_type: GObject.GType, parameter_types: GObject.GType[] | null): void;
 
         /**
          * Add a property with `name` to `jsc_class`. When the property value needs to be getted, `getter` is called
@@ -632,7 +632,7 @@ export namespace JavaScriptCore {
          * @param getter a {@link GObject.Callback} to be called to get the property value
          * @param setter a {@link GObject.Callback} to be called to set the property value
          */
-        add_property(name: string, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null)): void;
+        add_property(name: string, property_type: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void;
 
         /**
          * Get the class name of `jsc_class`
@@ -723,7 +723,7 @@ export namespace JavaScriptCore {
          * Get the {@link JavaScriptCore.Context} that is currently executing a function. This should only be
          * called within a function or method callback, otherwise `null` will be returned.
          */
-        static get_current(): (Context | null);
+        static get_current(): Context | null;
 
         // Methods
         /**
@@ -738,7 +738,7 @@ export namespace JavaScriptCore {
          * @param line_number the starting line number
          * @returns a {@link JavaScriptCore.CheckSyntaxResult}
          */
-        check_syntax(code: string, length: (bigint | number), mode: CheckSyntaxMode, uri: string, line_number: number): [CheckSyntaxResult, Exception | null];
+        check_syntax(code: string, length: bigint | number, mode: CheckSyntaxMode, uri: string, line_number: number): [CheckSyntaxResult, Exception | null];
 
         /**
          * Clear the uncaught exception in `context` if any.
@@ -751,7 +751,7 @@ export namespace JavaScriptCore {
          * @param length length of `code`, or -1 if `code` is a nul-terminated string
          * @returns a {@link JavaScriptCore.Value} representing the last value generated by the script.
          */
-        evaluate(code: string, length: (bigint | number)): Value;
+        evaluate(code: string, length: bigint | number): Value;
 
         /**
          * Evaluate `code` and create an new object where symbols defined in `code` will be added as properties,
@@ -767,7 +767,7 @@ export namespace JavaScriptCore {
          * @param line_number the starting line number
          * @returns a {@link JavaScriptCore.Value} representing the last value generated by the script.
          */
-        evaluate_in_object(code: string, length: (bigint | number), object_instance: null, object_class: (Class | null), uri: string, line_number: number): [Value, Value];
+        evaluate_in_object(code: string, length: bigint | number, object_instance: null, object_class: Class | null, uri: string, line_number: number): [Value, Value];
 
         /**
          * Evaluate `code` in `context` using `uri` as the source URI. The `line_number` is the starting line number
@@ -779,13 +779,13 @@ export namespace JavaScriptCore {
          * @param line_number the starting line number
          * @returns a {@link JavaScriptCore.Value} representing the last value generated by the script.
          */
-        evaluate_with_source_uri(code: string, length: (bigint | number), uri: string, line_number: number): Value;
+        evaluate_with_source_uri(code: string, length: bigint | number, uri: string, line_number: number): Value;
 
         /**
          * Get the last unhandled exception thrown in `context` by API functions calls.
          * @returns a {@link JavaScriptCore.Exception} or `null` if there isn't any    unhandled exception in the {@link JavaScriptCore.Context}.
          */
-        get_exception(): (Exception | null);
+        get_exception(): Exception | null;
 
         /**
          * Get a {@link JavaScriptCore.Value} referencing the `context` global object
@@ -837,7 +837,7 @@ export namespace JavaScriptCore {
          * @param vtable an optional {@link JavaScriptCore.ClassVTable} or `null`
          * @returns a {@link JavaScriptCore.Class}
          */
-        register_class(name: string, parent_class: (Class | null), vtable: (ClassVTable | null)): Class;
+        register_class(name: string, parent_class: Class | null, vtable: ClassVTable | null): Class;
 
         /**
          * Set a property of `context` global object with `name` and `value`.
@@ -871,13 +871,10 @@ export namespace JavaScriptCore {
 
     namespace Exception {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -923,7 +920,7 @@ export namespace JavaScriptCore {
          * Get a string with the exception backtrace.
          * @returns the exception backtrace string or `null`.
          */
-        get_backtrace_string(): (string | null);
+        get_backtrace_string(): string | null;
 
         /**
          * Get the column number at which `exception` happened.
@@ -953,7 +950,7 @@ export namespace JavaScriptCore {
          * Get the source URI of `exception`.
          * @returns the the source URI of `exception`, or `null`.
          */
-        get_source_uri(): (string | null);
+        get_source_uri(): string | null;
 
         /**
          * Return a report message of `exception`, containing all the possible details such us
@@ -1011,9 +1008,9 @@ export namespace JavaScriptCore {
 
         _init(...args: any[]): void;
 
-        static new_array_buffer(context: Context, data: null, size: (bigint | number), user_data: null): Value;
+        static new_array_buffer(context: Context, data: null, size: bigint | number, user_data: null): Value;
 
-        static new_array_from_garray(context: Context, array: (Value[] | null)): Value;
+        static new_array_from_garray(context: Context, array: Value[] | null): Value;
 
         static new_array_from_strv(context: Context, strv: string[]): Value;
 
@@ -1021,21 +1018,21 @@ export namespace JavaScriptCore {
 
         static new_from_json(context: Context, json: string): Value;
 
-        static new_function_variadic(context: Context, name: (string | null), callback: GObject.Callback, return_type: GObject.GType): Value;
+        static new_function_variadic(context: Context, name: string | null, callback: GObject.Callback, return_type: GObject.GType): Value;
 
-        static new_function(context: Context, name: (string | null), callback: GObject.Callback, return_type: GObject.GType, parameter_types: (GObject.GType[] | null)): Value;
+        static new_function(context: Context, name: string | null, callback: GObject.Callback, return_type: GObject.GType, parameter_types: GObject.GType[] | null): Value;
 
         static new_null(context: Context): Value;
 
         static new_number(context: Context, number: number): Value;
 
-        static new_object(context: Context, instance: null, jsc_class: (Class | null)): Value;
+        static new_object(context: Context, instance: null, jsc_class: Class | null): Value;
 
-        static new_string(context: Context, string: (string | null)): Value;
+        static new_string(context: Context, string: string | null): Value;
 
-        static new_string_from_bytes(context: Context, bytes: (GLib.Bytes | null)): Value;
+        static new_string_from_bytes(context: Context, bytes: GLib.Bytes | null): Value;
 
-        static new_typed_array(context: Context, type: TypedArrayType, length: (bigint | number)): Value;
+        static new_typed_array(context: Context, type: TypedArrayType, length: bigint | number): Value;
 
         static new_undefined(context: Context): Value;
 
@@ -1072,7 +1069,7 @@ export namespace JavaScriptCore {
          * @param size location where to store the size of the memory region.
          * @returns pointer to memory.
          */
-        array_buffer_get_data(size: ((bigint | number) | null)): null;
+        array_buffer_get_data(size: bigint | number | null): null;
 
         /**
          * Gets the size in bytes of the array buffer.
@@ -1089,7 +1086,7 @@ export namespace JavaScriptCore {
          * @param parameters the {@link JavaScriptCore.Value}<!-- -->s to pass as parameters to the constructor, or `null`
          * @returns a {@link JavaScriptCore.Value} referencing the newly created object instance.
          */
-        constructor_call(parameters: (Value[] | null)): Value;
+        constructor_call(parameters: Value[] | null): Value;
 
         /**
          * Call function referenced by `value`, passing the given `parameters`. If `n_parameters`
@@ -1100,7 +1097,7 @@ export namespace JavaScriptCore {
          * @param parameters the {@link JavaScriptCore.Value}<!-- -->s to pass as parameters to the function, or `null`
          * @returns a {@link JavaScriptCore.Value} with the return value of the function.
          */
-        function_call(parameters: (Value[] | null)): Value;
+        function_call(parameters: Value[] | null): Value;
 
         /**
          * Get the {@link JavaScriptCore.Context} in which `value` was created.
@@ -1194,7 +1191,7 @@ export namespace JavaScriptCore {
          * @param length number of array elements, or `-1`.
          * @returns a {@link JavaScriptCore.Value}
          */
-        new_typed_array_with_buffer(type: TypedArrayType, offset: (bigint | number), length: (bigint | number)): Value;
+        new_typed_array_with_buffer(type: TypedArrayType, offset: bigint | number, length: bigint | number): Value;
 
         /**
          * Define or modify a property with `property_name` in object referenced by `value`. When the
@@ -1216,7 +1213,7 @@ export namespace JavaScriptCore {
          * @param getter a {@link GObject.Callback} to be called to get the property value
          * @param setter a {@link GObject.Callback} to be called to set the property value
          */
-        object_define_property_accessor(property_name: string, flags: ValuePropertyFlags, property_type: GObject.GType, getter: (GObject.Callback | null), setter: (GObject.Callback | null)): void;
+        object_define_property_accessor(property_name: string, flags: ValuePropertyFlags, property_type: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void;
 
         /**
          * Define or modify a property with `property_name` in object referenced by `value`. This is equivalent to
@@ -1225,7 +1222,7 @@ export namespace JavaScriptCore {
          * @param flags {@link JavaScriptCore.ValuePropertyFlags}
          * @param property_value the default property value
          */
-        object_define_property_data(property_name: string, flags: ValuePropertyFlags, property_value: (Value | null)): void;
+        object_define_property_data(property_name: string, flags: ValuePropertyFlags, property_value: Value | null): void;
 
         /**
          * Try to delete property with `name` from `value`. This function will return `false` if
@@ -1240,7 +1237,7 @@ export namespace JavaScriptCore {
          * flag will be collected.
          * @returns a `null`-terminated array of strings containing the    property names, or `null` if `value` doesn't have enumerable properties.  Use `g_strfreev()` to free.
          */
-        object_enumerate_properties(): (string[] | null);
+        object_enumerate_properties(): string[] | null;
 
         /**
          * Get property with `name` from `value`.
@@ -1276,7 +1273,7 @@ export namespace JavaScriptCore {
          * @param parameters the {@link JavaScriptCore.Value}<!-- -->s to pass as parameters to the method, or `null`
          * @returns a {@link JavaScriptCore.Value} with the return value of the method.
          */
-        object_invoke_method(name: string, parameters: (Value[] | null)): Value;
+        object_invoke_method(name: string, parameters: Value[] | null): Value;
 
         /**
          * Get whether the value referenced by `value` is an instance of class `name`.
@@ -1403,13 +1400,10 @@ export namespace JavaScriptCore {
 
     namespace VirtualMachine {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

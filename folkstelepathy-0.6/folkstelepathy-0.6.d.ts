@@ -389,7 +389,7 @@ export namespace FolksTelepathy {
          * @param alias 
          * @param _callback_ 
          */
-        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -442,7 +442,7 @@ export namespace FolksTelepathy {
          * @param avatar 
          * @param _callback_ 
          */
-        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_avatar(avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -495,7 +495,7 @@ export namespace FolksTelepathy {
          * @param birthday 
          * @param _callback_ 
          */
-        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_birthday(birthday: GLib.DateTime, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -517,7 +517,7 @@ export namespace FolksTelepathy {
          * @param event_id 
          * @param _callback_ 
          */
-        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_calendar_event_id(event_id: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -601,7 +601,7 @@ export namespace FolksTelepathy {
          * @param email_addresses 
          * @param _callback_ 
          */
-        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_email_addresses(email_addresses: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -654,7 +654,7 @@ export namespace FolksTelepathy {
          * @param is_favourite 
          * @param _callback_ 
          */
-        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_is_favourite(is_favourite: boolean, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -710,7 +710,7 @@ export namespace FolksTelepathy {
          * @param is_member 
          * @param _callback_ 
          */
-        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -732,7 +732,7 @@ export namespace FolksTelepathy {
          * @param groups 
          * @param _callback_ 
          */
-        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -827,7 +827,7 @@ export namespace FolksTelepathy {
          * @param im_addresses 
          * @param _callback_ 
          */
-        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_im_addresses(im_addresses: Gee.MultiMap, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -880,7 +880,7 @@ export namespace FolksTelepathy {
          * @param name 
          * @param _callback_ 
          */
-        change_structured_name(name: Folks.StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_structured_name(name: Folks.StructuredName, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -902,7 +902,7 @@ export namespace FolksTelepathy {
          * @param full_name 
          * @param _callback_ 
          */
-        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -924,7 +924,7 @@ export namespace FolksTelepathy {
          * @param nickname 
          * @param _callback_ 
          */
-        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1039,7 +1039,7 @@ export namespace FolksTelepathy {
          * @param phone_numbers 
          * @param _callback_ 
          */
-        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_phone_numbers(phone_numbers: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1166,7 +1166,7 @@ export namespace FolksTelepathy {
          * @param urls 
          * @param _callback_ 
          */
-        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+        change_urls(urls: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 

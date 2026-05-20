@@ -152,9 +152,7 @@ export namespace Gkbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -196,7 +194,7 @@ export namespace Gkbd {
          * @param ln2cnt_map 
          * @param layout_name 
          */
-        static create_label_title(group: number, ln2cnt_map: ({ [key: string]: any } | GLib.HashTable<never, never>), layout_name: string): string;
+        static create_label_title(group: number, ln2cnt_map: { [key: string]: any } | GLib.HashTable<never, never>, layout_name: string): string;
 
         static get(): Configuration;
 
@@ -231,7 +229,7 @@ export namespace Gkbd {
          * @param group 
          * @returns group name
          */
-        get_group_name(group: number): (string | null);
+        get_group_name(group: number): string | null;
 
         /**
          * @returns full group names
@@ -354,9 +352,7 @@ export namespace Gkbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -477,9 +473,7 @@ export namespace Gkbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -617,9 +611,7 @@ export namespace Gkbd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {}
     }
 
     /**

@@ -295,9 +295,7 @@ export namespace GstVideo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GstBase.Transform.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GstBase.Transform.ConstructorProps {}
     }
 
     /**

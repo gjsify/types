@@ -694,7 +694,7 @@ export namespace SpiceClientGtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](session: SpiceClientGLib.Session, device_format_string: (string | null)): UsbDeviceWidget;
+        static ["new"](session: SpiceClientGLib.Session, device_format_string: string | null): UsbDeviceWidget;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;

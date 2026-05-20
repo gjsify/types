@@ -1505,7 +1505,7 @@ export namespace ColorHug {
      * @returns `true` if the command was executed successfully.
      * @since 1.2.3
      */
-    function device_check_firmware(device: GUsb.Device, data: number, data_len: (bigint | number)): boolean;
+    function device_check_firmware(device: GUsb.Device, data: number, data_len: bigint | number): boolean;
 
     /**
      * @param device 
@@ -1526,7 +1526,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_get_adc_calibration_neg(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function device_get_adc_calibration_neg(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Gets the ADC positive calibration value.
@@ -1535,7 +1535,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_get_adc_calibration_pos(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function device_get_adc_calibration_pos(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Gets any PCB wavelength_cal from the device.
@@ -1548,7 +1548,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_get_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Gets the status for the last operation.
@@ -1557,7 +1557,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_error(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, Error, Cmd];
+    function device_get_error(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Error, Cmd];
 
     /**
      * Returns the GUID for the connected ColorHug device.
@@ -1574,7 +1574,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_get_illuminants(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, Illuminant];
+    function device_get_illuminants(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Illuminant];
 
     /**
      * Gets the integration time used for taking the next samples.
@@ -1583,7 +1583,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_integral_time(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function device_get_integral_time(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Gets the LEDs from the device.
@@ -1592,7 +1592,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_leds(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, StatusLed];
+    function device_get_leds(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, StatusLed];
 
     /**
      * @param device 
@@ -1607,7 +1607,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_pcb_errata(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, PcbErrata];
+    function device_get_pcb_errata(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, PcbErrata];
 
     /**
      * Returns the runcode address for the ColorHug device.
@@ -1624,7 +1624,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_serial_number(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function device_get_serial_number(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * Gets the spectrum from the device. This queries the device multiple times
@@ -1634,7 +1634,7 @@ export namespace ColorHug {
      * @returns a {@link Colord.Spectrum}, or `null` for error
      * @since 1.3.1
      */
-    function device_get_spectrum(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): Colord.Spectrum;
+    function device_get_spectrum(device: GUsb.Device, cancellable: Gio.Cancellable | null): Colord.Spectrum;
 
     /**
      * Gets the spectrum from the device. This queries the device multiple times
@@ -1645,7 +1645,7 @@ export namespace ColorHug {
      * @returns a {@link Colord.Spectrum}, or `null` for error
      * @since 1.3.4
      */
-    function device_get_spectrum_full(device: GUsb.Device, kind: SpectrumKind, cancellable: (Gio.Cancellable | null)): Colord.Spectrum;
+    function device_get_spectrum_full(device: GUsb.Device, kind: SpectrumKind, cancellable: Gio.Cancellable | null): Colord.Spectrum;
 
     /**
      * Gets the PCB board temperature from the device.
@@ -1654,7 +1654,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_get_temperature(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): [boolean, number];
+    function device_get_temperature(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
     /**
      * @param device 
@@ -1669,7 +1669,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_load_sram(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_load_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Gets the device mode from the unique code stored in the firmware data.
@@ -1680,7 +1680,7 @@ export namespace ColorHug {
      * @returns A {@link ColorHug.DeviceMode}
      * @since 1.2.3
      */
-    function device_mode_from_firmware(data: number, data_len: (bigint | number)): DeviceMode;
+    function device_mode_from_firmware(data: number, data_len: bigint | number): DeviceMode;
 
     /**
      * @param device_mode 
@@ -1701,7 +1701,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_open_full(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_open_full(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Reads a value from the SRAM.
@@ -1712,7 +1712,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_read_sram(device: GUsb.Device, addr: number, len: number, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+    function device_read_sram(device: GUsb.Device, addr: number, len: number, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
     /**
      * Saves the entire SRAM space into the device EEPROM.
@@ -1721,7 +1721,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_save_sram(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_save_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Performs a self test on the device
@@ -1730,7 +1730,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_self_test(device: GUsb.Device, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_self_test(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets any PCB wavelength_cal on the device
@@ -1743,7 +1743,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the firmware signing keys on the device.
@@ -1755,7 +1755,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the illuminants on the device
@@ -1765,7 +1765,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_set_illuminants(device: GUsb.Device, value: Illuminant, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_illuminants(device: GUsb.Device, value: Illuminant, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the integration value for the next sample.
@@ -1775,7 +1775,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_integral_time(device: GUsb.Device, value: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_integral_time(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the LEDs on the device
@@ -1785,7 +1785,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets any PCB errata on the device
@@ -1795,7 +1795,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the serial number on the device
@@ -1805,7 +1805,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_set_serial_number(device: GUsb.Device, value: number, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_serial_number(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sets the spectrum from the device. This sends data multiple multiple times
@@ -1817,7 +1817,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_set_spectrum_full(device: GUsb.Device, kind: SpectrumKind, sp: Colord.Spectrum, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_set_spectrum_full(device: GUsb.Device, kind: SpectrumKind, sp: Colord.Spectrum, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Takes a reading from the device.
@@ -1827,7 +1827,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.1
      */
-    function device_take_reading_spectral(device: GUsb.Device, value: SpectrumKind, cancellable: (Gio.Cancellable | null)): boolean;
+    function device_take_reading_spectral(device: GUsb.Device, value: SpectrumKind, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Takes a reading from the device and returns the XYZ value.
@@ -1837,7 +1837,7 @@ export namespace ColorHug {
      * @returns a {@link Colord.ColorXYZ}, or `null` for error
      * @since 1.3.1
      */
-    function device_take_reading_xyz(device: GUsb.Device, calibration_idx: number, cancellable: (Gio.Cancellable | null)): Colord.ColorXYZ;
+    function device_take_reading_xyz(device: GUsb.Device, calibration_idx: number, cancellable: Gio.Cancellable | null): Colord.ColorXYZ;
 
     /**
      * Sends a message to the device and waits for a reply.
@@ -1851,7 +1851,7 @@ export namespace ColorHug {
      * @returns `true` if the command was executed successfully.
      * @since 0.1.29
      */
-    function device_write_command(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: (bigint | number), buffer_out: number, buffer_out_len: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+    function device_write_command(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Sends a message to the device and waits for a reply.
@@ -1864,7 +1864,7 @@ export namespace ColorHug {
      * @param cancellable A {@link Gio.Cancellable}, or `null`
      * @since 0.1.29
      */
-    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: (bigint | number), buffer_out: number, buffer_out_len: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Sends a message to the device and waits for a reply.
      * @param device A {@link GUsb.Device}
@@ -1877,7 +1877,7 @@ export namespace ColorHug {
      * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
      * @since 0.1.29
      */
-    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: (bigint | number), buffer_out: number, buffer_out_len: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<GUsb.Device> | null)): void;
+    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GUsb.Device> | null): void;
     /**
      * Sends a message to the device and waits for a reply.
      * @param device A {@link GUsb.Device}
@@ -1890,7 +1890,7 @@ export namespace ColorHug {
      * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
      * @since 0.1.29
      */
-    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: (bigint | number), buffer_out: number, buffer_out_len: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<GUsb.Device> | null)): (globalThis.Promise<boolean> | void);
+    function device_write_command_async(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<GUsb.Device> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Gets the result from the asynchronous function.
@@ -1910,7 +1910,7 @@ export namespace ColorHug {
      * @returns `true` for success
      * @since 1.3.4
      */
-    function device_write_sram(device: GUsb.Device, addr: number, data: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): boolean;
+    function device_write_sram(device: GUsb.Device, addr: number, data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * @param measure_mode 
@@ -2012,9 +2012,7 @@ export namespace ColorHug {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2076,7 +2074,7 @@ export namespace ColorHug {
          * @param buffer_out The output buffer, or `null`
          * @param buffer_out_len The size of `buffer_out`
          */
-        add(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: (bigint | number), buffer_out: number, buffer_out_len: (bigint | number)): void;
+        add(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number): void;
 
         /**
          * Boots the device from bootloader to firmware mode.
@@ -2103,7 +2101,7 @@ export namespace ColorHug {
          * @param address The device EEPROM address
          * @param len The length of `data`
          */
-        erase_flash(device: GUsb.Device, address: number, len: (bigint | number)): void;
+        erase_flash(device: GUsb.Device, address: number, len: bigint | number): void;
 
         /**
          * Gets the ADC Vref- calibration value.
@@ -2316,22 +2314,14 @@ export namespace ColorHug {
          * @param cancellable {@link Gio.Cancellable} or `null`
          * @returns `true` if the commands were executed successfully.
          */
-        process(process_flags: DeviceQueueProcessFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        process(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Processes all commands in the command queue.
          * @param process_flags 
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          */
-        process_async(process_flags: DeviceQueueProcessFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Processes all commands in the command queue.
-         * @param process_flags 
-         * @param cancellable A {@link Gio.Cancellable}, or `null`
-         * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
-         */
-        process_async(process_flags: DeviceQueueProcessFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Processes all commands in the command queue.
@@ -2339,7 +2329,15 @@ export namespace ColorHug {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
          */
-        process_async(process_flags: DeviceQueueProcessFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Processes all commands in the command queue.
+         * @param process_flags 
+         * @param cancellable A {@link Gio.Cancellable}, or `null`
+         * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
+         */
+        process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -2356,7 +2354,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        read_firmware(device: GUsb.Device, data: number, len: (bigint | number)): void;
+        read_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
         /**
          * Read flash code from the device.
@@ -2367,7 +2365,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        read_flash(device: GUsb.Device, address: number, data: number, len: (bigint | number)): void;
+        read_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
         /**
          * Reads binary data from the SRAM.
@@ -2378,7 +2376,7 @@ export namespace ColorHug {
          * @param data The binary data
          * @param len Size of `data`
          */
-        read_sram(device: GUsb.Device, address: number, data: number, len: (bigint | number)): void;
+        read_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
         /**
          * Resets the device back to bootloader mode.
@@ -2629,7 +2627,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        verify_firmware(device: GUsb.Device, data: number, len: (bigint | number)): void;
+        verify_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
         /**
          * Verify flash code from the device.
@@ -2640,7 +2638,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        verify_flash(device: GUsb.Device, address: number, data: number, len: (bigint | number)): void;
+        verify_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
         /**
          * Writes values to the firmware to be set at device startup.
@@ -2659,7 +2657,7 @@ export namespace ColorHug {
          * @param data Firmware binary data
          * @param len Size of `data`
          */
-        write_firmware(device: GUsb.Device, data: number, len: (bigint | number)): void;
+        write_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
         /**
          * Write flash code to the device.
@@ -2670,7 +2668,7 @@ export namespace ColorHug {
          * @param data Binary data
          * @param len The length of `data`
          */
-        write_flash(device: GUsb.Device, address: number, data: number, len: (bigint | number)): void;
+        write_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
         /**
          * Writes binary data to the SRAM.
@@ -2681,7 +2679,7 @@ export namespace ColorHug {
          * @param data The binary data
          * @param len Size of `data`
          */
-        write_sram(device: GUsb.Device, address: number, data: number, len: (bigint | number)): void;
+        write_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
     }
 
 

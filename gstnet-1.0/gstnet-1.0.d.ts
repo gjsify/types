@@ -64,7 +64,7 @@ export namespace GstNet {
      * @param buffer a {@link Gst.Buffer}
      * @returns the {@link GstNet.NetAddressMeta} or `null` when there is no such metadata on `buffer`.
      */
-    function buffer_get_net_address_meta(buffer: Gst.Buffer): (NetAddressMeta | null);
+    function buffer_get_net_address_meta(buffer: Gst.Buffer): NetAddressMeta | null;
 
     function net_address_meta_api_get_type(): GObject.GType;
 
@@ -114,7 +114,7 @@ export namespace GstNet {
      * @returns `true` if the GStreamer PTP clock subsystem could be initialized.
      * @since 1.6
      */
-    function ptp_init(clock_id: (bigint | number), interfaces: (string[] | null)): boolean;
+    function ptp_init(clock_id: bigint | number, interfaces: string[] | null): boolean;
 
     /**
      * Check if the GStreamer PTP clock subsystem is initialized.
@@ -146,7 +146,7 @@ export namespace GstNet {
      * @param id Callback id to remove
      * @since 1.6
      */
-    function ptp_statistics_callback_remove(id: (bigint | number)): void;
+    function ptp_statistics_callback_remove(id: bigint | number): void;
 
     /**
      * @gir-type Callback
@@ -177,18 +177,18 @@ export namespace GstNet {
         // Constructor properties interface
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
             address: string;
-            base_time: (bigint | number);
-            baseTime: (bigint | number);
+            base_time: bigint | number;
+            baseTime: bigint | number;
             bus: Gst.Bus;
             internal_clock: Gst.Clock;
             internalClock: Gst.Clock;
-            minimum_update_interval: (bigint | number);
-            minimumUpdateInterval: (bigint | number);
+            minimum_update_interval: bigint | number;
+            minimumUpdateInterval: bigint | number;
             port: number;
             qos_dscp: number;
             qosDscp: number;
-            round_trip_limit: (bigint | number);
-            roundTripLimit: (bigint | number);
+            round_trip_limit: bigint | number;
+            roundTripLimit: bigint | number;
         }
     }
 
@@ -256,13 +256,13 @@ export namespace GstNet {
          * @default 50000000
          */
         get minimum_update_interval(): number;
-        set minimum_update_interval(val: (bigint | number));
+        set minimum_update_interval(val: bigint | number);
 
         /**
          * @default 50000000
          */
         get minimumUpdateInterval(): number;
-        set minimumUpdateInterval(val: (bigint | number));
+        set minimumUpdateInterval(val: bigint | number);
 
         /**
          * @default 5637
@@ -286,13 +286,13 @@ export namespace GstNet {
          * @default 1000000000
          */
         get round_trip_limit(): number;
-        set round_trip_limit(val: (bigint | number));
+        set round_trip_limit(val: bigint | number);
 
         /**
          * @default 1000000000
          */
         get roundTripLimit(): number;
-        set roundTripLimit(val: (bigint | number));
+        set roundTripLimit(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -311,7 +311,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null), remote_address: string, remote_port: number, base_time: Gst.ClockTime): NetClientClock;
+        static ["new"](name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime): NetClientClock;
 
         // Signals
         /** @signal */
@@ -416,7 +416,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ["new"](clock: Gst.Clock, address: (string | null), port: number): NetTimeProvider;
+        static ["new"](clock: Gst.Clock, address: string | null, port: number): NetTimeProvider;
 
         // Signals
         /** @signal */
@@ -473,7 +473,7 @@ export namespace GstNet {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -517,7 +517,7 @@ export namespace GstNet {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Increases the reference count of `object`.
@@ -569,9 +569,7 @@ export namespace GstNet {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends NetClientClock.ConstructorProps {
-
-        }
+        interface ConstructorProps extends NetClientClock.ConstructorProps {}
     }
 
     /**
@@ -597,7 +595,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null), remote_address: string, remote_port: number, base_time: Gst.ClockTime): NtpClock;
+        static ["new"](name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime): NtpClock;
 
         // Signals
         /** @signal */
@@ -632,12 +630,12 @@ export namespace GstNet {
         // Constructor properties interface
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
             domain: number;
-            grandmaster_clock_id: (bigint | number);
-            grandmasterClockId: (bigint | number);
+            grandmaster_clock_id: bigint | number;
+            grandmasterClockId: bigint | number;
             internal_clock: Gst.Clock;
             internalClock: Gst.Clock;
-            master_clock_id: (bigint | number);
-            masterClockId: (bigint | number);
+            master_clock_id: bigint | number;
+            masterClockId: bigint | number;
         }
     }
 
@@ -807,9 +805,9 @@ export namespace GstNet {
         remote_time: Gst.ClockTime;
 
         // Constructors
-        constructor(buffer: (Uint8Array | null));
+        constructor(buffer: Uint8Array | null);
 
-        static ["new"](buffer: (Uint8Array | null)): NetTimePacket;
+        static ["new"](buffer: Uint8Array | null): NetTimePacket;
 
         // Static methods
         /**

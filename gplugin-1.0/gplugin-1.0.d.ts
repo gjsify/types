@@ -461,7 +461,7 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "loading-plugin": (arg0: GObject.Object, arg1: null) => (boolean | void);
+            "loading-plugin": (arg0: GObject.Object, arg1: null) => boolean | void;
             /**
              * Emitted when `manager` was asked to unload `plugin`, but `plugin` returned
              * `false` when its unload function was called.
@@ -483,13 +483,11 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "unloading-plugin": (arg0: GObject.Object, arg1: null) => (boolean | void);
+            "unloading-plugin": (arg0: GObject.Object, arg1: null) => boolean | void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -584,7 +582,7 @@ export namespace GPlugin {
          * @param filename The filename of the plugin.
          * @returns The plugin if found, otherwise `null`.
          */
-        find_plugin_with_filename(filename: string): (Plugin | null);
+        find_plugin_with_filename(filename: string): Plugin | null;
 
         /**
          * Calls {@link GPlugin.Manager.find_plugins} with `id`, and then returns the
@@ -1541,9 +1539,7 @@ export namespace GPlugin {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SourceNamespace {

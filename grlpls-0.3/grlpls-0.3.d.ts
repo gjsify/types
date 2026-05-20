@@ -46,7 +46,7 @@ export namespace GrlPls {
      * @returns the operation identifier
      * @since 0.2.0
      */
-    function browse(source: Grl.Source, playlist: Grl.Media, keys: Grl.KeyID[], options: Grl.OperationOptions, filter_func: (FilterFunc | null), callback: Grl.SourceResultCb): number;
+    function browse(source: Grl.Source, playlist: Grl.Media, keys: Grl.KeyID[], options: Grl.OperationOptions, filter_func: FilterFunc | null, callback: Grl.SourceResultCb): number;
 
     /**
      * Browse into a playlist. The playlist entries are
@@ -66,7 +66,7 @@ export namespace GrlPls {
      * @param bs a GrlSourceBrowseSpec structure with details of the browsing operation
      * @since 0.2.0
      */
-    function browse_by_spec(source: Grl.Source, filter_func: (FilterFunc | null), bs: Grl.SourceBrowseSpec): void;
+    function browse_by_spec(source: Grl.Source, filter_func: FilterFunc | null, bs: Grl.SourceBrowseSpec): void;
 
     /**
      * Browse into a playlist. The playlist entries are
@@ -93,7 +93,7 @@ export namespace GrlPls {
      * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
      * @since 0.2.0
      */
-    function browse_sync(source: Grl.Source, playlist: Grl.Media, keys: Grl.KeyID[], options: Grl.OperationOptions, filter_func: (FilterFunc | null)): Grl.Media[];
+    function browse_sync(source: Grl.Source, playlist: Grl.Media, keys: Grl.KeyID[], options: Grl.OperationOptions, filter_func: FilterFunc | null): Grl.Media[];
 
     /**
      * This function will update (if `content` is non-`null`) or create a

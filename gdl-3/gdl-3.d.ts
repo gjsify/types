@@ -180,7 +180,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_ENUM_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__OBJECT_ENUM_BOXED(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -190,7 +190,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__OBJECT_INT_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -200,7 +200,7 @@ export namespace Gdl {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__UINT_UINT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @gir-type Flags
@@ -595,7 +595,7 @@ export namespace Gdl {
          * Get the first child of the {@link Gdl.DockObject}.
          * @returns A {@link Gdl.DockObject} or `null`.
          */
-        get_root(): (DockObject | null);
+        get_root(): DockObject | null;
 
         /**
          * Hide the preview window used to materialize the dock target.
@@ -735,7 +735,7 @@ export namespace Gdl {
 
         _init(...args: any[]): void;
 
-        static ["new"](master: (GObject.Object | null)): DockBar;
+        static ["new"](master: GObject.Object | null): DockBar;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -1081,7 +1081,7 @@ export namespace Gdl {
          * @param position The position to dock #item, relative to #target.
          * @param docking_param This value is unused, and will be ignored.
          */
-        dock_to(target: (DockItem | null), position: DockPlacement, docking_param: number): void;
+        dock_to(target: DockItem | null, position: DockPlacement, docking_param: number): void;
 
         /**
          * Retrieves the behavior of the item.
@@ -1107,7 +1107,7 @@ export namespace Gdl {
          * This function returns the dock item's grip label widget.
          * @returns Returns the current label widget.
          */
-        get_grip(): (Gtk.Widget | null);
+        get_grip(): Gtk.Widget | null;
 
         /**
          * Retrieves the orientation of the object.
@@ -1211,7 +1211,7 @@ export namespace Gdl {
          * child will be removed.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child: (Gtk.Widget | null)): void;
+        set_child(child: Gtk.Widget | null): void;
 
         /**
          * This method has only an effect when you add you dock_item with
@@ -1312,9 +1312,7 @@ export namespace Gdl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1362,7 +1360,7 @@ export namespace Gdl {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1383,7 +1381,7 @@ export namespace Gdl {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1393,7 +1391,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1402,7 +1400,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1438,7 +1436,7 @@ export namespace Gdl {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -1454,7 +1452,7 @@ export namespace Gdl {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -1476,7 +1474,7 @@ export namespace Gdl {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -1487,7 +1485,7 @@ export namespace Gdl {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -1496,7 +1494,7 @@ export namespace Gdl {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -1788,7 +1786,7 @@ export namespace Gdl {
          * @param name The name of the layout to load or `null` for a default layout name.
          * @returns `true` if layout successfully loaded else `false`
          */
-        load_layout(name: (string | null)): boolean;
+        load_layout(name: string | null): boolean;
 
         /**
          * Saves the `layout` with the given name to the memory.
@@ -1797,7 +1795,7 @@ export namespace Gdl {
          * See also `gdl_dock_layout_save_to_file()`.
          * @param name The name of the layout to save or `null` for a default layout name.
          */
-        save_layout(name: (string | null)): void;
+        save_layout(name: string | null): void;
 
         /**
          * This function saves the current layout in XML format to
@@ -1985,7 +1983,7 @@ export namespace Gdl {
          * @param nick_name the name of the dock widget.
          * @returns A {@link Gdl.DockObject} named `nick_name` or `null` if it does not exist.
          */
-        get_object(nick_name: string): (DockObject | null);
+        get_object(nick_name: string): DockObject | null;
 
         /**
          * Remove one dock widget from the master.
@@ -2128,7 +2126,7 @@ export namespace Gdl {
              * @signal
              * @run-first
              */
-            dock: (arg0: DockObject, arg1: DockPlacement, arg2: (GObject.Value | null)) => void;
+            dock: (arg0: DockObject, arg1: DockPlacement, arg2: GObject.Value | null) => void;
             "notify::long-name": (pspec: GObject.ParamSpec) => void;
             "notify::master": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -2329,7 +2327,7 @@ export namespace Gdl {
          * @param placement where to return the placement information
          * @virtual
          */
-        vfunc_child_placement(child: DockObject, placement: (DockPlacement | null)): boolean;
+        vfunc_child_placement(child: DockObject, placement: DockPlacement | null): boolean;
 
         /**
          * Dissociate a dock object from its parent, including or not its children.
@@ -2345,7 +2343,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: (GObject.Value | null)): void;
+        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
 
         /**
          * Dock a dock widget in `object` at the defined position.
@@ -2363,7 +2361,7 @@ export namespace Gdl {
          * @param child The child widget to present or `null`
          * @virtual
          */
-        vfunc_present(child: (DockObject | null)): void;
+        vfunc_present(child: DockObject | null): void;
 
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
@@ -2379,7 +2377,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: (GObject.Value | null)): boolean;
+        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
 
         // Methods
         /**
@@ -2404,7 +2402,7 @@ export namespace Gdl {
          * @param placement where to return the placement information
          * @returns `true` if `child` is a child of `object`.
          */
-        child_placement(child: DockObject, placement: (DockPlacement | null)): boolean;
+        child_placement(child: DockObject, placement: DockPlacement | null): boolean;
 
         /**
          * Dissociate a dock object from its parent, including or not its children.
@@ -2418,7 +2416,7 @@ export namespace Gdl {
          * @param position The position for the child
          * @param other_data Optional data giving additional information depending on the dock object.
          */
-        dock(requestor: DockObject, position: DockPlacement, other_data: (GObject.Value | null)): void;
+        dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
 
         /**
          * Dock a dock widget in `object` at the defined position.
@@ -2465,7 +2463,7 @@ export namespace Gdl {
          * Returns a parent {@link Gdl.DockObject} if it exists.
          * @returns a {@link Gdl.DockObject} or `null` if such object does not exist.
          */
-        get_parent_object(): (DockObject | null);
+        get_parent_object(): DockObject | null;
 
         /**
          * Retrieves a pixbuf used as the dock object icon.
@@ -2483,7 +2481,7 @@ export namespace Gdl {
          * Get the top level {@link Gdl.Dock} widget of `object` or `null` if cannot be found.
          * @returns A {@link Gdl.Dock} or `null`.
          */
-        get_toplevel(): (Dock | null);
+        get_toplevel(): Dock | null;
 
         /**
          * Determine if an object is managed by the dock master, such object is
@@ -2530,7 +2528,7 @@ export namespace Gdl {
          * only the `object` will be show.
          * @param child The child widget to present or `null`
          */
-        present(child: (DockObject | null)): void;
+        present(child: DockObject | null): void;
 
         /**
          * Remove a compound object if it is not longer useful to hold the child. The
@@ -2545,7 +2543,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @returns `true` if `child` has been moved
          */
-        reorder(child: DockObject, new_position: DockPlacement, other_data: (GObject.Value | null)): boolean;
+        reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
 
         /**
          * Set the long name of the object. This name is an human readable string
@@ -2571,7 +2569,7 @@ export namespace Gdl {
          * Set a icon for a dock object using a {@link GdkPixbuf.Pixbuf}.
          * @param icon a icon or `null`
          */
-        set_pixbuf(icon: (GdkPixbuf.Pixbuf | null)): void;
+        set_pixbuf(icon: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * Set an icon for the dock object using a stock id.
@@ -2711,8 +2709,7 @@ export namespace Gdl {
 
     namespace DockParam {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -3126,9 +3123,7 @@ export namespace Gdl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**

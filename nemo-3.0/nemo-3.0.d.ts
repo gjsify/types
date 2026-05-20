@@ -307,9 +307,7 @@ export namespace Nemo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -351,13 +349,10 @@ export namespace Nemo {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -701,9 +696,7 @@ export namespace Nemo {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -757,15 +750,15 @@ export namespace Nemo {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -845,7 +838,7 @@ export namespace Nemo {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -869,7 +862,7 @@ export namespace Nemo {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -893,7 +886,7 @@ export namespace Nemo {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -917,7 +910,7 @@ export namespace Nemo {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -942,7 +935,7 @@ export namespace Nemo {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -967,7 +960,7 @@ export namespace Nemo {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1031,7 +1024,7 @@ export namespace Nemo {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1041,7 +1034,7 @@ export namespace Nemo {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1199,9 +1192,7 @@ export namespace Nemo {
     namespace ColumnProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ColumnProviderNamespace {
@@ -1274,7 +1265,7 @@ export namespace Nemo {
             /**
              * @virtual
              */
-            vfunc_get_mount(): (Gio.Mount | null);
+            vfunc_get_mount(): Gio.Mount | null;
 
             /**
              * @virtual
@@ -1284,12 +1275,12 @@ export namespace Nemo {
             /**
              * @virtual
              */
-            vfunc_get_parent_info(): (FileInfo | null);
+            vfunc_get_parent_info(): FileInfo | null;
 
             /**
              * @virtual
              */
-            vfunc_get_parent_location(): (Gio.File | null);
+            vfunc_get_parent_location(): Gio.File | null;
 
             /**
              * @virtual
@@ -1347,9 +1338,7 @@ export namespace Nemo {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileInfoNamespace {
@@ -1413,19 +1402,19 @@ export namespace Nemo {
         /**
          * @returns a {@link Gio.Mount} for the mount of `file`,   or `null` if `file` has no mount
          */
-        get_mount(): (Gio.Mount | null);
+        get_mount(): Gio.Mount | null;
 
         get_name(): string;
 
         /**
          * @returns a {@link Nemo.FileInfo} for the parent of `file`,   or `null` if `file` has no parent
          */
-        get_parent_info(): (FileInfo | null);
+        get_parent_info(): FileInfo | null;
 
         /**
          * @returns a {@link Gio.File} for the parent location of `file`,   or `null` if `file` has no parent
          */
-        get_parent_location(): (Gio.File | null);
+        get_parent_location(): Gio.File | null;
 
         get_parent_uri(): string;
 
@@ -1471,9 +1460,7 @@ export namespace Nemo {
     namespace InfoProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface InfoProviderNamespace {
@@ -1514,9 +1501,7 @@ export namespace Nemo {
     namespace LocationWidgetProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LocationWidgetProviderNamespace {
@@ -1545,9 +1530,7 @@ export namespace Nemo {
     namespace MenuProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuProviderNamespace {
@@ -1585,9 +1568,7 @@ export namespace Nemo {
     namespace NameAndDescProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface NameAndDescProviderNamespace {
@@ -1614,9 +1595,7 @@ export namespace Nemo {
     namespace PropertyPageProvider {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertyPageProviderNamespace {

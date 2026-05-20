@@ -63,7 +63,7 @@ export namespace Plasma {
 
         _init(...args: any[]): void;
 
-        static ["new"](store_socket_name: string, options: (ClientOptions | null)): Client;
+        static ["new"](store_socket_name: string, options: ClientOptions | null): Client;
 
         // Signals
         /** @signal */
@@ -85,7 +85,7 @@ export namespace Plasma {
          * @param options The option for creating an object.
          * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
          */
-        create(id: ObjectID, data_size: (bigint | number), options: (ClientCreateOptions | null)): (CreatedObject | null);
+        create(id: ObjectID, data_size: bigint | number, options: ClientCreateOptions | null): CreatedObject | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
@@ -103,7 +103,7 @@ export namespace Plasma {
          * @param timeout_ms The timeout in milliseconds. -1 means no timeout.
          * @returns A found {@link Plasma.ReferredObject}   on success, `null` on error.
          */
-        refer_object(id: ObjectID, timeout_ms: (bigint | number)): (ReferredObject | null);
+        refer_object(id: ObjectID, timeout_ms: bigint | number): ReferredObject | null;
     }
 
 
@@ -166,12 +166,12 @@ export namespace Plasma {
         /**
          * @returns The metadata of a created object.
          */
-        get_metadata(): (Uint8Array | null);
+        get_metadata(): Uint8Array | null;
 
         /**
          * @param metadata The metadata of a created object.
          */
-        set_metadata(metadata: (Uint8Array | null)): void;
+        set_metadata(metadata: Uint8Array | null): void;
     }
 
 
@@ -256,9 +256,7 @@ export namespace Plasma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -426,13 +424,10 @@ export namespace Plasma {
 
     namespace ObjectID {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -455,7 +450,7 @@ export namespace Plasma {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: (Uint8Array | string)): ObjectID;
+        static ["new"](id: Uint8Array | string): ObjectID;
 
         // Signals
         /** @signal */
@@ -496,9 +491,7 @@ export namespace Plasma {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**

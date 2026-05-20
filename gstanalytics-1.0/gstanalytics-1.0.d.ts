@@ -257,7 +257,7 @@ export namespace GstAnalytics {
      * @returns Newly attached {@link GstAnalytics.RelationMeta}
      * @since 1.24
      */
-    function buffer_add_analytics_relation_meta(buffer: Gst.Buffer): (RelationMeta | null);
+    function buffer_add_analytics_relation_meta(buffer: Gst.Buffer): RelationMeta | null;
 
     /**
      * Attache a analysis-results relation-meta ({@link GstAnalytics.RelationMeta}) to `buffer`.
@@ -269,7 +269,7 @@ export namespace GstAnalytics {
      * @returns Newly attached {@link GstAnalytics.RelationMeta}
      * @since 1.24
      */
-    function buffer_add_analytics_relation_meta_full(buffer: Gst.Buffer, init_params: RelationMetaInitParams): (RelationMeta | null);
+    function buffer_add_analytics_relation_meta_full(buffer: Gst.Buffer, init_params: RelationMetaInitParams): RelationMeta | null;
 
     /**
      * Adds a {@link GstAnalytics.TensorMeta} to a buffer
@@ -285,7 +285,7 @@ export namespace GstAnalytics {
      * @returns The {@link GstAnalytics.BatchMeta} if there is one
      * @since 1.28
      */
-    function buffer_get_analytics_batch_meta(buffer: Gst.Buffer): (BatchMeta | null);
+    function buffer_get_analytics_batch_meta(buffer: Gst.Buffer): BatchMeta | null;
 
     /**
      * Retrives the meta or `null` if it doesn't exist
@@ -293,7 +293,7 @@ export namespace GstAnalytics {
      * @returns The {@link GstAnalytics.RelationMeta} if there is one
      * @since 1.24
      */
-    function buffer_get_analytics_relation_meta(buffer: Gst.Buffer): (RelationMeta | null);
+    function buffer_get_analytics_relation_meta(buffer: Gst.Buffer): RelationMeta | null;
 
     /**
      * Gets the {@link GstAnalytics.TensorMeta} from a buffer
@@ -301,7 +301,7 @@ export namespace GstAnalytics {
      * @returns The {@link GstAnalytics.TensorMeta} if there is wone
      * @since 1.26
      */
-    function buffer_get_tensor_meta(buffer: Gst.Buffer): (TensorMeta | null);
+    function buffer_get_tensor_meta(buffer: Gst.Buffer): TensorMeta | null;
 
     /**
      * Get an id identifying {@link GstAnalytics.Mtd} type.
@@ -360,7 +360,7 @@ export namespace GstAnalytics {
      * @returns A new {@link GstAnalytics.ModelInfo} instance,    or `null` if the modelinfo file could not be found or loaded.
      * @since 1.28
      */
-    function modelinfo_load(model_filename: string): (ModelInfo | null);
+    function modelinfo_load(model_filename: string): ModelInfo | null;
 
     /**
      * Gets the string version of the name of this type of analytics data
@@ -510,19 +510,19 @@ export namespace GstAnalytics {
          * Gets the {@link Gst.Caps} from a stream
          * @returns The {@link Gst.Caps} if there are any
          */
-        get_caps(): (Gst.Caps | null);
+        get_caps(): Gst.Caps | null;
 
         /**
          * Gets the {@link Gst.Segment} from a stream
          * @returns The {@link Gst.Segment} if there is one
          */
-        get_segment(): (Gst.Segment | null);
+        get_segment(): Gst.Segment | null;
 
         /**
          * Gets the current stream id from a stream
          * @returns The stream id if there is any
          */
-        get_stream_id(): (string | null);
+        get_stream_id(): string | null;
     }
 
 
@@ -561,13 +561,13 @@ export namespace GstAnalytics {
          * @param index Object class index
          * @returns confidence level for `index`, <0.0 if the call failed.
          */
-        get_level(index: (bigint | number)): number;
+        get_level(index: bigint | number): number;
 
         /**
          * @param index index of the class Get quark of the class at `index`
          * @returns Quark of this class (label) associated with `index`
          */
-        get_quark(index: (bigint | number)): GLib.Quark;
+        get_quark(index: bigint | number): GLib.Quark;
     }
 
 
@@ -596,7 +596,7 @@ export namespace GstAnalytics {
          * when no longer needed.
          * @param model_filename Path to the model file (e.g., "model.onnx", "model.tflite")
          */
-        static load(model_filename: string): (ModelInfo | null);
+        static load(model_filename: string): ModelInfo | null;
 
         // Methods
         /**
@@ -613,7 +613,7 @@ export namespace GstAnalytics {
          * @param dims The dimension sizes. Use -1 for dynamic dimensions.
          * @returns The tensor name if found, or `null` otherwise.    The caller must free this with `g_free()` when done.
          */
-        find_tensor_name(dir: ModelInfoTensorDirection, index: (bigint | number), in_tensor_name: (string | null), data_type: TensorDataType, dims: (bigint | number)[]): (string | null);
+        find_tensor_name(dir: ModelInfoTensorDirection, index: bigint | number, in_tensor_name: string | null, data_type: TensorDataType, dims: (bigint | number)[]): string | null;
 
         /**
          * Free a modelinfo object allocated by `gst_analytics_modelinfo_load()`.
@@ -645,7 +645,7 @@ export namespace GstAnalytics {
          * tensors in the model.
          * @returns The group ID string, or `null` if not found.    The caller must free this with `g_free()` when done.
          */
-        get_group_id(): (string | null);
+        get_group_id(): string | null;
 
         /**
          * Get the tensor ID from the modelinfo for the specified tensor name.
@@ -654,7 +654,7 @@ export namespace GstAnalytics {
          * @param tensor_name The name of the tensor
          * @returns The tensor ID string, or `null` if not found.    The caller must free this with `g_free()` when done.
          */
-        get_id(tensor_name: string): (string | null);
+        get_id(tensor_name: string): string | null;
 
         /**
          * Calculate normalization scales and offsets to transform input data to the target range.
@@ -912,7 +912,7 @@ export namespace GstAnalytics {
          * @param num_dims The number of dimensions in the tensor
          * @returns Added successfully
          */
-        add_tensor_mtd(num_dims: (bigint | number)): [boolean, TensorMtd | null];
+        add_tensor_mtd(num_dims: bigint | number): [boolean, TensorMtd | null];
 
         /**
          * Add a new {@link GstAnalytics.TensorMtd} holding a {@link GstAnalytics.Tensor} to `instance`.
@@ -930,7 +930,7 @@ export namespace GstAnalytics {
          * @param tracking_first_seen Timestamp of first time the object was observed.
          * @returns Added successfully
          */
-        add_tracking_mtd(tracking_id: (bigint | number), tracking_first_seen: Gst.ClockTime): [boolean, TrackingMtd];
+        add_tracking_mtd(tracking_id: bigint | number, tracking_first_seen: Gst.ClockTime): [boolean, TrackingMtd];
 
         /**
          * Verify existence of relation(s) between `an_meta_first_d` and
@@ -1214,7 +1214,7 @@ export namespace GstAnalytics {
          * @param index Region index
          * @returns The region ID
          */
-        get_region_id(index: (bigint | number)): number;
+        get_region_id(index: bigint | number): number;
 
         /**
          * Get region index of the region identified by `id`.
@@ -1247,9 +1247,9 @@ export namespace GstAnalytics {
         dims: number[];
 
         // Constructors
-        constructor(num_dims: (bigint | number));
+        constructor(num_dims: bigint | number);
 
-        static alloc(num_dims: (bigint | number)): Tensor;
+        static alloc(num_dims: bigint | number): Tensor;
 
         static new_simple(id: GLib.Quark, data_type: TensorDataType, data: Gst.Buffer, dims_order: TensorDimOrder, dims: (bigint | number)[]): Tensor;
 
@@ -1269,13 +1269,13 @@ export namespace GstAnalytics {
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns TRUE if the {@link GstAnalytics.Tensor} has the reading order from the memory matching `order`, dimensions matching `num_dims`, data type matching `data_type` Otherwise FALSE will be returned.
          */
-        check_type(data_type: TensorDataType, order: TensorDimOrder, dims: ((bigint | number)[] | null)): boolean;
+        check_type(data_type: TensorDataType, order: TensorDimOrder, dims: (bigint | number)[] | null): boolean;
 
         /**
          * Create a copy of `tensor`.
          * @returns a new {@link GstAnalytics.Tensor}
          */
-        copy(): (Tensor | null);
+        copy(): Tensor | null;
 
         /**
          * Free tensor
@@ -1322,14 +1322,14 @@ export namespace GstAnalytics {
          * @param index The number of the tensor to get
          * @returns a GstTensor
          */
-        get(index: (bigint | number)): Tensor;
+        get(index: bigint | number): Tensor;
 
         /**
          * Get the first tensor from the {@link GstAnalytics.TensorMeta} identified by `id`.
          * @param id A {@link GLib.Quark} identifying tensor-encoding
          * @returns a GstTensor with id matching `id`. Otherwise NULL will be returned.
          */
-        get_by_id(id: GLib.Quark): (Tensor | null);
+        get_by_id(id: GLib.Quark): Tensor | null;
 
         /**
          * Finds the first tensor with the requsted ID in the meta
@@ -1349,7 +1349,7 @@ export namespace GstAnalytics {
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns a matching {@link GstAnalytics.Tensor}, otherwise NULL
          */
-        get_typed_tensor(tensor_id: GLib.Quark, data_type: TensorDataType, order: TensorDimOrder, dims: ((bigint | number)[] | null)): (Tensor | null);
+        get_typed_tensor(tensor_id: GLib.Quark, data_type: TensorDataType, order: TensorDimOrder, dims: (bigint | number)[] | null): Tensor | null;
 
         /**
          * Sets tensors into the {@link GstAnalytics.TensorMeta}
@@ -1433,7 +1433,7 @@ export namespace GstAnalytics {
      * Type of analytics meta data
      * @gir-type Alias
      */
-    type MtdType = (bigint | number);
+    type MtdType = bigint | number;
 
     /**
      * Name of the imported GIR library

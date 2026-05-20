@@ -46,7 +46,7 @@ export namespace Zpj {
         static UNKNOWN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -219,13 +219,10 @@ export namespace Zpj {
 
     namespace GoaAuthorizer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
     }
 
     /**
@@ -280,7 +277,7 @@ export namespace Zpj {
          * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
          * @param call A {@link Rest.ProxyCall}.
          */
-        process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void;
+        process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -290,7 +287,7 @@ export namespace Zpj {
          * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
          * @param message A {@link Soup.Message}.
          */
-        process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void;
+        process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
@@ -301,7 +298,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
@@ -315,22 +312,7 @@ export namespace Zpj {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See `zpj_authorizer_refresh_authorization()` for the
-         * synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
-         * result of the operation.
-         * 
-         * This method is thread safe.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
@@ -345,7 +327,22 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
+         * result of the operation.
+         * 
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        refresh_authorization_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -373,7 +370,7 @@ export namespace Zpj {
          * @param call A {@link Rest.ProxyCall}.
          * @virtual
          */
-        vfunc_process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void;
+        vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -384,7 +381,7 @@ export namespace Zpj {
          * @param message A {@link Soup.Message}.
          * @virtual
          */
-        vfunc_process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void;
+        vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
@@ -395,7 +392,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -457,14 +454,14 @@ export namespace Zpj {
          * @param folder 
          * @param cancellable 
          */
-        create_folder(folder: SkydriveFolder, cancellable: (Gio.Cancellable | null)): boolean;
+        create_folder(folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param name 
          * @param parent_id 
          * @param cancellable 
          */
-        create_folder_from_name(name: string, parent_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        create_folder_from_name(name: string, parent_id: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously deletes the entry corresponding to `entry_id` from
@@ -474,7 +471,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveEntry} was deleted successfully.
          */
-        delete_entry_id(entry_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        delete_entry_id(entry_id: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously downloads the file corresponding to `file_id` from
@@ -488,7 +485,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
          */
-        download_file_id_to_path(file_id: string, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        download_file_id_to_path(file_id: string, path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously returns a stream for downloading the file
@@ -501,7 +498,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
-        download_file_id_to_stream(file_id: string, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        download_file_id_to_stream(file_id: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * Asynchronously returns a stream for downloading the file
@@ -516,23 +513,7 @@ export namespace Zpj {
          * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        download_file_id_to_stream_async(file_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
-
-        /**
-         * Asynchronously returns a stream for downloading the file
-         * corresponding to `file_id` from
-         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See `zpj_skydrive_download_file_id_to_stream()` for
-         * the synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_skydrive_download_file_id_to_stream_finish()` to get
-         * the result of the operation.
-         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        download_file_id_to_stream_async(file_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        download_file_id_to_stream_async(file_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * Asynchronously returns a stream for downloading the file
@@ -548,7 +529,23 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        download_file_id_to_stream_async(file_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        download_file_id_to_stream_async(file_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously returns a stream for downloading the file
+         * corresponding to `file_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_id_to_stream()` for
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_skydrive_download_file_id_to_stream_finish()` to get
+         * the result of the operation.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        download_file_id_to_stream_async(file_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -570,7 +567,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
          */
-        download_file_to_path(file: SkydriveFile, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+        download_file_to_path(file: SkydriveFile, path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously returns a stream for downloading `file` from
@@ -581,7 +578,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
-        download_file_to_stream(file: SkydriveFile, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        download_file_to_stream(file: SkydriveFile, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * Asynchronously returns a stream for downloading `file` from
@@ -595,22 +592,7 @@ export namespace Zpj {
          * @param file The {@link Zpj.SkydriveFile} to be downloaded.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        download_file_to_stream_async(file: SkydriveFile, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
-
-        /**
-         * Asynchronously returns a stream for downloading `file` from
-         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream()` for the
-         * synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_skydrive_download_file_to_stream_finish()` to get the
-         * result of the operation.
-         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        download_file_to_stream_async(file: SkydriveFile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        download_file_to_stream_async(file: SkydriveFile, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * Asynchronously returns a stream for downloading `file` from
@@ -625,7 +607,22 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        download_file_to_stream_async(file: SkydriveFile, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        download_file_to_stream_async(file: SkydriveFile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously returns a stream for downloading `file` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream()` for the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_skydrive_download_file_to_stream_finish()` to get the
+         * result of the operation.
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        download_file_to_stream_async(file: SkydriveFile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -649,7 +646,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
          */
-        list_folder(folder: SkydriveFolder, cancellable: (Gio.Cancellable | null)): SkydriveEntry[];
+        list_folder(folder: SkydriveFolder, cancellable: Gio.Cancellable | null): SkydriveEntry[];
 
         /**
          * Synchronously lists the contents of the folder corresponding to
@@ -660,7 +657,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}, or `null` on error. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
          */
-        list_folder_id(folder_id: string, cancellable: (Gio.Cancellable | null)): SkydriveEntry[];
+        list_folder_id(folder_id: string, cancellable: Gio.Cancellable | null): SkydriveEntry[];
 
         /**
          * Asynchronously lists the contents of the folder corresponding to
@@ -675,23 +672,7 @@ export namespace Zpj {
          * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        list_folder_id_async(folder_id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<SkydriveEntry[]>;
-
-        /**
-         * Asynchronously lists the contents of the folder corresponding to
-         * `folder_id` from
-         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See `zpj_skydrive_list_folder_id()` for the
-         * synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_skydrive_list_folder_id_finish()` to get the result
-         * of the operation.
-         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        list_folder_id_async(folder_id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        list_folder_id_async(folder_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<SkydriveEntry[]>;
 
         /**
          * Asynchronously lists the contents of the folder corresponding to
@@ -707,7 +688,23 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        list_folder_id_async(folder_id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<SkydriveEntry[]> | void);
+        list_folder_id_async(folder_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously lists the contents of the folder corresponding to
+         * `folder_id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See `zpj_skydrive_list_folder_id()` for the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_skydrive_list_folder_id_finish()` to get the result
+         * of the operation.
+         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        list_folder_id_async(folder_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SkydriveEntry[]> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -727,7 +724,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A new {@link Zpj.SkydriveEntry}. Free the returned object with `g_object_unref()`.
          */
-        query_info_from_id(id: string, cancellable: (Gio.Cancellable | null)): SkydriveEntry;
+        query_info_from_id(id: string, cancellable: Gio.Cancellable | null): SkydriveEntry;
 
         /**
          * Asynchronously reads the properties of the entry corresponding to
@@ -742,23 +739,7 @@ export namespace Zpj {
          * @param id The ID to be queried.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        query_info_from_id_async(id: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<SkydriveEntry>;
-
-        /**
-         * Asynchronously reads the properties of the entry corresponding to
-         * `id` from
-         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id()` for the
-         * synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_skydrive_query_info_from_id_finish()` to get the result
-         * of the operation.
-         * @param id The ID to be queried.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        query_info_from_id_async(id: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        query_info_from_id_async(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<SkydriveEntry>;
 
         /**
          * Asynchronously reads the properties of the entry corresponding to
@@ -774,7 +755,23 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        query_info_from_id_async(id: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<SkydriveEntry> | void);
+        query_info_from_id_async(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously reads the properties of the entry corresponding to
+         * `id` from
+         * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
+         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id()` for the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_skydrive_query_info_from_id_finish()` to get the result
+         * of the operation.
+         * @param id The ID to be queried.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        query_info_from_id_async(id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SkydriveEntry> | void;
 
         /**
          * Finishes an asynchronous operation started with
@@ -808,7 +805,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the thumbnail data from. Free the returned object with `g_object_unref()`.
          */
-        thumbnail_file_id_to_stream(file_id: string, size: ThumbnailSize, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+        thumbnail_file_id_to_stream(file_id: string, size: ThumbnailSize, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
         /**
          * Synchronously uploads the file at `path` to
@@ -819,7 +816,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the file was uploaded successfully.
          */
-        upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable: (Gio.Cancellable | null)): boolean;
+        upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Synchronously uploads the file at `path` to
@@ -831,7 +828,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the file was uploaded successfully.
          */
-        upload_path_to_folder_id(path: string, folder_id: string, cancellable: (Gio.Cancellable | null)): boolean;
+        upload_path_to_folder_id(path: string, folder_id: string, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1093,7 +1090,7 @@ export namespace Zpj {
 
         // Constructor properties interface
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {
-            size: (bigint | number);
+            size: bigint | number;
         }
     }
 
@@ -1168,9 +1165,7 @@ export namespace Zpj {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SkydriveEntry.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SkydriveEntry.ConstructorProps {}
     }
 
     /**
@@ -1229,9 +1224,7 @@ export namespace Zpj {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SkydriveFile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SkydriveFile.ConstructorProps {}
     }
 
     /**
@@ -1296,7 +1289,7 @@ export namespace Zpj {
         // Constructor properties interface
         interface ConstructorProps extends SkydriveFile.ConstructorProps {
             bitrate: number;
-            duration: (bigint | number);
+            duration: bigint | number;
             height: number;
             width: number;
         }
@@ -1520,7 +1513,7 @@ export namespace Zpj {
              * @param call A {@link Rest.ProxyCall}.
              * @virtual
              */
-            vfunc_process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void;
+            vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
 
             /**
              * Adds the necessary authorization to `message`. The type of `message`
@@ -1531,7 +1524,7 @@ export namespace Zpj {
              * @param message A {@link Soup.Message}.
              * @virtual
              */
-            vfunc_process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void;
+            vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
             /**
              * Synchronously forces `iface` to refresh any authorization tokens
@@ -1542,14 +1535,12 @@ export namespace Zpj {
              * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+            vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AuthorizerNamespace {
@@ -1579,7 +1570,7 @@ export namespace Zpj {
          * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
          * @param call A {@link Rest.ProxyCall}.
          */
-        process_call(domain: (AuthorizationDomain | null), call: Rest.ProxyCall): void;
+        process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
 
         /**
          * Adds the necessary authorization to `message`. The type of `message`
@@ -1589,7 +1580,7 @@ export namespace Zpj {
          * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
          * @param message A {@link Soup.Message}.
          */
-        process_message(domain: (AuthorizationDomain | null), message: Soup.Message): void;
+        process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
@@ -1600,7 +1591,7 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
@@ -1614,22 +1605,7 @@ export namespace Zpj {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See `zpj_authorizer_refresh_authorization()` for the
-         * synchronous version of this call.
-         * 
-         * When the operation is finished, `callback` will be called. You can
-         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
-         * result of the operation.
-         * 
-         * This method is thread safe.
-         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
-         */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
@@ -1644,7 +1620,22 @@ export namespace Zpj {
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
-        refresh_authorization_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously forces `iface` to refresh any authorization tokens
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
+         * result of the operation.
+         * 
+         * This method is thread safe.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
+         */
+        refresh_authorization_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous operation started with

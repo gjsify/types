@@ -96,7 +96,7 @@ export namespace Gpiodglib {
         static PIPE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -489,7 +489,7 @@ export namespace Gpiodglib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -533,7 +533,7 @@ export namespace Gpiodglib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -652,14 +652,14 @@ export namespace Gpiodglib {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             event_type: EdgeEventType;
             eventType: EdgeEventType;
-            global_seqno: (bigint | number);
-            globalSeqno: (bigint | number);
+            global_seqno: bigint | number;
+            globalSeqno: bigint | number;
             line_offset: number;
             lineOffset: number;
-            line_seqno: (bigint | number);
-            lineSeqno: (bigint | number);
-            timestamp_ns: (bigint | number);
-            timestampNs: (bigint | number);
+            line_seqno: bigint | number;
+            lineSeqno: bigint | number;
+            timestamp_ns: bigint | number;
+            timestampNs: bigint | number;
         }
     }
 
@@ -821,8 +821,8 @@ export namespace Gpiodglib {
             eventType: InfoEventType;
             line_info: LineInfo;
             lineInfo: LineInfo;
-            timestamp_ns: (bigint | number);
-            timestampNs: (bigint | number);
+            timestamp_ns: bigint | number;
+            timestampNs: bigint | number;
         }
     }
 
@@ -1053,8 +1053,8 @@ export namespace Gpiodglib {
             activeLow: boolean;
             bias: LineBias;
             consumer: string;
-            debounce_period_us: (bigint | number);
-            debouncePeriodUs: (bigint | number);
+            debounce_period_us: bigint | number;
+            debouncePeriodUs: bigint | number;
             debounced: boolean;
             direction: LineDirection;
             drive: LineDrive;
@@ -1489,8 +1489,8 @@ export namespace Gpiodglib {
             active_low: boolean;
             activeLow: boolean;
             bias: LineBias;
-            debounce_period_us: (bigint | number);
-            debouncePeriodUs: (bigint | number);
+            debounce_period_us: bigint | number;
+            debouncePeriodUs: bigint | number;
             direction: LineDirection;
             drive: LineDrive;
             edge_detection: LineEdge;
@@ -1537,14 +1537,14 @@ export namespace Gpiodglib {
          * @default 0
          */
         get debounce_period_us(): number;
-        set debounce_period_us(val: (bigint | number));
+        set debounce_period_us(val: bigint | number);
 
         /**
          * Line debounce period (expressed in microseconds).
          * @default 0
          */
         get debouncePeriodUs(): number;
-        set debouncePeriodUs(val: (bigint | number));
+        set debouncePeriodUs(val: bigint | number);
 
         /**
          * Line direction setting.

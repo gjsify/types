@@ -119,7 +119,7 @@ export namespace Mirage {
         static WRITERERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -678,7 +678,7 @@ export namespace Mirage {
      * @param self a {@link Mirage.CdTextCoder}
      * @param buffer buffer containing encoded data
      */
-    function cdtext_decoder_init(self: CdTextCoder, buffer: (Uint8Array | string)): void;
+    function cdtext_decoder_init(self: CdTextCoder, buffer: Uint8Array | string): void;
 
     /**
      * Adds data to the encoder. `code` is language code of the block the data
@@ -699,7 +699,7 @@ export namespace Mirage {
      * @param track track number
      * @param data data
      */
-    function cdtext_encoder_add_data(self: CdTextCoder, code: number, type: number, track: number, data: (Uint8Array | string)): void;
+    function cdtext_encoder_add_data(self: CdTextCoder, code: number, type: number, track: number, data: Uint8Array | string): void;
 
     /**
      * Encodes the CD-TEXT data. Pointer to buffer containing the encoded data is
@@ -715,7 +715,7 @@ export namespace Mirage {
      * @param self a {@link Mirage.CdTextCoder}
      * @param buffer buffer into which data will be encoded
      */
-    function cdtext_encoder_init(self: CdTextCoder, buffer: (Uint8Array | string)): void;
+    function cdtext_encoder_init(self: CdTextCoder, buffer: Uint8Array | string): void;
 
     /**
      * Sets block information for CD-TEXT block specified by `block`. `block` must be
@@ -838,7 +838,7 @@ export namespace Mirage {
      * @param invert whether the result should be inverted
      * @returns CRC-16 checksum of data
      */
-    function helper_calculate_crc16(data: (Uint8Array | string), crctab: number[], reflected: boolean, invert: boolean): number;
+    function helper_calculate_crc16(data: Uint8Array | string, crctab: number[], reflected: boolean, invert: boolean): number;
 
     /**
      * Calculates the CRC-32 checksum of the data stored in `data`. This is
@@ -851,7 +851,7 @@ export namespace Mirage {
      * @param invert whether the initial value and result should be inverted
      * @returns CRC-32 checksum of data
      */
-    function helper_calculate_crc32_fast(data: (Uint8Array | string), crctab: number[], reflected: boolean, invert: boolean): number;
+    function helper_calculate_crc32_fast(data: Uint8Array | string, crctab: number[], reflected: boolean, invert: boolean): number;
 
     /**
      * Calculates the CRC-32 checksum of the data stored in `data`. This is
@@ -864,7 +864,7 @@ export namespace Mirage {
      * @param invert whether the initial value and result should be inverted
      * @returns CRC-32 checksum of data
      */
-    function helper_calculate_crc32_standard(data: (Uint8Array | string), crctab: number[], reflected: boolean, invert: boolean): number;
+    function helper_calculate_crc32_standard(data: Uint8Array | string, crctab: number[], reflected: boolean, invert: boolean): number;
 
     /**
      * Determines sector type from its data, based on first 16 bytes, which
@@ -884,7 +884,7 @@ export namespace Mirage {
      * @param buffer a 4-byte buffer containing BOM
      * @returns the name of encoding, or `null` if UTF-8 is assumed. The string is statically stored and should not be modified.
      */
-    function helper_encoding_from_bom(buffer: (Uint8Array | string)): string;
+    function helper_encoding_from_bom(buffer: Uint8Array | string): string;
 
     /**
      * Attempts to find a file with filename `filename` and path `path`. `filename` can
@@ -911,7 +911,7 @@ export namespace Mirage {
      * @param path path where to look for file (can be a filename), or `null`
      * @returns a newly allocated string containing the fullpath of file, or `null`.
      */
-    function helper_find_data_file(filename: string, path: (string | null)): string;
+    function helper_find_data_file(filename: string, path: string | null): string;
 
     /**
      * Dictionary-version of `mirage_helper_format_string()`.
@@ -923,7 +923,7 @@ export namespace Mirage {
      * @param dictionary a {@link GLib.HashTable} containing replacement token/value pairs
      * @returns string with all replacement tokens either replaced or removed. The string should be freed using `g_free()` when no longer needed.
      */
-    function helper_format_stringd(format: string, dictionary: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+    function helper_format_stringd(format: string, dictionary: { [key: string]: any } | GLib.HashTable<never, never>): string;
 
     /**
      * Retrieves suffix from `filename`.
@@ -1091,7 +1091,7 @@ export namespace Mirage {
      * (This is assuming all other sector data is already stored in sector_buffer and that sector_buffer is 2532 bytes long)
      * @param src data to calculate EDC data for
      */
-    function helper_sector_edc_ecc_compute_edc_block(src: (Uint8Array | string)): Uint8Array;
+    function helper_sector_edc_ecc_compute_edc_block(src: Uint8Array | string): Uint8Array;
 
     /**
      * Replacement function for g_strcasecmp/strcasecmp, which can properly handle UTF-8.
@@ -1127,7 +1127,7 @@ export namespace Mirage {
      * @param subchan subchannel type
      * @param channel96 buffer containing subchannel data to deinterleave (96 bytes)
      */
-    function helper_subchannel_deinterleave(subchan: number, channel96: (Uint8Array | string)): Uint8Array;
+    function helper_subchannel_deinterleave(subchan: number, channel96: Uint8Array | string): Uint8Array;
 
     /**
      * Interleaves subchannel data of type `subchan` stored in `channel12` into
@@ -1135,26 +1135,26 @@ export namespace Mirage {
      * @param subchan subchannel type
      * @param channel12 buffer containing subchannel data to interleave (12 bytes)
      */
-    function helper_subchannel_interleave(subchan: number, channel12: (Uint8Array | string)): Uint8Array;
+    function helper_subchannel_interleave(subchan: number, channel12: Uint8Array | string): Uint8Array;
 
     /**
      * Calculates the CRC-16 checksum of the Q subchannel data stored in `data`.
      * @param data buffer containing Q subchannel data (10 bytes)
      * @returns CRC-16 checksum of Q subchannel data
      */
-    function helper_subchannel_q_calculate_crc(data: (Uint8Array | string)): number;
+    function helper_subchannel_q_calculate_crc(data: Uint8Array | string): number;
 
     /**
      * Decodes ISRC stored in `buf` into string `isrc`.
      * @param buf buffer containing encoded ISRC (8 bytes)
      */
-    function helper_subchannel_q_decode_isrc(buf: (Uint8Array | string)): string[];
+    function helper_subchannel_q_decode_isrc(buf: Uint8Array | string): string[];
 
     /**
      * Decodes MCN stored in `buf` into string `mcn`.
      * @param buf buffer containing encoded MCN (7 bytes)
      */
-    function helper_subchannel_q_decode_mcn(buf: (Uint8Array | string)): string[];
+    function helper_subchannel_q_decode_mcn(buf: Uint8Array | string): string[];
 
     /**
      * Encodes ISRC string `isrc` into buffer `buf`.
@@ -1261,13 +1261,10 @@ export namespace Mirage {
 
     namespace CdTextCoder {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -1331,7 +1328,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -1351,7 +1348,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -1406,13 +1403,10 @@ export namespace Mirage {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1480,7 +1474,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Retrieves debug context's domain name.
@@ -1561,7 +1555,7 @@ export namespace Mirage {
          * will be reset.
          * @param func a password function pointer
          */
-        set_password_function(func: (PasswordFunction | null)): void;
+        set_password_function(func: PasswordFunction | null): void;
     }
 
 
@@ -1577,9 +1571,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -2046,7 +2038,7 @@ export namespace Mirage {
          * @param type disc structure type
          * @param data disc structure data to be set
          */
-        set_disc_structure(layer: number, type: number, data: (Uint8Array | string)): void;
+        set_disc_structure(layer: number, type: number, data: Uint8Array | string): void;
 
         /**
          * Sets the DPM data for disc. If `num_entries` is not positive, DPM data is reset.
@@ -2116,7 +2108,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -2136,7 +2128,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -2191,13 +2183,10 @@ export namespace Mirage {
 
     namespace FileStream {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {}
     }
 
     /**
@@ -2272,7 +2261,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -2292,7 +2281,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -2384,7 +2373,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: null, count: (bigint | number)): number;
+        read(buffer: null, count: bigint | number): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2392,7 +2381,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
         /**
          * Retrieves the current position within the stream.
@@ -2407,7 +2396,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: null, count: (bigint | number)): number;
+        write(buffer: null, count: bigint | number): number;
 
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
@@ -2442,7 +2431,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @virtual
          */
-        vfunc_read(buffer: null, count: number): (bigint | number);
+        vfunc_read(buffer: null, count: number): bigint | number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2456,7 +2445,7 @@ export namespace Mirage {
          * Retrieves the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Attempts to write `count` bytes to stream from the buffer starting at
@@ -2465,19 +2454,16 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @virtual
          */
-        vfunc_write(buffer: null, count: number): (bigint | number);
+        vfunc_write(buffer: null, count: number): bigint | number;
     }
 
 
     namespace FilterStream {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps, Stream.ConstructorProps {}
     }
 
     /**
@@ -2531,7 +2517,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_read(buffer: null, count: number): (bigint | number);
+        vfunc_read(buffer: null, count: number): bigint | number;
 
         /**
          * seeks to a location within stream
@@ -2547,7 +2533,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_simplified_partial_read(buffer: null, count: number): (bigint | number);
+        vfunc_simplified_partial_read(buffer: null, count: number): bigint | number;
 
         /**
          * writes a chunk of requested data to stream (part of simplified interface)
@@ -2555,13 +2541,13 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_simplified_partial_write(buffer: null, count: number): (bigint | number);
+        vfunc_simplified_partial_write(buffer: null, count: number): bigint | number;
 
         /**
          * tells the current location within stream
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * wrties data to stream
@@ -2569,7 +2555,7 @@ export namespace Mirage {
          * @param count 
          * @virtual
          */
-        vfunc_write(buffer: null, count: number): (bigint | number);
+        vfunc_write(buffer: null, count: number): bigint | number;
 
         // Methods
         /**
@@ -2613,7 +2599,7 @@ export namespace Mirage {
          * the simplified interface.
          * @param length length of the stream
          */
-        simplified_set_stream_length(length: (bigint | number)): void;
+        simplified_set_stream_length(length: bigint | number): void;
 
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
@@ -2640,7 +2626,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -2660,7 +2646,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -2752,7 +2738,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: null, count: (bigint | number)): number;
+        read(buffer: null, count: bigint | number): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -2760,7 +2746,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
         /**
          * Retrieves the current position within the stream.
@@ -2775,7 +2761,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: null, count: (bigint | number)): number;
+        write(buffer: null, count: bigint | number): number;
 
         /**
          * Retrieves the name to file on which the stream is opened. If `self` is
@@ -2817,9 +2803,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -2927,7 +2911,7 @@ export namespace Mirage {
          * Sets main data file offset.
          * @param offset main data file offset
          */
-        main_data_set_offset(offset: (bigint | number)): void;
+        main_data_set_offset(offset: bigint | number): void;
 
         /**
          * Sets main data file sector size.
@@ -2959,7 +2943,7 @@ export namespace Mirage {
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
          */
-        read_subchannel_data(address: number, buffer: (Uint8Array | null)): boolean;
+        read_subchannel_data(address: number, buffer: Uint8Array | null): boolean;
 
         /**
          * Sets fragment's start address. The `address` is given in sectors.
@@ -3024,7 +3008,7 @@ export namespace Mirage {
          * Sets subchannel data file offset.
          * @param offset subchannel data file offset
          */
-        subchannel_data_set_offset(offset: (bigint | number)): void;
+        subchannel_data_set_offset(offset: bigint | number): void;
 
         /**
          * Sets subchannel data file sector size.
@@ -3052,7 +3036,7 @@ export namespace Mirage {
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
          */
-        write_main_data(address: number, buffer: (Uint8Array | null)): boolean;
+        write_main_data(address: number, buffer: Uint8Array | null): boolean;
 
         /**
          * Reads subchannel data for sector at fragment-relative `address` (given
@@ -3064,7 +3048,7 @@ export namespace Mirage {
          * @param buffer buffer with read data, or `null`
          * @returns `true` on success, `false` on failure
          */
-        write_subchannel_data(address: number, buffer: (Uint8Array | null)): boolean;
+        write_subchannel_data(address: number, buffer: Uint8Array | null): boolean;
 
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
@@ -3091,7 +3075,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -3111,7 +3095,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -3166,13 +3150,10 @@ export namespace Mirage {
 
     namespace Index {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -3261,7 +3242,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -3281,7 +3262,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -3336,13 +3317,10 @@ export namespace Mirage {
 
     namespace Language {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -3410,7 +3388,7 @@ export namespace Mirage {
          * @param pack_data pack data
          * @returns `true` on success, `false` on failure
          */
-        set_pack_data(pack_type: LanguagePackType, pack_data: (Uint8Array | string)): boolean;
+        set_pack_data(pack_type: LanguagePackType, pack_data: Uint8Array | string): boolean;
 
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
@@ -3437,7 +3415,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -3457,7 +3435,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -3522,9 +3500,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -3575,7 +3551,7 @@ export namespace Mirage {
          * reset.
          * @param parent parent
          */
-        set_parent(parent: (Object | null)): void;
+        set_parent(parent: Object | null): void;
 
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
@@ -3602,7 +3578,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -3622,7 +3598,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -3677,13 +3653,10 @@ export namespace Mirage {
 
     namespace Parser {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -3807,7 +3780,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -3827,7 +3800,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -3981,13 +3954,10 @@ export namespace Mirage {
 
     namespace Sector {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -4039,7 +4009,7 @@ export namespace Mirage {
          * @param subchannel_data_length requested length of data in subchannel data buffer
          * @returns `true` on success, `false` on failure
          */
-        extract_data(main_data_length: number, subchannel_data: (number | null), subchannel_data_length: number): [boolean, number, SectorSubchannelFormat];
+        extract_data(main_data_length: number, subchannel_data: number | null, subchannel_data_length: number): [boolean, number, SectorSubchannelFormat];
 
         /**
          * Feeds data to sector. If `type` is {@link Mirage.SectorType.RAW} or {@link Mirage.SectorType.RAW_SCRAMBLED},
@@ -4058,7 +4028,7 @@ export namespace Mirage {
          * @param ignore_data_mask a mask of {@link Mirage.SectorValidData} values, indicating which parts of main channel sector data, if any, should be ignored and regerated even though they are provided by the data feed
          * @returns `true` on success, `false` on failure
          */
-        feed_data(address: number, type: SectorType, main_data: number, main_data_length: number, subchannel_format: SectorSubchannelFormat, subchannel_data: (number | null), subchannel_data_length: number, ignore_data_mask: number): boolean;
+        feed_data(address: number, type: SectorType, main_data: number, main_data_length: number, subchannel_format: SectorSubchannelFormat, subchannel_data: number | null, subchannel_data_length: number, ignore_data_mask: number): boolean;
 
         /**
          * Retrieves absolute disc address of the sector.
@@ -4149,7 +4119,7 @@ export namespace Mirage {
          * @param buf buffer containing user data
          * @returns `true` on success, `false` on failure
          */
-        set_data(buf: (Uint8Array | string)): boolean;
+        set_data(buf: Uint8Array | string): boolean;
 
         /**
          * @param args 
@@ -4162,14 +4132,14 @@ export namespace Mirage {
          * @param buf buffer containing EDC/ECC data
          * @returns `true` on success, `false` on failure
          */
-        set_edc_ecc(buf: (Uint8Array | string)): boolean;
+        set_edc_ecc(buf: Uint8Array | string): boolean;
 
         /**
          * Sets sector's header to that stored in `buf`.
          * @param buf buffer containing header
          * @returns `true` on success, `false` on failure
          */
-        set_header(buf: (Uint8Array | string)): boolean;
+        set_header(buf: Uint8Array | string): boolean;
 
         /**
          * Sets sector's subchannel data to that stored in `buf`. `format` must be
@@ -4178,21 +4148,21 @@ export namespace Mirage {
          * @param buf buffer containing subchannel data
          * @returns `true` on success, `false` on failure
          */
-        set_subchannel(format: SectorSubchannelFormat, buf: (Uint8Array | string)): boolean;
+        set_subchannel(format: SectorSubchannelFormat, buf: Uint8Array | string): boolean;
 
         /**
          * Sets sector's subheader to that stored in `buf`.
          * @param buf buffer containing subheader
          * @returns `true` on success, `false` on failure
          */
-        set_subheader(buf: (Uint8Array | string)): boolean;
+        set_subheader(buf: Uint8Array | string): boolean;
 
         /**
          * Sets sector's sync pattern to that stored in `buf`.
          * @param buf buffer containing sync pattern
          * @returns `true` on success, `false` on failure
          */
-        set_sync(buf: (Uint8Array | string)): boolean;
+        set_sync(buf: Uint8Array | string): boolean;
 
         /**
          * Verifies the sector data in terms of L-EC error detection/correction.
@@ -4253,7 +4223,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -4273,7 +4243,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -4338,9 +4308,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -4710,7 +4678,7 @@ export namespace Mirage {
          * @param data buffer containing encoded CD-TEXT data
          * @returns `true` on success, `false` on failure
          */
-        set_cdtext_data(data: (Uint8Array | string)): boolean;
+        set_cdtext_data(data: Uint8Array | string): boolean;
 
         /**
          * Sets session's leadout length to `length`. It does so by creating NULL fragment
@@ -4769,7 +4737,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -4789,7 +4757,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -4854,9 +4822,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -4939,7 +4905,7 @@ export namespace Mirage {
          * @param language a {@link Mirage.Language} to be added
          * @returns `true` on success, `false` on failure
          */
-        add_language(code: number, language: (Language | null)): boolean;
+        add_language(code: number, language: Language | null): boolean;
 
         /**
          * Iterates over fragments list, calling `func` for each fragment in the layout.
@@ -5325,7 +5291,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -5345,7 +5311,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -5410,9 +5376,7 @@ export namespace Mirage {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps, Contextual.ConstructorProps {}
     }
 
     /**
@@ -5520,7 +5484,7 @@ export namespace Mirage {
          * @param cancellable optional %GCancellable object, NULL to ignore.
          * @returns `true` on success, `false` on failure
          */
-        convert_image(filename: string, original_disc: Disc, parameters: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), cancellable: (Gio.Cancellable | null)): boolean;
+        convert_image(filename: string, original_disc: Disc, parameters: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Creates a fragment with specified `role` for given `track`. The latter
@@ -5623,7 +5587,7 @@ export namespace Mirage {
          * @param parameters writer parameters
          * @returns `true` on success, `false` on failure
          */
-        open_image(disc: Disc, parameters: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>)): boolean;
+        open_image(disc: Disc, parameters: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): boolean;
 
         /**
          * Sets conversion progress step. Setting `step` to 0 disables conversion
@@ -5657,7 +5621,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -5677,7 +5641,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -6112,9 +6076,7 @@ export namespace Mirage {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ContextualNamespace {
@@ -6153,7 +6115,7 @@ export namespace Mirage {
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
          */
-        create_output_stream(filename: string, filter_chain: (string[] | null)): Stream;
+        create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
         /**
          * Checks whether debug messages at debug level `level` are currently
@@ -6173,7 +6135,7 @@ export namespace Mirage {
          * @param width output width
          * @param buffer buffer to print
          */
-        debug_print_buffer(level: number, prefix: (string | null), width: number, buffer: (Uint8Array | string)): void;
+        debug_print_buffer(level: number, prefix: string | null, width: number, buffer: Uint8Array | string): void;
 
         /**
          * Retrieves the attached context.
@@ -6258,7 +6220,7 @@ export namespace Mirage {
              * @param count number of bytes to read from stream
              * @virtual
              */
-            vfunc_read(buffer: null, count: number): (bigint | number);
+            vfunc_read(buffer: null, count: number): bigint | number;
 
             /**
              * Seeks in the stream by the given `offset`, modified by `type`.
@@ -6272,7 +6234,7 @@ export namespace Mirage {
              * Retrieves the current position within the stream.
              * @virtual
              */
-            vfunc_tell(): (bigint | number);
+            vfunc_tell(): bigint | number;
 
             /**
              * Attempts to write `count` bytes to stream from the buffer starting at
@@ -6281,14 +6243,12 @@ export namespace Mirage {
              * @param count number of bytes to write to stream
              * @virtual
              */
-            vfunc_write(buffer: null, count: number): (bigint | number);
+            vfunc_write(buffer: null, count: number): bigint | number;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface StreamNamespace {
@@ -6343,7 +6303,7 @@ export namespace Mirage {
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
          */
-        read(buffer: null, count: (bigint | number)): number;
+        read(buffer: null, count: bigint | number): number;
 
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
@@ -6351,7 +6311,7 @@ export namespace Mirage {
          * @param type seek type
          * @returns `true` on success, `false` on failure.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
         /**
          * Retrieves the current position within the stream.
@@ -6366,7 +6326,7 @@ export namespace Mirage {
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
          */
-        write(buffer: null, count: (bigint | number)): number;
+        write(buffer: null, count: bigint | number): number;
     }
 
 

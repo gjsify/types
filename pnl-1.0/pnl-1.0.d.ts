@@ -230,7 +230,7 @@ export namespace Pnl {
          * @param pspec A {@link GObject.ParamSpec} of `target` or a {@link Gtk.Widget}<!-- -->'s parent.
          * @param value The new value for the property at the end of the animation.
          */
-        add_property(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        add_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * Start the animation. When the animation stops, the internal reference will
@@ -299,9 +299,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {}
     }
 
     /**
@@ -349,7 +347,7 @@ export namespace Pnl {
          * Gets the center widget for the dock.
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_center_widget(): (Gtk.Widget | null);
+        get_center_widget(): Gtk.Widget | null;
 
         /**
          * @returns A {@link Gtk.Widget}
@@ -390,13 +388,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -427,7 +425,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -441,7 +439,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -467,7 +465,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -632,13 +630,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -669,7 +667,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -683,7 +681,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -709,7 +707,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -752,9 +750,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -875,9 +871,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {}
     }
 
     /**
@@ -958,13 +952,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -995,7 +989,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -1009,7 +1003,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -1035,7 +1029,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -1194,13 +1188,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -1231,7 +1225,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -1245,7 +1239,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -1271,7 +1265,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -1347,9 +1341,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MultiPaned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, DockItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MultiPaned.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, DockItem.ConstructorProps {}
     }
 
     /**
@@ -1434,13 +1426,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -1471,7 +1463,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -1485,7 +1477,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -1511,7 +1503,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -1879,13 +1871,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -1916,7 +1908,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -1930,7 +1922,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -1956,7 +1948,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -2036,9 +2028,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TabStrip.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TabStrip.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2294,13 +2284,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -2331,7 +2321,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -2345,7 +2335,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -2371,7 +2361,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -2480,9 +2470,7 @@ export namespace Pnl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Dock.ConstructorProps, DockItem.ConstructorProps {}
     }
 
     /**
@@ -2544,13 +2532,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -2581,7 +2569,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
 
@@ -2595,7 +2583,7 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @virtual
          */
-        vfunc_get_manager(): (DockManager | null);
+        vfunc_get_manager(): DockManager | null;
 
         /**
          * @param old_manager 
@@ -2621,7 +2609,7 @@ export namespace Pnl {
          * @param manager A {@link Pnl.DockManager}
          * @virtual
          */
-        vfunc_set_manager(manager: (DockManager | null)): void;
+        vfunc_set_manager(manager: DockManager | null): void;
 
         /**
          * @virtual
@@ -2903,7 +2891,7 @@ export namespace Pnl {
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
             edge: Gtk.PositionType;
             title: string;
-            widget: ((Gtk.Widget | null) | any);
+            widget: Gtk.Widget | null | any;
         }
     }
 
@@ -2921,7 +2909,7 @@ export namespace Pnl {
         set title(val: string);
 
     // This accessor conflicts with a property or field in a parent class or interface.
-         widget: (Gtk.Widget | null) | any;
+         widget: Gtk.Widget | null | any;
 
         /**
          * Compile-time signal type information.
@@ -2958,7 +2946,7 @@ export namespace Pnl {
         /**
          * @returns A {@link Gtk.Widget} or `null`.
          */
-        get_widget(): (Gtk.Widget | null);
+        get_widget(): Gtk.Widget | null;
 
         /**
          * @param edge 
@@ -3067,7 +3055,7 @@ export namespace Pnl {
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             edge: Gtk.PositionType;
-            stack: (Gtk.Stack | null);
+            stack: Gtk.Stack | null;
         }
     }
 
@@ -3081,8 +3069,8 @@ export namespace Pnl {
         get edge(): Gtk.PositionType;
         set edge(val: Gtk.PositionType);
 
-        get stack(): (Gtk.Stack | null);
-        set stack(val: (Gtk.Stack | null));
+        get stack(): Gtk.Stack | null;
+        set stack(val: Gtk.Stack | null);
 
         /**
          * Compile-time signal type information.
@@ -3121,7 +3109,7 @@ export namespace Pnl {
         /**
          * @returns A {@link Gtk.Stack} or `null`.
          */
-        get_stack(): (Gtk.Stack | null);
+        get_stack(): Gtk.Stack | null;
 
         /**
          * @param edge 
@@ -3296,7 +3284,7 @@ export namespace Pnl {
              * Gets the dock manager for this dock item.
              * @virtual
              */
-            vfunc_get_manager(): (DockManager | null);
+            vfunc_get_manager(): DockManager | null;
 
             /**
              * @param old_manager 
@@ -3322,7 +3310,7 @@ export namespace Pnl {
              * @param manager A {@link Pnl.DockManager}
              * @virtual
              */
-            vfunc_set_manager(manager: (DockManager | null)): void;
+            vfunc_set_manager(manager: DockManager | null): void;
 
             /**
              * @virtual
@@ -3332,9 +3320,7 @@ export namespace Pnl {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface DockItemNamespace {
@@ -3367,13 +3353,13 @@ export namespace Pnl {
          * Gets the dock manager for this dock item.
          * @returns A `PnlDockmanager`.
          */
-        get_manager(): (DockManager | null);
+        get_manager(): DockManager | null;
 
         /**
          * Gets the parent {@link Pnl.DockItem}, or `null`.
          * @returns A {@link Pnl.DockItem} or `null`.
          */
-        get_parent(): (DockItem | null);
+        get_parent(): DockItem | null;
 
         has_widgets(): boolean;
 
@@ -3404,7 +3390,7 @@ export namespace Pnl {
          * Sets the dock manager for this {@link Pnl.DockItem}.
          * @param manager A {@link Pnl.DockManager}
          */
-        set_manager(manager: (DockManager | null)): void;
+        set_manager(manager: DockManager | null): void;
 
         update_visibility(): void;
     }

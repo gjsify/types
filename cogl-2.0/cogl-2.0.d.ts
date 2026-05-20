@@ -1852,7 +1852,7 @@ export namespace Cogl {
      * @returns A pointer to the mapped memory or        `null` is the call fails
      * @since 2.0
      */
-    function buffer_map_range(buffer: Buffer, offset: (bigint | number), size: (bigint | number), access: BufferAccess, hints: BufferMapHint): null;
+    function buffer_map_range(buffer: Buffer, offset: bigint | number, size: bigint | number, access: BufferAccess, hints: BufferMapHint): null;
 
     /**
      * Updates part of the buffer with new data from `data`. Where to put this new
@@ -1865,7 +1865,7 @@ export namespace Cogl {
      * @returns `true` is the operation succeeded, `false` otherwise
      * @since 1.2
      */
-    function buffer_set_data(buffer: Buffer, offset: (bigint | number), data: null, size: (bigint | number)): Bool;
+    function buffer_set_data(buffer: Buffer, offset: bigint | number, data: null, size: bigint | number): Bool;
 
     /**
      * Sets the update hint on a buffer. See {@link Cogl.BufferUpdateHint} for a description
@@ -2505,7 +2505,7 @@ export namespace Cogl {
      * @returns A "poll fd state age" that changes whenever the set               of poll_fds has changed. If this API is being used to               integrate with another system mainloop api then               knowing if the set of file descriptors and events has               really changed can help avoid redundant work               depending the api. The age isn't guaranteed to change               when the timeout changes.
      * @since 1.16
      */
-    function poll_renderer_get_info(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number, timeout: (bigint | number)): number;
+    function poll_renderer_get_info(renderer: Renderer, poll_fds: PollFD, n_poll_fds: number, timeout: bigint | number): number;
 
     /**
      * Restores the previously active {@link Cogl.GLES2Context} if there
@@ -3376,8 +3376,7 @@ export namespace Cogl {
 
     namespace AtlasTexture {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3414,8 +3413,7 @@ export namespace Cogl {
 
     namespace Attribute {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3427,7 +3425,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](attribute_buffer: AttributeBuffer, name: string, stride: (bigint | number), offset: (bigint | number), components: number, type: AttributeType): Attribute;
+        static ["new"](attribute_buffer: AttributeBuffer, name: string, stride: bigint | number, offset: bigint | number, components: number, type: AttributeType): Attribute;
 
         static new_const_1f(context: Context, name: string, value: number): Attribute;
 
@@ -3497,8 +3495,7 @@ export namespace Cogl {
 
     namespace AttributeBuffer {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3510,7 +3507,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static new_with_size(context: Context, bytes: (bigint | number)): AttributeBuffer;
+        static new_with_size(context: Context, bytes: bigint | number): AttributeBuffer;
 
         // Signals
         /** @signal */
@@ -3529,8 +3526,7 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3601,8 +3597,7 @@ export namespace Cogl {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3614,7 +3609,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](display: (Display | null)): Context;
+        static ["new"](display: Display | null): Context;
 
         // Signals
         /** @signal */
@@ -3655,8 +3650,7 @@ export namespace Cogl {
 
     namespace Display {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3731,8 +3725,7 @@ export namespace Cogl {
 
     namespace Fixed {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -3762,8 +3755,7 @@ export namespace Cogl {
 
     namespace FrameInfo {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3837,8 +3829,7 @@ export namespace Cogl {
 
     namespace GLES2Context {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3884,8 +3875,7 @@ export namespace Cogl {
 
     namespace IndexBuffer {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3897,7 +3887,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, bytes: (bigint | number)): IndexBuffer;
+        static ["new"](context: Context, bytes: bigint | number): IndexBuffer;
 
         // Signals
         /** @signal */
@@ -3916,8 +3906,7 @@ export namespace Cogl {
 
     namespace Indices {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3931,7 +3920,7 @@ export namespace Cogl {
 
         static ["new"](context: Context, type: IndicesType, indices_data: null, n_indices: number): Indices;
 
-        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: (bigint | number)): Indices;
+        static new_for_buffer(type: IndicesType, buffer: IndexBuffer, offset: bigint | number): Indices;
 
         // Signals
         /** @signal */
@@ -3954,14 +3943,13 @@ export namespace Cogl {
         /**
          * @param offset 
          */
-        set_offset(offset: (bigint | number)): void;
+        set_offset(offset: bigint | number): void;
     }
 
 
     namespace MatrixStack {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4191,8 +4179,7 @@ export namespace Cogl {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -4221,20 +4208,19 @@ export namespace Cogl {
         /**
          * @param value 
          */
-        static value_get_object(value: (GObject.Value | any)): null;
+        static value_get_object(value: GObject.Value | any): null;
 
         /**
          * @param value 
          * @param object 
          */
-        static value_set_object(value: (GObject.Value | any), object: null): void;
+        static value_set_object(value: GObject.Value | any, object: null): void;
     }
 
 
     namespace Onscreen {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -4283,7 +4269,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenDirtyClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: (UserDataDestroyCallback | null)): OnscreenDirtyClosure;
+        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: UserDataDestroyCallback | null): OnscreenDirtyClosure;
 
         /**
          * Installs a `callback` function that will be called for significant
@@ -4313,7 +4299,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_frame_callback(callback: FrameCallback, destroy: (UserDataDestroyCallback | null)): FrameClosure;
+        add_frame_callback(callback: FrameCallback, destroy: UserDataDestroyCallback | null): FrameClosure;
 
         /**
          * Registers a `callback` with `onscreen` that will be called whenever
@@ -4338,7 +4324,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenResizeClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_resize_callback(callback: OnscreenResizeCallback, destroy: (UserDataDestroyCallback | null)): OnscreenResizeClosure;
+        add_resize_callback(callback: OnscreenResizeCallback, destroy: UserDataDestroyCallback | null): OnscreenResizeClosure;
 
         /**
          * Installs a `callback` function that should be called whenever a swap buffers
@@ -4647,7 +4633,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -4658,7 +4644,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -4679,7 +4665,7 @@ export namespace Cogl {
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * First defines a geometry primitive by grouping a set of vertex `attributes`;
@@ -5568,8 +5554,7 @@ export namespace Cogl {
 
     namespace OnscreenTemplate {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -5638,8 +5623,7 @@ export namespace Cogl {
 
     namespace Output {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -5728,8 +5712,7 @@ export namespace Cogl {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -6596,8 +6579,7 @@ export namespace Cogl {
 
     namespace PixelBuffer {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -6609,7 +6591,7 @@ export namespace Cogl {
         // Constructors
         _init(...args: any[]): void;
 
-        static ["new"](context: Context, size: (bigint | number), data: null): PixelBuffer;
+        static ["new"](context: Context, size: bigint | number, data: null): PixelBuffer;
 
         // Signals
         /** @signal */
@@ -6628,8 +6610,7 @@ export namespace Cogl {
 
     namespace Primitive {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -6799,8 +6780,7 @@ export namespace Cogl {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -6922,8 +6902,7 @@ export namespace Cogl {
 
     namespace Snippet {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7032,8 +7011,7 @@ export namespace Cogl {
 
     namespace SubTexture {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7073,8 +7051,7 @@ export namespace Cogl {
 
     namespace SwapChain {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7116,8 +7093,7 @@ export namespace Cogl {
 
     namespace Texture2D {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7377,8 +7353,7 @@ export namespace Cogl {
 
     namespace Texture2DSliced {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7636,8 +7611,7 @@ export namespace Cogl {
 
     namespace Texture3D {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7893,8 +7867,7 @@ export namespace Cogl {
 
     namespace TexturePixmapX11 {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -7965,8 +7938,7 @@ export namespace Cogl {
 
     namespace TextureRectangle {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -8231,10 +8203,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Color>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Color;
 
@@ -9137,7 +9106,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        project_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        project_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a rotation matrix that applies a rotation
@@ -9227,7 +9196,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        transform_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        transform_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a transform matrix that translates along
@@ -10227,7 +10196,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -10238,7 +10207,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -10259,7 +10228,7 @@ export namespace Cogl {
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * First defines a geometry primitive by grouping a set of vertex `attributes`;

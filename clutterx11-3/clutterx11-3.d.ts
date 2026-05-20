@@ -419,14 +419,14 @@ export namespace ClutterX11 {
             automatic_updates: boolean;
             automaticUpdates: boolean;
             destroyed: boolean;
-            pixmap: (bigint | number);
+            pixmap: bigint | number;
             pixmap_depth: number;
             pixmapDepth: number;
             pixmap_height: number;
             pixmapHeight: number;
             pixmap_width: number;
             pixmapWidth: number;
-            window: (bigint | number);
+            window: bigint | number;
             window_mapped: boolean;
             windowMapped: boolean;
             window_override_redirect: boolean;
@@ -461,7 +461,7 @@ export namespace ClutterX11 {
         get destroyed(): boolean;
 
         get pixmap(): number;
-        set pixmap(val: (bigint | number));
+        set pixmap(val: bigint | number);
 
         /**
          * @read-only
@@ -494,7 +494,7 @@ export namespace ClutterX11 {
         get pixmapWidth(): number;
 
         get window(): number;
-        set window(val: (bigint | number));
+        set window(val: bigint | number);
 
         /**
          * @read-only

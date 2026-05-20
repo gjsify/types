@@ -105,7 +105,7 @@ export namespace AtrilDocument {
         static ENCRYPTED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -777,7 +777,7 @@ export namespace AtrilDocument {
          * @param utime a `gint64`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time(utime: (bigint | number)): boolean;
+        set_modified_from_time(utime: bigint | number): boolean;
 
         /**
          * Set the name of `annot`.
@@ -1146,10 +1146,10 @@ export namespace AtrilDocument {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: (bigint | number);
+            ctime: bigint | number;
             data: never;
             description: string;
-            mtime: (bigint | number);
+            mtime: bigint | number;
             name: string;
             size: number;
         }
@@ -1166,7 +1166,7 @@ export namespace AtrilDocument {
          * @construct-only
          * @default 0
          */
-        set ctime(val: (bigint | number));
+        set ctime(val: bigint | number);
 
         /**
          * @construct-only
@@ -1183,7 +1183,7 @@ export namespace AtrilDocument {
          * @construct-only
          * @default 0
          */
-        set mtime(val: (bigint | number));
+        set mtime(val: bigint | number);
 
         /**
          * @construct-only
@@ -1214,7 +1214,7 @@ export namespace AtrilDocument {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, description: string, mtime: (bigint | number), ctime: (bigint | number), size: (bigint | number), data: null): Attachment;
+        static ["new"](name: string, description: string, mtime: bigint | number, ctime: bigint | number, size: bigint | number, data: null): Attachment;
 
         // Signals
         /** @signal */
@@ -1258,13 +1258,10 @@ export namespace AtrilDocument {
 
     namespace Document {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1347,7 +1344,7 @@ export namespace AtrilDocument {
         /**
          * @param utime 
          */
-        static misc_format_date(utime: (bigint | number)): string;
+        static misc_format_date(utime: bigint | number): string;
 
         /**
          * @param width the desired width
@@ -1596,13 +1593,10 @@ export namespace AtrilDocument {
 
     namespace FormField {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1655,13 +1649,10 @@ export namespace AtrilDocument {
 
     namespace FormFieldButton {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -1710,13 +1701,10 @@ export namespace AtrilDocument {
 
     namespace FormFieldChoice {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -1775,13 +1763,10 @@ export namespace AtrilDocument {
 
     namespace FormFieldSignature {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -1826,13 +1811,10 @@ export namespace AtrilDocument {
 
     namespace FormFieldText {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {
-        }
+        interface SignalSignatures extends FormField.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends FormField.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
     /**
@@ -1893,13 +1875,10 @@ export namespace AtrilDocument {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1958,13 +1937,10 @@ export namespace AtrilDocument {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2412,13 +2388,10 @@ export namespace AtrilDocument {
 
     namespace Page {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2469,13 +2442,10 @@ export namespace AtrilDocument {
 
     namespace RenderContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3325,9 +3295,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AsyncRendererNamespace {
@@ -3395,9 +3363,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAnnotationsNamespace {
@@ -3465,9 +3431,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentAttachmentsNamespace {
@@ -3520,9 +3484,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFindNamespace {
@@ -3584,9 +3546,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFontsNamespace {
@@ -3718,9 +3678,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentFormsNamespace {
@@ -3836,9 +3794,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentImagesNamespace {
@@ -3907,9 +3863,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLayersNamespace {
@@ -3989,9 +3943,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentLinksNamespace {
@@ -4071,9 +4023,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentPrintNamespace {
@@ -4120,9 +4070,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentSecurityNamespace {
@@ -4185,9 +4133,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTextNamespace {
@@ -4247,9 +4193,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentThumbnailsNamespace {
@@ -4298,9 +4242,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DocumentTransitionNamespace {
@@ -4373,9 +4315,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileExporterNamespace {
@@ -4451,9 +4391,7 @@ export namespace AtrilDocument {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface SelectionNamespace {

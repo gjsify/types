@@ -236,14 +236,14 @@ export namespace Gd {
          * for the header title label to be visible again.
          * @param title_widget a custom widget to use for a title
          */
-        set_custom_title(title_widget: (Gtk.Widget | null)): void;
+        set_custom_title(title_widget: Gtk.Widget | null): void;
 
         /**
          * Sets the subtitle of the {@link Gd.HeaderBar}. The subtitle should give a user
          * an additional detail to help him identify the current view.
          * @param subtitle a subtitle
          */
-        set_subtitle(subtitle: (string | null)): void;
+        set_subtitle(subtitle: string | null): void;
 
         /**
          * Sets the title of the {@link Gd.HeaderBar}. The title should help a user
@@ -251,7 +251,7 @@ export namespace Gd {
          * application name.
          * @param title a title
          */
-        set_title(title: (string | null)): void;
+        set_title(title: string | null): void;
     }
 
 
@@ -323,9 +323,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.MenuButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.MenuButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -407,7 +405,7 @@ export namespace Gd {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param args 
@@ -418,7 +416,7 @@ export namespace Gd {
         /**
          * @param symbolic_icon_name 
          */
-        set_symbolic_icon_name(symbolic_icon_name: (string | null)): void;
+        set_symbolic_icon_name(symbolic_icon_name: string | null): void;
 
         /**
          * @param use_markup 
@@ -560,9 +558,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.RadioButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.RadioButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -644,7 +640,7 @@ export namespace Gd {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param args 
@@ -655,7 +651,7 @@ export namespace Gd {
         /**
          * @param symbolic_icon_name 
          */
-        set_symbolic_icon_name(symbolic_icon_name: (string | null)): void;
+        set_symbolic_icon_name(symbolic_icon_name: string | null): void;
 
         /**
          * @param use_markup 
@@ -761,9 +757,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -840,15 +834,15 @@ export namespace Gd {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -931,7 +925,7 @@ export namespace Gd {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param args 
@@ -942,7 +936,7 @@ export namespace Gd {
         /**
          * @param symbolic_icon_name 
          */
-        set_symbolic_icon_name(symbolic_icon_name: (string | null)): void;
+        set_symbolic_icon_name(symbolic_icon_name: string | null): void;
 
         /**
          * @param use_markup 
@@ -955,7 +949,7 @@ export namespace Gd {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -979,7 +973,7 @@ export namespace Gd {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1003,7 +997,7 @@ export namespace Gd {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -1027,7 +1021,7 @@ export namespace Gd {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1052,7 +1046,7 @@ export namespace Gd {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1077,7 +1071,7 @@ export namespace Gd {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1141,7 +1135,7 @@ export namespace Gd {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1151,7 +1145,7 @@ export namespace Gd {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -1261,9 +1255,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, HeaderButton.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1345,7 +1337,7 @@ export namespace Gd {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param args 
@@ -1356,7 +1348,7 @@ export namespace Gd {
         /**
          * @param symbolic_icon_name 
          */
-        set_symbolic_icon_name(symbolic_icon_name: (string | null)): void;
+        set_symbolic_icon_name(symbolic_icon_name: string | null): void;
 
         /**
          * @param use_markup 
@@ -1467,9 +1459,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.IconView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, MainViewGeneric.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellLayout.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.IconView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, MainViewGeneric.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellLayout.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -1608,7 +1598,7 @@ export namespace Gd {
         /**
          * @param model 
          */
-        set_model(model: (Gtk.TreeModel | null)): void;
+        set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param start 
@@ -1651,7 +1641,7 @@ export namespace Gd {
          * @param model 
          * @virtual
          */
-        vfunc_set_model(model: (Gtk.TreeModel | null)): void;
+        vfunc_set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param selection_mode 
@@ -1691,7 +1681,7 @@ export namespace Gd {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1742,7 +1732,7 @@ export namespace Gd {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1779,7 +1769,7 @@ export namespace Gd {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1834,7 +1824,7 @@ export namespace Gd {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Returns the size of a non-scrolling border around the
@@ -1874,7 +1864,7 @@ export namespace Gd {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1888,7 +1878,7 @@ export namespace Gd {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -1998,9 +1988,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, MainViewGeneric.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, MainViewGeneric.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -2136,7 +2124,7 @@ export namespace Gd {
         /**
          * @param model 
          */
-        set_model(model: (Gtk.TreeModel | null)): void;
+        set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param start 
@@ -2173,7 +2161,7 @@ export namespace Gd {
          * @param model 
          * @virtual
          */
-        vfunc_set_model(model: (Gtk.TreeModel | null)): void;
+        vfunc_set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param selection_mode 
@@ -2219,7 +2207,7 @@ export namespace Gd {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2233,7 +2221,7 @@ export namespace Gd {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2381,14 +2369,14 @@ export namespace Gd {
          * @param label 
          * @param pack_start 
          */
-        add_button(icon_name: (string | null), label: (string | null), pack_start: boolean): Gtk.Widget;
+        add_button(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget;
 
         /**
          * @param icon_name 
          * @param label 
          * @param pack_start 
          */
-        add_menu(icon_name: (string | null), label: (string | null), pack_start: boolean): Gtk.Widget;
+        add_menu(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget;
 
         /**
          * @param label 
@@ -2400,7 +2388,7 @@ export namespace Gd {
          * @param label 
          * @param pack_start 
          */
-        add_toggle(icon_name: (string | null), label: (string | null), pack_start: boolean): Gtk.Widget;
+        add_toggle(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget;
 
         /**
          * @param widget 
@@ -2416,12 +2404,12 @@ export namespace Gd {
          * @param primary 
          * @param detail 
          */
-        set_labels(primary: (string | null), detail: (string | null)): void;
+        set_labels(primary: string | null, detail: string | null): void;
 
         /**
          * @param menu 
          */
-        set_labels_menu(menu: (Gio.MenuModel | null)): void;
+        set_labels_menu(menu: Gio.MenuModel | null): void;
 
         /**
          * @param show_modes 
@@ -2620,7 +2608,7 @@ export namespace Gd {
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
          */
-        set_style(style: (Gtk.Style | null)): void;
+        set_style(style: Gtk.Style | null): void;
 
         /**
          * @param args 
@@ -2790,7 +2778,7 @@ export namespace Gd {
         /**
          * @param model 
          */
-        set_model(model: (Gtk.TreeModel | null)): void;
+        set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param selection_mode 
@@ -3254,7 +3242,7 @@ export namespace Gd {
          * Sets the stack to control.
          * @param stack a {@link Gd.Stack}
          */
-        set_stack(stack: (Stack | null)): void;
+        set_stack(stack: Stack | null): void;
 
         /**
          * The orientation of the orientable.
@@ -3349,9 +3337,7 @@ export namespace Gd {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {}
     }
 
     /**
@@ -5236,7 +5222,7 @@ export namespace Gd {
         /**
          * @param label 
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param args 
@@ -5247,7 +5233,7 @@ export namespace Gd {
         /**
          * @param symbolic_icon_name 
          */
-        set_symbolic_icon_name(symbolic_icon_name: (string | null)): void;
+        set_symbolic_icon_name(symbolic_icon_name: string | null): void;
 
         /**
          * @param use_markup 
@@ -5290,7 +5276,7 @@ export namespace Gd {
              * @param model 
              * @virtual
              */
-            vfunc_set_model(model: (Gtk.TreeModel | null)): void;
+            vfunc_set_model(model: Gtk.TreeModel | null): void;
 
             /**
              * @param selection_mode 
@@ -5301,9 +5287,7 @@ export namespace Gd {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface MainViewGenericNamespace {
@@ -5337,7 +5321,7 @@ export namespace Gd {
         /**
          * @param model 
          */
-        set_model(model: (Gtk.TreeModel | null)): void;
+        set_model(model: Gtk.TreeModel | null): void;
 
         /**
          * @param start 

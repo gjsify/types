@@ -48,7 +48,7 @@ export namespace Gm {
         static ERROR_PARSING_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -84,7 +84,7 @@ export namespace Gm {
      * @returns The devices
      * @since 0.2.2
      */
-    function list_devices(): (string[] | null);
+    function list_devices(): string[] | null;
 
     /**
      * Get the ISO 3316-1 country code based on a given mobile country
@@ -131,7 +131,7 @@ export namespace Gm {
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.0.1
      */
-    function timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc): number;
+    function timeout_add_seconds_once(priority: number, seconds: bigint | number, _function: GLib.SourceOnceFunc): number;
 
     /**
      * Sets a function to be called after a timeout with the default
@@ -155,7 +155,7 @@ export namespace Gm {
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.3.0
      */
-    function wakeup_timeout_add_seconds_once(priority: number, seconds: (bigint | number), _function: GLib.SourceOnceFunc): number;
+    function wakeup_timeout_add_seconds_once(priority: number, seconds: bigint | number, _function: GLib.SourceOnceFunc): number;
 
     namespace Cutout {
         // Signal signatures

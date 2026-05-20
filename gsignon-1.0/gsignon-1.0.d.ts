@@ -218,7 +218,7 @@ export namespace gSignon {
         static USER_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -443,13 +443,10 @@ export namespace gSignon {
 
     namespace AuthService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -520,7 +517,7 @@ export namespace gSignon {
          * @param application_context application security context, can be `null`.
          * @param cb callback to be invoked.
          */
-        query_identities(filter: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), application_context: string, cb: QueryIdentitiesCb): void;
+        query_identities(filter: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, application_context: string, cb: QueryIdentitiesCb): void;
 
         /**
          * Lists all the available mechanisms for an authentication method.
@@ -624,7 +621,7 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cb a callback which will be called with the result.
          */
-        process(session_data: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), mechanism: string, cb: AuthSessionProcessCb): void;
+        process(session_data: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, mechanism: string, cb: AuthSessionProcessCb): void;
 
         /**
          * Performs one step of the authentication process.
@@ -644,28 +641,7 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        process_async(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
-
-        /**
-         * Performs one step of the authentication process.
-         * `session_data` should be used to add additional authentication parameters to the
-         * session.
-         * 
-         * What specific parameters should be used can be found from authentication plugins'
-         * documentation (look for parameters that are expected in `gsignond_plugin_request_initial()`
-         * for the first step, and parameters that are expected in `gsignond_plugin_request()` for
-         * the subsequent steps). See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
-         * 
-         * If the {@link gSignon.Identity} that this session belongs to contains a username and a password,
-         * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
-         * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
-         * and they cannot be overriden.
-         * @param session_data a dictionary of parameters.
-         * @param mechanism the authentication mechanism to be used.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the authentication reply is available.
-         */
-        process_async(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
         /**
          * Performs one step of the authentication process.
@@ -686,7 +662,28 @@ export namespace gSignon {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
-        process_async(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+        process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Performs one step of the authentication process.
+         * `session_data` should be used to add additional authentication parameters to the
+         * session.
+         * 
+         * What specific parameters should be used can be found from authentication plugins'
+         * documentation (look for parameters that are expected in `gsignond_plugin_request_initial()`
+         * for the first step, and parameters that are expected in `gsignond_plugin_request()` for
+         * the subsequent steps). See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
+         * 
+         * If the {@link gSignon.Identity} that this session belongs to contains a username and a password,
+         * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
+         * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
+         * and they cannot be overriden.
+         * @param session_data a dictionary of parameters.
+         * @param mechanism the authentication mechanism to be used.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the authentication reply is available.
+         */
+        process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
         /**
          * Collect the result of the `signon_auth_session_process_async()` operation.
@@ -867,7 +864,7 @@ export namespace gSignon {
          * @param type the type of the identity.
          * @param cb callback.
          */
-        store_credentials_with_args(username: (string | null), secret: (string | null), store_secret: boolean, methods: ({ [key: string]: any } | GLib.HashTable), caption: (string | null), realms: (string | null), owner: (SecurityContext | null), access_control_list: (SecurityContext[] | null), type: IdentityType, cb: IdentityStoreCredentialsCb): void;
+        store_credentials_with_args(username: string | null, secret: string | null, store_secret: boolean, methods: { [key: string]: any } | GLib.HashTable, caption: string | null, realms: string | null, owner: SecurityContext | null, access_control_list: SecurityContext[] | null, type: IdentityType, cb: IdentityStoreCredentialsCb): void;
 
         /**
          * Stores the data contained in `info` into the identity record in the database.
@@ -926,10 +923,7 @@ export namespace gSignon {
         static $gtype: GObject.GType<IdentityInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): IdentityInfo;
 
@@ -1013,7 +1007,7 @@ export namespace gSignon {
          * it should be constructed with `g_hash_table_new_full`.
          * @param methods methods.
          */
-        own_methods(methods: ({ [key: string]: any } | GLib.HashTable)): void;
+        own_methods(methods: { [key: string]: any } | GLib.HashTable): void;
 
         /**
          * Remove `method` from the list of allowed authentication methods.
@@ -1050,7 +1044,7 @@ export namespace gSignon {
          * Set authentication methods that are allowed to be used with this identity.
          * @param methods methods.
          */
-        set_methods(methods: ({ [key: string]: any } | GLib.HashTable)): void;
+        set_methods(methods: { [key: string]: any } | GLib.HashTable): void;
 
         /**
          * Set identity owner's security context.

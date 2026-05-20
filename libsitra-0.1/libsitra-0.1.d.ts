@@ -101,7 +101,7 @@ export namespace Libsitra {
 
         _init(...args: any[]): void;
 
-        static ["new"](id: string, family: string, category: string, variable: boolean, license: string, weights: Gee.List, subsets: Gee.List, styles: Gee.List, files: (Gee.Map | null), links: (Gee.Map | null)): Font;
+        static ["new"](id: string, family: string, category: string, variable: boolean, license: string, weights: Gee.List, subsets: Gee.List, styles: Gee.List, files: Gee.Map | null, links: Gee.Map | null): Font;
 
         // Signals
         /** @signal */
@@ -190,13 +190,10 @@ export namespace Libsitra {
 
     namespace Fonts {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -238,7 +235,7 @@ export namespace Libsitra {
         /**
          * @param id 
          */
-        font(id: string): (Font | null);
+        font(id: string): Font | null;
 
         collection(): Gee.Collection;
     }
@@ -258,17 +255,15 @@ export namespace Libsitra {
             /**
              * @signal
              */
-            "installation-completed": (arg0: string, arg1: boolean, arg2: (string | null)) => void;
+            "installation-completed": (arg0: string, arg1: boolean, arg2: string | null) => void;
             /**
              * @signal
              */
-            "uninstallation-completed": (arg0: string, arg1: boolean, arg2: (string | null)) => void;
+            "uninstallation-completed": (arg0: string, arg1: boolean, arg2: string | null) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -323,13 +318,13 @@ export namespace Libsitra {
          * @param font 
          * @param _callback_ 
          */
-        install(font: Font, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        install(font: Font, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param font 
          * @param _callback_ 
          */
-        install(font: Font, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        install(font: Font, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -347,13 +342,13 @@ export namespace Libsitra {
          * @param font 
          * @param _callback_ 
          */
-        uninstall(font: Font, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        uninstall(font: Font, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param font 
          * @param _callback_ 
          */
-        uninstall(font: Font, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        uninstall(font: Font, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 

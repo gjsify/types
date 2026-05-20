@@ -79,7 +79,7 @@ export namespace GcrGtk4 {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-            certificate: (Gcr.Certificate | null);
+            certificate: Gcr.Certificate | null;
         }
     }
 
@@ -90,8 +90,8 @@ export namespace GcrGtk4 {
         static $gtype: GObject.GType<CertificateWidget>;
 
         // Properties
-        get certificate(): (Gcr.Certificate | null);
-        set certificate(val: (Gcr.Certificate | null));
+        get certificate(): Gcr.Certificate | null;
+        set certificate(val: Gcr.Certificate | null);
 
         /**
          * Compile-time signal type information.
@@ -107,7 +107,7 @@ export namespace GcrGtk4 {
 
         _init(...args: any[]): void;
 
-        static ["new"](certificate: (Gcr.Certificate | null)): CertificateWidget;
+        static ["new"](certificate: Gcr.Certificate | null): CertificateWidget;
 
         // Signals
         /** @signal */
@@ -127,13 +127,13 @@ export namespace GcrGtk4 {
          * Get the certificate displayed in the widget.
          * @returns the certificate
          */
-        get_certificate(): (Gcr.Certificate | null);
+        get_certificate(): Gcr.Certificate | null;
 
         /**
          * Set the certificate displayed in the widget
          * @param certificate the certificate to display
          */
-        set_certificate(certificate: (Gcr.Certificate | null)): void;
+        set_certificate(certificate: Gcr.Certificate | null): void;
 
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
@@ -180,7 +180,7 @@ export namespace GcrGtk4 {
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): (string | null);
+        get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -188,7 +188,7 @@ export namespace GcrGtk4 {
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): (Gtk.Accessible | null);
+        get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the accessible role of an accessible object.
@@ -216,13 +216,13 @@ export namespace GcrGtk4 {
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): (Gtk.Accessible | null);
+        get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): (Gtk.Accessible | null);
+        get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -266,7 +266,7 @@ export namespace GcrGtk4 {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
         /**
          * Updates the next accessible sibling.
@@ -275,7 +275,7 @@ export namespace GcrGtk4 {
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
         /**
          * Informs ATs that the platform state has changed.
@@ -333,7 +333,7 @@ export namespace GcrGtk4 {
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): (string | null);
+        vfunc_get_accessible_id(): string | null;
 
         /**
          * Retrieves the accessible parent for an accessible object.
@@ -341,13 +341,13 @@ export namespace GcrGtk4 {
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+        vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): (Gtk.ATContext | null);
+        vfunc_get_at_context(): Gtk.ATContext | null;
 
         /**
          * Queries the coordinates and dimensions of this accessible
@@ -363,13 +363,13 @@ export namespace GcrGtk4 {
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
 
         /**
          * Queries a platform state, such as focus.
@@ -389,7 +389,7 @@ export namespace GcrGtk4 {
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): (string | null);
+        get_buildable_id(): string | null;
 
         /**
          * Adds a child to `buildable`. `type` is an optional string
@@ -399,7 +399,7 @@ export namespace GcrGtk4 {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
@@ -410,7 +410,7 @@ export namespace GcrGtk4 {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called at the end of each custom element handled by
@@ -421,7 +421,7 @@ export namespace GcrGtk4 {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * Called for each unknown element under `<child>`.
@@ -430,7 +430,7 @@ export namespace GcrGtk4 {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, Gtk.BuildableParser, never];
 
         /**
          * The getter corresponding to `set_id`. Implement this

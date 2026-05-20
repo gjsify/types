@@ -241,13 +241,10 @@ export namespace Unique {
 
     namespace Backend {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -406,10 +403,7 @@ export namespace Unique {
         static $gtype: GObject.GType<MessageData>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): MessageData;
 
@@ -494,7 +488,7 @@ export namespace Unique {
          * @param data binary blob to set, or `null`
          * @param length length of `data`
          */
-        set(data: number, length: (bigint | number)): void;
+        set(data: number, length: bigint | number): void;
 
         /**
          * Sets `filename` as the contents of `message_data`.
@@ -510,7 +504,7 @@ export namespace Unique {
          * @param length length of the text, or -1
          * @returns `true` if the text was successfully converted to UTF-8
          */
-        set_text(str: string, length: (bigint | number)): boolean;
+        set_text(str: string, length: bigint | number): boolean;
 
         /**
          * Converts `uris` to a valid URI list and sets it as payload of

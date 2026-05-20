@@ -216,7 +216,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function interfaces_marshal_VOID__OBJECT_BOOLEAN(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -226,7 +226,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function interfaces_marshal_VOID__OBJECT_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -236,7 +236,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function interfaces_marshal_VOID__OBJECT_POINTER(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -246,7 +246,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function interfaces_marshal_VOID__OBJECT_STRING(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * @param closure 
@@ -256,7 +256,7 @@ export namespace GstInterfaces {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function interfaces_marshal_VOID__OBJECT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: never, marshal_data: never): void;
+    function interfaces_marshal_VOID__OBJECT_ULONG(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: never, marshal_data: never): void;
 
     /**
      * Check a bus message to see if it is a GstMixer notification
@@ -561,9 +561,7 @@ export namespace GstInterfaces {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -621,9 +619,7 @@ export namespace GstInterfaces {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MixerTrack.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MixerTrack.ConstructorProps {}
     }
 
     /**
@@ -799,9 +795,7 @@ export namespace GstInterfaces {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -856,13 +850,10 @@ export namespace GstInterfaces {
 
     namespace TunerNorm {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -990,9 +981,7 @@ export namespace GstInterfaces {
     namespace ColorBalance {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface ColorBalanceNamespace {
@@ -1058,9 +1047,7 @@ export namespace GstInterfaces {
     namespace Mixer {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface MixerNamespace {
@@ -1236,9 +1223,7 @@ export namespace GstInterfaces {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface NavigationNamespace {
@@ -1325,9 +1310,7 @@ export namespace GstInterfaces {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertyProbeNamespace {
@@ -1485,9 +1468,7 @@ export namespace GstInterfaces {
     namespace Tuner {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface TunerNamespace {
@@ -1515,7 +1496,7 @@ export namespace GstInterfaces {
          * @param channel The current {@link GstInterfaces.TunerChannel}
          * @param frequency The new frequency setting
          */
-        frequency_changed(channel: TunerChannel, frequency: (bigint | number)): void;
+        frequency_changed(channel: TunerChannel, frequency: bigint | number): void;
 
         /**
          * Retrieve the current frequency from the given channel. As for
@@ -1569,7 +1550,7 @@ export namespace GstInterfaces {
          * @param channel The {@link GstInterfaces.TunerChannel} to set the frequency on.
          * @param frequency The frequency to tune in to.
          */
-        set_frequency(channel: TunerChannel, frequency: (bigint | number)): void;
+        set_frequency(channel: TunerChannel, frequency: bigint | number): void;
 
         /**
          * Changes the video norm on this tuner to the given norm, which should be
@@ -1674,9 +1655,7 @@ export namespace GstInterfaces {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface VideoOrientationNamespace {
@@ -1755,9 +1734,7 @@ export namespace GstInterfaces {
     namespace XOverlay {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface XOverlayNamespace {
@@ -1782,7 +1759,7 @@ export namespace GstInterfaces {
          * This function should only be used by video overlay plugin developers.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        got_xwindow_id(xwindow_id: (bigint | number)): void;
+        got_xwindow_id(xwindow_id: bigint | number): void;
 
         /**
          * Tell an overlay that it should handle events from the window system. These
@@ -1828,7 +1805,7 @@ export namespace GstInterfaces {
          * stop using that window and create an internal one.
          * @param xwindow_id a `XID` referencing the XWindow.
          */
-        set_xwindow_id(xwindow_id: (bigint | number)): void;
+        set_xwindow_id(xwindow_id: bigint | number): void;
     }
 
 

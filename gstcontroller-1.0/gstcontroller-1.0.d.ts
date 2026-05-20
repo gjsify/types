@@ -361,7 +361,7 @@ export namespace GstController {
             amplitude: number;
             frequency: number;
             offset: number;
-            timeshift: (bigint | number);
+            timeshift: bigint | number;
             waveform: LFOWaveform;
         }
     }
@@ -413,7 +413,7 @@ export namespace GstController {
          * @default 0
          */
         get timeshift(): number;
-        set timeshift(val: (bigint | number));
+        set timeshift(val: bigint | number);
 
         /**
          * Specifies the waveform that should be used for this {@link GstController.LFOControlSource}.
@@ -462,9 +462,7 @@ export namespace GstController {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {}
     }
 
     /**
@@ -534,9 +532,7 @@ export namespace GstController {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.ControlSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.ControlSource.ConstructorProps {}
     }
 
     /**
@@ -593,7 +589,7 @@ export namespace GstController {
          * @param timestamp the search key
          * @returns the found {@link GLib.SequenceIter} or `null`
          */
-        find_control_point_iter(timestamp: Gst.ClockTime): (GLib.SequenceIter | null);
+        find_control_point_iter(timestamp: Gst.ClockTime): GLib.SequenceIter | null;
 
         /**
          * Returns a read-only copy of the list of {@link Gst.TimedValue} for the given property.
@@ -654,7 +650,7 @@ export namespace GstController {
 
         // Constructor properties interface
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
-            tolerance: (bigint | number);
+            tolerance: bigint | number;
         }
     }
 
@@ -677,7 +673,7 @@ export namespace GstController {
          * @default 0
          */
         get tolerance(): number;
-        set tolerance(val: (bigint | number));
+        set tolerance(val: bigint | number);
 
         /**
          * Compile-time signal type information.

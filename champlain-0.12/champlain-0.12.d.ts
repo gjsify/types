@@ -395,9 +395,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
     }
 
     /**
@@ -593,9 +591,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -857,7 +853,7 @@ export namespace Champlain {
 
         _init(...args: any[]): void;
 
-        static new_full(size_limit: number, cache_dir: (string | null), renderer: Renderer): FileCache;
+        static new_full(size_limit: number, cache_dir: string | null, renderer: Renderer): FileCache;
 
         // Signals
         /** @signal */
@@ -921,9 +917,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TileSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TileSource.ConstructorProps {}
     }
 
     /**
@@ -975,13 +969,10 @@ export namespace Champlain {
 
     namespace ImageRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {
-        }
+        interface SignalSignatures extends Renderer.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Renderer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Renderer.ConstructorProps {}
     }
 
     /**
@@ -1219,7 +1210,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -1233,7 +1224,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -1257,7 +1248,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -1343,7 +1334,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -1360,7 +1351,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -1443,7 +1434,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -1454,7 +1445,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -1583,7 +1574,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -1595,7 +1586,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -1633,7 +1624,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -1642,7 +1633,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -2017,7 +2008,7 @@ export namespace Champlain {
 
         static new_with_image(actor: Clutter.Actor): Label;
 
-        static new_with_text(text: string, font: (string | null), text_color: (Clutter.Color | null), label_color: (Clutter.Color | null)): Label;
+        static new_with_text(text: string, font: string | null, text_color: Clutter.Color | null, label_color: Clutter.Color | null): Label;
 
         // Signals
         /** @signal */
@@ -2133,7 +2124,7 @@ export namespace Champlain {
          * Sets the label's background color.
          * @param color The label's background color or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color: (Clutter.Color | null)): void;
+        set_color(color: Clutter.Color | null): void;
 
         /**
          * Sets if the label has a background.
@@ -2157,13 +2148,13 @@ export namespace Champlain {
          * Sets the label's font name such as "Sans 12".
          * @param font_name The label's font name or NULL to reset the font to the default             value.
          */
-        set_font_name(font_name: (string | null)): void;
+        set_font_name(font_name: string | null): void;
 
         /**
          * Sets the label's image.
          * @param image The image as a `ClutterActor` or NULL to remove the current image.
          */
-        set_image(image: (Clutter.Actor | null)): void;
+        set_image(image: Clutter.Actor | null): void;
 
         /**
          * Sets if the label's text is on a single line.
@@ -2181,7 +2172,7 @@ export namespace Champlain {
          * Sets the label's text color.
          * @param color The label's text color or NULL to reset the text to the default         color. The color parameter is copied.
          */
-        set_text_color(color: (Clutter.Color | null)): void;
+        set_text_color(color: Clutter.Color | null): void;
 
         /**
          * Sets if the label's text uses markup.
@@ -2349,9 +2340,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
@@ -2406,7 +2395,7 @@ export namespace Champlain {
          * @param view a {@link Champlain.View}
          * @virtual
          */
-        vfunc_set_view(view: (View | null)): void;
+        vfunc_set_view(view: View | null): void;
 
         // Methods
         /**
@@ -2423,7 +2412,7 @@ export namespace Champlain {
          * by user code.
          * @param view a {@link Champlain.View}
          */
-        set_view(view: (View | null)): void;
+        set_view(view: View | null): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -2442,7 +2431,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -2456,7 +2445,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -2480,7 +2469,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -2566,7 +2555,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -2583,7 +2572,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -2666,7 +2655,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -2677,7 +2666,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -2806,7 +2795,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -2818,7 +2807,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -2856,7 +2845,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -2865,7 +2854,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -3137,7 +3126,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -3151,7 +3140,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -3175,7 +3164,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -3261,7 +3250,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -3278,7 +3267,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -3361,7 +3350,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3372,7 +3361,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3501,7 +3490,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -3513,7 +3502,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -3551,7 +3540,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -3560,7 +3549,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -3894,9 +3883,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MapSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MapSource.ConstructorProps {}
     }
 
     /**
@@ -4200,13 +4187,10 @@ export namespace Champlain {
 
     namespace MapSourceFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4654,7 +4638,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -4668,7 +4652,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -4692,7 +4676,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -4778,7 +4762,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -4795,7 +4779,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -4878,7 +4862,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -4889,7 +4873,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -5018,7 +5002,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -5030,7 +5014,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -5068,7 +5052,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -5077,7 +5061,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -5890,9 +5874,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TileSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TileSource.ConstructorProps {}
     }
 
     /**
@@ -6271,7 +6253,7 @@ export namespace Champlain {
          * Set the path's fill color.
          * @param color The path's fill color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color: (Clutter.Color | null)): void;
+        set_fill_color(color: Clutter.Color | null): void;
 
         /**
          * Sets the path to be stroked
@@ -6283,7 +6265,7 @@ export namespace Champlain {
          * Set the path's stroke color.
          * @param color The path's stroke color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color: (Clutter.Color | null)): void;
+        set_stroke_color(color: Clutter.Color | null): void;
 
         /**
          * Sets the width of the stroke
@@ -6430,7 +6412,7 @@ export namespace Champlain {
         // Constructor properties interface
         interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             color: Clutter.Color;
-            size: (number | any);
+            size: number | any;
         }
     }
 
@@ -6454,9 +6436,9 @@ export namespace Champlain {
          * @default 12
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get size(): (number | any);
+        get size(): number | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set size(val: (number | any));
+        set size(val: number | any);
 
         /**
          * Compile-time signal type information.
@@ -6512,7 +6494,7 @@ export namespace Champlain {
          * Set the color of the point.
          * @param color The color of the point or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color: (Clutter.Color | null)): void;
+        set_color(color: Clutter.Color | null): void;
 
         /**
          * Set the size of the point.
@@ -6614,13 +6596,10 @@ export namespace Champlain {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     /**
@@ -6691,7 +6670,7 @@ export namespace Champlain {
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
          */
-        set_data(data: (Uint8Array | string)): void;
+        set_data(data: Uint8Array | string): void;
 
         /**
          * @param args 
@@ -6916,7 +6895,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -6930,7 +6909,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -6954,7 +6933,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -7040,7 +7019,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -7057,7 +7036,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -7140,7 +7119,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -7151,7 +7130,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -7280,7 +7259,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -7292,7 +7271,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -7330,7 +7309,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -7339,7 +7318,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -7496,11 +7475,11 @@ export namespace Champlain {
 
         // Constructor properties interface
         interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
-            content: (Clutter.Actor | any);
+            content: Clutter.Actor | any;
             etag: string;
             fade_in: boolean;
             fadeIn: boolean;
-            size: (number | any);
+            size: number | any;
             state: State;
             x: number;
             y: number;
@@ -7525,9 +7504,9 @@ export namespace Champlain {
          * @since 0.4
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get content(): (Clutter.Actor | any);
+        get content(): Clutter.Actor | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set content(val: (Clutter.Actor | any));
+        set content(val: Clutter.Actor | any);
 
         /**
          * The tile's ETag. This information is sent by some web servers as a mean
@@ -7561,9 +7540,9 @@ export namespace Champlain {
          * @default 256
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get size(): (number | any);
+        get size(): number | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set size(val: (number | any));
+        set size(val: number | any);
 
         /**
          * The state of the tile
@@ -7819,7 +7798,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -7833,7 +7812,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -7857,7 +7836,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -7943,7 +7922,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -7960,7 +7939,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -8043,7 +8022,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -8054,7 +8033,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -8183,7 +8162,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -8195,7 +8174,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -8233,7 +8212,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -8242,7 +8221,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -8304,9 +8283,7 @@ export namespace Champlain {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MapSource.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MapSource.ConstructorProps {}
     }
 
     /**
@@ -8400,7 +8377,7 @@ export namespace Champlain {
          * @param contents the tile contents that should be stored
          * @param size size of the contents in bytes
          */
-        store_tile(tile: Tile, contents: string, size: (bigint | number)): void;
+        store_tile(tile: Tile, contents: string, size: bigint | number): void;
     }
 
 
@@ -10530,7 +10507,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -10544,7 +10521,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -10568,7 +10545,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -10654,7 +10631,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -10671,7 +10648,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -10754,7 +10731,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -10765,7 +10742,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -10894,7 +10871,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -10906,7 +10883,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -10944,7 +10921,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -10953,7 +10930,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
@@ -11243,7 +11220,7 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
@@ -11257,7 +11234,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+        get_initial_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
@@ -11281,7 +11258,7 @@ export namespace Champlain {
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+        set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
@@ -11367,7 +11344,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
@@ -11384,7 +11361,7 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
@@ -11467,7 +11444,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -11478,7 +11455,7 @@ export namespace Champlain {
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -11607,7 +11584,7 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
@@ -11619,7 +11596,7 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
@@ -11657,7 +11634,7 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
         /**
          * Overrides the common properties setting. The underlying virtual
@@ -11666,7 +11643,7 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets `id_` as the unique Clutter script it for this instance of

@@ -56,7 +56,7 @@ export namespace GUPnP {
         static ACTION_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -88,7 +88,7 @@ export namespace GUPnP {
         static NOTIFY_FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -113,7 +113,7 @@ export namespace GUPnP {
         static FAIL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -160,7 +160,7 @@ export namespace GUPnP {
         static OTHER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -225,7 +225,7 @@ export namespace GUPnP {
         static OTHER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -308,7 +308,7 @@ export namespace GUPnP {
      * @since 0.20.5
      * @deprecated since 1.4.0: Use `gupnp_context_filter_get_entries()` instead.
      */
-    function white_list_get_entries(white_list: WhiteList): (string[] | null);
+    function white_list_get_entries(white_list: WhiteList): string[] | null;
 
     /**
      * Return the state of the entries list of {@link GUPnP.WhiteList}
@@ -352,7 +352,7 @@ export namespace GUPnP {
      * @gir-type Callback
      */
     interface ServiceIntrospectionCallback {
-        (info: ServiceInfo, introspection: (ServiceIntrospection | null), error: (GLib.Error | null)): void;
+        (info: ServiceInfo, introspection: ServiceIntrospection | null, error: GLib.Error | null): void;
     }
 
     /**
@@ -372,47 +372,47 @@ export namespace GUPnP {
     /**
      * @gir-type Alias
      */
-    type BinBase64 = (object | null);
+    type BinBase64 = object | null;
 
     /**
      * @gir-type Alias
      */
-    type BinHex = (object | null);
+    type BinHex = object | null;
 
     /**
      * @gir-type Alias
      */
-    type Date = (object | null);
+    type Date = object | null;
 
     /**
      * @gir-type Alias
      */
-    type DateTime = (object | null);
+    type DateTime = object | null;
 
     /**
      * @gir-type Alias
      */
-    type DateTimeTZ = (object | null);
+    type DateTimeTZ = object | null;
 
     /**
      * @gir-type Alias
      */
-    type Time = (object | null);
+    type Time = object | null;
 
     /**
      * @gir-type Alias
      */
-    type TimeTZ = (object | null);
+    type TimeTZ = object | null;
 
     /**
      * @gir-type Alias
      */
-    type URI = (object | null);
+    type URI = object | null;
 
     /**
      * @gir-type Alias
      */
-    type UUID = (object | null);
+    type UUID = object | null;
 
     namespace Context {
         // Signal signatures
@@ -530,7 +530,7 @@ export namespace GUPnP {
 
         _init(...args: any[]): void;
 
-        static ["new"](iface: (string | null), port: number): Context;
+        static ["new"](iface: string | null, port: number): Context;
 
         // Conflicted with GSSDP.Client.new
         static ["new"](...args: never[]): any;
@@ -633,7 +633,7 @@ export namespace GUPnP {
          * `acl` is `null`, the current access control list will be removed.
          * @param acl The new access control list or `null` to remove the current list.
          */
-        set_acl(acl: (Acl | null)): void;
+        set_acl(acl: Acl | null): void;
 
         /**
          * Set the default language for the Content-Language header to `language`.
@@ -702,7 +702,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -746,7 +746,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -760,7 +760,7 @@ export namespace GUPnP {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             enabled: boolean;
-            entries: (string[] | null);
+            entries: string[] | null;
         }
     }
 
@@ -790,7 +790,7 @@ export namespace GUPnP {
          * @since 1.4.0
          * @construct-only
          */
-        get entries(): (string[] | null);
+        get entries(): string[] | null;
 
         /**
          * Compile-time signal type information.
@@ -864,7 +864,7 @@ export namespace GUPnP {
          * Get the {@link GLib.List} of entries that compose the context filter. Do not free
          * @returns a {@link GLib.List} of entries used to filter networks, interfaces,... or `null`. Do not modify or free the list nor its elements.
          */
-        get_entries(): (string[] | null);
+        get_entries(): string[] | null;
 
         /**
          * Return the state of the entries list of {@link GUPnP.ContextFilter}
@@ -1446,7 +1446,7 @@ export namespace GUPnP {
          * @param element Name of the description element to retrieve
          * @returns a newly allocated string or `null` if the device               description doesn't contain the given `element`
          */
-        get_description_value(element: string): (string | null);
+        get_description_value(element: string): string | null;
 
         /**
          * Get the service with type `type` directly contained in `info` as
@@ -1459,7 +1459,7 @@ export namespace GUPnP {
          * @param type The type of the device to be retrieved.
          * @returns A new {@link GUPnP.DeviceInfo}.
          */
-        get_device(type: string): (DeviceInfo | null);
+        get_device(type: string): DeviceInfo | null;
 
         /**
          * Get the UPnP device type.
@@ -1488,7 +1488,7 @@ export namespace GUPnP {
          * @param prefer_bigger `true` if a bigger, rather than a smaller icon should be returned if no exact match could be found
          * @returns a string, or `null`.  `g_free()` after use.
          */
-        get_icon_url(requested_mime_type: (string | null), requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [(string | null), string, number, number, number];
+        get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [string | null, string, number, number, number];
 
         /**
          * Get the location of the device description file.
@@ -1500,44 +1500,44 @@ export namespace GUPnP {
          * Get the manufacturer of the device.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_manufacturer(): (string | null);
+        get_manufacturer(): string | null;
 
         /**
          * Get an URL pointing to the manufacturer's website.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_manufacturer_url(): (string | null);
+        get_manufacturer_url(): string | null;
 
         /**
          * Get the description of the device model.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_model_description(): (string | null);
+        get_model_description(): string | null;
 
         /**
          * Get the model name of the device.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_model_name(): (string | null);
+        get_model_name(): string | null;
 
         /**
          * Get the model number of the device.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_model_number(): (string | null);
+        get_model_number(): string | null;
 
         /**
          * Get an URL pointing to the device model's website.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_model_url(): (string | null);
+        get_model_url(): string | null;
 
         /**
          * Get an URL pointing to the device's presentation page, for web-based
          * administration.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_presentation_url(): (string | null);
+        get_presentation_url(): string | null;
 
         /**
          * Get the {@link GUPnP.ResourceFactory} used by the `device_info`.
@@ -1549,7 +1549,7 @@ export namespace GUPnP {
          * Get the serial number of the device.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_serial_number(): (string | null);
+        get_serial_number(): string | null;
 
         /**
          * Get the service with type `type` directly contained in `info` as a new object
@@ -1562,7 +1562,7 @@ export namespace GUPnP {
          * @param type The type of the service to be retrieved.
          * @returns A {@link GUPnP.ServiceInfo}.
          */
-        get_service(type: string): (ServiceInfo | null);
+        get_service(type: string): ServiceInfo | null;
 
         /**
          * Get the Unique Device Name of the device.
@@ -1574,7 +1574,7 @@ export namespace GUPnP {
          * Get the Universal Product Code of the device.
          * @returns A string, or `null`. `g_free()` after use.
          */
-        get_upc(): (string | null);
+        get_upc(): string | null;
 
         /**
          * Get the URL base of this device.
@@ -1587,7 +1587,7 @@ export namespace GUPnP {
          * directly contained in `info`.
          * @returns A {@link GLib.List} of strings. The elements should be `g_free()`'d and the list should be `g_list_free()`'d.
          */
-        list_device_types(): (string[] | null);
+        list_device_types(): string[] | null;
 
         /**
          * Get a {@link GLib.List} of new objects implementing {@link GUPnP.DeviceInfo}
@@ -1600,14 +1600,14 @@ export namespace GUPnP {
          * them.
          * @returns a {@link GLib.List} of new {@link GUPnP.DeviceInfo} objects.
          */
-        list_devices(): (DeviceInfo[] | null);
+        list_devices(): DeviceInfo[] | null;
 
         /**
          * Get a {@link GLib.List} of strings that represent the device capabilities as announced
          * in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
          * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain the &lt;dlna:X_DLNACAP&gt; element.
          */
-        list_dlna_capabilities(): (string[] | null);
+        list_dlna_capabilities(): string[] | null;
 
         /**
          * Get a {@link GLib.List} of strings that represent the device class and version as
@@ -1615,14 +1615,14 @@ export namespace GUPnP {
          * element.
          * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain the &lt;dlna:X_DLNADOC&gt; element.
          */
-        list_dlna_device_class_identifier(): (string[] | null);
+        list_dlna_device_class_identifier(): string[] | null;
 
         /**
          * Get a {@link GLib.List} of strings representing the types of the services
          * directly contained in `info`.
          * @returns A {@link GLib.List} of strings. The elements should be `g_free()`'d and the list should be `g_list_free()`'d.
          */
-        list_service_types(): (string[] | null);
+        list_service_types(): string[] | null;
 
         /**
          * Get a {@link GLib.List} of new objects implementing {@link GUPnP.ServiceInfo} representing the
@@ -1634,7 +1634,7 @@ export namespace GUPnP {
          * services if it wishes to keep them around and re-use them.
          * @returns A {@link GLib.List} of new {@link GUPnP.ServiceInfo} objects.
          */
-        list_services(): (ServiceInfo[] | null);
+        list_services(): ServiceInfo[] | null;
     }
 
 
@@ -1652,9 +1652,7 @@ export namespace GUPnP {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends DeviceInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DeviceInfo.ConstructorProps {}
     }
 
     /**
@@ -1694,13 +1692,10 @@ export namespace GUPnP {
 
     namespace ResourceFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1996,7 +1991,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2040,7 +2035,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2297,7 +2292,7 @@ export namespace GUPnP {
          * @param variable The name of the variable to notify
          * @param value The value of the variable
          */
-        notify_value(variable: string, value: (GObject.Value | any)): void;
+        notify_value(variable: string, value: GObject.Value | any): void;
 
         /**
          * A convenience function that attempts to connect all possible
@@ -2492,7 +2487,7 @@ export namespace GUPnP {
          * @param callback callback to be called when introspection object is ready.
          * @param cancellable GCancellable that can be used to cancel the call, or `null`.
          */
-        get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable: (Gio.Cancellable | null)): void;
+        get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable: Gio.Cancellable | null): void;
 
         /**
          * Get the location of the device description file.
@@ -2533,7 +2528,7 @@ export namespace GUPnP {
          * error code {@link Gio.IOErrorEnum.CANCELLED}.
          * @param cancellable {@link Gio.Cancellable} that can be used to cancel the call, or `null`.
          */
-        introspect_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<(ServiceIntrospection | null)>;
+        introspect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceIntrospection | null>;
 
         /**
          * Note that introspection object is created from the information in service
@@ -2545,7 +2540,7 @@ export namespace GUPnP {
          * @param cancellable {@link Gio.Cancellable} that can be used to cancel the call, or `null`.
          * @param callback callback to be called when introspeciton object is ready.
          */
-        introspect_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        introspect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Note that introspection object is created from the information in service
@@ -2557,7 +2552,7 @@ export namespace GUPnP {
          * @param cancellable {@link Gio.Cancellable} that can be used to cancel the call, or `null`.
          * @param callback callback to be called when introspeciton object is ready.
          */
-        introspect_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(ServiceIntrospection | null)> | void);
+        introspect_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ServiceIntrospection | null> | void;
 
         /**
          * Finish an asynchronous call initiated with
@@ -2565,7 +2560,7 @@ export namespace GUPnP {
          * @param res A {@link Gio.AsyncResult}
          * @returns `null`, if the call had an error, a {@link GUPnP.ServiceIntrospection} object otherwise.
          */
-        introspect_finish(res: Gio.AsyncResult): (ServiceIntrospection | null);
+        introspect_finish(res: Gio.AsyncResult): ServiceIntrospection | null;
     }
 
 
@@ -2627,14 +2622,14 @@ export namespace GUPnP {
          * @param action_name The name of the action to retrieve
          * @returns the action or `null`. Do not modify or free it.
          */
-        get_action(action_name: string): (ServiceActionInfo | null);
+        get_action(action_name: string): ServiceActionInfo | null;
 
         /**
          * Returns the state variable by the name `variable_name` in this service.
          * @param variable_name The name of the variable to retrieve
          * @returns the state variable or `null`. Do not modify or free it.
          */
-        get_state_variable(variable_name: string): (ServiceStateVariableInfo | null);
+        get_state_variable(variable_name: string): ServiceStateVariableInfo | null;
 
         /**
          * Returns a GList of names of all the actions in this service.
@@ -2774,7 +2769,7 @@ export namespace GUPnP {
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
          * @returns `null` on error, `action` if successful.
          */
-        call_action(action: ServiceProxyAction, cancellable: (Gio.Cancellable | null)): (ServiceProxyAction | null);
+        call_action(action: ServiceProxyAction, cancellable: Gio.Cancellable | null): ServiceProxyAction | null;
 
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
@@ -2786,20 +2781,7 @@ export namespace GUPnP {
          * @param action A {@link GUPnP.ServiceProxyAction} to call
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
          */
-        call_action_async(action: ServiceProxyAction, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(ServiceProxyAction | null)>;
-
-        /**
-         * Start a call on the remote UPnP service using the pre-configured `action`.
-         * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
-         * the call and `gupnp_service_proxy_action_get_result()`,
-         * `gupnp_service_proxy_action_get_result_hash()` or
-         * `gupnp_service_proxy_action_get_result_list()` to extract the result of the
-         * remote call.
-         * @param action A {@link GUPnP.ServiceProxyAction} to call
-         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the action is finished.
-         */
-        call_action_async(action: ServiceProxyAction, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_action_async(action: ServiceProxyAction, cancellable: Gio.Cancellable | null): globalThis.Promise<ServiceProxyAction | null>;
 
         /**
          * Start a call on the remote UPnP service using the pre-configured `action`.
@@ -2812,7 +2794,20 @@ export namespace GUPnP {
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the action is finished.
          */
-        call_action_async(action: ServiceProxyAction, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(ServiceProxyAction | null)> | void);
+        call_action_async(action: ServiceProxyAction, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Start a call on the remote UPnP service using the pre-configured `action`.
+         * Use `gupnp_service_proxy_call_action_finish()` in the `callback` to finalize
+         * the call and `gupnp_service_proxy_action_get_result()`,
+         * `gupnp_service_proxy_action_get_result_hash()` or
+         * `gupnp_service_proxy_action_get_result_list()` to extract the result of the
+         * remote call.
+         * @param action A {@link GUPnP.ServiceProxyAction} to call
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the current action call
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the action is finished.
+         */
+        call_action_async(action: ServiceProxyAction, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ServiceProxyAction | null> | void;
 
         /**
          * Finish an asynchronous call initiated with
@@ -2823,7 +2818,7 @@ export namespace GUPnP {
          * @param result a {@link Gio.AsyncResult}
          * @returns `null`, if the call had an error, the action otherwise.
          */
-        call_action_finish(result: Gio.AsyncResult): (ServiceProxyAction | null);
+        call_action_finish(result: Gio.AsyncResult): ServiceProxyAction | null;
 
         /**
          * Cancels `action`, freeing the `action` handle.
@@ -2838,7 +2833,7 @@ export namespace GUPnP {
          * @param hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
          * @returns `true` on success.
          */
-        end_action_hash(action: ServiceProxyAction, hash: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): [boolean, GLib.HashTable<string, GObject.Value>];
+        end_action_hash(action: ServiceProxyAction, hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): [boolean, GLib.HashTable<string, GObject.Value>];
 
         /**
          * A variant of `gupnp_service_proxy_end_action` that takes lists of
@@ -2909,13 +2904,10 @@ export namespace GUPnP {
 
     namespace XMLDoc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3088,7 +3080,7 @@ export namespace GUPnP {
          * @param argument The name of the return value to retrieve
          * @param value The {@link GObject.Value} to store the return value
          */
-        set_value(argument: string, value: (GObject.Value | any)): void;
+        set_value(argument: string, value: GObject.Value | any): void;
 
         /**
          * Sets the specified action return values.
@@ -3210,7 +3202,7 @@ export namespace GUPnP {
          * @param out_hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
          * @returns `true` on success.
          */
-        get_result_hash(out_hash: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): [boolean, GLib.HashTable<string, GObject.Value>];
+        get_result_hash(out_hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): [boolean, GLib.HashTable<string, GObject.Value>];
 
         /**
          * A variant of `gupnp_service_proxy_action_get_result()` that takes lists of
@@ -3280,7 +3272,7 @@ export namespace GUPnP {
          * @param value the new value of `key`
          * @returns true if successfully modified, false otherwise
          */
-        set(key: string, value: (GObject.Value | any)): boolean;
+        set(key: string, value: GObject.Value | any): boolean;
 
         unref(): void;
     }
@@ -3339,7 +3331,7 @@ export namespace GUPnP {
              * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
              * @virtual
              */
-            vfunc_is_allowed(device: null, service: null, path: string, address: string, agent: (string | null)): boolean;
+            vfunc_is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
 
             /**
              * Optional. Check asynchronously whether an IP address is allowed to access
@@ -3358,7 +3350,7 @@ export namespace GUPnP {
              * @param callback Callback to call after the function is done.
              * @virtual
              */
-            vfunc_is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`
@@ -3369,9 +3361,7 @@ export namespace GUPnP {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AclNamespace {
@@ -3398,7 +3388,7 @@ export namespace GUPnP {
          * @param address IP address of the peer.
          * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
          */
-        is_allowed(device: null, service: null, path: string, address: string, agent: (string | null)): boolean;
+        is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
 
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
@@ -3415,25 +3405,7 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Optional. Check asynchronously whether an IP address is allowed to access
-         * this resource. Use this function if the process of verifying the access right
-         * is expected to take some time, for example when using D-Bus etc.
-         * 
-         * If this function is supported, `gupnp_acl_can_sync()` should return `true`.
-         * 
-         * Use `gupnp_acl_is_allowed_finish()` to retrieve the result.
-         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
-         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
-         * @param path The path being served.
-         * @param address IP address of the peer
-         * @param agent The User-Agent header of the peer or `null` if not unknown.
-         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
-         * @param callback Callback to call after the function is done.
-         */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Optional. Check asynchronously whether an IP address is allowed to access
@@ -3451,7 +3423,25 @@ export namespace GUPnP {
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
          */
-        is_allowed_async(device: null, service: null, path: string, address: string, agent: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Optional. Check asynchronously whether an IP address is allowed to access
+         * this resource. Use this function if the process of verifying the access right
+         * is expected to take some time, for example when using D-Bus etc.
+         * 
+         * If this function is supported, `gupnp_acl_can_sync()` should return `true`.
+         * 
+         * Use `gupnp_acl_is_allowed_finish()` to retrieve the result.
+         * @param device The {@link GUPnP.Device} associated with `path` or `null` if unknown.
+         * @param service The {@link GUPnP.Service} associated with `path` or `null` if unknown.
+         * @param path The path being served.
+         * @param address IP address of the peer
+         * @param agent The User-Agent header of the peer or `null` if not unknown.
+         * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
+         * @param callback Callback to call after the function is done.
+         */
+        is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`

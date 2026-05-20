@@ -92,7 +92,7 @@ export namespace Gc {
      * @param chars a string consisting of UCS-4 characters
      * @returns a newly allocated character name of `uc`.
      */
-    function character_name(chars: string): (string | null);
+    function character_name(chars: string): string | null;
 
     /**
      * @returns an ISO639 two-letter language code
@@ -205,21 +205,21 @@ export namespace Gc {
          * @param max_matches 
          * @param cancellable 
          */
-        search(max_matches: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<SearchResult>;
+        search(max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<SearchResult>;
 
         /**
          * @param max_matches 
          * @param cancellable 
          * @param callback 
          */
-        search(max_matches: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        search(max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param max_matches 
          * @param cancellable 
          * @param callback 
          */
-        search(max_matches: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<SearchResult> | void);
+        search(max_matches: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SearchResult> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}.

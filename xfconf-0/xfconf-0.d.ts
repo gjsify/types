@@ -82,7 +82,7 @@ export namespace Xfconf {
         static INVALIDCHANNEL: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -192,7 +192,7 @@ export namespace Xfconf {
      * ID number.  See `xfconf_g_property_bind()`.
      * @param id A binding ID number.
      */
-    function property_unbind(id: (bigint | number)): void;
+    function property_unbind(id: bigint | number): void;
 
     /**
      * Unbinds all Xfconf channel bindings (see `xfconf_g_property_bind()`)
@@ -226,28 +226,28 @@ export namespace Xfconf {
      * @param value A {@link GObject.Value}.
      * @returns A gint16.
      */
-    function value_get_int16(value: (GObject.Value | any)): number;
+    function value_get_int16(value: GObject.Value | any): number;
 
     /**
      * Retrieves a 16-bit unsigned value from `value`.
      * @param value A {@link GObject.Value}.
      * @returns A guint16.
      */
-    function value_get_uint16(value: (GObject.Value | any)): number;
+    function value_get_uint16(value: GObject.Value | any): number;
 
     /**
      * Sets `value` using a signed 16-bit integer.
      * @param value A {@link GObject.Value}.
      * @param v_int16 A gint16.
      */
-    function value_set_int16(value: (GObject.Value | any), v_int16: number): void;
+    function value_set_int16(value: GObject.Value | any, v_int16: number): void;
 
     /**
      * Sets `value` using an unsigned 16-bit integer.
      * @param value A {@link GObject.Value}.
      * @param v_uint16 A guint16.
      */
-    function value_set_uint16(value: (GObject.Value | any), v_uint16: number): void;
+    function value_set_uint16(value: GObject.Value | any, v_uint16: number): void;
 
     namespace Channel {
         // Signal signatures
@@ -414,7 +414,7 @@ export namespace Xfconf {
          * @param property A property string.
          * @returns A newly-allocated {@link GLib.PtrArray} on success, or `null` on failure.
          */
-        get_arrayv(property: string): (GObject.Value[] | null);
+        get_arrayv(property: string): GObject.Value[] | null;
 
         /**
          * Retrieves the boolean value associated with `property` on `channel`.
@@ -465,7 +465,7 @@ export namespace Xfconf {
          * @param property_base The base property name of properties to retrieve.
          * @returns A newly-allocated {@link GLib.HashTable}, which should be freed with          `g_hash_table_destroy()` when no longer needed.
          */
-        get_properties(property_base: (string | null)): GLib.HashTable<string, GObject.Value>;
+        get_properties(property_base: string | null): GLib.HashTable<string, GObject.Value>;
 
         /**
          * Gets a property on `channel` and stores it in `value`.  The caller is
@@ -483,7 +483,7 @@ export namespace Xfconf {
          * @param value A {@link GObject.Value}.
          * @returns `true` if the property was retrieved successfully,          `false` otherwise.
          */
-        get_property(property: string, value: (GObject.Value | any)): boolean;
+        get_property(property: string, value: GObject.Value | any): boolean;
 
         /**
          * @param args 
@@ -497,7 +497,7 @@ export namespace Xfconf {
          * @param default_value A fallback value.
          * @returns A newly-allocated string which should                                      be freed with `g_free()` when no longer                                      needed.  If `property` is not in                                      `channel` or if its type does not match,                                      a `g_strdup()`ed copy of                                      `default_value` is returned.
          */
-        get_string(property: string, default_value: (string | null)): (string | null);
+        get_string(property: string, default_value: string | null): string | null;
 
         /**
          * Retrieves the string list value associated with `property` on `channel`.
@@ -535,7 +535,7 @@ export namespace Xfconf {
          * @param default_value A fallback value.
          * @returns The uint64 value, or, if `property` is not in `channel` or if its type does not match,          `default_value` is returned.
          */
-        get_uint64(property: string, default_value: (bigint | number)): number;
+        get_uint64(property: string, default_value: bigint | number): number;
 
         /**
          * Checks to see if `property` exists on `channel`.
@@ -628,7 +628,7 @@ export namespace Xfconf {
          * @param value A {@link GObject.Value}.
          * @returns `true` if the property was set successfully, `false` otherwise.
          */
-        set_property(property: string, value: (GObject.Value | any)): boolean;
+        set_property(property: string, value: GObject.Value | any): boolean;
 
         /**
          * @param args 
@@ -680,14 +680,13 @@ export namespace Xfconf {
          * @param value The value to set.
          * @returns `true` on success, `false` if an error occured.
          */
-        set_uint64(property: string, value: (bigint | number)): boolean;
+        set_uint64(property: string, value: bigint | number): boolean;
     }
 
 
     namespace Int16 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -716,8 +715,7 @@ export namespace Xfconf {
 
     namespace Uint16 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**

@@ -907,7 +907,7 @@ export namespace Cogl {
      * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
      * @deprecated since 1.16: Use `cogl_framebuffer_clear()` api instead
      */
-    function clear(color: Color, buffers: (bigint | number)): void;
+    function clear(color: Color, buffers: bigint | number): void;
 
     /**
      * @param name 
@@ -2581,8 +2581,7 @@ export namespace Cogl {
 
     namespace Bitmap {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -2644,8 +2643,7 @@ export namespace Cogl {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -2674,8 +2672,7 @@ export namespace Cogl {
 
     namespace Offscreen {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -2739,7 +2736,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -2750,7 +2747,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -2771,7 +2768,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
@@ -3499,8 +3496,7 @@ export namespace Cogl {
 
     namespace Onscreen {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -3554,7 +3550,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenDirtyClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: (UserDataDestroyCallback | null)): OnscreenDirtyClosure;
+        add_dirty_callback(callback: OnscreenDirtyCallback, destroy: UserDataDestroyCallback | null): OnscreenDirtyClosure;
 
         /**
          * Registers a `callback` with `onscreen` that will be called whenever
@@ -3579,7 +3575,7 @@ export namespace Cogl {
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenResizeClosure} pointer that can be used to               remove the callback and associated `user_data` later.
          */
-        add_resize_callback(callback: OnscreenResizeCallback, destroy: (UserDataDestroyCallback | null)): OnscreenResizeClosure;
+        add_resize_callback(callback: OnscreenResizeCallback, destroy: UserDataDestroyCallback | null): OnscreenResizeClosure;
 
         /**
          * Installs a `callback` function that should be called whenever a swap buffers
@@ -3870,7 +3866,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -3881,7 +3877,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -3902,7 +3898,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`
@@ -4630,8 +4626,7 @@ export namespace Cogl {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -5433,8 +5428,7 @@ export namespace Cogl {
 
     namespace Texture2D {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -5717,8 +5711,7 @@ export namespace Cogl {
 
     namespace Texture2DSliced {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
-        }
+        interface SignalSignatures extends Object.SignalSignatures {}
     }
 
     /**
@@ -6002,10 +5995,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Color>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Color;
 
@@ -6307,10 +6297,7 @@ export namespace Cogl {
         static $gtype: GObject.GType<Material>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Material;
 
@@ -7244,7 +7231,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        project_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        project_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a rotation matrix that applies a rotation
@@ -7334,7 +7321,7 @@ export namespace Cogl {
          * @param points_out A pointer to the first component of the first output point.
          * @param n_points The number of points to transform.
          */
-        transform_points(n_components: number, stride_in: (bigint | number), points_in: null, stride_out: (bigint | number), points_out: null, n_points: number): void;
+        transform_points(n_components: number, stride_in: bigint | number, points_in: null, stride_out: bigint | number, points_out: null, n_points: number): void;
 
         /**
          * Multiplies `matrix` with a transform matrix that translates along
@@ -7610,7 +7597,7 @@ export namespace Cogl {
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
          */
-        clear(buffers: (bigint | number), color: Color): void;
+        clear(buffers: bigint | number, color: Color): void;
 
         /**
          * Clears all the auxiliary buffers identified in the `buffers` mask, and if
@@ -7621,7 +7608,7 @@ export namespace Cogl {
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
          */
-        clear4f(buffers: (bigint | number), red: number, green: number, blue: number, alpha: number): void;
+        clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Declares that the specified `buffers` no longer need to be referenced
@@ -7642,7 +7629,7 @@ export namespace Cogl {
          * a {@link Cogl.Offscreen} framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
          */
-        discard_buffers(buffers: (bigint | number)): void;
+        discard_buffers(buffers: bigint | number): void;
 
         /**
          * Draws a textured rectangle to `framebuffer` with the given `pipeline`

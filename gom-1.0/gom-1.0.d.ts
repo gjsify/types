@@ -41,7 +41,7 @@ export namespace Gom {
         static RESOURCE_CURSOR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -123,13 +123,10 @@ export namespace Gom {
 
     namespace Adapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -173,12 +170,12 @@ export namespace Gom {
         /**
          * @param callback 
          */
-        close_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        close_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        close_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -219,7 +216,7 @@ export namespace Gom {
          * @param uri a URI understood by SQLite
          * @param callback the function to call when the operation finished, or `null`
          */
-        open_async(uri: string, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_async(uri: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Opens the database pointed to by `uri`. `uri` can be in any format understood
@@ -228,7 +225,7 @@ export namespace Gom {
          * @param uri a URI understood by SQLite
          * @param callback the function to call when the operation finished, or `null`
          */
-        open_async(uri: string, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_async(uri: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -332,13 +329,13 @@ export namespace Gom {
          * @param param 
          * @param value 
          */
-        set_param(param: number, value: (GObject.Value | any)): void;
+        set_param(param: number, value: GObject.Value | any): void;
 
         /**
          * @param param 
          * @param bytes 
          */
-        set_param_bytes(param: number, bytes: (GLib.Bytes | Uint8Array)): void;
+        set_param_bytes(param: number, bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * @param param 
@@ -362,7 +359,7 @@ export namespace Gom {
          * @param param 
          * @param value 
          */
-        set_param_int64(param: number, value: (bigint | number)): void;
+        set_param_int64(param: number, value: bigint | number): void;
 
         /**
          * @param param 
@@ -380,7 +377,7 @@ export namespace Gom {
          * @param param 
          * @param value 
          */
-        set_param_uint64(param: number, value: (bigint | number)): void;
+        set_param_uint64(param: number, value: bigint | number): void;
 
         /**
          * @param sql 
@@ -607,7 +604,7 @@ export namespace Gom {
          * @param column 
          * @param value 
          */
-        get_column(column: number, value: (GObject.Value | any)): void;
+        get_column(column: number, value: GObject.Value | any): void;
 
         /**
          * @param column 
@@ -711,25 +708,25 @@ export namespace Gom {
 
         static new_and_fullv(filter_array: Filter): Filter;
 
-        static new_eq(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_eq(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_glob(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_glob(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_gt(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_gt(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_gte(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_gte(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
         static new_is_not_null(resource_type: GObject.GType, property_name: string): Filter;
 
         static new_is_null(resource_type: GObject.GType, property_name: string): Filter;
 
-        static new_like(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_like(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_lt(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_lt(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_lte(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_lte(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
-        static new_neq(resource_type: GObject.GType, property_name: string, value: (GObject.Value | any)): Filter;
+        static new_neq(resource_type: GObject.GType, property_name: string, value: GObject.Value | any): Filter;
 
         static new_or(left: Filter, right: Filter): Filter;
 
@@ -754,7 +751,7 @@ export namespace Gom {
         /**
          * @param table_map 
          */
-        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+        get_sql(table_map: { [key: string]: any } | GLib.HashTable<never, never>): string;
 
         /**
          * Fetches the list of values that should be applied in order when building
@@ -840,7 +837,7 @@ export namespace Gom {
          * @param object_types a {@link GLib.List} of {@link GObject.GType}
          * @param callback A callback to execute upon completion.
          */
-        automatic_migrate_async(version: number, object_types: GObject.GType[], callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        automatic_migrate_async(version: number, object_types: GObject.GType[], callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Performs an automatic migration on the underlying database. See
@@ -852,7 +849,7 @@ export namespace Gom {
          * @param object_types a {@link GLib.List} of {@link GObject.GType}
          * @param callback A callback to execute upon completion.
          */
-        automatic_migrate_async(version: number, object_types: GObject.GType[], callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        automatic_migrate_async(version: number, object_types: GObject.GType[], callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -881,14 +878,14 @@ export namespace Gom {
          * @param filter 
          * @param callback 
          */
-        find_async(resource_type: GObject.GType, filter: Filter, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_async(resource_type: GObject.GType, filter: Filter, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param resource_type 
          * @param filter 
          * @param callback 
          */
-        find_async(resource_type: GObject.GType, filter: Filter, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ResourceGroup> | void);
+        find_async(resource_type: GObject.GType, filter: Filter, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ResourceGroup> | void;
 
         /**
          * Completes an asynchronous request to fetch a group of resources.
@@ -908,14 +905,14 @@ export namespace Gom {
          * @param filter 
          * @param callback 
          */
-        find_one_async(resource_type: GObject.GType, filter: Filter, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_one_async(resource_type: GObject.GType, filter: Filter, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param resource_type 
          * @param filter 
          * @param callback 
          */
-        find_one_async(resource_type: GObject.GType, filter: Filter, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Resource> | void);
+        find_one_async(resource_type: GObject.GType, filter: Filter, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Resource> | void;
 
         /**
          * Completes an asynchronous request to find a single resource in the
@@ -931,7 +928,7 @@ export namespace Gom {
          * @param filter A {@link Gom.Filter} to apply to your search.
          * @returns A {@link Gom.Resource} or `null`.
          */
-        find_one_sync(resource_type: GObject.GType, filter: (Filter | null)): Resource;
+        find_one_sync(resource_type: GObject.GType, filter: Filter | null): Resource;
 
         /**
          * @param resource_type 
@@ -939,7 +936,7 @@ export namespace Gom {
          * @param sorting 
          * @param callback 
          */
-        find_sorted_async(resource_type: GObject.GType, filter: Filter, sorting: Sorting, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        find_sorted_async(resource_type: GObject.GType, filter: Filter, sorting: Sorting, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Synchronously queries the {@link Gom.Repository} for objects matching the
@@ -950,7 +947,7 @@ export namespace Gom {
          * @param sorting An optional {@link Gom.Sorting} to order the query                              results.
          * @returns A {@link Gom.ResourceGroup} or `null`.
          */
-        find_sorted_sync(resource_type: GObject.GType, filter: (Filter | null), sorting: (Sorting | null)): ResourceGroup;
+        find_sorted_sync(resource_type: GObject.GType, filter: Filter | null, sorting: Sorting | null): ResourceGroup;
 
         /**
          * Synchronously queries the {@link Gom.Repository} for objects matching the
@@ -960,7 +957,7 @@ export namespace Gom {
          * @param filter An optional filter for the query.
          * @returns A {@link Gom.ResourceGroup} or `null`.
          */
-        find_sync(resource_type: GObject.GType, filter: (Filter | null)): ResourceGroup;
+        find_sync(resource_type: GObject.GType, filter: Filter | null): ResourceGroup;
 
         /**
          * Fetches the underlying adapter.
@@ -989,7 +986,7 @@ export namespace Gom {
          * @param migrator A function to perform the migrations.
          * @param callback A callback to execute upon completion.
          */
-        migrate_async(version: number, migrator: RepositoryMigrator, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        migrate_async(version: number, migrator: RepositoryMigrator, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously performs a migration on the underlying database. This will
@@ -1001,7 +998,7 @@ export namespace Gom {
          * @param migrator A function to perform the migrations.
          * @param callback A callback to execute upon completion.
          */
-        migrate_async(version: number, migrator: RepositoryMigrator, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        migrate_async(version: number, migrator: RepositoryMigrator, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1142,12 +1139,12 @@ export namespace Gom {
         /**
          * @param callback 
          */
-        delete_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        delete_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1174,7 +1171,7 @@ export namespace Gom {
          * @param filter 
          * @param callback 
          */
-        fetch_m2m_async(resource_type: GObject.GType, m2m_table: string, filter: Filter, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_m2m_async(resource_type: GObject.GType, m2m_table: string, filter: Filter, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param resource_type 
@@ -1182,7 +1179,7 @@ export namespace Gom {
          * @param filter 
          * @param callback 
          */
-        fetch_m2m_async(resource_type: GObject.GType, m2m_table: string, filter: Filter, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ResourceGroup> | void);
+        fetch_m2m_async(resource_type: GObject.GType, m2m_table: string, filter: Filter, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ResourceGroup> | void;
 
         /**
          * Completes the asynchronous request to fetch a group of resources that
@@ -1197,12 +1194,12 @@ export namespace Gom {
         /**
          * @param callback 
          */
-        save_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        save_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1358,12 +1355,12 @@ export namespace Gom {
         /**
          * @param callback 
          */
-        delete_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        delete_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1383,14 +1380,14 @@ export namespace Gom {
          * @param count 
          * @param callback 
          */
-        fetch_async(index_: number, count: number, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        fetch_async(index_: number, count: number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param index_ 
          * @param count 
          * @param callback 
          */
-        fetch_async(index_: number, count: number, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        fetch_async(index_: number, count: number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1424,12 +1421,12 @@ export namespace Gom {
         /**
          * @param callback 
          */
-        write_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        write_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -1442,13 +1439,10 @@ export namespace Gom {
 
     namespace Sorting {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     /**
@@ -1518,7 +1512,7 @@ export namespace Gom {
          * @param table_map A {@link GLib.HashTable}.
          * @returns A string containing the SQL query corresponding                           to this `sorting`.
          */
-        get_sql(table_map: ({ [key: string]: any } | GLib.HashTable<never, never>)): string;
+        get_sql(table_map: { [key: string]: any } | GLib.HashTable<never, never>): string;
     }
 
 

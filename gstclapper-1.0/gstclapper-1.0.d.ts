@@ -72,7 +72,7 @@ export namespace GstClapper {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -290,29 +290,29 @@ export namespace GstClapper {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            audio_video_offset: (bigint | number);
-            audioVideoOffset: (bigint | number);
+            audio_video_offset: bigint | number;
+            audioVideoOffset: bigint | number;
             current_audio_track: ClapperAudioInfo;
             currentAudioTrack: ClapperAudioInfo;
             current_subtitle_track: ClapperSubtitleInfo;
             currentSubtitleTrack: ClapperSubtitleInfo;
             current_video_track: ClapperVideoInfo;
             currentVideoTrack: ClapperVideoInfo;
-            duration: (bigint | number);
+            duration: bigint | number;
             media_info: ClapperMediaInfo;
             mediaInfo: ClapperMediaInfo;
             mpris: ClapperMpris;
             mute: boolean;
             pipeline: Gst.Element;
-            position: (bigint | number);
+            position: bigint | number;
             rate: number;
             seek_mode: ClapperSeekMode;
             seekMode: ClapperSeekMode;
             signal_dispatcher: ClapperSignalDispatcher;
             signalDispatcher: ClapperSignalDispatcher;
             state: ClapperState;
-            subtitle_video_offset: (bigint | number);
-            subtitleVideoOffset: (bigint | number);
+            subtitle_video_offset: bigint | number;
+            subtitleVideoOffset: bigint | number;
             suburi: string;
             uri: string;
             use_pipewire: boolean;
@@ -340,13 +340,13 @@ export namespace GstClapper {
          * @default 0
          */
         get audio_video_offset(): number;
-        set audio_video_offset(val: (bigint | number));
+        set audio_video_offset(val: bigint | number);
 
         /**
          * @default 0
          */
         get audioVideoOffset(): number;
-        set audioVideoOffset(val: (bigint | number));
+        set audioVideoOffset(val: bigint | number);
 
         /**
          * @read-only
@@ -454,13 +454,13 @@ export namespace GstClapper {
          * @default 0
          */
         get subtitle_video_offset(): number;
-        set subtitle_video_offset(val: (bigint | number));
+        set subtitle_video_offset(val: bigint | number);
 
         /**
          * @default 0
          */
         get subtitleVideoOffset(): number;
-        set subtitleVideoOffset(val: (bigint | number));
+        set subtitleVideoOffset(val: bigint | number);
 
         /**
          * @default null
@@ -552,7 +552,7 @@ export namespace GstClapper {
 
         _init(...args: any[]): void;
 
-        static ["new"](video_renderer: (ClapperVideoRenderer | null), signal_dispatcher: (ClapperSignalDispatcher | null), mpris: (ClapperMpris | null)): Clapper;
+        static ["new"](video_renderer: ClapperVideoRenderer | null, signal_dispatcher: ClapperSignalDispatcher | null, mpris: ClapperMpris | null): Clapper;
 
         // Signals
         /** @signal */
@@ -577,7 +577,7 @@ export namespace GstClapper {
          * on the implementation side.
          * @param argv pointer to application's argv
          */
-        static gst_init(argv: (string[] | null)): string[] | null;
+        static gst_init(argv: string[] | null): string[] | null;
 
         /**
          * Frees a `null` terminated array of {@link GstClapper.ClapperVisualization}.
@@ -713,7 +713,7 @@ export namespace GstClapper {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: ClapperSnapshotFormat, config: (Gst.Structure | null)): Gst.Sample;
+        get_video_snapshot(format: ClapperSnapshotFormat, config: Gst.Structure | null): Gst.Sample;
 
         /**
          * Returns the current volume level, as a percentage between 0 and 1.5
@@ -767,7 +767,7 @@ export namespace GstClapper {
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_audio_video_offset(offset: (bigint | number)): void;
+        set_audio_video_offset(offset: bigint | number): void;
 
         /**
          * Sets the current value of the indicated channel `type` to the passed
@@ -833,7 +833,7 @@ export namespace GstClapper {
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_subtitle_video_offset(offset: (bigint | number)): void;
+        set_subtitle_video_offset(offset: bigint | number): void;
 
         /**
          * Sets the next URI to play.
@@ -888,13 +888,10 @@ export namespace GstClapper {
 
     namespace ClapperAudioInfo {
         // Signal signatures
-        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1022,7 +1019,7 @@ export namespace GstClapper {
          * or the thread default one if `null` is used. See `gst_clapper_new()`.
          * @param application_context GMainContext to use or `null`
          */
-        static ["new"](application_context: (GLib.MainContext | null)): ClapperSignalDispatcher;
+        static ["new"](application_context: GLib.MainContext | null): ClapperSignalDispatcher;
 
         /**
          * @param clapper 
@@ -1097,13 +1094,10 @@ export namespace GstClapper {
 
     namespace ClapperMediaInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1337,7 +1331,7 @@ export namespace GstClapper {
 
         _init(...args: any[]): void;
 
-        static ["new"](own_name: string, id_path: string, identity: (string | null), desktop_entry: (string | null), default_art_url: (string | null)): ClapperMpris;
+        static ["new"](own_name: string, id_path: string, identity: string | null, desktop_entry: string | null, default_art_url: string | null): ClapperMpris;
 
         // Signals
         /** @signal */
@@ -1356,13 +1350,10 @@ export namespace GstClapper {
 
     namespace ClapperStreamInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1435,13 +1426,10 @@ export namespace GstClapper {
 
     namespace ClapperSubtitleInfo {
         // Signal signatures
-        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1493,13 +1481,10 @@ export namespace GstClapper {
 
     namespace ClapperVideoInfo {
         // Signal signatures
-        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1797,9 +1782,7 @@ export namespace GstClapper {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ClapperSignalDispatcherNamespace {
@@ -1820,9 +1803,7 @@ export namespace GstClapper {
     namespace ClapperVideoRenderer {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ClapperVideoRendererNamespace {

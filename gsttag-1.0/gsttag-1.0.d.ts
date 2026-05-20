@@ -464,14 +464,14 @@ export namespace GstTag {
      * @param env_vars a NULL-terminated string array of environment variable names, or NULL
      * @returns a newly-allocated string in UTF-8 encoding, or NULL
      */
-    function tag_freeform_string_to_utf8(data: number[], env_vars: string[]): (string | null);
+    function tag_freeform_string_to_utf8(data: number[], env_vars: string[]): string | null;
 
     /**
      * Looks up the GStreamer tag for a ID3v2 tag.
      * @param id3_tag ID3v2 tag to convert to GStreamer tag
      * @returns The corresponding GStreamer tag or NULL if none exists.
      */
-    function tag_from_id3_tag(id3_tag: string): (string | null);
+    function tag_from_id3_tag(id3_tag: string): string | null;
 
     /**
      * Looks up the GStreamer tag for an ID3v2 user tag (e.g. description in
@@ -480,14 +480,14 @@ export namespace GstTag {
      * @param id3_user_tag ID3v2 user tag to convert to GStreamer tag
      * @returns The corresponding GStreamer tag or NULL if none exists.
      */
-    function tag_from_id3_user_tag(type: string, id3_user_tag: string): (string | null);
+    function tag_from_id3_user_tag(type: string, id3_user_tag: string): string | null;
 
     /**
      * Looks up the GStreamer tag for a vorbiscomment tag.
      * @param vorbis_tag vorbiscomment tag to convert to GStreamer tag
      * @returns The corresponding GStreamer tag or NULL if none exists.
      */
-    function tag_from_vorbis_tag(vorbis_tag: string): (string | null);
+    function tag_from_vorbis_tag(vorbis_tag: string): string | null;
 
     /**
      * Determines size of an ID3v2 tag on buffer containing at least ID3v2 header,
@@ -506,7 +506,7 @@ export namespace GstTag {
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
      * @returns two-letter ISO-639-1 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
-    function tag_get_language_code_iso_639_1(lang_code: string): (string | null);
+    function tag_get_language_code_iso_639_1(lang_code: string): string | null;
 
     /**
      * Returns three-letter ISO-639-2 "bibliographic" language code given a
@@ -521,7 +521,7 @@ export namespace GstTag {
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
      * @returns three-letter ISO-639-2 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
-    function tag_get_language_code_iso_639_2B(lang_code: string): (string | null);
+    function tag_get_language_code_iso_639_2B(lang_code: string): string | null;
 
     /**
      * Returns three-letter ISO-639-2 "terminological" language code given a
@@ -536,7 +536,7 @@ export namespace GstTag {
      * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
      * @returns three-letter ISO-639-2 language code string that maps to `lang_code`,     or NULL if no mapping is known. The returned string must not be     modified or freed.
      */
-    function tag_get_language_code_iso_639_2T(lang_code: string): (string | null);
+    function tag_get_language_code_iso_639_2T(lang_code: string): string | null;
 
     /**
      * Returns a list of known language codes (in form of two-letter ISO-639-1
@@ -557,7 +557,7 @@ export namespace GstTag {
      * @param language_code two or three-letter ISO-639 language code
      * @returns language name in UTF-8 format, or NULL if `language_code` could     not be mapped to a language name. The returned string must not be     modified and does not need to freed; it will stay valid until the     application is terminated.
      */
-    function tag_get_language_name(language_code: string): (string | null);
+    function tag_get_language_name(language_code: string): string | null;
 
     /**
      * Get the description of a license, which is a translated description
@@ -565,7 +565,7 @@ export namespace GstTag {
      * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
      * @returns the description of the license, or NULL if the license is unknown    or a description is not available.
      */
-    function tag_get_license_description(license_ref: string): (string | null);
+    function tag_get_license_description(license_ref: string): string | null;
 
     /**
      * Get the flags of a license, which describe most of the features of
@@ -586,7 +586,7 @@ export namespace GstTag {
      * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
      * @returns the jurisdiction code of the license, or NULL if the license is    unknown or is not specific to a particular jurisdiction.
      */
-    function tag_get_license_jurisdiction(license_ref: string): (string | null);
+    function tag_get_license_jurisdiction(license_ref: string): string | null;
 
     /**
      * Get the nick name of a license, which is a short (untranslated) string
@@ -594,7 +594,7 @@ export namespace GstTag {
      * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
      * @returns the nick name of the license, or NULL if the license is unknown
      */
-    function tag_get_license_nick(license_ref: string): (string | null);
+    function tag_get_license_nick(license_ref: string): string | null;
 
     /**
      * Get the title of a license, which is a short translated description
@@ -602,14 +602,14 @@ export namespace GstTag {
      * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
      * @returns the title of the license, or NULL if the license is unknown or    no title is available.
      */
-    function tag_get_license_title(license_ref: string): (string | null);
+    function tag_get_license_title(license_ref: string): string | null;
 
     /**
      * Get the version of a license.
      * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
      * @returns the version of the license, or NULL if the license is not known or    has no version
      */
-    function tag_get_license_version(license_ref: string): (string | null);
+    function tag_get_license_version(license_ref: string): string | null;
 
     /**
      * Returns a list of known license references (in form of URIs). This is
@@ -632,7 +632,7 @@ export namespace GstTag {
      * @param id ID of genre to query
      * @returns the genre or NULL if no genre is associated with that ID.
      */
-    function tag_id3_genre_get(id: number): (string | null);
+    function tag_id3_genre_get(id: number): string | null;
 
     /**
      * Helper function for tag-reading plugins to create a {@link Gst.Sample} suitable to
@@ -661,7 +661,7 @@ export namespace GstTag {
      * @param image_type type of the image, or #GST_TAG_IMAGE_TYPE_UNDEFINED. Pass     #GST_TAG_IMAGE_TYPE_NONE if no image type should be set at all (e.g.     for preview images)
      * @returns a newly-allocated image sample for use in tag lists, or NULL
      */
-    function tag_image_data_to_image_sample(image_data: (Uint8Array | string), image_type: TagImageType): (Gst.Sample | null);
+    function tag_image_data_to_image_sample(image_data: Uint8Array | string, image_type: TagImageType): Gst.Sample | null;
 
     /**
      * Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
@@ -672,7 +672,7 @@ export namespace GstTag {
      * @param id3_picture_type picture type as per the ID3 (v2.4.0) specification for    the APIC frame (0 = unknown/other)
      * @returns `true` if the image was processed, otherwise `false`
      */
-    function tag_list_add_id3_image(tag_list: Gst.TagList, image_data: (Uint8Array | string), id3_picture_type: number): boolean;
+    function tag_list_add_id3_image(tag_list: Gst.TagList, image_data: Uint8Array | string, id3_picture_type: number): boolean;
 
     /**
      * Parses the IFD and IFD tags data contained in the buffer and puts it
@@ -699,7 +699,7 @@ export namespace GstTag {
      * @param buffer buffer to convert
      * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
-    function tag_list_from_id3v2_tag(buffer: Gst.Buffer): (Gst.TagList | null);
+    function tag_list_from_id3v2_tag(buffer: Gst.Buffer): Gst.TagList | null;
 
     /**
      * Creates a new tag list that contains the information parsed out of a
@@ -708,7 +708,7 @@ export namespace GstTag {
      * @param id_data identification data at start of stream
      * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
-    function tag_list_from_vorbiscomment(data: (Uint8Array | string), id_data: (Uint8Array | string)): [(Gst.TagList | null), string];
+    function tag_list_from_vorbiscomment(data: Uint8Array | string, id_data: Uint8Array | string): [Gst.TagList | null, string];
 
     /**
      * Creates a new tag list that contains the information parsed out of a
@@ -717,14 +717,14 @@ export namespace GstTag {
      * @param id_data identification data at start of stream
      * @returns A new {@link Gst.TagList} with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
      */
-    function tag_list_from_vorbiscomment_buffer(buffer: Gst.Buffer, id_data: (Uint8Array | string)): [(Gst.TagList | null), string];
+    function tag_list_from_vorbiscomment_buffer(buffer: Gst.Buffer, id_data: Uint8Array | string): [Gst.TagList | null, string];
 
     /**
      * Parse a xmp packet into a taglist.
      * @param buffer buffer
      * @returns new taglist or `null`, free the list when done
      */
-    function tag_list_from_xmp_buffer(buffer: Gst.Buffer): (Gst.TagList | null);
+    function tag_list_from_xmp_buffer(buffer: Gst.Buffer): Gst.TagList | null;
 
     /**
      * Parses the data containing an ID3v1 tag and returns a {@link Gst.TagList} from the
@@ -732,7 +732,7 @@ export namespace GstTag {
      * @param data 128 bytes of data containing the ID3v1 tag
      * @returns A new tag list or NULL if the data was not an ID3v1 tag.
      */
-    function tag_list_new_from_id3v1(data: (Uint8Array | string)): (Gst.TagList | null);
+    function tag_list_new_from_id3v1(data: Uint8Array | string): Gst.TagList | null;
 
     /**
      * Formats the tags in taglist on exif format. The resulting buffer contains
@@ -759,7 +759,7 @@ export namespace GstTag {
      * @param vendor_string string that describes the vendor string or NULL
      * @returns A new {@link Gst.Buffer} containing a vorbiscomment buffer with all tags          that could be converted from the given tag list.
      */
-    function tag_list_to_vorbiscomment_buffer(list: Gst.TagList, id_data: (Uint8Array | string), vendor_string: (string | null)): Gst.Buffer;
+    function tag_list_to_vorbiscomment_buffer(list: Gst.TagList, id_data: Uint8Array | string, vendor_string: string | null): Gst.Buffer;
 
     /**
      * Formats a taglist as a xmp packet using only the selected
@@ -770,7 +770,7 @@ export namespace GstTag {
      * @param schemas `null` terminated array of schemas to be used on serialization
      * @returns new buffer or `null`, unref the buffer when done
      */
-    function tag_list_to_xmp_buffer(list: Gst.TagList, read_only: boolean, schemas: string[]): (Gst.Buffer | null);
+    function tag_list_to_xmp_buffer(list: Gst.TagList, read_only: boolean, schemas: string[]): Gst.Buffer | null;
 
     /**
      * Convenience function to parse a GST_TAG_EXTENDED_COMMENT string and
@@ -798,7 +798,7 @@ export namespace GstTag {
      * @param gst_tag GStreamer tag to convert to vorbiscomment tag
      * @returns The corresponding ID3v2 tag or NULL if none exists.
      */
-    function tag_to_id3_tag(gst_tag: string): (string | null);
+    function tag_to_id3_tag(gst_tag: string): string | null;
 
     /**
      * Creates a new tag list that contains the information parsed out of a
@@ -814,7 +814,7 @@ export namespace GstTag {
      * @param gst_tag GStreamer tag to convert to vorbiscomment tag
      * @returns The corresponding vorbiscomment tag or NULL if none exists.
      */
-    function tag_to_vorbis_tag(gst_tag: string): (string | null);
+    function tag_to_vorbis_tag(gst_tag: string): string | null;
 
     /**
      * Gets the list of supported schemas in the xmp lib
@@ -932,9 +932,7 @@ export namespace GstTag {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     /**
@@ -1037,9 +1035,7 @@ export namespace GstTag {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.TagSetter.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.TagSetter.ConstructorProps {}
     }
 
     /**
@@ -1111,7 +1107,7 @@ export namespace GstTag {
          * @param tag tag to set
          * @param value GValue to set for the tag
          */
-        add_tag_value(mode: Gst.TagMergeMode, tag: string, value: (GObject.Value | any)): void;
+        add_tag_value(mode: Gst.TagMergeMode, tag: string, value: GObject.Value | any): void;
 
         /**
          * Returns the current list of tags the setter uses.  The list should not be
@@ -1120,7 +1116,7 @@ export namespace GstTag {
          * This function is not thread-safe.
          * @returns a current snapshot of the          taglist used in the setter or `null` if none is used.
          */
-        get_tag_list(): (Gst.TagList | null);
+        get_tag_list(): Gst.TagList | null;
 
         /**
          * Queries the mode by which tags inside the setter are overwritten by tags
@@ -1207,9 +1203,7 @@ export namespace GstTag {
     namespace TagXmpWriter {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Element.ConstructorProps {}
     }
 
     export interface TagXmpWriterNamespace {

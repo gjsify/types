@@ -30,12 +30,12 @@ export namespace LibvirtSandbox {
     /**
      * @param argv pointer to application's argv
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     /**
      * @param argv pointer to application's argv
      */
-    function init_check(argv: (string[] | null)): [boolean, string[] | null];
+    function init_check(argv: string[] | null): [boolean, string[] | null];
 
     /**
      * @param value 
@@ -228,9 +228,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Builder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Builder.ConstructorProps {}
     }
 
     /**
@@ -272,13 +270,10 @@ export namespace LibvirtSandbox {
 
     namespace BuilderInitrd {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -332,9 +327,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Builder.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Builder.ConstructorProps {}
     }
 
     /**
@@ -707,7 +700,7 @@ export namespace LibvirtSandbox {
          * @param target the guest target path
          * @returns a mount object or NULL
          */
-        find_mount(target: string): (ConfigMount | null);
+        find_mount(target: string): ConfigMount | null;
 
         /**
          * Retrieves the sandbox binary architecture
@@ -1446,9 +1439,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ConfigMountFile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
     }
 
     /**
@@ -1496,9 +1487,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ConfigMountFile.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
     }
 
     /**
@@ -1612,7 +1601,7 @@ export namespace LibvirtSandbox {
 
         // Constructor properties interface
         interface ConstructorProps extends ConfigMount.ConstructorProps {
-            usage: (bigint | number);
+            usage: bigint | number;
         }
     }
 
@@ -1643,7 +1632,7 @@ export namespace LibvirtSandbox {
 
         _init(...args: any[]): void;
 
-        static ["new"](targetdir: string, usage: (bigint | number)): ConfigMountRam;
+        static ["new"](targetdir: string, usage: bigint | number): ConfigMountRam;
 
         // Signals
         /** @signal */
@@ -1669,7 +1658,7 @@ export namespace LibvirtSandbox {
          * Sets the memory usage limit for the RAM filesystem in Kibibytes
          * @param usage the memory usage limit in KiB
          */
-        set_usage(usage: (bigint | number)): void;
+        set_usage(usage: bigint | number): void;
     }
 
 
@@ -2198,9 +2187,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Config.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Config.ConstructorProps {}
     }
 
     /**
@@ -2258,9 +2245,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ConfigService.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ConfigService.ConstructorProps {}
     }
 
     /**
@@ -2328,9 +2313,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ConfigService.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ConfigService.ConstructorProps {}
     }
 
     /**
@@ -2516,9 +2499,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Console.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Console.ConstructorProps {}
     }
 
     /**
@@ -2581,9 +2562,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Console.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Console.ConstructorProps {}
     }
 
     /**
@@ -2746,12 +2725,12 @@ export namespace LibvirtSandbox {
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_log_console(): (Console | null);
+        get_log_console(): Console | null;
 
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_shell_console(): (Console | null);
+        get_shell_console(): Console | null;
 
         is_attached(): boolean;
 
@@ -2770,9 +2749,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Context.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Context.ConstructorProps {}
     }
 
     /**
@@ -2814,7 +2791,7 @@ export namespace LibvirtSandbox {
         /**
          * @returns the sandbox console (or NULL)
          */
-        get_app_console(): (Console | null);
+        get_app_console(): Console | null;
     }
 
 
@@ -2827,9 +2804,7 @@ export namespace LibvirtSandbox {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Context.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Context.ConstructorProps {}
     }
 
     /**

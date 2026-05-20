@@ -73,7 +73,7 @@ export namespace GstPlay {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -352,25 +352,25 @@ export namespace GstPlay {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Object.ConstructorProps {
-            audio_video_offset: (bigint | number);
-            audioVideoOffset: (bigint | number);
-            current_audio_track: (PlayAudioInfo | null);
-            currentAudioTrack: (PlayAudioInfo | null);
-            current_subtitle_track: (PlaySubtitleInfo | null);
-            currentSubtitleTrack: (PlaySubtitleInfo | null);
-            current_video_track: (PlayVideoInfo | null);
-            currentVideoTrack: (PlayVideoInfo | null);
-            duration: (bigint | number);
-            media_info: (PlayMediaInfo | null);
-            mediaInfo: (PlayMediaInfo | null);
+            audio_video_offset: bigint | number;
+            audioVideoOffset: bigint | number;
+            current_audio_track: PlayAudioInfo | null;
+            currentAudioTrack: PlayAudioInfo | null;
+            current_subtitle_track: PlaySubtitleInfo | null;
+            currentSubtitleTrack: PlaySubtitleInfo | null;
+            current_video_track: PlayVideoInfo | null;
+            currentVideoTrack: PlayVideoInfo | null;
+            duration: bigint | number;
+            media_info: PlayMediaInfo | null;
+            mediaInfo: PlayMediaInfo | null;
             mute: boolean;
             pipeline: Gst.Element;
-            position: (bigint | number);
+            position: bigint | number;
             rate: number;
-            subtitle_video_offset: (bigint | number);
-            subtitleVideoOffset: (bigint | number);
+            subtitle_video_offset: bigint | number;
+            subtitleVideoOffset: bigint | number;
             suburi: string;
-            uri: (string | null);
+            uri: string | null;
             video_multiview_flags: GstVideo.VideoMultiviewFlags;
             videoMultiviewFlags: GstVideo.VideoMultiviewFlags;
             video_multiview_mode: GstVideo.VideoMultiviewFramePacking;
@@ -393,43 +393,43 @@ export namespace GstPlay {
          * @default 0
          */
         get audio_video_offset(): number;
-        set audio_video_offset(val: (bigint | number));
+        set audio_video_offset(val: bigint | number);
 
         /**
          * @default 0
          */
         get audioVideoOffset(): number;
-        set audioVideoOffset(val: (bigint | number));
+        set audioVideoOffset(val: bigint | number);
 
         /**
          * @read-only
          */
-        get current_audio_track(): (PlayAudioInfo | null);
+        get current_audio_track(): PlayAudioInfo | null;
 
         /**
          * @read-only
          */
-        get currentAudioTrack(): (PlayAudioInfo | null);
+        get currentAudioTrack(): PlayAudioInfo | null;
 
         /**
          * @read-only
          */
-        get current_subtitle_track(): (PlaySubtitleInfo | null);
+        get current_subtitle_track(): PlaySubtitleInfo | null;
 
         /**
          * @read-only
          */
-        get currentSubtitleTrack(): (PlaySubtitleInfo | null);
+        get currentSubtitleTrack(): PlaySubtitleInfo | null;
 
         /**
          * @read-only
          */
-        get current_video_track(): (PlayVideoInfo | null);
+        get current_video_track(): PlayVideoInfo | null;
 
         /**
          * @read-only
          */
-        get currentVideoTrack(): (PlayVideoInfo | null);
+        get currentVideoTrack(): PlayVideoInfo | null;
 
         /**
          * @read-only
@@ -440,12 +440,12 @@ export namespace GstPlay {
         /**
          * @read-only
          */
-        get media_info(): (PlayMediaInfo | null);
+        get media_info(): PlayMediaInfo | null;
 
         /**
          * @read-only
          */
-        get mediaInfo(): (PlayMediaInfo | null);
+        get mediaInfo(): PlayMediaInfo | null;
 
         /**
          * @default false
@@ -474,13 +474,13 @@ export namespace GstPlay {
          * @default 0
          */
         get subtitle_video_offset(): number;
-        set subtitle_video_offset(val: (bigint | number));
+        set subtitle_video_offset(val: bigint | number);
 
         /**
          * @default 0
          */
         get subtitleVideoOffset(): number;
-        set subtitleVideoOffset(val: (bigint | number));
+        set subtitleVideoOffset(val: bigint | number);
 
         /**
          * @default null
@@ -491,8 +491,8 @@ export namespace GstPlay {
         /**
          * @default null
          */
-        get uri(): (string | null);
-        set uri(val: (string | null));
+        get uri(): string | null;
+        set uri(val: string | null);
 
         /**
          * @default GstVideo.VideoMultiviewFlags.NONE
@@ -544,7 +544,7 @@ export namespace GstPlay {
 
         _init(...args: any[]): void;
 
-        static ["new"](video_renderer: (PlayVideoRenderer | null)): Play;
+        static ["new"](video_renderer: PlayVideoRenderer | null): Play;
 
         // Signals
         /** @signal */
@@ -575,7 +575,7 @@ export namespace GstPlay {
          * `gst_play_config_set_user_agent()` if any.
          * @param config a {@link GstPlay.Play} configuration
          */
-        static config_get_user_agent(config: Gst.Structure): (string | null);
+        static config_get_user_agent(config: Gst.Structure): string | null;
 
         /**
          * set desired interval in milliseconds between two position-updated messages.
@@ -607,7 +607,7 @@ export namespace GstPlay {
          * @param config a {@link GstPlay.Play} configuration
          * @param agent the string to use as user agent
          */
-        static config_set_user_agent(config: Gst.Structure, agent: (string | null)): void;
+        static config_set_user_agent(config: Gst.Structure, agent: string | null): void;
 
         /**
          * @param info a {@link GstPlay.PlayMediaInfo}
@@ -663,24 +663,24 @@ export namespace GstPlay {
          * A Function to get current audio {@link GstPlay.PlayAudioInfo} instance.
          * @returns current audio track. The caller should free it with `g_object_unref()`
          */
-        get_current_audio_track(): (PlayAudioInfo | null);
+        get_current_audio_track(): PlayAudioInfo | null;
 
         /**
          * A Function to get current subtitle {@link GstPlay.PlaySubtitleInfo} instance.
          * @returns current subtitle track. The caller should free it with `g_object_unref()`
          */
-        get_current_subtitle_track(): (PlaySubtitleInfo | null);
+        get_current_subtitle_track(): PlaySubtitleInfo | null;
 
         /**
          * A Function to get current video {@link GstPlay.PlayVideoInfo} instance.
          * @returns current video track. The caller should free it with `g_object_unref()`
          */
-        get_current_video_track(): (PlayVideoInfo | null);
+        get_current_video_track(): PlayVideoInfo | null;
 
         /**
          * @returns Name of the currently enabled   visualization.   `g_free()` after usage.
          */
-        get_current_visualization(): (string | null);
+        get_current_visualization(): string | null;
 
         /**
          * Retrieves the duration of the media stream that self represents.
@@ -692,7 +692,7 @@ export namespace GstPlay {
          * A Function to get the current media info {@link GstPlay.PlayMediaInfo} instance.
          * @returns media info instance. The caller should free it with `g_object_unref()`
          */
-        get_media_info(): (PlayMediaInfo | null);
+        get_media_info(): PlayMediaInfo | null;
 
         /**
          * GstPlay API exposes a {@link Gst.Bus} instance which purpose is to provide data
@@ -747,7 +747,7 @@ export namespace GstPlay {
          * current subtitle URI
          * @returns URI of the current external subtitle.   `g_free()` after usage.
          */
-        get_subtitle_uri(): (string | null);
+        get_subtitle_uri(): string | null;
 
         /**
          * Retrieve the current value of subtitle-video-offset property
@@ -759,7 +759,7 @@ export namespace GstPlay {
          * Gets the URI of the currently-playing stream.
          * @returns a string containing the URI of the currently-playing stream. `g_free()` after usage.
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Get a snapshot of the currently selected video stream, if any. The format can be
@@ -772,7 +772,7 @@ export namespace GstPlay {
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
          */
-        get_video_snapshot(format: PlaySnapshotFormat, config: (Gst.Structure | null)): (Gst.Sample | null);
+        get_video_snapshot(format: PlaySnapshotFormat, config: Gst.Structure | null): Gst.Sample | null;
 
         /**
          * Returns the current volume level, as a percentage between 0 and 1.
@@ -819,7 +819,7 @@ export namespace GstPlay {
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_audio_video_offset(offset: (bigint | number)): void;
+        set_audio_video_offset(offset: bigint | number): void;
 
         /**
          * Sets the current value of the indicated channel `type` to the passed
@@ -888,19 +888,19 @@ export namespace GstPlay {
          * rendered.
          * @param uri subtitle URI
          */
-        set_subtitle_uri(uri: (string | null)): void;
+        set_subtitle_uri(uri: string | null): void;
 
         /**
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
          */
-        set_subtitle_video_offset(offset: (bigint | number)): void;
+        set_subtitle_video_offset(offset: bigint | number): void;
 
         /**
          * Sets the next URI to play.
          * @param uri next URI to play.
          */
-        set_uri(uri: (string | null)): void;
+        set_uri(uri: string | null): void;
 
         /**
          * @param stream_index stream index
@@ -918,7 +918,7 @@ export namespace GstPlay {
          * @param name visualization element obtained from `gst_play_visualizations_get`()
          * @returns `true` if the visualizations was set correctly. Otherwise, `false`.
          */
-        set_visualization(name: (string | null)): boolean;
+        set_visualization(name: string | null): boolean;
 
         /**
          * Enable or disable the visualization.
@@ -942,13 +942,10 @@ export namespace GstPlay {
 
     namespace PlayAudioInfo {
         // Signal signatures
-        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1000,7 +997,7 @@ export namespace GstPlay {
         /**
          * @returns the language of the stream, or `null` if unknown.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
 
         /**
          * @returns the audio maximum bitrate in {@link GstPlay.PlayAudioInfo} or -1 if unknown.
@@ -1016,13 +1013,10 @@ export namespace GstPlay {
 
     namespace PlayMediaInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1069,7 +1063,7 @@ export namespace GstPlay {
         /**
          * @returns the container format or `null` if unknown.
          */
-        get_container_format(): (string | null);
+        get_container_format(): string | null;
 
         /**
          * @returns duration of the media.
@@ -1081,7 +1075,7 @@ export namespace GstPlay {
          * Application can use `gst_sample_*_()` API's to get caps, buffer etc.
          * @returns GstSample or `null`.
          */
-        get_image_sample(): (Gst.Sample | null);
+        get_image_sample(): Gst.Sample | null;
 
         /**
          * @returns number of audio streams.
@@ -1116,12 +1110,12 @@ export namespace GstPlay {
         /**
          * @returns the tags contained in media info.
          */
-        get_tags(): (Gst.TagList | null);
+        get_tags(): Gst.TagList | null;
 
         /**
          * @returns the media title or `null` if unknown.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @returns the URI associated with {@link GstPlay.PlayMediaInfo}.
@@ -1168,7 +1162,7 @@ export namespace GstPlay {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error, arg1: (Gst.Structure | null)) => void;
+            error: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
             /**
              * @signal
              * @run-last
@@ -1214,7 +1208,7 @@ export namespace GstPlay {
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error, arg1: (Gst.Structure | null)) => void;
+            warning: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
             "notify::play": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1280,13 +1274,10 @@ export namespace GstPlay {
 
     namespace PlayStreamInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1330,13 +1321,13 @@ export namespace GstPlay {
         /**
          * @returns the {@link Gst.Caps} of the stream or `null` if unknown.
          */
-        get_caps(): (Gst.Caps | null);
+        get_caps(): Gst.Caps | null;
 
         /**
          * A string describing codec used in {@link GstPlay.PlayStreamInfo}.
          * @returns codec string or `null` on unknown.
          */
-        get_codec(): (string | null);
+        get_codec(): string | null;
 
         /**
          * Function to get stream index from {@link GstPlay.PlayStreamInfo} instance or -1 if
@@ -1355,19 +1346,16 @@ export namespace GstPlay {
         /**
          * @returns the tags contained in this stream.
          */
-        get_tags(): (Gst.TagList | null);
+        get_tags(): Gst.TagList | null;
     }
 
 
     namespace PlaySubtitleInfo {
         // Signal signatures
-        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1409,19 +1397,16 @@ export namespace GstPlay {
         /**
          * @returns the language of the stream, or `null` if unknown.
          */
-        get_language(): (string | null);
+        get_language(): string | null;
     }
 
 
     namespace PlayVideoInfo {
         // Signal signatures
-        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {
-        }
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
     }
 
     /**
@@ -1692,9 +1677,7 @@ export namespace GstPlay {
     namespace PlayVideoRenderer {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PlayVideoRendererNamespace {

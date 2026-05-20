@@ -93,7 +93,7 @@ export namespace Anjuta {
         static FAILED: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -141,7 +141,7 @@ export namespace Anjuta {
         static CHARS: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -166,7 +166,7 @@ export namespace Anjuta {
         static ERROR_UNKNOWN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -194,7 +194,7 @@ export namespace Anjuta {
         static PLUGIN_MISSING: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -264,7 +264,7 @@ export namespace Anjuta {
         static EXIST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -304,7 +304,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__BOXED_ENUM(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__BOXED_ENUM(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -314,7 +314,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_INT_ULONG(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__INT_INT_ULONG(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -324,7 +324,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__INT_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -334,7 +334,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__INT_STRING(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -344,7 +344,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__POINTER_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__POINTER_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -354,7 +354,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__STRING_BOXED(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -364,7 +364,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__STRING_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -374,7 +374,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_INT_STRING(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__STRING_INT_STRING(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * @param closure 
@@ -384,7 +384,7 @@ export namespace Anjuta {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * Check if autogen version 5 is installed.
@@ -400,7 +400,7 @@ export namespace Anjuta {
      * @param encoding 
      * @param new_len 
      */
-    function convert_from_utf8(content: string, len: (bigint | number), encoding: Encoding, new_len: (bigint | number)): string;
+    function convert_from_utf8(content: string, len: bigint | number, encoding: Encoding, new_len: bigint | number): string;
 
     /**
      * @param content 
@@ -408,7 +408,7 @@ export namespace Anjuta {
      * @param encoding 
      * @param new_len 
      */
-    function convert_to_utf8(content: string, len: (bigint | number), encoding: Encoding, new_len: (bigint | number)): string;
+    function convert_to_utf8(content: string, len: bigint | number, encoding: Encoding, new_len: bigint | number): string;
 
     function encoding_get_current(): Encoding;
 
@@ -985,13 +985,10 @@ export namespace Anjuta {
 
     namespace AsyncCommand {
         // Signal signatures
-        interface SignalSignatures extends Command.SignalSignatures {
-        }
+        interface SignalSignatures extends Command.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Command.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Command.ConstructorProps {}
     }
 
     /**
@@ -1064,9 +1061,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1133,13 +1128,10 @@ export namespace Anjuta {
 
     namespace Autogen {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1190,7 +1182,7 @@ export namespace Anjuta {
          * @param func A function called when autogen is terminated
          * @returns `true` if the file has been processed without error.
          */
-        execute(func: (AutogenFunc | null)): boolean;
+        execute(func: AutogenFunc | null): boolean;
 
         /**
          * Get the list of all directories searched for files included in the autogen
@@ -1218,7 +1210,7 @@ export namespace Anjuta {
          * @param end_marker end marker string
          * @returns `true` if the file has been read without error.
          */
-        set_input_file(filename: string, start_marker: (string | null), end_marker: (string | null)): boolean;
+        set_input_file(filename: string, start_marker: string | null, end_marker: string | null): boolean;
 
         /**
          * Add a new directory in the list of autogen libraries path.
@@ -1258,19 +1250,16 @@ export namespace Anjuta {
          * @param values A hash table containing all definitions
          * @returns `true` if the file has been written without error,
          */
-        write_definition_file(values: ({ [key: string]: any } | GLib.HashTable<string, string>)): boolean;
+        write_definition_file(values: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
     }
 
 
     namespace CModule {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
     }
 
     /**
@@ -1359,13 +1348,10 @@ export namespace Anjuta {
 
     namespace CPluginFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1628,9 +1614,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1672,15 +1656,15 @@ export namespace Anjuta {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -1760,7 +1744,7 @@ export namespace Anjuta {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1784,7 +1768,7 @@ export namespace Anjuta {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1808,7 +1792,7 @@ export namespace Anjuta {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -1832,7 +1816,7 @@ export namespace Anjuta {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -1857,7 +1841,7 @@ export namespace Anjuta {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -1882,7 +1866,7 @@ export namespace Anjuta {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -1946,7 +1930,7 @@ export namespace Anjuta {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -1956,7 +1940,7 @@ export namespace Anjuta {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -2056,9 +2040,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2161,9 +2143,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2228,7 +2208,7 @@ export namespace Anjuta {
          * when a command finishes.
          * @virtual
          */
-        vfunc_get_error_message(): (string | null);
+        vfunc_get_error_message(): string | null;
 
         /**
          * Used by base classes derived from {@link Anjuta.Command} to emit the
@@ -2310,7 +2290,7 @@ export namespace Anjuta {
          * when a command finishes.
          * @returns Error message string that must be freed when no longer needed. If no error is set, return `null`.
          */
-        get_error_message(): (string | null);
+        get_error_message(): string | null;
 
         /**
          * @returns `true` if the command is currently running; `false` otherwise.
@@ -2513,9 +2493,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2706,9 +2684,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gdl.Dock.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gdl.Dock.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2759,7 +2735,7 @@ export namespace Anjuta {
          * @param user_data User data to pass to the entry callback
          * @returns `true` if the pane was added, or `false` if a pane with the same name already exists in the dock
          */
-        add_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null): boolean;
+        add_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: null): boolean;
 
         /**
          * Does the same thing as anjuta_dock_add_pane, but allows GDL dock behavior
@@ -2774,12 +2750,12 @@ export namespace Anjuta {
          * @param behavior Any combination of {@link Gdl.DockItemBehavior} flags
          * @returns `true` if the pane was added, or `false` if a pane with the same name already exists in the dock
          */
-        add_pane_full(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null, behavior: Gdl.DockItemBehavior): boolean;
+        add_pane_full(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: null, behavior: Gdl.DockItemBehavior): boolean;
 
         /**
          * @returns the {@link Anjuta.CommandBar} associated with this dock or `null`.
          */
-        get_command_bar(): (CommandBar | null);
+        get_command_bar(): CommandBar | null;
 
         /**
          * Makes the given pane invisible
@@ -2813,7 +2789,7 @@ export namespace Anjuta {
          * @param entries {@link Anjuta.CommandBar} entries 		 for this pane. Can be `null`
          * @param user_data User data to pass to the entry callback
          */
-        replace_command_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: (CommandBarEntry[] | null), user_data: null): void;
+        replace_command_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: null): void;
 
         /**
          * Associates an {@link Anjuta.CommandBar} with this dock. Command bars can be used to
@@ -3028,9 +3004,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Entry.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Editable.ConstructorProps {}
     }
 
     /**
@@ -3279,7 +3253,7 @@ export namespace Anjuta {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -3307,7 +3281,7 @@ export namespace Anjuta {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -3601,9 +3575,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -3954,13 +3926,10 @@ export namespace Anjuta {
 
     namespace LanguageProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4022,7 +3991,7 @@ export namespace Anjuta {
          * @param word_characters 
          * @returns The current word (needs to be freed) or `null` if no word was found
          */
-        get_pre_word(editor: GObject.Object, iter: GObject.Object, start_iter: GObject.Object, word_characters: string): (string | null);
+        get_pre_word(editor: GObject.Object, iter: GObject.Object, start_iter: GObject.Object, word_characters: string): string | null;
 
         /**
          * Install the settings for AnjutaLanguageProvider
@@ -4065,9 +4034,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4285,9 +4252,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -4447,7 +4412,7 @@ export namespace Anjuta {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -4461,7 +4426,7 @@ export namespace Anjuta {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -5113,13 +5078,10 @@ export namespace Anjuta {
 
     namespace Preferences {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5279,9 +5241,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -5633,7 +5593,7 @@ export namespace Anjuta {
          * Return the current profile.
          * @returns a {@link Anjuta.Profile} object or `null` if the profile stack is empty.
          */
-        get_current(): (Profile | null);
+        get_current(): Profile | null;
 
         /**
          * Remove a profile from the profile manager stack. If the manager is not
@@ -5824,13 +5784,13 @@ export namespace Anjuta {
          * @param sibling 
          * @param node 
          */
-        insert_after(sibling: (ProjectNode | null), node: ProjectNode): ProjectNode;
+        insert_after(sibling: ProjectNode | null, node: ProjectNode): ProjectNode;
 
         /**
          * @param sibling 
          * @param node 
          */
-        insert_before(sibling: (ProjectNode | null), node: ProjectNode): ProjectNode;
+        insert_before(sibling: ProjectNode | null, node: ProjectNode): ProjectNode;
 
         /**
          * @param info 
@@ -5978,9 +5938,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.MessageDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.MessageDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -6128,13 +6086,10 @@ export namespace Anjuta {
 
     namespace Session {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6196,7 +6151,7 @@ export namespace Anjuta {
          * @param fragment fragment part of the URI if existing, can be `null`
          * @returns A new GFile that has to be freed with `g_object_unref()`.
          */
-        get_file_from_relative_uri(uri: string, fragment: (string | null)): Gio.File;
+        get_file_from_relative_uri(uri: string, fragment: string | null): Gio.File;
 
         /**
          * Get a float `value` of `key` in given `section`.
@@ -6333,9 +6288,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -6464,13 +6417,10 @@ export namespace Anjuta {
 
     namespace SyncCommand {
         // Signal signatures
-        interface SignalSignatures extends Command.SignalSignatures {
-        }
+        interface SignalSignatures extends Command.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Command.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Command.ConstructorProps {}
     }
 
     /**
@@ -6620,13 +6570,10 @@ export namespace Anjuta {
 
     namespace TokenFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -6900,7 +6847,7 @@ export namespace Anjuta {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -6951,7 +6898,7 @@ export namespace Anjuta {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -6988,7 +6935,7 @@ export namespace Anjuta {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -7043,7 +6990,7 @@ export namespace Anjuta {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -7089,9 +7036,7 @@ export namespace Anjuta {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.UIManager.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.UIManager.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -7279,7 +7224,7 @@ export namespace Anjuta {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -7300,7 +7245,7 @@ export namespace Anjuta {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -7310,7 +7255,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -7319,7 +7264,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -7355,7 +7300,7 @@ export namespace Anjuta {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -7371,7 +7316,7 @@ export namespace Anjuta {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -7393,7 +7338,7 @@ export namespace Anjuta {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -7404,7 +7349,7 @@ export namespace Anjuta {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -7413,7 +7358,7 @@ export namespace Anjuta {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -7723,7 +7668,7 @@ export namespace Anjuta {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -7737,7 +7682,7 @@ export namespace Anjuta {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -8219,7 +8164,7 @@ export namespace Anjuta {
          * saving it in a file.
          * @returns The string representation of the description. The returned values must be freed after use.
          */
-        to_string(): (string | null);
+        to_string(): string | null;
     }
 
 
@@ -8357,9 +8302,9 @@ export namespace Anjuta {
         user_data: null;
 
         // Constructors
-        constructor(value: string, name: (string | null), user_data: null);
+        constructor(value: string, name: string | null, user_data: null);
 
-        static ["new"](value: string, name: (string | null), user_data: null): ProjectProperty;
+        static ["new"](value: string, name: string | null, user_data: null): ProjectProperty;
 
         // Methods
         copy(): ProjectProperty;
@@ -8531,13 +8476,13 @@ export namespace Anjuta {
         /**
          * @param length 
          */
-        set_length(length: (bigint | number)): void;
+        set_length(length: bigint | number): void;
 
         /**
          * @param value 
          * @param length 
          */
-        set_string(value: string, length: (bigint | number)): void;
+        set_string(value: string, length: bigint | number): void;
 
         /**
          * @param type 
@@ -8603,7 +8548,7 @@ export namespace Anjuta {
          * Return the parent stream
          * @returns The parent stream or `null` if there is no parent.
          */
-        get_parent(): (TokenStream | null);
+        get_parent(): TokenStream | null;
 
         /**
          * Return the root token for the output stream.
@@ -8615,7 +8560,7 @@ export namespace Anjuta {
          * Destroy the stream object and return the parent stream if it exists.
          * @returns The parent stream or `null` if there is no parent.
          */
-        pop(): (TokenStream | null);
+        pop(): TokenStream | null;
 
         /**
          * Read token from the input stream and write the content as a C string in the
@@ -8624,7 +8569,7 @@ export namespace Anjuta {
          * @param max_size the size of the buffer.
          * @returns The number of characters written in the buffer.
          */
-        read(buffer: string, max_size: (bigint | number)): number;
+        read(buffer: string, max_size: bigint | number): number;
     }
 
 
@@ -8928,9 +8873,7 @@ export namespace Anjuta {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ShellNamespace {
@@ -8950,7 +8893,7 @@ export namespace Anjuta {
          * @param name Name of the value
          * @param value Value to add
          */
-        add_value(name: string, value: (GObject.Value | any)): void;
+        add_value(name: string, value: GObject.Value | any): void;
 
         /**
          * Adds `widget` in the shell. The `placement` tells where the widget should
@@ -9062,7 +9005,7 @@ export namespace Anjuta {
          * @param name Name of the value to get
          * @param value Value to get
          */
-        get_value(name: string, value: (GObject.Value | any)): void;
+        get_value(name: string, value: GObject.Value | any): void;
 
         /**
          * If the widget is dockable, it hides it.

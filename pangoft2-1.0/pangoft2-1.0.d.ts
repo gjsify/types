@@ -140,7 +140,7 @@ export namespace PangoFT2 {
      * @param y the y position of the baseline (in Pango units   in user space coordinates)
      * @since 1.6
      */
-    function render_transformed(bitmap: freetype2.Bitmap, matrix: (Pango.Matrix | null), font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void;
+    function render_transformed(bitmap: freetype2.Bitmap, matrix: Pango.Matrix | null, font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void;
 
     /**
      * Free the global fontmap. (See `pango_ft2_font_map_for_display()`)
@@ -163,9 +163,7 @@ export namespace PangoFT2 {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap.ConstructorProps<A>, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap.ConstructorProps<A>, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -278,7 +276,7 @@ export namespace PangoFT2 {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -318,7 +316,7 @@ export namespace PangoFT2 {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.

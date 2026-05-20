@@ -60,7 +60,7 @@ export namespace GcrUi {
      * @param attrs The attributes to render
      * @returns a new renderer, or `null` if no renderer          matched the attributes; the render should be released with `g_object_unref()`
      */
-    function renderer_create(label: (string | null), attrs: Gck.Attributes): (Renderer | null);
+    function renderer_create(label: string | null, attrs: Gck.Attributes): Renderer | null;
 
     /**
      * Register a renderer to be created when matching attributes are passed to
@@ -106,7 +106,7 @@ export namespace GcrUi {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gcr.Certificate.ConstructorProps, Gcr.Comparable.ConstructorProps, Renderer.ConstructorProps {
-            attributes: (Gck.Attributes | any);
+            attributes: Gck.Attributes | any;
             certificate: Gcr.Certificate;
             label: string;
         }
@@ -125,9 +125,9 @@ export namespace GcrUi {
          * a CKA_VALUE type attribute which contains a DER encoded certificate.
          */
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get attributes(): (Gck.Attributes | any);
+        get attributes(): Gck.Attributes | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set attributes(val: (Gck.Attributes | any));
+        set attributes(val: Gck.Attributes | any);
 
         /**
          * The certificate to display. May be `null`.
@@ -157,7 +157,7 @@ export namespace GcrUi {
 
         static ["new"](certificate: Gcr.Certificate): CertificateRenderer;
 
-        static new_for_attributes(label: (string | null), attrs: null): CertificateRenderer;
+        static new_for_attributes(label: string | null, attrs: null): CertificateRenderer;
 
         // Signals
         /** @signal */
@@ -185,7 +185,7 @@ export namespace GcrUi {
          * Set a certificate to display in the renderer.
          * @param certificate the certificate to display
          */
-        set_certificate(certificate: (Gcr.Certificate | null)): void;
+        set_certificate(certificate: Gcr.Certificate | null): void;
 
         /**
          * A readable description for this certificate
@@ -322,7 +322,7 @@ export namespace GcrUi {
          * @param part a DN type string or OID.
          * @returns the allocated part of the issuer DN, or `null` if no          such part is present
          */
-        get_issuer_part(part: string): (string | null);
+        get_issuer_part(part: string): string | null;
 
         /**
          * Get the raw DER data for the issuer DN of the certificate.
@@ -403,7 +403,7 @@ export namespace GcrUi {
          * @param part a DN type string or OID.
          * @returns the allocated part of the subject DN, or `null` if no          such part is present.
          */
-        get_subject_part(part: string): (string | null);
+        get_subject_part(part: string): string | null;
 
         /**
          * Get the raw DER data for the subject DN of the certificate.
@@ -434,7 +434,7 @@ export namespace GcrUi {
          * Gets the raw DER data for an X.509 certificate.
          * @virtual
          */
-        vfunc_get_der_data(): (Uint8Array | string);
+        vfunc_get_der_data(): Uint8Array | string;
 
         /**
          * Compare whether two objects represent the same thing. The return value can
@@ -442,7 +442,7 @@ export namespace GcrUi {
          * @param other Another comparable object
          * @returns Zero if the two objects represent the same thing, non-zero if not.
          */
-        compare(other: (Gcr.Comparable | null)): number;
+        compare(other: Gcr.Comparable | null): number;
 
         /**
          * Compare whether two objects represent the same thing. The return value can
@@ -450,7 +450,7 @@ export namespace GcrUi {
          * @param other Another comparable object
          * @virtual
          */
-        vfunc_compare(other: (Gcr.Comparable | null)): number;
+        vfunc_compare(other: Gcr.Comparable | null): number;
 
         /**
          * Emit the {@link GcrUi.Renderer.SignalSignatures.data_changed | GcrUi.Renderer::data-changed} signal on the renderer. This is used by
@@ -462,7 +462,7 @@ export namespace GcrUi {
          * Get the PKCS#11 attributes, if any, set for this renderer to display.
          * @returns the attributes, owned by the renderer
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Called by {@link GcrUi.Viewer} when about to display a popup menu for the content
@@ -482,7 +482,7 @@ export namespace GcrUi {
          * Set the PKCS#11 attributes for this renderer to display.
          * @param attrs attributes to set
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
          * @virtual
@@ -556,8 +556,8 @@ export namespace GcrUi {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            attributes: (Gck.Attributes | null);
-            certificate: (Gcr.Certificate | null);
+            attributes: Gck.Attributes | null;
+            certificate: Gcr.Certificate | null;
         }
     }
 
@@ -580,11 +580,11 @@ export namespace GcrUi {
         static $gtype: GObject.GType<CertificateWidget>;
 
         // Properties
-        get attributes(): (Gck.Attributes | null);
-        set attributes(val: (Gck.Attributes | null));
+        get attributes(): Gck.Attributes | null;
+        set attributes(val: Gck.Attributes | null);
 
-        get certificate(): (Gcr.Certificate | null);
-        set certificate(val: (Gcr.Certificate | null));
+        get certificate(): Gcr.Certificate | null;
+        set certificate(val: Gcr.Certificate | null);
 
         /**
          * Compile-time signal type information.
@@ -600,7 +600,7 @@ export namespace GcrUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](certificate: (Gcr.Certificate | null)): CertificateWidget;
+        static ["new"](certificate: Gcr.Certificate | null): CertificateWidget;
 
         // Signals
         /** @signal */
@@ -621,26 +621,26 @@ export namespace GcrUi {
          * a certificate.
          * @returns the attributes, owned by the widget
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Get the certificate displayed in the widget.
          * @returns the certificate
          */
-        get_certificate(): (Gcr.Certificate | null);
+        get_certificate(): Gcr.Certificate | null;
 
         /**
          * Set the attributes displayed in the widget. The attributes should contain
          * a certificate.
          * @param attrs the attributes to display
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
          * Set the certificate displayed in the widget
          * @param certificate the certificate to display
          */
-        set_certificate(certificate: (Gcr.Certificate | null)): void;
+        set_certificate(certificate: Gcr.Certificate | null): void;
     }
 
 
@@ -774,7 +774,7 @@ export namespace GcrUi {
          * Set the collection which this model represents
          * @param collection the collection or `null`
          */
-        set_collection(collection: (Gcr.Collection | null)): void;
+        set_collection(collection: Gcr.Collection | null): void;
 
         /**
          * Set the checked/selected objects.
@@ -794,7 +794,7 @@ export namespace GcrUi {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -894,7 +894,7 @@ export namespace GcrUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -911,7 +911,7 @@ export namespace GcrUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -935,7 +935,7 @@ export namespace GcrUi {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1029,7 +1029,7 @@ export namespace GcrUi {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -1107,7 +1107,7 @@ export namespace GcrUi {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -1124,7 +1124,7 @@ export namespace GcrUi {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -1148,7 +1148,7 @@ export namespace GcrUi {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -1514,7 +1514,7 @@ export namespace GcrUi {
          * if selected is set to `null`.
          * @param selected the object to select or `null`
          */
-        set_selected(selected: (GObject.Object | null)): void;
+        set_selected(selected: GObject.Object | null): void;
 
         /**
          * Indicates whether editing on the cell has been canceled.
@@ -1557,7 +1557,7 @@ export namespace GcrUi {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -1585,7 +1585,7 @@ export namespace GcrUi {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1619,7 +1619,7 @@ export namespace GcrUi {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1670,7 +1670,7 @@ export namespace GcrUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1707,7 +1707,7 @@ export namespace GcrUi {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1762,7 +1762,7 @@ export namespace GcrUi {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1809,7 +1809,7 @@ export namespace GcrUi {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Renderer.ConstructorProps {
-            attributes: (Gck.Attributes | any);
+            attributes: Gck.Attributes | any;
             label: string;
         }
     }
@@ -1823,9 +1823,9 @@ export namespace GcrUi {
 
         // Properties
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get attributes(): (Gck.Attributes | any);
+        get attributes(): Gck.Attributes | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set attributes(val: (Gck.Attributes | any));
+        set attributes(val: Gck.Attributes | any);
 
         get label(): string;
         set label(val: string);
@@ -1844,7 +1844,7 @@ export namespace GcrUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: (string | null), error: GLib.Error): FailureRenderer;
+        static ["new"](label: string | null, error: GLib.Error): FailureRenderer;
 
         // Signals
         /** @signal */
@@ -1876,7 +1876,7 @@ export namespace GcrUi {
          * Get the PKCS#11 attributes, if any, set for this renderer to display.
          * @returns the attributes, owned by the renderer
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Called by {@link GcrUi.Viewer} when about to display a popup menu for the content
@@ -1896,7 +1896,7 @@ export namespace GcrUi {
          * Set the PKCS#11 attributes for this renderer to display.
          * @param attrs attributes to set
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
          * @virtual
@@ -1992,9 +1992,7 @@ export namespace GcrUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Button.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -2022,7 +2020,7 @@ export namespace GcrUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: (string | null)): ImportButton;
+        static ["new"](label: string | null): ImportButton;
 
         // Conflicted with Gtk.Button.new
         static ["new"](...args: never[]): any;
@@ -2065,15 +2063,15 @@ export namespace GcrUi {
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get action_name(): (string | null);
-        set action_name(val: (string | null));
+        get action_name(): string | null;
+        set action_name(val: string | null);
 
         /**
          * @default null
           * @category Inherited from Gtk.Actionable
          */
-        get actionName(): (string | null);
-        set actionName(val: (string | null));
+        get actionName(): string | null;
+        set actionName(val: string | null);
 
         /** @category Inherited from Gtk.Actionable */
         get action_target(): GLib.Variant;
@@ -2153,7 +2151,7 @@ export namespace GcrUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2177,7 +2175,7 @@ export namespace GcrUi {
          * associated with the window.
          * @param action_name an action name, or `null`
          */
-        set_action_name(action_name: (string | null)): void;
+        set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2201,7 +2199,7 @@ export namespace GcrUi {
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          */
-        set_action_target_value(target_value: (GLib.Variant | null)): void;
+        set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * Sets the action-name and associated string target value of an
@@ -2225,7 +2223,7 @@ export namespace GcrUi {
          * See `gtk_actionable_set_action_name()` for more information.
          * @virtual
          */
-        vfunc_get_action_name(): (string | null);
+        vfunc_get_action_name(): string | null;
 
         /**
          * Gets the current target value of `actionable`.
@@ -2250,7 +2248,7 @@ export namespace GcrUi {
          * @param action_name an action name, or `null`
          * @virtual
          */
-        vfunc_set_action_name(action_name: (string | null)): void;
+        vfunc_set_action_name(action_name: string | null): void;
 
         /**
          * Sets the target value of an actionable widget.
@@ -2275,7 +2273,7 @@ export namespace GcrUi {
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
          * @virtual
          */
-        vfunc_set_action_target_value(target_value: (GLib.Variant | null)): void;
+        vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
 
         /**
          * This is a utility function for {@link Gtk.Activatable} implementors.
@@ -2339,7 +2337,7 @@ export namespace GcrUi {
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
          */
-        sync_action_properties(action: (Gtk.Action | null)): void;
+        sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * This is called to update the activatable completely, this is called
@@ -2349,7 +2347,7 @@ export namespace GcrUi {
          * @param action the related {@link Gtk.Action} or `null`
          * @virtual
          */
-        vfunc_sync_action_properties(action: (Gtk.Action | null)): void;
+        vfunc_sync_action_properties(action: Gtk.Action | null): void;
 
         /**
          * Called to update the activatable when its related action’s properties change.
@@ -2436,7 +2434,7 @@ export namespace GcrUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](label: (string | null), attrs: (Gck.Attributes | null)): KeyRenderer;
+        static ["new"](label: string | null, attrs: Gck.Attributes | null): KeyRenderer;
 
         // Signals
         /** @signal */
@@ -2456,21 +2454,21 @@ export namespace GcrUi {
          * Get the attributes displayed in the renderer.
          * @returns the attributes, owned by the renderer
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Get the attributes displayed in the renderer. The attributes should represent
          * either an RSA, DSA, or EC key in PKCS#11 style.
          * @param attrs the attributes to display
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
 
         /**
          * The attributes to display.
           * @category Inherited from GcrUi.Renderer
          */
-        get attributes(): (Gck.Attributes | null);
-        set attributes(val: (Gck.Attributes | null));
+        get attributes(): Gck.Attributes | null;
+        set attributes(val: Gck.Attributes | null);
 
         /**
          * The label to display.
@@ -2570,7 +2568,7 @@ export namespace GcrUi {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            attributes: (Gck.Attributes | null);
+            attributes: Gck.Attributes | null;
         }
     }
 
@@ -2591,8 +2589,8 @@ export namespace GcrUi {
         static $gtype: GObject.GType<KeyWidget>;
 
         // Properties
-        get attributes(): (Gck.Attributes | null);
-        set attributes(val: (Gck.Attributes | null));
+        get attributes(): Gck.Attributes | null;
+        set attributes(val: Gck.Attributes | null);
 
         /**
          * Compile-time signal type information.
@@ -2608,7 +2606,7 @@ export namespace GcrUi {
 
         _init(...args: any[]): void;
 
-        static ["new"](attrs: (Gck.Attributes | null)): KeyWidget;
+        static ["new"](attrs: Gck.Attributes | null): KeyWidget;
 
         // Signals
         /** @signal */
@@ -2628,14 +2626,14 @@ export namespace GcrUi {
          * Get the attributes displayed in the widget.
          * @returns The attributes, owned by the widget.
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Get the attributes displayed in the widget. The attributes should represent
          * either an RSA, DSA or EC key in PKCS#11 style.
          * @param attrs the attributes to display
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
     }
 
 
@@ -2878,7 +2876,7 @@ export namespace GcrUi {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -2892,7 +2890,7 @@ export namespace GcrUi {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -3301,9 +3299,9 @@ export namespace GcrUi {
           * @category Inherited from Gcr.Prompt
          */
         // This accessor conflicts with another accessor's type in a parent class or interface.
-    get title(): (string | any);
+    get title(): string | any;
         // This accessor conflicts with another accessor's type in a parent class or interface.
-    set title(val: (string | any));
+    set title(val: string | any);
 
         /**
          * A prompt warning displayed on the prompt, or `null` for no warning.
@@ -3339,7 +3337,7 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm(cancellable: (Gio.Cancellable | null)): Gcr.PromptReply;
+        confirm(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -3349,18 +3347,7 @@ export namespace GcrUi {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        confirm_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gcr.PromptReply>;
-
-        /**
-         * Prompts for confirmation asking a cancel/continue style question.
-         * Set the various properties on the prompt before calling this method to
-         * represent the question correctly.
-         * 
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        confirm_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        confirm_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
 
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -3371,7 +3358,18 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        confirm_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gcr.PromptReply> | void);
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gcr.PromptReply> | void;
 
         /**
          * Complete an operation to prompt for confirmation.
@@ -3399,7 +3397,7 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
          */
-        confirm_run(cancellable: (Gio.Cancellable | null)): Gcr.PromptReply;
+        confirm_run(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
         /**
          * Get the string handle of the caller's window.
@@ -3525,7 +3523,7 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password(cancellable: (Gio.Cancellable | null)): string;
+        password(cancellable: Gio.Cancellable | null): string;
 
         /**
          * Prompts for password. Set the various properties on the prompt before calling
@@ -3534,17 +3532,7 @@ export namespace GcrUi {
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
-        password_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * Prompts for password. Set the various properties on the prompt before calling
-         * this method to explain which password should be entered.
-         * 
-         * This method will return immediately and complete asynchronously.
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        password_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Prompts for password. Set the various properties on the prompt before calling
@@ -3554,7 +3542,17 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        password_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Complete an operation to prompt for a password.
@@ -3587,7 +3585,7 @@ export namespace GcrUi {
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
          */
-        password_run(cancellable: (Gio.Cancellable | null)): string;
+        password_run(cancellable: Gio.Cancellable | null): string;
 
         /**
          * Reset the contents and properties of the prompt.
@@ -3633,7 +3631,7 @@ export namespace GcrUi {
          * If this is `null`, then no additional choice is being displayed.
          * @param choice_label the additional choice or `null`
          */
-        set_choice_label(choice_label: (string | null)): void;
+        set_choice_label(choice_label: string | null): void;
 
         /**
          * Set the label for the continue button.
@@ -3690,7 +3688,7 @@ export namespace GcrUi {
          * If this string is `null` then no warning is displayed.
          * @param warning the warning or `null`
          */
-        set_warning(warning: (string | null)): void;
+        set_warning(warning: string | null): void;
 
         /**
          * close a prompt
@@ -3708,7 +3706,7 @@ export namespace GcrUi {
          * @param callback called when the operation completes
          * @virtual
          */
-        vfunc_prompt_confirm_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_prompt_confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Complete an operation to prompt for confirmation.
@@ -3730,7 +3728,7 @@ export namespace GcrUi {
          * @param callback called when the operation completes
          * @virtual
          */
-        vfunc_prompt_password_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_prompt_password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Complete an operation to prompt for a password.
@@ -3757,9 +3755,7 @@ export namespace GcrUi {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {}
     }
 
     /**
@@ -4053,7 +4049,7 @@ export namespace GcrUi {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -4067,7 +4063,7 @@ export namespace GcrUi {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -4437,7 +4433,7 @@ export namespace GcrUi {
          * @param display_name label for the loaded data
          * @param data data to load
          */
-        load_bytes(display_name: (string | null), data: (GLib.Bytes | Uint8Array)): void;
+        load_bytes(display_name: string | null, data: GLib.Bytes | Uint8Array): void;
 
         /**
          * Parse and load some data to be displayed into the viewer widgets. The data
@@ -4449,7 +4445,7 @@ export namespace GcrUi {
          * @param display_name label for the loaded data
          * @param data data to load
          */
-        load_data(display_name: (string | null), data: (Uint8Array | string)): void;
+        load_data(display_name: string | null, data: Uint8Array | string): void;
 
         /**
          * Display contents of a file in the viewer widget. Multiple files can
@@ -4474,7 +4470,7 @@ export namespace GcrUi {
          * @param message descriptive error message
          * @param error detailed error
          */
-        show_error(message: string, error: (GLib.Error | null)): void;
+        show_error(message: string, error: GLib.Error | null): void;
 
         /**
          * The orientation of the orientable.
@@ -4714,7 +4710,7 @@ export namespace GcrUi {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: (Gck.Attributes | null);
+            attributes: Gck.Attributes | null;
             label: string;
         }
     }
@@ -4728,7 +4724,7 @@ export namespace GcrUi {
         * @param label The label for the renderer
         * @param attrs The attributes to render
         */
-        create(label: (string | null), attrs: Gck.Attributes): (Renderer | null);
+        create(label: string | null, attrs: Gck.Attributes): Renderer | null;
         /**
         * Register a renderer to be created when matching attributes are passed to
         * `gcr_renderer_create()`.
@@ -4761,8 +4757,8 @@ export namespace GcrUi {
         /**
          * The attributes to display.
          */
-        get attributes(): (Gck.Attributes | null);
-        set attributes(val: (Gck.Attributes | null));
+        get attributes(): Gck.Attributes | null;
+        set attributes(val: Gck.Attributes | null);
 
         /**
          * The label to display.
@@ -4781,7 +4777,7 @@ export namespace GcrUi {
          * Get the PKCS#11 attributes, if any, set for this renderer to display.
          * @returns the attributes, owned by the renderer
          */
-        get_attributes(): (Gck.Attributes | null);
+        get_attributes(): Gck.Attributes | null;
 
         /**
          * Called by {@link GcrUi.Viewer} when about to display a popup menu for the content
@@ -4801,7 +4797,7 @@ export namespace GcrUi {
          * Set the PKCS#11 attributes for this renderer to display.
          * @param attrs attributes to set
          */
-        set_attributes(attrs: (Gck.Attributes | null)): void;
+        set_attributes(attrs: Gck.Attributes | null): void;
     }
 
 
@@ -4844,7 +4840,7 @@ export namespace GcrUi {
              * @param before the renderer to insert before
              * @virtual
              */
-            vfunc_insert_renderer(renderer: Renderer, before: (Renderer | null)): void;
+            vfunc_insert_renderer(renderer: Renderer, before: Renderer | null): void;
 
             /**
              * Remove a renderer from this viewer.
@@ -4856,9 +4852,7 @@ export namespace GcrUi {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface ViewerNamespace {
@@ -4915,7 +4909,7 @@ export namespace GcrUi {
          * @param renderer the renderer to insert
          * @param before the renderer to insert before
          */
-        insert_renderer(renderer: Renderer, before: (Renderer | null)): void;
+        insert_renderer(renderer: Renderer, before: Renderer | null): void;
 
         /**
          * Remove a renderer from this viewer.

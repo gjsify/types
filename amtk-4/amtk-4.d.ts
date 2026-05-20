@@ -76,7 +76,7 @@ export namespace Amtk {
      * @returns the long description of `menu_item`, previously set with   `amtk_menu_item_set_long_description()`.
      * @since 2.0
      */
-    function menu_item_get_long_description(menu_item: Gtk.MenuItem): (string | null);
+    function menu_item_get_long_description(menu_item: Gtk.MenuItem): string | null;
 
     /**
      * Sets an icon to a {@link Gtk.MenuItem}.
@@ -104,7 +104,7 @@ export namespace Amtk {
      * @param long_description the long description, or `null` to unset it.
      * @since 2.0
      */
-    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: (string | null)): void;
+    function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: string | null): void;
 
     /**
      * Utility function to be able to port an application gradually to {@link Gio.Action},
@@ -235,13 +235,10 @@ export namespace Amtk {
 
     namespace ActionInfoCentralStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -291,13 +288,10 @@ export namespace Amtk {
 
     namespace ActionInfoStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -355,7 +349,7 @@ export namespace Amtk {
          * @param entries a pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
          */
-        add_entries(entries: ActionInfoEntry[], translation_domain: (string | null)): void;
+        add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
 
         /**
          * Checks for each {@link Amtk.ActionInfo} of `store` that it has been used (see
@@ -387,7 +381,7 @@ export namespace Amtk {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application_window: Gtk.ApplicationWindow;
             applicationWindow: Gtk.ApplicationWindow;
-            statusbar: (Gtk.Statusbar | null);
+            statusbar: Gtk.Statusbar | null;
         }
     }
 
@@ -416,8 +410,8 @@ export namespace Amtk {
          * The {@link Gtk.Statusbar}. `null` by default.
          * @since 2.0
          */
-        get statusbar(): (Gtk.Statusbar | null);
-        set statusbar(val: (Gtk.Statusbar | null));
+        get statusbar(): Gtk.Statusbar | null;
+        set statusbar(val: Gtk.Statusbar | null);
 
         /**
          * Compile-time signal type information.
@@ -513,13 +507,13 @@ export namespace Amtk {
         /**
          * @returns the {@link Amtk.ApplicationWindow.statusbar}.
          */
-        get_statusbar(): (Gtk.Statusbar | null);
+        get_statusbar(): Gtk.Statusbar | null;
 
         /**
          * Sets the {@link Amtk.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
          */
-        set_statusbar(statusbar: (Gtk.Statusbar | null)): void;
+        set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
 
 
@@ -532,7 +526,7 @@ export namespace Amtk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application: (Gtk.Application | null);
+            application: Gtk.Application | null;
             default_flags: FactoryFlags;
             defaultFlags: FactoryFlags;
         }
@@ -551,7 +545,7 @@ export namespace Amtk {
          * @since 3.0
          * @construct-only
          */
-        get application(): (Gtk.Application | null);
+        get application(): Gtk.Application | null;
 
         /**
          * The default {@link Amtk.FactoryFlags}.
@@ -581,7 +575,7 @@ export namespace Amtk {
 
         _init(...args: any[]): void;
 
-        static ["new"](application: (Gtk.Application | null)): Factory;
+        static ["new"](application: Gtk.Application | null): Factory;
 
         static new_with_default_application(): Factory;
 
@@ -685,7 +679,7 @@ export namespace Amtk {
         /**
          * @returns the {@link Amtk.Factory.application}.
          */
-        get_application(): (Gtk.Application | null);
+        get_application(): Gtk.Application | null;
 
         /**
          * @returns the {@link Amtk.Factory.default_flags}.
@@ -815,14 +809,11 @@ export namespace Amtk {
         static $gtype: GObject.GType<ActionInfo>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ActionInfo;
 
-        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: (string | null)): ActionInfo;
+        static new_from_entry(info_entry: ActionInfoEntry, translation_domain: string | null): ActionInfo;
 
         // Methods
         /**
@@ -841,23 +832,23 @@ export namespace Amtk {
         /**
          * @returns the action name, or `null`. Example: `"win.save"`.
          */
-        get_action_name(): (string | null);
+        get_action_name(): string | null;
 
         /**
          * @returns the icon name, or `null`.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * Gets the label. The label has normally a mnemonic.
          * @returns the label (i.e. a short description), or `null`.
          */
-        get_label(): (string | null);
+        get_label(): string | null;
 
         /**
          * @returns the tooltip (i.e. a long description), or `null`.
          */
-        get_tooltip(): (string | null);
+        get_tooltip(): string | null;
 
         /**
          * Returns whether `info` has been used (for example by an {@link Amtk.Factory}
@@ -896,18 +887,18 @@ export namespace Amtk {
         /**
          * @param icon_name the icon name, or `null`.
          */
-        set_icon_name(icon_name: (string | null)): void;
+        set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the label with a mnemonic.
          * @param label the label (i.e. a short description), or `null`.
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
          */
-        set_tooltip(tooltip: (string | null)): void;
+        set_tooltip(tooltip: string | null): void;
 
         /**
          * Decrements the reference count of `info` by one. If the reference count drops

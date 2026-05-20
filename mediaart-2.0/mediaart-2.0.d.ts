@@ -64,7 +64,7 @@ export namespace MediaArt {
         static NO_CACHE_DIR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -98,7 +98,7 @@ export namespace MediaArt {
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
      */
-    function buffer_to_jpeg(buffer: (Uint8Array | string), buffer_mime: string, target: string): boolean;
+    function buffer_to_jpeg(buffer: Uint8Array | string, buffer_mime: string, target: string): boolean;
 
     /**
      * The error domain for {@link MediaArt.Error}.
@@ -142,7 +142,7 @@ export namespace MediaArt {
      * @returns `true` if `cache_file` was returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_file(artist: (string | null), title: (string | null), prefix: (string | null)): [boolean, Gio.File | null];
+    function get_file(artist: string | null, title: string | null, prefix: string | null): [boolean, Gio.File | null];
 
     /**
      * This function calls `media_art_get_file()` by creating a {@link Gio.File} for
@@ -160,7 +160,7 @@ export namespace MediaArt {
      * @returns `true` if `cache_path` was returned, otherwise `false`.
      * @since 0.2.0
      */
-    function get_path(artist: (string | null), title: (string | null), prefix: (string | null)): [boolean, string];
+    function get_path(artist: string | null, title: string | null, prefix: string | null): [boolean, string];
 
     /**
      * This function facilitates a plugin&apos;s need to create any
@@ -195,7 +195,7 @@ export namespace MediaArt {
      * @returns `TRUE` on success, otherwise `FALSE` where `error` will be set.
      * @since 0.2.0
      */
-    function remove(artist: string, album: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+    function remove(artist: string, album: string | null, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * Removes media art for given album/artist provided. Precisely the
@@ -226,7 +226,7 @@ export namespace MediaArt {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
      * @since 0.7.0
      */
-    function remove_async(artist: string, album: (string | null), io_priority: number, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function remove_async(artist: string, album: string | null, io_priority: number, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * Removes media art for given album/artist provided. Precisely the
      * same operation as `media_art_remove()` is performing, but
@@ -257,7 +257,7 @@ export namespace MediaArt {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
      * @since 0.7.0
      */
-    function remove_async(artist: string, album: (string | null), io_priority: number, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function remove_async(artist: string, album: string | null, io_priority: number, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * Removes media art for given album/artist provided. Precisely the
      * same operation as `media_art_remove()` is performing, but
@@ -288,7 +288,7 @@ export namespace MediaArt {
      * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
      * @since 0.7.0
      */
-    function remove_async(artist: string, album: (string | null), io_priority: number, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function remove_async(artist: string, album: string | null, io_priority: number, source_object: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes the asynchronous operation started with
@@ -298,7 +298,7 @@ export namespace MediaArt {
      * @returns `true` on success, otherwise `false` when `error` will be set.
      * @since 0.7.0
      */
-    function remove_finish(source_object: (GObject.Object | null), result: Gio.AsyncResult): boolean;
+    function remove_finish(source_object: GObject.Object | null, result: Gio.AsyncResult): boolean;
 
     /**
      * Strip a albumname or artistname string to prepare it for calculating the
@@ -319,7 +319,7 @@ export namespace MediaArt {
      * @returns `original` stripped of invalid characters which must be freed. On error or if `original` is NULL, `null` is returned.
      * @since 0.2.0
      */
-    function strip_invalid_entities(original: (string | null)): string;
+    function strip_invalid_entities(original: string | null): string;
 
     /**
      * This type categorized the flags used when processing media art.
@@ -340,13 +340,10 @@ export namespace MediaArt {
 
     namespace Process {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -406,7 +403,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: (string | null), artist: (string | null), title: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string | null, artist: string | null, title: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -436,38 +433,7 @@ export namespace MediaArt {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Processes media art. Precisely the same operation as
-         * `media_art_process_buffer()` is performing, but asynchronously.
-         * 
-         * When all i/o for the operation is finished the `callback` will be
-         * called.
-         * 
-         * In case of a partial error the callback will be called with any
-         * succeeding items and no error, and on the next request the error
-         * will be reported. If a request is cancelled the callback will be
-         * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         * 
-         * Dbufferng an async request no other sync and async calls are allowed,
-         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         * 
-         * Any outstanding i/o request with higher priority (lower numerical
-         * value) will be executed before an outstanding request with lower
-         * priority. Default priority is `G_PRIORITY_DEFAULT`.
-         * @param type The type of media
-         * @param flags The options given for how to process the media art
-         * @param related_file File related to the media art
-         * @param buffer a buffer containing `file` data, or `null`
-         * @param mime MIME type of `buffer`, or `null`
-         * @param artist The artist name `file` or `null`
-         * @param title The title for `file` or `null`
-         * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -498,7 +464,38 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: (Uint8Array | null), mime: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Processes media art. Precisely the same operation as
+         * `media_art_process_buffer()` is performing, but asynchronously.
+         * 
+         * When all i/o for the operation is finished the `callback` will be
+         * called.
+         * 
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * Dbufferng an async request no other sync and async calls are allowed,
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
+         * 
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param type The type of media
+         * @param flags The options given for how to process the media art
+         * @param related_file File related to the media art
+         * @param buffer a buffer containing `file` data, or `null`
+         * @param mime MIME type of `buffer`, or `null`
+         * @param artist The artist name `file` or `null`
+         * @param title The title for `file` or `null`
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        buffer_async(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the asynchronous operation started with
@@ -544,7 +541,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        file(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -572,36 +569,7 @@ export namespace MediaArt {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Processes media art. Precisely the same operation as
-         * `media_art_process_file()` is performing, but asynchronously.
-         * 
-         * When all i/o for the operation is finished the `callback` will be
-         * called.
-         * 
-         * In case of a partial error the callback will be called with any
-         * succeeding items and no error, and on the next request the error
-         * will be reported. If a request is cancelled the callback will be
-         * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         * 
-         * During an async request no other sync and async calls are allowed,
-         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         * 
-         * Any outstanding i/o request with higher priority (lower numerical
-         * value) will be executed before an outstanding request with lower
-         * priority. Default priority is `G_PRIORITY_DEFAULT`.
-         * @param type The type of media
-         * @param flags The options given for how to process the media art
-         * @param file File to be processed
-         * @param artist The artist name `file` or `null`
-         * @param title The title for `file` or `null`
-         * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -630,7 +598,36 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Processes media art. Precisely the same operation as
+         * `media_art_process_file()` is performing, but asynchronously.
+         * 
+         * When all i/o for the operation is finished the `callback` will be
+         * called.
+         * 
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * During an async request no other sync and async calls are allowed,
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
+         * 
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param type The type of media
+         * @param flags The options given for how to process the media art
+         * @param file File to be processed
+         * @param artist The artist name `file` or `null`
+         * @param title The title for `file` or `null`
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        file_async(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the asynchronous operation started with
@@ -652,7 +649,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
          */
-        uri(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+        uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -680,36 +677,7 @@ export namespace MediaArt {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Processes media art. Precisely the same operation as
-         * `media_art_process_uri()` is performing, but asynchronously.
-         * 
-         * When all i/o for the operation is finished the `callback` will be
-         * called.
-         * 
-         * In case of a partial error the callback will be called with any
-         * succeeding items and no error, and on the next request the error
-         * will be reported. If a request is cancelled the callback will be
-         * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         * 
-         * During an async request no other sync and async calls are allowed,
-         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         * 
-         * Any outstanding i/o request with higher priority (lower numerical
-         * value) will be executed before an outstanding request with lower
-         * priority. Default priority is `G_PRIORITY_DEFAULT`.
-         * @param type The type of media
-         * @param flags The options given for how to process the media art
-         * @param uri A string representing a URI to be processed
-         * @param artist The artist name `file` or `null`
-         * @param title The title for `file` or `null`
-         * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Processes media art. Precisely the same operation as
@@ -738,7 +706,36 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: (string | null), title: (string | null), io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Processes media art. Precisely the same operation as
+         * `media_art_process_uri()` is performing, but asynchronously.
+         * 
+         * When all i/o for the operation is finished the `callback` will be
+         * called.
+         * 
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * During an async request no other sync and async calls are allowed,
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
+         * 
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param type The type of media
+         * @param flags The options given for how to process the media art
+         * @param uri A string representing a URI to be processed
+         * @param artist The artist name `file` or `null`
+         * @param title The title for `file` or `null`
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        uri_async(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the asynchronous operation started with
@@ -790,7 +787,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -834,7 +831,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

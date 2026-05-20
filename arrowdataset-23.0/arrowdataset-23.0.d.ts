@@ -80,9 +80,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileFormat.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
     /**
@@ -177,7 +175,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link ArrowDataset.ScannerBuilder} on success, `null` on error.
          */
-        begin_scan(): (ScannerBuilder | null);
+        begin_scan(): ScannerBuilder | null;
 
         /**
          * @returns The type name of `dataset`.   It should be freed with `g_free()` when no longer needed.
@@ -187,12 +185,12 @@ export namespace ArrowDataset {
         /**
          * @returns A {@link Arrow.RecordBatchReader} on success, `null` on error.
          */
-        to_record_batch_reader(): (Arrow.RecordBatchReader | null);
+        to_record_batch_reader(): Arrow.RecordBatchReader | null;
 
         /**
          * @returns A loaded {@link Arrow.Table} on success, `null` on error.
          */
-        to_table(): (Arrow.Table | null);
+        to_table(): Arrow.Table | null;
     }
 
 
@@ -258,7 +256,7 @@ export namespace ArrowDataset {
          * @param options A {@link ArrowDataset.FinishOptions}.
          * @returns A newly created {@link ArrowDataset.Dataset} on success, `null` on error.
          */
-        finish(options: (FinishOptions | null)): (Dataset | null);
+        finish(options: FinishOptions | null): Dataset | null;
     }
 
 
@@ -269,9 +267,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
     }
 
     /**
@@ -294,7 +290,7 @@ export namespace ArrowDataset {
 
         _init(...args: any[]): void;
 
-        static ["new"](schema: Arrow.Schema, dictionaries: (Arrow.Array[] | null), options: (KeyValuePartitioningOptions | null)): DirectoryPartitioning;
+        static ["new"](schema: Arrow.Schema, dictionaries: Arrow.Array[] | null, options: KeyValuePartitioningOptions | null): DirectoryPartitioning;
 
         // Signals
         /** @signal */
@@ -592,7 +588,7 @@ export namespace ArrowDataset {
          * @param options A {@link ArrowDataset.FinishOptions}.
          * @returns A newly created {@link ArrowDataset.FileSystemDataset} on success, `null` on error.
          */
-        finish(options: (FinishOptions | null)): (FileSystemDataset | null);
+        finish(options: FinishOptions | null): FileSystemDataset | null;
 
         /**
          * @param file_system A {@link Arrow.FileSystem}.
@@ -1031,9 +1027,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {
-
-        }
+        interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
     }
 
     /**
@@ -1056,7 +1050,7 @@ export namespace ArrowDataset {
 
         _init(...args: any[]): void;
 
-        static ["new"](schema: Arrow.Schema, dictionaries: (Arrow.Array[] | null), options: (HivePartitioningOptions | null)): HivePartitioning;
+        static ["new"](schema: Arrow.Schema, dictionaries: Arrow.Array[] | null, options: HivePartitioningOptions | null): HivePartitioning;
 
         // Signals
         /** @signal */
@@ -1156,9 +1150,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileFormat.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
     /**
@@ -1205,9 +1197,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Fragment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Fragment.ConstructorProps {}
     }
 
     /**
@@ -1254,9 +1244,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Partitioning.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Partitioning.ConstructorProps {}
     }
 
     /**
@@ -1370,9 +1358,7 @@ export namespace ArrowDataset {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FileFormat.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FileFormat.ConstructorProps {}
     }
 
     /**
@@ -1636,12 +1622,12 @@ export namespace ArrowDataset {
         /**
          * @returns A {@link Arrow.RecordBatchReader} on success, `null` on error.
          */
-        to_record_batch_reader(): (Arrow.RecordBatchReader | null);
+        to_record_batch_reader(): Arrow.RecordBatchReader | null;
 
         /**
          * @returns A newly created {@link Arrow.Table} on success, `null` on error.
          */
-        to_table(): (Arrow.Table | null);
+        to_table(): Arrow.Table | null;
     }
 
 
@@ -1710,7 +1696,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link ArrowDataset.Scanner} on success, `null` on error.
          */
-        finish(): (Scanner | null);
+        finish(): Scanner | null;
 
         /**
          * @param expression A {@link Arrow.Expression} to filter rows with.

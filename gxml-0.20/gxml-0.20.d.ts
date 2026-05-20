@@ -145,7 +145,7 @@ export namespace GXml {
         static COMBINER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -161,7 +161,7 @@ export namespace GXml {
         static INVALID_DOCUMENT_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -223,7 +223,7 @@ export namespace GXml {
         static DATA_CLONE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -239,7 +239,7 @@ export namespace GXml {
         static INVALID_TEXT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -253,7 +253,7 @@ export namespace GXml {
         static INVALIDATION_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -271,7 +271,7 @@ export namespace GXml {
         static INVALID_STREAM_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -289,7 +289,7 @@ export namespace GXml {
         static WRITER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -347,7 +347,7 @@ export namespace GXml {
         static INVALID_CTXT: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -361,7 +361,7 @@ export namespace GXml {
         static INVALID_NAMESPACE_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -494,13 +494,10 @@ export namespace GXml {
 
     namespace ArrayList {
         // Signal signatures
-        interface SignalSignatures extends BaseCollection.SignalSignatures {
-        }
+        interface SignalSignatures extends BaseCollection.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseCollection.ConstructorProps, List.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseCollection.ConstructorProps, List.ConstructorProps {}
     }
 
     /**
@@ -597,7 +594,7 @@ export namespace GXml {
         // Conflicted with GXml.Node.new
         static ["new"](...args: never[]): any;
 
-        static namespace(element: DomElement, namespace_uri: string, prefix: (string | null), name: string, val: string): Attr;
+        static namespace(element: DomElement, namespace_uri: string, prefix: string | null, name: string, val: string): Attr;
 
         static reference(element: DomElement, name: string): Attr;
 
@@ -621,7 +618,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomAttr
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -633,7 +630,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomAttr
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -657,9 +654,9 @@ export namespace GXml {
         get value(): string;
         set value(val: string);
 
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
@@ -677,12 +674,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_namespace_uri(): (string | null);
+        vfunc_get_namespace_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_prefix(): (string | null);
+        vfunc_get_prefix(): string | null;
 
         /**
          * @virtual
@@ -722,9 +719,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterable.ConstructorProps, Collection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterable.ConstructorProps, Collection.ConstructorProps {}
     }
 
     /**
@@ -909,7 +904,7 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -1014,7 +1009,7 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -1051,7 +1046,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_item(index: number): (DomElement | null);
+        get_item(index: number): DomElement | null;
 
         /**
          * @param node 
@@ -1065,7 +1060,7 @@ export namespace GXml {
          */
         initialize(t: GObject.GType): void;
 
-        create_item(): (DomElement | null);
+        create_item(): DomElement | null;
 
         /**
          * @virtual
@@ -1108,7 +1103,7 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_get_item(index: number): (DomElement | null);
+        vfunc_get_item(index: number): DomElement | null;
 
         /**
          * @param node 
@@ -1130,7 +1125,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_create_item(): (DomElement | null);
+        vfunc_create_item(): DomElement | null;
     }
 
 
@@ -1252,7 +1247,7 @@ export namespace GXml {
         // Constructor properties interface
         interface ConstructorProps extends CssSelector.ConstructorProps {
             prefixed: boolean;
-            prefix: (string | null);
+            prefix: string | null;
             local_name: string;
             localName: string;
         }
@@ -1270,8 +1265,8 @@ export namespace GXml {
          */
         get prefixed(): boolean;
 
-        get prefix(): (string | null);
-        set prefix(val: (string | null));
+        get prefix(): string | null;
+        set prefix(val: string | null);
 
         get local_name(): string;
         set local_name(val: string);
@@ -1293,7 +1288,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](prefix: (string | null), local_name: string): CssElementSelector;
+        static ["new"](prefix: string | null, local_name: string): CssElementSelector;
 
         // Conflicted with GXml.CssSelector.new
         static ["new"](...args: never[]): any;
@@ -1314,12 +1309,12 @@ export namespace GXml {
         // Methods
         get_prefixed(): boolean;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         /**
          * @param value 
          */
-        set_prefix(value: (string | null)): void;
+        set_prefix(value: string | null): void;
 
         get_local_name(): string;
 
@@ -1343,7 +1338,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends CssSelector.ConstructorProps {
-            prefix: (string | null);
+            prefix: string | null;
             local_name: string;
             localName: string;
         }
@@ -1356,8 +1351,8 @@ export namespace GXml {
         static $gtype: GObject.GType<CssAttributeSelector>;
 
         // Properties
-        get prefix(): (string | null);
-        set prefix(val: (string | null));
+        get prefix(): string | null;
+        set prefix(val: string | null);
 
         get local_name(): string;
         set local_name(val: string);
@@ -1379,7 +1374,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](prefix: (string | null), local_name: string): CssAttributeSelector;
+        static ["new"](prefix: string | null, local_name: string): CssAttributeSelector;
 
         // Conflicted with GXml.CssSelector.new
         static ["new"](...args: never[]): any;
@@ -1398,12 +1393,12 @@ export namespace GXml {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         /**
          * @param value 
          */
-        set_prefix(value: (string | null)): void;
+        set_prefix(value: string | null): void;
 
         get_local_name(): string;
 
@@ -1568,9 +1563,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocument.ConstructorProps, DomXMLDocument.ConstructorProps {}
     }
 
     /**
@@ -1631,7 +1624,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -1643,7 +1636,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -1733,13 +1726,13 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomDocument
          */
-        get doctype(): (DomDocumentType | null);
+        get doctype(): DomDocumentType | null;
 
         /**
          * @read-only
           * @category Inherited from GXml.DomDocument
          */
-        get document_element(): (DomElement | null);
+        get document_element(): DomElement | null;
 
         /**
          * @read-only
@@ -1749,16 +1742,16 @@ export namespace GXml {
 
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -1779,12 +1772,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_element_child(): (DomElement | null);
+        vfunc_get_first_element_child(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_element_child(): (DomElement | null);
+        vfunc_get_last_element_child(): DomElement | null;
 
         /**
          * @virtual
@@ -1795,7 +1788,7 @@ export namespace GXml {
          * @param selectors 
          * @virtual
          */
-        vfunc_query_selector(selectors: string): (DomElement | null);
+        vfunc_query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -1813,13 +1806,13 @@ export namespace GXml {
         /**
          * @param element_id 
          */
-        get_element_by_id(element_id: string): (DomElement | null);
+        get_element_by_id(element_id: string): DomElement | null;
 
         /**
          * @param element_id 
          * @virtual
          */
-        vfunc_get_element_by_id(element_id: string): (DomElement | null);
+        vfunc_get_element_by_id(element_id: string): DomElement | null;
 
         get_implementation(): DomImplementation;
 
@@ -1835,9 +1828,9 @@ export namespace GXml {
 
         get_content_type(): string;
 
-        get_doctype(): (DomDocumentType | null);
+        get_doctype(): DomDocumentType | null;
 
-        get_document_element(): (DomElement | null);
+        get_document_element(): DomElement | null;
 
         /**
          * @param local_name 
@@ -1848,7 +1841,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param classNames 
@@ -1864,7 +1857,7 @@ export namespace GXml {
          * @param namespace 
          * @param qualified_name 
          */
-        create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+        create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
         create_document_fragment(): DomDocumentFragment;
 
@@ -1918,27 +1911,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1949,27 +1942,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -1981,19 +1974,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -2003,24 +1996,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -2031,27 +2024,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -2062,27 +2055,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -2093,27 +2086,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -2165,12 +2158,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_doctype(): (DomDocumentType | null);
+        vfunc_get_doctype(): DomDocumentType | null;
 
         /**
          * @virtual
          */
-        vfunc_get_document_element(): (DomElement | null);
+        vfunc_get_document_element(): DomElement | null;
 
         /**
          * @param local_name 
@@ -2183,7 +2176,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param classNames 
@@ -2202,7 +2195,7 @@ export namespace GXml {
          * @param qualified_name 
          * @virtual
          */
-        vfunc_create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+        vfunc_create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
         /**
          * @virtual
@@ -2271,7 +2264,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
@@ -2279,7 +2272,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2292,7 +2285,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
@@ -2300,7 +2293,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2318,7 +2311,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2330,14 +2323,14 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2350,7 +2343,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
@@ -2358,7 +2351,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2371,7 +2364,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
@@ -2379,7 +2372,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2392,7 +2385,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
@@ -2400,7 +2393,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -2423,13 +2416,10 @@ export namespace GXml {
 
     namespace Implementation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
     }
 
     /**
@@ -2479,7 +2469,7 @@ export namespace GXml {
          * @param qualified_name 
          * @param doctype 
          */
-        create_document(nspace: (string | null), qualified_name: (string | null), doctype: (DomDocumentType | null)): DomXMLDocument;
+        create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument;
 
         /**
          * @param title 
@@ -2502,7 +2492,7 @@ export namespace GXml {
          * @param doctype 
          * @virtual
          */
-        vfunc_create_document(nspace: (string | null), qualified_name: (string | null), doctype: (DomDocumentType | null)): DomXMLDocument;
+        vfunc_create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument;
 
         /**
          * @param title 
@@ -2526,9 +2516,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps, DomChildNode.ConstructorProps, DomDocumentType.ConstructorProps {}
     }
 
     /**
@@ -2551,7 +2539,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](doc: DomDocument, name: string, public_id: (string | null), system_id: (string | null)): DocumentType;
+        static ["new"](doc: DomDocument, name: string, public_id: string | null, system_id: string | null): DocumentType;
 
         // Conflicted with GXml.Node.new
         static ["new"](...args: never[]): any;
@@ -2643,9 +2631,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocumentFragment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps, DomParentNode.ConstructorProps, DomNonElementParentNode.ConstructorProps, DomDocumentFragment.ConstructorProps {}
     }
 
     /**
@@ -2696,7 +2682,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -2708,7 +2694,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -2730,16 +2716,16 @@ export namespace GXml {
 
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -2760,12 +2746,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_element_child(): (DomElement | null);
+        vfunc_get_first_element_child(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_element_child(): (DomElement | null);
+        vfunc_get_last_element_child(): DomElement | null;
 
         /**
          * @virtual
@@ -2776,7 +2762,7 @@ export namespace GXml {
          * @param selectors 
          * @virtual
          */
-        vfunc_query_selector(selectors: string): (DomElement | null);
+        vfunc_query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -2794,25 +2780,22 @@ export namespace GXml {
         /**
          * @param element_id 
          */
-        get_element_by_id(element_id: string): (DomElement | null);
+        get_element_by_id(element_id: string): DomElement | null;
 
         /**
          * @param element_id 
          * @virtual
          */
-        vfunc_get_element_by_id(element_id: string): (DomElement | null);
+        vfunc_get_element_by_id(element_id: string): DomElement | null;
     }
 
 
     namespace DomNodeFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2864,9 +2847,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -2907,7 +2888,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_element(index: number): (DomElement | null);
+        get_element(index: number): DomElement | null;
 
         to_array(): DomElement[];
 
@@ -2922,18 +2903,18 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomElement | null);
+        item(index: number): DomElement | null;
 
         /**
          * @param name 
          */
-        named_item(name: string): (DomElement | null);
+        named_item(name: string): DomElement | null;
 
         /**
          * @param index 
          * @virtual
          */
-        vfunc_get_element(index: number): (DomElement | null);
+        vfunc_get_element(index: number): DomElement | null;
 
         /**
          * @virtual
@@ -2956,13 +2937,13 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomElement | null);
+        vfunc_item(index: number): DomElement | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_named_item(name: string): (DomElement | null);
+        vfunc_named_item(name: string): DomElement | null;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -3061,7 +3042,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends DomEventInit.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -3073,7 +3054,7 @@ export namespace GXml {
 
         // Properties
         get detail(): unknown;
-        set detail(val: (GObject.Value | any));
+        set detail(val: GObject.Value | any);
 
         /**
          * Compile-time signal type information.
@@ -3110,7 +3091,7 @@ export namespace GXml {
         /**
          * @param value 
          */
-        set_detail(value: (GObject.Value | any)): void;
+        set_detail(value: GObject.Value | any): void;
     }
 
 
@@ -3332,13 +3313,10 @@ export namespace GXml {
 
     namespace DomErrorName {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3476,12 +3454,12 @@ export namespace GXml {
         /**
          * @param nspace 
          */
-        lookup_prefix(nspace: (string | null)): (string | null);
+        lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          */
-        lookup_namespace_uri(prefix: (string | null)): (string | null);
+        lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param local_name 
@@ -3499,7 +3477,7 @@ export namespace GXml {
          * @param prefix 
          * @param local_name 
          */
-        initialize_with_namespace(namespace_uri: (string | null), prefix: (string | null), local_name: string): void;
+        initialize_with_namespace(namespace_uri: string | null, prefix: string | null, local_name: string): void;
 
         /**
          * @param doc 
@@ -3507,7 +3485,7 @@ export namespace GXml {
          * @param prefix 
          * @param local_name 
          */
-        initialize_document_with_namespace(doc: DomDocument, namespace_uri: (string | null), prefix: (string | null), local_name: string): void;
+        initialize_document_with_namespace(doc: DomDocument, namespace_uri: string | null, prefix: string | null, local_name: string): void;
 
         get_parse_children(): boolean;
 
@@ -3541,12 +3519,12 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        parse_buffer_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        parse_buffer_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        parse_buffer_async(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        parse_buffer_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3557,7 +3535,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): (DomElement | null);
+        get previous_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -3569,7 +3547,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): (DomElement | null);
+        get next_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -3587,7 +3565,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -3599,7 +3577,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -3623,7 +3601,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomElement
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -3635,7 +3613,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomElement
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -3662,12 +3640,12 @@ export namespace GXml {
         get tagName(): string;
 
         /** @category Inherited from GXml.DomElement */
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
         /** @category Inherited from GXml.DomElement */
-        get class_name(): (string | null);
-        set class_name(val: (string | null));
+        get class_name(): string | null;
+        set class_name(val: string | null);
 
         /** @category Inherited from GXml.DomElement */
         get className(): string;
@@ -3698,32 +3676,32 @@ export namespace GXml {
          */
         vfunc_remove(): void;
 
-        get_previous_element_sibling(): (DomElement | null);
+        get_previous_element_sibling(): DomElement | null;
 
-        get_next_element_sibling(): (DomElement | null);
-
-        /**
-         * @virtual
-         */
-        vfunc_get_previous_element_sibling(): (DomElement | null);
+        get_next_element_sibling(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_next_element_sibling(): (DomElement | null);
+        vfunc_get_previous_element_sibling(): DomElement | null;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_next_element_sibling(): DomElement | null;
 
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -3744,12 +3722,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_element_child(): (DomElement | null);
+        vfunc_get_first_element_child(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_element_child(): (DomElement | null);
+        vfunc_get_last_element_child(): DomElement | null;
 
         /**
          * @virtual
@@ -3760,7 +3738,7 @@ export namespace GXml {
          * @param selectors 
          * @virtual
          */
-        vfunc_query_selector(selectors: string): (DomElement | null);
+        vfunc_query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -3775,27 +3753,27 @@ export namespace GXml {
          */
         vfunc_get_elements_by_property_value(property: string, value: string): DomElementList;
 
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
         get_tag_name(): string;
 
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * @param value 
          */
-        set_id(value: (string | null)): void;
+        set_id(value: string | null): void;
 
-        get_class_name(): (string | null);
+        get_class_name(): string | null;
 
         /**
          * @param value 
          */
-        set_class_name(value: (string | null)): void;
+        set_class_name(value: string | null): void;
 
         get_class_list(): DomTokenList;
 
@@ -3804,13 +3782,13 @@ export namespace GXml {
         /**
          * @param name 
          */
-        get_attribute(name: string): (string | null);
+        get_attribute(name: string): string | null;
 
         /**
          * @param namespace 
          * @param local_name 
          */
-        get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+        get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
         /**
          * @param name 
@@ -3829,7 +3807,7 @@ export namespace GXml {
          * @param name 
          * @param value 
          */
-        set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+        set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
         /**
          * @param name 
@@ -3846,7 +3824,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        remove_attribute_ns(namespace: (string | null), local_name: string): void;
+        remove_attribute_ns(namespace: string | null, local_name: string): void;
 
         /**
          * @param name 
@@ -3857,7 +3835,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+        has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
         /**
          * @param local_name 
@@ -3868,7 +3846,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param class_names 
@@ -3889,21 +3867,21 @@ export namespace GXml {
          * @param uri 
          * @param cancellable 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3914,27 +3892,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3945,27 +3923,27 @@ export namespace GXml {
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param istream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param istream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param istream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -3976,27 +3954,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4006,24 +3984,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -4034,27 +4012,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4070,21 +4048,21 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -4096,19 +4074,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -4118,12 +4096,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_namespace_uri(): (string | null);
+        vfunc_get_namespace_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_prefix(): (string | null);
+        vfunc_get_prefix(): string | null;
 
         /**
          * @virtual
@@ -4138,24 +4116,24 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_id(): (string | null);
+        vfunc_get_id(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_id(value: (string | null)): void;
+        vfunc_set_id(value: string | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_class_name(): (string | null);
+        vfunc_get_class_name(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_class_name(value: (string | null)): void;
+        vfunc_set_class_name(value: string | null): void;
 
         /**
          * @virtual
@@ -4171,14 +4149,14 @@ export namespace GXml {
          * @param name 
          * @virtual
          */
-        vfunc_get_attribute(name: string): (string | null);
+        vfunc_get_attribute(name: string): string | null;
 
         /**
          * @param namespace 
          * @param local_name 
          * @virtual
          */
-        vfunc_get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+        vfunc_get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
         /**
          * @param name 
@@ -4200,7 +4178,7 @@ export namespace GXml {
          * @param value 
          * @virtual
          */
-        vfunc_set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+        vfunc_set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
         /**
          * @param name 
@@ -4220,7 +4198,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_remove_attribute_ns(namespace: (string | null), local_name: string): void;
+        vfunc_remove_attribute_ns(namespace: string | null, local_name: string): void;
 
         /**
          * @param name 
@@ -4233,7 +4211,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+        vfunc_has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
         /**
          * @param local_name 
@@ -4246,7 +4224,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param class_names 
@@ -4272,7 +4250,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4285,7 +4263,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
@@ -4293,7 +4271,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4306,7 +4284,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param istream 
@@ -4314,7 +4292,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4327,7 +4305,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
@@ -4335,7 +4313,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4347,14 +4325,14 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4367,7 +4345,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
@@ -4375,7 +4353,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4395,7 +4373,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4413,7 +4391,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -4426,29 +4404,29 @@ export namespace GXml {
         /**
          * @param nick 
          */
-        find_property_name(nick: string): (GObject.ParamSpec | null);
+        find_property_name(nick: string): GObject.ParamSpec | null;
 
         /**
          * @param pname 
          */
-        find_object_property_name(pname: string): (GObject.ParamSpec | null);
+        find_object_property_name(pname: string): GObject.ParamSpec | null;
 
         get_property_element_list(): GObject.ParamSpec[];
 
         /**
          * @param prop 
          */
-        get_property_string(prop: GObject.ParamSpec): (string | null);
+        get_property_string(prop: GObject.ParamSpec): string | null;
 
         /**
          * @param name 
          */
-        find_property(name: string): (Property | null);
+        find_property(name: string): Property | null;
 
         /**
          * @param name 
          */
-        get_child(name: string): (DomElement | null);
+        get_child(name: string): DomElement | null;
 
         /**
          * @param name 
@@ -4474,13 +4452,13 @@ export namespace GXml {
          * @param nick 
          * @virtual
          */
-        vfunc_find_property_name(nick: string): (GObject.ParamSpec | null);
+        vfunc_find_property_name(nick: string): GObject.ParamSpec | null;
 
         /**
          * @param pname 
          * @virtual
          */
-        vfunc_find_object_property_name(pname: string): (GObject.ParamSpec | null);
+        vfunc_find_object_property_name(pname: string): GObject.ParamSpec | null;
 
         /**
          * @virtual
@@ -4491,19 +4469,19 @@ export namespace GXml {
          * @param prop 
          * @virtual
          */
-        vfunc_get_property_string(prop: GObject.ParamSpec): (string | null);
+        vfunc_get_property_string(prop: GObject.ParamSpec): string | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_find_property(name: string): (Property | null);
+        vfunc_find_property(name: string): Property | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_get_child(name: string): (DomElement | null);
+        vfunc_get_child(name: string): DomElement | null;
 
         /**
          * @param name 
@@ -4544,9 +4522,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
     }
 
     /**
@@ -4604,39 +4580,39 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         /**
          * @param name 
          */
-        get_named_item(name: string): (DomNode | null);
+        get_named_item(name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item(node: DomNode): (DomNode | null);
+        set_named_item(node: DomNode): DomNode | null;
 
         /**
          * @param name 
          */
-        remove_named_item(name: string): (DomNode | null);
+        remove_named_item(name: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param localName 
          */
-        remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+        remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param local_name 
          */
-        get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+        get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item_ns(node: DomNode): (DomNode | null);
+        set_named_item_ns(node: DomNode): DomNode | null;
 
         /**
          * @virtual
@@ -4647,45 +4623,45 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomNode | null);
+        vfunc_item(index: number): DomNode | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_get_named_item(name: string): (DomNode | null);
+        vfunc_get_named_item(name: string): DomNode | null;
 
         /**
          * @param node 
          * @virtual
          */
-        vfunc_set_named_item(node: DomNode): (DomNode | null);
+        vfunc_set_named_item(node: DomNode): DomNode | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_remove_named_item(name: string): (DomNode | null);
+        vfunc_remove_named_item(name: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param localName 
          * @virtual
          */
-        vfunc_remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+        vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param local_name 
          * @virtual
          */
-        vfunc_get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+        vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
         /**
          * @param node 
          * @virtual
          */
-        vfunc_set_named_item_ns(node: DomNode): (DomNode | null);
+        vfunc_set_named_item_ns(node: DomNode): DomNode | null;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -4703,8 +4679,7 @@ export namespace GXml {
 
     namespace Enumeration {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -4759,7 +4734,7 @@ export namespace GXml {
          * @param enumeration 
          * @param val 
          */
-        static parse(enumeration: GObject.GType, val: string): (GObject.EnumValue | null);
+        static parse(enumeration: GObject.GType, val: string): GObject.EnumValue | null;
 
         /**
          * @param enumeration 
@@ -4770,7 +4745,7 @@ export namespace GXml {
          * @param enumeration 
          * @param val 
          */
-        static parse_integer(enumeration: GObject.GType, val: number): (GObject.EnumValue | null);
+        static parse_integer(enumeration: GObject.GType, val: number): GObject.EnumValue | null;
 
         /**
          * @param enumeration 
@@ -4794,9 +4769,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {}
     }
 
     /**
@@ -4844,7 +4817,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomEvent
          */
-        get event_target(): (DomEventTarget | null);
+        get event_target(): DomEventTarget | null;
 
         /**
          * @read-only
@@ -4856,7 +4829,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomEvent
          */
-        get current_target(): (DomEventTarget | null);
+        get current_target(): DomEventTarget | null;
 
         /**
          * @read-only
@@ -4926,9 +4899,9 @@ export namespace GXml {
 
         get_etype(): string;
 
-        get_event_target(): (DomEventTarget | null);
+        get_event_target(): DomEventTarget | null;
 
-        get_current_target(): (DomEventTarget | null);
+        get_current_target(): DomEventTarget | null;
 
         get_bubbles(): boolean;
 
@@ -4963,12 +4936,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_event_target(): (DomEventTarget | null);
+        vfunc_get_event_target(): DomEventTarget | null;
 
         /**
          * @virtual
          */
-        vfunc_get_current_target(): (DomEventTarget | null);
+        vfunc_get_current_target(): DomEventTarget | null;
 
         /**
          * @virtual
@@ -5033,7 +5006,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Event.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -5087,7 +5060,7 @@ export namespace GXml {
          * @param cancelable 
          * @param detail 
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: (GObject.Value | null)): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | null): void;
     }
 
 
@@ -5099,9 +5072,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseCollection.ConstructorProps, Map.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseCollection.ConstructorProps, Map.ConstructorProps {}
     }
 
     /**
@@ -5156,7 +5127,7 @@ export namespace GXml {
         /**
          * @param key 
          */
-        get(key: string): (DomElement | null);
+        get(key: string): DomElement | null;
 
         get_keys(): string[];
 
@@ -5190,7 +5161,7 @@ export namespace GXml {
         /**
          * @param key 
          */
-        item(key: string): (DomElement | null);
+        item(key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5214,7 +5185,7 @@ export namespace GXml {
          * @param key 
          * @virtual
          */
-        vfunc_item(key: string): (DomElement | null);
+        vfunc_item(key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5238,9 +5209,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseCollection.ConstructorProps, PairedMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseCollection.ConstructorProps, PairedMap.ConstructorProps {}
     }
 
     /**
@@ -5298,7 +5267,7 @@ export namespace GXml {
          * @param primary_key 
          * @param secondary_key 
          */
-        get(primary_key: string, secondary_key: string): (DomElement | null);
+        get(primary_key: string, secondary_key: string): DomElement | null;
 
         get_primary_keys(): string[];
 
@@ -5355,7 +5324,7 @@ export namespace GXml {
          * @param primary_key 
          * @param secondary_key 
          */
-        item(primary_key: string, secondary_key: string): (DomElement | null);
+        item(primary_key: string, secondary_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5405,7 +5374,7 @@ export namespace GXml {
          * @param secondary_key 
          * @virtual
          */
-        vfunc_item(primary_key: string, secondary_key: string): (DomElement | null);
+        vfunc_item(primary_key: string, secondary_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5438,9 +5407,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseCollection.ConstructorProps, ThreeMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseCollection.ConstructorProps, ThreeMap.ConstructorProps {}
     }
 
     /**
@@ -5501,7 +5468,7 @@ export namespace GXml {
          * @param secondary_key 
          * @param third_key 
          */
-        get(primary_key: string, secondary_key: string, third_key: string): (DomElement | null);
+        get(primary_key: string, secondary_key: string, third_key: string): DomElement | null;
 
         get_primary_keys(): string[];
 
@@ -5580,7 +5547,7 @@ export namespace GXml {
          * @param secondary_key 
          * @param third_key 
          */
-        item(primary_key: string, secondary_key: string, third_key: string): (DomElement | null);
+        item(primary_key: string, secondary_key: string, third_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5655,7 +5622,7 @@ export namespace GXml {
          * @param third_key 
          * @virtual
          */
-        vfunc_item(primary_key: string, secondary_key: string, third_key: string): (DomElement | null);
+        vfunc_item(primary_key: string, secondary_key: string, third_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -5705,9 +5672,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -5748,7 +5713,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_element(index: number): (DomElement | null);
+        get_element(index: number): DomElement | null;
 
         to_array(): DomElement[];
 
@@ -5763,18 +5728,18 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomElement | null);
+        item(index: number): DomElement | null;
 
         /**
          * @param name 
          */
-        named_item(name: string): (DomElement | null);
+        named_item(name: string): DomElement | null;
 
         /**
          * @param index 
          * @virtual
          */
-        vfunc_get_element(index: number): (DomElement | null);
+        vfunc_get_element(index: number): DomElement | null;
 
         /**
          * @virtual
@@ -5797,13 +5762,13 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomElement | null);
+        vfunc_item(index: number): DomElement | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_named_item(name: string): (DomElement | null);
+        vfunc_named_item(name: string): DomElement | null;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -5889,9 +5854,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Element.ConstructorProps {}
     }
 
     /**
@@ -5942,9 +5905,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {}
     }
 
     /**
@@ -6092,9 +6053,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEventTarget.ConstructorProps, DomNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomEventTarget.ConstructorProps, DomNode.ConstructorProps {}
     }
 
     /**
@@ -6160,7 +6119,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get base_uri(): (string | null);
+        get base_uri(): string | null;
 
         /**
          * @read-only
@@ -6169,8 +6128,8 @@ export namespace GXml {
         get baseUri(): string;
 
         /** @category Inherited from GXml.DomNode */
-        get owner_document(): (DomDocument | null);
-        set owner_document(val: (DomDocument | null));
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
 
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
@@ -6180,7 +6139,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get parent_node(): (DomNode | null);
+        get parent_node(): DomNode | null;
 
         /**
          * @read-only
@@ -6192,7 +6151,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get parent_element(): (DomElement | null);
+        get parent_element(): DomElement | null;
 
         /**
          * @read-only
@@ -6216,7 +6175,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get first_child(): (DomNode | null);
+        get first_child(): DomNode | null;
 
         /**
          * @read-only
@@ -6228,7 +6187,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get last_child(): (DomNode | null);
+        get last_child(): DomNode | null;
 
         /**
          * @read-only
@@ -6240,7 +6199,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get previous_sibling(): (DomNode | null);
+        get previous_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -6252,7 +6211,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get next_sibling(): (DomNode | null);
+        get next_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -6261,16 +6220,16 @@ export namespace GXml {
         get nextSibling(): DomNode;
 
         /** @category Inherited from GXml.DomNode */
-        get node_value(): (string | null);
-        set node_value(val: (string | null));
+        get node_value(): string | null;
+        set node_value(val: string | null);
 
         /** @category Inherited from GXml.DomNode */
         get nodeValue(): string;
         set nodeValue(val: string);
 
         /** @category Inherited from GXml.DomNode */
-        get text_content(): (string | null);
-        set text_content(val: (string | null));
+        get text_content(): string | null;
+        set text_content(val: string | null);
 
         /** @category Inherited from GXml.DomNode */
         get textContent(): string;
@@ -6281,14 +6240,14 @@ export namespace GXml {
          * @param callback 
          * @param capture 
          */
-        add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param type 
          * @param callback 
          * @param capture 
          */
-        remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param event 
@@ -6301,7 +6260,7 @@ export namespace GXml {
          * @param capture 
          * @virtual
          */
-        vfunc_add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        vfunc_add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param type 
@@ -6309,7 +6268,7 @@ export namespace GXml {
          * @param capture 
          * @virtual
          */
-        vfunc_remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        vfunc_remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param event 
@@ -6321,42 +6280,42 @@ export namespace GXml {
 
         get_node_name(): string;
 
-        get_base_uri(): (string | null);
+        get_base_uri(): string | null;
 
-        get_owner_document(): (DomDocument | null);
+        get_owner_document(): DomDocument | null;
 
         /**
          * @param value 
          */
-        set_owner_document(value: (DomDocument | null)): void;
+        set_owner_document(value: DomDocument | null): void;
 
-        get_parent_node(): (DomNode | null);
+        get_parent_node(): DomNode | null;
 
-        get_parent_element(): (DomElement | null);
+        get_parent_element(): DomElement | null;
 
         get_child_nodes(): DomNodeList;
 
-        get_first_child(): (DomNode | null);
+        get_first_child(): DomNode | null;
 
-        get_last_child(): (DomNode | null);
+        get_last_child(): DomNode | null;
 
-        get_previous_sibling(): (DomNode | null);
+        get_previous_sibling(): DomNode | null;
 
-        get_next_sibling(): (DomNode | null);
+        get_next_sibling(): DomNode | null;
 
-        get_node_value(): (string | null);
-
-        /**
-         * @param value 
-         */
-        set_node_value(value: (string | null)): void;
-
-        get_text_content(): (string | null);
+        get_node_value(): string | null;
 
         /**
          * @param value 
          */
-        set_text_content(value: (string | null)): void;
+        set_node_value(value: string | null): void;
+
+        get_text_content(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_text_content(value: string | null): void;
 
         has_child_nodes(): boolean;
 
@@ -6365,7 +6324,7 @@ export namespace GXml {
         /**
          * @param node 
          */
-        is_equal_node(node: (DomNode | null)): boolean;
+        is_equal_node(node: DomNode | null): boolean;
 
         /**
          * @param other 
@@ -6375,28 +6334,28 @@ export namespace GXml {
         /**
          * @param other 
          */
-        contains(other: (DomNode | null)): boolean;
+        contains(other: DomNode | null): boolean;
 
         /**
          * @param nspace 
          */
-        lookup_prefix(nspace: (string | null)): (string | null);
+        lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          */
-        lookup_namespace_uri(prefix: (string | null)): (string | null);
+        lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param nspace 
          */
-        is_default_namespace(nspace: (string | null)): boolean;
+        is_default_namespace(nspace: string | null): boolean;
 
         /**
          * @param node 
          * @param child 
          */
-        insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
 
         /**
          * @param node 
@@ -6427,28 +6386,28 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_base_uri(): (string | null);
+        vfunc_get_base_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_owner_document(): (DomDocument | null);
+        vfunc_get_owner_document(): DomDocument | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_owner_document(value: (DomDocument | null)): void;
+        vfunc_set_owner_document(value: DomDocument | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_parent_node(): (DomNode | null);
+        vfunc_get_parent_node(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_parent_element(): (DomElement | null);
+        vfunc_get_parent_element(): DomElement | null;
 
         /**
          * @virtual
@@ -6458,44 +6417,44 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_child(): (DomNode | null);
+        vfunc_get_first_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_child(): (DomNode | null);
+        vfunc_get_last_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_previous_sibling(): (DomNode | null);
+        vfunc_get_previous_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_next_sibling(): (DomNode | null);
+        vfunc_get_next_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_node_value(): (string | null);
-
-        /**
-         * @param value 
-         * @virtual
-         */
-        vfunc_set_node_value(value: (string | null)): void;
-
-        /**
-         * @virtual
-         */
-        vfunc_get_text_content(): (string | null);
+        vfunc_get_node_value(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_text_content(value: (string | null)): void;
+        vfunc_set_node_value(value: string | null): void;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_text_content(): string | null;
+
+        /**
+         * @param value 
+         * @virtual
+         */
+        vfunc_set_text_content(value: string | null): void;
 
         /**
          * @virtual
@@ -6511,7 +6470,7 @@ export namespace GXml {
          * @param node 
          * @virtual
          */
-        vfunc_is_equal_node(node: (DomNode | null)): boolean;
+        vfunc_is_equal_node(node: DomNode | null): boolean;
 
         /**
          * @param other 
@@ -6523,32 +6482,32 @@ export namespace GXml {
          * @param other 
          * @virtual
          */
-        vfunc_contains(other: (DomNode | null)): boolean;
+        vfunc_contains(other: DomNode | null): boolean;
 
         /**
          * @param nspace 
          * @virtual
          */
-        vfunc_lookup_prefix(nspace: (string | null)): (string | null);
+        vfunc_lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          * @virtual
          */
-        vfunc_lookup_namespace_uri(prefix: (string | null)): (string | null);
+        vfunc_lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param nspace 
          * @virtual
          */
-        vfunc_is_default_namespace(nspace: (string | null)): boolean;
+        vfunc_is_default_namespace(nspace: string | null): boolean;
 
         /**
          * @param node 
          * @param child 
          * @virtual
          */
-        vfunc_insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+        vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
 
         /**
          * @param node 
@@ -6584,9 +6543,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {}
     }
 
     /**
@@ -6633,7 +6590,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         get_length(): number;
 
@@ -6641,7 +6598,7 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomNode | null);
+        vfunc_item(index: number): DomNode | null;
 
         /**
          * @virtual
@@ -6672,9 +6629,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {}
     }
 
     /**
@@ -6762,9 +6717,9 @@ export namespace GXml {
 
         get_what_to_show(): number;
 
-        next_node(): (DomNode | null);
+        next_node(): DomNode | null;
 
-        previous_node(): (DomNode | null);
+        previous_node(): DomNode | null;
 
         detach(): void;
 
@@ -6791,12 +6746,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_next_node(): (DomNode | null);
+        vfunc_next_node(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_previous_node(): (DomNode | null);
+        vfunc_previous_node(): DomNode | null;
 
         /**
          * @virtual
@@ -6813,7 +6768,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Property.ConstructorProps {
-            value: (string | null);
+            value: string | null;
         }
     }
 
@@ -6824,8 +6779,8 @@ export namespace GXml {
         static $gtype: GObject.GType<BaseProperty>;
 
         // Properties
-        get value(): (string | null);
-        set value(val: (string | null));
+        get value(): string | null;
+        set value(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -6858,32 +6813,32 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_value(): (string | null);
+        vfunc_get_value(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_value(value: (string | null)): void;
+        vfunc_set_value(value: string | null): void;
 
         /**
          * @param val 
          * @virtual
          */
-        vfunc_validate_value(val: (string | null)): boolean;
+        vfunc_validate_value(val: string | null): boolean;
 
         // Methods
-        get_value(): (string | null);
+        get_value(): string | null;
 
         /**
          * @param value 
          */
-        set_value(value: (string | null)): void;
+        set_value(value: string | null): void;
 
         /**
          * @param val 
          */
-        validate_value(val: (string | null)): boolean;
+        validate_value(val: string | null): boolean;
     }
 
 
@@ -6894,9 +6849,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseProperty.ConstructorProps {}
     }
 
     /**
@@ -6945,9 +6898,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseProperty.ConstructorProps {}
     }
 
     /**
@@ -7164,9 +7115,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Double.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Double.ConstructorProps {}
     }
 
     /**
@@ -7221,9 +7170,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseProperty.ConstructorProps {}
     }
 
     /**
@@ -7278,9 +7225,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseProperty.ConstructorProps {}
     }
 
     /**
@@ -7463,9 +7408,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseProperty.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseProperty.ConstructorProps {}
     }
 
     /**
@@ -7594,9 +7537,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {}
     }
 
     /**
@@ -7767,9 +7708,9 @@ export namespace GXml {
 
         delete_contents(): void;
 
-        extract_contents(): (DomDocumentFragment | null);
+        extract_contents(): DomDocumentFragment | null;
 
-        clone_contents(): (DomDocumentFragment | null);
+        clone_contents(): DomDocumentFragment | null;
 
         /**
          * @param node 
@@ -7905,12 +7846,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_extract_contents(): (DomDocumentFragment | null);
+        vfunc_extract_contents(): DomDocumentFragment | null;
 
         /**
          * @virtual
          */
-        vfunc_clone_contents(): (DomDocumentFragment | null);
+        vfunc_clone_contents(): DomDocumentFragment | null;
 
         /**
          * @param node 
@@ -7974,9 +7915,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {}
     }
 
     /**
@@ -7999,7 +7938,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](e: DomElement, attr: (string | null)): SettableTokenList;
+        static ["new"](e: DomElement, attr: string | null): SettableTokenList;
 
         // Conflicted with Gee.ArrayList.new
         static ["new"](...args: never[]): any;
@@ -8060,9 +7999,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Property.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Property.ConstructorProps {}
     }
 
     /**
@@ -8101,37 +8038,37 @@ export namespace GXml {
         emit(signal: string, ...args: any[]): void;
 
         /** @category Inherited from GXml.Property */
-        get value(): (string | null);
-        set value(val: (string | null));
+        get value(): string | null;
+        set value(val: string | null);
 
-        get_value(): (string | null);
+        get_value(): string | null;
 
         /**
          * @param value 
          */
-        set_value(value: (string | null)): void;
+        set_value(value: string | null): void;
 
         /**
          * @param val 
          */
-        validate_value(val: (string | null)): boolean;
+        validate_value(val: string | null): boolean;
 
         /**
          * @virtual
          */
-        vfunc_get_value(): (string | null);
+        vfunc_get_value(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_value(value: (string | null)): void;
+        vfunc_set_value(value: string | null): void;
 
         /**
          * @param val 
          * @virtual
          */
-        vfunc_validate_value(val: (string | null)): boolean;
+        vfunc_validate_value(val: string | null): boolean;
     }
 
 
@@ -8144,9 +8081,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Node.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps, DomChildNode.ConstructorProps, DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Node.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps, DomChildNode.ConstructorProps, DomCharacterData.ConstructorProps {}
     }
 
     /**
@@ -8188,7 +8123,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): (DomElement | null);
+        get previous_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -8200,7 +8135,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): (DomElement | null);
+        get next_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -8212,19 +8147,19 @@ export namespace GXml {
         get data(): string;
         set data(val: string);
 
-        get_previous_element_sibling(): (DomElement | null);
+        get_previous_element_sibling(): DomElement | null;
 
-        get_next_element_sibling(): (DomElement | null);
-
-        /**
-         * @virtual
-         */
-        vfunc_get_previous_element_sibling(): (DomElement | null);
+        get_next_element_sibling(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_next_element_sibling(): (DomElement | null);
+        vfunc_get_previous_element_sibling(): DomElement | null;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_next_element_sibling(): DomElement | null;
 
         remove(): void;
 
@@ -8338,9 +8273,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CharacterData.ConstructorProps, DomText.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CharacterData.ConstructorProps, DomText.ConstructorProps {}
     }
 
     /**
@@ -8509,9 +8442,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CharacterData.ConstructorProps, DomProcessingInstruction.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CharacterData.ConstructorProps, DomProcessingInstruction.ConstructorProps {}
     }
 
     /**
@@ -8674,9 +8605,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends CharacterData.ConstructorProps, DomComment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends CharacterData.ConstructorProps, DomComment.ConstructorProps {}
     }
 
     /**
@@ -8832,9 +8761,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {}
     }
 
     /**
@@ -8857,7 +8784,7 @@ export namespace GXml {
 
         _init(...args: any[]): void;
 
-        static ["new"](e: DomElement, attr: (string | null)): TokenList;
+        static ["new"](e: DomElement, attr: string | null): TokenList;
 
         // Conflicted with Gee.ArrayList.new
         static ["new"](...args: never[]): any;
@@ -8889,7 +8816,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (string | null);
+        item(index: number): string | null;
 
         /**
          * @param token 
@@ -8942,7 +8869,7 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (string | null);
+        vfunc_item(index: number): string | null;
 
         /**
          * @param token 
@@ -9019,9 +8946,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {}
     }
 
     /**
@@ -9095,19 +9020,19 @@ export namespace GXml {
 
         get_current_node(): DomNode;
 
-        parent_node(): (DomNode | null);
+        parent_node(): DomNode | null;
 
-        first_child(): (DomNode | null);
+        first_child(): DomNode | null;
 
-        last_child(): (DomNode | null);
+        last_child(): DomNode | null;
 
-        previous_sibling(): (DomNode | null);
+        previous_sibling(): DomNode | null;
 
-        next_sibling(): (DomNode | null);
+        next_sibling(): DomNode | null;
 
-        previous_node(): (DomNode | null);
+        previous_node(): DomNode | null;
 
-        next_node(): (DomNode | null);
+        next_node(): DomNode | null;
 
         /**
          * @virtual
@@ -9127,37 +9052,37 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_parent_node(): (DomNode | null);
+        vfunc_parent_node(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_first_child(): (DomNode | null);
+        vfunc_first_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_last_child(): (DomNode | null);
+        vfunc_last_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_previous_sibling(): (DomNode | null);
+        vfunc_previous_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_next_sibling(): (DomNode | null);
+        vfunc_next_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_previous_node(): (DomNode | null);
+        vfunc_previous_node(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_next_node(): (DomNode | null);
+        vfunc_next_node(): DomNode | null;
     }
 
 
@@ -9177,9 +9102,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XNode.ConstructorProps, DomAttr.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XNode.ConstructorProps, DomAttr.ConstructorProps {}
     }
 
     /**
@@ -9221,7 +9144,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomAttr
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -9233,7 +9156,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomAttr
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -9257,9 +9180,9 @@ export namespace GXml {
         get value(): string;
         set value(val: string);
 
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
@@ -9277,12 +9200,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_namespace_uri(): (string | null);
+        vfunc_get_namespace_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_prefix(): (string | null);
+        vfunc_get_prefix(): string | null;
 
         /**
          * @virtual
@@ -9494,9 +9417,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XNode.ConstructorProps, DomChildNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XNode.ConstructorProps, DomChildNode.ConstructorProps {}
     }
 
     /**
@@ -9558,9 +9479,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {}
     }
 
     /**
@@ -9602,7 +9521,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get previous_element_sibling(): (DomElement | null);
+        get previous_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -9614,7 +9533,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNonDocumentTypeChildNode
          */
-        get next_element_sibling(): (DomElement | null);
+        get next_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -9622,19 +9541,19 @@ export namespace GXml {
          */
         get nextElementSibling(): DomElement;
 
-        get_previous_element_sibling(): (DomElement | null);
+        get_previous_element_sibling(): DomElement | null;
 
-        get_next_element_sibling(): (DomElement | null);
-
-        /**
-         * @virtual
-         */
-        vfunc_get_previous_element_sibling(): (DomElement | null);
+        get_next_element_sibling(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_next_element_sibling(): (DomElement | null);
+        vfunc_get_previous_element_sibling(): DomElement | null;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_next_element_sibling(): DomElement | null;
     }
 
 
@@ -9653,9 +9572,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XCharacterData.ConstructorProps, DomComment.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XCharacterData.ConstructorProps, DomComment.ConstructorProps {}
     }
 
     /**
@@ -9898,7 +9815,7 @@ export namespace GXml {
 
         static from_uri(uri: string, options: number): XDocument;
 
-        static from_file(file: Gio.File, options: number, cancel: (Gio.Cancellable | null)): XDocument;
+        static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XDocument;
 
         static from_string(str: string, options: number): XDocument;
 
@@ -9924,14 +9841,14 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_save(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param f 
          * @param cancellable 
          * @virtual
          */
-        vfunc_save_as(f: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_save_as(f: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         // Methods
         get_indent(): boolean;
@@ -9987,13 +9904,13 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        save(cancellable: (Gio.Cancellable | null)): boolean;
+        save(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        save_as(f: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+        save_as(f: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @read-only
@@ -10005,7 +9922,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -10017,7 +9934,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -10107,13 +10024,13 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomDocument
          */
-        get doctype(): (DomDocumentType | null);
+        get doctype(): DomDocumentType | null;
 
         /**
          * @read-only
           * @category Inherited from GXml.DomDocument
          */
-        get document_element(): (DomElement | null);
+        get document_element(): DomElement | null;
 
         /**
          * @read-only
@@ -10123,16 +10040,16 @@ export namespace GXml {
 
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -10153,12 +10070,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_element_child(): (DomElement | null);
+        vfunc_get_first_element_child(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_element_child(): (DomElement | null);
+        vfunc_get_last_element_child(): DomElement | null;
 
         /**
          * @virtual
@@ -10169,7 +10086,7 @@ export namespace GXml {
          * @param selectors 
          * @virtual
          */
-        vfunc_query_selector(selectors: string): (DomElement | null);
+        vfunc_query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -10187,13 +10104,13 @@ export namespace GXml {
         /**
          * @param element_id 
          */
-        get_element_by_id(element_id: string): (DomElement | null);
+        get_element_by_id(element_id: string): DomElement | null;
 
         /**
          * @param element_id 
          * @virtual
          */
-        vfunc_get_element_by_id(element_id: string): (DomElement | null);
+        vfunc_get_element_by_id(element_id: string): DomElement | null;
 
         get_implementation(): DomImplementation;
 
@@ -10209,9 +10126,9 @@ export namespace GXml {
 
         get_content_type(): string;
 
-        get_doctype(): (DomDocumentType | null);
+        get_doctype(): DomDocumentType | null;
 
-        get_document_element(): (DomElement | null);
+        get_document_element(): DomElement | null;
 
         /**
          * @param local_name 
@@ -10222,7 +10139,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param classNames 
@@ -10238,7 +10155,7 @@ export namespace GXml {
          * @param namespace 
          * @param qualified_name 
          */
-        create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+        create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
         create_document_fragment(): DomDocumentFragment;
 
@@ -10292,27 +10209,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -10323,27 +10240,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -10355,19 +10272,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -10377,24 +10294,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -10405,27 +10322,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -10436,27 +10353,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -10467,27 +10384,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -10539,12 +10456,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_doctype(): (DomDocumentType | null);
+        vfunc_get_doctype(): DomDocumentType | null;
 
         /**
          * @virtual
          */
-        vfunc_get_document_element(): (DomElement | null);
+        vfunc_get_document_element(): DomElement | null;
 
         /**
          * @param local_name 
@@ -10557,7 +10474,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param classNames 
@@ -10576,7 +10493,7 @@ export namespace GXml {
          * @param qualified_name 
          * @virtual
          */
-        vfunc_create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+        vfunc_create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
         /**
          * @virtual
@@ -10645,7 +10562,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
@@ -10653,7 +10570,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10666,7 +10583,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
@@ -10674,7 +10591,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10692,7 +10609,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10704,14 +10621,14 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10724,7 +10641,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
@@ -10732,7 +10649,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10745,7 +10662,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
@@ -10753,7 +10670,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10766,7 +10683,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
@@ -10774,7 +10691,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -10797,14 +10714,14 @@ export namespace GXml {
          * @param expression 
          * @param resolver 
          */
-        evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
 
         /**
          * @param expression 
          * @param resolver 
          * @virtual
          */
-        vfunc_evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+        vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
     }
 
 
@@ -10891,7 +10808,7 @@ export namespace GXml {
         /**
          * @param name 
          */
-        get_attr(name: string): (DomNode | null);
+        get_attr(name: string): DomNode | null;
 
         /**
          * @param ns 
@@ -10904,7 +10821,7 @@ export namespace GXml {
          * @param name 
          * @param uri 
          */
-        get_ns_attr(name: string, uri: string): (DomNode | null);
+        get_ns_attr(name: string, uri: string): DomNode | null;
 
         normalize(): void;
 
@@ -10936,7 +10853,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -10948,7 +10865,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomParentNode
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -10972,7 +10889,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomElement
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -10984,7 +10901,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomElement
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -11011,12 +10928,12 @@ export namespace GXml {
         get tagName(): string;
 
         /** @category Inherited from GXml.DomElement */
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
         /** @category Inherited from GXml.DomElement */
-        get class_name(): (string | null);
-        set class_name(val: (string | null));
+        get class_name(): string | null;
+        set class_name(val: string | null);
 
         /** @category Inherited from GXml.DomElement */
         get className(): string;
@@ -11042,16 +10959,16 @@ export namespace GXml {
 
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -11072,12 +10989,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_element_child(): (DomElement | null);
+        vfunc_get_first_element_child(): DomElement | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_element_child(): (DomElement | null);
+        vfunc_get_last_element_child(): DomElement | null;
 
         /**
          * @virtual
@@ -11088,7 +11005,7 @@ export namespace GXml {
          * @param selectors 
          * @virtual
          */
-        vfunc_query_selector(selectors: string): (DomElement | null);
+        vfunc_query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -11103,27 +11020,27 @@ export namespace GXml {
          */
         vfunc_get_elements_by_property_value(property: string, value: string): DomElementList;
 
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
         get_tag_name(): string;
 
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * @param value 
          */
-        set_id(value: (string | null)): void;
+        set_id(value: string | null): void;
 
-        get_class_name(): (string | null);
+        get_class_name(): string | null;
 
         /**
          * @param value 
          */
-        set_class_name(value: (string | null)): void;
+        set_class_name(value: string | null): void;
 
         get_class_list(): DomTokenList;
 
@@ -11132,13 +11049,13 @@ export namespace GXml {
         /**
          * @param name 
          */
-        get_attribute(name: string): (string | null);
+        get_attribute(name: string): string | null;
 
         /**
          * @param namespace 
          * @param local_name 
          */
-        get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+        get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
         /**
          * @param name 
@@ -11151,7 +11068,7 @@ export namespace GXml {
          * @param name 
          * @param value 
          */
-        set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+        set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
         /**
          * @param name 
@@ -11162,7 +11079,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        remove_attribute_ns(namespace: (string | null), local_name: string): void;
+        remove_attribute_ns(namespace: string | null, local_name: string): void;
 
         /**
          * @param name 
@@ -11173,7 +11090,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+        has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
         /**
          * @param local_name 
@@ -11184,7 +11101,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param class_names 
@@ -11205,21 +11122,21 @@ export namespace GXml {
          * @param uri 
          * @param cancellable 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11230,27 +11147,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11261,27 +11178,27 @@ export namespace GXml {
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param istream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param istream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param istream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11292,27 +11209,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11322,24 +11239,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -11350,27 +11267,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11386,21 +11303,21 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -11412,19 +11329,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -11434,12 +11351,12 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_namespace_uri(): (string | null);
+        vfunc_get_namespace_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_prefix(): (string | null);
+        vfunc_get_prefix(): string | null;
 
         /**
          * @virtual
@@ -11454,24 +11371,24 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_id(): (string | null);
+        vfunc_get_id(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_id(value: (string | null)): void;
+        vfunc_set_id(value: string | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_class_name(): (string | null);
+        vfunc_get_class_name(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_class_name(value: (string | null)): void;
+        vfunc_set_class_name(value: string | null): void;
 
         /**
          * @virtual
@@ -11487,14 +11404,14 @@ export namespace GXml {
          * @param name 
          * @virtual
          */
-        vfunc_get_attribute(name: string): (string | null);
+        vfunc_get_attribute(name: string): string | null;
 
         /**
          * @param namespace 
          * @param local_name 
          * @virtual
          */
-        vfunc_get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+        vfunc_get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
         /**
          * @param name 
@@ -11509,7 +11426,7 @@ export namespace GXml {
          * @param value 
          * @virtual
          */
-        vfunc_set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+        vfunc_set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
         /**
          * @param name 
@@ -11522,7 +11439,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_remove_attribute_ns(namespace: (string | null), local_name: string): void;
+        vfunc_remove_attribute_ns(namespace: string | null, local_name: string): void;
 
         /**
          * @param name 
@@ -11535,7 +11452,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+        vfunc_has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
         /**
          * @param local_name 
@@ -11548,7 +11465,7 @@ export namespace GXml {
          * @param local_name 
          * @virtual
          */
-        vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param class_names 
@@ -11574,7 +11491,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11587,7 +11504,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
@@ -11595,7 +11512,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11608,7 +11525,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param istream 
@@ -11616,7 +11533,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11629,7 +11546,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
@@ -11637,7 +11554,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11649,14 +11566,14 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+        vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11669,7 +11586,7 @@ export namespace GXml {
          * @param cancellable 
          * @virtual
          */
-        vfunc_write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
@@ -11677,7 +11594,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11697,7 +11614,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11715,7 +11632,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -11727,14 +11644,14 @@ export namespace GXml {
          * @param expression 
          * @param resolver 
          */
-        evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
 
         /**
          * @param expression 
          * @param resolver 
          * @virtual
          */
-        vfunc_evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+        vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
     }
 
 
@@ -11757,9 +11674,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
     }
 
     /**
@@ -11808,39 +11723,39 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         /**
          * @param name 
          */
-        get_named_item(name: string): (DomNode | null);
+        get_named_item(name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item(node: DomNode): (DomNode | null);
+        set_named_item(node: DomNode): DomNode | null;
 
         /**
          * @param name 
          */
-        remove_named_item(name: string): (DomNode | null);
+        remove_named_item(name: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param localName 
          */
-        remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+        remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param local_name 
          */
-        get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+        get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item_ns(node: DomNode): (DomNode | null);
+        set_named_item_ns(node: DomNode): DomNode | null;
 
         /**
          * @virtual
@@ -11851,45 +11766,45 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomNode | null);
+        vfunc_item(index: number): DomNode | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_get_named_item(name: string): (DomNode | null);
+        vfunc_get_named_item(name: string): DomNode | null;
 
         /**
          * @param node 
          * @virtual
          */
-        vfunc_set_named_item(node: DomNode): (DomNode | null);
+        vfunc_set_named_item(node: DomNode): DomNode | null;
 
         /**
          * @param name 
          * @virtual
          */
-        vfunc_remove_named_item(name: string): (DomNode | null);
+        vfunc_remove_named_item(name: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param localName 
          * @virtual
          */
-        vfunc_remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+        vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param local_name 
          * @virtual
          */
-        vfunc_get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+        vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
         /**
          * @param node 
          * @virtual
          */
-        vfunc_set_named_item_ns(node: DomNode): (DomNode | null);
+        vfunc_set_named_item_ns(node: DomNode): DomNode | null;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -11920,9 +11835,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.MapEntry.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.MapEntry.ConstructorProps {}
     }
 
     /**
@@ -11971,9 +11884,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {}
     }
 
     /**
@@ -12151,9 +12062,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XDocument.ConstructorProps, DomHtmlDocument.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XDocument.ConstructorProps, DomHtmlDocument.ConstructorProps {}
     }
 
     /**
@@ -12180,7 +12089,7 @@ export namespace GXml {
 
         static from_uri(uri: string, options: number): XHtmlDocument;
 
-        static from_file(file: Gio.File, options: number, cancel: (Gio.Cancellable | null)): XHtmlDocument;
+        static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XHtmlDocument;
 
         static from_string(html: string, options: number): XHtmlDocument;
 
@@ -12250,9 +12159,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps, DomNodeList.ConstructorProps, DomHTMLCollection.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps, DomNodeList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
     }
 
     /**
@@ -12299,7 +12206,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         /**
          * @param args 
@@ -12313,7 +12220,7 @@ export namespace GXml {
          * @param index 
          * @virtual
          */
-        vfunc_item(index: number): (DomNode | null);
+        vfunc_item(index: number): DomNode | null;
 
         /**
          * @param args 
@@ -12330,7 +12237,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_element(index: number): (DomElement | null);
+        get_element(index: number): DomElement | null;
 
         to_array(): DomElement[];
 
@@ -12343,13 +12250,13 @@ export namespace GXml {
         /**
          * @param name 
          */
-        named_item(name: string): (DomElement | null);
+        named_item(name: string): DomElement | null;
 
         /**
          * @param index 
          * @virtual
          */
-        vfunc_get_element(index: number): (DomElement | null);
+        vfunc_get_element(index: number): DomElement | null;
 
         /**
          * @virtual
@@ -12367,7 +12274,7 @@ export namespace GXml {
          * @param name 
          * @virtual
          */
-        vfunc_named_item(name: string): (DomElement | null);
+        vfunc_named_item(name: string): DomElement | null;
 
         /**
          * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
@@ -12391,9 +12298,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.BidirIterator.ConstructorProps, Gee.ListIterator.ConstructorProps, Gee.BidirListIterator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterator.ConstructorProps, Gee.BidirIterator.ConstructorProps, Gee.ListIterator.ConstructorProps, Gee.BidirListIterator.ConstructorProps {}
     }
 
     /**
@@ -12535,7 +12440,7 @@ export namespace GXml {
         /**
          * @param compare 
          */
-        order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         get_element_type(): GObject.GType;
 
@@ -12640,7 +12545,7 @@ export namespace GXml {
          * @param compare 
          * @virtual
          */
-        vfunc_order_by(compare: (GLib.CompareDataFunc | null)): Gee.Iterator;
+        vfunc_order_by(compare: GLib.CompareDataFunc | null): Gee.Iterator;
 
         /**
          * @virtual
@@ -12898,7 +12803,7 @@ export namespace GXml {
          * @param prefix 
          * @virtual
          */
-        vfunc_set_namespace(uri: string, prefix: (string | null)): boolean;
+        vfunc_set_namespace(uri: string, prefix: string | null): boolean;
 
         /**
          * @virtual
@@ -12951,7 +12856,7 @@ export namespace GXml {
          * @param uri 
          * @param prefix 
          */
-        set_namespace(uri: string, prefix: (string | null)): boolean;
+        set_namespace(uri: string, prefix: string | null): boolean;
 
         get_attrs(): Gee.Map;
 
@@ -13009,7 +12914,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get base_uri(): (string | null);
+        get base_uri(): string | null;
 
         /**
          * @read-only
@@ -13018,8 +12923,8 @@ export namespace GXml {
         get baseUri(): string;
 
         /** @category Inherited from GXml.DomNode */
-        get owner_document(): (DomDocument | null);
-        set owner_document(val: (DomDocument | null));
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
 
         /** @category Inherited from GXml.DomNode */
         get ownerDocument(): DomDocument;
@@ -13029,7 +12934,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get parent_node(): (DomNode | null);
+        get parent_node(): DomNode | null;
 
         /**
          * @read-only
@@ -13041,7 +12946,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get parent_element(): (DomElement | null);
+        get parent_element(): DomElement | null;
 
         /**
          * @read-only
@@ -13065,7 +12970,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get first_child(): (DomNode | null);
+        get first_child(): DomNode | null;
 
         /**
          * @read-only
@@ -13077,7 +12982,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get last_child(): (DomNode | null);
+        get last_child(): DomNode | null;
 
         /**
          * @read-only
@@ -13089,7 +12994,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get previous_sibling(): (DomNode | null);
+        get previous_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -13101,7 +13006,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.DomNode
          */
-        get next_sibling(): (DomNode | null);
+        get next_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -13110,16 +13015,16 @@ export namespace GXml {
         get nextSibling(): DomNode;
 
         /** @category Inherited from GXml.DomNode */
-        get node_value(): (string | null);
-        set node_value(val: (string | null));
+        get node_value(): string | null;
+        set node_value(val: string | null);
 
         /** @category Inherited from GXml.DomNode */
         get nodeValue(): string;
         set nodeValue(val: string);
 
         /** @category Inherited from GXml.DomNode */
-        get text_content(): (string | null);
-        set text_content(val: (string | null));
+        get text_content(): string | null;
+        set text_content(val: string | null);
 
         /** @category Inherited from GXml.DomNode */
         get textContent(): string;
@@ -13130,14 +13035,14 @@ export namespace GXml {
          * @param callback 
          * @param capture 
          */
-        add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param type 
          * @param callback 
          * @param capture 
          */
-        remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param event 
@@ -13150,7 +13055,7 @@ export namespace GXml {
          * @param capture 
          * @virtual
          */
-        vfunc_add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        vfunc_add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param type 
@@ -13158,7 +13063,7 @@ export namespace GXml {
          * @param capture 
          * @virtual
          */
-        vfunc_remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        vfunc_remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param event 
@@ -13170,42 +13075,42 @@ export namespace GXml {
 
         get_node_name(): string;
 
-        get_base_uri(): (string | null);
+        get_base_uri(): string | null;
 
-        get_owner_document(): (DomDocument | null);
+        get_owner_document(): DomDocument | null;
 
         /**
          * @param value 
          */
-        set_owner_document(value: (DomDocument | null)): void;
+        set_owner_document(value: DomDocument | null): void;
 
-        get_parent_node(): (DomNode | null);
+        get_parent_node(): DomNode | null;
 
-        get_parent_element(): (DomElement | null);
+        get_parent_element(): DomElement | null;
 
         get_child_nodes(): DomNodeList;
 
-        get_first_child(): (DomNode | null);
+        get_first_child(): DomNode | null;
 
-        get_last_child(): (DomNode | null);
+        get_last_child(): DomNode | null;
 
-        get_previous_sibling(): (DomNode | null);
+        get_previous_sibling(): DomNode | null;
 
-        get_next_sibling(): (DomNode | null);
+        get_next_sibling(): DomNode | null;
 
-        get_node_value(): (string | null);
-
-        /**
-         * @param value 
-         */
-        set_node_value(value: (string | null)): void;
-
-        get_text_content(): (string | null);
+        get_node_value(): string | null;
 
         /**
          * @param value 
          */
-        set_text_content(value: (string | null)): void;
+        set_node_value(value: string | null): void;
+
+        get_text_content(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_text_content(value: string | null): void;
 
         has_child_nodes(): boolean;
 
@@ -13214,7 +13119,7 @@ export namespace GXml {
         /**
          * @param node 
          */
-        is_equal_node(node: (DomNode | null)): boolean;
+        is_equal_node(node: DomNode | null): boolean;
 
         /**
          * @param other 
@@ -13224,28 +13129,28 @@ export namespace GXml {
         /**
          * @param other 
          */
-        contains(other: (DomNode | null)): boolean;
+        contains(other: DomNode | null): boolean;
 
         /**
          * @param nspace 
          */
-        lookup_prefix(nspace: (string | null)): (string | null);
+        lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          */
-        lookup_namespace_uri(prefix: (string | null)): (string | null);
+        lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param nspace 
          */
-        is_default_namespace(nspace: (string | null)): boolean;
+        is_default_namespace(nspace: string | null): boolean;
 
         /**
          * @param node 
          * @param child 
          */
-        insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
 
         /**
          * @param node 
@@ -13276,28 +13181,28 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_base_uri(): (string | null);
+        vfunc_get_base_uri(): string | null;
 
         /**
          * @virtual
          */
-        vfunc_get_owner_document(): (DomDocument | null);
+        vfunc_get_owner_document(): DomDocument | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_owner_document(value: (DomDocument | null)): void;
+        vfunc_set_owner_document(value: DomDocument | null): void;
 
         /**
          * @virtual
          */
-        vfunc_get_parent_node(): (DomNode | null);
+        vfunc_get_parent_node(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_parent_element(): (DomElement | null);
+        vfunc_get_parent_element(): DomElement | null;
 
         /**
          * @virtual
@@ -13307,44 +13212,44 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_first_child(): (DomNode | null);
+        vfunc_get_first_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_last_child(): (DomNode | null);
+        vfunc_get_last_child(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_previous_sibling(): (DomNode | null);
+        vfunc_get_previous_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_next_sibling(): (DomNode | null);
+        vfunc_get_next_sibling(): DomNode | null;
 
         /**
          * @virtual
          */
-        vfunc_get_node_value(): (string | null);
-
-        /**
-         * @param value 
-         * @virtual
-         */
-        vfunc_set_node_value(value: (string | null)): void;
-
-        /**
-         * @virtual
-         */
-        vfunc_get_text_content(): (string | null);
+        vfunc_get_node_value(): string | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_text_content(value: (string | null)): void;
+        vfunc_set_node_value(value: string | null): void;
+
+        /**
+         * @virtual
+         */
+        vfunc_get_text_content(): string | null;
+
+        /**
+         * @param value 
+         * @virtual
+         */
+        vfunc_set_text_content(value: string | null): void;
 
         /**
          * @virtual
@@ -13360,7 +13265,7 @@ export namespace GXml {
          * @param node 
          * @virtual
          */
-        vfunc_is_equal_node(node: (DomNode | null)): boolean;
+        vfunc_is_equal_node(node: DomNode | null): boolean;
 
         /**
          * @param other 
@@ -13372,32 +13277,32 @@ export namespace GXml {
          * @param other 
          * @virtual
          */
-        vfunc_contains(other: (DomNode | null)): boolean;
+        vfunc_contains(other: DomNode | null): boolean;
 
         /**
          * @param nspace 
          * @virtual
          */
-        vfunc_lookup_prefix(nspace: (string | null)): (string | null);
+        vfunc_lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          * @virtual
          */
-        vfunc_lookup_namespace_uri(prefix: (string | null)): (string | null);
+        vfunc_lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param nspace 
          * @virtual
          */
-        vfunc_is_default_namespace(nspace: (string | null)): boolean;
+        vfunc_is_default_namespace(nspace: string | null): boolean;
 
         /**
          * @param node 
          * @param child 
          * @virtual
          */
-        vfunc_insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+        vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
 
         /**
          * @param node 
@@ -13431,9 +13336,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {}
     }
 
     /**
@@ -13486,13 +13389,13 @@ export namespace GXml {
          * @param istream 
          * @param _callback_ 
          */
-        read_child_nodes_stream_async(istream: Gio.InputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_child_nodes_stream_async(istream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param istream 
          * @param _callback_ 
          */
-        read_child_nodes_stream_async(istream: Gio.InputStream, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_child_nodes_stream_async(istream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13508,8 +13411,8 @@ export namespace GXml {
         set indent(val: boolean);
 
         /** @category Inherited from GXml.Parser */
-        get cancellable(): (Gio.Cancellable | null);
-        set cancellable(val: (Gio.Cancellable | null));
+        get cancellable(): Gio.Cancellable | null;
+        set cancellable(val: Gio.Cancellable | null);
 
         /**
          * @read-only
@@ -13537,12 +13440,12 @@ export namespace GXml {
          */
         set_indent(value: boolean): void;
 
-        get_cancellable(): (Gio.Cancellable | null);
+        get_cancellable(): Gio.Cancellable | null;
 
         /**
          * @param value 
          */
-        set_cancellable(value: (Gio.Cancellable | null)): void;
+        set_cancellable(value: Gio.Cancellable | null): void;
 
         get_node(): DomNode;
 
@@ -13562,13 +13465,13 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13582,12 +13485,12 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -13608,13 +13511,13 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13635,13 +13538,13 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13662,13 +13565,13 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_stream_async(stream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13689,13 +13592,13 @@ export namespace GXml {
          * @param str 
          * @param _callback_ 
          */
-        read_string_async(str: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param str 
          * @param _callback_ 
          */
-        read_string_async(str: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13709,12 +13612,12 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -13735,13 +13638,13 @@ export namespace GXml {
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -13793,7 +13696,7 @@ export namespace GXml {
         /**
          * @param parent 
          */
-        create_element(parent: DomNode): (DomElement | null);
+        create_element(parent: DomNode): DomElement | null;
 
         /**
          * @param element 
@@ -13825,13 +13728,13 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_cancellable(): (Gio.Cancellable | null);
+        vfunc_get_cancellable(): Gio.Cancellable | null;
 
         /**
          * @param value 
          * @virtual
          */
-        vfunc_set_cancellable(value: (Gio.Cancellable | null)): void;
+        vfunc_set_cancellable(value: Gio.Cancellable | null): void;
 
         /**
          * @virtual
@@ -13841,7 +13744,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_types(): ({ [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>);
+        vfunc_get_types(): { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
 
         /**
          * @param file 
@@ -13854,7 +13757,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13871,7 +13774,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_string_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13890,7 +13793,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13909,7 +13812,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13928,7 +13831,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_stream_async(stream: Gio.InputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13947,7 +13850,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_string_async(str: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13964,7 +13867,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_create_stream_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -13983,7 +13886,7 @@ export namespace GXml {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_read_child_nodes_async(parent: DomNode, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _res_ 
@@ -14061,7 +13964,7 @@ export namespace GXml {
          * @param parent 
          * @virtual
          */
-        vfunc_create_element(parent: DomNode): (DomElement | null);
+        vfunc_create_element(parent: DomNode): DomElement | null;
 
         /**
          * @param element 
@@ -14544,9 +14447,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeDefinition.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeDefinition.ConstructorProps {}
     }
 
     /**
@@ -14596,9 +14497,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeDefinition.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeDefinition.ConstructorProps {}
     }
 
     /**
@@ -14821,9 +14720,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -14873,9 +14770,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -14925,9 +14820,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -14977,9 +14870,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15029,9 +14920,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15081,9 +14970,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15133,9 +15020,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15185,9 +15070,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15237,9 +15120,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15428,9 +15309,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Boolean.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Boolean.ConstructorProps {}
     }
 
     /**
@@ -15480,9 +15359,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15532,9 +15409,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15584,9 +15459,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdTypeRestrictionDef.ConstructorProps {}
     }
 
     /**
@@ -15904,7 +15777,7 @@ export namespace GXml {
             minOccurs: string;
             name: string;
             nillable: boolean;
-            ref: (string | any);
+            ref: string | any;
             substitution_group: DomTokenList;
             substitutionGroup: DomTokenList;
             target_namespace: string;
@@ -16158,9 +16031,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Element.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Element.ConstructorProps {}
     }
 
     /**
@@ -16338,9 +16209,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -16390,9 +16259,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -16442,9 +16309,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdBaseContent.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdBaseContent.ConstructorProps {}
     }
 
     /**
@@ -16558,9 +16423,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdBaseAttribute.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdBaseAttribute.ConstructorProps {}
     }
 
     /**
@@ -16610,9 +16473,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdBaseAttribute.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdBaseAttribute.ConstructorProps {}
     }
 
     /**
@@ -16727,9 +16588,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdList.ConstructorProps {}
     }
 
     /**
@@ -16776,9 +16635,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdList.ConstructorProps {}
     }
 
     /**
@@ -16825,9 +16682,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdList.ConstructorProps {}
     }
 
     /**
@@ -16874,9 +16729,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdList.ConstructorProps {}
     }
 
     /**
@@ -16923,9 +16776,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XsdList.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XsdList.ConstructorProps {}
     }
 
     /**
@@ -16980,9 +16831,7 @@ export namespace GXml {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends XCharacterData.ConstructorProps, DomText.ConstructorProps {
-
-        }
+        interface ConstructorProps extends XCharacterData.ConstructorProps, DomText.ConstructorProps {}
     }
 
     /**
@@ -19065,7 +18914,7 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_get_item(index: number): (DomElement | null);
+            vfunc_get_item(index: number): DomElement | null;
 
             /**
              * @param node 
@@ -19087,7 +18936,7 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_create_item(): (DomElement | null);
+            vfunc_create_item(): DomElement | null;
 
             /**
              * @param index 
@@ -19178,7 +19027,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_item(index: number): (DomElement | null);
+        get_item(index: number): DomElement | null;
 
         /**
          * @param node 
@@ -19192,7 +19041,7 @@ export namespace GXml {
          */
         initialize(t: GObject.GType): void;
 
-        create_item(): (DomElement | null);
+        create_item(): DomElement | null;
 
         /**
          * @param index 
@@ -19211,9 +19060,7 @@ export namespace GXml {
     namespace List {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ListNamespace {
@@ -19247,9 +19094,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementNamespace {
@@ -19293,7 +19138,7 @@ export namespace GXml {
              * @param key 
              * @virtual
              */
-            vfunc_item(key: string): (DomElement | null);
+            vfunc_item(key: string): DomElement | null;
 
             /**
              * @param key 
@@ -19354,7 +19199,7 @@ export namespace GXml {
         /**
          * @param key 
          */
-        item(key: string): (DomElement | null);
+        item(key: string): DomElement | null;
 
         /**
          * @param key 
@@ -19390,9 +19235,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementPairKeyNamespace {
@@ -19455,7 +19298,7 @@ export namespace GXml {
              * @param secondary_key 
              * @virtual
              */
-            vfunc_item(primary_key: string, secondary_key: string): (DomElement | null);
+            vfunc_item(primary_key: string, secondary_key: string): DomElement | null;
 
             /**
              * @param key 
@@ -19542,7 +19385,7 @@ export namespace GXml {
          * @param primary_key 
          * @param secondary_key 
          */
-        item(primary_key: string, secondary_key: string): (DomElement | null);
+        item(primary_key: string, secondary_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -19592,9 +19435,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MappeableElementThreeKeyNamespace {
@@ -19671,7 +19512,7 @@ export namespace GXml {
              * @param third_key 
              * @virtual
              */
-            vfunc_item(primary_key: string, secondary_key: string, third_key: string): (DomElement | null);
+            vfunc_item(primary_key: string, secondary_key: string, third_key: string): DomElement | null;
 
             /**
              * @param key 
@@ -19789,7 +19630,7 @@ export namespace GXml {
          * @param secondary_key 
          * @param third_key 
          */
-        item(primary_key: string, secondary_key: string, third_key: string): (DomElement | null);
+        item(primary_key: string, secondary_key: string, third_key: string): DomElement | null;
 
         /**
          * @param key 
@@ -19837,14 +19678,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_types(): ({ [key: string]: any } | GLib.HashTable<string, GObject.GType>);
+            vfunc_get_types(): { [key: string]: any } | GLib.HashTable<string, GObject.GType>;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface CollectionParentNamespace {
@@ -19855,13 +19694,13 @@ export namespace GXml {
         * @param parent_type 
         * @param type 
         */
-        add_supported_type(types: ({ [key: string]: any } | GLib.HashTable<string, GObject.GType>), parent_type: GObject.GType, type: GObject.GType): void;
+        add_supported_type(types: { [key: string]: any } | GLib.HashTable<string, GObject.GType>, parent_type: GObject.GType, type: GObject.GType): void;
         /**
         * @param table 
         * @param parent_type 
         * @param types 
         */
-        add_supported_types(table: ({ [key: string]: any } | GLib.HashTable<string, GObject.GType>), parent_type: GObject.GType, types: GObject.GType[]): void;
+        add_supported_types(table: { [key: string]: any } | GLib.HashTable<string, GObject.GType>, parent_type: GObject.GType, types: GObject.GType[]): void;
     }
     /**
      * @gir-type Interface
@@ -19888,12 +19727,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_namespace_uri(): (string | null);
+            vfunc_get_namespace_uri(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_prefix(): (string | null);
+            vfunc_get_prefix(): string | null;
 
             /**
              * @virtual
@@ -19925,9 +19764,9 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            namespace_uri: (string | null);
+            namespace_uri: string | null;
             namespaceUri: string;
-            prefix: (string | null);
+            prefix: string | null;
             local_name: string;
             localName: string;
             name: string;
@@ -19948,7 +19787,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -19958,7 +19797,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -19979,9 +19818,9 @@ export namespace GXml {
         set value(val: string);
 
         // Methods
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
@@ -20156,9 +19995,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomCharacterData.ConstructorProps {}
     }
 
     export interface DomTextNamespace {
@@ -20232,9 +20069,7 @@ export namespace GXml {
     namespace DomComment {
 
         // Constructor properties interface
-        interface ConstructorProps extends DomCharacterData.ConstructorProps {
-
-        }
+        interface ConstructorProps extends DomCharacterData.ConstructorProps {}
     }
 
     export interface DomCommentNamespace {
@@ -20264,14 +20099,12 @@ export namespace GXml {
              * @param element_id 
              * @virtual
              */
-            vfunc_get_element_by_id(element_id: string): (DomElement | null);
+            vfunc_get_element_by_id(element_id: string): DomElement | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomNonElementParentNodeNamespace {
@@ -20287,7 +20120,7 @@ export namespace GXml {
         /**
          * @param element_id 
          */
-        get_element_by_id(element_id: string): (DomElement | null);
+        get_element_by_id(element_id: string): DomElement | null;
     }
 
 
@@ -20311,12 +20144,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_first_element_child(): (DomElement | null);
+            vfunc_get_first_element_child(): DomElement | null;
 
             /**
              * @virtual
              */
-            vfunc_get_last_element_child(): (DomElement | null);
+            vfunc_get_last_element_child(): DomElement | null;
 
             /**
              * @virtual
@@ -20327,7 +20160,7 @@ export namespace GXml {
              * @param selectors 
              * @virtual
              */
-            vfunc_query_selector(selectors: string): (DomElement | null);
+            vfunc_query_selector(selectors: string): DomElement | null;
 
             /**
              * @param selectors 
@@ -20347,9 +20180,9 @@ export namespace GXml {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             children: DomHTMLCollection;
-            first_element_child: (DomElement | null);
+            first_element_child: DomElement | null;
             firstElementChild: DomElement;
-            last_element_child: (DomElement | null);
+            last_element_child: DomElement | null;
             lastElementChild: DomElement;
             child_element_count: number;
             childElementCount: number;
@@ -20374,7 +20207,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get first_element_child(): (DomElement | null);
+        get first_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -20384,7 +20217,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get last_element_child(): (DomElement | null);
+        get last_element_child(): DomElement | null;
 
         /**
          * @read-only
@@ -20404,16 +20237,16 @@ export namespace GXml {
         // Methods
         get_children(): DomHTMLCollection;
 
-        get_first_element_child(): (DomElement | null);
+        get_first_element_child(): DomElement | null;
 
-        get_last_element_child(): (DomElement | null);
+        get_last_element_child(): DomElement | null;
 
         get_child_element_count(): number;
 
         /**
          * @param selectors 
          */
-        query_selector(selectors: string): (DomElement | null);
+        query_selector(selectors: string): DomElement | null;
 
         /**
          * @param selectors 
@@ -20443,20 +20276,20 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_previous_element_sibling(): (DomElement | null);
+            vfunc_get_previous_element_sibling(): DomElement | null;
 
             /**
              * @virtual
              */
-            vfunc_get_next_element_sibling(): (DomElement | null);
+            vfunc_get_next_element_sibling(): DomElement | null;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            previous_element_sibling: (DomElement | null);
+            previous_element_sibling: DomElement | null;
             previousElementSibling: DomElement;
-            next_element_sibling: (DomElement | null);
+            next_element_sibling: DomElement | null;
             nextElementSibling: DomElement;
         }
     }
@@ -20474,7 +20307,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_element_sibling(): (DomElement | null);
+        get previous_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -20484,7 +20317,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_element_sibling(): (DomElement | null);
+        get next_element_sibling(): DomElement | null;
 
         /**
          * @read-only
@@ -20492,9 +20325,9 @@ export namespace GXml {
         get nextElementSibling(): DomElement;
 
         // Methods
-        get_previous_element_sibling(): (DomElement | null);
+        get_previous_element_sibling(): DomElement | null;
 
-        get_next_element_sibling(): (DomElement | null);
+        get_next_element_sibling(): DomElement | null;
     }
 
 
@@ -20518,9 +20351,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomChildNodeNamespace {
@@ -20553,7 +20384,7 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_item(index: number): (DomNode | null);
+            vfunc_item(index: number): DomNode | null;
 
             /**
              * @virtual
@@ -20587,7 +20418,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         get_length(): number;
     }
@@ -20609,7 +20440,7 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_get_element(index: number): (DomElement | null);
+            vfunc_get_element(index: number): DomElement | null;
 
             /**
              * @virtual
@@ -20625,20 +20456,18 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_item(index: number): (DomElement | null);
+            vfunc_item(index: number): DomElement | null;
 
             /**
              * @param name 
              * @virtual
              */
-            vfunc_named_item(name: string): (DomElement | null);
+            vfunc_named_item(name: string): DomElement | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomHTMLCollectionNamespace {
@@ -20654,7 +20483,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_element(index: number): (DomElement | null);
+        get_element(index: number): DomElement | null;
 
         to_array(): DomElement[];
 
@@ -20663,12 +20492,12 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomElement | null);
+        item(index: number): DomElement | null;
 
         /**
          * @param name 
          */
-        named_item(name: string): (DomElement | null);
+        named_item(name: string): DomElement | null;
     }
 
 
@@ -20707,12 +20536,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_next_node(): (DomNode | null);
+            vfunc_next_node(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_previous_node(): (DomNode | null);
+            vfunc_previous_node(): DomNode | null;
 
             /**
              * @virtual
@@ -20787,9 +20616,9 @@ export namespace GXml {
 
         get_what_to_show(): number;
 
-        next_node(): (DomNode | null);
+        next_node(): DomNode | null;
 
-        previous_node(): (DomNode | null);
+        previous_node(): DomNode | null;
 
         detach(): void;
     }
@@ -20825,37 +20654,37 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_parent_node(): (DomNode | null);
+            vfunc_parent_node(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_first_child(): (DomNode | null);
+            vfunc_first_child(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_last_child(): (DomNode | null);
+            vfunc_last_child(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_previous_sibling(): (DomNode | null);
+            vfunc_previous_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_next_sibling(): (DomNode | null);
+            vfunc_next_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_previous_node(): (DomNode | null);
+            vfunc_previous_node(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_next_node(): (DomNode | null);
+            vfunc_next_node(): DomNode | null;
         }
 
 
@@ -20911,19 +20740,19 @@ export namespace GXml {
 
         get_current_node(): DomNode;
 
-        parent_node(): (DomNode | null);
+        parent_node(): DomNode | null;
 
-        first_child(): (DomNode | null);
+        first_child(): DomNode | null;
 
-        last_child(): (DomNode | null);
+        last_child(): DomNode | null;
 
-        previous_sibling(): (DomNode | null);
+        previous_sibling(): DomNode | null;
 
-        next_sibling(): (DomNode | null);
+        next_sibling(): DomNode | null;
 
-        previous_node(): (DomNode | null);
+        previous_node(): DomNode | null;
 
-        next_node(): (DomNode | null);
+        next_node(): DomNode | null;
     }
 
 
@@ -20948,45 +20777,45 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_item(index: number): (DomNode | null);
+            vfunc_item(index: number): DomNode | null;
 
             /**
              * @param name 
              * @virtual
              */
-            vfunc_get_named_item(name: string): (DomNode | null);
+            vfunc_get_named_item(name: string): DomNode | null;
 
             /**
              * @param node 
              * @virtual
              */
-            vfunc_set_named_item(node: DomNode): (DomNode | null);
+            vfunc_set_named_item(node: DomNode): DomNode | null;
 
             /**
              * @param name 
              * @virtual
              */
-            vfunc_remove_named_item(name: string): (DomNode | null);
+            vfunc_remove_named_item(name: string): DomNode | null;
 
             /**
              * @param namespace_uri 
              * @param localName 
              * @virtual
              */
-            vfunc_remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+            vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
             /**
              * @param namespace_uri 
              * @param local_name 
              * @virtual
              */
-            vfunc_get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+            vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
             /**
              * @param node 
              * @virtual
              */
-            vfunc_set_named_item_ns(node: DomNode): (DomNode | null);
+            vfunc_set_named_item_ns(node: DomNode): DomNode | null;
         }
 
 
@@ -21017,39 +20846,39 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (DomNode | null);
+        item(index: number): DomNode | null;
 
         /**
          * @param name 
          */
-        get_named_item(name: string): (DomNode | null);
+        get_named_item(name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item(node: DomNode): (DomNode | null);
+        set_named_item(node: DomNode): DomNode | null;
 
         /**
          * @param name 
          */
-        remove_named_item(name: string): (DomNode | null);
+        remove_named_item(name: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param localName 
          */
-        remove_named_item_ns(namespace_uri: string, localName: string): (DomNode | null);
+        remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null;
 
         /**
          * @param namespace_uri 
          * @param local_name 
          */
-        get_named_item_ns(namespace_uri: string, local_name: string): (DomNode | null);
+        get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null;
 
         /**
          * @param node 
          */
-        set_named_item_ns(node: DomNode): (DomNode | null);
+        set_named_item_ns(node: DomNode): DomNode | null;
     }
 
 
@@ -21074,7 +20903,7 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_item(index: number): (string | null);
+            vfunc_item(index: number): string | null;
 
             /**
              * @param token 
@@ -21136,7 +20965,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        item(index: number): (string | null);
+        item(index: number): string | null;
 
         /**
          * @param token 
@@ -21268,12 +21097,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_doctype(): (DomDocumentType | null);
+            vfunc_get_doctype(): DomDocumentType | null;
 
             /**
              * @virtual
              */
-            vfunc_get_document_element(): (DomElement | null);
+            vfunc_get_document_element(): DomElement | null;
 
             /**
              * @param local_name 
@@ -21286,7 +21115,7 @@ export namespace GXml {
              * @param local_name 
              * @virtual
              */
-            vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+            vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
             /**
              * @param classNames 
@@ -21305,7 +21134,7 @@ export namespace GXml {
              * @param qualified_name 
              * @virtual
              */
-            vfunc_create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+            vfunc_create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
             /**
              * @virtual
@@ -21374,7 +21203,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param file 
@@ -21382,7 +21211,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21395,7 +21224,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param stream 
@@ -21403,7 +21232,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21421,7 +21250,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21433,14 +21262,14 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+            vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
             /**
              * @param cancellable 
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21453,7 +21282,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param file 
@@ -21461,7 +21290,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21474,7 +21303,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param str 
@@ -21482,7 +21311,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21495,7 +21324,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param stream 
@@ -21503,7 +21332,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -21537,8 +21366,8 @@ export namespace GXml {
             characterSet: string;
             content_type: string;
             contentType: string;
-            doctype: (DomDocumentType | null);
-            document_element: (DomElement | null);
+            doctype: DomDocumentType | null;
+            document_element: DomElement | null;
             documentElement: DomElement;
         }
     }
@@ -21611,12 +21440,12 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get doctype(): (DomDocumentType | null);
+        get doctype(): DomDocumentType | null;
 
         /**
          * @read-only
          */
-        get document_element(): (DomElement | null);
+        get document_element(): DomElement | null;
 
         /**
          * @read-only
@@ -21638,9 +21467,9 @@ export namespace GXml {
 
         get_content_type(): string;
 
-        get_doctype(): (DomDocumentType | null);
+        get_doctype(): DomDocumentType | null;
 
-        get_document_element(): (DomElement | null);
+        get_document_element(): DomElement | null;
 
         /**
          * @param local_name 
@@ -21651,7 +21480,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param classNames 
@@ -21667,7 +21496,7 @@ export namespace GXml {
          * @param namespace 
          * @param qualified_name 
          */
-        create_element_ns(namespace: (string | null), qualified_name: string): DomElement;
+        create_element_ns(namespace: string | null, qualified_name: string): DomElement;
 
         create_document_fragment(): DomDocumentFragment;
 
@@ -21721,27 +21550,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        write_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21752,27 +21581,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): void;
+        write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21784,19 +21613,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -21806,24 +21635,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -21834,27 +21663,27 @@ export namespace GXml {
          * @param file 
          * @param cancellable 
          */
-        read_from_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param file 
          * @param cancellable 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param file 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param file 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(file: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param file 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21865,27 +21694,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21896,27 +21725,27 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param stream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(stream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param stream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -21939,9 +21768,7 @@ export namespace GXml {
     namespace DomXMLDocument {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomXMLDocumentNamespace {
@@ -21981,7 +21808,7 @@ export namespace GXml {
              * @param doctype 
              * @virtual
              */
-            vfunc_create_document(nspace: (string | null), qualified_name: (string | null), doctype: (DomDocumentType | null)): DomXMLDocument;
+            vfunc_create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument;
 
             /**
              * @param title 
@@ -21997,9 +21824,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomImplementationNamespace {
@@ -22024,7 +21849,7 @@ export namespace GXml {
          * @param qualified_name 
          * @param doctype 
          */
-        create_document(nspace: (string | null), qualified_name: (string | null), doctype: (DomDocumentType | null)): DomXMLDocument;
+        create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument;
 
         /**
          * @param title 
@@ -22042,9 +21867,7 @@ export namespace GXml {
     namespace DomDocumentFragment {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomDocumentFragmentNamespace {
@@ -22173,9 +21996,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomHtmlDocumentNamespace {
@@ -22217,12 +22038,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_namespace_uri(): (string | null);
+            vfunc_get_namespace_uri(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_prefix(): (string | null);
+            vfunc_get_prefix(): string | null;
 
             /**
              * @virtual
@@ -22237,24 +22058,24 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_id(): (string | null);
+            vfunc_get_id(): string | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_id(value: (string | null)): void;
+            vfunc_set_id(value: string | null): void;
 
             /**
              * @virtual
              */
-            vfunc_get_class_name(): (string | null);
+            vfunc_get_class_name(): string | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_class_name(value: (string | null)): void;
+            vfunc_set_class_name(value: string | null): void;
 
             /**
              * @virtual
@@ -22270,14 +22091,14 @@ export namespace GXml {
              * @param name 
              * @virtual
              */
-            vfunc_get_attribute(name: string): (string | null);
+            vfunc_get_attribute(name: string): string | null;
 
             /**
              * @param namespace 
              * @param local_name 
              * @virtual
              */
-            vfunc_get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+            vfunc_get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
             /**
              * @param name 
@@ -22292,7 +22113,7 @@ export namespace GXml {
              * @param value 
              * @virtual
              */
-            vfunc_set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+            vfunc_set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
             /**
              * @param name 
@@ -22305,7 +22126,7 @@ export namespace GXml {
              * @param local_name 
              * @virtual
              */
-            vfunc_remove_attribute_ns(namespace: (string | null), local_name: string): void;
+            vfunc_remove_attribute_ns(namespace: string | null, local_name: string): void;
 
             /**
              * @param name 
@@ -22318,7 +22139,7 @@ export namespace GXml {
              * @param local_name 
              * @virtual
              */
-            vfunc_has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+            vfunc_has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
             /**
              * @param local_name 
@@ -22331,7 +22152,7 @@ export namespace GXml {
              * @param local_name 
              * @virtual
              */
-            vfunc_get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+            vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
             /**
              * @param class_names 
@@ -22357,7 +22178,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22370,7 +22191,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param f 
@@ -22378,7 +22199,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22391,7 +22212,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param istream 
@@ -22399,7 +22220,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22412,7 +22233,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param str 
@@ -22420,7 +22241,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22432,14 +22253,14 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_write_string(cancellable: (Gio.Cancellable | null)): string;
+            vfunc_write_string(cancellable: Gio.Cancellable | null): string;
 
             /**
              * @param cancellable 
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22452,7 +22273,7 @@ export namespace GXml {
              * @param cancellable 
              * @virtual
              */
-            vfunc_write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+            vfunc_write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
             /**
              * @param f 
@@ -22460,7 +22281,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22480,7 +22301,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22498,7 +22319,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -22510,15 +22331,15 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            namespace_uri: (string | null);
+            namespace_uri: string | null;
             namespaceUri: string;
-            prefix: (string | null);
+            prefix: string | null;
             local_name: string;
             localName: string;
             tag_name: string;
             tagName: string;
-            id: (string | null);
-            class_name: (string | null);
+            id: string | null;
+            class_name: string | null;
             className: string;
             class_list: DomTokenList;
             classList: DomTokenList;
@@ -22539,7 +22360,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get namespace_uri(): (string | null);
+        get namespace_uri(): string | null;
 
         /**
          * @read-only
@@ -22549,7 +22370,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get prefix(): (string | null);
+        get prefix(): string | null;
 
         /**
          * @read-only
@@ -22571,11 +22392,11 @@ export namespace GXml {
          */
         get tagName(): string;
 
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
-        get class_name(): (string | null);
-        set class_name(val: (string | null));
+        get class_name(): string | null;
+        set class_name(val: string | null);
 
         get className(): string;
         set className(val: string);
@@ -22596,27 +22417,27 @@ export namespace GXml {
         get attributes(): DomNamedNodeMap;
 
         // Methods
-        get_namespace_uri(): (string | null);
+        get_namespace_uri(): string | null;
 
-        get_prefix(): (string | null);
+        get_prefix(): string | null;
 
         get_local_name(): string;
 
         get_tag_name(): string;
 
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * @param value 
          */
-        set_id(value: (string | null)): void;
+        set_id(value: string | null): void;
 
-        get_class_name(): (string | null);
+        get_class_name(): string | null;
 
         /**
          * @param value 
          */
-        set_class_name(value: (string | null)): void;
+        set_class_name(value: string | null): void;
 
         get_class_list(): DomTokenList;
 
@@ -22625,13 +22446,13 @@ export namespace GXml {
         /**
          * @param name 
          */
-        get_attribute(name: string): (string | null);
+        get_attribute(name: string): string | null;
 
         /**
          * @param namespace 
          * @param local_name 
          */
-        get_attribute_ns(namespace: (string | null), local_name: string): (string | null);
+        get_attribute_ns(namespace: string | null, local_name: string): string | null;
 
         /**
          * @param name 
@@ -22644,7 +22465,7 @@ export namespace GXml {
          * @param name 
          * @param value 
          */
-        set_attribute_ns(namespace: (string | null), name: string, value: string): void;
+        set_attribute_ns(namespace: string | null, name: string, value: string): void;
 
         /**
          * @param name 
@@ -22655,7 +22476,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        remove_attribute_ns(namespace: (string | null), local_name: string): void;
+        remove_attribute_ns(namespace: string | null, local_name: string): void;
 
         /**
          * @param name 
@@ -22666,7 +22487,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        has_attribute_ns(namespace: (string | null), local_name: string): boolean;
+        has_attribute_ns(namespace: string | null, local_name: string): boolean;
 
         /**
          * @param local_name 
@@ -22677,7 +22498,7 @@ export namespace GXml {
          * @param namespace 
          * @param local_name 
          */
-        get_elements_by_tag_name_ns(namespace: (string | null), local_name: string): DomHTMLCollection;
+        get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection;
 
         /**
          * @param class_names 
@@ -22698,21 +22519,21 @@ export namespace GXml {
          * @param uri 
          * @param cancellable 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param uri 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_uri_async(uri: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22723,27 +22544,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        read_from_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22754,27 +22575,27 @@ export namespace GXml {
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): void;
+        read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param istream 
          * @param cancellable 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param istream 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param istream 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_stream_async(istream: Gio.InputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param istream 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22785,27 +22606,27 @@ export namespace GXml {
          * @param str 
          * @param cancellable 
          */
-        read_from_string(str: string, cancellable: (Gio.Cancellable | null)): void;
+        read_from_string(str: string, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param str 
          * @param cancellable 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param str 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param str 
          * @param cancellable 
          * @param _callback_ 
          */
-        read_from_string_async(str: string, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param str 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22815,24 +22636,24 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        write_string(cancellable: (Gio.Cancellable | null)): string;
+        write_string(cancellable: Gio.Cancellable | null): string;
 
         /**
          * @param cancellable 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
-
-        /**
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        write_string_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_string_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -22843,27 +22664,27 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          */
-        write_file(f: Gio.File, cancellable: (Gio.Cancellable | null)): void;
+        write_file(f: Gio.File, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param f 
          * @param cancellable 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
-
-        /**
-         * @param f 
-         * @param cancellable 
-         * @param _callback_ 
-         */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param f 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_file_async(f: Gio.File, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param f 
+         * @param cancellable 
+         * @param _callback_ 
+         */
+        write_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22879,21 +22700,21 @@ export namespace GXml {
          * @param stream 
          * @param cancellable 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<void>;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param cancellable 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -22905,19 +22726,19 @@ export namespace GXml {
         /**
          * @param cancellable 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+        create_stream_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param cancellable 
          * @param _callback_ 
          */
-        create_stream_async(cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(cancellable: Gio.Cancellable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -22944,7 +22765,7 @@ export namespace GXml {
              * @param capture 
              * @virtual
              */
-            vfunc_add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+            vfunc_add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
             /**
              * @param type 
@@ -22952,7 +22773,7 @@ export namespace GXml {
              * @param capture 
              * @virtual
              */
-            vfunc_remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+            vfunc_remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
             /**
              * @param event 
@@ -22963,9 +22784,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomEventTargetNamespace {
@@ -22983,14 +22802,14 @@ export namespace GXml {
          * @param callback 
          * @param capture 
          */
-        add_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param type 
          * @param callback 
          * @param capture 
          */
-        remove_event_listener(type: string, callback: (DomEventListener | null), capture: boolean): void;
+        remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void;
 
         /**
          * @param event 
@@ -23020,9 +22839,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomEventListenerNamespace {
@@ -23062,12 +22879,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_event_target(): (DomEventTarget | null);
+            vfunc_get_event_target(): DomEventTarget | null;
 
             /**
              * @virtual
              */
-            vfunc_get_current_target(): (DomEventTarget | null);
+            vfunc_get_current_target(): DomEventTarget | null;
 
             /**
              * @virtual
@@ -23127,9 +22944,9 @@ export namespace GXml {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             etype: string;
-            event_target: (DomEventTarget | null);
+            event_target: DomEventTarget | null;
             eventTarget: DomEventTarget;
-            current_target: (DomEventTarget | null);
+            current_target: DomEventTarget | null;
             currentTarget: DomEventTarget;
             bubbles: boolean;
             cancelable: boolean;
@@ -23162,7 +22979,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get event_target(): (DomEventTarget | null);
+        get event_target(): DomEventTarget | null;
 
         /**
          * @read-only
@@ -23172,7 +22989,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get current_target(): (DomEventTarget | null);
+        get current_target(): DomEventTarget | null;
 
         /**
          * @read-only
@@ -23232,9 +23049,9 @@ export namespace GXml {
         // Methods
         get_etype(): string;
 
-        get_event_target(): (DomEventTarget | null);
+        get_event_target(): DomEventTarget | null;
 
-        get_current_target(): (DomEventTarget | null);
+        get_current_target(): DomEventTarget | null;
 
         get_bubbles(): boolean;
 
@@ -23293,7 +23110,7 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            detail: (GObject.Value | any);
+            detail: GObject.Value | any;
         }
     }
 
@@ -23321,7 +23138,7 @@ export namespace GXml {
          * @param cancelable 
          * @param detail 
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: (GObject.Value | any)): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any): void;
     }
 
 
@@ -23357,9 +23174,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DomMutationObserverNamespace {
@@ -23431,27 +23246,27 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_previous_sibling(): (DomNode | null);
+            vfunc_get_previous_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_next_sibling(): (DomNode | null);
+            vfunc_get_next_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_attribute_name(): (string | null);
+            vfunc_get_attribute_name(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_attribute_namespace(): (string | null);
+            vfunc_get_attribute_namespace(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_old_value(): (string | null);
+            vfunc_get_old_value(): string | null;
         }
 
 
@@ -23463,15 +23278,15 @@ export namespace GXml {
             addedNodes: DomNodeList;
             removed_nodes: DomNodeList;
             removedNodes: DomNodeList;
-            previous_sibling: (DomNode | null);
+            previous_sibling: DomNode | null;
             previousSibling: DomNode;
-            next_sibling: (DomNode | null);
+            next_sibling: DomNode | null;
             nextSibling: DomNode;
-            attribute_name: (string | null);
+            attribute_name: string | null;
             attributeName: string;
-            attribute_namespace: (string | null);
+            attribute_namespace: string | null;
             attributeNamespace: string;
-            old_value: (string | null);
+            old_value: string | null;
             oldValue: string;
         }
     }
@@ -23511,7 +23326,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_sibling(): (DomNode | null);
+        get previous_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -23521,7 +23336,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_sibling(): (DomNode | null);
+        get next_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -23531,7 +23346,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get attribute_name(): (string | null);
+        get attribute_name(): string | null;
 
         /**
          * @read-only
@@ -23541,7 +23356,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get attribute_namespace(): (string | null);
+        get attribute_namespace(): string | null;
 
         /**
          * @read-only
@@ -23551,7 +23366,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get old_value(): (string | null);
+        get old_value(): string | null;
 
         /**
          * @read-only
@@ -23577,15 +23392,15 @@ export namespace GXml {
          */
         set_removed_nodes(value: DomNodeList): void;
 
-        get_previous_sibling(): (DomNode | null);
+        get_previous_sibling(): DomNode | null;
 
-        get_next_sibling(): (DomNode | null);
+        get_next_sibling(): DomNode | null;
 
-        get_attribute_name(): (string | null);
+        get_attribute_name(): string | null;
 
-        get_attribute_namespace(): (string | null);
+        get_attribute_namespace(): string | null;
 
-        get_old_value(): (string | null);
+        get_old_value(): string | null;
     }
 
 
@@ -23614,28 +23429,28 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_base_uri(): (string | null);
+            vfunc_get_base_uri(): string | null;
 
             /**
              * @virtual
              */
-            vfunc_get_owner_document(): (DomDocument | null);
+            vfunc_get_owner_document(): DomDocument | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_owner_document(value: (DomDocument | null)): void;
+            vfunc_set_owner_document(value: DomDocument | null): void;
 
             /**
              * @virtual
              */
-            vfunc_get_parent_node(): (DomNode | null);
+            vfunc_get_parent_node(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_parent_element(): (DomElement | null);
+            vfunc_get_parent_element(): DomElement | null;
 
             /**
              * @virtual
@@ -23645,44 +23460,44 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_first_child(): (DomNode | null);
+            vfunc_get_first_child(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_last_child(): (DomNode | null);
+            vfunc_get_last_child(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_previous_sibling(): (DomNode | null);
+            vfunc_get_previous_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_next_sibling(): (DomNode | null);
+            vfunc_get_next_sibling(): DomNode | null;
 
             /**
              * @virtual
              */
-            vfunc_get_node_value(): (string | null);
-
-            /**
-             * @param value 
-             * @virtual
-             */
-            vfunc_set_node_value(value: (string | null)): void;
-
-            /**
-             * @virtual
-             */
-            vfunc_get_text_content(): (string | null);
+            vfunc_get_node_value(): string | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_text_content(value: (string | null)): void;
+            vfunc_set_node_value(value: string | null): void;
+
+            /**
+             * @virtual
+             */
+            vfunc_get_text_content(): string | null;
+
+            /**
+             * @param value 
+             * @virtual
+             */
+            vfunc_set_text_content(value: string | null): void;
 
             /**
              * @virtual
@@ -23698,7 +23513,7 @@ export namespace GXml {
              * @param node 
              * @virtual
              */
-            vfunc_is_equal_node(node: (DomNode | null)): boolean;
+            vfunc_is_equal_node(node: DomNode | null): boolean;
 
             /**
              * @param other 
@@ -23710,32 +23525,32 @@ export namespace GXml {
              * @param other 
              * @virtual
              */
-            vfunc_contains(other: (DomNode | null)): boolean;
+            vfunc_contains(other: DomNode | null): boolean;
 
             /**
              * @param nspace 
              * @virtual
              */
-            vfunc_lookup_prefix(nspace: (string | null)): (string | null);
+            vfunc_lookup_prefix(nspace: string | null): string | null;
 
             /**
              * @param prefix 
              * @virtual
              */
-            vfunc_lookup_namespace_uri(prefix: (string | null)): (string | null);
+            vfunc_lookup_namespace_uri(prefix: string | null): string | null;
 
             /**
              * @param nspace 
              * @virtual
              */
-            vfunc_is_default_namespace(nspace: (string | null)): boolean;
+            vfunc_is_default_namespace(nspace: string | null): boolean;
 
             /**
              * @param node 
              * @param child 
              * @virtual
              */
-            vfunc_insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+            vfunc_insert_before(node: DomNode, child: DomNode | null): DomNode;
 
             /**
              * @param node 
@@ -23764,27 +23579,27 @@ export namespace GXml {
             nodeType: DomNodeNodeType;
             node_name: string;
             nodeName: string;
-            base_uri: (string | null);
+            base_uri: string | null;
             baseUri: string;
-            owner_document: (DomDocument | null);
+            owner_document: DomDocument | null;
             ownerDocument: DomDocument;
-            parent_node: (DomNode | null);
+            parent_node: DomNode | null;
             parentNode: DomNode;
-            parent_element: (DomElement | null);
+            parent_element: DomElement | null;
             parentElement: DomElement;
             child_nodes: DomNodeList;
             childNodes: DomNodeList;
-            first_child: (DomNode | null);
+            first_child: DomNode | null;
             firstChild: DomNode;
-            last_child: (DomNode | null);
+            last_child: DomNode | null;
             lastChild: DomNode;
-            previous_sibling: (DomNode | null);
+            previous_sibling: DomNode | null;
             previousSibling: DomNode;
-            next_sibling: (DomNode | null);
+            next_sibling: DomNode | null;
             nextSibling: DomNode;
-            node_value: (string | null);
+            node_value: string | null;
             nodeValue: string;
-            text_content: (string | null);
+            text_content: string | null;
             textContent: string;
         }
     }
@@ -23829,15 +23644,15 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get base_uri(): (string | null);
+        get base_uri(): string | null;
 
         /**
          * @read-only
          */
         get baseUri(): string;
 
-        get owner_document(): (DomDocument | null);
-        set owner_document(val: (DomDocument | null));
+        get owner_document(): DomDocument | null;
+        set owner_document(val: DomDocument | null);
 
         get ownerDocument(): DomDocument;
         set ownerDocument(val: DomDocument);
@@ -23845,7 +23660,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get parent_node(): (DomNode | null);
+        get parent_node(): DomNode | null;
 
         /**
          * @read-only
@@ -23855,7 +23670,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get parent_element(): (DomElement | null);
+        get parent_element(): DomElement | null;
 
         /**
          * @read-only
@@ -23875,7 +23690,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get first_child(): (DomNode | null);
+        get first_child(): DomNode | null;
 
         /**
          * @read-only
@@ -23885,7 +23700,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get last_child(): (DomNode | null);
+        get last_child(): DomNode | null;
 
         /**
          * @read-only
@@ -23895,7 +23710,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get previous_sibling(): (DomNode | null);
+        get previous_sibling(): DomNode | null;
 
         /**
          * @read-only
@@ -23905,21 +23720,21 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get next_sibling(): (DomNode | null);
+        get next_sibling(): DomNode | null;
 
         /**
          * @read-only
          */
         get nextSibling(): DomNode;
 
-        get node_value(): (string | null);
-        set node_value(val: (string | null));
+        get node_value(): string | null;
+        set node_value(val: string | null);
 
         get nodeValue(): string;
         set nodeValue(val: string);
 
-        get text_content(): (string | null);
-        set text_content(val: (string | null));
+        get text_content(): string | null;
+        set text_content(val: string | null);
 
         get textContent(): string;
         set textContent(val: string);
@@ -23929,42 +23744,42 @@ export namespace GXml {
 
         get_node_name(): string;
 
-        get_base_uri(): (string | null);
+        get_base_uri(): string | null;
 
-        get_owner_document(): (DomDocument | null);
+        get_owner_document(): DomDocument | null;
 
         /**
          * @param value 
          */
-        set_owner_document(value: (DomDocument | null)): void;
+        set_owner_document(value: DomDocument | null): void;
 
-        get_parent_node(): (DomNode | null);
+        get_parent_node(): DomNode | null;
 
-        get_parent_element(): (DomElement | null);
+        get_parent_element(): DomElement | null;
 
         get_child_nodes(): DomNodeList;
 
-        get_first_child(): (DomNode | null);
+        get_first_child(): DomNode | null;
 
-        get_last_child(): (DomNode | null);
+        get_last_child(): DomNode | null;
 
-        get_previous_sibling(): (DomNode | null);
+        get_previous_sibling(): DomNode | null;
 
-        get_next_sibling(): (DomNode | null);
+        get_next_sibling(): DomNode | null;
 
-        get_node_value(): (string | null);
-
-        /**
-         * @param value 
-         */
-        set_node_value(value: (string | null)): void;
-
-        get_text_content(): (string | null);
+        get_node_value(): string | null;
 
         /**
          * @param value 
          */
-        set_text_content(value: (string | null)): void;
+        set_node_value(value: string | null): void;
+
+        get_text_content(): string | null;
+
+        /**
+         * @param value 
+         */
+        set_text_content(value: string | null): void;
 
         has_child_nodes(): boolean;
 
@@ -23973,7 +23788,7 @@ export namespace GXml {
         /**
          * @param node 
          */
-        is_equal_node(node: (DomNode | null)): boolean;
+        is_equal_node(node: DomNode | null): boolean;
 
         /**
          * @param other 
@@ -23983,28 +23798,28 @@ export namespace GXml {
         /**
          * @param other 
          */
-        contains(other: (DomNode | null)): boolean;
+        contains(other: DomNode | null): boolean;
 
         /**
          * @param nspace 
          */
-        lookup_prefix(nspace: (string | null)): (string | null);
+        lookup_prefix(nspace: string | null): string | null;
 
         /**
          * @param prefix 
          */
-        lookup_namespace_uri(prefix: (string | null)): (string | null);
+        lookup_namespace_uri(prefix: string | null): string | null;
 
         /**
          * @param nspace 
          */
-        is_default_namespace(nspace: (string | null)): boolean;
+        is_default_namespace(nspace: string | null): boolean;
 
         /**
          * @param node 
          * @param child 
          */
-        insert_before(node: DomNode, child: (DomNode | null)): DomNode;
+        insert_before(node: DomNode, child: DomNode | null): DomNode;
 
         /**
          * @param node 
@@ -24137,12 +23952,12 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_extract_contents(): (DomDocumentFragment | null);
+            vfunc_extract_contents(): DomDocumentFragment | null;
 
             /**
              * @virtual
              */
-            vfunc_clone_contents(): (DomDocumentFragment | null);
+            vfunc_clone_contents(): DomDocumentFragment | null;
 
             /**
              * @param node 
@@ -24342,9 +24157,9 @@ export namespace GXml {
 
         delete_contents(): void;
 
-        extract_contents(): (DomDocumentFragment | null);
+        extract_contents(): DomDocumentFragment | null;
 
-        clone_contents(): (DomDocumentFragment | null);
+        clone_contents(): DomDocumentFragment | null;
 
         /**
          * @param node 
@@ -24738,9 +24553,7 @@ export namespace GXml {
     namespace IXsdTypeDef {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeDefNamespace {
@@ -24911,9 +24724,7 @@ export namespace GXml {
     namespace IXsdTypeList {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeListNamespace {
@@ -24934,9 +24745,7 @@ export namespace GXml {
     namespace IXsdTypeUnion {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeUnionNamespace {
@@ -25011,9 +24820,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinExclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinExclusiveNamespace {
@@ -25034,9 +24841,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinInclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinInclusiveNamespace {
@@ -25057,9 +24862,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxExclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxExclusiveNamespace {
@@ -25080,9 +24883,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxInclusive {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxInclusiveNamespace {
@@ -25103,9 +24904,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionTotalDigits {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionTotalDigitsNamespace {
@@ -25126,9 +24925,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionFractionDigits {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionFractionDigitsNamespace {
@@ -25149,9 +24946,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionLengthNamespace {
@@ -25172,9 +24967,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMinLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMinLengthNamespace {
@@ -25195,9 +24988,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionMaxLength {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionMaxLengthNamespace {
@@ -25392,9 +25183,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionPattern {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionPatternNamespace {
@@ -25415,9 +25204,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionAssertion {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionAssertionNamespace {
@@ -25438,9 +25225,7 @@ export namespace GXml {
     namespace IXsdTypeRestrictionExplicitTimezone {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdTypeRestrictionExplicitTimezoneNamespace {
@@ -25821,13 +25606,13 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_id(): (string | null);
+            vfunc_get_id(): string | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_id(value: (string | null)): void;
+            vfunc_set_id(value: string | null): void;
 
             /**
              * @virtual
@@ -25960,12 +25745,12 @@ export namespace GXml {
             "final": string;
             fixed: string;
             form: string;
-            id: (string | null);
+            id: string | null;
             maxOccurs: string;
             minOccurs: string;
             name: string;
             nillable: boolean;
-            ref: (string | any);
+            ref: string | any;
             substitution_group: DomTokenList;
             substitutionGroup: DomTokenList;
             target_namespace: string;
@@ -26008,8 +25793,8 @@ export namespace GXml {
         get form(): string;
         set form(val: string);
 
-        get id(): (string | null);
-        set id(val: (string | null));
+        get id(): string | null;
+        set id(val: string | null);
 
         get maxOccurs(): string;
         set maxOccurs(val: string);
@@ -26102,12 +25887,12 @@ export namespace GXml {
          */
         set_form(value: string): void;
 
-        get_id(): (string | null);
+        get_id(): string | null;
 
         /**
          * @param value 
          */
-        set_id(value: (string | null)): void;
+        set_id(value: string | null): void;
 
         get_maxOccurs(): string;
 
@@ -26195,9 +25980,7 @@ export namespace GXml {
     namespace IXsdAnnotation {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAnnotationNamespace {
@@ -26272,9 +26055,7 @@ export namespace GXml {
     namespace IXsdSimpleContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdSimpleContentNamespace {
@@ -26295,9 +26076,7 @@ export namespace GXml {
     namespace IXsdComplexContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdComplexContentNamespace {
@@ -26318,9 +26097,7 @@ export namespace GXml {
     namespace IXsdOpenContent {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdOpenContentNamespace {
@@ -26395,9 +26172,7 @@ export namespace GXml {
     namespace IXsdAttribute {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAttributeNamespace {
@@ -26418,9 +26193,7 @@ export namespace GXml {
     namespace IXsdAttributeGroup {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdAttributeGroupNamespace {
@@ -26488,7 +26261,7 @@ export namespace GXml {
              * @param index 
              * @virtual
              */
-            vfunc_get_item(index: number): (DomElement | null);
+            vfunc_get_item(index: number): DomElement | null;
 
             /**
              * @param element 
@@ -26578,7 +26351,7 @@ export namespace GXml {
         /**
          * @param index 
          */
-        get_item(index: number): (DomElement | null);
+        get_item(index: number): DomElement | null;
 
         /**
          * @param element 
@@ -26604,9 +26377,7 @@ export namespace GXml {
     namespace IXsdListElements {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListElementsNamespace {
@@ -26627,9 +26398,7 @@ export namespace GXml {
     namespace IXsdListSimpleTypes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListSimpleTypesNamespace {
@@ -26650,9 +26419,7 @@ export namespace GXml {
     namespace IXsdListComplexTypes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListComplexTypesNamespace {
@@ -26673,9 +26440,7 @@ export namespace GXml {
     namespace IXsdListAttributes {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListAttributesNamespace {
@@ -26696,9 +26461,7 @@ export namespace GXml {
     namespace IXsdListAttributesGroup {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListAttributesGroupNamespace {
@@ -26719,9 +26482,7 @@ export namespace GXml {
     namespace IXsdListTypeRestrictionEnumerations {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListTypeRestrictionEnumerationsNamespace {
@@ -26742,9 +26503,7 @@ export namespace GXml {
     namespace IXsdListTypeRestrictionWhiteSpaces {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface IXsdListTypeRestrictionWhiteSpacesNamespace {
@@ -26779,13 +26538,13 @@ export namespace GXml {
              * @param nick 
              * @virtual
              */
-            vfunc_find_property_name(nick: string): (GObject.ParamSpec | null);
+            vfunc_find_property_name(nick: string): GObject.ParamSpec | null;
 
             /**
              * @param pname 
              * @virtual
              */
-            vfunc_find_object_property_name(pname: string): (GObject.ParamSpec | null);
+            vfunc_find_object_property_name(pname: string): GObject.ParamSpec | null;
 
             /**
              * @virtual
@@ -26796,19 +26555,19 @@ export namespace GXml {
              * @param prop 
              * @virtual
              */
-            vfunc_get_property_string(prop: GObject.ParamSpec): (string | null);
+            vfunc_get_property_string(prop: GObject.ParamSpec): string | null;
 
             /**
              * @param name 
              * @virtual
              */
-            vfunc_get_attribute(name: string): (string | null);
+            vfunc_get_attribute(name: string): string | null;
 
             /**
              * @param name 
              * @virtual
              */
-            vfunc_find_property(name: string): (Property | null);
+            vfunc_find_property(name: string): Property | null;
 
             /**
              * @param name 
@@ -26821,7 +26580,7 @@ export namespace GXml {
              * @param name 
              * @virtual
              */
-            vfunc_get_child(name: string): (DomElement | null);
+            vfunc_get_child(name: string): DomElement | null;
 
             /**
              * @param name 
@@ -26850,9 +26609,7 @@ export namespace GXml {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ObjectNamespace {
@@ -26870,29 +26627,29 @@ export namespace GXml {
         /**
          * @param nick 
          */
-        find_property_name(nick: string): (GObject.ParamSpec | null);
+        find_property_name(nick: string): GObject.ParamSpec | null;
 
         /**
          * @param pname 
          */
-        find_object_property_name(pname: string): (GObject.ParamSpec | null);
+        find_object_property_name(pname: string): GObject.ParamSpec | null;
 
         get_property_element_list(): GObject.ParamSpec[];
 
         /**
          * @param prop 
          */
-        get_property_string(prop: GObject.ParamSpec): (string | null);
+        get_property_string(prop: GObject.ParamSpec): string | null;
 
         /**
          * @param name 
          */
-        get_attribute(name: string): (string | null);
+        get_attribute(name: string): string | null;
 
         /**
          * @param name 
          */
-        find_property(name: string): (Property | null);
+        find_property(name: string): Property | null;
 
         /**
          * @param name 
@@ -26903,7 +26660,7 @@ export namespace GXml {
         /**
          * @param name 
          */
-        get_child(name: string): (DomElement | null);
+        get_child(name: string): DomElement | null;
 
         /**
          * @param name 
@@ -26964,13 +26721,13 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_cancellable(): (Gio.Cancellable | null);
+            vfunc_get_cancellable(): Gio.Cancellable | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_cancellable(value: (Gio.Cancellable | null)): void;
+            vfunc_set_cancellable(value: Gio.Cancellable | null): void;
 
             /**
              * @virtual
@@ -26980,7 +26737,7 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_types(): ({ [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>);
+            vfunc_get_types(): { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
 
             /**
              * @param file 
@@ -26993,7 +26750,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27010,7 +26767,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_string_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27029,7 +26786,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27048,7 +26805,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27067,7 +26824,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_stream_async(stream: Gio.InputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27086,7 +26843,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_string_async(str: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27103,7 +26860,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_create_stream_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27122,7 +26879,7 @@ export namespace GXml {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_read_child_nodes_async(parent: DomNode, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+            vfunc_read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -27200,7 +26957,7 @@ export namespace GXml {
              * @param parent 
              * @virtual
              */
-            vfunc_create_element(parent: DomNode): (DomElement | null);
+            vfunc_create_element(parent: DomNode): DomElement | null;
 
             /**
              * @param element 
@@ -27214,9 +26971,9 @@ export namespace GXml {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backup: boolean;
             indent: boolean;
-            cancellable: (Gio.Cancellable | null);
+            cancellable: Gio.Cancellable | null;
             node: DomNode;
-            types: ({ [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>);
+            types: { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
         }
     }
 
@@ -27236,8 +26993,8 @@ export namespace GXml {
         get indent(): boolean;
         set indent(val: boolean);
 
-        get cancellable(): (Gio.Cancellable | null);
-        set cancellable(val: (Gio.Cancellable | null));
+        get cancellable(): Gio.Cancellable | null;
+        set cancellable(val: Gio.Cancellable | null);
 
         /**
          * @read-only
@@ -27264,12 +27021,12 @@ export namespace GXml {
          */
         set_indent(value: boolean): void;
 
-        get_cancellable(): (Gio.Cancellable | null);
+        get_cancellable(): Gio.Cancellable | null;
 
         /**
          * @param value 
          */
-        set_cancellable(value: (Gio.Cancellable | null)): void;
+        set_cancellable(value: Gio.Cancellable | null): void;
 
         get_node(): DomNode;
 
@@ -27289,13 +27046,13 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        write_file_async(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27309,12 +27066,12 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_string_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        write_string_async(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        write_string_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param _res_ 
@@ -27335,13 +27092,13 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_stream_async(stream: Gio.OutputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param _callback_ 
          */
-        write_stream_async(stream: Gio.OutputStream, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        write_stream_async(stream: Gio.OutputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27362,13 +27119,13 @@ export namespace GXml {
          * @param file 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_file_async(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param file 
          * @param _callback_ 
          */
-        read_file_async(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_file_async(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27389,13 +27146,13 @@ export namespace GXml {
          * @param stream 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param stream 
          * @param _callback_ 
          */
-        read_stream_async(stream: Gio.InputStream, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_stream_async(stream: Gio.InputStream, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27416,13 +27173,13 @@ export namespace GXml {
          * @param str 
          * @param _callback_ 
          */
-        read_string_async(str: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param str 
          * @param _callback_ 
          */
-        read_string_async(str: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_string_async(str: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27436,12 +27193,12 @@ export namespace GXml {
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param _callback_ 
          */
-        create_stream_async(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+        create_stream_async(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
         /**
          * @param _res_ 
@@ -27462,13 +27219,13 @@ export namespace GXml {
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_child_nodes_async(parent: DomNode, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param parent 
          * @param _callback_ 
          */
-        read_child_nodes_async(parent: DomNode, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+        read_child_nodes_async(parent: DomNode, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
         /**
          * @param _res_ 
@@ -27520,7 +27277,7 @@ export namespace GXml {
         /**
          * @param parent 
          */
-        create_element(parent: DomNode): (DomElement | null);
+        create_element(parent: DomNode): DomElement | null;
 
         /**
          * @param element 
@@ -27544,25 +27301,25 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_value(): (string | null);
+            vfunc_get_value(): string | null;
 
             /**
              * @param value 
              * @virtual
              */
-            vfunc_set_value(value: (string | null)): void;
+            vfunc_set_value(value: string | null): void;
 
             /**
              * @param val 
              * @virtual
              */
-            vfunc_validate_value(val: (string | null)): boolean;
+            vfunc_validate_value(val: string | null): boolean;
         }
 
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            value: (string | null);
+            value: string | null;
         }
     }
 
@@ -27576,21 +27333,21 @@ export namespace GXml {
     interface Property extends GObject.Object, Property.Interface {
 
         // Properties
-        get value(): (string | null);
-        set value(val: (string | null));
+        get value(): string | null;
+        set value(val: string | null);
 
         // Methods
-        get_value(): (string | null);
+        get_value(): string | null;
 
         /**
          * @param value 
          */
-        set_value(value: (string | null)): void;
+        set_value(value: string | null): void;
 
         /**
          * @param val 
          */
-        validate_value(val: (string | null)): boolean;
+        validate_value(val: string | null): boolean;
     }
 
 
@@ -27611,14 +27368,12 @@ export namespace GXml {
              * @param resolver 
              * @virtual
              */
-            vfunc_evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+            vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface XPathContextNamespace {
@@ -27635,7 +27390,7 @@ export namespace GXml {
          * @param expression 
          * @param resolver 
          */
-        evaluate(expression: string, resolver: (Gee.Map | null)): XPathObject;
+        evaluate(expression: string, resolver: Gee.Map | null): XPathObject;
     }
 
 

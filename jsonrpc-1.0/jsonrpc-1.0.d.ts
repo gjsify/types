@@ -91,7 +91,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call": (arg0: string, arg1: GLib.Variant, arg2: (GLib.Variant | null)) => (boolean | void);
+            "handle-call": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -102,7 +102,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            notification: (arg0: string, arg1: (GLib.Variant | null)) => void;
+            notification: (arg0: string, arg1: GLib.Variant | null) => void;
             "notify::io-stream": (pspec: GObject.ParamSpec) => void;
             "notify::use-gvariant": (pspec: GObject.ParamSpec) => void;
             /**
@@ -122,7 +122,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call::io-stream": (arg0: string, arg1: GLib.Variant, arg2: (GLib.Variant | null)) => (boolean | void);
+            "handle-call::io-stream": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when an RPC has been received from the peer we
              * are connected to. Return `true` if you have handled this message, even
@@ -140,8 +140,8 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call::use-gvariant": (arg0: string, arg1: GLib.Variant, arg2: (GLib.Variant | null)) => (boolean | void);
-            [key: `handle-call::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: (GLib.Variant | null)) => (boolean | void);
+            "handle-call::use-gvariant": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            [key: `handle-call::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -152,7 +152,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "notification::io-stream": (arg0: string, arg1: (GLib.Variant | null)) => void;
+            "notification::io-stream": (arg0: string, arg1: GLib.Variant | null) => void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -163,8 +163,8 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "notification::use-gvariant": (arg0: string, arg1: (GLib.Variant | null)) => void;
-            [key: `notification::${string}`]: (arg0: string, arg1: (GLib.Variant | null)) => void;
+            "notification::use-gvariant": (arg0: string, arg1: GLib.Variant | null) => void;
+            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant | null) => void;
         }
 
         // Constructor properties interface
@@ -323,7 +323,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
          */
-        call(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant | null];
+        call(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
         /**
          * Asynchronously calls `method` with `params` on the remote peer.
@@ -337,22 +337,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Variant | null)>;
-
-        /**
-         * Asynchronously calls `method` with `params` on the remote peer.
-         * 
-         * Upon completion or failure, `callback` is executed and it should
-         * call {@link Client.call_finish} to complete the request and release
-         * any memory held.
-         * 
-         * If `params` is floating, the floating reference is consumed.
-         * @param method The name of the method to call
-         * @param params A {@link GLib.Variant} of parameters or `null`
-         * @param cancellable A {@link Gio.Cancellable} or `null`
-         * @param callback a callback to executed upon completion
-         */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
         /**
          * Asynchronously calls `method` with `params` on the remote peer.
@@ -367,7 +352,22 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback to executed upon completion
          */
-        call_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Variant | null)> | void);
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously calls `method` with `params` on the remote peer.
+         * 
+         * Upon completion or failure, `callback` is executed and it should
+         * call {@link Client.call_finish} to complete the request and release
+         * any memory held.
+         * 
+         * If `params` is floating, the floating reference is consumed.
+         * @param method The name of the method to call
+         * @param params A {@link GLib.Variant} of parameters or `null`
+         * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @param callback a callback to executed upon completion
+         */
+        call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
         /**
          * Completes an asynchronous call to {@link Client.call_async}.
@@ -394,7 +394,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback Callback to executed upon completion
          */
-        call_with_id_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): GLib.Variant | null;
+        call_with_id_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): GLib.Variant | null;
 
         /**
          * Closes the underlying streams and cancels any inflight operations of the
@@ -408,7 +408,7 @@ export namespace Jsonrpc {
          * @param cancellable 
          * @returns `true` if successful; otherwise `false` and `error` is set.
          */
-        close(cancellable: (Gio.Cancellable | null)): boolean;
+        close(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronous version of {@link Client.close}.
@@ -417,17 +417,7 @@ export namespace Jsonrpc {
          * be converted to using asynchronous operations.
          * @param cancellable 
          */
-        close_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronous version of {@link Client.close}.
-         * 
-         * Currently this operation is implemented synchronously, but in the future may
-         * be converted to using asynchronous operations.
-         * @param cancellable 
-         * @param callback 
-         */
-        close_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous version of {@link Client.close}.
@@ -437,7 +427,17 @@ export namespace Jsonrpc {
          * @param cancellable 
          * @param callback 
          */
-        close_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronous version of {@link Client.close}.
+         * 
+         * Currently this operation is implemented synchronously, but in the future may
+         * be converted to using asynchronous operations.
+         * @param cancellable 
+         * @param callback 
+         */
+        close_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous request of {@link Client.close_async}.
@@ -462,22 +462,14 @@ export namespace Jsonrpc {
          * @param result The return value or `null`
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          */
-        reply(id: GLib.Variant, result: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+        reply(id: GLib.Variant, result: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param id 
          * @param result 
          * @param cancellable 
          */
-        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param id 
-         * @param result 
-         * @param cancellable 
-         * @param callback 
-         */
-        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param id 
@@ -485,7 +477,15 @@ export namespace Jsonrpc {
          * @param cancellable 
          * @param callback 
          */
-        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param id 
+         * @param result 
+         * @param cancellable 
+         * @param callback 
+         */
+        reply_async(id: GLib.Variant, result: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Asynchronously replies to the peer, sending a JSON-RPC error message.
@@ -498,7 +498,7 @@ export namespace Jsonrpc {
          * @param message An optional error message
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          */
-        reply_error_async(id: GLib.Variant, code: number, message: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously replies to the peer, sending a JSON-RPC error message.
@@ -512,7 +512,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`
          */
-        reply_error_async(id: GLib.Variant, code: number, message: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously replies to the peer, sending a JSON-RPC error message.
@@ -526,7 +526,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`
          */
-        reply_error_async(id: GLib.Variant, code: number, message: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -551,7 +551,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
          */
-        send_notification(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+        send_notification(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously calls `method` with `params` on the remote peer.
@@ -567,24 +567,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously calls `method` with `params` on the remote peer.
-         * 
-         * This function will not wait or expect a reply from the peer.
-         * 
-         * This function is useful when the caller wants to be notified that
-         * the bytes have been delivered to the underlying stream. This does
-         * not indicate that the peer has received them.
-         * 
-         * If `params` is floating then the reference is consumed.
-         * @param method The name of the method to call
-         * @param params A {@link GLib.Variant} of parameters or `null`
-         * @param cancellable A {@link Gio.Cancellable} or `null`
-         * @param callback 
-         */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously calls `method` with `params` on the remote peer.
@@ -601,7 +584,24 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback 
          */
-        send_notification_async(method: string, params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously calls `method` with `params` on the remote peer.
+         * 
+         * This function will not wait or expect a reply from the peer.
+         * 
+         * This function is useful when the caller wants to be notified that
+         * the bytes have been delivered to the underlying stream. This does
+         * not indicate that the peer has received them.
+         * 
+         * If `params` is floating then the reference is consumed.
+         * @param method The name of the method to call
+         * @param params A {@link GLib.Variant} of parameters or `null`
+         * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @param callback 
+         */
+        send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous call to {@link Client.send_notification_async}.
@@ -644,9 +644,7 @@ export namespace Jsonrpc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gio.DataInputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gio.DataInputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
     }
 
     /**
@@ -689,24 +687,24 @@ export namespace Jsonrpc {
          * @param cancellable 
          * @param message 
          */
-        read_message(cancellable: (Gio.Cancellable | null), message: GLib.Variant): boolean;
+        read_message(cancellable: Gio.Cancellable | null, message: GLib.Variant): boolean;
 
         /**
          * @param cancellable 
          */
-        read_message_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * @param cancellable 
-         * @param callback 
-         */
-        read_message_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        read_message_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * @param cancellable 
          * @param callback 
          */
-        read_message_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        read_message_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * @param cancellable 
+         * @param callback 
+         */
+        read_message_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -796,7 +794,7 @@ export namespace Jsonrpc {
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        write_message(message: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+        write_message(message: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Asynchronously sends a message to the peer.
@@ -806,18 +804,7 @@ export namespace Jsonrpc {
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        write_message_async(message: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously sends a message to the peer.
-         * 
-         * This asynchronous operation will complete once the message has
-         * been buffered, and there is no guarantee the peer received it.
-         * @param message a {@link GLib.Variant}
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} or `null`
-         */
-        write_message_async(message: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously sends a message to the peer.
@@ -828,7 +815,18 @@ export namespace Jsonrpc {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} or `null`
          */
-        write_message_async(message: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously sends a message to the peer.
+         * 
+         * This asynchronous operation will complete once the message has
+         * been buffered, and there is no guarantee the peer received it.
+         * @param message a {@link GLib.Variant}
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} or `null`
+         */
+        write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -868,7 +866,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -890,7 +888,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -925,13 +923,13 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -947,7 +945,7 @@ export namespace Jsonrpc {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -977,7 +975,7 @@ export namespace Jsonrpc {
              * @since 3.26
              * @run-last
              */
-            "handle-call": (arg0: Client, arg1: string, arg2: GLib.Variant, arg3: GLib.Variant) => (boolean | void);
+            "handle-call": (arg0: Client, arg1: string, arg2: GLib.Variant, arg3: GLib.Variant) => boolean | void;
             /**
              * This signal is emitted when the client has sent a notification to us.
              * @signal
@@ -988,9 +986,7 @@ export namespace Jsonrpc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

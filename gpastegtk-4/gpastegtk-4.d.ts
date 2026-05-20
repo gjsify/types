@@ -49,7 +49,7 @@ export namespace GPasteGtk {
      * @param msg the message to display
      * @param on_confirmation handler to invoke when we get a confirmation
      */
-    function util_confirm_dialog(parent: (Gtk.Window | null), action: string, msg: string, on_confirmation: ConfirmDialogCallback): void;
+    function util_confirm_dialog(parent: Gtk.Window | null, action: string, msg: string, on_confirmation: ConfirmDialogCallback): void;
 
     /**
      * Empty history after prompting user for confirmation
@@ -58,7 +58,7 @@ export namespace GPasteGtk {
      * @param settings a {@link GPaste.Settings} instance
      * @param history the name of the history to empty
      */
-    function util_empty_history(parent_window: (Gtk.Window | null), client: GPaste.Client, settings: GPaste.Settings, history: string): void;
+    function util_empty_history(parent_window: Gtk.Window | null, client: GPaste.Client, settings: GPaste.Settings, history: string): void;
 
     /**
      * Present the application's window to user
@@ -148,9 +148,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -247,9 +245,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Adw.PreferencesDialog.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Adw.PreferencesDialog.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Gtk.ShortcutManager.ConstructorProps {}
     }
 
     /**
@@ -337,9 +333,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Adw.PreferencesGroup.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Adw.PreferencesGroup.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -466,9 +460,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -513,13 +505,10 @@ export namespace GPasteGtk {
 
     namespace PreferencesManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -568,7 +557,7 @@ export namespace GPasteGtk {
          * Returns the {@link GPaste.Settings} instance manager by `self`
          * @returns the {@link GPaste.Settings} instance
          */
-        get_settings(): (GPaste.Settings | null);
+        get_settings(): GPaste.Settings | null;
 
         /**
          * Register the page in the manager to notify for settings changes
@@ -625,9 +614,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Adw.PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Adw.PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -729,9 +716,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends PreferencesPage.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**
@@ -816,9 +801,7 @@ export namespace GPasteGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Adw.Bin.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Adw.Bin.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {}
     }
 
     /**

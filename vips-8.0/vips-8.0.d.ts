@@ -2242,7 +2242,7 @@ export namespace Vips {
      * @param data data to store
      * @returns the new {@link Blob}.
      */
-    function blob_copy(data: (Uint8Array | string)): Blob;
+    function blob_copy(data: Uint8Array | string): Blob;
 
     /**
      * Set the block state on all untrusted operations.
@@ -2363,7 +2363,7 @@ export namespace Vips {
      *     {@link tracked_get_mem}.
      * @param max_mem maximum amount of tracked memory we use
      */
-    function cache_set_max_mem(max_mem: (bigint | number)): void;
+    function cache_set_max_mem(max_mem: bigint | number): void;
 
     /**
      * Handy for debugging. Print operation cache actions to stdout as we run.
@@ -3232,7 +3232,7 @@ export namespace Vips {
      * @param func a function to execute in the new thread
      * @returns the new {@link GLib.Thread}, or `NULL` if an error occurred
      */
-    function g_thread_new(domain: (string | null), func: GLib.ThreadFunc): GLib.Thread;
+    function g_thread_new(domain: string | null, func: GLib.ThreadFunc): GLib.Thread;
 
     /**
      * ::: seealso
@@ -3306,14 +3306,14 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function hash_table_map(hash: ({ [key: string]: any } | GLib.HashTable<never, never>), fn: SListMap2Fn, a: null, b: null): null;
+    function hash_table_map(hash: { [key: string]: any } | GLib.HashTable<never, never>, fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * @param image 
      * @param data 
      * @param data_length 
      */
-    function icc_is_compatible_profile(image: Image, data: null, data_length: (bigint | number)): boolean;
+    function icc_is_compatible_profile(image: Image, data: null, data_length: bigint | number): boolean;
 
     /**
      * VIPS can optionally be built without the ICC library. Use this function to
@@ -3389,7 +3389,7 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory.
      */
-    function malloc(object: (Object | null), size: (bigint | number)): null;
+    function malloc(object: Object | null, size: bigint | number): null;
 
     /**
      * @param a 
@@ -3431,7 +3431,7 @@ export namespace Vips {
      *     `VIPS_PIPE_READ_LIMIT`.
      * @param limit maximum number of bytes to buffer from a pipe
      */
-    function pipe_read_limit_set(limit: (bigint | number)): void;
+    function pipe_read_limit_set(limit: bigint | number): void;
 
     /**
      * If set, vips will record profiling information, and dump it on program
@@ -3505,7 +3505,7 @@ export namespace Vips {
      * @param l2 another {@link GLib.SList}
      * @returns `TRUE` if `l1` is equal to `l2`. `FALSE` otherwise.
      */
-    function slist_equal(l1: (Uint8Array | string), l2: (Uint8Array | string)): boolean;
+    function slist_equal(l1: Uint8Array | string, l2: Uint8Array | string): boolean;
 
     /**
      * Remove all occurrences of an item from a list.
@@ -3516,7 +3516,7 @@ export namespace Vips {
      * @param b user data
      * @returns new head of `list`
      */
-    function slist_filter(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): Uint8Array;
+    function slist_filter(list: Uint8Array | string, fn: SListMap2Fn, a: null, b: null): Uint8Array;
 
     /**
      * Fold over a slist, applying `fn` to each element.
@@ -3527,13 +3527,13 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_fold2(list: (Uint8Array | string), start: null, fn: SListFold2Fn, a: null, b: null): null;
+    function slist_fold2(list: Uint8Array | string, start: null, fn: SListFold2Fn, a: null, b: null): null;
 
     /**
      * Free a {@link GLib.SList} of things which need {@link GLib.free}ing.
      * @param list a {@link GLib.SList}
      */
-    function slist_free_all(list: (Uint8Array | string)): void;
+    function slist_free_all(list: Uint8Array | string): void;
 
     /**
      * Map over a slist. _copy() the list in case the callback changes it.
@@ -3543,7 +3543,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): null;
+    function slist_map2(list: Uint8Array | string, fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * Map backwards. We _reverse() rather than recurse and unwind to save stack.
@@ -3553,7 +3553,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map2_rev(list: (Uint8Array | string), fn: SListMap2Fn, a: null, b: null): null;
+    function slist_map2_rev(list: Uint8Array | string, fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * Map over a slist. _copy() the list in case the callback changes it.
@@ -3565,7 +3565,7 @@ export namespace Vips {
      * @param d user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function slist_map4(list: (Uint8Array | string), fn: SListMap4Fn, a: null, b: null, c: null, d: null): null;
+    function slist_map4(list: Uint8Array | string, fn: SListMap4Fn, a: null, b: null, c: null, d: null): null;
 
     /**
      * Start function for many images in. `a` is a pointer to
@@ -3626,7 +3626,7 @@ export namespace Vips {
      * @param str string to copy
      * @returns a pointer to the allocated memory
      */
-    function strdup(object: (Object | null), str: string): string;
+    function strdup(object: Object | null, str: string): string;
 
     /**
      * @param str 
@@ -3677,7 +3677,7 @@ export namespace Vips {
      * @param align specifies the alignment
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_aligned_alloc(size: (bigint | number), align: (bigint | number)): null;
+    function tracked_aligned_alloc(size: bigint | number, align: bigint | number): null;
 
     /**
      * Only use it to free memory that was
@@ -3758,7 +3758,7 @@ export namespace Vips {
      * @param size number of bytes to allocate
      * @returns a pointer to the allocated memory, or `NULL` on error.
      */
-    function tracked_malloc(size: (bigint | number)): null;
+    function tracked_malloc(size: bigint | number): null;
 
     /**
      * Exactly as [`open()`](man:open(2)), but the number of files currently open via
@@ -3804,7 +3804,7 @@ export namespace Vips {
      * @param value get from this value
      * @returns The pointer held by `value`.
      */
-    function value_get_area(value: (GObject.Value | any)): [null, number];
+    function value_get_area(value: GObject.Value | any): [null, number];
 
     /**
      * Return the pointer to the array held by `value`.
@@ -3816,7 +3816,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @returns The array address.
      */
-    function value_get_array(value: (GObject.Value | any)): [null, number, GObject.GType | null, number];
+    function value_get_array(value: GObject.Value | any): [null, number, GObject.GType | null, number];
 
     /**
      * Return the start of the array of doubles held by `value`.
@@ -3827,7 +3827,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @returns The array address.
      */
-    function value_get_array_double(value: (GObject.Value | any)): number[];
+    function value_get_array_double(value: GObject.Value | any): number[];
 
     /**
      * Return the start of the array of images held by `value`.
@@ -3838,7 +3838,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @returns The array address.
      */
-    function value_get_array_image(value: (GObject.Value | any)): Image[];
+    function value_get_array_image(value: GObject.Value | any): Image[];
 
     /**
      * Return the start of the array of ints held by `value`.
@@ -3849,7 +3849,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @returns The array address.
      */
-    function value_get_array_int(value: (GObject.Value | any)): number[];
+    function value_get_array_int(value: GObject.Value | any): number[];
 
     /**
      * Returns the data pointer from a blob. Optionally returns the length too.
@@ -3863,34 +3863,34 @@ export namespace Vips {
      * @param value GValue to set
      * @returns The pointer held by `value`.
      */
-    function value_get_blob(value: (GObject.Value | any)): Uint8Array;
+    function value_get_blob(value: GObject.Value | any): Uint8Array;
 
     /**
      * Get the C string held internally by the {@link GObject.Value}.
      * @param value {@link GObject.Value} to get from
      * @returns The C string held by `value`.
      */
-    function value_get_ref_string(value: (GObject.Value | any)): [string, number];
+    function value_get_ref_string(value: GObject.Value | any): [string, number];
 
     /**
      * Get the C string held internally by the GValue.
      * @param value GValue to get from
      * @returns The C string held by `value`.
      */
-    function value_get_save_string(value: (GObject.Value | any)): string;
+    function value_get_save_string(value: GObject.Value | any): string;
 
     /**
      * @param psoec 
      * @param value 
      */
-    function value_is_null(psoec: GObject.ParamSpec, value: (GObject.Value | any)): boolean;
+    function value_is_null(psoec: GObject.ParamSpec, value: GObject.Value | any): boolean;
 
     /**
      * Set value to be a ref-counted area of memory with a free function.
      * @param value set this value
      * @param free_fn data will be freed with this function
      */
-    function value_set_area(value: (GObject.Value | any), free_fn: (CallbackFn | null)): void;
+    function value_set_area(value: GObject.Value | any, free_fn: CallbackFn | null): void;
 
     /**
      * Set `value` to be an array of things.
@@ -3901,7 +3901,7 @@ export namespace Vips {
      * @param type the type of each element
      * @param sizeof_type the sizeof each element
      */
-    function value_set_array(n: number, type: GObject.GType, sizeof_type: (bigint | number)): unknown;
+    function value_set_array(n: number, type: GObject.GType, sizeof_type: bigint | number): unknown;
 
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
@@ -3911,7 +3911,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @param array array of doubles
      */
-    function value_set_array_double(value: (GObject.Value | any), array: (number[] | null)): void;
+    function value_set_array_double(value: GObject.Value | any, array: number[] | null): void;
 
     /**
      * Set `value` to hold an array of images. Pass in the array length in `n`.
@@ -3921,7 +3921,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @param n the number of elements
      */
-    function value_set_array_image(value: (GObject.Value | any), n: number): void;
+    function value_set_array_image(value: GObject.Value | any, n: number): void;
 
     /**
      * Set `value` to hold a copy of `array`. Pass in the array length in `n`.
@@ -3931,7 +3931,7 @@ export namespace Vips {
      * @param value {@link GObject.Value} to get from
      * @param array array of ints
      */
-    function value_set_array_int(value: (GObject.Value | any), array: (number[] | null)): void;
+    function value_set_array_int(value: GObject.Value | any, array: number[] | null): void;
 
     /**
      * Set `value` to hold an array of {@link GObject.Object}. Pass in the array
@@ -3957,7 +3957,7 @@ export namespace Vips {
      * @param free_fn free function for `data`
      * @param data pointer to area of memory
      */
-    function value_set_blob(free_fn: (CallbackFn | null), data: (Uint8Array | string)): unknown;
+    function value_set_blob(free_fn: CallbackFn | null, data: Uint8Array | string): unknown;
 
     /**
      * Just like {@link value_set_blob}, but when
@@ -3971,7 +3971,7 @@ export namespace Vips {
      * @param value GValue to set
      * @param data pointer to area of memory
      */
-    function value_set_blob_free(value: (GObject.Value | any), data: (Uint8Array | string)): void;
+    function value_set_blob_free(value: GObject.Value | any, data: Uint8Array | string): void;
 
     /**
      * Copies the C string `str` into `value`.
@@ -4000,7 +4000,7 @@ export namespace Vips {
      * This can also be set using the `VIPS_VECTOR` environment variable.
      * @param disabled_targets A bitfield of targets to disable at runtime.
      */
-    function vector_disable_targets(disabled_targets: (bigint | number)): void;
+    function vector_disable_targets(disabled_targets: bigint | number): void;
 
     /**
      * Gets a bitfield of builtin targets that libvips was built with.
@@ -4027,7 +4027,7 @@ export namespace Vips {
      * @param target A specific target to describe.
      * @returns a string describing the target.
      */
-    function vector_target_name(target: (bigint | number)): string;
+    function vector_target_name(target: bigint | number): string;
 
     /**
      * Get the major, minor or micro library version, with `flag` values 0, 1 and
@@ -4651,9 +4651,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Operation.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Operation.ConstructorProps {}
     }
 
     /**
@@ -4777,7 +4775,7 @@ export namespace Vips {
          *     {@link Image.new_from_buffer}.
          * @param data start of memory buffer
          */
-        static find_load_buffer(data: (Uint8Array | string)): string;
+        static find_load_buffer(data: Uint8Array | string): string;
 
         /**
          * Searches for an operation you could use to load a source. To see the
@@ -4799,7 +4797,7 @@ export namespace Vips {
          *     {@link Foreign.find_save_buffer}, {@link Image.write_to_file}.
          * @param filename name to find a saver for
          */
-        static find_save(filename: string): (string | null);
+        static find_save(filename: string): string | null;
 
         /**
          * Searches for an operation you could use to write to a buffer in `suffix`
@@ -4809,7 +4807,7 @@ export namespace Vips {
          *     {@link Image.write_to_buffer}.
          * @param suffix name to find a saver for
          */
-        static find_save_buffer(suffix: string): (string | null);
+        static find_save_buffer(suffix: string): string | null;
 
         /**
          * Searches for an operation you could use to write to a target in `suffix`
@@ -4819,7 +4817,7 @@ export namespace Vips {
          *     {@link Image.write_to_buffer}.
          * @param suffix format to find a saver for
          */
-        static find_save_target(suffix: string): (string | null);
+        static find_save_target(suffix: string): string | null;
 
         /**
          * Get a `NULL`-terminated array listing all the supported suffixes.
@@ -4847,7 +4845,7 @@ export namespace Vips {
          * @param loader name of loader to use for test
          * @param data pointer to the buffer to test
          */
-        static is_a_buffer(loader: string, data: (Uint8Array | string)): boolean;
+        static is_a_buffer(loader: string, data: Uint8Array | string): boolean;
 
         /**
          * Return `TRUE` if `source` can be loaded by `loader`. `loader` is something
@@ -5412,7 +5410,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
@@ -5434,7 +5432,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
@@ -5469,13 +5467,13 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): (bigint | number);
+        vfunc_tell(): bigint | number;
 
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
@@ -5491,7 +5489,7 @@ export namespace Vips {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -5593,8 +5591,8 @@ export namespace Vips {
             interpretation: Interpretation;
             kill: boolean;
             mode: string;
-            sizeof_header: (bigint | number);
-            sizeofHeader: (bigint | number);
+            sizeof_header: bigint | number;
+            sizeofHeader: bigint | number;
             width: number;
             xoffset: number;
             xres: number;
@@ -5731,13 +5729,13 @@ export namespace Vips {
          * @default 64
          */
         get sizeof_header(): number;
-        set sizeof_header(val: (bigint | number));
+        set sizeof_header(val: bigint | number);
 
         /**
          * @default 64
          */
         get sizeofHeader(): number;
-        set sizeofHeader(val: (bigint | number));
+        set sizeofHeader(val: bigint | number);
 
         /**
          * @default 1
@@ -5789,15 +5787,15 @@ export namespace Vips {
 
         static new_from_file_RW(filename: string): Image;
 
-        static new_from_file_raw(filename: string, xsize: number, ysize: number, bands: number, offset: (bigint | number)): Image;
+        static new_from_file_raw(filename: string, xsize: number, ysize: number, bands: number, offset: bigint | number): Image;
 
         static new_from_image(image: Image, c: number[]): Image;
 
         static new_from_image1(image: Image, c: number): Image;
 
-        static new_from_memory(data: (Uint8Array | string), width: number, height: number, bands: number, format: BandFormat): Image;
+        static new_from_memory(data: Uint8Array | string, width: number, height: number, bands: number, format: BandFormat): Image;
 
-        static new_from_memory_copy(data: (Uint8Array | string), width: number, height: number, bands: number, format: BandFormat): Image;
+        static new_from_memory_copy(data: Uint8Array | string, width: number, height: number, bands: number, format: BandFormat): Image;
 
         static new_matrix(width: number, height: number): Image;
 
@@ -5969,7 +5967,7 @@ export namespace Vips {
         /**
          * @param processed 
          */
-        ["eval"](processed: (bigint | number)): void;
+        ["eval"](processed: bigint | number): void;
 
         /**
          * Loaders can call this on the image they are making if they see a read error
@@ -6198,7 +6196,7 @@ export namespace Vips {
          * you're done with it.
          * @returns the gainmap image, if present, or NULL.
          */
-        get_gainmap(): (Image | null);
+        get_gainmap(): Image | null;
 
         /**
          * @returns the number of pixels down the image.
@@ -6646,7 +6644,7 @@ export namespace Vips {
          * @param name the name to give the metadata
          * @param value the {@link GObject.Value} to copy into the image
          */
-        set(name: string, value: (GObject.Value | any)): void;
+        set(name: string, value: GObject.Value | any): void;
 
         /**
          * @param args 
@@ -6663,7 +6661,7 @@ export namespace Vips {
          * @param name metadata name
          * @param free_fn free function for `data`
          */
-        set_area(name: string, free_fn: (CallbackFn | null)): void;
+        set_area(name: string, free_fn: CallbackFn | null): void;
 
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
@@ -6674,7 +6672,7 @@ export namespace Vips {
          * @param name metadata name
          * @param array array of doubles
          */
-        set_array_double(name: string, array: (number[] | null)): void;
+        set_array_double(name: string, array: number[] | null): void;
 
         /**
          * Attaches `array` as a metadata item on `image` as `name`.
@@ -6685,7 +6683,7 @@ export namespace Vips {
          * @param name metadata name
          * @param array array of ints
          */
-        set_array_int(name: string, array: (number[] | null)): void;
+        set_array_int(name: string, array: number[] | null): void;
 
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`.
@@ -6696,7 +6694,7 @@ export namespace Vips {
          * @param free_fn free function for `data`
          * @param data pointer to area of   memory
          */
-        set_blob(name: string, free_fn: (CallbackFn | null), data: (Uint8Array | string)): void;
+        set_blob(name: string, free_fn: CallbackFn | null, data: Uint8Array | string): void;
 
         /**
          * Attaches `data` as a metadata item on `image` under the name `name`, taking
@@ -6707,7 +6705,7 @@ export namespace Vips {
          * @param name metadata name
          * @param data pointer to area of memory
          */
-        set_blob_copy(name: string, data: (Uint8Array | string)): void;
+        set_blob_copy(name: string, data: Uint8Array | string): void;
 
         /**
          * Sets the delete_on_close flag for the image. If this flag is set, when
@@ -6869,7 +6867,7 @@ export namespace Vips {
          * @param notify_fn pixels are ready notification callback
          * @returns 0 on success, -1 on error.
          */
-        sink_screen(mask: Image, tile_width: number, tile_height: number, max_tiles: number, priority: number, notify_fn: (SinkNotify | null)): [number, Image];
+        sink_screen(mask: Image, tile_width: number, tile_height: number, max_tiles: number, priority: number, notify_fn: SinkNotify | null): [number, Image];
 
         /**
          * Loops over an image. `generate_fn` is called for every
@@ -6966,9 +6964,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7257,7 +7253,7 @@ export namespace Vips {
          * @param value 
          * @param pspec 
          */
-        static get_property(gobject: GObject.Object, property_id: number, value: (GObject.Value | any), pspec: GObject.ParamSpec): void;
+        static get_property(gobject: GObject.Object, property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
 
         static print_all(): void;
 
@@ -7274,7 +7270,7 @@ export namespace Vips {
          * @param value 
          * @param pspec 
          */
-        static set_property(gobject: GObject.Object, property_id: number, value: (GObject.Value | any), pspec: GObject.ParamSpec): void;
+        static set_property(gobject: GObject.Object, property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
 
         /**
          * @param pspec 
@@ -7464,9 +7460,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7671,9 +7665,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -7791,7 +7783,7 @@ export namespace Vips {
          * @param len 
          * @returns A copy of the pixel data.
          */
-        fetch(left: number, top: number, width: number, height: number, len: (bigint | number)): Pel;
+        fetch(left: number, top: number, width: number, height: number, len: bigint | number): Pel;
 
         /**
          * @returns Height of the pixels held in region.
@@ -8164,7 +8156,7 @@ export namespace Vips {
 
         static new_from_file(filename: string): Source;
 
-        static new_from_memory(data: null, length: (bigint | number)): Source;
+        static new_from_memory(data: null, length: bigint | number): Source;
 
         static new_from_options(options: string): Source;
 
@@ -8194,7 +8186,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: null, length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): bigint | number;
 
         /**
          * Move the file read position. You can't call this after pixel decode starts.
@@ -8203,7 +8195,7 @@ export namespace Vips {
          * @param whence seek relative to this point
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): (bigint | number);
+        vfunc_seek(offset: number, whence: number): bigint | number;
 
         // Methods
         /**
@@ -8256,7 +8248,7 @@ export namespace Vips {
          * @param length return the file length here, or `NULL`
          * @returns a pointer to the start of the file contents, or `NULL` on error.
          */
-        map(length: (bigint | number)): null;
+        map(length: bigint | number): null;
 
         /**
          * Just like {@link Source.map}, but return a {@link Blob} containing the
@@ -8285,7 +8277,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: null, length: (bigint | number)): number;
+        read(buffer: null, length: bigint | number): number;
 
         /**
          * Rewind the source to the start.
@@ -8309,7 +8301,7 @@ export namespace Vips {
          * @param whence seek relative to this point
          * @returns the new file position, or -1 on error.
          */
-        seek(offset: (bigint | number), whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
 
         /**
          * Return a pointer to the first few bytes of the file. If the file is too
@@ -8317,7 +8309,7 @@ export namespace Vips {
          * @param length number of bytes to sniff
          * @returns a pointer to the bytes at the start of the file, or `NULL` on error.
          */
-        sniff(length: (bigint | number)): number;
+        sniff(length: bigint | number): number;
 
         /**
          * Attempt to sniff at most `length` bytes from the start of the source. A
@@ -8328,7 +8320,7 @@ export namespace Vips {
          * @param length max number of bytes to read
          * @returns number of bytes read, or -1 on error.
          */
-        sniff_at_most(data: number, length: (bigint | number)): number;
+        sniff_at_most(data: number, length: bigint | number): number;
 
         /**
          * Restore the source after minimisation. This is called at the start
@@ -8350,7 +8342,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: null, arg1: number) => (bigint | number);
+            read: (arg0: null, arg1: number) => bigint | number;
             /**
              * This signal is emitted to seek the source. The handler should
              * change the source position appropriately.
@@ -8359,7 +8351,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => (bigint | number);
+            seek: (arg0: number, arg1: number) => bigint | number;
             "notify::blob": (pspec: GObject.ParamSpec) => void;
             "notify::descriptor": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -8368,9 +8360,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Source.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Source.ConstructorProps {}
     }
 
     /**
@@ -8420,14 +8410,14 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_read(buffer: null, length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): bigint | number;
 
         /**
          * @param offset 
          * @param whence 
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): (bigint | number);
+        vfunc_seek(offset: number, whence: number): bigint | number;
     }
 
 
@@ -8594,7 +8584,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @virtual
          */
-        vfunc_read(buffer: null, length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): bigint | number;
 
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
@@ -8605,14 +8595,14 @@ export namespace Vips {
          * @param whence seek relative to beginning, offset, or end
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): (bigint | number);
+        vfunc_seek(offset: number, whence: number): bigint | number;
 
         /**
          * @param data 
          * @param length 
          * @virtual
          */
-        vfunc_write(data: null, length: number): (bigint | number);
+        vfunc_write(data: null, length: number): bigint | number;
 
         // Methods
         /**
@@ -8645,7 +8635,7 @@ export namespace Vips {
          * @param length length of `buffer` in bytes
          * @returns the number of bytes read, 0 on end of file, -1 on error.
          */
-        read(buffer: null, length: (bigint | number)): number;
+        read(buffer: null, length: bigint | number): number;
 
         /**
          * Seek the target. This behaves exactly as [`lseek()`](man:lseek(2)).
@@ -8656,7 +8646,7 @@ export namespace Vips {
          * @param whence seek relative to beginning, offset, or end
          * @returns the new offset, -1 on error.
          */
-        seek(offset: (bigint | number), whence: number): number;
+        seek(offset: bigint | number, whence: number): number;
 
         /**
          * Memory targets only (see {@link Target.new_to_memory}). Steal all data
@@ -8687,7 +8677,7 @@ export namespace Vips {
          * @param length length of `data` in bytes
          * @returns 0 on success, -1 on error.
          */
-        write(data: null, length: (bigint | number)): number;
+        write(data: null, length: bigint | number): number;
 
         /**
          * Write `str` to `target`, but escape stuff that xml hates in text. Our
@@ -8735,7 +8725,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: null, arg1: number) => (bigint | number);
+            read: (arg0: null, arg1: number) => bigint | number;
             /**
              * This signal is emitted to seek the target. The handler should
              * change the target position appropriately.
@@ -8744,13 +8734,13 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => (bigint | number);
+            seek: (arg0: number, arg1: number) => bigint | number;
             /**
              * This signal is emitted to write bytes to the target.
              * @signal
              * @action
              */
-            write: (arg0: null, arg1: number) => (bigint | number);
+            write: (arg0: null, arg1: number) => bigint | number;
             "notify::blob": (pspec: GObject.ParamSpec) => void;
             "notify::memory": (pspec: GObject.ParamSpec) => void;
             "notify::descriptor": (pspec: GObject.ParamSpec) => void;
@@ -8760,9 +8750,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Target.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Target.ConstructorProps {}
     }
 
     /**
@@ -8822,21 +8810,21 @@ export namespace Vips {
          * @param length 
          * @virtual
          */
-        vfunc_read(buffer: null, length: number): (bigint | number);
+        vfunc_read(buffer: null, length: number): bigint | number;
 
         /**
          * @param offset 
          * @param whence 
          * @virtual
          */
-        vfunc_seek(offset: number, whence: number): (bigint | number);
+        vfunc_seek(offset: number, whence: number): bigint | number;
 
         /**
          * @param data 
          * @param length 
          * @virtual
          */
-        vfunc_write(data: null, length: number): (bigint | number);
+        vfunc_write(data: null, length: number): bigint | number;
     }
 
 
@@ -8848,9 +8836,7 @@ export namespace Vips {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Object.ConstructorProps {}
     }
 
     /**
@@ -8938,11 +8924,11 @@ export namespace Vips {
         n: number;
 
         // Constructors
-        constructor(free_fn: (CallbackFn | null));
+        constructor(free_fn: CallbackFn | null);
 
-        static ["new"](free_fn: (CallbackFn | null)): Area;
+        static ["new"](free_fn: CallbackFn | null): Area;
 
-        static new_array(type: GObject.GType, sizeof_type: (bigint | number), n: number): Area;
+        static new_array(type: GObject.GType, sizeof_type: bigint | number, n: number): Area;
 
         static new_array_object(n: number): Area;
 
@@ -9117,9 +9103,9 @@ export namespace Vips {
         static $gtype: GObject.GType<Blob>;
 
         // Constructors
-        constructor(free_fn: (CallbackFn | null), data: (Uint8Array | string));
+        constructor(free_fn: CallbackFn | null, data: Uint8Array | string);
 
-        static ["new"](free_fn: (CallbackFn | null), data: (Uint8Array | string)): Blob;
+        static ["new"](free_fn: CallbackFn | null, data: Uint8Array | string): Blob;
 
         // Static methods
         /**
@@ -9130,7 +9116,7 @@ export namespace Vips {
          *     {@link Blob.new}.
          * @param data data to store
          */
-        static copy(data: (Uint8Array | string)): Blob;
+        static copy(data: Uint8Array | string): Blob;
 
         // Methods
         /**
@@ -9153,7 +9139,7 @@ export namespace Vips {
          * @param free_fn `data` will be freed with this function
          * @param data data to store
          */
-        set(free_fn: (CallbackFn | null), data: (Uint8Array | string)): void;
+        set(free_fn: CallbackFn | null, data: Uint8Array | string): void;
     }
 
 
@@ -9183,10 +9169,7 @@ export namespace Vips {
         static $gtype: GObject.GType<Buf>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         // Methods
         /**
@@ -9201,7 +9184,7 @@ export namespace Vips {
          * @param n the number of bytes
          * @returns `FALSE` on overflow, `TRUE` otherwise.
          */
-        append_size(n: (bigint | number)): boolean;
+        append_size(n: bigint | number): boolean;
 
         /**
          * Append a single character `ch` to `buf`.
@@ -9234,7 +9217,7 @@ export namespace Vips {
          * @param value {@link GObject.Value} to format and append
          * @returns `FALSE` on overflow, `TRUE` otherwise.
          */
-        appendgv(value: (GObject.Value | any)): boolean;
+        appendgv(value: GObject.Value | any): boolean;
 
         /**
          * Append at most `sz` chars from `str` to `buf`. `sz` < 0 means unlimited. This
@@ -9375,7 +9358,7 @@ export namespace Vips {
          * @param size the size to allocate
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        allocate(size: (bigint | number)): boolean;
+        allocate(size: bigint | number): boolean;
 
         /**
          * Destroy `dbuf`. This frees any allocated memory. Useful for dbufs on the
@@ -9393,7 +9376,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns start of write area.
          */
-        get_write(size: ((bigint | number) | null)): number;
+        get_write(size: bigint | number | null): number;
 
         /**
          * Initialize `dbuf`. You can also just init to zero, eg.
@@ -9408,7 +9391,7 @@ export namespace Vips {
          * @param size the minimum size
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        minimum_size(size: (bigint | number)): boolean;
+        minimum_size(size: bigint | number): boolean;
 
         /**
          * Up to `size` bytes are read from the buffer and copied to `data`. The number
@@ -9417,7 +9400,7 @@ export namespace Vips {
          * @param size read up to this many bytes
          * @returns the number of bytes transferred.
          */
-        read(data: number, size: (bigint | number)): number;
+        read(data: number, size: bigint | number): number;
 
         /**
          * Reset the buffer to empty. No memory is freed, just the data size and
@@ -9442,7 +9425,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        steal(size: ((bigint | number) | null)): number;
+        steal(size: bigint | number | null): number;
 
         /**
          * Return a pointer to `dbuf`'s internal data.
@@ -9452,7 +9435,7 @@ export namespace Vips {
          * @param size optionally return length in bytes here
          * @returns The pointer held by `dbuf`.
          */
-        string(size: ((bigint | number) | null)): number;
+        string(size: bigint | number | null): number;
 
         /**
          * @returns the current write point
@@ -9470,7 +9453,7 @@ export namespace Vips {
          * @param size the size of the len to write
          * @returns `FALSE` on out of memory, `TRUE` otherwise.
          */
-        write(data: number, size: (bigint | number)): boolean;
+        write(data: number, size: bigint | number): boolean;
 
         /**
          * Write `str` to `dbuf`, but escape stuff that xml hates in text. Our
@@ -9711,7 +9694,7 @@ export namespace Vips {
         /**
          * @param timeout 
          */
-        down_timeout(timeout: (bigint | number)): number;
+        down_timeout(timeout: bigint | number): number;
 
         /**
          * @param n 

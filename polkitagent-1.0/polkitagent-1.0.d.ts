@@ -57,13 +57,10 @@ export namespace PolkitAgent {
 
     namespace Listener {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -146,7 +143,7 @@ export namespace PolkitAgent {
          * @param callback Function to call when the user is done authenticating.
          * @virtual
          */
-        vfunc_initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes an authentication request from the PolicyKit daemon, see
@@ -183,7 +180,7 @@ export namespace PolkitAgent {
          * @param identities A list of {@link Polkit.Identity} objects that the user can choose to authenticate as.
          * @param cancellable A {@link Gio.Cancellable}.
          */
-        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Called on a registered authentication agent (see
@@ -212,7 +209,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable}.
          * @param callback Function to call when the user is done authenticating.
          */
-        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Called on a registered authentication agent (see
@@ -241,7 +238,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable}.
          * @param callback Function to call when the user is done authenticating.
          */
-        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        initiate_authentication(action_id: string, message: string, icon_name: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an authentication request from the PolicyKit daemon, see
@@ -274,7 +271,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
-        register(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: (Gio.Cancellable | null)): null;
+        register(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: Gio.Cancellable | null): null;
 
         /**
          * Like `polkit_agent_listener_register()` but takes options to influence registration. See the
@@ -286,7 +283,7 @@ export namespace PolkitAgent {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
          */
-        register_with_options(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): null;
+        register_with_options(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): null;
     }
 
 
@@ -433,13 +430,10 @@ export namespace PolkitAgent {
 
     namespace TextListener {
         // Signal signatures
-        interface SignalSignatures extends Listener.SignalSignatures {
-        }
+        interface SignalSignatures extends Listener.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -464,7 +458,7 @@ export namespace PolkitAgent {
 
         _init(...args: any[]): void;
 
-        static ["new"](cancellable: (Gio.Cancellable | null)): TextListener;
+        static ["new"](cancellable: Gio.Cancellable | null): TextListener;
 
         // Signals
         /** @signal */
@@ -521,7 +515,7 @@ export namespace PolkitAgent {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -565,7 +559,7 @@ export namespace PolkitAgent {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 

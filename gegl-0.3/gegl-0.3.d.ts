@@ -326,13 +326,13 @@ export namespace Gegl {
      * @param format_name A Babl format name, e.g. "RGBA float"
      * @returns the format pointer
      */
-    function format(format_name: string): (GObject.Value | null);
+    function format(format_name: string): GObject.Value | null;
 
     /**
      * @param format A Babl pointer
      * @returns the format name
      */
-    function format_get_name(format: (GObject.Value | any)): (string | null);
+    function format_get_name(format: GObject.Value | any): string | null;
 
     /**
      * This function fetches the version of the GEGL library being used by
@@ -372,7 +372,7 @@ export namespace Gegl {
      * by `gegl_get_option_group`(), you don't have to call `gegl_init`().
      * @param argv a pointer to the array of command line arguments.
      */
-    function init(argv: (string[] | null)): string[] | null;
+    function init(argv: string[] | null): string[] | null;
 
     function is_main_thread(): boolean;
 
@@ -1074,7 +1074,7 @@ export namespace Gegl {
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          * @returns A copy of the requested data
          */
-        get(rect: Rectangle, scale: number, format_name: (string | null), repeat_mode: AbyssPolicy): Uint8Array;
+        get(rect: Rectangle, scale: number, format_name: string | null, repeat_mode: AbyssPolicy): Uint8Array;
 
         /**
          * Store a linear raster buffer into the GeglBuffer.
@@ -1082,7 +1082,7 @@ export namespace Gegl {
          * @param format_name the format of the input data.
          * @param src pixel data to write to `buffer`.
          */
-        set(rect: Rectangle, format_name: string, src: (Uint8Array | string)): void;
+        set(rect: Rectangle, format_name: string, src: Uint8Array | string): void;
 
         /**
          * @param args 
@@ -1233,7 +1233,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @returns The color components
          */
-        get_components(format: (GObject.Value | any)): number[];
+        get_components(format: GObject.Value | any): number[];
 
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data,
@@ -1246,7 +1246,7 @@ export namespace Gegl {
          * @param format A Babl pointer
          * @param components The color components.
          */
-        set_components(format: (GObject.Value | any), components: number[]): void;
+        set_components(format: GObject.Value | any, components: number[]): void;
 
         /**
          * Retrieves the current set color as linear light non premultipled RGBA data
@@ -1285,8 +1285,8 @@ export namespace Gegl {
             queueSize: number;
             swap: string;
             threads: number;
-            tile_cache_size: (bigint | number);
-            tileCacheSize: (bigint | number);
+            tile_cache_size: bigint | number;
+            tileCacheSize: bigint | number;
             tile_height: number;
             tileHeight: number;
             tile_width: number;
@@ -1331,10 +1331,10 @@ export namespace Gegl {
         set threads(val: number);
 
         get tile_cache_size(): number;
-        set tile_cache_size(val: (bigint | number));
+        set tile_cache_size(val: bigint | number);
 
         get tileCacheSize(): number;
-        set tileCacheSize(val: (bigint | number));
+        set tileCacheSize(val: bigint | number);
 
         get tile_height(): number;
         set tile_height(val: number);
@@ -1385,13 +1385,10 @@ export namespace Gegl {
 
     namespace Curve {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1513,7 +1510,7 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dont_cache: boolean;
             dontCache: boolean;
-            gegl_operation: (Operation | null);
+            gegl_operation: Operation | null;
             geglOperation: Operation;
             name: string;
             operation: string;
@@ -1536,8 +1533,8 @@ export namespace Gegl {
         get dontCache(): boolean;
         set dontCache(val: boolean);
 
-        get gegl_operation(): (Operation | null);
-        set gegl_operation(val: (Operation | null));
+        get gegl_operation(): Operation | null;
+        set gegl_operation(val: Operation | null);
 
         get geglOperation(): Operation;
         set geglOperation(val: Operation);
@@ -1608,7 +1605,7 @@ export namespace Gegl {
          * @param level mipmap level to render (0 for all)
          * @param abyss_policy 
          */
-        blit_buffer(buffer: (Buffer | null), roi: (Rectangle | null), level: number, abyss_policy: AbyssPolicy): void;
+        blit_buffer(buffer: Buffer | null, roi: Rectangle | null, level: number, abyss_policy: AbyssPolicy): void;
 
         /**
          * Makes a connection between the pads of two nodes.
@@ -1690,7 +1687,7 @@ export namespace Gegl {
         /**
          * @returns The operation object associated with this node or NULL if there is no op associated.
          */
-        get_gegl_operation(): (Operation | null);
+        get_gegl_operation(): Operation | null;
 
         /**
          * Proxies are used to route between nodes of a subgraph contained within
@@ -1726,7 +1723,7 @@ export namespace Gegl {
          * @param output_pad_name optional pointer to a location where we can store a                   freshly allocated string with the name of the output pad.
          * @returns the node providing data or NULL if no node is connected to the input_pad.
          */
-        get_producer(input_pad_name: string, output_pad_name: (string | null)): Node;
+        get_producer(input_pad_name: string, output_pad_name: string | null): Node;
 
         /**
          * Returns TRUE if the node has a pad with the specified name
@@ -1842,7 +1839,7 @@ export namespace Gegl {
          * @param property_name the name of the property to set
          * @param value a GValue containing the value to be set in the property.
          */
-        set_property(property_name: string, value: (GObject.Value | any)): void;
+        set_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Returns a freshly allocated \0 terminated string containing a XML
@@ -1863,19 +1860,16 @@ export namespace Gegl {
          * @param path_root filesystem path to construct relative paths from.
          * @returns XML serialization of a graph segment.
          */
-        to_xml_full(tail: (Node | null), path_root: string): string;
+        to_xml_full(tail: Node | null, path_root: string): string;
     }
 
 
     namespace Operation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1977,9 +1971,7 @@ export namespace Gegl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2287,22 +2279,22 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             swap_busy: boolean;
             swapBusy: boolean;
-            swap_file_size: (bigint | number);
-            swapFileSize: (bigint | number);
-            swap_total: (bigint | number);
-            swapTotal: (bigint | number);
+            swap_file_size: bigint | number;
+            swapFileSize: bigint | number;
+            swap_total: bigint | number;
+            swapTotal: bigint | number;
             tile_cache_hits: number;
             tileCacheHits: number;
             tile_cache_misses: number;
             tileCacheMisses: number;
-            tile_cache_total: (bigint | number);
-            tileCacheTotal: (bigint | number);
-            tile_cache_total_max: (bigint | number);
-            tileCacheTotalMax: (bigint | number);
-            tile_cache_total_uncloned: (bigint | number);
-            tileCacheTotalUncloned: (bigint | number);
-            zoom_total: (bigint | number);
-            zoomTotal: (bigint | number);
+            tile_cache_total: bigint | number;
+            tileCacheTotal: bigint | number;
+            tile_cache_total_max: bigint | number;
+            tileCacheTotalMax: bigint | number;
+            tile_cache_total_uncloned: bigint | number;
+            tileCacheTotalUncloned: bigint | number;
+            zoom_total: bigint | number;
+            zoomTotal: bigint | number;
         }
     }
 
@@ -2662,13 +2654,10 @@ export namespace Gegl {
 
     namespace TileSource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3157,10 +3146,7 @@ export namespace Gegl {
         static $gtype: GObject.GType<Random>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Random;
 

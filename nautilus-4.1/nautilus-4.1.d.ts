@@ -85,14 +85,14 @@ export namespace Nautilus {
      * application cache.
      * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
      */
-    function file_info_lookup(location: Gio.File): (FileInfo | null);
+    function file_info_lookup(location: Gio.File): FileInfo | null;
 
     /**
      * Get an existing {@link Nautilus.FileInfo} or `NULL` if it does not exist in the
      * application cache.
      * @param uri the URI to lookup the file info for
      */
-    function file_info_lookup_for_uri(uri: string): (FileInfo | null);
+    function file_info_lookup_for_uri(uri: string): FileInfo | null;
 
     /**
      * Complete an async file info update.
@@ -255,13 +255,10 @@ export namespace Nautilus {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -315,7 +312,7 @@ export namespace Nautilus {
          * Get a list of {@link NautilusMenuItem} for the current {@link Nautilus.Menu}.
          * @returns the provided {@link Nautilus.MenuItem} list
          */
-        get_items(): (MenuItem[] | null);
+        get_items(): MenuItem[] | null;
     }
 
 
@@ -429,7 +426,7 @@ export namespace Nautilus {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: string, label: string, tip: (string | null), icon: (string | null)): MenuItem;
+        static ["new"](name: string, label: string, tip: string | null, icon: string | null): MenuItem;
 
         // Signals
         /** @signal */
@@ -731,14 +728,12 @@ export namespace Nautilus {
              * This method should return immediately without any blocking i/o.
              * @virtual
              */
-            vfunc_get_columns(): (Column[] | null);
+            vfunc_get_columns(): Column[] | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface ColumnProviderNamespace {
@@ -765,7 +760,7 @@ export namespace Nautilus {
          * This method should return immediately without any blocking i/o.
          * @returns the provided {@link Nautilus.Column} objects
          */
-        get_columns(): (Column[] | null);
+        get_columns(): Column[] | null;
     }
 
 
@@ -840,7 +835,7 @@ export namespace Nautilus {
              * mount in which case you can call {@link Gio.File.find_enclosing_mount_async}.
              * @virtual
              */
-            vfunc_get_mount(): (Gio.Mount | null);
+            vfunc_get_mount(): Gio.Mount | null;
 
             /**
              * Gets the name.
@@ -855,13 +850,13 @@ export namespace Nautilus {
              * only for files already cached by Nautilus.
              * @virtual
              */
-            vfunc_get_parent_info(): (FileInfo | null);
+            vfunc_get_parent_info(): FileInfo | null;
 
             /**
              * Gets the parent location.
              * @virtual
              */
-            vfunc_get_parent_location(): (Gio.File | null);
+            vfunc_get_parent_location(): Gio.File | null;
 
             /**
              * Get the parent {@link Nautilus.FileInfo} uri.
@@ -874,7 +869,7 @@ export namespace Nautilus {
              * @param attribute_name the name of an attribute
              * @virtual
              */
-            vfunc_get_string_attribute(attribute_name: string): (string | null);
+            vfunc_get_string_attribute(attribute_name: string): string | null;
 
             /**
              * Gets the URI.
@@ -922,9 +917,7 @@ export namespace Nautilus {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FileInfoNamespace {
@@ -957,13 +950,13 @@ export namespace Nautilus {
         * application cache.
         * @param location the location for which to look up a corresponding {@link Nautilus.FileInfo} object
         */
-        lookup(location: Gio.File): (FileInfo | null);
+        lookup(location: Gio.File): FileInfo | null;
         /**
         * Get an existing {@link Nautilus.FileInfo} or `NULL` if it does not exist in the
         * application cache.
         * @param uri the URI to lookup the file info for
         */
-        lookup_for_uri(uri: string): (FileInfo | null);
+        lookup_for_uri(uri: string): FileInfo | null;
     }
     /**
      * File interface for nautilus extensions.
@@ -1032,7 +1025,7 @@ export namespace Nautilus {
          * mount in which case you can call {@link Gio.File.find_enclosing_mount_async}.
          * @returns the mount of `file_info`,                                      or `null` if `file_info` has no mount
          */
-        get_mount(): (Gio.Mount | null);
+        get_mount(): Gio.Mount | null;
 
         /**
          * Gets the name.
@@ -1047,13 +1040,13 @@ export namespace Nautilus {
          * only for files already cached by Nautilus.
          * @returns a {@link Nautilus.FileInfo} for the parent of `file_info`,                                      or `null` if `file_info` has no parent.
          */
-        get_parent_info(): (FileInfo | null);
+        get_parent_info(): FileInfo | null;
 
         /**
          * Gets the parent location.
          * @returns a {@link Gio.File} for the parent location of `file_info`,   or `null` if `file_info` has no parent
          */
-        get_parent_location(): (Gio.File | null);
+        get_parent_location(): Gio.File | null;
 
         /**
          * Get the parent {@link Nautilus.FileInfo} uri.
@@ -1066,7 +1059,7 @@ export namespace Nautilus {
          * @param attribute_name the name of an attribute
          * @returns the value for the given `attribute_name`, or `null` if   there is none
          */
-        get_string_attribute(attribute_name: string): (string | null);
+        get_string_attribute(attribute_name: string): string | null;
 
         /**
          * Gets the URI.
@@ -1145,9 +1138,7 @@ export namespace Nautilus {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface InfoProviderNamespace {
@@ -1210,21 +1201,19 @@ export namespace Nautilus {
              * @param current_folder the folder for which background items are requested
              * @virtual
              */
-            vfunc_get_background_items(current_folder: FileInfo): (MenuItem[] | null);
+            vfunc_get_background_items(current_folder: FileInfo): MenuItem[] | null;
 
             /**
              * Called whenever the selected files in a view changes.
              * @param files a list of selected files
              * @virtual
              */
-            vfunc_get_file_items(files: FileInfo[]): (MenuItem[] | null);
+            vfunc_get_file_items(files: FileInfo[]): MenuItem[] | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuProviderNamespace {
@@ -1251,14 +1240,14 @@ export namespace Nautilus {
          * @param current_folder the folder for which background items are requested
          * @returns the provided list of items.
          */
-        get_background_items(current_folder: FileInfo): (MenuItem[] | null);
+        get_background_items(current_folder: FileInfo): MenuItem[] | null;
 
         /**
          * Called whenever the selected files in a view changes.
          * @param files a list of selected files
          * @returns the provided list of items.
          */
-        get_file_items(files: FileInfo[]): (MenuItem[] | null);
+        get_file_items(files: FileInfo[]): MenuItem[] | null;
     }
 
 
@@ -1284,14 +1273,12 @@ export namespace Nautilus {
              * @param files a list of files
              * @virtual
              */
-            vfunc_get_models(files: FileInfo[]): (PropertiesModel[] | null);
+            vfunc_get_models(files: FileInfo[]): PropertiesModel[] | null;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PropertiesModelProviderNamespace {
@@ -1318,7 +1305,7 @@ export namespace Nautilus {
          * @param files a list of files
          * @returns a list of models.
          */
-        get_models(files: FileInfo[]): (PropertiesModel[] | null);
+        get_models(files: FileInfo[]): PropertiesModel[] | null;
     }
 
 

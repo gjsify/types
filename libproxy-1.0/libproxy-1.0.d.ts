@@ -39,10 +39,7 @@ export namespace Libproxy {
         static $gtype: GObject.GType<ProxyFactory>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): ProxyFactory;
 

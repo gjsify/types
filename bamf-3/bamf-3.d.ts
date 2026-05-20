@@ -136,9 +136,7 @@ export namespace Bamf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends View.ConstructorProps {
-
-        }
+        interface ConstructorProps extends View.ConstructorProps {}
     }
 
     /**
@@ -229,13 +227,10 @@ export namespace Bamf {
 
     namespace Control {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -324,9 +319,7 @@ export namespace Bamf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -488,7 +481,7 @@ export namespace Bamf {
             is_foreground_tab: boolean;
             isForegroundTab: boolean;
             location: string;
-            xid: (bigint | number);
+            xid: bigint | number;
         }
     }
 
@@ -583,7 +576,7 @@ export namespace Bamf {
          * The desktop file for the tab.
          * @virtual
          */
-        vfunc_get_xid(): (bigint | number);
+        vfunc_get_xid(): bigint | number;
 
         // Methods
         /**
@@ -1013,9 +1006,7 @@ export namespace Bamf {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends View.ConstructorProps {
-
-        }
+        interface ConstructorProps extends View.ConstructorProps {}
     }
 
     /**
@@ -1065,7 +1056,7 @@ export namespace Bamf {
         /**
          * @virtual
          */
-        vfunc_get_transient(): (Window | null);
+        vfunc_get_transient(): Window | null;
 
         /**
          * @param prop 
@@ -1086,7 +1077,7 @@ export namespace Bamf {
         /**
          * @virtual
          */
-        vfunc_last_active(): (bigint | number);
+        vfunc_last_active(): bigint | number;
 
         /**
          * @virtual
@@ -1115,7 +1106,7 @@ export namespace Bamf {
         /**
          * @returns A transient for this {@link Bamf.Window}.
          */
-        get_transient(): (Window | null);
+        get_transient(): Window | null;
 
         /**
          * @param prop 

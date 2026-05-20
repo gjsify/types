@@ -392,9 +392,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -647,9 +645,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -903,7 +899,7 @@ export namespace BraseroBurn {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             flags: number;
-            speed: (bigint | number);
+            speed: bigint | number;
             tmpdir: string;
         }
     }
@@ -925,7 +921,7 @@ export namespace BraseroBurn {
          * @default 0
          */
         get speed(): number;
-        set speed(val: (bigint | number));
+        set speed(val: bigint | number);
 
         /**
          * @default null
@@ -1030,7 +1026,7 @@ export namespace BraseroBurn {
          * @param sibling a {@link BraseroBurn.Track} or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the track was successfully inserted or BRASERO_BURN_ERR otherwise.
          */
-        add_track(new_track: (Track | null), sibling: (Track | null)): BurnResult;
+        add_track(new_track: Track | null, sibling: Track | null): BurnResult;
 
         can_blank(): BurnResult;
 
@@ -1122,7 +1118,7 @@ export namespace BraseroBurn {
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: (bigint | number), bytes: (bigint | number)): BurnResult;
+        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
 
         /**
          * Sets `status` to reflect whether `session` is ready to be used.
@@ -1167,7 +1163,7 @@ export namespace BraseroBurn {
          * @param sibling a {@link BraseroBurn.Track} or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the track was successfully moved or BRASERO_BURN_ERR otherwise.
          */
-        move_track(track: Track, sibling: (Track | null)): BurnResult;
+        move_track(track: Track, sibling: Track | null): BurnResult;
 
         /**
          * @param output 
@@ -1220,13 +1216,13 @@ export namespace BraseroBurn {
          * @param toc a `gchar` or NULL.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successfully set; BRASERO_BURN_ERR otherwise.
          */
-        set_image_output_full(format: ImageFormat, image: (string | null), toc: (string | null)): BurnResult;
+        set_image_output_full(format: ImageFormat, image: string | null, toc: string | null): BurnResult;
 
         /**
          * Sets the label for `session`.
          * @param label a `gchar` or `null`
          */
-        set_label(label: (string | null)): void;
+        set_label(label: string | null): void;
 
         /**
          * Sets the speed at which the medium should be burnt.
@@ -1235,7 +1231,7 @@ export namespace BraseroBurn {
          * @param rate a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful; BRASERO_BURN_ERR otherwise.
          */
-        set_rate(rate: (bigint | number)): BurnResult;
+        set_rate(rate: bigint | number): BurnResult;
 
         /**
          * For the following functions:
@@ -1267,7 +1263,7 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value} *
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        tag_add(tag: string, value: (GObject.Value | any)): BurnResult;
+        tag_add(tag: string, value: GObject.Value | any): BurnResult;
 
         /**
          * Associates a new `tag` with `session`. This can be used
@@ -1290,7 +1286,7 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the retrieval was successful BRASERO_BURN_ERR otherwise
          */
-        tag_lookup(tag: string, value: (GObject.Value | any)): BurnResult;
+        tag_lookup(tag: string, value: GObject.Value | any): BurnResult;
 
         /**
          * Retrieves an int value associated with `session` through
@@ -1326,16 +1322,14 @@ export namespace BraseroBurn {
              * @action
              * @run-last
              */
-            "wrong-extension": () => (boolean | void);
+            "wrong-extension": () => boolean | void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::speed": (pspec: GObject.ParamSpec) => void;
             "notify::tmpdir": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends SessionSpan.ConstructorProps {
-
-        }
+        interface ConstructorProps extends SessionSpan.ConstructorProps {}
     }
 
     /**
@@ -1436,9 +1430,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends BurnSession.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BurnSession.ConstructorProps {}
     }
 
     /**
@@ -1526,13 +1518,10 @@ export namespace BraseroBurn {
 
     namespace Status {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1713,9 +1702,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ToolDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ToolDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1837,9 +1824,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -1902,9 +1887,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1994,7 +1977,7 @@ export namespace BraseroBurn {
          * @param bytes a `goffset` or NULL
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful BRASERO_BURN_NOT_READY if `track` needs more time for processing the size BRASERO_BURN_ERR if something is wrong or if it is empty
          */
-        get_size(blocks: (bigint | number), bytes: (bigint | number)): BurnResult;
+        get_size(blocks: bigint | number, bytes: bigint | number): BurnResult;
 
         /**
          * Sets `status` to reflect whether `track` is ready to be used
@@ -2027,7 +2010,7 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        tag_add(tag: string, value: (GObject.Value | any)): BurnResult;
+        tag_add(tag: string, value: GObject.Value | any): BurnResult;
 
         /**
          * A wrapper around brasero_track_tag_add () to associate
@@ -2064,7 +2047,7 @@ export namespace BraseroBurn {
          * @param value a {@link GObject.Value} **
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if the retrieval was successful BRASERO_BURN_ERR otherwise
          */
-        tag_lookup(tag: string, value: (GObject.Value | any)): BurnResult;
+        tag_lookup(tag: string, value: GObject.Value | any): BurnResult;
 
         /**
          * Retrieves a int value associated with `track`. This
@@ -2086,13 +2069,10 @@ export namespace BraseroBurn {
 
     namespace TrackData {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
-        }
+        interface SignalSignatures extends Track.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps {}
     }
 
     /**
@@ -2142,7 +2122,7 @@ export namespace BraseroBurn {
         /**
          * @virtual
          */
-        vfunc_get_file_num(): (bigint | number);
+        vfunc_get_file_num(): bigint | number;
 
         /**
          * Returns the parameters determining the file system type
@@ -2157,7 +2137,7 @@ export namespace BraseroBurn {
          * Do not free after usage as `track` retains ownership.
          * @virtual
          */
-        vfunc_get_grafts(): (GraftPt[] | null);
+        vfunc_get_grafts(): GraftPt[] | null;
 
         /**
          * Removes one or more parameters determining the file system type
@@ -2177,7 +2157,7 @@ export namespace BraseroBurn {
          * @param unreadable a {@link GLib.SList} of URIS as strings or `null`.
          * @virtual
          */
-        vfunc_set_source(grafts: GraftPt[], unreadable: (string[] | null)): BurnResult;
+        vfunc_set_source(grafts: GraftPt[], unreadable: string[] | null): BurnResult;
 
         // Methods
         /**
@@ -2195,7 +2175,7 @@ export namespace BraseroBurn {
          * usage as `track` retains ownership.
          * @returns a {@link GLib.SList} of `gchar` * or `null` if no URI should be excluded.
          */
-        get_excluded_list(): (string[] | null);
+        get_excluded_list(): string[] | null;
 
         /**
          * Sets the number of files (not directories) in `file_num`.
@@ -2216,7 +2196,7 @@ export namespace BraseroBurn {
          * Do not free after usage as `track` retains ownership.
          * @returns a {@link GLib.SList} of {@link BraseroBurn.GraftPt} or `null` if empty.
          */
-        get_grafts(): (GraftPt[] | null);
+        get_grafts(): GraftPt[] | null;
 
         /**
          * Removes one or more parameters determining the file system type
@@ -2231,14 +2211,14 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_data_blocks(blocks: (bigint | number)): BurnResult;
+        set_data_blocks(blocks: bigint | number): BurnResult;
 
         /**
          * Sets the number of files (not directories) in `track`.
          * @param number a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_file_num(number: (bigint | number)): BurnResult;
+        set_file_num(number: bigint | number): BurnResult;
 
         /**
          * Sets the lists of grafts points (`grafts`) and excluded
@@ -2250,7 +2230,7 @@ export namespace BraseroBurn {
          * @param unreadable a {@link GLib.SList} of URIS as strings or `null`.
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it was successful, BRASERO_BURN_ERR otherwise.
          */
-        set_source(grafts: GraftPt[], unreadable: (string[] | null)): BurnResult;
+        set_source(grafts: GraftPt[], unreadable: string[] | null): BurnResult;
 
         /**
          * Write to `grafts_path` (a path to a file) the graft points,
@@ -2269,7 +2249,7 @@ export namespace BraseroBurn {
          * @param videodir a `gchar` or `null`.
          * @returns a {@link BraseroBurn.BurnResult}.
          */
-        write_to_paths(grafts_path: string, excluded_path: string, emptydir: string, videodir: (string | null)): BurnResult;
+        write_to_paths(grafts_path: string, excluded_path: string, emptydir: string, videodir: string | null): BurnResult;
     }
 
 
@@ -2280,7 +2260,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "deep-directory": (arg0: string) => (boolean | void);
+            "deep-directory": (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -2300,7 +2280,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "name-collision": (arg0: string) => (boolean | void);
+            "name-collision": (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -2339,9 +2319,7 @@ export namespace BraseroBurn {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackData.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackData.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
     }
 
     /**
@@ -2460,7 +2438,7 @@ export namespace BraseroBurn {
          * @param new_track a {@link BraseroBurn.TrackData}
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span(sectors: (bigint | number), new_track: TrackData): BurnResult;
+        span(sectors: bigint | number, new_track: TrackData): BurnResult;
 
         /**
          * Checks whether some files were not included during calls to brasero_track_data_cfg_span ().
@@ -2485,7 +2463,7 @@ export namespace BraseroBurn {
          * @param sectors a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if there is not anymore data. BRASERO_BURN_RETRY if the operation was successful and a new {@link BraseroBurn.TrackDataCfg} was created. BRASERO_BURN_ERR otherwise.
          */
-        span_possible(sectors: (bigint | number)): BurnResult;
+        span_possible(sectors: bigint | number): BurnResult;
 
         /**
          * Resets the list of files that were included after calls to brasero_track_data_cfg_span ().
@@ -2616,7 +2594,7 @@ export namespace BraseroBurn {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -2716,7 +2694,7 @@ export namespace BraseroBurn {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -2733,7 +2711,7 @@ export namespace BraseroBurn {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -2757,7 +2735,7 @@ export namespace BraseroBurn {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -2851,7 +2829,7 @@ export namespace BraseroBurn {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -2929,7 +2907,7 @@ export namespace BraseroBurn {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -2946,7 +2924,7 @@ export namespace BraseroBurn {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -2970,7 +2948,7 @@ export namespace BraseroBurn {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -3202,13 +3180,10 @@ export namespace BraseroBurn {
 
     namespace TrackDisc {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
-        }
+        interface SignalSignatures extends Track.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps {}
     }
 
     /**
@@ -3266,13 +3241,10 @@ export namespace BraseroBurn {
 
     namespace TrackImage {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
-        }
+        interface SignalSignatures extends Track.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps {}
     }
 
     /**
@@ -3365,7 +3337,7 @@ export namespace BraseroBurn {
          * @param blocks a `goffset`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_block_num(blocks: (bigint | number)): BurnResult;
+        set_block_num(blocks: bigint | number): BurnResult;
 
         /**
          * Sets the image source path (and its toc if need be)
@@ -3381,13 +3353,10 @@ export namespace BraseroBurn {
 
     namespace TrackImageCfg {
         // Signal signatures
-        interface SignalSignatures extends TrackImage.SignalSignatures {
-        }
+        interface SignalSignatures extends TrackImage.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackImage.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackImage.ConstructorProps {}
     }
 
     /**
@@ -3454,13 +3423,10 @@ export namespace BraseroBurn {
 
     namespace TrackStream {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
-        }
+        interface SignalSignatures extends Track.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps {}
     }
 
     /**
@@ -3552,7 +3518,7 @@ export namespace BraseroBurn {
          * @param length a `guint64`
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if `length` was set.
          */
-        get_length(length: (bigint | number)): BurnResult;
+        get_length(length: bigint | number): BurnResult;
 
         /**
          * This function returns the path or the URI (if `uri` is TRUE)
@@ -3578,7 +3544,7 @@ export namespace BraseroBurn {
          * @param gap a `gint64` or -1 to ignore
          * @returns a {@link BraseroBurn.BurnResult}. BRASERO_BURN_OK if it is successful.
          */
-        set_boundaries(start: (bigint | number), end: (bigint | number), gap: (bigint | number)): BurnResult;
+        set_boundaries(start: bigint | number, end: bigint | number, gap: bigint | number): BurnResult;
 
         /**
          * Sets the format of the stream.
@@ -3601,13 +3567,10 @@ export namespace BraseroBurn {
 
     namespace TrackStreamCfg {
         // Signal signatures
-        interface SignalSignatures extends TrackStream.SignalSignatures {
-        }
+        interface SignalSignatures extends TrackStream.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackStream.ConstructorProps {}
     }
 
     /**

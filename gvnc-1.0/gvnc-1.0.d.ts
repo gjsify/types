@@ -298,9 +298,7 @@ export namespace GVnc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Audio.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Audio.ConstructorProps {}
     }
 
     /**
@@ -474,7 +472,7 @@ export namespace GVnc {
 
         _init(...args: any[]): void;
 
-        static ["new"](buffer: (Uint8Array | string), width: number, height: number, rowstride: number, localFormat: PixelFormat, remoteFormat: PixelFormat): BaseFramebuffer;
+        static ["new"](buffer: Uint8Array | string, width: number, height: number, rowstride: number, localFormat: PixelFormat, remoteFormat: PixelFormat): BaseFramebuffer;
 
         // Signals
         /** @signal */
@@ -523,7 +521,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        fill(src: (Uint8Array | string), x: number, y: number, width: number, height: number): void;
+        fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
 
         /**
          * Get a pointer to the framebuffer contents
@@ -575,7 +573,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        rgb24_blt(src: (Uint8Array | string), rowstride: number, x: number, y: number, width: number, height: number): void;
+        rgb24_blt(src: Uint8Array | string, rowstride: number, x: number, y: number, width: number, height: number): void;
 
         /**
          * Set the color map to use for the framebuffer
@@ -591,7 +589,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        set_pixel_at(src: (Uint8Array | string), x: number, y: number): void;
+        set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
 
         /**
          * @param src 
@@ -750,7 +748,7 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-cursor-changed": (arg0: (Cursor | null)) => void;
+            "vnc-cursor-changed": (arg0: Cursor | null) => void;
             /**
              * @signal
              * @run-first
@@ -998,7 +996,7 @@ export namespace GVnc {
          * @param data 
          * @param length 
          */
-        client_cut_text(data: null, length: (bigint | number)): boolean;
+        client_cut_text(data: null, length: bigint | number): boolean;
 
         /**
          * Request that the server send a framebuffer update when the
@@ -1144,7 +1142,7 @@ export namespace GVnc {
          * @param hostname the hostname
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_addr(addr: Gio.SocketAddress, hostname: (string | null)): boolean;
+        open_addr(addr: Gio.SocketAddress, hostname: string | null): boolean;
 
         /**
          * Open a connection using `fd` as the transport. If `fd`
@@ -1168,7 +1166,7 @@ export namespace GVnc {
          * @param hostname the host associated with the connection
          * @returns TRUE if a connection was opened, FALSE if already open
          */
-        open_fd_with_hostname(fd: number, hostname: (string | null)): boolean;
+        open_fd_with_hostname(fd: number, hostname: string | null): boolean;
 
         /**
          * Open a TCP connection to the remote desktop at `host`
@@ -1370,7 +1368,7 @@ export namespace GVnc {
 
         _init(...args: any[]): void;
 
-        static ["new"](data: (Uint8Array | string), hotx: number, hoty: number, width: number, height: number): Cursor;
+        static ["new"](data: Uint8Array | string, hotx: number, hoty: number, width: number, height: number): Cursor;
 
         // Signals
         /** @signal */
@@ -1749,9 +1747,7 @@ export namespace GVnc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface AudioNamespace {
@@ -1912,9 +1908,7 @@ export namespace GVnc {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface FramebufferNamespace {
@@ -1961,7 +1955,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        fill(src: (Uint8Array | string), x: number, y: number, width: number, height: number): void;
+        fill(src: Uint8Array | string, x: number, y: number, width: number, height: number): void;
 
         /**
          * Get a pointer to the framebuffer contents
@@ -2013,7 +2007,7 @@ export namespace GVnc {
          * @param width the number of pixels to fill horizontally
          * @param height the number of pixels to fill vertically
          */
-        rgb24_blt(src: (Uint8Array | string), rowstride: number, x: number, y: number, width: number, height: number): void;
+        rgb24_blt(src: Uint8Array | string, rowstride: number, x: number, y: number, width: number, height: number): void;
 
         /**
          * Set the color map to use for the framebuffer
@@ -2029,7 +2023,7 @@ export namespace GVnc {
          * @param x the horizontal pixel to set
          * @param y the vertical pixel to set
          */
-        set_pixel_at(src: (Uint8Array | string), x: number, y: number): void;
+        set_pixel_at(src: Uint8Array | string, x: number, y: number): void;
     }
 
 

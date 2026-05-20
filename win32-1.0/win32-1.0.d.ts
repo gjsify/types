@@ -36,17 +36,17 @@ export namespace win32 {
     /**
      * @gir-type Alias
      */
-    type HICON = (bigint | number);
+    type HICON = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type HCURSOR = (bigint | number);
+    type HCURSOR = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type HGDIOBJ = (bigint | number);
+    type HGDIOBJ = bigint | number;
 
     /**
      * Name of the imported GIR library

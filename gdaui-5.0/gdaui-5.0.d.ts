@@ -75,7 +75,7 @@ export namespace Gdaui {
         static INVALID_DATA_ERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -137,7 +137,7 @@ export namespace Gdaui {
      * @param plugin_name the name of an entry plugin, or `null`
      * @returns a new {@link Gdaui.DataEntry} widget, _NEVER_ `null`
      */
-    function new_data_entry(type: GObject.GType, plugin_name: (string | null)): DataEntry;
+    function new_data_entry(type: GObject.GType, plugin_name: string | null): DataEntry;
 
     /**
      * @gir-type Callback
@@ -374,7 +374,7 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
 
-        static new_in_dialog(data_set: Gda.Set, parent: (Gtk.Window | null), title: (string | null), header: (string | null)): BasicForm;
+        static new_in_dialog(data_set: Gda.Set, parent: Gtk.Window | null, title: string | null, header: string | null): BasicForm;
 
         // Signals
         /** @signal */
@@ -421,7 +421,7 @@ export namespace Gdaui {
          * then the focus is on the first entry which needs attention.
          * @param holder a {@link Gda.Holder} object, or `null`
          */
-        entry_grab_focus(holder: (Gda.Holder | null)): void;
+        entry_grab_focus(holder: Gda.Holder | null): void;
 
         /**
          * Sets the {@link Gdaui.DataEntry} in `form` which corresponds to the
@@ -430,7 +430,7 @@ export namespace Gdaui {
          * @param holder a {@link Gda.Holder} object; or `null`
          * @param editable `true` if corresponding data entry must be editable
          */
-        entry_set_editable(holder: (Gda.Holder | null), editable: boolean): void;
+        entry_set_editable(holder: Gda.Holder | null, editable: boolean): void;
 
         /**
          * Shows or hides the {@link Gdaui.DataEntry} in `form` which corresponds to the
@@ -712,7 +712,7 @@ export namespace Gdaui {
          * Filters the elements displayed in `cloud`, by altering their color.
          * @param filter the filter to use, or `null` to remove any filter
          */
-        filter(filter: (string | null)): void;
+        filter(filter: string | null): void;
 
         /**
          * Sets `cloud`'s selection mode
@@ -724,7 +724,7 @@ export namespace Gdaui {
          * Specifies a function called by `cloud` to compute each row's respective weight.
          * @param func a {@link Gdaui.CloudWeightFunc} function which computes weights, or `null` to unset
          */
-        set_weight_func(func: (CloudWeightFunc | null)): void;
+        set_weight_func(func: CloudWeightFunc | null): void;
 
         /**
          * The orientation of the orientable.
@@ -954,7 +954,7 @@ export namespace Gdaui {
         interface ConstructorProps extends Gtk.ComboBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataSelector.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
             as_list: boolean;
             asList: boolean;
-            model: (Gda.DataModel | any);
+            model: Gda.DataModel | any;
         }
     }
 
@@ -972,9 +972,9 @@ export namespace Gdaui {
         set asList(val: boolean);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get model(): (Gda.DataModel | any);
+        get model(): Gda.DataModel | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set model(val: (Gda.DataModel | any));
+        set model(val: Gda.DataModel | any);
 
         /**
          * Compile-time signal type information.
@@ -1234,7 +1234,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -1262,7 +1262,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1296,7 +1296,7 @@ export namespace Gdaui {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1347,7 +1347,7 @@ export namespace Gdaui {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -1384,7 +1384,7 @@ export namespace Gdaui {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -1439,7 +1439,7 @@ export namespace Gdaui {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -1526,7 +1526,7 @@ export namespace Gdaui {
             to_be_deleted: boolean;
             toBeDeleted: boolean;
             type: GObject.GTypeInput;
-            value: (GObject.Value | any);
+            value: GObject.Value | any;
         }
     }
 
@@ -1566,7 +1566,7 @@ export namespace Gdaui {
         set type(val: GObject.GType);
 
         get value(): unknown;
-        set value(val: (GObject.Value | any));
+        set value(val: GObject.Value | any);
 
         /**
          * Compile-time signal type information.
@@ -1654,7 +1654,7 @@ export namespace Gdaui {
             to_be_deleted: boolean;
             toBeDeleted: boolean;
             type: GObject.GTypeInput;
-            value: (GObject.Value | any);
+            value: GObject.Value | any;
         }
     }
 
@@ -1694,7 +1694,7 @@ export namespace Gdaui {
         set type(val: GObject.GType);
 
         get value(): unknown;
-        set value(val: (GObject.Value | any));
+        set value(val: GObject.Value | any);
 
         /**
          * Compile-time signal type information.
@@ -2202,7 +2202,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](dh: (Gda.DataHandler | null), type: GObject.GType, options: string): DataCellRendererTextual;
+        static ["new"](dh: Gda.DataHandler | null, type: GObject.GType, options: string): DataCellRendererTextual;
 
         // Conflicted with Gtk.CellRendererText.new
         static ["new"](...args: never[]): any;
@@ -2630,7 +2630,7 @@ export namespace Gdaui {
          * @param value the value to store (gets copied)
          * @returns `true` on success
          */
-        set_value(iter: Gtk.TreeIter, col: number, value: (GObject.Value | any)): boolean;
+        set_value(iter: Gtk.TreeIter, col: number, value: GObject.Value | any): boolean;
 
         /**
          * Remove the "to be deleted" mark the row pointed by `iter`, if it existed.
@@ -2644,7 +2644,7 @@ export namespace Gdaui {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -2744,7 +2744,7 @@ export namespace Gdaui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -2761,7 +2761,7 @@ export namespace Gdaui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -2785,7 +2785,7 @@ export namespace Gdaui {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -2879,7 +2879,7 @@ export namespace Gdaui {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -2957,7 +2957,7 @@ export namespace Gdaui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -2974,7 +2974,7 @@ export namespace Gdaui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -2998,7 +2998,7 @@ export namespace Gdaui {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -3239,7 +3239,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](prefix: (string | null), suffix: (string | null)): Entry;
+        static ["new"](prefix: string | null, suffix: string | null): Entry;
 
         // Conflicted with Gtk.Entry.new
         static ["new"](...args: never[]): any;
@@ -3332,7 +3332,7 @@ export namespace Gdaui {
          * `gtk_entry_set_text()`
          * @param text the text to set into `entry`, or `null`
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * @param args 
@@ -3389,7 +3389,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -3417,7 +3417,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Copies the contents of the currently selected content in the editable and
@@ -3709,9 +3709,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -3825,7 +3823,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -3843,7 +3841,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -3865,7 +3863,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -3931,7 +3929,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -3940,7 +3938,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -3998,7 +3996,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -4100,9 +4098,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -4216,7 +4212,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -4234,7 +4230,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -4256,7 +4252,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -4322,7 +4318,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -4331,7 +4327,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -4389,7 +4385,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -4596,7 +4592,7 @@ export namespace Gdaui {
          * @param values a list of {@link GObject.Value} values, or `null`
          * @returns `true` if no error occurred.
          */
-        set_values(values: (GObject.Value[] | null)): boolean;
+        set_values(values: GObject.Value[] | null): boolean;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -4668,7 +4664,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -4686,7 +4682,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -4708,7 +4704,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -4774,7 +4770,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -4783,7 +4779,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -4841,7 +4837,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -5068,7 +5064,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -5086,7 +5082,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -5108,7 +5104,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -5174,7 +5170,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -5183,7 +5179,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -5241,7 +5237,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -5293,7 +5289,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -5321,7 +5317,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -5398,9 +5394,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -5485,7 +5479,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -5513,7 +5507,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -5603,9 +5597,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryWrapper.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -5719,7 +5711,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -5737,7 +5729,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -5759,7 +5751,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -5825,7 +5817,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -5834,7 +5826,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -5892,7 +5884,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -6132,7 +6124,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -6150,7 +6142,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -6172,7 +6164,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -6238,7 +6230,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -6247,7 +6239,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -6305,7 +6297,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -6357,7 +6349,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -6385,7 +6377,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -6645,7 +6637,7 @@ export namespace Gdaui {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -6659,7 +6651,7 @@ export namespace Gdaui {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -6871,7 +6863,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -6889,7 +6881,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -6911,7 +6903,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -6977,7 +6969,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -6986,7 +6978,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -7044,7 +7036,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -7096,7 +7088,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -7124,7 +7116,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -7201,9 +7193,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -7288,7 +7278,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -7316,7 +7306,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -7408,9 +7398,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends EntryCommonTime.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataEntry.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -7495,7 +7483,7 @@ export namespace Gdaui {
          * lifetime is temporary and does not persist across other edits and/or cells.
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          */
-        start_editing(event: (Gdk.Event | null)): void;
+        start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal.
@@ -7523,7 +7511,7 @@ export namespace Gdaui {
          * @param event The {@link Gdk.Event} that began the editing process, or   `null` if editing was initiated programmatically
          * @virtual
          */
-        vfunc_start_editing(event: (Gdk.Event | null)): void;
+        vfunc_start_editing(event: Gdk.Event | null): void;
 
         /**
          * Emits a {@link Gtk.Widget.SignalSignatures.child_notify | Gtk.Widget::child-notify} signal for the
@@ -7682,7 +7670,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_real_get_value(): (GObject.Value | any);
+        vfunc_real_get_value(): GObject.Value | any;
 
         /**
          * @param value 
@@ -7789,7 +7777,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -7807,7 +7795,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -7829,7 +7817,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -7887,7 +7875,7 @@ export namespace Gdaui {
         /**
          * @virtual
          */
-        vfunc_get_ref_value(): (GObject.Value | any);
+        vfunc_get_ref_value(): GObject.Value | any;
 
         /**
          * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -7896,7 +7884,7 @@ export namespace Gdaui {
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @virtual
          */
-        vfunc_get_value(): (GObject.Value | any);
+        vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
@@ -7941,7 +7929,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: (GObject.Value | null)): void;
+        vfunc_set_value(value: GObject.Value | null): void;
 
         /**
          * @param value 
@@ -8533,7 +8521,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](format: string, mask: (string | null)): FormattedEntry;
+        static ["new"](format: string, mask: string | null): FormattedEntry;
 
         // Conflicted with Gdaui.Entry.new
         static ["new"](...args: never[]): any;
@@ -8565,7 +8553,7 @@ export namespace Gdaui {
          * which is anot allowed, to perform other actions
          * @param insert_func a {@link Gdaui.FormattedEntryInsertFunc}, or `null`
          */
-        set_insert_func(insert_func: (FormattedEntryInsertFunc | null)): void;
+        set_insert_func(insert_func: FormattedEntryInsertFunc | null): void;
     }
 
 
@@ -8674,7 +8662,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](model: (Gda.DataModel | null)): Grid;
+        static ["new"](model: Gda.DataModel | null): Grid;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -9076,7 +9064,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](dsn: (string | null)): Login;
+        static ["new"](dsn: string | null): Login;
 
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
@@ -9133,7 +9121,7 @@ export namespace Gdaui {
          * In any case `login`'s mode (set by `gdaui_login_set_mode()`) is not changed.
          * @param dsn a data source name, or `null`
          */
-        set_dsn(dsn: (string | null)): void;
+        set_dsn(dsn: string | null): void;
 
         /**
          * Set how `login` operates
@@ -9410,9 +9398,7 @@ export namespace Gdaui {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Combo.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataSelector.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Combo.ConstructorProps, Atk.ImplementorIface.ConstructorProps, DataSelector.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellEditable.ConstructorProps, Gtk.CellLayout.ConstructorProps {}
     }
 
     /**
@@ -9468,7 +9454,7 @@ export namespace Gdaui {
          * @param provider the provider to be selected, or `null` for the default (SQLite)
          * @returns `true` if `provider` has been selected
          */
-        set_provider(provider: (string | null)): boolean;
+        set_provider(provider: string | null): boolean;
 
         /**
          * Get the {@link Gda.DataModelIter} object represented the current selected row in `iface`. This
@@ -9766,7 +9752,7 @@ export namespace Gdaui {
 
         _init(...args: any[]): void;
 
-        static ["new"](model: (Gda.DataModel | null)): RawForm;
+        static ["new"](model: Gda.DataModel | null): RawForm;
 
         // Conflicted with Gdaui.BasicForm.new
         static ["new"](...args: never[]): any;
@@ -10135,7 +10121,7 @@ export namespace Gdaui {
             globalActionsVisible: boolean;
             info_cell_visible: boolean;
             infoCellVisible: boolean;
-            model: (Gda.DataModel | any);
+            model: Gda.DataModel | any;
             xml_layout: never;
             xmlLayout: never;
         }
@@ -10161,9 +10147,9 @@ export namespace Gdaui {
         set infoCellVisible(val: boolean);
 
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        get model(): (Gda.DataModel | any);
+        get model(): Gda.DataModel | any;
     // This accessor conflicts with another accessor's type in a parent class or interface.
-        set model(val: (Gda.DataModel | any));
+        set model(val: Gda.DataModel | any);
 
         /**
          * @write-only
@@ -10625,7 +10611,7 @@ export namespace Gdaui {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -10639,7 +10625,7 @@ export namespace Gdaui {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -10978,7 +10964,7 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
         static ["new"](...args: never[]): any;
 
-        static new_in_dialog(op: Gda.ServerOperation, parent: (Gtk.Window | null), title: (string | null), header: (string | null)): ServerOperation;
+        static new_in_dialog(op: Gda.ServerOperation, parent: Gtk.Window | null, title: string | null, header: string | null): ServerOperation;
 
         // Signals
         /** @signal */
@@ -11038,7 +11024,7 @@ export namespace Gdaui {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            set: (Gda.Set | any);
+            set: Gda.Set | any;
         }
     }
 
@@ -11119,27 +11105,27 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            "drag-can-drag": (arg0: string) => (boolean | void);
+            "drag-can-drag": (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-can-drop": (arg0: string, arg1: null) => (boolean | void);
+            "drag-can-drop": (arg0: string, arg1: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-delete": (arg0: string) => (boolean | void);
+            "drag-delete": (arg0: string) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-drop": (arg0: string, arg1: null) => (boolean | void);
+            "drag-drop": (arg0: string, arg1: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-get": (arg0: string, arg1: null) => (boolean | void);
+            "drag-get": (arg0: string, arg1: null) => boolean | void;
             "notify::tree": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11376,7 +11362,7 @@ export namespace Gdaui {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -11476,7 +11462,7 @@ export namespace Gdaui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -11493,7 +11479,7 @@ export namespace Gdaui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -11517,7 +11503,7 @@ export namespace Gdaui {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -11611,7 +11597,7 @@ export namespace Gdaui {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -11689,7 +11675,7 @@ export namespace Gdaui {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -11706,7 +11692,7 @@ export namespace Gdaui {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -11730,7 +11716,7 @@ export namespace Gdaui {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -12553,7 +12539,7 @@ export namespace Gdaui {
             /**
              * @virtual
              */
-            vfunc_get_ref_value(): (GObject.Value | any);
+            vfunc_get_ref_value(): GObject.Value | any;
 
             /**
              * Fetch the value held in the GdauiDataEntry widget. If the value is set to NULL,
@@ -12562,7 +12548,7 @@ export namespace Gdaui {
              * has been provided to the widget (and is of the same type as the one provided by `de`).
              * @virtual
              */
-            vfunc_get_value(): (GObject.Value | any);
+            vfunc_get_value(): GObject.Value | any;
 
             /**
              * Fetch the type of data the GdauiDataEntry handles
@@ -12620,7 +12606,7 @@ export namespace Gdaui {
              * @param value a {@link GObject.Value}, or `null`
              * @virtual
              */
-            vfunc_set_value(value: (GObject.Value | null)): void;
+            vfunc_set_value(value: GObject.Value | null): void;
 
             /**
              * @param value 
@@ -12652,9 +12638,7 @@ export namespace Gdaui {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface DataEntryNamespace {
@@ -12738,7 +12722,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: (GObject.Value | null)): void;
+        set_default_value(value: GObject.Value | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -12756,7 +12740,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: (GObject.Value | null)): void;
+        set_reference_value(value: GObject.Value | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -12778,7 +12762,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: (GObject.Value | null)): void;
+        set_value(value: GObject.Value | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -12871,9 +12855,7 @@ export namespace Gdaui {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DataProxyNamespace {
@@ -13039,9 +13021,7 @@ export namespace Gdaui {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface DataSelectorNamespace {

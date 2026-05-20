@@ -111,13 +111,10 @@ export namespace PangoFc {
 
     namespace Decoder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -332,7 +329,7 @@ export namespace PangoFc {
          * and its fontmap are valid.
          * @returns a   `null`-terminated array of {@link Pango.Language}*
          */
-        get_languages(): (Pango.Language[] | null);
+        get_languages(): Pango.Language[] | null;
 
         /**
          * Returns the index of a glyph suitable for drawing `wc`
@@ -376,9 +373,7 @@ export namespace PangoFc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Pango.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {
-
-        }
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Pango.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {}
     }
 
     /**
@@ -461,7 +456,7 @@ export namespace PangoFc {
          * @param pattern The {@link fontconfig.Pattern} to find the decoder for.
          * @returns a newly created {@link PangoFc.Decoder}   object or `null` if no decoder is set for `pattern`.
          */
-        find_decoder(pattern: fontconfig.Pattern): (Decoder | null);
+        find_decoder(pattern: fontconfig.Pattern): Decoder | null;
 
         /**
          * Sets a function that will be called to do final configuration
@@ -536,7 +531,7 @@ export namespace PangoFc {
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): (A | null);
+        get_item(position: number): A | null;
 
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
@@ -576,7 +571,7 @@ export namespace PangoFc {
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): (A | null);
+        vfunc_get_item(position: number): A | null;
 
         /**
          * Gets the type of the items in `list`.

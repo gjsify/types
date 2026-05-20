@@ -70,9 +70,7 @@ export namespace MxGtk {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Frame.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Frame.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**

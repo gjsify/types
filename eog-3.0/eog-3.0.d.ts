@@ -56,7 +56,7 @@ export namespace Eog {
         static UNKNOWN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -240,7 +240,7 @@ export namespace Eog {
         static UNKNOWN: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -399,7 +399,7 @@ export namespace Eog {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__INT_INT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * Adds a frame to `thumbnail`
@@ -431,7 +431,7 @@ export namespace Eog {
     /**
      * @gir-type Alias
      */
-    type ExifData = (object | null);
+    type ExifData = object | null;
 
     /**
      * @gir-type Flags
@@ -516,9 +516,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {}
     }
 
     /**
@@ -762,9 +760,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -911,9 +907,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.FileChooserDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.FileChooser.ConstructorProps {}
     }
 
     /**
@@ -1007,16 +1001,16 @@ export namespace Eog {
         set doOverwriteConfirmation(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extra_widget(): (Gtk.Widget | null);
-        set extra_widget(val: (Gtk.Widget | null));
+        get extra_widget(): Gtk.Widget | null;
+        set extra_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get extraWidget(): (Gtk.Widget | null);
-        set extraWidget(val: (Gtk.Widget | null));
+        get extraWidget(): Gtk.Widget | null;
+        set extraWidget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get filter(): (Gtk.FileFilter | null);
-        set filter(val: (Gtk.FileFilter | null));
+        get filter(): Gtk.FileFilter | null;
+        set filter(val: Gtk.FileFilter | null);
 
         /**
          * @default true
@@ -1033,12 +1027,12 @@ export namespace Eog {
         set localOnly(val: boolean);
 
         /** @category Inherited from Gtk.FileChooser */
-        get preview_widget(): (Gtk.Widget | null);
-        set preview_widget(val: (Gtk.Widget | null));
+        get preview_widget(): Gtk.Widget | null;
+        set preview_widget(val: Gtk.Widget | null);
 
         /** @category Inherited from Gtk.FileChooser */
-        get previewWidget(): (Gtk.Widget | null);
-        set previewWidget(val: (Gtk.Widget | null));
+        get previewWidget(): Gtk.Widget | null;
+        set previewWidget(val: Gtk.Widget | null);
 
         /**
          * @default true
@@ -1109,7 +1103,7 @@ export namespace Eog {
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
          */
-        add_choice(id: string, label: string, options: (string[] | null), option_labels: (string[] | null)): void;
+        add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
 
         /**
          * Adds `filter` to the list of filters that the user can select between.
@@ -1176,14 +1170,14 @@ export namespace Eog {
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
          */
-        get_current_folder(): (string | null);
+        get_current_folder(): string | null;
 
         /**
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
          */
-        get_current_folder_file(): (Gio.File | null);
+        get_current_folder_file(): Gio.File | null;
 
         /**
          * Gets the current folder of `chooser` as an URI.
@@ -1198,7 +1192,7 @@ export namespace Eog {
          * usual way to get the selection.
          * @returns the URI for the current folder. Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
          */
-        get_current_folder_uri(): (string | null);
+        get_current_folder_uri(): string | null;
 
         /**
          * Gets the current name in the file selector, as entered by the user in the
@@ -1225,7 +1219,7 @@ export namespace Eog {
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
          */
-        get_extra_widget(): (Gtk.Widget | null);
+        get_extra_widget(): Gtk.Widget | null;
 
         /**
          * Gets the {@link Gio.File} for the currently selected file in
@@ -1248,7 +1242,7 @@ export namespace Eog {
          * folder.
          * @returns The currently selected filename,  or `null` if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
          */
-        get_filename(): (string | null);
+        get_filename(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -1270,7 +1264,7 @@ export namespace Eog {
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
          */
-        get_filter(): (Gtk.FileFilter | null);
+        get_filter(): Gtk.FileFilter | null;
 
         /**
          * Gets whether only local files can be selected in the
@@ -1284,28 +1278,28 @@ export namespace Eog {
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
          */
-        get_preview_file(): (Gio.File | null);
+        get_preview_file(): Gio.File | null;
 
         /**
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
          */
-        get_preview_filename(): (string | null);
+        get_preview_filename(): string | null;
 
         /**
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview,     or `null` if no file is selected. Free with `g_free()`.
          */
-        get_preview_uri(): (string | null);
+        get_preview_uri(): string | null;
 
         /**
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
          */
-        get_preview_widget(): (Gtk.Widget | null);
+        get_preview_widget(): Gtk.Widget | null;
 
         /**
          * Gets whether the preview widget set by `gtk_file_chooser_set_preview_widget()`
@@ -1338,7 +1332,7 @@ export namespace Eog {
          * folder.
          * @returns The currently selected URI, or `null`    if no file is selected. If `gtk_file_chooser_set_local_only()` is set to    `true` (the default) a local URI will be returned for any FUSE locations.    Free with `g_free()`
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * Lists all the selected files and subfolders in the current folder of
@@ -1366,14 +1360,14 @@ export namespace Eog {
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
          */
-        list_shortcut_folder_uris(): (string[] | null);
+        list_shortcut_folder_uris(): string[] | null;
 
         /**
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders. Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
          */
-        list_shortcut_folders(): (string[] | null);
+        list_shortcut_folders(): string[] | null;
 
         /**
          * Removes a 'choice' that has been added with `gtk_file_chooser_add_choice()`.
@@ -1801,9 +1795,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2031,13 +2023,10 @@ export namespace Eog {
 
     namespace ImageSaveInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2119,9 +2108,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2220,13 +2207,10 @@ export namespace Eog {
 
     namespace JobCopy {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2275,13 +2259,10 @@ export namespace Eog {
 
     namespace JobLoad {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2328,13 +2309,10 @@ export namespace Eog {
 
     namespace JobModel {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2381,13 +2359,10 @@ export namespace Eog {
 
     namespace JobSave {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2436,13 +2411,10 @@ export namespace Eog {
 
     namespace JobSaveAs {
         // Signal signatures
-        interface SignalSignatures extends JobSave.SignalSignatures {
-        }
+        interface SignalSignatures extends JobSave.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends JobSave.ConstructorProps {
-
-        }
+        interface ConstructorProps extends JobSave.ConstructorProps {}
     }
 
     /**
@@ -2492,13 +2464,10 @@ export namespace Eog {
 
     namespace JobThumbnail {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2545,13 +2514,10 @@ export namespace Eog {
 
     namespace JobTransform {
         // Signal signatures
-        interface SignalSignatures extends Job.SignalSignatures {
-        }
+        interface SignalSignatures extends Job.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Job.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Job.ConstructorProps {}
     }
 
     /**
@@ -2607,9 +2573,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
     }
 
     /**
@@ -2743,7 +2707,7 @@ export namespace Eog {
          * @param child child to add
          * @param type kind of child or `null`
          */
-        add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -2764,7 +2728,7 @@ export namespace Eog {
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
-        custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2774,7 +2738,7 @@ export namespace Eog {
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
-        custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2783,7 +2747,7 @@ export namespace Eog {
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
-        custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, null];
+        custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -2819,7 +2783,7 @@ export namespace Eog {
          * @param name name of property
          * @param value value of property
          */
-        set_buildable_property(builder: Gtk.Builder, name: string, value: (GObject.Value | any)): void;
+        set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
@@ -2835,7 +2799,7 @@ export namespace Eog {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
         /**
          * Constructs a child of `buildable` with the name `name`.
@@ -2857,7 +2821,7 @@ export namespace Eog {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called at the end of each custom element handled by
@@ -2868,7 +2832,7 @@ export namespace Eog {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: null): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
         /**
          * This is called for each unknown element under `<child>`.
@@ -2877,7 +2841,7 @@ export namespace Eog {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, GLib.MarkupParser, never];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
 
         /**
          * Get the internal child called `childname` of the `buildable` object.
@@ -3042,7 +3006,7 @@ export namespace Eog {
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
         /**
          * Calls func on each node in model in a depth-first fashion.
@@ -3142,7 +3106,7 @@ export namespace Eog {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -3159,7 +3123,7 @@ export namespace Eog {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -3183,7 +3147,7 @@ export namespace Eog {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -3277,7 +3241,7 @@ export namespace Eog {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
         /**
          * Lets the tree unref the node.
@@ -3355,7 +3319,7 @@ export namespace Eog {
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
 
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
@@ -3372,7 +3336,7 @@ export namespace Eog {
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
 
         /**
          * Sets `iter` to point to the node following it at the current level.
@@ -3396,7 +3360,7 @@ export namespace Eog {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
 
         /**
          * Sets `iter` to be the parent of `child`.
@@ -4325,7 +4289,7 @@ export namespace Eog {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -4339,7 +4303,7 @@ export namespace Eog {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -4590,9 +4554,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -4890,9 +4852,7 @@ export namespace Eog {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.IconView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellLayout.ConstructorProps, Gtk.Orientable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.IconView.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.CellLayout.ConstructorProps, Gtk.Orientable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -5094,7 +5054,7 @@ export namespace Eog {
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
-        get_area(): (Gtk.CellArea | null);
+        get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -5145,7 +5105,7 @@ export namespace Eog {
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
-        set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Adds an attribute mapping to the list in `cell_layout`.
@@ -5182,7 +5142,7 @@ export namespace Eog {
          * is used by `cell_layout`.
          * @virtual
          */
-        vfunc_get_area(): (Gtk.CellArea | null);
+        vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
@@ -5237,7 +5197,7 @@ export namespace Eog {
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          * @virtual
          */
-        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: (Gtk.CellLayoutDataFunc | null)): void;
+        vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
         /**
          * Retrieves the orientation of the `orientable`.
@@ -5289,7 +5249,7 @@ export namespace Eog {
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -5303,7 +5263,7 @@ export namespace Eog {
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
@@ -5327,13 +5287,10 @@ export namespace Eog {
 
     namespace Transform {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -5426,8 +5383,8 @@ export namespace Eog {
             convertSpaces: boolean;
             counter_n_digits: number;
             counterNDigits: number;
-            counter_start: (bigint | number);
-            counterStart: (bigint | number);
+            counter_start: bigint | number;
+            counterStart: bigint | number;
             n_images: number;
             nImages: number;
             space_character: number;
@@ -5470,13 +5427,13 @@ export namespace Eog {
          * @default 1
          */
         get counter_start(): number;
-        set counter_start(val: (bigint | number));
+        set counter_start(val: bigint | number);
 
         /**
          * @default 1
          */
         get counterStart(): number;
-        set counterStart(val: (bigint | number));
+        set counterStart(val: bigint | number);
 
         /**
          * @write-only
@@ -5541,7 +5498,7 @@ export namespace Eog {
          * @param convert_spaces 
          * @param space_char 
          */
-        static preview(format_str: string, img: Image, format: GdkPixbuf.PixbufFormat, counter: (bigint | number), n_images: number, convert_spaces: boolean, space_char: string): string;
+        static preview(format_str: string, img: Image, format: GdkPixbuf.PixbufFormat, counter: bigint | number, n_images: number, convert_spaces: boolean, space_char: string): string;
 
         // Methods
         /**
@@ -5922,7 +5879,7 @@ export namespace Eog {
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -5968,7 +5925,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -5982,7 +5939,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): (GLib.Variant | null);
+        get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -6006,7 +5963,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): (GLib.Variant | null);
+        get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -6028,7 +5985,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): (GLib.VariantType | null);
+        get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -6155,7 +6112,7 @@ export namespace Eog {
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
         /**
          * Request for the state of the named action within `action_group` to be
@@ -6202,7 +6159,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Queries the current state of the named action within `action_group`.
@@ -6216,7 +6173,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state(action_name: string): GLib.Variant | null;
 
         /**
          * Requests a hint about the valid range of values for the state of the
@@ -6240,7 +6197,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
 
         /**
          * Queries the type of the state of the named action within
@@ -6262,7 +6219,7 @@ export namespace Eog {
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
 
         /**
          * Checks if the named action exists within `action_group`.
@@ -6338,7 +6295,7 @@ export namespace Eog {
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): (Gio.Action | null);
+        lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.
@@ -6394,7 +6351,7 @@ export namespace Eog {
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+        vfunc_lookup_action(action_name: string): Gio.Action | null;
 
         /**
          * Removes the named action from the action map.

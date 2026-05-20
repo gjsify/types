@@ -87,7 +87,7 @@ export namespace EBook {
      * @returns `true` when no fatal error occurred, `false` otherwise.
      * @since 3.30
      */
-    function book_utils_get_recipient_certificates_sync(registry: EDataServer.SourceRegistry, only_clients: (BookClient[] | null), flags: Camel.RecipientCertificateFlags, recipients: string[], cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+    function book_utils_get_recipient_certificates_sync(registry: EDataServer.SourceRegistry, only_clients: BookClient[] | null, flags: Camel.RecipientCertificateFlags, recipients: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
     namespace BookClient {
         // Signal signatures
@@ -177,7 +177,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        static connect(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<BookClient> | null)): void;
+        static connect(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<BookClient> | null): void;
 
         /**
          * @param args 
@@ -195,7 +195,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        static connect_direct(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<BookClient> | null)): void;
+        static connect_direct(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<BookClient> | null): void;
 
         /**
          * Finishes the operation started with `e_book_client_connect_direct()`.
@@ -217,7 +217,7 @@ export namespace EBook {
          * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        static connect_direct_sync(registry: EDataServer.SourceRegistry, source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: (Gio.Cancellable | null)): BookClient;
+        static connect_direct_sync(registry: EDataServer.SourceRegistry, source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: Gio.Cancellable | null): BookClient;
 
         /**
          * Finishes the operation started with `e_book_client_connect()`.  If an
@@ -254,7 +254,7 @@ export namespace EBook {
          * @param wait_for_connected_seconds timeout, in seconds, to wait for the backend to be fully connected
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        static connect_sync(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: (Gio.Cancellable | null)): BookClient;
+        static connect_sync(source: EDataServer.Source, wait_for_connected_seconds: number, cancellable: Gio.Cancellable | null): BookClient;
 
         /**
          * Get the {@link EBookContacts.Contact} referring to the user of the address book
@@ -278,7 +278,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Adds `contact` to `client`.
@@ -289,7 +289,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Adds `contact` to `client`.
@@ -300,7 +300,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        add_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes previous call of `e_book_client_add_contact()` and
@@ -325,7 +325,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        add_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): [boolean, string];
+        add_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Adds `contacts` to `client`.
@@ -335,18 +335,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(string[] | null)>;
-
-        /**
-         * Adds `contacts` to `client`.
-         * The call is finished by `e_book_client_add_contacts_finish()`
-         * from the `callback`.
-         * @param contacts a {@link GLib.SList} of {@link EBookContacts.Contact} objects to add
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
 
         /**
          * Adds `contacts` to `client`.
@@ -357,7 +346,18 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(string[] | null)> | void);
+        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Adds `contacts` to `client`.
+         * The call is finished by `e_book_client_add_contacts_finish()`
+         * from the `callback`.
+         * @param contacts a {@link GLib.SList} of {@link EBookContacts.Contact} objects to add
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        add_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[] | null> | void;
 
         /**
          * Finishes previous call of `e_book_client_add_contacts()` and
@@ -388,7 +388,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        add_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): [boolean, string[] | null];
+        add_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
@@ -401,21 +401,7 @@ export namespace EBook {
          * @param email_address an email address
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Asynchronously checks whether contains an `email_address`. When the `email_address`
-         * contains multiple addresses, then returns `true` when at least one
-         * address exists in the address book.
-         * 
-         * When the operation is finished, `callback` will be called.  You can then
-         * call `e_book_client_contains_email_finish()` to get the result of the
-         * operation.
-         * @param email_address an email address
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously checks whether contains an `email_address`. When the `email_address`
@@ -429,7 +415,21 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        contains_email(email_address: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Asynchronously checks whether contains an `email_address`. When the `email_address`
+         * contains multiple addresses, then returns `true` when at least one
+         * address exists in the address book.
+         * 
+         * When the operation is finished, `callback` will be called.  You can then
+         * call `e_book_client_contains_email_finish()` to get the result of the
+         * operation.
+         * @param email_address an email address
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        contains_email(email_address: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_book_client_contains_email()`.
@@ -442,7 +442,7 @@ export namespace EBook {
          * @param email_address 
          * @param cancellable 
          */
-        contains_email_sync(email_address: string, cancellable: (Gio.Cancellable | null)): boolean;
+        contains_email_sync(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
@@ -451,17 +451,7 @@ export namespace EBook {
          * @param uid a unique string ID specifying the contact
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(EBookContacts.Contact | null)>;
-
-        /**
-         * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
-         * The call is finished by `e_book_client_get_contact_finish()`
-         * from the `callback`.
-         * @param uid a unique string ID specifying the contact
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contact(uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact | null>;
 
         /**
          * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
@@ -471,7 +461,17 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_contact(uid: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(EBookContacts.Contact | null)> | void);
+        get_contact(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Receive {@link EBookContacts.Contact} from the `client` for the given `uid`.
+         * The call is finished by `e_book_client_get_contact_finish()`
+         * from the `callback`.
+         * @param uid a unique string ID specifying the contact
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        get_contact(uid: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EBookContacts.Contact | null> | void;
 
         /**
          * Finishes previous call of `e_book_client_get_contact()`.
@@ -490,7 +490,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contact_sync(uid: string, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact];
+        get_contact_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact];
 
         /**
          * Query `client` with `sexp`, receiving a list of contacts which
@@ -502,20 +502,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contacts(sexp: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<EBookContacts.Contact[]>;
-
-        /**
-         * Query `client` with `sexp`, receiving a list of contacts which
-         * matched. The call is finished by `e_book_client_get_contacts_finish()`
-         * from the `callback`.
-         * 
-         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
-         * to a string with `e_book_query_to_string()`.
-         * @param sexp an S-expression representing the query
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        get_contacts(sexp: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contacts(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<EBookContacts.Contact[]>;
 
         /**
          * Query `client` with `sexp`, receiving a list of contacts which
@@ -528,7 +515,20 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_contacts(sexp: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<EBookContacts.Contact[]> | void);
+        get_contacts(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Query `client` with `sexp`, receiving a list of contacts which
+         * matched. The call is finished by `e_book_client_get_contacts_finish()`
+         * from the `callback`.
+         * 
+         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
+         * to a string with `e_book_query_to_string()`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        get_contacts(sexp: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EBookContacts.Contact[]> | void;
 
         /**
          * Finishes previous call of `e_book_client_get_contacts()`.
@@ -550,7 +550,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contacts_sync(sexp: string, cancellable: (Gio.Cancellable | null)): [boolean, EBookContacts.Contact[]];
+        get_contacts_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
         /**
          * Query `client` with `sexp`, receiving a list of contacts UIDs which
@@ -562,20 +562,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_contacts_uids(sexp: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
-
-        /**
-         * Query `client` with `sexp`, receiving a list of contacts UIDs which
-         * matched. The call is finished by `e_book_client_get_contacts_uids_finish()`
-         * from the `callback`.
-         * 
-         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
-         * to a string with `e_book_query_to_string()`.
-         * @param sexp an S-expression representing the query
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        get_contacts_uids(sexp: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_contacts_uids(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
         /**
          * Query `client` with `sexp`, receiving a list of contacts UIDs which
@@ -588,7 +575,20 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_contacts_uids(sexp: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+        get_contacts_uids(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Query `client` with `sexp`, receiving a list of contacts UIDs which
+         * matched. The call is finished by `e_book_client_get_contacts_uids_finish()`
+         * from the `callback`.
+         * 
+         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
+         * to a string with `e_book_query_to_string()`.
+         * @param sexp an S-expression representing the query
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        get_contacts_uids(sexp: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Finishes previous call of `e_book_client_get_contacts_uids()`.
@@ -610,7 +610,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_contacts_uids_sync(sexp: string, cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+        get_contacts_uids_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
         /**
          * Create an {@link EBook.BookClientCursor}.
@@ -625,23 +625,7 @@ export namespace EBook {
          * @param n_fields the length of the input `sort_fields` and `sort_types` arrays
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<BookClientCursor>;
-
-        /**
-         * Create an {@link EBook.BookClientCursor}.
-         * The call is finished by `e_book_client_get_cursor_finish()`
-         * from the `callback`.
-         * 
-         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
-         * to a string with `e_book_query_to_string()`.
-         * @param sexp an S-expression representing the query
-         * @param sort_fields an array of `EContactFields` to sort the cursor with
-         * @param sort_types an array of `EBookCursorSortTypes` to complement `sort_fields`
-         * @param n_fields the length of the input `sort_fields` and `sort_types` arrays
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: Gio.Cancellable | null): globalThis.Promise<BookClientCursor>;
 
         /**
          * Create an {@link EBook.BookClientCursor}.
@@ -657,7 +641,23 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<BookClientCursor> | void);
+        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Create an {@link EBook.BookClientCursor}.
+         * The call is finished by `e_book_client_get_cursor_finish()`
+         * from the `callback`.
+         * 
+         * Note: `sexp` can be obtained through {@link EBookContacts.BookQuery}, by converting it
+         * to a string with `e_book_query_to_string()`.
+         * @param sexp an S-expression representing the query
+         * @param sort_fields an array of `EContactFields` to sort the cursor with
+         * @param sort_types an array of `EBookCursorSortTypes` to complement `sort_fields`
+         * @param n_fields the length of the input `sort_fields` and `sort_types` arrays
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        get_cursor(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<BookClientCursor> | void;
 
         /**
          * Finishes previous call of `e_book_client_get_cursor()`.
@@ -683,7 +683,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_cursor_sync(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: (Gio.Cancellable | null)): [boolean, BookClientCursor];
+        get_cursor_sync(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: Gio.Cancellable | null): [boolean, BookClientCursor];
 
         /**
          * Reports the locale in use for `client`. The addressbook might sort contacts
@@ -715,7 +715,7 @@ export namespace EBook {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        get_view(sexp: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<BookClientView>;
+        get_view(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<BookClientView>;
 
         /**
          * Query `client` with `sexp`, creating an {@link EBook.BookClientView}.
@@ -728,7 +728,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_view(sexp: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        get_view(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Query `client` with `sexp`, creating an {@link EBook.BookClientView}.
@@ -741,7 +741,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        get_view(sexp: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<BookClientView> | void);
+        get_view(sexp: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<BookClientView> | void;
 
         /**
          * Finishes previous call of `e_book_client_get_view()`.
@@ -763,7 +763,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        get_view_sync(sexp: string, cancellable: (Gio.Cancellable | null)): [boolean, BookClientView];
+        get_view_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, BookClientView];
 
         /**
          * Applies the changes made to `contact` to the stored version in `client`.
@@ -773,18 +773,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Applies the changes made to `contact` to the stored version in `client`.
-         * The call is finished by `e_book_client_modify_contact_finish()`
-         * from the `callback`.
-         * @param contact an {@link EBookContacts.Contact}
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Applies the changes made to `contact` to the stored version in `client`.
@@ -795,7 +784,18 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Applies the changes made to `contact` to the stored version in `client`.
+         * The call is finished by `e_book_client_modify_contact_finish()`
+         * from the `callback`.
+         * @param contact an {@link EBookContacts.Contact}
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        modify_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_book_client_modify_contact()`.
@@ -811,7 +811,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        modify_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        modify_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Applies the changes made to `contacts` to the stored versions in `client`.
@@ -821,18 +821,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Applies the changes made to `contacts` to the stored versions in `client`.
-         * The call is finished by `e_book_client_modify_contacts_finish()`
-         * from the `callback`.
-         * @param contacts a {@link GLib.SList} of {@link EBookContacts.Contact} objects
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Applies the changes made to `contacts` to the stored versions in `client`.
@@ -843,7 +832,18 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Applies the changes made to `contacts` to the stored versions in `client`.
+         * The call is finished by `e_book_client_modify_contacts_finish()`
+         * from the `callback`.
+         * @param contacts a {@link GLib.SList} of {@link EBookContacts.Contact} objects
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        modify_contacts(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_book_client_modify_contacts()`.
@@ -859,7 +859,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        modify_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        modify_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes `contact` from the `client`.
@@ -869,18 +869,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Removes `contact` from the `client`.
-         * The call is finished by `e_book_client_remove_contact_finish()`
-         * from the `callback`.
-         * @param contact an {@link EBookContacts.Contact}
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes `contact` from the `client`.
@@ -891,7 +880,18 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Removes `contact` from the `client`.
+         * The call is finished by `e_book_client_remove_contact_finish()`
+         * from the `callback`.
+         * @param contact an {@link EBookContacts.Contact}
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        remove_contact(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Removes contact with `uid` from the `client`.
@@ -901,7 +901,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes contact with `uid` from the `client`.
@@ -912,7 +912,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Removes contact with `uid` from the `client`.
@@ -923,7 +923,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_contact_by_uid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_book_client_remove_contact_by_uid()`.
@@ -939,7 +939,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        remove_contact_by_uid_sync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contact_by_uid_sync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Finishes previous call of `e_book_client_remove_contact()`.
@@ -955,7 +955,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        remove_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Removes the contacts with uids from the list `uids` from `client`.  This is
@@ -968,21 +968,7 @@ export namespace EBook {
          * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          */
-        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Removes the contacts with uids from the list `uids` from `client`.  This is
-         * always more efficient than calling `e_book_client_remove_contact()` if you
-         * have more than one uid to remove, as some backends can implement it
-         * as a batch request.
-         * The call is finished by `e_book_client_remove_contacts_finish()`
-         * from the `callback`.
-         * @param uids a {@link GLib.SList} of UIDs to remove
-         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
-         * @param cancellable a {@link Gio.Cancellable}; can be `null`
-         * @param callback callback to call when a result is ready
-         */
-        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Removes the contacts with uids from the list `uids` from `client`.  This is
@@ -996,7 +982,21 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
          */
-        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Removes the contacts with uids from the list `uids` from `client`.  This is
+         * always more efficient than calling `e_book_client_remove_contact()` if you
+         * have more than one uid to remove, as some backends can implement it
+         * as a batch request.
+         * The call is finished by `e_book_client_remove_contacts_finish()`
+         * from the `callback`.
+         * @param uids a {@link GLib.SList} of UIDs to remove
+         * @param opflags bit-or of {@link EBookContacts.BookOperationFlags}
+         * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @param callback callback to call when a result is ready
+         */
+        remove_contacts(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes previous call of `e_book_client_remove_contacts()`.
@@ -1015,7 +1015,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          */
-        remove_contacts_sync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        remove_contacts_sync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Specify that `contact` residing in `client` is the {@link EBookContacts.Contact} that
@@ -1065,7 +1065,7 @@ export namespace EBook {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1108,7 +1108,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1151,7 +1151,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1211,7 +1211,7 @@ export namespace EBook {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1263,7 +1263,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1307,7 +1307,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1610,7 +1610,7 @@ export namespace EBook {
          * @param index the alphabetic index
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          */
-        set_alphabetic_index(index: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        set_alphabetic_index(index: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Sets the current cursor position to point to an <link linkend="cursor-alphabet">Alphabetic Index</link>.
@@ -1623,7 +1623,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @param callback callback to call when a result is ready
          */
-        set_alphabetic_index(index: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_alphabetic_index(index: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets the current cursor position to point to an <link linkend="cursor-alphabet">Alphabetic Index</link>.
@@ -1636,7 +1636,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @param callback callback to call when a result is ready
          */
-        set_alphabetic_index(index: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_alphabetic_index(index: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous call initiated by `e_book_client_cursor_set_alphabetic_index()`.
@@ -1673,7 +1673,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_alphabetic_index_sync(index: number, cancellable: (Gio.Cancellable | null)): boolean;
+        set_alphabetic_index_sync(index: number, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
@@ -1685,20 +1685,7 @@ export namespace EBook {
          * @param sexp the new search expression for `cursor`
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          */
-        set_sexp(sexp: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
-         * 
-         * See: `e_book_client_cursor_set_sexp_sync()`.
-         * 
-         * This asynchronous call is completed with a call to
-         * `e_book_client_cursor_set_sexp_finish()` from the specified `callback`.
-         * @param sexp the new search expression for `cursor`
-         * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
-         * @param callback callback to call when a result is ready
-         */
-        set_sexp(sexp: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        set_sexp(sexp: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
@@ -1711,7 +1698,20 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @param callback callback to call when a result is ready
          */
-        set_sexp(sexp: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        set_sexp(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Sets the <link linkend="cursor-search">Search Expression</link> for the cursor.
+         * 
+         * See: `e_book_client_cursor_set_sexp_sync()`.
+         * 
+         * This asynchronous call is completed with a call to
+         * `e_book_client_cursor_set_sexp_finish()` from the specified `callback`.
+         * @param sexp the new search expression for `cursor`
+         * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
+         * @param callback callback to call when a result is ready
+         */
+        set_sexp(sexp: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Completes an asynchronous call initiated by `e_book_client_cursor_set_sexp()`, reporting
@@ -1741,7 +1741,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          */
-        set_sexp_sync(sexp: string, cancellable: (Gio.Cancellable | null)): boolean;
+        set_sexp_sync(sexp: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
@@ -1756,23 +1756,7 @@ export namespace EBook {
          * @param count a positive or negative amount of contacts to try and fetch
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          */
-        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, (EBookContacts.Contact[] | null)]>;
-
-        /**
-         * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
-         * a maximum of `count` and fetch the results traversed.
-         * 
-         * See: `e_book_client_cursor_step_sync()`.
-         * 
-         * This asynchronous call is completed with a call to
-         * `e_book_client_cursor_step_finish()` from the specified `callback`.
-         * @param flags The {@link EBookContacts.BookCursorStepFlags} for this step
-         * @param origin The {@link EBookContacts.BookCursorOrigin} from whence to step
-         * @param count a positive or negative amount of contacts to try and fetch
-         * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
-         * @param callback callback to call when a result is ready
-         */
-        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[number, EBookContacts.Contact[] | null]>;
 
         /**
          * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
@@ -1788,7 +1772,23 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @param callback callback to call when a result is ready
          */
-        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, (EBookContacts.Contact[] | null)]> | void);
+        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
+         * a maximum of `count` and fetch the results traversed.
+         * 
+         * See: `e_book_client_cursor_step_sync()`.
+         * 
+         * This asynchronous call is completed with a call to
+         * `e_book_client_cursor_step_finish()` from the specified `callback`.
+         * @param flags The {@link EBookContacts.BookCursorStepFlags} for this step
+         * @param origin The {@link EBookContacts.BookCursorOrigin} from whence to step
+         * @param count a positive or negative amount of contacts to try and fetch
+         * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
+         * @param callback callback to call when a result is ready
+         */
+        step(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, EBookContacts.Contact[] | null]> | void;
 
         /**
          * Completes an asynchronous call initiated by `e_book_client_cursor_step()`, fetching
@@ -1835,7 +1835,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns The number of contacts traversed if successful, otherwise -1 is returned and `error` is set.
          */
-        step_sync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: (Gio.Cancellable | null)): [number, EBookContacts.Contact[] | null];
+        step_sync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [number, EBookContacts.Contact[] | null];
 
         /**
          * Initializes the object implementing the interface.
@@ -1879,7 +1879,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1923,7 +1923,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2110,7 +2110,7 @@ export namespace EBook {
          * @param range_length how many contacts to retrieve
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        dup_contacts(range_start: number, range_length: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[number, EBookContacts.Contact[]]>;
+        dup_contacts(range_start: number, range_length: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[number, EBookContacts.Contact[]]>;
 
         /**
          * Asynchronously reads `range_length` contacts from index `range_start`.
@@ -2126,7 +2126,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param cb a callback to call when the contacts are received
          */
-        dup_contacts(range_start: number, range_length: number, cancellable: (Gio.Cancellable | null), cb: (Gio.AsyncReadyCallback<this> | null)): void;
+        dup_contacts(range_start: number, range_length: number, cancellable: Gio.Cancellable | null, cb: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously reads `range_length` contacts from index `range_start`.
@@ -2142,7 +2142,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param cb a callback to call when the contacts are received
          */
-        dup_contacts(range_start: number, range_length: number, cancellable: (Gio.Cancellable | null), cb?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[number, EBookContacts.Contact[]]> | void);
+        dup_contacts(range_start: number, range_length: number, cancellable: Gio.Cancellable | null, cb?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[number, EBookContacts.Contact[]]> | void;
 
         /**
          * Finishes previous call of `e_book_client_view_dup_contacts()`;
@@ -2253,7 +2253,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          */
-        set_sort_fields_sync(fields: EBookContacts.BookClientViewSortFields, cancellable: (Gio.Cancellable | null)): boolean;
+        set_sort_fields_sync(fields: EBookContacts.BookClientViewSortFields, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells `client_view` to start processing events.
@@ -2307,7 +2307,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2351,7 +2351,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2366,9 +2366,7 @@ export namespace EBook {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2433,7 +2431,7 @@ export namespace EBook {
          * Creates an {@link EBook.Destination} from an XML document.
          * @param str an XML string
          */
-        static ["import"](str: string): (Destination | null);
+        static ["import"](str: string): Destination | null;
 
         /**
          * Creates an array of pointers to {@link EBook.Destination} elements
@@ -2487,19 +2485,19 @@ export namespace EBook {
          * suitable for use in an email header, but not for displaying to users.
          * @returns an encoded destination string suitable for use in an          email header, or `null` if the destination was empty
          */
-        get_address(): (string | null);
+        get_address(): string | null;
 
         /**
          * Gets the contact `dest` is pointing to, if any.
          * @returns An {@link EBookContacts.Contact}, or `null` if none was set.
          */
-        get_contact(): (EBookContacts.Contact | null);
+        get_contact(): EBookContacts.Contact | null;
 
         /**
          * Gets the unique contact ID `dest` is pointing to, if any.
          * @returns A unique contact ID, or `null` if none was set.
          */
-        get_contact_uid(): (string | null);
+        get_contact_uid(): string | null;
 
         /**
          * Gets the e-mail address of `dest`'s addressee.
@@ -2526,14 +2524,14 @@ export namespace EBook {
          * be encoded in quoted printable.
          * @returns The full name of the addressee, or `null` if none was set.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Gets the unique source ID `dest` is pointing to, if any. The source
          * ID specifies which address book `dest`'s contact came from.
          * @returns A unique source ID, or `null` if none was set.
          */
-        get_source_uid(): (string | null);
+        get_source_uid(): string | null;
 
         /**
          * Generates a textual representation of `dest`, suitable for referring
@@ -2570,7 +2568,7 @@ export namespace EBook {
          * thus should not be freed.
          * @returns A list of elements of type {@link EBook.Destination}, or `null`.
          */
-        list_get_dests(): (Destination[] | null);
+        list_get_dests(): Destination[] | null;
 
         /**
          * If `dest` is a list, gets the list of EDestinations assigned directly
@@ -2578,7 +2576,7 @@ export namespace EBook {
          * The list and its elements belong to `dest`, and should not be freed.
          * @returns A list of elements of type {@link EBook.Destination}, or `null`.
          */
-        list_get_root_dests(): (Destination[] | null);
+        list_get_root_dests(): Destination[] | null;
 
         /**
          * If `dest` is a list, checks if the addresses in the list

@@ -105,22 +105,22 @@ export namespace xlib {
     /**
      * @gir-type Alias
      */
-    type Atom = (bigint | number);
+    type Atom = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Colormap = (bigint | number);
+    type Colormap = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Cursor = (bigint | number);
+    type Cursor = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Drawable = (bigint | number);
+    type Drawable = bigint | number;
 
     /**
      * @gir-type Alias
@@ -135,37 +135,37 @@ export namespace xlib {
     /**
      * @gir-type Alias
      */
-    type KeySym = (bigint | number);
+    type KeySym = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Picture = (bigint | number);
+    type Picture = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Time = (bigint | number);
+    type Time = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type VisualID = (bigint | number);
+    type VisualID = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Window = (bigint | number);
+    type Window = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type XID = (bigint | number);
+    type XID = bigint | number;
 
     /**
      * @gir-type Alias
      */
-    type Pixmap = (bigint | number);
+    type Pixmap = bigint | number;
 
     /**
      * Name of the imported GIR library

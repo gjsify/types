@@ -425,7 +425,7 @@ export namespace Tepl {
      * @returns `true` if the transformation was successful, and `false` otherwise.
      * @since 5.0
      */
-    function utils_binding_transform_func_smart_bool(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: null): boolean;
+    function utils_binding_transform_func_smart_bool(binding: GObject.Binding, from_value: GObject.Value | any, to_value: GObject.Value | any, user_data: null): boolean;
 
     /**
      * Especially useful for external {@link Gio.Settings} (provided by another application
@@ -465,7 +465,7 @@ export namespace Tepl {
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 5.0
      */
-    function utils_create_parent_directories(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+    function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
     /**
      * This function is deprecated, use the {@link GLib.Uri} functions instead.
@@ -488,7 +488,7 @@ export namespace Tepl {
      * @param cancellable a {@link Gio.Cancellable}.
      * @since 5.0
      */
-    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function utils_file_query_exists_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * The asynchronous version of `g_file_query_exists()`. When the operation is
      * finished, `callback` will be called. You can then call
@@ -498,7 +498,7 @@ export namespace Tepl {
      * @param callback the callback to call when the operation is finished.
      * @since 5.0
      */
-    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    function utils_file_query_exists_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
     /**
      * The asynchronous version of `g_file_query_exists()`. When the operation is
      * finished, `callback` will be called. You can then call
@@ -508,7 +508,7 @@ export namespace Tepl {
      * @param callback the callback to call when the operation is finished.
      * @since 5.0
      */
-    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<boolean> | void);
+    function utils_file_query_exists_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.File> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finishes the operation started with `tepl_utils_file_query_exists_async()`.
@@ -566,7 +566,7 @@ export namespace Tepl {
      * @returns the toplevel {@link Gtk.Window}, or `null`.
      * @since 6.13
      */
-    function utils_get_toplevel_window(widget: Gtk.Widget): (Gtk.Window | null);
+    function utils_get_toplevel_window(widget: Gtk.Widget): Gtk.Window | null;
 
     /**
      * Removes all rows of `list_box`, to obtain an empty {@link Gtk.ListBox}.
@@ -584,7 +584,7 @@ export namespace Tepl {
      * @returns a `null`-terminated array of {@link Gtk.ListBoxRow} objects, or `null`. Free with   `g_free()` when no longer needed.
      * @since 6.0
      */
-    function utils_list_box_get_filtered_children(list_box: Gtk.ListBox, filter_func: Gtk.ListBoxFilterFunc): [(Gtk.ListBoxRow[] | null), number];
+    function utils_list_box_get_filtered_children(list_box: Gtk.ListBox, filter_func: Gtk.ListBoxFilterFunc): [Gtk.ListBoxRow[] | null, number];
 
     /**
      * This function has the same semantics as `gtk_list_box_get_row_at_index()`, but
@@ -598,7 +598,7 @@ export namespace Tepl {
      * @returns the child {@link Gtk.ListBoxRow} or `null`.
      * @since 6.0
      */
-    function utils_list_box_get_row_at_index_with_filter(list_box: Gtk.ListBox, index: number, filter_func: Gtk.ListBoxFilterFunc): (Gtk.ListBoxRow | null);
+    function utils_list_box_get_row_at_index_with_filter(list_box: Gtk.ListBox, index: number, filter_func: Gtk.ListBoxFilterFunc): Gtk.ListBoxRow | null;
 
     /**
      * Scrolls to a specific {@link Gtk.ListBoxRow}.
@@ -657,7 +657,7 @@ export namespace Tepl {
      * @returns a newly allocated string with the escaped text, or `null` if `src` is not a valid UTF-8 string. Free with `g_free()` when no longer needed.
      * @since 5.0
      */
-    function utils_markup_escape_text(src: string): (string | null);
+    function utils_markup_escape_text(src: string): string | null;
 
     /**
      * A replacement for `gtk_widget_override_font()`. Because
@@ -668,7 +668,7 @@ export namespace Tepl {
      * @param font_desc the {@link Pango.FontDescription} to use, or `null` to undo   the effect of previous calls to this function on `widget`.
      * @since 6.2
      */
-    function utils_override_font_description(widget: Gtk.Widget, font_desc: (Pango.FontDescription | null)): void;
+    function utils_override_font_description(widget: Gtk.Widget, font_desc: Pango.FontDescription | null): void;
 
     /**
      * A convenience function that calls `tepl_utils_override_font_description()`.
@@ -679,7 +679,7 @@ export namespace Tepl {
      * @param font_str a string representation of a {@link Pango.FontDescription}, or   `null` to undo the effect of previous calls to this function on `widget`.
      * @since 6.2
      */
-    function utils_override_font_string(widget: Gtk.Widget, font_str: (string | null)): void;
+    function utils_override_font_string(widget: Gtk.Widget, font_str: string | null): void;
 
     /**
      * Replaces the home directory with a tilde, if the home directory is present in
@@ -698,7 +698,7 @@ export namespace Tepl {
      * @param new_widget the new {@link Gtk.Widget}.
      * @since 6.11
      */
-    function utils_set_widget(widget_ptr: Gtk.Widget, new_widget: (Gtk.Widget | null)): void;
+    function utils_set_widget(widget_ptr: Gtk.Widget, new_widget: Gtk.Widget | null): void;
 
     /**
      * To better configure a {@link Gtk.Statusbar} (to make it smaller).
@@ -835,13 +835,10 @@ export namespace Tepl {
 
     namespace AbstractFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -901,7 +898,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @virtual
          */
-        vfunc_create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        vfunc_create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         /**
          * Creates a new {@link Gio.File} that is then intended to be used as an argument to
@@ -910,7 +907,7 @@ export namespace Tepl {
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
          * @virtual
          */
-        vfunc_create_metadata_manager_file(): (Gio.File | null);
+        vfunc_create_metadata_manager_file(): Gio.File | null;
 
         /**
          * Virtual function pointer for
@@ -918,7 +915,7 @@ export namespace Tepl {
          *   {@link Tepl.PrefsDialog} is created with `tepl_prefs_dialog_new()`.
          * @virtual
          */
-        vfunc_create_prefs_dialog(): (PrefsDialog | null);
+        vfunc_create_prefs_dialog(): PrefsDialog | null;
 
         /**
          * Virtual function pointer for `tepl_abstract_factory_create_tab()`.
@@ -932,7 +929,7 @@ export namespace Tepl {
          * @param tab a {@link Tepl.Tab}.
          * @virtual
          */
-        vfunc_create_tab_label(tab: Tab): (Gtk.Widget | null);
+        vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
 
         // Methods
         /**
@@ -946,7 +943,7 @@ export namespace Tepl {
          * @param app a {@link Gtk.Application}.
          * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
-        create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+        create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         /**
          * Creates a new {@link Gio.File} that is then intended to be used as an argument to
@@ -955,12 +952,12 @@ export namespace Tepl {
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
          * @returns a new {@link Gio.File}, or `null` if the vfunc is not implemented.
          */
-        create_metadata_manager_file(): (Gio.File | null);
+        create_metadata_manager_file(): Gio.File | null;
 
         /**
          * @returns a new {@link Tepl.PrefsDialog}, or `null` if   the vfunc is not implemented.
          */
-        create_prefs_dialog(): (PrefsDialog | null);
+        create_prefs_dialog(): PrefsDialog | null;
 
         /**
          * @returns a new {@link Tepl.Tab}.
@@ -972,7 +969,7 @@ export namespace Tepl {
          * @param tab a {@link Tepl.Tab}.
          * @returns a new {@link Gtk.Widget}, or `null` for the default tab label (“page N” with {@link Gtk.Notebook}).
          */
-        create_tab_label(tab: Tab): (Gtk.Widget | null);
+        create_tab_label(tab: Tab): Gtk.Widget | null;
 
         /**
          * Sets the {@link Tepl.AbstractFactory} singleton. This should be called early in
@@ -1061,7 +1058,7 @@ export namespace Tepl {
          * sense of `tepl_application_window_is_main_window()`.
          * @returns the active main {@link Gtk.ApplicationWindow}, or `null`.
          */
-        get_active_main_window(): (Gtk.ApplicationWindow | null);
+        get_active_main_window(): Gtk.ApplicationWindow | null;
 
         /**
          * Returns an initially empty {@link Amtk.ActionInfoStore} reserved for the
@@ -1305,7 +1302,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -1313,23 +1310,23 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): (Buffer | null);
+        get activeBuffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): (Tab | null);
-        set activeTab(val: (Tab | null));
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -1337,7 +1334,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -1345,7 +1342,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): (View | null);
+        get activeView(): View | null;
 
         /**
          * Appends `tab` to `tab_group`.
@@ -1358,18 +1355,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -1414,7 +1411,7 @@ export namespace Tepl {
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -1634,8 +1631,8 @@ export namespace Tepl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             code_comment_is_supported: boolean;
             codeCommentIsSupported: boolean;
-            source_view: (GtkSource.View | null);
-            sourceView: (GtkSource.View | null);
+            source_view: GtkSource.View | null;
+            sourceView: GtkSource.View | null;
         }
     }
 
@@ -1678,7 +1675,7 @@ export namespace Tepl {
          * @since 6.14
          * @construct-only
          */
-        get source_view(): (GtkSource.View | null);
+        get source_view(): GtkSource.View | null;
 
         /**
          * The associated {@link GtkSource.View} widget. {@link Tepl.CodeCommentView} has a weak
@@ -1686,7 +1683,7 @@ export namespace Tepl {
          * @since 6.14
          * @construct-only
          */
-        get sourceView(): (GtkSource.View | null);
+        get sourceView(): GtkSource.View | null;
 
         /**
          * Compile-time signal type information.
@@ -1728,7 +1725,7 @@ export namespace Tepl {
          * @param start_iter a {@link Gtk.TextIter}.
          * @param end_iter a {@link Gtk.TextIter}, or `null` to comment only the line at   `start_iter`.
          */
-        comment_lines(start_iter: Gtk.TextIter, end_iter: (Gtk.TextIter | null)): void;
+        comment_lines(start_iter: Gtk.TextIter, end_iter: Gtk.TextIter | null): void;
 
         /**
          * Comments the selected lines.
@@ -1741,7 +1738,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Tepl.CodeCommentView.source_view}.
          */
-        get_source_view(): (GtkSource.View | null);
+        get_source_view(): GtkSource.View | null;
 
         /**
          * Uncomments the selected text.
@@ -1922,7 +1919,7 @@ export namespace Tepl {
          * @param chooser a {@link Gtk.FileChooser}.
          * @param parent a {@link Gtk.Window}, or `null`.
          */
-        static chooser_set_parent(chooser: Gtk.FileChooser, parent: (Gtk.Window | null)): void;
+        static chooser_set_parent(chooser: Gtk.FileChooser, parent: Gtk.Window | null): void;
 
         /**
          * Calls `gtk_native_dialog_show()` or `gtk_window_present()` depending on the type
@@ -1962,7 +1959,7 @@ export namespace Tepl {
          * Sets the {@link Tepl.File.location} property.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location: (Gio.File | null)): void;
+        set_location(location: Gio.File | null): void;
     }
 
 
@@ -1976,9 +1973,9 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Buffer | null);
-            file: (File | null);
-            location: (Gio.File | null);
+            buffer: Buffer | null;
+            file: File | null;
+            location: Gio.File | null;
         }
     }
 
@@ -1995,7 +1992,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Buffer | null);
+        get buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
@@ -2003,7 +2000,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get file(): (File | null);
+        get file(): File | null;
 
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
@@ -2011,7 +2008,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get location(): (Gio.File | null);
+        get location(): Gio.File | null;
 
         /**
          * Compile-time signal type information.
@@ -2046,17 +2043,17 @@ export namespace Tepl {
         /**
          * @returns the {@link Tepl.Buffer} to load the content into.
          */
-        get_buffer(): (Buffer | null);
+        get_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.File}.
          */
-        get_file(): (File | null);
+        get_file(): File | null;
 
         /**
          * @returns the {@link Gio.File} to load.
          */
-        get_location(): (Gio.File | null);
+        get_location(): Gio.File | null;
 
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
@@ -2065,17 +2062,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
-         * 
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
@@ -2085,7 +2072,17 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file loading started with `tepl_file_loader_load_async()`.
@@ -2238,7 +2235,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2247,7 +2244,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
@@ -2256,7 +2253,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes a file saving started with `tepl_file_saver_save_async()`.
@@ -2294,7 +2291,7 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: (Gtk.TextBuffer | null);
+            buffer: Gtk.TextBuffer | null;
             folded: boolean;
         }
     }
@@ -2312,7 +2309,7 @@ export namespace Tepl {
          * @since 1.0
          * @construct-only
          */
-        get buffer(): (Gtk.TextBuffer | null);
+        get buffer(): Gtk.TextBuffer | null;
 
         /**
          * Whether the {@link Tepl.FoldRegion} is folded or not.
@@ -2361,7 +2358,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
          */
-        get_buffer(): (Gtk.TextBuffer | null);
+        get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * @returns whether the {@link Tepl.FoldRegion} is folded.
@@ -2437,9 +2434,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -2532,9 +2527,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
     }
 
     /**
@@ -2750,7 +2743,7 @@ export namespace Tepl {
 
         static ["new"](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: (string | null)): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
 
         // Signals
         /** @signal */
@@ -2939,9 +2932,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, LanguageChooser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, LanguageChooser.ConstructorProps {}
     }
 
     /**
@@ -2964,7 +2955,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ["new"](parent: (Gtk.Window | null)): LanguageChooserDialog;
+        static ["new"](parent: Gtk.Window | null): LanguageChooserDialog;
 
         // Conflicted with Gtk.Dialog.new
         static ["new"](...args: never[]): any;
@@ -2986,7 +2977,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: (GtkSource.Language | null)): void;
+        select_language(language: GtkSource.Language | null): void;
 
         /**
          * The function pointer for the
@@ -3001,7 +2992,7 @@ export namespace Tepl {
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language: (GtkSource.Language | null)): void;
+        vfunc_select_language(language: GtkSource.Language | null): void;
     }
 
 
@@ -3059,9 +3050,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, LanguageChooser.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, LanguageChooser.ConstructorProps {}
     }
 
     /**
@@ -3124,7 +3113,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: (GtkSource.Language | null)): void;
+        select_language(language: GtkSource.Language | null): void;
 
         /**
          * The function pointer for the
@@ -3139,7 +3128,7 @@ export namespace Tepl {
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language: (GtkSource.Language | null)): void;
+        vfunc_select_language(language: GtkSource.Language | null): void;
     }
 
 
@@ -3191,9 +3180,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -3254,19 +3241,16 @@ export namespace Tepl {
          * `tepl_line_column_indicator_set_tab_group()`, but not both.
          * @param view a {@link Tepl.View}, or `null`.
          */
-        set_view(view: (View | null)): void;
+        set_view(view: View | null): void;
     }
 
 
     namespace Metadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3313,7 +3297,7 @@ export namespace Tepl {
          * @param key a key.
          * @returns the associated value (a UTF-8 string), or `null`. Free with `g_free()` when no longer needed.
          */
-        get(key: string): (string | null);
+        get(key: string): string | null;
 
         /**
          * Sets or unsets `key`. This function just stores the new metadata value in the
@@ -3324,7 +3308,7 @@ export namespace Tepl {
          * @param key a key.
          * @param value a nul-terminated UTF-8 string, or `null` to unset the key.
          */
-        set(key: string, value: (string | null)): void;
+        set(key: string, value: string | null): void;
 
         /**
          * @param args 
@@ -3336,13 +3320,10 @@ export namespace Tepl {
 
     namespace MetadataManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -3507,9 +3488,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, TabGroup.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, TabGroup.ConstructorProps {}
     }
 
     /**
@@ -3553,7 +3532,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -3561,23 +3540,23 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): (Buffer | null);
+        get activeBuffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): (Tab | null);
-        set activeTab(val: (Tab | null));
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -3585,7 +3564,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -3593,7 +3572,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): (View | null);
+        get activeView(): View | null;
 
         /**
          * Appends `tab` to `tab_group`.
@@ -3606,18 +3585,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -3662,7 +3641,7 @@ export namespace Tepl {
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -3800,7 +3779,7 @@ export namespace Tepl {
          * to `view`. If `view` is `null`, then `indicator` will be empty.
          * @param view a {@link Gtk.TextView}, or `null`.
          */
-        set_view(view: (Gtk.TextView | null)): void;
+        set_view(view: Gtk.TextView | null): void;
     }
 
 
@@ -3858,9 +3837,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -3909,7 +3886,7 @@ export namespace Tepl {
          * @param title a human-readable title for `component`.
          * @param icon_name the icon name for `component`, or `null`.
          */
-        add_component(component: Gtk.Widget, name: string, title: string, icon_name: (string | null)): void;
+        add_component(component: Gtk.Widget, name: string, title: string, icon_name: string | null): void;
 
         /**
          * @returns the {@link Gtk.Stack} widget of `panel` (a direct child {@link Gtk.Widget} of `panel`).
@@ -3986,12 +3963,12 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            icon_name: (string | null);
-            iconName: (string | null);
+            icon_name: string | null;
+            iconName: string | null;
             name: string;
             position: number;
-            title: (string | null);
-            widget: (Gtk.Widget | null);
+            title: string | null;
+            widget: Gtk.Widget | null;
         }
     }
 
@@ -4011,7 +3988,7 @@ export namespace Tepl {
          * @construct-only
          * @default null
          */
-        get icon_name(): (string | null);
+        get icon_name(): string | null;
 
         /**
          * The icon name.
@@ -4022,7 +3999,7 @@ export namespace Tepl {
          * @construct-only
          * @default null
          */
-        get iconName(): (string | null);
+        get iconName(): string | null;
 
         /**
          * The name.
@@ -4054,14 +4031,14 @@ export namespace Tepl {
          * @construct-only
          * @default null
          */
-        get title(): (string | null);
+        get title(): string | null;
 
         /**
          * The {@link Gtk.Widget} (the main content).
          * @since 6.11
          * @construct-only
          */
-        get widget(): (Gtk.Widget | null);
+        get widget(): Gtk.Widget | null;
 
         /**
          * Compile-time signal type information.
@@ -4077,7 +4054,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ["new"](widget: Gtk.Widget, name: string, title: (string | null), icon_name: (string | null), position: number): PanelItem;
+        static ["new"](widget: Gtk.Widget, name: string, title: string | null, icon_name: string | null, position: number): PanelItem;
 
         // Signals
         /** @signal */
@@ -4113,7 +4090,7 @@ export namespace Tepl {
         /**
          * @returns the value of the {@link Tepl.PanelItem.icon_name} property.
          */
-        get_icon_name(): (string | null);
+        get_icon_name(): string | null;
 
         /**
          * @returns the value of the {@link Tepl.PanelItem.name} property.
@@ -4128,24 +4105,21 @@ export namespace Tepl {
         /**
          * @returns the value of the {@link Tepl.PanelItem.title} property.
          */
-        get_title(): (string | null);
+        get_title(): string | null;
 
         /**
          * @returns the value of the {@link Tepl.PanelItem.widget}   property.
          */
-        get_widget(): (Gtk.Widget | null);
+        get_widget(): Gtk.Widget | null;
     }
 
 
     namespace PanelNotebook {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4231,10 +4205,10 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Panel.ConstructorProps {
-            active_item: (PanelItem | null);
-            activeItem: (PanelItem | null);
-            active_item_name: (string | null);
-            activeItemName: (string | null);
+            active_item: PanelItem | null;
+            activeItem: PanelItem | null;
+            active_item_name: string | null;
+            activeItemName: string | null;
         }
     }
 
@@ -4249,31 +4223,31 @@ export namespace Tepl {
          * The {@link Tepl.PanelItem} currently shown.
          * @since 6.11
          */
-        get active_item(): (PanelItem | null);
-        set active_item(val: (PanelItem | null));
+        get active_item(): PanelItem | null;
+        set active_item(val: PanelItem | null);
 
         /**
          * The {@link Tepl.PanelItem} currently shown.
          * @since 6.11
          */
-        get activeItem(): (PanelItem | null);
-        set activeItem(val: (PanelItem | null));
+        get activeItem(): PanelItem | null;
+        set activeItem(val: PanelItem | null);
 
         /**
          * The name of the {@link Tepl.PanelSimple.active_item}.
          * @since 6.11
          * @default null
          */
-        get active_item_name(): (string | null);
-        set active_item_name(val: (string | null));
+        get active_item_name(): string | null;
+        set active_item_name(val: string | null);
 
         /**
          * The name of the {@link Tepl.PanelSimple.active_item}.
          * @since 6.11
          * @default null
          */
-        get activeItemName(): (string | null);
-        set activeItemName(val: (string | null));
+        get activeItemName(): string | null;
+        set activeItemName(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -4326,13 +4300,13 @@ export namespace Tepl {
         /**
          * @returns the value of the   {@link Tepl.PanelSimple.active_item} property.
          */
-        get_active_item(): (PanelItem | null);
+        get_active_item(): PanelItem | null;
 
         /**
          * A convenience function.
          * @returns the name of the {@link Tepl.PanelSimple.active_item}.
          */
-        get_active_item_name(): (string | null);
+        get_active_item_name(): string | null;
 
         /**
          * @returns all the items of   `panel`.
@@ -4350,7 +4324,7 @@ export namespace Tepl {
          * {@link Tepl.PanelItem} named `name` (if found).
          * @param name a name.
          */
-        set_active_item_name(name: (string | null)): void;
+        set_active_item_name(name: string | null): void;
 
         /**
          * Adds an item to the panel.
@@ -4370,7 +4344,7 @@ export namespace Tepl {
          * Only one {@link Tepl.PanelItem} is shown at a time in a {@link Tepl.Panel}.
          * @param item a {@link Tepl.PanelItem}.
          */
-        set_active(item: (PanelItem | null)): void;
+        set_active(item: PanelItem | null): void;
 
         /**
          * Adds an item to the panel.
@@ -4393,19 +4367,16 @@ export namespace Tepl {
          * @param item a {@link Tepl.PanelItem}.
          * @virtual
          */
-        vfunc_set_active(item: (PanelItem | null)): void;
+        vfunc_set_active(item: PanelItem | null): void;
     }
 
 
     namespace PanelStack {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -4428,7 +4399,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ["new"](panel_simple: (PanelSimple | null), stack: (Gtk.Stack | null)): PanelStack;
+        static ["new"](panel_simple: PanelSimple | null, stack: Gtk.Stack | null): PanelStack;
 
         // Signals
         /** @signal */
@@ -4515,9 +4486,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -4652,9 +4621,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -4818,7 +4785,7 @@ export namespace Tepl {
 
         _init(...args: any[]): void;
 
-        static ["new"](icon_name: (string | null), markup: (string | null), has_cancel_button: boolean): ProgressInfoBar;
+        static ["new"](icon_name: string | null, markup: string | null, has_cancel_button: boolean): ProgressInfoBar;
 
         // Conflicted with Tepl.InfoBar.new
         static ["new"](...args: never[]): any;
@@ -4895,8 +4862,8 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            style_scheme_id: (string | null);
-            styleSchemeId: (string | null);
+            style_scheme_id: string | null;
+            styleSchemeId: string | null;
         }
     }
 
@@ -4916,7 +4883,7 @@ export namespace Tepl {
          * @read-only
          * @default null
          */
-        get style_scheme_id(): (string | null);
+        get style_scheme_id(): string | null;
 
         /**
          * See `tepl_settings_provide_style_scheme_settings()`.
@@ -4927,7 +4894,7 @@ export namespace Tepl {
          * @read-only
          * @default null
          */
-        get styleSchemeId(): (string | null);
+        get styleSchemeId(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -4994,7 +4961,7 @@ export namespace Tepl {
         /**
          * @returns the value of the   {@link Tepl.Settings.style_scheme_id} property.
          */
-        get_style_scheme_id(): (string | null);
+        get_style_scheme_id(): string | null;
 
         /**
          * This function permits to setup correctly the GTK theme variant to use.
@@ -5010,7 +4977,7 @@ export namespace Tepl {
          * @param theme_variant_settings a {@link Gio.Settings} object, or `null`.
          * @param theme_variant_setting_key a {@link Gio.Settings} key of type enum   {@link Tepl.SettingsThemeVariant}, or `null`.
          */
-        handle_theme_variant(theme_variant_settings: (Gio.Settings | null), theme_variant_setting_key: (string | null)): void;
+        handle_theme_variant(theme_variant_settings: Gio.Settings | null, theme_variant_setting_key: string | null): void;
 
         /**
          * @returns the {@link Gio.Settings} for `"org.gnome.desktop.interface"`.
@@ -5102,9 +5069,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -5240,9 +5205,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.MenuButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.MenuButton.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Actionable.ConstructorProps, Gtk.Activatable.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -5410,9 +5373,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {}
     }
 
     /**
@@ -5521,9 +5482,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
     /**
@@ -5613,8 +5572,8 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
-            style_scheme_id: (string | null);
-            styleSchemeId: (string | null);
+            style_scheme_id: string | null;
+            styleSchemeId: string | null;
         }
     }
 
@@ -5634,8 +5593,8 @@ export namespace Tepl {
          * @since 6.11
          * @default null
          */
-        get style_scheme_id(): (string | null);
-        set style_scheme_id(val: (string | null));
+        get style_scheme_id(): string | null;
+        set style_scheme_id(val: string | null);
 
         /**
          * The selected {@link GtkSource.StyleScheme} ID.
@@ -5646,8 +5605,8 @@ export namespace Tepl {
          * @since 6.11
          * @default null
          */
-        get styleSchemeId(): (string | null);
-        set styleSchemeId(val: (string | null));
+        get styleSchemeId(): string | null;
+        set styleSchemeId(val: string | null);
 
         /**
          * Compile-time signal type information.
@@ -5682,7 +5641,7 @@ export namespace Tepl {
         /**
          * @returns the value of the   {@link Tepl.StyleSchemeChooserSimple.style_scheme_id} property.
          */
-        get_style_scheme_id(): (string | null);
+        get_style_scheme_id(): string | null;
 
         /**
          * Sets the {@link Tepl.StyleSchemeChooserSimple.style_scheme_id} property.
@@ -5909,7 +5868,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
@@ -5918,7 +5877,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * The same as `tepl_tab_save_as_async()`, but without callback.
@@ -5951,7 +5910,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
@@ -5960,7 +5919,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * The same as `tepl_tab_save_async()`, but without callback.
@@ -5993,7 +5952,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
@@ -6001,23 +5960,23 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeBuffer(): (Buffer | null);
+        get activeBuffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
           * @category Inherited from Tepl.TabGroup
          */
-        get activeTab(): (Tab | null);
-        set activeTab(val: (Tab | null));
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -6025,7 +5984,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
@@ -6033,7 +5992,7 @@ export namespace Tepl {
          * @read-only
           * @category Inherited from Tepl.TabGroup
          */
-        get activeView(): (View | null);
+        get activeView(): View | null;
 
         /**
          * Retrieves the orientation of the `orientable`.
@@ -6058,18 +6017,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.
@@ -6114,7 +6073,7 @@ export namespace Tepl {
          *   By default, `null` is returned.
          * @virtual
          */
-        vfunc_get_active_tab(): (Tab | null);
+        vfunc_get_active_tab(): Tab | null;
 
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -6190,7 +6149,7 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
-            tab: (Tab | null);
+            tab: Tab | null;
         }
     }
 
@@ -6207,7 +6166,7 @@ export namespace Tepl {
          * @since 3.0
          * @construct-only
          */
-        get tab(): (Tab | null);
+        get tab(): Tab | null;
 
         /**
          * Compile-time signal type information.
@@ -6257,7 +6216,7 @@ export namespace Tepl {
         /**
          * @returns the {@link Tepl.TabLabel.tab}.
          */
-        get_tab(): (Tab | null);
+        get_tab(): Tab | null;
 
         /**
          * Asks {@link Tepl.TabLabel} to update its tooltip. The ::get_tooltip_markup virtual
@@ -6372,9 +6331,7 @@ export namespace Tepl {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {}
     }
 
     /**
@@ -6980,14 +6937,12 @@ export namespace Tepl {
              * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
              * @virtual
              */
-            vfunc_select_language(language: (GtkSource.Language | null)): void;
+            vfunc_select_language(language: GtkSource.Language | null): void;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface LanguageChooserNamespace {
@@ -7004,7 +6959,7 @@ export namespace Tepl {
          * Selects `language` in the list.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: (GtkSource.Language | null)): void;
+        select_language(language: GtkSource.Language | null): void;
     }
 
 
@@ -7041,14 +6996,12 @@ export namespace Tepl {
              * @param item a {@link Tepl.PanelItem}.
              * @virtual
              */
-            vfunc_set_active(item: (PanelItem | null)): void;
+            vfunc_set_active(item: PanelItem | null): void;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface PanelNamespace {
@@ -7079,7 +7032,7 @@ export namespace Tepl {
          * Only one {@link Tepl.PanelItem} is shown at a time in a {@link Tepl.Panel}.
          * @param item a {@link Tepl.PanelItem}.
          */
-        set_active(item: (PanelItem | null)): void;
+        set_active(item: PanelItem | null): void;
     }
 
 
@@ -7109,7 +7062,7 @@ export namespace Tepl {
              *   By default, `null` is returned.
              * @virtual
              */
-            vfunc_get_active_tab(): (Tab | null);
+            vfunc_get_active_tab(): Tab | null;
 
             /**
              * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
@@ -7133,12 +7086,12 @@ export namespace Tepl {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_buffer: (Buffer | null);
-            activeBuffer: (Buffer | null);
-            active_tab: (Tab | null);
-            activeTab: (Tab | null);
-            active_view: (View | null);
-            activeView: (View | null);
+            active_buffer: Buffer | null;
+            activeBuffer: Buffer | null;
+            active_tab: Tab | null;
+            activeTab: Tab | null;
+            active_view: View | null;
+            activeView: View | null;
         }
     }
 
@@ -7157,42 +7110,42 @@ export namespace Tepl {
          * @since 3.0
          * @read-only
          */
-        get active_buffer(): (Buffer | null);
+        get active_buffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get activeBuffer(): (Buffer | null);
+        get activeBuffer(): Buffer | null;
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get active_tab(): (Tab | null);
-        set active_tab(val: (Tab | null));
+        get active_tab(): Tab | null;
+        set active_tab(val: Tab | null);
 
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get activeTab(): (Tab | null);
-        set activeTab(val: (Tab | null));
+        get activeTab(): Tab | null;
+        set activeTab(val: Tab | null);
 
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get active_view(): (View | null);
+        get active_view(): View | null;
 
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get activeView(): (View | null);
+        get activeView(): View | null;
 
         // Methods
         /**
@@ -7206,18 +7159,18 @@ export namespace Tepl {
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): (Buffer | null);
+        get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): (Tab | null);
+        get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): (View | null);
+        get_active_view(): View | null;
 
         /**
          * Convenience function.

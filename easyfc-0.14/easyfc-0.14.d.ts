@@ -208,7 +208,7 @@ export namespace Easyfc {
      * @param localized_font_name `true` to include the localized font name if available,                       `false` for English font name only.
      * @returns a {@link GLib.List} contains the font family name.          if no valid families, `null` then.
      */
-    function font_get_list(language: (string | null), alias_name: (string | null), localized_font_name: boolean): string[];
+    function font_get_list(language: string | null, alias_name: string | null, localized_font_name: boolean): string[];
 
     /**
      * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
@@ -216,7 +216,7 @@ export namespace Easyfc {
      * @param alias_name the alias name to obtain the fonts pettern list for.
      * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
      */
-    function font_get_pattern_list(language: (string | null), alias_name: (string | null)): fontconfig.Pattern[];
+    function font_get_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
 
     /**
      * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,
@@ -233,7 +233,7 @@ export namespace Easyfc {
      * @returns a {@link GLib.List} contains the font family name.          if no valid families, `null` then.
      * @deprecated since 0.7: Use `ezfc_font_get_list()`.
      */
-    function get_fonts_list(language: (string | null), alias_name: (string | null)): string[];
+    function get_fonts_list(language: string | null, alias_name: string | null): string[];
 
     /**
      * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
@@ -242,7 +242,7 @@ export namespace Easyfc {
      * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
      * @deprecated since 0.7: Use `ezfc_font_get_pattern_list()`.
      */
-    function get_fonts_pattern_list(language: (string | null), alias_name: (string | null)): fontconfig.Pattern[];
+    function get_fonts_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
 
     /**
      * Initialize the library.
@@ -335,10 +335,7 @@ export namespace Easyfc {
         static $gtype: GObject.GType<Config>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Config;
 
@@ -350,7 +347,7 @@ export namespace Easyfc {
          * @param alias a {@link Easyfc.Alias}.
          * @returns `true` if it's successfully completed, otherwise `false`.
          */
-        add_alias(language: (string | null), alias: Alias): boolean;
+        add_alias(language: string | null, alias: Alias): boolean;
 
         /**
          * Add a #font font to generate non-language-specific, non-alias-specific
@@ -378,7 +375,7 @@ export namespace Easyfc {
          * @param language a language name referenced to the alias
          * @returns a {@link GLib.List} contains {@link Easyfc.Alias} or `null`.
          */
-        get_aliases(language: (string | null)): Alias[];
+        get_aliases(language: string | null): Alias[];
 
         /**
          * Obtains the list of {@link Easyfc.Font} in `config`.
@@ -437,14 +434,14 @@ export namespace Easyfc {
          * @param alias_name a alias font name to remove.
          * @returns `true` if it's successfully removed, otherwise `false`.
          */
-        remove_alias(language: (string | null), alias_name: string): boolean;
+        remove_alias(language: string | null, alias_name: string): boolean;
 
         /**
          * Removes all of aliases assigned for `language` language from `config`.
          * @param language a language name to remove `alias_name` from.
          * @returns `true` if it's successfully removed, otherwise `false`.
          */
-        remove_aliases(language: (string | null)): boolean;
+        remove_aliases(language: string | null): boolean;
 
         /**
          * Remove a {@link Easyfc.Font} instance corresponding to `family`.
@@ -505,7 +502,7 @@ export namespace Easyfc {
          * make the change in the filename for output.
          * @param name additional configuration name.
          */
-        set_name(name: (string | null)): void;
+        set_name(name: string | null): void;
 
         /**
          * Set `priority` to `config` instance.
@@ -530,10 +527,7 @@ export namespace Easyfc {
         static $gtype: GObject.GType<Font>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static ["new"](): Font;
 
@@ -553,14 +547,14 @@ export namespace Easyfc {
          * @param alias_name the alias name to obtain the fonts list for.
          * @param localized_font_name `true` to include the localized font name if available,                       `false` for English font name only.
          */
-        static get_list(language: (string | null), alias_name: (string | null), localized_font_name: boolean): string[];
+        static get_list(language: string | null, alias_name: string | null, localized_font_name: boolean): string[];
 
         /**
          * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
          * @param language the language name fontconfig can deal with.
          * @param alias_name the alias name to obtain the fonts pettern list for.
          */
-        static get_pattern_list(language: (string | null), alias_name: (string | null)): fontconfig.Pattern[];
+        static get_pattern_list(language: string | null, alias_name: string | null): fontconfig.Pattern[];
 
         /**
          * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,

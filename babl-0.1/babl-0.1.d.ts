@@ -297,7 +297,7 @@ export namespace Babl {
      * @param data The pixel data
      * @param count The number of pixels in `data`
      */
-    function palette_set_palette(babl: Object, format: Object, data: (Uint8Array | string), count: number): void;
+    function palette_set_palette(babl: Object, format: Object, data: Uint8Array | string, count: number): void;
 
     /**
      * Process n pixels from source to destination using babl_fish,
@@ -307,7 +307,7 @@ export namespace Babl {
      * @param destination 
      * @param n 
      */
-    function process(babl_fish: Object, source: null, destination: null, n: (bigint | number)): number;
+    function process(babl_fish: Object, source: null, destination: null, n: bigint | number): number;
 
     /**
      * @param babl_fish 
@@ -318,7 +318,7 @@ export namespace Babl {
      * @param n 
      * @param rows 
      */
-    function process_rows(babl_fish: Object, source: null, source_stride: number, dest: null, dest_stride: number, n: (bigint | number), rows: number): number;
+    function process_rows(babl_fish: Object, source: null, source_stride: number, dest: null, dest_stride: number, n: bigint | number, rows: number): number;
 
     /**
      * Returns the babl object representing the `horizontal` and `vertical`
@@ -359,7 +359,7 @@ export namespace Babl {
      * @param trc_blue The blue component of the TRC (can be `null` if it's            the same as `trc_red`).
      * @param flags The {@link Babl.SpaceFlags}
      */
-    function space_from_chromaticities(name: (string | null), wx: number, wy: number, rx: number, ry: number, gx: number, gy: number, bx: number, by: number, trc_red: Object, trc_green: (Object | null), trc_blue: (Object | null), flags: SpaceFlags): Object;
+    function space_from_chromaticities(name: string | null, wx: number, wy: number, rx: number, ry: number, gx: number, gy: number, bx: number, by: number, trc_red: Object, trc_green: Object | null, trc_blue: Object | null, flags: SpaceFlags): Object;
 
     /**
      * Create a babl space from an in memory ICC profile, the profile does no
@@ -400,7 +400,7 @@ export namespace Babl {
      * @param trc_green The green component of the TRC (can be `null` if it's            the same as `trc_red`).
      * @param trc_blue The blue component of the TRC (can be `null` if it's            the same as `trc_red`).
      */
-    function space_from_rgbxyz_matrix(name: (string | null), wx: number, wy: number, wz: number, rx: number, gx: number, bx: number, ry: number, gy: number, by: number, rz: number, gz: number, bz: number, trc_red: Object, trc_green: (Object | null), trc_blue: (Object | null)): Object;
+    function space_from_rgbxyz_matrix(name: string | null, wx: number, wy: number, wz: number, rx: number, gx: number, bx: number, ry: number, gy: number, by: number, rz: number, gz: number, bz: number, trc_red: Object, trc_green: Object | null, trc_blue: Object | null): Object;
 
     /**
      * query the chromaticities of white point and primaries as well as trcs

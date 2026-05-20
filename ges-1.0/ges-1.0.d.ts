@@ -404,7 +404,7 @@ export namespace GES {
         static INVALID_EFFECT_BIN_DESCRIPTION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -1026,7 +1026,7 @@ export namespace GES {
      * @param argv pointer to application's argv
      * @returns `true` if GES could be initialized.
      */
-    function init_check(argv: (string[] | null)): [boolean, string[] | null];
+    function init_check(argv: string[] | null): [boolean, string[] | null];
 
     /**
      * Use this function to check if GES has been initialized with `ges_init()`
@@ -1056,7 +1056,7 @@ export namespace GES {
      * @returns A {@link Gst.Sample} containing the last frame from `playsink` in the format defined by the `caps`
      * @deprecated since 1.18: Use the "convert-sample" action signal of #playsink instead.
      */
-    function play_sink_convert_frame(playsink: Gst.Element, caps: Gst.Caps): (Gst.Sample | null);
+    function play_sink_convert_frame(playsink: Gst.Element, caps: Gst.Caps): Gst.Sample | null;
 
     /**
      * @param key_spec_1 
@@ -1092,7 +1092,7 @@ export namespace GES {
      * @gir-type Callback
      */
     interface CreateTrackElementFunc {
-        (clip: Clip, type: TrackType): (TrackElement | null);
+        (clip: Clip, type: TrackType): TrackElement | null;
     }
 
     /**
@@ -1291,9 +1291,9 @@ export namespace GES {
             extractable_type: GObject.GTypeInput;
             extractableType: GObject.GTypeInput;
             id: string;
-            proxy: (Asset | null);
-            proxy_target: (Asset | null);
-            proxyTarget: (Asset | null);
+            proxy: Asset | null;
+            proxy_target: Asset | null;
+            proxyTarget: Asset | null;
         }
     }
 
@@ -1434,8 +1434,8 @@ export namespace GES {
          * Setting this property will not usually remove the existing proxy, but
          * will replace it as the default (see `ges_asset_set_proxy()`).
          */
-        get proxy(): (Asset | null);
-        set proxy(val: (Asset | null));
+        get proxy(): Asset | null;
+        set proxy(val: Asset | null);
 
         /**
          * The asset that this asset is a proxy for, or `null` if it is not a
@@ -1452,7 +1452,7 @@ export namespace GES {
          * asset it is now the proxy of/no longer the proxy of.
          * @read-only
          */
-        get proxy_target(): (Asset | null);
+        get proxy_target(): Asset | null;
 
         /**
          * The asset that this asset is a proxy for, or `null` if it is not a
@@ -1469,7 +1469,7 @@ export namespace GES {
          * asset it is now the proxy of/no longer the proxy of.
          * @read-only
          */
-        get proxyTarget(): (Asset | null);
+        get proxyTarget(): Asset | null;
 
         /**
          * Compile-time signal type information.
@@ -1512,7 +1512,7 @@ export namespace GES {
          * @param extractable_type The {@link GES.Asset.extractable_type} of the asset that needs reloading
          * @param id The {@link GES.Asset.id} of the asset asset that needs reloading
          */
-        static needs_reload(extractable_type: GObject.GType, id: (string | null)): boolean;
+        static needs_reload(extractable_type: GObject.GType, id: string | null): boolean;
 
         /**
          * Returns an asset with the given properties. If such an asset already
@@ -1550,7 +1550,7 @@ export namespace GES {
          * @param extractable_type The {@link GES.Asset.extractable_type} of the asset
          * @param id The {@link GES.Asset.id} of the asset
          */
-        static request(extractable_type: GObject.GType, id: (string | null)): (Asset | null);
+        static request(extractable_type: GObject.GType, id: string | null): Asset | null;
 
         /**
          * Requests an asset with the given properties asynchronously (see
@@ -1601,7 +1601,7 @@ export namespace GES {
          * @param cancellable An object to allow cancellation of the asset request, or `null` to ignore
          * @param callback A function to call when the initialization is finished
          */
-        static request_async(extractable_type: GObject.GType, id: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Asset> | null)): void;
+        static request_async(extractable_type: GObject.GType, id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Asset> | null): void;
 
         /**
          * Fetches an asset requested by `ges_asset_request_async()`, which
@@ -1668,7 +1668,7 @@ export namespace GES {
          * Retrieve the error that was set on the asset when it was loaded.
          * @returns The error set on `asset`, or `null` if no error occurred when `asset` was loaded.
          */
-        get_error(): (GLib.Error | null);
+        get_error(): GLib.Error | null;
 
         /**
          * Gets the {@link GES.Asset.extractable_type} of the asset.
@@ -1686,7 +1686,7 @@ export namespace GES {
          * Gets the default {@link GES.Asset.proxy} of the asset.
          * @returns The default proxy of `asset`.
          */
-        get_proxy(): (Asset | null);
+        get_proxy(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.proxy_target} of the asset.
@@ -1695,7 +1695,7 @@ export namespace GES {
          * call `ges_asset_get_error()` on the returned target.
          * @returns The asset that `proxy` is a proxy of.
          */
-        get_proxy_target(): (Asset | null);
+        get_proxy_target(): Asset | null;
 
         /**
          * Get all the proxies that the asset has. The first item of the list will
@@ -1723,7 +1723,7 @@ export namespace GES {
          * @param proxy A new default proxy for `asset`
          * @returns `true` if `proxy` was successfully set as the default for `asset`.
          */
-        set_proxy(proxy: (Asset | null)): boolean;
+        set_proxy(proxy: Asset | null): boolean;
 
         /**
          * Removes the proxy from the available list of proxies for the asset. If
@@ -1832,14 +1832,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -1848,7 +1848,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -1885,7 +1885,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -1976,7 +1976,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2015,7 +2015,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -2099,7 +2099,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2118,7 +2118,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2145,7 +2145,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2187,50 +2187,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -2273,7 +2230,50 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2333,7 +2333,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -2385,7 +2385,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -2429,7 +2429,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -2453,9 +2453,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -2520,9 +2518,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends AudioSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends AudioSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -2604,9 +2600,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -2758,14 +2752,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -2774,7 +2768,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -2811,7 +2805,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2902,7 +2896,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2941,7 +2935,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -3025,7 +3019,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -3044,7 +3038,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -3071,7 +3065,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Increases the reference count of `object`.
@@ -3123,9 +3117,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Transition.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Transition.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3257,9 +3249,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3392,7 +3382,7 @@ export namespace GES {
          * @param sink_to_source_func The function to use for querying how a time is translated from the sink coordinates to the source coordinates of `effect`
          * @returns `true` if the translation functions were set.
          */
-        set_time_translation_funcs(source_to_sink_func: (BaseEffectTimeTranslationFunc | null), sink_to_source_func: (BaseEffectTimeTranslationFunc | null)): boolean;
+        set_time_translation_funcs(source_to_sink_func: BaseEffectTimeTranslationFunc | null, sink_to_source_func: BaseEffectTimeTranslationFunc | null): boolean;
     }
 
 
@@ -3415,9 +3405,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3486,9 +3474,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -3528,13 +3514,10 @@ export namespace GES {
 
     namespace BaseXmlFormatter {
         // Signal signatures
-        interface SignalSignatures extends Formatter.SignalSignatures {
-        }
+        interface SignalSignatures extends Formatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
     }
 
     /**
@@ -3574,7 +3557,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -3659,9 +3642,9 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-            duration_limit: (bigint | number);
-            durationLimit: (bigint | number);
-            layer: (Layer | null);
+            duration_limit: bigint | number;
+            durationLimit: bigint | number;
+            layer: Layer | null;
             supported_formats: TrackType;
             supportedFormats: TrackType;
         }
@@ -3901,7 +3884,7 @@ export namespace GES {
          * signal emission may be stopped internally.
          * @read-only
          */
-        get layer(): (Layer | null);
+        get layer(): Layer | null;
 
         /**
          * The {@link GES.TrackType}-s that the clip supports, which it can create
@@ -3961,7 +3944,7 @@ export namespace GES {
          * @param type A {@link GES.TrackType} to create a {@link GES.TrackElement} for
          * @virtual
          */
-        vfunc_create_track_element(type: TrackType): (TrackElement | null);
+        vfunc_create_track_element(type: TrackType): TrackElement | null;
 
         /**
          * Method to create the (multiple) core
@@ -3982,7 +3965,7 @@ export namespace GES {
          * @param asset An asset with #GES_TYPE_TRACK_ELEMENT as its {@link GES.Asset.extractable_type}
          * @returns The newly created element, or `null` if an error occurred.
          */
-        add_asset(asset: Asset): (TrackElement | null);
+        add_asset(asset: Asset): TrackElement | null;
 
         /**
          * Adds the track element child of the clip to a specific track.
@@ -4046,7 +4029,7 @@ export namespace GES {
          * @param type The type of track element to search for, or `G_TYPE_NONE` to match any type
          * @returns The element controlled by `clip`, in `track`, and of the given `type`, or `null` if no such element could be found.
          */
-        find_track_element(track: (Track | null), type: GObject.GType): (TrackElement | null);
+        find_track_element(track: Track | null, type: GObject.GType): TrackElement | null;
 
         /**
          * Finds the {@link GES.TrackElement}-s controlled by the clip that match the
@@ -4072,7 +4055,7 @@ export namespace GES {
          * @param type The type of track element to search for, or `G_TYPE_NONE` to match any type
          * @returns A list of all the {@link GES.TrackElement}-s controlled by `clip`, in `track` or of the given `track_type`, and of the given `type`.
          */
-        find_track_elements(track: (Track | null), track_type: TrackType, type: GObject.GType): TrackElement[];
+        find_track_elements(track: Track | null, track_type: TrackType, type: GObject.GType): TrackElement[];
 
         /**
          * Gets the {@link GES.Clip.duration_limit} of the clip.
@@ -4128,7 +4111,7 @@ export namespace GES {
          * Gets the {@link GES.Clip.layer} of the clip.
          * @returns The layer `clip` is in, or `null` if `clip` is not in any layer.
          */
-        get_layer(): (Layer | null);
+        get_layer(): Layer | null;
 
         /**
          * Gets the {@link GES.Clip.supported_formats} of the clip.
@@ -4302,7 +4285,7 @@ export namespace GES {
          * @param position The timeline position at which to perform the split
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
          */
-        split(position: (bigint | number)): (Clip | null);
+        split(position: bigint | number): Clip | null;
 
         /**
          * Splits a clip at the given timeline position into two clips. The clip
@@ -4335,7 +4318,7 @@ export namespace GES {
          * @param position The timeline position at which to perform the split, between the start and end of the clip
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
          */
-        split_full(position: (bigint | number)): (Clip | null);
+        split_full(position: bigint | number): Clip | null;
     }
 
 
@@ -4539,14 +4522,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -4555,7 +4538,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -4592,7 +4575,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -4683,7 +4666,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -4722,7 +4705,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -4806,7 +4789,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -4825,7 +4808,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -4852,7 +4835,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4894,50 +4877,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4980,7 +4920,50 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -5040,7 +5023,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -5092,7 +5075,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -5136,19 +5119,16 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace CommandLineFormatter {
         // Signal signatures
-        interface SignalSignatures extends Formatter.SignalSignatures {
-        }
+        interface SignalSignatures extends Formatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
     }
 
     /**
@@ -5202,7 +5182,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -5375,7 +5355,7 @@ export namespace GES {
          * instead.
          * @param containers The {@link GES.Container}-s to group
          */
-        static group(containers: (Container[] | null)): (Container | null);
+        static group(containers: Container[] | null): Container | null;
 
         // Virtual methods
         /**
@@ -5408,7 +5388,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `container` (in nanoseconds)
          * @virtual
          */
-        vfunc_edit(layers: (Layer[] | null), new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
+        vfunc_edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
 
         /**
          * Virtual method to remove a child
@@ -5460,7 +5440,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `container` (in nanoseconds)
          * @returns `true` if the edit of `container` completed, `false` on failure.
          */
-        edit(layers: (Layer[] | null), new_layer_priority: number, mode: EditMode, edge: Edge, position: (bigint | number)): boolean;
+        edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
         /**
          * @param args 
@@ -5507,7 +5487,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -5666,14 +5646,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -5682,7 +5662,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -5719,7 +5699,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -5810,7 +5790,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -5849,7 +5829,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -5933,7 +5913,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -5952,7 +5932,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -5979,7 +5959,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -5991,7 +5971,7 @@ export namespace GES {
              * @since 1.24
              * @run-last
              */
-            discovered: (arg0: GstPbutils.DiscovererInfo, arg1: (GLib.Error | null)) => void;
+            discovered: (arg0: GstPbutils.DiscovererInfo, arg1: GLib.Error | null) => void;
             /**
              * Retrieves information about a URI from and external source of information,
              * like a cache file. This is used by the discoverer to speed up the
@@ -6000,7 +5980,7 @@ export namespace GES {
              * @since 1.24
              * @run-last
              */
-            "load-serialized-info": (arg0: string) => (GstPbutils.DiscovererInfo | null);
+            "load-serialized-info": (arg0: string) => GstPbutils.DiscovererInfo | null;
             /**
              * Allows to setup the source element before the discoverer runs.
              * @signal
@@ -6014,7 +5994,7 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            timeout: (bigint | number);
+            timeout: bigint | number;
             use_cache: boolean;
             useCache: boolean;
         }
@@ -6034,7 +6014,7 @@ export namespace GES {
          * @default 60000000000
          */
         get timeout(): number;
-        set timeout(val: (bigint | number));
+        set timeout(val: bigint | number);
 
         /**
          * @default false
@@ -6227,9 +6207,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackElementAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackElementAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -6307,7 +6285,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -6350,7 +6328,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -6393,7 +6371,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6453,7 +6431,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -6563,7 +6541,7 @@ export namespace GES {
 
         _init(...args: any[]): void;
 
-        static ["new"](video_bin_description: (string | null), audio_bin_description: (string | null)): EffectClip;
+        static ["new"](video_bin_description: string | null, audio_bin_description: string | null): EffectClip;
 
         // Signals
         /** @signal */
@@ -6582,13 +6560,10 @@ export namespace GES {
 
     namespace Formatter {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Extractable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Extractable.ConstructorProps {}
     }
 
     /**
@@ -6703,7 +6678,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -6785,13 +6760,13 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends Container.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-            duration: (bigint | number);
-            in_point: (bigint | number);
-            inPoint: (bigint | number);
-            max_duration: (bigint | number);
-            maxDuration: (bigint | number);
+            duration: bigint | number;
+            in_point: bigint | number;
+            inPoint: bigint | number;
+            max_duration: bigint | number;
+            maxDuration: bigint | number;
             priority: number;
-            start: (bigint | number);
+            start: bigint | number;
         }
     }
 
@@ -6845,7 +6820,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         /**
          * An overwrite of the {@link GES.TimelineElement.in_point} property. This has
@@ -6853,7 +6828,7 @@ export namespace GES {
          * @default 0
          */
         get in_point(): number;
-        set in_point(val: (bigint | number));
+        set in_point(val: bigint | number);
 
         /**
          * An overwrite of the {@link GES.TimelineElement.in_point} property. This has
@@ -6861,7 +6836,7 @@ export namespace GES {
          * @default 0
          */
         get inPoint(): number;
-        set inPoint(val: (bigint | number));
+        set inPoint(val: bigint | number);
 
         /**
          * An overwrite of the {@link GES.TimelineElement.max_duration} property. This
@@ -6869,7 +6844,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get max_duration(): number;
-        set max_duration(val: (bigint | number));
+        set max_duration(val: bigint | number);
 
         /**
          * An overwrite of the {@link GES.TimelineElement.max_duration} property. This
@@ -6877,7 +6852,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get maxDuration(): number;
-        set maxDuration(val: (bigint | number));
+        set maxDuration(val: bigint | number);
 
         /**
          * An overwrite of the {@link GES.TimelineElement.priority} property.
@@ -6895,7 +6870,7 @@ export namespace GES {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -7160,7 +7135,7 @@ export namespace GES {
          * @param track_types The {@link GES.Clip.supported_formats} to set on the the new clip, or #GES_TRACK_TYPE_UNKNOWN to use the default
          * @returns The newly created clip.
          */
-        add_asset(asset: Asset, start: Gst.ClockTime, inpoint: Gst.ClockTime, duration: Gst.ClockTime, track_types: TrackType): (Clip | null);
+        add_asset(asset: Asset, start: Gst.ClockTime, inpoint: Gst.ClockTime, duration: Gst.ClockTime, track_types: TrackType): Clip | null;
 
         /**
          * Extracts a new clip from an asset and adds it to the layer with
@@ -7240,7 +7215,7 @@ export namespace GES {
          * Gets the timeline that the layer is a part of.
          * @returns The timeline that `layer` is currently part of, or `null` if it is not associated with any timeline.
          */
-        get_timeline(): (Timeline | null);
+        get_timeline(): Timeline | null;
 
         /**
          * Convenience method to check if the layer is empty (doesn't contain
@@ -7271,7 +7246,7 @@ export namespace GES {
          * @param tracks The list of tracks `layer` should be (de-)active in, or `null` to include all the tracks in the `layer`'s timeline
          * @returns `true` if the operation worked `false` otherwise.
          */
-        set_active_for_tracks(active: boolean, tracks: (Track[] | null)): boolean;
+        set_active_for_tracks(active: boolean, tracks: Track[] | null): boolean;
 
         /**
          * Sets {@link GES.Layer.auto_transition} for the layer. Use
@@ -7299,7 +7274,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -7458,14 +7433,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -7474,7 +7449,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -7511,7 +7486,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7602,7 +7577,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7641,7 +7616,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -7725,7 +7700,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7744,7 +7719,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7771,7 +7746,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -7783,7 +7758,7 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, MetaContainer.ConstructorProps {
-            position: (bigint | number);
+            position: bigint | number;
         }
     }
 
@@ -7927,14 +7902,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -7943,7 +7918,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -7980,7 +7955,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -8071,7 +8046,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -8110,7 +8085,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -8194,7 +8169,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -8213,7 +8188,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -8240,7 +8215,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -8465,9 +8440,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -8525,9 +8498,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -8585,9 +8556,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends OperationClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -8812,7 +8781,7 @@ export namespace GES {
          * @param caps Some caps to specifying the desired format, or #GST_CAPS_ANY to use the native format
          * @returns A sample of `self`'s current image preview in the format given by `caps`, or `null` if an error prevented fetching the sample.
          */
-        get_thumbnail(caps: Gst.Caps): (Gst.Sample | null);
+        get_thumbnail(caps: Gst.Caps): Gst.Sample | null;
 
         /**
          * Gets a sample from the pipeline of the currently displayed image in
@@ -8824,31 +8793,31 @@ export namespace GES {
          * @param height The requested pixel height of the image, or -1 to use the native size
          * @returns A sample of `self`'s current image preview in the "RGB" format, scaled to `width` and `height`, or `null` if an error prevented fetching the sample.
          */
-        get_thumbnail_rgb24(width: number, height: number): (Gst.Sample | null);
+        get_thumbnail_rgb24(width: number, height: number): Gst.Sample | null;
 
         /**
          * Gets the {@link GES.Pipeline.audio_sink} of the pipeline.
          * @returns The audio sink used by `self` for preview.
          */
-        preview_get_audio_sink(): (Gst.Element | null);
+        preview_get_audio_sink(): Gst.Element | null;
 
         /**
          * Gets the {@link GES.Pipeline.video_sink} of the pipeline.
          * @returns The video sink used by `self` for preview.
          */
-        preview_get_video_sink(): (Gst.Element | null);
+        preview_get_video_sink(): Gst.Element | null;
 
         /**
          * Sets the {@link GES.Pipeline.audio_sink} of the pipeline.
          * @param sink A audio sink for `self` to use for preview
          */
-        preview_set_audio_sink(sink: (Gst.Element | null)): void;
+        preview_set_audio_sink(sink: Gst.Element | null): void;
 
         /**
          * Sets the {@link GES.Pipeline.video_sink} of the pipeline.
          * @param sink A video sink for `self` to use for preview
          */
-        preview_set_video_sink(sink: (Gst.Element | null)): void;
+        preview_set_video_sink(sink: Gst.Element | null): void;
 
         /**
          * Saves the currently displayed image of the pipeline in preview to the
@@ -8913,7 +8882,7 @@ export namespace GES {
          * This function should only be used by video overlay plugin developers.
          * @param handle a platform-specific handle referencing the window
          */
-        got_window_handle(handle: (bigint | number)): void;
+        got_window_handle(handle: bigint | number): void;
 
         /**
          * Tell an overlay that it should handle events from the window system. These
@@ -8961,7 +8930,7 @@ export namespace GES {
          * tell the overlay to stop using that window and create an internal one.
          * @param handle a handle referencing the window.
          */
-        set_window_handle(handle: (bigint | number)): void;
+        set_window_handle(handle: bigint | number): void;
 
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
@@ -9032,13 +9001,10 @@ export namespace GES {
 
     namespace PitiviFormatter {
         // Signal signatures
-        interface SignalSignatures extends Formatter.SignalSignatures {
-        }
+        interface SignalSignatures extends Formatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
     }
 
     /**
@@ -9083,7 +9049,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -9213,7 +9179,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "missing-uri": (arg0: GLib.Error, arg1: Asset) => (string | null);
+            "missing-uri": (arg0: GLib.Error, arg1: Asset) => string | null;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -9223,7 +9189,7 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends Asset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            uri: (string | null);
+            uri: string | null;
         }
     }
 
@@ -9277,7 +9243,7 @@ export namespace GES {
          * @construct-only
          * @default null
          */
-        get uri(): (string | null);
+        get uri(): string | null;
 
         /**
          * Compile-time signal type information.
@@ -9293,7 +9259,7 @@ export namespace GES {
 
         _init(...args: any[]): void;
 
-        static ["new"](uri: (string | null)): Project;
+        static ["new"](uri: string | null): Project;
 
         // Signals
         /** @signal */
@@ -9386,7 +9352,7 @@ export namespace GES {
          * @param extractable_type The {@link GObject.GType} of the asset to create
          * @returns `true` if the asset was added and started loading, `false` it was already in the project. MT safe.
          */
-        create_asset(id: (string | null), extractable_type: GObject.GType): boolean;
+        create_asset(id: string | null, extractable_type: GObject.GType): boolean;
 
         /**
          * Create and add a {@link GES.Asset} to `project`. You should connect to the
@@ -9396,14 +9362,14 @@ export namespace GES {
          * @param extractable_type The {@link GObject.GType} of the asset to create
          * @returns The newly created {@link GES.Asset} or `null`. MT safe.
          */
-        create_asset_sync(id: (string | null), extractable_type: GObject.GType): (Asset | null);
+        create_asset_sync(id: string | null, extractable_type: GObject.GType): Asset | null;
 
         /**
          * @param id The id of the asset to retrieve
          * @param extractable_type The extractable_type of the asset to retrieve from `object`
          * @returns The {@link GES.Asset} with `id` or `null` if no asset with `id` as an ID MT safe.
          */
-        get_asset(id: string, extractable_type: GObject.GType): (Asset | null);
+        get_asset(id: string, extractable_type: GObject.GType): Asset | null;
 
         /**
          * Get the assets that are being loaded
@@ -9415,7 +9381,7 @@ export namespace GES {
          * Retrieve the uri that is currently set on `project`
          * @returns a newly allocated string representing uri. MT safe.
          */
-        get_uri(): (string | null);
+        get_uri(): string | null;
 
         /**
          * List all `asset` contained in `project` filtering per extractable_type
@@ -9431,7 +9397,7 @@ export namespace GES {
          * is the latest added.
          * @returns The list of {@link GstPbutils.EncodingProfile} used in `project`
          */
-        list_encoding_profiles(): (GstPbutils.EncodingProfile[] | null);
+        list_encoding_profiles(): GstPbutils.EncodingProfile[] | null;
 
         /**
          * Loads `project` into `timeline`
@@ -9457,7 +9423,7 @@ export namespace GES {
          * @param overwrite `true` to overwrite file if it exists
          * @returns `true` if the project could be save, `false` otherwise MT safe.
          */
-        save(timeline: Timeline, uri: string, formatter_asset: (Asset | null), overwrite: boolean): boolean;
+        save(timeline: Timeline, uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean;
 
         /**
          * Deserializes the given string, and adds and sets the found fields and
@@ -9555,14 +9521,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -9571,7 +9537,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -9608,7 +9574,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -9699,7 +9665,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -9738,7 +9704,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -9822,7 +9788,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -9841,7 +9807,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -9868,7 +9834,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -9910,50 +9876,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -9996,7 +9919,50 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10056,7 +10022,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10108,7 +10074,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -10152,7 +10118,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -10176,9 +10142,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackElement.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -10252,9 +10216,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Clip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -10313,9 +10275,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends ClipAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends ClipAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -10393,7 +10353,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -10436,7 +10396,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -10479,7 +10439,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10539,7 +10499,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -10731,9 +10691,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -10782,7 +10740,7 @@ export namespace GES {
          * Get the pango font description currently set on `source`.
          * @returns The pango font description currently set on `source`.
          */
-        get_font_desc(): (string | null);
+        get_font_desc(): string | null;
 
         /**
          * Get the horizontal aligment used by `source`.
@@ -10794,7 +10752,7 @@ export namespace GES {
          * Get the text currently set on `source`.
          * @returns The text currently set on `source`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Get the vertical aligment used by `source`.
@@ -10825,7 +10783,7 @@ export namespace GES {
          * will render.
          * @param font_desc the pango font description
          */
-        set_font_desc(font_desc: (string | null)): void;
+        set_font_desc(font_desc: string | null): void;
 
         /**
          * Sets the horizontal aligment of the text.
@@ -10837,7 +10795,7 @@ export namespace GES {
          * Sets the text this track element will render.
          * @param text the text to render. an internal copy of this text will be made.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * Sets the vertical aligment of the text.
@@ -10887,10 +10845,10 @@ export namespace GES {
         // Constructor properties interface
         interface ConstructorProps extends OverlayClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             color: number;
-            font_desc: (string | null);
-            fontDesc: (string | null);
+            font_desc: string | null;
+            fontDesc: string | null;
             halignment: TextHAlign;
-            text: (string | null);
+            text: string | null;
             valignment: TextVAlign;
             xpos: number;
             ypos: number;
@@ -10916,15 +10874,15 @@ export namespace GES {
          * Pango font description string
          * @default Serif 36
          */
-        get font_desc(): (string | null);
-        set font_desc(val: (string | null));
+        get font_desc(): string | null;
+        set font_desc(val: string | null);
 
         /**
          * Pango font description string
          * @default Serif 36
          */
-        get fontDesc(): (string | null);
-        set fontDesc(val: (string | null));
+        get fontDesc(): string | null;
+        set fontDesc(val: string | null);
 
         /**
          * Horizontal alignment of the text
@@ -10936,8 +10894,8 @@ export namespace GES {
         /**
          * The text to diplay
          */
-        get text(): (string | null);
-        set text(val: (string | null));
+        get text(): string | null;
+        set text(val: string | null);
 
         /**
          * Vertical alignent of the text
@@ -11000,7 +10958,7 @@ export namespace GES {
          * Get the pango font description used by `self`.
          * @returns The pango font description used by `self`.
          */
-        get_font_desc(): (string | null);
+        get_font_desc(): string | null;
 
         /**
          * Get the horizontal aligment used by `self`.
@@ -11012,7 +10970,7 @@ export namespace GES {
          * Get the text currently set on `self`.
          * @returns The text currently set on `self`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Get the vertical aligment used by `self`.
@@ -11042,7 +11000,7 @@ export namespace GES {
          * Sets the pango font description of the text
          * @param font_desc the pango font description
          */
-        set_font_desc(font_desc: (string | null)): void;
+        set_font_desc(font_desc: string | null): void;
 
         /**
          * Sets the horizontal aligment of the text.
@@ -11054,7 +11012,7 @@ export namespace GES {
          * Sets the text this clip will render.
          * @param text the text to render. an internal copy of this text will be made.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * Sets the vertical aligment of the text.
@@ -11136,7 +11094,7 @@ export namespace GES {
              * @since 1.18
              * @run-last
              */
-            "select-element-track": (arg0: Clip, arg1: TrackElement) => (Track | null);
+            "select-element-track": (arg0: Clip, arg1: TrackElement) => Track | null;
             /**
              * This will be emitted whenever the timeline needs to determine which
              * tracks a clip's children should be added to. The track element will
@@ -11247,9 +11205,9 @@ export namespace GES {
         interface ConstructorProps extends Gst.Bin.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
             auto_transition: boolean;
             autoTransition: boolean;
-            duration: (bigint | number);
-            snapping_distance: (bigint | number);
-            snappingDistance: (bigint | number);
+            duration: bigint | number;
+            snapping_distance: bigint | number;
+            snappingDistance: bigint | number;
         }
     }
 
@@ -11402,7 +11360,7 @@ export namespace GES {
          * @default 0
          */
         get snapping_distance(): number;
-        set snapping_distance(val: (bigint | number));
+        set snapping_distance(val: bigint | number);
 
         /**
          * The distance (in nanoseconds) at which a {@link GES.TimelineElement} being
@@ -11412,7 +11370,7 @@ export namespace GES {
          * @default 0
          */
         get snappingDistance(): number;
-        set snappingDistance(val: (bigint | number));
+        set snappingDistance(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -11606,7 +11564,7 @@ export namespace GES {
          * @param name The name of the element to find
          * @returns The timeline element in `timeline` with the given `name`, or `null` if it was not found.
          */
-        get_element(name: string): (TimelineElement | null);
+        get_element(name: string): TimelineElement | null;
 
         /**
          * This method allows you to convert a timeline {@link Gst.ClockTime} into its
@@ -11638,7 +11596,7 @@ export namespace GES {
          * @param priority The priority/index of the layer to find
          * @returns The layer with the given `priority`, or `null` if none was found. Since 1.6
          */
-        get_layer(priority: number): (Layer | null);
+        get_layer(priority: number): Layer | null;
 
         /**
          * Get the list of {@link GES.Layer}-s present in the timeline.
@@ -11652,7 +11610,7 @@ export namespace GES {
          * @param track A track
          * @returns The pad corresponding to `track`, or `null` if there is an error.
          */
-        get_pad_for_track(track: Track): (Gst.Pad | null);
+        get_pad_for_track(track: Track): Gst.Pad | null;
 
         /**
          * Gets the {@link GES.Timeline.snapping_distance} for the timeline.
@@ -11665,7 +11623,7 @@ export namespace GES {
          * @param pad A pad
          * @returns The track corresponding to `pad`, or `null` if there is an error.
          */
-        get_track_for_pad(pad: Gst.Pad): (Track | null);
+        get_track_for_pad(pad: Gst.Pad): Track | null;
 
         /**
          * Get the list of {@link GES.Track}-s used by the timeline.
@@ -11719,7 +11677,7 @@ export namespace GES {
          * @param layer_priority The layer into which the element should be pasted. -1 means paste to the same layer from which `element` has been copied from
          * @returns The newly created element, or `null` if pasting fails.
          */
-        paste_element(element: TimelineElement, position: Gst.ClockTime, layer_priority: number): (TimelineElement | null);
+        paste_element(element: TimelineElement, position: Gst.ClockTime, layer_priority: number): TimelineElement | null;
 
         /**
          * Removes a layer from the timeline.
@@ -11744,7 +11702,7 @@ export namespace GES {
          * @param overwrite `true` to overwrite file if it exists
          * @returns `true` if `timeline` was successfully saved to `uri`.
          */
-        save_to_uri(uri: string, formatter_asset: (Asset | null), overwrite: boolean): boolean;
+        save_to_uri(uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean;
 
         /**
          * Sets {@link GES.Timeline.auto_transition} for the timeline. This will also set
@@ -11774,7 +11732,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -11933,14 +11891,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -11949,7 +11907,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -11986,7 +11944,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -12077,7 +12035,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -12116,7 +12074,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -12200,7 +12158,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -12219,7 +12177,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -12246,7 +12204,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
@@ -12325,7 +12283,7 @@ export namespace GES {
          * @param name name of the property to set
          * @param value new {@link GObject.Value} for the property
          */
-        set_property(name: string, value: (GObject.Value | any)): void;
+        set_property(name: string, value: GObject.Value | any): void;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
@@ -12534,17 +12492,17 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-            duration: (bigint | number);
-            in_point: (bigint | number);
-            inPoint: (bigint | number);
-            max_duration: (bigint | number);
-            maxDuration: (bigint | number);
-            name: (string | null);
-            parent: (TimelineElement | null);
+            duration: bigint | number;
+            in_point: bigint | number;
+            inPoint: bigint | number;
+            max_duration: bigint | number;
+            maxDuration: bigint | number;
+            name: string | null;
+            parent: TimelineElement | null;
             priority: number;
             serialize: boolean;
-            start: (bigint | number);
-            timeline: (Timeline | null);
+            start: bigint | number;
+            timeline: Timeline | null;
         }
     }
 
@@ -12646,7 +12604,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         /**
          * The initial offset to use internally when outputting content (in
@@ -12665,7 +12623,7 @@ export namespace GES {
          * @default 0
          */
         get in_point(): number;
-        set in_point(val: (bigint | number));
+        set in_point(val: bigint | number);
 
         /**
          * The initial offset to use internally when outputting content (in
@@ -12684,7 +12642,7 @@ export namespace GES {
          * @default 0
          */
         get inPoint(): number;
-        set inPoint(val: (bigint | number));
+        set inPoint(val: bigint | number);
 
         /**
          * The full duration of internal content that is available (a time
@@ -12704,7 +12662,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get max_duration(): number;
-        set max_duration(val: (bigint | number));
+        set max_duration(val: bigint | number);
 
         /**
          * The full duration of internal content that is available (a time
@@ -12724,20 +12682,20 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get maxDuration(): number;
-        set maxDuration(val: (bigint | number));
+        set maxDuration(val: bigint | number);
 
         /**
          * The name of the element. This should be unique within its timeline.
          * @default null
          */
-        get name(): (string | null);
-        set name(val: (string | null));
+        get name(): string | null;
+        set name(val: string | null);
 
         /**
          * The parent container of the element.
          */
-        get parent(): (TimelineElement | null);
-        set parent(val: (TimelineElement | null));
+        get parent(): TimelineElement | null;
+        set parent(val: TimelineElement | null);
 
         /**
          * The priority of the element.
@@ -12764,13 +12722,13 @@ export namespace GES {
          * @default 0
          */
         get start(): number;
-        set start(val: (bigint | number));
+        set start(val: bigint | number);
 
         /**
          * The timeline that the element lies within.
          */
-        get timeline(): (Timeline | null);
-        set timeline(val: (Timeline | null));
+        get timeline(): Timeline | null;
+        set timeline(val: Timeline | null);
 
         /**
          * Compile-time signal type information.
@@ -13051,7 +13009,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
          */
-        edit(layers: (Layer[] | null), new_layer_priority: (bigint | number), mode: EditMode, edge: Edge, position: (bigint | number)): boolean;
+        edit(layers: Layer[] | null, new_layer_priority: bigint | number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
         /**
          * Edits the element within its timeline by adjusting its
@@ -13082,7 +13040,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
          */
-        edit_full(new_layer_priority: (bigint | number), mode: EditMode, edge: Edge, position: (bigint | number)): boolean;
+        edit_full(new_layer_priority: bigint | number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
         /**
          * Gets the property of a child of the element.
@@ -13144,7 +13102,7 @@ export namespace GES {
          * Gets the {@link GES.TimelineElement.name} for the element.
          * @returns The name of `self`.
          */
-        get_name(): (string | null);
+        get_name(): string | null;
 
         /**
          * Get the "natural" framerate of `self`. This is to say, for example
@@ -13164,7 +13122,7 @@ export namespace GES {
          * Gets the {@link GES.TimelineElement.parent} for the element.
          * @returns The parent of `self`, or `null` if `self` has no parent.
          */
-        get_parent(): (TimelineElement | null);
+        get_parent(): TimelineElement | null;
 
         /**
          * Gets the {@link GES.TimelineElement.priority} for the element.
@@ -13182,7 +13140,7 @@ export namespace GES {
          * Gets the {@link GES.TimelineElement.timeline} for the element.
          * @returns The timeline of `self`, or `null` if `self` has no timeline.
          */
-        get_timeline(): (Timeline | null);
+        get_timeline(): Timeline | null;
 
         /**
          * Gets the toplevel {@link GES.TimelineElement.parent} of the element.
@@ -13245,7 +13203,7 @@ export namespace GES {
          * @param paste_position The position in the timeline `element` should be pasted to, i.e. the {@link GES.TimelineElement.start} value for the pasted element.
          * @returns The newly created element, or `null` if pasting fails.
          */
-        paste(paste_position: Gst.ClockTime): (TimelineElement | null);
+        paste(paste_position: Gst.ClockTime): TimelineElement | null;
 
         /**
          * Remove a child property from the element. `pspec` should be a
@@ -13303,7 +13261,7 @@ export namespace GES {
          * @param value The value to set the property to
          * @returns `true` if the property was found and set.
          */
-        set_child_property(property_name: string, value: (GObject.Value | any)): boolean;
+        set_child_property(property_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the property of a child of the element. Specifically, the property
@@ -13312,7 +13270,7 @@ export namespace GES {
          * @param pspec The specification of a registered child property to set
          * @param value The value to set the property to
          */
-        set_child_property_by_pspec(pspec: GObject.ParamSpec, value: (GObject.Value | any)): void;
+        set_child_property_by_pspec(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
         /**
          * Sets the property of a child of the element.
@@ -13333,7 +13291,7 @@ export namespace GES {
          * @param value The value to set the property to
          * @returns `true` if the property was found and set.
          */
-        set_child_property_full(property_name: string, value: (GObject.Value | any)): boolean;
+        set_child_property_full(property_name: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets {@link GES.TimelineElement.duration} for the element.
@@ -13390,7 +13348,7 @@ export namespace GES {
          * @param name The name `self` should take
          * @returns `true` if `name` or a generated name for `self` could be set.
          */
-        set_name(name: (string | null)): boolean;
+        set_name(name: string | null): boolean;
 
         /**
          * Sets the {@link GES.TimelineElement.parent} for the element.
@@ -13466,7 +13424,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -13625,14 +13583,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -13641,7 +13599,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -13678,7 +13636,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -13769,7 +13727,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -13808,7 +13766,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -13892,7 +13850,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -13911,7 +13869,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -13938,7 +13896,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -13972,10 +13930,10 @@ export namespace GES {
         interface ConstructorProps extends SourceClip.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
             background: number;
             color: number;
-            font_desc: (string | null);
-            fontDesc: (string | null);
+            font_desc: string | null;
+            fontDesc: string | null;
             halignment: TextHAlign;
-            text: (string | null);
+            text: string | null;
             valignment: TextVAlign;
             xpos: number;
             ypos: number;
@@ -14012,16 +13970,16 @@ export namespace GES {
          * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` or `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          * @default Serif 36
          */
-        get font_desc(): (string | null);
-        set font_desc(val: (string | null));
+        get font_desc(): string | null;
+        set font_desc(val: string | null);
 
         /**
          * Pango font description string
          * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` or `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          * @default Serif 36
          */
-        get fontDesc(): (string | null);
-        set fontDesc(val: (string | null));
+        get fontDesc(): string | null;
+        set fontDesc(val: string | null);
 
         /**
          * Horizontal alignment of the text
@@ -14035,8 +13993,8 @@ export namespace GES {
          * The text to diplay
          * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` or `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
-        get text(): (string | null);
-        set text(val: (string | null));
+        get text(): string | null;
+        set text(val: string | null);
 
         /**
          * Vertical alignent of the text
@@ -14102,7 +14060,7 @@ export namespace GES {
          * Get the pango font description used by `self`.
          * @returns The pango font description used by `self`.
          */
-        get_font_desc(): (string | null);
+        get_font_desc(): string | null;
 
         /**
          * Get the horizontal aligment used by `self`.
@@ -14114,7 +14072,7 @@ export namespace GES {
          * Get the text currently set on `self`.
          * @returns The text currently set on `self`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Get the color used by `self`.
@@ -14156,7 +14114,7 @@ export namespace GES {
          * Sets the pango font description of the text.
          * @param font_desc the pango font description
          */
-        set_font_desc(font_desc: (string | null)): void;
+        set_font_desc(font_desc: string | null): void;
 
         /**
          * Sets the horizontal aligment of the text.
@@ -14168,7 +14126,7 @@ export namespace GES {
          * Sets the text this clip will render.
          * @param text the text to render. an internal copy of this text will be made.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * Sets the vertical aligment of the text.
@@ -14210,9 +14168,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -14261,7 +14217,7 @@ export namespace GES {
          * Get the pango font description used by `source`.
          * @returns The pango font description used by this `source`.
          */
-        get_font_desc(): (string | null);
+        get_font_desc(): string | null;
 
         /**
          * Get the horizontal aligment used by `source`.
@@ -14273,7 +14229,7 @@ export namespace GES {
          * Get the text currently set on the `source`.
          * @returns The text currently set on the `source`.
          */
-        get_text(): (string | null);
+        get_text(): string | null;
 
         /**
          * Get the color used by `source`.
@@ -14310,7 +14266,7 @@ export namespace GES {
          * the text.
          * @param font_desc the pango font description
          */
-        set_font_desc(font_desc: (string | null)): void;
+        set_font_desc(font_desc: string | null): void;
 
         /**
          * Sets the vertical aligment of the text.
@@ -14322,7 +14278,7 @@ export namespace GES {
          * Sets the text this track element will render.
          * @param text the text to render. an internal copy of this text will be made.
          */
-        set_text(text: (string | null)): void;
+        set_text(text: string | null): void;
 
         /**
          * Sets the color of the text.
@@ -14388,12 +14344,12 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Bin.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-            caps: (Gst.Caps | null);
-            duration: (bigint | number);
+            caps: Gst.Caps | null;
+            duration: bigint | number;
             id: string;
             mixing: boolean;
-            restriction_caps: (Gst.Caps | null);
-            restrictionCaps: (Gst.Caps | null);
+            restriction_caps: Gst.Caps | null;
+            restrictionCaps: Gst.Caps | null;
             track_type: TrackType;
             trackType: TrackType;
         }
@@ -14445,7 +14401,7 @@ export namespace GES {
          * Default value: #GST_CAPS_ANY.
          * @construct-only
          */
-        get caps(): (Gst.Caps | null);
+        get caps(): Gst.Caps | null;
 
         /**
          * Current duration of the track
@@ -14486,8 +14442,8 @@ export namespace GES {
          * 
          * Default value: #GST_CAPS_ANY.
          */
-        get restriction_caps(): (Gst.Caps | null);
-        set restriction_caps(val: (Gst.Caps | null));
+        get restriction_caps(): Gst.Caps | null;
+        set restriction_caps(val: Gst.Caps | null);
 
         /**
          * The capabilities that specifies the final output format of the
@@ -14500,8 +14456,8 @@ export namespace GES {
          * 
          * Default value: #GST_CAPS_ANY.
          */
-        get restrictionCaps(): (Gst.Caps | null);
-        set restrictionCaps(val: (Gst.Caps | null));
+        get restrictionCaps(): Gst.Caps | null;
+        set restrictionCaps(val: Gst.Caps | null);
 
         /**
          * The track type of the track. This controls the type of
@@ -14605,7 +14561,7 @@ export namespace GES {
          * Get the {@link GES.Track.caps} of the track.
          * @returns The caps of `track`.
          */
-        get_caps(): (Gst.Caps | null);
+        get_caps(): Gst.Caps | null;
 
         /**
          * Gets the track elements contained in the track. The returned list is
@@ -14625,13 +14581,13 @@ export namespace GES {
          * Gets the {@link GES.Track.restriction_caps} of the track.
          * @returns The restriction-caps of `track`.
          */
-        get_restriction_caps(): (Gst.Caps | null);
+        get_restriction_caps(): Gst.Caps | null;
 
         /**
          * Get the timeline this track belongs to.
          * @returns The timeline that `track` belongs to, or `null` if it does not belong to a timeline.
          */
-        get_timeline(): (Timeline | null);
+        get_timeline(): Timeline | null;
 
         /**
          * See `ges_track_remove_element_full()`, which also returns an error.
@@ -14790,14 +14746,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -14806,7 +14762,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -14843,7 +14799,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -14934,7 +14890,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -14973,7 +14929,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -15057,7 +15013,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -15076,7 +15032,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -15103,7 +15059,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
@@ -15182,7 +15138,7 @@ export namespace GES {
          * @param name name of the property to set
          * @param value new {@link GObject.Value} for the property
          */
-        set_property(name: string, value: (GObject.Value | any)): void;
+        set_property(name: string, value: GObject.Value | any): void;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
@@ -15294,7 +15250,7 @@ export namespace GES {
             autoClampControlSources: boolean;
             has_internal_source: boolean;
             hasInternalSource: boolean;
-            track: (Track | null);
+            track: Track | null;
             track_type: TrackType;
             trackType: TrackType;
         }
@@ -15462,7 +15418,7 @@ export namespace GES {
          * belong to a track.
          * @read-only
          */
-        get track(): (Track | null);
+        get track(): Track | null;
 
         /**
          * The track type of the element, which determines the type of track the
@@ -15560,7 +15516,7 @@ export namespace GES {
          * @param blacklist A blacklist of element factory names, or `null` to not blacklist any element factory
          * @param whitelist A whitelist of element property names, or `null` to whitelist all writeable properties
          */
-        add_children_props(element: Gst.Element, wanted_categories: (string[] | null), blacklist: (string[] | null), whitelist: (string[] | null)): void;
+        add_children_props(element: Gst.Element, wanted_categories: string[] | null, blacklist: string[] | null, whitelist: string[] | null): void;
 
         /**
          * Clamp the `GstTimedValueControlSource` for the specified child property
@@ -15586,7 +15542,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `object` (in nanoseconds)
          * @returns `true` if the edit of `object` completed, `false` on failure.
          */
-        edit(layers: (Layer[] | null), mode: EditMode, edge: Edge, position: (bigint | number)): boolean;
+        edit(layers: Layer[] | null, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
         /**
          * @param args 
@@ -15620,14 +15576,14 @@ export namespace GES {
          * @param property_name The name of the child property to return the control binding of
          * @returns The control binding that was created for the specified child property of `object`, or `null` if `property_name` does not correspond to any control binding.
          */
-        get_control_binding(property_name: string): (Gst.ControlBinding | null);
+        get_control_binding(property_name: string): Gst.ControlBinding | null;
 
         /**
          * Get the {@link Gst.Element} that the track element's underlying nleobject
          * controls.
          * @returns The {@link Gst.Element} being controlled by the nleobject that `object` wraps.
          */
-        get_element(): (Gst.Element | null);
+        get_element(): Gst.Element | null;
 
         /**
          * Get the GNonLin object this object is controlling.
@@ -15645,7 +15601,7 @@ export namespace GES {
          * Get the {@link GES.TrackElement.track} for the element.
          * @returns The track that `object` belongs to, or `null` if it does not belong to a track.
          */
-        get_track(): (Track | null);
+        get_track(): Track | null;
 
         /**
          * Gets the {@link GES.TrackElement.track_type} for the element.
@@ -15756,7 +15712,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -15915,14 +15871,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -15931,7 +15887,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -15968,7 +15924,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16059,7 +16015,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16098,7 +16054,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -16182,7 +16138,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16201,7 +16157,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16228,7 +16184,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -16418,14 +16374,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -16434,7 +16390,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -16471,7 +16427,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16562,7 +16518,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16601,7 +16557,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -16685,7 +16641,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16704,7 +16660,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16731,7 +16687,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -16773,50 +16729,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
-
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         * 
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         * 
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         * 
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         * 
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         * 
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         * 
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -16859,7 +16772,50 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -16919,7 +16875,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -16971,7 +16927,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -17015,7 +16971,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -17039,9 +16995,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Operation.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -17317,7 +17271,7 @@ export namespace GES {
 
         // Constructor properties interface
         interface ConstructorProps extends SourceClipAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            duration: (bigint | number);
+            duration: bigint | number;
             is_nested_timeline: boolean;
             isNestedTimeline: boolean;
         }
@@ -17335,7 +17289,7 @@ export namespace GES {
          * @default 18446744073709551615
          */
         get duration(): number;
-        set duration(val: (bigint | number));
+        set duration(val: bigint | number);
 
         /**
          * The duration (in nanoseconds) of the media file
@@ -17422,7 +17376,7 @@ export namespace GES {
          * @param cancellable optional %GCancellable object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished
          */
-        static ["new"](uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<UriClipAsset> | null)): void;
+        static ["new"](uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UriClipAsset> | null): void;
 
         /**
          * Creates a {@link GES.UriClipAsset} for `uri` synchonously. You should avoid
@@ -17510,7 +17464,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -17553,7 +17507,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -17596,7 +17550,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -17656,7 +17610,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -17679,9 +17633,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends TrackElementAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends TrackElementAsset.ConstructorProps, MetaContainer.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -17782,7 +17734,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -17825,7 +17777,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -17868,7 +17820,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -17928,7 +17880,7 @@ export namespace GES {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -17960,9 +17912,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Source.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -18034,9 +17984,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {
-
-        }
+        interface ConstructorProps extends VideoSource.ConstructorProps, Extractable.ConstructorProps, MetaContainer.ConstructorProps {}
     }
 
     /**
@@ -18106,9 +18054,7 @@ export namespace GES {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Track.ConstructorProps, MetaContainer.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -18259,14 +18205,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -18275,7 +18221,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -18312,7 +18258,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -18403,7 +18349,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -18442,7 +18388,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -18526,7 +18472,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -18545,7 +18491,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -18572,7 +18518,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Increases the reference count of `object`.
@@ -18820,13 +18766,10 @@ export namespace GES {
 
     namespace XmlFormatter {
         // Signal signatures
-        interface SignalSignatures extends BaseXmlFormatter.SignalSignatures {
-        }
+        interface SignalSignatures extends BaseXmlFormatter.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends BaseXmlFormatter.ConstructorProps, Extractable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends BaseXmlFormatter.ConstructorProps, Extractable.ConstructorProps {}
     }
 
     /**
@@ -19643,9 +19586,7 @@ export namespace GES {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
     }
 
     export interface ExtractableNamespace {
@@ -19678,7 +19619,7 @@ export namespace GES {
          * Get the asset that has been set on the extractable object.
          * @returns The asset set on `self`, or `null` if no asset has been set.
          */
-        get_asset(): (Asset | null);
+        get_asset(): Asset | null;
 
         /**
          * Gets the {@link GES.Asset.id} of some associated asset. It may be the case
@@ -19718,9 +19659,7 @@ export namespace GES {
     namespace MetaContainer {
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MetaContainerNamespace {
@@ -19852,14 +19791,14 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
          */
-        get_marker_list(key: string): (MarkerList | null);
+        get_marker_list(key: string): MarkerList | null;
 
         /**
          * Gets the current value of the specified field of the meta container.
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): (GObject.Value | null);
+        get_meta(key: string): GObject.Value | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -19868,7 +19807,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to get
          * @returns The string value under `meta_item`, or `null` if it could not be fetched.
          */
-        get_string(meta_item: string): (string | null);
+        get_string(meta_item: string): string | null;
 
         /**
          * Gets the current uint value of the specified field of the meta
@@ -19905,7 +19844,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `value` types, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta(flags: MetaFlag, meta_item: string, value: (GObject.Value | any)): boolean;
+        register_meta(flags: MetaFlag, meta_item: string, value: GObject.Value | any): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -19996,7 +19935,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold int64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_int64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_int64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -20035,7 +19974,7 @@ export namespace GES {
          * @param value The value to set for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold uint64 typed values, with the given `flags`, and the field was successfully set to `value`.
          */
-        register_meta_uint64(flags: MetaFlag, meta_item: string, value: (bigint | number)): boolean;
+        register_meta_uint64(flags: MetaFlag, meta_item: string, value: bigint | number): boolean;
 
         /**
          * Registers a static metadata field on the container to only hold the
@@ -20119,7 +20058,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_int64(meta_item: string, value: (bigint | number)): boolean;
+        set_int64(meta_item: string, value: bigint | number): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -20138,7 +20077,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: (GObject.Value | null)): boolean;
+        set_meta(meta_item: string, value: GObject.Value | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -20165,7 +20104,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_uint64(meta_item: string, value: (bigint | number)): boolean;
+        set_uint64(meta_item: string, value: bigint | number): boolean;
     }
 
 
@@ -20177,7 +20116,7 @@ export namespace GES {
      * A datatype to hold a frame number.
      * @gir-type Alias
      */
-    type FrameNumber = (bigint | number);
+    type FrameNumber = bigint | number;
 
     /**
      * Name of the imported GIR library

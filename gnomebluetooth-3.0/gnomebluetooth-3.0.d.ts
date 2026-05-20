@@ -441,7 +441,7 @@ export namespace GnomeBluetooth {
          * @param connect Whether try to connect or disconnect from services on a device
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * This will start the process of connecting to one of the known-connectable
@@ -460,7 +460,7 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * This will start the process of connecting to one of the known-connectable
@@ -479,7 +479,7 @@ export namespace GnomeBluetooth {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the connection is complete
          */
-        connect_service(path: string, connect: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes the connection operation. See `bluetooth_client_connect_service()`.

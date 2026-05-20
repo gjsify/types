@@ -174,7 +174,7 @@ export namespace Garcon {
      * @param invocation_hint 
      * @param marshal_data 
      */
-    function marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: null, marshal_data: null): void;
+    function marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: GObject.Value | any, n_param_values: number, param_values: GObject.Value | any, invocation_hint: null, marshal_data: null): void;
 
     /**
      * Sets (or unsets) the desktop environment for which menus will generated.
@@ -213,7 +213,7 @@ export namespace Garcon {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {
-            directory: (MenuDirectory | null);
+            directory: MenuDirectory | null;
             file: Gio.File;
         }
     }
@@ -228,8 +228,8 @@ export namespace Garcon {
         /**
          * The directory entry associated with this menu.
          */
-        get directory(): (MenuDirectory | null);
-        set directory(val: (MenuDirectory | null));
+        get directory(): MenuDirectory | null;
+        set directory(val: MenuDirectory | null);
 
         /**
          * The {@link Gio.File} from which the %GarconMenu was loaded.
@@ -286,7 +286,7 @@ export namespace Garcon {
          * should show up in etc.
          * @returns a {@link Garcon.MenuDirectory}
          */
-        get_directory(): (MenuDirectory | null);
+        get_directory(): MenuDirectory | null;
 
         /**
          * Get all the menu element in `menu`. This contains sub menus, menu items
@@ -295,7 +295,7 @@ export namespace Garcon {
          * Returns a list of {@link Garcon.MenuItem} or `null`. Free the list with
          * `g_list_free()`.
          */
-        get_elements(): (MenuItem[] | null);
+        get_elements(): MenuItem[] | null;
 
         /**
          * Get the file for `menu`. It refers to the .menu file from which
@@ -329,7 +329,7 @@ export namespace Garcon {
          * @param name a sub menu name
          * @returns a {@link Garcon.Menu} or `null`.
          */
-        get_menu_with_name(name: string): (Menu | null);
+        get_menu_with_name(name: string): Menu | null;
 
         /**
          * Returns a sorted list of {@link Garcon.Menu} submenus of `menu`. The list
@@ -342,7 +342,7 @@ export namespace Garcon {
          * Returns the parent {@link Garcon.Menu} or `menu`.
          * @returns a {@link Garcon.Menu} or `null` if `menu` is the root menu.
          */
-        get_parent(): (Menu | null);
+        get_parent(): Menu | null;
 
         /**
          * This function loads the entire menu tree from the file referred to
@@ -359,7 +359,7 @@ export namespace Garcon {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the menu was loaded successfully or          `false` if there was an error or the process was          cancelled.
          */
-        load(cancellable: (Gio.Cancellable | null)): boolean;
+        load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param b 
@@ -880,7 +880,7 @@ export namespace Garcon {
          * @param action_name 
          * @returns a {@link Garcon.MenuItemAction}
          */
-        get_action(action_name: string): (MenuItemAction | null);
+        get_action(action_name: string): MenuItemAction | null;
 
         /**
          * @returns list of action name
@@ -1218,13 +1218,10 @@ export namespace Garcon {
 
     namespace MenuItemCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1280,19 +1277,16 @@ export namespace Garcon {
          * @param desktop_id desktop id to update
          * @returns a {@link Garcon.MenuItem}
          */
-        lookup(uri: string, desktop_id: string): (MenuItem | null);
+        lookup(uri: string, desktop_id: string): MenuItem | null;
     }
 
 
     namespace MenuItemPool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1429,7 +1423,7 @@ export namespace Garcon {
          * @param merge_dirs list of menu directories to merge
          * @param cancellable 
          */
-        run(merge_files: string[], merge_dirs: string[], cancellable: (Gio.Cancellable | null)): boolean;
+        run(merge_files: string[], merge_dirs: string[], cancellable: Gio.Cancellable | null): boolean;
 
         get_file(): Gio.File;
 
@@ -1676,7 +1670,7 @@ export namespace Garcon {
         /**
          * @param cancellable 
          */
-        run(cancellable: (Gio.Cancellable | null)): boolean;
+        run(cancellable: Gio.Cancellable | null): boolean;
 
         get_file(): Gio.File;
 
@@ -1689,13 +1683,10 @@ export namespace Garcon {
 
     namespace MenuSeparator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {}
     }
 
     /**
@@ -1967,9 +1958,7 @@ export namespace Garcon {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuElementNamespace {
@@ -2021,9 +2010,7 @@ export namespace Garcon {
 
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     export interface MenuTreeProviderNamespace {

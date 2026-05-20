@@ -106,9 +106,7 @@ export namespace Cvc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -212,8 +210,8 @@ export namespace Cvc {
             humanProfile: string;
             icon_name: string;
             iconName: string;
-            id: (bigint | number);
-            index: (bigint | number);
+            id: bigint | number;
+            index: bigint | number;
             name: string;
             pa_context: never;
             paContext: never;
@@ -319,7 +317,7 @@ export namespace Cvc {
          * @param profile the profile to change to or `null`.
          * @returns `true` if profile successfully changed or already using this profile.
          */
-        change_profile(profile: (string | null)): boolean;
+        change_profile(profile: string | null): boolean;
 
         get_gicon(): Gio.Icon;
 
@@ -600,7 +598,7 @@ export namespace Cvc {
          * @param profile Can be `null` if any profile present on this port is okay
          * @returns This method will attempt to swap the profile on the card of the device with given profile name.  If successful it will set the preferred profile on that device so as we know the next time the user moves to that device it should have this profile active.
          */
-        change_profile_on_selected_device(device: MixerUIDevice, profile: (string | null)): boolean;
+        change_profile_on_selected_device(device: MixerUIDevice, profile: string | null): boolean;
 
         close(): boolean;
 
@@ -777,9 +775,7 @@ export namespace Cvc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MixerStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
     /**
@@ -842,9 +838,7 @@ export namespace Cvc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MixerStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
     /**
@@ -907,9 +901,7 @@ export namespace Cvc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MixerStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
     /**
@@ -972,9 +964,7 @@ export namespace Cvc {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends MixerStream.ConstructorProps {
-
-        }
+        interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
     /**
@@ -1052,8 +1042,8 @@ export namespace Cvc {
             applicationId: string;
             can_decibel: boolean;
             canDecibel: boolean;
-            card_index: (bigint | number);
-            cardIndex: (bigint | number);
+            card_index: bigint | number;
+            cardIndex: bigint | number;
             channel_map: ChannelMap;
             channelMap: ChannelMap;
             decibel: number;
@@ -1062,8 +1052,8 @@ export namespace Cvc {
             formFactor: string;
             icon_name: string;
             iconName: string;
-            id: (bigint | number);
-            index: (bigint | number);
+            id: bigint | number;
+            index: bigint | number;
             is_event_stream: boolean;
             isEventStream: boolean;
             is_muted: boolean;
@@ -1077,7 +1067,7 @@ export namespace Cvc {
             state: MixerStreamState;
             sysfs_path: string;
             sysfsPath: string;
-            volume: (bigint | number);
+            volume: bigint | number;
         }
     }
 
@@ -1116,13 +1106,13 @@ export namespace Cvc {
          * @default 4294967295
          */
         get card_index(): number;
-        set card_index(val: (bigint | number));
+        set card_index(val: bigint | number);
 
         /**
          * @default 4294967295
          */
         get cardIndex(): number;
-        set cardIndex(val: (bigint | number));
+        set cardIndex(val: bigint | number);
 
         get channel_map(): ChannelMap;
         set channel_map(val: ChannelMap);
@@ -1258,7 +1248,7 @@ export namespace Cvc {
          * @default 0
          */
         get volume(): number;
-        set volume(val: (bigint | number));
+        set volume(val: bigint | number);
 
         /**
          * Compile-time signal type information.
@@ -1601,7 +1591,7 @@ export namespace Cvc {
          * @param current The currently selected profile
          * @returns a profile name, valid as long as the UI device profiles are.
          */
-        get_best_profile(selected: (string | null), current: string): string;
+        get_best_profile(selected: string | null, current: string): string;
 
         get_description(): string;
 

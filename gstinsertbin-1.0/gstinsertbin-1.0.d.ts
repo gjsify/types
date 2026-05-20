@@ -90,9 +90,7 @@ export namespace GstInsertBin {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
     }
 
     /**
@@ -127,7 +125,7 @@ export namespace GstInsertBin {
 
         _init(...args: any[]): void;
 
-        static ["new"](name: (string | null)): InsertBin;
+        static ["new"](name: string | null): InsertBin;
 
         // Signals
         /** @signal */
@@ -277,7 +275,7 @@ export namespace GstInsertBin {
          * @param name name of the property to set
          * @param value new {@link GObject.Value} for the property
          */
-        set_property(name: string, value: (GObject.Value | any)): void;
+        set_property(name: string, value: GObject.Value | any): void;
 
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.

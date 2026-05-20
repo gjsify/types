@@ -48,7 +48,7 @@ export namespace TotemPlParser {
         static EMPTY_PLAYLIST: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         static quark(): GLib.Quark;
@@ -447,7 +447,7 @@ export namespace TotemPlParser {
          * @param len the length of data to check
          * @param debug `true` if debug statements should be printed
          */
-        static can_parse_from_data(data: string, len: (bigint | number), debug: boolean): boolean;
+        static can_parse_from_data(data: string, len: bigint | number, debug: boolean): boolean;
 
         /**
          * Checks if the file can be parsed. Files can be parsed if:
@@ -552,7 +552,7 @@ export namespace TotemPlParser {
          * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<ParserResult>;
+        parse_async(uri: string, fallback: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<ParserResult>;
 
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
@@ -567,7 +567,7 @@ export namespace TotemPlParser {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
          */
-        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        parse_async(uri: string, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
@@ -582,7 +582,7 @@ export namespace TotemPlParser {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
          */
-        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ParserResult> | void);
+        parse_async(uri: string, fallback: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ParserResult> | void;
 
         /**
          * Finishes an asynchronous playlist parsing operation started with `totem_pl_parser_parse_async()`
@@ -603,7 +603,7 @@ export namespace TotemPlParser {
          * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
          * @returns a {@link TotemPlParser.ParserResult}
          */
-        parse_with_base(uri: string, base: (string | null), fallback: boolean): ParserResult;
+        parse_with_base(uri: string, base: string | null, fallback: boolean): ParserResult;
 
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`, using `base` to resolve relative paths where appropriate.
@@ -619,7 +619,7 @@ export namespace TotemPlParser {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
          */
-        parse_with_base_async(uri: string, base: (string | null), fallback: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        parse_with_base_async(uri: string, base: string | null, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Writes the playlist held by `parser` and `playlist` out to the path
@@ -659,7 +659,7 @@ export namespace TotemPlParser {
          * @param type a {@link TotemPlParser.ParserType} for the outputted playlist
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous version of `totem_pl_parser_save()`. For more details
@@ -674,7 +674,7 @@ export namespace TotemPlParser {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when saving has finished
          */
-        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous version of `totem_pl_parser_save()`. For more details
@@ -689,7 +689,7 @@ export namespace TotemPlParser {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when saving has finished
          */
-        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous playlist saving operation started with `totem_pl_parser_save_async()`.
@@ -705,13 +705,10 @@ export namespace TotemPlParser {
 
     namespace Playlist {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -766,7 +763,7 @@ export namespace TotemPlParser {
          * @param value an empty {@link GObject.Value} to set
          * @returns `true` if `iter` contains data for `key`.
          */
-        get_value(iter: PlaylistIter, key: string, value: (GObject.Value | any)): boolean;
+        get_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
 
         /**
          * Inserts a new empty element to `playlist` at `position`, and modifies
@@ -819,7 +816,7 @@ export namespace TotemPlParser {
          * @param value {@link GObject.Value} containing the key value
          * @returns `true` if the value could be stored in `playlist`
          */
-        set_value(iter: PlaylistIter, key: string, value: (GObject.Value | any)): boolean;
+        set_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
 
         /**
          * Returns the number of elements in `playlist`.
@@ -855,10 +852,7 @@ export namespace TotemPlParser {
         static $gtype: GObject.GType<PlaylistIter>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
     }
 
 

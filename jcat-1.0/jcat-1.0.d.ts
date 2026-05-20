@@ -223,13 +223,10 @@ export namespace Jcat {
 
     namespace Blob {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -252,9 +249,9 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ["new"](kind: BlobKind, data: (GLib.Bytes | Uint8Array)): Blob;
+        static ["new"](kind: BlobKind, data: GLib.Bytes | Uint8Array): Blob;
 
-        static new_full(kind: BlobKind, data: (GLib.Bytes | Uint8Array), flags: BlobFlags): Blob;
+        static new_full(kind: BlobKind, data: GLib.Bytes | Uint8Array, flags: BlobFlags): Blob;
 
         static new_utf8(kind: BlobKind, data: string): Blob;
 
@@ -337,7 +334,7 @@ export namespace Jcat {
          * Sets an optional AppStream ID on the blob.
          * @param appstream_id string
          */
-        set_appstream_id(appstream_id: (string | null)): void;
+        set_appstream_id(appstream_id: string | null): void;
 
         /**
          * Sets the blob target.
@@ -349,7 +346,7 @@ export namespace Jcat {
          * Sets the creation timestamp for the blob.
          * @param timestamp UTC timestamp
          */
-        set_timestamp(timestamp: (bigint | number)): void;
+        set_timestamp(timestamp: bigint | number): void;
 
         /**
          * Converts the {@link Jcat.Blob} to a string.
@@ -361,13 +358,10 @@ export namespace Jcat {
 
     namespace BtCheckpoint {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -390,7 +384,7 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ["new"](blob: (GLib.Bytes | Uint8Array)): BtCheckpoint;
+        static ["new"](blob: GLib.Bytes | Uint8Array): BtCheckpoint;
 
         // Signals
         /** @signal */
@@ -459,13 +453,10 @@ export namespace Jcat {
 
     namespace BtVerifier {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -488,7 +479,7 @@ export namespace Jcat {
 
         _init(...args: any[]): void;
 
-        static ["new"](blob: (GLib.Bytes | Uint8Array)): BtVerifier;
+        static ["new"](blob: GLib.Bytes | Uint8Array): BtVerifier;
 
         // Signals
         /** @signal */
@@ -538,13 +529,10 @@ export namespace Jcat {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -623,7 +611,7 @@ export namespace Jcat {
          * Gets the local state directory the engines are using.
          * @returns path
          */
-        get_keyring_path(): (string | null);
+        get_keyring_path(): string | null;
 
         /**
          * Sets the local state directory for the engines to use.
@@ -638,7 +626,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          */
-        verify_blob(data: (GLib.Bytes | Uint8Array), blob: Blob, flags: VerifyFlags): Result;
+        verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags): Result;
 
         /**
          * Verifies a {@link Jcat.Item} using the public keys added to the context. All
@@ -649,7 +637,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
          * @returns array of {@link Jcat.Result}, or `null` for failed
          */
-        verify_item(data: (GLib.Bytes | Uint8Array), item: Item, flags: VerifyFlags): Result[];
+        verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags): Result[];
 
         /**
          * Verifies a {@link Jcat.Item} using the target to an item. At least one `verify=CHECKSUM` (e.g. SHA256)
@@ -806,7 +794,7 @@ export namespace Jcat {
          * @param blob {@link GLib.Bytes}
          * @returns %
          */
-        add_public_key_raw(blob: (GLib.Bytes | Uint8Array)): boolean;
+        add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Gets the blob kind.
@@ -828,7 +816,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @returns {@link Jcat.Blob}, or `null` for failed
          */
-        pubkey_sign(blob: (GLib.Bytes | Uint8Array), cert: (GLib.Bytes | Uint8Array), privkey: (GLib.Bytes | Uint8Array), flags: SignFlags): Blob;
+        pubkey_sign(blob: GLib.Bytes | Uint8Array, cert: GLib.Bytes | Uint8Array, privkey: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
 
         /**
          * Verifies a chunk of data.
@@ -837,7 +825,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          */
-        pubkey_verify(blob: (GLib.Bytes | Uint8Array), blob_signature: (GLib.Bytes | Uint8Array), flags: VerifyFlags): Result;
+        pubkey_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
 
         /**
          * Signs a chunk of data.
@@ -845,7 +833,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @returns {@link Jcat.Blob}, or `null` for failed
          */
-        self_sign(blob: (GLib.Bytes | Uint8Array), flags: SignFlags): Blob;
+        self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
 
         /**
          * Verifies a chunk of data.
@@ -854,19 +842,16 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          */
-        self_verify(blob: (GLib.Bytes | Uint8Array), blob_signature: (GLib.Bytes | Uint8Array), flags: VerifyFlags): Result;
+        self_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
     }
 
 
     namespace File {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -918,7 +903,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_file(gfile: Gio.File, flags: ExportFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        export_file(gfile: Gio.File, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Exports a Jcat file to raw JSON.
@@ -934,7 +919,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Finds the item with the specified ID, falling back to the ID alias if set.
@@ -975,7 +960,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_file(gfile: Gio.File, flags: ImportFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        import_file(gfile: Gio.File, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Imports a Jcat file from raw JSON.
@@ -992,7 +977,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          */
-        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable: (Gio.Cancellable | null)): boolean;
+        import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Converts the {@link Jcat.File} to a string.
@@ -1004,13 +989,10 @@ export namespace Jcat {
 
     namespace Item {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1128,7 +1110,7 @@ export namespace Jcat {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             authority: string;
             engine: Engine;
-            timestamp: (bigint | number);
+            timestamp: bigint | number;
         }
     }
 
@@ -1154,7 +1136,7 @@ export namespace Jcat {
          * @default 0
          */
         get timestamp(): number;
-        set timestamp(val: (bigint | number));
+        set timestamp(val: bigint | number);
 
         /**
          * Compile-time signal type information.

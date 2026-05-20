@@ -276,9 +276,7 @@ export namespace GstAllocators {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends FdAllocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends FdAllocator.ConstructorProps {}
     }
 
     /**
@@ -325,7 +323,7 @@ export namespace GstAllocators {
          * @param fd dmabuf file descriptor
          * @param size memory size
          */
-        static alloc(allocator: Gst.Allocator, fd: number, size: (bigint | number)): (Gst.Memory | null);
+        static alloc(allocator: Gst.Allocator, fd: number, size: bigint | number): Gst.Memory | null;
 
         /**
          * Return a %GstMemory that wraps a dmabuf file descriptor.
@@ -334,7 +332,7 @@ export namespace GstAllocators {
          * @param size memory size
          * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
-        static alloc_with_flags(allocator: Gst.Allocator, fd: number, size: (bigint | number), flags: FdMemoryFlags): (Gst.Memory | null);
+        static alloc_with_flags(allocator: Gst.Allocator, fd: number, size: bigint | number, flags: FdMemoryFlags): Gst.Memory | null;
     }
 
 
@@ -346,9 +344,7 @@ export namespace GstAllocators {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     /**
@@ -396,7 +392,7 @@ export namespace GstAllocators {
          * @param size memory size
          * @param flags extra {@link GstAllocators.FdMemoryFlags}
          */
-        static alloc(allocator: Gst.Allocator, fd: number, size: (bigint | number), flags: FdMemoryFlags): (Gst.Memory | null);
+        static alloc(allocator: Gst.Allocator, fd: number, size: bigint | number, flags: FdMemoryFlags): Gst.Memory | null;
     }
 
 
@@ -432,14 +428,12 @@ export namespace GstAllocators {
              * @param mem 
              * @virtual
              */
-            vfunc_get_phys_addr(mem: Gst.Memory): (bigint | number);
+            vfunc_get_phys_addr(mem: Gst.Memory): bigint | number;
         }
 
 
         // Constructor properties interface
-        interface ConstructorProps extends Gst.Allocator.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
     }
 
     export interface PhysMemoryAllocatorNamespace {

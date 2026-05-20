@@ -41,7 +41,7 @@ export namespace SocialWebClient {
      * @gir-type Callback
      */
     interface ClientServiceContactsQueryOpenViewCallback {
-        (query: ClientService, contact_view: (ClientContactView | null)): void;
+        (query: ClientService, contact_view: ClientContactView | null): void;
     }
 
     /**
@@ -55,7 +55,7 @@ export namespace SocialWebClient {
      * @gir-type Callback
      */
     interface ClientServiceQueryOpenViewCallback {
-        (query: ClientService, item_view: (ClientItemView | null)): void;
+        (query: ClientService, item_view: ClientItemView | null): void;
     }
 
     /**
@@ -76,9 +76,7 @@ export namespace SocialWebClient {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -296,13 +294,10 @@ export namespace SocialWebClient {
 
     namespace ClientLastfm {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -362,7 +357,7 @@ export namespace SocialWebClient {
          * @param tracknumber 
          * @param musicbrainz_id 
          */
-        submit_track(artist: string, album: string, track: string, time: (bigint | number), source: string, rating: string, length: number, tracknumber: number, musicbrainz_id: string): void;
+        submit_track(artist: string, album: string, track: string, time: bigint | number, source: string, rating: string, length: number, tracknumber: number, musicbrainz_id: string): void;
     }
 
 
@@ -392,9 +387,7 @@ export namespace SocialWebClient {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -472,7 +465,7 @@ export namespace SocialWebClient {
          * @param params 
          * @param cb 
          */
-        contacts_query_open_view(query: string, params: ({ [key: string]: any } | GLib.HashTable<string, string>), cb: ClientServiceContactsQueryOpenViewCallback): void;
+        contacts_query_open_view(query: string, params: { [key: string]: any } | GLib.HashTable<string, string>, cb: ClientServiceContactsQueryOpenViewCallback): void;
 
         credentials_updated(): void;
 
@@ -495,7 +488,7 @@ export namespace SocialWebClient {
          * @param params 
          * @param cb 
          */
-        query_open_view(query: string, params: ({ [key: string]: any } | GLib.HashTable<string, string>), cb: ClientServiceQueryOpenViewCallback): void;
+        query_open_view(query: string, params: { [key: string]: any } | GLib.HashTable<string, string>, cb: ClientServiceQueryOpenViewCallback): void;
 
         request_avatar(): void;
 
@@ -510,7 +503,7 @@ export namespace SocialWebClient {
          * @param status_msg 
          * @param fields 
          */
-        update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string, fields: ({ [key: string]: any } | GLib.HashTable<string, string>)): void;
+        update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string, fields: { [key: string]: any } | GLib.HashTable<string, string>): void;
 
         /**
          * @param res 

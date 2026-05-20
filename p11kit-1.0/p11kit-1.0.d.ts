@@ -59,7 +59,7 @@ export namespace P11Kit {
      * @param max_length Maximum length of string block
      * @returns The newly allocated string, or `null` if memory could not be allocated.
      */
-    function space_strdup(string: number, max_length: (bigint | number)): string;
+    function space_strdup(string: number, max_length: bigint | number): string;
 
     /**
      * In PKCS\#11 structures many strings are encoded in a strange way. The string
@@ -79,7 +79,7 @@ export namespace P11Kit {
      * @param max_length Maximum length of string block
      * @returns The length of the space padded string.
      */
-    function space_strlen(string: number, max_length: (bigint | number)): number;
+    function space_strlen(string: number, max_length: bigint | number): number;
 
     /**
      * Lookup a message for the uri error code. These codes are the P11_KIT_URI_XXX
@@ -174,7 +174,7 @@ export namespace P11Kit {
          * @param length a location to return the value length
          * @returns the value for the PIN.
          */
-        get_value(length: (bigint | number)): number;
+        get_value(length: bigint | number): number;
 
         /**
          * Add a reference to a P11KitPin. This should be matched with a later call

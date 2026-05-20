@@ -293,13 +293,10 @@ export namespace GExiv2 {
 
     namespace Metadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -360,7 +357,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static get_tag_description(tag: string): (string | null);
+        static get_tag_description(tag: string): string | null;
 
         /**
          * Get Exiv2's label for this tag.
@@ -368,7 +365,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static get_tag_label(tag: string): (string | null);
+        static get_tag_label(tag: string): string | null;
 
         /**
          * Get Exiv2's type name of a tag.
@@ -379,7 +376,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static get_tag_type(tag: string): (string | null);
+        static get_tag_type(tag: string): string | null;
 
         /**
          * Look up the URI for the namespace for `tag`
@@ -424,7 +421,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static try_get_tag_description(tag: string): (string | null);
+        static try_get_tag_description(tag: string): string | null;
 
         /**
          * Get Exiv2's label for this tag.
@@ -432,7 +429,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static try_get_tag_label(tag: string): (string | null);
+        static try_get_tag_label(tag: string): string | null;
 
         /**
          * Get Exiv2's type name of a tag.
@@ -443,7 +440,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          */
-        static try_get_tag_type(tag: string): (string | null);
+        static try_get_tag_type(tag: string): string | null;
 
         /**
          * Look up the URI for the namespace for `tag`
@@ -493,7 +490,7 @@ export namespace GExiv2 {
          * @param bytes An image buffer to update the metadata on, nor `null`
          * @returns A newly allocated GBytes object containing the image with new metadata
          */
-        as_bytes(bytes: (GLib.Bytes | null)): GLib.Bytes;
+        as_bytes(bytes: GLib.Bytes | null): GLib.Bytes;
 
         /**
          * Removes all tags for all domains (EXIF, IPTC, and XMP).
@@ -545,7 +542,7 @@ export namespace GExiv2 {
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator.
          */
-        from_app1_segment(data: (Uint8Array | string)): boolean;
+        from_app1_segment(data: Uint8Array | string): boolean;
 
         /**
          * Read metadata from a {@link Gio.InputStream}. This function is not very
@@ -561,7 +558,7 @@ export namespace GExiv2 {
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): (string | null);
+        generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
@@ -587,14 +584,14 @@ export namespace GExiv2 {
          * which is more useful for quick or casual use.
          * @returns The photo's comment field.
          */
-        get_comment(): (string | null);
+        get_comment(): string | null;
 
         /**
          * Returns a binary blob of the contained EXIF data, if the image contains any.
          * @param byte_order Whether to export the data in little or big endian format
          * @returns The content of the EXIF data or `null` on error
          */
-        get_exif_data(byte_order: ByteOrder): (GLib.Bytes | null);
+        get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
 
         /**
          * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
@@ -734,7 +731,7 @@ export namespace GExiv2 {
          * load a particular preview into memory.
          * @returns An array of {@link GExiv2.PreviewProperties} instances, one for each preview present in the loaded image.
          */
-        get_preview_properties(): (PreviewProperties[] | null);
+        get_preview_properties(): PreviewProperties[] | null;
 
         /**
          * Query whether the currently loaded image supports writing of EXIF metadata.
@@ -764,7 +761,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's interpreted value as a string
          */
-        get_tag_interpreted_string(tag: string): (string | null);
+        get_tag_interpreted_string(tag: string): string | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -782,7 +779,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The multiple string values of the tag.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
          */
-        get_tag_multiple(tag: string): (string[] | null);
+        get_tag_multiple(tag: string): string[] | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -792,7 +789,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's raw value as a byte array
          */
-        get_tag_raw(tag: string): (GLib.Bytes | null);
+        get_tag_raw(tag: string): GLib.Bytes | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -805,13 +802,13 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
          */
-        get_tag_string(tag: string): (string | null);
+        get_tag_string(tag: string): string | null;
 
         /**
          * Get the currently encoded XMP packet (after having called {@link GExiv2.Metadata.try_get_xmp_packet})
          * @returns The currently-encoded XMP packet (see {@link Metadata.generate_xmp_packet}).
          */
-        get_xmp_packet(): (string | null);
+        get_xmp_packet(): string | null;
 
         /**
          * Get the XMP data from the image.
@@ -861,7 +858,7 @@ export namespace GExiv2 {
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator
          */
-        open_buf(data: (Uint8Array | string)): boolean;
+        open_buf(data: Uint8Array | string): boolean;
 
         /**
          * Populate metadata from `path`.
@@ -909,7 +906,7 @@ export namespace GExiv2 {
          * Sets or replaces the EXIF thumbnail with the data in `buffer`.
          * @param buffer A buffer containing thumbnail data
          */
-        set_exif_thumbnail_from_buffer(buffer: (Uint8Array | string)): void;
+        set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
         /**
          * Sets or replaces the EXIF thumbnail with the image in the file
@@ -953,7 +950,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        set_tag_long(tag: string, value: (bigint | number)): boolean;
+        set_tag_long(tag: string, value: bigint | number): boolean;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -1028,7 +1025,7 @@ export namespace GExiv2 {
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          */
-        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): (string | null);
+        try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
         /**
          * A composite accessor that uses the first available metadata field from a list of well-known
@@ -1054,7 +1051,7 @@ export namespace GExiv2 {
          * which is more useful for quick or casual use.
          * @returns The photo's comment field.
          */
-        try_get_comment(): (string | null);
+        try_get_comment(): string | null;
 
         /**
          * Fetch EXIF `tag` represented by a fraction. `nom` will contain the numerator,
@@ -1155,7 +1152,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's interpreted value as a string
          */
-        try_get_tag_interpreted_string(tag: string): (string | null);
+        try_get_tag_interpreted_string(tag: string): string | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -1169,7 +1166,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The multiple string values of `tag`.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
          */
-        try_get_tag_multiple(tag: string): (string[] | null);
+        try_get_tag_multiple(tag: string): string[] | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -1179,7 +1176,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's raw value as a byte array
          */
-        try_get_tag_raw(tag: string): (GLib.Bytes | null);
+        try_get_tag_raw(tag: string): GLib.Bytes | null;
 
         /**
          * Get a string representationf a tag.
@@ -1190,13 +1187,13 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
          */
-        try_get_tag_string(tag: string): (string | null);
+        try_get_tag_string(tag: string): string | null;
 
         /**
          * Get the currently encoded XMP packet (after having called {@link GExiv2.Metadata.try_generate_xmp_packet})
          * @returns `null` if no packet was generated previously, the XMP packet contents otherwise
          */
-        try_get_xmp_packet(): (string | null);
+        try_get_xmp_packet(): string | null;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -1226,7 +1223,7 @@ export namespace GExiv2 {
          * Sets or replaces the EXIF thumbnail with the data in `buffer`.
          * @param buffer A buffer containing thumbnail data
          */
-        try_set_exif_thumbnail_from_buffer(buffer: (Uint8Array | string)): void;
+        try_set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
         /**
          * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
@@ -1263,7 +1260,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          */
-        try_set_tag_long(tag: string, value: (bigint | number)): boolean;
+        try_set_tag_long(tag: string, value: bigint | number): boolean;
 
         /**
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
@@ -1333,13 +1330,10 @@ export namespace GExiv2 {
 
     namespace PreviewImage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1449,13 +1443,10 @@ export namespace GExiv2 {
 
     namespace PreviewProperties {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**

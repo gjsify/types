@@ -41,9 +41,7 @@ export namespace PantheonWayland {
     namespace ExtendedBehavior {
 
         // Constructor properties interface
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
-
-        }
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
     export interface ExtendedBehaviorNamespace {

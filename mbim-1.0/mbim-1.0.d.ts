@@ -1516,7 +1516,7 @@ export namespace Mbim {
         static INCOMPLETEMESSAGE: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -2722,7 +2722,7 @@ export namespace Mbim {
         static MAXTRANSFER: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -3782,7 +3782,7 @@ export namespace Mbim {
         static DECODEORPARSINGERROR: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
 
         // Static methods
         /**
@@ -6835,7 +6835,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished.
          */
-        static ["new"](file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Device> | null)): void;
+        static ["new"](file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Device> | null): void;
 
         // Methods
         /**
@@ -6860,7 +6860,7 @@ export namespace Mbim {
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
         /**
          * Asynchronously creates a new virtual network device node on top of
@@ -6885,7 +6885,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously creates a new virtual network device node on top of
@@ -6910,7 +6910,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * Finishes an operation started with `mbim_device_add_link()`.
@@ -6943,7 +6943,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
-        close(timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        close(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously closes a {@link Mbim.Device} for I/O.
@@ -6954,7 +6954,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        close(timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        close(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously closes a {@link Mbim.Device} for I/O.
@@ -6965,7 +6965,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        close(timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        close(timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous close operation started with `mbim_device_close()`.
@@ -6989,7 +6989,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        command(message: Message, timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Message>;
+        command(message: Message, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Message>;
 
         /**
          * Asynchronously sends a {@link Mbim.Message} to the device.
@@ -7001,7 +7001,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        command(message: Message, timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously sends a {@link Mbim.Message} to the device.
@@ -7013,7 +7013,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        command(message: Message, timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Message> | void);
+        command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Message> | void;
 
         /**
          * Finishes an operation started with `mbim_device_command()`.
@@ -7041,7 +7041,7 @@ export namespace Mbim {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_all_links(base_ifname: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
@@ -7060,7 +7060,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        delete_all_links(base_ifname: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
@@ -7079,7 +7079,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        delete_all_links(base_ifname: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `mbim_device_delete_all_links()`.
@@ -7100,7 +7100,7 @@ export namespace Mbim {
          * @param ifname the name of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
-        delete_link(ifname: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        delete_link(ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously deletes a virtual network interface that has been previously
@@ -7115,7 +7115,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        delete_link(ifname: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        delete_link(ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously deletes a virtual network interface that has been previously
@@ -7130,7 +7130,7 @@ export namespace Mbim {
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        delete_link(ifname: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        delete_link(ifname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an operation started with `mbim_device_delete_link()`.
@@ -7205,7 +7205,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
-        open(timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
@@ -7216,7 +7216,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        open(timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
@@ -7227,7 +7227,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        open(timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open(timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous open operation started with `mbim_device_open()`.
@@ -7248,7 +7248,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
-        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
@@ -7263,7 +7263,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously opens a {@link Mbim.Device} for I/O.
@@ -7278,7 +7278,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
-        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an asynchronous open operation started with `mbim_device_open_full()`.
@@ -7345,7 +7345,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -7388,7 +7388,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -7431,7 +7431,7 @@ export namespace Mbim {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -7491,7 +7491,7 @@ export namespace Mbim {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -8433,10 +8433,7 @@ export namespace Mbim {
         static $gtype: GObject.GType<Message>;
 
         // Constructors
-
-        constructor(properties?: Partial<{
-
-        }>);
+        constructor(properties?: Partial<{}>);
 
         static atds_location_query_new(): Message;
 
@@ -8450,11 +8447,11 @@ export namespace Mbim {
 
         static atds_signal_query_new(): Message;
 
-        static auth_aka_query_new(rand: (Uint8Array | string), autn: (Uint8Array | string)): Message;
+        static auth_aka_query_new(rand: Uint8Array | string, autn: Uint8Array | string): Message;
 
-        static auth_akap_query_new(rand: (Uint8Array | string), autn: (Uint8Array | string), network_name: string): Message;
+        static auth_akap_query_new(rand: Uint8Array | string, autn: Uint8Array | string, network_name: string): Message;
 
-        static auth_sim_query_new(rand1: (Uint8Array | string), rand2: (Uint8Array | string), rand3: (Uint8Array | string), n: number): Message;
+        static auth_sim_query_new(rand1: Uint8Array | string, rand2: Uint8Array | string, rand3: Uint8Array | string, n: number): Message;
 
         static close_done_new(transaction_id: number, error_status_code: StatusError): Message;
 
@@ -8462,7 +8459,7 @@ export namespace Mbim {
 
         static command_new(transaction_id: number, service: Service, cid: number, command_type: MessageCommandType): Message;
 
-        static compal_at_command_query_new(command_req: (Uint8Array | string)): Message;
+        static compal_at_command_query_new(command_req: Uint8Array | string): Message;
 
         static connect_query_new(session_id: number, activation_state: ActivationState, voice_call_state: VoiceCallState, ip_type: ContextIpType, context_type: Uuid, nw_error: number): Message;
 
@@ -8484,13 +8481,13 @@ export namespace Mbim {
 
         static error_new(transaction_id: number, error_status_code: ProtocolError): Message;
 
-        static fibocom_at_command_set_new(command_req: (Uint8Array | string)): Message;
+        static fibocom_at_command_set_new(command_req: Uint8Array | string): Message;
 
         static function_error_new(transaction_id: number, error_status_code: ProtocolError): Message;
 
         static google_carrier_lock_query_new(): Message;
 
-        static google_carrier_lock_set_new(data: (Uint8Array | string)): Message;
+        static google_carrier_lock_set_new(data: Uint8Array | string): Message;
 
         static home_provider_query_new(): Message;
 
@@ -8580,7 +8577,7 @@ export namespace Mbim {
 
         static ms_sar_transmission_status_set_new(channel_notification: TransmissionNotificationStatus, hysteresis_timer: number): Message;
 
-        static ms_uicc_low_level_access_apdu_set_new(channel: number, secure_messaging: UiccSecureMessaging, class_byte_type: UiccClassByteType, command: (Uint8Array | string)): Message;
+        static ms_uicc_low_level_access_apdu_set_new(channel: number, secure_messaging: UiccSecureMessaging, class_byte_type: UiccClassByteType, command: Uint8Array | string): Message;
 
         static ms_uicc_low_level_access_application_list_query_new(): Message;
 
@@ -8588,13 +8585,13 @@ export namespace Mbim {
 
         static ms_uicc_low_level_access_close_channel_set_new(channel: number, channel_group: number): Message;
 
-        static ms_uicc_low_level_access_file_status_query_new(version: number, application_id: (Uint8Array | string), file_path: (Uint8Array | string)): Message;
+        static ms_uicc_low_level_access_file_status_query_new(version: number, application_id: Uint8Array | string, file_path: Uint8Array | string): Message;
 
-        static ms_uicc_low_level_access_open_channel_set_new(app_id: (Uint8Array | string), select_p2_arg: number, channel_group: number): Message;
+        static ms_uicc_low_level_access_open_channel_set_new(app_id: Uint8Array | string, select_p2_arg: number, channel_group: number): Message;
 
-        static ms_uicc_low_level_access_read_binary_query_new(version: number, application_id: (Uint8Array | string), file_path: (Uint8Array | string), read_offset: number, read_size: number, local_pin: string, data: (Uint8Array | string)): Message;
+        static ms_uicc_low_level_access_read_binary_query_new(version: number, application_id: Uint8Array | string, file_path: Uint8Array | string, read_offset: number, read_size: number, local_pin: string, data: Uint8Array | string): Message;
 
-        static ms_uicc_low_level_access_read_record_query_new(version: number, application_id: (Uint8Array | string), file_path: (Uint8Array | string), record_number: number, local_pin: string, data: (Uint8Array | string)): Message;
+        static ms_uicc_low_level_access_read_record_query_new(version: number, application_id: Uint8Array | string, file_path: Uint8Array | string, record_number: number, local_pin: string, data: Uint8Array | string): Message;
 
         static ms_uicc_low_level_access_reset_query_new(): Message;
 
@@ -8650,13 +8647,13 @@ export namespace Mbim {
 
         static proxy_control_configuration_set_new(device_path: string, timeout: number): Message;
 
-        static qdu_command_set_new(command_type: QuectelCommandType, command_string: (Uint8Array | string)): Message;
+        static qdu_command_set_new(command_type: QuectelCommandType, command_string: Uint8Array | string): Message;
 
         static qdu_file_open_query_new(): Message;
 
         static qdu_file_open_set_new(file_type: QduFileType, file_size: number): Message;
 
-        static qdu_file_write_set_new(data_buffer: (Uint8Array | string)): Message;
+        static qdu_file_write_set_new(data_buffer: Uint8Array | string): Message;
 
         static qdu_quectel_read_version_set_new(version_type: QduQuectelVersionType): Message;
 
@@ -8666,7 +8663,7 @@ export namespace Mbim {
 
         static qdu_update_session_set_new(session_action: QduSessionAction, session_type: QduSessionType): Message;
 
-        static qmi_msg_set_new(qmi_msg: (Uint8Array | string)): Message;
+        static qmi_msg_set_new(qmi_msg: Uint8Array | string): Message;
 
         static quectel_radio_state_query_new(): Message;
 
@@ -8680,7 +8677,7 @@ export namespace Mbim {
 
         static register_state_set_new(provider_id: string, register_action: RegisterAction, data_class: DataClass): Message;
 
-        static service_activation_set_new(buffer: (Uint8Array | string)): Message;
+        static service_activation_set_new(buffer: Uint8Array | string): Message;
 
         static signal_state_query_new(): Message;
 
@@ -8700,17 +8697,17 @@ export namespace Mbim {
 
         static stk_envelope_query_new(): Message;
 
-        static stk_envelope_set_new(data: (Uint8Array | string)): Message;
+        static stk_envelope_set_new(data: Uint8Array | string): Message;
 
         static stk_pac_query_new(): Message;
 
-        static stk_pac_set_new(pac_host_control: (Uint8Array | string)): Message;
+        static stk_pac_set_new(pac_host_control: Uint8Array | string): Message;
 
-        static stk_terminal_response_set_new(response: (Uint8Array | string)): Message;
+        static stk_terminal_response_set_new(response: Uint8Array | string): Message;
 
         static subscriber_ready_status_query_new(): Message;
 
-        static ussd_set_new(action: UssdAction, data_coding_scheme: number, payload: (Uint8Array | string)): Message;
+        static ussd_set_new(action: UssdAction, data_coding_scheme: number, payload: Uint8Array | string): Message;
 
         static visible_providers_query_new(action: VisibleProvidersAction): Message;
 

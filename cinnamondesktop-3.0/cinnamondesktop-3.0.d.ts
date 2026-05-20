@@ -95,7 +95,7 @@ export namespace CinnamonDesktop {
         static NO_DPMS_EXTENSION: number;
 
         // Constructors
-        constructor(options: { message: string, code: number });
+        constructor(options: { message: string; code: number });
     }
 
 
@@ -150,7 +150,7 @@ export namespace CinnamonDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: (bigint | number)): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
 
     /**
      * Calculates the MD5 checksum of the uri. This can be useful
@@ -198,7 +198,7 @@ export namespace CinnamonDesktop {
      * @returns the country name. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_code(code: string, translation: (string | null)): string;
+    function get_country_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the country description for `locale`. If `translation` is
@@ -208,7 +208,7 @@ export namespace CinnamonDesktop {
      * @returns the country description. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_locale(locale: string, translation: (string | null)): string;
+    function get_country_from_locale(locale: string, translation: string | null): string;
 
     /**
      * Gets the default input source's type and identifier for a given
@@ -227,7 +227,7 @@ export namespace CinnamonDesktop {
      * @returns the language name. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_code(code: string, translation: (string | null)): string;
+    function get_language_from_code(code: string, translation: string | null): string;
 
     /**
      * Gets the language description for `locale`. If `translation` is
@@ -237,7 +237,7 @@ export namespace CinnamonDesktop {
      * @returns the language description. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_locale(locale: string, translation: (string | null)): string;
+    function get_language_from_locale(locale: string, translation: string | null): string;
 
     /**
      * Gets a translation of the raw `modifier` string. If `translation`
@@ -247,7 +247,7 @@ export namespace CinnamonDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      * @since 3.34
      */
-    function get_translated_modifier(modifier: string, translation: (string | null)): string;
+    function get_translated_modifier(modifier: string, translation: string | null): string;
 
     /**
      * Returns `true` if there are translations for language `code`.
@@ -308,7 +308,7 @@ export namespace CinnamonDesktop {
      * @param connection An {@link Gio.DBusConnection} to the session bus, or `null`
      * @param cancellable {@link Gio.Cancellable} to use
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -335,7 +335,7 @@ export namespace CinnamonDesktop {
      * @param cancellable {@link Gio.Cancellable} to use
      * @param callback Callback to call when the operation is done
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): void;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
@@ -362,7 +362,7 @@ export namespace CinnamonDesktop {
      * @param cancellable {@link Gio.Cancellable} to use
      * @param callback Callback to call when the operation is done
      */
-    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+    function start_systemd_scope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<string> | null): globalThis.Promise<boolean> | void;
 
     /**
      * Finish an asynchronous operation to create a transient scope that was
@@ -412,9 +412,7 @@ export namespace CinnamonDesktop {
         }
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -737,13 +735,10 @@ export namespace CinnamonDesktop {
 
     namespace DesktopThumbnailFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -792,7 +787,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: (bigint | number)): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
         /**
          * Creates a failed thumbnail for the file so that we don't try
@@ -802,7 +797,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param mtime the modification time of the file
          */
-        create_failed_thumbnail(uri: string, mtime: (bigint | number)): void;
+        create_failed_thumbnail(uri: string, mtime: bigint | number): void;
 
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -825,7 +820,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: (bigint | number)): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
         /**
          * Tries to locate an existing thumbnail for the file specified.
@@ -835,7 +830,7 @@ export namespace CinnamonDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: (bigint | number)): string;
+        lookup(uri: string, mtime: bigint | number): string;
 
         /**
          * Saves `thumbnail` at the right place. If the save fails a
@@ -846,19 +841,16 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number)): void;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
     }
 
 
     namespace IdleMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
     }
 
     /**
@@ -902,13 +894,13 @@ export namespace CinnamonDesktop {
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: (bigint | number), callback: (IdleMonitorWatchFunc | null)): number;
+        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback: (IdleMonitorWatchFunc | null)): number;
+        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
 
         /**
          * @returns The current idle time, in milliseconds
@@ -965,7 +957,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1009,19 +1001,16 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
     namespace PnpIds {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1245,13 +1234,10 @@ export namespace CinnamonDesktop {
 
     namespace RROutputInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -1505,7 +1491,7 @@ export namespace CinnamonDesktop {
          * @param screen 
          * @param callback 
          */
-        static new_async(screen: Gdk.Screen, callback: (Gio.AsyncReadyCallback<RRScreen> | null)): void;
+        static new_async(screen: Gdk.Screen, callback: Gio.AsyncReadyCallback<RRScreen> | null): void;
 
         // Virtual methods
         /**
@@ -1624,7 +1610,7 @@ export namespace CinnamonDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1667,7 +1653,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1710,7 +1696,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+        init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1770,7 +1756,7 @@ export namespace CinnamonDesktop {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Finishes asynchronous initialization and returns the result.
@@ -1822,7 +1808,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: (Gio.Cancellable | null)): boolean;
+        init(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initializes the object implementing the interface.
@@ -1866,7 +1852,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
+        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
     }
 
 
@@ -1956,7 +1942,7 @@ export namespace CinnamonDesktop {
          * @param gettext_domain 
          * @param format_string 
          */
-        static lctime_format(gettext_domain: (string | null), format_string: (string | null)): string;
+        static lctime_format(gettext_domain: string | null, format_string: string | null): string;
 
         // Methods
         /**
@@ -2000,19 +1986,16 @@ export namespace CinnamonDesktop {
          * @param format_string 
          * @returns Whether or not the format string was valid and accepted.
          */
-        set_format_string(format_string: (string | null)): boolean;
+        set_format_string(format_string: string | null): boolean;
     }
 
 
     namespace XkbInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
-        }
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
 
         // Constructor properties interface
-        interface ConstructorProps extends GObject.Object.ConstructorProps {
-
-        }
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
     /**
@@ -2323,7 +2306,7 @@ export namespace CinnamonDesktop {
         /**
          * @param size 
          */
-        get_edid_data(size: (bigint | number)): number;
+        get_edid_data(size: bigint | number): number;
 
         get_id(): number;
 

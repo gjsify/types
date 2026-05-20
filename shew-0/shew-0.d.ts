@@ -162,12 +162,12 @@ export namespace Shew {
         /**
          * @param callback 
          */
-        ["export"](callback: (Gio.AsyncReadyCallback<this> | null)): void;
+        ["export"](callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param callback 
          */
-        ["export"](callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+        ["export"](callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param result 

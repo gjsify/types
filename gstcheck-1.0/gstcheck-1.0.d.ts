@@ -82,7 +82,7 @@ export namespace GstCheck {
      * @param data data to compare to
      * @param size size of data to compare
      */
-    function check_buffer_data(buffer: Gst.Buffer, data: null, size: (bigint | number)): void;
+    function check_buffer_data(buffer: Gst.Buffer, data: null, size: bigint | number): void;
 
     /**
      * Compare two caps with gst_caps_is_equal and fail unless they are
@@ -194,7 +194,7 @@ export namespace GstCheck {
      * @param caps {@link Gst.Caps} in case caps event must be sent
      * @param format The {@link Gst.Format} of the default segment to send
      */
-    function check_setup_events(srcpad: Gst.Pad, element: Gst.Element, caps: (Gst.Caps | null), format: Gst.Format): void;
+    function check_setup_events(srcpad: Gst.Pad, element: Gst.Element, caps: Gst.Caps | null, format: Gst.Format): void;
 
     /**
      * Push stream-start, caps and segment event, which consist of the minimum
@@ -206,7 +206,7 @@ export namespace GstCheck {
      * @param format The {@link Gst.Format} of the default segment to send
      * @param stream_id A unique identifier for the stream
      */
-    function check_setup_events_with_stream_id(srcpad: Gst.Pad, element: Gst.Element, caps: (Gst.Caps | null), format: Gst.Format, stream_id: string): void;
+    function check_setup_events_with_stream_id(srcpad: Gst.Pad, element: Gst.Element, caps: Gst.Caps | null, format: Gst.Format, stream_id: string): void;
 
     /**
      * Does the same as `gst_check_setup_sink_pad_by_name` with the <emphasis> name </emphasis> parameter equal to "src".
@@ -400,8 +400,8 @@ export namespace GstCheck {
         interface ConstructorProps extends Gst.Clock.ConstructorProps {
             clock_type: Gst.ClockType;
             clockType: Gst.ClockType;
-            start_time: (bigint | number);
-            startTime: (bigint | number);
+            start_time: bigint | number;
+            startTime: bigint | number;
         }
     }
 
@@ -633,7 +633,7 @@ export namespace GstCheck {
          * MT safe.
          * @param pending_list List     of of pending `GstClockIDs`
          */
-        static id_list_get_latest_time(pending_list: (Gst.ClockID[] | null)): Gst.ClockTime;
+        static id_list_get_latest_time(pending_list: Gst.ClockID[] | null): Gst.ClockTime;
 
         // Methods
         /**
@@ -708,13 +708,13 @@ export namespace GstCheck {
          * MT safe.
          * @param pending_list List     of pending `GstClockIDs`
          */
-        process_id_list(pending_list: (Gst.ClockID[] | null)): number;
+        process_id_list(pending_list: Gst.ClockID[] | null): number;
 
         /**
          * MT safe.
          * @returns a {@link Gst.ClockID} containing the next pending clock notification.
          */
-        process_next_clock_id(): (Gst.ClockID | null);
+        process_next_clock_id(): Gst.ClockID | null;
 
         /**
          * Sets the time of `test_clock` to the time given by `new_time`. The time of
@@ -961,7 +961,7 @@ export namespace GstCheck {
          * @param api a metadata API
          * @param params API specific parameters
          */
-        add_propose_allocation_meta(api: GObject.GType, params: (Gst.Structure | null)): void;
+        add_propose_allocation_meta(api: GObject.GType, params: Gst.Structure | null): void;
 
         /**
          * Similar to gst_harness_add_sink_harness, this is a convenience to
@@ -1091,7 +1091,7 @@ export namespace GstCheck {
          * @param size a `gsize` specifying the size of the buffer
          * @returns a {@link Gst.Buffer} of size `size`
          */
-        create_buffer(size: (bigint | number)): Gst.Buffer;
+        create_buffer(size: bigint | number): Gst.Buffer;
 
         /**
          * Allows you to dump the `GstBuffers` the {@link GstCheck.Harness} sinkpad {@link GLib.AsyncQueue}
@@ -1130,7 +1130,7 @@ export namespace GstCheck {
          * @param element_name a `gchar` with a {@link Gst.ElementFactory} name
          * @returns a {@link Gst.Element} or `null` if not found
          */
-        find_element(element_name: string): (Gst.Element | null);
+        find_element(element_name: string): Gst.Element | null;
 
         /**
          * Gets the `allocator` and its `params` that has been decided to use after an
@@ -1156,7 +1156,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link GstCheck.TestClock}, or `null` if the testclock is not present.
          */
-        get_testclock(): (TestClock | null);
+        get_testclock(): TestClock | null;
 
         /**
          * This will set the harnessed {@link Gst.Element} to {@link Gst.State.PLAYING}.
@@ -1179,7 +1179,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Buffer} or `null` if timed out.
          */
-        pull(): (Gst.Buffer | null);
+        pull(): Gst.Buffer | null;
 
         /**
          * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad.
@@ -1188,7 +1188,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Event} or `null` if timed out.
          */
-        pull_event(): (Gst.Event | null);
+        pull_event(): Gst.Event | null;
 
         /**
          * Pulls a {@link Gst.Buffer} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad. The pull
@@ -1205,7 +1205,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Event} or `null` if timed out.
          */
-        pull_upstream_event(): (Gst.Event | null);
+        pull_upstream_event(): Gst.Event | null;
 
         /**
          * Pushes a {@link Gst.Buffer} on the {@link GstCheck.Harness} srcpad. The standard way of
@@ -1226,7 +1226,7 @@ export namespace GstCheck {
          * @param buffer a {@link Gst.Buffer} to push
          * @returns a {@link Gst.Buffer} or `null` if timed out.
          */
-        push_and_pull(buffer: Gst.Buffer): (Gst.Buffer | null);
+        push_and_pull(buffer: Gst.Buffer): Gst.Buffer | null;
 
         /**
          * Pushes an {@link Gst.Event} on the {@link GstCheck.Harness} srcpad.
@@ -1349,7 +1349,7 @@ export namespace GstCheck {
          * @param allocator a {@link Gst.Allocator}
          * @param params a {@link Gst.AllocationParams}
          */
-        set_propose_allocator(allocator: (Gst.Allocator | null), params: (Gst.AllocationParams | null)): void;
+        set_propose_allocator(allocator: Gst.Allocator | null, params: Gst.AllocationParams | null): void;
 
         /**
          * Sets the `GstHarness` sinkpad caps.
@@ -1462,7 +1462,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Buffer} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
-        try_pull(): (Gst.Buffer | null);
+        try_pull(): Gst.Buffer | null;
 
         /**
          * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad.
@@ -1471,7 +1471,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Event} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
-        try_pull_event(): (Gst.Event | null);
+        try_pull_event(): Gst.Event | null;
 
         /**
          * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} srcpad.
@@ -1480,7 +1480,7 @@ export namespace GstCheck {
          * MT safe.
          * @returns a {@link Gst.Event} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
-        try_pull_upstream_event(): (Gst.Event | null);
+        try_pull_upstream_event(): Gst.Event | null;
 
         /**
          * The number of `GstEvents` currently in the {@link GstCheck.Harness} srcpad {@link GLib.AsyncQueue}
