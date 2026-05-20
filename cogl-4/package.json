@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-4",
-    "version": "4.0.0-4.0.0-rc.16",
+    "version": "4.0.0-4.0.0-rc.17",
     "description": "GJS TypeScript type definitions for Cogl-4, generated from library version 4.0.0",
     "type": "module",
     "module": "cogl-4.js",
@@ -31,10 +31,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.16",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.16",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.16",
-      "@girs/gl-1.0": "1.0.0-4.0.0-rc.16"    },
+      "@girs/gjs": "4.0.0-rc.17",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.17",
+      "@girs/glib-2.0": "2.88.0-4.0.0-rc.17",
+      "@girs/gl-1.0": "1.0.0-4.0.0-rc.17"    },
     "devDependencies": {
       "typescript": "*"
     },
