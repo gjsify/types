@@ -9361,14 +9361,14 @@ export namespace IBus {
      * @param path A path of the saved dictionary file.
      * @returns An Emoji dictionary file loaded from the saved cache file. A hash table of { emoji character, {@link IBus.EmojiData} object } is loaded from the saved cache file. Recommend to use `ibus_emoji_data_load()` instead becase GSList in GHashTable does not work with Gir and Vala. Calls `ibus_emoji_data_load()` internally.
      */
-    function emoji_dict_load(path: string): GLib.HashTable<string, never>;
+    function emoji_dict_load(path: string): { [key: string]: never };
 
     /**
      * @param dict An Emoji dictionary
      * @param emoji an emoji character
      * @returns An {@link IBus.EmojiData} of `emoji`. This API was prepared for the old dict foramat with Gir and Vala but no longer needed. Use `ibus_emoji_data_load()` instead.
      */
-    function emoji_dict_lookup(dict: { [key: string]: any } | GLib.HashTable<string, EmojiData>, emoji: string): EmojiData;
+    function emoji_dict_lookup(dict: { [key: string]: EmojiData }, emoji: string): EmojiData;
 
     /**
      * Saves the Emoji dictionary to the cache file.
@@ -9379,7 +9379,7 @@ export namespace IBus {
      * @param path A path of the saved dictionary file.
      * @param dict An Emoji dictionary
      */
-    function emoji_dict_save(path: string, dict: { [key: string]: any } | GLib.HashTable<string, never>): void;
+    function emoji_dict_save(path: string, dict: { [key: string]: never }): void;
 
     function error_quark(): GLib.Quark;
 

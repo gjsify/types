@@ -1474,7 +1474,7 @@ export namespace GstMpegts {
      * @param additional_info pointer to optional additional info
      * @returns {@link GstMpegts.Descriptor}, `null` on failure
      */
-    function descriptor_from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
+    function descriptor_from_registration(format_identifier: string, additional_info: Uint8Array | string | null): Descriptor;
 
     /**
      * @param source 
@@ -2655,7 +2655,7 @@ export namespace GstMpegts {
          * @param format_identifier a 4 character format identifier string
          * @param additional_info pointer to optional additional info
          */
-        static from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor;
+        static from_registration(format_identifier: string, additional_info: Uint8Array | string | null): Descriptor;
 
         /**
          * @param source 

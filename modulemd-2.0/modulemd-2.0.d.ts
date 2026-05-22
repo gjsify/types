@@ -1917,7 +1917,7 @@ export namespace Modulemd {
          * @param intent The name of the system intent whose default stream will be retrieved. If left NULL or the specified intent has no separate default, it will return the generic default stream for this module. System intents are deprecated and this argument will be ignored in the future.
          * @returns A {@link GLib.HashTable} with the module name as the key and the default stream as the value for all modules with a default stream in the index. Modules without a default stream will not appear in this table.
          */
-        get_default_streams(intent: string | null): GLib.HashTable<string, string>;
+        get_default_streams(intent: string | null): { [key: string]: string };
 
         /**
          * @returns The metadata version of {@link Modulemd.Defaults} in use for this index.
@@ -3912,21 +3912,21 @@ export namespace Modulemd {
          * stream `self` are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPM packages to demodularize.
          */
-        replace_demodularized_rpms(set: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        replace_demodularized_rpms(set: never): void;
 
         /**
          * Any existing API RPMs associated with module stream `self` are removed and
          * replaced by `set`.
          * @param set A {@link GLib.HashTable} set of binary RPMs present in this module stream that is considered stable public API.
          */
-        replace_rpm_api(set: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        replace_rpm_api(set: never): void;
 
         /**
          * Any existing filtered binary RPM names associated with module stream `self`
          * are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPMs to filter out of this module stream.
          */
-        replace_rpm_filters(set: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        replace_rpm_filters(set: never): void;
 
         /**
          * Set the module community website address.

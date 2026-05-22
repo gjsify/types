@@ -1,6 +1,6 @@
 {
     "name": "@girs/edatabook-1.2",
-    "version": "1.2.0-4.0.0-rc.17",
+    "version": "1.2.0-4.0.0",
     "description": "GJS TypeScript type definitions for EDataBook-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "edatabook-1.2.js",
@@ -31,18 +31,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.17",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.17",
-      "@girs/edataserver-1.2": "1.2.0-4.0.0-rc.17",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.17",
-      "@girs/soup-3.0": "3.6.6-4.0.0-rc.17",
-      "@girs/json-1.0": "1.10.8-4.0.0-rc.17",
-      "@girs/camel-1.2": "1.2.0-4.0.0-rc.17",
-      "@girs/ebookcontacts-1.2": "1.2.0-4.0.0-rc.17",
-      "@girs/ebackend-1.2": "1.2.0-4.0.0-rc.17"    },
+      "@girs/gjs": "4.0.0",
+      "@girs/gio-2.0": "2.88.0-4.0.0",
+      "@girs/gobject-2.0": "2.88.0-4.0.0",
+      "@girs/glib-2.0": "2.88.0-4.0.0",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0",
+      "@girs/edataserver-1.2": "1.2.0-4.0.0",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0",
+      "@girs/soup-3.0": "3.6.6-4.0.0",
+      "@girs/json-1.0": "1.10.8-4.0.0",
+      "@girs/camel-1.2": "1.2.0-4.0.0",
+      "@girs/ebookcontacts-1.2": "1.2.0-4.0.0",
+      "@girs/ebackend-1.2": "1.2.0-4.0.0"    },
     "devDependencies": {
       "typescript": "*"
     },

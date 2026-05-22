@@ -1995,7 +1995,7 @@ export namespace Soup {
      * @param encoded_form data of type "application/x-www-form-urlencoded"
      * @returns a hash table containing the name/value pairs from `encoded_form`, which you can free with `g_hash_table_destroy()`.
      */
-    function form_decode(encoded_form: string): GLib.HashTable<string, string>;
+    function form_decode(encoded_form: string): { [key: string]: string };
 
     /**
      * Decodes the "multipart/form-data" request in `msg`; this is a
@@ -2022,7 +2022,7 @@ export namespace Soup {
      * @returns a hash table containing the name/value pairs (other than `file_control_name`) from `msg`, which you can free with `g_hash_table_destroy()`. On error, it will return `null`.
      * @since 2.26
      */
-    function form_decode_multipart(msg: Message, file_control_name: string | null): [GLib.HashTable<string, string> | null, string, string, Buffer | null];
+    function form_decode_multipart(msg: Message, file_control_name: string | null): [{ [key: string]: string } | null, string, string, Buffer | null];
 
     /**
      * Encodes `form_data_set` into a value of type
@@ -2046,7 +2046,7 @@ export namespace Soup {
      * @param form_data_set a hash table containing name/value pairs (as strings)
      * @returns the encoded form
      */
-    function form_encode_hash(form_data_set: { [key: string]: any } | GLib.HashTable<string, string>): string;
+    function form_encode_hash(form_data_set: { [key: string]: string }): string;
 
     /**
      * Creates a new %SoupMessage and sets it up to send `form_data_set` to
@@ -2066,7 +2066,7 @@ export namespace Soup {
      * @param form_data_set the data to send to `uri`
      * @returns the new %SoupMessage
      */
-    function form_request_new_from_hash(method: string, uri: string, form_data_set: { [key: string]: any } | GLib.HashTable<string, string>): Message;
+    function form_request_new_from_hash(method: string, uri: string, form_data_set: { [key: string]: string }): Message;
 
     /**
      * Creates a new %SoupMessage and sets it up to send `multipart` to
@@ -2143,7 +2143,7 @@ export namespace Soup {
      * Frees `param_list`.
      * @param param_list a {@link GLib.HashTable} returned from `soup_header_parse_param_list()` or `soup_header_parse_semi_param_list()`
      */
-    function header_free_param_list(param_list: { [key: string]: any } | GLib.HashTable<string, string>): void;
+    function header_free_param_list(param_list: { [key: string]: string }): void;
 
     /**
      * Appends something like <literal>`name`=`value`</literal> to `string`,
@@ -2199,7 +2199,7 @@ export namespace Soup {
      * @param header a header value
      * @returns a {@link GLib.HashTable} of list elements, which can be freed with `soup_header_free_param_list()`.
      */
-    function header_parse_param_list(header: string): GLib.HashTable<string, string>;
+    function header_parse_param_list(header: string): { [key: string]: string };
 
     /**
      * A strict version of `soup_header_parse_param_list()`
@@ -2213,7 +2213,7 @@ export namespace Soup {
      * @returns a {@link GLib.HashTable} of list elements, which can be freed with `soup_header_free_param_list()` or `null` if there are duplicate elements.
      * @since 2.66
      */
-    function header_parse_param_list_strict(header: string): GLib.HashTable<string, string> | null;
+    function header_parse_param_list_strict(header: string): { [key: string]: string } | null;
 
     /**
      * Parses a header whose content is a list of items with optional
@@ -2242,7 +2242,7 @@ export namespace Soup {
      * @returns a {@link GLib.HashTable} of list elements, which can be freed with `soup_header_free_param_list()`.
      * @since 2.24
      */
-    function header_parse_semi_param_list(header: string): GLib.HashTable<string, string>;
+    function header_parse_semi_param_list(header: string): { [key: string]: string };
 
     /**
      * A strict version of `soup_header_parse_semi_param_list()`
@@ -2256,7 +2256,7 @@ export namespace Soup {
      * @returns a {@link GLib.HashTable} of list elements, which can be freed with `soup_header_free_param_list()` or `null` if there are duplicate elements.
      * @since 2.66
      */
-    function header_parse_semi_param_list_strict(header: string): GLib.HashTable<string, string> | null;
+    function header_parse_semi_param_list_strict(header: string): { [key: string]: string } | null;
 
     /**
      * Parses the headers of an HTTP request or response in `str` and
@@ -2469,7 +2469,7 @@ export namespace Soup {
      * @param value a value
      * @deprecated Use {@link GLib.Variant} API instead.
      */
-    function value_hash_insert_value(hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string, value: GObject.Value | any): void;
+    function value_hash_insert_value(hash: { [key: string]: GObject.Value }, key: string, value: GObject.Value | any): void;
 
     /**
      * Creates a {@link GLib.HashTable} whose keys are strings and whose values
@@ -2477,7 +2477,7 @@ export namespace Soup {
      * @returns a new empty {@link GLib.HashTable}
      * @deprecated Use {@link GLib.Variant} API instead.
      */
-    function value_hash_new(): GLib.HashTable<string, GObject.Value>;
+    function value_hash_new(): { [key: string]: GObject.Value };
 
     /**
      * Adds the necessary headers to `msg` to request a WebSocket
@@ -2957,7 +2957,7 @@ export namespace Soup {
      * @gir-type Callback
      */
     interface ServerCallback {
-        (server: Server, msg: Message, path: string, query: GLib.HashTable<string, string> | null, client: ClientContext): void;
+        (server: Server, msg: Message, path: string, query: { [key: string]: string } | null, client: ClientContext): void;
     }
 
     /**
@@ -3634,7 +3634,7 @@ export namespace Soup {
          * @param auth_header the WWW-Authenticate/Proxy-Authenticate header
          * @virtual
          */
-        vfunc_update(msg: Message, auth_header: GLib.HashTable<never, never>): boolean;
+        vfunc_update(msg: Message, auth_header: never): boolean;
 
         // Methods
         /**
@@ -5049,7 +5049,7 @@ export namespace Soup {
          * @param buffer a buffer containing the start of `msg`'s response body
          * @virtual
          */
-        vfunc_sniff(msg: Message, buffer: Buffer): [string, GLib.HashTable<string, string> | null];
+        vfunc_sniff(msg: Message, buffer: Buffer): [string, { [key: string]: string } | null];
 
         // Methods
         /**
@@ -5067,7 +5067,7 @@ export namespace Soup {
          * @param buffer a buffer containing the start of `msg`'s response body
          * @returns the sniffed Content-Type of `buffer`; this will never be `null`,   but may be "application/octet-stream".
          */
-        sniff(msg: Message, buffer: Buffer): [string, GLib.HashTable<string, string> | null];
+        sniff(msg: Message, buffer: Buffer): [string, { [key: string]: string } | null];
 
         /**
          * Adds a "sub-feature" of type `type` to the base feature `feature`.
@@ -6525,7 +6525,7 @@ export namespace Soup {
              * @since 2.28
              * @run-first
              */
-            "content-sniffed": (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            "content-sniffed": (arg0: string, arg1: { [key: string]: string }) => void;
             /**
              * Emitted when all HTTP processing is finished for a message.
              * (After {@link Soup.Message.SignalSignatures.got_body | Soup.Message::got_body} for client-side messages, or
@@ -7088,7 +7088,7 @@ export namespace Soup {
          * @param content_type 
          * @param params 
          */
-        content_sniffed(content_type: string, params: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        content_sniffed(content_type: string, params: never): void;
 
         /**
          * This disables the actions of {@link Soup.SessionFeature}<!-- -->s with the
@@ -7305,7 +7305,7 @@ export namespace Soup {
          * @param req_use a {@link Soup.MemoryUse} describing how to handle `req_body`
          * @param req_body a data buffer containing the body of the message request.
          */
-        set_request(content_type: string | null, req_use: MemoryUse, req_body: Uint8Array | null): void;
+        set_request(content_type: string | null, req_use: MemoryUse, req_body: Uint8Array | string | null): void;
 
         /**
          * Convenience function to set the response body of a {@link Soup.Message}. If
@@ -7314,7 +7314,7 @@ export namespace Soup {
          * @param resp_use a {@link Soup.MemoryUse} describing how to handle `resp_body`
          * @param resp_body a data buffer containing the body of the message response.
          */
-        set_response(content_type: string | null, resp_use: MemoryUse, resp_body: Uint8Array | null): void;
+        set_response(content_type: string | null, resp_use: MemoryUse, resp_body: Uint8Array | string | null): void;
 
         /**
          * Sets `site_for_cookies` as the policy URL for same-site cookies for `msg`.
@@ -7618,7 +7618,7 @@ export namespace Soup {
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @virtual
          */
-        vfunc_read_nonblocking(): [bigint | number, Uint8Array | null];
+        vfunc_read_nonblocking(): [bigint | number, Uint8Array | string | null];
     }
 
 
@@ -12076,7 +12076,7 @@ export namespace Soup {
          * is run.
          * @param data the message contents
          */
-        send_binary(data: Uint8Array | null): void;
+        send_binary(data: Uint8Array | string | null): void;
 
         /**
          * Send a message of the given `type` to the peer. Note that this method,
@@ -12164,7 +12164,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @virtual
          */
-        vfunc_configure(connection_type: WebsocketConnectionType, params: GLib.HashTable<never, never> | null): boolean;
+        vfunc_configure(connection_type: WebsocketConnectionType, params: never | null): boolean;
 
         /**
          * Get the parameters strings to be included in the request header. If the extension
@@ -12211,7 +12211,7 @@ export namespace Soup {
          * @param params the parameters, or `null`
          * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
          */
-        configure(connection_type: WebsocketConnectionType, params: GLib.HashTable<never, never> | null): boolean;
+        configure(connection_type: WebsocketConnectionType, params: never | null): boolean;
 
         /**
          * Get the parameters strings to be included in the request header. If the extension
@@ -13503,7 +13503,7 @@ export namespace Soup {
          * form methods.
          * @returns `true` if `hdrs` contains a "Content-Disposition" header, `false` if not (in which case *`disposition` and *`params` will be unchanged).
          */
-        get_content_disposition(): [boolean, string, GLib.HashTable<string, string>];
+        get_content_disposition(): [boolean, string, { [key: string]: string }];
 
         /**
          * Gets the message body length that `hdrs` declare. This will only
@@ -13527,7 +13527,7 @@ export namespace Soup {
          * are only interested in the content type itself.
          * @returns a string with the value of the "Content-Type" header or `null` if `hdrs` does not contain that header or it cannot be parsed (in which case *`params` will be unchanged).
          */
-        get_content_type(): [string | null, GLib.HashTable<string, string> | null];
+        get_content_type(): [string | null, { [key: string]: string } | null];
 
         /**
          * Gets the message body encoding that `hdrs` declare. This may not
@@ -13668,7 +13668,7 @@ export namespace Soup {
          * @param disposition the disposition-type
          * @param params additional parameters, or `null`
          */
-        set_content_disposition(disposition: string, params: GLib.HashTable<string, string> | null): void;
+        set_content_disposition(disposition: string, params: { [key: string]: string } | null): void;
 
         /**
          * Sets the message body length that `hdrs` will declare, and sets
@@ -13708,7 +13708,7 @@ export namespace Soup {
          * @param content_type the MIME type
          * @param params additional parameters, or `null`
          */
-        set_content_type(content_type: string, params: GLib.HashTable<string, string> | null): void;
+        set_content_type(content_type: string, params: { [key: string]: string } | null): void;
 
         /**
          * Sets the message body encoding that `hdrs` will declare. In particular,
@@ -14305,7 +14305,7 @@ export namespace Soup {
          * HTML form rules. See `soup_form_encode_hash()` for more information.
          * @param form a {@link GLib.HashTable} containing HTML form information
          */
-        set_query_from_form(form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        set_query_from_form(form: { [key: string]: string }): void;
 
         /**
          * Sets `uri`'s scheme to `scheme`. This will also set `uri`'s port to

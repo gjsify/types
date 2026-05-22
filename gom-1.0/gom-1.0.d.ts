@@ -751,7 +751,7 @@ export namespace Gom {
         /**
          * @param table_map 
          */
-        get_sql(table_map: { [key: string]: any } | GLib.HashTable<never, never>): string;
+        get_sql(table_map: never): string;
 
         /**
          * Fetches the list of values that should be applied in order when building
@@ -1512,7 +1512,7 @@ export namespace Gom {
          * @param table_map A {@link GLib.HashTable}.
          * @returns A string containing the SQL query corresponding                           to this `sorting`.
          */
-        get_sql(table_map: { [key: string]: any } | GLib.HashTable<never, never>): string;
+        get_sql(table_map: never): string;
     }
 
 

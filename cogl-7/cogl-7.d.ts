@@ -4632,7 +4632,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | string | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
@@ -4906,7 +4906,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | string | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.
@@ -7207,7 +7207,7 @@ export namespace Cogl {
          * @param data memory location to write the `texture`'s contents, or `null` to only query the data size through the return value.
          * @returns the size of the texture data in bytes
          */
-        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | null): number;
+        get_data(format: PixelFormat, rowstride: number, data: Uint8Array | string | null): number;
 
         /**
          * Queries the GL handles for a GPU side texture through its {@link Cogl.Texture}.

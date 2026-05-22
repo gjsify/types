@@ -3257,7 +3257,7 @@ export namespace RygelCore {
              * @param _callback_ 
              * @virtual
              */
-            vfunc_is_allowed(device: GLib.HashTable<string, string>, service: GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_is_allowed(device: { [key: string]: string }, service: { [key: string]: string }, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param _res_ 
@@ -3288,7 +3288,7 @@ export namespace RygelCore {
          * @param address 
          * @param agent 
          */
-        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null): globalThis.Promise<boolean>;
+        is_allowed(device: { [key: string]: string }, service: { [key: string]: string }, path: string, address: string, agent: string | null): globalThis.Promise<boolean>;
 
         /**
          * @param device 
@@ -3298,7 +3298,7 @@ export namespace RygelCore {
          * @param agent 
          * @param _callback_ 
          */
-        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        is_allowed(device: { [key: string]: string }, service: { [key: string]: string }, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * @param device 
@@ -3308,7 +3308,7 @@ export namespace RygelCore {
          * @param agent 
          * @param _callback_ 
          */
-        is_allowed(device: { [key: string]: any } | GLib.HashTable<string, string>, service: { [key: string]: any } | GLib.HashTable<string, string>, path: string, address: string, agent: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        is_allowed(device: { [key: string]: string }, service: { [key: string]: string }, path: string, address: string, agent: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param _res_ 

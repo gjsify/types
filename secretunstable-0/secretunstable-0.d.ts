@@ -546,7 +546,7 @@ export namespace SecretUnstable {
          * @param flags search option flags
          * @param cancellable optional cancellation object
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
 
         /**
          * Search for items matching the `attributes` in the `collection`.
@@ -570,7 +570,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Search for items matching the `attributes` in the `collection`.
@@ -594,7 +594,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Item[]> | void;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Item[]> | void;
 
         /**
          * Complete asynchronous operation to search for items in a collection.
@@ -618,7 +618,7 @@ export namespace SecretUnstable {
          * @param attributes search for items matching these attributes
          * @param cancellable optional cancellation object
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): globalThis.Promise<string[]>;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): globalThis.Promise<string[]>;
 
         /**
          * Search for items in `collection` matching the `attributes`, and return their
@@ -636,7 +636,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Search for items in `collection` matching the `attributes`, and return their
@@ -654,7 +654,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string[]> | void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string[]> | void;
 
         /**
          * Complete asynchronous operation to search for items in a collection.
@@ -683,7 +683,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns an array of DBus object paths for matching items.
          */
-        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): string[];
+        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): string[];
 
         /**
          * Search for items matching the `attributes` in the `collection`.
@@ -708,7 +708,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
          */
-        search_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
+        search_sync(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
 
         /**
          * Set the label of this collection.
@@ -1114,7 +1114,7 @@ export namespace SecretUnstable {
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>;
+            attributes: { [key: string]: string };
             created: bigint | number;
             label: string;
             locked: boolean;
@@ -1135,8 +1135,8 @@ export namespace SecretUnstable {
          * The attributes set on this item. Attributes are used to locate an
          * item. They are not guaranteed to be stored or transferred securely.
          */
-        get attributes(): GLib.HashTable<string, string>;
-        set attributes(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get attributes(): { [key: string]: string };
+        set attributes(val: { [key: string]: string });
 
         /**
          * The date and time (in seconds since the UNIX epoch) that this
@@ -1230,7 +1230,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static create(collection: Collection, schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Item>): void;
+        static create(collection: Collection, schema: Secret.Schema, attributes: { [key: string]: string }, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Item>): void;
 
         /**
          * Finish operation to create a new item in the secret service.
@@ -1256,7 +1256,7 @@ export namespace SecretUnstable {
          * @param flags flags for the creation of the new item
          * @param cancellable optional cancellation object
          */
-        static create_sync(collection: Collection, schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): Item;
+        static create_sync(collection: Collection, schema: Secret.Schema, attributes: { [key: string]: string }, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): Item;
 
         /**
          * Load the secret values for an secret items stored in the service.
@@ -1370,7 +1370,7 @@ export namespace SecretUnstable {
          * `secret_item_set_attributes()` instead.
          * @returns a new reference to the attributes, which should not be modified, and released with `g_hash_table_unref()`
          */
-        get_attributes(): GLib.HashTable<string, string>;
+        get_attributes(): { [key: string]: string };
 
         /**
          * Get the created date and time of the item. The return value is
@@ -1524,7 +1524,7 @@ export namespace SecretUnstable {
          * @param attributes a new set of attributes
          * @param cancellable optional cancellation object
          */
-        set_attributes(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+        set_attributes(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Set the attributes of this item.
@@ -1539,7 +1539,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the asynchronous operation completes
          */
-        set_attributes(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        set_attributes(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Set the attributes of this item.
@@ -1554,7 +1554,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the asynchronous operation completes
          */
-        set_attributes(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
+        set_attributes(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Complete operation to set the attributes of this item.
@@ -1577,7 +1577,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
          */
-        set_attributes_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): boolean;
+        set_attributes_sync(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): boolean;
 
         /**
          * Set the label of this item.
@@ -2734,7 +2734,7 @@ export namespace SecretUnstable {
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          */
-        clear(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+        clear(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Remove unlocked items which match the attributes from the secret service.
@@ -2750,7 +2750,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        clear(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        clear(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Remove unlocked items which match the attributes from the secret service.
@@ -2766,7 +2766,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        clear(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
+        clear(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Finish asynchronous operation to remove items from the secret
@@ -2791,7 +2791,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether items were removed or not
          */
-        clear_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): boolean;
+        clear_sync(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): boolean;
 
         /**
          * Create a new collection in the secret service, and return its path.
@@ -2822,39 +2822,7 @@ export namespace SecretUnstable {
          * @param flags not currently used
          * @param cancellable optional cancellation object
          */
-        create_collection_dbus_path(properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
-
-        /**
-         * Create a new collection in the secret service, and return its path.
-         * 
-         * Using this method requires that you setup a correct hash table of D-Bus
-         * properties for the new collection. You may prefer to use
-         * `secret_collection_create()` which does handles this for you.
-         * 
-         * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
-         * default collection to store items in). This allows other applications to
-         * easily identify and share a collection. If a collection with the `alias`
-         * already exists, then instead of creating a new collection, the existing
-         * collection will be returned. If no collection with this alias exists, then a
-         * new collection will be created and this alias will be assigned to it.
-         * 
-         * `properties` is a set of properties for the new collection. The keys in the
-         * hash table should be interface.property strings like
-         * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
-         * in the hash table should be {@link GLib.Variant} values of the properties.
-         * 
-         * If you wish to have a
-         * 
-         * This method will return immediately and complete asynchronously. The secret
-         * service may prompt the user. `secret_service_prompt()` will be used to handle
-         * any prompts that are required.
-         * @param properties hash table of properties for the new collection
-         * @param alias an alias to check for before creating the new collection, or to assign to the new collection
-         * @param flags not currently used
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        create_collection_dbus_path(properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        create_collection_dbus_path(properties: { [key: string]: GLib.Variant }, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
 
         /**
          * Create a new collection in the secret service, and return its path.
@@ -2886,7 +2854,39 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        create_collection_dbus_path(properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
+        create_collection_dbus_path(properties: { [key: string]: GLib.Variant }, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Create a new collection in the secret service, and return its path.
+         * 
+         * Using this method requires that you setup a correct hash table of D-Bus
+         * properties for the new collection. You may prefer to use
+         * `secret_collection_create()` which does handles this for you.
+         * 
+         * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
+         * default collection to store items in). This allows other applications to
+         * easily identify and share a collection. If a collection with the `alias`
+         * already exists, then instead of creating a new collection, the existing
+         * collection will be returned. If no collection with this alias exists, then a
+         * new collection will be created and this alias will be assigned to it.
+         * 
+         * `properties` is a set of properties for the new collection. The keys in the
+         * hash table should be interface.property strings like
+         * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
+         * in the hash table should be {@link GLib.Variant} values of the properties.
+         * 
+         * If you wish to have a
+         * 
+         * This method will return immediately and complete asynchronously. The secret
+         * service may prompt the user. `secret_service_prompt()` will be used to handle
+         * any prompts that are required.
+         * @param properties hash table of properties for the new collection
+         * @param alias an alias to check for before creating the new collection, or to assign to the new collection
+         * @param flags not currently used
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        create_collection_dbus_path(properties: { [key: string]: GLib.Variant }, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * Finish asynchronous operation to create a new collection in the secret
@@ -2924,7 +2924,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a new string containing the D-Bus object path of the collection
          */
-        create_collection_dbus_path_sync(properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): string;
+        create_collection_dbus_path_sync(properties: { [key: string]: GLib.Variant }, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): string;
 
         /**
          * Create a new item in a secret service collection and return its D-Bus
@@ -2952,36 +2952,7 @@ export namespace SecretUnstable {
          * @param flags flags for the creation of the new item
          * @param cancellable optional cancellation object
          */
-        create_item_dbus_path(collection_path: string, properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
-
-        /**
-         * Create a new item in a secret service collection and return its D-Bus
-         * object path.
-         * 
-         * It is often easier to use `secret_password_store()` or `secret_item_create()`
-         * rather than using this function. Using this method requires that you setup
-         * a correct hash table of D-Bus `properties` for the new collection.
-         * 
-         * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
-         * service will search for an item matching the `attributes`, and update that item
-         * instead of creating a new one.
-         * 
-         * `properties` is a set of properties for the new collection. The keys in the
-         * hash table should be interface.property strings like
-         * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
-         * in the hash table should be {@link GLib.Variant} values of the properties.
-         * 
-         * This method will return immediately and complete asynchronously. The secret
-         * service may prompt the user. `secret_service_prompt()` will be used to handle
-         * any prompts that are required.
-         * @param collection_path the D-Bus object path of the collection in which to create item
-         * @param properties hash table of D-Bus properties for the new collection
-         * @param value the secret value to store in the item
-         * @param flags flags for the creation of the new item
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        create_item_dbus_path(collection_path: string, properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        create_item_dbus_path(collection_path: string, properties: { [key: string]: GLib.Variant }, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
 
         /**
          * Create a new item in a secret service collection and return its D-Bus
@@ -3010,7 +2981,36 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        create_item_dbus_path(collection_path: string, properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
+        create_item_dbus_path(collection_path: string, properties: { [key: string]: GLib.Variant }, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Create a new item in a secret service collection and return its D-Bus
+         * object path.
+         * 
+         * It is often easier to use `secret_password_store()` or `secret_item_create()`
+         * rather than using this function. Using this method requires that you setup
+         * a correct hash table of D-Bus `properties` for the new collection.
+         * 
+         * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
+         * service will search for an item matching the `attributes`, and update that item
+         * instead of creating a new one.
+         * 
+         * `properties` is a set of properties for the new collection. The keys in the
+         * hash table should be interface.property strings like
+         * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
+         * in the hash table should be {@link GLib.Variant} values of the properties.
+         * 
+         * This method will return immediately and complete asynchronously. The secret
+         * service may prompt the user. `secret_service_prompt()` will be used to handle
+         * any prompts that are required.
+         * @param collection_path the D-Bus object path of the collection in which to create item
+         * @param properties hash table of D-Bus properties for the new collection
+         * @param value the secret value to store in the item
+         * @param flags flags for the creation of the new item
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        create_item_dbus_path(collection_path: string, properties: { [key: string]: GLib.Variant }, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string> | void;
 
         /**
          * Finish asynchronous operation to create a new item in the secret
@@ -3047,7 +3047,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a new string containing the D-Bus object path of the item
          */
-        create_item_dbus_path_sync(collection_path: string, properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): string;
+        create_item_dbus_path_sync(collection_path: string, properties: { [key: string]: GLib.Variant }, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): string;
 
         /**
          * Delete a secret item from the secret service.
@@ -3297,7 +3297,7 @@ export namespace SecretUnstable {
          * @param item_paths the D-Bus paths to items to retrieve secrets for
          * @param cancellable optional cancellation object
          */
-        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable): globalThis.Promise<GLib.HashTable<string, Value>>;
+        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable): globalThis.Promise<{ [key: string]: Value }>;
 
         /**
          * Get the secret values for an secret items stored in the service.
@@ -3325,7 +3325,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<GLib.HashTable<string, Value>> | void;
+        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<{ [key: string]: Value }> | void;
 
         /**
          * Complete asynchronous operation to get the secret values for an
@@ -3335,7 +3335,7 @@ export namespace SecretUnstable {
          * @param result asynchronous result passed to callback
          * @returns a newly allocated hash table of item_path keys to {@link SecretUnstable.Value} values.
          */
-        get_secrets_for_dbus_paths_finish(result: Gio.AsyncResult): GLib.HashTable<string, Value>;
+        get_secrets_for_dbus_paths_finish(result: Gio.AsyncResult): { [key: string]: Value };
 
         /**
          * Get the secret values for an secret items stored in the service.
@@ -3352,7 +3352,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a newly allocated hash table of item_path keys to {@link SecretUnstable.Value} values.
          */
-        get_secrets_for_dbus_paths_sync(item_paths: string, cancellable: Gio.Cancellable): GLib.HashTable<string, Value>;
+        get_secrets_for_dbus_paths_sync(item_paths: string, cancellable: Gio.Cancellable): { [key: string]: Value };
 
         /**
          * Get the set of algorithms being used to transfer secrets between this
@@ -3623,7 +3623,7 @@ export namespace SecretUnstable {
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          */
-        lookup(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): globalThis.Promise<Value>;
+        lookup(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): globalThis.Promise<Value>;
 
         /**
          * Lookup a secret value in the secret service.
@@ -3639,7 +3639,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        lookup(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        lookup(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Lookup a secret value in the secret service.
@@ -3655,7 +3655,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        lookup(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Value> | void;
+        lookup(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Value> | void;
 
         /**
          * Finish asynchronous operation to lookup a secret value in the secret service.
@@ -3681,7 +3681,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a newly allocated {@link SecretUnstable.Value}, which should be released with `secret_value_unref()`, or `null` if no secret found
          */
-        lookup_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): Value;
+        lookup_sync(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): Value;
 
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
@@ -3906,7 +3906,7 @@ export namespace SecretUnstable {
          * @param flags search option flags
          * @param cancellable optional cancellation object
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
 
         /**
          * Search for items matching the `attributes`. All collections are searched.
@@ -3933,7 +3933,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Search for items matching the `attributes`. All collections are searched.
@@ -3960,7 +3960,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Item[]> | void;
+        search(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Item[]> | void;
 
         /**
          * Complete asynchronous operation to search for items.
@@ -3984,7 +3984,7 @@ export namespace SecretUnstable {
          * @param attributes search for items matching these attributes
          * @param cancellable optional cancellation object
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): globalThis.Promise<[string[] | null, string[] | null]>;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): globalThis.Promise<[string[] | null, string[] | null]>;
 
         /**
          * Search for items matching the `attributes`, and return their D-Bus object paths.
@@ -4002,7 +4002,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Search for items matching the `attributes`, and return their D-Bus object paths.
@@ -4020,7 +4020,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<[string[] | null, string[] | null]> | void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<[string[] | null, string[] | null]> | void;
 
         /**
          * Complete asynchronous operation to search for items, and return their
@@ -4057,7 +4057,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the search was successful or not
          */
-        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, cancellable: Gio.Cancellable): [boolean, string[] | null, string[] | null];
+        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: { [key: string]: string }, cancellable: Gio.Cancellable): [boolean, string[] | null, string[] | null];
 
         /**
          * Search for items matching the `attributes`. All collections are searched.
@@ -4087,7 +4087,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
          */
-        search_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
+        search_sync(schema: Secret.Schema, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
 
         /**
          * Assign a collection to this alias. Aliases help determine
@@ -4236,7 +4236,7 @@ export namespace SecretUnstable {
          * @param value the secret value
          * @param cancellable optional cancellation object
          */
-        store(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, collection: string, label: string, value: Value, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+        store(schema: Secret.Schema, attributes: { [key: string]: string }, collection: string, label: string, value: Value, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Store a secret value in the secret service.
@@ -4262,7 +4262,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        store(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        store(schema: Secret.Schema, attributes: { [key: string]: string }, collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * Store a secret value in the secret service.
@@ -4288,7 +4288,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        store(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
+        store(schema: Secret.Schema, attributes: { [key: string]: string }, collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
         /**
          * Finish asynchronous operation to store a secret value in the secret service.
@@ -4322,7 +4322,7 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the storage was successful or not
          */
-        store_sync(schema: Secret.Schema, attributes: { [key: string]: any } | GLib.HashTable<string, string>, collection: string, label: string, value: Value, cancellable: Gio.Cancellable): boolean;
+        store_sync(schema: Secret.Schema, attributes: { [key: string]: string }, collection: string, label: string, value: Value, cancellable: Gio.Cancellable): boolean;
 
         /**
          * Unlock items or collections in the secret service.

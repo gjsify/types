@@ -12637,7 +12637,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_map(map: never): void;
     }
 
 
@@ -12755,7 +12755,7 @@ export namespace Dazzle {
         /**
          * @param map 
          */
-        set_map(map: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_map(map: never): void;
     }
 
 
@@ -13278,7 +13278,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_page(page_name: string, map: never): void;
 
         /**
          * @param page_name 
@@ -13405,7 +13405,7 @@ export namespace Dazzle {
          * @param map 
          * @virtual
          */
-        vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
+        vfunc_set_page(page_name: string, map: never): void;
     }
 
 
@@ -16487,7 +16487,7 @@ export namespace Dazzle {
          * @param signal_name the name of the signal
          * @param values The   values to use when calling the signal.
          */
-        add_signalv(accel: string, signal_name: string, values: GObject.Value[] | null): void;
+        add_signalv(accel: string, signal_name: string, values: (GObject.Value | any)[] | null): void;
 
         get_name(): string;
 
@@ -26940,7 +26940,7 @@ export namespace Dazzle {
              * @param map 
              * @virtual
              */
-            vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
+            vfunc_set_page(page_name: string, map: never): void;
         }
 
 
@@ -27072,7 +27072,7 @@ export namespace Dazzle {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_page(page_name: string, map: never): void;
     }
 
 

@@ -1015,7 +1015,7 @@ export namespace AppStreamCompose {
          * Get a set of image format names we can currently read
          * (via GdkPixbuf).
          */
-        static supported_format_names(): GLib.HashTable<never, never>;
+        static supported_format_names(): never;
 
         // Methods
         /**
@@ -1296,7 +1296,7 @@ export namespace AppStreamCompose {
          * @param bytes The data to include in the global component ID, or `null`
          * @returns `true` if the component existed and was updated.
          */
-        update_component_gcid(cpt: AppStream.Component, bytes: GLib.Bytes | null): boolean;
+        update_component_gcid(cpt: AppStream.Component, bytes: GLib.Bytes | Uint8Array | null): boolean;
 
         /**
          * Update the global component ID for the given component.

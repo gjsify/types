@@ -13506,7 +13506,7 @@ export namespace GData {
          * @param namespaces 
          * @virtual
          */
-        vfunc_get_namespaces(namespaces: GLib.HashTable<never, never>): void;
+        vfunc_get_namespaces(namespaces: never): void;
 
         /**
          * @param xml_string 

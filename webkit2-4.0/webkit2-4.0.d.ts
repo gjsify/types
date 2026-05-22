@@ -4554,7 +4554,7 @@ export namespace WebKit2 {
          * function does not reliably return all text fields.
          * @returns a {@link GLib.HashTable} with the form    text fields, or `null` if the form doesn't contain text fields.
          */
-        get_text_fields(): GLib.HashTable<never, never> | null;
+        get_text_fields(): never | null;
 
         /**
          * Get lists of the text fields contained in the form associated to `request`.

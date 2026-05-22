@@ -432,7 +432,7 @@ export namespace Gegl {
      * @param format_name A Babl format name, e.g. "RGBA float"
      * @returns the format pointer
      */
-    function format(format_name: string): GObject.Value | null;
+    function format(format_name: string): unknown | null;
 
     /**
      * @param format A Babl pointer

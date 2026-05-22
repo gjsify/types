@@ -4506,9 +4506,9 @@ export namespace Gsk {
         static $gtype: GObject.GType<ShaderArgsBuilder>;
 
         // Constructors
-        constructor(shader: GLShader, initial_values: GLib.Bytes | null);
+        constructor(shader: GLShader, initial_values: GLib.Bytes | Uint8Array | null);
 
-        static ["new"](shader: GLShader, initial_values: GLib.Bytes | null): ShaderArgsBuilder;
+        static ["new"](shader: GLShader, initial_values: GLib.Bytes | Uint8Array | null): ShaderArgsBuilder;
 
         // Methods
         /**

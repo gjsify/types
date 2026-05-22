@@ -56,29 +56,17 @@ export interface MetaInfo<Props, Interfaces, Sigs> {
 
 export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any
 
-// Advanced type inference for GObject class registration
-// String conversion utilities for property names
+// Advanced type inference for GObject class registration.
+// Convert kebab-case property names (e.g. "my-prop") to snake_case
+// ("my_prop"). GJS exposes registered properties on the JS side as
+// snake_case (and via `get_property('kebab-name')`), so we only alias to
+// that form; camelCase aliases would not match anything at runtime.
 type SnakeToUnderscoreCase<S extends string> = S extends `${infer T}-${infer U}`
     ? `${T}_${SnakeToUnderscoreCase<U>}`
     : S extends `${infer T}`
       ? `${T}`
       : never
 
-type SnakeToCamelCase<S extends string> = S extends `${infer T}-${infer U}`
-    ? `${Lowercase<T>}${SnakeToPascalCase<U>}`
-    : S extends `${infer T}`
-      ? `${Lowercase<T>}`
-      : SnakeToPascalCase<S>
-
-type SnakeToPascalCase<S extends string> = string extends S
-    ? string
-    : S extends `${infer T}-${infer U}`
-      ? `${Capitalize<Lowercase<T>>}${SnakeToPascalCase<U>}`
-      : S extends `${infer T}`
-        ? `${Capitalize<Lowercase<T>>}`
-        : never
-
-type SnakeToCamel<T> = { [P in keyof T as P extends string ? SnakeToCamelCase<P> : P]: T[P] }
 type SnakeToUnderscore<T> = { [P in keyof T as P extends string ? SnakeToUnderscoreCase<P> : P]: T[P] }
 
 // Advanced utility types for class registration
@@ -103,7 +91,7 @@ export type RegisteredPrototype<
     P extends {},
     Props extends { [key: string]: ParamSpec },
     Interfaces extends any[],
-> = Properties<P, SnakeToCamel<Props> & SnakeToUnderscore<Props>> & UnionToIntersection<Interfaces[number]> & P
+> = Properties<P, SnakeToUnderscore<Props>> & UnionToIntersection<Interfaces[number]> & P
 
 type Ctor = new (...a: any[]) => object
 type Init = { _init(...args: any[]): void }
@@ -333,24 +321,17 @@ export type SignalCallback<Emitter, Fn> = Fn extends (...args: infer P) => infer
 // TODO: What about the generated class Closure
 export type TClosure<R = any, P = any> = (...args: P[]) => R
 
-type ObjectConstructor = { new (...args: any[]): Object }
-
-// Standard registerClass overloads
-export function registerClass<T extends ObjectConstructor>(cls: T): T
-
-export function registerClass<
-    T extends ObjectConstructor,
-    Props extends { [key: string]: ParamSpec },
-    Interfaces extends { $gtype: GType }[],
-    Sigs extends {
-        [key: string]: {
-            param_types?: readonly GTypeInput[]
-            [key: string]: any
-        }
-    },
->(options: MetaInfo<Props, Interfaces, Sigs>, cls: T): T
-
-// Enhanced registerClass overloads with advanced type inference
+// Enhanced registerClass overloads with advanced type inference. Previously
+// shadowed by the standard overloads above, which matched any class
+// extending GObject.Object via `T extends ObjectConstructor` and returned
+// the class type unchanged — making the enhanced inference unreachable.
+// The two overload sets are now mutually exclusive on the `noAdvancedVariants`
+// flag.
+//
+// When the return value is captured (`const Foo = GObject.registerClass(...)`),
+// the resulting class carries inferred property types via RegisteredPrototype.
+// The idiomatic `static { GObject.registerClass(...) }` pattern discards the
+// return and is unaffected.
 
 export function registerClass<P extends {}, T extends new (...args: any[]) => P>(
     klass: T,
@@ -367,17 +348,7 @@ export function registerClass<
         }
     },
 >(
-    options: {
-        GTypeName?: string
-        GTypeFlags?: TypeFlags
-        Properties?: Props
-        Signals?: Sigs
-        Implements?: Interfaces
-        CssName?: string
-        Template?: string
-        Children?: string[]
-        InternalChildren?: string[]
-    },
+    options: MetaInfo<Props, Interfaces, Sigs>,
     klass: T,
 ): RegisteredClass<T, Props, Interfaces>
 
@@ -2440,7 +2411,7 @@ export function registerClass<
      * @gir-type Callback
      */
     interface ClosureMarshal {
-        (closure: Closure, return_value: Value | null, param_values: unknown[], invocation_hint: null, marshal_data: null): void;
+        (closure: Closure, return_value: unknown | null, param_values: unknown[], invocation_hint: null, marshal_data: null): void;
     }
 
     /**
@@ -6538,7 +6509,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        append(value: Value | null): ValueArray;
+        append(value: Value | any | null): ValueArray;
 
         /**
          * Construct an exact copy of a {@link GObject.ValueArray} by duplicating all its
@@ -6566,7 +6537,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        insert(index_: number, value: Value | null): ValueArray;
+        insert(index_: number, value: Value | any | null): ValueArray;
 
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
@@ -6574,7 +6545,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        prepend(value: Value | null): ValueArray;
+        prepend(value: Value | any | null): ValueArray;
 
         /**
          * Remove the value at position `index_` from `value_array`.

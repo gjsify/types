@@ -1,6 +1,6 @@
 {
     "name": "@girs/libvirtgobject-1.0",
-    "version": "1.0.0-4.0.0-rc.17",
+    "version": "1.0.0-4.0.0",
     "description": "GJS TypeScript type definitions for LibvirtGObject-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "libvirtgobject-1.0.js",
@@ -31,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.17",
-      "@girs/libvirtglib-1.0": "1.0.0-4.0.0-rc.17",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/libvirtgconfig-1.0": "1.0.0-4.0.0-rc.17",
-      "@girs/libxml2-2.0": "2.0.0-4.0.0-rc.17",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/gio-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.17"    },
+      "@girs/gjs": "4.0.0",
+      "@girs/libvirtglib-1.0": "1.0.0-4.0.0",
+      "@girs/glib-2.0": "2.88.0-4.0.0",
+      "@girs/libvirtgconfig-1.0": "1.0.0-4.0.0",
+      "@girs/libxml2-2.0": "2.0.0-4.0.0",
+      "@girs/gobject-2.0": "2.88.0-4.0.0",
+      "@girs/gio-2.0": "2.88.0-4.0.0",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0"    },
     "devDependencies": {
       "typescript": "*"
     },

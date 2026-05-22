@@ -2386,7 +2386,7 @@ export namespace GCalc {
         /**
          * @param val 
          */
-        set_value(val: GObject.Value | null): void;
+        set_value(val: GObject.Value | any | null): void;
 
         /**
          * @param args 
@@ -2394,7 +2394,7 @@ export namespace GCalc {
         // Conflicted with GCalc.MathVariable.set_value
         set_value(...args: never[]): any;
 
-        get_value(): GObject.Value | null;
+        get_value(): unknown | null;
 
         /**
          * @param args 
@@ -2406,7 +2406,7 @@ export namespace GCalc {
          * @param val 
          * @virtual
          */
-        vfunc_set_value(val: GObject.Value | null): void;
+        vfunc_set_value(val: unknown | null): void;
 
         /**
          * @param args 
@@ -2418,7 +2418,7 @@ export namespace GCalc {
         /**
          * @virtual
          */
-        vfunc_get_value(): GObject.Value | null;
+        vfunc_get_value(): GObject.Value | any | null;
 
         /**
          * @param args 
@@ -4533,12 +4533,12 @@ export namespace GCalc {
              * @param val 
              * @virtual
              */
-            vfunc_set_value(val: GObject.Value | null): void;
+            vfunc_set_value(val: unknown | null): void;
 
             /**
              * @virtual
              */
-            vfunc_get_value(): GObject.Value | null;
+            vfunc_get_value(): GObject.Value | any | null;
         }
 
 
@@ -4559,9 +4559,9 @@ export namespace GCalc {
         /**
          * @param val 
          */
-        set_value(val: GObject.Value | null): void;
+        set_value(val: GObject.Value | any | null): void;
 
-        get_value(): GObject.Value | null;
+        get_value(): unknown | null;
     }
 
 

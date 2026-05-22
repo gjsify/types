@@ -1714,7 +1714,7 @@ export namespace Ags {
      * @returns the {@link GLib.HashTable} containig globals
      * @since 3.0.0
      */
-    function globals_get_hash_table(): GLib.HashTable<string, GObject.Value>;
+    function globals_get_hash_table(): { [key: string]: GObject.Value };
 
     /**
      * Set global key/value.
@@ -5091,7 +5091,7 @@ export namespace Ags {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         // Methods
         /**
@@ -5104,7 +5104,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the response on success, otherwise `null`.
          */
-        do_request(msg: Soup.ServerMessage, query: { [key: string]: any } | GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 
@@ -14502,7 +14502,7 @@ export namespace Ags {
              * @param security_token the security token
              * @virtual
              */
-            vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+            vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
         }
 
 
@@ -14530,7 +14530,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: { [key: string]: any } | GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 

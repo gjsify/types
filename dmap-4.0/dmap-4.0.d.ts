@@ -1780,7 +1780,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_ctrl_int(message: Soup.ServerMessage, path: string, query: never): void;
 
         /**
          * @param server 
@@ -1789,7 +1789,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_databases(server: Soup.Server, message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_databases(server: Soup.Server, message: Soup.ServerMessage, path: string, query: never): void;
 
         /**
          * @param msg 
@@ -1797,7 +1797,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_databases_browse_xxx(msg: Soup.ServerMessage, path: string, query: never): void;
 
         /**
          * @param server 
@@ -1828,7 +1828,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_login(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_login(message: Soup.ServerMessage, path: string, query: never): void;
 
         /**
          * @param message 
@@ -1836,7 +1836,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_logout(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_logout(message: Soup.ServerMessage, path: string, query: never): void;
 
         /**
          * @param msg 
@@ -1871,7 +1871,7 @@ export namespace Dmap {
          * @param query 
          * @virtual
          */
-        vfunc_update(message: Soup.ServerMessage, path: string, query: GLib.HashTable<never, never>): void;
+        vfunc_update(message: Soup.ServerMessage, path: string, query: never): void;
 
         // Methods
         /**
@@ -3008,7 +3008,7 @@ export namespace Dmap {
          * @param filter_def A series of filter definitions.
          * @returns the records which satisfy a record in `filter_def`.
          */
-        apply_filter(filter_def: DbFilterDefinition[]): GLib.HashTable<number, Record>;
+        apply_filter(filter_def: DbFilterDefinition[]): { [key: number]: Record };
 
         /**
          * @returns the number of records in the database.

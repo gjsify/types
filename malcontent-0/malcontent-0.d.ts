@@ -2142,7 +2142,7 @@ export namespace Malcontent {
          * A `NULL` return value is equivalent to an empty mapping.
          * @returns mapping of ID   to URI for allow lists
          */
-        get_allow_lists(): GLib.HashTable<string, string> | null;
+        get_allow_lists(): { [key: string]: string } | null;
 
         /**
          * Gets the block lists configured on the filter.
@@ -2153,7 +2153,7 @@ export namespace Malcontent {
          * A `NULL` return value is equivalent to an empty mapping.
          * @returns mapping of ID   to URI for block lists
          */
-        get_block_lists(): GLib.HashTable<string, string> | null;
+        get_block_lists(): { [key: string]: string } | null;
 
         /**
          * Gets the custom allow list configured on the filter.

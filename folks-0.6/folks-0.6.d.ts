@@ -1485,7 +1485,7 @@ export namespace Folks {
          * @param persona_store 
          * @param details 
          */
-        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): globalThis.Promise<Persona>;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: GObject.Value }): globalThis.Promise<Persona>;
 
         /**
          * @param parent 
@@ -1493,7 +1493,7 @@ export namespace Folks {
          * @param details 
          * @param _callback_ 
          */
-        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: GObject.Value }, _callback_: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * @param parent 
@@ -1501,7 +1501,7 @@ export namespace Folks {
          * @param details 
          * @param _callback_ 
          */
-        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Persona> | void;
+        add_persona_from_details(parent: Individual, persona_store: PersonaStore, details: { [key: string]: GObject.Value }, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Persona> | void;
 
         /**
          * @param _res_ 
@@ -4046,7 +4046,7 @@ export namespace Folks {
          * @param _callback_ 
          * @virtual
          */
-        vfunc_add_persona_from_details(details: GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void;
+        vfunc_add_persona_from_details(details: { [key: string]: GObject.Value }, _callback_: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * @param _res_ 
@@ -4159,19 +4159,19 @@ export namespace Folks {
         /**
          * @param details 
          */
-        add_persona_from_details(details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): globalThis.Promise<Persona>;
+        add_persona_from_details(details: { [key: string]: GObject.Value }): globalThis.Promise<Persona>;
 
         /**
          * @param details 
          * @param _callback_ 
          */
-        add_persona_from_details(details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, _callback_: Gio.AsyncReadyCallback<this>): void;
+        add_persona_from_details(details: { [key: string]: GObject.Value }, _callback_: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * @param details 
          * @param _callback_ 
          */
-        add_persona_from_details(details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Persona> | void;
+        add_persona_from_details(details: { [key: string]: GObject.Value }, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Persona> | void;
 
         /**
          * @param _res_ 

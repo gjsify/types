@@ -1085,7 +1085,7 @@ export namespace GES {
      * @gir-type Callback
      */
     interface BaseEffectTimeTranslationFunc {
-        (effect: BaseEffect, time: Gst.ClockTime, time_property_values: GLib.HashTable<string, GObject.Value>): Gst.ClockTime;
+        (effect: BaseEffect, time: Gst.ClockTime, time_property_values: { [key: string]: GObject.Value }): Gst.ClockTime;
     }
 
     /**
@@ -1839,7 +1839,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -2118,7 +2118,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -2759,7 +2759,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -3038,7 +3038,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -4529,7 +4529,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -4808,7 +4808,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -5653,7 +5653,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -5932,7 +5932,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7440,7 +7440,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -7719,7 +7719,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -7909,7 +7909,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -8188,7 +8188,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -9528,7 +9528,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -9807,7 +9807,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -11898,7 +11898,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -12177,7 +12177,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -13590,7 +13590,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -13869,7 +13869,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -14753,7 +14753,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -15032,7 +15032,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -15559,7 +15559,7 @@ export namespace GES {
          * corresponding created {@link Gst.ControlBinding}.
          * @returns A hash table containing all child-property-name/control-binding pairs for `trackelement`.
          */
-        get_all_control_bindings(): GLib.HashTable<string, Gst.ControlBinding>;
+        get_all_control_bindings(): { [key: string]: Gst.ControlBinding };
 
         /**
          * Gets {@link GES.TrackElement.auto_clamp_control_sources}.
@@ -15878,7 +15878,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -16157,7 +16157,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -16381,7 +16381,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -16660,7 +16660,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -18212,7 +18212,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -18491,7 +18491,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the
@@ -19798,7 +19798,7 @@ export namespace GES {
          * @param key The key for the `container` field to get
          * @returns The value under `key`, or `null` if `container` does not have the field set.
          */
-        get_meta(key: string): GObject.Value | null;
+        get_meta(key: string): unknown | null;
 
         /**
          * Gets the current string value of the specified field of the meta
@@ -20077,7 +20077,7 @@ export namespace GES {
          * @param value The value to set under `meta_item`, or `null` to remove the corresponding field
          * @returns `true` if `value` was set under `meta_item` for `container`.
          */
-        set_meta(meta_item: string, value: GObject.Value | null): boolean;
+        set_meta(meta_item: string, value: GObject.Value | any | null): boolean;
 
         /**
          * Sets the value of the specified field of the meta container to the

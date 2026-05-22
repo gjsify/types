@@ -299,7 +299,7 @@ export namespace Gepub {
         /**
          * @returns doc resource table
          */
-        get_resources(): GLib.HashTable<string, Resource>;
+        get_resources(): { [key: string]: Resource };
 
         /**
          * @returns the list of text in the current chapter.

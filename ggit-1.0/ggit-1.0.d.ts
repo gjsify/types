@@ -3461,7 +3461,7 @@ export namespace Ggit {
 
         _init(...args: any[]): void;
 
-        static new_buffers(buffer1: Uint8Array | null, buffer1_as_path: string | null, buffer2: Uint8Array | null, buffer2_as_path: string | null, diff_options: DiffOptions | null): Diff;
+        static new_buffers(buffer1: Uint8Array | string | null, buffer1_as_path: string | null, buffer2: Uint8Array | string | null, buffer2_as_path: string | null, diff_options: DiffOptions | null): Diff;
 
         static new_index_to_workdir(repository: Repository, index: Index | null, diff_options: DiffOptions | null): Diff;
 
@@ -3497,7 +3497,7 @@ export namespace Ggit {
          * @param hunk_cb a {@link Ggit.DiffHunkCallback}.
          * @param line_cb a {@link Ggit.DiffLineCallback}.
          */
-        static blob_to_buffer(old_blob: Blob | null, old_as_path: string | null, buffer: Uint8Array | null, buffer_as_path: string | null, diff_options: DiffOptions | null, file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void;
+        static blob_to_buffer(old_blob: Blob | null, old_as_path: string | null, buffer: Uint8Array | string | null, buffer_as_path: string | null, diff_options: DiffOptions | null, file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void;
 
         /**
          * Iterates over the diff calling `file_cb`, `binary_cb`, `hunk_cb` and `line_cb`.

@@ -6959,7 +6959,7 @@ export namespace Gdk {
      * @param io_priority the I/O priority of the operation
      * @param cancellable optional {@link Gio.Cancellable} object
      */
-    function content_deserialize_async(stream: Gio.InputStream, mime_type: string, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[GObject.Value]>;
+    function content_deserialize_async(stream: Gio.InputStream, mime_type: string, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[unknown]>;
     /**
      * Reads content from the given input stream and deserialize it, asynchronously.
      * 
@@ -6985,7 +6985,7 @@ export namespace Gdk {
      * @param cancellable optional {@link Gio.Cancellable} object
      * @param callback callback to call when the operation is done
      */
-    function content_deserialize_async(stream: Gio.InputStream, mime_type: string, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): globalThis.Promise<[GObject.Value]> | void;
+    function content_deserialize_async(stream: Gio.InputStream, mime_type: string, type: GObject.GType, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Gio.InputStream> | null): globalThis.Promise<[unknown]> | void;
 
     /**
      * Finishes a content deserialization operation.
@@ -14839,7 +14839,7 @@ export namespace Gdk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            bytes: GLib.Bytes | null;
+            bytes: GLib.Bytes | Uint8Array | null;
             color_state: ColorState;
             colorState: ColorState;
             format: MemoryFormat;
@@ -14877,7 +14877,7 @@ export namespace Gdk {
          * @since 4.16
          */
         get bytes(): GLib.Bytes | null;
-        set bytes(val: GLib.Bytes | null);
+        set bytes(val: GLib.Bytes | Uint8Array | null);
 
         /**
          * The colorstate describing the data.
@@ -15071,7 +15071,7 @@ export namespace Gdk {
          * The bytes must be set before calling {@link Gdk.MemoryTextureBuilder.build}.
          * @param bytes The bytes the texture shows or `null` to unset
          */
-        set_bytes(bytes: GLib.Bytes | null): void;
+        set_bytes(bytes: GLib.Bytes | Uint8Array | null): void;
 
         /**
          * Sets the colorstate describing the data.

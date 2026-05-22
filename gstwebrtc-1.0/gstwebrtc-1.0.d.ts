@@ -1047,14 +1047,14 @@ export namespace GstWebRTC {
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
          */
-        send_data(data: GLib.Bytes | null): void;
+        send_data(data: GLib.Bytes | Uint8Array | null): void;
 
         /**
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
          * @returns TRUE if `channel` is open and data could be queued
          */
-        send_data_full(data: GLib.Bytes | null): boolean;
+        send_data_full(data: GLib.Bytes | Uint8Array | null): boolean;
 
         /**
          * Send `str` as a string message over `channel`.

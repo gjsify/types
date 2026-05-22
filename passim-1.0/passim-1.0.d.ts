@@ -376,7 +376,7 @@ export namespace Passim {
          * Sets the local bytes in the cache.
          * @param bytes a {@link GLib.Bytes}
          */
-        set_bytes(bytes: GLib.Bytes | null): void;
+        set_bytes(bytes: GLib.Bytes | Uint8Array | null): void;
 
         /**
          * Sets the cmdline of the binary that published the item.

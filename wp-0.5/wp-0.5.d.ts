@@ -6204,7 +6204,7 @@ export namespace Wp {
          * @param key the key
          * @returns the data associated with `key` or `null`
          */
-        get_data(key: string): GObject.Value | null;
+        get_data(key: string): unknown | null;
 
         /**
          * Gets the name of the event.
@@ -6252,7 +6252,7 @@ export namespace Wp {
          * @param key the key to associate `data` with
          * @param data the data element, or `null` to remove any previous data associated with this `key`
          */
-        set_data(key: string, data: GObject.Value | null): void;
+        set_data(key: string, data: GObject.Value | any | null): void;
 
         /**
          * Stops processing of this event; any further hooks will not be executed from this moment onwards and the event will be discarded from the stack.

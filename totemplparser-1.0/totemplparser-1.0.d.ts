@@ -328,7 +328,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            "entry-parsed": (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            "entry-parsed": (arg0: string, arg1: { [key: string]: string }) => void;
             /**
              * The ::playlist-ended signal is emitted when a playlist is finished
              * parsing. It is only called when {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started}
@@ -345,7 +345,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            "playlist-started": (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            "playlist-started": (arg0: string, arg1: { [key: string]: string }) => void;
             "notify::debug": (pspec: GObject.ParamSpec) => void;
             "notify::disable-unsafe": (pspec: GObject.ParamSpec) => void;
             "notify::force": (pspec: GObject.ParamSpec) => void;
@@ -491,7 +491,7 @@ export namespace TotemPlParser {
          * @param metadata 
          * @virtual
          */
-        vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<never, never>): void;
+        vfunc_entry_parsed(uri: string, metadata: never): void;
 
         /**
          * @param uri 
@@ -504,7 +504,7 @@ export namespace TotemPlParser {
          * @param metadata 
          * @virtual
          */
-        vfunc_playlist_started(uri: string, metadata: GLib.HashTable<never, never>): void;
+        vfunc_playlist_started(uri: string, metadata: never): void;
 
         // Methods
         /**

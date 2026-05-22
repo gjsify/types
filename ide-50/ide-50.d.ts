@@ -1047,7 +1047,7 @@ export namespace Ide {
      * @param name the name for the memfd or tempfile
      * @returns -1 upon failure, otherwise a file-descriptor
      */
-    function foundry_bytes_to_memfd(bytes: GLib.Bytes | null, name: string): number;
+    function foundry_bytes_to_memfd(bytes: GLib.Bytes | Uint8Array | null, name: string): number;
 
     /**
      * @param file 
@@ -13156,7 +13156,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -13170,7 +13170,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -13184,7 +13184,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -16393,7 +16393,7 @@ export namespace Ide {
          * @param directory 
          * @param cancellable 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: any }>;
 
         /**
          * @param directory 
@@ -16407,13 +16407,13 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: any }> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} of {@link Gio.File} to {@link GObject.Strv}
          */
-        get_build_flags_for_dir_finish(result: Gio.AsyncResult): GLib.HashTable;
+        get_build_flags_for_dir_finish(result: Gio.AsyncResult): { [key: string]: any };
 
         /**
          * This function will get build flags for all files and returns
@@ -16421,7 +16421,7 @@ export namespace Ide {
          * @param files array of files whose build flags has to be retrieved.
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: any }>;
 
         /**
          * This function will get build flags for all files and returns
@@ -16439,13 +16439,13 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: any }> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} or {@link Gio.File} to {@link GObject.Strv}
          */
-        get_build_flags_for_files_finish(result: Gio.AsyncResult): GLib.HashTable;
+        get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
         /**
          * @param pipeline 
@@ -16515,7 +16515,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
-        vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any } | GLib.HashTable;
+        vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
         /**
          * @param pipeline 
@@ -22718,7 +22718,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -22732,7 +22732,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -22746,7 +22746,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -24002,7 +24002,7 @@ export namespace Ide {
          * @param contents a {@link GLib.Bytes} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -24011,7 +24011,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -24020,7 +24020,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
 
         /**
          * Completes an asynchronous request to get the symbol tree for the
@@ -45293,7 +45293,7 @@ export namespace Ide {
          * @param tool_id the identifier of the tool like `IDE_TOOLCHAIN_TOOL_CC`
          * @virtual
          */
-        vfunc_get_tools_for_id(tool_id: string): { [key: string]: any } | GLib.HashTable<string, string>;
+        vfunc_get_tools_for_id(tool_id: string): { [key: string]: string };
 
         // Methods
         get_display_name(): string;
@@ -45329,7 +45329,7 @@ export namespace Ide {
          * @param tool_id the identifier of the tool like `IDE_TOOLCHAIN_TOOL_CC`
          * @returns A table of language names and paths.
          */
-        get_tools_for_id(tool_id: string): GLib.HashTable<string, string>;
+        get_tools_for_id(tool_id: string): { [key: string]: string };
 
         /**
          * @param display_name 
@@ -56372,7 +56372,7 @@ export namespace Ide {
              * @param result a {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any } | GLib.HashTable;
+            vfunc_get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
             /**
              * @param pipeline 
@@ -56493,7 +56493,7 @@ export namespace Ide {
          * @param directory 
          * @param cancellable 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: any }>;
 
         /**
          * @param directory 
@@ -56507,13 +56507,13 @@ export namespace Ide {
          * @param cancellable 
          * @param callback 
          */
-        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
+        get_build_flags_for_dir_async(directory: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: any }> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} of {@link Gio.File} to {@link GObject.Strv}
          */
-        get_build_flags_for_dir_finish(result: Gio.AsyncResult): GLib.HashTable;
+        get_build_flags_for_dir_finish(result: Gio.AsyncResult): { [key: string]: any };
 
         /**
          * This function will get build flags for all files and returns
@@ -56521,7 +56521,7 @@ export namespace Ide {
          * @param files array of files whose build flags has to be retrieved.
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: any }>;
 
         /**
          * This function will get build flags for all files and returns
@@ -56539,13 +56539,13 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} to cancel getting build flags.
          * @param callback function to be called after getting build flags.
          */
-        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable> | void;
+        get_build_flags_for_files_async(files: Gio.File[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: any }> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} or {@link Gio.File} to {@link GObject.Strv}
          */
-        get_build_flags_for_files_finish(result: Gio.AsyncResult): GLib.HashTable;
+        get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
         /**
          * @param pipeline 
@@ -57753,7 +57753,7 @@ export namespace Ide {
          * @param lang_id the language id for the buffer
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Diagnostics>;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -57767,7 +57767,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests the provider diagnose `file` using `contents` as the contents of
@@ -57781,7 +57781,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        diagnose_async(file: Gio.File, contents: GLib.Bytes | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
+        diagnose_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, lang_id: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Diagnostics> | void;
 
         /**
          * Completes an asynchronous request to diagnose a file.
@@ -59188,7 +59188,7 @@ export namespace Ide {
              * @param result a {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | null, GLib.Bytes | null];
+            vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | Uint8Array | null, GLib.Bytes | Uint8Array | null];
 
             /**
              * This process acts identical to `g_subprocess_communicate_utf8()`.
@@ -59330,7 +59330,7 @@ export namespace Ide {
          * @param stdin_buf a {@link GLib.Bytes} to send to stdin or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -59345,7 +59345,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to complete the request
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -59360,7 +59360,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback A callback to complete the request
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
 
         /**
          * Finishes a request to `ide_subprocess_communicate_async()`.
@@ -59696,7 +59696,7 @@ export namespace Ide {
          * @param contents a {@link GLib.Bytes} or `null`
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<SymbolTree | null>;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -59705,7 +59705,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously fetch an up to date symbol tree for `file`.
@@ -59714,7 +59714,7 @@ export namespace Ide {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a callback to execute upon completion
          */
-        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
+        get_symbol_tree_async(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SymbolTree | null> | void;
 
         /**
          * Completes an asynchronous request to get the symbol tree for the

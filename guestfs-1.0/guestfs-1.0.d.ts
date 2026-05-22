@@ -5658,7 +5658,7 @@ export namespace Guestfs {
          * @param device 
          * @returns a GHashTable of results, or NULL on error
          */
-        blkid(device: string): GLib.HashTable<string, string>;
+        blkid(device: string): { [key: string]: string };
 
         /**
          * flush device buffers
@@ -6283,7 +6283,7 @@ export namespace Guestfs {
          * @param subvolume 
          * @returns a GHashTable of results, or NULL on error
          */
-        btrfs_subvolume_show(subvolume: string): GLib.HashTable<string, string>;
+        btrfs_subvolume_show(subvolume: string): { [key: string]: string };
 
         /**
          * create a btrfs snapshot
@@ -9136,7 +9136,7 @@ export namespace Guestfs {
          * @param root 
          * @returns a GHashTable of results, or NULL on error
          */
-        inspect_get_drive_mappings(root: string): GLib.HashTable<string, string>;
+        inspect_get_drive_mappings(root: string): { [key: string]: string };
 
         /**
          * get filesystems associated with inspected operating system
@@ -9306,7 +9306,7 @@ export namespace Guestfs {
          * @param root 
          * @returns a GHashTable of results, or NULL on error
          */
-        inspect_get_mountpoints(root: string): GLib.HashTable<string, string>;
+        inspect_get_mountpoints(root: string): { [key: string]: string };
 
         /**
          * get a possible osinfo short ID corresponding to this operating system
@@ -9987,7 +9987,7 @@ export namespace Guestfs {
          * @param val 
          * @returns a GHashTable of results, or NULL on error
          */
-        internal_test_rhashtable(val: string): GLib.HashTable<string, string>;
+        internal_test_rhashtable(val: string): { [key: string]: string };
 
         /**
          * internal test function - do not use
@@ -10001,7 +10001,7 @@ export namespace Guestfs {
          * You probably don't want to call this function.
          * @returns a GHashTable of results, or NULL on error
          */
-        internal_test_rhashtableerr(): GLib.HashTable<string, string>;
+        internal_test_rhashtableerr(): { [key: string]: string };
 
         /**
          * internal test function - do not use
@@ -10834,7 +10834,7 @@ export namespace Guestfs {
          * and partition names (eg. /dev/sda and /dev/sda1).
          * @returns a GHashTable of results, or NULL on error
          */
-        list_disk_labels(): GLib.HashTable<string, string>;
+        list_disk_labels(): { [key: string]: string };
 
         /**
          * list device mapper devices
@@ -10890,7 +10890,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_os()` to look for OSes).
          * @returns a GHashTable of results, or NULL on error
          */
-        list_filesystems(): GLib.HashTable<string, string>;
+        list_filesystems(): { [key: string]: string };
 
         /**
          * list all Windows dynamic disk partitions
@@ -11603,7 +11603,7 @@ export namespace Guestfs {
          * @param md 
          * @returns a GHashTable of results, or NULL on error
          */
-        md_detail(md: string): GLib.HashTable<string, string>;
+        md_detail(md: string): { [key: string]: string };
 
         /**
          * get underlying devices from an MD device
@@ -12363,7 +12363,7 @@ export namespace Guestfs {
          * directory where the device is mounted.
          * @returns a GHashTable of results, or NULL on error
          */
-        mountpoints(): GLib.HashTable<string, string>;
+        mountpoints(): { [key: string]: string };
 
         /**
          * show mounted filesystems
@@ -14919,7 +14919,7 @@ export namespace Guestfs {
          * @param device 
          * @returns a GHashTable of results, or NULL on error
          */
-        tune2fs_l(device: string): GLib.HashTable<string, string>;
+        tune2fs_l(device: string): { [key: string]: string };
 
         /**
          * unpack compressed tarball to directory

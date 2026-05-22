@@ -387,7 +387,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
          */
-        set_value(key: string, value: GObject.Value | null): void;
+        set_value(key: string, value: GObject.Value | any | null): void;
 
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
@@ -763,7 +763,7 @@ export namespace Accounts {
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
          */
-        set_value(key: string, value: GObject.Value | null): void;
+        set_value(key: string, value: GObject.Value | any | null): void;
 
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
@@ -1398,7 +1398,7 @@ export namespace Accounts {
          * Gets the authentication parameters.
          * @returns a {@link GLib.HashTable} containing all the authentication parameters.
          */
-        get_parameters(): GLib.HashTable<string, GObject.Value>;
+        get_parameters(): { [key: string]: GObject.Value };
 
         /**
          * Insert the given authentication parameters into the authentication data. If
@@ -1406,7 +1406,7 @@ export namespace Accounts {
          * take precedence.
          * @param parameters a {@link GLib.HashTable} containing the authentication parameters to be added.
          */
-        insert_parameters(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
+        insert_parameters(parameters: { [key: string]: GObject.Value }): void;
 
         /**
          * Increment the reference count of `self`.

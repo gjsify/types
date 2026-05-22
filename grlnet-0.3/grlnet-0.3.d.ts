@@ -228,7 +228,7 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_with_headers_async(uri: string, headers: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        request_with_headers_async(uri: string, headers: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets if cache must be used. Note that this will only work if caching is

@@ -1884,7 +1884,7 @@ export namespace Tsparql {
          * @param property_uri a string identifying the property to look up
          * @returns a {@link GLib.List} of   {@link GObject.Value} instances. The list should be freed with {@link GLib.List.free}
          */
-        get_values(property_uri: string): GObject.Value[] | null;
+        get_values(property_uri: string): unknown[] | null;
 
         /**
          * A helper function that compares a {@link Tsparql.Resource} by its identifier

@@ -2075,7 +2075,7 @@ export namespace RygelServer {
          * @param replacement_pairs 
          * @param source_string 
          */
-        static apply_replacements(replacement_pairs: { [key: string]: any } | GLib.HashTable<string, string>, source_string: string | null): string | null;
+        static apply_replacements(replacement_pairs: { [key: string]: string }, source_string: string | null): string | null;
 
         // Virtual methods
         /**
@@ -2514,7 +2514,7 @@ export namespace RygelServer {
          * @param didl_resource 
          * @param replacements 
          */
-        serialize(didl_resource: GUPnPAV.DIDLLiteResource, replacements: GLib.HashTable<string, string> | null): GUPnPAV.DIDLLiteResource;
+        serialize(didl_resource: GUPnPAV.DIDLLiteResource, replacements: { [key: string]: string } | null): GUPnPAV.DIDLLiteResource;
 
         /**
          * @param pi 
@@ -2524,7 +2524,7 @@ export namespace RygelServer {
         /**
          * @param replacements 
          */
-        get_protocol_info(replacements: GLib.HashTable<string, string> | null): GUPnPAV.ProtocolInfo;
+        get_protocol_info(replacements: { [key: string]: string } | null): GUPnPAV.ProtocolInfo;
 
         supports_arbitrary_byte_seek(): boolean;
 
@@ -3031,7 +3031,7 @@ export namespace RygelServer {
          * @param replacements 
          * @virtual
          */
-        vfunc_create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: GLib.HashTable<string, string>): DataSource | null;
+        vfunc_create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: { [key: string]: string }): DataSource | null;
 
         /**
          * @param uri 
@@ -3074,7 +3074,7 @@ export namespace RygelServer {
          * @param resource 
          * @param replacements 
          */
-        create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: { [key: string]: any } | GLib.HashTable<string, string>): DataSource | null;
+        create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: { [key: string]: string }): DataSource | null;
 
         /**
          * @param uri 
@@ -4301,7 +4301,7 @@ export namespace RygelServer {
 
         get_protocol_info(): Gee.ArrayList;
 
-        get_replacements(): GLib.HashTable<string, string>;
+        get_replacements(): { [key: string]: string };
 
         is_local(): boolean;
 

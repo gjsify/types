@@ -1003,7 +1003,7 @@ export namespace GUPnPDLNA {
          * mapping.
          * @returns Entries. Do not modify.
          */
-        get_entries(): GLib.HashTable<string, ValueList>;
+        get_entries(): { [key: string]: ValueList };
 
         /**
          * Gets `restriction`'s MIME type.

@@ -6164,7 +6164,7 @@ export namespace NM {
      * @returns the new {@link NM.IPRoutingRule} or `null` on error.
      * @since 1.18
      */
-    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): IPRoutingRule;
+    function ip_routing_rule_from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: never | null): IPRoutingRule;
 
     /**
      * Tries to create a NMConnection from a keyfile. The resulting keyfile is
@@ -6406,7 +6406,7 @@ export namespace NM {
      * @returns the string representing attributes, or `null`    in case there are no attributes
      * @since 1.8
      */
-    function utils_format_variant_attributes(attributes: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, attr_separator: number, key_value_separator: number): string;
+    function utils_format_variant_attributes(attributes: { [key: string]: GLib.Variant }, attr_separator: number, key_value_separator: number): string;
 
     /**
      * Gets current time in milliseconds of CLOCK_BOOTTIME.
@@ -6794,7 +6794,7 @@ export namespace NM {
      * @returns a {@link GLib.HashTable} mapping attribute names to {@link GLib.Variant} values. Warning: the variant are still floating references, owned by the hash table. If you take a reference, ensure to sink the one of the hash table first.
      * @since 1.8
      */
-    function utils_parse_variant_attributes(string: string, attr_separator: number, key_value_separator: number, ignore_unknown: boolean, spec: VariantAttributeSpec): GLib.HashTable<string, GLib.Variant>;
+    function utils_parse_variant_attributes(string: string, attr_separator: number, key_value_separator: number, ignore_unknown: boolean, spec: VariantAttributeSpec): { [key: string]: GLib.Variant };
 
     /**
      * The only purpose of this function is to give access to `g_print()`
@@ -10827,7 +10827,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<string, number>>;
+        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: number }>;
 
         /**
          * Performs the rollback of a checkpoint before the timeout is reached.
@@ -10843,14 +10843,14 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
          */
-        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, number>> | void;
+        checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: number }> | void;
 
         /**
          * Gets the result of a call to `nm_client_checkpoint_rollback()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns an hash table of   devices and results. Devices are represented by their original   D-Bus path; each result is a {@link NM.RollbackResult}.
          */
-        checkpoint_rollback_finish(result: Gio.AsyncResult): GLib.HashTable<string, number>;
+        checkpoint_rollback_finish(result: Gio.AsyncResult): { [key: string]: number };
 
         /**
          * Determine whether connectivity checking is available.  This
@@ -12548,7 +12548,7 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Connection, bigint | number]>;
+        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Connection, number]>;
 
         /**
          * Asynchronously begins and gets the currently applied connection.
@@ -12564,7 +12564,7 @@ export namespace NM {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
          */
-        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Connection, bigint | number]> | void;
+        get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Connection, number]> | void;
 
         /**
          * Gets the result of a call to `nm_device_get_applied_connection_async()`.
@@ -17825,7 +17825,7 @@ export namespace NM {
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
             family: number;
-            options: { [key: string]: any } | GLib.HashTable<string, string>;
+            options: { [key: string]: string };
         }
     }
 
@@ -17848,7 +17848,7 @@ export namespace NM {
          * The {@link GLib.HashTable} containing options of the configuration.
          * @read-only
          */
-        get options(): GLib.HashTable<string, string>;
+        get options(): { [key: string]: string };
 
         /**
          * Compile-time signal type information.
@@ -17895,7 +17895,7 @@ export namespace NM {
          * Gets all the options contained in the configuration.
          * @returns the {@link GLib.HashTable} containing strings for keys and values.  This is the internal copy used by the configuration, and must not be modified.
          */
-        get_options(): GLib.HashTable<string, string>;
+        get_options(): { [key: string]: string };
     }
 
 
@@ -18897,7 +18897,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
+        normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -19799,7 +19799,7 @@ export namespace NM {
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
          * @returns `true` if the settings contain the same values, `false` if they do not
          */
-        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: any } | GLib.HashTable<string, number>): [boolean, GLib.HashTable<string, number>];
+        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: number }): [boolean, { [key: string]: number }];
 
         /**
          * Duplicates a {@link NM.Setting}.
@@ -22285,7 +22285,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            options: { [key: string]: any } | GLib.HashTable<string, string>;
+            options: { [key: string]: string };
         }
     }
 
@@ -22302,8 +22302,8 @@ export namespace NM {
          * must be strings. Option names must contain only alphanumeric characters
          * (ie, [a-zA-Z0-9]).
          */
-        get options(): GLib.HashTable<string, string>;
-        set options(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get options(): { [key: string]: string };
+        set options(val: { [key: string]: string });
 
         /**
          * Compile-time signal type information.
@@ -31105,7 +31105,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: { [key: string]: any } | GLib.HashTable<string, string>;
+            data: { [key: string]: string };
         }
     }
 
@@ -31121,8 +31121,8 @@ export namespace NM {
          * A dictionary of key/value pairs with external-ids for OVS.
          * @since 1.30
          */
-        get data(): GLib.HashTable<string, string>;
-        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get data(): { [key: string]: string };
+        set data(val: { [key: string]: string });
 
         /**
          * Compile-time signal type information.
@@ -31309,7 +31309,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: { [key: string]: any } | GLib.HashTable<string, string>;
+            data: { [key: string]: string };
         }
     }
 
@@ -31328,8 +31328,8 @@ export namespace NM {
          * that OVS supports.
          * @since 1.42
          */
-        get data(): GLib.HashTable<string, string>;
-        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get data(): { [key: string]: string };
+        set data(val: { [key: string]: string });
 
         /**
          * Compile-time signal type information.
@@ -34040,7 +34040,7 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: { [key: string]: any } | GLib.HashTable<string, string>;
+            data: { [key: string]: string };
         }
     }
 
@@ -34059,8 +34059,8 @@ export namespace NM {
          * but the values can be arbitrary UTF8 strings up to a certain length.
          * @since 1.8
          */
-        get data(): GLib.HashTable<string, string>;
-        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get data(): { [key: string]: string };
+        set data(val: { [key: string]: string });
 
         /**
          * Compile-time signal type information.
@@ -34469,9 +34469,9 @@ export namespace NM {
 
         // Constructor properties interface
         interface ConstructorProps extends Setting.ConstructorProps {
-            data: { [key: string]: any } | GLib.HashTable<string, string>;
+            data: { [key: string]: string };
             persistent: boolean;
-            secrets: { [key: string]: any } | GLib.HashTable<string, string>;
+            secrets: { [key: string]: string };
             service_type: string;
             serviceType: string;
             timeout: number;
@@ -34492,8 +34492,8 @@ export namespace NM {
          * Dictionary of key/value pairs of VPN plugin specific data.  Both keys and
          * values must be strings.
          */
-        get data(): GLib.HashTable<string, string>;
-        set data(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get data(): { [key: string]: string };
+        set data(val: { [key: string]: string });
 
         /**
          * If the VPN service supports persistence, and this property is `true`,
@@ -34508,8 +34508,8 @@ export namespace NM {
          * Dictionary of key/value pairs of VPN plugin specific secrets like
          * passwords or private keys.  Both keys and values must be strings.
          */
-        get secrets(): GLib.HashTable<string, string>;
-        set secrets(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get secrets(): { [key: string]: string };
+        set secrets(val: { [key: string]: string });
 
         /**
          * D-Bus service name of the VPN plugin that this setting uses to connect to
@@ -35756,8 +35756,8 @@ export namespace NM {
             port: string;
             s390_nettype: string;
             s390Nettype: string;
-            s390_options: { [key: string]: any } | GLib.HashTable<string, string>;
-            s390Options: { [key: string]: any } | GLib.HashTable<string, string>;
+            s390_options: { [key: string]: string };
+            s390Options: { [key: string]: string };
             s390_subchannels: string[];
             s390Subchannels: string[];
             speed: number;
@@ -36058,8 +36058,8 @@ export namespace NM {
          * However, s390utils ships a udev rule which parses this information
          * and applies it to the interface.
          */
-        get s390_options(): GLib.HashTable<string, string>;
-        set s390_options(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get s390_options(): { [key: string]: string };
+        set s390_options(val: { [key: string]: string });
 
         /**
          * Dictionary of key/value pairs of s390-specific device options.  Both keys
@@ -36071,8 +36071,8 @@ export namespace NM {
          * However, s390utils ships a udev rule which parses this information
          * and applies it to the interface.
          */
-        get s390Options(): GLib.HashTable<string, string>;
-        set s390Options(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        get s390Options(): { [key: string]: string };
+        set s390Options(val: { [key: string]: string });
 
         /**
          * Identifies specific subchannels that this network device uses for
@@ -38431,7 +38431,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
+        normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This
@@ -39071,14 +39071,14 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: { [key: string]: any } | GLib.HashTable<never, never>, secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: never, secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
          */
-        static read_vpn_details(fd: number): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
+        static read_vpn_details(fd: number): [boolean, never, never];
 
         // Virtual methods
         /**
@@ -39428,14 +39428,14 @@ export namespace NM {
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
          */
-        static get_secret_flags(data: { [key: string]: any } | GLib.HashTable<never, never>, secret_name: string): [boolean, SettingSecretFlags];
+        static get_secret_flags(data: never, secret_name: string): [boolean, SettingSecretFlags];
 
         /**
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
          */
-        static read_vpn_details(fd: number): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
+        static read_vpn_details(fd: number): [boolean, never, never];
 
         // Virtual methods
         /**
@@ -40678,7 +40678,7 @@ export namespace NM {
          * @param to_string_flags {@link NM.IPRoutingRuleAsStringFlags} for controlling the   string conversion.
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          */
-        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): IPRoutingRule;
+        static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: never | null): IPRoutingRule;
 
         // Methods
         /**
@@ -40924,7 +40924,7 @@ export namespace NM {
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
          */
-        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: GLib.HashTable<never, never> | null): string;
+        to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: never | null): string;
 
         /**
          * Decreases the reference count of the instance and destroys
@@ -42574,7 +42574,7 @@ export namespace NM {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings compared with `g_str_equal()` function. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
+        normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
         /**
          * Removes the {@link NM.Setting} with the given {@link GObject.GType} from the {@link NM.Connection}.  This

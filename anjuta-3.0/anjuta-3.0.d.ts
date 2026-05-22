@@ -1250,7 +1250,7 @@ export namespace Anjuta {
          * @param values A hash table containing all definitions
          * @returns `true` if the file has been written without error,
          */
-        write_definition_file(values: { [key: string]: any } | GLib.HashTable<string, string>): boolean;
+        write_definition_file(values: { [key: string]: string }): boolean;
     }
 
 

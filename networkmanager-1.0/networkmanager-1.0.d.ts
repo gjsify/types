@@ -3525,7 +3525,7 @@ export namespace NetworkManager {
      * @param hash a {@link GLib.HashTable} mapping string:GValue
      * @returns a newly allocated duplicated {@link GLib.HashTable}, caller must free the returned hash with `g_hash_table_unref()` or `g_hash_table_destroy()`
      */
-    function utils_gvalue_hash_dup(hash: { [key: string]: any } | GLib.HashTable<never, never>): GLib.HashTable<string, GObject.Value>;
+    function utils_gvalue_hash_dup(hash: never): { [key: string]: GObject.Value };
 
     /**
      * Converts a hex string (2 characters) into its byte representation.
@@ -4216,7 +4216,7 @@ export namespace NetworkManager {
 
         static ["new"](): Connection;
 
-        static new_from_hash(hash: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): Connection;
+        static new_from_hash(hash: { [key: string]: GLib.HashTable }): Connection;
 
         // Signals
         /** @signal */
@@ -4301,7 +4301,7 @@ export namespace NetworkManager {
          * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
          * @returns `true` if the connections contain the same values, `false` if they do not
          */
-        diff(b: Connection, flags: SettingCompareFlags, out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
+        diff(b: Connection, flags: SettingCompareFlags, out_settings: { [key: string]: GLib.HashTable }): boolean;
 
         /**
          * Print the connection to stdout.  For debugging purposes ONLY, should NOT
@@ -4578,7 +4578,7 @@ export namespace NetworkManager {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: GLib.HashTable<string, never> | null): [boolean, boolean];
+        normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
         /**
          * Removes the {@link NetworkManager.Setting} with the given {@link GObject.GType} from the {@link NetworkManager.Connection}.  This
@@ -4591,7 +4591,7 @@ export namespace NetworkManager {
          * @param new_settings a {@link GLib.HashTable} of settings
          * @returns `true` if the settings were valid and added to the connection, `false` if they were not
          */
-        replace_settings(new_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
+        replace_settings(new_settings: { [key: string]: GLib.HashTable }): boolean;
 
         /**
          * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
@@ -4619,7 +4619,7 @@ export namespace NetworkManager {
          * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
          * @returns a new {@link GLib.HashTable} describing the connection, its settings, and each setting's properties.  The caller owns the hash table and must unref the hash table with `g_hash_table_unref()` when it is no longer needed.
          */
-        to_hash(flags: SettingHashFlags): GLib.HashTable<string, GLib.HashTable>;
+        to_hash(flags: SettingHashFlags): { [key: string]: GLib.HashTable };
 
         /**
          * Update the specified setting's secrets, given a hash table of secrets
@@ -4632,7 +4632,7 @@ export namespace NetworkManager {
          * @param secrets a {@link GLib.HashTable} mapping string:{@link GObject.Value} of setting property names and secrets of the given `setting_name`
          * @returns `true` if the secrets were successfully updated, `false` if the update failed (tried to update secrets for a setting that doesn't exist, etc)
          */
-        update_secrets(setting_name: string, secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
+        update_secrets(setting_name: string, secrets: { [key: string]: GObject.Value }): boolean;
 
         /**
          * Validates the connection and all its settings.  Each setting's properties
@@ -4693,7 +4693,7 @@ export namespace NetworkManager {
 
         _init(...args: any[]): void;
 
-        static new_from_hash(setting_type: GObject.GType, hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Setting;
+        static new_from_hash(setting_type: GObject.GType, hash: { [key: string]: GObject.Value }): Setting;
 
         // Signals
         /** @signal */
@@ -4792,7 +4792,7 @@ export namespace NetworkManager {
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
          * @returns `true` if the settings contain the same values, `false` if they do not
          */
-        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: any } | GLib.HashTable<string, number>): [boolean, GLib.HashTable<string, number>];
+        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: { [key: string]: number }): [boolean, { [key: string]: number }];
 
         /**
          * Duplicates a {@link NetworkManager.Setting}.
@@ -4854,7 +4854,7 @@ export namespace NetworkManager {
          * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
          * @returns a new {@link GLib.HashTable} describing the setting's properties
          */
-        to_hash(flags: SettingHashFlags): GLib.HashTable<string, GObject.Value>;
+        to_hash(flags: SettingHashFlags): { [key: string]: GObject.Value };
 
         /**
          * Convert the setting into a string.  For debugging purposes ONLY, should NOT
@@ -4870,7 +4870,7 @@ export namespace NetworkManager {
          * @param secrets a {@link GLib.HashTable} mapping string to {@link GObject.Value} of setting property names and secrets
          * @returns `true` if the secrets were successfully updated, `false` on failure to update one or more of the secrets.
          */
-        update_secrets(secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
+        update_secrets(secrets: { [key: string]: GObject.Value }): boolean;
 
         /**
          * Validates the setting.  Each setting's properties have allowed values, and

@@ -440,12 +440,12 @@ export namespace Grl {
     /**
      * @returns a new hash table made to contain GValues.
      */
-    function g_value_hashtable_new(): GLib.HashTable<string, GObject.Value>;
+    function g_value_hashtable_new(): { [key: string]: GObject.Value };
 
     /**
      * @returns a new hash table made to contain GValues.
      */
-    function g_value_hashtable_new_direct(): GLib.HashTable<never, GObject.Value>;
+    function g_value_hashtable_new_direct(): never;
 
     /**
      * @param g_type 
@@ -668,12 +668,12 @@ export namespace Grl {
      * @param min 
      * @param max 
      */
-    function range_value_hashtable_insert(hash_table: { [key: string]: any } | GLib.HashTable<never, never>, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
+    function range_value_hashtable_insert(hash_table: never, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
 
     /**
      * @returns a {@link GLib.HashTable}
      */
-    function range_value_hashtable_new(): GLib.HashTable<never, RangeValue>;
+    function range_value_hashtable_new(): never;
 
     /**
      * @gir-type Callback
@@ -2932,7 +2932,7 @@ export namespace Grl {
          * `max_value`. If some of the values has no limit, it will set a `null`.
          * @param key a {@link Grl.KeyID}
          */
-        get_key_range_filter(key: KeyID): [GObject.Value | null, GObject.Value | null];
+        get_key_range_filter(key: KeyID): [unknown | null, unknown | null];
 
         get_key_range_filter_list(): KeyID[];
 
@@ -2991,7 +2991,7 @@ export namespace Grl {
          * @param filters 
          * @returns `true` on success
          */
-        set_key_filters(filters: { [key: string]: any } | GLib.HashTable<KeyID, GObject.Value>): boolean;
+        set_key_filters(filters: never): boolean;
 
         /**
          * Set filter as "`key` == `value`".
@@ -3012,7 +3012,7 @@ export namespace Grl {
          * @param max_value maximum value for range
          * @returns `true` on success
          */
-        set_key_range_filter_value(key: KeyID, min_value: GObject.Value | null, max_value: GObject.Value | null): boolean;
+        set_key_range_filter_value(key: KeyID, min_value: GObject.Value | any | null, max_value: GObject.Value | any | null): boolean;
 
         /**
          * Set the resolution flags for an operation. Will only succeed if `flags` obey
@@ -3201,7 +3201,7 @@ export namespace Grl {
         /**
          * @param info 
          */
-        set_optional_info(info: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_optional_info(info: never): void;
 
         /**
          * @param register_keys_function 
@@ -4694,9 +4694,9 @@ export namespace Grl {
          * @param min 
          * @param max 
          */
-        static hashtable_insert(hash_table: { [key: string]: any } | GLib.HashTable<never, never>, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
+        static hashtable_insert(hash_table: never, key: null, min: GObject.Value | any, max: GObject.Value | any): void;
 
-        static hashtable_new(): GLib.HashTable<never, RangeValue>;
+        static hashtable_new(): never;
 
         // Methods
         dup(): RangeValue;

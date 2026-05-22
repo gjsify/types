@@ -960,7 +960,7 @@ export namespace FoundryGtk {
         /**
          * @param id_to_trigger 
          */
-        override_triggers(id_to_trigger: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        override_triggers(id_to_trigger: never): void;
 
         /**
          * @param file 
@@ -1570,7 +1570,7 @@ export namespace FoundryGtk {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @virtual
          */
-        vfunc_dup_contents(): GLib.Bytes | null;
+        vfunc_dup_contents(): GLib.Bytes | Uint8Array | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer

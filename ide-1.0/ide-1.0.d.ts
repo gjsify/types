@@ -947,7 +947,7 @@ export namespace Ide {
      * @param case_insensitive whether to match parameter names case-insensitively
      * @returns a hash table of attribute/value pairs. Both names and values will be fully-decoded. If `params` cannot be parsed (eg, it contains two `separator` characters in a row), then `null` is returned.
      */
-    function uri_parse_params(params: string, length: bigint | number, separator: number, case_insensitive: boolean): GLib.HashTable<string, string>;
+    function uri_parse_params(params: string, length: bigint | number, separator: number, case_insensitive: boolean): { [key: string]: string };
 
     /**
      * Parses `uri_string` more-or-less according to the generic grammar of
@@ -14492,7 +14492,7 @@ export namespace Ide {
          * @param page_name 
          * @param map 
          */
-        set_page(page_name: string, map: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_page(page_name: string, map: never): void;
 
         /**
          * @param page_name 
@@ -14619,7 +14619,7 @@ export namespace Ide {
          * @param map 
          * @virtual
          */
-        vfunc_set_page(page_name: string, map: GLib.HashTable<never, never>): void;
+        vfunc_set_page(page_name: string, map: never): void;
 
         /**
          * This interface method is called when the workbench would like to shutdown.
@@ -24668,7 +24668,7 @@ export namespace Ide {
          * @param separator the separator character between parameters.   (usually ';', but sometimes '&')
          * @param case_insensitive whether to match parameter names case-insensitively
          */
-        static parse_params(params: string, length: bigint | number, separator: number, case_insensitive: boolean): GLib.HashTable<string, string>;
+        static parse_params(params: string, length: bigint | number, separator: number, case_insensitive: boolean): { [key: string]: string };
 
         /**
          * Parses `uri_string` more-or-less according to the generic grammar of
@@ -26749,7 +26749,7 @@ export namespace Ide {
              * @param callback the callback for the asynchronous operation.
              * @virtual
              */
-            vfunc_expand_async(params: GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_expand_async(params: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param result 
@@ -26816,7 +26816,7 @@ export namespace Ide {
          * @param params A hashtable of template parameters.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        expand_async(params: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        expand_async(params: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously requests expansion of the template.
@@ -26829,7 +26829,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback the callback for the asynchronous operation.
          */
-        expand_async(params: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        expand_async(params: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously requests expansion of the template.
@@ -26842,7 +26842,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback the callback for the asynchronous operation.
          */
-        expand_async(params: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        expand_async(params: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result 
@@ -27402,7 +27402,7 @@ export namespace Ide {
              * @param result A {@link Gio.AsyncResult}
              * @virtual
              */
-            vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | null, GLib.Bytes | null];
+            vfunc_communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | Uint8Array | null, GLib.Bytes | Uint8Array | null];
 
             /**
              * This process acts identical to `g_subprocess_communicate_utf8()`.
@@ -27544,7 +27544,7 @@ export namespace Ide {
          * @param stdin_buf A {@link GLib.Bytes} to send to stdin or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]>;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -27559,7 +27559,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback A callback to complete the request
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously communicates with the the child process.
@@ -27574,7 +27574,7 @@ export namespace Ide {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback A callback to complete the request
          */
-        communicate_async(stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
+        communicate_async(stdin_buf: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.Bytes | null, GLib.Bytes | null]> | void;
 
         /**
          * Finishes a request to `ide_subprocess_communicate_async()`.

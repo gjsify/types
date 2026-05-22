@@ -1,6 +1,6 @@
 {
     "name": "@girs/mypaintgegl-1.6",
-    "version": "1.6.0-4.0.0-rc.17",
+    "version": "1.6.0-4.0.0",
     "description": "GJS TypeScript type definitions for MyPaintGegl-1.6, generated from library version 1.6.0",
     "type": "module",
     "module": "mypaintgegl-1.6.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-rc.17",
-      "@girs/mypaint-1.6": "1.6.0-4.0.0-rc.17",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/glib-2.0": "2.88.0-4.0.0-rc.17",
-      "@girs/gegl-0.4": "0.4.68-4.0.0-rc.17",
-      "@girs/babl-0.1": "0.1.124-4.0.0-rc.17"    },
+      "@girs/gjs": "4.0.0",
+      "@girs/mypaint-1.6": "1.6.0-4.0.0",
+      "@girs/gobject-2.0": "2.88.0-4.0.0",
+      "@girs/glib-2.0": "2.88.0-4.0.0",
+      "@girs/gegl-0.4": "0.4.68-4.0.0",
+      "@girs/babl-0.1": "0.1.124-4.0.0"    },
     "devDependencies": {
       "typescript": "*"
     },

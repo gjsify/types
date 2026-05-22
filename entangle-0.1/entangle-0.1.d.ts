@@ -1775,7 +1775,7 @@ export namespace Entangle {
          * caller will affect this object
          * @param data the new data
          */
-        set_data(data: Uint8Array | null): void;
+        set_data(data: Uint8Array | string | null): void;
 
         /**
          * @param args 

@@ -286,7 +286,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          */
-        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | null, mime: string, artist: string | null, title: string | null): boolean;
+        buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | string | null, mime: string, artist: string | null, title: string | null): boolean;
 
         /**
          * Process `file` and check if media art exists and if it is up to date

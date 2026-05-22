@@ -730,7 +730,7 @@ export namespace LibvirtSandbox {
          * Retrieves the hashtable of custom environment variables in the sandbox
          * @returns the hashtable of environment variables
          */
-        get_envs(): GLib.HashTable<number, number>;
+        get_envs(): { [key: number]: number };
 
         /**
          * Get the group ID to invoke the sandbox application under.
@@ -1351,7 +1351,7 @@ export namespace LibvirtSandbox {
          * Retrieves the list of all include files
          * @returns the include files
          */
-        get_includes(): GLib.HashTable<string, string>;
+        get_includes(): { [key: string]: string };
 
         /**
          * Retrieves the target directory for the custom mount

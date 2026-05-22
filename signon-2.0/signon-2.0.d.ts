@@ -871,7 +871,7 @@ export namespace Signon {
          * Get a hash table of the methods and mechanisms of `info`.
          * @returns the table of allowed methods and mechanisms.
          */
-        get_methods(): GLib.HashTable;
+        get_methods(): { [key: string]: any };
 
         /**
          * Get an array of the realms of `info`.

@@ -20277,7 +20277,7 @@ export namespace Clutter {
 
         _init(...args: any[]): void;
 
-        static new_with_values(gtype: GObject.GType, initial: GObject.Value | null, _final: GObject.Value | null): Interval;
+        static new_with_values(gtype: GObject.GType, initial: GObject.Value | any | null, _final: GObject.Value | any | null): Interval;
 
         // Signals
         /** @signal */

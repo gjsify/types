@@ -372,7 +372,7 @@ export namespace Zeitgeist {
     /**
      * @param sources 
      */
-    function data_sources_to_variant(sources: { [key: string]: any } | GLib.HashTable<string, DataSource>): GLib.Variant;
+    function data_sources_to_variant(sources: { [key: string]: DataSource }): GLib.Variant;
 
     /**
      * @param vevents 

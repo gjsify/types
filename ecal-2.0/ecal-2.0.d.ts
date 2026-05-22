@@ -1197,7 +1197,7 @@ export namespace ECal {
      * @param new_comp a new {@link ICalGLib.Component}, or `null`
      * @since 3.48
      */
-    function util_diff_categories(old_comp: ICalGLib.Component | null, new_comp: ICalGLib.Component | null): [GLib.HashTable<string, number>, GLib.HashTable<string, number>];
+    function util_diff_categories(old_comp: ICalGLib.Component | null, new_comp: ICalGLib.Component | null): [{ [key: string]: number }, { [key: string]: number }];
 
     /**
      * Compares two email addresses and returns whether they are equal.

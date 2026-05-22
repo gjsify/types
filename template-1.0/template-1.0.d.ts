@@ -534,7 +534,7 @@ export namespace Template {
          * @param name a name for the symbol
          * @param value A {@link GObject.Value} or `null`
          */
-        set_value(name: string, value: GObject.Value | null): void;
+        set_value(name: string, value: GObject.Value | any | null): void;
 
         /**
          * Sets the value of the symbol named `name` to the variant `value`.

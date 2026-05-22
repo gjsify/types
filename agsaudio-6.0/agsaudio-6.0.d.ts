@@ -68354,7 +68354,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: { [key: string]: any } | GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         /**
          * Do request.
@@ -68366,7 +68366,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 

@@ -221,7 +221,7 @@ export namespace UnityExtras {
         /**
          * @param uri 
          */
-        video_properties(uri: string): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
+        video_properties(uri: string): globalThis.Promise<{ [key: string]: GLib.Variant }>;
 
         /**
          * @param uri 
@@ -233,12 +233,12 @@ export namespace UnityExtras {
          * @param uri 
          * @param _callback_ 
          */
-        video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<{ [key: string]: GLib.Variant }> | void;
 
         /**
          * @param _res_ 
          */
-        video_properties_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
+        video_properties_finish(_res_: Gio.AsyncResult): { [key: string]: GLib.Variant };
     }
 
 

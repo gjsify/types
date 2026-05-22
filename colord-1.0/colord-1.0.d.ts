@@ -1340,7 +1340,7 @@ export namespace Colord {
          * @param properties properties to   set on the device, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        create_device(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
+        create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
 
         /**
          * Creates a color device.
@@ -1350,7 +1350,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        create_device(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Creates a color device.
@@ -1360,7 +1360,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        create_device(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device> | void;
+        create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -1380,7 +1380,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          */
-        create_device_sync(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null): Device;
+        create_device_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Device;
 
         /**
          * Creates a color profile.
@@ -1389,17 +1389,7 @@ export namespace Colord {
          * @param properties properties to   set on the profile, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        create_profile(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
-
-        /**
-         * Creates a color profile.
-         * @param id identifier for the profile
-         * @param scope the scope of the profile
-         * @param properties properties to   set on the profile, or `null`
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback the function to run on completion
-         */
-        create_profile(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
         /**
          * Creates a color profile.
@@ -1409,7 +1399,17 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        create_profile(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
+        create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Creates a color profile.
+         * @param id identifier for the profile
+         * @param scope the scope of the profile
+         * @param properties properties to   set on the profile, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback the function to run on completion
+         */
+        create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -1474,7 +1474,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          */
-        create_profile_sync(id: string, scope: ObjectScope, properties: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null): Profile;
+        create_profile_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Profile;
 
         /**
          * Deletes a device.
@@ -2550,7 +2550,7 @@ export namespace Colord {
          * Returns the device metadata.
          * @returns a               {@link GLib.HashTable}.
          */
-        get_metadata(): GLib.HashTable<string, string>;
+        get_metadata(): { [key: string]: string };
 
         /**
          * Returns the device metadata for a specific key.
@@ -3483,7 +3483,7 @@ export namespace Colord {
          * Gets all the metadata from the ICC profile.
          * @returns The profile metadata
          */
-        get_metadata(): GLib.HashTable<never, never>;
+        get_metadata(): never;
 
         /**
          * Gets an item of data from the ICC metadata store.
@@ -3677,7 +3677,7 @@ export namespace Colord {
          * Sets the profile copyrights for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_copyright_items(values: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_copyright_items(values: never): void;
 
         /**
          * Sets the ICC creation date and time.
@@ -3696,7 +3696,7 @@ export namespace Colord {
          * Sets the profile descriptions for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_description_items(values: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_description_items(values: never): void;
 
         /**
          * Sets the filename, which may be required if the ICC profile has been loaded
@@ -3722,7 +3722,7 @@ export namespace Colord {
          * Sets the profile manufacturers for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_manufacturer_items(values: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_manufacturer_items(values: never): void;
 
         /**
          * Sets the profile model for a specific locale.
@@ -3735,7 +3735,7 @@ export namespace Colord {
          * Sets the profile models for specific locales.
          * @param values New translated values, with the key being the locale.
          */
-        set_model_items(values: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_model_items(values: never): void;
 
         /**
          * Sets the raw data for the specific tag.
@@ -4503,7 +4503,7 @@ export namespace Colord {
          * Returns the profile metadata.
          * @returns a               {@link GLib.HashTable}.
          */
-        get_metadata(): GLib.HashTable<string, string>;
+        get_metadata(): { [key: string]: string };
 
         /**
          * Returns the profile metadata for a specific key.
@@ -4995,7 +4995,7 @@ export namespace Colord {
          * Returns the sensor metadata.
          * @returns a               {@link GLib.HashTable}.
          */
-        get_metadata(): GLib.HashTable<string, string>;
+        get_metadata(): { [key: string]: string };
 
         /**
          * Returns the sensor metadata for a specific key.
@@ -5039,7 +5039,7 @@ export namespace Colord {
          * Gets any sensor options.
          * @returns A               refcounted {@link GLib.HashTable} of (string, GVariant).
          */
-        get_options(): GLib.HashTable<string, GLib.Variant>;
+        get_options(): { [key: string]: GLib.Variant };
 
         /**
          * Gets a color sample from a sensor
@@ -5196,7 +5196,7 @@ export namespace Colord {
          * @param values the options
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        set_options(values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Sets options on the sensor device.
@@ -5204,7 +5204,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        set_options(values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets options on the sensor device.
@@ -5212,7 +5212,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
          */
-        set_options(values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Gets the result from the asynchronous function.
@@ -5230,7 +5230,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          */
-        set_options_sync(values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): boolean;
+        set_options_sync(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
         to_string(): string;
 
