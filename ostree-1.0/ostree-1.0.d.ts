@@ -1505,14 +1505,14 @@ export namespace OSTree {
         /**
          * @returns All children files (the value is a checksum)
          */
-        get_files(): GLib.HashTable<string, string>;
+        get_files(): { [key: string]: string };
 
         get_metadata_checksum(): string;
 
         /**
          * @returns All children directories
          */
-        get_subdirs(): GLib.HashTable<string, MutableTree>;
+        get_subdirs(): { [key: string]: MutableTree };
 
         /**
          * @param name 
@@ -1671,7 +1671,7 @@ export namespace OSTree {
          * This hash table is a set of {@link GLib.Variant} which can be accessed via
          * `ostree_object_name_deserialize()`.
          */
-        static traverse_new_reachable(): GLib.HashTable<GLib.Variant, GLib.Variant>;
+        static traverse_new_reachable(): never;
 
         // Methods
         /**
@@ -1918,7 +1918,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_commit_objects_starting_with(start: string, out_commits: { [key: string]: any } | GLib.HashTable<never, never>, cancellable: Gio.Cancellable | null): boolean;
+        list_commit_objects_starting_with(start: string, out_commits: never, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * This function synchronously enumerates all objects in the
@@ -1929,7 +1929,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_objects(flags: RepoListObjectsFlags, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<never, never>];
+        list_objects(flags: RepoListObjectsFlags, cancellable: Gio.Cancellable | null): [boolean, never];
 
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
@@ -1938,7 +1938,7 @@ export namespace OSTree {
          * @param refspec_prefix Only list refs which match this prefix
          * @param cancellable Cancellable
          */
-        list_refs(refspec_prefix: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
+        list_refs(refspec_prefix: string | null, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
@@ -1950,7 +1950,7 @@ export namespace OSTree {
          * @param flags Options controlling listing behavior
          * @param cancellable Cancellable
          */
-        list_refs_ext(refspec_prefix: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
+        list_refs_ext(refspec_prefix: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
          * This function synchronously enumerates all static deltas in the
@@ -2197,7 +2197,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary(name: string, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_fetch_summary(name: string, out_summary: GLib.Bytes | Uint8Array | null, out_signatures: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Like `ostree_repo_remote_fetch_summary()`, but supports an extensible set of flags.
@@ -2211,7 +2211,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean;
+        remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, out_summary: GLib.Bytes | Uint8Array | null, out_signatures: GLib.Bytes | Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Return whether GPG verification is enabled for the remote named `name`
@@ -2267,7 +2267,7 @@ export namespace OSTree {
          * @param remote_name Name of the remote.
          * @param cancellable Cancellable
          */
-        remote_list_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
+        remote_list_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
          * Look up the given refspec, returning the checksum it references in
@@ -2427,7 +2427,7 @@ export namespace OSTree {
          * @param maxdepth Traverse this many parent commits, -1 for unlimited
          * @param cancellable Cancellable
          */
-        traverse_commit(commit_checksum: string, maxdepth: number, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<GLib.Variant, GLib.Variant>];
+        traverse_commit(commit_checksum: string, maxdepth: number, cancellable: Gio.Cancellable | null): [boolean, never];
 
         /**
          * Check for a valid GPG signature on commit named by the ASCII

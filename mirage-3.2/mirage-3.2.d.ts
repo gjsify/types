@@ -923,7 +923,7 @@ export namespace Mirage {
      * @param dictionary a {@link GLib.HashTable} containing replacement token/value pairs
      * @returns string with all replacement tokens either replaced or removed. The string should be freed using `g_free()` when no longer needed.
      */
-    function helper_format_stringd(format: string, dictionary: { [key: string]: any } | GLib.HashTable<never, never>): string;
+    function helper_format_stringd(format: string, dictionary: never): string;
 
     /**
      * Retrieves suffix from `filename`.
@@ -2943,7 +2943,7 @@ export namespace Mirage {
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
          */
-        read_subchannel_data(address: number, buffer: Uint8Array | null): boolean;
+        read_subchannel_data(address: number, buffer: Uint8Array | string | null): boolean;
 
         /**
          * Sets fragment's start address. The `address` is given in sectors.
@@ -3036,7 +3036,7 @@ export namespace Mirage {
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
          */
-        write_main_data(address: number, buffer: Uint8Array | null): boolean;
+        write_main_data(address: number, buffer: Uint8Array | string | null): boolean;
 
         /**
          * Reads subchannel data for sector at fragment-relative `address` (given
@@ -3048,7 +3048,7 @@ export namespace Mirage {
          * @param buffer buffer with read data, or `null`
          * @returns `true` on success, `false` on failure
          */
-        write_subchannel_data(address: number, buffer: Uint8Array | null): boolean;
+        write_subchannel_data(address: number, buffer: Uint8Array | string | null): boolean;
 
         /**
          * Opens a file pointed to by `filename` and creates a chain of filter
@@ -5484,7 +5484,7 @@ export namespace Mirage {
          * @param cancellable optional %GCancellable object, NULL to ignore.
          * @returns `true` on success, `false` on failure
          */
-        convert_image(filename: string, original_disc: Disc, parameters: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): boolean;
+        convert_image(filename: string, original_disc: Disc, parameters: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Creates a fragment with specified `role` for given `track`. The latter
@@ -5587,7 +5587,7 @@ export namespace Mirage {
          * @param parameters writer parameters
          * @returns `true` on success, `false` on failure
          */
-        open_image(disc: Disc, parameters: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): boolean;
+        open_image(disc: Disc, parameters: { [key: string]: GLib.Variant }): boolean;
 
         /**
          * Sets conversion progress step. Setting `step` to 0 disables conversion

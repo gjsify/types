@@ -1311,7 +1311,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          */
-        list_unused_refs_with_options(arch: string | null, metadata_injection: GLib.HashTable<never, never> | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): InstalledRef[];
+        list_unused_refs_with_options(arch: string | null, metadata_injection: never | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
         /**
          * Loads the metadata overrides file for an application.
@@ -1537,8 +1537,8 @@ export namespace Flatpak {
 
         // Constructor properties interface
         interface ConstructorProps extends Ref.ConstructorProps {
-            appdata_content_rating: GLib.HashTable<never, never> | null;
-            appdataContentRating: GLib.HashTable<never, never> | null;
+            appdata_content_rating: never | null;
+            appdataContentRating: never | null;
             appdata_content_rating_type: string | null;
             appdataContentRatingType: string | null;
             appdata_license: string;
@@ -1576,12 +1576,12 @@ export namespace Flatpak {
         /**
          * @construct-only
          */
-        get appdata_content_rating(): GLib.HashTable<never, never> | null;
+        get appdata_content_rating(): never | null;
 
         /**
          * @construct-only
          */
-        get appdataContentRating(): GLib.HashTable<never, never> | null;
+        get appdataContentRating(): never | null;
 
         /**
          * @construct-only
@@ -1759,7 +1759,7 @@ export namespace Flatpak {
          * `flatpak_installed_ref_get_appdata_content_rating_type()`).
          * @returns the content rating or `null`
          */
-        get_appdata_content_rating(): GLib.HashTable<string, string> | null;
+        get_appdata_content_rating(): { [key: string]: string } | null;
 
         /**
          * Returns the content rating type from the appdata. For example, `oars-1.0` or
@@ -2650,7 +2650,7 @@ export namespace Flatpak {
             endOfLifeRebase: string;
             installed_size: bigint | number;
             installedSize: bigint | number;
-            metadata: GLib.Bytes | null;
+            metadata: GLib.Bytes | Uint8Array | null;
             remote_name: string;
             remoteName: string;
         }
@@ -3188,7 +3188,7 @@ export namespace Flatpak {
          * @param gpg_data GPG key with which to check bundle signatures, or  `null` to use the key embedded in the bundle (if any)
          * @returns `true` on success; `false` with `error` set on failure.
          */
-        add_install_bundle(file: Gio.File, gpg_data: GLib.Bytes | null): boolean;
+        add_install_bundle(file: Gio.File, gpg_data: GLib.Bytes | Uint8Array | null): boolean;
 
         /**
          * Adds installing the given flatpakref to this transaction.

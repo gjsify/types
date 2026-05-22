@@ -3086,7 +3086,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function brushes_popup(brush_callback: string, popup_title: string, initial_brush: Brush | null, parent_window: GLib.Bytes | null): boolean;
+    function brushes_popup(brush_callback: string, popup_title: string, initial_brush: Brush | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Refresh current brushes. This function always succeeds.
@@ -5269,7 +5269,7 @@ export namespace ParamArray {
      * @returns TRUE on success.
      * @deprecated since 3.2: Use `gimp_items_popup()` instead.
      */
-    function drawables_popup(callback: string, popup_title: string, drawable_type: string, initial_drawable: Drawable | null, parent_window: GLib.Bytes | null): boolean;
+    function drawables_popup(callback: string, popup_title: string, drawable_type: string, initial_drawable: Drawable | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Sets the selected drawable in a drawable selection dialog.
@@ -5931,7 +5931,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function fonts_popup(font_callback: string, popup_title: string, initial_font: Font | null, parent_window: GLib.Bytes | null): boolean;
+    function fonts_popup(font_callback: string, popup_title: string, initial_font: Font | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Refresh current fonts. This function always succeeds.
@@ -6125,7 +6125,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function gradients_popup(gradient_callback: string, popup_title: string, initial_gradient: Gradient | null, parent_window: GLib.Bytes | null): boolean;
+    function gradients_popup(gradient_callback: string, popup_title: string, initial_gradient: Gradient | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Refresh current gradients. This function always succeeds.
@@ -6224,7 +6224,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function images_popup(callback: string, popup_title: string, initial_image: Image | null, parent_window: GLib.Bytes | null): boolean;
+    function images_popup(callback: string, popup_title: string, initial_image: Image | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Sets the selected image in a image selection dialog.
@@ -6300,7 +6300,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function items_popup(callback: string, popup_title: string, item_type: string, initial_item: Item | null, parent_window: GLib.Bytes | null): boolean;
+    function items_popup(callback: string, popup_title: string, item_type: string, initial_item: Item | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Sets the selected item in a item selection dialog.
@@ -6465,7 +6465,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function palettes_popup(palette_callback: string, popup_title: string, initial_palette: Palette | null, parent_window: GLib.Bytes | null): boolean;
+    function palettes_popup(palette_callback: string, popup_title: string, initial_palette: Palette | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Refreshes current palettes. This function always succeeds.
@@ -7243,7 +7243,7 @@ export namespace ParamArray {
      * @param parent_window An optional parent window handle for the popup to be set transient to.
      * @returns TRUE on success.
      */
-    function patterns_popup(pattern_callback: string, popup_title: string, initial_pattern: Pattern | null, parent_window: GLib.Bytes | null): boolean;
+    function patterns_popup(pattern_callback: string, popup_title: string, initial_pattern: Pattern | null, parent_window: GLib.Bytes | Uint8Array | null): boolean;
 
     /**
      * Refresh current patterns. This function always succeeds.
@@ -23057,7 +23057,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        append(value: GObject.Value | null): ValueArray;
+        append(value: GObject.Value | any | null): ValueArray;
 
         /**
          * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
@@ -23117,7 +23117,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        insert(index: number, value: GObject.Value | null): ValueArray;
+        insert(index: number, value: GObject.Value | any | null): ValueArray;
 
         length(): number;
 
@@ -23127,7 +23127,7 @@ export namespace ParamArray {
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
          */
-        prepend(value: GObject.Value | null): ValueArray;
+        prepend(value: GObject.Value | any | null): ValueArray;
 
         /**
          * Adds a reference to a {@link Gimp.ValueArray}.

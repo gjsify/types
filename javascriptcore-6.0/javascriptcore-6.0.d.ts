@@ -1039,7 +1039,7 @@ export namespace JavaScriptCore {
 
         static new_string(context: Context, string: string | null): Value;
 
-        static new_string_from_bytes(context: Context, bytes: GLib.Bytes | null): Value;
+        static new_string_from_bytes(context: Context, bytes: GLib.Bytes | Uint8Array | null): Value;
 
         static new_typed_array(context: Context, type: TypedArrayType, length: bigint | number): Value;
 

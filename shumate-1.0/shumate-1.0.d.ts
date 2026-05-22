@@ -1134,7 +1134,7 @@ export namespace Shumate {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @virtual
          */
-        vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
+        vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | Uint8Array | null;
 
         /**
          * Begins a request for a tile.
@@ -1249,7 +1249,7 @@ export namespace Shumate {
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed: boolean;
-            data: GLib.Bytes | null;
+            data: GLib.Bytes | Uint8Array | null;
             error: GLib.Error | null;
             x: number;
             y: number;

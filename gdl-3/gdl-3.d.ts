@@ -2126,7 +2126,7 @@ export namespace Gdl {
              * @signal
              * @run-first
              */
-            dock: (arg0: DockObject, arg1: DockPlacement, arg2: GObject.Value | null) => void;
+            dock: (arg0: DockObject, arg1: DockPlacement, arg2: unknown | null) => void;
             "notify::long-name": (pspec: GObject.ParamSpec) => void;
             "notify::master": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -2343,7 +2343,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
+        vfunc_dock(requestor: DockObject, position: DockPlacement, other_data: unknown | null): void;
 
         /**
          * Dock a dock widget in `object` at the defined position.
@@ -2377,7 +2377,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @virtual
          */
-        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
+        vfunc_reorder(child: DockObject, new_position: DockPlacement, other_data: unknown | null): boolean;
 
         // Methods
         /**
@@ -2416,7 +2416,7 @@ export namespace Gdl {
          * @param position The position for the child
          * @param other_data Optional data giving additional information depending on the dock object.
          */
-        dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | null): void;
+        dock(requestor: DockObject, position: DockPlacement, other_data: GObject.Value | any | null): void;
 
         /**
          * Dock a dock widget in `object` at the defined position.
@@ -2543,7 +2543,7 @@ export namespace Gdl {
          * @param other_data Optional data giving additional information depending on the dock object.
          * @returns `true` if `child` has been moved
          */
-        reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | null): boolean;
+        reorder(child: DockObject, new_position: DockPlacement, other_data: GObject.Value | any | null): boolean;
 
         /**
          * Set the long name of the object. This name is an human readable string

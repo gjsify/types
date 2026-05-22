@@ -475,7 +475,7 @@ export namespace Rest {
          * @param extra_params any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
          * @returns a newly allocated uri string
          */
-        build_login_url_full(redirect_uri: string, extra_params: { [key: string]: any } | GLib.HashTable<never, never>): string;
+        build_login_url_full(redirect_uri: string, extra_params: never): string;
 
         /**
          * Get the current request or access token.
@@ -1290,7 +1290,7 @@ export namespace Rest {
         /**
          * @returns pointer to a hash table of headers. This hash table must not be changed. You should call `g_hash_table_unref()` when you have finished with it.
          */
-        get_response_headers(): GLib.HashTable<never, never>;
+        get_response_headers(): never;
 
         /**
          * Get the HTTP status code for the call.
@@ -1591,7 +1591,7 @@ export namespace Rest {
          * before the hash table.
          * @returns a new {@link GLib.HashTable}.
          */
-        as_string_hash_table(): GLib.HashTable<string, Param>;
+        as_string_hash_table(): { [key: string]: Param };
 
         /**
          * Destroy the {@link Rest.Params} and the {@link Rest.Param} objects that it contains.

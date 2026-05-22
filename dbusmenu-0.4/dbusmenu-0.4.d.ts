@@ -965,7 +965,7 @@ export namespace Dbusmenu {
          * to destroy the created {@link GLib.HashTable}.
          * @returns A brand new {@link GLib.HashTable} that contains all of    theroperties that are on this {@link Dbusmenu.Menuitem} `mi`.
          */
-        properties_copy(): GLib.HashTable<never, never>;
+        properties_copy(): never;
 
         /**
          * This functiong gets a list of the names of all the properties

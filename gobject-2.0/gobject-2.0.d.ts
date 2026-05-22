@@ -2411,7 +2411,7 @@ export function registerClass<
      * @gir-type Callback
      */
     interface ClosureMarshal {
-        (closure: Closure, return_value: Value | null, param_values: unknown[], invocation_hint: null, marshal_data: null): void;
+        (closure: Closure, return_value: unknown | null, param_values: unknown[], invocation_hint: null, marshal_data: null): void;
     }
 
     /**
@@ -6509,7 +6509,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        append(value: Value | null): ValueArray;
+        append(value: Value | any | null): ValueArray;
 
         /**
          * Construct an exact copy of a {@link GObject.ValueArray} by duplicating all its
@@ -6537,7 +6537,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        insert(index_: number, value: Value | null): ValueArray;
+        insert(index_: number, value: Value | any | null): ValueArray;
 
         /**
          * Insert a copy of `value` as first element of `value_array`. If `value` is
@@ -6545,7 +6545,7 @@ export function registerClass<
          * @param value {@link GObject.Value} to copy into {@link GObject.ValueArray}, or `null`
          * @returns the {@link GObject.ValueArray} passed in as `value_array`
          */
-        prepend(value: Value | null): ValueArray;
+        prepend(value: Value | any | null): ValueArray;
 
         /**
          * Remove the value at position `index_` from `value_array`.

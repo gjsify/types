@@ -1042,7 +1042,7 @@ export namespace GdkPixbuf {
          * attached by another function using {@link GdkPixbuf.Pixbuf.set_option}.
          * @returns a {@link GLib.HashTable}   of key/values pairs
          */
-        get_options(): GLib.HashTable<string, string>;
+        get_options(): { [key: string]: string };
 
         /**
          * Queries a pointer to the pixel data of a pixbuf.

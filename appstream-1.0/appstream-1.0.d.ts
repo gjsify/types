@@ -3842,7 +3842,7 @@ export namespace AppStream {
             projectLicense: string;
             screenshots: Screenshot[];
             summary: string;
-            urls: { [key: string]: any } | GLib.HashTable<UrlKind, string>;
+            urls: never;
         }
     }
 
@@ -3950,7 +3950,7 @@ export namespace AppStream {
          * the urls associated with this component
          * @read-only
          */
-        get urls(): GLib.HashTable<UrlKind, string>;
+        get urls(): never;
 
         /**
          * Compile-time signal type information.
@@ -4233,7 +4233,7 @@ export namespace AppStream {
         /**
          * @returns Hash table of custom user defined data fields.
          */
-        get_custom(): GLib.HashTable<never, never>;
+        get_custom(): never;
 
         /**
          * Retrieve value for a custom data entry with the given key.
@@ -4333,7 +4333,7 @@ export namespace AppStream {
          * keword arrays.
          * @returns Hash table locale->keyword arrays
          */
-        get_keywords_table(): GLib.HashTable<never, never>;
+        get_keywords_table(): never;
 
         /**
          * Returns the {@link AppStream.ComponentKind} of this component.
@@ -4391,7 +4391,7 @@ export namespace AppStream {
          * mapping table.
          * @returns locale->names map
          */
-        get_name_table(): GLib.HashTable<never, never>;
+        get_name_table(): never;
 
         /**
          * Get variant suffix for the component name
@@ -4547,7 +4547,7 @@ export namespace AppStream {
          * mapping table.
          * @returns locale->summary map
          */
-        get_summary_table(): GLib.HashTable<never, never>;
+        get_summary_table(): never;
 
         /**
          * Get an array of items that are supported by this component,
@@ -8177,7 +8177,7 @@ export namespace AppStream {
          * a list of issues per-file is desired without prior explicit sorting.
          * @returns a file to issue list mapping
          */
-        get_issues_per_file(): GLib.HashTable;
+        get_issues_per_file(): { [key: string]: any };
 
         get_report_yaml(): string;
 

@@ -2052,7 +2052,7 @@ export namespace Unity {
             searchString: string;
             search_type: SearchType;
             searchType: SearchType;
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: GLib.Variant };
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
             owner: DeprecatedScopeBase;
@@ -2099,7 +2099,7 @@ export namespace Unity {
         /**
          * @construct-only
          */
-        get hints(): GLib.HashTable<string, GLib.Variant>;
+        get hints(): { [key: string]: GLib.Variant };
 
         /**
          * @construct-only
@@ -2166,7 +2166,7 @@ export namespace Unity {
 
         get_search_type(): SearchType;
 
-        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        get_hints(): { [key: string]: GLib.Variant };
 
         get_results_model(): Dee.SerializableModel;
 
@@ -2217,7 +2217,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ["new"](owner: AggregatorScope, channel_id: string, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, results_model: Dee.SerializableModel): AggregatedScopeSearch;
+        static ["new"](owner: AggregatorScope, channel_id: string, hints: { [key: string]: GLib.Variant }, results_model: Dee.SerializableModel): AggregatedScopeSearch;
 
         // Signals
         /** @signal */
@@ -2239,7 +2239,7 @@ export namespace Unity {
          * @param search_type 
          * @param hints 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: GLib.Variant }): globalThis.Promise<{ [key: string]: GLib.Variant }>;
 
         /**
          * @param scope_id 
@@ -2248,7 +2248,7 @@ export namespace Unity {
          * @param hints 
          * @param _callback_ 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, _callback_: Gio.AsyncReadyCallback<this>): void;
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: GLib.Variant }, _callback_: Gio.AsyncReadyCallback<this>): void;
 
         /**
          * @param scope_id 
@@ -2257,12 +2257,12 @@ export namespace Unity {
          * @param hints 
          * @param _callback_ 
          */
-        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        search_scope(scope_id: string, search_string: string, search_type: SearchType, hints: { [key: string]: GLib.Variant }, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<{ [key: string]: GLib.Variant }> | void;
 
         /**
          * @param _res_ 
          */
-        search_scope_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
+        search_scope_finish(_res_: Gio.AsyncResult): { [key: string]: GLib.Variant };
 
         /**
          * @param scope_id 
@@ -2481,7 +2481,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: GLib.Variant };
         }
     }
 
@@ -2536,7 +2536,7 @@ export namespace Unity {
         /**
          * @read-only
          */
-        get hints(): GLib.HashTable<string, GLib.Variant>;
+        get hints(): { [key: string]: GLib.Variant };
 
         /**
          * Compile-time signal type information.
@@ -2587,7 +2587,7 @@ export namespace Unity {
 
         get_layout_hint(): LayoutHint;
 
-        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        get_hints(): { [key: string]: GLib.Variant };
 
         /**
          * Build an externalized form of `self` which can be used together with
@@ -3451,7 +3451,7 @@ export namespace Unity {
             actionType: number;
             scope_result: ScopeResult;
             scopeResult: ScopeResult;
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: GLib.Variant };
         }
     }
 
@@ -3486,8 +3486,8 @@ export namespace Unity {
         get scopeResult(): ScopeResult;
         set scopeResult(val: ScopeResult);
 
-        get hints(): GLib.HashTable<string, GLib.Variant>;
-        set hints(val: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>);
+        get hints(): { [key: string]: GLib.Variant };
+        set hints(val: { [key: string]: GLib.Variant });
 
         /**
          * Compile-time signal type information.
@@ -3547,7 +3547,7 @@ export namespace Unity {
          */
         set_scope_result(value: ScopeResult): void;
 
-        get_hints(): GLib.HashTable<string, GLib.Variant>;
+        get_hints(): { [key: string]: GLib.Variant };
     }
 
 
@@ -4192,7 +4192,7 @@ export namespace Unity {
         /**
          * @param metadata 
          */
-        static create(metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): SearchMetadata;
+        static create(metadata: { [key: string]: GLib.Variant }): SearchMetadata;
 
         /**
          * @param metadata 
@@ -6663,7 +6663,7 @@ export namespace Unity {
          * @param dnd_uri 
          * @param metadata 
          */
-        static create(uri: string, icon_hint: string, category: number, result_type: ResultType, mimetype: string, title: string, comment: string, dnd_uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>): ScopeResult;
+        static create(uri: string, icon_hint: string, category: number, result_type: ResultType, mimetype: string, title: string, comment: string, dnd_uri: string, metadata: { [key: string]: GLib.Variant }): ScopeResult;
 
         /**
          * @param variant 
@@ -6700,7 +6700,7 @@ export namespace Unity {
          * @param result_set 
          * @param cancellable 
          */
-        static create(search_query: string, search_type: SearchType, filter_state: FilterSet, metadata: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, result_set: ResultSet, cancellable: Cancellable): SearchContext;
+        static create(search_query: string, search_type: SearchType, filter_state: FilterSet, metadata: { [key: string]: GLib.Variant }, result_set: ResultSet, cancellable: Cancellable): SearchContext;
 
         // Methods
         /**

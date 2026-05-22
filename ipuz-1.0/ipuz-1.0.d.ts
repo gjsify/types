@@ -5650,7 +5650,7 @@ export namespace Ipuz {
             publisher: string;
             puzzle_kind: PuzzleKind;
             puzzleKind: PuzzleKind;
-            styles: { [key: string]: any } | GLib.HashTable<never, never>;
+            styles: never;
             title: string;
             uniqueid: string;
             url: string;
@@ -6025,7 +6025,7 @@ export namespace Ipuz {
          * A `GHash` table containing all the named styles for the puzzle. These can be added or removed by calling {@link Ipuz.Puzzle.set_style}
          * @read-only
          */
-        get styles(): GLib.HashTable<never, never>;
+        get styles(): never;
 
         /**
          * Title of the puzzle.

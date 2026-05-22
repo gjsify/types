@@ -4836,7 +4836,7 @@ export namespace EDataBook {
         /**
          * @returns Hash table of field names which the listener is interested in. Backends can return fully populated objects, but the listener advertised that it will use only these. Returns `null` for all available fields. Note: The data pointer in the hash table has no special meaning, it's only GINT_TO_POINTER(1) for easier checking. Also, field names are compared case insensitively.
          */
-        get_fields_of_interest(): GLib.HashTable<string, number> | null;
+        get_fields_of_interest(): { [key: string]: number } | null;
 
         /**
          * Gets the {@link EBookContacts.BookClientViewFlags} that control the behaviour of `view`.

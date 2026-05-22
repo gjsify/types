@@ -5060,7 +5060,7 @@ export namespace GXml {
          * @param cancelable 
          * @param detail 
          */
-        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | null): void;
+        init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: GObject.Value | any | null): void;
     }
 
 
@@ -13424,7 +13424,7 @@ export namespace GXml {
          * @read-only
           * @category Inherited from GXml.Parser
          */
-        get types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
+        get types(): never;
 
         get_backup(): boolean;
 
@@ -13449,7 +13449,7 @@ export namespace GXml {
 
         get_node(): DomNode;
 
-        get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
+        get_types(): never;
 
         /**
          * @param file 
@@ -13744,7 +13744,7 @@ export namespace GXml {
         /**
          * @virtual
          */
-        vfunc_get_types(): { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
+        vfunc_get_types(): never;
 
         /**
          * @param file 
@@ -19678,7 +19678,7 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_types(): { [key: string]: any } | GLib.HashTable<string, GObject.GType>;
+            vfunc_get_types(): { [key: string]: GObject.GType };
         }
 
 
@@ -19694,13 +19694,13 @@ export namespace GXml {
         * @param parent_type 
         * @param type 
         */
-        add_supported_type(types: { [key: string]: any } | GLib.HashTable<string, GObject.GType>, parent_type: GObject.GType, type: GObject.GType): void;
+        add_supported_type(types: { [key: string]: GObject.GType }, parent_type: GObject.GType, type: GObject.GType): void;
         /**
         * @param table 
         * @param parent_type 
         * @param types 
         */
-        add_supported_types(table: { [key: string]: any } | GLib.HashTable<string, GObject.GType>, parent_type: GObject.GType, types: GObject.GType[]): void;
+        add_supported_types(table: { [key: string]: GObject.GType }, parent_type: GObject.GType, types: GObject.GType[]): void;
     }
     /**
      * @gir-type Interface
@@ -19708,7 +19708,7 @@ export namespace GXml {
     interface CollectionParent extends GObject.Object, CollectionParent.Interface {
 
         // Methods
-        get_types(): GLib.HashTable<string, GObject.GType>;
+        get_types(): { [key: string]: GObject.GType };
     }
 
 
@@ -26737,7 +26737,7 @@ export namespace GXml {
             /**
              * @virtual
              */
-            vfunc_get_types(): { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
+            vfunc_get_types(): never;
 
             /**
              * @param file 
@@ -26973,7 +26973,7 @@ export namespace GXml {
             indent: boolean;
             cancellable: Gio.Cancellable | null;
             node: DomNode;
-            types: { [key: string]: any } | GLib.HashTable<GObject.GType, GLib.HashTable>;
+            types: never;
         }
     }
 
@@ -27004,7 +27004,7 @@ export namespace GXml {
         /**
          * @read-only
          */
-        get types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
+        get types(): never;
 
         // Methods
         get_backup(): boolean;
@@ -27030,7 +27030,7 @@ export namespace GXml {
 
         get_node(): DomNode;
 
-        get_types(): GLib.HashTable<GObject.GType, GLib.HashTable>;
+        get_types(): never;
 
         /**
          * @param file 

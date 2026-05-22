@@ -1122,7 +1122,7 @@ export namespace EBookContacts {
      * @param new_contact a new {@link EBookContacts.Contact}, or `null`
      * @since 3.48
      */
-    function book_util_diff_categories(old_contact: Contact | null, new_contact: Contact | null): [GLib.HashTable<string, number>, GLib.HashTable<string, number>];
+    function book_util_diff_categories(old_contact: Contact | null, new_contact: Contact | null): [{ [key: string]: number }, { [key: string]: number }];
 
     /**
      * Parses the `email_address` and calls `func` for each found address.

@@ -1787,7 +1787,7 @@ export namespace ArrowFlight {
          * @param token The client token. May be the empty string if the client does not   provide a token.
          * @virtual
          */
-        vfunc_is_valid(context: ServerCallContext, token: GLib.Bytes): GLib.Bytes | null;
+        vfunc_is_valid(context: ServerCallContext, token: GLib.Bytes): GLib.Bytes | Uint8Array | null;
 
         // Methods
         /**

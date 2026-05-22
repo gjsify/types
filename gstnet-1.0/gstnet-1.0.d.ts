@@ -805,9 +805,9 @@ export namespace GstNet {
         remote_time: Gst.ClockTime;
 
         // Constructors
-        constructor(buffer: Uint8Array | null);
+        constructor(buffer: Uint8Array | string | null);
 
-        static ["new"](buffer: Uint8Array | null): NetTimePacket;
+        static ["new"](buffer: Uint8Array | string | null): NetTimePacket;
 
         // Static methods
         /**

@@ -2325,7 +2325,7 @@ export namespace GUPnP {
          * @param hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
          * @returns `true` on success.
          */
-        end_action_hash(action: ServiceProxyAction, hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): [boolean, GLib.HashTable<string, GObject.Value>];
+        end_action_hash(action: ServiceProxyAction, hash: { [key: string]: GObject.Value }): [boolean, { [key: string]: GObject.Value }];
 
         /**
          * A variant of `gupnp_service_proxy_end_action` that takes lists of

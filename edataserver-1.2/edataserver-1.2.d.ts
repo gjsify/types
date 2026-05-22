@@ -1914,7 +1914,7 @@ export namespace EDataServer {
      * @param value a property value
      * @since 3.28
      */
-    function oauth2_service_util_set_to_form(form: { [key: string]: any } | GLib.HashTable<string, string>, name: string, value: string | null): void;
+    function oauth2_service_util_set_to_form(form: { [key: string]: string }, name: string, value: string | null): void;
 
     /**
      * Takes ownership of `value` and sets it for `name` to `form`. The `value`
@@ -1930,7 +1930,7 @@ export namespace EDataServer {
      * @param value a property value
      * @since 3.28
      */
-    function oauth2_service_util_take_to_form(form: { [key: string]: any } | GLib.HashTable<string, string>, name: string, value: string | null): void;
+    function oauth2_service_util_take_to_form(form: { [key: string]: string }, name: string, value: string | null): void;
 
     /**
      * Transfers the contents of `src_queue` to the tail of `dst_queue`.
@@ -2796,7 +2796,7 @@ export namespace EDataServer {
      * Frees the memory used by `hash` and its contents.
      * @param hash the {@link GLib.HashTable} to destroy
      */
-    function xml_destroy_hash(hash: { [key: string]: any } | GLib.HashTable<string, string>): void;
+    function xml_destroy_hash(hash: { [key: string]: string }): void;
 
     /**
      * Writes the given XML document structure to the file given by `filename`.
@@ -2817,7 +2817,7 @@ export namespace EDataServer {
      * @param type The value type to use as a key in the hash table.
      * @returns The newly-created {@link GLib.HashTable} representation of `doc`.
      */
-    function xml_to_hash(doc: libxml2.Doc, type: XmlHashType): GLib.HashTable<string, string>;
+    function xml_to_hash(doc: libxml2.Doc, type: XmlHashType): { [key: string]: string };
 
     /**
      * Adds a new key/value pair to the {@link EDataServer.XmlHash} `hash`.
@@ -5184,7 +5184,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -5200,7 +5200,7 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5226,7 +5226,7 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5430,7 +5430,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -5447,7 +5447,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5475,7 +5475,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5720,7 +5720,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -5736,7 +5736,7 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5762,7 +5762,7 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -5966,7 +5966,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -5983,7 +5983,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -6011,7 +6011,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -6256,7 +6256,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -6272,7 +6272,7 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -6298,7 +6298,7 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -6502,7 +6502,7 @@ export namespace EDataServer {
          * @param uri_query query for the URI to use
          * @virtual
          */
-        vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+        vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -6519,7 +6519,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -6547,7 +6547,7 @@ export namespace EDataServer {
          * @param form form parameters to be used in the POST request
          * @virtual
          */
-        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+        vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -8272,7 +8272,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, bigint | number]>;
+        mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
         /**
          * Asynchronously loads a signature from the signature file for `source`,
@@ -8306,7 +8306,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, bigint | number]> | void;
+        mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
         /**
          * Finishes an operation started with `e_source_mail_signature_load()`.  The
@@ -12949,7 +12949,7 @@ export namespace EDataServer {
          * control on the list of aliases.
          * @returns A newly created   {@link GLib.HashTable} will all the aliases. Returns `null` if there are none set.   Use `g_hash_table_destroy()` to free the returned hash table.
          */
-        get_aliases_as_hash_table(): GLib.HashTable<string, string> | null;
+        get_aliases_as_hash_table(): { [key: string]: string } | null;
 
         /**
          * Returns the sender's name for this identity.
@@ -17668,7 +17668,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        get_current_user_privilege_set_full_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVPrivilege[], GLib.HashTable<never, never> | null, GLib.HashTable<never, never> | null];
+        get_current_user_privilege_set_full_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVPrivilege[], never | null, never | null];
 
         /**
          * Gets current user privileges for the `uri`, or, in case it's `null`, for the URI
@@ -17925,7 +17925,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        options_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<never, never>, GLib.HashTable<never, never>];
+        options_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, never, never];
 
         /**
          * Issues POST request on the provided `uri`, or, in case it's `null`, on the URI
@@ -18120,7 +18120,7 @@ export namespace EDataServer {
          * @param prefix error message prefix, used when replacing, or `null`
          * @returns Whether any detailed error had been recognized.
          */
-        replace_with_detailed_error(message: Soup.Message, response_data: Uint8Array | null, ignore_multistatus: boolean, prefix: string | null): boolean;
+        replace_with_detailed_error(message: Soup.Message, response_data: Uint8Array | string | null, ignore_multistatus: boolean, prefix: string | null): boolean;
 
         /**
          * Issues REPORT request on the provided `uri`, or, in case it's `null`, on the URI
@@ -18145,7 +18145,7 @@ export namespace EDataServer {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          */
-        report_sync(uri: string | null, depth: string | null, xml: XmlDocument, func: WebDAVPropstatTraverseFunc | null, out_content_type: string | null, out_content: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        report_sync(uri: string | null, depth: string | null, xml: XmlDocument, func: WebDAVPropstatTraverseFunc | null, out_content_type: string | null, out_content: Uint8Array | string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Changes Access Control List (ACL) for the `uri`, or, in case it's `null`,
@@ -20155,7 +20155,7 @@ export namespace EDataServer {
              * @param uri_query query for the URI to use
              * @virtual
              */
-            vfunc_prepare_authentication_uri_query(source: Source, uri_query: GLib.HashTable<string, string>): void;
+            vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
             /**
              * Sets additional form parameters to be used in the POST request when requesting
@@ -20172,7 +20172,7 @@ export namespace EDataServer {
              * @param form form parameters to be used in the POST request
              * @virtual
              */
-            vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: GLib.HashTable<string, string>): void;
+            vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
             /**
              * The `service` can change the `message` before it's sent to
@@ -20200,7 +20200,7 @@ export namespace EDataServer {
              * @param form form parameters to be used in the POST request
              * @virtual
              */
-            vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: GLib.HashTable<string, string>): void;
+            vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
             /**
              * The `service` can change the `message` before it's sent to
@@ -20253,7 +20253,7 @@ export namespace EDataServer {
         * @param name a property name
         * @param value a property value
         */
-        util_set_to_form(form: { [key: string]: any } | GLib.HashTable<string, string>, name: string, value: string | null): void;
+        util_set_to_form(form: { [key: string]: string }, name: string, value: string | null): void;
         /**
         * Takes ownership of `value` and sets it for `name` to `form`. The `value`
         * will be freed with `g_free()`, when no longer needed. The `form` should be
@@ -20267,7 +20267,7 @@ export namespace EDataServer {
         * @param name a property name
         * @param value a property value
         */
-        util_take_to_form(form: { [key: string]: any } | GLib.HashTable<string, string>, name: string, value: string | null): void;
+        util_take_to_form(form: { [key: string]: string }, name: string, value: string | null): void;
     }
     /**
      * Contains only private data that should be read and manipulated using the
@@ -20465,7 +20465,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
          */
-        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
         /**
          * Sets additional form parameters to be used in the POST request when requesting
@@ -20481,7 +20481,7 @@ export namespace EDataServer {
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
          */
-        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to
@@ -20507,7 +20507,7 @@ export namespace EDataServer {
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
          */
-        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
         /**
          * The `service` can change the `message` before it's sent to

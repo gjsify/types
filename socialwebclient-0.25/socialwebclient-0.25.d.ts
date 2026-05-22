@@ -465,7 +465,7 @@ export namespace SocialWebClient {
          * @param params 
          * @param cb 
          */
-        contacts_query_open_view(query: string, params: { [key: string]: any } | GLib.HashTable<string, string>, cb: ClientServiceContactsQueryOpenViewCallback): void;
+        contacts_query_open_view(query: string, params: { [key: string]: string }, cb: ClientServiceContactsQueryOpenViewCallback): void;
 
         credentials_updated(): void;
 
@@ -488,7 +488,7 @@ export namespace SocialWebClient {
          * @param params 
          * @param cb 
          */
-        query_open_view(query: string, params: { [key: string]: any } | GLib.HashTable<string, string>, cb: ClientServiceQueryOpenViewCallback): void;
+        query_open_view(query: string, params: { [key: string]: string }, cb: ClientServiceQueryOpenViewCallback): void;
 
         request_avatar(): void;
 
@@ -503,7 +503,7 @@ export namespace SocialWebClient {
          * @param status_msg 
          * @param fields 
          */
-        update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string, fields: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string, fields: { [key: string]: string }): void;
 
         /**
          * @param res 

@@ -1164,7 +1164,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1174,7 +1174,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1184,7 +1184,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
+        vfunc_databases(server: Soup.Server, message: Soup.Message, path: string, query: never, context: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1194,7 +1194,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
+        vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: never, context: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1204,7 +1204,7 @@ export namespace DMAP {
          * @param context 
          * @virtual
          */
-        vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable<never, never>, context: Soup.ClientContext): void;
+        vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: never, context: Soup.ClientContext): void;
 
         /**
          * @virtual
@@ -1224,7 +1224,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_login(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_login(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1234,7 +1234,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_logout(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_logout(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
 
         /**
          * @param msg 
@@ -1264,7 +1264,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
 
         /**
          * @param server 
@@ -1274,7 +1274,7 @@ export namespace DMAP {
          * @param ctx 
          * @virtual
          */
-        vfunc_update(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable<never, never>, ctx: Soup.ClientContext): void;
+        vfunc_update(server: Soup.Server, message: Soup.Message, path: string, query: never, ctx: Soup.ClientContext): void;
     }
 
 

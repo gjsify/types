@@ -16623,8 +16623,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
-            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignored_serializable_properties: { [key: string]: GObject.ParamSpec };
+            ignoredSerializableProperties: { [key: string]: GObject.ParamSpec };
         }
     }
 
@@ -16635,11 +16635,11 @@ export namespace GXml {
         static $gtype: GObject.GType<SerializableArrayList>;
 
         // Properties
-        get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
+        set ignored_serializable_properties(val: { [key: string]: GObject.ParamSpec });
 
-        get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignoredSerializableProperties(): { [key: string]: GObject.ParamSpec };
+        set ignoredSerializableProperties(val: { [key: string]: GObject.ParamSpec });
 
         /**
          * Compile-time signal type information.
@@ -16821,12 +16821,12 @@ export namespace GXml {
          */
         default_deserialize_property(property_node: Node): boolean;
 
-        get_ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
+        get_ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
 
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
+        set_ignored_serializable_properties(value: { [key: string]: GObject.ParamSpec }): void;
 
         /**
          * @read-only
@@ -16963,8 +16963,8 @@ export namespace GXml {
             primary_keys: Gee.Collection;
             primaryKeys: Gee.Collection;
             size: number;
-            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
-            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignored_serializable_properties: { [key: string]: GObject.ParamSpec };
+            ignoredSerializableProperties: { [key: string]: GObject.ParamSpec };
         }
     }
 
@@ -17020,11 +17020,11 @@ export namespace GXml {
          */
         get size(): number;
 
-        get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
+        set ignored_serializable_properties(val: { [key: string]: GObject.ParamSpec });
 
-        get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignoredSerializableProperties(): { [key: string]: GObject.ParamSpec };
+        set ignoredSerializableProperties(val: { [key: string]: GObject.ParamSpec });
 
         /**
          * Compile-time signal type information.
@@ -17257,12 +17257,12 @@ export namespace GXml {
 
         get_size(): number;
 
-        get_ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
+        get_ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
 
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
+        set_ignored_serializable_properties(value: { [key: string]: GObject.ParamSpec }): void;
 
         /**
          * @read-only
@@ -17576,8 +17576,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
-            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignored_serializable_properties: { [key: string]: GObject.ParamSpec };
+            ignoredSerializableProperties: { [key: string]: GObject.ParamSpec };
         }
     }
 
@@ -17588,11 +17588,11 @@ export namespace GXml {
         static $gtype: GObject.GType<SerializableHashMap>;
 
         // Properties
-        get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
+        set ignored_serializable_properties(val: { [key: string]: GObject.ParamSpec });
 
-        get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignoredSerializableProperties(): { [key: string]: GObject.ParamSpec };
+        set ignoredSerializableProperties(val: { [key: string]: GObject.ParamSpec });
 
         /**
          * Compile-time signal type information.
@@ -17781,12 +17781,12 @@ export namespace GXml {
          */
         default_deserialize_property(property_node: Node): boolean;
 
-        get_ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
+        get_ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
 
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
+        set_ignored_serializable_properties(value: { [key: string]: GObject.ParamSpec }): void;
 
         /**
          * @read-only
@@ -17916,8 +17916,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends Gee.TreeMap.ConstructorProps, Serializable.ConstructorProps, SerializableCollection.ConstructorProps {
-            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
-            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignored_serializable_properties: { [key: string]: GObject.ParamSpec };
+            ignoredSerializableProperties: { [key: string]: GObject.ParamSpec };
         }
     }
 
@@ -17928,11 +17928,11 @@ export namespace GXml {
         static $gtype: GObject.GType<SerializableTreeMap>;
 
         // Properties
-        get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
+        set ignored_serializable_properties(val: { [key: string]: GObject.ParamSpec });
 
-        get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignoredSerializableProperties(): { [key: string]: GObject.ParamSpec };
+        set ignoredSerializableProperties(val: { [key: string]: GObject.ParamSpec });
 
         /**
          * Compile-time signal type information.
@@ -18114,12 +18114,12 @@ export namespace GXml {
          */
         default_deserialize_property(property_node: Node): boolean;
 
-        get_ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
+        get_ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
 
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
+        set_ignored_serializable_properties(value: { [key: string]: GObject.ParamSpec }): void;
 
         /**
          * @read-only
@@ -18295,8 +18295,8 @@ export namespace GXml {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Serializable.ConstructorProps {
-            ignored_serializable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
-            ignoredSerializableProperties: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>;
+            ignored_serializable_properties: { [key: string]: GObject.ParamSpec };
+            ignoredSerializableProperties: { [key: string]: GObject.ParamSpec };
         }
     }
 
@@ -18307,11 +18307,11 @@ export namespace GXml {
         static $gtype: GObject.GType<SerializableObjectModel>;
 
         // Properties
-        get ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignored_serializable_properties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
+        set ignored_serializable_properties(val: { [key: string]: GObject.ParamSpec });
 
-        get ignoredSerializableProperties(): GLib.HashTable<string, GObject.ParamSpec>;
-        set ignoredSerializableProperties(val: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>);
+        get ignoredSerializableProperties(): { [key: string]: GObject.ParamSpec };
+        set ignoredSerializableProperties(val: { [key: string]: GObject.ParamSpec });
 
         /**
          * Compile-time signal type information.
@@ -18475,12 +18475,12 @@ export namespace GXml {
 
         to_string(): string;
 
-        get_ignored_serializable_properties(): GLib.HashTable<string, GObject.ParamSpec>;
+        get_ignored_serializable_properties(): { [key: string]: GObject.ParamSpec };
 
         /**
          * @param value 
          */
-        set_ignored_serializable_properties(value: { [key: string]: any } | GLib.HashTable<string, GObject.ParamSpec>): void;
+        set_ignored_serializable_properties(value: { [key: string]: GObject.ParamSpec }): void;
 
         /**
          * @read-only

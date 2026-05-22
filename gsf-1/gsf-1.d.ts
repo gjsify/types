@@ -780,7 +780,7 @@ export namespace Gsf {
      * @param value A GValue of type {@link Gsf.DocPropVector}.
      * @returns A {@link GLib.Array} of {@link GObject.Value}
      */
-    function value_get_docprop_array(value: GObject.Value | any): GObject.Value[] | null;
+    function value_get_docprop_array(value: GObject.Value | any): unknown[] | null;
 
     /**
      * @param value 
@@ -1416,13 +1416,13 @@ export namespace Gsf {
          * a collection of names and source code.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        get_modules(): GLib.HashTable<string, never> | null;
+        get_modules(): { [key: string]: never } | null;
 
         /**
          * A collection of names and source code which the caller is responsible for destroying.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        steal_modules(): GLib.HashTable<string, never> | null;
+        steal_modules(): { [key: string]: never } | null;
     }
 
 

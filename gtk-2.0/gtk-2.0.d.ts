@@ -56172,8 +56172,8 @@ export namespace Gtk {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            color_hash: { [key: string]: any } | GLib.HashTable<never, never>;
-            colorHash: { [key: string]: any } | GLib.HashTable<never, never>;
+            color_hash: never;
+            colorHash: never;
             gtk_alternative_button_order: boolean;
             gtkAlternativeButtonOrder: boolean;
             gtk_alternative_sort_arrows: boolean;
@@ -56326,7 +56326,7 @@ export namespace Gtk {
          * @since 2.10
          * @read-only
          */
-        get color_hash(): GLib.HashTable<never, never>;
+        get color_hash(): never;
 
         /**
          * Holds a hash table representation of the {@link Gtk.Settings.gtk_color_scheme}
@@ -56334,7 +56334,7 @@ export namespace Gtk {
          * @since 2.10
          * @read-only
          */
-        get colorHash(): GLib.HashTable<never, never>;
+        get colorHash(): never;
 
         /**
          * @default false

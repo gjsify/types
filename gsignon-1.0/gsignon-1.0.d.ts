@@ -337,7 +337,7 @@ export namespace gSignon {
      * @gir-type Callback
      */
     interface AuthSessionProcessCb {
-        (self: AuthSession, session_data: GLib.HashTable<string, GObject.Value>, error: GLib.Error): void;
+        (self: AuthSession, session_data: { [key: string]: GObject.Value }, error: GLib.Error): void;
     }
 
     /**
@@ -517,7 +517,7 @@ export namespace gSignon {
          * @param application_context application security context, can be `null`.
          * @param cb callback to be invoked.
          */
-        query_identities(filter: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, application_context: string, cb: QueryIdentitiesCb): void;
+        query_identities(filter: { [key: string]: GLib.Variant }, application_context: string, cb: QueryIdentitiesCb): void;
 
         /**
          * Lists all the available mechanisms for an authentication method.
@@ -621,7 +621,7 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cb a callback which will be called with the result.
          */
-        process(session_data: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, mechanism: string, cb: AuthSessionProcessCb): void;
+        process(session_data: { [key: string]: GObject.Value }, mechanism: string, cb: AuthSessionProcessCb): void;
 
         /**
          * Performs one step of the authentication process.
@@ -864,7 +864,7 @@ export namespace gSignon {
          * @param type the type of the identity.
          * @param cb callback.
          */
-        store_credentials_with_args(username: string | null, secret: string | null, store_secret: boolean, methods: { [key: string]: any } | GLib.HashTable, caption: string | null, realms: string | null, owner: SecurityContext | null, access_control_list: SecurityContext[] | null, type: IdentityType, cb: IdentityStoreCredentialsCb): void;
+        store_credentials_with_args(username: string | null, secret: string | null, store_secret: boolean, methods: { [key: string]: any }, caption: string | null, realms: string | null, owner: SecurityContext | null, access_control_list: SecurityContext[] | null, type: IdentityType, cb: IdentityStoreCredentialsCb): void;
 
         /**
          * Stores the data contained in `info` into the identity record in the database.
@@ -974,7 +974,7 @@ export namespace gSignon {
          * `signon_identity_info_set_methods()`.
          * @returns the table of allowed methods and mechanisms.
          */
-        get_methods(): GLib.HashTable;
+        get_methods(): { [key: string]: any };
 
         /**
          * Get identity owner's security context.
@@ -1007,7 +1007,7 @@ export namespace gSignon {
          * it should be constructed with `g_hash_table_new_full`.
          * @param methods methods.
          */
-        own_methods(methods: { [key: string]: any } | GLib.HashTable): void;
+        own_methods(methods: { [key: string]: any }): void;
 
         /**
          * Remove `method` from the list of allowed authentication methods.
@@ -1044,7 +1044,7 @@ export namespace gSignon {
          * Set authentication methods that are allowed to be used with this identity.
          * @param methods methods.
          */
-        set_methods(methods: { [key: string]: any } | GLib.HashTable): void;
+        set_methods(methods: { [key: string]: any }): void;
 
         /**
          * Set identity owner's security context.

@@ -1824,7 +1824,7 @@ export namespace Dee {
          * @param column the column index to get the schemas for
          * @returns Hashtable               containing a mapping from field names to schemas or NULL.               Note that keys and values in the hashtable may be owned               by the model, so you need to create a deep copy if you               intend to keep the hashtable around.
          */
-        get_vardict_schema(column: number): GLib.HashTable<string, string>;
+        get_vardict_schema(column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -1938,7 +1938,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -2250,7 +2250,7 @@ export namespace Dee {
          * @param num_column 
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -2355,7 +2355,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -2780,7 +2780,7 @@ export namespace Dee {
          * @param column the column index to get the schemas for
          * @returns Hashtable               containing a mapping from field names to schemas or NULL.               Note that keys and values in the hashtable may be owned               by the model, so you need to create a deep copy if you               intend to keep the hashtable around.
          */
-        get_vardict_schema(column: number): GLib.HashTable<string, string>;
+        get_vardict_schema(column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -2894,7 +2894,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -3206,7 +3206,7 @@ export namespace Dee {
          * @param num_column 
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -3311,7 +3311,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -3751,7 +3751,7 @@ export namespace Dee {
          * @param column the column index to get the schemas for
          * @returns Hashtable               containing a mapping from field names to schemas or NULL.               Note that keys and values in the hashtable may be owned               by the model, so you need to create a deep copy if you               intend to keep the hashtable around.
          */
-        get_vardict_schema(column: number): GLib.HashTable<string, string>;
+        get_vardict_schema(column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -3865,7 +3865,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -4177,7 +4177,7 @@ export namespace Dee {
          * @param num_column 
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -4282,7 +4282,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -5256,7 +5256,7 @@ export namespace Dee {
          * @param column the column index to get the schemas for
          * @returns Hashtable               containing a mapping from field names to schemas or NULL.               Note that keys and values in the hashtable may be owned               by the model, so you need to create a deep copy if you               intend to keep the hashtable around.
          */
-        get_vardict_schema(column: number): GLib.HashTable<string, string>;
+        get_vardict_schema(column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -5370,7 +5370,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -5682,7 +5682,7 @@ export namespace Dee {
          * @param num_column 
          * @virtual
          */
-        vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
+        vfunc_get_vardict_schema(num_column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -5787,7 +5787,7 @@ export namespace Dee {
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          * @virtual
          */
-        vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+        vfunc_register_vardict_schema(num_column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.
@@ -6664,7 +6664,7 @@ export namespace Dee {
              * @param num_column 
              * @virtual
              */
-            vfunc_get_vardict_schema(num_column: number): { [key: string]: any } | GLib.HashTable<string, string>;
+            vfunc_get_vardict_schema(num_column: number): { [key: string]: string };
 
             /**
              * As `dee_model_insert()`, but intended for language bindings or
@@ -6769,7 +6769,7 @@ export namespace Dee {
              * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
              * @virtual
              */
-            vfunc_register_vardict_schema(num_column: number, schemas: GLib.HashTable<string, string>): void;
+            vfunc_register_vardict_schema(num_column: number, schemas: { [key: string]: string }): void;
 
             /**
              * Removes the row at the given position from the model.
@@ -7132,7 +7132,7 @@ export namespace Dee {
          * @param column the column index to get the schemas for
          * @returns Hashtable               containing a mapping from field names to schemas or NULL.               Note that keys and values in the hashtable may be owned               by the model, so you need to create a deep copy if you               intend to keep the hashtable around.
          */
-        get_vardict_schema(column: number): GLib.HashTable<string, string>;
+        get_vardict_schema(column: number): { [key: string]: string };
 
         /**
          * As `dee_model_insert()`, but intended for language bindings or
@@ -7246,7 +7246,7 @@ export namespace Dee {
          * @param column the column index to register the schemas with
          * @param schemas hashtable with keys specifying           names of the fields and values defining their schema
          */
-        register_vardict_schema(column: number, schemas: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        register_vardict_schema(column: number, schemas: { [key: string]: string }): void;
 
         /**
          * Removes the row at the given position from the model.

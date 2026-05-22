@@ -848,7 +848,7 @@ export namespace GstSdp {
          * @param salt_data the salt
          * @returns `true` on success
          */
-        key_data_set_salt(salt_data: Uint8Array | null): boolean;
+        key_data_set_salt(salt_data: Uint8Array | string | null): boolean;
 
         /**
          * Set the SPI/MKI validity in the {@link GstSdp.MIKEYPayloadType.KEY_DATA} `payload`.

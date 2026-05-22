@@ -5191,14 +5191,14 @@ export namespace Gst {
      * @param value a GValue initialized to GST_TYPE_FRACTION_RANGE
      * @returns the maximum of the range
      */
-    function value_get_fraction_range_max(value: GObject.Value | any): GObject.Value | null;
+    function value_get_fraction_range_max(value: GObject.Value | any): unknown | null;
 
     /**
      * Gets the minimum of the range specified by `value`.
      * @param value a GValue initialized to GST_TYPE_FRACTION_RANGE
      * @returns the minimum of the range
      */
-    function value_get_fraction_range_min(value: GObject.Value | any): GObject.Value | null;
+    function value_get_fraction_range_min(value: GObject.Value | any): unknown | null;
 
     /**
      * Gets the maximum of the range specified by `value`.
@@ -5274,7 +5274,7 @@ export namespace Gst {
      * @param value2 another value to intersect
      * @returns `true` if the intersection is non-empty
      */
-    function value_intersect(value1: GObject.Value | any, value2: GObject.Value | any): [boolean, GObject.Value | null];
+    function value_intersect(value1: GObject.Value | any, value2: GObject.Value | any): [boolean, unknown | null];
 
     /**
      * Tests if the given GValue, if available in a GstStructure (or any other
@@ -5431,7 +5431,7 @@ export namespace Gst {
      * @param subtrahend the value to subtract
      * @returns `true` if the subtraction is not empty
      */
-    function value_subtract(minuend: GObject.Value | any, subtrahend: GObject.Value | any): [boolean, GObject.Value | null];
+    function value_subtract(minuend: GObject.Value | any, subtrahend: GObject.Value | any): [boolean, unknown | null];
 
     /**
      * Creates a GValue corresponding to the union of `value1` and `value2`.
@@ -10320,7 +10320,7 @@ export namespace Gst {
          * @param timestamp the time the control-change should be read from
          * @virtual
          */
-        vfunc_get_value(timestamp: ClockTime): GObject.Value | null;
+        vfunc_get_value(timestamp: ClockTime): GObject.Value | any | null;
 
         /**
          * Sets the property of the `object`, according to the `GstControlSources` that
@@ -10361,7 +10361,7 @@ export namespace Gst {
          * @param timestamp the time the control-change should be read from
          * @returns the GValue of the property at the given time, or `null` if the property isn't controlled.
          */
-        get_value(timestamp: ClockTime): GObject.Value | null;
+        get_value(timestamp: ClockTime): unknown | null;
 
         /**
          * @param args 
@@ -12740,7 +12740,7 @@ export namespace Gst {
          * @param names array of properties names
          * @param values array of associated properties values
          */
-        static make_with_properties(factoryname: string, names: string[] | null, values: GObject.Value[] | null): Element | null;
+        static make_with_properties(factoryname: string, names: string[] | null, values: (GObject.Value | any)[] | null): Element | null;
 
         // Methods
         /**
@@ -12787,7 +12787,7 @@ export namespace Gst {
          * @param values array of associated properties values
          * @returns new {@link Gst.Element} or `null`     if the element couldn't be created
          */
-        create_with_properties(names: string[] | null, values: GObject.Value[] | null): Element | null;
+        create_with_properties(names: string[] | null, values: (GObject.Value | any)[] | null): Element | null;
 
         /**
          * Get the {@link GObject.GType} for elements managed by this factory. The type can
@@ -13529,7 +13529,7 @@ export namespace Gst {
          * @param timestamp the time the control-change should be read from
          * @returns the GValue of the property at the given time, or `null` if the property isn't controlled.
          */
-        get_value(property_name: string, timestamp: ClockTime): GObject.Value | null;
+        get_value(property_name: string, timestamp: ClockTime): unknown | null;
 
         /**
          * Check if the `object` has active controlled properties.
@@ -21008,7 +21008,7 @@ export namespace Gst {
 
         static new_progress(src: Object | null, type: ProgressType, code: string, text: string): Message;
 
-        static new_property_notify(src: Object, property_name: string, val: GObject.Value | null): Message;
+        static new_property_notify(src: Object, property_name: string, val: GObject.Value | any | null): Message;
 
         static new_qos(src: Object | null, live: boolean, running_time: bigint | number, stream_time: bigint | number, timestamp: bigint | number, duration: bigint | number): Message;
 
@@ -21110,7 +21110,7 @@ export namespace Gst {
          * Extracts the object managing the streaming thread from `message`.
          * @returns a GValue containing the object that manages the streaming thread. This object is usually of type GstTask but other types can be added in the future. The object remains valid as long as `message` is valid.
          */
-        get_stream_status_object(): GObject.Value | null;
+        get_stream_status_object(): unknown | null;
 
         /**
          * Access the structure of the message.
@@ -21318,7 +21318,7 @@ export namespace Gst {
          * when set up with `gst_element_add_property_notify_watch()` or
          * `gst_element_add_property_deep_notify_watch()`.
          */
-        parse_property_notify(): [Object | null, string, GObject.Value | null];
+        parse_property_notify(): [Object | null, string, unknown | null];
 
         /**
          * Extract the timestamps and live status from the QoS message.
@@ -24448,7 +24448,7 @@ export namespace Gst {
          * @param fieldname the name of the field to get
          * @returns the {@link GObject.Value} corresponding to the field with the given name.
          */
-        get_value(fieldname: string): GObject.Value | null;
+        get_value(fieldname: string): unknown | null;
 
         /**
          * Check if `structure` contains a field named `fieldname`.
@@ -24477,7 +24477,7 @@ export namespace Gst {
          * @param field the {@link GLib.Quark} of the field to get
          * @returns the {@link GObject.Value} corresponding to the field with the given name identifier.
          */
-        id_get_value(field: GLib.Quark): GObject.Value | null;
+        id_get_value(field: GLib.Quark): unknown | null;
 
         /**
          * Check if `structure` contains a field named `field`.
@@ -24517,7 +24517,7 @@ export namespace Gst {
          * @param fieldname the name of the field to get
          * @returns the {@link GObject.Value} corresponding to the field with the given name.
          */
-        id_str_get_value(fieldname: IdStr): GObject.Value | null;
+        id_str_get_value(fieldname: IdStr): unknown | null;
 
         /**
          * Check if `structure` contains a field named `fieldname`.
@@ -25142,7 +25142,7 @@ export namespace Gst {
          * @param index number of entry to read out
          * @returns The GValue for the specified          entry or `null` if the tag wasn't available or the tag          doesn't have as many entries
          */
-        get_value_index(tag: string, index: number): GObject.Value | null;
+        get_value_index(tag: string, index: number): unknown | null;
 
         /**
          * Inserts the tags of the `from` list into the first list using the given mode.
@@ -25792,7 +25792,7 @@ export namespace Gst {
          * See more about Media Fragments URI 1.0 (W3C) at https://www.w3.org/TR/media-frags/
          * @returns The          fragment hash table from the URI.
          */
-        get_media_fragment_table(): GLib.HashTable<string, string> | null;
+        get_media_fragment_table(): { [key: string]: string } | null;
 
         /**
          * Extract the path string from the URI object.
@@ -25851,7 +25851,7 @@ export namespace Gst {
          * URI.
          * @returns The query          hash table from the URI.
          */
-        get_query_table(): GLib.HashTable<string, string> | null;
+        get_query_table(): { [key: string]: string } | null;
 
         /**
          * Get the value associated with the `query_key` key. Will return `null` if the
@@ -26019,7 +26019,7 @@ export namespace Gst {
          * @param query_table The new               query table to use.
          * @returns `true` if the new table was successfully used for the query table.
          */
-        set_query_table(query_table: GLib.HashTable<string, string> | null): boolean;
+        set_query_table(query_table: { [key: string]: string } | null): boolean;
 
         /**
          * This inserts or replaces a key in the query table. A `query_value` of `null`

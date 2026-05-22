@@ -75963,7 +75963,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
-        do_request(msg: Soup.ServerMessage, query: { [key: string]: any } | GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
 
         /**
          * Do request.
@@ -75975,7 +75975,7 @@ export namespace AgsAudio {
          * @param security_token the security token
          * @virtual
          */
-        vfunc_do_request(msg: Soup.ServerMessage, query: GLib.HashTable<never, never>, security_context: GObject.Object, path: string, login: string, security_token: string): null;
+        vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
 
 
@@ -85232,14 +85232,14 @@ export namespace AgsAudio {
             input_soundcard_channel: number;
             inputSoundcardChannel: number;
             line: number;
-            midi1_cc_to_port_specifier: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi1CcToPortSpecifier: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi1_cc_to_value: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi1CcToValue: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi2_cc_to_port_specifier: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi2CcToPortSpecifier: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi2_cc_to_value: { [key: string]: any } | GLib.HashTable<never, never>;
-            midi2CcToValue: { [key: string]: any } | GLib.HashTable<never, never>;
+            midi1_cc_to_port_specifier: never;
+            midi1CcToPortSpecifier: never;
+            midi1_cc_to_value: never;
+            midi1CcToValue: never;
+            midi2_cc_to_port_specifier: never;
+            midi2CcToPortSpecifier: never;
+            midi2_cc_to_value: never;
+            midi2CcToValue: never;
             output_soundcard: GObject.Object;
             outputSoundcard: GObject.Object;
             output_soundcard_channel: number;
@@ -85413,57 +85413,57 @@ export namespace AgsAudio {
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi1_cc_to_port_specifier(): GLib.HashTable<never, never>;
-        set midi1_cc_to_port_specifier(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi1_cc_to_port_specifier(): never;
+        set midi1_cc_to_port_specifier(val: never);
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi1CcToPortSpecifier(): GLib.HashTable<never, never>;
-        set midi1CcToPortSpecifier(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi1CcToPortSpecifier(): never;
+        set midi1CcToPortSpecifier(val: never);
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi1_cc_to_value(): GLib.HashTable<never, never>;
-        set midi1_cc_to_value(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi1_cc_to_value(): never;
+        set midi1_cc_to_value(val: never);
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi1CcToValue(): GLib.HashTable<never, never>;
-        set midi1CcToValue(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi1CcToValue(): never;
+        set midi1CcToValue(val: never);
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi2_cc_to_port_specifier(): GLib.HashTable<never, never>;
-        set midi2_cc_to_port_specifier(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi2_cc_to_port_specifier(): never;
+        set midi2_cc_to_port_specifier(val: never);
 
         /**
          * The MIDI version 1 control change to port specifier.
          * @since 7.0.0
          */
-        get midi2CcToPortSpecifier(): GLib.HashTable<never, never>;
-        set midi2CcToPortSpecifier(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi2CcToPortSpecifier(): never;
+        set midi2CcToPortSpecifier(val: never);
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi2_cc_to_value(): GLib.HashTable<never, never>;
-        set midi2_cc_to_value(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi2_cc_to_value(): never;
+        set midi2_cc_to_value(val: never);
 
         /**
          * The MIDI version 1 control change to value.
          * @since 7.0.0
          */
-        get midi2CcToValue(): GLib.HashTable<never, never>;
-        set midi2CcToValue(val: { [key: string]: any } | GLib.HashTable<never, never>);
+        get midi2CcToValue(): never;
+        set midi2CcToValue(val: never);
 
         /**
          * The assigned soundcard.
@@ -86044,25 +86044,25 @@ export namespace AgsAudio {
          * Gets MIDI version 1 control change to port specifier mapped hash table.
          * @returns the MIDI version 1 control change to port specifier hash table
          */
-        get_midi1_cc_to_port_specifier(): GLib.HashTable<never, never>;
+        get_midi1_cc_to_port_specifier(): never;
 
         /**
          * Gets MIDI version 1 control change to value mapped hash table.
          * @returns the MIDI version 1 control change to value hash table
          */
-        get_midi1_cc_to_value(): GLib.HashTable<never, never>;
+        get_midi1_cc_to_value(): never;
 
         /**
          * Gets MIDI version 1 control change to port specifier mapped hash table.
          * @returns the MIDI version 1 control change to port specifier hash table
          */
-        get_midi2_cc_to_port_specifier(): GLib.HashTable<never, never>;
+        get_midi2_cc_to_port_specifier(): never;
 
         /**
          * Gets MIDI version 1 control change to value mapped hash table.
          * @returns the MIDI version 1 control change to value hash table
          */
-        get_midi2_cc_to_value(): GLib.HashTable<never, never>;
+        get_midi2_cc_to_value(): never;
 
         /**
          * Get object mutex.

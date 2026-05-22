@@ -4972,7 +4972,7 @@ export namespace AgsGui {
          * Get bookmark from `file_widget`.
          * @returns the bookmark {@link GLib.HashTable}
          */
-        get_bookmark(): GLib.HashTable<never, never>;
+        get_bookmark(): never;
 
         /**
          * Get bookmark filename of `file_widget`.
@@ -5026,7 +5026,7 @@ export namespace AgsGui {
          * Get location from `file_widget`.
          * @returns the location {@link GLib.HashTable}
          */
-        get_location(): GLib.HashTable<never, never>;
+        get_location(): never;
 
         /**
          * Get recently used from `file_widget`.

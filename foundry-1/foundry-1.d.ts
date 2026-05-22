@@ -1008,7 +1008,7 @@ export namespace Foundry {
      * @param stdin_bytes the standard input buffer
      * @returns a {@link Dex.Future} that resolves to a string
      */
-    function subprocess_communicate(subprocess: Gio.Subprocess, stdin_bytes: GLib.Bytes | null): Dex.Future;
+    function subprocess_communicate(subprocess: Gio.Subprocess, stdin_bytes: GLib.Bytes | Uint8Array | null): Dex.Future;
 
     /**
      * Like `g_subprocess_communicate_utf8()` but only supports stdout and is
@@ -14475,7 +14475,7 @@ export namespace Foundry {
          * @param language the language identifier for `file`
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Diagnostic}.
          */
-        diagnose(file: Gio.File | null, contents: GLib.Bytes | null, language: string | null): Dex.Future;
+        diagnose(file: Gio.File | null, contents: GLib.Bytes | Uint8Array | null, language: string | null): Dex.Future;
 
         /**
          * @param file a {@link Gio.File}
@@ -14603,7 +14603,7 @@ export namespace Foundry {
          * @param language the language code such as "c"
          * @returns a {@link Dex.Future} that resolves to a {@link Gio.ListModel}   of {@link Foundry.Diagnostic}.
          */
-        diagnose(file: Gio.File | null, contents: GLib.Bytes | null, language: string | null): Dex.Future;
+        diagnose(file: Gio.File | null, contents: GLib.Bytes | Uint8Array | null, language: string | null): Dex.Future;
 
         /**
          * Gets a name for the provider that is expected to be displayed to
@@ -18476,7 +18476,7 @@ export namespace Foundry {
          * @param contents a {@link GLib.Bytes} of file contents or `null`
          * @returns a {@link Dex.Future} that resolves to a string   containing the language identifier, or rejects with error.
          */
-        guess_language(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | null): Dex.Future;
+        guess_language(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | Uint8Array | null): Dex.Future;
 
         list_languages(): string[];
 
@@ -28263,7 +28263,7 @@ export namespace Foundry {
          * @param contents optional contents to use instead of what is in   the working tree.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
          */
-        stage_entry(entry: GitStatusEntry, contents: GLib.Bytes | null): Dex.Future;
+        stage_entry(entry: GitStatusEntry, contents: GLib.Bytes | Uint8Array | null): Dex.Future;
 
         /**
          * Stashes the current working directory changes.
@@ -30624,7 +30624,7 @@ export namespace Foundry {
          * @param contents a {@link GLib.Bytes} of file contents or `null`
          * @returns a {@link Dex.Future} that resolves to   a string containing the source code language or rejects with   a new {@link GLib.Error}.
          */
-        guess(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | null): Dex.Future;
+        guess(file: Gio.File | null, content_type: string | null, contents: GLib.Bytes | Uint8Array | null): Dex.Future;
 
         /**
          * Gets a list of known languages by their language identifier.
@@ -41057,7 +41057,7 @@ export namespace Foundry {
          * Gets the contents of the buffer as a {@link GLib.Bytes}.
          * @virtual
          */
-        vfunc_dup_contents(): GLib.Bytes | null;
+        vfunc_dup_contents(): GLib.Bytes | Uint8Array | null;
 
         /**
          * Gets the GtkSourceView-style identifier for the language of the buffer
@@ -41510,14 +41510,14 @@ export namespace Foundry {
          * @param line_offset the character offset (starting from 0)
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.Symbol} or rejects with error
          */
-        find_symbol_at(file: Gio.File, contents: GLib.Bytes | null, line: number, line_offset: number): Dex.Future;
+        find_symbol_at(file: Gio.File, contents: GLib.Bytes | Uint8Array | null, line: number, line_offset: number): Dex.Future;
 
         /**
          * @param file a {@link Gio.File}
          * @param contents optional modified contents for the file
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Symbol} or rejects with error
          */
-        list_symbols(file: Gio.File, contents: GLib.Bytes | null): Dex.Future;
+        list_symbols(file: Gio.File, contents: GLib.Bytes | Uint8Array | null): Dex.Future;
 
         /**
          * Calls the default implementation of the {@link Json.Serializable.deserialize_property}
@@ -46848,7 +46848,7 @@ export namespace Foundry {
          * @param bytes optional contents for the file
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsBlame} or rejects with error
          */
-        blame(file: VcsFile, bytes: GLib.Bytes | null): Dex.Future;
+        blame(file: VcsFile, bytes: GLib.Bytes | Uint8Array | null): Dex.Future;
 
         /**
          * @param file a {@link Foundry.VcsFile}
@@ -47287,7 +47287,7 @@ export namespace Foundry {
          * @param bytes data for the blame or `null` to reset to file defaults
          * @returns a {@link Dex.Future} that resolves   to any value or rejects with error
          */
-        update(bytes: GLib.Bytes | null): Dex.Future;
+        update(bytes: GLib.Bytes | Uint8Array | null): Dex.Future;
     }
 
 
@@ -51439,7 +51439,7 @@ export namespace Foundry {
              * Gets the contents of the buffer as a {@link GLib.Bytes}.
              * @virtual
              */
-            vfunc_dup_contents(): GLib.Bytes | null;
+            vfunc_dup_contents(): GLib.Bytes | Uint8Array | null;
 
             /**
              * Gets the GtkSourceView-style identifier for the language of the buffer

@@ -3823,7 +3823,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -3841,7 +3841,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -3863,7 +3863,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -3996,7 +3996,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -4212,7 +4212,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -4230,7 +4230,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -4252,7 +4252,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -4385,7 +4385,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -4592,7 +4592,7 @@ export namespace Gdaui {
          * @param values a list of {@link GObject.Value} values, or `null`
          * @returns `true` if no error occurred.
          */
-        set_values(values: GObject.Value[] | null): boolean;
+        set_values(values: (GObject.Value | any)[] | null): boolean;
 
         /**
          * Used for the layout of `GdaDataEntry` widgets in containers: queries if `de` requires
@@ -4664,7 +4664,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -4682,7 +4682,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -4704,7 +4704,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -4837,7 +4837,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -5064,7 +5064,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -5082,7 +5082,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -5104,7 +5104,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -5237,7 +5237,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -5711,7 +5711,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -5729,7 +5729,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -5751,7 +5751,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -5884,7 +5884,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -6124,7 +6124,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -6142,7 +6142,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -6164,7 +6164,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -6297,7 +6297,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -6863,7 +6863,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -6881,7 +6881,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -6903,7 +6903,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -7036,7 +7036,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -7777,7 +7777,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -7795,7 +7795,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -7817,7 +7817,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
@@ -7929,7 +7929,7 @@ export namespace Gdaui {
          * @param value a {@link GObject.Value}, or `null`
          * @virtual
          */
-        vfunc_set_value(value: GObject.Value | null): void;
+        vfunc_set_value(value: unknown | null): void;
 
         /**
          * @param value 
@@ -12606,7 +12606,7 @@ export namespace Gdaui {
              * @param value a {@link GObject.Value}, or `null`
              * @virtual
              */
-            vfunc_set_value(value: GObject.Value | null): void;
+            vfunc_set_value(value: unknown | null): void;
 
             /**
              * @param value 
@@ -12722,7 +12722,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_default_value(value: GObject.Value | null): void;
+        set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
@@ -12740,7 +12740,7 @@ export namespace Gdaui {
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_reference_value(value: GObject.Value | null): void;
+        set_reference_value(value: GObject.Value | any | null): void;
 
         /**
          * Defines the color to be used when `de` displays an invalid value. Any value not
@@ -12762,7 +12762,7 @@ export namespace Gdaui {
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_value(value: GObject.Value | null): void;
+        set_value(value: GObject.Value | any | null): void;
 
         /**
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what

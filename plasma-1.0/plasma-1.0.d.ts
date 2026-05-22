@@ -171,7 +171,7 @@ export namespace Plasma {
         /**
          * @param metadata The metadata of a created object.
          */
-        set_metadata(metadata: Uint8Array | null): void;
+        set_metadata(metadata: Uint8Array | string | null): void;
     }
 
 

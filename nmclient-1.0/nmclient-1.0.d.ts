@@ -1380,7 +1380,7 @@ export namespace NMClient {
      * @gir-type Callback
      */
     interface RemoteConnectionGetSecretsFunc {
-        (connection: RemoteConnection, secrets: GLib.HashTable<string, GLib.HashTable>, error: GLib.Error): void;
+        (connection: RemoteConnection, secrets: { [key: string]: GLib.HashTable }, error: GLib.Error): void;
     }
 
     /**
@@ -1422,7 +1422,7 @@ export namespace NMClient {
      * @gir-type Callback
      */
     interface SecretAgentGetSecretsFunc {
-        (agent: SecretAgent, connection: NetworkManager.Connection, secrets: GLib.HashTable<string, GLib.HashTable>, error: GLib.Error): void;
+        (agent: SecretAgent, connection: NetworkManager.Connection, secrets: { [key: string]: GLib.HashTable }, error: GLib.Error): void;
     }
 
     /**
@@ -3642,7 +3642,7 @@ export namespace NMClient {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            options: { [key: string]: any } | GLib.HashTable<string, GObject.Value>;
+            options: { [key: string]: GObject.Value };
         }
     }
 
@@ -3657,7 +3657,7 @@ export namespace NMClient {
          * The {@link GLib.HashTable} containing options of the configuration.
          * @read-only
          */
-        get options(): GLib.HashTable<string, GObject.Value>;
+        get options(): { [key: string]: GObject.Value };
 
         /**
          * Compile-time signal type information.
@@ -3700,7 +3700,7 @@ export namespace NMClient {
          * Gets all the options contained in the configuration.
          * @returns the {@link GLib.HashTable} containing strings for keys and values. This is the internal copy used by the configuration, and must not be modified.
          */
-        get_options(): GLib.HashTable<string, GObject.Value>;
+        get_options(): { [key: string]: GObject.Value };
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -3997,7 +3997,7 @@ export namespace NMClient {
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
-            options: { [key: string]: any } | GLib.HashTable<string, GObject.Value>;
+            options: { [key: string]: GObject.Value };
         }
     }
 
@@ -4012,7 +4012,7 @@ export namespace NMClient {
          * The {@link GLib.HashTable} containing options of the configuration.
          * @read-only
          */
-        get options(): GLib.HashTable<string, GObject.Value>;
+        get options(): { [key: string]: GObject.Value };
 
         /**
          * Compile-time signal type information.
@@ -4055,7 +4055,7 @@ export namespace NMClient {
          * Gets all the options contained in the configuration.
          * @returns the {@link GLib.HashTable} containing strings for keys and values. This is the internal copy used by the configuration, and must not be modified.
          */
-        get_options(): GLib.HashTable<string, GObject.Value>;
+        get_options(): { [key: string]: GObject.Value };
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -11239,7 +11239,7 @@ export namespace NMClient {
          * @param new_settings 
          * @virtual
          */
-        vfunc_updated(new_settings: GLib.HashTable<never, never>): void;
+        vfunc_updated(new_settings: never): void;
 
         // Methods
         /**

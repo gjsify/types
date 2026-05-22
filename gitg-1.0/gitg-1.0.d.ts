@@ -6059,7 +6059,7 @@ export namespace Gitg {
          * @param file 
          * @param raw_content 
          */
-        static get_textconv_content_from_raw(repository: Repository, file: Ggit.DiffFile, raw_content: Uint8Array | null): Uint8Array;
+        static get_textconv_content_from_raw(repository: Repository, file: Ggit.DiffFile, raw_content: Uint8Array | string | null): Uint8Array;
     }
 
 

@@ -414,7 +414,7 @@ export namespace Xfconf {
          * @param property A property string.
          * @returns A newly-allocated {@link GLib.PtrArray} on success, or `null` on failure.
          */
-        get_arrayv(property: string): GObject.Value[] | null;
+        get_arrayv(property: string): unknown[] | null;
 
         /**
          * Retrieves the boolean value associated with `property` on `channel`.
@@ -465,7 +465,7 @@ export namespace Xfconf {
          * @param property_base The base property name of properties to retrieve.
          * @returns A newly-allocated {@link GLib.HashTable}, which should be freed with          `g_hash_table_destroy()` when no longer needed.
          */
-        get_properties(property_base: string | null): GLib.HashTable<string, GObject.Value>;
+        get_properties(property_base: string | null): { [key: string]: GObject.Value };
 
         /**
          * Gets a property on `channel` and stores it in `value`.  The caller is

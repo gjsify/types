@@ -1088,7 +1088,7 @@ export namespace Clapper {
          * {@link GLib.HashTable} with string keys and {@link GObject.Value} as their values.
          * @param table a {@link GLib.HashTable} with property names and values
          */
-        set_locally(table: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
+        set_locally(table: { [key: string]: GObject.Value }): void;
 
         /**
          * Set whether to allow instances of proxy target to be created.

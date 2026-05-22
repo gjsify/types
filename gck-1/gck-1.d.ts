@@ -1814,7 +1814,7 @@ export namespace Gck {
          * @param cancellable optional cancellation object or `null`
          * @returns a list of          the matching objects, which may be empty
          */
-        find_handles(match: Attributes, cancellable: Gio.Cancellable | null): (bigint | number)[] | null;
+        find_handles(match: Attributes, cancellable: Gio.Cancellable | null): number[] | null;
 
         /**
          * Find the objects matching the passed attributes. This call will
@@ -1824,7 +1824,7 @@ export namespace Gck {
          * @param match the attributes to match against the objects
          * @param cancellable optional cancellation object or `null`
          */
-        find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<(bigint | number)[] | null>;
+        find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<number[] | null>;
 
         /**
          * Find the objects matching the passed attributes. This call will
@@ -1846,14 +1846,14 @@ export namespace Gck {
          * @param cancellable optional cancellation object or `null`
          * @param callback called when the operation completes
          */
-        find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<(bigint | number)[] | null> | void;
+        find_handles_async(match: Attributes, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number[] | null> | void;
 
         /**
          * Get the result of a find handles operation.
          * @param result the asynchronous result
          * @returns an array of          handles that matched, which may be empty, or `null` on failure
          */
-        find_handles_finish(result: Gio.AsyncResult): (bigint | number)[] | null;
+        find_handles_finish(result: Gio.AsyncResult): number[] | null;
 
         /**
          * Find the objects matching the passed attributes. This call may
@@ -2034,7 +2034,7 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        init_pin(pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        init_pin(pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Initialize the user's pin on this slot that this session is opened on.
@@ -2045,19 +2045,7 @@ export namespace Gck {
          * @param pin the user's PIN, or `null` for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Initialize the user's pin on this slot that this session is opened on.
-         * According to the PKCS#11 standards, the session must be logged in with
-         * the `CKU_SO` user type.
-         * 
-         * This call will return immediately and completes asynchronously.
-         * @param pin the user's PIN, or `null` for protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        init_pin_async(pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Initialize the user's pin on this slot that this session is opened on.
@@ -2069,7 +2057,19 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        init_pin_async(pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Initialize the user's pin on this slot that this session is opened on.
+         * According to the PKCS#11 standards, the session must be logged in with
+         * the `CKU_SO` user type.
+         * 
+         * This call will return immediately and completes asynchronously.
+         * @param pin the user's PIN, or `null` for protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        init_pin_async(pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Get the result of initializing a user's PIN.
@@ -2086,7 +2086,7 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        login(user_type: bigint | number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        login(user_type: bigint | number, pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Login the user on the session. This call will return
@@ -2095,17 +2095,7 @@ export namespace Gck {
          * @param pin the user's PIN, or `null` for       protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        login_async(user_type: bigint | number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Login the user on the session. This call will return
-         * immediately and completes asynchronously.
-         * @param user_type The type of login user.
-         * @param pin the user's PIN, or `null` for       protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        login_async(user_type: bigint | number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        login_async(user_type: bigint | number, pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Login the user on the session. This call will return
@@ -2115,7 +2105,17 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        login_async(user_type: bigint | number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        login_async(user_type: bigint | number, pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Login the user on the session. This call will return
+         * immediately and completes asynchronously.
+         * @param user_type The type of login user.
+         * @param pin the user's PIN, or `null` for       protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        login_async(user_type: bigint | number, pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Get the result of a login operation.
@@ -2223,7 +2223,7 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        set_pin(old_pin: Uint8Array | null, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        set_pin(old_pin: Uint8Array | string | null, new_pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Change the user's pin on this slot that this session is opened on.
@@ -2234,19 +2234,7 @@ export namespace Gck {
          * @param new_pin the user's new PIN, or `null`           for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        set_pin_async(old_pin: Uint8Array | null, n_old_pin: bigint | number, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-
-        /**
-         * Change the user's pin on this slot that this session is opened on.
-         * 
-         * This call will return immediately and completes asynchronously.
-         * @param old_pin the user's old PIN, or `null`           for protected authentication path
-         * @param n_old_pin the length of the old PIN
-         * @param new_pin the user's new PIN, or `null`           for protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        set_pin_async(old_pin: Uint8Array | null, n_old_pin: bigint | number, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        set_pin_async(old_pin: Uint8Array | string | null, n_old_pin: bigint | number, new_pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Change the user's pin on this slot that this session is opened on.
@@ -2258,7 +2246,19 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        set_pin_async(old_pin: Uint8Array | null, n_old_pin: bigint | number, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        set_pin_async(old_pin: Uint8Array | string | null, n_old_pin: bigint | number, new_pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+
+        /**
+         * Change the user's pin on this slot that this session is opened on.
+         * 
+         * This call will return immediately and completes asynchronously.
+         * @param old_pin the user's old PIN, or `null`           for protected authentication path
+         * @param n_old_pin the length of the old PIN
+         * @param new_pin the user's new PIN, or `null`           for protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        set_pin_async(old_pin: Uint8Array | string | null, n_old_pin: bigint | number, new_pin: Uint8Array | string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Get the result of changing a user's PIN.
@@ -3391,7 +3391,7 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the new attribute memory
          */
-        add_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        add_data(attr_type: bigint | number, value: Uint8Array | string | null): void;
 
         /**
          * Add a new attribute to the builder for the date `value`.
@@ -3611,7 +3611,7 @@ export namespace Gck {
          * @param attr_type the attribute type
          * @param value the new attribute memory
          */
-        set_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        set_data(attr_type: bigint | number, value: Uint8Array | string | null): void;
 
         /**
          * Set an attribute on the builder for the date `value`.
@@ -3679,7 +3679,7 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the new         attribute memory
          */
-        take_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        take_data(attr_type: bigint | number, value: Uint8Array | string | null): void;
     }
 
 

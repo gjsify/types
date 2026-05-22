@@ -3306,7 +3306,7 @@ export namespace Vips {
      * @param b user data
      * @returns `NULL` if `fn` returns `NULL` for all arguments, otherwise the first non-`NULL` value from `fn`.
      */
-    function hash_table_map(hash: { [key: string]: any } | GLib.HashTable<never, never>, fn: SListMap2Fn, a: null, b: null): null;
+    function hash_table_map(hash: never, fn: SListMap2Fn, a: null, b: null): null;
 
     /**
      * @param image 

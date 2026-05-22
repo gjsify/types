@@ -490,7 +490,7 @@ export namespace GExiv2 {
          * @param bytes An image buffer to update the metadata on, nor `null`
          * @returns A newly allocated GBytes object containing the image with new metadata
          */
-        as_bytes(bytes: GLib.Bytes | null): GLib.Bytes;
+        as_bytes(bytes: GLib.Bytes | Uint8Array | null): GLib.Bytes;
 
         /**
          * Removes all tags for all domains (EXIF, IPTC, and XMP).

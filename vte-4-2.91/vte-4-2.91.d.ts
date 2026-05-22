@@ -1913,20 +1913,20 @@ export namespace Vte {
          * Interprets `data` as if it were data received from a child process.
          * @param data a string in the terminal's current encoding
          */
-        feed(data: Uint8Array | null): void;
+        feed(data: Uint8Array | string | null): void;
 
         /**
          * Sends a block of UTF-8 text to the child as if it were entered by the user
          * at the keyboard.
          * @param text data to send to the child
          */
-        feed_child(text: Uint8Array | null): void;
+        feed_child(text: Uint8Array | string | null): void;
 
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          */
-        feed_child_binary(data: Uint8Array | null): void;
+        feed_child_binary(data: Uint8Array | string | null): void;
 
         /**
          * Checks whether or not the terminal will attempt to draw bold text,

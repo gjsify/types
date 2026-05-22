@@ -784,7 +784,7 @@ export namespace NMA {
         /**
          * @returns a  hash table where keys are country names `gchar` and values are {@link NMA.CountryInfo}.
          */
-        get_countries(): GLib.HashTable<string, CountryInfo>;
+        get_countries(): { [key: string]: CountryInfo };
 
         /**
          * @param mccmnc the MCC/MNC string to look for.

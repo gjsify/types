@@ -247,7 +247,7 @@ export namespace Unity {
      * @param io_priority 
      * @param cancellable 
      */
-    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable): globalThis.Promise<[Uint8Array, bigint | number]>;
+    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable): globalThis.Promise<[Uint8Array, number]>;
     /**
      * <para>Asynchronously read a stream into memory. This method will close the input stream when done.</para>
      * @param input 
@@ -263,7 +263,7 @@ export namespace Unity {
      * @param cancellable 
      * @param _callback_ 
      */
-    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<Gio.InputStream>): globalThis.Promise<[Uint8Array, bigint | number]> | void;
+    function io_read_stream_async(input: Gio.InputStream, io_priority: number, cancellable: Gio.Cancellable, _callback_: Gio.AsyncReadyCallback<Gio.InputStream>): globalThis.Promise<[Uint8Array, number]> | void;
 
     /**
      * @param _res_ 
@@ -1631,7 +1631,7 @@ export namespace Unity {
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
             search_string: string;
             searchString: string;
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: GLib.Variant };
             results_model: Dee.SerializableModel;
             resultsModel: Dee.SerializableModel;
         }
@@ -1657,7 +1657,7 @@ export namespace Unity {
         /**
          * @construct-only
          */
-        get hints(): GLib.HashTable<string, GLib.Variant>;
+        get hints(): { [key: string]: GLib.Variant };
 
         /**
          * @construct-only
@@ -1683,7 +1683,7 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
-        static ["new"](search_string: string, hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, results_model: Dee.SerializableModel): LensSearch;
+        static ["new"](search_string: string, hints: { [key: string]: GLib.Variant }, results_model: Dee.SerializableModel): LensSearch;
 
         // Signals
         /** @signal */
@@ -2025,7 +2025,7 @@ export namespace Unity {
             iconHint: Gio.Icon;
             layout_hint: LayoutHint;
             layoutHint: LayoutHint;
-            hints: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>;
+            hints: { [key: string]: GLib.Variant };
         }
     }
 
@@ -2080,7 +2080,7 @@ export namespace Unity {
         /**
          * @read-only
          */
-        get hints(): GLib.HashTable<string, GLib.Variant>;
+        get hints(): { [key: string]: GLib.Variant };
 
         /**
          * Compile-time signal type information.

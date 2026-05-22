@@ -2020,7 +2020,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters A {@link GLib.HashTable} of string->GValue containing the parameters.
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter_ht(transmitter: string, stream_transmitter_parameters: GLib.HashTable<string, GObject.Value> | null): boolean;
+        set_transmitter_ht(transmitter: string, stream_transmitter_parameters: { [key: string]: GObject.Value } | null): boolean;
     }
 
 

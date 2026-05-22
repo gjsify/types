@@ -5195,7 +5195,7 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | null): void;
+        store(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | any | null): void;
 
         /**
          * Stores an item in the metadata store so that lookpus matching `key`
@@ -5205,7 +5205,7 @@ export namespace RB {
          * @param source_type metadata source type
          * @param data data to store
          */
-        store_raw(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | null): void;
+        store_raw(key: ExtDBKey, source_type: ExtDBSourceType, data: GObject.Value | any | null): void;
 
         /**
          * Stores an item identified by `uri` in the metadata store so that
@@ -6398,7 +6398,7 @@ export namespace RB {
          * @param map map to hold the entries
          * @virtual
          */
-        vfunc_get_entries(category: string, map: GLib.HashTable<string, RhythmDBEntry>): void;
+        vfunc_get_entries(category: string, map: { [key: string]: RhythmDBEntry }): void;
 
         /**
          * @virtual
@@ -6430,7 +6430,7 @@ export namespace RB {
          * @param category the sync category name
          * @param map map to hold the entries
          */
-        get_entries(category: string, map: { [key: string]: any } | GLib.HashTable<string, RhythmDBEntry>): void;
+        get_entries(category: string, map: { [key: string]: RhythmDBEntry }): void;
 
         get_free_space(): number;
 
@@ -12582,7 +12582,7 @@ export namespace RB {
          * @param uri the URI to query
          * @returns `true` if the URI is found in the database
          */
-        get_song_properties(uri: string): [boolean, GLib.HashTable<string, GObject.Value>];
+        get_song_properties(uri: string): [boolean, { [key: string]: GObject.Value }];
 
         /**
          * Looks up and returns the source that owns entries of the specified
@@ -15186,7 +15186,7 @@ export namespace RB {
          * and creates a new empty map.
          * @returns {@link GLib.HashTable} from the map
          */
-        steal_hashtable(): GLib.HashTable<never, never>;
+        steal_hashtable(): never;
     }
 
 

@@ -2440,7 +2440,7 @@ export namespace Snapd {
          * @param sound_theme_names a list of sound theme names.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        check_themes_async(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>]>;
+        check_themes_async(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[{ [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }]>;
 
         /**
          * Asynchronously check for snaps providing the requested desktop themes.
@@ -2462,7 +2462,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        check_themes_async(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>]> | void;
+        check_themes_async(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[{ [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }]> | void;
 
         /**
          * Complete request started with `snapd_client_check_themes_async()`.
@@ -2470,7 +2470,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success.
          */
-        check_themes_finish(result: Gio.AsyncResult): [boolean, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>];
+        check_themes_finish(result: Gio.AsyncResult): [boolean, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }];
 
         /**
          * Check the status of snap packaged versions of named desktop
@@ -2481,7 +2481,7 @@ export namespace Snapd {
          * @param sound_theme_names a list of sound theme names.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        check_themes_sync(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>, GLib.HashTable<string, ThemeStatus>];
+        check_themes_sync(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }];
 
         /**
          * This method is no longer required and does nothing, snapd-glib now connects on demand.
@@ -3972,7 +3972,7 @@ export namespace Snapd {
          * @param keys keys to returns or `null` to return all.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
+        get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: GLib.Variant }>;
 
         /**
          * Asynchronously get configuration for a snap.
@@ -3992,7 +3992,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: GLib.Variant }> | void;
 
         /**
          * Complete request started with `snapd_client_get_snap_conf_async()`.
@@ -4000,7 +4000,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a table of configuration values or `null` on error.
          */
-        get_snap_conf_finish(result: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
+        get_snap_conf_finish(result: Gio.AsyncResult): { [key: string]: GLib.Variant };
 
         /**
          * Get configuration for a snap. System configuration is stored using the name "system".
@@ -4009,7 +4009,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a table of configuration values or `null` on error.
          */
-        get_snap_conf_sync(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): GLib.HashTable<string, GLib.Variant>;
+        get_snap_conf_sync(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): { [key: string]: GLib.Variant };
 
         /**
          * Complete request started with `snapd_client_get_snap_async()`.
@@ -5063,7 +5063,7 @@ export namespace Snapd {
          * @param key_values Keys to set.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          */
-        set_snap_conf_async(name: string, key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_snap_conf_async(name: string, key_values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously set configuration for a snap.
@@ -5073,7 +5073,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        set_snap_conf_async(name: string, key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        set_snap_conf_async(name: string, key_values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Asynchronously set configuration for a snap.
@@ -5083,7 +5083,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
-        set_snap_conf_async(name: string, key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        set_snap_conf_async(name: string, key_values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Complete request started with `snapd_client_set_snap_conf_async()`.
@@ -5100,7 +5100,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if configuration successfully applied.
          */
-        set_snap_conf_sync(name: string, key_values: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>, cancellable: Gio.Cancellable | null): boolean;
+        set_snap_conf_sync(name: string, key_values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set the Unix socket path to connect to snapd with.
@@ -5284,11 +5284,11 @@ export namespace Snapd {
             manual: boolean;
             name: string;
             plug: PlugRef;
-            plug_attrs: { [key: string]: any } | GLib.HashTable<never, never>;
-            plugAttrs: { [key: string]: any } | GLib.HashTable<never, never>;
+            plug_attrs: never;
+            plugAttrs: never;
             slot: SlotRef;
-            slot_attrs: { [key: string]: any } | GLib.HashTable<never, never>;
-            slotAttrs: { [key: string]: any } | GLib.HashTable<never, never>;
+            slot_attrs: never;
+            slotAttrs: never;
             snap: string;
         }
     }
@@ -5334,12 +5334,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get plug_attrs(): GLib.HashTable<never, never>;
+        get plug_attrs(): never;
 
         /**
          * @construct-only
          */
-        get plugAttrs(): GLib.HashTable<never, never>;
+        get plugAttrs(): never;
 
         /**
          * @construct-only
@@ -5349,12 +5349,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get slot_attrs(): GLib.HashTable<never, never>;
+        get slot_attrs(): never;
 
         /**
          * @construct-only
          */
-        get slotAttrs(): GLib.HashTable<never, never>;
+        get slotAttrs(): never;
 
         /**
          * @construct-only
@@ -6175,8 +6175,8 @@ export namespace Snapd {
             firstOccurred: GLib.DateTime;
             id: string;
             key: string;
-            last_data: { [key: string]: any } | GLib.HashTable<never, never>;
-            lastData: { [key: string]: any } | GLib.HashTable<never, never>;
+            last_data: never;
+            lastData: never;
             last_occurred: GLib.DateTime;
             lastOccurred: GLib.DateTime;
             last_occurred_nanoseconds: number;
@@ -6239,12 +6239,12 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get last_data(): GLib.HashTable<never, never>;
+        get last_data(): never;
 
         /**
          * @construct-only
          */
-        get lastData(): GLib.HashTable<never, never>;
+        get lastData(): never;
 
         /**
          * @construct-only
@@ -6391,13 +6391,13 @@ export namespace Snapd {
          * Get the data of the notice.
          * @returns a HashTable with the data elements.
          */
-        get_last_data(): GLib.HashTable<never, never>;
+        get_last_data(): never;
 
         /**
          * Get the data of the notice.
          * @returns a HashTable with the data elements.
          */
-        get_last_data2(): GLib.HashTable<never, never>;
+        get_last_data2(): never;
 
         /**
          * Get the time this notification last occurred.
@@ -6553,7 +6553,7 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: { [key: string]: any } | GLib.HashTable<never, never>;
+            attributes: never;
             connections: never[];
             "interface": string;
             label: string;
@@ -6574,7 +6574,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get attributes(): GLib.HashTable<never, never>;
+        get attributes(): never;
 
         /**
          * @construct-only
@@ -6949,7 +6949,7 @@ export namespace Snapd {
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            attributes: { [key: string]: any } | GLib.HashTable<never, never>;
+            attributes: never;
             connections: never[];
             "interface": string;
             label: string;
@@ -6970,7 +6970,7 @@ export namespace Snapd {
         /**
          * @construct-only
          */
-        get attributes(): GLib.HashTable<never, never>;
+        get attributes(): never;
 
         /**
          * @construct-only
@@ -8273,7 +8273,7 @@ export namespace Snapd {
          * backend may provide "classic", "devmode" and "strict".
          * @returns a hash table of string arrays keyed by backend name.
          */
-        get_sandbox_features(): GLib.HashTable;
+        get_sandbox_features(): { [key: string]: any };
 
         /**
          * Get the series of snapd running, e.g. "16".

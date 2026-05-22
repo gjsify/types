@@ -517,7 +517,7 @@ export namespace GstPbutils {
      * @returns The {@link Gst.Caps}, or `null` if the parameters would lead to invalid Opus caps.
      * @since 1.8
      */
-    function codec_utils_opus_create_caps(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | null): Gst.Caps | null;
+    function codec_utils_opus_create_caps(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | string | null): Gst.Caps | null;
 
     /**
      * Creates Opus caps from the given OpusHead `header` and comment header
@@ -542,7 +542,7 @@ export namespace GstPbutils {
      * @returns The {@link Gst.Buffer} containing the OpusHead.
      * @since 1.8
      */
-    function codec_utils_opus_create_header(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | null, pre_skip: number, output_gain: number): Gst.Buffer | null;
+    function codec_utils_opus_create_header(rate: number, channels: number, channel_mapping_family: number, stream_count: number, coupled_count: number, channel_mapping: Uint8Array | string | null, pre_skip: number, output_gain: number): Gst.Buffer | null;
 
     /**
      * Parses Opus caps and fills the different fields with defaults if possible.

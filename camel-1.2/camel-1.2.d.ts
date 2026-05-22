@@ -4609,7 +4609,7 @@ export namespace Camel {
          * @param index an index to start with, between 0 and `ncols`
          * @param col_names column names to traverse
          */
-        static get_column_ident(hash: { [key: string]: any } | GLib.HashTable<never, never>, index: number, col_names: string[]): [DBKnownColumnNames, GLib.HashTable<never, never>];
+        static get_column_ident(hash: never, index: number, col_names: string[]): [DBKnownColumnNames, never];
 
         /**
          * @param raw_name raw name to find the column name for
@@ -4790,7 +4790,7 @@ export namespace Camel {
          * @param hash a hash table to fill
          * @returns 0 on success, -1 on error
          */
-        get_folder_uids(folder_name: string, sort_by: string | null, collate: string | null, hash: { [key: string]: any } | GLib.HashTable<string, number>): number;
+        get_folder_uids(folder_name: string, sort_by: string | null, collate: string | null, hash: { [key: string]: number }): number;
 
         /**
          * Runs a `cdb` maintenance, which includes vacuum, if necessary.
@@ -7915,7 +7915,7 @@ export namespace Camel {
          * 
          * Note: When searching for values always use uids from the string pool.
          */
-        get_hash(): GLib.HashTable<string, number>;
+        get_hash(): { [key: string]: number };
 
         /**
          * @returns a {@link Camel.Index} used to index body content.
@@ -9623,7 +9623,7 @@ export namespace Camel {
          * cast to {@link Camel.SummaryMessageID}.
          * @since 3.24
          */
-        get references(): never[] | null;
+        get references(): null[] | null;
         set references(val: never[] | null);
 
         /**
@@ -10129,7 +10129,7 @@ export namespace Camel {
          * @param references a references to set
          * @virtual
          */
-        vfunc_take_references(references: (bigint | number)[] | null): boolean;
+        vfunc_take_references(references: number[] | null): boolean;
 
         /**
          * Takes all the `user_flags`, which replaces any current user flags on the `mi`.
@@ -10209,7 +10209,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available. Free returned   array with `g_array_unref()` when no longer needed.
          */
-        dup_references(): (bigint | number)[] | null;
+        dup_references(): number[] | null;
 
         /**
          * @returns A newly allocated {@link Camel.NamedFlags} with   all the currently set user flags on the `mi`. Free the returned structure   with `camel_named_flags_free()` when no londer needed.
@@ -10333,7 +10333,7 @@ export namespace Camel {
          * can be cast to {@link Camel.SummaryMessageID}.
          * @returns A {@link GLib.Array} of   guint64 encoded Message-ID-s; or `null` when none are available.
          */
-        get_references(): (bigint | number)[] | null;
+        get_references(): number[] | null;
 
         /**
          * @returns Size of the associated message.
@@ -12594,7 +12594,7 @@ export namespace Camel {
          * @param data data to put into the part
          * @param type Content-Type of the data
          */
-        set_content(data: Uint8Array | null, type: string | null): void;
+        set_content(data: Uint8Array | string | null, type: string | null): void;
 
         /**
          * @param args 
@@ -14128,7 +14128,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_challenge_sync(token: Uint8Array | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
+        vfunc_challenge_sync(token: Uint8Array | null, cancellable: Gio.Cancellable | null): Uint8Array | string | null;
 
         /**
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
@@ -14149,7 +14149,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
+        challenge(token: Uint8Array | string | null, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array | null>;
 
         /**
          * If `token` is `null`, asynchronously generate the initial SASL message
@@ -14164,7 +14164,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        challenge(token: Uint8Array | string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * If `token` is `null`, asynchronously generate the initial SASL message
@@ -14179,7 +14179,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        challenge(token: Uint8Array | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array | null> | void;
+        challenge(token: Uint8Array | string | null, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Uint8Array | null> | void;
 
         /**
          * As with `camel_sasl_challenge()`, but the challenge `token` and the
@@ -14257,7 +14257,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the SASL response or `null`. If an error occurred, `error` will also be set.
          */
-        challenge_sync(token: Uint8Array | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
+        challenge_sync(token: Uint8Array | string | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
 
         /**
          * @returns whether or not `sasl` has successfully authenticated the user. This will be `true` after it returns the last needed response. The caller must still pass that information on to the server and verify that it has accepted it.
@@ -16249,7 +16249,7 @@ export namespace Camel {
         /**
          * @returns Currently used junk    headers as a hash table, previously set by `camel_session_set_junk_headers()`.
          */
-        get_junk_headers(): GLib.HashTable<string, string>;
+        get_junk_headers(): { [key: string]: string };
 
         /**
          * Obtains the OAuth 2.0 access token for `service` along with its expiry
@@ -16868,7 +16868,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @virtual
          */
-        vfunc_initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: any } | GLib.HashTable<string, string>];
+        vfunc_initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
          * Renames the folder described by `old_name` to `new_name`.
@@ -17411,7 +17411,7 @@ export namespace Camel {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable<string, string>>;
+        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: string }>;
 
         /**
          * Runs initial setup for the `store` asynchronously.
@@ -17439,7 +17439,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, string>> | void;
+        initial_setup(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: string }> | void;
 
         /**
          * Finishes the operation started with `camel_store_initial_setup()`.
@@ -17450,7 +17450,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          */
-        initial_setup_finish(result: Gio.AsyncResult): [boolean, GLib.HashTable<string, string>];
+        initial_setup_finish(result: Gio.AsyncResult): [boolean, { [key: string]: string }];
 
         /**
          * Runs initial setup for the `store`. It's meant to preset some
@@ -17470,7 +17470,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          */
-        initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.HashTable<string, string>];
+        initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
         /**
          * Checks the state of the current CamelDB used for the `store` and eventually
@@ -20681,7 +20681,7 @@ export namespace Camel {
          * @param subfolder a {@link Camel.Folder}
          * @returns a {@link GLib.HashTable} with    all the virtual mesasge info UID-s knwn to the `summary`.
          */
-        get_uids_for_subfolder(subfolder: Folder): GLib.HashTable<string, number>;
+        get_uids_for_subfolder(subfolder: Folder): { [key: string]: number };
 
         /**
          * Removes the given `vuid` of the `subfolder` from the `summary`.
@@ -23121,7 +23121,7 @@ export namespace Camel {
          * @param url a {@link Camel.URL}
          * @returns 0 on success or -1 on fail.
          */
-        auto_detect(url: URL): [number, GLib.HashTable<string, string> | null];
+        auto_detect(url: URL): [number, { [key: string]: string } | null];
 
         /**
          * Registers a provider.

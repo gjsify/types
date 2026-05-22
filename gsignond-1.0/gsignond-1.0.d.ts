@@ -942,7 +942,7 @@ export namespace GSignond {
          * It should not be modified.
          * @returns The {@link GLib.HashTable} contained into the {@link GSignond.Dictionary}.
          */
-        get_table(): GLib.HashTable<string, GLib.Variant>;
+        get_table(): { [key: string]: GLib.Variant };
 
         /**
          * Retrieves a uint32 value.

@@ -10618,7 +10618,7 @@ export namespace Adw {
          * @param property the target property
          * @param value the value to set
          */
-        add_setter(object: GObject.Object, property: string, value: GObject.Value | null): void;
+        add_setter(object: GObject.Object, property: string, value: GObject.Value | any | null): void;
 
         /**
          * Adds `n_setters` setters to `self`.
@@ -41531,7 +41531,7 @@ export namespace Adw {
              * @since 1.3
              * @run-last
              */
-            "extra-drag-value": (arg0: TabPage, arg1: GObject.Value | null) => Gdk.DragAction;
+            "extra-drag-value": (arg0: TabPage, arg1: unknown | null) => Gdk.DragAction;
             "notify::autohide": (pspec: GObject.ParamSpec) => void;
             "notify::end-action-widget": (pspec: GObject.ParamSpec) => void;
             "notify::expand-tabs": (pspec: GObject.ParamSpec) => void;
@@ -43024,7 +43024,7 @@ export namespace Adw {
              * @since 1.3
              * @run-last
              */
-            "extra-drag-value": (arg0: TabPage, arg1: GObject.Value | null) => Gdk.DragAction;
+            "extra-drag-value": (arg0: TabPage, arg1: unknown | null) => Gdk.DragAction;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::enable-new-tab": (pspec: GObject.ParamSpec) => void;
             "notify::enable-search": (pspec: GObject.ParamSpec) => void;

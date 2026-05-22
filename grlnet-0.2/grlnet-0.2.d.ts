@@ -164,7 +164,7 @@ export namespace GrlNet {
          * @param uri The URI of the resource to request
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          */
-        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, bigint | number]>;
+        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
         /**
          * Request the fetching of a web resource given the `uri`. This request is
@@ -182,7 +182,7 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, bigint | number]> | void;
+        request_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
         /**
          * Finishes an asynchronous load of the file's contents.
@@ -204,7 +204,7 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_with_headers_async(uri: string, headers: GLib.HashTable<string, string> | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        request_with_headers_async(uri: string, headers: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Sets if cache must be used. Note that this will only work if caching is

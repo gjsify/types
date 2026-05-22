@@ -3495,7 +3495,7 @@ export namespace GUPnP {
          * @param out_hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
          * @returns `true` on success.
          */
-        get_result_hash(out_hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): [boolean, GLib.HashTable<string, GObject.Value>];
+        get_result_hash(out_hash: { [key: string]: GObject.Value }): [boolean, { [key: string]: GObject.Value }];
 
         /**
          * A variant of `gupnp_service_proxy_action_get_result()` that takes lists of

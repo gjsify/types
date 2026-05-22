@@ -2918,7 +2918,7 @@ export namespace Arrow {
         /**
          * @returns The column name and value type mapping of the options.
          */
-        get_column_types(): GLib.HashTable<string, DataType>;
+        get_column_types(): { [key: string]: DataType };
 
         /**
          * @returns The values to be processed as false.   If the number of values is zero, this returns `null`.   It's a `null`-terminated string array. It must be freed with   `g_strfreev()` when no longer needed.
@@ -7298,7 +7298,7 @@ export namespace Arrow {
         /**
          * @returns The   metadata in the field.   It should be freed with `g_hash_table_unref()` when no longer needed.
          */
-        get_metadata(): GLib.HashTable<string, string> | null;
+        get_metadata(): { [key: string]: string } | null;
 
         /**
          * @returns The name of the field.
@@ -7335,13 +7335,13 @@ export namespace Arrow {
          * @param metadata An additional associated metadata.
          * @returns The new field that also has the given   metadata. If both of the existing metadata and the given metadata   have the same keys, the values in the given metadata are used.
          */
-        with_merged_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
+        with_merged_metadata(metadata: { [key: string]: string }): Field;
 
         /**
          * @param metadata A new associated metadata.
          * @returns The new field with the given metadata.
          */
-        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Field;
+        with_metadata(metadata: { [key: string]: string }): Field;
     }
 
 
@@ -8224,7 +8224,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          */
-        append_value(value: Uint8Array | null): boolean;
+        append_value(value: Uint8Array | string | null): boolean;
 
         /**
          * @param value A binary value.
@@ -16011,7 +16011,7 @@ export namespace Arrow {
         /**
          * @returns The   metadata in the schema.   It should be freed with `g_hash_table_unref()` when no longer needed.
          */
-        get_metadata(): GLib.HashTable<string, string> | null;
+        get_metadata(): { [key: string]: string } | null;
 
         /**
          * @returns `true` if the schema has metadata, `false` otherwise.
@@ -16051,7 +16051,7 @@ export namespace Arrow {
          * @param metadata A new associated metadata.
          * @returns The new schema with the given metadata.
          */
-        with_metadata(metadata: { [key: string]: any } | GLib.HashTable<string, string>): Schema;
+        with_metadata(metadata: { [key: string]: string }): Schema;
     }
 
 

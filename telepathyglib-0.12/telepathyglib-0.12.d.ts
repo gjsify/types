@@ -3434,7 +3434,7 @@ export namespace TelepathyGLib {
      * @returns a boolean value for `key`
      * @since 0.7.9
      */
-    function asv_get_boolean(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [boolean, boolean];
+    function asv_get_boolean(asv: { [key: string]: GObject.Value }, key: string): [boolean, boolean];
 
     /**
      * If a value for `key` in `asv` is present and is of the desired type,
@@ -3451,7 +3451,7 @@ export namespace TelepathyGLib {
      * @returns the value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_boxed(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string, type: GObject.GType): null;
+    function asv_get_boxed(asv: { [key: string]: GObject.Value }, key: string, type: GObject.GType): null;
 
     /**
      * If a value for `key` in `asv` is present and is an array of bytes
@@ -3468,7 +3468,7 @@ export namespace TelepathyGLib {
      * @returns the string value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_bytes(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): Uint8Array | null;
+    function asv_get_bytes(asv: { [key: string]: GObject.Value }, key: string): Uint8Array | null;
 
     /**
      * If a value for `key` in `asv` is present and has any numeric type used by
@@ -3481,7 +3481,7 @@ export namespace TelepathyGLib {
      * @returns the double precision floating-point value of `key`, or 0.0
      * @since 0.7.9
      */
-    function asv_get_double(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_double(asv: { [key: string]: GObject.Value }, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3495,7 +3495,7 @@ export namespace TelepathyGLib {
      * @returns the 32-bit signed integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_int32(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_int32(asv: { [key: string]: GObject.Value }, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3509,7 +3509,7 @@ export namespace TelepathyGLib {
      * @returns the 64-bit signed integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_int64(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_int64(asv: { [key: string]: GObject.Value }, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present and is an object path, return it.
@@ -3524,7 +3524,7 @@ export namespace TelepathyGLib {
      * @returns the object-path value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_object_path(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string | null;
+    function asv_get_object_path(asv: { [key: string]: GObject.Value }, key: string): string | null;
 
     /**
      * If a value for `key` in `asv` is present and is a string, return it.
@@ -3539,7 +3539,7 @@ export namespace TelepathyGLib {
      * @returns the string value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_string(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string | null;
+    function asv_get_string(asv: { [key: string]: GObject.Value }, key: string): string | null;
 
     /**
      * If a value for `key` in `asv` is present and is an array of strings (strv),
@@ -3555,7 +3555,7 @@ export namespace TelepathyGLib {
      * @returns the `null`-terminated string-array value of `key`, or `null`
      * @since 0.7.9
      */
-    function asv_get_strv(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): string[] | null;
+    function asv_get_strv(asv: { [key: string]: GObject.Value }, key: string): string[] | null;
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3569,7 +3569,7 @@ export namespace TelepathyGLib {
      * @returns the 32-bit unsigned integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_uint32(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_uint32(asv: { [key: string]: GObject.Value }, key: string): [number, boolean];
 
     /**
      * If a value for `key` in `asv` is present, has an integer type used by
@@ -3582,7 +3582,7 @@ export namespace TelepathyGLib {
      * @returns the 64-bit unsigned integer value of `key`, or 0
      * @since 0.7.9
      */
-    function asv_get_uint64(asv: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, key: string): [number, boolean];
+    function asv_get_uint64(asv: { [key: string]: GObject.Value }, key: string): [number, boolean];
 
     /**
      * Check that the given string is a valid D-Bus bus name of an appropriate
@@ -3673,7 +3673,7 @@ export namespace TelepathyGLib {
      * @returns a map  from property name (without the interface name) to value
      * @since 0.21.2
      */
-    function dbus_properties_mixin_dup_all(self: GObject.Object, interface_name: string): GLib.HashTable<string, GObject.Value>;
+    function dbus_properties_mixin_dup_all(self: GObject.Object, interface_name: string): { [key: string]: GObject.Value };
 
     /**
      * Emits the PropertiesChanged signal for the provided properties. Depending on
@@ -4327,7 +4327,7 @@ export namespace TelepathyGLib {
      * @gir-type Callback
      */
     interface ConnectionContactsByIdCb<A = GObject.Object> {
-        (connection: Connection, contacts: Contact[], requested_ids: string[], failed_id_errors: GLib.HashTable<string, GLib.Error>, error: GLib.Error, weak_object: A): void;
+        (connection: Connection, contacts: Contact[], requested_ids: string[], failed_id_errors: { [key: string]: GLib.Error }, error: GLib.Error, weak_object: A): void;
     }
 
     /**
@@ -5160,7 +5160,7 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "status-changed": (arg0: number, arg1: number, arg2: number, arg3: string | null, arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "status-changed": (arg0: number, arg1: number, arg2: number, arg3: string | null, arg4: { [key: string]: GObject.Value }) => void;
             "notify::automatic-presence-type": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status-message": (pspec: GObject.ParamSpec) => void;
@@ -5219,8 +5219,8 @@ export namespace TelepathyGLib {
             connection: Connection;
             connection_error: string;
             connectionError: string;
-            connection_error_details: { [key: string]: any } | GLib.HashTable<never, never>;
-            connectionErrorDetails: { [key: string]: any } | GLib.HashTable<never, never>;
+            connection_error_details: never;
+            connectionErrorDetails: never;
             connection_manager: string;
             connectionManager: string;
             connection_status: number;
@@ -5586,7 +5586,7 @@ export namespace TelepathyGLib {
          * @since 0.11.7
          * @read-only
          */
-        get connection_error_details(): GLib.HashTable<never, never>;
+        get connection_error_details(): never;
 
         /**
          * A map from string to {@link GObject.Value} containing extensible error details
@@ -5610,7 +5610,7 @@ export namespace TelepathyGLib {
          * @since 0.11.7
          * @read-only
          */
-        get connectionErrorDetails(): GLib.HashTable<never, never>;
+        get connectionErrorDetails(): never;
 
         /**
          * The account's connection manager name.
@@ -6677,7 +6677,7 @@ export namespace TelepathyGLib {
          * the Telepathy D-Bus Interface Specification</ulink>.
          * @returns the hash table of  parameters on `account`
          */
-        get_parameters(): GLib.HashTable<string, GObject.Value>;
+        get_parameters(): { [key: string]: GObject.Value };
 
         /**
          * Returns the portion of `account`'s object path after the standard
@@ -6747,7 +6747,7 @@ export namespace TelepathyGLib {
          * call `tp_account_get_storage_specific_information_finish()` to get the
          * result of the request.
          */
-        get_storage_specific_information_async(): globalThis.Promise<GLib.HashTable<string, GObject.Value>>;
+        get_storage_specific_information_async(): globalThis.Promise<{ [key: string]: GObject.Value }>;
 
         /**
          * Makes an asynchronous request of `self`'s StorageSpecificInformation
@@ -6769,7 +6769,7 @@ export namespace TelepathyGLib {
          * result of the request.
          * @param callback a callback to call when the request is satisfied
          */
-        get_storage_specific_information_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.HashTable<string, GObject.Value>> | void;
+        get_storage_specific_information_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: GObject.Value }> | void;
 
         /**
          * Retrieve the value of the request begun with
@@ -6780,7 +6780,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable}  of strings to GValues representing the D-Bus type a{sv}.
          */
-        get_storage_specific_information_finish(result: Gio.AsyncResult): GLib.HashTable<string, GObject.Value>;
+        get_storage_specific_information_finish(result: Gio.AsyncResult): { [key: string]: GObject.Value };
 
         /**
          * Return the same thing as the {@link TelepathyGLib.Account.supersedes} property, in a way
@@ -6961,7 +6961,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can be `null`  only if `len` equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null): globalThis.Promise<boolean>;
+        set_avatar_async(avatar: Uint8Array | string | null, mime_type: string | null): globalThis.Promise<boolean>;
 
         /**
          * Requests an asynchronous change of the Avatar parameter on `self`. When
@@ -6973,7 +6973,7 @@ export namespace TelepathyGLib {
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          * @param callback a callback to call when the request is satisfied
          */
-        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        set_avatar_async(avatar: Uint8Array | string | null, mime_type: string | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous change of the Avatar parameter on `self`. When
@@ -6985,7 +6985,7 @@ export namespace TelepathyGLib {
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          * @param callback a callback to call when the request is satisfied
          */
-        set_avatar_async(avatar: Uint8Array | null, mime_type: string | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        set_avatar_async(avatar: Uint8Array | string | null, mime_type: string | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes an async avatar change request on `account`.
@@ -7265,7 +7265,7 @@ export namespace TelepathyGLib {
          * @param parameters new  parameters to set on `account`
          * @param unset_parameters list of parameters to unset on `account`
          */
-        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string): globalThis.Promise<string[]>;
+        update_parameters_async(parameters: { [key: string]: GObject.Value }, unset_parameters: string): globalThis.Promise<string[]>;
 
         /**
          * Requests an asynchronous update of parameters of `account`. When the
@@ -7275,7 +7275,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        update_parameters_async(parameters: { [key: string]: GObject.Value }, unset_parameters: string, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous update of parameters of `account`. When the
@@ -7285,7 +7285,7 @@ export namespace TelepathyGLib {
          * @param unset_parameters list of parameters to unset on `account`
          * @param callback a callback to call when the request is satisfied
          */
-        update_parameters_async(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, unset_parameters: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
+        update_parameters_async(parameters: { [key: string]: GObject.Value }, unset_parameters: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
         /**
          * Finishes an async update of the parameters on `account`.
@@ -7637,7 +7637,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](account: Account, request: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, user_action_time: bigint | number): AccountChannelRequest;
+        static ["new"](account: Account, request: { [key: string]: GObject.Value }, user_action_time: bigint | number): AccountChannelRequest;
 
         static new_audio_call(account: Account, user_action_time: bigint | number): AccountChannelRequest;
 
@@ -8123,7 +8123,7 @@ export namespace TelepathyGLib {
          * Return the {@link TelepathyGLib.AccountChannelRequest.request} construct-only property
          * @returns the value of {@link TelepathyGLib.AccountChannelRequest.request}
          */
-        get_request(): GLib.HashTable<never, never>;
+        get_request(): never;
 
         /**
          * Return the {@link TelepathyGLib.AccountChannelRequest.user_action_time} construct-only property
@@ -8300,7 +8300,7 @@ export namespace TelepathyGLib {
          * instead.
          * @param hints a #TP_HASH_TYPE_STRING_VARIANT_MAP
          */
-        set_hints(hints: { [key: string]: any } | GLib.HashTable<never, never>): void;
+        set_hints(hints: never): void;
 
         /**
          * Indicate that the contacts listed in `ids` have to be invited to the
@@ -8565,7 +8565,7 @@ export namespace TelepathyGLib {
          * @param parameters parameters  for the new account
          * @param properties properties  for the new account
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): globalThis.Promise<Account>;
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: GObject.Value }, properties: { [key: string]: GObject.Value }): globalThis.Promise<Account>;
 
         /**
          * Requests an asynchronous create of an account on the account manager
@@ -8588,7 +8588,7 @@ export namespace TelepathyGLib {
          * @param properties properties  for the new account
          * @param callback a callback to call when the request is satisfied
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, callback: Gio.AsyncReadyCallback<this> | null): void;
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: GObject.Value }, properties: { [key: string]: GObject.Value }, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Requests an asynchronous create of an account on the account manager
@@ -8611,7 +8611,7 @@ export namespace TelepathyGLib {
          * @param properties properties  for the new account
          * @param callback a callback to call when the request is satisfied
          */
-        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Account> | void;
+        create_account_async(connection_manager: string, protocol: string, display_name: string, parameters: { [key: string]: GObject.Value }, properties: { [key: string]: GObject.Value }, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Account> | void;
 
         /**
          * Finishes an async create account operation, and returns a new {@link TelepathyGLib.Account}
@@ -9264,7 +9264,7 @@ export namespace TelepathyGLib {
          * @param avatar a new avatar to set; can   be `null` only if %len equals 0
          * @param mime_type the MIME type of the new avatar; can be `null`  only if `len` equals 0
          */
-        set_avatar(avatar: Uint8Array | null, mime_type: string | null): void;
+        set_avatar(avatar: Uint8Array | string | null, mime_type: string | null): void;
 
         /**
          * Set the connect automatically property of the account on creation
@@ -9604,7 +9604,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that
@@ -10069,7 +10069,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.add_dispatch_operation.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_approver_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
+        add_approver_filter(filter: { [key: string]: GObject.Value }): void;
 
         /**
          * Register a new channel class as Approver.ApproverChannelFilter.
@@ -10141,7 +10141,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.handle_channels.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_handler_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
+        add_handler_filter(filter: { [key: string]: GObject.Value }): void;
 
         /**
          * Register a new channel class as Handler.HandlerChannelFilter.
@@ -10169,7 +10169,7 @@ export namespace TelepathyGLib {
          * {@link TelepathyGLib.BaseClientClass}.observe_channels.
          * @param filter a `TP_HASH_TYPE_CHANNEL_CLASS`
          */
-        add_observer_filter(filter: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
+        add_observer_filter(filter: { [key: string]: GObject.Value }): void;
 
         /**
          * Register a new channel class as Observer.ObserverChannelFilter.
@@ -10216,7 +10216,7 @@ export namespace TelepathyGLib {
          * @param user_action_time the time at which user action occurred, or #TP_USER_ACTION_TIME_NOT_USER_ACTION if this delegation request is for some reason not involving user action.
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channels, or `null` to indicate that any handler but `self` would be acceptable.
          */
-        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]>;
+        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string): globalThis.Promise<[Channel[], never]>;
 
         /**
          * Asynchronously calls DelegateChannels on the ChannelDispatcher to try
@@ -10240,7 +10240,7 @@ export namespace TelepathyGLib {
          * @param preferred_handler Either the well-known bus name (starting with `TP_CLIENT_BUS_NAME_BASE`) of the preferred handler for the channels, or `null` to indicate that any handler but `self` would be acceptable.
          * @param callback a callback to call when the request is satisfied
          */
-        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Channel[], GLib.HashTable<Channel, GLib.Error>]> | void;
+        delegate_channels_async(channels: Channel[], user_action_time: bigint | number, preferred_handler: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Channel[], never]> | void;
 
         /**
          * Finishes an async channels delegation request started using
@@ -10248,7 +10248,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation succeed, `delegated` and `not_delegated` can be used to know the channels that `self` is not handling any more, otherwise `false`.
          */
-        delegate_channels_finish(result: Gio.AsyncResult): [boolean, Channel[], GLib.HashTable<Channel, GLib.Error>];
+        delegate_channels_finish(result: Gio.AsyncResult): [boolean, Channel[], never];
 
         /**
          * Returns the set of channels currently handled by this base client or by any
@@ -10939,7 +10939,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that
@@ -10991,7 +10991,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "members-changed": (arg0: GLib.HashTable<Contact, number>, arg1: Contact[], arg2: CallStateReason) => void;
+            "members-changed": (arg0: never, arg1: Contact[], arg2: CallStateReason) => void;
             /**
              * The ::state-changed signal is emitted whenever the
              * call state changes.
@@ -10999,7 +10999,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "state-changed": (arg0: number, arg1: number, arg2: CallStateReason, arg3: GLib.HashTable<string, GObject.Value>) => void;
+            "state-changed": (arg0: number, arg1: number, arg2: CallStateReason, arg3: { [key: string]: GObject.Value }) => void;
             "notify::contents": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::hardware-streaming": (pspec: GObject.ParamSpec) => void;
@@ -11053,8 +11053,8 @@ export namespace TelepathyGLib {
             mutable_contents: boolean;
             mutableContents: boolean;
             state: number;
-            state_details: { [key: string]: any } | GLib.HashTable<never, never>;
-            stateDetails: { [key: string]: any } | GLib.HashTable<never, never>;
+            state_details: never;
+            stateDetails: never;
             state_reason: CallStateReason;
             stateReason: CallStateReason;
         }
@@ -11234,7 +11234,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get state_details(): GLib.HashTable<never, never>;
+        get state_details(): never;
 
         /**
          * Detailed infoermation about {@link TelepathyGLib.CallChannel.state}. It is a {@link GLib.HashTable}
@@ -11242,7 +11242,7 @@ export namespace TelepathyGLib {
          * @since 0.17.5
          * @read-only
          */
-        get stateDetails(): GLib.HashTable<never, never>;
+        get stateDetails(): never;
 
         /**
          * Reason why {@link TelepathyGLib.CallChannel.state} last changed.
@@ -11389,13 +11389,13 @@ export namespace TelepathyGLib {
          * prepared.
          * @returns {@link GLib.HashTable} mapping {@link TelepathyGLib.Contact} to its new {@link TelepathyGLib.CallMemberFlags}
          */
-        get_members(): GLib.HashTable<Contact, number>;
+        get_members(): never;
 
         /**
          * <!-- -->
          * @returns the value of {@link TelepathyGLib.CallChannel.state}
          */
-        get_state(): [CallState, CallFlags | null, GLib.HashTable<never, never> | null, CallStateReason | null];
+        get_state(): [CallState, CallFlags | null, never | null, CallStateReason | null];
 
         /**
          * Request that the call is ended. All contents will be removed from `self` so
@@ -11872,7 +11872,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "remote-members-changed": (arg0: GLib.HashTable<Contact, number>, arg1: Contact[], arg2: CallStateReason) => void;
+            "remote-members-changed": (arg0: never, arg1: Contact[], arg2: CallStateReason) => void;
             "notify::can-request-receiving": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
@@ -12006,7 +12006,7 @@ export namespace TelepathyGLib {
          * It is NOT guaranteed that {@link TelepathyGLib.Contact} objects have any feature prepared.
          * @returns {@link GLib.HashTable} mapping {@link TelepathyGLib.Contact} to its new {@link TelepathyGLib.SendingState}
          */
-        get_remote_members(): GLib.HashTable<Contact, number>;
+        get_remote_members(): never;
 
         /**
          * Request that a remote contact stops or starts sending on this stream.
@@ -12216,7 +12216,7 @@ export namespace TelepathyGLib {
          * <!-- -->
          * @returns the same {@link GLib.PtrArray} as the {@link TelepathyGLib.Capabilities.channel_classes} property
          */
-        get_channel_classes(): GLib.HashTable[];
+        get_channel_classes(): { [key: string]: any }[];
 
         /**
          * <!-- -->
@@ -12438,7 +12438,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -12468,7 +12468,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             "notify::channel-ready": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::group-flags": (pspec: GObject.ParamSpec) => void;
@@ -12668,7 +12668,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::channel-ready": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::channel-ready": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12680,7 +12680,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::connection": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::connection": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12692,7 +12692,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-flags": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::group-flags": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12704,7 +12704,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-self-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::group-self-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12716,7 +12716,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-self-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::group-self-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12728,7 +12728,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12740,7 +12740,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::initiator-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12752,7 +12752,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::initiator-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12764,7 +12764,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::initiator-identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12776,7 +12776,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::password-needed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::password-needed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12788,7 +12788,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::requested": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::requested": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12800,7 +12800,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::target-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::target-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12812,7 +12812,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::bus-name": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::bus-name": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12824,7 +12824,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::dbus-daemon": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::dbus-daemon": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12836,7 +12836,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::factory": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::factory": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12848,7 +12848,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::interfaces": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::interfaces": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12860,8 +12860,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::object-path": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
-            [key: `group-contacts-changed::${string}`]: (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: GLib.HashTable<string, GObject.Value>) => void;
+            "group-contacts-changed::object-path": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            [key: `group-contacts-changed::${string}`]: (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13181,7 +13181,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::channel-ready": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::channel-ready": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13193,7 +13193,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::connection": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::connection": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13205,7 +13205,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-flags": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::group-flags": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13217,7 +13217,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-self-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::group-self-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13229,7 +13229,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-self-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::group-self-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13241,7 +13241,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13253,7 +13253,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::initiator-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13265,7 +13265,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::initiator-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13277,7 +13277,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::initiator-identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13289,7 +13289,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::password-needed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::password-needed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13301,7 +13301,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::requested": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::requested": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13313,7 +13313,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::target-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::target-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13325,7 +13325,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::bus-name": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::bus-name": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13337,7 +13337,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::dbus-daemon": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::dbus-daemon": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13349,7 +13349,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::factory": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::factory": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13361,7 +13361,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::interfaces": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::interfaces": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13373,8 +13373,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::object-path": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
-            [key: `group-members-changed-detailed::${string}`]: (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: GLib.HashTable<string, GObject.Value>) => void;
+            "group-members-changed-detailed::object-path": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            [key: `group-members-changed-detailed::${string}`]: (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
         }
 
         // Constructor properties interface
@@ -13791,7 +13791,7 @@ export namespace TelepathyGLib {
 
         static ["new"](conn: Connection, object_path: string, optional_channel_type: string, optional_handle_type: HandleType, optional_handle: Handle): Channel;
 
-        static new_from_properties(conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
+        static new_from_properties(conn: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): Channel;
 
         // Signals
         /** @signal */
@@ -13852,7 +13852,7 @@ export namespace TelepathyGLib {
          * feature is prepared.
          * @returns a {@link GLib.HashTable}  where the keys are strings,  D-Bus interface name + "." + property name, and the values are {@link GObject.Value}  instances
          */
-        borrow_immutable_properties(): GLib.HashTable<string, GObject.Value>;
+        borrow_immutable_properties(): { [key: string]: GObject.Value };
 
         /**
          * Close channel `self`. In most cases, it's generally cleaner to use
@@ -14643,7 +14643,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): ChannelDispatchOperation;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: never): ChannelDispatchOperation;
 
         // Signals
         /** @signal */
@@ -15799,7 +15799,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): ChannelRequest;
+        static ["new"](bus_daemon: DBusDaemon, object_path: string, immutable_properties: never): ChannelRequest;
 
         // Signals
         /** @signal */
@@ -15848,13 +15848,13 @@ export namespace TelepathyGLib {
          * Return the {@link TelepathyGLib.ChannelRequest.hints} property
          * @returns the value of {@link TelepathyGLib.ChannelRequest.hints}
          */
-        get_hints(): GLib.HashTable<never, never>;
+        get_hints(): never;
 
         /**
          * Return the {@link TelepathyGLib.ChannelRequest.immutable_properties} construct-only property
          * @returns the value of {@link TelepathyGLib.ChannelRequest.immutable_properties}
          */
-        get_immutable_properties(): GLib.HashTable<never, never>;
+        get_immutable_properties(): never;
 
         /**
          * return the {@link TelepathyGLib.ChannelRequest.preferred_handler} construct-only property
@@ -17628,7 +17628,7 @@ export namespace TelepathyGLib {
          * Otherwise, return `null`, without altering `details`.
          * @returns a D-Bus error name, or `null`.
          */
-        get_detailed_error(): [string | null, GLib.HashTable<string, GObject.Value> | null];
+        get_detailed_error(): [string | null, { [key: string]: GObject.Value } | null];
 
         /**
          * <!-- -->
@@ -19615,7 +19615,7 @@ export namespace TelepathyGLib {
          * reffed with `g_hash_table_ref()`.
          * @returns the same  {@link GLib.HashTable} (or `null`) as the {@link TelepathyGLib.Contact.location} property
          */
-        get_location(): GLib.HashTable<string, GObject.Value>;
+        get_location(): { [key: string]: GObject.Value };
 
         /**
          * Return the contact's user-defined status message, or an empty string.
@@ -20187,7 +20187,7 @@ export namespace TelepathyGLib {
          * call `tp_contact_search_reset_async()`.
          * @param criteria a map from keys returned by `tp_contact_search_get_search_keys()` to values to search for
          */
-        start(criteria: { [key: string]: any } | GLib.HashTable<string, string>): void;
+        start(criteria: { [key: string]: string }): void;
 
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -20797,7 +20797,7 @@ export namespace TelepathyGLib {
          * be used to communicate through the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: GLib.HashTable<never, never> | null): globalThis.Promise<Gio.DBusConnection>;
+        offer_async(params: never | null): globalThis.Promise<Gio.DBusConnection>;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20807,7 +20807,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: GLib.HashTable<never, never> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        offer_async(params: never | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
@@ -20817,7 +20817,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: GLib.HashTable<never, never> | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.DBusConnection> | void;
+        offer_async(params: never | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.DBusConnection> | void;
 
         /**
          * Finishes offering an outgoing D-Bus tube. The returned {@link Gio.DBusConnection}
@@ -21383,7 +21383,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): FileTransferChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): FileTransferChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -21469,7 +21469,7 @@ export namespace TelepathyGLib {
          * Return the {@link TelepathyGLib.FileTransferChannel.metadata} property
          * @returns the   value of the {@link TelepathyGLib.FileTransferChannel.metadata} property
          */
-        get_metadata(): GLib.HashTable;
+        get_metadata(): { [key: string]: any };
 
         /**
          * Return the {@link TelepathyGLib.FileTransferChannel.mime_type} property
@@ -21792,7 +21792,7 @@ export namespace TelepathyGLib {
          * The returned hash table is only valid for as long as `self` is.
          * @returns extensible  extra handler information, in a form suitable for use with  `tp_asv_get_string()` etc.
          */
-        get_handler_info(): GLib.HashTable<string, GObject.Value>;
+        get_handler_info(): { [key: string]: GObject.Value };
 
         /**
          * Return a list of the {@link TelepathyGLib.ChannelRequest} which have been satisfied by the
@@ -21998,7 +21998,7 @@ export namespace TelepathyGLib {
          * @param part a part number
          * @returns the {@link GLib.HashTable} used to implement the given part, or `null` if the  part number is out of range. The hash table is only valid as long as the  message is valid and the part is not deleted.
          */
-        peek(part: number): GLib.HashTable<string, GObject.Value>;
+        peek(part: number): { [key: string]: GObject.Value };
 
         /**
          * Reference the given handle until this message is destroyed.
@@ -22625,7 +22625,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: { [key: string]: any } | GLib.HashTable<never, never>): Protocol;
+        static ["new"](dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: never): Protocol;
 
         static new_vardict(dbus: DBusDaemon, cm_name: string, protocol_name: string, immutable_properties: GLib.Variant): Protocol;
 
@@ -24306,7 +24306,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the account, or `null`.
          * @returns a reference to a {@link TelepathyGLib.Account};  see `tp_account_new()`.
          */
-        ensure_account(object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Account;
+        ensure_account(object_path: string, immutable_properties: { [key: string]: GObject.Value }): Account;
 
         /**
          * Returns a {@link TelepathyGLib.Channel} proxy for the channel at `object_path` on `connection`.
@@ -24326,7 +24326,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the channel
          * @returns a reference to a {@link TelepathyGLib.Channel};  see `tp_channel_new_from_properties()`.
          */
-        ensure_channel(connection: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
+        ensure_channel(connection: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): Channel;
 
         /**
          * Returns a {@link TelepathyGLib.Connection} proxy for the connection at `object_path`.
@@ -24344,7 +24344,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the connection.
          * @returns a reference to a {@link TelepathyGLib.Connection};  see `tp_connection_new()`.
          */
-        ensure_connection(object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Connection;
+        ensure_connection(object_path: string, immutable_properties: { [key: string]: GObject.Value }): Connection;
 
         /**
          * Returns a {@link TelepathyGLib.Contact} representing `identifier` (and `handle`) on `connection`.
@@ -24775,7 +24775,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): StreamTubeChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): StreamTubeChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -24856,7 +24856,7 @@ export namespace TelepathyGLib {
          * the tube.
          * @param params parameters of the tube, or `null`
          */
-        offer_async(params: GLib.HashTable<never, never> | null): globalThis.Promise<boolean>;
+        offer_async(params: never | null): globalThis.Promise<boolean>;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24869,7 +24869,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: GLib.HashTable<never, never> | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        offer_async(params: never | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Offer an outgoing stream tube. When the tube has been offered, `callback`
@@ -24882,7 +24882,7 @@ export namespace TelepathyGLib {
          * @param params parameters of the tube, or `null`
          * @param callback a callback to call when the tube has been offered
          */
-        offer_async(params: GLib.HashTable<never, never> | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        offer_async(params: never | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes offering an outgoing stream tube.
@@ -25885,7 +25885,7 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
-        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): TextChannel;
+        static ["new"](conn: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): TextChannel;
 
         // Conflicted with TelepathyGLib.Channel.new
         static ["new"](...args: never[]): any;
@@ -27266,7 +27266,7 @@ export namespace TelepathyGLib {
          * <code>Handle_Identifier_Map</code> in the Telepathy specification.
          * @returns a map from the  handles in `self` to the corresponding identifier.
          */
-        to_identifier_map(): GLib.HashTable<Handle, string>;
+        to_identifier_map(): never;
     }
 
 
@@ -28031,7 +28031,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          */
-        create_channel(conn: Connection, path: string, properties: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Channel;
+        create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 
         /**
          * Return a zero terminated {@link GLib.Array} containing the {@link TelepathyGLib.Channel} features that

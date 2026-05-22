@@ -9510,7 +9510,7 @@ export namespace Gladeui {
          * @param widget The {@link Gladeui.Widget} the signals belong to
          * @param signals The signals of the {@link Gladeui.Widget}
          */
-        static ["new"](widget: Widget, signals: { [key: string]: any } | GLib.HashTable<never, never>): Gtk.TreeModel;
+        static ["new"](widget: Widget, signals: never): Gtk.TreeModel;
 
         /**
          * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because

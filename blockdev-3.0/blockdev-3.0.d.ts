@@ -3262,7 +3262,7 @@ export namespace BlockDev {
      * @param pool_name name of the VDO pool to get statistics for
      * @returns hashtable of type string - string of available                                                    statistics or `null` in case of error                                                    (`error` gets populated in those cases) Statistics are collected from the values exposed by the kernel `dm-vdo` module. Some of the keys are computed to mimic the information produced by the vdo tools. Please note the contents of the hashtable may vary depending on the actual dm-vdo module version. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.QUERY}
      */
-    function lvm_vdo_get_stats_full(vg_name: string, pool_name: string): GLib.HashTable<string, string>;
+    function lvm_vdo_get_stats_full(vg_name: string, pool_name: string): { [key: string]: string };
 
     /**
      * @param vg_name name of the VG that contains the LV to get information about
