@@ -1,62 +1,56 @@
 {
     "name": "@girs/gcr-3",
-    "version": "3.41.2-4.0.0-rc.15",
+    "version": "3.41.2-4.0.0-rc.17",
     "description": "GJS TypeScript type definitions for Gcr-3, generated from library version 3.41.2",
     "type": "module",
     "module": "gcr-3.js",
     "main": "gcr-3.js",
     "exports": {
-        "./ambient": {
-            "types": "./gcr-3-ambient.d.ts",
-            "import": "./gcr-3-ambient.js",
-            "default": "./gcr-3-ambient.js"
-        },
-        "./import": {
-            "types": "./gcr-3-import.d.ts",
-            "import": "./gcr-3-import.js",
-            "default": "./gcr-3-import.js"
-        },
-        "./gcr-3": {
-            "types": "./gcr-3.d.ts",
-            "import": "./gcr-3.js",
-            "default": "./gcr-3.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./gcr-3-ambient.d.ts",
+        "import": "./gcr-3-ambient.js",
+        "default": "./gcr-3-ambient.js"
+      },
+      "./import": {
+        "types": "./gcr-3-import.d.ts",
+        "import": "./gcr-3-import.js",
+        "default": "./gcr-3-import.js"
+      },
+      "./gcr-3": {
+        "types": "./gcr-3.d.ts",
+        "import": "./gcr-3.js",
+        "default": "./gcr-3.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gck-1": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/gio-2.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gmodule-2.0": "workspace:^",
+      "@girs/gck-1": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Gcr-3"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gcr-3"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gcr-3#readme"
 }
+
+

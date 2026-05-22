@@ -1,60 +1,54 @@
 {
     "name": "@girs/mtk-17",
-    "version": "17.0.0-4.0.0-rc.15",
+    "version": "17.0.0-4.0.0-rc.17",
     "description": "GJS TypeScript type definitions for Mtk-17, generated from library version 17.0.0",
     "type": "module",
     "module": "mtk-17.js",
     "main": "mtk-17.js",
     "exports": {
-        "./ambient": {
-            "types": "./mtk-17-ambient.d.ts",
-            "import": "./mtk-17-ambient.js",
-            "default": "./mtk-17-ambient.js"
-        },
-        "./import": {
-            "types": "./mtk-17-import.d.ts",
-            "import": "./mtk-17-import.js",
-            "default": "./mtk-17-import.js"
-        },
-        "./mtk-17": {
-            "types": "./mtk-17.d.ts",
-            "import": "./mtk-17.js",
-            "default": "./mtk-17.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./mtk-17-ambient.d.ts",
+        "import": "./mtk-17-ambient.js",
+        "default": "./mtk-17-ambient.js"
+      },
+      "./import": {
+        "types": "./mtk-17-import.d.ts",
+        "import": "./mtk-17-import.js",
+        "default": "./mtk-17-import.js"
+      },
+      "./mtk-17": {
+        "types": "./mtk-17.d.ts",
+        "import": "./mtk-17.js",
+        "default": "./mtk-17.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/graphene-1.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/graphene-1.0": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "Mtk-17"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Mtk-17"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/mtk-17#readme"
 }
+
+

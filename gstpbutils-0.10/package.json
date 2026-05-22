@@ -1,62 +1,56 @@
 {
     "name": "@girs/gstpbutils-0.10",
-    "version": "0.10.0-4.0.0-rc.15",
+    "version": "0.10.0-4.0.0-rc.17",
     "description": "GJS TypeScript type definitions for GstPbutils-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "gstpbutils-0.10.js",
     "main": "gstpbutils-0.10.js",
     "exports": {
-        "./ambient": {
-            "types": "./gstpbutils-0.10-ambient.d.ts",
-            "import": "./gstpbutils-0.10-ambient.js",
-            "default": "./gstpbutils-0.10-ambient.js"
-        },
-        "./import": {
-            "types": "./gstpbutils-0.10-import.d.ts",
-            "import": "./gstpbutils-0.10-import.js",
-            "default": "./gstpbutils-0.10-import.js"
-        },
-        "./gstpbutils-0.10": {
-            "types": "./gstpbutils-0.10.d.ts",
-            "import": "./gstpbutils-0.10.js",
-            "default": "./gstpbutils-0.10.js"
-        },
-        ".": {
-            "types": "./index.d.ts",
-            "import": "./index.js",
-            "default": "./index.js"
-        }
+      "./ambient": {
+        "types": "./gstpbutils-0.10-ambient.d.ts",
+        "import": "./gstpbutils-0.10-ambient.js",
+        "default": "./gstpbutils-0.10-ambient.js"
+      },
+      "./import": {
+        "types": "./gstpbutils-0.10-import.d.ts",
+        "import": "./gstpbutils-0.10-import.js",
+        "default": "./gstpbutils-0.10-import.js"
+      },
+      "./gstpbutils-0.10": {
+        "types": "./gstpbutils-0.10.d.ts",
+        "import": "./gstpbutils-0.10.js",
+        "default": "./gstpbutils-0.10.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
     },
     "scripts": {
-        "test": "tsc --project tsconfig.json"
+      "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gjs": "workspace:^",
-        "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
-        "@girs/gobject-2.0": "workspace:^",
-        "@girs/gst-0.10": "workspace:^",
-        "@girs/libxml2-2.0": "workspace:^"
-    },
+      "@girs/gjs": "workspace:^",
+      "@girs/libxml2-2.0": "workspace:^",
+      "@girs/gst-0.10": "workspace:^",
+      "@girs/gobject-2.0": "workspace:^",
+      "@girs/glib-2.0": "workspace:^",
+      "@girs/gmodule-2.0": "workspace:^"    },
     "devDependencies": {
-        "typescript": "*"
+      "typescript": "*"
     },
-    "keywords": [
-        "Gir",
-        "TypeScript",
-        "types",
-        "GObject-Introspection",
-        "GJS",
-        "GstPbutils-0.10"
-    ],
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "GstPbutils-0.10"],
     "author": "ts-for-gir",
     "license": "MIT",
     "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gjsify/types.git"
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
     },
     "bugs": {
-        "url": "https://github.com/gjsify/ts-for-gir/issues"
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
     "homepage": "https://github.com/gjsify/types/tree/main/gstpbutils-0.10#readme"
 }
+
+
