@@ -243,6 +243,16 @@ declare namespace giCairo {
         getTarget(): Surface;
 
         /**
+         * Returns the current destination surface for the group being
+         * built — set by the most recent {@link pushGroup} /
+         * {@link pushGroupWithContent} that has not been
+         * {@link popGroup}-ed.
+         *
+         * Source: gjs/modules/cairo-context.cpp `getGroupTarget_func`.
+         */
+        getGroupTarget(): Surface;
+
+        /**
          * Gets the current tolerance value
          * @returns The current tolerance value
          */
@@ -622,6 +632,15 @@ declare namespace giCairo {
         copyPath(): Path;
 
         /**
+         * Returns a flattened copy of the current path — curves are
+         * approximated by straight-line segments according to the
+         * current tolerance.
+         *
+         * Source: gjs/modules/cairo-context.cpp `copyPathFlat_func`.
+         */
+        copyPathFlat(): Path;
+
+        /**
          * Appends a path to the current path
          * @param path A path to append
          */
@@ -667,6 +686,24 @@ declare namespace giCairo {
          * Finishes the surface and drops all references to external resources
          */
         finish(): void;
+
+        /**
+         * Surface type (image, PDF, PostScript, SVG, …) — the runtime kind
+         * regardless of static class.
+         *
+         * Source: gjs/modules/cairo-surface.cpp `getType_func`.
+         */
+        getType(): SurfaceType;
+
+        /**
+         * Write the surface's contents out to a PNG file. Only meaningful
+         * for image-backed surfaces (returns CAIRO_STATUS_WRITE_ERROR on
+         * non-image surfaces).
+         *
+         * Source: gjs/modules/cairo-surface.cpp `writeToPNG_func`.
+         * @param filename Output PNG path
+         */
+        writeToPNG(filename: string): void;
 
         /**
          * Attaches user data to the surface (C API: cairo_surface_set_user_data)
@@ -720,6 +757,16 @@ declare namespace giCairo {
          * @returns The height of the surface
          */
         getHeight(): number;
+
+        /**
+         * Number of bytes between the start of one row and the start of
+         * the next, rounded up to a Cairo-imposed alignment boundary.
+         * Useful when reading the surface's raw pixel buffer.
+         *
+         * Source: gjs/modules/cairo-image-surface.cpp `getStride_func`.
+         * @returns Row stride in bytes
+         */
+        getStride(): number;
 
         /**
          * Writes the contents of the surface to a PNG file
@@ -914,9 +961,89 @@ declare namespace giCairo {
     export class RectangleInt extends Cairo.RectangleInt {}
 
     /**
-     * A region object used for representing a set of pixels
+     * A region object used for representing a set of pixels.
+     *
+     * Constructor takes no arguments — Cairo regions start empty and grow
+     * via {@link unionRectangle} / {@link union}. Source:
+     * gjs/modules/cairo-region.cpp `constructor_impl`.
      */
-    export class Region extends Cairo.Region {}
+    export class Region extends Cairo.Region {
+        constructor();
+
+        /**
+         * Number of disjoint rectangles in the region's decomposition.
+         * Source: cairo-region.cpp `num_rectangles_func`.
+         */
+        numRectangles(): number;
+
+        /**
+         * Return the `i`-th rectangle in the region's decomposition.
+         * Throws if `i` is out of range.
+         * Source: cairo-region.cpp `get_rectangle_func`.
+         */
+        getRectangle(i: number): RectangleInt;
+
+        /**
+         * Union this region with `other` in place (`this ← this ∪ other`).
+         * Source: cairo-region.cpp `REGION_DEFINE_REGION_FUNC(union)`.
+         */
+        union(other: Region): void;
+
+        /**
+         * Subtract `other` from this region in place (`this ← this ∖ other`).
+         * Source: cairo-region.cpp `REGION_DEFINE_REGION_FUNC(subtract)`.
+         */
+        subtract(other: Region): void;
+
+        /**
+         * Intersect this region with `other` in place (`this ← this ∩ other`).
+         * Source: cairo-region.cpp `REGION_DEFINE_REGION_FUNC(intersect)`.
+         */
+        intersect(other: Region): void;
+
+        /**
+         * Replace this region with the symmetric difference (`this ⊕ other`).
+         * Source: cairo-region.cpp `REGION_DEFINE_REGION_FUNC(xor)`.
+         */
+        xor(other: Region): void;
+
+        /**
+         * Union a single rectangle into this region.
+         * Source: cairo-region.cpp `REGION_DEFINE_RECT_FUNC(union)`.
+         */
+        unionRectangle(rect: RectangleInt): void;
+
+        /**
+         * Subtract a single rectangle from this region.
+         * Source: cairo-region.cpp `REGION_DEFINE_RECT_FUNC(subtract)`.
+         */
+        subtractRectangle(rect: RectangleInt): void;
+
+        /**
+         * Intersect this region with a rectangle.
+         * Source: cairo-region.cpp `REGION_DEFINE_RECT_FUNC(intersect)`.
+         */
+        intersectRectangle(rect: RectangleInt): void;
+
+        /**
+         * Symmetric-difference this region with a rectangle.
+         * Source: cairo-region.cpp `REGION_DEFINE_RECT_FUNC(xor)`.
+         */
+        xorRectangle(rect: RectangleInt): void;
+    }
+
+    /**
+     * Integer-coordinate rectangle — Cairo's `cairo_rectangle_int_t` JS
+     * shape. Used by `Region` methods that read/write rectangle data.
+     * Source: gjs/modules/cairo-region.cpp `fill_rectangle` reads these
+     * four properties off the JS object.
+     */
+    export interface RectangleInt {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+    }
 
     /**
      * A matrix object used for transforming coordinates
