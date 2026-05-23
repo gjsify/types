@@ -771,6 +771,12 @@ declare namespace giCairo {
      * Base class for all Cairo patterns
      */
     export class Pattern extends Cairo.Pattern {
+        /**
+         * Get the pattern's type (Solid, Surface, Linear, Radial, Mesh, …).
+         *
+         * Source: gjs/modules/cairo-pattern.cpp `getType_func`.
+         */
+        getType(): PatternType;
     }
 
     /**
@@ -836,6 +842,39 @@ declare namespace giCairo {
          * @param surface The surface to use
          */
         constructor(surface: Surface);
+
+        /**
+         * Sets the mode to be used for drawing outside the area of this
+         * pattern. By default the {@link Extend.NONE} mode is used (a
+         * transparent pixel) for surface patterns and
+         * {@link Extend.PAD} for gradients.
+         *
+         * Source: gjs/modules/cairo-surface-pattern.cpp `setExtend_func`.
+         * @param extend The extend mode
+         */
+        setExtend(extend: Extend): void;
+
+        /**
+         * Get the current extend mode for this pattern.
+         *
+         * Source: gjs/modules/cairo-surface-pattern.cpp `getExtend_func`.
+         */
+        getExtend(): Extend;
+
+        /**
+         * Set the filter to be used for resizing when using this pattern.
+         *
+         * Source: gjs/modules/cairo-surface-pattern.cpp `setFilter_func`.
+         * @param filter The filter
+         */
+        setFilter(filter: Filter): void;
+
+        /**
+         * Get the current filter for this pattern.
+         *
+         * Source: gjs/modules/cairo-surface-pattern.cpp `getFilter_func`.
+         */
+        getFilter(): Filter;
     }
 
     /**
