@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-12",
-    "version": "12.0.0-4.0.1",
+    "version": "12.0.0-4.0.2",
     "description": "GJS TypeScript type definitions for Cogl-12, generated from library version 12.0.0",
     "type": "module",
     "module": "cogl-12.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.1",
-      "@girs/cairo-1.0": "1.0.0-4.0.1",
-      "@girs/gobject-2.0": "2.88.0-4.0.1",
-      "@girs/glib-2.0": "2.88.0-4.0.1",
-      "@girs/graphene-1.0": "1.0.0-4.0.1",
-      "@girs/gl-1.0": "1.0.0-4.0.1"    },
+      "@girs/gjs": "4.0.2",
+      "@girs/cairo-1.0": "1.0.0-4.0.2",
+      "@girs/gobject-2.0": "2.88.0-4.0.2",
+      "@girs/glib-2.0": "2.88.0-4.0.2",
+      "@girs/graphene-1.0": "1.0.0-4.0.2",
+      "@girs/gl-1.0": "1.0.0-4.0.2"    },
     "devDependencies": {
       "typescript": "*"
     },
