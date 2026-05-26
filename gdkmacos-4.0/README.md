@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gdkmacos-4.0)
 
 
-GJS TypeScript type definitions for GdkMacos-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.3.
+GJS TypeScript type definitions for GdkMacos-4.0, generated from library version 4.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.4.
 
 ## Install
 
