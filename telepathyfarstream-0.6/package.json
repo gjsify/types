@@ -1,6 +1,6 @@
 {
     "name": "@girs/telepathyfarstream-0.6",
-    "version": "0.6.0-4.0.2",
+    "version": "0.6.0-4.0.3",
     "description": "GJS TypeScript type definitions for TelepathyFarstream-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "telepathyfarstream-0.6.js",
@@ -31,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.2",
-      "@girs/telepathyglib-0.12": "0.12.0-4.0.2",
-      "@girs/gio-2.0": "2.88.0-4.0.2",
-      "@girs/gobject-2.0": "2.88.0-4.0.2",
-      "@girs/glib-2.0": "2.88.0-4.0.2",
-      "@girs/gmodule-2.0": "2.0.0-4.0.2",
-      "@girs/gst-1.0": "1.28.1-4.0.2",
-      "@girs/farstream-0.2": "0.2.0-4.0.2"    },
+      "@girs/gjs": "4.0.3",
+      "@girs/telepathyglib-0.12": "0.12.0-4.0.3",
+      "@girs/gio-2.0": "2.88.0-4.0.3",
+      "@girs/gobject-2.0": "2.88.0-4.0.3",
+      "@girs/glib-2.0": "2.88.0-4.0.3",
+      "@girs/gmodule-2.0": "2.0.0-4.0.3",
+      "@girs/gst-1.0": "1.28.1-4.0.3",
+      "@girs/farstream-0.2": "0.2.0-4.0.3"    },
     "devDependencies": {
       "typescript": "*"
     },
