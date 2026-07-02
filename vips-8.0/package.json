@@ -1,6 +1,7 @@
 {
     "name": "@girs/vips-8.0",
-    "version": "8.18.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "8.18.0",
     "description": "GJS TypeScript type definitions for Vips-8.0, generated from library version 8.18.0",
     "type": "module",
     "module": "vips-8.0.js",

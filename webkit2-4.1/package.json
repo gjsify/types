@@ -1,6 +1,7 @@
 {
     "name": "@girs/webkit2-4.1",
-    "version": "2.52.1-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "2.52.1",
     "description": "GJS TypeScript type definitions for WebKit2-4.1, generated from library version 2.52.1",
     "type": "module",
     "module": "webkit2-4.1.js",

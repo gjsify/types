@@ -1,6 +1,7 @@
 {
     "name": "@girs/hs-1",
-    "version": "0.1.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.1.0",
     "description": "GJS TypeScript type definitions for Hs-1, generated from library version 0.1.0",
     "type": "module",
     "module": "hs-1.js",

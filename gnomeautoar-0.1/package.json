@@ -1,6 +1,7 @@
 {
     "name": "@girs/gnomeautoar-0.1",
-    "version": "0.1.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.1.0",
     "description": "GJS TypeScript type definitions for GnomeAutoar-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "gnomeautoar-0.1.js",

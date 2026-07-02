@@ -1,6 +1,7 @@
 {
     "name": "@girs/meta-14",
-    "version": "14.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "14.0.0",
     "description": "GJS TypeScript type definitions for Meta-14, generated from library version 14.0.0",
     "type": "module",
     "module": "meta-14.js",

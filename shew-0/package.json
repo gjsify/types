@@ -1,6 +1,7 @@
 {
     "name": "@girs/shew-0",
-    "version": "0.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.0.0",
     "description": "GJS TypeScript type definitions for Shew-0, generated from library version 0.0.0",
     "type": "module",
     "module": "shew-0.js",

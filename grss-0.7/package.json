@@ -1,6 +1,7 @@
 {
     "name": "@girs/grss-0.7",
-    "version": "0.7.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.7.0",
     "description": "GJS TypeScript type definitions for Grss-0.7, generated from library version 0.7.0",
     "type": "module",
     "module": "grss-0.7.js",

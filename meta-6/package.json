@@ -1,6 +1,7 @@
 {
     "name": "@girs/meta-6",
-    "version": "3.36.6-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "3.36.6",
     "description": "GJS TypeScript type definitions for Meta-6, generated from library version 3.36.6",
     "type": "module",
     "module": "meta-6.js",

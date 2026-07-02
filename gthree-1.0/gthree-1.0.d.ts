@@ -9093,12 +9093,6 @@ export namespace Gthree {
 
         material_index: number;
 
-        face: Graphene.Triangle;
-
-        uv: Graphene.Vec2;
-
-        uv2: Graphene.Vec2;
-
         // Constructors
         constructor(object: Object);
 

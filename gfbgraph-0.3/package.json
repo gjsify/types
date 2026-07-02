@@ -1,6 +1,7 @@
 {
     "name": "@girs/gfbgraph-0.3",
-    "version": "0.3.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.3.0",
     "description": "GJS TypeScript type definitions for GFBGraph-0.3, generated from library version 0.3.0",
     "type": "module",
     "module": "gfbgraph-0.3.js",

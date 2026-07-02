@@ -1,6 +1,7 @@
 {
     "name": "@girs/vda-1",
-    "version": "1.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "1.0.0",
     "description": "GJS TypeScript type definitions for Vda-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vda-1.js",

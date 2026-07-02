@@ -1,6 +1,7 @@
 {
     "name": "@girs/ecalendar-1.2",
-    "version": "1.2.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "1.2.0",
     "description": "GJS TypeScript type definitions for ECalendar-1.2, generated from library version 1.2.0",
     "type": "module",
     "module": "ecalendar-1.2.js",

@@ -1,6 +1,7 @@
 {
     "name": "@girs/lasem-0.6",
-    "version": "0.6.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.6.0",
     "description": "GJS TypeScript type definitions for Lasem-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "lasem-0.6.js",

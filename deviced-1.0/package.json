@@ -1,6 +1,7 @@
 {
     "name": "@girs/deviced-1.0",
-    "version": "3.27.4-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "3.27.4",
     "description": "GJS TypeScript type definitions for Deviced-1.0, generated from library version 3.27.4",
     "type": "module",
     "module": "deviced-1.0.js",

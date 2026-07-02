@@ -3856,13 +3856,13 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Bin.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
      */
-    class SquareBin<A extends Clutter.Actor = Clutter.Actor> extends St.Bin<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
+    class SquareBin<A extends Clutter.Actor = Clutter.Actor> extends St.Bin implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<SquareBin>;
 
         /**
@@ -4167,13 +4167,13 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {}
     }
 
     /**
      * @gir-type Class
      */
-    class Stack<A extends Clutter.Actor = Clutter.Actor> extends St.Widget<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
+    class Stack<A extends Clutter.Actor = Clutter.Actor> extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<Stack>;
 
         /**
@@ -5077,7 +5077,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             window_container: Clutter.Actor;
             windowContainer: Clutter.Actor;
         }
@@ -5086,7 +5086,7 @@ export namespace Shell {
     /**
      * @gir-type Class
      */
-    class WindowPreview<A extends Clutter.Actor = Clutter.Actor> extends St.Widget<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
+    class WindowPreview<A extends Clutter.Actor = Clutter.Actor> extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<WindowPreview>;
 
         // Properties
@@ -5576,7 +5576,7 @@ export namespace Shell {
         }
 
         // Constructor properties interface
-        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps<A>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor> extends St.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             monitor_index: number;
             monitorIndex: number;
             state_adjustment_value: number;
@@ -5587,7 +5587,7 @@ export namespace Shell {
     /**
      * @gir-type Class
      */
-    class WorkspaceBackground<A extends Clutter.Actor = Clutter.Actor> extends St.Widget<A> implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
+    class WorkspaceBackground<A extends Clutter.Actor = Clutter.Actor> extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable {
         static $gtype: GObject.GType<WorkspaceBackground>;
 
         // Properties

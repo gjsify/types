@@ -1,6 +1,7 @@
 {
     "name": "@girs/ayatanaido3-0.4",
-    "version": "0.4.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.4.0",
     "description": "GJS TypeScript type definitions for AyatanaIdo3-0.4, generated from library version 0.4.0",
     "type": "module",
     "module": "ayatanaido3-0.4.js",

@@ -1,6 +1,7 @@
 {
     "name": "@girs/gxml-0.20",
-    "version": "0.20.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.20.0",
     "description": "GJS TypeScript type definitions for GXml-0.20, generated from library version 0.20.0",
     "type": "module",
     "module": "gxml-0.20.js",

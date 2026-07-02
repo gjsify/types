@@ -1,6 +1,7 @@
 {
     "name": "@girs/gpaste-2",
-    "version": "2.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "2.0.0",
     "description": "GJS TypeScript type definitions for GPaste-2, generated from library version 2.0.0",
     "type": "module",
     "module": "gpaste-2.js",

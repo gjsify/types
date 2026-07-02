@@ -1,6 +1,7 @@
 {
     "name": "@girs/mirage-3.2",
-    "version": "3.2.9-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "3.2.9",
     "description": "GJS TypeScript type definitions for Mirage-3.2, generated from library version 3.2.9",
     "type": "module",
     "module": "mirage-3.2.js",

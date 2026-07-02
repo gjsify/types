@@ -1,6 +1,7 @@
 {
     "name": "@girs/gxps-0.1",
-    "version": "0.3.2-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "0.3.2",
     "description": "GJS TypeScript type definitions for GXPS-0.1, generated from library version 0.3.2",
     "type": "module",
     "module": "gxps-0.1.js",

@@ -1,6 +1,7 @@
 {
     "name": "@girs/rygelcore-2.8",
-    "version": "2.8.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "2.8.0",
     "description": "GJS TypeScript type definitions for RygelCore-2.8, generated from library version 2.8.0",
     "type": "module",
     "module": "rygelcore-2.8.js",

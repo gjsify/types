@@ -1,6 +1,7 @@
 {
     "name": "@girs/st-12",
-    "version": "12.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "12.0.0",
     "description": "GJS TypeScript type definitions for St-12, generated from library version 12.0.0",
     "type": "module",
     "module": "st-12.js",

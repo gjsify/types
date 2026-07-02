@@ -1,6 +1,7 @@
 {
     "name": "@girs/clutterx11-7",
-    "version": "7.0.0-4.0.0-rc.17",
+    "version": "4.0.4",
+    "libraryVersion": "7.0.0",
     "description": "GJS TypeScript type definitions for ClutterX11-7, generated from library version 7.0.0",
     "type": "module",
     "module": "clutterx11-7.js",
