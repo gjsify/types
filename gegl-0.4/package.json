@@ -1,6 +1,7 @@
 {
     "name": "@girs/gegl-0.4",
-    "version": "0.4.68-4.0.4",
+    "version": "4.0.4",
+    "libraryVersion": "0.4.68",
     "description": "GJS TypeScript type definitions for Gegl-0.4, generated from library version 0.4.68",
     "type": "module",
     "module": "gegl-0.4.js",
@@ -31,10 +32,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.4",
-      "@girs/gobject-2.0": "2.88.0-4.0.4",
-      "@girs/glib-2.0": "2.88.0-4.0.4",
-      "@girs/babl-0.1": "0.1.124-4.0.4"    },
+      "@girs/gjs": "^4.0.4",
+      "@girs/gobject-2.0": "^4.0.4",
+      "@girs/glib-2.0": "^4.0.4",
+      "@girs/babl-0.1": "^4.0.4"    },
     "devDependencies": {
       "typescript": "*"
     },
