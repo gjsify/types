@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstpbutils-0.10",
-    "version": "4.0.4",
+    "version": "4.1.0",
     "libraryVersion": "0.10.0",
     "description": "GJS TypeScript type definitions for GstPbutils-0.10, generated from library version 0.10.0",
     "type": "module",
@@ -32,12 +32,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.0.4",
-      "@girs/libxml2-2.0": "^4.0.4",
-      "@girs/gst-0.10": "^4.0.4",
-      "@girs/gobject-2.0": "^4.0.4",
-      "@girs/glib-2.0": "^4.0.4",
-      "@girs/gmodule-2.0": "^4.0.4"    },
+      "@girs/gjs": "^4.1.0",
+      "@girs/libxml2-2.0": "^4.1.0",
+      "@girs/gst-0.10": "^4.1.0",
+      "@girs/gobject-2.0": "^4.1.0",
+      "@girs/glib-2.0": "^4.1.0",
+      "@girs/gmodule-2.0": "^4.1.0"    },
     "devDependencies": {
       "typescript": "*"
     },

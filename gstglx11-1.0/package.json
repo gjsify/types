@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstglx11-1.0",
-    "version": "4.0.4",
+    "version": "4.1.0",
     "libraryVersion": "1.0.0",
     "description": "GJS TypeScript type definitions for GstGLX11-1.0, generated from library version 1.0.0",
     "type": "module",
@@ -32,14 +32,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.0.4",
-      "@girs/gstvideo-1.0": "^4.0.4",
-      "@girs/gstbase-1.0": "^4.0.4",
-      "@girs/gst-1.0": "^4.0.4",
-      "@girs/gobject-2.0": "^4.0.4",
-      "@girs/glib-2.0": "^4.0.4",
-      "@girs/gmodule-2.0": "^4.0.4",
-      "@girs/gstgl-1.0": "^4.0.4"    },
+      "@girs/gjs": "^4.1.0",
+      "@girs/gstvideo-1.0": "^4.1.0",
+      "@girs/gstbase-1.0": "^4.1.0",
+      "@girs/gst-1.0": "^4.1.0",
+      "@girs/gobject-2.0": "^4.1.0",
+      "@girs/glib-2.0": "^4.1.0",
+      "@girs/gmodule-2.0": "^4.1.0",
+      "@girs/gstgl-1.0": "^4.1.0"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -1,6 +1,6 @@
 {
     "name": "@girs/rygelrenderer-2.6",
-    "version": "4.0.4",
+    "version": "4.1.0",
     "libraryVersion": "2.6.0",
     "description": "GJS TypeScript type definitions for RygelRenderer-2.6, generated from library version 2.6.0",
     "type": "module",
@@ -32,18 +32,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.0.4",
-      "@girs/rygelcore-2.6": "^4.0.4",
-      "@girs/glib-2.0": "^4.0.4",
-      "@girs/gee-0.8": "^4.0.4",
-      "@girs/gio-2.0": "^4.0.4",
-      "@girs/gobject-2.0": "^4.0.4",
-      "@girs/gmodule-2.0": "^4.0.4",
-      "@girs/gupnp-1.2": "^4.0.4",
-      "@girs/libxml2-2.0": "^4.0.4",
-      "@girs/soup-2.4": "^4.0.4",
-      "@girs/gssdp-1.2": "^4.0.4",
-      "@girs/gupnpav-1.0": "^4.0.4"    },
+      "@girs/gjs": "^4.1.0",
+      "@girs/rygelcore-2.6": "^4.1.0",
+      "@girs/glib-2.0": "^4.1.0",
+      "@girs/gee-0.8": "^4.1.0",
+      "@girs/gio-2.0": "^4.1.0",
+      "@girs/gobject-2.0": "^4.1.0",
+      "@girs/gmodule-2.0": "^4.1.0",
+      "@girs/gupnp-1.2": "^4.1.0",
+      "@girs/libxml2-2.0": "^4.1.0",
+      "@girs/soup-2.4": "^4.1.0",
+      "@girs/gssdp-1.2": "^4.1.0",
+      "@girs/gupnpav-1.0": "^4.1.0"    },
     "devDependencies": {
       "typescript": "*"
     },

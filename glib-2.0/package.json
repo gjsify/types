@@ -1,6 +1,6 @@
 {
     "name": "@girs/glib-2.0",
-    "version": "4.0.4",
+    "version": "4.1.0",
     "libraryVersion": "2.88.0",
     "description": "GJS TypeScript type definitions for GLib-2.0, generated from library version 2.88.0",
     "type": "module",
@@ -32,8 +32,8 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.0.4",
-      "@girs/gobject-2.0": "^4.0.4"    },
+      "@girs/gjs": "^4.1.0",
+      "@girs/gobject-2.0": "^4.1.0"    },
     "devDependencies": {
       "typescript": "*"
     },

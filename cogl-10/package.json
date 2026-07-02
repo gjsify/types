@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-10",
-    "version": "4.0.4",
+    "version": "4.1.0",
     "libraryVersion": "10.0.0",
     "description": "GJS TypeScript type definitions for Cogl-10, generated from library version 10.0.0",
     "type": "module",
@@ -32,12 +32,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.0.4",
-      "@girs/cairo-1.0": "^4.0.4",
-      "@girs/gobject-2.0": "^4.0.4",
-      "@girs/glib-2.0": "^4.0.4",
-      "@girs/graphene-1.0": "^4.0.4",
-      "@girs/gl-1.0": "^4.0.4"    },
+      "@girs/gjs": "^4.1.0",
+      "@girs/cairo-1.0": "^4.1.0",
+      "@girs/gobject-2.0": "^4.1.0",
+      "@girs/glib-2.0": "^4.1.0",
+      "@girs/graphene-1.0": "^4.1.0",
+      "@girs/gl-1.0": "^4.1.0"    },
     "devDependencies": {
       "typescript": "*"
     },
