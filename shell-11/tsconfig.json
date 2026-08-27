@@ -116,7 +116,7 @@
       ]
 }
   },
-  "include": ["./shell-11.d.ts"]
+  "include": ["./shell-11.d.ts","./shell-11-surface.d.ts"]
 }
 
 

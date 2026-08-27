@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./tepl-4.d.ts"]
+  "include": ["./tepl-4.d.ts","./tepl-4-surface.d.ts"]
 }
 
 

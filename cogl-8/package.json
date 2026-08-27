@@ -1,8 +1,7 @@
 {
     "name": "@girs/cogl-8",
-    "version": "4.1.0",
-    "libraryVersion": "8.0.0",
-    "description": "GJS TypeScript type definitions for Cogl-8, generated from library version 8.0.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for Cogl-8",
     "type": "module",
     "module": "cogl-8.js",
     "main": "cogl-8.js",
@@ -32,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/graphene-1.0": "^4.1.0",
-      "@girs/gl-1.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/graphene-1.0": "^4.2.0",
+      "@girs/gl-1.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

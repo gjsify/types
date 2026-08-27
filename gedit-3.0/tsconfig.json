@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gedit-3.0.d.ts"]
+  "include": ["./gedit-3.0.d.ts","./gedit-3.0-surface.d.ts"]
 }
 
 

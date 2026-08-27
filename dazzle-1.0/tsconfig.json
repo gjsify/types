@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./dazzle-1.0.d.ts"]
+  "include": ["./dazzle-1.0.d.ts","./dazzle-1.0-surface.d.ts"]
 }
 
 

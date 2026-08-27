@@ -1,8 +1,7 @@
 {
     "name": "@girs/timezonemap-1.0",
-    "version": "4.1.0",
-    "libraryVersion": "1.0.0",
-    "description": "GJS TypeScript type definitions for TimezoneMap-1.0, generated from library version 1.0.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for TimezoneMap-1.0",
     "type": "module",
     "module": "timezonemap-1.0.js",
     "main": "timezonemap-1.0.js",
@@ -16,6 +15,11 @@
         "types": "./timezonemap-1.0-import.d.ts",
         "import": "./timezonemap-1.0-import.js",
         "default": "./timezonemap-1.0-import.js"
+      },
+      "./surface": {
+        "types": "./timezonemap-1.0-surface.d.ts",
+        "import": "./timezonemap-1.0-surface.js",
+        "default": "./timezonemap-1.0-surface.js"
       },
       "./timezonemap-1.0": {
         "types": "./timezonemap-1.0.d.ts",
@@ -32,21 +36,21 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/json-1.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gtk-3.0": "^4.1.0",
-      "@girs/xlib-2.0": "^4.1.0",
-      "@girs/gdk-3.0": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/pango-1.0": "^4.1.0",
-      "@girs/harfbuzz-0.0": "^4.1.0",
-      "@girs/freetype2-2.0": "^4.1.0",
-      "@girs/gdkpixbuf-2.0": "^4.1.0",
-      "@girs/atk-1.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/json-1.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gtk-3.0": "^4.2.0",
+      "@girs/xlib-2.0": "^4.2.0",
+      "@girs/gdk-3.0": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/pango-1.0": "^4.2.0",
+      "@girs/harfbuzz-0.0": "^4.2.0",
+      "@girs/freetype2-2.0": "^4.2.0",
+      "@girs/gdkpixbuf-2.0": "^4.2.0",
+      "@girs/atk-1.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

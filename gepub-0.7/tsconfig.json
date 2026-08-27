@@ -74,7 +74,7 @@
       ]
 }
   },
-  "include": ["./gepub-0.7.d.ts"]
+  "include": ["./gepub-0.7.d.ts","./gepub-0.7-surface.d.ts"]
 }
 
 

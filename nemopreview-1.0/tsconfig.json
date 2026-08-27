@@ -104,7 +104,7 @@
       ]
 }
   },
-  "include": ["./nemopreview-1.0.d.ts"]
+  "include": ["./nemopreview-1.0.d.ts","./nemopreview-1.0-surface.d.ts"]
 }
 
 

@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./spiceclientgtk-3.0.d.ts"]
+  "include": ["./spiceclientgtk-3.0.d.ts","./spiceclientgtk-3.0-surface.d.ts"]
 }
 
 

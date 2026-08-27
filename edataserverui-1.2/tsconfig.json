@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./edataserverui-1.2.d.ts"]
+  "include": ["./edataserverui-1.2.d.ts","./edataserverui-1.2-surface.d.ts"]
 }
 
 

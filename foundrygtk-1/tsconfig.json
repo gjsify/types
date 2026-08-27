@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./foundrygtk-1.d.ts"]
+  "include": ["./foundrygtk-1.d.ts","./foundrygtk-1-surface.d.ts"]
 }
 
 

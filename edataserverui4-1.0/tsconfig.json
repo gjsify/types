@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./edataserverui4-1.0.d.ts"]
+  "include": ["./edataserverui4-1.0.d.ts","./edataserverui4-1.0-surface.d.ts"]
 }
 
 

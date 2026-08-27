@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./devhelp-3.0.d.ts"]
+  "include": ["./devhelp-3.0.d.ts","./devhelp-3.0-surface.d.ts"]
 }
 
 

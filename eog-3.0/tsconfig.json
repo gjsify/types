@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./eog-3.0.d.ts"]
+  "include": ["./eog-3.0.d.ts","./eog-3.0-surface.d.ts"]
 }
 
 

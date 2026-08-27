@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./anjuta-3.0.d.ts"]
+  "include": ["./anjuta-3.0.d.ts","./anjuta-3.0-surface.d.ts"]
 }
 
 

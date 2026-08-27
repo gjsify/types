@@ -1,8 +1,7 @@
 {
     "name": "@girs/farstream-0.2",
-    "version": "4.1.0",
-    "libraryVersion": "0.2.0",
-    "description": "GJS TypeScript type definitions for Farstream-0.2, generated from library version 0.2.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for Farstream-0.2",
     "type": "module",
     "module": "farstream-0.2.js",
     "main": "farstream-0.2.js",
@@ -32,11 +31,11 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gst-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gst-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

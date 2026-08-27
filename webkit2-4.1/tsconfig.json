@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./webkit2-4.1.d.ts"]
+  "include": ["./webkit2-4.1.d.ts","./webkit2-4.1-surface.d.ts"]
 }
 
 

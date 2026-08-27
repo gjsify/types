@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./hex-4.d.ts"]
+  "include": ["./hex-4.d.ts","./hex-4-surface.d.ts"]
 }
 
 

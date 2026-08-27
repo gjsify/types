@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./braseromedia-3.1.d.ts"]
+  "include": ["./braseromedia-3.1.d.ts","./braseromedia-3.1-surface.d.ts"]
 }
 
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./adw-1.d.ts"]
+  "include": ["./adw-1.d.ts","./adw-1-surface.d.ts"]
 }
 
 

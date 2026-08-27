@@ -95,7 +95,7 @@
       ]
 }
   },
-  "include": ["./ide-46.d.ts"]
+  "include": ["./ide-46.d.ts","./ide-46-surface.d.ts"]
 }
 
 

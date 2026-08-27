@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./goocanvas-2.0.d.ts"]
+  "include": ["./goocanvas-2.0.d.ts","./goocanvas-2.0-surface.d.ts"]
 }
 
 

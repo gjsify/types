@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./xed-1.0.d.ts"]
+  "include": ["./xed-1.0.d.ts","./xed-1.0-surface.d.ts"]
 }
 
 

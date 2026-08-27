@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./gdaui-5.0.d.ts"]
+  "include": ["./gdaui-5.0.d.ts","./gdaui-5.0-surface.d.ts"]
 }
 
 

@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gtksource-3.0.d.ts"]
+  "include": ["./gtksource-3.0.d.ts","./gtksource-3.0-surface.d.ts"]
 }
 
 

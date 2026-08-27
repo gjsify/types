@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./braseroburn-3.1.d.ts"]
+  "include": ["./braseroburn-3.1.d.ts","./braseroburn-3.1-surface.d.ts"]
 }
 
 

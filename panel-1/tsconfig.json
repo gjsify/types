@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./panel-1.d.ts"]
+  "include": ["./panel-1.d.ts","./panel-1-surface.d.ts"]
 }
 
 

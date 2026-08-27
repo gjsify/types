@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./pnl-1.0.d.ts"]
+  "include": ["./pnl-1.0.d.ts","./pnl-1.0-surface.d.ts"]
 }
 
 

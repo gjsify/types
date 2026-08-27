@@ -1,8 +1,7 @@
 {
     "name": "@girs/avahicore-0.6",
-    "version": "4.1.0",
-    "libraryVersion": "0.6.0",
-    "description": "GJS TypeScript type definitions for AvahiCore-0.6, generated from library version 0.6.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for AvahiCore-0.6",
     "type": "module",
     "module": "avahicore-0.6.js",
     "main": "avahicore-0.6.js",
@@ -32,8 +31,8 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

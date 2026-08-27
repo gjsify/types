@@ -1,0 +1,32 @@
+// The widget vocabulary of Libxfce4ui-2.0 as runtime data.
+//
+// GENERATED — do not edit. Provenance: Libxfce4ui-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+//
+// The type half of this subpath is the sibling `.d.ts`. This file exists because
+// types are erased: a consumer that wants to ask the installed library whether every
+// name here is real needs values, not declarations.
+
+export const SURFACE_PROVENANCE = 'Libxfce4ui-2.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface';
+
+export const OWN_PROPS = {
+    XfceFilenameInput: ['max-text-length', 'original-filename'],
+    XfceTitledDialog: ['subtitle'],
+};
+
+export const OWN_SIGNALS = {
+    XfceFilenameInput: ['text-invalid', 'text-valid'],
+};
+
+export const DECLS = {
+    XfceFilenameInput: ['XfceFilenameInput', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
+    XfceTitledDialog: ['XfceTitledDialog', 'GtkDialog', 'GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
+};
+
+export const ENUM_NICKS = {};
+
+export const SLOT_CANDIDATES = {};
+
+export const SINCE = {
+    'XfceFilenameInput.max-text-length': '4.16',
+    'XfceFilenameInput.original-filename': '4.16',
+};

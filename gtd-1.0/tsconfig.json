@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gtd-1.0.d.ts"]
+  "include": ["./gtd-1.0.d.ts","./gtd-1.0-surface.d.ts"]
 }
 
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./evinceview-3.0.d.ts"]
+  "include": ["./evinceview-3.0.d.ts","./evinceview-3.0-surface.d.ts"]
 }
 
 

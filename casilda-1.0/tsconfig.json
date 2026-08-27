@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./casilda-1.0.d.ts"]
+  "include": ["./casilda-1.0.d.ts","./casilda-1.0-surface.d.ts"]
 }
 
 

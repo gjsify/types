@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./gplugingtk4-1.0.d.ts"]
+  "include": ["./gplugingtk4-1.0.d.ts","./gplugingtk4-1.0-surface.d.ts"]
 }
 
 

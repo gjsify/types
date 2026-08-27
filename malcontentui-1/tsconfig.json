@@ -74,7 +74,7 @@
       ]
 }
   },
-  "include": ["./malcontentui-1.d.ts"]
+  "include": ["./malcontentui-1.d.ts","./malcontentui-1-surface.d.ts"]
 }
 
 

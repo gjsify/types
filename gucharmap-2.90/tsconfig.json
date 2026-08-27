@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gucharmap-2.90.d.ts"]
+  "include": ["./gucharmap-2.90.d.ts","./gucharmap-2.90-surface.d.ts"]
 }
 
 

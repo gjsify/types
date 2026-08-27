@@ -1,0 +1,339 @@
+/**
+ * The GIR-derived widget VOCABULARY for Anjuta-3.0.
+ *
+ * GENERATED — do not edit. Provenance: Anjuta-3.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+ *
+ * 16 concrete widgets, 16 declarations, 7 enum nick unions, 4 slot candidates.
+ *
+ * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
+ * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
+ * differently. The shape to avoid is the GLOBAL AUGMENT — a `declare global` on
+ * `React.JSX` collides with every other library on a shared tag — while a
+ * module-scoped `JSX` behind a `jsxImportSource` does not. This package is used by
+ * projects that want nothing to do with JSX, so it emits neither; a consumer declaring
+ * a module-scoped namespace over these names is doing it right.
+ *
+ * Three things this is and `ConstructorProps` is not: WRITABLE-only (measured on
+ * Gtk-4.0, `ConstructorProps` offers 150 read-only properties across 68 classes as
+ * settable, and GTK's failure mode for writing one is exit 0), OPTIONAL, and keyed
+ * by the name GObject actually REGISTERED — the dashed spelling `g_object_set`,
+ * GtkBuilder XML and Blueprint all use.
+ *
+ * Signal handler types are not re-derived: `X.SignalSignatures`, which this package
+ * already emits for every class with the parent chain, every implemented interface
+ * and the `notify::` keys folded in, is what `Widgets[G]['signals']` points at.
+ */
+
+import type Anjuta from './anjuta-3.0.js';
+import type GObject from '@girs/gobject-2.0';
+import type Gtk from '@girs/gtk-3.0';
+import type { GdlDockConstructOnly, GdlDockObjectConstructOnly, GdlDockObjectProps, GdlDockProps } from '@girs/gdl-3/surface';
+import type { GtkActionableConstructOnly, GtkActionableProps, GtkActivatableConstructOnly, GtkActivatableProps, GtkBinConstructOnly, GtkBinProps, GtkBoxConstructOnly, GtkBoxProps, GtkBuildableConstructOnly, GtkBuildableProps, GtkButtonConstructOnly, GtkButtonProps, GtkCellEditableConstructOnly, GtkCellEditableProps, GtkCellLayoutConstructOnly, GtkCellLayoutProps, GtkContainerConstructOnly, GtkContainerProps, GtkDialogConstructOnly, GtkDialogProps, GtkEditableConstructOnly, GtkEditableProps, GtkEntryConstructOnly, GtkEntryProps, GtkMessageDialogConstructOnly, GtkMessageDialogProps, GtkNotebookConstructOnly, GtkNotebookProps, GtkOrientableConstructOnly, GtkOrientableProps, GtkScrollableConstructOnly, GtkScrollableProps, GtkToggleButtonConstructOnly, GtkToggleButtonProps, GtkTreeViewConstructOnly, GtkTreeViewProps, GtkWidgetConstructOnly, GtkWidgetProps, GtkWindowConstructOnly, GtkWindowProps } from '@girs/gtk-3.0/surface';
+
+// ---------------------------------------------------------------------------
+// Enum nicks — the string vocabulary GObject registered, from GIR's `glib:nick`.
+//
+// Not derived from the member name. Substituting underscores for dashes is not a law:
+// some nicks keep an underscore the substitution would have replaced, and only the
+// attribute knows which. Gtk-4.0 and Adw-1 contradict no derivation at all, which is
+// how a derived nick passes review and breaks elsewhere.
+// Re-measure with `scripts/check-nick-derivation.mjs` in ts-for-gir.
+// ---------------------------------------------------------------------------
+
+export type AnjutaCommandBarEntryTypeNick = 'frame' | 'button';
+export type AnjutaCommandQueueExecuteModeNick = 'automatic' | 'manual';
+export type AnjutaLauncherOutputTypeNick = 'stdout' | 'stderr' | 'pty';
+export type AnjutaProjectValueTypeNick = 'string' | 'list' | 'boolean' | 'map';
+export type AnjutaSerializerModeNick = 'read' | 'write';
+export type AnjutaSessionPhaseNick = 'start' | 'first' | 'normal' | 'last' | 'end';
+export type AnjutaShellPlacementNick = 'none' | 'top' | 'bottom' | 'right' | 'left' | 'center' | 'floating';
+
+// ---------------------------------------------------------------------------
+// Property surfaces — one interface per GIR DECLARATION, mirroring GIR's own
+// inheritance rather than flattening per widget.
+//
+// The interfaces are load-bearing, not tidiness: `GtkBox` declares four properties
+// of its own and `orientation` is not among them — it lives on `Gtk.Orientable`,
+// because GObject installs interface properties on the implementor at runtime while
+// GIR keeps them once, on the interface.
+// ---------------------------------------------------------------------------
+
+export interface AnjutaCloseButtonProps extends GtkButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaCloseButtonConstructOnly = GtkButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly;
+
+export interface AnjutaColumnTextViewProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaColumnTextViewConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface AnjutaCommandBarProps extends GtkNotebookProps, GtkBuildableProps {
+    'max-text-width'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaCommandBarConstructOnly = GtkNotebookConstructOnly | GtkBuildableConstructOnly | 'max-text-width';
+
+export interface AnjutaDockProps extends GdlDockProps, GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaDockConstructOnly = GdlDockConstructOnly | GtkBuildableConstructOnly;
+
+export interface AnjutaDropEntryProps extends AnjutaEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaDropEntryConstructOnly = AnjutaEntryConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
+
+export interface AnjutaEntryProps extends GtkEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
+    'help-text'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaEntryConstructOnly = GtkEntryConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
+
+export interface AnjutaEnvironmentEditorProps extends GtkBinProps, GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaEnvironmentEditorConstructOnly = GtkBinConstructOnly | GtkBuildableConstructOnly;
+
+export interface AnjutaFileDropEntryProps extends AnjutaDropEntryProps, GtkBuildableProps, GtkCellEditableProps, GtkEditableProps {
+    'relative-path'?: string;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaFileDropEntryConstructOnly = AnjutaDropEntryConstructOnly | GtkBuildableConstructOnly | GtkCellEditableConstructOnly | GtkEditableConstructOnly;
+
+export interface AnjutaFileListProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
+    'relative-path'?: string;
+    'show-add-button'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaFileListConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface AnjutaPkgConfigChooserProps extends GtkTreeViewProps, GtkBuildableProps, GtkScrollableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaPkgConfigChooserConstructOnly = GtkTreeViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly;
+
+export interface AnjutaPreferencesDialogProps extends GtkDialogProps, GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaPreferencesDialogConstructOnly = GtkDialogConstructOnly | GtkBuildableConstructOnly;
+
+export interface AnjutaSavePromptProps extends GtkMessageDialogProps, GtkBuildableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaSavePromptConstructOnly = GtkMessageDialogConstructOnly | GtkBuildableConstructOnly;
+
+export interface AnjutaStatusProps extends GtkBoxProps, GtkBuildableProps, GtkOrientableProps {
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaStatusConstructOnly = GtkBoxConstructOnly | GtkBuildableConstructOnly | GtkOrientableConstructOnly;
+
+export interface AnjutaTabberProps extends GtkContainerProps, GtkBuildableProps {
+    notebook?: GObject.Object;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaTabberConstructOnly = GtkContainerConstructOnly | GtkBuildableConstructOnly | 'notebook';
+
+export interface AnjutaTreeComboBoxProps extends GtkToggleButtonProps, GtkActionableProps, GtkActivatableProps, GtkBuildableProps, GtkCellLayoutProps {
+    model?: Gtk.TreeModel;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaTreeComboBoxConstructOnly = GtkToggleButtonConstructOnly | GtkActionableConstructOnly | GtkActivatableConstructOnly | GtkBuildableConstructOnly | GtkCellLayoutConstructOnly;
+
+export interface AnjutaVcsStatusTreeViewProps extends GtkTreeViewProps, GtkBuildableProps, GtkScrollableProps {
+    'conflicted-selectable'?: boolean;
+    'show-status'?: boolean;
+    'status-codes'?: number;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AnjutaVcsStatusTreeViewConstructOnly = GtkTreeViewConstructOnly | GtkBuildableConstructOnly | GtkScrollableConstructOnly | 'conflicted-selectable' | 'status-codes';
+
+// ---------------------------------------------------------------------------
+// The GType-keyed widget map.
+//
+// Keyed by GType because that is also the GtkBuilder XML key and the typelib key. A
+// consumer maps GTypes to tags in ITS convention — kebab for JSX intrinsics, Pascal
+// for a Vue `GlobalComponents`, the class itself for a renderer whose element type
+// is the class. None of those is baked in here.
+//
+// `slotCandidates` is a candidate list and never an answer: derived from methods
+// taking exactly one widget argument. The GIR cannot tell adoption from reference —
+// `set_title_widget` parents its argument and `set_activatable_widget` does not, and
+// both are `void f(GtkWidget*)` at `transfer-ownership="none"`. Curation decides;
+// this is what notices when a release adds a candidate.
+// ---------------------------------------------------------------------------
+
+export interface Widgets {
+    AnjutaCloseButton: {
+        class: Anjuta.CloseButton;
+        props: AnjutaCloseButtonProps;
+        signals: Anjuta.CloseButton.SignalSignatures;
+        constructOnly: AnjutaCloseButtonConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaColumnTextView: {
+        class: Anjuta.ColumnTextView;
+        props: AnjutaColumnTextViewProps;
+        signals: Anjuta.ColumnTextView.SignalSignatures;
+        constructOnly: AnjutaColumnTextViewConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaCommandBar: {
+        class: Anjuta.CommandBar;
+        props: AnjutaCommandBarProps;
+        signals: Anjuta.CommandBar.SignalSignatures;
+        constructOnly: AnjutaCommandBarConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaDock: {
+        class: Anjuta.Dock;
+        props: AnjutaDockProps;
+        signals: Anjuta.Dock.SignalSignatures;
+        constructOnly: AnjutaDockConstructOnly;
+        slotCandidates: {
+        'command-bar': 'set_command_bar';
+        };
+    };
+    AnjutaDropEntry: {
+        class: Anjuta.DropEntry;
+        props: AnjutaDropEntryProps;
+        signals: Anjuta.DropEntry.SignalSignatures;
+        constructOnly: AnjutaDropEntryConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaEntry: {
+        class: Anjuta.Entry;
+        props: AnjutaEntryProps;
+        signals: Anjuta.Entry.SignalSignatures;
+        constructOnly: AnjutaEntryConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaEnvironmentEditor: {
+        class: Anjuta.EnvironmentEditor;
+        props: AnjutaEnvironmentEditorProps;
+        signals: Anjuta.EnvironmentEditor.SignalSignatures;
+        constructOnly: AnjutaEnvironmentEditorConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaFileDropEntry: {
+        class: Anjuta.FileDropEntry;
+        props: AnjutaFileDropEntryProps;
+        signals: Anjuta.FileDropEntry.SignalSignatures;
+        constructOnly: AnjutaFileDropEntryConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaFileList: {
+        class: Anjuta.FileList;
+        props: AnjutaFileListProps;
+        signals: Anjuta.FileList.SignalSignatures;
+        constructOnly: AnjutaFileListConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaPkgConfigChooser: {
+        class: Anjuta.PkgConfigChooser;
+        props: AnjutaPkgConfigChooserProps;
+        signals: Anjuta.PkgConfigChooser.SignalSignatures;
+        constructOnly: AnjutaPkgConfigChooserConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaPreferencesDialog: {
+        class: Anjuta.PreferencesDialog;
+        props: AnjutaPreferencesDialogProps;
+        signals: Anjuta.PreferencesDialog.SignalSignatures;
+        constructOnly: AnjutaPreferencesDialogConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaSavePrompt: {
+        class: Anjuta.SavePrompt;
+        props: AnjutaSavePromptProps;
+        signals: Anjuta.SavePrompt.SignalSignatures;
+        constructOnly: AnjutaSavePromptConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaStatus: {
+        class: Anjuta.Status;
+        props: AnjutaStatusProps;
+        signals: Anjuta.Status.SignalSignatures;
+        constructOnly: AnjutaStatusConstructOnly;
+        slotCandidates: {
+        'title-window': 'set_title_window';
+        'widget': 'add_widget';
+        };
+    };
+    AnjutaTabber: {
+        class: Anjuta.Tabber;
+        props: AnjutaTabberProps;
+        signals: Anjuta.Tabber.SignalSignatures;
+        constructOnly: AnjutaTabberConstructOnly;
+        slotCandidates: {
+        'tab': 'add_tab';
+        };
+    };
+    AnjutaTreeComboBox: {
+        class: Anjuta.TreeComboBox;
+        props: AnjutaTreeComboBoxProps;
+        signals: Anjuta.TreeComboBox.SignalSignatures;
+        constructOnly: AnjutaTreeComboBoxConstructOnly;
+        slotCandidates: {};
+    };
+    AnjutaVcsStatusTreeView: {
+        class: Anjuta.VcsStatusTreeView;
+        props: AnjutaVcsStatusTreeViewProps;
+        signals: Anjuta.VcsStatusTreeView.SignalSignatures;
+        constructOnly: AnjutaVcsStatusTreeViewConstructOnly;
+        slotCandidates: {};
+    };
+}
+
+/** Every GType this namespace can create. A consumer derives its own tag map. */
+export type WidgetGType = keyof Widgets;
+
+/** The writable, optional, GObject-keyed property surface of one GType. */
+export type PropsOf<G extends WidgetGType> = Widgets[G]['props'];
+
+/** The signal table this package already emits, reached by GType. */
+export type SignalsOf<G extends WidgetGType> = Widgets[G]['signals'];
+
+/** The instance type — what a `ref`-shaped prop should infer. */
+export type InstanceOf<G extends WidgetGType> = Widgets[G]['class'];
+
+/** Property names that can only be set at construction. */
+export type ConstructOnlyOf<G extends WidgetGType> = Widgets[G]['constructOnly'];
+
+/** Candidate child slots — see the note above; curation decides. */
+export type SlotCandidatesOf<G extends WidgetGType> = keyof Widgets[G]['slotCandidates'];
+
+/**
+ * The same facts as runtime data, for a consumer that CHECKS them.
+ *
+ * Types are erased, so a spec that asks the installed GTK whether every property
+ * here is a writable ParamSpec, every signal resolvable by `GObject.signal_lookup`
+ * and every nick resolvable through an enum lookup cannot read the interfaces
+ * above. Emitted headlessly with no GTK present, which is exactly why the checking
+ * belongs to the consumer and the DATA belongs here.
+ */
+export const SURFACE_PROVENANCE: string;
+
+/** Declaration GType -> its own settable properties, as GObject registered them. */
+export const OWN_PROPS: Readonly<Record<string, readonly string[]>>;
+
+/** Widget GType -> its own signals. */
+export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
+
+/** Widget GType -> every declaration its members come from, self first. */
+export const DECLS: Readonly<Record<string, readonly string[]>>;
+
+/** Enum GType -> the nicks this surface offers. */
+export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;
+
+/** Widget GType -> slot name -> the method that may adopt a child there. */
+export const SLOT_CANDIDATES: Readonly<Record<string, Readonly<Record<string, string>>>>;
+
+/**
+ * `Type.property` -> the release that introduced it.
+ *
+ * What keeps a runtime cross-check honest across a version gap without an
+ * allowlist: a member the installed library lacks is a defect UNLESS the version
+ * here is newer than the one running.
+ */
+export const SINCE: Readonly<Record<string, string>>;

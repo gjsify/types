@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./nmgtk-1.0.d.ts"]
+  "include": ["./nmgtk-1.0.d.ts","./nmgtk-1.0-surface.d.ts"]
 }
 
 

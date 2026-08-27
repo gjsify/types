@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./budgie-1.0.d.ts"]
+  "include": ["./budgie-1.0.d.ts","./budgie-1.0-surface.d.ts"]
 }
 
 

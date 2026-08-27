@@ -1,6 +1,6 @@
 {
     "name": "@girs/adw-1",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "libraryVersion": "1.10.0",
     "description": "GJS TypeScript type definitions for Adw-1, generated from library version 1.10.0",
     "type": "module",
@@ -17,6 +17,11 @@
         "import": "./adw-1-import.js",
         "default": "./adw-1-import.js"
       },
+      "./surface": {
+        "types": "./adw-1-surface.d.ts",
+        "import": "./adw-1-surface.js",
+        "default": "./adw-1-surface.js"
+      },
       "./adw-1": {
         "types": "./adw-1.d.ts",
         "import": "./adw-1.js",
@@ -32,21 +37,21 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gtk-4.0": "^4.1.0",
-      "@girs/gsk-4.0": "^4.1.0",
-      "@girs/graphene-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/gdk-4.0": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/pangocairo-1.0": "^4.1.0",
-      "@girs/pango-1.0": "^4.1.0",
-      "@girs/harfbuzz-0.0": "^4.1.0",
-      "@girs/freetype2-2.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gdkpixbuf-2.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gtk-4.0": "^4.2.0",
+      "@girs/gsk-4.0": "^4.2.0",
+      "@girs/graphene-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/gdk-4.0": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/pangocairo-1.0": "^4.2.0",
+      "@girs/pango-1.0": "^4.2.0",
+      "@girs/harfbuzz-0.0": "^4.2.0",
+      "@girs/freetype2-2.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gdkpixbuf-2.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

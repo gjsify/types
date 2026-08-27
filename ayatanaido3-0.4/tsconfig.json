@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./ayatanaido3-0.4.d.ts"]
+  "include": ["./ayatanaido3-0.4.d.ts","./ayatanaido3-0.4-surface.d.ts"]
 }
 
 

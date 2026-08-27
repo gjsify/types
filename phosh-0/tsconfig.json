@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./phosh-0.d.ts"]
+  "include": ["./phosh-0.d.ts","./phosh-0-surface.d.ts"]
 }
 
 

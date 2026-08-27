@@ -1,8 +1,7 @@
 {
     "name": "@girs/gcrgtk3-4",
-    "version": "4.1.0",
-    "libraryVersion": "4.0.0",
-    "description": "GJS TypeScript type definitions for GcrGtk3-4, generated from library version 4.0.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for GcrGtk3-4",
     "type": "module",
     "module": "gcrgtk3-4.js",
     "main": "gcrgtk3-4.js",
@@ -16,6 +15,11 @@
         "types": "./gcrgtk3-4-import.d.ts",
         "import": "./gcrgtk3-4-import.js",
         "default": "./gcrgtk3-4-import.js"
+      },
+      "./surface": {
+        "types": "./gcrgtk3-4-surface.d.ts",
+        "import": "./gcrgtk3-4-surface.js",
+        "default": "./gcrgtk3-4-surface.js"
       },
       "./gcrgtk3-4": {
         "types": "./gcrgtk3-4.d.ts",
@@ -32,22 +36,22 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gtk-3.0": "^4.1.0",
-      "@girs/xlib-2.0": "^4.1.0",
-      "@girs/gdk-3.0": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/pango-1.0": "^4.1.0",
-      "@girs/harfbuzz-0.0": "^4.1.0",
-      "@girs/freetype2-2.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gdkpixbuf-2.0": "^4.1.0",
-      "@girs/atk-1.0": "^4.1.0",
-      "@girs/gcr-4": "^4.1.0",
-      "@girs/gck-2": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gtk-3.0": "^4.2.0",
+      "@girs/xlib-2.0": "^4.2.0",
+      "@girs/gdk-3.0": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/pango-1.0": "^4.2.0",
+      "@girs/harfbuzz-0.0": "^4.2.0",
+      "@girs/freetype2-2.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gdkpixbuf-2.0": "^4.2.0",
+      "@girs/atk-1.0": "^4.2.0",
+      "@girs/gcr-4": "^4.2.0",
+      "@girs/gck-2": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

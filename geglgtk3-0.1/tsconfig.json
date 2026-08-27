@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./geglgtk3-0.1.d.ts"]
+  "include": ["./geglgtk3-0.1.d.ts","./geglgtk3-0.1-surface.d.ts"]
 }
 
 

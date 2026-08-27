@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./gthreegtk3-1.0.d.ts"]
+  "include": ["./gthreegtk3-1.0.d.ts","./gthreegtk3-1.0-surface.d.ts"]
 }
 
 

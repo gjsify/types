@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./osmgpsmap-1.0.d.ts"]
+  "include": ["./osmgpsmap-1.0.d.ts","./osmgpsmap-1.0-surface.d.ts"]
 }
 
 

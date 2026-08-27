@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./gcrui-3.d.ts"]
+  "include": ["./gcrui-3.d.ts","./gcrui-3-surface.d.ts"]
 }
 
 

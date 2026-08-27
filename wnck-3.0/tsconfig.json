@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./wnck-3.0.d.ts"]
+  "include": ["./wnck-3.0.d.ts","./wnck-3.0-surface.d.ts"]
 }
 
 

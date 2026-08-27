@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gspell-1.d.ts"]
+  "include": ["./gspell-1.d.ts","./gspell-1-surface.d.ts"]
 }
 
 

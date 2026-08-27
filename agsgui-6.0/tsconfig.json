@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./agsgui-6.0.d.ts"]
+  "include": ["./agsgui-6.0.d.ts","./agsgui-6.0-surface.d.ts"]
 }
 
 

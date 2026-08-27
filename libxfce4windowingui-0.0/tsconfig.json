@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./libxfce4windowingui-0.0.d.ts"]
+  "include": ["./libxfce4windowingui-0.0.d.ts","./libxfce4windowingui-0.0-surface.d.ts"]
 }
 
 

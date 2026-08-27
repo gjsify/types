@@ -1,8 +1,7 @@
 {
     "name": "@girs/gtef-2",
-    "version": "4.1.0",
-    "libraryVersion": "2.0.0",
-    "description": "GJS TypeScript type definitions for Gtef-2, generated from library version 2.0.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for Gtef-2",
     "type": "module",
     "module": "gtef-2.js",
     "main": "gtef-2.js",
@@ -16,6 +15,11 @@
         "types": "./gtef-2-import.d.ts",
         "import": "./gtef-2-import.js",
         "default": "./gtef-2-import.js"
+      },
+      "./surface": {
+        "types": "./gtef-2-surface.d.ts",
+        "import": "./gtef-2-surface.js",
+        "default": "./gtef-2-surface.js"
       },
       "./gtef-2": {
         "types": "./gtef-2.d.ts",
@@ -32,21 +36,21 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gtksource-3.0": "^4.1.0",
-      "@girs/gtk-3.0": "^4.1.0",
-      "@girs/xlib-2.0": "^4.1.0",
-      "@girs/gdk-3.0": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/pango-1.0": "^4.1.0",
-      "@girs/harfbuzz-0.0": "^4.1.0",
-      "@girs/freetype2-2.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gdkpixbuf-2.0": "^4.1.0",
-      "@girs/atk-1.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gtksource-3.0": "^4.2.0",
+      "@girs/gtk-3.0": "^4.2.0",
+      "@girs/xlib-2.0": "^4.2.0",
+      "@girs/gdk-3.0": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/pango-1.0": "^4.2.0",
+      "@girs/harfbuzz-0.0": "^4.2.0",
+      "@girs/freetype2-2.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gdkpixbuf-2.0": "^4.2.0",
+      "@girs/atk-1.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

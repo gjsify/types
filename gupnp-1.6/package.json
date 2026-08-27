@@ -1,8 +1,7 @@
 {
     "name": "@girs/gupnp-1.6",
-    "version": "4.1.0",
-    "libraryVersion": "1.6.0",
-    "description": "GJS TypeScript type definitions for GUPnP-1.6, generated from library version 1.6.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for GUPnP-1.6",
     "type": "module",
     "module": "gupnp-1.6.js",
     "main": "gupnp-1.6.js",
@@ -32,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/libxml2-2.0": "^4.1.0",
-      "@girs/soup-3.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gssdp-1.6": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/libxml2-2.0": "^4.2.0",
+      "@girs/soup-3.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gssdp-1.6": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

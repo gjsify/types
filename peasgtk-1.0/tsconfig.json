@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./peasgtk-1.0.d.ts"]
+  "include": ["./peasgtk-1.0.d.ts","./peasgtk-1.0-surface.d.ts"]
 }
 
 

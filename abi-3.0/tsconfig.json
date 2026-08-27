@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./abi-3.0.d.ts"]
+  "include": ["./abi-3.0.d.ts","./abi-3.0-surface.d.ts"]
 }
 
 

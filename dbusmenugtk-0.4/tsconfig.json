@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./dbusmenugtk-0.4.d.ts"]
+  "include": ["./dbusmenugtk-0.4.d.ts","./dbusmenugtk-0.4-surface.d.ts"]
 }
 
 

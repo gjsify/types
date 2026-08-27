@@ -86,7 +86,7 @@
       ]
 }
   },
-  "include": ["./clappergtk-0.0.d.ts"]
+  "include": ["./clappergtk-0.0.d.ts","./clappergtk-0.0-surface.d.ts"]
 }
 
 

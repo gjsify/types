@@ -1,8 +1,7 @@
 {
     "name": "@girs/anacondawidgets-3.4",
-    "version": "4.1.0",
-    "libraryVersion": "3.4.0",
-    "description": "GJS TypeScript type definitions for AnacondaWidgets-3.4, generated from library version 3.4.0",
+    "version": "4.2.0",
+    "description": "GJS TypeScript type definitions for AnacondaWidgets-3.4",
     "type": "module",
     "module": "anacondawidgets-3.4.js",
     "main": "anacondawidgets-3.4.js",
@@ -16,6 +15,11 @@
         "types": "./anacondawidgets-3.4-import.d.ts",
         "import": "./anacondawidgets-3.4-import.js",
         "default": "./anacondawidgets-3.4-import.js"
+      },
+      "./surface": {
+        "types": "./anacondawidgets-3.4-surface.d.ts",
+        "import": "./anacondawidgets-3.4-surface.js",
+        "default": "./anacondawidgets-3.4-surface.js"
       },
       "./anacondawidgets-3.4": {
         "types": "./anacondawidgets-3.4.d.ts",
@@ -32,21 +36,21 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.1.0",
-      "@girs/gtk-3.0": "^4.1.0",
-      "@girs/xlib-2.0": "^4.1.0",
-      "@girs/gdk-3.0": "^4.1.0",
-      "@girs/cairo-1.0": "^4.1.0",
-      "@girs/gobject-2.0": "^4.1.0",
-      "@girs/glib-2.0": "^4.1.0",
-      "@girs/pango-1.0": "^4.1.0",
-      "@girs/harfbuzz-0.0": "^4.1.0",
-      "@girs/freetype2-2.0": "^4.1.0",
-      "@girs/gio-2.0": "^4.1.0",
-      "@girs/gmodule-2.0": "^4.1.0",
-      "@girs/gdkpixbuf-2.0": "^4.1.0",
-      "@girs/atk-1.0": "^4.1.0",
-      "@girs/xkl-1.0": "^4.1.0"    },
+      "@girs/gjs": "^4.2.0",
+      "@girs/gtk-3.0": "^4.2.0",
+      "@girs/xlib-2.0": "^4.2.0",
+      "@girs/gdk-3.0": "^4.2.0",
+      "@girs/cairo-1.0": "^4.2.0",
+      "@girs/gobject-2.0": "^4.2.0",
+      "@girs/glib-2.0": "^4.2.0",
+      "@girs/pango-1.0": "^4.2.0",
+      "@girs/harfbuzz-0.0": "^4.2.0",
+      "@girs/freetype2-2.0": "^4.2.0",
+      "@girs/gio-2.0": "^4.2.0",
+      "@girs/gmodule-2.0": "^4.2.0",
+      "@girs/gdkpixbuf-2.0": "^4.2.0",
+      "@girs/atk-1.0": "^4.2.0",
+      "@girs/xkl-1.0": "^4.2.0"    },
     "devDependencies": {
       "typescript": "*"
     },

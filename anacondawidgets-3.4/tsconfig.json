@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./anacondawidgets-3.4.d.ts"]
+  "include": ["./anacondawidgets-3.4.d.ts","./anacondawidgets-3.4-surface.d.ts"]
 }
 
 

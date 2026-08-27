@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/cally-6)
 
 
-GJS TypeScript type definitions for Cally-6, generated from library version 6.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.1.0.
+GJS TypeScript type definitions for Cally-6 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.2.0.
 
 ## Install
 

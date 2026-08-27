@@ -1,0 +1,30 @@
+// The widget vocabulary of BraseroMedia-3.1 as runtime data.
+//
+// GENERATED — do not edit. Provenance: BraseroMedia-3.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface
+//
+// The type half of this subpath is the sibling `.d.ts`. This file exists because
+// types are erased: a consumer that wants to ask the installed library whether every
+// name here is real needs values, not declarations.
+
+export const SURFACE_PROVENANCE = 'BraseroMedia-3.1 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Atk.ImplementorIface';
+
+export const OWN_PROPS = {
+    BraseroDriveSelection: ['Drive', 'drive-type'],
+    BraseroMediumSelection: ['media-type', 'medium'],
+};
+
+export const OWN_SIGNALS = {
+    BraseroDriveSelection: ['drive-changed'],
+    BraseroMediumSelection: ['medium-changed'],
+};
+
+export const DECLS = {
+    BraseroDriveSelection: ['BraseroDriveSelection', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+    BraseroMediumSelection: ['BraseroMediumSelection', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
+};
+
+export const ENUM_NICKS = {};
+
+export const SLOT_CANDIDATES = {};
+
+export const SINCE = {};

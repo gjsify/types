@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./xreaderview-1.5.d.ts"]
+  "include": ["./xreaderview-1.5.d.ts","./xreaderview-1.5-surface.d.ts"]
 }
 
 

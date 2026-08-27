@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./eom-1.0.d.ts"]
+  "include": ["./eom-1.0.d.ts","./eom-1.0-surface.d.ts"]
 }
 
 
