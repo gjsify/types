@@ -133,21 +133,37 @@ function isTerminalNpmError(message: string): boolean {
 }
 
 /**
- * The registry could not save the packument — transient, and NOT the same thing
- * as `EPUBLISHCONFLICT` (that one means the version is already there and is
- * terminal by design).
+ * Codes that are the registry asking to be asked again.
  *
- * The incident: the 4.2.0 sweep published 702 of 703 packages and failed on
- * `@girs/unity-7.0` with `E409 Conflict - PUT .../@girs%2funity-7.0 - Failed to
- * save packument`, npm's own wording for "a previous publish is still being
- * processed". One second later the sweep moved on and the run ended red with a
- * single package missing from npm — a state that needs a human to notice a red
- * X on a two-hour job and diff 703 names against the registry. It is exactly
- * the shape retries exist for, and it was the one transient code the classifier
- * did not know.
+ * `E409` is here because the 4.2.0 release found it the hard way: 702 of 703
+ * packages published, and `@girs/unity-7.0` died on
+ *
+ *     npm error code E409
+ *     npm error 409 Conflict - PUT … - Failed to save packument. A common cause
+ *     is if you try to publish a new package before the previous package has
+ *     been fully published.
+ *
+ * — a transient write conflict, retried ZERO times, because tightening this
+ * classifier made it right about what is terminal and left everything it did
+ * not name unretryable. Being precise about one half of a partition is not the
+ * same as covering it, and the half that was named was the half we had already
+ * been bitten by — which is exactly how the other half stays invisible.
+ *
+ * So the retryable side is named too, not just the one code from the incident:
+ * the 5xx family and the coded transport errors belong here for the same
+ * reason. One package left unpublished costs a human a red X on a two-hour job
+ * and a 703-name diff against the registry.
+ *
+ * Publishing over an existing version is a DIFFERENT answer and stays terminal:
+ * npm spells that `EPUBLISHCONFLICT`, and `publishPackageOnce` resolves it as
+ * already-published before this is ever consulted. The two 409-shaped
+ * conditions must never collapse into one rule.
  */
-function isPackumentSaveConflict(message: string): boolean {
-	return npmErrorCode(message) === "E409";
+const RETRYABLE_NPM_CODES = new Set(["E409", "E500", "E502", "E503", "E504", "ETIMEDOUT", "ECONNRESET"]);
+
+function isRetryableNpmError(message: string): boolean {
+	const code = npmErrorCode(message);
+	return code !== null && RETRYABLE_NPM_CODES.has(code);
 }
 
 /**
@@ -164,7 +180,7 @@ function isRetryablePublishError(message: string): boolean {
 	const lower = message.toLowerCase();
 	return (
 		isRateLimitedError(message) ||
-		isPackumentSaveConflict(message) ||
+		isRetryableNpmError(message) ||
 		lower.includes("econnreset") ||
 		lower.includes("etimedout") ||
 		lower.includes("socket hang up")
@@ -216,7 +232,7 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 		retryable: true,
 	},
 	{
-		name: "a coded transport error is neither",
+		name: "a coded transport error is not a rate limit, and not terminal",
 		message: "npm error code ECONNRESET\nnpm error network socket hang up",
 		rateLimited: false,
 		terminal: false,
@@ -247,6 +263,13 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 			"npm error code E409\n" +
 			"npm error 409 Conflict - PUT https://registry.npmjs.org/@girs%2funity-7.0 - Failed to save packument. " +
 			"A common cause is if you try to publish a new package before the previous package has been fully processed.",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+	},
+	{
+		name: "a 503 from the registry is retryable",
+		message: "npm error code E503\nnpm error 503 Service Unavailable",
 		rateLimited: false,
 		terminal: false,
 		retryable: true,
