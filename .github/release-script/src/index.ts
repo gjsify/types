@@ -9,6 +9,19 @@ interface Config {
 	timeoutSec: number;
 	dryRun: boolean;
 	continueOnError: boolean;
+	/**
+	 * How this run authenticates to npm. BOTH are supported on purpose.
+	 *
+	 * `token` is the simple path and it stays: npm Trusted Publishing cannot
+	 * create a package that does not exist yet, so the first publish of a NEW
+	 * `@girs/*` namespace — and ts-for-gir grows new ones — needs either a token
+	 * or a prior `gjsify onboard` sweep. A release train that can only do OIDC
+	 * would stall on the first new library GNOME ships.
+	 *
+	 * `oidc` is the one to prefer once the packages are onboarded: nothing to
+	 * expire, nothing to leak, and provenance without a secret.
+	 */
+	authMode: "token" | "oidc";
 }
 
 interface Package {
@@ -82,14 +95,119 @@ function calcBackoffMs(attempt: number, baseMs: number, maxMs: number): number {
 	return Math.max(100, Math.floor(exp + jitter));
 }
 
+/**
+ * npm's own error CODE, if the output carries one. `npm error code E404`.
+ *
+ * Read the code, never the prose. npm prints the tarball shasum on every
+ * publish attempt, so a plain `"429"` substring test against the output matches
+ * whenever that 40-char hex happens to contain those three digits — about 0.9 %
+ * of packages. That is how a permanent `E404` (npm's disguise for a 403 on a
+ * package you may not write) was classified as a rate limit and retried ten
+ * times with five-minute backoff, per package, for hours.
+ */
+function npmErrorCode(message: string): string | null {
+	const m = message.match(/^\s*npm (?:ERR!|error) code (E?[A-Z0-9_]+)/m);
+	return m ? m[1].toUpperCase() : null;
+}
+
+/**
+ * Retryable ONLY on a rate limit. A permission or missing-package answer never
+ * becomes true by waiting, and retrying it hides the real failure behind an
+ * hours-long backoff that looks like progress.
+ */
 function isRateLimitedError(message: string): boolean {
+	const code = npmErrorCode(message);
+	if (code) return code === "E429";
+	// No code line — fall back to the unambiguous PHRASES only. Never a bare
+	// number: the output also carries shasums, byte sizes and version strings.
 	const lower = message.toLowerCase();
-	return (
-		lower.includes("e429") ||
-		lower.includes("429") ||
-		lower.includes("too many requests") ||
-		lower.includes("rate limit")
-	);
+	return lower.includes("too many requests") || lower.includes("rate limit");
+}
+
+/** Codes that are settled: no amount of retrying changes the answer. */
+const TERMINAL_NPM_CODES = new Set(["E401", "E402", "E403", "E404", "EPUBLISHCONFLICT", "EOTP"]);
+
+function isTerminalNpmError(message: string): boolean {
+	const code = npmErrorCode(message);
+	return code !== null && TERMINAL_NPM_CODES.has(code);
+}
+
+/**
+ * Always-on self-test of the retry classifier, run at startup.
+ *
+ * The defect this replaces was invisible for exactly as long as nobody read a
+ * log: a permanent error classified as transient looks like patience. There is
+ * no test runner in this repository, and a test nothing runs is worse than
+ * none — so the vectors run every time the script does, cost a millisecond, and
+ * fail the process rather than warn.
+ *
+ * Vector 2 is the incident, verbatim in shape: npm prints the tarball shasum on
+ * every attempt, and `838bf765429e…` carries "429" at offset 8.
+ */
+const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean; terminal: boolean }[] = [
+	{
+		name: "E429 is a rate limit",
+		message: "npm error code E429\nnpm error 429 Too Many Requests",
+		rateLimited: true,
+		terminal: false,
+	},
+	{
+		name: "E404 whose shasum contains 429 is NOT a rate limit",
+		message:
+			"npm notice shasum: 838bf765429e25d726322cee8a408ebc15399ad6\n" +
+			"npm error code E404\n" +
+			"npm error 404 Not Found - PUT https://registry.npmjs.org/@girs%2fkeybinder-3.0",
+		rateLimited: false,
+		terminal: true,
+	},
+	{
+		name: "E403 is terminal",
+		message: "npm error code E403\nnpm error 403 Forbidden - PUT https://registry.npmjs.org/@girs%2fgtk-4.0",
+		rateLimited: false,
+		terminal: true,
+	},
+	{
+		name: "the legacy ERR! spelling still reads",
+		message: "npm ERR! code E429",
+		rateLimited: true,
+		terminal: false,
+	},
+	{
+		name: "a coded transport error is neither",
+		message: "npm error code ECONNRESET\nnpm error network socket hang up",
+		rateLimited: false,
+		terminal: false,
+	},
+	{
+		name: "an uncoded rate limit is still read, by phrase",
+		message: "Registry responded: too many requests, slow down",
+		rateLimited: true,
+		terminal: false,
+	},
+	{
+		// npm prints `unpacked size` on every publish too. Any number in the
+		// output is a coin flip against a bare-substring test.
+		name: "an unpacked size of 429 kB is not a rate limit",
+		message: "npm notice unpacked size: 429.1 kB\nnpm error code E403\nnpm error 403 Forbidden",
+		rateLimited: false,
+		terminal: true,
+	},
+];
+
+function selfTestClassifier(): void {
+	const failures: string[] = [];
+	for (const v of CLASSIFIER_VECTORS) {
+		if (isRateLimitedError(v.message) !== v.rateLimited) {
+			failures.push(`${v.name}: expected rateLimited=${v.rateLimited}`);
+		}
+		if (isTerminalNpmError(v.message) !== v.terminal) {
+			failures.push(`${v.name}: expected terminal=${v.terminal}`);
+		}
+	}
+	if (failures.length > 0) {
+		throw new Error(`retry-classifier self-test FAILED:\n  ${failures.join("\n  ")}`);
+	}
+	console.log(`🧪 retry-classifier self-test green — ${CLASSIFIER_VECTORS.length} vector(s)`);
 }
 
 function isRetryableHttpStatus(status: number): boolean {
@@ -177,7 +295,12 @@ function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
 }
 
 function getEnvConfig(): Pick<Config, "token" | "registry" | "timeoutSec"> {
-	const token = process.env.NODE_AUTH_TOKEN;
+	// An EMPTY token is no token. `actions/setup-node` injects a literal
+	// placeholder and a workflow that maps an unset secret still exports the
+	// variable, so "the variable exists" says nothing about whether a credential
+	// does — and an empty string here would select token auth and then fail
+	// every publish with a 401 that reads like a revoked token.
+	const token = process.env.NODE_AUTH_TOKEN?.trim() || undefined;
 	const registry = normalizeRegistryUrl(process.env.NPM_REGISTRY || DEFAULT_REGISTRY);
 	const timeoutSec = process.env.NPM_TIMEOUT_SEC
 		? Number.parseInt(process.env.NPM_TIMEOUT_SEC, 10)
@@ -199,11 +322,13 @@ function createConfig(): Config {
 	const args = parseArgs();
 	const env = getEnvConfig();
 
-	if (!args.dryRun && !env.token) {
-		throw new Error("NODE_AUTH_TOKEN environment variable is required");
-	}
+	// A missing token is NOT an error: it is the OIDC path. npm engages Trusted
+	// Publishing only when no token is configured, so "no token" is how the
+	// mode is selected — see `Config.authMode`. What IS an error is having
+	// neither, and `assertCanAuthenticate` decides that from the environment.
+	const authMode: Config["authMode"] = env.token ? "token" : "oidc";
 
-	return { ...args, ...env };
+	return { ...args, ...env, authMode };
 }
 
 // File system utilities
@@ -356,7 +481,13 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 			reject(new Error(`Timeout after ${config.timeoutSec}s for ${pkg.name}`));
 		}, config.timeoutSec * 1000);
 
-		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
+		// In OIDC mode the token must be ABSENT, not empty: npm decides between
+		// Trusted Publishing and token auth by whether one is configured at all,
+		// and `NODE_AUTH_TOKEN=""` still counts as configured. This is the same
+		// trap `actions/setup-node` sets by injecting a literal placeholder.
+		const env = { ...process.env } as NodeJS.ProcessEnv;
+		if (config.authMode === "token" && config.token) env.NODE_AUTH_TOKEN = config.token;
+		else delete env.NODE_AUTH_TOKEN;
 		const args = ["publish", "--tag", "latest", "--access", "public", "--provenance", "--registry", config.registry];
 
 		const proc = spawn("npm", args, {
@@ -416,8 +547,17 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 			baseDelayMs: RETRY_BASE_MS,
 			maxDelayMs: RETRY_MAX_MS,
 			shouldRetry: (err) => {
-				const msg = (err instanceof Error ? err.message : String(err)).toLowerCase();
-				return isRateLimitedError(msg) || msg.includes("econnreset") || msg.includes("etimedout") || msg.includes("socket hang up");
+				const msg = err instanceof Error ? err.message : String(err);
+				// A settled answer wins over every other signal, so a message that
+				// happens to contain a transport word cannot resurrect it.
+				if (isTerminalNpmError(msg)) return false;
+				const lower = msg.toLowerCase();
+				return (
+					isRateLimitedError(msg) ||
+					lower.includes("econnreset") ||
+					lower.includes("etimedout") ||
+					lower.includes("socket hang up")
+				);
 			},
 			onRetry: (attempt, wait, err) => {
 				const message = err instanceof Error ? err.message : String(err);
@@ -445,44 +585,57 @@ async function collectPackages(): Promise<Package[]> {
 	return packages;
 }
 
-async function testNpmAuth(config: Config): Promise<void> {
+/**
+ * Prove this run can authenticate, BEFORE it spends hours discovering it cannot.
+ *
+ * The old version ran `npm whoami`, printed `⚠️  Auth test failed` on a dead
+ * token and continued anyway — so a settled credential failure became 703
+ * retried publishes. A pre-flight check that cannot fail is not a check.
+ *
+ * Each mode is verified on its own terms, because `whoami` is the wrong question
+ * in OIDC mode (there is deliberately no token to identify).
+ */
+async function assertCanAuthenticate(config: Config): Promise<void> {
 	if (config.dryRun) return;
 
-	console.log("🔐 Testing npm authentication...");
+	if (config.authMode === "oidc") {
+		console.log("🔐 Auth mode: OIDC (npm Trusted Publishing) — no token configured");
+		if (!process.env.ACTIONS_ID_TOKEN_REQUEST_URL || !process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN) {
+			throw new Error(
+				"No NODE_AUTH_TOKEN and no GitHub OIDC token available: the job needs `permissions: id-token: write`, " +
+					"or set NODE_AUTH_TOKEN to publish with a token instead.",
+			);
+		}
+		console.log("✅ OIDC token endpoint available");
+		// Each package must ALSO have a Trusted Publisher configured for this
+		// workflow; npm answers a missing one with a 404 on the OIDC exchange.
+		// `gjsify onboard --packages "*"` configures them in one idempotent sweep.
+		return;
+	}
 
-	return new Promise((resolve) => {
+	console.log("🔐 Auth mode: token — verifying with npm whoami…");
+	const who = await new Promise<{ code: number | null; stdout: string; stderr: string }>((resolve) => {
 		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
-		const proc = spawn("npm", ["whoami", "--registry", config.registry], {
-			env,
-			shell: true,
-			stdio: "pipe",
-		});
-
+		const proc = spawn("npm", ["whoami", "--registry", config.registry], { env, shell: true, stdio: "pipe" });
 		let stdout = "";
 		let stderr = "";
-
-		proc.stdout.on("data", (data) => {
-			stdout += data.toString();
+		proc.stdout.on("data", (d) => {
+			stdout += d.toString();
 		});
-		proc.stderr.on("data", (data) => {
-			stderr += data.toString();
+		proc.stderr.on("data", (d) => {
+			stderr += d.toString();
 		});
-
-		proc.on("exit", (code) => {
-			if (code === 0) {
-				console.log(`✅ Authenticated as: ${stdout.trim()}`);
-				resolve();
-			} else {
-				console.warn(`⚠️  Auth test failed: ${stderr.trim()}`);
-				resolve(); // Continue anyway
-			}
-		});
-
-		proc.on("error", (err) => {
-			console.warn(`⚠️  Auth test error: ${err.message}`);
-			resolve(); // Continue anyway
-		});
+		proc.on("exit", (code) => resolve({ code, stdout, stderr }));
+		proc.on("error", (err) => resolve({ code: 1, stdout: "", stderr: err.message }));
 	});
+
+	if (who.code !== 0) {
+		throw new Error(
+			`NODE_AUTH_TOKEN is not usable on ${config.registry}: ${who.stderr.trim() || `npm whoami exit ${who.code}`}. ` +
+				"Replace the token, or drop it to publish via OIDC once the packages have a Trusted Publisher.",
+		);
+	}
+	console.log(`✅ Authenticated as: ${who.stdout.trim()}`);
 }
 
 // Phase 1: Check all package statuses in parallel with concurrency limit
@@ -608,6 +761,8 @@ async function publishPendingPackages(
 
 async function main(): Promise<void> {
 	try {
+		selfTestClassifier();
+
 		const config = createConfig();
 
 		if (config.dryRun) {
@@ -620,7 +775,7 @@ async function main(): Promise<void> {
 
 		console.log(`⚙️  Config: batch=${BATCH_SIZE}, batchDelay=${BATCH_DELAY_MS}ms, publishDelay=${PUBLISH_DELAY_MS}ms, statusConcurrency=${STATUS_CONCURRENCY}`);
 
-		await testNpmAuth(config);
+		await assertCanAuthenticate(config);
 		const packages = await collectPackages();
 
 		// Check for test packages with workspace dependencies
@@ -641,8 +796,18 @@ async function main(): Promise<void> {
 		console.log(`   ❌ Errors: ${errors}`);
 		console.log(`   📋 Total: ${alreadyPublished + processed + errors}`);
 
-		if (errors > 0 && !config.continueOnError) {
-			throw new Error(`Processing failed with ${errors} errors`);
+		// `--continue-on-error` governs whether the SWEEP stops at the first
+		// failure. It never governed whether failure is REPORTED, and reading it
+		// that way is how this script printed "completed successfully" and exited
+		// 0 over a run in which every single publish had failed. The workflow
+		// passes the flag, so that green check was one broken credential away at
+		// all times: a release job whose whole job is publishing, reporting
+		// success having published nothing.
+		if (errors > 0) {
+			throw new Error(
+				`${errors} of ${errors + processed} package(s) failed to publish` +
+					(config.continueOnError ? " (--continue-on-error kept the sweep going; the run still failed)" : ""),
+			);
 		}
 
 		console.log(`✅ ${config.dryRun ? "DRY RUN" : "Processing"} completed successfully`);

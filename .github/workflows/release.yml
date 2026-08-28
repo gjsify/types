@@ -43,8 +43,27 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
+      # Both auth paths are supported, and the token decides which one runs.
+      #
+      # With a token: the simple path, and the ONLY one that can create a
+      # package that does not exist yet — npm Trusted Publishing requires the
+      # package to already exist, so the first publish of a new `@girs/*`
+      # namespace needs this or a prior `gjsify onboard` sweep.
+      #
+      # Without one: npm Trusted Publishing (OIDC), via `id-token: write` above.
+      # Nothing to expire, nothing to leak. Preferred once every package has a
+      # Trusted Publisher configured for this workflow.
+      #
+      # Writing an EMPTY token line is worse than writing none: npm reads
+      # configured-but-empty as token auth and never attempts the OIDC exchange.
       - name: Configure npm authentication
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+        run: |
+          if [ -n "$NODE_AUTH_TOKEN" ]; then
+            echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+            echo "npm auth: token"
+          else
+            echo "npm auth: OIDC (no NODE_AUTH_TOKEN configured)"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
