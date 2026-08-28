@@ -38,22 +38,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      # setup-node@v7, and the version matters. v6 exported a DUMMY
-      # `NODE_AUTH_TOKEN` whenever `registry-url` was set without one, which npm
-      # reads as token auth and which therefore silently disables the OIDC
-      # exchange. v7's headline change is removing that export
-      # (actions/setup-node#1558), so `registry-url` with no token is now the
-      # documented Trusted-Publishing shape rather than a trap.
-      #
-      # `package-manager-cache: false` per the same docs: setup-node enables npm
-      # caching automatically, and a poisoned cache can expose credentials —
-      # including the OIDC token — to attacker-controlled code.
+      # `package-manager-cache: false`: setup-node caches npm automatically, and
+      # a poisoned cache can expose credentials — the OIDC token included — to
+      # attacker-controlled code.
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v7
         with:
           node-version: ${{ env.node-version }}
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
+
+      # npm >= 11.5.1 is a hard requirement for Trusted Publishing; below it a
+      # publish fails even when the OIDC permissions are right, and it fails as
+      # an auth error — so it reads as a broken Trusted Publisher rather than as
+      # a stale toolchain. PINNED rather than asserted at runtime: which npm a
+      # `24.x` runner carries is a moving target (24.0 shipped 11.3), and this
+      # workflow controls its own environment.
+      - name: Pin an npm that can use Trusted Publishing
+        run: |
+          npm install -g npm@^11.5.1
+          npm --version
 
       # The publisher is TypeScript executed with type STRIPPING, which does no
       # checking whatsoever — so a type error in the script that publishes 703

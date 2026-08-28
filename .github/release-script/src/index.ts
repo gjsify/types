@@ -194,19 +194,6 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 	},
 ];
 
-const NPM_VERSION_VECTORS: { version: string; below: boolean }[] = [
-	{ version: "11.5.1", below: false },
-	{ version: "11.5.0", below: true },
-	{ version: "11.4.9", below: true },
-	{ version: "11.6.0", below: false },
-	{ version: "12.0.0", below: false },
-	{ version: "10.9.9", below: true },
-	// A prerelease or an unreadable string must not BLOCK — refusing to publish
-	// over a version we could not parse is worse than the risk it guards.
-	{ version: "not-a-version", below: false },
-	{ version: "11.5.1-beta.1", below: false },
-];
-
 function selfTestClassifier(): void {
 	const failures: string[] = [];
 	for (const v of CLASSIFIER_VECTORS) {
@@ -217,17 +204,10 @@ function selfTestClassifier(): void {
 			failures.push(`${v.name}: expected terminal=${v.terminal}`);
 		}
 	}
-	for (const v of NPM_VERSION_VECTORS) {
-		if (isBelowMinNpm(v.version) !== v.below) {
-			failures.push(`npm ${v.version}: expected below=${v.below}`);
-		}
-	}
 	if (failures.length > 0) {
-		throw new Error(`self-test FAILED:\n  ${failures.join("\n  ")}`);
+		throw new Error(`retry-classifier self-test FAILED:\n  ${failures.join("\n  ")}`);
 	}
-	console.log(
-		`🧪 self-test green — ${CLASSIFIER_VECTORS.length} classifier + ${NPM_VERSION_VECTORS.length} npm-version vector(s)`,
-	);
+	console.log(`🧪 retry-classifier self-test green — ${CLASSIFIER_VECTORS.length} vector(s)`);
 }
 
 function isRetryableHttpStatus(status: number): boolean {
@@ -315,11 +295,11 @@ function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
 }
 
 function getEnvConfig(): Pick<Config, "token" | "registry" | "timeoutSec"> {
-	// An EMPTY token is no token. `actions/setup-node` injects a literal
-	// placeholder and a workflow that maps an unset secret still exports the
-	// variable, so "the variable exists" says nothing about whether a credential
-	// does — and an empty string here would select token auth and then fail
-	// every publish with a 401 that reads like a revoked token.
+	// An EMPTY token is no token. `${{ secrets.NODE_AUTH_TOKEN }}` still exports
+	// the variable when the secret is unset, so "the variable exists" says
+	// nothing about whether a credential does — and an empty string would select
+	// token auth and then fail every publish with a 401 that reads like a
+	// revoked token.
 	const token = process.env.NODE_AUTH_TOKEN?.trim() || undefined;
 	const registry = normalizeRegistryUrl(process.env.NPM_REGISTRY || DEFAULT_REGISTRY);
 	const timeoutSec = process.env.NPM_TIMEOUT_SEC
@@ -501,10 +481,8 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 			reject(new Error(`Timeout after ${config.timeoutSec}s for ${pkg.name}`));
 		}, config.timeoutSec * 1000);
 
-		// In OIDC mode the token must be ABSENT, not empty: npm decides between
-		// Trusted Publishing and token auth by whether one is configured at all,
-		// and `NODE_AUTH_TOKEN=""` still counts as configured. This is the same
-		// trap `actions/setup-node` sets by injecting a literal placeholder.
+		// In OIDC mode the token must be ABSENT, not empty — an unset secret still
+		// exports `NODE_AUTH_TOKEN=""` into this process.
 		const env = { ...process.env } as NodeJS.ProcessEnv;
 		if (config.authMode === "token" && config.token) env.NODE_AUTH_TOKEN = config.token;
 		else delete env.NODE_AUTH_TOKEN;
@@ -615,40 +593,33 @@ async function collectPackages(): Promise<Package[]> {
  * Each mode is verified on its own terms, because `whoami` is the wrong question
  * in OIDC mode (there is deliberately no token to identify).
  */
-/** The first npm release that can exchange a GitHub OIDC token. */
-const MIN_NPM_FOR_OIDC = [11, 5, 1] as const;
+/** How long the pre-flight auth probe may take before it is treated as undecided. */
+const WHOAMI_TIMEOUT_MS = 30_000;
 
-function isBelowMinNpm(version: string): boolean {
-	const parts = version.trim().split(".").map((p) => Number.parseInt(p, 10));
-	if (parts.length < 3 || parts.some((n) => !Number.isFinite(n))) return false; // unparseable — do not block on a guess
-	for (let i = 0; i < 3; i++) {
-		if (parts[i] < MIN_NPM_FOR_OIDC[i]) return true;
-		if (parts[i] > MIN_NPM_FOR_OIDC[i]) return false;
-	}
-	return false; // exactly the minimum
-}
-
-async function assertNpmSupportsOidc(): Promise<void> {
-	const version = await new Promise<string>((resolve) => {
-		const proc = spawn("npm", ["--version"], { shell: true, stdio: "pipe" });
-		let out = "";
-		proc.stdout.on("data", (d) => {
-			out += d.toString();
-		});
-		proc.on("exit", () => resolve(out.trim()));
-		proc.on("error", () => resolve(""));
-	});
-	if (!version) {
-		console.warn("⚠️  could not read the npm version — proceeding");
+/**
+ * Refuse to publish from anywhere but CI.
+ *
+ * This script publishes 703 packages and it is not a dry run by default, so a
+ * local invocation with a live `~/.npmrc` walks straight from the auth check
+ * into Phase 2. Measured, by doing exactly that during development: 703 publish
+ * attempts against the real registry, stopped only by `--provenance` failing to
+ * find a CI provider. That is luck, not a guard — and it would evaporate the
+ * moment someone drops `--provenance` or runs it under any provider npm knows.
+ *
+ * `--dry-run` still works everywhere; only the writing path is gated.
+ */
+function assertRunningInCi(config: Config): void {
+	if (config.dryRun) return;
+	const inCi = process.env.GITHUB_ACTIONS === "true" || process.env.CI === "true";
+	if (inCi) return;
+	if (process.env.ALLOW_PUBLISH_OUTSIDE_CI === "1") {
+		console.warn("⚠️  ALLOW_PUBLISH_OUTSIDE_CI=1 — publishing from a non-CI environment on purpose.");
 		return;
 	}
-	if (isBelowMinNpm(version)) {
-		throw new Error(
-			`npm ${version} cannot use Trusted Publishing: OIDC needs npm >= ${MIN_NPM_FOR_OIDC.join(".")}. ` +
-				"Use Node.js 24 or newer, or set NODE_AUTH_TOKEN to publish with a token instead.",
-		);
-	}
-	console.log(`✅ npm ${version} supports OIDC (>= ${MIN_NPM_FOR_OIDC.join(".")})`);
+	throw new Error(
+		"refusing to publish outside CI: this script publishes every package in the repo and is not a dry run. " +
+			"Use --dry-run to inspect the plan, or set ALLOW_PUBLISH_OUTSIDE_CI=1 if you really mean it.",
+	);
 }
 
 async function assertCanAuthenticate(config: Config): Promise<void> {
@@ -662,42 +633,71 @@ async function assertCanAuthenticate(config: Config): Promise<void> {
 					"or set NODE_AUTH_TOKEN to publish with a token instead.",
 			);
 		}
+		// npm >= 11.5.1 is required for the OIDC exchange. Not asserted here:
+		// release.yml pins it, which is the layer that controls the environment.
 		console.log("✅ OIDC token endpoint available");
-		// npm ≥ 11.5.1 is a HARD requirement for Trusted Publishing, and below it
-		// "publishing will fail even if OIDC permissions are correctly configured"
-		// (actions/setup-node docs). That failure arrives as an auth error, so it
-		// reads as a broken Trusted Publisher rather than as a stale toolchain —
-		// name it here instead.
-		await assertNpmSupportsOidc();
 		// Each package must ALSO have a Trusted Publisher configured for this
 		// workflow; npm answers a missing one with a 404 on the OIDC exchange.
 		// `gjsify onboard --packages "*"` configures them in one idempotent sweep.
 		return;
 	}
 
-	console.log("🔐 Auth mode: token — verifying with npm whoami…");
-	const who = await new Promise<{ code: number | null; stdout: string; stderr: string }>((resolve) => {
-		const env = { ...process.env, NODE_AUTH_TOKEN: config.token };
-		const proc = spawn("npm", ["whoami", "--registry", config.registry], { env, shell: true, stdio: "pipe" });
-		let stdout = "";
-		let stderr = "";
-		proc.stdout.on("data", (d) => {
-			stdout += d.toString();
-		});
-		proc.stderr.on("data", (d) => {
-			stderr += d.toString();
-		});
-		proc.on("exit", (code) => resolve({ code, stdout, stderr }));
-		proc.on("error", (err) => resolve({ code: 1, stdout: "", stderr: err.message }));
-	});
+	console.log("🔐 Auth mode: token — verifying the TOKEN…");
 
-	if (who.code !== 0) {
+	// Asked over HTTP with the token in the header, NOT via `npm whoami`.
+	//
+	// `npm whoami` authenticates from `~/.npmrc`; a bare `NODE_AUTH_TOKEN` in the
+	// environment is inert unless some npmrc line interpolates it. So off-CI the
+	// check answered from whatever credential the file happened to hold —
+	// measured: it printed `Authenticated as: jumplink` for a token spelled
+	// `npm_dead000…`. A gate that reads a different credential than the one under
+	// test reports on the wrong subject, and it does so most convincingly when
+	// the other credential is good.
+	//
+	// The direct call also removes npm's internal retry-with-backoff, which is
+	// why the old check ran past 90s under registry throttling instead of
+	// answering.
+	const base = config.registry.endsWith("/") ? config.registry.slice(0, -1) : config.registry;
+	let status: number;
+	let body: string;
+	try {
+		const res = await fetch(`${base}/-/whoami`, {
+			headers: { authorization: `Bearer ${config.token}`, accept: "application/json" },
+			signal: AbortSignal.timeout(WHOAMI_TIMEOUT_MS),
+		});
+		status = res.status;
+		body = await res.text().catch(() => "");
+	} catch (err) {
+		// A SETTLED negative is fatal; an UNDECIDED one is not. A timeout or a
+		// network error says nothing about the token, and refusing to release over
+		// a question we could not ask would block on a transient blip. Publishing
+		// is not thereby unguarded: E401/E403/E404 are terminal in the retry
+		// classifier, so a bad credential fails on the FIRST package rather than
+		// after ten backed-off retries on each of them.
+		console.warn(
+			`⚠️  could not reach ${base}/-/whoami (${err instanceof Error ? err.message : String(err)}) — ` +
+				"cannot verify the token here. Continuing; a bad credential will fail on the first publish.",
+		);
+		return;
+	}
+
+	if (status === 401 || status === 403) {
 		throw new Error(
-			`NODE_AUTH_TOKEN is not usable on ${config.registry}: ${who.stderr.trim() || `npm whoami exit ${who.code}`}. ` +
+			`NODE_AUTH_TOKEN is not usable on ${base} (HTTP ${status}). ` +
 				"Replace the token, or drop it to publish via OIDC once the packages have a Trusted Publisher.",
 		);
 	}
-	console.log(`✅ Authenticated as: ${who.stdout.trim()}`);
+	if (status < 200 || status >= 300) {
+		console.warn(`⚠️  ${base}/-/whoami answered HTTP ${status} — token not verified, continuing.`);
+		return;
+	}
+	let username = "";
+	try {
+		username = (JSON.parse(body) as { username?: string }).username ?? "";
+	} catch {
+		/* non-JSON body — the 2xx is the answer that matters */
+	}
+	console.log(`✅ Authenticated as: ${username || "(unknown)"}`);
 }
 
 // Phase 1: Check all package statuses in parallel with concurrency limit
@@ -826,6 +826,7 @@ async function main(): Promise<void> {
 		selfTestClassifier();
 
 		const config = createConfig();
+		assertRunningInCi(config);
 
 		if (config.dryRun) {
 			console.log("🔍 DRY RUN MODE - No packages will be published");
