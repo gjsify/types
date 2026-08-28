@@ -133,6 +133,45 @@ function isTerminalNpmError(message: string): boolean {
 }
 
 /**
+ * The registry could not save the packument — transient, and NOT the same thing
+ * as `EPUBLISHCONFLICT` (that one means the version is already there and is
+ * terminal by design).
+ *
+ * The incident: the 4.2.0 sweep published 702 of 703 packages and failed on
+ * `@girs/unity-7.0` with `E409 Conflict - PUT .../@girs%2funity-7.0 - Failed to
+ * save packument`, npm's own wording for "a previous publish is still being
+ * processed". One second later the sweep moved on and the run ended red with a
+ * single package missing from npm — a state that needs a human to notice a red
+ * X on a two-hour job and diff 703 names against the registry. It is exactly
+ * the shape retries exist for, and it was the one transient code the classifier
+ * did not know.
+ */
+function isPackumentSaveConflict(message: string): boolean {
+	return npmErrorCode(message) === "E409";
+}
+
+/**
+ * THE decision that gates a publish retry — the composed predicate, not one of
+ * its parts. It lives here, beside the classifiers it calls, so the self-test
+ * below can run the real thing: the helpers were covered all along, while the
+ * `shouldRetry` closure that actually decides was not, which is how a code that
+ * is neither terminal nor rate-limited came to mean "give up".
+ */
+function isRetryablePublishError(message: string): boolean {
+	// A settled answer wins over every other signal, so a message that happens
+	// to contain a transport word cannot resurrect it.
+	if (isTerminalNpmError(message)) return false;
+	const lower = message.toLowerCase();
+	return (
+		isRateLimitedError(message) ||
+		isPackumentSaveConflict(message) ||
+		lower.includes("econnreset") ||
+		lower.includes("etimedout") ||
+		lower.includes("socket hang up")
+	);
+}
+
+/**
  * Always-on self-test of the retry classifier, run at startup.
  *
  * The defect this replaces was invisible for exactly as long as nobody read a
@@ -144,12 +183,13 @@ function isTerminalNpmError(message: string): boolean {
  * Vector 2 is the incident, verbatim in shape: npm prints the tarball shasum on
  * every attempt, and `838bf765429e…` carries "429" at offset 8.
  */
-const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean; terminal: boolean }[] = [
+const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean; terminal: boolean; retryable: boolean }[] = [
 	{
 		name: "E429 is a rate limit",
 		message: "npm error code E429\nnpm error 429 Too Many Requests",
 		rateLimited: true,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "E404 whose shasum contains 429 is NOT a rate limit",
@@ -159,30 +199,35 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 			"npm error 404 Not Found - PUT https://registry.npmjs.org/@girs%2fkeybinder-3.0",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
 	},
 	{
 		name: "E403 is terminal",
 		message: "npm error code E403\nnpm error 403 Forbidden - PUT https://registry.npmjs.org/@girs%2fgtk-4.0",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
 	},
 	{
 		name: "the legacy ERR! spelling still reads",
 		message: "npm ERR! code E429",
 		rateLimited: true,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "a coded transport error is neither",
 		message: "npm error code ECONNRESET\nnpm error network socket hang up",
 		rateLimited: false,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		name: "an uncoded rate limit is still read, by phrase",
 		message: "Registry responded: too many requests, slow down",
 		rateLimited: true,
 		terminal: false,
+		retryable: true,
 	},
 	{
 		// npm prints `unpacked size` on every publish too. Any number in the
@@ -191,6 +236,27 @@ const CLASSIFIER_VECTORS: { name: string; message: string; rateLimited: boolean;
 		message: "npm notice unpacked size: 429.1 kB\nnpm error code E403\nnpm error 403 Forbidden",
 		rateLimited: false,
 		terminal: true,
+		retryable: false,
+	},
+	{
+		// The 4.2.0 incident, verbatim in shape. `E409` is transient and must be
+		// retried; `EPUBLISHCONFLICT` is the settled "already published" answer
+		// and must not be — the two must never collapse into one rule.
+		name: "E409 packument save conflict is transient",
+		message:
+			"npm error code E409\n" +
+			"npm error 409 Conflict - PUT https://registry.npmjs.org/@girs%2funity-7.0 - Failed to save packument. " +
+			"A common cause is if you try to publish a new package before the previous package has been fully processed.",
+		rateLimited: false,
+		terminal: false,
+		retryable: true,
+	},
+	{
+		name: "EPUBLISHCONFLICT stays terminal",
+		message: "npm error code EPUBLISHCONFLICT\nnpm error Cannot publish over previously published version",
+		rateLimited: false,
+		terminal: true,
+		retryable: false,
 	},
 ];
 
@@ -202,6 +268,9 @@ function selfTestClassifier(): void {
 		}
 		if (isTerminalNpmError(v.message) !== v.terminal) {
 			failures.push(`${v.name}: expected terminal=${v.terminal}`);
+		}
+		if (isRetryablePublishError(v.message) !== v.retryable) {
+			failures.push(`${v.name}: expected retryable=${v.retryable}`);
 		}
 	}
 	if (failures.length > 0) {
@@ -544,19 +613,7 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 			maxRetries: MAX_RETRIES_PUBLISH,
 			baseDelayMs: RETRY_BASE_MS,
 			maxDelayMs: RETRY_MAX_MS,
-			shouldRetry: (err) => {
-				const msg = err instanceof Error ? err.message : String(err);
-				// A settled answer wins over every other signal, so a message that
-				// happens to contain a transport word cannot resurrect it.
-				if (isTerminalNpmError(msg)) return false;
-				const lower = msg.toLowerCase();
-				return (
-					isRateLimitedError(msg) ||
-					lower.includes("econnreset") ||
-					lower.includes("etimedout") ||
-					lower.includes("socket hang up")
-				);
-			},
+			shouldRetry: (err) => isRetryablePublishError(err instanceof Error ? err.message : String(err)),
 			onRetry: (attempt, wait, err) => {
 				const message = err instanceof Error ? err.message : String(err);
 				console.log(`⏳ ${pkg.name}@${pkg.version} retry ${attempt}/${MAX_RETRIES_PUBLISH} in ${wait}ms: ${message}`);
